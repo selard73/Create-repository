@@ -19,6 +19,7 @@ local UP = 0.7
 local THICK = 3
 local GROW_V = 1.0       -- cutters grow this much along their vertical axis (0.5 up, 0.5 down)
 local GROW_H = 0.004     -- and this much sideways (0.002 per side) so CSG never sees exactly coplanar walls
+local MIN_POINTS = 3     -- a lower part is only cut when at least this many grid points (0.25 apart) are hidden under it
 local NOT_FLOOR = {"cup", "saucer", "chair", "seat", "table", "squirrel", "lamp", "sign", "pot", "plant", "flower", "umbrella",
 	"awning", "canopy", "bench", "cart", "crate", "barrel", "basket", "fountain", "statue", "pizza", "glass", "bottle", "menu",
 	"trunk", "foliage", "crown", "bush", "hedge", "pad", "prompt", "handle", "bubble", "marker"}
@@ -151,7 +152,7 @@ local plan = {}
 for L, ups in pairs(over) do
 	local total, names = 0, {}
 	for U, c in pairs(ups) do total += c; names[U.Name] = (names[U.Name] or 0) + 1 end
-	if total > 0 then table.insert(plan, {L = L, ups = ups, total = total, names = names}) end
+	if total >= MIN_POINTS then table.insert(plan, {L = L, ups = ups, total = total, names = names}) end
 end
 table.sort(plan, function(a, b) return a.total > b.total end)
 print(string.format("QQ SQF PLAN %d parts to cut (%s):", #plan, DRY and "DRY RUN, nothing changes" or "CUTTING"))
