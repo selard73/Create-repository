@@ -1,0 +1,40 @@
+{
+  "name": "Create-repository",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedFirst": {
+      "$path": "src/ReplicatedFirst",
+      "$ignoreUnknownInstances": true
+    },
+
+    "ReplicatedStorage": {
+      "$path": "src/ReplicatedStorage",
+      "$ignoreUnknownInstances": true
+    },
+
+    "ServerScriptService": {
+      "$path": "src/ServerScriptService",
+      "$ignoreUnknownInstances": true
+    },
+
+    "ServerStorage": {
+      "$path": "src/ServerStorage",
+      "$ignoreUnknownInstances": true
+    },
+
+    "StarterPlayer": {
+      "$ignoreUnknownInstances": true,
+
+      "StarterPlayerScripts": {
+        "$path": "src/StarterPlayerScripts",
+        "$ignoreUnknownInstances": true
+      },
+
+      "StarterCharacterScripts": {
+        "$path": "src/StarterCharacterScripts",
+        "$ignoreUnknownInstances": true
+      }
+    }
+  }
+}
