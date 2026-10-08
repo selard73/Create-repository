@@ -1,0 +1,179 @@
+# ================================================================ the cliff and the falls (the gorge's end) ================
+# Shannon (Sep 30 evening): the gorge OPENS onto a waterfall. The walls end at sharp corners at their last column
+# (ZC); from each corner a cliff arm sweeps south round the plunge pool (the cove), and between the corners the river
+# pours over a rounded sill. An arm's first column IS the wall's last column (same rows, same points), so the join is
+# seamless; the face carries the walls' strata on past the corner (the along-face coordinate continues the wall's z),
+# and the beds carry on down to the pool bed with a second texture (strata_low.png) below the river-bed level.
+ZC = float(ZS[-1]); assert abs(ZC - G.ZC) < 1e-6, (ZC, G.ZC)
+CXE = float(G.centre_x(ZC))
+XCW, XCE = G.corner_x(-1), G.corner_x(1)
+N_LOW = 96                                                # rows from the pool bed up to Y0 (the texture split)
+K_SILL = 8                                                # the lip's face keeps the corners' first rows above Y0, then the sill
+COLS_C = 26
+
+
+def wall_face_x(y, s):
+    """x of the wall's face at its last column (z = ZC): the corner's arris follows it"""
+    return float(G.centre_x(ZC)) + s * G.face_d(ZC, np.asarray(y, dtype=float), s)
+
+
+def arm_path(a, s):
+    """plan position of an arm's base line a studs (along x) out from its corner, and the outward (air-side) unit normal"""
+    a = float(a)
+    x = G.corner_x(s) + s * a; z = ZC - float(G.cove(a))
+    da = 0.5
+    slope = (float(G.cove(a + da)) - float(G.cove(max(a - da, 0.0)))) / (da + min(a, da))       # d cove / d a >= 0
+    tx, tz = s, -slope
+    ln = math.hypot(tx, tz); tx, tz = tx / ln, tz / ln
+    return x, z, s * tz, -s * tx                          # n = s (t_z, -t_x): south-ish, toward the air
+
+
+_AA = np.linspace(0.0, G.ARM_L + 2.0, 4000)
+_ARC = np.concatenate([[0.0], np.cumsum(np.hypot(np.diff(_AA), np.diff(np.array([float(G.cove(v)) for v in _AA]))))])
+
+
+def arc_of(a):
+    return float(np.interp(a, _AA, _ARC))
+
+
+def arm_column(a, s):
+    """one column of a cliff arm: N_LOW rows from the pool bed to Y0, then exactly the wall's row scheme (N_FACE face
+    rows to the lip's foot, the lip, the top strip going back into the ridge). At a = 0 it is the wall's own last
+    column with the low rows under it."""
+    T = float(G.cliff_T(a, s)); yf = T - G.RR
+    ys_low = G.Y_FOOT + (Y0 - G.Y_FOOT) * (np.arange(N_LOW) / N_LOW)
+    zv = ZC - arc_of(a)                                   # the along-face coordinate (texture, beds, joints)
+    if a <= 1e-9:
+        xs = wall_face_x(ys_low, s)
+        pts = [(float(x), float(y), ZC) for x, y in zip(xs, ys_low)]; vs = [float(y) for y in ys_low]
+        p2, v2 = column(ZC, s)
+        return pts + p2, vs + v2, zv
+    x0, z0, nx, nz = arm_path(a, s)
+    ys_up = Y0 + (yf - Y0) * (np.arange(N_FACE + 1) / N_FACE)
+    ys = np.concatenate([ys_low, ys_up]); zvs = np.full(ys.shape, zv)
+    wc = float(G.smoothstep(0.0, 6.0, a))                 # the wall's own features right at the corner, the arm's beyond
+    rel = ((1 - wc) * G.relief(zvs, ys, T, s) + wc * G.relief(zvs, ys, T, 2 * s)) * float(G.smoothstep(0.0, 4.0, a))
+    notch = 1.3 * np.exp(-((ys - (G.SEA_Y + 2.2)) / 2.0) ** 2) * float(G.smoothstep(0.0, 10.0, a))   # the harbour's waterline notch
+    d = rel - G.arm_lean(a, ys) - notch                   # offset along n: + toward the air
+    shear = (wall_face_x(ys, s) - G.corner_x(s)) * (1 - float(G.smoothstep(0.0, 30.0, a)))   # columns near the corner keep its slant
+    pts = [(x0 + float(sx) + nx * float(dd), float(yy), z0 + nz * float(dd)) for sx, yy, dd in zip(shear, ys, d)]
+    vs = [float(v) for v in ys]
+    df = float(d[-1]); shf = float(shear[-1])
+    for k in range(1, N_LIP + 1):
+        th = (k / N_LIP) * (math.pi / 2)
+        dd = df - (G.RR - G.RR * math.cos(th))
+        pts.append((x0 + shf + nx * dd, yf + G.RR * math.sin(th), z0 + nz * dd)); vs.append(V_TOP0 + 0.3 * k / N_LIP)
+    for k in range(1, N_STRIP + 1):
+        f = k / N_STRIP
+        dd = df - G.RR - f * G.TOP_STRIP
+        pts.append((x0 + shf + nx * dd, T - 2.5 * f * f, z0 + nz * dd)); vs.append(V_TOP0 + 0.3 + 2.5 * f)
+    return pts, vs, zv
+
+
+def lip_column(x):
+    """one column of the face under the lip (between the corners, on z = ZC): the low rows, the corners' first K_SILL
+    rows above Y0, the rounded sill, and the sill sloping back down to the river bed. Its end columns coincide with the
+    corners' columns row for row."""
+    t = (XCE - x) / (XCE - XCW)
+    ys_low = G.Y_FOOT + (Y0 - G.Y_FOOT) * (np.arange(N_LOW) / N_LOW)
+    yfw = float(G.cliff_T(0.0, -1)) - G.RR; yfe = float(G.cliff_T(0.0, 1)) - G.RR
+    yf = yfe * (1 - t) + yfw * t
+    ys = np.concatenate([ys_low, Y0 + (yf - Y0) * (np.arange(K_SILL + 1) / N_FACE)])
+    ww = 1 - float(G.smoothstep(0.0, 4.0, x - XCW)); we = 1 - float(G.smoothstep(0.0, 4.0, XCE - x))
+    zv = ZC - 2.0 * (XCE - x)
+    rel = 0.45 * G.relief(np.full(ys.shape, zv), ys, float(G.cliff_T(0.0, -1)), -2) * (1 - max(ww, we))
+    xs = x + ww * (wall_face_x(ys, -1) - XCW) + we * (wall_face_x(ys, 1) - XCE)
+    pts = [(float(xx), float(yy), ZC + float(dd)) for xx, yy, dd in zip(xs, ys, rel)]; vs = [float(v) for v in ys]
+    y0s = float(ys[-1]); df = float(rel[-1]); xf = float(xs[-1])
+    for k in range(1, N_LIP + 1):
+        th = (k / N_LIP) * (math.pi / 2)
+        pts.append((xf, y0s + G.SILL_R * math.sin(th), ZC + df + G.SILL_R - G.SILL_R * math.cos(th))); vs.append(V_TOP0 + 0.3 * k / N_LIP)
+    ytop = y0s + G.SILL_R
+    for k in range(1, N_STRIP + 1):
+        f = k / N_STRIP
+        pts.append((xf, ytop - (ytop - (Y0 + 0.3)) * f, ZC + df + G.SILL_R + f * (G.SILL_RUN - G.SILL_R - df))); vs.append(V_TOP0 + 0.3 + 2.5 * f)
+    return pts, vs, zv
+
+
+def strip_meshes(tag, cols, s_wind, cap_end_dir=None):
+    """cols: (pts, vs, zv) per column in order; s_wind = -1 when (column direction) x (+y) already points to the air,
+    +1 when it must be flipped. Chunks of COLS_C columns; each chunk becomes two meshes: rows 0..N_LOW with
+    strata_low.png (name suffix _Lo) and the rest with strata.png. Optionally a fan closes the last column."""
+    P = np.array([c[0] for c in cols], dtype=float); V = np.array([c[1] for c in cols], dtype=float); ZV = [c[2] for c in cols]
+    dx = np.zeros_like(P); dy = np.zeros_like(P)
+    dx[1:-1] = P[2:] - P[:-2]; dx[0] = P[1] - P[0]; dx[-1] = P[-1] - P[-2]
+    dy[:, 1:-1] = P[:, 2:] - P[:, :-2]; dy[:, 0] = P[:, 1] - P[:, 0]; dy[:, -1] = P[:, -1] - P[:, -2]
+    N = np.cross(dx, dy); ln = np.linalg.norm(N, axis=2, keepdims=True); ln[ln == 0] = 1; N = N / ln
+    if s_wind > 0:
+        N = -N
+    nc = P.shape[0]
+    bounds = list(range(0, nc - 1, COLS_C)) + [nc - 1]
+    out = []
+    for k in range(len(bounds) - 1):
+        c0, c1 = bounds[k], bounds[k + 1]
+        for part, (r0, r1) in (("Lo", (0, N_LOW)), ("", (N_LOW, P.shape[1] - 1))):
+            m = Mesh("SouthCliff_%s%02d%s" % (tag, k + 1, "_Lo" if part else ""), "StrataLow" if part else "Strata", smooth=True)
+            idx = {}
+            for ci in range(c0, c1 + 1):
+                for ri in range(r0, r1 + 1):
+                    y = P[ci, ri, 1]
+                    uv = ((G.Z_START - ZV[ci]) / U_TILE, (y - G.Y_FOOT) / (Y0 - G.Y_FOOT)) if part else uv_of(ZV[ci], V[ci, ri])
+                    idx[ci, ri] = m.vert(P[ci, ri], uv, N[ci, ri])
+            for ci in range(c0, c1):
+                for ri in range(r0, r1):
+                    a, b, c, d = idx[ci, ri], idx[ci + 1, ri], idx[ci + 1, ri + 1], idx[ci, ri + 1]
+                    if s_wind < 0:
+                        m.f.append((a, b, c)); m.f.append((a, c, d))
+                    else:
+                        m.f.append((a, c, b)); m.f.append((a, d, c))
+            if cap_end_dir is not None and c1 == nc - 1:
+                # close the arm's far end with a fan (it is buried in the ridge's terrain slope), facing out along the arm
+                pts = [tuple(P[c1, ri]) for ri in range(r0, r1 + 1)]
+                cen = (sum(p[0] for p in pts) / len(pts), sum(p[1] for p in pts) / len(pts), sum(p[2] for p in pts) / len(pts))
+                nrm = (cap_end_dir, 0.0, 0.0)
+                cidx = m.vert(cen, (0.0, 0.5), nrm)
+                ids = [m.vert(p, (p[2] / U_TILE, 0.5), nrm) for p in pts]
+                for q in range(len(ids) - 1):
+                    a, b = ids[q], ids[q + 1]
+                    n_ = np.cross(np.subtract(m.v[a - 1], cen), np.subtract(m.v[b - 1], cen))
+                    m.f.append((cidx, a, b) if n_[0] * cap_end_dir >= 0 else (cidx, b, a))
+            out.append(m)
+    return out
+
+
+CLIFF = []
+AS = np.arange(0.0, G.ARM_L + 1e-6, DZC)
+for s, tag in ((-1, "W"), (1, "E")):
+    CLIFF += strip_meshes(tag, [arm_column(a, s) for a in AS], s, cap_end_dir=float(s))
+_lx = np.linspace(XCE, XCW, int(round((XCE - XCW) / DZC)) + 1)            # east to west, so the face points south
+CLIFF += strip_meshes("L", [lip_column(x) for x in _lx], -1)
+
+# preview only: the falling water, its foam and mist, and the harbour/sea water plane (terrain water in the game)
+falls = Mesh("Falls", "Falls"); foam = Mesh("Foam", "Foam"); mist = Mesh("Mist", "Mist"); sea = Mesh("Sea", "Water")
+_nf = 26
+
+
+def _sheet(t):
+    return (G.WATER_Y - (G.FALL_H + 0.8) * t, ZC + 0.9 - 6.5 * t * t)
+
+
+for i in range(_nf):
+    t0, t1 = i / _nf, (i + 1) / _nf
+    (ya, za), (yb, zb) = _sheet(t0), _sheet(t1)
+    w0 = G.FALL_W / 2 + 1.5 * t0; w1 = G.FALL_W / 2 + 1.5 * t1
+    A, B, C, D = (CXE - w0, ya, za), (CXE + w0, ya, za), (CXE + w1, yb, zb), (CXE - w1, yb, zb)
+    falls.quad_flat(A, B, C, D); falls.quad_flat(A, D, C, B)
+_fc = (CXE, G.SEA_Y + 0.15, ZC - 7.0)
+for k in range(28):
+    a0, a1 = 2 * math.pi * k / 28, 2 * math.pi * (k + 1) / 28
+    foam.tri_flat(_fc, (CXE + 17 * math.cos(a1), _fc[1], _fc[2] + 17 * math.sin(a1)), (CXE + 17 * math.cos(a0), _fc[1], _fc[2] + 17 * math.sin(a0)))
+for ang in (0.0, math.pi / 2):
+    ux, uz = math.cos(ang) * 14, math.sin(ang) * 14
+    A, B = (CXE - ux, G.SEA_Y - 0.5, ZC - 6 - uz), (CXE + ux, G.SEA_Y - 0.5, ZC - 6 + uz)
+    C, D = (CXE + ux, G.SEA_Y + 19.0, ZC - 6 + uz), (CXE - ux, G.SEA_Y + 19.0, ZC - 6 - uz)
+    mist.quad_flat(A, B, C, D); mist.quad_flat(A, D, C, B)
+sea.quad_flat((-240.0, G.SEA_Y, ZC + 0.5), (1000.0, G.SEA_Y, ZC + 0.5), (1000.0, G.SEA_Y, -1400.0), (-240.0, G.SEA_Y, -1400.0))
+FALLS_PREV = [falls, foam, mist, sea]
+print("cliff: arm columns", len(AS), "lip columns", len(_lx), "| corners x %.2f / %.2f  crest z %.1f  sea %.1f plain %.1f" % (XCW, XCE, ZC, G.SEA_Y, G.PLAIN_Y))
+
+

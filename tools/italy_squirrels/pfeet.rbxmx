@@ -1,0 +1,30 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">PFeet</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 read-only: what each foot of a swapped squirrel stands on (rays straight down from 1 stud above the sole).
+-- Foot points in Blender units (feet_probe clusters), sx 1, same mapping as swap_model.template.lua.
+local JOBS={
+	boatpainter_squirrel={{-0.45,-0.40},{-0.20,-0.10},{-0.30,-0.25},{0.35,-0.25},{0.70,0.00},{0.55,-0.15}},
+	octopus_squirrel={{-0.62,-0.45},{-0.35,-0.05},{-0.45,-0.25},{0.20,-0.50},{0.50,-0.25},{0.35,-0.35}},
+	italytourist_squirrel={{-0.33,-0.38},{-0.15,-0.22},{-0.24,-0.33},{0.40,-0.18},{0.62,0.02},{0.57,-0.10}},
+}
+for id,pts in pairs(JOBS) do
+	local col=workspace:FindFirstChild(id..'_color')
+	if col and col:FindFirstChild('Squirrel') and not col.Squirrel:GetAttribute('ProbeSkip') then
+		local cm=col.Squirrel
+		local B={} for _,d in ipairs(col:GetDescendants()) do if d:IsA('Bone') then B[d.Name]=d end end
+		local hl=cm.CFrame:PointToObjectSpace(B.Head.WorldPosition) local sz=hl.Z<0 and 1 or -1
+		local k=3.4/cm.Size.Y local R=cm.CFrame-cm.Position
+		local sole=cm.Position.Y-cm.Size.Y/2
+		local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Exclude
+		rp.FilterDescendantsInstances={col,workspace:FindFirstChild('SquirrelTwins')}
+		local out={}
+		for _,f in ipairs(pts) do
+			local w=cm.Position+R:VectorToWorldSpace(Vector3.new(f[1],0,sz*f[2])*k)
+			local hit=workspace:Raycast(Vector3.new(w.X,sole+1,w.Z),Vector3.new(0,-6,0),rp)
+			table.insert(out,hit and string.format('%s gap %.2f',hit.Instance.Name,sole-hit.Position.Y) or 'NOTHING')
+		end
+		warn('QF@'..id,'sole',string.format('%.2f',sole),table.concat(out,' | '))
+	end
+end
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

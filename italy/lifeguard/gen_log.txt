@@ -1,0 +1,15 @@
+Chair_Wood tris 396 dims (2.74, 2.74, 5.78)
+Umbrella_Pole tris 64 dims (0.26, 0.26, 4.62)
+Umbrella_Red tris 80 dims (4.5, 4.5, 1.02)
+Umbrella_White tris 80 dims (4.5, 4.5, 1.02)
+Buoy_Red tris 216 dims (0.32, 1.56, 1.56)
+Buoy_White tris 216 dims (0.32, 1.56, 1.56)
+Boat_Hull tris 2784 dims (6.6, 2.5, 1.33)
+Boat_Trim tris 640 dims (6.6, 2.59, 0.57)
+Boat_Wood tris 104 dims (4.53, 1.49, 0.21)
+Boat_Text tris 3784 dims (2.78, 2.59, 0.29)
+FBX_DONE
+shot prev_front.png
+shot prev_side.png
+shot prev_boat.png
+RENDER_DONE

@@ -1,0 +1,135 @@
+-- Oct 5 2026 PROMENADE +10, step 1 (parts). Her picks: edge +10, fish stall +5, gangways 14 -> 10, Stella Marina 2 out.
+-- Backups: ServerStorage.PromenadeBackup (clones) + attributes PromOldCF/PromOldSize (parts) / PromOldPivot (models);
+-- new 'old line' paving clones carry PromenadeFill=true. Undo: tools/italy_squirrels/revert_promenade1.lua.
+local SS=game:GetService('ServerStorage')
+local P=workspace.PortoNocciola
+if SS:FindFirstChild('PromenadeBackup') then warn('PRM@ABORT PromenadeBackup exists - step 1 already ran') return end
+local W=P['01 Curved waterfront'] local J=P['11 Fitted surface joins'] local B=P['04 Piers and fishing boats']
+local Z=P['06 Piazza details and planting'] local N=P['05 Boatyard and nets'] local FM=P['03 Fish market']
+local DX=Vector3.new(-10,0,0) local DM=Vector3.new(-5,0,0) local DS=Vector3.new(-2,0,0)
+local LOWER=Vector3.new(0,-0.07,0)
+local function f(v) return string.format('%.2f,%.2f,%.2f',v.X,v.Y,v.Z) end
+
+-- ===== collect + verify (nothing changes until every count matches) =====
+local ringNames={['Seawall ashlar']=160,['Rounded coping stone']=41,['Quay foundation']=6,['Worn limestone promenade']=5,['Pier landing stone infill']=2}
+local ring,cnt={}, {}
+for _,c in ipairs(W:GetChildren()) do
+	if c:IsA('BasePart') and ringNames[c.Name] then table.insert(ring,c) cnt[c.Name]=(cnt[c.Name] or 0)+1 end
+end
+for n,e in pairs(ringNames) do if cnt[n]~=e then warn('PRM@ABORT count',n,cnt[n],'expected',e) return end end
+local joins={} for _,c in ipairs(J:GetChildren()) do if c:IsA('WedgePart') then table.insert(joins,c) end end
+if #joins~=31 then warn('PRM@ABORT joins',#joins) return end
+local bollards={} for _,c in ipairs(W:GetChildren()) do if c:IsA('Model') and c.Name=='Mooring bollard' then table.insert(bollards,c) end end
+if #bollards~=4 then warn('PRM@ABORT bollards',#bollards) return end
+local function findModel(parent,name,cx,cz)
+	for _,c in ipairs(parent:GetChildren()) do
+		if c.Name==name and c:IsA('Model') then
+			local cf=c:GetBoundingBox()
+			if math.abs(cf.Position.X-cx)<1.6 and math.abs(cf.Position.Z-cz)<1.6 then return c end
+		end
+	end
+end
+local edgeF={{Z,'Quay lantern',236,-602},{Z,'Quay lantern',244,-694},{Z,'Harbour bench',240.05,-615.95},
+	{N,'Nets drying on rack',244.0,-627.05},{N,'Nets drying on rack',239.95,-694.5}}
+local midF={{Z,'Quay lantern',246,-622},{Z,'Quay lantern',248,-675},{Z,'Harbour bench',249.1,-669}}
+local edgeM,midM={},{}
+for _,e in ipairs(edgeF) do local m=findModel(e[1],e[2],e[3],e[4]) if not m then warn('PRM@ABORT missing',e[2],e[3],e[4]) return end table.insert(edgeM,m) end
+for _,e in ipairs(midF) do local m=findModel(e[1],e[2],e[3],e[4]) if not m then warn('PRM@ABORT missing',e[2],e[3],e[4]) return end table.insert(midM,m) end
+local gwNames={['Gentle timber gangway']=true,['Gangway edge beam']=true,['Gangway handrail']=true,['Gangway short post']=true}
+local gw={} for _,c in ipairs(B:GetChildren()) do if c:IsA('BasePart') and gwNames[c.Name] then table.insert(gw,c) end end
+if #gw~=30 then warn('PRM@ABORT gangway parts',#gw) return end
+local SM=B:FindFirstChild('Stella Marina') local MO=B:FindFirstChild('Attached boat moorings') and B['Attached boat moorings']:FindFirstChild('Stella Marina')
+local GINO=workspace:FindFirstChild('deckhand_squirrel_color') local FISH=workspace:FindFirstChild('fishmonger_squirrel_color')
+if not (SM and SM:IsA('Model') and MO and GINO and FISH) then warn('PRM@ABORT boat/squirrels missing') return end
+
+-- ===== backup =====
+local BK=Instance.new('Folder') BK.Name='PromenadeBackup'
+BK:SetAttribute('Note','Oct 5 2026 promenade +10 step 1: clones of everything moved/reshaped (fish market: pivot attribute only). Undo with revert_promenade1.lua')
+local function bk(sub,inst)
+	local fo=BK:FindFirstChild(sub) or Instance.new('Folder') fo.Name=sub fo.Parent=BK
+	local c=inst:Clone() c:SetAttribute('OrigFullName',inst:GetFullName()) c.Parent=fo
+end
+for _,p in ipairs(ring) do bk('Ring',p) end
+for _,p in ipairs(joins) do bk('Joins',p) end
+for _,m in ipairs(bollards) do bk('Bollards',m) end
+for _,m in ipairs(edgeM) do bk('Furniture',m) end
+for _,m in ipairs(midM) do bk('Furniture',m) end
+for _,p in ipairs(gw) do bk('Gangways',p) end
+bk('Boat',SM) bk('Boat',MO) bk('Squirrels',GINO) bk('Squirrels',FISH)
+BK.Parent=SS
+
+-- ===== helpers =====
+local function movePart(p,d) if p:GetAttribute('PromOldCF')==nil then p:SetAttribute('PromOldCF',p.CFrame) end p.CFrame=p.CFrame+d end
+local function moveModel(m,d) if m:GetAttribute('PromOldPivot')==nil then m:SetAttribute('PromOldPivot',m:GetPivot()) end m:PivotTo(m:GetPivot()+d) end
+local function rotBetween(u,w)
+	local ax=u:Cross(w) local s=ax.Magnitude
+	if s<1e-7 then return CFrame.new() end
+	return CFrame.fromAxisAngle(ax/s,math.atan2(s,u:Dot(w)))
+end
+local function remapLong(p,map) -- map both ends of the part's long axis, keep its cross-section
+	local cf,s=p.CFrame,p.Size
+	if p:GetAttribute('PromOldCF')==nil then p:SetAttribute('PromOldCF',cf) end
+	if p:GetAttribute('PromOldSize')==nil then p:SetAttribute('PromOldSize',s) end
+	local axis,L,key
+	if s.X>=s.Y and s.X>=s.Z then axis,L,key=cf.XVector,s.X,'X' elseif s.Y>=s.Z then axis,L,key=cf.YVector,s.Y,'Y' else axis,L,key=cf.ZVector,s.Z,'Z' end
+	local a,b=map(cf.Position+axis*L/2),map(cf.Position-axis*L/2)
+	local d=a-b local nL=d.Magnitude
+	p.CFrame=CFrame.new((a+b)/2)*rotBetween(axis,d/nL)*(cf-cf.Position)
+	p.Size=(key=='X' and Vector3.new(nL,s.Y,s.Z)) or (key=='Y' and Vector3.new(s.X,nL,s.Z)) or Vector3.new(s.X,s.Y,nL)
+end
+
+-- ===== 1) old-line paving: lowered copies of every surface piece that moves =====
+local fills=0
+for _,p in ipairs(ring) do
+	if p.Name=='Worn limestone promenade' or p.Name=='Pier landing stone infill' then
+		local c=p:Clone() c.CFrame=p.CFrame+LOWER c:SetAttribute('PromenadeFill',true) c.Parent=p.Parent fills+=1
+	end
+end
+for _,p in ipairs(joins) do local c=p:Clone() c.CFrame=p.CFrame+LOWER c:SetAttribute('PromenadeFill',true) c.Parent=p.Parent fills+=1 end
+
+-- ===== 2) quay ring, joins, bollards, edge furniture: 10 out =====
+for _,p in ipairs(ring) do movePart(p,DX) end
+for _,p in ipairs(joins) do movePart(p,DX) end
+for _,m in ipairs(bollards) do moveModel(m,DX) end
+for _,m in ipairs(edgeM) do moveModel(m,DX) end
+
+-- ===== 3) middle row + fish stall + fishmonger: 5 out =====
+for _,m in ipairs(midM) do moveModel(m,DM) end
+moveModel(FM,DM) moveModel(FISH,DM)
+
+-- ===== 4) gangways: 10 out, then shortened 14 -> 10 toward the land end (heights kept) =====
+local ends={}
+for _,p in ipairs(gw) do
+	if p.Name=='Gentle timber gangway' then
+		local e=math.max((p.Position+p.CFrame.XVector*p.Size.X/2).X,(p.Position-p.CFrame.XVector*p.Size.X/2).X)
+		ends[p.Position.Z>-660 and 'P' or 'R']=e-10
+	end
+end
+if not (ends.P and ends.R) then warn('PRM@WARN gangway ends missing') end
+for _,p in ipairs(gw) do
+	movePart(p,DX)
+	local xl=ends[p.Position.Z>-660 and 'P' or 'R']
+	local function map(v) return Vector3.new(xl-(xl-v.X)*10/14,v.Y,v.Z) end
+	if p.Name=='Gangway short post' then
+		local c=p.CFrame p.CFrame=CFrame.new(map(c.Position))*(c-c.Position)
+	else
+		remapLong(p,map)
+	end
+end
+
+-- ===== 5) Stella Marina 2 out; her rope re-laid from the moved gunwale to the same pier post =====
+moveModel(SM,DS) moveModel(GINO,DS)
+local zg,zh=-647.6,-639.47
+local function shear(v) local t=math.clamp((v.Z-zg)/(zh-zg),0,1) return Vector3.new(v.X-2*(1-t),v.Y,v.Z) end
+local ropes,loops=0,0
+for _,p in ipairs(MO:GetDescendants()) do
+	if p:IsA('BasePart') then
+		if p.Name=='Gunwale tie loop' then movePart(p,DS) loops+=1
+		elseif p.Name=='Attached mooring rope' then remapLong(p,shear) ropes+=1 end
+	end
+end
+
+warn('PRM@DONE ring',#ring,'joins',#joins,'fills',fills,'bollards',#bollards,'edgeF',#edgeM,'midF',#midM,'gangway',#gw,'ends',ends.P,ends.R,'ropes',ropes,'loops',loops)
+local bc=FM:FindFirstChild('BeppeCrate',true)
+if bc then warn('PRM@beppe',f(bc:GetPivot().Position)) end
+warn('PRM@stella',f(SM:GetPivot().Position),'gino',f(GINO:GetPivot().Position),'fish',f(FISH:GetPivot().Position))

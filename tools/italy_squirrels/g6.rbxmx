@@ -1,0 +1,20 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">GelatoFwd</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+local col=workspace.gelato_squirrel_color local cm=col.Squirrel
+col:PivotTo(col:GetPivot()+Vector3.new(-0.9,0,0))
+local gp=RaycastParams.new() gp.FilterType=Enum.RaycastFilterType.Exclude gp.FilterDescendantsInstances={col,workspace.ComingSoonWall}
+local B={} for _,d in ipairs(col:GetDescendants()) do if d:IsA('Bone') then B[d.Name]=d end end
+local hl=cm.CFrame:PointToObjectSpace(B.Head.WorldPosition) local tl=cm.CFrame:PointToObjectSpace(B.Tail1.WorldPosition)
+local sz,sx,k=hl.Z<0 and 1 or -1,tl.X<0 and 1 or -1,3.4/cm.Size.Y
+local R=cm.CFrame-cm.Position local hi=-1e9 local hs={}
+for _,f in ipairs({{-0.55,-0.75},{-0.2,-0.75},{-0.55,-0.4},{-0.2,-0.4},{0.6,-0.6},{0.95,-0.6},{0.6,-0.3},{0.95,-0.3}}) do
+	local w=Vector3.new(cm.Position.X,0,cm.Position.Z)+R:VectorToWorldSpace(Vector3.new(sx*f[1],0,sz*f[2])*k)
+	local q=workspace:Raycast(Vector3.new(w.X,-44,w.Z),Vector3.new(0,-6,0),gp)
+	if q then hi=math.max(hi,q.Position.Y) table.insert(hs,q.Position.Y) end
+end
+col:PivotTo(col:GetPivot()+Vector3.new(0,hi+0.02-(cm.Position.Y-cm.Size.Y/2),0))
+local lo=1e9 for _,y in ipairs(hs) do lo=math.min(lo,y) end
+game:GetService('ChangeHistoryService'):SetWaypoint('Giulia a bit forward')
+warn('QR@FWD',cm.Position,'feet hit',#hs,'spread',hi-lo)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

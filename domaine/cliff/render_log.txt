@@ -1,0 +1,7 @@
+objects 38
+rendered vineyard
+rendered face
+rendered east
+rendered west
+rendered summit
+rendered route

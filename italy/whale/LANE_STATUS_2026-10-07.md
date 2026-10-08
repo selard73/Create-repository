@@ -1,0 +1,8 @@
+# Whale lane status (Oct 7 2026, ~10:20 EDT, third chat, Roblox_Studio MCP works)
+
+- DIG RAN with her yes: ServerStorage.WhaleLaneBackup saved (corner -10,-22,-315). 6111 columns / 36005 cells written, 0 skipped.
+- Readback OK in the core: y -84 Sand/1 (new solid floor over the void), -80..-68 Water/1; slope columns correct (x=230: -80 Sand/0.19; x=245: -68 Sand/0.28).
+- CONFIRMED DEFECT (probe during her play test, server side): a thin sand LID sits over the lane. Ray from above (IgnoreWater) hits Sand@-61.9 at A, B, point 3, (200,-1000); a ray started inside the water at -66 hits the new floor at -78. The lid is the -64..-60 cell, which still reads Sand/0.02: WriteVoxels Water/1 did not take on that cell (every other cell in the column was written). The lid is what the "bed at -61.9" always was; the real sand began at -64.
+- NEXT (needs her yes; the classifier denied it as a shared-resource edit without it): single-voxel experiment at A on the -64..-60 cell: WriteVoxels Water/1, then Air/0, then Air->Water, then Terrain:FillBlock Water, then ReplaceMaterial Sand->Water, then a 3x3 patch; read back + IgnoreWater raycast after each. Whichever clears the lid becomes the "delid" pass over the whole band (same 6111 columns, only the -64 cell), then re-verify the four stations (expect ray from above = Sand@-80 in the core).
+- Undo of the whole dig: `workspace.Terrain:PasteRegion(game.ServerStorage.WhaleLaneBackup, Vector3int16.new(-10,-22,-315), true)`.
+- dig_lane.lua now (a) fills solid sand from -84 up to the new floor in every dug column, (b) ends the slope at -64. w_lane.rbxmx repacked. mcp_wrap.py wraps warn() scripts for execute_luau. Studio id this session: 5d21a214-57a4-4cc3-be8c-24f753959bb0.

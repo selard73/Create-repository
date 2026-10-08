@@ -1,0 +1,6 @@
+kite+string (x>0.55): n=538 bbox x 0.56..1.43 y -1.20..-0.30 z 1.49..3.22 | Head 0.91, Tail2 0.04, Neck 0.00, Root 0.00, Chest 0.00
+kite only (x>0.95): n=345 bbox x 0.95..1.42 y -1.20..-0.48 z 1.80..3.22 | Head 0.91, Tail2 0.04, Neck 0.00
+string (0.55<x<0.95, z>1.6): n=131 bbox x 0.56..0.95 y -0.79..-0.30 z 2.21..3.18 | Head 0.89, Tail2 0.02, Neck 0.02, Root 0.01, Chest 0.00
+above body (z>2.45): n=294 bbox x 0.68..1.10 y -1.20..-0.30 z 2.45..3.22 | Head 0.91, Tail2 0.03, Neck 0.00, Root 0.00, Chest 0.00
+spool/paw (x 0.1..0.6, z 1.0..1.9): n=23 bbox x 0.10..0.38 y -0.80..-0.77 z 1.32..1.89 | Head 0.57, Neck 0.21, Root 0.13, Chest 0.07
+DONE

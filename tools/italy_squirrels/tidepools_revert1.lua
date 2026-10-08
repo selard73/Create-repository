@@ -1,0 +1,23 @@
+-- Oct 4 2026: undo tidepools_build1 (ugly grey shelf): paste the terrain backup back, clear the sliver past the backup's south edge,
+-- remove the empty 'Natural tide pools' folder, put the old ring-pool parts back where they were.
+local T=workspace.Terrain
+local SS=game:GetService('ServerStorage')
+local bk=SS:FindFirstChild('TidePoolBackup')
+if not bk then warn('QV@ABORT no backup') return end
+local tr=bk:FindFirstChild('Terrain_x276_y-68_z-812')
+local old=bk:FindFirstChild('OldRingPools')
+if not (tr and old) then warn('QV@ABORT backup pieces missing') return end
+local cove=workspace.PortoNocciola['14 Lighthouse coast']:FindFirstChild('Cala della Sabbia and tide pools')
+T:PasteRegion(tr,Vector3int16.new(69,-17,-203),true)
+-- ball edges reached ~1 stud past the copied box on the south side (z < -812): any rock there goes back to water
+T:ReplaceMaterial(Region3.new(Vector3.new(276,-68,-816),Vector3.new(316,-44,-812)),4,Enum.Material.Rock,Enum.Material.Water)
+T:ReplaceMaterial(Region3.new(Vector3.new(276,-68,-816),Vector3.new(316,-44,-812)),4,Enum.Material.Slate,Enum.Material.Water)
+local f=cove:FindFirstChild('Natural tide pools') if f and #f:GetChildren()==0 then f:Destroy() end
+local n=0 for _,p in ipairs(old:GetChildren()) do p.Parent=cove n+=1 end
+game:GetService('ChangeHistoryService'):SetWaypoint('Tide pools reverted')
+-- check: the grid that the survey printed, at the old pool centres
+for _,c in ipairs({{293,-772},{300,-783},{306,-800},{290,-781},{295,-795}}) do
+	local r=workspace:Raycast(Vector3.new(c[1],-40,c[2]),Vector3.new(0,-30,0))
+	warn(string.format('QV@AT %d,%d -> %s y %.2f',c[1],c[2],r and (r.Instance==T and ('Terrain '..r.Material.Name) or r.Instance.Name) or 'none',r and r.Position.Y or 0))
+end
+warn('QV@REVERTED parts back',n)

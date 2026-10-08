@@ -1,0 +1,21 @@
+TOP WHISKER FACES:
+face 1578: verts=[7012, 3737, 60]
+face 1685: verts=[3737, 1003, 7012]
+face 1728: verts=[3737, 1003, 60]
+face 2002: verts=[2393, 1003, 60]
+face 2003: verts=[7012, 60, 7031]
+face 2100: verts=[1003, 7012, 7031]
+
+FRONT WHISKER FACES:
+face 1315: verts=[5120, 6994, 6071]
+face 1330: verts=[5120, 45, 6071]
+face 1337: verts=[3256, 5120, 6994]
+face 1359: verts=[3256, 6994, 1454]
+face 1361: verts=[5120, 3256, 510]
+face 1362: verts=[6994, 1454, 6071]
+face 1377: verts=[5124, 1454, 6071]
+face 1418: verts=[3256, 4659, 1454]
+face 1440: verts=[3256, 1457, 510]
+face 1444: verts=[3256, 1457, 4659]
+face 1477: verts=[4659, 6547, 1454]
+face 1521: verts=[1457, 4674, 4659]

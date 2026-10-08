@@ -1,0 +1,59 @@
+-- TonioTalk (StarterPlayerScripts, Oct 4 2026, Shannon): after you tag Tonio the Conductor he speaks - "Please come back and
+-- ride when you have found all 15 squirrels in the harbor", or, once you have found 15 harbour squirrels, something else.
+-- Spoken through the SquirrelBubble like every squirrel. He says it when you tag him (just after the reveal), and again
+-- when you walk back up to him later (at most once a minute), so a returning player still hears where they stand.
+local Players = game:GetService("Players")
+local RS = game:GetService("ReplicatedStorage")
+local player = Players.LocalPlayer
+local ID = "conductor_squirrel"
+local NEED = 15
+local NOT_YET = "Please come back and ride when you have found all 15 squirrels in the harbor."
+local READY = "Bravo! All 15 harbour squirrels found. All aboard the funicolare - mind the step!"
+local okB, Bubble = pcall(function() return require(RS:WaitForChild("SquirrelBubble", 20)) end)
+
+local function tonio() return workspace:FindFirstChild(ID .. "_color") end
+local function found() return (player:GetAttribute("FoundIds") or ""):find(ID, 1, true) ~= nil end
+local lastSaid = 0
+local function speak()
+	local m = tonio()
+	if not (m and okB) then return end
+	lastSaid = os.clock()
+	local n = player:GetAttribute("Found_porto") or 0
+	pcall(Bubble.say, m, n >= NEED and READY or NOT_YET, {secs = 4.5})
+end
+
+-- the funicular turned this player away (FunicularServer, under 15 harbour squirrels): anyone sitting gets up again,
+-- and Tonio explains (at most every 3 seconds, so pressing Board again and again does not spam him)
+task.spawn(function()
+	local lockEv = RS:WaitForChild("FunicularLocked", 60)
+	if not lockEv then return end
+	lockEv.OnClientEvent:Connect(function()
+		local h = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+		if h and h.Sit then h.Sit = false h.Jump = true end
+		if os.clock() - lastSaid > 3 then speak() end
+	end)
+end)
+
+-- tagged: the server tells this player which squirrel they just found
+local ev = RS:WaitForChild("SquirrelFound", 30)
+if ev then
+	ev.OnClientEvent:Connect(function(id)
+		if id == ID then task.delay(1.4, speak) end          -- after the ding and the colour reveal
+	end)
+end
+
+-- walking back up to him once he is yours
+local near = false
+while true do
+	task.wait(0.4)
+	local m = tonio()
+	local cm = m and m:FindFirstChild("Squirrel")
+	local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+	if cm and hrp and found() then
+		local close = (cm.Position - hrp.Position).Magnitude < 10
+		if close and not near and os.clock() - lastSaid > 60 then speak() end
+		near = close
+	else
+		near = false
+	end
+end

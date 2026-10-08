@@ -1,0 +1,80 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">MoveOB2</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 (Shannon: put the Octopus Catcher "on the deck of a moored fishing boat"): stand the new octopus_squirrel
+-- on the floor of the Rosina (moored along the north side of Molo dei Pescatori, centre 216,-52.1,-628, long axis = X),
+-- facing the pier (-Z) so people walking out along the pier see him. Tests spots along the boat: every foot point must
+-- land flat on a Rosina floor part, and the squirrel's own box (with the octopus he holds) must not cut any other Rosina
+-- part. Picks the passing spot nearest the boat's middle. warn + return before any edit if nothing fits.
+local NEWF={-0.06,-0.30}   -- feet centre (feet_probe), Blender units
+local FEET={{-0.62,-0.45},{-0.35,-0.05},{-0.45,-0.25},{0.20,-0.50},{0.50,-0.25},{0.35,-0.35},{-0.06,-0.30}}
+local WANT=Vector3.new(0,0,-1)
+local PN=workspace:FindFirstChild('PortoNocciola')
+local S=PN and PN:FindFirstChild('04 Piers and fishing boats')
+local boat=S and S:FindFirstChild('Rosina')
+local col=workspace:FindFirstChild('octopus_squirrel_color')
+if not (boat and col and col:FindFirstChild('Squirrel')) then warn('QOB@ABORT boat',boat,'col',col) return end
+local cm=col.Squirrel
+local B={} for _,d in ipairs(col:GetDescendants()) do if d:IsA('Bone') then B[d.Name]=d end end
+local function sz_() local hl=cm.CFrame:PointToObjectSpace(B.Head.WorldPosition) return hl.Z<0 and 1 or -1 end
+local start=col:GetPivot()
+-- upright + face WANT (about the mesh centre), as swap_model.template.lua does
+local rel=cm.CFrame:Inverse()*col:GetPivot() col:PivotTo(CFrame.new(cm.Position)*rel)
+for i=1,3 do
+	local R=cm.CFrame-cm.Position
+	local fwd=R:VectorToWorldSpace(Vector3.new(0,0,-sz_()))*Vector3.new(1,0,1)
+	local ang=math.atan2(WANT.X,WANT.Z)-math.atan2(fwd.X,fwd.Z)
+	local c=CFrame.new(cm.Position) col:PivotTo(c*CFrame.Angles(0,ang,0)*c:Inverse()*col:GetPivot())
+end
+local sz=sz_() local R=cm.CFrame-cm.Position local k=3.4/cm.Size.Y
+local function off(f) return R:VectorToWorldSpace(Vector3.new(f[1]-NEWF[1],0,sz*(f[2]-NEWF[2]))*k) end
+local floorish={}
+for _,d in ipairs(boat:GetDescendants()) do
+	if d:IsA('BasePart') then local n=d.Name:lower() if n:match('floor') or n:match('plank') or n:match('deck') or n:match('bottom') then floorish[d]=true end end
+end
+local inc=RaycastParams.new() inc.FilterType=Enum.RaycastFilterType.Include inc.FilterDescendantsInstances={boat}
+local ov=OverlapParams.new() ov.FilterType=Enum.RaycastFilterType.Include ov.FilterDescendantsInstances={boat}
+local bcf,bsz=boat:GetBoundingBox()
+local best,bestd,tested,why=nil,1e9,0,{}
+-- the mesh centre sits this far from the feet centre (horizontal), so the body box can be placed for each spot
+local fc0=R:VectorToWorldSpace(Vector3.new(NEWF[1],0,sz*NEWF[2])*k)
+for dx=-bsz.Z/2+1,bsz.Z/2-1,0.25 do
+	for _,dz in ipairs({0,0.3,-0.3,0.6,-0.6}) do
+		tested+=1
+		local L=Vector3.new(bcf.Position.X+dx,bcf.Position.Y+bsz.Y/2+1,bcf.Position.Z+dz)
+		local ys,ok={},true
+		for _,f in ipairs(FEET) do
+			local w=L+off(f)
+			local h=workspace:Raycast(Vector3.new(w.X,L.Y+2,w.Z),Vector3.new(0,-8,0),inc)
+			if not (h and floorish[h.Instance]) then ok=false why.foot=(why.foot or 0)+1 break end
+			table.insert(ys,h.Position.Y)
+		end
+		if ok then
+			local lo,hi=math.min(table.unpack(ys)),math.max(table.unpack(ys))
+			if hi-lo>0.2 then ok=false why.flat=(why.flat or 0)+1 end
+			if ok then
+				local floorY=hi
+				local centre=Vector3.new(L.X-fc0.X,floorY+cm.Size.Y/2,L.Z-fc0.Z)
+				local box=CFrame.new(centre)*(cm.CFrame-cm.Position)
+				local hits=workspace:GetPartBoundsInBox(box+Vector3.new(0,0.12,0),cm.Size*Vector3.new(0.8,0.9,0.8),ov)
+				for _,p in ipairs(hits) do if not floorish[p] then ok=false why.body=(why.body or 0)+1 why.what=p.Name break end end
+				if ok then
+					local d=math.abs(dx)+math.abs(dz)
+					if d<bestd then best,bestd={L=Vector3.new(L.X,floorY,L.Z),centre=centre},d end
+				end
+			end
+		end
+	end
+end
+if not best then
+	col:PivotTo(start)
+	warn('QOB@ABORT no spot fits; tested',tested,'foot misses',why.foot,'not flat',why.flat,'body cuts',why.body,'e.g.',why.what) return
+end
+col:PivotTo(col:GetPivot()+(best.centre-cm.Position))
+game:GetService('ChangeHistoryService'):SetWaypoint('Octopus Catcher onto the Rosina')
+warn('QOB@MOVED feet',best.L,'centre',cm.Position,'from boat middle',string.format('%.2f',bestd),'facing',R:VectorToWorldSpace(Vector3.new(0,0,-sz)),'tested',tested)
+local t=best.L+Vector3.new(0,1.6,0)
+local cam=workspace.CurrentCamera
+cam.CameraType=Enum.CameraType.Fixed cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(t+WANT*9+Vector3.new(2,3,0),t)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

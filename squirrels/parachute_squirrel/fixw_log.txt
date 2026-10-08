@@ -1,0 +1,7 @@
+region [-3, 3, -2, 2, 2.45, 5.2] Head+Neck+Tail1+Tail2 -> Chest: 1485 vertices
+region [0.25, 3, -2, 2, 1.3, 2.45] Head+Neck+Tail1+Tail2 -> Chest: 360 vertices
+region [-3, -1.15, -2, 0.2, 1.3, 2.45] Head+Neck+Tail1+Tail2 -> Chest: 12 vertices
+after: region [-3, 3, -2, 2, 2.45, 5.2] 1485 verts, mean Head+Neck+Tail1+Tail2 weight 0.000, max 0.00
+after: region [0.25, 3, -2, 2, 1.3, 2.45] 360 verts, mean Head+Neck+Tail1+Tail2 weight 0.000, max 0.00
+after: region [-3, -1.15, -2, 0.2, 1.3, 2.45] 12 verts, mean Head+Neck+Tail1+Tail2 weight 0.000, max 0.00
+FIXW_DONE

@@ -1,0 +1,4 @@
+fairy_squirrel: rendered, span 2.73
+ballerina_squirrel: rendered, span 2.65
+mime_squirrel: rendered, span 2.79
+CUTOUT_DONE

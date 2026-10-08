@@ -1,0 +1,24 @@
+{
+  "input": "C:\\Users\\slard\\roblox-props\\meshy_dog\\pup.fbx",
+  "meshes_in": [
+    {
+      "name": "Mesh_0",
+      "polys": 3015702,
+      "tris": 3015702
+    }
+  ],
+  "dims_in": [
+    1.178,
+    1.466,
+    1.903
+  ],
+  "dims_out": [
+    3.096,
+    3.853,
+    5.0
+  ],
+  "tris_before": 3015702,
+  "tris_after": 9500,
+  "output": "C:\\Users\\slard\\roblox-props\\meshy_dog\\pup_roblox.fbx",
+  "output_obj": "C:\\Users\\slard\\roblox-props\\meshy_dog\\pup_roblox.obj"
+}

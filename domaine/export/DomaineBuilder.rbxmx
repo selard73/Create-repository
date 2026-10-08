@@ -1,0 +1,1836 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+  <Item class="Folder" referent="RBX0">
+    <Properties>
+      <string name="Name">DomaineBuilder</string>
+      <Attributes name="AttributesSerialize">
+        <Attribute name="Enabled"><bool>true</bool></Attribute>
+        <Attribute name="Seed"><double>7</double></Attribute>
+        <Attribute name="MapId"><string>domaine</string></Attribute>
+        <Attribute name="MapName"><string>Château de l'Acorn</string></Attribute>
+        <Attribute name="HideSquirrels"><bool>true</bool></Attribute>
+        <Attribute name="StreetEndX"><double>350</double></Attribute>
+        <Attribute name="StreetZ"><double>-120</double></Attribute>
+        <Attribute name="GroundY"><double>0.55</double></Attribute>
+      </Attributes>
+    </Properties>
+    <Item class="ModuleScript" referent="RBX1">
+      <Properties>
+        <string name="Name">BuildModule</string>
+        <ProtectedString name="Source"><![CDATA[-- DomaineBuilder.BuildModule: builds "Château de l'Acorn" (Provençal countryside: lavender field, vineyard, farm)
+-- east of the French street, on rolling Roblox Terrain. Edit mode: require(workspace.DomaineBuilder.BuildModule)()
+-- then set Enabled = false. Attributes on the folder: Enabled, Seed, MapId ("domaine"), MapName, HideSquirrels,
+-- StreetEndX (350), StreetZ (-120), GroundY (0.55).
+return function()
+local CollectionService = game:GetService("CollectionService")
+local folder = script.Parent
+local function attr(name, default)
+	local v = folder:GetAttribute(name)
+	if v == nil then return default end
+	return v
+end
+if attr("Enabled", true) == false then print("DomaineBuilder: disabled") return end
+local SEED = attr("Seed", 7)
+local MAP_ID = attr("MapId", "domaine")
+local MAP_NAME = attr("MapName", "Château de l'Acorn")
+local HIDE = attr("HideSquirrels", true)
+local X0 = attr("StreetEndX", 350)          -- the French street ends here
+local CZ = attr("StreetZ", -120)            -- and runs along this z
+local GY0 = attr("GroundY", 0.55)           -- the pavement height the countryside starts from
+local rng = Random.new(SEED)
+local C = Color3.fromRGB
+
+-- ---------------------------------------------------------------- kit lookup ----
+-- domaine_a.obj / domaine_b.obj import as pieces named "<kit>__<piece>"; regroup into one Model per kit
+local KIT = {"lavender_row_a", "lavender_row_b", "vine_row_a", "vine_row_b", "cypress", "olive_tree", "sunflower_patch", "boxwood", "oleander",
+	"mas", "barn", "chapel", "windmill", "cellar_front", "hut", "coop", "hen",
+	"well", "beehive", "lavender_cart", "barrel", "barrel_rack", "wine_press", "crate_grapes", "tasting_table", "long_table", "tractor",
+	"trailer", "hay_round", "hay_stack", "scarecrow", "trough", "stone_wall", "stone_wall_b", "stone_pillar", "farm_gate", "picket_fence",
+	"picket_gate", "sign_post", "still", "garden", "barrel_open"}
+do
+	local groups = {}
+	for _, p in ipairs(workspace:GetDescendants()) do
+		if p:IsA("MeshPart") and not p:FindFirstAncestor("Domaine") and not p:FindFirstAncestor("Village") then
+			local kit, piece = p.Name:match("^(.-)__(.+)$")
+			if kit and piece and table.find(KIT, kit) then
+				local g = groups[kit]
+				if not g then
+					g = Instance.new("Model"); g.Name = kit
+					g.Parent = workspace:FindFirstChild("DomaineKit") or (function()
+						local f = Instance.new("Folder"); f.Name = "DomaineKit"; f.Parent = workspace; return f end)()
+					groups[kit] = g
+				end
+				p.Name = piece; p.Parent = g
+			end
+		end
+	end
+	for _, g in pairs(groups) do g.PrimaryPart = g:FindFirstChildWhichIsA("BasePart") end
+	for _, mdl in ipairs(workspace:GetChildren()) do
+		if mdl:IsA("Model") and mdl.Name:lower():find("domaine_") and not mdl:FindFirstChildWhichIsA("BasePart", true) then mdl:Destroy() end
+	end
+end
+local templates = {}
+local kitFolder = workspace:FindFirstChild("DomaineKit")
+if kitFolder then for _, k in ipairs(KIT) do templates[k] = kitFolder:FindFirstChild(k) end end
+local villageKit = workspace:FindFirstChild("VillageKit")
+local missing = {}
+for _, k in ipairs(KIT) do if not templates[k] then table.insert(missing, k) end end
+if #missing > 0 then warn("DomaineBuilder: kit pieces not found (import domaine_a.obj and domaine_b.obj, Merge Meshes OFF): " .. table.concat(missing, ", ")) end
+if not templates.mas then warn("DomaineBuilder: nothing to build with") return end
+-- the templates stay in the kit folder, invisible and inert; every placed prop is a clone
+for _, t in pairs(templates) do
+	for _, p in ipairs(t:GetDescendants()) do
+		if p:IsA("BasePart") then p.Anchored = true; p.Transparency = 1; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false end
+	end
+end
+
+-- ---------------------------------------------------------------- palette ----
+local FLOWERS = {C(230, 90, 120), C(240, 200, 70), C(220, 70, 60), C(200, 120, 220)}
+local COLOR = {
+	Lav = C(146, 96, 214), Sage = C(152, 172, 150), Soil = C(96, 72, 52),
+	VPost = C(120, 92, 62), Wire = C(72, 72, 78), VTrunk = C(94, 70, 50), VLeaf = C(108, 158, 66), GrapeG = C(164, 196, 92), Grape = C(98, 58, 132),
+	Cypress = C(54, 88, 58), OTrunk = C(108, 88, 66), Olive = C(152, 170, 132),
+	SStem = C(90, 130, 64), SLeaf = C(100, 148, 70), Petal = C(250, 200, 42), Seed = C(92, 56, 30),
+	Boxwood = C(72, 116, 62), Oleander = C(84, 132, 76), Bloom = C(250, 248, 240),
+	Walls = C(202, 186, 158), Quoin = C(224, 214, 194), Roof = C(186, 116, 90), Tile = C(170, 104, 82), Slate = C(92, 96, 108), Trim = C(234, 228, 212),
+	Window = C(150, 180, 200), Shutter = C(98, 140, 178), ShutterB = C(76, 112, 148), Door = C(116, 82, 60), Wood = C(140, 106, 76), Plank = C(160, 128, 96),
+	Dark = C(26, 24, 24), Iron = C(48, 48, 52), Brass = C(214, 178, 92), Glass = C(216, 230, 240), Chimney = C(204, 190, 170), Hay = C(230, 198, 102),
+	Stone = C(178, 168, 150), Vault = C(116, 108, 98), Water = C(110, 170, 200), Bell = C(204, 168, 76), Cross = C(76, 76, 82),
+	Hen = C(236, 226, 204), Comb = C(216, 50, 50), Beak = C(230, 178, 64), HenLeg = C(216, 166, 76), Sails = C(212, 206, 190),
+	Hive = C(240, 234, 220), Wicker = C(184, 148, 102), Barrel = C(140, 102, 70), Copper = C(204, 128, 76), Brick = C(166, 90, 72), Bottle = C(90, 128, 90),
+	Plate = C(245, 242, 235), Cheese = C(240, 204, 100), Body = C(204, 46, 38), Tread = C(40, 40, 42), Hub = C(234, 184, 40), Twine = C(158, 132, 86),
+	Shirt = C(192, 64, 52), Patch = C(76, 116, 178), Pants = C(76, 88, 128), Straw = C(230, 198, 102), Sack = C(204, 178, 128), Hat = C(216, 178, 102),
+	Crow = C(26, 26, 30), Picket = C(242, 242, 236), Sign = C(216, 204, 178), Lettuce = C(140, 190, 90), Tomato = C(216, 50, 50), Pumpkin = C(234, 140, 38),
+	Gravel = C(192, 178, 154), Leaf = C(114, 158, 76), Crate = C(178, 142, 102), Bench = C(128, 108, 92),
+	Handle = C(48, 48, 52), StoneB = C(118, 102, 80),
+}
+local ORDER = {}
+for k in pairs(COLOR) do table.insert(ORDER, k) end
+table.sort(ORDER, function(a, b) return #a > #b end)          -- longest prefix wins (ShutterB before Shutter, GrapeG before Grape)
+local function colourFor(name)
+	local d = tonumber(name:match("^Flower(%d+)$"))
+	if d then return FLOWERS[(d - 1) % #FLOWERS + 1] end
+	for _, k in ipairs(ORDER) do if name:sub(1, #k) == k then return COLOR[k] end end
+	return nil
+end
+local function tintModel(model, overrides)
+	for _, p in ipairs(model:GetDescendants()) do
+		if p:IsA("BasePart") then
+			local col = (overrides and overrides[p.Name]) or colourFor(p.Name)
+			if col then p.Color = col end
+			p.Material = Enum.Material.SmoothPlastic
+			if p.Name == "Glass" or p.Name == "Window" then p.Material = Enum.Material.Glass; p.Transparency = 0.35 end
+			if p.Name == "Water" then p.Transparency = 0.25; p.Reflectance = 0.1 end
+			p.CastShadow = true
+		end
+	end
+end
+
+-- ---------------------------------------------------------------- the map folder ----
+local old = workspace:FindFirstChild("Domaine")
+if old then old:Destroy() end
+local domaine = Instance.new("Folder"); domaine.Name = "Domaine"; domaine.Parent = workspace
+local props = Instance.new("Folder"); props.Name = "Props"; props.Parent = domaine
+local spots = Instance.new("Folder"); spots.Name = "HidingSpots"; spots.Parent = domaine
+
+-- ---------------------------------------------------------------- terrain ----
+-- Region: x 380..724, z -284..64 (the play area is x 384..680, z -240..20; the rest falls back to the baseplate).
+-- Height: flat pavement level at the garden, then a gentle rise east with a vineyard slope up to a ridge, a rise for
+-- the windmill, and a flat terrace for the lavender.
+local T = workspace.Terrain
+local RES = 4
+local RX0, RX1, RZ0, RZ1, RY0, RY1 = 380, 724, -284, 64, -12, 44
+local function smooth(t) t = math.clamp(t, 0, 1) return t * t * (3 - 2 * t) end
+local function bump(x, z, cx, cz, r, amp) local d = math.sqrt((x - cx) ^ 2 + (z - cz) ^ 2) return amp * (1 - smooth(d / r)) end
+local function heightRaw(x, z)
+	local h = GY0
+	h += 5.5 * smooth((x - 400) / 260)                                   -- the general rise to the east
+	h += bump(x, z, 612, -172, 95, 9.0)                                  -- the vineyard ridge (chapel on top)
+	h += bump(x, z, 588, -62, 46, 6.5)                                   -- the windmill rise
+	h += bump(x, z, 690, -30, 90, 6.0)                                   -- far corner hill
+	h += bump(x, z, 662, -240, 70, 5.0)
+	h -= bump(x, z, 468, -166, 58, 2.5)                                  -- the lavender terrace stays flat and low
+	-- fade to the baseplate outside the play area
+	local edge = math.min(smooth((x - 380) / 10), smooth((RX1 - x) / 40), smooth((z - RZ0) / 40), smooth((RZ1 - z) / 40))
+	h = h * edge                                                          -- thins to nothing at the border, so the baseplate takes over
+	-- the strip that meets the street stays exactly at pavement height
+	if x < 400 then h = GY0 + (h - GY0) * smooth((x - 388) / 12) end
+	return h
+end
+local MILL_PAD = {x = 588, z = -62, r0 = 9, r1 = 15}                   -- a level pad on the knoll's crown, so the tower's round base meets the ground all round
+local function heightAt(x, z)
+	local h = heightRaw(x, z)
+	local d = math.sqrt((x - MILL_PAD.x) ^ 2 + (z - MILL_PAD.z) ^ 2)
+	if d < MILL_PAD.r1 then
+		local hc = heightRaw(MILL_PAD.x, MILL_PAD.z)
+		h = hc + (h - hc) * smooth((d - MILL_PAD.r0) / (MILL_PAD.r1 - MILL_PAD.r0))
+	end
+	-- a rim of hills just beyond the estate's east, south and north walls, so the boundary reads as the land rising
+	local rim = 11 * smooth((x - 701) / 11) * (1 - smooth((x - 716) / 8))
+	rim = math.max(rim, 11 * smooth((-z - 251) / 11) * (1 - smooth((-z - 268) / 10)))
+	rim = math.max(rim, 11 * smooth((z - 31) / 11) * (1 - smooth((z - 48) / 10)))
+	return h + rim
+end
+-- the dirt lane: east along the street axis, then bending to the cellar door; two footpaths branch off it
+local LANE = {{X0, CZ}, {392, CZ}, {520, CZ}, {560, -116}, {596, -112}}
+local PATHS = {LANE, {{482, CZ}, {482, -80}}, {{596, -112}, {628, -140}, {650, -160}}}
+local function distToLane(x, z)
+	local best = 1e9
+	for _, poly in ipairs(PATHS) do
+		for i = 1, #poly - 1 do
+			local ax, az, bx, bz = poly[i][1], poly[i][2], poly[i + 1][1], poly[i + 1][2]
+			local dx, dz = bx - ax, bz - az
+			local t = math.clamp(((x - ax) * dx + (z - az) * dz) / (dx * dx + dz * dz), 0, 1)
+			local px, pz = ax + dx * t, az + dz * t
+			best = math.min(best, math.sqrt((x - px) ^ 2 + (z - pz) ^ 2))
+		end
+	end
+	return best
+end
+local FIELD = {x0 = 424, x1 = 492, z0 = -200, z1 = -132}       -- lavender terrace (soil)
+local VINES = {x0 = 528, x1 = 636, z0 = -236, z1 = -118}       -- vineyard (grass with soil lines)
+local COURT = {x0 = 452, x1 = 512, z0 = -84, z1 = -52}         -- gravel courtyard in front of the mas
+local LAWN = {x0 = 452, x1 = 512, z0 = -52, z1 = -20}
+local function materialAt(x, z, h)
+	if x >= FIELD.x0 and x <= FIELD.x1 and z >= FIELD.z0 and z <= FIELD.z1 then return Enum.Material.Ground end
+	if distToLane(x, z) < 4.5 then return Enum.Material.Ground end
+	if x >= COURT.x0 and x <= COURT.x1 and z >= COURT.z0 and z <= COURT.z1 then return Enum.Material.Sand end
+	if x >= LAWN.x0 and x <= LAWN.x1 and z >= LAWN.z0 and z <= LAWN.z1 then return Enum.Material.LeafyGrass end
+	if x >= VINES.x0 and x <= VINES.x1 and z >= VINES.z0 and z <= VINES.z1 then
+		local row = (z - VINES.z0) % 8
+		if row < 1.6 then return Enum.Material.Ground end
+		return Enum.Material.LeafyGrass
+	end
+	if h > 14 and rng:NextNumber() < 0.2 then return Enum.Material.Rock end
+	return Enum.Material.Grass
+end
+do
+	local region = Region3.new(Vector3.new(RX0, RY0, RZ0), Vector3.new(RX1, RY1, RZ1)):ExpandToGrid(RES)
+	T:FillRegion(region, RES, Enum.Material.Air)
+	local size = region.Size / RES
+	local nx, ny, nz = math.floor(size.X + 0.5), math.floor(size.Y + 0.5), math.floor(size.Z + 0.5)
+	local mats, occ = {}, {}
+	local rmin = region.CFrame.Position - region.Size / 2
+	for ix = 1, nx do
+		mats[ix] = {}; occ[ix] = {}
+		local x = rmin.X + (ix - 0.5) * RES
+		for iy = 1, ny do
+			mats[ix][iy] = {}; occ[ix][iy] = {}
+			local yb = rmin.Y + (iy - 1) * RES
+			for iz = 1, nz do
+				local z = rmin.Z + (iz - 0.5) * RES
+				local h = heightAt(x, z)
+				local fill = math.clamp((h - yb) / RES, 0, 1)
+				if fill > 0.001 then
+					mats[ix][iy][iz] = materialAt(x, z, h); occ[ix][iy][iz] = fill
+				else
+					mats[ix][iy][iz] = Enum.Material.Air; occ[ix][iy][iz] = 0
+				end
+			end
+		end
+	end
+	T:WriteVoxels(region, RES, mats, occ)
+	-- terrain colours matched to the world: the baseplate green for grass, warm earth for the lane and the lavender soil
+	local bp = workspace:FindFirstChild("Baseplate")
+	local green = bp and bp.Color or C(94, 142, 76)
+	T:SetMaterialColor(Enum.Material.Grass, green)
+	T:SetMaterialColor(Enum.Material.LeafyGrass, green)
+	T:SetMaterialColor(Enum.Material.Ground, C(118, 90, 60))
+	T:SetMaterialColor(Enum.Material.Sand, C(198, 184, 156))
+	T:SetMaterialColor(Enum.Material.Rock, C(150, 146, 138))
+	print("DomaineBuilder: terrain written", nx, ny, nz)
+	task.wait(0.5)                                                        -- terrain collision updates a frame later: the ground raycasts must see the NEW voxels
+end
+
+-- ---------------------------------------------------------------- placement ----
+local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude
+local ignore = {props, spots}
+for _, t in pairs(templates) do table.insert(ignore, t) end
+if kitFolder then table.insert(ignore, kitFolder) end
+if villageKit then table.insert(ignore, villageKit) end
+for _, mdl in ipairs(CollectionService:GetTagged("Squirrel")) do table.insert(ignore, mdl) end
+for _, z in ipairs((workspace:FindFirstChild("Zones") or Instance.new("Folder")):GetChildren()) do table.insert(ignore, z) end
+if workspace:FindFirstChild("Boundary") then table.insert(ignore, workspace.Boundary) end   -- the invisible boundary walls are raycast-visible (CanQuery is forced on by CanCollide)
+rp.FilterDescendantsInstances = ignore
+local function groundAt(x, z)
+	local r = workspace:Raycast(Vector3.new(x, 300, z), Vector3.new(0, -600, 0), rp)
+	return r and r.Position.Y or GY0
+end
+-- bounding-box centres of the kits whose own coordinates the builder needs after placement (measured from the OBJ files)
+local KIT_CENTRE = {trough = Vector3.new(1.010, 2.300, 0.000), tractor = Vector3.new(0.000, 4.335, -0.500), coop = Vector3.new(1.017, 4.731, -3.400),
+	hen = Vector3.new(-0.013, 1.023, -0.063), trailer = Vector3.new(0.000, 2.633, -2.235), garden = Vector3.new(0.000, 1.900, -0.100)}
+local ATOMIC = {hen = true, tractor = true, trailer = true, trough = true, coop = true, lavender_row_a = true, lavender_row_b = true, sunflower_patch = true}
+local placed = {}
+-- ---------------------------------------------------------------- table dressing (plain Parts) ----
+local function mkPart(parent, name, size, cf, col, shape)
+	local p = Instance.new("Part"); p.Name = name; p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false; p.Locked = true
+	p.Material = Enum.Material.SmoothPlastic; p.Color = col; p.Size = size; p.CFrame = cf; p.CastShadow = true
+	if shape then p.Shape = shape end
+	p.Parent = parent
+	return p
+end
+local function mkBall(parent, name, d, cf, col) return mkPart(parent, name, Vector3.new(d, d, d), cf, col, Enum.PartType.Ball) end
+local function mkEgg(parent, name, size, cf, col)                     -- a Block with a Sphere mesh: an ellipsoid of any proportions
+	local p = mkPart(parent, name, size, cf, col)
+	local m = Instance.new("SpecialMesh"); m.MeshType = Enum.MeshType.Sphere; m.Parent = p
+	return p
+end
+local function mkDisc(parent, name, r, h, cf, col)                   -- an upright cylinder (Roblox cylinders lie along X)
+	return mkPart(parent, name, Vector3.new(h, r * 2, r * 2), cf * CFrame.Angles(0, 0, math.pi / 2), col, Enum.PartType.Cylinder)
+end
+-- a cafe table: cream cloth with a blue hem, two settings with croissants, a posy in a vase
+local function dressCafeTable(ct)
+	local tbl = ct:FindFirstChild("Table")
+	if not tbl then return end
+	local top = tbl.Position.Y + tbl.Size.Y / 2
+	local c = Vector3.new(tbl.Position.X, top, tbl.Position.Z)
+	local r = math.max(tbl.Size.X, tbl.Size.Z) / 2
+	local CLOTH, HEM, SILVER = C(250, 246, 232), C(96, 140, 190), C(206, 210, 216)
+	mkDisc(ct, "Cloth", r + 0.16, 0.06, CFrame.new(c + Vector3.new(0, 0.03, 0)), CLOTH)
+	mkDisc(ct, "Cloth", r + 0.10, 0.52, CFrame.new(c - Vector3.new(0, 0.26, 0)), CLOTH)
+	mkDisc(ct, "Hem", r + 0.12, 0.07, CFrame.new(c - Vector3.new(0, 0.50, 0)), HEM)
+	for _, sz in ipairs({-0.62, 0.62}) do
+		local dir = sz > 0 and 1 or -1
+		mkDisc(ct, "Plate", 0.36, 0.04, CFrame.new(c + Vector3.new(0, 0.08, sz)), C(252, 252, 248))
+		mkDisc(ct, "PlateRim", 0.24, 0.015, CFrame.new(c + Vector3.new(0, 0.105, sz)), C(226, 234, 242))
+		local g = mkDisc(ct, "Glass", 0.1, 0.32, CFrame.new(c + Vector3.new(0.52, 0.22, sz * 0.7)), C(214, 232, 242)); g.Transparency = 0.45
+		mkPart(ct, "Knife", Vector3.new(0.05, 0.02, 0.5), CFrame.new(c + Vector3.new(0.48, 0.07, sz)), SILVER)
+		mkPart(ct, "Fork", Vector3.new(0.05, 0.02, 0.5), CFrame.new(c + Vector3.new(-0.48, 0.07, sz)), SILVER)
+		for _, o in ipairs({{-0.14, 0.05}, {0, 0.1}, {0.14, 0.05}}) do
+			mkBall(ct, "Croissant", 0.15, CFrame.new(c + Vector3.new(o[1], 0.16, sz + o[2] * dir)), C(224, 172, 94))
+		end
+	end
+	mkDisc(ct, "Vase", 0.12, 0.34, CFrame.new(c + Vector3.new(0, 0.23, 0)), C(80, 120, 180))
+	for _, o in ipairs({{-0.1, 0.02, C(240, 90, 120)}, {0.09, -0.05, C(250, 200, 70)}, {0.02, 0.1, C(230, 80, 70)}}) do
+		mkPart(ct, "Stem", Vector3.new(0.03, 0.32, 0.03), CFrame.new(c + Vector3.new(o[1] * 0.5, 0.56, o[2] * 0.5)), C(90, 140, 70))
+		mkBall(ct, "Bloom", 0.17, CFrame.new(c + Vector3.new(o[1], 0.74, o[2])), o[3])
+	end
+end
+-- the long table: the kit's plates, glasses and bottles come off; twelve settings go back on at the table's edges
+-- (plate, glass, knife, fork) so the middle 1.2 studs stay free for the food, which is sized to fit that band
+local function dressLongTable(lt)
+	local plank = lt:FindFirstChild("Plank")
+	if not plank then return end
+	for _, p in ipairs(lt:GetChildren()) do
+		if p:IsA("BasePart") and (p.Name:sub(1, 6) == "Bottle" or p.Name == "Plate" or p.Name == "Glass") then p:Destroy() end
+	end
+	local topY = plank.Position.Y + plank.Size.Y / 2
+	local function at(x, y, z)
+		local w = plank.CFrame:PointToWorldSpace(Vector3.new(x, 0, z))
+		return CFrame.new(w.X, topY + y, w.Z)
+	end
+	local function atR(x, y, z, yaw) return at(x, y, z) * plank.CFrame.Rotation * CFrame.Angles(0, yaw, 0) end
+	local SILVER, WOOD, WHITE, GLASS = C(206, 210, 216), C(150, 112, 76), C(252, 252, 248), C(214, 232, 242)
+	for i = 0, 5 do
+		local x = -5.0 + i * 2.0
+		for _, s in ipairs({-1, 1}) do
+			local z = s * 1.22
+			mkDisc(lt, "Plate", 0.52, 0.04, at(x, 0.02, z), WHITE)
+			mkDisc(lt, "PlateRim", 0.36, 0.015, at(x, 0.045, z), C(226, 234, 242))
+			local g = mkDisc(lt, "Glass", 0.1, 0.32, at(x + 0.95, 0.16, s * 0.88), GLASS); g.Transparency = 0.45
+			mkPart(lt, "Fork", Vector3.new(0.05, 0.02, 0.5), atR(x - 0.70, 0.01, z, 0), SILVER)
+			mkPart(lt, "Knife", Vector3.new(0.05, 0.02, 0.5), atR(x + 0.70, 0.01, z, 0), SILVER)
+		end
+	end
+	-- bread basket
+	mkDisc(lt, "Basket", 0.5, 0.22, at(-5.0, 0.11, 0), C(184, 148, 102))
+	for k, o in ipairs({{0.25, 0.12}, {-0.2, -0.1}, {0.05, 0.02}}) do
+		mkPart(lt, "Baguette", Vector3.new(1.3, 0.24, 0.24), atR(-5.0 + o[2], 0.32 + k * 0.03, o[2] * 0.8, o[1]), C(216, 170, 98), Enum.PartType.Cylinder)
+	end
+	-- cheese board
+	mkDisc(lt, "Board", 0.6, 0.06, at(-3.0, 0.03, 0), WOOD)
+	mkDisc(lt, "Cheese", 0.32, 0.2, at(-3.2, 0.16, 0.1), C(240, 204, 100))
+	mkPart(lt, "Cheese", Vector3.new(0.4, 0.18, 0.26), atR(-2.62, 0.15, -0.2, 0.6), C(240, 204, 100))
+	mkDisc(lt, "Brie", 0.2, 0.11, at(-2.68, 0.115, 0.3), C(250, 246, 226))
+	for _, o in ipairs({{-3.35, -0.35}, {-3.25, -0.44}, {-3.45, -0.45}}) do mkBall(lt, "Grape", 0.13, at(o[1], 0.125, o[2]), C(98, 58, 132)) end
+	-- roast chicken on a platter with potatoes
+	mkDisc(lt, "Platter", 0.6, 0.05, at(-1.0, 0.025, 0), WHITE)
+	mkEgg(lt, "Chicken", Vector3.new(1.0, 0.58, 0.7), atR(-1.0, 0.34, 0, 0), C(200, 128, 62))
+	mkEgg(lt, "Drumstick", Vector3.new(0.34, 0.22, 0.22), atR(-0.55, 0.19, 0.32, 0.5), C(196, 120, 58))
+	mkEgg(lt, "Drumstick", Vector3.new(0.34, 0.22, 0.22), atR(-1.45, 0.19, 0.32, -0.5), C(196, 120, 58))
+	for _, o in ipairs({{-1.5, -0.38}, {-1.2, -0.45}, {-0.7, -0.42}, {-0.45, -0.25}}) do mkBall(lt, "Potato", 0.2, at(o[1], 0.15, o[2]), C(232, 196, 110)) end
+	-- salad
+	mkDisc(lt, "Bowl", 0.5, 0.34, at(1.0, 0.17, 0), C(250, 246, 232))
+	mkEgg(lt, "Salad", Vector3.new(0.9, 0.42, 0.9), at(1.0, 0.44, 0), C(100, 168, 70))
+	for _, o in ipairs({{0.8, 0.12}, {1.18, -0.15}, {1.03, 0.26}}) do mkBall(lt, "Tomato", 0.17, at(o[1], 0.62, o[2]), C(216, 50, 50)) end
+	-- strawberry tart
+	mkDisc(lt, "Tart", 0.55, 0.14, at(3.0, 0.07, 0), C(222, 178, 110))
+	mkDisc(lt, "Tart", 0.46, 0.05, at(3.0, 0.165, 0), C(204, 58, 58))
+	for i = 0, 5 do local a = i / 6 * 6.283 mkBall(lt, "Strawberry", 0.14, at(3.0 + math.cos(a) * 0.3, 0.24, math.sin(a) * 0.3), C(214, 40, 44)) end
+	-- fruit bowl
+	mkDisc(lt, "Bowl", 0.5, 0.3, at(5.0, 0.15, 0), C(96, 140, 190))
+	mkBall(lt, "Apple", 0.28, at(4.85, 0.4, -0.12), C(200, 50, 50)); mkBall(lt, "Apple", 0.27, at(5.2, 0.38, 0.14), C(140, 190, 60))
+	mkBall(lt, "Orange", 0.25, at(4.88, 0.55, 0.18), C(240, 150, 40)); mkEgg(lt, "Pear", Vector3.new(0.24, 0.34, 0.24), at(5.24, 0.56, -0.17), C(200, 210, 90))
+	for i = 0, 5 do mkBall(lt, "Grape", 0.13, at(5.0 + (i % 3 - 1) * 0.12, 0.66 + math.floor(i / 3) * 0.09, (i % 2) * 0.1 - 0.02), C(98, 58, 132)) end
+end
+-- a stone foundation course under a building's walls: the ground slopes, the building is level, and without it the
+-- downhill corner hangs in the air. Mostly buried; only the downhill side shows.
+local function plinth(model, depth)
+	local walls = model and model:FindFirstChild("Walls")
+	if not walls then return end
+	local f = Instance.new("Part"); f.Name = "Foundation"; f.Anchored = true; f.CanCollide = true; f.CanQuery = true; f.Locked = true
+	f.Material = Enum.Material.SmoothPlastic; f.CastShadow = true
+	local c = walls.Color; f.Color = Color3.new(c.R * 0.8, c.G * 0.78, c.B * 0.74)
+	f.Size = Vector3.new(walls.Size.X + 0.5, depth, walls.Size.Z + 0.5)
+	f.CFrame = walls.CFrame * CFrame.new(0, -walls.Size.Y / 2 - depth / 2 + 0.15, 0)
+	f.Parent = model
+end
+local function unlock(model) for _, p in ipairs(model:GetDescendants()) do if p:IsA("BasePart") then p.Locked = false end end end
+-- place(kit, x, z, yaw, opts): opts.scale, opts.tint (overrides table), opts.tilt (follow the slope along the model's x),
+-- opts.sink (studs below ground), opts.spots = { {kind, dx, dy, dz}, ... } in the model's frame, opts.precise
+local function place(kitName, x, z, yaw, opts)
+	opts = opts or {}
+	local t = templates[kitName] or (villageKit and villageKit:FindFirstChild(kitName))
+	if not t then return end
+	local model = t:Clone(); model.Name = kitName
+	for _, p in ipairs(model:GetDescendants()) do
+		if p:IsA("BasePart") then p.Transparency = 0; p.CanCollide = true; p.CanQuery = true; p.Locked = true; p.Anchored = true end
+	end
+	if ATOMIC[kitName] then model.ModelStreamingMode = Enum.ModelStreamingMode.Atomic end
+	model.Parent = props
+	if opts.tint == nil and (kitName == "stone_wall" or kitName == "stone_wall_b" or kitName == "stone_pillar") then opts.tint = {Stone = C(172, 146, 108), StoneB = C(108, 86, 60), Quoin = C(188, 170, 142)} end   -- must precede tintModel
+	tintModel(model, opts.tint)
+	if opts.scale and opts.scale ~= 1 then model:ScaleTo(opts.scale) end
+	local gy = opts.fixedY or groundAt(x, z)          -- fixedY: props inside the cellar, under the earth knoll
+	-- Import 3D turns every kit 180 degrees about Y (kit front -Z ends up on +Z), so turn it back; spot offsets below are
+	-- given in kit coordinates and the two flips cancel there
+	local rot = CFrame.Angles(0, yaw + math.pi, 0)
+	if opts.tilt then                  -- slope along the model's own x axis (rows): sample the ground at both ends
+		local bb0, size0 = model:GetBoundingBox()
+		local half = size0.X / 2 * 0.9
+		local ex = rot:VectorToWorldSpace(Vector3.new(half, 0, 0))
+		local ya, yb = groundAt(x + ex.X, z + ex.Z), groundAt(x - ex.X, z - ex.Z)
+		local pitch = math.atan2(ya - yb, 2 * half)
+		rot = rot * CFrame.Angles(0, 0, pitch)
+		gy = (ya + yb) / 2
+	end
+	model:PivotTo(CFrame.new(x, gy, z) * rot)
+	local bb, size = model:GetBoundingBox()
+	-- centre the footprint on (x, z) and rest the bottom on the ground (the kit's own bottom is its y = 0). The box is
+	-- oriented with the model, so the centre of its bottom face is what meets the ground (tilted rows follow the slope).
+	local bottom = bb.Position.Y - bb.UpVector.Y * size.Y / 2
+	model:PivotTo(model:GetPivot() + Vector3.new(x - bb.Position.X, gy - bottom - (opts.sink or 0), z - bb.Position.Z))
+	do
+		local bb2 = model:GetBoundingBox()
+		if not model.PrimaryPart then model.WorldPivot = CFrame.new(bb2.Position) * model:GetPivot().Rotation end   -- a pivot on the prop, not off in space
+		local kc = KIT_CENTRE[kitName]
+		if kc then                                     -- KitOrigin: the kit's own (0,0,0) and axes, in world space (kit coordinates -> world)
+			local sc = opts.scale or 1
+			model:SetAttribute("KitOrigin", CFrame.new(bb2.Position) * CFrame.Angles(0, yaw, 0) * CFrame.new(-kc.X * sc, -kc.Y * sc, -kc.Z * sc))
+		end
+	end
+	if opts.precise then
+		for _, p in ipairs(model:GetDescendants()) do if p:IsA("MeshPart") then p.CollisionFidelity = Enum.CollisionFidelity.PreciseConvexDecomposition end end
+	end
+	if opts.spots then
+		local base = CFrame.new(x, gy, z) * CFrame.Angles(0, yaw, 0)
+		for _, sp in ipairs(opts.spots) do
+			local a = Instance.new("Attachment"); a.Name = sp[1]; a.Parent = spots
+			a.WorldCFrame = base * CFrame.new(sp[2], sp[3], sp[4])
+			a:SetAttribute("Face", sp[5] or yaw)
+		end
+	end
+	table.insert(placed, model)
+	return model
+end
+local function spotAt(kind, x, y, z, face)
+	local a = Instance.new("Attachment"); a.Name = kind; a.Parent = spots
+	a.WorldCFrame = CFrame.new(x, y, z) * CFrame.Angles(0, face or 0, 0)
+	return a
+end
+local function signText(model, text, size)
+	local board = model:FindFirstChild("Sign", true)
+	if not board then return end
+	for _, face in ipairs({Enum.NormalId.Front, Enum.NormalId.Back}) do
+		local gui = Instance.new("SurfaceGui"); gui.Face = face; gui.LightInfluence = 0.6; gui.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud; gui.PixelsPerStud = 60
+		gui.Parent = board
+		local l = Instance.new("TextLabel"); l.Size = UDim2.fromScale(1, 1); l.BackgroundTransparency = 1; l.Text = text
+		l.FontFace = Font.new("rbxasset://fonts/families/PatrickHand.json"); l.TextScaled = true; l.TextColor3 = C(70, 50, 30); l.Parent = gui
+		local tc = Instance.new("UITextSizeConstraint"); tc.MaxTextSize = size or 40; tc.Parent = l
+	end
+end
+
+-- ---------------------------------------------------------------- 1. the gate: garden at the end of the street ----
+-- The street (22 wide, sidewalks 9 each side) ends at X0. A picket fence closes it off with a gate on the axis; inside,
+-- two garden plots either side of a gravel path, and a second gate lets the lane out on the east side.
+local GX0, GX1 = X0 + 2, X0 + 38
+local GZ0, GZ1 = CZ - 22, CZ + 22
+do
+	-- a flat pavement-coloured pad so the garden sits level with the street
+	local pad = Instance.new("Part"); pad.Name = "GardenPad"; pad.Anchored = true; pad.Size = Vector3.new(GX1 - GX0 + 2, 0.6, GZ1 - GZ0 + 2)
+	pad.Position = Vector3.new((GX0 + GX1) / 2, GY0 - 0.3, CZ); pad.Color = C(178, 164, 136); pad.Material = Enum.Material.Sand; pad.Locked = true
+	pad.TopSurface = Enum.SurfaceType.Smooth; pad.Parent = domaine
+	local path = Instance.new("Part"); path.Name = "GardenPath"; path.Anchored = true; path.Size = Vector3.new(GX1 - GX0 + 2, 0.12, 7)
+	path.Position = Vector3.new((GX0 + GX1) / 2, GY0 + 0.06, CZ); path.Color = C(192, 178, 154); path.Material = Enum.Material.Sand; path.Locked = true; path.Parent = domaine
+	-- fence: west side (with the street gate), north and south sides, east side (with the lane gate)
+	local function fenceRun(x0, z0, x1, z1, gateAt, noLeaf, gateW)
+		local L = math.sqrt((x1 - x0) ^ 2 + (z1 - z0) ^ 2)
+		local yaw = math.atan2(-(z1 - z0), x1 - x0)
+		local ux, uz = (x1 - x0) / L, (z1 - z0) / L
+		local function fill(s0, s1)                        -- picket segments (about 8 studs each, scaled to fit) over [s0, s1]
+			local len = s1 - s0
+			if len < 0.6 then return end
+			local n = math.max(1, math.floor(len / 8 + 0.5))
+			local seg = len / n
+			for k = 0, n - 1 do
+				local sm = s0 + (k + 0.5) * seg
+				place("picket_fence", x0 + ux * sm, z0 + uz * sm, yaw, {scale = seg / 8})
+			end
+		end
+		if gateAt then
+			local g, w = L * gateAt, gateW or 6                -- the opening is centred exactly where asked (the street axis)
+			fill(0, g - w / 2); fill(g + w / 2, L)
+			if not noLeaf then place("picket_gate", x0 + ux * g, z0 + uz * g, yaw, {scale = w / 4}) end
+		else
+			fill(0, L)
+		end
+	end
+	fenceRun(GX0, GZ0, GX0, GZ1, 0.5, true)       -- west, gate on the street axis (its locking leaf comes from the Boundary build)
+	fenceRun(GX0, GZ1, GX1, GZ1)                  -- north
+	fenceRun(GX0, GZ0, GX1, GZ0)                  -- south
+	fenceRun(GX1, GZ0, GX1, GZ1, 0.5)             -- east, gate to the lane
+	place("garden", (GX0 + GX1) / 2, CZ + 12.5, math.pi, {spots = {{"InGarden", 5.5, 1.2, 4.0}}})
+	place("garden", (GX0 + GX1) / 2, CZ - 12.5, 0)
+	place("boxwood", GX0 + 4, GZ1 - 4, 0); place("boxwood", GX0 + 4, GZ0 + 4, 0)
+	place("oleander", GX1 - 6, GZ1 - 5, 0.4); place("oleander", GX1 - 6, GZ0 + 5, 2.1)
+end
+local TREE_TINT = {Canopy = C(96, 150, 72), Trunk = C(110, 85, 60)}
+local PARASOL_TINT = {Canopy = C(200, 70, 60), Pole = C(70, 60, 55)}
+
+-- ---------------------------------------------------------------- 2. the lane ----
+local function alongLane(fromX, toX, step, fn)
+	-- walk the polyline and call fn(x, z, yaw, side normal) every `step` studs
+	local acc = 0
+	for i = 1, #LANE - 1 do
+		local ax, az, bx, bz = LANE[i][1], LANE[i][2], LANE[i + 1][1], LANE[i + 1][2]
+		local L = math.sqrt((bx - ax) ^ 2 + (bz - az) ^ 2)
+		local yaw = math.atan2(-(bz - az), bx - ax)
+		local nx, nz = -(bz - az) / L, (bx - ax) / L
+		local d = acc
+		while d < acc + L do
+			local f = (d - acc) / L
+			local x, z = ax + (bx - ax) * f, az + (bz - az) * f
+			if x >= fromX and x <= toX then fn(x, z, yaw, nx, nz) end
+			d += step
+		end
+		acc += L
+	end
+end
+do
+	-- dry-stone walls line the straight part of the lane, with openings for the farm path (north) and the lavender
+	-- field (south), and cypresses behind them
+	local k = 0
+	local off = 8.5
+	local function opening(x, lo, hi) return x > lo and x < hi end
+	alongLane(GX1 + 8, 518, 12, function(x, z, yaw, nx, nz)
+		k += 1
+		if not opening(x, 470, 494) then place(k % 2 == 0 and "stone_wall" or "stone_wall_b", x + nx * off, z + nz * off, yaw, {tilt = true, precise = true}) end
+		if not opening(x, 448, 472) then place(k % 2 == 1 and "stone_wall" or "stone_wall_b", x - nx * off, z - nz * off, yaw, {tilt = true, precise = true}) end
+		if k % 3 == 0 then
+			local cy, cs = rng:NextNumber(0, 6.28), rng:NextNumber(0.9, 1.15)
+			if k ~= 3 then place("cypress", x + nx * (off + 4), z + nz * (off + 4), cy, {scale = cs}) end       -- k = 3 stood in the sunflowers
+		end
+		if k % 4 == 2 then
+			local cy, cs = rng:NextNumber(0, 6.28), rng:NextNumber(0.9, 1.15)
+			if k ~= 2 then place("cypress", x - nx * (off + 4), z - nz * (off + 4), cy, {scale = cs}) end       -- k = 2 stood inside the plane tree
+		end
+	end)
+	for _, px in ipairs({470, 494}) do place("stone_pillar", px, CZ + off, 0) end
+	for _, px in ipairs({448, 472}) do place("stone_pillar", px, CZ - off, 0) end
+	place("stone_pillar", GX1 + 6, CZ + 9, 0); place("stone_pillar", GX1 + 6, CZ - 9, 0)
+	place("plane_tree", 410, CZ - 14, 0.6, {scale = 1.6, tint = TREE_TINT})
+	place("cypress", 540, -128, 0.4, {scale = 1.1}); place("cypress", 578, -122, 1.3, {scale = 1.0})
+end
+
+-- ---------------------------------------------------------------- 3. the lavender field ----
+do
+	local rows = 12
+	local LILAC = C(196, 168, 232)
+	for r = 0, rows - 1 do
+		local z = FIELD.z0 + 3.5 + r * ((FIELD.z1 - FIELD.z0 - 7) / (rows - 1))
+		local lilac = (r == 3 or r == 8)
+		for s = 0, 2 do
+			local x = FIELD.x0 + 11 + s * 21.5
+			local m = place((r + s) % 2 == 0 and "lavender_row_a" or "lavender_row_b", x, z, 0, {tilt = true, tint = lilac and {Lav = LILAC} or nil,
+				spots = (r == 5 and s == 1) and {{"InLavender", 2.0, 0.6, 0.0}} or nil})
+		end
+	end
+	place("well", FIELD.x0 - 5, FIELD.z1 + 6, 0.3, {spots = {{"InWell", 0.0, 0.9, 0.0}}})
+	for i = 0, 4 do
+		local z = FIELD.z0 + 8 + i * 12
+		local hive = place("beehive", FIELD.x1 + 6, z, -math.pi / 2, {spots = (i == 2) and {{"OnHive", 0.0, 4.15, 0.0, -math.pi / 2}} or nil})
+		if hive then
+			local top = hive:FindFirstChild("Hive", true) or hive:FindFirstChildWhichIsA("BasePart")
+			local a = Instance.new("Attachment"); a.Name = "Bees"; a.Parent = top
+			a.WorldCFrame = CFrame.new(FIELD.x1 + 5.2, groundAt(FIELD.x1 + 6, z) + 1.6, z)
+			local pe = Instance.new("ParticleEmitter"); pe.Name = "Bees"; pe.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+			pe.Color = ColorSequence.new(C(60, 50, 20)); pe.Size = NumberSequence.new(0.18); pe.Transparency = NumberSequence.new(0.1)
+			pe.Lifetime = NumberRange.new(2.5, 4); pe.Rate = 4; pe.Speed = NumberRange.new(1.2, 2.4); pe.SpreadAngle = Vector2.new(180, 180)
+			pe.Acceleration = Vector3.new(0, 0.3, 0); pe.Drag = 1.5; pe.Rotation = NumberRange.new(0, 360); pe.LightEmission = 0.1; pe.Parent = a
+		end
+	end
+	place("lavender_cart", FIELD.x0 + 26, FIELD.z1 + 7, math.pi * 0.95)
+	local hutX, hutZ = FIELD.x1 + 22, FIELD.z1 - 14
+	plinth(place("hut", hutX, hutZ, 0), 2.0)
+	place("still", hutX + 8.5, hutZ - 0.5, 0)
+	place("olive_tree", FIELD.x0 - 12, FIELD.z0 + 10, 1.2, {scale = 1.3})
+	place("olive_tree", FIELD.x1 + 16, FIELD.z0 - 6, 2.4, {scale = 1.1})
+end
+
+-- ---------------------------------------------------------------- 4. the vineyard ----
+do
+	local rows = math.floor((VINES.z1 - VINES.z0) / 8)
+	for r = 0, rows - 1 do
+		local z = VINES.z0 + 0.8 + r * 8
+		local green = (r % 3 == 1)
+		for s = 0, 3 do
+			local x = VINES.x0 + 12 + s * 25
+			local nm = (r + s) % 2 == 0 and "vine_row_a" or "vine_row_b"
+			place(nm, x, z, 0, {tilt = true, tint = green and {Grape = C(164, 196, 92)} or nil,
+				spots = (r == 4 and s == 2) and {{"InVines", 0.0, 1.0, -1.2}} or nil})
+		end
+	end
+	-- the cellar at the end of the lane: a stone room with earth heaped over it, door facing the lane (south)
+	local cx, cz = 600, -108
+	local cellar = place("cellar_front", cx, cz, 0, {sink = 0.2, precise = true})
+	if cellar then
+		local gy = groundAt(cx, cz)
+		-- earth heaped over the room: a buried core, a low dome on top and banks either side, then the room and the
+		-- doorway carved hollow again (terrain fills ignore parts)
+		T:FillBlock(CFrame.new(cx, gy + 4.6, cz + 6.0), Vector3.new(11.5, 9.6, 10.5), Enum.Material.Grass)
+		T:FillBall(Vector3.new(cx, gy + 4.5, cz + 6.5), 7.8, Enum.Material.Grass)
+		T:FillBall(Vector3.new(cx - 7.5, gy + 0.5, cz + 6.5), 6.0, Enum.Material.Grass)
+		T:FillBall(Vector3.new(cx + 7.5, gy + 0.5, cz + 6.5), 6.0, Enum.Material.Grass)
+		T:FillBall(Vector3.new(cx, gy + 0.5, cz + 13), 6.0, Enum.Material.Grass)
+		T:FillBlock(CFrame.new(cx, gy + 3.7, cz + 5.6), Vector3.new(5.6, 9.4, 9.2), Enum.Material.Air)     -- the room stays hollow, down to its stone floor
+		T:FillBlock(CFrame.new(cx, gy + 4.6, cz - 1.5), Vector3.new(7.0, 9.0, 5.5), Enum.Material.Air)     -- and the doorway clear
+		local floorY = gy - 0.2                                                                   -- the cellar floor slab (sink 0.2)
+		-- the room's meshes are one piece each, so their collision hulls would fill the room and block the arch; swap
+		-- them for explicit invisible colliders: floor, three walls, ceiling, the two piers and the header over the arch
+		for _, p in ipairs(cellar:GetDescendants()) do
+			if p:IsA("BasePart") and (p.Name == "Vault" or p.Name == "Walls" or p.Name == "Stone") then p.CanCollide = false end
+		end
+		local function collider(name, pos, size)
+			local q = Instance.new("Part"); q.Name = name; q.Anchored = true; q.CanCollide = true; q.CanQuery = true; q.Transparency = 1
+			q.Locked = true; q.Size = size; q.CFrame = CFrame.new(pos); q.Parent = cellar
+		end
+		collider("CellarFloor", Vector3.new(cx, floorY - 0.25, cz + 5.5), Vector3.new(7.2, 0.5, 12.6))
+		collider("CellarWallL", Vector3.new(cx - 3.0, floorY + 4.3, cz + 5.6), Vector3.new(1.0, 8.6, 8.4))
+		collider("CellarWallR", Vector3.new(cx + 3.0, floorY + 4.3, cz + 5.6), Vector3.new(1.0, 8.6, 8.4))
+		collider("CellarBack", Vector3.new(cx, floorY + 4.3, cz + 9.9), Vector3.new(7.2, 8.6, 1.0))
+		collider("CellarCeiling", Vector3.new(cx, floorY + 8.6, cz + 5.5), Vector3.new(7.2, 1.0, 12.6))
+		collider("CellarPierL", Vector3.new(cx - 5.25, floorY + 4.5, cz), Vector3.new(5.5, 9.0, 3.0))
+		collider("CellarPierR", Vector3.new(cx + 5.25, floorY + 4.5, cz), Vector3.new(5.5, 9.0, 3.0))
+		collider("CellarHeader", Vector3.new(cx, floorY + 8.3, cz), Vector3.new(5.4, 1.4, 3.0))
+		place("barrel_rack", cx - 0.6, cz + 6.8, math.pi / 2, {fixedY = floorY})
+		place("barrel_open", cx + 1.7, cz + 3.4, 0.3, {fixedY = floorY, spots = {{"InBarrel", 0.0, 0.25, 0.0}}})
+		place("crate_grapes", cx - 4.8, cz - 5.0, 0.4, {spots = {{"InCrate", 0.0, 1.1, 0.0}}})
+		place("crate_grapes", cx - 6.6, cz - 3.2, 2.2)
+		place("wine_press", cx + 7.5, cz - 4.5, 0)
+		place("tasting_table", cx - 10, cz - 7, 0.2)
+		place("barrel", cx + 12.5, cz - 3, 1.0)
+	end
+	plinth(place("chapel", 655, -172, math.pi * 0.75, {spots = {{"InBelfry", 3.5, 20.3, -7.5}}, precise = true}), 2.4)
+	place("cypress", 665, -165, 0, {scale = 1.2}); place("cypress", 645, -183, 0, {scale = 1.1})     -- flanking the nave, clear of the door
+	place("olive_tree", 560, -100, 0.8, {scale = 1.2})
+end
+
+-- ---------------------------------------------------------------- 5. the farm ----
+do
+	local MX, MZ = 482, -36
+	plinth(place("mas", MX, MZ, 0, {precise = true}), 2.0)
+	-- courtyard: long table with parasols under a plane tree, boxwood balls, oleanders
+	local ltable = place("long_table", MX + 2, MZ - 30, 0, {spots = {{"UnderTable", 0.0, 1.4, 0.0}}})
+	if ltable then                                     -- seats along both benches, facing the table (kit coords: benches at z = +-3, top 1.76)
+		local gyT = groundAt(MX + 2, MZ - 30)
+		local base = CFrame.new(MX + 2, gyT, MZ - 30)
+		for _, sz in ipairs({-3.0, 3.0}) do
+			for _, sx in ipairs({-4.5, -1.5, 1.5, 4.5}) do
+				local pos = (base * CFrame.new(sx, 1.9, sz)).Position
+				local seat = Instance.new("Seat"); seat.Name = "BenchSeat"; seat.Anchored = true; seat.CanCollide = true; seat.CanQuery = false
+				seat.Transparency = 1; seat.Locked = true; seat.Size = Vector3.new(2.6, 0.3, 1.3)
+				seat.CFrame = CFrame.lookAt(pos, (base * CFrame.new(sx, 1.9, 0)).Position)
+				seat.Parent = ltable
+			end
+		end
+		dressLongTable(ltable)
+	end
+	-- a small terrace by the front door: two café tables with chairs, each with its own parasol standing beside it
+	for i, tx in ipairs({MX - 9, MX + 11}) do
+		local tz = MZ - 21
+		local ct = place("cafe_table", tx, tz, 0)
+		if ct then
+			local gyC = groundAt(tx, tz)
+			for _, sz in ipairs({-2.05, 2.05}) do
+				local seat = Instance.new("Seat"); seat.Name = "ChairSeat"; seat.Anchored = true; seat.CanCollide = true; seat.CanQuery = false
+				seat.Transparency = 1; seat.Locked = true; seat.Size = Vector3.new(1.6, 0.3, 1.4)
+				seat.CFrame = CFrame.lookAt(Vector3.new(tx, gyC + 1.55, tz + sz), Vector3.new(tx, gyC + 1.55, tz))
+				seat.Parent = ct
+			end
+			dressCafeTable(ct)
+		end
+		place("parasol", tx + (i == 1 and 2.7 or -2.7), tz, 0, {tint = PARASOL_TINT, scale = 1.25})
+	end
+	place("plane_tree", MX - 16, MZ - 26, 0.3, {scale = 1.8, tint = TREE_TINT})
+	for i = 0, 5 do place("boxwood", MX - 20 + i * 8, MZ - 14, 0, {scale = rng:NextNumber(0.8, 1.1)}) end
+	place("oleander", MX - 22, MZ - 4, 0.5); place("oleander", MX + 22, MZ - 6, 2.0)
+	place("cypress", MX + 21, MZ + 6, 0, {scale = 1.15}); place("cypress", MX + 25, MZ + 2, 0, {scale = 0.95})
+	place("stone_wall", MX - 24, MZ - 44, 0, {tilt = true, precise = true}); place("stone_wall_b", MX - 12, MZ - 44, 0, {tilt = true, precise = true})
+	place("stone_wall", MX + 12, MZ - 44, 0, {tilt = true, precise = true}); place("stone_wall_b", MX + 24, MZ - 44, 0, {tilt = true, precise = true})
+	place("stone_pillar", MX - 5, MZ - 44, 0); place("stone_pillar", MX + 5, MZ - 44, 0)
+	place("farm_gate", MX - 2, MZ - 44, 0.35)
+	-- barn, coop, tractor, hay, sunflowers, trough, olives
+	local BX, BZ = 536, -40
+	plinth(place("barn", BX, BZ, 0, {spots = {{"InLoft", 0.0, 15.0, -11.2}}, precise = true}), 2.0)
+	local TX, TZ, TYAW = BX - 22, BZ - 20, -1.0                 -- nose toward the open meadow east of the yard
+	local tractor = place("tractor", TX, TZ, TYAW)
+	if tractor then
+		-- a drivable tractor: an invisible Chassis part is the assembly root (kit coordinates = its own frame), the body is
+		-- welded to it and each wheel hangs on a Motor6D so it can spin and steer. TractorDrive/TractorClient (below) do the rest.
+		local base = tractor:GetAttribute("KitOrigin")
+		local chassis = Instance.new("Part"); chassis.Name = "Chassis"; chassis.Anchored = true; chassis.CanCollide = false; chassis.CanQuery = false
+		chassis.CanTouch = false; chassis.Transparency = 1; chassis.Locked = true; chassis.Size = Vector3.new(4, 0.4, 8); chassis.RootPriority = 127
+		chassis.CFrame = base; chassis.Parent = tractor
+		tractor.PrimaryPart = chassis
+		local seat = Instance.new("VehicleSeat"); seat.Name = "DriverSeat"; seat.CanCollide = true; seat.CanQuery = false; seat.Transparency = 1
+		seat.Locked = true; seat.Size = Vector3.new(1.6, 0.4, 1.4); seat.HeadsUpDisplay = false; seat.MaxSpeed = 0; seat.Torque = 0
+		seat.CFrame = base * CFrame.new(0, 4.75, 1.3)                          -- on the saddle, facing the kit's front (-z)
+		seat.Parent = tractor
+		local prompt = Instance.new("ProximityPrompt"); prompt.ActionText = "Drive the tractor"; prompt.ObjectText = "Tractor"
+		prompt.MaxActivationDistance = 10; prompt.HoldDuration = 0; prompt.RequiresLineOfSight = false; prompt.Parent = seat
+		for _, p in ipairs(tractor:GetChildren()) do
+			if p:IsA("BasePart") and p ~= chassis then
+				p.Anchored = false
+				local w = p.Name:match("^Tread(..)$")
+				if w then
+					local m = Instance.new("Motor6D"); m.Name = "Axle" .. w; m.Part0 = chassis; m.Part1 = p
+					m.C0 = CFrame.new(chassis.CFrame:PointToObjectSpace(p.Position))   -- position only: the hub frame keeps the chassis axes (X = axle)
+					m.C1 = p.CFrame:ToObjectSpace(chassis.CFrame * m.C0)
+					m.Parent = chassis
+				elseif p.Name:match("^Hub(..)$") then
+					local wc = Instance.new("WeldConstraint"); wc.Part0 = tractor:FindFirstChild("Tread" .. p.Name:sub(-2)); wc.Part1 = p; wc.Parent = p
+				else
+					local wc = Instance.new("WeldConstraint"); wc.Part0 = chassis; wc.Part1 = p; wc.Parent = p
+				end
+			end
+		end
+		local att = Instance.new("Attachment"); att.Name = "Centre"; att.Parent = chassis
+		local lift = Instance.new("VectorForce"); lift.Name = "Float"; lift.Attachment0 = att; lift.RelativeTo = Enum.ActuatorRelativeTo.World
+		lift.ApplyAtCenterOfMass = true; lift.Force = Vector3.zero; lift.Enabled = false; lift.Parent = chassis
+	end
+	place("trailer", BX, BZ - 23, 0.35, {spots = {{"OnTractor", 0.0, 5.3, 0.0, 0.35 + math.pi / 2}}})    -- parked by the barn; Toto rides in the hay
+	place("hay_round", BX + 16, BZ - 18, 0.4); place("hay_round", BX + 21, BZ - 16, 1.1); place("hay_stack", BX + 12, BZ - 26, 0.2)
+	local CX, CZ2 = 446, -70
+	local coop = place("coop", CX, CZ2, 0.2, {spots = {{"InCoop", -1.8, 1.9, -3.3}}, precise = true})
+	local coopO = coop and coop:GetAttribute("KitOrigin") or CFrame.new(CX, groundAt(CX, CZ2), CZ2) * CFrame.Angles(0, 0.2, 0)
+	domaine:SetAttribute("HenRunPos", coopO.Position); domaine:SetAttribute("HenRunYaw", 0.2)
+	if coop then
+		-- the run's wire is too thin for the navmesh to see, so invisible pathfinding-only walls trace every fence segment
+		-- (and the open gate leaf); nothing collides with them, the hens' paths just treat them as fence
+		local segs = {{-6, -12, 6, -12}, {-6, -12, -6, -3}, {6, -12, 6, -8.7}, {6, -6.3, 6, -3}, {-6, -3, -4, -3}, {4, -3, 6, -3}}
+		local function fence(cf, size)
+			local f = Instance.new("Part"); f.Name = "HenFence"; f.Anchored = true; f.CanCollide = false; f.CanQuery = false; f.CanTouch = false
+			f.Transparency = 1; f.Locked = true; f.Size = size; f.CFrame = cf; f.Parent = coop
+			local pm = Instance.new("PathfindingModifier"); pm.PassThrough = false; pm.Parent = f
+		end
+		for _, sg in ipairs(segs) do
+			local dx, dz = sg[3] - sg[1], sg[4] - sg[2]
+			fence(coopO * CFrame.new((sg[1] + sg[3]) / 2, 1.4, (sg[2] + sg[4]) / 2), Vector3.new(math.max(math.abs(dx), 1.2) + 0.6, 2.8, math.max(math.abs(dz), 1.2) + 0.6))
+		end
+		local hinge, tip = Vector3.new(6.15, 1.4, -8.55), Vector3.new(6.15 + 0.94 * 2.1, 1.4, -8.55 - 0.34 * 2.1)
+		fence(coopO * CFrame.lookAt((hinge + tip) / 2, tip), Vector3.new(1.2, 2.8, 2.4))
+	end
+	do                                                 -- a feed bin by the run; DomaineLife (below) makes the hens come running
+		local base = coopO
+		local bin = Instance.new("Part"); bin.Name = "FeedBin"; bin.Anchored = true; bin.Size = Vector3.new(1.5, 1.7, 1.5); bin.Color = C(176, 142, 96)
+		bin.Material = Enum.Material.Fabric; bin.Locked = true; bin.CFrame = base * CFrame.new(10.2, 0.85, -3.6) * CFrame.Angles(0, 0.3, 0); bin.Parent = props      -- clear of the gateway
+		local lid = Instance.new("Part"); lid.Name = "FeedGrain"; lid.Anchored = true; lid.Size = Vector3.new(1.2, 0.2, 1.2); lid.Color = C(232, 190, 92)
+		lid.Material = Enum.Material.Sand; lid.Locked = true; lid.CFrame = bin.CFrame * CFrame.new(0, 0.8, 0); lid.Parent = bin
+		local prompt = Instance.new("ProximityPrompt"); prompt.ActionText = "Feed the hens"; prompt.ObjectText = "Feed bin"
+		prompt.MaxActivationDistance = 8; prompt.HoldDuration = 0; prompt.RequiresLineOfSight = false; prompt.Parent = bin
+	end
+	for i = 1, 5 do
+		local lx, lz, hyaw = rng:NextNumber(-4.5, 4.5), -5.5 - rng:NextNumber(0, 5), rng:NextNumber(0, 6.28)
+		local hp = coopO * Vector3.new(lx, 0, lz)                                                  -- inside the run, in the coop's frame
+		local hen = place("hen", hp.X, hp.Z, hyaw, {scale = rng:NextNumber(0.9, 1.1), tint = (i % 2 == 0) and {Hen = C(150, 96, 60)} or nil})
+		if hen then
+			hen:SetAttribute("Yaw", hyaw)
+			for _, p in ipairs(hen:GetDescendants()) do if p:IsA("BasePart") then p.CanCollide = false end end
+			-- a solid body: an invisible collider the height of a player's chest, so you bump into the bird rather than
+			-- stepping onto its back; the navmesh ignores it so the hens do not wall each other in
+			local o = hen:GetAttribute("KitOrigin")
+			local col = Instance.new("Part"); col.Name = "HenCollider"; col.Anchored = true; col.CanCollide = true; col.CanQuery = true; col.CanTouch = false
+			col.Transparency = 1; col.Locked = true; col.Size = Vector3.new(1.2, 3.4, 2.0)
+			col.CFrame = (o or hen:GetPivot()) * CFrame.new(0, 1.7, -0.06); col.Parent = hen
+			local pm = Instance.new("PathfindingModifier"); pm.PassThrough = true; pm.Parent = col
+		end
+	end
+	place("sunflower_patch", 428, -104, 0.3, {spots = {{"OnSunflower", 0.2, 5.6, -2.6}}})
+	place("sunflower_patch", 436, -98, 1.4); place("sunflower_patch", 424, -94, 2.6)
+	place("scarecrow", 441, -96, 0.1, {spots = {{"OnScarecrow", 1.7, 5.9, 0.0}}})
+	local trough = place("trough", 512, -72, 0.2, {spots = {{"InTrough", 0.0, 1.7, 0.0}}})
+	if trough then                                     -- the pump: spout and hinge attachments plus a prompt on the handle (DomaineLife works it)
+		local base = trough:GetAttribute("KitOrigin")
+		local handle = trough:FindFirstChild("Handle")
+		local iron = trough:FindFirstChild("Iron") or handle
+		if iron then
+			local spout = Instance.new("Attachment"); spout.Name = "Spout"; spout.Parent = iron
+			spout.WorldCFrame = base * CFrame.new(2.6, 2.55, 0)
+			local hinge = Instance.new("Attachment"); hinge.Name = "Hinge"; hinge.Parent = iron
+			hinge.WorldCFrame = base * CFrame.new(3.6, 3.3, 0.1)
+		end
+		if handle then
+			local prompt = Instance.new("ProximityPrompt"); prompt.ActionText = "Pump water"; prompt.ObjectText = "Pump"
+			prompt.MaxActivationDistance = 8; prompt.HoldDuration = 0; prompt.RequiresLineOfSight = false; prompt.UIOffset = Vector2.new(0, -64); prompt.Parent = handle
+		end
+	end
+	place("olive_tree", 520, -95, 1.1, {scale = 1.25}); place("olive_tree", 470, -100, 2.0, {scale = 1.1})
+	-- the windmill on its rise; the sails turn
+	local WX, WZ = 588, -62
+	local mill = place("windmill", WX, WZ, math.pi * 0.85, {precise = true})
+	if mill then
+		local sails = mill:FindFirstChild("Sails", true)
+		if sails then
+			sails.CanCollide = false
+			local base = sails.CFrame
+			local axis = base:VectorToObjectSpace(mill:GetPivot().LookVector)
+			local scr = Instance.new("Script"); scr.Name = "TurnSails"
+			scr.Source = [[
+local sails = script.Parent
+local base = sails.CFrame
+local axis = script:GetAttribute("Axis") or Vector3.new(0, 0, 1)
+local t = 0
+-- a squirrel seated on the sail rides round with it
+local rider, riderOffset
+task.defer(function()
+	task.wait(2)
+	local spot = workspace:FindFirstChild("Domaine") and workspace.Domaine.HidingSpots:FindFirstChild("OnSail")
+	local name = spot and spot:GetAttribute("Squirrel")
+	local mdl = name and workspace:FindFirstChild(name)
+	if mdl then rider = mdl; riderOffset = sails.CFrame:ToObjectSpace(mdl:GetPivot()) end
+end)
+game:GetService("RunService").Heartbeat:Connect(function(dt)
+	t += dt * 0.35
+	sails.CFrame = base * CFrame.fromAxisAngle(axis, t)
+	if rider and rider.Parent then rider:PivotTo(sails.CFrame * riderOffset) end
+end)]]
+			scr:SetAttribute("Axis", axis)
+			scr.Parent = sails
+			-- Picnic Pierre rides a sail: an attachment on the sails part itself, so the squirrel turns with it
+			local a = Instance.new("Attachment"); a.Name = "OnSail"; a.Parent = sails
+			a.CFrame = CFrame.new(-6.0, 6.0, -0.9)
+			spotAt("OnSail", (sails.CFrame * a.CFrame).Position.X, (sails.CFrame * a.CFrame).Position.Y, (sails.CFrame * a.CFrame).Position.Z, 0)
+		end
+	end
+end
+-- ---------------------------------------------------------------- 5a. the estate's edges: stone walls and cypress rows ----
+do
+	for _, x in ipairs({358, 370, 394, 406, 418, 430, 442, 454, 466, 478, 490, 502, 514, 526, 538, 550, 562, 574, 586, 598, 610, 622, 634, 646, 658, 670, 682, 694}) do
+		place("stone_wall_b", x, -247, 0, {tilt = true, precise = true}); place("stone_wall_b", x, 27, 0, {tilt = true, precise = true})   -- x 382 skipped: it straddles the terrain's edge fade
+	end
+	place("cypress", 382, -246, 0.4, {scale = 1.1}); place("cypress", 382, 26, 1.1, {scale = 1.1})
+	for z = -241, 21, 12 do place("stone_wall_b", 696, z, math.pi / 2, {tilt = true, precise = true}) end
+	for z = -244, 24, 9 do place("cypress", 691, z, rng:NextNumber(0, 6.28), {scale = rng:NextNumber(0.95, 1.3)}) end
+	for x = 362, 690, 16 do
+		place("cypress", x, -242, rng:NextNumber(0, 6.28), {scale = rng:NextNumber(0.95, 1.25)})
+		place("cypress", x, 22, rng:NextNumber(0, 6.28), {scale = rng:NextNumber(0.95, 1.25)})
+	end
+	for z = -246, -146, 9 do place("cypress", 357, z, rng:NextNumber(0, 6.28), {scale = rng:NextNumber(0.9, 1.2)}) end   -- fence line, south of the garden
+	for z = -94, 26, 9 do place("cypress", 357, z, rng:NextNumber(0, 6.28), {scale = rng:NextNumber(0.9, 1.2)}) end       -- fence line, north of the garden
+end
+-- ---------------------------------------------------------------- 5b. life: wind, hens, pump, tractor ----
+do
+	local SRC = {
+		Client = [=[-- DomaineClient (runs on every client): the breeze in the lavender, the hens, the pump's water and the grain scatter.
+-- Everything here is cosmetic and simulated locally, so it stays smooth instead of stepping at the replication rate.
+-- The place streams, so props arrive and leave as the player moves: each one is registered when it appears.
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local domaine = script.Parent
+local props = domaine:WaitForChild("Props")
+
+local groundParams = RaycastParams.new(); groundParams.FilterType = Enum.RaycastFilterType.Include
+local groundList = {workspace.Terrain}
+local bp = workspace:FindFirstChild("Baseplate"); if bp then table.insert(groundList, bp) end
+local pad = domaine:FindFirstChild("GardenPad"); if pad then table.insert(groundList, pad) end
+groundParams.FilterDescendantsInstances = groundList
+local function groundY(x, z, fallback)
+	local r = workspace:Raycast(Vector3.new(x, 200, z), Vector3.new(0, -400, 0), groundParams)
+	return r and r.Position.Y or fallback
+end
+
+-- ------------------------------------------------------------------ wind ----
+-- each lavender and sunflower part rocks about the line where it meets the ground; a slow gust envelope and a phase
+-- that runs with position make the field ripple rather than shiver in unison
+local sway = {}                                                        -- part -> item
+local function swayAmp(m, p)
+	if m.Name:match("^lavender_row") then return p.Name == "Lav" and math.rad(4.5) or math.rad(1.6) end
+	if m.Name == "sunflower_patch" then return math.rad(2.2) end
+end
+local function addSway(m, p)
+	if not p:IsA("BasePart") or sway[p] then return end
+	local amp = swayAmp(m, p)
+	if not amp then return end
+	local hinge = CFrame.new(0, -p.Size.Y / 2, 0)
+	local pos = p.Position
+	sway[p] = {part = p, base = p.CFrame, amp = amp, phase = pos.X * 0.23 + pos.Z * 0.11 + math.random() * 0.6,
+		speed = 1.1 + math.random() * 0.5, hinge = hinge, hingeInv = hinge:Inverse()}
+end
+
+-- ------------------------------------------------------------------ hens ----
+local runPos = domaine:GetAttribute("HenRunPos") or Vector3.zero
+local runCF = CFrame.new(runPos) * CFrame.Angles(0, domaine:GetAttribute("HenRunYaw") or 0, 0)
+local RUN = {x0 = -5.2, x1 = 5.2, z0 = -11.2, z1 = -3.8}           -- the wire run, in the coop's own frame
+local GATE_IN, GATE_OUT = Vector3.new(4.8, 0, -7.5), Vector3.new(9.0, 0, -7.5)
+local function inRun(worldPos)
+	local l = runCF:PointToObjectSpace(worldPos)
+	return l.X > RUN.x0 - 0.3 and l.X < RUN.x1 + 0.3 and l.Z > RUN.z0 - 0.3 and l.Z < RUN.z1 + 0.3
+end
+local function runPoint(u, v) return runCF:PointToWorldSpace(Vector3.new(RUN.x0 + (RUN.x1 - RUN.x0) * u, 0, RUN.z0 + (RUN.z1 - RUN.z0) * v)) end
+local FENCE = {x0 = -6, x1 = 6, z0 = -12, z1 = -3}                    -- the wire itself, in the coop's frame
+local function fenced(l) return l.X > FENCE.x0 and l.X < FENCE.x1 and l.Z > FENCE.z0 and l.Z < FENCE.z1 end
+local function throughGate(l) return l.X > 5 and l.Z > -9.0 and l.Z < -6.0 end
+local function cutsWire(a, b)
+	-- does the straight walk a -> b (world) cross the fence line anywhere but the gateway? sampled every half stud
+	local n = math.max(1, math.ceil((b - a).Magnitude / 0.5))
+	local prev = runCF:PointToObjectSpace(a)
+	for i = 1, n do
+		local l = runCF:PointToObjectSpace(a:Lerp(b, i / n))
+		if fenced(l) ~= fenced(prev) and not throughGate((l + prev) / 2) then return true end
+		prev = l
+	end
+	return false
+end
+local function routeOK(from, route)
+	local a = from
+	for _, b in ipairs(route) do
+		if cutsWire(a, b) then return false end
+		a = b
+	end
+	return true
+end
+local PathfindingService = game:GetService("PathfindingService")
+local hens = {}                                                        -- model -> state
+local henModels = {}
+local henCount = 0
+local probeParams = RaycastParams.new(); probeParams.FilterType = Enum.RaycastFilterType.Exclude
+local function addHen(m)
+	if hens[m] or not m.Parent then return end
+	local bb, size = m:GetBoundingBox()
+	if size.Magnitude < 0.5 then return end
+	local feet = Vector3.new(bb.Position.X, bb.Position.Y - size.Y / 2, bb.Position.Z)
+	local yaw = m:GetAttribute("Yaw") or 0
+	local feetCF = CFrame.new(feet) * CFrame.Angles(0, yaw, 0)
+	henCount += 1
+	local a = math.random() * 6.283
+	hens[m] = {model = m, pos = feet, yaw = yaw, inv = feetCF:ToObjectSpace(m:GetPivot()), goal = feet, route = {}, planId = 0, lastPlan = 0, blocked = 0,
+		wait = math.random() * 3, peck = 1 + math.random() * 2, pecking = 0, phase0 = henCount * 1.7,
+		followOffset = Vector3.new(math.cos(a) * 4.5, 0, math.sin(a) * 4.5),
+		path = PathfindingService:CreatePath({AgentRadius = 0.7, AgentHeight = 2.2, AgentCanJump = false, WaypointSpacing = 1.2})}
+	table.insert(henModels, m)
+	probeParams.FilterDescendantsInstances = henModels
+end
+local feedChar, feedUntil = nil, 0
+local plan
+local function wanderPoint() return runPoint(0.1 + math.random() * 0.8, 0.1 + math.random() * 0.8) end
+plan = function(h, target, wander, tries)
+	-- walk around solid things: paths over the navmesh (walls, bins, buildings). A fence crossing is always taken in
+	-- two legs through the gateway, and any route that would still cut the wire is refused (the hen waits and retries).
+	h.goal = target
+	if h.planning and os.clock() - h.lastPlan < 1.5 then return end
+	h.planning = true
+	h.lastPlan = os.clock()
+	task.spawn(function()
+		local from = h.pos
+		local function leg(a, b)
+			local ok = pcall(function() h.path:ComputeAsync(a + Vector3.new(0, 0.5, 0), Vector3.new(b.X, groundY(b.X, b.Z, a.Y) + 0.5, b.Z)) end)
+			if not (ok and h.path.Status == Enum.PathStatus.Success) then return nil end
+			local wps, out = h.path:GetWaypoints(), {}
+			for i = 2, #wps do table.insert(out, Vector3.new(wps[i].Position.X, b.Y, wps[i].Position.Z)) end
+			table.insert(out, b)
+			return out
+		end
+		local route
+		local lf = runCF:PointToObjectSpace(from)
+		local fromIn, toIn = fenced(lf), fenced(runCF:PointToObjectSpace(target))
+		if fromIn ~= toIn then
+			local gIn, gOut = runCF:PointToWorldSpace(GATE_IN), runCF:PointToWorldSpace(GATE_OUT)
+			gIn = Vector3.new(gIn.X, from.Y, gIn.Z); gOut = Vector3.new(gOut.X, from.Y, gOut.Z)
+			local first, second = fromIn and gIn or gOut, fromIn and gOut or gIn
+			local inCorridor = lf.Z > -9.2 and lf.Z < -5.8 and lf.X > 3.8 and lf.X < 10.0
+			local leg1 = inCorridor and {} or (leg(from, first) or {first})     -- already in the gateway: straight on through
+			local leg2 = leg(second, target)
+			if leg2 then
+				route = leg1
+				table.insert(route, second)
+				for _, w in ipairs(leg2) do table.insert(route, w) end
+			end
+		else
+			route = leg(from, target)
+		end
+		h.planning = false
+		if not h.model.Parent then return end
+		if route and routeOK(from, route) then
+			h.route = route
+		elseif wander and (tries or 0) < 3 then
+			plan(h, wanderPoint(), true, (tries or 0) + 1)                     -- that spot is not reachable: pick another
+			return
+		else
+			h.route = {}                                                          -- no clean way there: wait, try again shortly
+			h.lastPlan = os.clock() + 0.8
+			return
+		end
+		if (Vector3.new(h.goal.X, 0, h.goal.Z) - Vector3.new(target.X, 0, target.Z)).Magnitude > 2 then plan(h, h.goal) end
+	end)
+end
+local function blockedAhead(h, u)
+	-- things that move (people, the tractor) are not in the navmesh: wait for them rather than walk through them.
+	-- Static props are the path's business; stopping for them here only deadlocks a hen against a corner it is skirting.
+	local side = Vector3.new(-u.Z, 0, u.X)
+	for _, off in ipairs({-0.5, 0, 0.5}) do
+		local hit = workspace:Raycast(h.pos + Vector3.new(0, 0.9, 0) + side * off, u * 1.7, probeParams)
+		if hit and hit.Instance ~= workspace.Terrain and hit.Instance.CanCollide then
+			local model = hit.Instance:FindFirstAncestorOfClass("Model")
+			while model do
+				if model.Name == "tractor" or model:FindFirstChildOfClass("Humanoid") then return true end
+				model = model.Parent and model.Parent:FindFirstAncestorOfClass("Model")
+			end
+		end
+	end
+	return false
+end
+local function rotY(v, a)
+	local c, s = math.cos(a), math.sin(a)
+	return Vector3.new(v.X * c + v.Z * s, 0, -v.X * s + v.Z * c)
+end
+local function clearStep(h, v, len)
+	-- a free step: nothing solid in the way (people, props, walls) and not through the wire
+	local side = Vector3.new(-v.Z, 0, v.X)
+	for _, off in ipairs({-0.5, 0, 0.5}) do
+		local hit = workspace:Raycast(h.pos + Vector3.new(0, 0.9, 0) + side * off, v * len, probeParams)
+		if hit and hit.Instance ~= workspace.Terrain and hit.Instance.CanCollide then return false end
+	end
+	return not cutsWire(h.pos, h.pos + v * len)
+end
+local function personNear(h, r)
+	for _, pl in ipairs(Players:GetPlayers()) do
+		local ch = pl.Character
+		local hrp = ch and ch:FindFirstChild("HumanoidRootPart")
+		if hrp then
+			local d = Vector3.new(h.pos.X - hrp.Position.X, 0, h.pos.Z - hrp.Position.Z)
+			if d.Magnitude < r and math.abs(hrp.Position.Y - h.pos.Y) < 5 then return hrp, d end
+		end
+	end
+end
+local function turnTo(h, v, dt)
+	local want = math.atan2(-v.X, -v.Z)
+	local diff = (want - h.yaw + math.pi) % (2 * math.pi) - math.pi
+	h.yaw = h.yaw + diff * math.min(1, 9 * dt)
+end
+local function stepHen(h, dt, now)
+	local hrp = feedChar and feedChar.Parent and feedChar:FindFirstChild("HumanoidRootPart")
+	local following = hrp and now < feedUntil
+	local speed = 2.6
+	if following then
+		speed = 7.0
+		local target = hrp.Position + h.followOffset
+		local far = (Vector3.new(target.X, 0, target.Z) - Vector3.new(h.goal.X, 0, h.goal.Z)).Magnitude > 2.0
+		local away = (Vector3.new(target.X, 0, target.Z) - Vector3.new(h.pos.X, 0, h.pos.Z)).Magnitude > 2.2
+		local stale = away and now - (h.lastMove or now) > 3                      -- standing still while far from the feeder: try again
+		if (far or (#h.route == 0 and away) or stale) and os.clock() - h.lastPlan > 0.4 then
+			plan(h, target); h.lastMove = now
+		end
+		h.wasFollowing = true
+	else
+		if h.wasFollowing then h.wasFollowing = false; plan(h, wanderPoint(), true) end
+		h.wait -= dt
+		if h.wait <= 0 then
+			plan(h, wanderPoint(), true)
+			h.wait = 3 + math.random() * 5
+		end
+	end
+	-- waypoints already reached are dropped first, so the pace carries straight through them
+	-- (reached = within a stud, or already past it: a hen at speed turns on a radius wider than a waypoint is close,
+	-- and would otherwise circle a point it can never quite touch)
+	while #h.route > 1 do
+		local w, w2 = h.route[1], h.route[2]
+		local toW = Vector3.new(w.X - h.pos.X, 0, w.Z - h.pos.Z)
+		local ahead = Vector3.new(w2.X - w.X, 0, w2.Z - w.Z)
+		if toW.Magnitude <= 0.9 or toW:Dot(ahead) < 0 then table.remove(h.route, 1) else break end
+	end
+	-- where to go this frame: a desired direction and speed, smoothed below so nothing flips frame to frame
+	local target = h.route[1] or h.goal
+	local d = Vector3.new(target.X - h.pos.X, 0, target.Z - h.pos.Z)
+	local dist = d.Magnitude
+	local last = #h.route <= 1
+	local arrive = last and (following and 1.2 or 0.5) or 0.45
+	if last and h.arrived then arrive = arrive + 1.2 end                  -- once there, stay put until the goal really moves away
+	local desired, want = nil, 0
+	local hrpNear, awayV = personNear(h, h.scatter and 3.4 or 2.2)         -- hysteresis: starts at 2.2 studs, ends past 3.4
+	h.scatter = hrpNear ~= nil
+	if hrpNear then
+		-- someone is right on top of the hen: ease away from them, around whatever is behind
+		local a = awayV.Magnitude > 0.05 and awayV.Unit or Vector3.new(1, 0, 0)
+		for _, ang in ipairs({0, 0.8, -0.8, 1.6, -1.6}) do
+			local v = rotY(a, ang)
+			if clearStep(h, v, 1.4) then desired = v; want = 4.5; break end
+		end
+	elseif dist > arrive then
+		local u = d / dist
+		if blockedAhead(h, u) then
+			-- a person (or the tractor) in the way: pick a side once and keep to it until the way ahead is clear again
+			if not h.side then
+				local best
+				for _, ang in ipairs({0.9, -0.9, 1.5, -1.5}) do
+					if clearStep(h, rotY(u, ang), 1.6) then best = ang; break end
+				end
+				h.side = best
+			end
+			if h.side and clearStep(h, rotY(u, h.side), 1.4) then desired = rotY(u, h.side); want = speed * 0.8; h.blocked = 0
+			else h.blocked += dt; if h.blocked > 0.9 then h.blocked = 0; h.side = nil; plan(h, h.goal) end end
+			h.clearSince = now
+		else
+			if h.side and now - (h.clearSince or 0) > 0.3 then h.side = nil end
+			desired = u; h.blocked = 0
+			-- ease in over the last couple of studs of the final leg instead of overshooting and turning back
+			want = last and speed * math.clamp((dist - arrive) / 2.0 + 0.2, 0.2, 1) or speed
+		end
+		h.arrived = false
+	else
+		h.route = {}                                                          -- arrived
+		h.arrived = true
+	end
+	-- smooth the heading and the pace: hens lean into turns and slow down instead of snapping
+	local moving = false
+	if desired then
+		local k = math.min(1, 12 * dt)
+		h.dir = h.dir and (h.dir * (1 - k) + desired * k) or desired
+		if h.dir.Magnitude > 0.01 then h.dir = h.dir.Unit else h.dir = desired end
+		h.pace = (h.pace or 0) + (want - (h.pace or 0)) * math.min(1, (want > (h.pace or 0) and 6 or 10) * dt)
+		local step = math.min(h.pace * dt, hrpNear and 10 or math.max(dist - arrive * 0.5, 0))
+		if step > 0.002 then
+			h.pos = h.pos + h.dir * step
+			turnTo(h, h.dir, dt)
+			h.lastMove = now
+			moving = h.pace > 0.25
+		end
+	else
+		h.pace = 0
+	end
+	if not moving then
+		h.peck -= dt
+		if h.peck <= 0 then h.pecking = 0.9; h.peck = 1.4 + math.random() * 2.6 end
+	end
+	for _, o in pairs(hens) do                                            -- hens keep a little room from each other
+		if o ~= h then
+			local dd = Vector3.new(h.pos.X - o.pos.X, 0, h.pos.Z - o.pos.Z)
+			local l = dd.Magnitude
+			if l > 0.01 and l < 0.9 then h.pos = h.pos + dd / l * (0.9 - l) * 0.5 end
+		end
+	end
+	local pitch = 0
+	if h.pecking > 0 then
+		h.pecking -= dt
+		local u = 1 - math.max(h.pecking, 0) / 0.9
+		pitch = math.rad(30) * math.sin(u * math.pi)                              -- one unhurried dip of the head
+	end
+	local bob = moving and math.abs(math.sin(now * (following and 22 or 15) + h.phase0)) * 0.14 * math.min(1, h.pace / 2.6) or 0
+	local gy = groundY(h.pos.X, h.pos.Z, h.pos.Y)
+	h.pos = Vector3.new(h.pos.X, gy, h.pos.Z)
+	local feetCF = CFrame.new(h.pos.X, gy + bob, h.pos.Z) * CFrame.Angles(0, h.yaw, 0) * CFrame.Angles(-pitch, 0, 0)
+	h.model:PivotTo(feetCF * h.inv)
+end
+local function grainScatter(at)
+	local a = Instance.new("Attachment"); a.Parent = workspace.Terrain; a.WorldPosition = at + Vector3.new(0, 0.6, 0)
+	local pe = Instance.new("ParticleEmitter"); pe.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+	pe.Color = ColorSequence.new(Color3.fromRGB(236, 196, 96), Color3.fromRGB(214, 160, 70)); pe.Size = NumberSequence.new(0.22, 0.14)
+	pe.Lifetime = NumberRange.new(0.5, 0.9); pe.Speed = NumberRange.new(5, 8); pe.SpreadAngle = Vector2.new(60, 60)
+	pe.Acceleration = Vector3.new(0, -30, 0); pe.Rate = 0; pe.LightEmission = 0.15; pe.Parent = a
+	pe:Emit(60)
+	local pile = Instance.new("Part"); pile.Anchored = true; pile.CanCollide = false; pile.CanQuery = false; pile.Shape = Enum.PartType.Cylinder
+	pile.Size = Vector3.new(0.08, 1.6, 1.6); pile.Color = Color3.fromRGB(228, 186, 88); pile.Material = Enum.Material.Sand
+	pile.CFrame = CFrame.new(at.X, groundY(at.X, at.Z, at.Y) + 0.03, at.Z) * CFrame.Angles(0, 0, math.pi / 2); pile.Parent = workspace.Terrain
+	task.delay(3, function() a:Destroy() end)
+	task.delay(28, function() TweenService:Create(pile, TweenInfo.new(2), {Transparency = 1}):Play() end)
+	task.delay(31, function() pile:Destroy() end)
+end
+local function onFeed()
+	local uid = domaine:GetAttribute("FeedBy")
+	local until_ = domaine:GetAttribute("FeedUntil") or 0
+	local at = domaine:GetAttribute("FeedAt")
+	local player = uid and Players:GetPlayerByUserId(uid)
+	if player and player.Character then
+		feedChar = player.Character; feedUntil = until_
+		for _, h in pairs(hens) do
+			local a = math.random() * 6.283; local r = 4.0 + math.random() * 2.0
+			h.followOffset = Vector3.new(math.cos(a) * r, 0, math.sin(a) * r)
+			h.route = {}
+		end
+	end
+	if at then grainScatter(at) end
+end
+domaine:GetAttributeChangedSignal("FeedUntil"):Connect(onFeed)
+
+-- ------------------------------------------------------------------ the pump ----
+local pumps = {}                                                       -- trough model -> true
+local function addPump(trough)
+	if pumps[trough] or not trough.Parent then return end
+	local handle = trough:FindFirstChild("Handle")
+	local spout = trough:FindFirstChild("Spout", true)
+	local hinge = trough:FindFirstChild("Hinge", true)
+	local water = trough:FindFirstChild("Water")
+	if not (handle and spout and hinge) then return end
+	pumps[trough] = true
+	local handle0 = handle.CFrame
+	local hingeCF = hinge.WorldCFrame
+	local rel = hingeCF:ToObjectSpace(handle0)
+	local fall = Instance.new("Attachment"); fall.Name = "Fall"; fall.Parent = spout.Parent
+	fall.WorldCFrame = CFrame.new(spout.WorldPosition - Vector3.new(0, 0.12, 0))            -- world-upright: "Bottom" is straight down whatever the pump's rotation
+	local stream = Instance.new("ParticleEmitter"); stream.Name = "Stream"; stream.Texture = "rbxasset://textures/particles/smoke_main.dds"
+	stream.Color = ColorSequence.new(Color3.fromRGB(110, 170, 255), Color3.fromRGB(170, 215, 255)); stream.Size = NumberSequence.new(0.34, 0.42)
+	stream.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.05), NumberSequenceKeypoint.new(1, 0.35)}); stream.Squash = NumberSequence.new(-1.2)
+	stream.Orientation = Enum.ParticleOrientation.VelocityParallel; stream.Lifetime = NumberRange.new(0.3, 0.36); stream.Rate = 0
+	stream.Speed = NumberRange.new(0.8, 1.2); stream.SpreadAngle = Vector2.new(2, 2); stream.Acceleration = Vector3.new(0, -22, 0)
+	stream.EmissionDirection = Enum.NormalId.Bottom; stream.LightEmission = 0.1; stream.Parent = fall
+	local snd = Instance.new("Sound"); snd.SoundId = "rbxasset://sounds/impact_water.mp3"; snd.Volume = 0.5; snd.RollOffMaxDistance = 45; snd.Parent = handle
+	local water0 = water and water.CFrame
+	local conn
+	trough:GetAttributeChangedSignal("PumpAt"):Connect(function()
+		if conn then conn:Disconnect() end
+		local t0 = os.clock()
+		stream.Rate = 120
+		task.delay(0.3, function() snd:Play() end); task.delay(1.2, function() snd:Play() end); task.delay(2.1, function() snd:Play() end)
+		conn = RunService.RenderStepped:Connect(function()
+			local t = os.clock() - t0
+			local a = -math.rad(42) * (0.5 - 0.5 * math.cos(t * 2 * math.pi / 0.9))         -- three strokes, pushed down and back up
+			handle.CFrame = hingeCF * CFrame.Angles(0, 0, a) * rel
+			if water and water0 then water.CFrame = water0 + Vector3.new(0, math.min(0.18, t * 0.07), 0) end
+			if t > 2.7 or not trough.Parent then
+				conn:Disconnect(); conn = nil
+				handle.CFrame = handle0; stream.Rate = 0
+				if water and water0 then TweenService:Create(water, TweenInfo.new(16, Enum.EasingStyle.Linear), {CFrame = water0}):Play() end
+			end
+		end)
+	end)
+end
+
+-- ------------------------------------------------------------------ registration ----
+local function register(m)
+	if not m:IsA("Model") then return end
+	if m.Name:match("^lavender_row") or m.Name == "sunflower_patch" then
+		for _, p in ipairs(m:GetChildren()) do addSway(m, p) end
+		m.ChildAdded:Connect(function(p) addSway(m, p) end)
+	elseif m.Name == "hen" then
+		task.defer(addHen, m)
+		task.delay(0.5, addHen, m)
+	elseif m.Name == "trough" then
+		task.defer(addPump, m)
+		task.delay(0.5, addPump, m)
+	end
+end
+for _, m in ipairs(props:GetChildren()) do register(m) end
+props.ChildAdded:Connect(register)
+props.ChildRemoved:Connect(function(m)
+	hens[m] = nil; pumps[m] = nil
+	local i = table.find(henModels, m); if i then table.remove(henModels, i); probeParams.FilterDescendantsInstances = henModels end
+	for p in pairs(sway) do if p.Parent == nil or p:IsDescendantOf(m) then sway[p] = nil end end
+end)
+
+-- ------------------------------------------------------------------ frame ----
+local t = 0
+RunService.RenderStepped:Connect(function(dt)
+	dt = math.min(dt, 0.05)
+	t += dt
+	local gust = 0.55 + 0.45 * math.sin(t * 0.31) * math.sin(t * 0.17 + 1.0)
+	for p, it in pairs(sway) do
+		if p.Parent then
+			local a = it.amp * (gust * math.sin(t * it.speed + it.phase) + 0.25 * math.sin(t * 3.1 + it.phase * 2))
+			p.CFrame = it.base * it.hinge * CFrame.Angles(a, 0, 0) * it.hingeInv
+		else
+			sway[p] = nil
+		end
+	end
+	local now = workspace:GetServerTimeNow()
+	for m, h in pairs(hens) do
+		if m.Parent then stepHen(h, dt, now) else hens[m] = nil end
+	end
+end)
+]=],
+		Life = [=[-- DomaineLife (server): the two prompts. It only records what happened as attributes; every client animates from them.
+local domaine = script.Parent
+local props = domaine:WaitForChild("Props")
+
+local bin = props:FindFirstChild("FeedBin")
+local binPrompt = bin and bin:FindFirstChildOfClass("ProximityPrompt")
+if binPrompt then
+	binPrompt.Triggered:Connect(function(player)
+		local char = player.Character
+		local hrp = char and char:FindFirstChild("HumanoidRootPart")
+		if not hrp then return end
+		domaine:SetAttribute("FeedBy", player.UserId)
+		domaine:SetAttribute("FeedAt", hrp.Position - Vector3.new(0, 2.6, 0) + hrp.CFrame.LookVector * 2.5)
+		domaine:SetAttribute("FeedUntil", workspace:GetServerTimeNow() + 30)
+	end)
+end
+
+for _, m in ipairs(props:GetChildren()) do
+	if m.Name == "trough" then
+		local handle = m:FindFirstChild("Handle")
+		local prompt = handle and handle:FindFirstChildOfClass("ProximityPrompt")
+		if prompt then
+			local busyUntil = 0
+			prompt.Triggered:Connect(function()
+				local now = workspace:GetServerTimeNow()
+				if now < busyUntil then return end
+				busyUntil = now + 3
+				m:SetAttribute("PumpAt", now)
+			end)
+		end
+	end
+end
+]=],
+		Drive = [=[-- TractorDrive (server, inside the tractor): seats the player from the prompt, hands the tractor to the driver's client
+-- while it is being driven, and parks it (anchored, solid) when they get off. The driving itself is in TractorClient.
+local Players = game:GetService("Players")
+local model = script.Parent
+local seat = model:WaitForChild("DriverSeat")
+local chassis = model:WaitForChild("Chassis")
+local lift = chassis:WaitForChild("Float")
+local home = chassis.CFrame
+local parts = {}
+for _, p in ipairs(model:GetDescendants()) do
+	if p:IsA("BasePart") and p ~= chassis and p ~= seat then table.insert(parts, p) end
+end
+local prompt = seat:FindFirstChildOfClass("ProximityPrompt")
+local lastDriver
+local function stepOff()
+	-- put the driver on the ground beside the tractor: standing up on the saddle leaves them wedged under the canopy
+	local char = lastDriver and lastDriver.Character
+	local hum = char and char:FindFirstChildOfClass("Humanoid")
+	if not (char and hum and hum.Health > 0 and char:FindFirstChild("HumanoidRootPart")) then return end
+	local cf = chassis.CFrame
+	local at = cf.Position - cf.RightVector * 4.8 - cf.LookVector * 1.3
+	local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude; rp.FilterDescendantsInstances = {model, char}
+	local hit = workspace:Raycast(at + Vector3.new(0, 8, 0), Vector3.new(0, -40, 0), rp)
+	local y = (hit and hit.Position.Y or cf.Position.Y) + 3.2
+	local stand = Vector3.new(at.X, y, at.Z)
+	char:PivotTo(CFrame.lookAt(stand, stand + Vector3.new(cf.LookVector.X, 0, cf.LookVector.Z)))
+end
+local function park()
+	chassis.Anchored = true
+	lift.Enabled = false
+	for _, p in ipairs(parts) do p.CanCollide = true end
+	if prompt then prompt.Enabled = true end
+end
+if prompt then
+	prompt.Triggered:Connect(function(player)
+		local char = player.Character
+		local hum = char and char:FindFirstChildOfClass("Humanoid")
+		if hum and hum.Health > 0 and not seat.Occupant and hum.SeatPart == nil then seat:Sit(hum) end
+	end)
+end
+seat:GetPropertyChangedSignal("Occupant"):Connect(function()
+	local hum = seat.Occupant
+	local player = hum and Players:GetPlayerFromCharacter(hum.Parent)
+	if player then
+		lastDriver = player
+		if prompt then prompt.Enabled = false end
+		for _, p in ipairs(parts) do p.CanCollide = false end           -- the body must not fight the ground while it is moved
+		chassis.Anchored = false
+		lift.Force = Vector3.new(0, chassis.AssemblyMass * workspace.Gravity, 0)   -- hold it up: gravity is not part of the drive
+		lift.Enabled = true
+		local root = chassis.AssemblyRootPart or chassis
+		pcall(function() root:SetNetworkOwner(player) end)
+	else
+		stepOff()
+		park()
+	end
+end)
+task.spawn(function()
+	while true do
+		task.wait(2)
+		if not chassis.Anchored and not seat.Occupant then park() end
+		local p = chassis.Position
+		if p.Y < home.Position.Y - 40 or (p - home.Position).Magnitude > 700 then     -- lost it somehow: bring it home
+			park(); model:PivotTo(home)
+		end
+	end
+end)
+]=],
+		DriveClient = [=[-- TractorClient (every client, inside the tractor). The driver's client moves the tractor: throttle and steering from the
+-- seat, a bicycle-model turn, the body set on the ground under its four wheels, stopped by anything solid in its way.
+-- Every client turns the wheels from the motion it sees, so passengers and bystanders get spinning, steering wheels too.
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local model = script.Parent
+local seat = model:WaitForChild("DriverSeat")
+local chassis = model:WaitForChild("Chassis")
+local player = Players.LocalPlayer
+local axles = {}
+for _, j in ipairs(chassis:GetChildren()) do
+	local w = j.Name:match("^Axle(..)$")
+	if w and j:IsA("Motor6D") then axles[w] = j end
+end
+if not (axles.RL and axles.RR and axles.FL and axles.FR) then warn("TractorClient: axles missing") return end
+local rRear, rFront = axles.RL.Part1.Size.Y / 2, axles.FL.Part1.Size.Y / 2
+local zRear = (axles.RL.C0.Position.Z + axles.RR.C0.Position.Z) / 2
+local zFront = (axles.FL.C0.Position.Z + axles.FR.C0.Position.Z) / 2
+local wheelbase = zRear - zFront                                           -- the front is toward -z
+local track = math.abs(axles.RL.C0.Position.X - axles.RR.C0.Position.X)
+local tOrigin = (0 - zRear) / (zFront - zRear)                             -- where the chassis origin sits between the axles
+local MAX_STEER, TOP, REVERSE = math.rad(30), 16, 7
+local BOUNDS = {x0 = 386, x1 = 700, z0 = -250, z1 = 30}
+
+local groundParams = RaycastParams.new(); groundParams.FilterType = Enum.RaycastFilterType.Include
+local gl = {workspace.Terrain}
+local bp = workspace:FindFirstChild("Baseplate"); if bp then table.insert(gl, bp) end
+local dom = workspace:FindFirstChild("Domaine")
+local pad = dom and dom:FindFirstChild("GardenPad"); if pad then table.insert(gl, pad) end
+groundParams.FilterDescendantsInstances = gl
+local function groundY(x, z, fb)
+	local r = workspace:Raycast(Vector3.new(x, 200, z), Vector3.new(0, -400, 0), groundParams)
+	return r and r.Position.Y or fb
+end
+local blockParams = RaycastParams.new(); blockParams.FilterType = Enum.RaycastFilterType.Exclude
+local function blocked(origin, dir, char)
+	blockParams.FilterDescendantsInstances = {model, char}
+	local right = CFrame.lookAt(Vector3.zero, dir).RightVector
+	for _, side in ipairs({-2.6, 0, 2.6}) do
+		for _, up in ipairs({0.9, 2.2}) do
+			local hit = workspace:Raycast(origin + right * side + Vector3.new(0, up, 0), dir, blockParams)
+			if hit and hit.Instance ~= workspace.Terrain and hit.Instance.CanCollide then return true end
+		end
+	end
+	return false
+end
+
+local pos, heading, speed, steer = nil, 0, 0, 0
+local spinVis, steerVis, lastCF = 0, 0, chassis.CFrame
+local function input()
+	local th = seat.ThrottleFloat; if th == 0 then th = seat.Throttle end
+	local st = seat.SteerFloat; if st == 0 then st = seat.Steer end
+	return math.clamp(th, -1, 1), math.clamp(st, -1, 1)
+end
+local function drive(dt, char)
+	if not pos then
+		local cf = chassis.CFrame
+		pos = cf.Position; heading = math.atan2(-cf.LookVector.X, -cf.LookVector.Z); speed = 0; steer = 0
+	end
+	local th, st = input()
+	if th ~= 0 then
+		speed = math.clamp(speed + th * 9 * dt, -REVERSE, TOP)
+	else
+		speed = speed * math.max(0, 1 - 2.5 * dt)
+		if math.abs(speed) < 0.05 then speed = 0 end
+	end
+	steer = steer + (st * MAX_STEER - steer) * math.min(1, 6 * dt)
+	if speed ~= 0 then heading = heading - math.tan(steer) * (speed / wheelbase) * dt end
+	local yawCF = CFrame.Angles(0, heading, 0)
+	local dir = yawCF.LookVector
+	local newPos = pos + dir * speed * dt
+	if speed ~= 0 then
+		local sgn = speed > 0 and 1 or -1
+		local reach = (sgn > 0 and -zFront + 1.6 or zRear + 3.0) + math.abs(speed) * dt
+		if blocked(pos, dir * sgn * reach, char) then speed = 0; newPos = pos end
+		if newPos.X < BOUNDS.x0 or newPos.X > BOUNDS.x1 or newPos.Z < BOUNDS.z0 or newPos.Z > BOUNDS.z1 then speed = 0; newPos = pos end
+	end
+	pos = newPos
+	local h = {}
+	for w, j in pairs(axles) do
+		local o = j.C0.Position
+		local wp = pos + yawCF:VectorToWorldSpace(Vector3.new(o.X, 0, o.Z))
+		h[w] = groundY(wp.X, wp.Z, pos.Y)
+	end
+	local hF, hR = (h.FL + h.FR) / 2, (h.RL + h.RR) / 2
+	local hL, hRt = (h.FL + h.RL) / 2, (h.FR + h.RR) / 2
+	local pitch = math.atan2(hF - hR, wheelbase)
+	local roll = math.atan2(hL - hRt, track)
+	pos = Vector3.new(pos.X, hR + (hF - hR) * tOrigin, pos.Z)
+	chassis.CFrame = CFrame.new(pos) * yawCF * CFrame.Angles(pitch, 0, 0) * CFrame.Angles(0, 0, -roll)
+	chassis.AssemblyLinearVelocity = dir * speed
+	chassis.AssemblyAngularVelocity = Vector3.new(0, -math.tan(steer) * speed / wheelbase, 0)
+	steerVis = steer
+end
+local function wheels(dt, driving)
+	local cf = chassis.CFrame
+	local fwd = -cf:VectorToObjectSpace(cf.Position - lastCF.Position).Z          -- travel along the tractor's own forward
+	local l0, l1 = lastCF.LookVector, cf.LookVector
+	local dyaw = math.atan2(l0.X * l1.Z - l0.Z * l1.X, l0.X * l1.X + l0.Z * l1.Z)
+	lastCF = cf
+	spinVis = spinVis + fwd / rRear
+	if not driving then
+		local v = fwd / dt
+		local target = math.abs(v) > 0.3 and math.clamp(math.atan(wheelbase * (dyaw / dt) / v), -MAX_STEER, MAX_STEER) or 0
+		steerVis = steerVis + (target - steerVis) * math.min(1, 5 * dt)
+	end
+	for w, j in pairs(axles) do
+		local front = w == "FL" or w == "FR"
+		local s = front and spinVis * rRear / rFront or spinVis
+		j.Transform = (front and CFrame.Angles(0, -steerVis, 0) or CFrame.identity) * CFrame.Angles(-s, 0, 0)
+	end
+end
+RunService.Heartbeat:Connect(function(dt)
+	dt = math.min(math.max(dt, 1 / 240), 0.05)
+	local char = player.Character
+	local hum = char and char:FindFirstChildOfClass("Humanoid")
+	local driving = hum ~= nil and hum.SeatPart == seat and not chassis.Anchored
+	if driving then drive(dt, char) else pos = nil end
+	wheels(dt, driving)
+end)
+]=],
+		Garden = [=[-- GardenCans (server): the watering can in each gate-garden can be picked up (prompt), is carried as a Tool with its
+-- spout pointing straight ahead, and a click or tap pours it: the can tips forward and showers water; if the player
+-- stands by a bed, its soil darkens, sparkles rise and the bed pushes up new growth for a minute. "Put down" (prompt on
+-- the carried can, or Backspace) rests it at the player's feet; it goes back to its stand when left there a while,
+-- when the carrier leaves the garden, or when the carrier leaves the game.
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local domaine = script.Parent
+local props = domaine:WaitForChild("Props")
+local C = Color3.fromRGB
+
+-- the beds, in the garden kit's own coordinates (gen_domaine_props.garden): soil rectangle and what grows there
+local BEDS = {
+	{x = -5.5, z = -4.0, w = 5.4, d = 3.4, top = 0.70, kind = "lettuce"},
+	{x =  5.5, z = -4.0, w = 5.4, d = 3.4, top = 0.70, kind = "tomato"},
+	{x = -5.5, z =  4.0, w = 5.4, d = 3.4, top = 0.70, kind = "pumpkin"},
+	{x =  5.5, z =  4.0, w = 5.4, d = 3.4, top = 0.70, kind = "carrot"},
+	{x = -3.0, z = -6.4, w = 3.6, d = 1.2, top = 0.65, kind = "flower"},
+	{x =  3.0, z = -6.4, w = 3.6, d = 1.2, top = 0.65, kind = "flower"},
+}
+local SPOUT_LOCAL = Vector3.new(-0.9, 0.52, 0)          -- the spout tip in the can mesh's own (import-flipped) space; the spout is the mesh's -X
+-- the R15 hand, measured in the tool-hold pose: the character's forward and up expressed in the RightGrip frame
+local F_H = Vector3.new(0.1857, 0.1406, -0.9724)
+local U_H = Vector3.new(-0.0701, 0.9898, 0.1297)
+local GX = (-F_H).Unit                                   -- the can's +X points backward, so its spout (-X) points straight ahead
+local GZ = GX:Cross(U_H).Unit
+local GY = GZ:Cross(GX)
+local GRIP = CFrame.new(0.4, 0.34, 0) * CFrame.fromMatrix(Vector3.zero, GX, GY, GZ):Inverse()   -- hand at the top of the body, can upright
+local TILT = CFrame.fromAxisAngle(F_H:Cross(U_H).Unit, 0.85)                                  -- pouring: the can pitches forward about the hand's right axis
+local LEAVE_RADIUS, REST_HOME_AFTER = 28, 120
+local FLOWERS = {C(240, 90, 120), C(250, 200, 70), C(230, 80, 70), C(190, 120, 220), C(250, 250, 240), C(255, 150, 60)}
+local LEAF, LETTUCE, TOMATO, PUMPKIN, STEM = C(114, 158, 76), C(140, 190, 90), C(216, 50, 50), C(234, 140, 38), C(90, 130, 64)
+
+local function mkPart(parent, name, size, cf, col, shape)
+	local p = Instance.new("Part"); p.Name = name; p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false
+	p.Material = Enum.Material.SmoothPlastic; p.Color = col; p.Size = size; p.CFrame = cf; p.CastShadow = true
+	if shape then p.Shape = shape end
+	p.Parent = parent
+	return p
+end
+-- a plant that grows up out of the ground over a second, stands for a minute and shrinks away
+local function grow(parent, name, size, cf, col, shape, hold)
+	local p = mkPart(parent, name, size * 0.05, cf - Vector3.new(0, size.Y * 0.47, 0), col, shape)
+	TweenService:Create(p, TweenInfo.new(1.1, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = size, CFrame = cf}):Play()
+	task.delay(hold or 60, function()
+		if p.Parent then
+			TweenService:Create(p, TweenInfo.new(1.0, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Size = size * 0.05, CFrame = cf - Vector3.new(0, size.Y * 0.47, 0)}):Play()
+			task.delay(1.05, function() p:Destroy() end)
+		end
+	end)
+	return p
+end
+
+local function soak(st, bed)
+	local garden, o = st.garden, st.origin
+	local rng = st.rng
+	local function W(x, y, z) return o:PointToWorldSpace(Vector3.new(x, y, z)) end
+	local function at(x, y, z) return CFrame.new(W(x, y, z)) * o.Rotation end
+	-- the soil darkens and dries over the next minute
+	local wet = mkPart(garden, "Wet", Vector3.new(bed.w - 0.2, 0.03, bed.d - 0.2), at(bed.x, bed.top + 0.02, bed.z), C(58, 40, 26))
+	wet.Transparency = 0.25
+	TweenService:Create(wet, TweenInfo.new(55, Enum.EasingStyle.Linear), {Transparency = 1}):Play()
+	task.delay(56, function() wet:Destroy() end)
+	-- sparkles over the bed
+	local sp = st.sparkles[bed]
+	if not sp then
+		local a = Instance.new("Attachment"); a.Name = "BedSparkle"; a.Parent = garden:FindFirstChild("Soil") or garden:FindFirstChildWhichIsA("BasePart")
+		a.WorldPosition = W(bed.x, bed.top + 0.5, bed.z)
+		sp = Instance.new("ParticleEmitter"); sp.Name = "Sparkle"; sp.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+		sp.Color = ColorSequence.new(C(220, 245, 255), C(160, 230, 170)); sp.Size = NumberSequence.new(0.3, 0); sp.Lifetime = NumberRange.new(0.8, 1.3)
+		sp.Speed = NumberRange.new(1.5, 3); sp.SpreadAngle = Vector2.new(70, 70); sp.Acceleration = Vector3.new(0, -2.5, 0); sp.LightEmission = 0.6
+		sp.Transparency = NumberSequence.new(0.1, 1); sp.Rate = 0; sp.Parent = a
+		st.sparkles[bed] = sp
+	end
+	sp.Rate = 45
+	task.delay(1.6, function() sp.Rate = 0 end)
+	-- new growth for the kind of bed
+	local k = bed.kind
+	if k == "lettuce" then
+		for i = 1, 5 do
+			local x, z = bed.x + rng:NextNumber(-2.2, 2.2), bed.z + rng:NextNumber(-1.2, 1.2)
+			grow(garden, "Sprout", Vector3.new(0.5, 0.4, 0.5), at(x, bed.top + 0.2, z), LETTUCE, Enum.PartType.Ball)
+		end
+	elseif k == "tomato" then
+		for i = 1, 6 do
+			local x = 3.5 + (i % 4) * 1.35 + rng:NextNumber(-0.3, 0.3)
+			grow(garden, "Sprout", Vector3.new(0.22, 0.22, 0.22), at(x, rng:NextNumber(1.1, 2.3), bed.z + rng:NextNumber(-0.3, 0.3)), TOMATO, Enum.PartType.Ball)
+		end
+		for i = 1, 3 do
+			grow(garden, "Sprout", Vector3.new(0.13, 0.13, 0.13), at(3.5 + rng:NextNumber(0, 4), rng:NextNumber(1.3, 2.4), bed.z + rng:NextNumber(-0.35, 0.35)), C(250, 220, 80), Enum.PartType.Ball)
+		end
+	elseif k == "pumpkin" then
+		grow(garden, "Sprout", Vector3.new(0.7, 0.55, 0.7), at(bed.x + 1.1, bed.top + 0.27, bed.z + 1.0), PUMPKIN, Enum.PartType.Ball)
+		for i = 1, 3 do
+			grow(garden, "Sprout", Vector3.new(0.45, 0.16, 0.45), at(bed.x + rng:NextNumber(-2.2, 2.2), bed.top + 0.12, bed.z + rng:NextNumber(-1.2, 1.2)), LEAF, Enum.PartType.Ball)
+		end
+		for i = 1, 2 do
+			grow(garden, "Sprout", Vector3.new(0.2, 0.2, 0.2), at(bed.x + rng:NextNumber(-2, 2), bed.top + 0.35, bed.z + rng:NextNumber(-1, 1)), C(250, 220, 80), Enum.PartType.Ball)
+		end
+	elseif k == "carrot" then
+		for i = 1, 6 do
+			local x, z = bed.x + rng:NextNumber(-2.2, 2.2), bed.z + rng:NextNumber(-1.2, 1.2)
+			for j = -1, 1 do
+				grow(garden, "Sprout", Vector3.new(0.07, 0.7, 0.07), at(x + j * 0.08, bed.top + 0.35, z) * CFrame.Angles(0, 0, j * 0.28), LEAF)
+			end
+			grow(garden, "Sprout", Vector3.new(0.05, 0.22, 0.22), at(x, bed.top + 0.03, z) * CFrame.Angles(0, 0, math.pi / 2), C(240, 130, 40), Enum.PartType.Cylinder)
+		end
+	else
+		for i = 1, 6 do
+			local x, z = bed.x + rng:NextNumber(-1.55, 1.55), bed.z + rng:NextNumber(-0.35, 0.35)
+			grow(garden, "Sprout", Vector3.new(0.05, 0.8, 0.05), at(x, bed.top + 0.4, z), STEM)
+			grow(garden, "Sprout", Vector3.new(0.32, 0.32, 0.32), at(x, bed.top + 0.85, z), FLOWERS[rng:NextInteger(1, #FLOWERS)], Enum.PartType.Ball)
+		end
+	end
+end
+
+local function setGrip(tool, cf, dur)
+	local from = tool.Grip
+	local steps = math.max(1, math.floor(dur / 0.05))
+	for i = 1, steps do
+		task.wait(0.05)
+		if not tool.Parent then return end
+		tool.Grip = from:Lerp(cf, i / steps)
+	end
+end
+
+local function bedNear(st, pos)                          -- the bed within reach of a world position, if any
+	local lp = st.origin:PointToObjectSpace(pos)
+	local bed, best
+	for _, b in ipairs(BEDS) do
+		local dx = math.max(0, math.abs(lp.X - b.x) - b.w / 2)
+		local dz = math.max(0, math.abs(lp.Z - b.z) - b.d / 2)
+		local dist = math.sqrt(dx * dx + dz * dz)
+		if dist < 3.4 and (not best or dist < best) then bed, best = b, dist end
+	end
+	return bed
+end
+
+local function water(st, player)
+	if st.busy or not st.tool then return end
+	local char = player.Character
+	local root = char and char:FindFirstChild("HumanoidRootPart")
+	if not root then return end
+	st.busy = true
+	local tool = st.tool
+	local handle = tool:FindFirstChild("Handle")
+	local pour = handle and handle:FindFirstChild("SpoutTip") and handle.SpoutTip:FindFirstChildOfClass("ParticleEmitter")
+	local snd = handle and handle:FindFirstChildOfClass("Sound")
+	if pour then pour.Rate = 220 end
+	if snd then snd:Play(); task.delay(0.9, function() snd:Play() end) end
+	task.spawn(setGrip, tool, GRIP * TILT, 0.35)
+	-- the bed the player stands by, if any
+	local bed = bedNear(st, root.Position)
+	if bed then st.watered[bed] = os.clock(); task.delay(0.5, function() if st.tool == tool then soak(st, bed) end end) end
+	task.delay(2.4, function()
+		if pour then pour.Rate = 0 end
+		if tool.Parent then task.spawn(setGrip, tool, GRIP, 0.4) end
+		st.busy = false
+	end)
+end
+
+-- the can rests at cf, visible, ready to be picked up
+local function restCan(st, cf, away)
+	st.can.CFrame = cf
+	st.can.Transparency = st.canTransparency; st.can.CanCollide = st.canCollide
+	st.prompt.Enabled = true; st.prompt.ActionText = "Pick up"
+	st.away = away; st.restAt = os.clock()
+end
+-- put the can down on the ground at pos (spout along look); no pos = back on its stand
+local function putDown(st, pos, look, char)
+	local tool = st.tool
+	st.tool = nil; st.carrier = nil; st.busy = false
+	if tool then tool:Destroy() end
+	if pos then
+		local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude; rp.FilterDescendantsInstances = {char, st.can}
+		local r = workspace:Raycast(pos + Vector3.new(0, 1.5, 0), Vector3.new(0, -12, 0), rp)
+		if r then
+			local L = look and Vector3.new(look.X, 0, look.Z)
+			L = (L and L.Magnitude > 0.01) and L.Unit or Vector3.new(0, 0, -1)
+			local o = Vector3.new(pos.X, r.Position.Y + st.can.Size.Y / 2 + 0.02, pos.Z)
+			restCan(st, CFrame.fromMatrix(o, -L, Vector3.yAxis, (-L):Cross(Vector3.yAxis)), true)
+			return
+		end
+	end
+	restCan(st, st.home, false)
+end
+local function putBack(st) putDown(st, nil) end
+
+local function pickUp(st, player)
+	local char = player.Character
+	local hum = char and char:FindFirstChildOfClass("Humanoid")
+	if not hum or hum.Health <= 0 then return end
+	local tool = Instance.new("Tool"); tool.Name = "Watering can"; tool.ToolTip = "Click or tap to water"; tool.CanBeDropped = true; tool.RequiresHandle = true
+	tool.Grip = GRIP
+	local handle = st.can:Clone(); handle.Name = "Handle"; handle:ClearAllChildren()
+	handle.Anchored = false; handle.CanCollide = false; handle.CanQuery = false; handle.Massless = true; handle.Transparency = 0; handle.Parent = tool
+	local tip = Instance.new("Attachment"); tip.Name = "SpoutTip"; tip.Position = SPOUT_LOCAL; tip.Parent = handle
+	local pour = Instance.new("ParticleEmitter"); pour.Name = "Pour"; pour.Texture = "rbxasset://textures/particles/smoke_main.dds"
+	pour.Color = ColorSequence.new(C(130, 190, 255), C(205, 235, 255)); pour.Size = NumberSequence.new(0.28, 0.18); pour.Squash = NumberSequence.new(-1.5)
+	pour.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.05), NumberSequenceKeypoint.new(1, 0.4)}); pour.Orientation = Enum.ParticleOrientation.VelocityParallel
+	pour.Lifetime = NumberRange.new(0.7, 0.9); pour.Speed = NumberRange.new(4, 6); pour.SpreadAngle = Vector2.new(10, 10)
+	pour.Acceleration = Vector3.new(0, -26, 0); pour.EmissionDirection = Enum.NormalId.Left; pour.LightEmission = 0.2; pour.Rate = 0; pour.Parent = tip
+	local snd = Instance.new("Sound"); snd.SoundId = "rbxasset://sounds/impact_water.mp3"; snd.Volume = 0.35; snd.RollOffMaxDistance = 40; snd.Parent = handle
+	-- "Put down" on the carried can itself
+	local pd = Instance.new("ProximityPrompt"); pd.Name = "PutDown"; pd.ActionText = "Put down"; pd.ObjectText = "Watering can"
+	pd.MaxActivationDistance = 10; pd.HoldDuration = 0; pd.RequiresLineOfSight = false; pd.UIOffset = Vector2.new(0, -36); pd.Parent = handle
+	local hint = Instance.new("BillboardGui"); hint.Name = "Hint"; hint.Size = UDim2.new(0, 280, 0, 46); hint.StudsOffset = Vector3.new(0, 5.6, 0)
+	hint.AlwaysOnTop = true; hint.MaxDistance = 40; hint.Adornee = char:FindFirstChild("Head"); hint.Parent = char:FindFirstChild("Head") or handle   -- above the head, clear of the hands
+	local hl = Instance.new("TextLabel"); hl.Size = UDim2.fromScale(1, 1); hl.BackgroundColor3 = C(38, 30, 52); hl.BackgroundTransparency = 0.2
+	hl.TextColor3 = C(255, 246, 220); hl.Font = Enum.Font.FredokaOne; hl.TextSize = 18; hl.TextWrapped = true; hl.Text = "Carry it up to a bed to water it (or click to pour)"; hl.Parent = hint
+	local hc = Instance.new("UICorner"); hc.CornerRadius = UDim.new(0, 10); hc.Parent = hl
+	task.delay(9, function() if hint.Parent then hint:Destroy() end end)
+	tool.Parent = player.Backpack
+	hum:EquipTool(tool)
+	st.carrier = player; st.tool = tool
+	task.spawn(function()                                              -- standing by a bed with the can pours on its own
+		while st.tool == tool and tool.Parent do
+			task.wait(0.5)
+			if st.tool == tool and not st.busy then
+				local c = player.Character
+				local root = c and c:FindFirstChild("HumanoidRootPart")
+				local bed = root and bedNear(st, root.Position)
+				if bed and os.clock() - (st.watered[bed] or -1e9) > 15 then water(st, player) end
+			end
+		end
+	end)
+	st.can.Transparency = 1; st.can.CanCollide = false; st.prompt.Enabled = false
+	tool.Activated:Connect(function() water(st, player) end)
+	pd.Triggered:Connect(function(who)
+		if who ~= st.carrier or st.tool ~= tool then return end
+		local c = who.Character
+		local root = c and c:FindFirstChild("HumanoidRootPart")
+		if root then putDown(st, root.Position + root.CFrame.LookVector * 1.7, root.CFrame.LookVector, c) else putBack(st) end
+	end)
+	tool.AncestryChanged:Connect(function()
+		if st.tool ~= tool then return end
+		if tool.Parent == workspace then                              -- dropped with Backspace: it lands at the player's feet
+			local c = player.Character
+			local root = c and c:FindFirstChild("HumanoidRootPart")
+			local h = tool:FindFirstChild("Handle")
+			if root and h then putDown(st, Vector3.new(h.Position.X, root.Position.Y, h.Position.Z), root.CFrame.LookVector, c) else putBack(st) end
+		elseif not tool:IsDescendantOf(game) then
+			putBack(st)
+		end
+	end)
+end
+
+local cans = {}
+local function setup(garden)
+	local can = garden:FindFirstChild("Iron")
+	local origin = garden:GetAttribute("KitOrigin")
+	if not (can and origin) or cans[garden] then return end
+	local st = {garden = garden, can = can, origin = origin, home = can.CFrame, sparkles = {}, watered = {}, rng = Random.new(garden:GetAttribute("Seed") or 7),
+		canTransparency = can.Transparency, canCollide = can.CanCollide, away = false}
+	local prompt = Instance.new("ProximityPrompt"); prompt.ActionText = "Pick up"; prompt.ObjectText = "Watering can"
+	prompt.MaxActivationDistance = 8; prompt.HoldDuration = 0; prompt.RequiresLineOfSight = false; prompt.UIOffset = Vector2.new(0, -40); prompt.Parent = can
+	st.prompt = prompt
+	prompt.Triggered:Connect(function(player)
+		if not st.carrier then pickUp(st, player) end
+	end)
+	cans[garden] = st
+end
+for _, m in ipairs(props:GetChildren()) do if m.Name == "garden" then setup(m) end end
+props.ChildAdded:Connect(function(m) if m.Name == "garden" then task.defer(setup, m) end end)
+-- a can carried out of the garden, or left lying about, goes back to its stand
+task.spawn(function()
+	while true do
+		task.wait(2)
+		for _, st in pairs(cans) do
+			if st.carrier then
+				local char = st.carrier.Character
+				local root = char and char:FindFirstChild("HumanoidRootPart")
+				if not root or (root.Position - st.origin.Position).Magnitude > LEAVE_RADIUS then putBack(st) end
+			elseif st.away and st.restAt and os.clock() - st.restAt > REST_HOME_AFTER then
+				restCan(st, st.home, false)
+			end
+		end
+	end
+end)
+Players.PlayerRemoving:Connect(function(player)
+	for _, st in pairs(cans) do if st.carrier == player then putBack(st) end end
+end)
+]=],
+	}
+	local function install(name, parent, ctx, src)
+		local scr = Instance.new("Script"); scr.Name = name; scr.RunContext = ctx; scr.Source = src; scr.Parent = parent
+	end
+	install("DomaineClient", domaine, Enum.RunContext.Client, SRC.Client)
+	install("DomaineLife", domaine, Enum.RunContext.Server, SRC.Life)
+	install("GardenCans", domaine, Enum.RunContext.Server, SRC.Garden)
+	for _, m in ipairs(props:GetChildren()) do
+		if m.Name == "tractor" and m:FindFirstChild("Chassis") then
+			install("TractorDrive", m, Enum.RunContext.Server, SRC.Drive)
+			install("TractorClient", m, Enum.RunContext.Client, SRC.DriveClient)
+		end
+	end
+end
+print(string.format("DomaineBuilder: %d props, %d hiding spots", #placed, #spots:GetChildren()))
+-- self-check: every prop's footprint centre must meet the ground it was placed on (reports anything hovering)
+do
+	local floaters = {}
+	local chk = RaycastParams.new(); chk.FilterType = Enum.RaycastFilterType.Exclude
+	for _, m in ipairs(placed) do
+		if m:FindFirstChild("CellarFloor") then continue end            -- the cellar stands in carved-out terrain by design
+		local bb, size = m:GetBoundingBox()
+		local bottom = bb.Position - bb.UpVector * (size.Y / 2)
+		local fnd = m:FindFirstChild("Foundation")
+		if fnd then bottom = Vector3.new(bottom.X, fnd.Position.Y + fnd.Size.Y / 2 - 0.15, bottom.Z) end   -- judge the walls, not the buried course
+		chk.FilterDescendantsInstances = {m, spots, kitFolder or m, workspace:FindFirstChild("Boundary") or m}
+		local r = workspace:Raycast(bottom + Vector3.new(0, 0.5, 0), Vector3.new(0, -12, 0), chk)
+		local gap = r and (bottom.Y - r.Position.Y) or 99
+		if gap > 1.0 then table.insert(floaters, string.format("%s@%.0f,%.0f gap %.1f", m.Name, bb.Position.X, bb.Position.Z, gap)) end
+	end
+	if #floaters > 0 then warn("DomaineBuilder FLOAT CHECK: " .. table.concat(floaters, " | ")) else print("DomaineBuilder float check: all props grounded") end
+end
+
+-- ---------------------------------------------------------------- 6. the zone ----
+local zones = workspace:FindFirstChild("Zones") or Instance.new("Folder")
+zones.Name = "Zones"; zones.Parent = workspace
+local z = zones:FindFirstChild(MAP_ID) or Instance.new("Part")
+z.Name = MAP_ID; z.Anchored = true; z.CanCollide = false; z.CanQuery = false; z.CanTouch = false; z.Transparency = 1
+z.Size = Vector3.new(700 - GX0, 2, 260); z.Position = Vector3.new((GX0 + 700) / 2, GY0 - 50, -110); z:SetAttribute("MapId", MAP_ID); z.Parent = zones
+
+-- ---------------------------------------------------------------- 7. squirrels into the spots ----
+if HIDE then
+	local ss = workspace:FindFirstChild("SquirrelScripts", true)
+	local reg = ss and ss:FindFirstChild("SquirrelRegistry")
+	if reg then
+		local R = require(reg:Clone())
+		local BY_SPOT = {vintner_squirrel = "InBarrel", lavender_lucie = "InLavender", beekeeper_squirrel = "OnHive", farmer_fernand = "InLoft",
+			scarecrow_squirrel = "OnScarecrow", tractor_toto = "OnTractor", sunflower_squirrel = "OnSunflower", grape_stomper_gigi = "InCrate",
+			shepherd_squirrel = "InTrough", chevre_squirrel = "InWell", truffle_hunter = "InBelfry", picnic_pierre = "OnSail"}
+		local n = 0
+		for _, e in ipairs(R.squirrels) do
+			if e.map == MAP_ID then
+				local spot = spots:FindFirstChild(BY_SPOT[e.id] or "")
+				for _, mdl in ipairs(workspace:GetChildren()) do
+					if mdl:IsA("Model") and (mdl.Name == e.id .. "_color" or mdl.Name == e.id .. "_gray") and spot then
+						local yaw = spot:GetAttribute("Face") or 0
+						mdl:PivotTo(CFrame.new(spot.WorldPosition) * CFrame.Angles(0, yaw, 0))
+						spot:SetAttribute("Squirrel", mdl.Name); n += 1
+					end
+				end
+			end
+		end
+		print("DomaineBuilder: seated", n, "squirrel models")
+	else
+		warn("DomaineBuilder: SquirrelRegistry not found; squirrels left where they are")
+	end
+end
+end
+]]></ProtectedString>
+      </Properties>
+    </Item>
+  </Item>
+</roblox>

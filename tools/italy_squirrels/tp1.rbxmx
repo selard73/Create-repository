@@ -1,0 +1,34 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">ProbeTP1</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+local root=workspace.PortoNocciola['14 Lighthouse coast']:FindFirstChild('Cala della Sabbia and tide pools')
+if not root then warn('QT1@NOROOT') return end
+for _,m in ipairs(root:GetChildren()) do
+	local c,s
+	if m:IsA('Model') then c,s=m:GetBoundingBox() elseif m:IsA('BasePart') then c,s=m.CFrame,m.Size end
+	local n=0 for _,d in ipairs(m:GetDescendants()) do if d:IsA('BasePart') then n+=1 end end
+	if c then warn(string.format('QT1@C %s [%s] parts %d c(%.1f,%.1f,%.1f) s(%.1f,%.1f,%.1f)',m.Name,m.ClassName,n,c.X,c.Y,c.Z,s.X,s.Y,s.Z)) end
+end
+-- every part whose name mentions pool, with material/colour
+local seen=0
+for _,d in ipairs(root:GetDescendants()) do
+	if d:IsA('BasePart') and (d.Name:lower():find('pool') or d.Name:lower():find('basin') or d.Name:lower():find('rim')) and seen<40 then
+		seen+=1
+		warn(string.format('QT1@P %s / %s %s (%.1f,%.1f,%.1f) s(%.2f,%.2f,%.2f) %s %s %s',d.Parent.Name,d.Name,d.ClassName,d.Position.X,d.Position.Y,d.Position.Z,d.Size.X,d.Size.Y,d.Size.Z,d.Material.Name,tostring(d.Color),d:IsA('Part') and d.Shape.Name or ''))
+	end
+end
+-- terrain + parts: height and material grid around the pools
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Exclude rp.FilterDescendantsInstances={workspace:FindFirstChild('SquirrelTwins')}
+rp.IgnoreWater=false
+local rp2=RaycastParams.new() rp2.FilterType=Enum.RaycastFilterType.Exclude rp2.FilterDescendantsInstances={workspace:FindFirstChild('SquirrelTwins')} rp2.IgnoreWater=true
+for z=-755,-805,-3 do
+	local row={}
+	for x=262,332,3 do
+		local a=workspace:Raycast(Vector3.new(x,0,z),Vector3.new(0,-80,0),rp)
+		local b=workspace:Raycast(Vector3.new(x,0,z),Vector3.new(0,-80,0),rp2)
+		local function tag(r) if not r then return '----' end if r.Instance==workspace.Terrain then return r.Material.Name:sub(1,2)..string.format('%02d',math.floor(-r.Position.Y+0.5)%100) end return '#'..r.Instance.Name:sub(1,1)..string.format('%02d',math.floor(-r.Position.Y+0.5)%100) end
+		table.insert(row,tag(a)..'/'..tag(b))
+	end
+	warn(string.format('QT1@z%d %s',z,table.concat(row,' ')))
+end
+warn('QT1@END')
+
+end]]></ProtectedString></Properties></Item></Item></roblox>

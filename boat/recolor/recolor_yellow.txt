@@ -1,0 +1,2 @@
+outer faces 1646 texels 185723; inner faces 540 texels 44734 cream [0.984 0.957 0.871]
+DONE

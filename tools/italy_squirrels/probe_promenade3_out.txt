@@ -1,0 +1,179 @@
+﻿QP3@ring 01 Curved waterfront|Model|Mooring bollard top - - kids Partx3 Modelx1 
+QP3@ring 01 Curved waterfront|Model|Mooring bollard top - - kids Partx3 Modelx1 
+QP3@ring 01 Curved waterfront|Part|Seawall ashlar top -50.75 Limestone//0.737255, 0.682353, 0.572549 kids 
+QP3@ring 01 Curved waterfront|Part|Seawall ashlar top -52.31 Limestone//0.721569, 0.670588, 0.564706 kids 
+QP3@ring 01 Curved waterfront|Part|Stone terrace foundation top -46.95 Cobblestone//0.643137, 0.592157, 0.509804 kids 
+QP3@ring 01 Curved waterfront|Part|Rounded coping stone top -46.56 Limestone//0.929412, 0.858824, 0.717647 kids 
+QP3@ring 01 Curved waterfront|Part|Stone terrace foundation top -46.95 Cobblestone//0.643137, 0.592157, 0.509804 kids 
+QP3@ring 01 Curved waterfront|Part|Rounded coping stone top -46.56 Limestone//0.929412, 0.858824, 0.717647 kids 
+QP3@ring 01 Curved waterfront|Part|Realigned stair tread top -47.85 Limestone//0.929412, 0.858824, 0.717647 kids 
+QP3@ring 01 Curved waterfront|Part|Realigned stair masonry top -48.31 Limestone//0.709804, 0.666667, 0.584314 kids 
+QP3@ring 01 Curved waterfront|Part|Realigned stair masonry top -48.01 Limestone//0.709804, 0.666667, 0.584314 kids 
+QP3@ring 01 Curved waterfront|Part|Realigned stair tread top -48.15 Limestone//0.929412, 0.858824, 0.717647 kids 
+QP3@ring 01 Curved waterfront|Part|North quay seam cap top -46.78 Cobblestone//0.792157, 0.72549, 0.6 kids 
+QP3@ring 01 Curved waterfront|Part|Closed quay seam cap top -46.78 Cobblestone//0.792157, 0.72549, 0.6 kids 
+QP3@ring 01 Curved waterfront|Part|Pier landing stone infill top -46.66 Cobblestone//0.792157, 0.72549, 0.6 kids 
+QP3@ring 01 Curved waterfront|Part|North quay seam masonry top -46.83 Cobblestone//0.643137, 0.592157, 0.509804 kids 
+QP3@ring 01 Curved waterfront|Part|Piazza paving top -46.80 Cobblestone//0.792157, 0.72549, 0.6 kids 
+QP3@ring 01 Curved waterfront|Part|Worn limestone promenade top -46.66 Cobblestone//0.792157, 0.72549, 0.6 kids 
+QP3@ring 01 Curved waterfront|Part|Worn limestone promenade top -46.66 Cobblestone//0.792157, 0.72549, 0.6 kids 
+QP3@ring 01 Curved waterfront|Part|Quay foundation top -47.00 Cobblestone//0.643137, 0.592157, 0.509804 kids 
+QP3@ring 01 Curved waterfront|Part|Pier landing stone infill top -46.66 Cobblestone//0.792157, 0.72549, 0.6 kids 
+QP3@ring 01 Curved waterfront|Part|Closed quay seam top -46.83 Cobblestone//0.643137, 0.592157, 0.509804 kids 
+QP3@ring 01 Curved waterfront|Part|Quay foundation top -47.00 Cobblestone//0.643137, 0.592157, 0.509804 kids 
+QP3@ring 01 Curved waterfront|Part|Piazza paving top -46.80 Cobblestone//0.792157, 0.72549, 0.6 kids 
+QP3@ring 01 Curved waterfront|Part|Realigned stair landing top -46.80 Cobblestone//0.792157, 0.72549, 0.6 kids 
+QP3@ring 11 Fitted surface joins|Part|South side passage join top -46.82 Cobblestone//0.792157, 0.72549, 0.6 kids 
+QP3@ring 11 Fitted surface joins|WedgePart|Quay fitted around gangway top -42.73 Cobblestone//0.792157, 0.72549, 0.6 TILTED kids 
+QP3@ring 11 Fitted surface joins|WedgePart|Fitted quay corner top -47.84 Cobblestone//0.792157, 0.72549, 0.6 TILTED kids 
+QP3@ring 11 Fitted surface joins|Part|Rear terrace cross join top -46.82 Cobblestone//0.792157, 0.72549, 0.6 kids 
+QP3@ring 11 Fitted surface joins|WedgePart|Fitted quay corner top -47.84 Cobblestone//0.792157, 0.72549, 0.6 TILTED kids 
+QP3@ring 11 Fitted surface joins|WedgePart|Quay fitted around gangway top -46.39 Cobblestone//0.792157, 0.72549, 0.6 TILTED kids 
+QP3@count 01 Curved waterfront|Part|Stone terrace foundation 5
+QP3@count 01 Curved waterfront|Part|Realigned stair landing 1
+QP3@count 01 Curved waterfront|Part|North quay seam cap 1
+QP3@count 11 Fitted surface joins|Part|Rear terrace cross join 1
+QP3@count 01 Curved waterfront|Part|Piazza paving 5
+QP3@count 01 Curved waterfront|Part|North quay seam masonry 1
+QP3@count 01 Curved waterfront|Part|Closed quay seam cap 1
+QP3@count 11 Fitted surface joins|WedgePart|Quay fitted around gangway 12
+QP3@count 11 Fitted surface joins|Part|South side passage join 1
+QP3@count 01 Curved waterfront|Part|Worn limestone promenade 5
+QP3@count 01 Curved waterfront|Part|Quay foundation 6
+QP3@count 01 Curved waterfront|Part|Closed quay seam 1
+QP3@count 01 Curved waterfront|Model|Mooring bollard 4
+QP3@count 01 Curved waterfront|Part|Seawall ashlar 160
+QP3@count 01 Curved waterfront|Part|Realigned stair tread 7
+QP3@count 11 Fitted surface joins|WedgePart|Fitted quay corner 19
+QP3@count 01 Curved waterfront|Part|Realigned stair masonry 7
+QP3@count 01 Curved waterfront|Part|Rounded coping stone 41
+QP3@count 01 Curved waterfront|Part|Pier landing stone infill 2
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.98,-51.35,-647.54 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.96,-51.41,-647.59 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.98,-51.27,-647.54 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.97,-51.39,-647.56 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.95,-51.43,-647.63 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.94,-48.07,-639.72 size 0.56,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Tied rope tail Part 220.97,-48.13,-639.47 size 0.24,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Post hitch Part 220.97,-47.95,-639.47 size 0.15,0.14,0.14
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.87,-48.31,-640.22 size 0.56,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.81,-48.55,-640.73 size 0.56,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.14,-50.82,-646.28 size 0.54,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.26,-50.45,-645.27 size 0.54,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.38,-50.06,-644.26 size 0.55,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.20,-50.64,-645.78 size 0.54,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.98,-51.23,-647.55 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.07,-50.99,-646.79 size 0.54,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.01,-51.16,-647.29 size 0.54,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.50,-49.65,-643.25 size 0.55,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.57,-49.44,-642.75 size 0.55,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.69,-49.01,-641.74 size 0.56,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.63,-49.23,-642.24 size 0.55,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.75,-48.78,-641.23 size 0.56,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.32,-50.26,-644.77 size 0.54,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Attached mooring rope Part 220.44,-49.86,-643.76 size 0.55,0.09,0.09
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.91,-51.40,-647.74 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.92,-51.42,-647.71 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.93,-51.43,-647.67 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.89,-51.29,-647.78 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.90,-51.37,-647.77 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.91,-51.19,-647.72 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.89,-51.33,-647.78 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.93,-51.17,-647.69 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.89,-51.25,-647.77 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.96,-51.18,-647.61 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.90,-51.21,-647.75 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.94,-51.17,-647.65 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.97,-51.20,-647.58 size 0.04,0.08,0.08
+QP3@moor Attached boat moorings.Stella Marina.Gunwale tie loop Part 219.98,-51.31,-647.53 size 0.04,0.08,0.08
+QP3@moor Molo dei Pescatori.Pile rope binding Part 225.74,-47.95,-639.24 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 225.76,-47.95,-639.32 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 225.88,-47.95,-639.44 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 225.76,-47.95,-639.08 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 220.81,-47.95,-639.01 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 225.96,-47.95,-639.46 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 221.26,-47.95,-639.24 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 221.26,-47.95,-639.16 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 221.19,-47.95,-639.39 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 221.24,-47.95,-639.32 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 216.04,-47.95,-638.94 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 216.19,-47.95,-639.01 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 215.76,-47.95,-639.32 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 221.12,-47.95,-638.96 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 220.96,-47.95,-639.46 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 215.74,-47.95,-639.24 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Timber pile Part 221.00,-52.75,-639.20 size 10.10,0.48,0.48
+QP3@moor Molo dei Pescatori.Pile rope binding Part 220.88,-47.95,-639.44 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 221.24,-47.95,-639.08 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 221.19,-47.95,-639.01 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 215.81,-47.95,-639.39 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 215.96,-47.95,-638.94 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 221.04,-47.95,-638.94 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 216.12,-47.95,-639.44 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 215.96,-47.95,-639.46 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 216.04,-47.95,-639.46 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 215.88,-47.95,-638.96 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 215.81,-47.95,-639.01 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 215.76,-47.95,-639.08 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 215.88,-47.95,-639.44 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Timber pile Part 216.00,-52.75,-639.20 size 10.10,0.48,0.48
+QP3@moor Molo dei Pescatori.Pile rope binding Part 215.74,-47.95,-639.16 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 225.74,-47.95,-639.16 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 225.81,-47.95,-639.01 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 225.81,-47.95,-639.39 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 225.96,-47.95,-638.94 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 220.76,-47.95,-639.08 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 225.88,-47.95,-638.96 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 221.12,-47.95,-639.44 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 221.04,-47.95,-639.46 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 220.74,-47.95,-639.16 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 220.96,-47.95,-638.94 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 220.88,-47.95,-638.96 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 220.76,-47.95,-639.32 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 216.26,-47.95,-639.16 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 216.24,-47.95,-639.08 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 216.12,-47.95,-638.96 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 216.26,-47.95,-639.24 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 216.24,-47.95,-639.32 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 220.81,-47.95,-639.39 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 216.19,-47.95,-639.39 size 0.08,0.10,0.10
+QP3@moor Molo dei Pescatori.Pile rope binding Part 220.74,-47.95,-639.24 size 0.08,0.10,0.10
+QP3@gw Gangway edge beam cf 235.871,-47.388,-639.580, 0.9851,-0.1720,0.0000, 0.1720,0.9851,0.0000, -0.0000,0.0000,1.0000 size 14.01,0.16,0.15
+QP3@gw Gangway short post cf 240.000,-45.150,-687.580, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway edge beam cf 235.871,-47.388,-634.420, 0.9851,-0.1720,0.0000, 0.1720,0.9851,0.0000, -0.0000,0.0000,1.0000 size 14.01,0.16,0.15
+QP3@gw Gangway short post cf 229.000,-47.560,-639.580, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 232.450,-46.958,-634.420, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 239.350,-45.753,-634.420, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 235.900,-46.355,-639.580, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway edge beam cf 232.971,-47.387,-687.580, 0.9855,-0.1696,0.0000, 0.1696,0.9855,0.0000, -0.0000,0.0000,1.0000 size 14.21,0.16,0.15
+QP3@gw Gangway short post cf 236.500,-45.753,-687.580, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 233.000,-46.355,-687.580, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 239.350,-45.753,-639.580, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gentle timber gangway cf 235.900,-47.555,-637.000, 0.9851,-0.1720,0.0000, 0.1720,0.9851,0.0000, -0.0000,0.0000,1.0000 size 14.01,0.30,5.40
+QP3@gw Gangway handrail cf 233.000,-45.255,-682.420, -0.0000,-0.1696,0.9855, -0.0000,0.9855,0.1696, -1.0000,0.0000,-0.0000 size 0.09,0.09,14.21
+QP3@gw Gentle timber gangway cf 233.000,-47.555,-685.000, 0.9855,-0.1696,0.0000, 0.1696,0.9855,0.0000, -0.0000,0.0000,1.0000 size 14.21,0.30,5.40
+QP3@gw Gangway edge beam cf 232.971,-47.388,-682.420, 0.9855,-0.1696,0.0000, 0.1696,0.9855,0.0000, -0.0000,0.0000,1.0000 size 14.21,0.16,0.15
+QP3@gw Gangway short post cf 233.000,-46.355,-682.420, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway handrail cf 233.000,-45.255,-687.580, -0.0000,-0.1696,0.9855, -0.0000,0.9855,0.1696, -1.0000,0.0000,-0.0000 size 0.09,0.09,14.21
+QP3@gw Gangway short post cf 236.500,-45.753,-682.420, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 240.000,-45.150,-682.420, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway handrail cf 235.900,-45.255,-639.580, -0.0000,-0.1720,0.9851, -0.0000,0.9851,0.1720, -1.0000,0.0000,-0.0000 size 0.09,0.09,14.01
+QP3@gw Gangway short post cf 229.500,-46.958,-687.580, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 242.800,-45.150,-634.420, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway handrail cf 235.900,-45.255,-634.420, -0.0000,-0.1720,0.9851, -0.0000,0.9851,0.1720, -1.0000,0.0000,-0.0000 size 0.09,0.09,14.01
+QP3@gw Gangway short post cf 242.800,-45.150,-639.580, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 226.000,-47.560,-687.580, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 235.900,-46.355,-634.420, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 229.500,-46.958,-682.420, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 232.450,-46.958,-639.580, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 226.000,-47.560,-682.420, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@gw Gangway short post cf 229.000,-47.560,-634.420, 1.0000,-0.0000,0.0000, -0.0000,1.0000,0.0000, -0.0000,0.0000,1.0000 size 0.12,2.10,0.12
+QP3@stella Workspace.PortoNocciola.04 Piers and fishing boats.Stella Marina Model pivot 223.99,-45.97,-646.00
+QP3@gino Workspace.deckhand_squirrel_color pivot 222.35,-52.51,-646.20 anchored false
+QP3@fish Workspace.fishmonger_squirrel_color pivot 253.75,-44.94,-636.86
+QP3@joints 01 Curved waterfront 0 unanchored 0
+QP3@joints 03 Fish market 0 unanchored 0
+QP3@joints 04 Piers and fishing boats 0 unanchored 0
+QP3@joints 06 Piazza details and planting 0 unanchored 0
+QP3@joints 05 Boatyard and nets 0 unanchored 0
+QP3@DONE

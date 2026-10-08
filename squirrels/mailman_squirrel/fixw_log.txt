@@ -1,0 +1,7 @@
+region [0.3, 1.0, -2.0, 0.3, 0.1, 0.8] Tail1+Tail2 -> Root: 2 vertices
+piece [0.25, 0.75, -0.8, 0.6, 0.05, 0.85] seed [0.44, -0.26, 0.48]: 378 verts in piece, 327 moved Head+Neck -> Chest
+region [-1.0, 1.0, -2.0, 2.0, -0.1, 0.35] Head+Neck+Chest -> Root: 342 vertices
+after: region [0.3, 1.0, -2.0, 0.3, 0.1, 0.8] 342 verts, mean Tail1+Tail2 weight 0.000, max 0.00
+after: region [0.25, 0.75, -0.8, 0.6, 0.05, 0.85] 378 verts, mean Head+Neck weight 0.000, max 0.00
+after: region [-1.0, 1.0, -2.0, 2.0, -0.1, 0.35] 446 verts, mean Head+Neck+Chest weight 0.000, max 0.00
+FIXW_DONE

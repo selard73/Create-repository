@@ -1,0 +1,150 @@
+﻿QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 323.0,-52.5,-773.8 size 12.0,17.1,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 322.4,-41.8,-778.1 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 322.3,-51.2,-778.6 size 12.0,19.6,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 317.0,-33.0,-825.6 size 12.0,7.9,1.1 up -0.0,1.0,0.0 look -0.1,-0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 316.9,-32.8,-826.6 size 12.0,8.3,1.1 up -0.0,1.0,0.0 look -0.1,-0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 322.7,-51.8,-776.2 size 12.0,18.3,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 320.5,-47.7,-792.1 size 12.0,26.6,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 322.8,-52.0,-775.4 size 12.0,17.9,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 322.7,-43.1,-775.8 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 322.8,-43.5,-775.0 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 322.1,-50.8,-780.2 size 12.0,20.4,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 322.0,-50.6,-781.0 size 12.0,20.8,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Solid turning landing Part Cobblestone 319.0,-41.7,-803.0 size 15.5,12.4,12.4 up -1.0,0.0,0.0 look -0.0,-0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 322.1,-40.6,-780.5 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 322.2,-41.0,-779.7 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 321.8,-39.8,-782.1 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 322.2,-51.0,-779.4 size 12.0,20.0,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Junction fitted handrail Part Metal 324.2,-31.0,-808.6 size 10.2,0.1,0.1 up -1.0,0.0,0.1 look 0.0,-1.0,-0.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 322.4,-51.4,-777.8 size 12.0,19.2,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Junction fitted handrail Part Metal 316.4,-37.4,-780.2 size 28.0,0.1,0.1 up -1.0,0.0,0.1 look -0.1,-0.9,-0.5
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 322.5,-42.2,-777.3 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 322.5,-51.6,-777.0 size 12.0,18.7,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 322.6,-42.6,-776.5 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 321.1,-48.9,-787.4 size 12.0,24.1,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 320.7,-48.1,-790.5 size 12.0,25.8,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 321.0,-48.7,-788.2 size 12.0,24.5,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 320.7,-35.2,-790.9 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 321.2,-49.2,-786.6 size 12.0,23.7,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 321.2,-37.3,-786.9 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 323.4,-45.5,-771.0 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 321.5,-38.5,-784.5 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 321.5,-49.6,-785.0 size 12.0,22.9,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 320.9,-48.5,-788.9 size 12.0,24.9,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 321.1,-36.9,-787.7 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 321.0,-36.5,-788.5 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 323.0,-44.3,-773.4 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Level stair exit Part Cobblestone 320.0,-47.5,-795.7 size 12.0,27.0,4.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 317.0,-29.0,-826.0 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,-0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 320.5,-34.8,-791.7 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Level stair approach Part Cobblestone 324.0,-53.9,-766.3 size 12.0,14.2,4.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 320.4,-47.5,-792.9 size 12.0,27.0,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 323.1,-52.7,-773.1 size 12.0,16.7,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 320.3,-34.0,-793.2 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 323.1,-44.7,-772.6 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 320.4,-34.4,-792.4 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 323.3,-45.1,-771.8 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 323.2,-52.9,-772.3 size 12.0,16.3,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 323.5,-45.9,-770.2 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 323.4,-53.3,-770.7 size 12.0,15.4,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 320.8,-48.3,-789.7 size 12.0,25.3,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 320.8,-35.6,-790.1 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 323.5,-53.5,-769.9 size 12.0,15.0,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 323.6,-46.4,-769.4 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 320.9,-36.0,-789.3 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 323.6,-53.7,-769.1 size 12.0,14.6,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 317.6,-35.7,-819.1 size 12.0,8.4,1.1 up -0.0,1.0,0.0 look -0.1,-0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Stone tread nosing Part Limestone 317.6,-31.9,-818.5 size 12.0,0.1,0.1 up -0.0,1.0,0.0 look -0.1,-0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 317.4,-34.4,-821.3 size 12.0,7.3,1.1 up -0.0,1.0,0.0 look -0.1,-0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 323.3,-53.1,-771.5 size 12.0,15.9,0.9 up -0.0,1.0,0.0 look -0.1,0.0,-1.0
+QF8@wall 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Supported limestone stair Part Cobblestone 317.5,-35.3,-820.2 size 12.0,8.4,1.1 up -0.0,1.0,0.0 look -0.1,-0.0,-1.0
+QF8@wallcount 122
+QF8@step 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving Part Cobblestone 312.2,-53.9,-722.5 size 12.0,14.2,4.6 up -0.0,1.0,0.0 look 0.3,-0.0,-0.9
+QF8@step 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving Part Cobblestone 310.8,-50.0,-718.2 size 12.0,6.3,4.6 up -0.0,1.0,0.0 look 0.3,-0.0,-0.9
+QF8@step 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving Part Cobblestone 315.2,-53.9,-731.1 size 12.0,14.2,4.6 up -0.0,1.0,0.0 look 0.3,-0.0,-0.9
+QF8@step 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving Part Cobblestone 313.8,-53.9,-726.8 size 12.0,14.2,4.6 up -0.0,1.0,0.0 look 0.3,-0.0,-0.9
+QF8@step 12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Solid turning landing Part Cobblestone 310.0,-49.6,-716.0 size 5.6,12.4,12.4 up -1.0,0.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 08 Coastal finishing.Tide pool rim rock Part Limestone 303.7,-51.1,-723.1 size 1.2,0.7,0.9 up -0.0,1.0,0.0 look 0.5,-0.0,0.9
+QF8@step 08 Coastal finishing.Tide pool rim rock Part Limestone 306.0,-52.0,-724.2 size 1.2,0.7,0.9 up -0.0,1.0,0.0 look 1.0,-0.0,-0.0
+QF8@step 08 Coastal finishing.Tide pool rim rock Part Limestone 304.6,-51.6,-723.9 size 1.2,0.7,0.9 up -0.0,1.0,0.0 look 0.9,-0.0,0.5
+QF8@step 08 Coastal finishing.Tide pool rim rock Part Limestone 308.3,-52.4,-723.1 size 1.2,0.7,0.9 up -0.0,1.0,0.0 look 0.5,-0.0,-0.9
+QF8@step 08 Coastal finishing.Tide pool rim rock Part Limestone 307.4,-52.3,-723.9 size 1.2,0.7,0.9 up -0.0,1.0,0.0 look 0.9,-0.0,-0.5
+QF8@step 08 Coastal finishing.Tide pool water Part Glass 306.0,-51.6,-722.0 size 0.1,5.0,4.0 up -1.0,0.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 08 Coastal finishing.Tide pool rim rock Part Limestone 308.3,-51.8,-720.9 size 1.2,0.7,0.9 up -0.0,1.0,0.0 look -0.5,0.0,-0.9
+QF8@step 08 Coastal finishing.Tide pool rim rock Part Limestone 308.7,-52.2,-722.0 size 1.2,0.7,0.9 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 08 Coastal finishing.Tide pool rim rock Part Limestone 307.4,-51.4,-720.1 size 1.2,0.7,0.9 up -0.0,1.0,0.0 look -0.9,0.0,-0.5
+QF8@step 08 Coastal finishing.Tide pool rim rock Part Limestone 306.0,-51.0,-719.8 size 1.2,0.7,0.9 up -0.0,1.0,0.0 look -1.0,0.0,0.0
+QF8@step 08 Coastal finishing.Tide pool rim rock Part Limestone 304.7,-50.7,-720.1 size 1.2,0.7,0.9 up -0.0,1.0,0.0 look -0.9,0.0,0.5
+QF8@step 08 Coastal finishing.Tide pool rim rock Part Limestone 303.3,-50.8,-722.0 size 1.2,0.7,0.9 up -0.0,1.0,0.0 look 0.0,0.0,1.0
+QF8@step 08 Coastal finishing.Tide pool rim rock Part Limestone 303.7,-50.7,-720.9 size 1.2,0.7,0.9 up -0.0,1.0,0.0 look -0.5,0.0,0.9
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 310.0,-51.6,-719.0 size 3.1,1.6,2.0 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 305.1,-50.6,-719.5 size 2.8,1.4,1.8 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 313.4,-52.7,-719.4 size 2.6,1.3,1.6 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.6,-48.4,-711.0 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 307.5,-51.8,-722.4 size 3.2,1.6,2.0 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 306.4,-50.0,-715.6 size 2.8,1.4,1.7 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 313.0,-52.2,-718.1 size 2.8,1.4,1.7 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.4,-48.4,-712.0 size 0.5,0.0,0.3 up 0.1,1.0,-0.1 look -0.2,-0.1,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.4,-48.4,-709.4 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.2,-48.4,-712.8 size 0.5,0.0,0.3 up 0.2,1.0,-0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.5,-48.4,-711.5 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.4,-48.4,-711.8 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 314.4,-52.8,-718.6 size 1.5,0.7,0.9 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.2,-48.4,-710.1 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.4,-48.5,-709.1 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.1,-48.4,-710.9 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.9,-48.5,-709.2 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.3,-48.4,-709.6 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 306.0,-51.3,-721.9 size 3.1,1.5,1.9 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.3,-48.4,-709.9 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.2,-48.4,-710.4 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 309.2,-49.5,-708.1 size 0.5,0.0,0.3 up 0.1,1.0,-0.2 look -0.2,-0.1,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.5,-48.4,-711.3 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.1,-48.4,-710.7 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.0,-48.4,-711.2 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 311.7,-53.3,-723.6 size 3.4,1.7,2.1 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.8,-48.5,-710.0 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.8,-48.5,-709.7 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.6,-48.4,-710.7 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 308.6,-52.7,-724.4 size 2.4,1.2,1.5 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 314.6,-52.1,-716.5 size 3.0,1.5,1.9 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.8,-48.5,-709.5 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 313.7,-52.7,-719.0 size 2.6,1.3,1.6 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 312.9,-53.0,-720.8 size 1.7,0.9,1.1 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.7,-48.4,-710.5 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 311.7,-54.7,-727.9 size 2.7,1.3,1.7 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.7,-48.5,-710.2 size 0.5,0.0,0.3 up 0.1,1.0,0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 311.8,-53.7,-724.4 size 3.1,1.6,1.9 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.3,-48.4,-712.6 size 0.5,0.0,0.3 up 0.2,1.0,-0.0 look -0.2,0.0,-1.0
+QF8@step 07 Cove and tide pools.Water worn limestone Part Limestone 310.9,-51.0,-715.8 size 3.5,1.7,2.2 up -0.0,1.0,0.0 look -0.0,-0.0,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.3,-48.4,-712.3 size 0.5,0.0,0.3 up 0.1,1.0,-0.1 look -0.2,-0.1,-1.0
+QF8@step 07 Cove and tide pools.Sand conforming beach towel Part Fabric 296.2,-48.4,-713.1 size 0.5,0.0,0.3 up 0.2,1.0,-0.0 look -0.2,0.0,-1.0
+QF8@stepcount 61
+QF8@g -708 sssssssssssssssssssssssssssss
+QF8@g -709 sssssssssssssssssssssssssssss
+QF8@g -710 sssssssssssss###sssssssssssss
+QF8@g -711 sssssssssss#######sssssssssss
+QF8@g -712 ssssssssss#########sssssssssw
+QF8@g -713 sssssssss###########sssssssww
+QF8@g -714 sssssssss###########sssssswww
+QF8@g -715 ssssssss#############ssswwwww
+QF8@g -716 ssssssss#############sswwwwww
+QF8@g -717 ssssssss#############sswwwwww
+QF8@g -718 sssssssss#############wwwwwww
+QF8@g -719 sssssssss#############wwwwwww
+QF8@g -720 ssssssssss############wwwwwww
+QF8@g -721 ssssssssss#############wwwwww
+QF8@g -722 ssssssssss#############wwwwww
+QF8@g -723 sssssssssss############wwwwww
+QF8@g -724 sssssssssss#############wwwww
+QF8@g -725 sssssssssss#############wwwww
+QF8@g -726 ssssssssssss############wwwww
+QF8@g -727 ssssssssssss#############wwww
+QF8@g -728 sssssssssssw#############wwww
+QF8@g -729 sssssssssswww############wwww
+QF8@g -730 ssssssssswwww#############www
+QF8@g -731 sssssssswwwww#############www
+QF8@g -732 ssssssswwwwwww############www
+QF8@g -733 sssssswwwwwwww#############ww
+QF8@g -734 sssswwwwwwwwww#############ww
+QF8@DONE

@@ -1,0 +1,9 @@
+Objects in scene: ['Mesh_0']
+Object: Mesh_0, Type: MESH
+  Vert count: 570621
+  Dimensions: <Vector (1.6511, 1.3174, 1.9004)>
+  X range: [-0.8246, 0.8265]
+  Y range: [-0.6599, 0.6575]
+  Z range: [-0.9515, 0.9489]
+  Vertex groups: []
+  Materials: ['Material.001']

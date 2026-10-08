@@ -1,0 +1,13 @@
+Candidate whisker verts: 12
+top_whisker: id=60, co=(-0.6407, 0.0032, 1.7947), valence=5
+top_whisker: id=1003, co=(-0.6245, -0.0030, 1.7966), valence=6
+front_whisker: id=1454, co=(-0.7098, -0.0293, 1.6489), valence=6
+front_whisker: id=1457, co=(-0.7027, 0.0571, 1.6401), valence=6
+top_whisker: id=1917, co=(-0.6539, -0.0003, 1.9259), valence=3
+front_whisker: id=3256, co=(-0.7126, 0.0572, 1.6453), valence=6
+top_whisker: id=3737, co=(-0.7104, -0.0010, 1.7670), valence=3
+front_whisker: id=4659, co=(-0.7004, -0.0153, 1.6469), valence=6
+front_whisker: id=5120, co=(-0.7392, 0.0733, 1.6283), valence=8
+front_whisker: id=6071, co=(-0.7312, -0.0506, 1.6310), valence=7
+front_whisker: id=6994, co=(-0.7332, -0.0088, 1.6387), valence=4
+top_whisker: id=7012, co=(-0.6629, -0.0013, 1.7911), valence=4

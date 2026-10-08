@@ -1,0 +1,10 @@
+-- Oct 5 2026: the top-bar title (player attribute HonourTitle) also let the Keeper title win; Squirrel Maestro (tier 4+)
+-- now wins there too, same rule as the name tag (patch_title_v2).
+local S=workspace.Honours.TitleServer
+local s=S.Source
+local A='(champT and champT ~= "") and champT or'
+local i,j=s:find(A,1,true)
+if not i or s:find(A,j+1,true) then warn('QT3@ABORT anchor',i) return end
+S.Source=s:sub(1,i-1)..'(champT and champT ~= "" and tier < 4) and champT or'..s:sub(j+1)
+game:GetService('ChangeHistoryService'):SetWaypoint('Maestro over Keeper in the top bar')
+warn('QT3@OK',S.Source:find('and tier < 4) and champT',1,true)~=nil)

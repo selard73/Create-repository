@@ -1,0 +1,222 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">TPLife</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- tidepools_life_install (Oct 4 2026, Shannon: wading "is fun" + "put a few crabs in there walking around")
+local F=workspace.PortoNocciola['14 Lighthouse coast']['Cala della Sabbia and tide pools']:FindFirstChild('Natural tide pools')
+local imp=workspace:FindFirstChild('crab_rigged')
+local holder=script.Parent
+local ls=holder:FindFirstChild('TidePoolLife')
+if not (F and imp and ls) then warn('QL@ABORT missing',F,imp,ls) return end
+local mesh=imp:FindFirstChildWhichIsA('MeshPart',true)
+if not mesh then warn('QL@ABORT crab mesh missing') return end
+local nb=0 for _,b in ipairs(mesh:GetDescendants()) do if b:IsA('Bone') then nb+=1 end end
+if nb<7 then warn('QL@ABORT bones',nb) return end
+local SPS=game:GetService('StarterPlayer'):FindFirstChild('StarterPlayerScripts')
+if not SPS then warn('QL@ABORT no StarterPlayerScripts') return end
+if SPS:FindFirstChild('TidePoolLife') then warn('QL@ABORT already installed') return end
+-- ---- edits ----
+for _,d in ipairs(imp:GetDescendants()) do if d:IsA('BasePart') then d.Anchored=true d.CanCollide=false d.CanQuery=false d.CanTouch=false d.CastShadow=true end end
+imp.Name='TidePoolCrab'
+imp:SetAttribute('Source','roblox-props/italy/crab (rig_crab.py): bones Root, LegsLF/LB/RF/RB, ClawL/R')
+imp.Parent=game:GetService('ReplicatedStorage')
+F.TidePoolWater.CanQuery=true            -- the wading check raycasts against it (still no collision)
+ls.Parent=SPS
+game:GetService('ChangeHistoryService'):SetWaypoint('Tide pools: wading + crabs')
+warn('QL@OK crab bones',nb,'mesh size',mesh.Size,'script',ls:GetFullName())
+end]]></ProtectedString></Properties></Item><Item class="LocalScript" referent="RBX2"><Properties><string name="Name">TidePoolLife</string><ProtectedString name="Source"><![CDATA[-- TidePoolLife (LocalScript, StarterPlayerScripts) - Oct 4 2026, Porto Nocciola's natural tide pools.
+-- 1) Wading: while your feet are in a pool you slow a little, ripples spread from your feet, water splashes when you step in
+--    and a soft splash plays as you walk. (The pool water is a see-through mesh; Roblox terrain water cannot fit pools this small.)
+-- 2) Crabs: a few rigged crabs (ReplicatedStorage.TidePoolCrab) scuttle sideways round the shelf, stop, wave their claws.
+--    Everything runs on this player's own screen only, and only while they are near the cove.
+-- Source: roblox-props/italy/tidepools/TidePoolLife.client.lua (POINTS are filled in by make_life_lua.py).
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local RS = game:GetService("ReplicatedStorage")
+local player = Players.LocalPlayer
+
+local COVE_CENTRE = Vector3.new(298, -52, -785)
+local NEAR = 140                 -- studs: crabs only exist / move while you are this close
+local CRAB_COUNT = 4
+local POINTS = {{287,-785},{287,-782},{288,-788},{288,-787},{288,-786},{288,-785},{288,-784},{288,-783},{288,-782},{288,-781},{288,-780},{288,-779},{288,-778},{288,-777},{288,-776},{289,-789},{289,-788},{289,-787},{289,-786},{289,-785},{289,-784},{289,-783},{289,-782},{289,-781},{289,-780},{289,-779},{289,-778},{289,-777},{289,-776},{289,-775},{289,-774},{289,-773},{290,-792},{290,-791},{290,-790},{290,-789},{290,-788},{290,-787},{290,-786},{290,-785},{290,-784},{290,-783},{290,-782},{290,-781},{290,-780},{290,-779},{290,-778},{290,-777},{290,-776},{290,-775},{290,-774},{290,-773},{290,-772},{291,-794},{291,-793},{291,-792},{291,-791},{291,-790},{291,-789},{291,-788},{291,-787},{291,-786},{291,-785},{291,-784},{291,-783},{291,-782},{291,-781},{291,-780},{291,-779},{291,-778},{291,-777},{291,-776},{291,-775},{291,-774},{291,-773},{291,-772},{291,-771},{291,-770},{291,-769},{292,-796},{292,-795},{292,-794},{292,-793},{292,-792},{292,-791},{292,-790},{292,-789},{292,-788},{292,-787},{292,-786},{292,-785},{292,-784},{292,-783},{292,-782},{292,-781},{292,-780},{292,-779},{292,-778},{292,-777},{292,-776},{292,-775},{292,-774},{292,-773},{292,-772},{292,-771},{292,-770},{292,-769},{293,-797},{293,-796},{293,-795},{293,-794},{293,-793},{293,-792},{293,-791},{293,-790},{293,-789},{293,-788},{293,-787},{293,-786},{293,-785},{293,-784},{293,-783},{293,-782},{293,-781},{293,-780},{293,-779},{293,-778},{293,-777},{293,-776},{293,-775},{293,-774},{293,-773},{293,-772},{293,-771},{293,-770},{293,-769},{293,-768},{294,-798},{294,-797},{294,-796},{294,-795},{294,-794},{294,-793},{294,-792},{294,-791},{294,-790},{294,-789},{294,-788},{294,-787},{294,-786},{294,-785},{294,-784},{294,-783},{294,-782},{294,-781},{294,-780},{294,-779},{294,-778},{294,-777},{294,-776},{294,-775},{294,-774},{294,-773},{294,-772},{294,-771},{294,-770},{294,-769},{294,-768},{294,-767},{295,-798},{295,-797},{295,-796},{295,-795},{295,-794},{295,-793},{295,-792},{295,-791},{295,-790},{295,-789},{295,-788},{295,-787},{295,-786},{295,-785},{295,-784},{295,-783},{295,-782},{295,-781},{295,-780},{295,-779},{295,-778},{295,-777},{295,-776},{295,-775},{295,-774},{295,-773},{295,-772},{295,-771},{295,-770},{295,-769},{295,-768},{295,-767},{295,-766},{296,-799},{296,-798},{296,-797},{296,-796},{296,-795},{296,-794},{296,-793},{296,-792},{296,-791},{296,-790},{296,-789},{296,-788},{296,-787},{296,-786},{296,-785},{296,-784},{296,-783},{296,-782},{296,-781},{296,-780},{296,-779},{296,-778},{296,-777},{296,-776},{296,-775},{296,-774},{296,-773},{296,-772},{296,-771},{296,-770},{296,-769},{296,-768},{296,-767},{296,-766},{296,-765},{297,-800},{297,-799},{297,-798},{297,-797},{297,-796},{297,-795},{297,-794},{297,-793},{297,-792},{297,-791},{297,-790},{297,-789},{297,-788},{297,-787},{297,-786},{297,-785},{297,-784},{297,-783},{297,-782},{297,-781},{297,-780},{297,-779},{297,-778},{297,-777},{297,-776},{297,-775},{297,-774},{297,-773},{297,-772},{297,-771},{297,-770},{297,-769},{297,-768},{297,-767},{297,-766},{297,-765},{298,-801},{298,-800},{298,-799},{298,-798},{298,-797},{298,-796},{298,-795},{298,-794},{298,-792},{298,-791},{298,-790},{298,-789},{298,-788},{298,-787},{298,-786},{298,-785},{298,-784},{298,-783},{298,-782},{298,-781},{298,-780},{298,-779},{298,-773},{298,-772},{298,-770},{299,-803},{299,-802},{299,-801},{299,-800},{299,-799},{299,-798},{299,-797},{299,-796},{299,-795},{300,-803},{300,-802},{300,-801},{300,-800},{300,-799},{300,-798},{300,-797},{300,-796},{300,-795},{301,-804},{301,-803},{301,-802},{301,-801},{301,-800},{301,-799},{301,-798},{301,-797},{301,-796},{302,-804},{302,-803},{302,-802},{302,-801},{302,-800},{302,-799},{302,-798},{302,-797},{302,-796},{303,-805},{303,-804},{303,-803},{303,-802},{303,-801},{303,-800},{303,-799},{303,-798},{303,-797},{303,-796},{304,-805},{304,-804},{304,-803},{304,-802},{304,-801},{304,-800},{304,-799},{304,-798},{304,-797},{304,-796},{305,-805},{305,-804},{305,-803},{305,-802},{305,-801},{305,-800},{305,-799},{305,-798},{305,-797},{305,-796},{306,-805},{306,-804},{306,-803},{306,-802},{306,-801},{306,-800},{306,-799},{306,-798},{306,-797},{306,-796},{307,-805},{307,-804},{307,-803},{307,-802},{307,-801},{307,-800},{307,-799},{307,-798},{307,-797},{308,-804},{308,-803},{308,-802},{308,-801},{308,-800},{308,-799},{308,-798},{308,-797},{309,-804},{309,-803},{309,-802},{309,-799},{309,-798},{309,-797},{310,-803}}
+
+local function poolsFolder()
+	local p = workspace:FindFirstChild("PortoNocciola")
+	p = p and p:FindFirstChild("14 Lighthouse coast")
+	p = p and p:FindFirstChild("Cala della Sabbia and tide pools")
+	return p and p:FindFirstChild("Natural tide pools")
+end
+
+-- ================= wading =================
+local SPLASH = "rbxasset://sounds/impact_water.mp3"
+local inWater, slowedTo, baseSpeed = false, nil, nil
+local lastRipple, lastStep = 0, 0
+local fx = Instance.new("Folder") fx.Name = "TidePoolFX" fx.Parent = workspace
+
+local function sound(pos, vol, pitch)
+	local a = Instance.new("Part") a.Anchored = true a.CanCollide = false a.CanQuery = false a.CanTouch = false
+	a.Transparency = 1 a.Size = Vector3.new(0.2, 0.2, 0.2) a.CFrame = CFrame.new(pos) a.Parent = fx
+	local s = Instance.new("Sound") s.SoundId = SPLASH s.Volume = vol s.PlaybackSpeed = pitch s.RollOffMaxDistance = 60 s.Parent = a
+	s:Play()
+	task.delay(2, function() a:Destroy() end)
+end
+
+local function ripple(pos, size)
+	local r = Instance.new("Part") r.Shape = Enum.PartType.Cylinder r.Anchored = true r.CanCollide = false r.CanQuery = false r.CanTouch = false
+	r.CastShadow = false r.Material = Enum.Material.SmoothPlastic r.Color = Color3.fromRGB(235, 250, 252) r.Transparency = 0.45
+	r.Size = Vector3.new(0.02, 0.5, 0.5)
+	r.CFrame = CFrame.new(pos) * CFrame.Angles(0, 0, math.rad(90))
+	r.Parent = fx
+	TweenService:Create(r, TweenInfo.new(0.9, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = Vector3.new(0.02, size, size), Transparency = 1}):Play()
+	task.delay(1, function() r:Destroy() end)
+end
+
+local function droplets(pos, n)
+	local a = Instance.new("Part") a.Anchored = true a.CanCollide = false a.CanQuery = false a.CanTouch = false a.Transparency = 1
+	a.Size = Vector3.new(0.2, 0.2, 0.2) a.CFrame = CFrame.new(pos) a.Parent = fx
+	local e = Instance.new("ParticleEmitter")
+	e.Color = ColorSequence.new(Color3.fromRGB(220, 244, 250)) e.LightEmission = 0.3
+	e.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.18), NumberSequenceKeypoint.new(1, 0.05)})
+	e.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.2), NumberSequenceKeypoint.new(1, 1)})
+	e.Lifetime = NumberRange.new(0.35, 0.6) e.Speed = NumberRange.new(4, 7) e.SpreadAngle = Vector2.new(35, 35)
+	e.Acceleration = Vector3.new(0, -30, 0) e.EmissionDirection = Enum.NormalId.Top e.Rate = 0 e.Parent = a
+	e:Emit(n)
+	task.delay(1.2, function() a:Destroy() end)
+end
+
+local function wadeStep(char, dt, folder)
+	local hrp = char:FindFirstChild("HumanoidRootPart")
+	local hum = char:FindFirstChildOfClass("Humanoid")
+	local water = folder and folder:FindFirstChild("TidePoolWater")
+	if not (hrp and hum and water) then return end
+	local rp = RaycastParams.new() rp.FilterType = Enum.RaycastFilterType.Include rp.FilterDescendantsInstances = {water}
+	local hit = workspace:Raycast(hrp.Position + Vector3.new(0, 1, 0), Vector3.new(0, -8, 0), rp)
+	local feetY = hrp.Position.Y - hrp.Size.Y / 2 - hum.HipHeight
+	local nowIn = hit ~= nil and feetY < hit.Position.Y + 0.05 and feetY > hit.Position.Y - 2.5
+	local now = os.clock()
+	if nowIn and not inWater then
+		inWater = true
+		baseSpeed = hum.WalkSpeed
+		slowedTo = baseSpeed * 0.75
+		hum.WalkSpeed = slowedTo
+		local p = Vector3.new(hrp.Position.X, hit.Position.Y + 0.03, hrp.Position.Z)
+		sound(p, 0.55, 1.0 + math.random() * 0.15) droplets(p, 14) ripple(p, 4)
+	elseif not nowIn and inWater then
+		inWater = false
+		if slowedTo and math.abs(hum.WalkSpeed - slowedTo) < 0.01 and baseSpeed then hum.WalkSpeed = baseSpeed end
+		slowedTo, baseSpeed = nil, nil
+	end
+	if inWater and hum.MoveDirection.Magnitude > 0.1 then
+		local p = Vector3.new(hrp.Position.X, hit.Position.Y + 0.03, hrp.Position.Z)
+		if now - lastRipple > 0.32 then lastRipple = now ripple(p, 2.6) end
+		if now - lastStep > 0.42 then lastStep = now sound(p, 0.22, 1.15 + math.random() * 0.25) droplets(p, 4) end
+	end
+end
+
+-- ================= crabs =================
+local crabs = {}
+local rng = Random.new()
+
+local function surface(folder, x, z)
+	local shelf = folder and folder:FindFirstChild("TidePoolShelf")
+	if not shelf then return nil end
+	local rp = RaycastParams.new() rp.FilterType = Enum.RaycastFilterType.Include rp.FilterDescendantsInstances = {shelf}
+	local r = workspace:Raycast(Vector3.new(x, -40, z), Vector3.new(0, -20, 0), rp)
+	return r and r.Position, r and r.Normal
+end
+
+local function pick() local p = POINTS[rng:NextInteger(1, #POINTS)] return Vector2.new(p[1], p[2]) end
+
+local function makeCrab(template)
+	local m = template:Clone()
+	local mesh = m:FindFirstChildWhichIsA("MeshPart", true)
+	if not mesh then m:Destroy() return nil end
+	for _, d in ipairs(m:GetDescendants()) do
+		if d:IsA("BasePart") then d.Anchored = true d.CanCollide = false d.CanQuery = false d.CanTouch = false end
+	end
+	m.Parent = fx
+	local bones = {}
+	for _, b in ipairs(mesh:GetDescendants()) do if b:IsA("Bone") then bones[b.Name] = b end end
+	local c = {model = m, mesh = mesh, bones = bones, pos = pick(), target = nil, wait = rng:NextNumber(0, 2),
+		facing = Vector3.new(rng:NextNumber(-1, 1), 0, rng:NextNumber(-1, 1)).Unit, phase = rng:NextNumber(0, 6), claw = 0, clawT = 0}
+	-- each leg/claw bone's own axis for "the crab's forward" and "the crab's right", measured at rest
+	mesh.CFrame = CFrame.new(0, 0, 0)
+	c.axes = {}
+	for name, b in pairs(bones) do
+		local w = b.WorldCFrame
+		c.axes[name] = {fwd = w:VectorToObjectSpace(Vector3.new(0, 0, -1)), right = w:VectorToObjectSpace(Vector3.new(1, 0, 0))}
+	end
+	return c
+end
+
+local function poseCrab(c, moving, dt)
+	local b = c.bones
+	c.phase += dt * (moving and 14 or 0)
+	local s1, s2 = math.sin(c.phase), math.sin(c.phase + math.pi)
+	local lift = moving and 0.32 or 0
+	local function leg(name, s, side)
+		local bone = b[name] if not bone then return end
+		bone.Transform = CFrame.fromAxisAngle(c.axes[name].fwd, side * math.max(0, s) * lift - side * 0.04)
+	end
+	leg("LegsLF", s1, 1) leg("LegsRB", s1, -1) leg("LegsLB", s2, 1) leg("LegsRF", s2, -1)
+	-- claws: now and then, when standing still, a little wave
+	local clawAngle = 0
+	if c.clawT > 0 then clawAngle = math.sin((1.2 - c.clawT) * 8) * 0.35 + 0.25 end
+	for _, name in ipairs({"ClawL", "ClawR"}) do
+		local bone = b[name]
+		if bone then bone.Transform = CFrame.fromAxisAngle(c.axes[name].right, clawAngle) end
+	end
+end
+
+local function stepCrab(c, dt, folder)
+	local speed = 2.2
+	if c.wait > 0 then
+		c.wait -= dt
+		if c.clawT > 0 then c.clawT -= dt end
+		if c.wait <= 0 then c.target = pick() end
+	elseif c.target then
+		local d = c.target - c.pos
+		if d.Magnitude < 0.3 then
+			c.target = nil c.wait = rng:NextNumber(0.8, 3.5)
+			if rng:NextNumber() < 0.45 then c.clawT = 1.2 end
+		else
+			local dir = d.Unit
+			c.pos += dir * math.min(d.Magnitude, speed * dt)
+			-- crabs walk sideways: face across the direction of travel, turning gently
+			local want = Vector3.new(-dir.Y, 0, dir.X)
+			if want:Dot(c.facing) < 0 then want = -want end
+			c.facing = c.facing:Lerp(want, math.min(1, dt * 4)).Unit
+		end
+	end
+	local p, n = surface(folder, c.pos.X, c.pos.Y)
+	if not p then return end
+	local up = n:Lerp(Vector3.yAxis, 0.5).Unit
+	local fwd = (c.facing - up * c.facing:Dot(up)).Unit
+	local right = fwd:Cross(up)
+	local cf = CFrame.fromMatrix(p + up * (c.mesh.Size.Y / 2), right, up, -fwd)
+	c.mesh.CFrame = cf
+	poseCrab(c, c.target ~= nil and c.wait <= 0, dt)
+end
+
+-- ================= loop =================
+local acc = 0
+RunService.Heartbeat:Connect(function(dt)
+	local char = player.Character
+	local hrp = char and char:FindFirstChild("HumanoidRootPart")
+	local folder = poolsFolder()
+	local near = hrp and folder and (hrp.Position - COVE_CENTRE).Magnitude < NEAR
+	if near then
+		pcall(wadeStep, char, dt, folder)
+		if #crabs == 0 then
+			local template = RS:FindFirstChild("TidePoolCrab")
+			if template then for i = 1, CRAB_COUNT do local c = makeCrab(template) if c then table.insert(crabs, c) end end end
+		end
+		for _, c in ipairs(crabs) do pcall(stepCrab, c, dt, folder) end
+	else
+		if inWater then                 -- left the cove (or the pools streamed out) while wading: give the speed back
+			local hum = char and char:FindFirstChildOfClass("Humanoid")
+			if hum and slowedTo and math.abs(hum.WalkSpeed - slowedTo) < 0.01 and baseSpeed then hum.WalkSpeed = baseSpeed end
+			inWater, slowedTo, baseSpeed = false, nil, nil
+		end
+		if #crabs > 0 then for _, c in ipairs(crabs) do c.model:Destroy() end crabs = {} end
+	end
+end)
+]]></ProtectedString></Properties></Item></Item></roblox>

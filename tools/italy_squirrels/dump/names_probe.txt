@@ -1,0 +1,36 @@
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Signor Timbro x1 :: 		{id = "customs_squirrel",      map = "porto", name = "Signor Timbro",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Timbro x1 :: 		{id = "customs_squirrel",      map = "porto", name = "Signor Timbro",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Beppe x2 :: 		{id = "fishmonger_squirrel",      map = "porto", name = "Beppe the Fishmonger",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Nonno Reti x1 :: 		{id = "netmender_squirrel",      map = "porto", name = "Nonno Reti",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Giulia x1 :: 		{id = "gelato_squirrel",      map = "porto", name = "Giulia the Gelato Squirrel",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Vito x1 :: 		{id = "boatpainter_squirrel",  map = "porto", name = "Vito the Boat Painter",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Capitano Remo x1 :: 		{id = "seacaptain_squirrel",   map = "porto", name = "Capitano Remo",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Remo x1 :: 		{id = "seacaptain_squirrel",   map = "porto", name = "Capitano Remo",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Sandro x1 :: 		{id = "sunbather_squirrel",    map = "porto", name = "Sandro the Sunbather",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Enzo x1 :: 		{id = "crabcatcher_squirrel",  map = "porto", name = "Enzo the Crab Catcher",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Tonio x1 :: 		{id = "conductor_squirrel",    map = "porto", name = "Tonio the Conductor",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Rocco x1 :: 		{id = "lifeguard_squirrel",    map = "porto", name = "Rocco the Lifeguard",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Lello x1 :: 		{id = "octopus_squirrel",    map = "porto", name = "Lello the Octopus Catcher",
+QN@ Workspace.SquirrelScripts.SquirrelRegistry | Tito x1 :: 		{id = "tightrope_squirrel",    map = "porto", name = "Tito the Tightrope Walker",
+QN@ Workspace.Shop.ShopClient | Beppe x1 :: 	{id = "crabtrap",   name = "Crab trap",       blurb = "Yours to keep. Cast it off the rocks in the Crab Catching Area at Porto Nocciola, then sell your catch to Beppe.", once = true},
+QN@ Workspace.ComingSoonWall.ComingSoonServer | Tonio x1 :: local SAFE=Vector3.new(320,-40,-604)            -- the quay by the funicular entrance and Tonio
+QN@ Workspace.CrabGame.CrabServer | Beppe x3 :: -- Everything that matters is decided HERE: where the trap lands, when it is ready, what is in it, what Beppe pays.
+QN@ Workspace.PortoNocciola.15 Funicolare.FunicularServer | Tonio x1 :: -- A turned-away player gets RS.FunicularLocked; TonioTalk makes Tonio explain (and stands them up if seated).
+QN@ Workspace.SwapE.PatchModule | Signor Timbro x1 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Timbro x2 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Beppe x1 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Nonno Reti x1 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Giulia x1 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Vito x1 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Capitano Remo x1 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Remo x2 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Sandro x1 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Enzo x1 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Tonio x1 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Rocco x1 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Lello x1 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ Workspace.SwapE.PatchModule | Tito x1 :: local OLD={'Signor Timbro','Timbro','Beppe','Nonno Reti','Giulia','Vito','Capitano Remo','Remo','Sandro','Enzo','Tonio','Rocco','Lello','Tito'}
+QN@ StarterPlayer.StarterPlayerScripts.CrabClient | Beppe x4 :: -- in the bucket it shrinks to a little "sell to Beppe" pill. Beppe and Enzo talk through the SquirrelBubble like every squirrel.
+QN@ StarterPlayer.StarterPlayerScripts.CrabClient | Enzo x2 :: -- in the bucket it shrinks to a little "sell to Beppe" pill. Beppe and Enzo talk through the SquirrelBubble like every squirrel.
+QN@ StarterPlayer.StarterPlayerScripts.TonioTalk | Tonio x2 :: -- TonioTalk (StarterPlayerScripts, Oct 4 2026, Shannon): after you tag Tonio the Conductor he speaks - "Please come back and
+QN@DONE

@@ -1,0 +1,189 @@
+QW@LC Circolo Velico exterior [Model] n=755 at 437,-4,-950 size 26x28x24
+QW@LC2   Circolo Velico exterior / Glazed exterior display window [Model] n=287 at 447,-9,-952 size 7x5x1
+QW@LC2   Circolo Velico exterior / Survey matching upper facade [Model] n=305 at 436,-3,-955 size 16x18x21
+QW@LC2   Circolo Velico exterior / Open masonry chimney [Model] n=13 at 434,9,-951 size 2x3x2
+QW@LC2   Circolo Velico exterior / Fitted paving beside sailing club [Model] n=2 at 436,-15,-942 size 20x6x10
+QW@LC2   Circolo Velico exterior / Sailing races noticeboard [Model] n=8 at 436,-9,-947 size 3x4x0
+QW@LC2   Circolo Velico exterior / Survey fitted balcony 14 [Model] n=23 at 447,-2,-951 size 7x3x3
+QW@LC2   Circolo Velico exterior / Survey fitted balcony 15 [Model] n=23 at 447,-2,-959 size 7x3x3
+QW@LC2   Circolo Velico exterior / Joined sloping canvas awning [Model] n=22 at 448,-7,-955 size 15x2x4
+QW@LC Prato dei Fiori coastal meadow [Model] n=1470 at 520,5,-1081 size 158x17x119
+QW@LC Faro di Porto Nocciola [Model] n=126 at 520,35,-1178 size 78x32x32
+QW@LC Keeper cottage exterior [Model] n=501 at 555,-1,-1147 size 20x52x20
+QW@LC2   Keeper cottage exterior / Recessed residential facade [Model] n=367 at 556,11,-1147 size 19x18x17
+QW@LC2   Keeper cottage exterior / Full-size balcony 138 [Model] n=23 at 547,12,-1152 size 7x3x3
+QW@LC2   Keeper cottage exterior / Full-size ground window planter [Model] n=6 at 547,4,-1151 size 8x2x2
+QW@LC2   Keeper cottage exterior / Open masonry chimney [Model] n=13 at 558,23,-1152 size 2x3x2
+QW@LC2   Keeper cottage exterior / Consistent full-size closed entrance [Model] n=5 at 548,6,-1143 size 5x7x1
+QW@LC2   Keeper cottage exterior / Full-size balcony 137 [Model] n=23 at 547,12,-1143 size 7x3x3
+QW@LC Chiesa di Santa Marina exterior [Model] n=290 at 407,0,-962 size 52x89x78
+QW@LC2   Chiesa di Santa Marina exterior / Church square approach [Model] n=78 at 396,-7,-988 size 15x17x37
+QW@LC2   Chiesa di Santa Marina exterior / Silver olive tree [Model] n=21 at 424,-6,-981 size 9x8x8
+QW@LC Cala della Sabbia and tide pools [Model] n=194 at 310,-52,-782 size 55x17x56
+QW@LC2   Cala della Sabbia and tide pools / Cove sand access [Model] n=40 at 315,-52,-768 size 17x29x26
+QW@LC2   Cala della Sabbia and tide pools / CrabZoneSign [Model] n=55 at 311,-47,-786 size 6x6x1
+QW@LC Spiaggia dei Ciottoli [Model] n=126 at 416,-52,-1067 size 3x42x34
+QW@LC Sailing club stored dinghy 1 [Model] n=91 at 435,-10,-966 size 3x1x7
+QW@LC Torre di Guardia [Model] n=27 at 585,23,-1006 size 22x34x22
+QW@LC Sailing club approach [Model] n=7 at 466,-13,-945 size 3x35x10
+QW@LC Club flagstaff [Part] n=0 at 451,-3,-930 size 18x0x0
+QW@LC Sailing club stored dinghy 2 [Model] n=91 at 435,-10,-973 size 3x1x7
+QW@LC Lantern frame [Part] n=0 at 527,10,-1153 size 0x1x0
+QW@LC Watchtower approach [Model] n=11 at 568,11,-993 size 3x43x16
+QW@LC Sailing club fitted dinghy court [Model] n=22 at 440,-28,-958 size 25x34x40
+QW@LC Lighthouse cottage approach [Model] n=15 at 522,1,-1134 size 3x54x30
+QW@LC Layered coastal rock [Part] n=0 at 365,-32,-1024 size 12x5x9
+QW@LC Grotta Azzurra [Model] n=13 at 450,-43,-1112 size 19x46x28
+QW@LC Layered coastal rock [Part] n=0 at 362,-32,-1021 size 11x5x9
+QW@LC Club Italian flag [Part] n=0 at 454,4,-930 size 1x2x0
+QW@LC Layered coastal rock [Part] n=0 at 307,-39,-912 size 11x5x9
+QW@LC Layered coastal rock [Part] n=0 at 441,-20,-1108 size 14x5x9
+QW@LC Lamp foot [Part] n=0 at 527,2,-1153 size 0x1x1
+QW@LC Layered coastal rock [Part] n=0 at 316,-37,-920 size 14x5x9
+QW@LC Amber lantern [Part] n=0 at 527,10,-1153 size 1x1x1
+QW@LC Street lamp post [Part] n=0 at 527,6,-1153 size 8x0x0
+QW@LC Stored sailing spar [Part] n=0 at 438,-10,-928 size 16x0x0
+QW@LC Lantern frame [Part] n=0 at 527,10,-1153 size 0x1x0
+QW@LC Lantern cap [Part] n=0 at 527,11,-1153 size 1x0x1
+QW@LC Lantern frame [Part] n=0 at 527,10,-1153 size 0x1x0
+QW@LC Lantern frame [Part] n=0 at 527,10,-1153 size 0x1x0
+QW@LC Layered coastal rock [Part] n=0 at 438,-21,-1107 size 13x5x9
+QW@LC Stored sailing spar [Part] n=0 at 438,-10,-931 size 16x0x0
+QW@LC Layered coastal rock [Part] n=0 at 313,-38,-919 size 13x5x9
+QW@LC Layered coastal rock [Part] n=0 at 310,-39,-915 size 12x5x9
+QW@LC Layered coastal rock [Part] n=0 at 435,-22,-1103 size 12x5x9
+QW@LC Layered coastal rock [Part] n=0 at 359,-33,-1022 size 10x5x9
+QW@LC Layered coastal rock [Part] n=0 at 474,-4,-1197 size 10x5x9
+QW@LC Layered coastal rock [Part] n=0 at 368,-31,-1028 size 13x5x9
+QW@LC Layered coastal rock [Part] n=0 at 371,-30,-1029 size 14x5x9
+QW@LC Layered coastal rock [Part] n=0 at 477,-3,-1196 size 11x5x9
+QW@LC Layered coastal rock [Part] n=0 at 532,-9,-1198 size 10x5x9
+QW@LC Club Italian flag [Part] n=0 at 452,4,-930 size 1x2x0
+QW@LC Club Italian flag [Part] n=0 at 453,4,-930 size 1x2x0
+QW@LC Layered coastal rock [Part] n=0 at 480,-3,-1199 size 12x5x9
+QW@LC Layered coastal rock [Part] n=0 at 483,-2,-1203 size 13x5x9
+QW@LC Layered coastal rock [Part] n=0 at 486,-1,-1204 size 14x5x9
+QW@LC Layered coastal rock [Part] n=0 at 535,-8,-1197 size 11x5x9
+QW@LC Layered coastal rock [Part] n=0 at 541,-7,-1204 size 13x5x9
+QW@LC Layered coastal rock [Part] n=0 at 432,-22,-1100 size 11x5x9
+QW@LC Layered coastal rock [Part] n=0 at 538,-8,-1200 size 12x5x9
+QW@LC Layered coastal rock [Part] n=0 at 447,-7,-1163 size 10x5x9
+QW@LC Layered coastal rock [Part] n=0 at 544,-6,-1205 size 14x5x9
+QW@LC Layered coastal rock [Part] n=0 at 456,-5,-1169 size 13x5x9
+QW@LC Layered coastal rock [Part] n=0 at 450,-6,-1162 size 11x5x9
+QW@LC Layered coastal rock [Part] n=0 at 453,-6,-1165 size 12x5x9
+QW@LC Layered coastal rock [Part] n=0 at 459,-4,-1170 size 14x5x9
+QW@LC Layered coastal rock [Part] n=0 at 429,-23,-1101 size 10x5x9
+QW@LC Layered coastal rock [Part] n=0 at 304,-40,-913 size 10x5x9
+QW@KEY 13 Hillside town.Usable village seating.Lighthouse sea bench [Model] at 488.9,3.8,-1145.0 size 6x4x2
+QW@KEY 13 Hillside town.Lantern frame [Part] at 543.6,20.1,-753.4 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 450.4,-3.9,-687.4 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 474.6,-3.9,-826.4 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 474.6,-3.9,-825.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 475.4,-3.9,-826.4 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 475.4,-3.9,-825.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern cap [Part] at 475.0,-3.2,-826.0 size 1x0x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 454.4,-3.9,-762.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern cap [Part] at 454.0,-3.2,-763.0 size 1x0x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 454.4,-3.9,-763.4 size 0x1x0
+QW@KEY 13 Hillside town.Amber lantern [Part] at 475.0,-3.9,-826.0 size 1x1x1
+QW@KEY 13 Hillside town.Amber lantern [Part] at 400.0,-27.5,-826.0 size 1x1x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 449.6,-3.9,-687.4 size 0x1x0
+QW@KEY 13 Hillside town.Amber lantern [Part] at 450.0,-3.9,-687.0 size 1x1x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 453.6,-3.9,-762.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 453.6,-3.9,-763.4 size 0x1x0
+QW@KEY 13 Hillside town.Torre dell Orologio.Solid stone tower [Part] at 494.0,11.5,-817.0 size 13x47x13
+QW@KEY 13 Hillside town.Torre dell Orologio.Tower cornice [Part] at 494.0,12.0,-817.0 size 14x1x14
+QW@KEY 13 Hillside town.Torre dell Orologio.Tower cornice [Part] at 494.0,27.0,-817.0 size 14x1x14
+QW@KEY 13 Hillside town.Torre dell Orologio.Tower ashlar base [Part] at 494.0,-9.5,-817.0 size 14x5x14
+QW@KEY 13 Hillside town.Torre dell Orologio.Tower cornice [Part] at 494.0,-4.0,-817.0 size 14x1x14
+QW@KEY 13 Hillside town.Torre dell Orologio.Tower cornice [Part] at 494.0,34.7,-817.0 size 14x1x14
+QW@KEY 13 Hillside town.Torre dell Orologio.Clock tower roof [Part] at 494.0,35.4,-817.0 size 16x1x16
+QW@KEY 13 Hillside town.Amber lantern [Part] at 454.0,-3.9,-763.0 size 1x1x1
+QW@KEY 13 Hillside town.Lantern cap [Part] at 450.0,-3.2,-687.0 size 1x0x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 449.6,-3.9,-686.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 383.4,-27.4,-727.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 383.4,-27.4,-728.4 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 450.4,-3.9,-686.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern cap [Part] at 383.0,-26.6,-728.0 size 1x0x1
+QW@KEY 13 Hillside town.Amber lantern [Part] at 383.0,-27.4,-728.0 size 1x1x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 382.6,-27.4,-728.4 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 382.6,-27.4,-727.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 399.6,-27.5,-826.4 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 399.6,-27.5,-825.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 400.4,-27.5,-826.4 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 400.4,-27.5,-825.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern cap [Part] at 400.0,-26.7,-826.0 size 1x0x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 546.6,18.5,-930.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 547.4,18.5,-931.4 size 0x1x0
+QW@KEY 13 Hillside town.Lantern cap [Part] at 547.0,19.3,-931.0 size 1x0x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 547.4,18.5,-930.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern cap [Part] at 478.6,-3.2,-891.2 size 1x0x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 560.4,18.5,-877.4 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 560.4,18.5,-876.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern cap [Part] at 560.0,19.3,-877.0 size 1x0x1
+QW@KEY 13 Hillside town.Amber lantern [Part] at 547.0,18.5,-931.0 size 1x1x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 546.6,18.5,-931.4 size 0x1x0
+QW@KEY 13 Hillside town.Lantern cap [Part] at 544.0,20.8,-753.0 size 1x0x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 559.6,18.5,-877.4 size 0x1x0
+QW@KEY 13 Hillside town.Amber lantern [Part] at 560.0,18.5,-877.0 size 1x1x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 559.6,18.5,-876.6 size 0x1x0
+QW@KEY 13 Hillside town.Amber lantern [Part] at 544.0,20.1,-753.0 size 1x1x1
+QW@KEY 13 Hillside town.Lantern frame [Part] at 544.4,20.1,-752.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 544.4,20.1,-753.4 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 478.2,-3.9,-891.7 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 543.6,20.1,-752.6 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 479.0,-3.9,-890.8 size 0x1x0
+QW@KEY 13 Hillside town.Lantern frame [Part] at 479.0,-3.9,-891.7 size 0x1x0
+QW@KEY_TOTAL 181
+QW@FINE3 z=-1040 -59 -46 -36 -36p -36p 1 0 1p 2p 1 2 2 2 1 0 2p 0 2 2
+QW@FINE3 z=-1050 -62 -62 -55 -44 -39p -49 -49 -49 2p 2p 1 2 1 2p 2p 1 2 2 2
+QW@FINE3 z=-1060 -62 -62 -62 -60 -51 -47p -51p -49 -49 2p 2p 2p 2p 2p 1 2 2 2 2
+QW@FINE3 z=-1070 -62 -62 -62 -62 -51p -51p -50p -49 -49 0 2p 2p 1 2 2 2 2 2 2
+QW@FINE3 z=-1080 -62 -62 -62 -62 -62 -51p -50p -49 -4 2 1 2p 0 2 2 2 2 2 2
+QW@FINE3 z=-1090 -62 -62 -62 -62 -62 -62 -50p -52 -3 2 2 0 2p 1 2 2 2 2 2
+QW@FINE3 z=-1100 -62 -62 -62 -62 -62 -62 -57 -20p -50p -0 2 2 2p 2p 2 2 2 2 2
+QW@FINE3 z=-1110 -62 -62 -62 -62 -62 -62 -62 -52 -17p -50p 1 2 1 2p 1 2 2 2 2
+QW@FINE3 z=-1120 -62 -62 -62 -62 -62 -62 -62 -52 -26 -4 2 2 2 2p 2p 0 0 1 2
+QW@FINE3 z=-1130 -62 -62 -62 -62 -62 -62 -62 -59 -45 -12 2 2 2 1 2p 0 2p 2p 1
+QW@FINE3 z=-1140 -62 -62 -62 -62 -62 -62 -62 -61 -42 -20 0 2 2 2 2p 2p 2 1 2p
+QW@FINE3 z=-1150 -62 -62 -62 -62 -62 -62 -62 -62 -51 -28 -3 2 2 2 1 2p 1 2 1
+QW@FINE3 z=-1160 -62 -62 -62 -62 -62 -62 -62 -62 -58 -4p -13 2 2 2 1 2p 0 2 0
+QW@FINE3 z=-1170 -62 -62 -62 -62 -62 -62 -62 -62 -62 -2p -2p 1 2 2 2 3p 24p 3p 2
+QW@FINE3 z=-1180 -62 -62 -62 -62 -62 -62 -62 -62 -62 -52 -27 -7 0 1 2 3p 60p 3p 0
+QW@FINE3 z=-1190 -62 -62 -62 -62 -62 -62 -62 -62 -62 -60 -36 -26 -23 -18 -16 2p 3p 2p -4
+QW@FINE3 z=-1200 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -54 -50 0p 1p -38 -34 -30 -6p -5p
+QW@FINE3 z=-1210 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -60 -61 -55 -53 -2p
+QW@FINE3 z=-1220 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62 -62
+QW@HRAY z=-1040 lo=368 hi=375
+QW@HRAY z=-1050 lo=384 hi=397
+QW@HRAY z=-1060 lo=402 hi=444
+QW@HRAY z=-1070 lo=429 hi=447
+QW@HRAY z=-1080 lo=429 hi=440
+QW@HRAY z=-1090 lo=434 hi=435
+QW@HRAY z=-1100 lo=452 hi=467
+QW@HRAY z=-1110 lo=470 hi=479
+QW@HRAY z=-1120 lo=439 hi=476
+QW@HRAY z=-1130 lo=435 hi=452
+QW@HRAY z=-1140 lo=437 hi=442
+QW@HRAY z=-1150 lo=441 hi=445
+QW@HRAY z=-1160 lo=444 hi=447
+QW@HRAY z=-1170 lo=447 hi=451
+QW@HRAY z=-1180 lo=451 hi=455
+QW@HRAY z=-1190 lo=455 hi=459
+QW@HRAY z=-1200 lo=470 hi=494
+QW@HRAY z=-900 lo=290 hi=290
+QW@HRAY z=-910 lo=290 hi=290
+QW@HRAY z=-920 lo=289 hi=289
+QW@HRAY z=-930 lo=289 hi=289
+QW@HRAY z=-940 lo=288 hi=288
+QW@HRAY z=-950 lo=288 hi=288
+QW@HRAY z=-960 lo=286 hi=286
+QW@HRAY z=-970 lo=284 hi=284
+QW@HRAY z=-980 lo=282 hi=282
+QW@HRAY z=-990 lo=280 hi=280
+QW@HRAY z=-1000 lo=280 hi=280
+QW@HRAY z=-1010 lo=279 hi=279
+QW@HRAY z=-1020 lo=278 hi=278
+QW@HRAY z=-1030 lo=277 hi=277
+QW@SURVEY3_DONE

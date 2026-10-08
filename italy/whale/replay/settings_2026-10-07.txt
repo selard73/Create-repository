@@ -1,0 +1,22 @@
+REPLAY SETTINGS dumped from the live Studio DataModel at ~13:14 Oct 7 2026 (before the forced restart)
+Honours attrs: Badge_forest=2980609362202333 Badge_village=3066275971523339 Badge_domaine=1304762848867330 Badge_porto=1472887764139377 Badge_genius=4327774231356693 Badge_luminary=511740616906295
+PortoKeeper (Folder in workspace) attrs: Badge_key=0 Facing=(0.8064049,0,0.5913637) FigureX=488 KeyShare=0.42 Need=45 NoKeeperUserIds="" PlinthX=488 PlinthZ=-1158 RestKeyHeight=3.4 Scale=1.5 Title="Guardian of the Harbour" TopY=6.4
+  Plinth = clone of workspace.Champion.Plinth, pivot pos (488,4.2,-1158) rot (0,-126.254,0) i.e. CFrame.lookAt((488, 2+size.Y/2, -1158), (518, same y, -1136)); ground y 2.0
+  Plaque.Words: Title "GUARDIAN OF THE HARBOUR" | Day "OF PORTO NOCCIOLA" | Who "This could be you" | Note "Be the first to find all 45 squirrels of Porto Nocciola and your statue will stand here, holding the harbour key."
+  Key: built by PortoKeeperServer makeKey(3.4, 488, 6.4, -1158, yaw) at start (placeholder); RemoteEvent ReplicatedStorage.PortoKeeperEvent; scripts PortoKeeperServer (Server) + PortoKeeperClient (Client) in bundle_2026-10-07.txt
+Zones (Parts, Anchored, CanCollide/CanQuery/CanTouch false, Transparency 1, Size y 2, y -50; attrs MapId=porto + Area):
+  porto_harbour      centre (252.5,-50,-710)   size 205 x 340   Area=harbour
+  porto_harbour_sea  centre (225,-50,-1090)    size 150 x 420   Area=harbour
+  porto_borgo        centre (577.5,-50,-770)   size 445 x 460   Area=borgo
+  porto_borgo_coast  centre (327.5,-50,-940)   size 55 x 120    Area=borgo
+  porto_groves       centre (550,-50,-1150)    size 500 x 300   Area=groves
+Officer Acorn: model officer_acorn_police_squirrel_color pivot pos (465.0499,-12.0001,-962.7701) rot (90,152.072,0); mesh rbxassetid://124720866507711 TextureID rbxassetid://130480149265309 (SurfaceAppearance removed); attrs SquirrelId=officer_acorn_police_squirrel DisplayName="Officer Acorn" ColorTexture=rbxassetid://130480149265309 GrayTexture=rbxassetid://107510255623828 (NO Bio attr)
+  gray twin workspace.SquirrelTwins.officer_acorn_police_squirrel_gray at (0,-401.2,0) rot (90,0,0) mesh rbxassetid://86000711684884 TextureID rbxassetid://107510255623828
+  FBX sources on her Desktop: officer_acorn_police_squirrel_color.fbx, officer_acorn_police_squirrel_gray.fbx, giulia_market_squirrel_gray.fbx
+Bio attrs cleared on: baker_squirrel_color, pizzadelivery_squirrel_color, giulia_market_squirrel_color, officer_acorn_police_squirrel_color
+Squirrel meshes: RenderFidelity Precise on all (115/116 at dump time; 69 were set today)
+Lighthouse sea bench (13 Hillside town.Usable village seating): pivot pos (489.2838,3.8305,-1140.021) rot (0,-96.71,0)  [was at 488.93,3.80,-1145.01]
+Whale: workspace.PortoWhale (Import 3D of italy/whale/whale_color.fbx -> model whale_color/mesh Whale), installer tools/italy_squirrels/install_whale.lua (build_install.py: LENGTH 60 WATER_Y -52.9 ROUTE 200,-840;90,-940;40,-1110;210,-1215;340,-1165;362,-1102;215,-985 BLOW_AT 1,6 SPEED 7 BLOW_DUR 12 SOUND rbxassetid://9114454664 BED_Y -77; spout v3 in the template). Mesh rbxassetid://81916751786751 tex rbxassetid://113513444512222, parked at (200,-58.98,-840) rot (0,47.726,0).
+Whale lane: italy/whale/dig_lane.lua (includes the delid pass); bed -78 at A/B/point 3 after.
+Porto: Fontana del Limone pivot (593.5205,-11.9492,-794) rot 0 = correct (v1135 should already be correct; the stray transform happened after v1135).
+Registry: bundle_2026-10-07.txt (areas harbour/borgo "Via della Piazza"/groves "The Groves"; 24 porto entries with area; short bios).

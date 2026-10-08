@@ -1,0 +1,5 @@
+bbox min (-1.56, -1.93, -0.0) max (1.53, 1.93, 5.0)
+rendered side
+rendered front
+rendered top
+VIEWS_DONE

@@ -1,0 +1,58 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">QP5</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 read-only, her 5 flags after the +10 build: (a) things left in the stall's ORIGINAL volume (fish?) that did
+-- not move with '03 Fish market'; (b) scripts that mention the aquarium/fish market/old coordinates; (c) fish-market children
+-- now sitting in the alley (current x > 256.5); (d) parts along the north (z -590..-596) and south (z -699..-708) quay faces.
+local P=workspace.PortoNocciola
+local FM=P['03 Fish market']
+local function f(v) return string.format('%.2f,%.2f,%.2f',v.X,v.Y,v.Z) end
+local skipSec={['01 Curved waterfront']=true,['11 Fitted surface joins']=true,['03 Fish market']=true,['02 Pastel waterfront']=true}
+local n=0
+for _,d in ipairs(workspace:GetDescendants()) do
+	if d:IsA('BasePart') and not d:IsA('Terrain') then
+		local p=d.Position
+		if p.X>244 and p.X<262 and p.Z<-634 and p.Z>-659 and p.Y>-46.6 and p.Y<-38 then
+			local top=d while top.Parent and top.Parent~=P and top.Parent~=workspace do top=top.Parent end
+			local sec=(top.Parent==P) and top.Name or ('WS:'..top.Name)
+			if not skipSec[sec] and not d:FindFirstAncestor('Lemon tree') and not d:FindFirstAncestor('Quay lantern') then
+				n+=1 if n<=40 then warn('QP5@left',d:GetFullName(),d.ClassName,f(p),'size',f(d.Size),'T',d.Transparency) end
+			end
+		end
+	end
+end
+warn('QP5@left count',n)
+local keys={'aquarium','Aquarium','seafood','Seafood','Fish market','FishMarket','fish tank','FishTank','Tank','253.','-654','-655'}
+for _,s in ipairs(game:GetDescendants()) do
+	if s:IsA('LuaSourceContainer') then
+		local ok,src=pcall(function() return s.Source end)
+		if ok and src then
+			for _,k in ipairs(keys) do
+				local i=string.find(src,k,1,true)
+				if i then warn('QP5@script',s:GetFullName(),'key',k,'|',(src:sub(math.max(1,i-80),i+120):gsub('\n',' '))) break end
+			end
+		end
+	end
+end
+for _,c in ipairs(FM:GetChildren()) do
+	local ok,cf,sz=pcall(function() if c:IsA('BasePart') then return c.CFrame,c.Size end return c:GetBoundingBox() end)
+	if ok and cf then
+		local mn=cf.Position-sz/2
+		if mn.X>256.5 or cf.Position.X>258 then warn('QP5@alley',c.ClassName,c.Name,'centre',f(cf.Position),'size',f(sz)) end
+	else
+		-- folders: report their parts' extent
+		local lo,hi=nil,nil
+		for _,d in ipairs(c:GetDescendants()) do if d:IsA('BasePart') then lo=lo and lo:Min(d.Position) or d.Position hi=hi and hi:Max(d.Position) or d.Position end end
+		if lo then warn('QP5@group',c.ClassName,c.Name,'min',f(lo),'max',f(hi)) end
+	end
+end
+for _,d in ipairs(P:GetDescendants()) do
+	if d:IsA('BasePart') then
+		local p=d.Position
+		if p.Y>-52 and ((p.Z>-597 and p.Z<-589 and p.X>212 and p.X<250) or (p.Z<-698 and p.Z>-709 and p.X>218 and p.X<262)) then
+			warn('QP5@edge',d:GetFullName():gsub('Workspace.PortoNocciola.',''),d.ClassName,f(p),'size',f(d.Size),'fill',tostring(d:GetAttribute('PromenadeFill')),'moved',tostring(d:GetAttribute('PromOldCF')~=nil))
+		end
+	end
+end
+warn('QP5@DONE')
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

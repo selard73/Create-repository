@@ -1,0 +1,37 @@
+-- tm1 Oct 4 2026 (Shannon picked "Squirrel Maestro"): a 4th honour after Squirrel Sage, earned with the first 15 Porto
+-- Nocciola harbour squirrels (a count, not 100% of the map, because Porto will grow up the mountain). Mediterranean blue.
+-- Patches the live workspace.Honours.TitleServer / TitleClient in place; every anchor is checked first, nothing changes
+-- unless all of them are found.
+local H=workspace:FindFirstChild('Honours')
+local S=H and H:FindFirstChild('TitleServer') local Cl=H and H:FindFirstChild('TitleClient')
+if not (S and Cl) then warn('QT@ABORT Honours scripts missing',H,S,Cl) return end
+local s,c=S.Source,Cl.Source
+if s:find('Squirrel Maestro',1,true) then warn('QT@SKIP already patched') return end
+local A1='badge = "Badge_domaine", colour = C(240, 196, 60)},'
+local A2='if n == nil or n < (TOTAL[t.map] or 1) then break end'
+local A3='math.clamp(tier, 1, 3)'
+local B1='local COLOURS = {C(205, 127, 50), C(200, 204, 212), C(240, 196, 60)}'
+local B2='b1.Text = tier == 3 and "All 44 squirrels found! You are now a" or "A section complete! You are now a"'
+local miss={}
+for k,v in pairs({A1=s:find(A1,1,true),A2=s:find(A2,1,true),B1=c:find(B1,1,true),B2=c:find(B2,1,true)}) do if not v then table.insert(miss,k) end end
+if #miss>0 then warn('QT@ABORT anchors missing',table.concat(miss,',')) return end
+local function rep(src,a,b) local i,j=src:find(a,1,true) return src:sub(1,i-1)..b..src:sub(j+1) end
+-- server: the new tier line goes after the end of the Sage line (it carries a trailing comment)
+local i,j=s:find(A1,1,true)
+local eol=s:find('\n',j,true) or #s
+local NEW='\n\t{map = "porto",   title = "Squirrel Maestro",               badge = "Badge_porto",   colour = C(46, 150, 214), need = 15},   -- Oct 4 2026 (Shannon): first 15 Porto Nocciola squirrels (a count: Porto will grow)'
+s=s:sub(1,eol-1)..NEW..s:sub(eol)
+s=rep(s,A2,'if n == nil or n < (t.need or TOTAL[t.map] or 1) then break end')
+if s:find(A3,1,true) then s=rep(s,A3,'math.clamp(tier, 1, #TIERS)') end
+-- client: 4th medallion colour + banner line
+c=rep(c,B1,'local COLOURS = {C(205, 127, 50), C(200, 204, 212), C(240, 196, 60), C(46, 150, 214)}')
+c=rep(c,B2,'b1.Text = tier == 4 and "15 harbour squirrels found! You are now a" or tier == 3 and "All 44 squirrels found! You are now a" or "A section complete! You are now a"')
+-- backups, then write
+local SS=game:GetService('ServerStorage')
+local bk=SS:FindFirstChild('HonoursBackup') or Instance.new('Folder',SS) bk.Name='HonoursBackup'
+if not bk:FindFirstChild('TitleServer_v1033') then local x=S:Clone() x.Name='TitleServer_v1033' x.Disabled=true x.Parent=bk end
+if not bk:FindFirstChild('TitleClient_v1033') then local x=Cl:Clone() x.Name='TitleClient_v1033' x.Disabled=true x.Parent=bk end
+S.Source=s Cl.Source=c
+if H:GetAttribute('Badge_porto')==nil then H:SetAttribute('Badge_porto',0) end
+game:GetService('ChangeHistoryService'):SetWaypoint('Squirrel Maestro title')
+warn('QT@OK maestro',S.Source:find('Squirrel Maestro',1,true)~=nil,S.Source:find('t.need or',1,true)~=nil,Cl.Source:find('15 harbour squirrels found',1,true)~=nil,#S.Source,#Cl.Source)

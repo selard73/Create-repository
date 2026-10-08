@@ -1,0 +1,4 @@
+region [-0.62, 0.05, -1.2, 0.25, 0.4, 2.4] Tail1+Tail2 -> Chest: 264 vertices
+head->chest soft falloff z 0.95..1.25: 2207 vertices adjusted
+after: region [-0.62, 0.05, -1.2, 0.25, 0.4, 2.4] 706 verts, mean Tail1+Tail2 weight 0.000, max 0.00
+FIXW_DONE

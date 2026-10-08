@@ -1,0 +1,116 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">CliffT4b</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- ct4 Oct 4 2026: clean redo of ct1+ct2 in one pass per side. ct2's far slopes were too long (gradient 0.8 over ~90 studs
+-- of drop) and were cut off at the edit area's south edge, leaving steps; the two passes also left a seam column at x -150.
+-- Now: restore both backups, then per column a limestone escarpment (3 ledged tiers) whose height tapers from the full
+-- cliff height beside the falls to ~40% far away, and below it a concave grass talus that always lands on the ground
+-- at a target foot line (west z ~-606; east short of the path/station/funicular hill). Cells south of the foot line are
+-- never rewritten. Then the CliffBlendDress trees/boulders are re-seated on the new ground.
+local T=workspace.Terrain
+local SS=game:GetService('ServerStorage')
+local LIME=Enum.Material.Limestone local GRASS=Enum.Material.Grass local GROUND=Enum.Material.Ground local AIR=Enum.Material.Air local WATER=Enum.Material.Water
+-- restore (ct2 backup first: it was taken after ct1 and covers the outer strips; then ct1's original)
+local b2,b1=SS:FindFirstChild('CliffBlendBackup2'),SS:FindFirstChild('CliffBlendBackup')
+if not (b1 and b2) then warn('QB@ABORT backups missing') return end
+for _,bk in ipairs({b2,b1}) do for _,tr in ipairs(bk:GetChildren()) do
+	local c=tr:GetAttribute('Corner') T:PasteRegion(tr,Vector3int16.new(c.X/4,c.Y/4,c.Z/4),true)
+end end
+local function smooth(e0,e1,v) local t=math.clamp((v-e0)/(e1-e0),0,1) return t*t*(3-2*t) end
+local function n1(x) return math.sin(x*0.071)*0.6+math.sin(x*0.193+1.3)*0.4 end
+local function n2(x) return math.sin(x*0.137+2.1)*0.5+math.sin(x*0.311+0.4)*0.5 end
+local function region(x0,x1,z0,z1) return Region3.new(Vector3.new(x0,-56,z0),Vector3.new(x1,64,z1)):ExpandToGrid(4) end
+local stats={}
+local function pass(tag,r,distFn,footFn,zFootGround)
+	local mat,occ=T:ReadVoxels(r,4)
+	local sx,sy,sz=mat.Size.X,mat.Size.Y,mat.Size.Z
+	local x0=r.CFrame.Position.X-r.Size.X/2 local y0=r.CFrame.Position.Y-r.Size.Y/2 local z0=r.CFrame.Position.Z-r.Size.Z/2
+	local changed=0
+	local function colTop(i,k) for j=sy,1,-1 do if occ[i][j][k]>0.05 and mat[i][j][k]~=WATER then return y0+(j-1)*4+occ[i][j][k]*4 end end return nil end
+	local function colWater(i,k) for j=sy,1,-1 do if occ[i][j][k]>0.05 then return mat[i][j][k]==WATER end end return false end
+	for i=1,sx do
+		local x=x0+(i-0.5)*4
+		local d=math.max(0,distFn(x))
+		local zc=-550+2.5*n1(x)
+		local kT=math.clamp(math.floor((zc+4-z0)/4)+1,1,sz)
+		local top=colTop(i,kT) or 40
+		local kF=math.clamp(math.floor((zFootGround-z0)/4)+1,1,sz)
+		local F=colWater(i,kF) and -56 or math.max(-50,colTop(i,kF) or -48)
+		local zFoot=footFn(x)
+		local uFoot=zc-zFoot
+		local fr=0.4+0.6*(1-smooth(0,160,d))
+		local Hr=math.max(0,(top-F)*fr*(0.9+0.1*n2(x)))
+		local tiers={} local rem=Hr
+		for t=1,3 do local h=(t<3) and Hr/3*(1+0.15*n2(x*0.55+t*13)) or rem   -- t4b: smoother along x (no deep slots between neighbours) rem-=h tiers[t]=math.max(0,h) end
+		local ledge=2.0+1.2*(n1(x*0.7)+1)
+		local runRock=0 for t=1,3 do runRock+=tiers[t]/3.5 if t<3 then runRock+=ledge end end
+		local yR=top-Hr
+		for k=1,sz do
+			local z=z0+(k-0.5)*4
+			local u=zc-z
+			if u>=0 and u<=uFoot then
+				local y=top local uu=u local inRock=false
+				for t=1,3 do
+					local h=tiers[t] local run=math.max(h/3.5,0.01)
+					if h>0.5 and uu<=run then y=y-h*(uu/run) inRock=true uu=-1 break end
+					y=y-h uu=uu-run
+					if t<3 and h>0.5 then if uu<=ledge then inRock=true uu=-1 break end uu=uu-ledge end
+				end
+				local steep=false
+				if uu>=0 then
+					local L=math.max(4,uFoot-runRock)
+					local t=math.clamp(uu/L,0,1)
+					y=yR-(yR-F)*(1-(1-t)^1.7)                     -- concave: steeper under the rock, easing onto the ground
+					steep=((yR-F)*1.7/L)*(1-t)^0.7>1.0 or uu<4      -- local gradient > 1 or the scree just under the rock
+				end
+				local S=math.max(F,y)
+				for j=1,sy do
+					local yb=y0+(j-1)*4
+					if yb>=math.max(-50,F-4) and yb<=top+6 and mat[i][j][k]~=WATER then
+						local o=math.clamp((S-yb)/4,0,1)
+						local m=AIR
+						if o>0 then
+							if inRock or steep then m=LIME elseif S-(yb+4)>6 then m=GROUND else m=GRASS end
+						end
+						if math.abs(occ[i][j][k]-o)>0.01 or mat[i][j][k]~=m then occ[i][j][k]=o mat[i][j][k]=m changed+=1 end
+					end
+				end
+			elseif u<0 and u>-6 then
+				local cut=1.5*((u+6)/6)^2
+				for j=sy,1,-1 do
+					local yb=y0+(j-1)*4
+					if occ[i][j][k]>0 and mat[i][j][k]~=WATER and yb>=top-8 then
+						local surf=yb+occ[i][j][k]*4
+						if surf>top-cut then local o=math.clamp((top-cut-yb)/4,0,1) if o<occ[i][j][k] then occ[i][j][k]=o changed+=1 if o<=0 then mat[i][j][k]=AIR end end end
+					end
+				end
+			end
+		end
+	end
+	T:WriteVoxels(r,4,mat,occ)
+	stats[tag]=changed
+end
+pass('W',region(-404,48,-648,-528),function(x) return 44-x end,function(x) return -606+4*n1(x*0.5) end,-612)
+pass('E',region(328,824,-596,-528),function(x) return x-332 end,function(x) if x<336 then return -580 elseif x<380 then return -588 else return -592 end end,-594)
+-- re-seat the dressing on the new ground
+local DF=workspace.SouthGorge:FindFirstChild('CliffBlendDress') local moved=0
+if DF then
+	local tp=RaycastParams.new() tp.FilterType=Enum.RaycastFilterType.Include tp.FilterDescendantsInstances={T}
+	for _,m in ipairs(DF:GetChildren()) do
+		local cf,size=m:GetBoundingBox()
+		local base=cf.Position-Vector3.new(0,size.Y/2,0)
+		local h=workspace:Raycast(Vector3.new(base.X,200,base.Z),Vector3.new(0,-300,0),tp)
+		if h then
+			local sink=(m.Name:find('rock') and 0.6) or 0.15
+			local dy=(h.Position.Y-sink)-base.Y
+			if math.abs(dy)>0.05 then m:PivotTo(m:GetPivot()+Vector3.new(0,dy,0)) moved+=1 end
+		end
+	end
+end
+game:GetService('ChangeHistoryService'):SetWaypoint('Cliff blend terrain t4b')
+warn('QB@T4b changed W',stats.W,'E',stats.E,'dress re-seated',moved)
+local cam=workspace.CurrentCamera
+local t=Vector3.new(-170,0,-560)
+cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(Vector3.new(-40,10,-720),t)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

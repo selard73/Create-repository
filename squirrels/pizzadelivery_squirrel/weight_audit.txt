@@ -1,0 +1,4 @@
+Low verts (z < 0.8): 2298 -> {'Root': 2298, 'Neck': 846, 'Head': 858, 'Chest': 398, 'Tail1': 795}
+Pizza box verts (y > 0.5, z < 1.5): 1274 -> {'Root': 680, 'Tail1': 1274, 'Tail2': 14}
+Head/helmet verts: 976, tail leaks: 0
+Tail verts: 1511, head leaks: 19

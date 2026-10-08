@@ -1,0 +1,19 @@
+brown               1577  x -0.60.. 0.61  y -1.23.. 1.34  z  0.00.. 2.40  centre ( 0.02, 0.34, 1.22)  head 0.21 chest 0.03 root 0.21 tail 0.54
+other                861  x -0.63.. 0.64  y -1.30.. 0.11  z  0.29.. 1.53  centre (-0.10,-0.70, 1.00)  head 0.72 chest 0.05 root 0.20 tail 0.00
+pink/red             478  x -0.64.. 0.62  y -1.32.. 0.18  z  0.47.. 2.21  centre (-0.02,-0.69, 1.08)  head 0.70 chest 0.11 root 0.17 tail 0.00
+white-high(z>0.9)    340  x -0.60.. 0.59  y -1.34.. 0.07  z  0.90.. 2.06  centre (-0.00,-0.61, 1.27)  head 0.82 chest 0.12 root 0.05 tail 0.00
+white-low            109  x -0.42.. 0.36  y -1.11.. 0.39  z  0.02.. 0.90  centre (-0.02,-0.56, 0.50)  head 0.55 chest 0.02 root 0.41 tail 0.00
+yellow                75  x -0.49.. 0.61  y -1.27.. 0.09  z  0.33.. 1.97  centre (-0.21,-0.97, 1.19)  head 0.82 chest 0.04 root 0.12 tail 0.00
+blue                  21  x -0.38.. 0.04  y -1.08..-0.56  z  1.01.. 1.37  centre (-0.14,-0.81, 1.23)  head 0.95 chest 0.00 root 0.01 tail 0.00
+gray                   1  x  0.32.. 0.32  y -0.79..-0.79  z  1.66.. 1.66  centre ( 0.32,-0.79, 1.66)  head 0.97 chest 0.00 root 0.00 tail 0.00
+yellow (coat) top edge by x bin, front half (y < -0.1):
+   x -0.50..-0.40: coat top z 1.40
+   x -0.40..-0.30: coat top z 1.38
+   x -0.30..-0.20: coat top z 1.35
+   x  0.00.. 0.10: coat top z 1.17
+   x  0.10.. 0.20: coat top z 1.16
+   x  0.30.. 0.40: coat top z 1.97
+   x  0.40.. 0.50: coat top z 1.93
+   x  0.60.. 0.70: coat top z 0.40
+muzzle/face white: lowest z 0.90
+COLORS_DONE

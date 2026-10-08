@@ -1,0 +1,10 @@
+source tris 7748194
+  Hi decimate -> 774818
+  Hi decimate -> 300000
+voxel 0.011 -> 376888 tris
+  Squirrel decimate -> 94222
+  Squirrel decimate -> 23554
+  Squirrel decimate -> 7000
+baked -> C:\Users\slard\roblox-props\squirrels\customs_squirrel\customs_squirrel_1k.png
+final tris 7000
+REBUILD_DONE

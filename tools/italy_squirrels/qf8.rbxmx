@@ -1,0 +1,37 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">QF8</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 read-only: geometry for her flags 6 (stepped wall edge at the Cala della Sabbia tide pools) and 7 (water seam +
+-- pebbles at the tourist's step in the cove). Parts + a 1-stud ray grid of what the top surface is.
+local function f(v) return string.format('%.1f,%.1f,%.1f',v.X,v.Y,v.Z) end
+local function parts(cx,cz,r,minDim,tag)
+	local n=0
+	for _,d in ipairs(workspace:GetDescendants()) do
+		if d:IsA('BasePart') and d.Transparency<1 then
+			local p=d.Position
+			if math.abs(p.X-cx)<r and math.abs(p.Z-cz)<r and p.Y>-62 and p.Y<-25 and math.max(d.Size.X,d.Size.Y,d.Size.Z)>=minDim then
+				n+=1 if n<=60 then
+					local cf=d.CFrame
+					warn(tag,d:GetFullName():gsub('Workspace.PortoNocciola.',''),d.ClassName,d.Material.Name,f(p),'size',f(d.Size),'up',f(cf.UpVector),'look',f(cf.LookVector))
+				end
+			end
+		end
+	end
+	warn(tag..'count',n)
+end
+parts(300,-795,32,6,'QF8@wall')
+parts(309,-721,13,0,'QF8@step')
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Exclude rp.FilterDescendantsInstances={}
+for z=-708,-734,-1 do
+	local row={}
+	for x=296,324 do
+		local r=workspace:Raycast(Vector3.new(x,-38,z),Vector3.new(0,-30,0),rp)
+		local ch='?'
+		if not r then ch=' ' elseif r.Instance==workspace.Terrain then ch=(r.Material==Enum.Material.Water and 'w') or (r.Material==Enum.Material.Sand and 's') or 't'
+		else ch=(r.Position.Y>-47.5) and '#' or '+' end
+		table.insert(row,ch)
+	end
+	warn('QF8@g',z,table.concat(row))
+end
+warn('QF8@DONE')
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

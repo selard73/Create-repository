@@ -1,0 +1,10 @@
+source tris 7747918
+  Hi decimate -> 774790
+  Hi decimate -> 300000
+voxel 0.011 -> 374488 tris
+  Squirrel decimate -> 93622
+  Squirrel decimate -> 23404
+  Squirrel decimate -> 7000
+baked -> C:\Users\slard\roblox-props\squirrels\fishmonger_squirrel\fishmonger_squirrel_1k.png
+final tris 7000
+REBUILD_DONE

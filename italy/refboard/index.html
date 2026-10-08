@@ -1,0 +1,253 @@
+<title>Gorge Reference Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a field sheet for a river trip. A narrow header with the decisions already made, then three bands (your map, the aqueduct, the gorge), each a wrapping grid of photo cards with pick buttons. */
+:root {
+  --bg: #eef2f1;          /* pale river-stone */
+  --panel: #ffffff;
+  --ink: #1f2b2a;
+  --muted: #5b6a68;
+  --line: #d3dcda;
+  --river: #13808a;       /* gorge water */
+  --river-ink: #ffffff;
+  --sand: #c98f3c;        /* sandstone strata */
+  --sand-soft: #f6e7cf;
+  --no: #a8473d;
+  --no-soft: #f5dfdb;
+  --maybe: #8a6d12;
+  --maybe-soft: #f4ecc9;
+  --yes-soft: #d5ecec;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131a1a; --panel: #1b2424; --ink: #e5ecea; --muted: #9aaba8; --line: #2e3b3b;
+    --river: #3fb3bd; --river-ink: #0d1717; --sand: #e0aa5c; --sand-soft: #3a2e1c;
+    --no: #e08a7f; --no-soft: #3d2320; --maybe: #d8bc5a; --maybe-soft: #3a3318; --yes-soft: #17393b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131a1a; --panel: #1b2424; --ink: #e5ecea; --muted: #9aaba8; --line: #2e3b3b;
+  --river: #3fb3bd; --river-ink: #0d1717; --sand: #e0aa5c; --sand-soft: #3a2e1c;
+  --no: #e08a7f; --no-soft: #3d2320; --maybe: #d8bc5a; --maybe-soft: #3a3318; --yes-soft: #17393b;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5; padding-inline: 16px; padding-block: 28px 64px; }
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 40px; }
+header { display: grid; gap: 14px; max-width: 70ch; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; margin: 0; text-wrap: balance; }
+h1 .strata { background: linear-gradient(180deg, transparent 62%, var(--sand-soft) 62%); }
+header p { margin: 0; color: var(--muted); }
+.decided { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 14px; border: 1px solid var(--line); background: var(--panel); border-radius: 999px; padding: 3px 12px; }
+.chip b { color: var(--river); font-weight: 600; }
+.tally { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; font-size: 15px; }
+.tally .n { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.tally .status { margin-left: auto; color: var(--muted); font-size: 14px; }
+section { display: grid; gap: 16px; }
+.band-head { display: grid; gap: 4px; max-width: 70ch; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 24px; margin: 0; text-wrap: balance; }
+.band-head p { margin: 0; color: var(--muted); }
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); align-items: start; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: grid; min-width: 0; }
+.card[data-choice="yes"] { border-color: var(--river); box-shadow: 0 0 0 2px var(--river) inset; }
+.card[data-choice="no"] img { filter: grayscale(.85); opacity: .7; }
+.card img { display: block; width: 100%; height: auto; aspect-ratio: var(--ar); object-fit: cover; background: var(--line); }
+.body { padding: 14px 16px 16px; display: grid; gap: 10px; min-width: 0; }
+h3 { font-family: var(--display); font-weight: 600; font-size: 18px; margin: 0; line-height: 1.2; }
+.take { margin: 0; font-size: 15px; }
+.take b { color: var(--sand); font-weight: 600; }
+.credit { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.credit a { color: inherit; }
+.picks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.picks button { font: 600 14px var(--body); padding: 7px 6px; border-radius: 8px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+.picks button:hover { border-color: var(--muted); }
+.picks button:focus-visible, textarea:focus-visible { outline: 2px solid var(--river); outline-offset: 2px; }
+.picks button[aria-pressed="true"][data-v="yes"] { background: var(--river); color: var(--river-ink); border-color: var(--river); }
+.picks button[aria-pressed="true"][data-v="maybe"] { background: var(--maybe-soft); color: var(--maybe); border-color: var(--maybe); }
+.picks button[aria-pressed="true"][data-v="no"] { background: var(--no-soft); color: var(--no); border-color: var(--no); }
+.picks button:disabled { cursor: not-allowed; opacity: .5; }
+textarea { width: 100%; min-height: 40px; resize: vertical; font: 15px var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; }
+.mine .body { background: var(--sand-soft); }
+.tag { justify-self: start; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--sand); }
+.overall { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 10px; max-width: 760px; }
+.overall label { font-family: var(--display); font-weight: 600; font-size: 18px; }
+.overall textarea { min-height: 90px; }
+footer { font-size: 13px; color: var(--muted); max-width: 80ch; }
+@media (prefers-reduced-motion: no-preference) { .card { transition: box-shadow .15s, border-color .15s; } }
+@media (max-width: 420px) { .grid { grid-template-columns: 1fr; } .tally .status { margin-left: 0; width: 100%; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">1001 Squirrels · south gorge · reference board</div>
+    <h1>Pick the look for the <span class="strata">gorge to Italy</span></h1>
+    <p>Mark each photo <b>Use this</b>, <b>Maybe</b> or <b>Not this</b>, and add a note if one detail matters (the arches, the colour of the rock, the trees on top). Your picks save as you go, and Claude reads them back before making anything.</p>
+    <div class="decided" aria-label="Already decided">
+      <span class="chip"><b>Cliffs:</b> cream layered sandstone</span>
+      <span class="chip"><b>Landmark:</b> old stone aqueduct</span>
+      <span class="chip"><b>Start:</b> "Sail to Italy?" card</span>
+      <span class="chip"><b>Haze:</b> none</span>
+    </div>
+  </header>
+
+  <div class="tally" role="status" aria-live="polite">
+    <span>Use this <span class="n" id="n-yes">0</span></span>
+    <span>Maybe <span class="n" id="n-maybe">0</span></span>
+    <span>Not this <span class="n" id="n-no">0</span></span>
+    <span class="status" id="status">Connecting…</span>
+  </div>
+
+  <section aria-labelledby="h-mine">
+    <div class="band-head">
+      <h2 id="h-mine">Your map today</h2>
+      <p>The style everything new has to match: low-poly shapes, soft flat colours, cream rock in stacked layers.</p>
+    </div>
+    <div class="grid" id="grid-mine"></div>
+  </section>
+
+  <section aria-labelledby="h-aq">
+    <div class="band-head">
+      <h2 id="h-aq">The aqueduct</h2>
+      <p>The boat sails under it at about z -345, with at least 10 studs above the water. One or two tiers of arches in the game, simplified into chunky blocks.</p>
+    </div>
+    <div class="grid" id="grid-aq"></div>
+  </section>
+
+  <section aria-labelledby="h-gorge">
+    <div class="band-head">
+      <h2 id="h-gorge">The sandstone gorge</h2>
+      <p>Cliffs 30 to 45 studs high either side of water about 20 studs wide. Look at the rock colour, the layers, what grows on top and what sits at the waterline.</p>
+    </div>
+    <div class="grid" id="grid-gorge"></div>
+  </section>
+
+  <div class="overall">
+    <label for="note-overall">Anything else? (colours, mood, things to avoid)</label>
+    <textarea id="note-overall" placeholder="e.g. warmer rock like the Pont du Gard, more trees on top, keep the water bright turquoise"></textarea>
+  </div>
+
+  <footer>
+    Photos from Wikimedia Commons, resized, used under the licences shown on each card. The three "Your map" pictures are Studio captures of 1001 Squirrels.
+  </footer>
+</div>
+
+<script>
+const CARDS = [
+  { id: "m1", band: "mine", mine: true, ar: "640/310", title: "Your Sandstone Climb", take: "<b>Match this rock:</b> cream and tan bands stacked like a layer cake, rounded low-poly edges, green bushes on the ledges." },
+  { id: "m2", band: "mine", mine: true, ar: "1100/472", title: "The edge of the map now", take: "<b>Keep this feel:</b> soft grassy mounds and low-poly trees. The new ridge grows out of these." },
+  { id: "m3", band: "mine", mine: true, ar: "1100/368", title: "What the boat sees today", take: "<b>The starting view:</b> from the jetty, looking south. Past the mounds the land is flat and empty. The gorge fills that." },
+  { id: "a1", band: "aq", ar: "1100/820", title: "Pont du Gard, from the water", take: "<b>The boater's view:</b> big arches marching across the river, warm honey stone, trees right up to the ends.",
+    credit: "Chris0693", lic: "CC BY-SA 3.0", licUrl: "https://creativecommons.org/licenses/by-sa/3.0/", src: "https://commons.wikimedia.org/wiki/File:Pont_Du_Gard_From_River.JPG" },
+  { id: "a2", band: "aq", ar: "1100/425", title: "Pont du Gard, the whole span", take: "<b>The shape:</b> three tiers, big arches below and many small ones on top. The game version might keep two tiers.",
+    credit: "Benh LIEU SONG", lic: "CC BY-SA 3.0", licUrl: "https://creativecommons.org/licenses/by-sa/3.0/", src: "https://commons.wikimedia.org/wiki/File:Pont_du_Gard_BLS.jpg" },
+  { id: "a3", band: "aq", ar: "1100/619", title: "Ponte delle Torri, Spoleto (Italy)", take: "<b>Tall and narrow:</b> very tall slim piers across a wooded gorge, paler stone. More dramatic, more Italian.",
+    credit: "Christoph Strässler", lic: "CC BY-SA 2.0", licUrl: "https://creativecommons.org/licenses/by-sa/2.0/", src: "https://commons.wikimedia.org/wiki/File:Ponte_delle_Torri,_Spoleto,_Italy.jpg" },
+  { id: "a4", band: "aq", ar: "1100/825", title: "Ponte Acquedotto, Gravina in Puglia", take: "<b>Simpler:</b> a short aqueduct-bridge over a dry ravine, cypress trees below. A smaller, humbler option.",
+    credit: "Lorenzo Ciaccia", lic: "CC BY-SA 4.0", licUrl: "https://creativecommons.org/licenses/by-sa/4.0/", src: "https://commons.wikimedia.org/wiki/File:Gravina_in_Puglia_-_Ponte_Acquedotto_-_panoramica.jpeg" },
+  { id: "g1", band: "gorge", ar: "1100/826", title: "Gorges de l'Ardèche, at water level", take: "<b>The waterline:</b> pale cliffs, a little sand beach, a big rock in the shallows. Close to what the boat will pass.",
+    credit: "Sébastien Crego", lic: "CC BY-SA 4.0", licUrl: "https://creativecommons.org/licenses/by-sa/4.0/", src: "https://commons.wikimedia.org/wiki/File:Gorges_de_l%27Ard%C3%A8che_-_Pont_d%27Arc_%C3%A0_fleur_d%27eau.jpg" },
+  { id: "g2", band: "gorge", ar: "1096/1100", title: "Canoes in the Ardèche gorge", take: "<b>Scale:</b> small boats under towering rock and a natural arch, green trees tucked into the cliff.",
+    credit: "Celeda", lic: "CC BY-SA 4.0", licUrl: "https://creativecommons.org/licenses/by-sa/4.0/", src: "https://commons.wikimedia.org/wiki/File:Cano%C3%ABs_en_haut_des_Gorges_de_l%27Ard%C3%A8che.jpg" },
+  { id: "g3", band: "gorge", ar: "1100/733", title: "Gorges du Verdon (Provence)", take: "<b>Colour:</b> cream cliffs with turquoise water and dark green scrub on top. This one is in Provence, next door to your map's theme.",
+    credit: "kallerna", lic: "CC BY-SA 4.0", licUrl: "https://creativecommons.org/licenses/by-sa/4.0/", src: "https://commons.wikimedia.org/wiki/File:Verdon_Gorge_1.jpg" },
+  { id: "g4", band: "gorge", ar: "1100/825", title: "Zion Narrows", take: "<b>Layers up close:</b> warm banded sandstone walls right at the water, with an overhang. Warmer and redder than cream.",
+    credit: "Jason", lic: "CC BY 2.0", licUrl: "https://creativecommons.org/licenses/by/2.0/", src: "https://commons.wikimedia.org/wiki/File:Zion_-_The_Narrows.jpg" }
+];
+const LABELS = { yes: "Use this", maybe: "Maybe", no: "Not this" };
+const state = {};          // id -> {choice, note}
+let db = null;
+const $ = (s) => document.querySelector(s);
+
+function cardHTML(c) {
+  const picks = c.mine ? "" : `
+      <div class="picks" role="group" aria-label="Pick for ${c.title}">
+        ${Object.keys(LABELS).map(v => `<button type="button" id="pick-${c.id}-${v}" data-id="${c.id}" data-v="${v}" aria-pressed="false" disabled>${LABELS[v]}</button>`).join("")}
+      </div>`;
+  const credit = c.mine ? `<span class="tag">From your game</span>` :
+    `<div class="credit">Photo: ${c.credit}, <a href="${c.licUrl}" target="_blank" rel="noopener">${c.lic}</a>, <a href="${c.src}" target="_blank" rel="noopener">Wikimedia Commons</a> (resized)</div>`;
+  return `<article class="card${c.mine ? " mine" : ""}" id="card-${c.id}" style="--ar:${c.ar}">
+    <img src="img/${c.id}.jpg" alt="${c.title}" loading="lazy" width="${c.ar.split("/")[0]}" height="${c.ar.split("/")[1]}">
+    <div class="body">
+      <h3>${c.title}</h3>
+      <p class="take">${c.take}</p>
+      ${picks}
+      ${c.mine ? "" : `<textarea id="note-${c.id}" data-id="${c.id}" rows="1" placeholder="Note (optional)" disabled></textarea>`}
+      ${credit}
+    </div>
+  </article>`;
+}
+for (const band of ["mine", "aq", "gorge"]) {
+  $("#grid-" + band).innerHTML = CARDS.filter(c => c.band === band).map(cardHTML).join("");
+}
+
+function paint() {
+  const n = { yes: 0, maybe: 0, no: 0 };
+  for (const c of CARDS) {
+    if (c.mine) continue;
+    const s = state[c.id] || {};
+    if (s.choice) n[s.choice]++;
+    document.getElementById("card-" + c.id).dataset.choice = s.choice || "";
+    for (const v of Object.keys(LABELS)) document.getElementById(`pick-${c.id}-${v}`).setAttribute("aria-pressed", String(s.choice === v));
+    const ta = document.getElementById("note-" + c.id);
+    if (document.activeElement !== ta) ta.value = s.note || "";
+  }
+  for (const k in n) document.getElementById("n-" + k).textContent = n[k];
+  const ov = document.getElementById("note-overall");
+  if (document.activeElement !== ov) ov.value = (state.overall && state.overall.note) || "";
+}
+
+function setStatus(t) { $("#status").textContent = t; }
+
+async function save(id, patch) {
+  state[id] = Object.assign({}, state[id], patch, { updatedAt: new Date().toISOString() });
+  paint();
+  if (!db) return;
+  setStatus("Saving…");
+  try { await db.collection("picks").doc(id).set(state[id]); setStatus("Saved"); }
+  catch (e) {
+    if (e && e.code === "unavailable") {
+      setTimeout(async () => { try { await db.collection("picks").doc(id).set(state[id]); setStatus("Saved"); } catch { setStatus("Couldn't save. Try again in a moment."); } }, 600 + Math.random() * 800);
+    } else { setStatus("Couldn't save that change."); }
+  }
+}
+
+document.addEventListener("click", (ev) => {
+  const b = ev.target.closest(".picks button");
+  if (!b || b.disabled) return;
+  const id = b.dataset.id, v = b.dataset.v;
+  save(id, { choice: (state[id] && state[id].choice === v) ? null : v });
+});
+const timers = {};
+document.addEventListener("input", (ev) => {
+  const ta = ev.target.closest("textarea"); if (!ta || ta.disabled) return;
+  const id = ta.id === "note-overall" ? "overall" : ta.dataset.id;
+  clearTimeout(timers[id]);
+  timers[id] = setTimeout(() => save(id, { note: ta.value }), 700);
+});
+document.addEventListener("focusout", (ev) => {
+  const ta = ev.target.closest("textarea"); if (!ta || ta.disabled) return;
+  const id = ta.id === "note-overall" ? "overall" : ta.dataset.id;
+  const cur = (state[id] && state[id].note) || "";
+  if (ta.value !== cur) { clearTimeout(timers[id]); save(id, { note: ta.value }); }
+});
+
+paint();
+(async () => {
+  try { db = window.claude && window.claude.use ? await window.claude.use("db") : null; } catch { db = null; }
+  if (!db) { setStatus("Picks can't be saved in this view. Open the page from claude.ai to choose."); return; }
+  document.querySelectorAll(".picks button, textarea").forEach(el => el.disabled = false);
+  setStatus("Ready: your picks save as you go");
+  db.collection("picks").onSnapshot((snap) => {
+    for (const d of snap.docs) { if (d.exists) state[d.id] = Object.assign({}, d.data()); }
+    paint();
+  }, () => setStatus("Live updates stopped. Reload the page to keep picking."));
+})();
+</script>

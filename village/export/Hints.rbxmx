@@ -1,0 +1,315 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+  <Item class="Folder" referent="RBX0"><Properties><string name="Name">Hints</string></Properties>
+    <Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[-- Hints: a paid HINT (Developer Product, Robux). "Need a hint?" prompts the purchase; on success one squirrel this player
+-- has not found yet (the nearest one in the area they are standing in) is marked for them alone: it glows through walls
+-- in cycling bright colours, spins, floats up off the ground with sparkles and a "Hint!" beacon, for HintSeconds or until
+-- the player gets within click range (then it settles back down but stays lit) or finds it. Nobody else sees any of it.
+-- The product is created on the Creator Dashboard (Monetization > Developer Products); its id goes in the HintProductId
+-- attribute. While the id is 0, hints are free in Studio (for testing) and the button says "coming soon" in the live game.
+-- Run in edit mode: require(workspace.Hints.PatchModule)()  (packed by village/make_patch.py)
+return function()
+	local old = workspace:FindFirstChild("HintShop"); if old then old:Destroy() end
+	local H = Instance.new("Folder"); H.Name = "HintShop"
+	H:SetAttribute("HintProductId", 3713471302); H:SetAttribute("HintSeconds", 120)
+	H.Parent = workspace
+	for _, n in ipairs({"HintRequest", "HintGranted", "HintStatus"}) do local e = Instance.new("RemoteEvent"); e.Name = n; e.Parent = H end
+
+	local SERVER = [==[
+-- HintServer: takes the purchase (or grants a free test hint in Studio), picks the squirrel and tells that player's client.
+local Players = game:GetService("Players")
+local MarketplaceService = game:GetService("MarketplaceService")
+local CollectionService = game:GetService("CollectionService")
+local RunService = game:GetService("RunService")
+local H = script.Parent
+local req, granted, status = H:WaitForChild("HintRequest"), H:WaitForChild("HintGranted"), H:WaitForChild("HintStatus")
+local Registry = require(workspace:WaitForChild("SquirrelScripts"):WaitForChild("SquirrelRegistry"))
+local MAP_OF = {}
+for _, e in ipairs(Registry.squirrels) do MAP_OF[e.id] = e.map end
+local function zoneOf(pos)
+	local zones = workspace:FindFirstChild("Zones")
+	if zones then
+		for _, z in ipairs(zones:GetChildren()) do
+			if z:IsA("BasePart") and z:GetAttribute("MapId") then
+				local rel = z.CFrame:PointToObjectSpace(pos)
+				if math.abs(rel.X) <= z.Size.X / 2 and math.abs(rel.Z) <= z.Size.Z / 2 then return z:GetAttribute("MapId") end
+			end
+		end
+	end
+	return "forest"
+end
+local function foundSet(player)
+	local s = {}
+	for id in string.gmatch(player:GetAttribute("FoundIds") or "", "[^,]+") do s[id] = true end
+	return s
+end
+-- the nearest squirrel this player has not found, in the area they stand in (any area if that one is complete)
+local function pick(player)
+	local char = player.Character
+	local root = char and char:FindFirstChild("HumanoidRootPart")
+	local pos = root and root.Position or Vector3.zero
+	local zone, found = zoneOf(pos), foundSet(player)
+	local here, elsewhere = {}, {}
+	for _, m in ipairs(CollectionService:GetTagged("Squirrel")) do
+		if m:IsA("Model") and not m.Name:lower():find("gray") and m:IsDescendantOf(workspace) then
+			local id = m:GetAttribute("SquirrelId") or (m.Name:lower():gsub("_color$", ""))
+			if not found[id] then
+				local ok, bb = pcall(function() return m:GetBoundingBox() end)
+				if ok then
+					local rec = {model = m, id = id, pos = bb.Position, dist = (bb.Position - pos).Magnitude}
+					if MAP_OF[id] == zone then table.insert(here, rec) else table.insert(elsewhere, rec) end
+				end
+			end
+		end
+	end
+	local list = (#here > 0) and here or elsewhere
+	table.sort(list, function(a, b) return a.dist < b.dist end)
+	return list[1]
+end
+local function grant(player)
+	local target = pick(player)
+	if not target then status:FireClient(player, "You have found every squirrel. Nothing left to hint!"); return false end
+	local secs = H:GetAttribute("HintSeconds") or 120
+	player:SetAttribute("HintUntil", os.time() + secs)
+	granted:FireClient(player, target.model, target.id, target.pos, secs)
+	print(string.format("HintServer: %s got a hint for %s", player.Name, target.id))
+	return true
+end
+req.OnServerEvent:Connect(function(player)
+	local productId = H:GetAttribute("HintProductId") or 0
+	if (player:GetAttribute("HintUntil") or 0) > os.time() then status:FireClient(player, "A hint is already running. Follow the sparkles!"); return end
+	if not pick(player) then status:FireClient(player, "You have found every squirrel. Nothing left to hint!"); return end
+	if productId > 0 then
+		local ok, err = pcall(function() MarketplaceService:PromptProductPurchase(player, productId) end)
+		if not ok then warn("HintServer: prompt failed: " .. tostring(err)); status:FireClient(player, "The shop is not answering. Try again in a moment.") end
+	elseif RunService:IsStudio() then
+		grant(player)                                             -- free while testing in Studio, until the product exists
+	else
+		status:FireClient(player, "Hints are coming soon!")
+	end
+end)
+MarketplaceService.ProcessReceipt = function(receipt)
+	local productId = H:GetAttribute("HintProductId") or 0
+	if productId <= 0 or receipt.ProductId ~= productId then return Enum.ProductPurchaseDecision.NotProcessedYet end
+	local player = Players:GetPlayerByUserId(receipt.PlayerId)
+	if not player then return Enum.ProductPurchaseDecision.NotProcessedYet end
+	grant(player)
+	return Enum.ProductPurchaseDecision.PurchaseGranted
+end
+]==]
+	local CLIENT = [==[
+-- HintClient: the "Need a hint?" button, and the hint itself (glow, spin, float, sparkles, beacon) for this player only.
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local MarketplaceService = game:GetService("MarketplaceService")
+local CollectionService = game:GetService("CollectionService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Debris = game:GetService("Debris")
+local player = Players.LocalPlayer
+local H = script.Parent
+local req, granted, status = H:WaitForChild("HintRequest"), H:WaitForChild("HintGranted"), H:WaitForChild("HintStatus")
+local C = Color3.fromRGB
+local SETTLE_RADIUS = 34                       -- inside click range the squirrel comes back down (but stays lit)
+
+-- ---- the button
+local gui = Instance.new("ScreenGui"); gui.Name = "HintGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.Parent = player:WaitForChild("PlayerGui")
+local UIS = game:GetService("UserInputService")
+local isMobile = UIS.TouchEnabled and not UIS.KeyboardEnabled
+local btn = Instance.new("TextButton"); btn.Name = "HintButton"; btn.Size = UDim2.new(0, 104, 0, 40)
+if isMobile then                                          -- phones: on the right, under the acorn and map icons
+	btn.AnchorPoint = Vector2.new(1, 0); btn.Position = UDim2.new(1, -10, 0, 64)
+else                                                      -- desktop: in the top row, its bottom level with the Roblox pills
+	btn.Position = UDim2.new(0, 222, 0, 14)
+end
+btn.BackgroundColor3 = C(38, 30, 52); btn.BackgroundTransparency = 0.1; btn.BorderSizePixel = 0; btn.AutoButtonColor = true
+btn.Font = Enum.Font.FredokaOne; btn.TextSize = 20; btn.TextColor3 = C(255, 246, 220); btn.Text = "Hint"; btn.Parent = gui
+local bc = Instance.new("UICorner"); bc.CornerRadius = UDim.new(0, 23); bc.Parent = btn
+local bs = Instance.new("UIStroke"); bs.Color = C(240, 200, 90); bs.Thickness = 2; bs.Parent = btn
+local note = Instance.new("TextLabel"); note.Size = UDim2.new(0, 300, 0, 44)
+note.AnchorPoint = btn.AnchorPoint; note.Position = isMobile and UDim2.new(1, -10, 0, 170) or UDim2.new(0, 222, 0, 62); note.BackgroundColor3 = C(38, 30, 52)
+note.BackgroundTransparency = 0.2; note.TextColor3 = C(255, 246, 220); note.Font = Enum.Font.FredokaOne; note.TextSize = 16; note.TextWrapped = true; note.Visible = false; note.Parent = gui
+local nc = Instance.new("UICorner"); nc.CornerRadius = UDim.new(0, 10); nc.Parent = note
+local noteAt = 0
+local function say(text, secs)
+	note.Text = text; note.Visible = true
+	local t = os.clock(); noteAt = t
+	task.delay(secs or 4, function() if noteAt == t then note.Visible = false end end)
+end
+local ROBUX = utf8.char(0xE002)                 -- the official Robux symbol, in Roblox's own fonts
+local price
+local function fetchPrice()
+	local id = H:GetAttribute("HintProductId") or 0
+	if id <= 0 or price ~= nil then return end
+	task.spawn(function()
+		local ok, info = pcall(function() return MarketplaceService:GetProductInfo(id, Enum.InfoType.Product) end)
+		price = (ok and info and info.PriceInRobux) or false
+	end)
+end
+local function baseLabel() return "Hint" end
+fetchPrice()
+btn.Text = baseLabel()
+
+-- ---- the confirmation: what a hint does, and what it costs
+local shade = Instance.new("TextButton"); shade.Name = "Shade"; shade.Size = UDim2.fromScale(1, 1); shade.BackgroundColor3 = C(0, 0, 0)
+shade.BackgroundTransparency = 0.45; shade.BorderSizePixel = 0; shade.Text = ""; shade.AutoButtonColor = false; shade.Visible = false
+shade.ZIndex = 30; shade.Parent = gui
+local box = Instance.new("Frame"); box.Size = UDim2.new(0, 460, 0, 286); box.Position = UDim2.new(0.5, -230, 0.5, -143)
+box.BackgroundColor3 = C(38, 30, 52); box.BorderSizePixel = 0; box.ZIndex = 31; box.Parent = shade
+local bxc = Instance.new("UICorner"); bxc.CornerRadius = UDim.new(0, 18); bxc.Parent = box
+local bxs = Instance.new("UIStroke"); bxs.Color = C(240, 200, 90); bxs.Thickness = 2; bxs.Parent = box
+local mt = Instance.new("TextLabel"); mt.Size = UDim2.new(1, -40, 0, 42); mt.Position = UDim2.new(0, 20, 0, 16); mt.BackgroundTransparency = 1
+mt.Font = Enum.Font.Antique; mt.TextSize = 34; mt.TextColor3 = C(255, 214, 90); mt.Text = "Need a hint?"; mt.ZIndex = 32; mt.Parent = box
+local mb = Instance.new("TextLabel"); mb.Size = UDim2.new(1, -44, 0, 76); mb.Position = UDim2.new(0, 22, 0, 60); mb.BackgroundTransparency = 1
+mb.Font = Enum.Font.FredokaOne; mb.TextSize = 20; mb.TextWrapped = true; mb.TextColor3 = C(255, 246, 220); mb.ZIndex = 32
+mb.Text = "Get help finding that one elusive squirrel."
+mb.Parent = box
+local priceRow = Instance.new("TextLabel"); priceRow.Size = UDim2.new(1, -40, 0, 46); priceRow.Position = UDim2.new(0, 20, 0, 140)
+priceRow.BackgroundTransparency = 1; priceRow.Font = Enum.Font.FredokaOne; priceRow.TextSize = 34; priceRow.TextColor3 = C(255, 255, 255)
+priceRow.ZIndex = 32; priceRow.Parent = box
+local function modalButton(name, text, x, fill, ink)
+	local b = Instance.new("TextButton"); b.Name = name; b.Size = UDim2.new(0, 190, 0, 48); b.Position = UDim2.new(0, x, 1, -64)
+	b.BackgroundColor3 = fill; b.BorderSizePixel = 0; b.Font = Enum.Font.FredokaOne; b.TextSize = 19; b.TextColor3 = ink; b.Text = text
+	b.ZIndex = 32; b.Parent = box
+	local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0, 24); c.Parent = b
+	return b
+end
+local notNow = modalButton("NotNow", "Not now", 20, C(70, 60, 90), C(255, 246, 220))
+local buy = modalButton("Buy", "Buy hint", 250, C(70, 150, 90), C(255, 250, 244))
+local function closeModal() shade.Visible = false end
+local function openModal()
+	local id = H:GetAttribute("HintProductId") or 0
+	fetchPrice()
+	if id > 0 then
+		priceRow.Text = price and (ROBUX .. " " .. price) or (ROBUX .. " ...")
+		buy.Text = "Buy hint"
+		buy.BackgroundColor3 = C(70, 150, 90)
+	elseif RunService:IsStudio() then
+		priceRow.Text = "Free while testing in Studio"
+		buy.Text = "Try a hint"
+		buy.BackgroundColor3 = C(70, 150, 90)
+	else
+		priceRow.Text = "Coming soon"
+		buy.Text = "Coming soon"
+		buy.BackgroundColor3 = C(80, 74, 96)
+	end
+	shade.Visible = true
+end
+notNow.Activated:Connect(closeModal)
+-- clicking the dark surround closes it; a click on the panel itself must never count as one
+local function insidePanel(pos)
+	local p, sz = box.AbsolutePosition, box.AbsoluteSize
+	return pos.X >= p.X and pos.X <= p.X + sz.X and pos.Y >= p.Y and pos.Y <= p.Y + sz.Y
+end
+shade.InputBegan:Connect(function(io)
+	if io.UserInputType == Enum.UserInputType.MouseButton1 or io.UserInputType == Enum.UserInputType.Touch then
+		if not insidePanel(io.Position) then closeModal() end
+	end
+end)
+buy.Activated:Connect(function()
+	local id = H:GetAttribute("HintProductId") or 0
+	if id <= 0 and not RunService:IsStudio() then closeModal(); say("Hints are coming soon!", 3); return end
+	closeModal()
+	req:FireServer()
+end)
+status.OnClientEvent:Connect(function(msg) say(msg, 4) end)
+
+-- ---- the hint
+local active
+local function stopHint()
+	if not active then return end
+	local a = active; active = nil
+	if a.conn then a.conn:Disconnect() end
+	if a.model and a.model.Parent and a.pivot0 then pcall(function() a.model:PivotTo(a.pivot0) end) end
+	for _, inst in ipairs(a.junk) do if inst.Parent then inst:Destroy() end end
+	if a.addedConn then a.addedConn:Disconnect() end
+	btn.Text = baseLabel()
+end
+local function attachModelEffects(a, model)
+	a.model = model
+	a.pivot0 = model:GetPivot()
+	local bb, sz = model:GetBoundingBox()
+	a.centre = bb.Position; a.height = sz.Y
+	local hl = Instance.new("Highlight"); hl.Name = "HintGlow"; hl.Adornee = model; hl.FillTransparency = 0.3; hl.OutlineTransparency = 0
+	hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop; hl.Parent = model; table.insert(a.junk, hl)
+	local part = model.PrimaryPart or model:FindFirstChildWhichIsA("BasePart", true)
+	if part then
+		local at = Instance.new("Attachment"); at.Name = "HintSparkle"; at.Parent = part; table.insert(a.junk, at)
+		local pe = Instance.new("ParticleEmitter"); pe.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+		pe.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, C(255, 80, 200)), ColorSequenceKeypoint.new(0.33, C(80, 220, 255)), ColorSequenceKeypoint.new(0.66, C(255, 230, 60)), ColorSequenceKeypoint.new(1, C(120, 255, 120))})
+		pe.Size = NumberSequence.new(0.55, 0); pe.Lifetime = NumberRange.new(0.8, 1.4); pe.Speed = NumberRange.new(3, 5); pe.SpreadAngle = Vector2.new(180, 180)
+		pe.Acceleration = Vector3.new(0, -3, 0); pe.LightEmission = 1; pe.Rate = 70; pe.Parent = at
+		a.emitter = pe
+	end
+end
+local function beacon(a, pos)
+	local p = Instance.new("Part"); p.Name = "HintBeacon"; p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false; p.Transparency = 1
+	p.Size = Vector3.new(1, 1, 1); p.Position = pos + Vector3.new(0, 8, 0); p.Parent = workspace; table.insert(a.junk, p)
+	local bg = Instance.new("BillboardGui"); bg.Size = UDim2.new(0, 150, 0, 60); bg.AlwaysOnTop = true; bg.MaxDistance = 1500; bg.LightInfluence = 0; bg.Parent = p
+	local l = Instance.new("TextLabel"); l.Size = UDim2.fromScale(1, 1); l.BackgroundTransparency = 1; l.Font = Enum.Font.FredokaOne; l.TextSize = 30
+	l.TextColor3 = C(255, 230, 80); l.TextStrokeTransparency = 0.2; l.Text = "Hint!"; l.Parent = bg
+	a.beacon, a.beaconLabel = p, l
+end
+local function startHint(model, id, pos, secs)
+	stopHint()
+	local a = {id = id, pos = pos, junk = {}, t0 = os.clock(), secs = secs, t = 0, yaw = 0, lift = 0, state = "rising"}
+	active = a
+	beacon(a, pos)
+	if model then attachModelEffects(a, model) else
+		-- not streamed in yet: hook it when it arrives
+		a.addedConn = CollectionService:GetInstanceAddedSignal("Squirrel"):Connect(function(m)
+			if active == a and not a.model and m:IsA("Model") and (m:GetAttribute("SquirrelId") == id or m.Name:lower():gsub("_color$", "") == id) and not m.Name:lower():find("gray") then attachModelEffects(a, m) end
+		end)
+	end
+	say("Follow the sparkles to your squirrel.", 6)
+	local s = Instance.new("Sound"); s.SoundId = "rbxasset://sounds/electronicpingshort.wav"; s.Volume = 0.6; s.Parent = gui; s:Play(); Debris:AddItem(s, 3)
+	a.conn = RunService.RenderStepped:Connect(function(dt)
+		if active ~= a then return end
+		a.t += dt
+		local left = a.secs - (os.clock() - a.t0)
+		if left <= 0 then stopHint(); return end
+		btn.Text = string.format("Hint on  %d:%02d", math.floor(left / 60), math.floor(left % 60))
+		-- colours
+		local hue = (a.t * 0.45) % 1
+		local char = player.Character
+		local root = char and char:FindFirstChild("HumanoidRootPart")
+		local ref = a.centre or a.pos
+		if a.state == "rising" and root and (root.Position - ref).Magnitude < SETTLE_RADIUS then a.state = "settling"; a.settleT = a.t end
+		local target = (a.state == "rising") and (5 + 0.7 * math.sin(a.t * 2.2)) or 0
+		a.lift += (target - a.lift) * math.min(1, dt * (a.state == "rising" and 2.5 or 1.6))
+		local spin = (a.state == "rising") and 2.4 or math.max(0, 2.4 - (a.t - (a.settleT or a.t)) * 2)
+		a.yaw += dt * spin
+		if a.model and a.model.Parent then
+			local hl = a.model:FindFirstChild("HintGlow")
+			if hl then
+				if a.state == "rising" then hl.FillColor = Color3.fromHSV(hue, 0.85, 1); hl.OutlineColor = Color3.fromHSV((hue + 0.5) % 1, 1, 1)
+				else hl.FillColor = C(255, 214, 90); hl.OutlineColor = C(255, 250, 200); hl.FillTransparency = 0.55 end
+			end
+			if a.emitter then a.emitter.Rate = (a.state == "rising") and 70 or 25 end
+			local c = a.centre
+			a.model:PivotTo(CFrame.new(0, a.lift, 0) * CFrame.new(c) * CFrame.Angles(0, a.yaw, 0) * CFrame.new(-c) * a.pivot0)
+		end
+		if a.beacon then
+			a.beacon.Position = ref + Vector3.new(0, a.height and (a.height + 3 + a.lift) or 8, 0) + Vector3.new(0, 0.4 * math.sin(a.t * 4), 0)
+			a.beaconLabel.TextColor3 = (a.state == "rising") and Color3.fromHSV(hue, 0.7, 1) or C(255, 230, 80)
+		end
+	end)
+end
+granted.OnClientEvent:Connect(startHint)
+btn.Activated:Connect(function()
+	if active then say("A hint is already running. Follow the sparkles!", 3); return end
+	openModal()
+end)
+-- finding the hinted squirrel ends the hint at once (before the reveal hop, where possible)
+local found = ReplicatedStorage:FindFirstChild("SquirrelFound")
+if found then found.OnClientEvent:Connect(function(id) if active and tostring(id):gsub("_color$", "") == active.id then stopHint() end end) end
+H:GetAttributeChangedSignal("HintProductId"):Connect(function() price = nil; fetchPrice(); btn.Text = baseLabel() end)
+]==]
+	local function install(name, ctx, src)
+		local s = Instance.new("Script"); s.Name = name; s.RunContext = ctx; s.Source = src; s.Parent = H
+	end
+	install("HintServer", Enum.RunContext.Server, SERVER)
+	install("HintClient", Enum.RunContext.Client, CLIENT)
+	print("HintShop installed: set attribute HintProductId (Developer Product id) on workspace.HintShop; free in Studio while it is 0")
+end
+]]></ProtectedString></Properties></Item>
+  </Item>
+</roblox>

@@ -1,0 +1,111 @@
+-- ct1 Oct 4 2026 (Shannon: blend the falls cliff into the hillsides). Terrain only, both sides of the SouthCliff mesh.
+-- The old ridge edge was a vertical grass wall (drawn dark grey) on a straight line at z -548..-552. Now: a limestone
+-- escarpment in the cliff's own cream colour, tallest beside the cliff piece and breaking into three ledged tiers, that
+-- fades with distance into a rounded grassy slope down to the harbour level. North of the edge line (the ridge top) only
+-- the sharp lip is rounded. Backup of both regions first (ServerStorage.CliffBlendBackup).
+-- Protected: anything below y -50, water cells, the harbour->station path (x<336 south of z -580), the station and the
+-- funicular hill (east: never south of z -588 for x<380 / -592 beyond).
+local T=workspace.Terrain
+local SS=game:GetService('ServerStorage')
+local LIME=Enum.Material.Limestone local GRASS=Enum.Material.Grass local GROUND=Enum.Material.Ground local AIR=Enum.Material.Air local WATER=Enum.Material.Water
+T:SetMaterialColor(LIME,Color3.fromRGB(228,199,146))           -- the strata texture's mean colour (Limestone is unused elsewhere)
+local bk=SS:FindFirstChild('CliffBlendBackup')
+local function region(x0,x1,z0,z1) return Region3.new(Vector3.new(x0,-56,z0),Vector3.new(x1,64,z1)):ExpandToGrid(4) end
+local RW=region(-152,48,-644,-528)
+local RE=region(328,564,-596,-528)
+if not bk then
+	bk=Instance.new('Folder') bk.Name='CliffBlendBackup'
+	for name,r in pairs({West=RW,East=RE}) do
+		local mn=r.CFrame.Position-r.Size/2 local mx=r.CFrame.Position+r.Size/2
+		local tr=T:CopyRegion(Region3int16.new(Vector3int16.new(mn.X/4,mn.Y/4,mn.Z/4),Vector3int16.new(mx.X/4-1,mx.Y/4-1,mx.Z/4-1)))
+		tr.Name='Terrain'..name tr:SetAttribute('Corner',r.CFrame.Position-r.Size/2) tr.Parent=bk
+	end
+	bk.Parent=SS
+end
+local function smooth(e0,e1,v) local t=math.clamp((v-e0)/(e1-e0),0,1) return t*t*(3-2*t) end
+local function n1(x) return math.sin(x*0.071)*0.6+math.sin(x*0.193+1.3)*0.4 end      -- -1..1 smooth wobble
+local function n2(x) return math.sin(x*0.137+2.1)*0.5+math.sin(x*0.311+0.4)*0.5 end
+local stats={}
+local function pass(tag,r,distFn,zClip)
+	local mat,occ=T:ReadVoxels(r,4)
+	local sx,sy,sz=mat.Size.X,mat.Size.Y,mat.Size.Z
+	local x0=r.CFrame.Position.X-r.Size.X/2 local y0=r.CFrame.Position.Y-r.Size.Y/2 local z0=r.CFrame.Position.Z-r.Size.Z/2
+	local changed=0
+	for i=1,sx do
+		local x=x0+(i-0.5)*4
+		local d=math.max(0,distFn(x))
+		local zc=-550+2.5*n1(x)
+		-- ridge top T from the column just north of the edge line (highest filled cell)
+		local kT=math.clamp(math.floor((zc+4-z0)/4)+1,1,sz)
+		local top=-60
+		for j=sy,1,-1 do if occ[i][j][kT]>0.05 and mat[i][j][kT]~=WATER then top=y0+(j-1)*4+occ[i][j][kT]*4 break end end
+		local F=-48
+		local Hr=math.max(0,(top-F)*(1-smooth(0,150,d))*(0.86+0.14*n2(x)))
+		local tiers={} local rem=Hr
+		for t=1,3 do local h=(t<3) and Hr/3*(1+0.18*n2(x*1.7+t*13)) or rem rem-=h tiers[t]=math.max(0,h) end
+		local ledge=2.5+1.5*(n1(x*2.3)+1)
+		for k=1,sz do
+			local z=z0+(k-0.5)*4
+			local u=zc-z                                             -- distance south of the edge line
+			local zmin=zClip(x)
+			if z>=zmin and u>-6 then
+				local S
+				if u<0 then
+					S=nil                                            -- round the lip: handled below per column
+				else
+					-- three ledged rock tiers, then a talus/grass slope at 0.8
+					local y=top local uu=u local rockEnd=0 local inRock=false
+					for t=1,3 do
+						local h=tiers[t] local run=math.max(h/3.5,0.01)
+						if h>0.5 and uu<=run then y=y-h*(uu/run) inRock=true uu=-1 break end
+						y=y-h uu=uu-run
+						if t<3 and h>0.5 then if uu<=ledge then inRock=true uu=-1 break end uu=uu-ledge end
+					end
+					if uu>=0 then
+						-- slope below the rock (or the whole shoulder where there is no rock): eases in over 8 studs
+						local g=(Hr<4) and (0.25+0.55*smooth(0,8,uu)) or 0.8
+						y=y-uu*g
+					end
+					S=math.max(F,y)
+					stats.rock=(stats.rock or 0)+(inRock and 1 or 0)
+					-- rewrite this column's cells between F-2 and top+6
+					for j=1,sy do
+						local yb=y0+(j-1)*4
+						if yb>=-50 and yb<=top+6 and mat[i][j][k]~=WATER then
+							local o=math.clamp((S-yb)/4,0,1)
+							local m=AIR
+							if o>0 then
+								local depth=S-(yb+4)
+								if inRock or (Hr>=4 and S>top-Hr-3) then m=LIME
+								elseif depth>6 then m=GROUND else m=GRASS end
+							end
+							if math.abs(occ[i][j][k]-o)>0.01 or mat[i][j][k]~=m then occ[i][j][k]=o mat[i][j][k]=m changed+=1 end
+						end
+					end
+				end
+				if u<0 then
+					-- ridge lip: lower the very edge by up to 1.5 studs so it rounds over instead of a knife edge
+					local cut=1.5*((u+6)/6)^2
+					for j=sy,1,-1 do
+						local yb=y0+(j-1)*4
+						if occ[i][j][k]>0 and mat[i][j][k]~=WATER and yb>=top-8 then
+							local surf=yb+occ[i][j][k]*4
+							if surf>top-cut then local o=math.clamp((top-cut-yb)/4,0,1) if o<occ[i][j][k] then occ[i][j][k]=o changed+=1 if o<=0 then mat[i][j][k]=AIR end end end
+						end
+					end
+				end
+			end
+		end
+	end
+	T:WriteVoxels(r,4,mat,occ)
+	stats[tag]=changed
+end
+-- west: distance from the cliff piece's west end (x ~44); east: from its east end (x ~332)
+pass('W',RW,function(x) return 44-x end,function(x) return -640 end)
+pass('E',RE,function(x) return x-332 end,function(x) if x<336 then return -580 elseif x<380 then return -588 else return -592 end end)
+game:GetService('ChangeHistoryService'):SetWaypoint('Cliff blend terrain t1')
+warn('QB@T1 changed W',stats.W,'E',stats.E,'rock cols',stats.rock,'limestone',T:GetMaterialColor(LIME))
+local cam=workspace.CurrentCamera
+local t=Vector3.new(20,-5,-565)
+cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(Vector3.new(150,40,-760),t)

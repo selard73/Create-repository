@@ -1,0 +1,85 @@
+===== mailman_squirrel: neck starts z 1.57, head centre (0.00,-0.79,1.97), zone z >= 1.77: 871 verts | MIXED 0 | BODY 2
+  BODY: mean head 0.00 body 0.99, bbox x -0.45..-0.44 y -0.56..-0.55 z 2.40..2.40
+     cell (-0.50,-0.50, 2.50) n  2 head 0.00 colours [('brown', 2)]
+===== philosopher_squirrel: neck starts z 1.25, head centre (0.00,-0.88,1.65), zone z >= 1.45: 237 verts | MIXED 0 | BODY 0
+===== waiter_squirrel: neck starts z 1.30, head centre (0.00,-0.74,1.70), zone z >= 1.50: 482 verts | MIXED 20 | BODY 0
+  MIXED: mean head 0.84 body 0.15, bbox x -0.26..0.25 y -0.26..-0.16 z 1.50..1.71
+     cell ( 0.00,-0.25, 1.50) n  6 head 0.77 colours [('brown', 6)]
+     cell ( 0.00,-0.25, 1.75) n  6 head 0.89 colours [('brown', 3), ('pink/red', 2)]
+     cell ( 0.25,-0.25, 1.50) n  3 head 0.84 colours [('brown', 3)]
+     cell (-0.25,-0.25, 1.50) n  3 head 0.88 colours [('brown', 3)]
+     cell ( 0.25,-0.25, 1.75) n  2 head 0.89 colours [('brown', 1), ('pink/red', 1)]
+===== mime_squirrel: neck starts z 1.41, head centre (0.00,-0.83,1.81), zone z >= 1.61: 602 verts | MIXED 0 | BODY 21
+  BODY: mean head 0.00 body 1.00, bbox x -0.77..-0.58 y -0.71..-0.56 z 1.61..1.67
+     cell (-0.75,-0.50, 1.75) n  7 head 0.00 colours [('white-high', 5), ('dark', 1)]
+     cell (-0.75,-0.75, 1.75) n  6 head 0.00 colours [('pink/red', 4), ('white-high', 2)]
+     cell (-0.50,-0.75, 1.75) n  3 head 0.00 colours [('white-high', 2), ('pink/red', 1)]
+     cell (-0.50,-0.75, 1.50) n  2 head 0.00 colours [('white-high', 1), ('pink/red', 1)]
+     cell (-0.75,-0.75, 1.50) n  2 head 0.00 colours [('pink/red', 1), ('white-high', 1)]
+     cell (-0.50,-0.50, 1.75) n  1 head 0.00 colours [('white-high', 1)]
+===== cyclist_squirrel: neck starts z 1.35, head centre (0.00,-0.61,1.75), zone z >= 1.55: 505 verts | MIXED 62 | BODY 0
+  MIXED: mean head 0.84 body 0.15, bbox x -0.32..0.32 y -0.29..-0.05 z 1.57..1.94
+     cell ( 0.00, 0.00, 1.75) n 15 head 0.86 colours [('other', 13), ('blue', 2)]
+     cell (-0.25,-0.25, 1.75) n 12 head 0.88 colours [('blue', 5), ('yellow', 3)]
+     cell (-0.25,-0.25, 1.50) n  7 head 0.83 colours [('gray', 3), ('blue', 3)]
+     cell ( 0.00, 0.00, 1.50) n  5 head 0.71 colours [('blue', 3), ('gray', 2)]
+     cell ( 0.25,-0.25, 1.50) n  5 head 0.84 colours [('blue', 4), ('other', 1)]
+     cell (-0.25, 0.00, 1.75) n  5 head 0.86 colours [('other', 4), ('yellow', 1)]
+     cell ( 0.25, 0.00, 1.75) n  5 head 0.86 colours [('other', 3), ('yellow', 1)]
+     cell ( 0.00,-0.25, 2.00) n  3 head 0.89 colours [('other', 2), ('blue', 1)]
+     cell (-0.25, 0.00, 1.50) n  2 head 0.81 colours [('yellow', 1), ('blue', 1)]
+     cell ( 0.00,-0.25, 1.50) n  2 head 0.72 colours [('gray', 1), ('blue', 1)]
+===== glam_squirrel: neck starts z 1.54, head centre (0.00,-0.75,1.94), zone z >= 1.74: 573 verts | MIXED 0 | BODY 0
+===== bird_feeder_squirrel: neck starts z 1.24, head centre (0.00,-0.58,1.64), zone z >= 1.44: 277 verts | MIXED 0 | BODY 0
+===== firefighter_squirrel: neck starts z 1.53, head centre (0.00,-0.84,1.93), zone z >= 1.73: 686 verts | MIXED 0 | BODY 0
+===== tourist_squirrel: neck starts z 1.44, head centre (0.00,-0.68,1.84), zone z >= 1.64: 727 verts | MIXED 0 | BODY 0
+===== painter_squirrel: neck starts z 1.32, head centre (0.00,-0.73,1.72), zone z >= 1.52: 690 verts | MIXED 13 | BODY 137
+  MIXED: mean head 0.86 body 0.13, bbox x -0.23..0.31 y -0.17..-0.07 z 1.54..1.68
+     cell ( 0.00, 0.00, 1.75) n  3 head 0.88 colours [('gray', 3)]
+     cell ( 0.00, 0.00, 1.50) n  3 head 0.83 colours [('gray', 3)]
+     cell ( 0.25, 0.00, 1.75) n  2 head 0.87 colours [('gray', 2)]
+     cell ( 0.25,-0.25, 1.50) n  2 head 0.86 colours [('gray', 2)]
+     cell (-0.25,-0.25, 1.50) n  1 head 0.88 colours [('gray', 1)]
+     cell (-0.25, 0.00, 1.50) n  1 head 0.89 colours [('gray', 1)]
+     cell ( 0.25, 0.00, 1.50) n  1 head 0.83 colours [('gray', 1)]
+  BODY: mean head 0.00 body 0.98, bbox x 0.47..0.78 y -1.32..-1.10 z 1.52..1.91
+     cell ( 0.50,-1.25, 1.75) n 54 head 0.00 colours [('brown', 30), ('other', 10)]
+     cell ( 0.75,-1.25, 1.75) n 53 head 0.00 colours [('other', 28), ('brown', 22)]
+     cell ( 0.50,-1.25, 1.50) n 12 head 0.00 colours [('white-high', 5), ('brown', 5)]
+     cell ( 0.75,-1.25, 2.00) n  9 head 0.00 colours [('other', 9)]
+     cell ( 0.50,-1.00, 1.50) n  7 head 0.00 colours [('brown', 3), ('white-high', 3)]
+     cell ( 0.50,-1.00, 1.75) n  1 head 0.00 colours [('brown', 1)]
+     cell ( 0.75,-1.00, 1.75) n  1 head 0.00 colours [('brown', 1)]
+===== florist_squirrel: neck starts z 1.16, head centre (0.00,-0.77,1.56), zone z >= 1.36: 451 verts | MIXED 192 | BODY 121
+  MIXED: mean head 0.82 body 0.17, bbox x -0.52..0.47 y -0.69..-0.08 z 1.36..2.40
+     cell ( 0.25,-0.50, 2.00) n 28 head 0.87 colours [('white-high', 16), ('brown', 11)]
+     cell ( 0.25,-0.25, 2.00) n 14 head 0.84 colours [('brown', 13), ('pink/red', 1)]
+     cell ( 0.50,-0.50, 1.75) n 13 head 0.88 colours [('white-high', 9), ('brown', 4)]
+     cell (-0.25,-0.50, 2.25) n 11 head 0.85 colours [('brown', 9), ('pink/red', 2)]
+     cell (-0.50,-0.50, 2.00) n 11 head 0.85 colours [('brown', 10), ('pink/red', 1)]
+     cell ( 0.50,-0.25, 2.00) n  9 head 0.84 colours [('brown', 7), ('white-high', 2)]
+     cell ( 0.50,-0.50, 2.00) n  8 head 0.87 colours [('white-high', 4), ('brown', 2)]
+     cell ( 0.25,-0.25, 1.50) n  8 head 0.68 colours [('brown', 7), ('white-high', 1)]
+     cell ( 0.25,-0.25, 1.75) n  8 head 0.79 colours [('brown', 8)]
+     cell ( 0.00,-0.25, 2.00) n  7 head 0.83 colours [('brown', 7)]
+  BODY: mean head 0.00 body 0.97, bbox x -0.64..0.35 y -1.23..-0.18 z 1.36..1.56
+     cell (-0.25,-1.00, 1.50) n 39 head 0.00 colours [('pink/red', 32), ('other', 5)]
+     cell (-0.50,-1.00, 1.50) n 26 head 0.00 colours [('other', 13), ('pink/red', 12)]
+     cell (-0.25,-0.75, 1.50) n  8 head 0.00 colours [('other', 6), ('pink/red', 2)]
+     cell (-0.50,-0.75, 1.50) n  6 head 0.00 colours [('other', 6)]
+     cell ( 0.25,-0.25, 1.50) n  6 head 0.00 colours [('other', 6)]
+     cell (-0.50,-1.25, 1.25) n  5 head 0.00 colours [('brown', 4), ('yellow', 1)]
+     cell (-0.50,-1.25, 1.50) n  5 head 0.00 colours [('other', 3), ('yellow', 1)]
+     cell (-0.50,-1.00, 1.25) n  5 head 0.00 colours [('other', 5)]
+     cell (-0.25,-0.75, 1.25) n  4 head 0.00 colours [('other', 2), ('pink/red', 1)]
+     cell (-0.25,-1.00, 1.25) n  4 head 0.00 colours [('pink/red', 4)]
+===== spy_squirrel: neck starts z 1.16, head centre (0.00,-0.64,1.56), zone z >= 1.36: 659 verts | MIXED 40 | BODY 0
+  MIXED: mean head 0.74 body 0.25, bbox x -0.83..0.12 y -0.55..0.06 z 1.36..1.60
+     cell (-0.25, 0.00, 1.50) n  9 head 0.70 colours [('white-high', 9)]
+     cell (-0.50, 0.00, 1.50) n  9 head 0.71 colours [('white-high', 9)]
+     cell ( 0.00, 0.00, 1.50) n  7 head 0.70 colours [('white-high', 7)]
+     cell (-0.75,-0.25, 1.50) n  5 head 0.77 colours [('white-high', 5)]
+     cell (-0.75,-0.50, 1.50) n  5 head 0.86 colours [('white-high', 5)]
+     cell ( 0.00,-0.25, 1.50) n  4 head 0.81 colours [('white-high', 4)]
+     cell (-0.50, 0.00, 1.25) n  1 head 0.67 colours [('white-high', 1)]
+CROWN_DONE

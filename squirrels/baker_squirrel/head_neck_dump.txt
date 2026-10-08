@@ -1,0 +1,2 @@
+Total head/neck verts: 1860
+Dirty head/neck verts (sharing chest/tail/root): 0

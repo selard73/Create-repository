@@ -1,0 +1,85 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">TidePools2</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 4 2026 v2 (after v1's grey Rock shelf was reverted): LIMESTONE, flatter and lower. Replace Codex's three ring-of-boulders pools by the sandy cove
+-- with a natural terrain-rock shelf and irregular shallow pools carved into it, plus a little sea life.
+-- Backups first: terrain region copy + the old pool parts moved (not deleted) to ServerStorage.TidePoolBackup.
+-- No asserts after the first edit: warn + return.
+local T=workspace.Terrain
+local cove=workspace.PortoNocciola['14 Lighthouse coast']:FindFirstChild('Cala della Sabbia and tide pools')
+if not cove then warn('QP@ABORT no cove') return end
+if cove:FindFirstChild('Natural tide pools') then warn('QP@ABORT already built') return end
+local SS=game:GetService('ServerStorage')
+-- ---------- backups ----------
+local bk=SS:FindFirstChild('TidePoolBackup') or Instance.new('Folder')
+bk.Name='TidePoolBackup' bk.Parent=SS
+local reg=Region3int16.new(Vector3int16.new(276/4,-68/4,-816/4),Vector3int16.new(316/4-1,-44/4-1,-756/4-1))
+local tr=T:CopyRegion(reg) tr.Name='Terrain_v2_x276_y-68_z-816' tr:SetAttribute('Corner',Vector3.new(276,-68,-816)) tr.Parent=bk
+local old=bk:FindFirstChild('OldRingPools') or Instance.new('Folder') old.Name='OldRingPools' old.Parent=bk
+local moved=0
+for _,d in ipairs(cove:GetChildren()) do
+	if d:IsA('BasePart') and (d.Name=='Tide pool rock rim' or d.Name=='Tide pool rock basin' or d.Name=='Still tide pool water' or d.Name=='Tide pool shells') then
+		d.Parent=old moved+=1
+	end
+end
+warn('QP@BACKUP terrain + parts moved',moved)
+-- ---------- shelf ----------
+local poly={{299,-762},{295,-764},{290,-768},{287,-774},{285.5,-781},{286,-788},{288.5,-794},{292.5,-799},{297,-804},{302,-807.5},{307.5,-807},{311,-804},{311,-796},{304,-794},{300,-793},{299.5,-780}}
+local function inside(x,z)
+	local c=false local j=#poly
+	for i=1,#poly do
+		local xi,zi=poly[i][1],poly[i][2] local xj,zj=poly[j][1],poly[j][2]
+		if ((zi>z)~=(zj>z)) and (x<(xj-xi)*(z-zi)/(zj-zi)+xi) then c=not c end
+		j=i
+	end
+	return c
+end
+local rng=Random.new(1004)
+local function top(x,z)        -- shelf top: ~ -50.9 by the cove, ~ -51.9 at the sea edge, plus small noise
+	local t=math.clamp((299.5-x)/13,0,1)
+	if z<-794 then t=math.clamp((311-x)/16,0,1)*0.6+math.clamp((-794-z)/14,0,1)*0.4 end
+	return -51.3-0.9*t+math.noise(x*0.21,z*0.21)*0.15
+end
+local nb=0
+-- skirt: big balls down to the sea bed so the shelf is one solid rock, not floating lumps
+for x=284,312,4.5 do for z=-809,-760,4.5 do
+	local jx,jz=x+rng:NextNumber(-1,1),z+rng:NextNumber(-1,1)
+	if inside(jx,jz) then T:FillBall(Vector3.new(jx,top(jx,jz)-5.6,jz),4.6,Enum.Material.Limestone) nb+=1 end
+end end
+-- top: smaller balls whose tops trace the shelf surface (bumpy, rounded, natural)
+for x=284,312,2.2 do for z=-809,-760,2.2 do
+	local jx,jz=x+rng:NextNumber(-0.7,0.7),z+rng:NextNumber(-0.7,0.7)
+	if inside(jx,jz) then local r=rng:NextNumber(2.4,2.9) T:FillBall(Vector3.new(jx,top(jx,jz)-r,jz),r,Enum.Material.Limestone) nb+=1 end
+end end
+-- a few loose boulders on the seaward edge
+for _,b in ipairs({{286.2,-776,1.6},{285.8,-786,1.9},{289.5,-796.5,1.5},{299,-806,1.7},{309.5,-807,1.4}}) do
+	T:FillBall(Vector3.new(b[1],-53.0+b[3]*0.35,b[2]),b[3]*0.8,Enum.Material.Limestone) nb+=1
+end
+warn('QP@SHELF balls',nb)
+-- ---------- pools: carved hollows, then the air in them becomes water ----------
+local pools={
+	{{294,-770,2.4},{296.4,-772.4,2.1}},                       -- kidney
+	{{290.6,-779.5,2.2},{291.6,-782.6,2.3},{290.4,-785.8,2.0}},  -- long crack-like pool
+	{{296.8,-786.5,2.0}},                                        -- round puddle
+	{{293.2,-793.6,2.5},{295.6,-795.8,2.1}},                     -- bigger pool
+	{{302.4,-800.5,2.2},{304.8,-802.2,1.9}},                     -- by the stairs
+	{{298.2,-777.2,1.6}},                                        -- little one
+}
+local PY=-52.2
+for pi,p in ipairs(pools) do
+	local lo,hi=Vector3.new(1e9,0,1e9),Vector3.new(-1e9,0,-1e9)
+	for _,b in ipairs(p) do
+		T:FillBall(Vector3.new(b[1],PY,b[2]),b[3],Enum.Material.Air)
+		lo=Vector3.new(math.min(lo.X,b[1]-b[3]),0,math.min(lo.Z,b[2]-b[3])) hi=Vector3.new(math.max(hi.X,b[1]+b[3]),0,math.max(hi.Z,b[2]+b[3]))
+	end
+	local r=Region3.new(Vector3.new(lo.X,-56,lo.Z),Vector3.new(hi.X,-52,hi.Z)):ExpandToGrid(4)
+	T:ReplaceMaterial(r,4,Enum.Material.Air,Enum.Material.Water)
+end
+warn('QP@POOLS',#pools)
+local T_=T
+game:GetService('ChangeHistoryService'):SetWaypoint('Natural tide pools v2 (limestone)')
+local cam=workspace.CurrentCamera
+local t=Vector3.new(295,-52,-786)
+cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(Vector3.new(276,-40,-772),t)
+warn('QP@DONE v2')
+
+end]]></ProtectedString></Properties></Item></Item></roblox>

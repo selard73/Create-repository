@@ -1,0 +1,39 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">ChairNB</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 (Shannon: the raised seat cushion of the lifeguard chair has to go, the lifeguard stands in the chair):
+-- italy/lifeguard/gen_lifeguard.py now builds Chair_Wood WITHOUT the seat bench (same bounding box 2.74 x 5.78 x 2.74).
+-- Needs the regenerated lifeguard_chair.fbx imported (Import Queue -> model 'lifeguard_chair' at the workspace root).
+-- Puts the new Chair_Wood exactly where the old one is, copies its look/physics, old -> ServerStorage.LifeguardBackup.
+local PN=workspace.PortoNocciola
+local post=PN:FindFirstChild('Lifeguard Post')
+local chairM=post and post:FindFirstChild('Lifeguard Chair')
+local old=chairM and chairM:FindFirstChild('Chair_Wood')
+local imp=workspace:FindFirstChild('lifeguard_chair')
+local new=imp and imp:FindFirstChild('Chair_Wood',true)
+if not (old and new) then warn('QCH@ABORT old',old,'imported',imp,'new',new) return end
+if (new.Size-old.Size).Magnitude>0.08 then warn('QCH@ABORT size differs',new.Size,old.Size) return end
+new.CFrame=old.CFrame
+for _,p in ipairs({'Color','Material','Reflectance','Transparency','Anchored','CanCollide','CanTouch','CanQuery','CastShadow','Locked'}) do
+	pcall(function() new[p]=old[p] end)
+end
+for _,p in ipairs({'CollisionFidelity','RenderFidelity','DoubleSided','MaterialVariant'}) do pcall(function() new[p]=old[p] end) end
+for k,v in pairs(old:GetAttributes()) do new:SetAttribute(k,v) end
+for _,ch in ipairs(old:GetChildren()) do ch.Parent=new end
+local SS=game:GetService('ServerStorage')
+local bk=SS:FindFirstChild('LifeguardBackup') or Instance.new('Folder',SS) bk.Name='LifeguardBackup'
+new.Parent=chairM
+old.Name='Chair_Wood_with_bench_oct5' old.Parent=bk
+imp:Destroy()
+game:GetService('ChangeHistoryService'):SetWaypoint('Lifeguard chair without the seat bench')
+-- the lifeguard's feet vs the seat platform (platform top = chair bottom + 4.36, the old bench top was + 4.68)
+local bottom=new.Position.Y-new.Size.Y/2
+local lg=workspace:FindFirstChild('lifeguard_squirrel_color')
+local sole=lg and lg:FindFirstChild('Squirrel') and (lg.Squirrel.Position.Y-lg.Squirrel.Size.Y/2)
+warn('QCH@SWAPPED chair at',new.Position,'platform top',string.format('%.2f',bottom+4.36),'lifeguard sole',sole and string.format('%.2f',sole) or 'n/a',
+	'CollisionFidelity',tostring(new.CollisionFidelity))
+local cam=workspace.CurrentCamera
+local t=new.Position+Vector3.new(0,1.5,0)
+cam.CameraType=Enum.CameraType.Fixed cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(t+Vector3.new(-5,3,-8),t)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

@@ -1,0 +1,12 @@
+Tail candidate count: 1579
+Tail X range: 0.20 .. 1.09
+Tail Y range: 0.00 .. 0.77
+Tail Z range: 0.08 .. 2.04
+Head candidate count: 2080
+Head X range: -1.09 .. 0.76
+Head Y range: -0.77 .. 0.61
+Head Z range: 1.45 .. 2.40
+Pin candidate count: 1698
+Pin X range: -1.09 .. -0.40
+Pin Y range: -0.74 .. -0.10
+Pin Z range: 0.00 .. 2.38

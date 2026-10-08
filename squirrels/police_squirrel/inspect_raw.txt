@@ -1,0 +1,8 @@
+Name: Mesh_0
+Vertices: 638210
+Polygons: 1276528
+Dimensions: <Vector (1.6349, 1.2044, 1.8946)>
+Location: <Vector (0.0000, 0.0000, 0.0000)>
+Bounds X: [-0.825, 0.810]
+Bounds Y: [-0.606, 0.599]
+Bounds Z: [-0.951, 0.944]

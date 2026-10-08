@@ -1,0 +1,179 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+  <Item class="Folder" referent="RBX0">
+    <Properties><string name="Name">FrenchInstall</string></Properties>
+    <Item class="ModuleScript" referent="RBX1">
+      <Properties>
+        <string name="Name">Run</string>
+        <ProtectedString name="Source"><![CDATA[
+return function()
+	local RunService = game:GetService("RunService")
+	assert(not RunService:IsRunning(), "FRENCH: stop Play first (edit mode only)")
+	local function say(...)
+		local t = table.pack(...)
+		local s = {}
+		for i = 1, t.n do s[i] = tostring(t[i]) end
+		print("FRENCH: " .. table.concat(s, " "))
+	end
+
+	-- 1. scripts: the new folder must be complete before the old one goes
+	local new = workspace:FindFirstChild("SquirrelScripts")
+	assert(new and new:FindFirstChild("SquirrelRegistry") and new:FindFirstChild("SquirrelSetup") and new:FindFirstChild("SquirrelAnim"),
+		"FRENCH: new SquirrelScripts folder not found in Workspace")
+	local reg = require(new.SquirrelRegistry)
+	local onMap, mapName = 0, nil
+	for _, e in ipairs(reg.squirrels) do if e.map == "village" then onMap += 1 end end
+	for _, m in ipairs(reg.maps) do if m.id == "village" then mapName = m.name end end
+	say("registry has", #reg.squirrels, "squirrels,", onMap, "on the French map named", mapName)
+	local old = workspace:FindFirstChild("SquirrelScripts_old")
+	if old then
+		for k, v in pairs(old:GetAttributes()) do if new:GetAttribute(k) == nil then new:SetAttribute(k, v) end end
+		old:Destroy()
+		say("old SquirrelScripts removed")
+	end
+
+	-- 2. the imported models
+	local IDS = {"mailman_squirrel", "philosopher_squirrel", "waiter_squirrel", "mime_squirrel", "cyclist_squirrel", "glam_squirrel",
+		"bird_feeder_squirrel", "firefighter_squirrel", "tourist_squirrel", "painter_squirrel", "florist_squirrel", "spy_squirrel"}
+	local byName = {}
+	for _, d in ipairs(workspace:GetDescendants()) do
+		if d:IsA("Model") then
+			byName[d.Name] = byName[d.Name] or {}
+			table.insert(byName[d.Name], d)
+		end
+	end
+	local models, problems = {}, {}
+	for _, id in ipairs(IDS) do
+		local entry = {}
+		for _, tag in ipairs({"color", "gray"}) do
+			local list = byName[id .. "_" .. tag]
+			if not list then
+				table.insert(problems, id .. "_" .. tag .. " missing")
+			else
+				if #list > 1 then table.insert(problems, id .. "_" .. tag .. " imported " .. #list .. " times (using the first)") end
+				local m = list[1]
+				m.Parent = workspace
+				for _, p in ipairs(m:GetDescendants()) do
+					if p:IsA("BasePart") then
+						p.Anchored = true
+						p.Locked = false
+						pcall(function() p.RenderFidelity = Enum.RenderFidelity.Precise end)
+					end
+				end
+				entry[tag] = m
+			end
+		end
+		models[id] = entry
+	end
+	if #problems > 0 then warn("FRENCH: " .. table.concat(problems, "; ")) end
+
+	-- 3. placement helpers
+	local village = workspace:FindFirstChild("Village")
+	assert(village and village:FindFirstChild("HidingSpots") and village:FindFirstChild("Props"), "FRENCH: Village folder not found")
+	local builder = workspace:FindFirstChild("VillageBuilder")
+	local CX = builder and builder:GetAttribute("CenterX") or 260
+	local CZ = builder and builder:GetAttribute("CenterZ") or -120
+	local spots = village.HidingSpots
+	local used = {}
+
+	local function doorOf(shop)
+		for _, m in ipairs(village.Props:GetChildren()) do
+			local sign = m:FindFirstChild("SignText", true)
+			local gui = sign and sign:FindFirstChildWhichIsA("SurfaceGui")
+			local label = gui and gui:FindFirstChildWhichIsA("TextLabel")
+			if label and label.Text == shop then
+				local door = m:FindFirstChild("DoorShop", true)
+				return door and door.Position or m:GetPivot().Position
+			end
+		end
+		warn("FRENCH: shop not found: " .. shop)
+		return Vector3.new(CX, 0, CZ)
+	end
+
+	local function spotNear(kind, pos)
+		local best, bestD
+		for _, a in ipairs(spots:GetChildren()) do
+			if a.Name == kind and not used[a] then
+				local d = (a.WorldPosition - pos).Magnitude
+				if not bestD or d < bestD then best, bestD = a, d end
+			end
+		end
+		if best then used[best] = true end
+		return best
+	end
+
+	local function forwardOf(model)
+		local root, head
+		for _, b in ipairs(model:GetDescendants()) do
+			if b:IsA("Bone") then
+				if b.Name == "Root" then root = b elseif b.Name == "Head" then head = b end
+			end
+		end
+		if root and head then
+			local f = head.WorldPosition - root.WorldPosition
+			f = Vector3.new(f.X, 0, f.Z)
+			if f.Magnitude > 1e-3 then return f.Unit end
+		end
+		local lv = model:GetPivot().LookVector
+		return Vector3.new(lv.X, 0, lv.Z).Unit
+	end
+
+	local function put(model, pos, faceDir)
+		if faceDir then
+			local want = Vector3.new(faceDir.X, 0, faceDir.Z)
+			if want.Magnitude > 1e-3 then
+				want = want.Unit
+				local f = forwardOf(model)
+				local turn = math.atan2(want.X, want.Z) - math.atan2(f.X, f.Z)
+				local piv = model:GetPivot()
+				model:PivotTo(CFrame.new(piv.Position) * CFrame.Angles(0, turn, 0) * piv.Rotation)
+			end
+		end
+		local bb, size = model:GetBoundingBox()
+		model:PivotTo(model:GetPivot() + Vector3.new(pos.X - bb.Position.X, pos.Y - (bb.Position.Y - size.Y / 2), pos.Z - bb.Position.Z))
+	end
+
+	local function toStreet(pos) return Vector3.new(0, 0, CZ - pos.Z) end
+	local fountain = Vector3.new(CX, 0, CZ + 11 + 9 + 14)
+
+	-- 4. where each squirrel goes: {spot kind, a point to search near, which way to face}
+	local PLAN = {
+		{"mailman_squirrel", "InDoorway", function() return doorOf("LA POSTE") end, toStreet},
+		{"waiter_squirrel", "InDoorway", function() return doorOf("CAF\u{00C9} DE L'\u{00C9}CUREUIL") end, toStreet},
+		{"florist_squirrel", "BehindPlanter", function() return doorOf("FLEURISTE") end, toStreet},
+		{"bird_feeder_squirrel", "InFountain", function() return fountain end, function(p) return Vector3.new(0, 0, -1) end},
+		{"philosopher_squirrel", "OnBench", function() return fountain + Vector3.new(0, 0, 12) end, function(p) return fountain - p end},
+		{"painter_squirrel", "OnBench", function() return fountain + Vector3.new(-17, 0, -8) end, function(p) return fountain - p end},
+		{"tourist_squirrel", "ByLamp", function() return doorOf("BOULANGERIE") end, function(p) return doorOf("BOULANGERIE") - p end},
+		{"firefighter_squirrel", "ByLamp", function() return doorOf("FROMAGERIE") end, toStreet},
+		{"cyclist_squirrel", "BesideBike", function() return Vector3.new(CX, 0, CZ) end, toStreet},
+		{"mime_squirrel", "OnAwning", function() return doorOf("CHAPELIER") end, toStreet},
+		{"glam_squirrel", "OnAwning", function() return doorOf("MODE ET STYLE") end, toStreet},
+		{"spy_squirrel", "UnderBridge", function() return Vector3.new(CX - 100, 0, CZ) end, function(p) return Vector3.new(1, 0, 0) end},
+	}
+	local placed = 0
+	for _, step in ipairs(PLAN) do
+		local id, kind, near, face = step[1], step[2], step[3], step[4]
+		local m = models[id]
+		local spot = spotNear(kind, near())
+		if not (m and m.color) then
+			warn("FRENCH: skipped " .. id .. " (colour model missing)")
+		elseif not spot then
+			warn("FRENCH: no free " .. kind .. " spot for " .. id)
+		else
+			local pos = spot.WorldPosition
+			local dir = face(pos)
+			put(m.color, pos, dir)
+			if m.gray then put(m.gray, pos, dir) end
+			spot:SetAttribute("Squirrel", id)
+			placed += 1
+			say(string.format("%s -> %s at (%.1f, %.1f, %.1f)", id, kind, pos.X, pos.Y, pos.Z))
+		end
+	end
+	if builder then builder:SetAttribute("HideSquirrels", false) end
+	say("placed", placed, "of", #PLAN, "| VillageBuilder HideSquirrels =", builder and builder:GetAttribute("HideSquirrels"))
+end
+]]></ProtectedString>
+      </Properties>
+    </Item>
+  </Item>
+</roblox>

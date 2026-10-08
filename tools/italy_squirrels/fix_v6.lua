@@ -1,0 +1,23 @@
+-- Beppe exactly centred on his crate (crate unchanged) + read-only probe of the travel cart, the quay steps and the quay wall
+local bc=workspace.PortoNocciola['03 Fish market'].BeppeCrate
+local col=workspace.fishmonger_squirrel_color local cm=col.Squirrel
+local cf=bc:GetBoundingBox()
+col:PivotTo(col:GetPivot()+Vector3.new(cf.Position.X-cm.Position.X,0,cf.Position.Z-cm.Position.Z))
+warn('QI@BEPPE@centred mesh',cm.Position,'crate',cf.Position)
+game:GetService('ChangeHistoryService'):SetWaypoint('Beppe centred on the crate')
+for _,m in ipairs(workspace.Travel:GetDescendants()) do
+	if m:IsA('Model') then local c,s=m:GetBoundingBox() warn('QI@CART@'..m:GetFullName()..'@'..tostring(c.Position)..'@'..tostring(s)..'@pivot '..tostring(m:GetPivot())) end
+end
+local seen={}
+for _,d in ipairs(workspace:GetDescendants()) do
+	if d:IsA('BasePart') and d.Name:lower():find('stair') and d.Position.Z<-570 and d.Position.Z>-600 and d.Position.X>235 and d.Position.X<270 then
+		local k=d.Parent:GetFullName() if not seen[k] then seen[k]=true local ok,c,s=pcall(function() return d.Parent:GetBoundingBox() end)
+		warn('QI@STAIRS@'..k..'@'..(ok and (tostring(c.Position)..'@'..tostring(s)) or '')..'@n '..#d.Parent:GetChildren()) end
+	end
+end
+local op=OverlapParams.new() op.FilterType=Enum.RaycastFilterType.Exclude op.FilterDescendantsInstances={workspace.ComingSoonWall}
+for _,p in ipairs(workspace:GetPartBoundsInBox(CFrame.new(246,-46.5,-594),Vector3.new(34,5,10),op)) do
+	warn('QI@WALL@'..p:GetFullName():sub(11)..'@'..tostring(p.Position)..'@'..tostring(p.Size)..'@'..tostring(p.Orientation))
+end
+local t=workspace.customs_squirrel_color.Squirrel warn('QI@TIMBRO@'..tostring(t.Position))
+warn('QI@END@')

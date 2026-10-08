@@ -1,0 +1,464 @@
+-- Standing pup: full setup in one paste (Ctrl+Enter). Safe to run again.
+local ws = workspace
+-- 1) sitting pup present? (rigged mesh with Hips bone but no leg bones)
+local haveSit = false
+for _, p in ipairs(ws:GetDescendants()) do
+	if p:IsA("MeshPart") and p:FindFirstChild("Hips", true) and not p:FindFirstChild("FrontUpper.L", true) then haveSit = true end
+end
+if not haveSit then
+	local ok, err = pcall(function()
+		local asset = game:GetService("InsertService"):LoadAsset(89842519385833)
+		local sit = asset:FindFirstChildOfClass("Model") or asset:GetChildren()[1]
+		sit.Name = "SittingPup"; sit.Parent = ws
+		local stand
+		for _, p in ipairs(ws:GetDescendants()) do
+			if p:IsA("MeshPart") and p:FindFirstChild("FrontUpper.L", true) then stand = p:FindFirstAncestorOfClass("Model") or p end
+		end
+		asset:Destroy()
+	end)
+	if ok then print("Sitting pup inserted from your uploads") else warn("Could not insert the sitting pup: " .. tostring(err)) end
+else
+	print("Sitting pup already in the Workspace")
+end
+-- 1b) park the sitting pup next to the standing dog, feet on the same level, keeping his own rotation
+do
+	local sit, stand
+	for _, p in ipairs(ws:GetDescendants()) do
+		if p:IsA("MeshPart") and p:FindFirstChild("Hips", true) then
+			if p:FindFirstChild("FrontUpper.L", true) then stand = p else sit = p end
+		end
+	end
+	if sit and stand then
+		local sm = sit:FindFirstAncestorOfClass("Model") or sit
+		local st = stand:FindFirstAncestorOfClass("Model") or stand
+		if sit.Size.Y > 20 then sm:ScaleTo(sm:GetScale() * 3.5 / sit.Size.Y) end
+		local standFeet = stand.Position.Y - stand.Size.Y / 2
+		local sitFeet = sit.Position.Y - sit.Size.Y / 2
+		local target = Vector3.new(st:GetPivot().Position.X, sm:GetPivot().Position.Y + (standFeet - sitFeet), st:GetPivot().Position.Z + 6)
+		sm:PivotTo(CFrame.new(target - sm:GetPivot().Position) * sm:GetPivot())
+		print("Sitting pup parked beside the standing dog")
+	end
+end
+-- 2) old script folders out
+for _, n in ipairs({"PupScripts", "StandingPupScripts"}) do
+	local f = ws:FindFirstChild(n); if f then f.Parent = nil end
+end
+-- 3) new scripts
+local folder = Instance.new("Folder"); folder.Name = "StandingPupScripts"
+local function mk(name, ctx, src)
+	local s = Instance.new("Script"); s.Name = name; s.RunContext = ctx; s.Source = src; s.Parent = folder
+end
+mk("PupBrain", Enum.RunContext.Server, [==[
+-- PupBrain (server): call the dog with the prompt and he walks to you; call again and he stays (and sits).
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+local function findDog()
+	for _, p in ipairs(workspace:GetDescendants()) do
+		if p:IsA("MeshPart") and p:FindFirstChild("FrontUpper.L", true) then return p end
+	end
+end
+local mesh = findDog()
+local waited = 0
+while not mesh and waited < 15 do task.wait(0.5); waited += 0.5; mesh = findDog() end
+if not mesh then warn(script.Name .. ": no standing rigged dog found (needs a bone named FrontUpper.L)") return end
+local model = mesh:FindFirstAncestorOfClass("Model") or mesh
+local bones = {}
+for _, b in ipairs(mesh:GetDescendants()) do if b:IsA("Bone") then bones[b.Name] = b end end
+
+for _, p in ipairs(model:GetDescendants()) do if p:IsA("BasePart") then p.Anchored = true end end
+
+local TARGET_HEIGHT = 3.5       -- studs; a raw import comes in 100x too big, so fix that once
+if mesh.Size.Y > 20 then model:ScaleTo(model:GetScale() * TARGET_HEIGHT / mesh.Size.Y) end
+
+local FOLLOW_DIST, SPEED, TURN = 6.0, 8.0, 5.0
+local SIT_DELAY = 2.5           -- seconds standing around before he sits
+local STAND_UP_TIME = 0.7       -- seconds to get up before he starts walking
+
+-- the sitting pup: any other rigged mesh with a Hips bone but no leg bones (the original Meshy sit)
+local sitMesh
+for _, p in ipairs(workspace:GetDescendants()) do
+	if p:IsA("MeshPart") and p ~= mesh and p:FindFirstChild("Hips", true) and not p:FindFirstChild("FrontUpper.L", true)
+		and not p:IsDescendantOf(model) then sitMesh = p end
+end
+local sitModel = sitMesh and (sitMesh:FindFirstAncestorOfClass("Model") or sitMesh)
+if sitModel then
+	for _, p in ipairs(sitModel:GetDescendants()) do if p:IsA("BasePart") then p.Anchored = true end end
+	if sitMesh.Size.Y > 20 then sitModel:ScaleTo(sitModel:GetScale() * TARGET_HEIGHT / sitMesh.Size.Y) end
+	sitModel:SetAttribute("TractorTarget", false)
+	print("PupBrain: sitting pup found:", sitModel:GetFullName())
+else
+	warn("PupBrain: no sitting pup found in the Workspace; he will only stand and walk")
+end
+local FADE_TIME = 0.25
+
+local pivot0 = model:GetPivot()
+local rot0 = pivot0.Rotation
+local rayParams = RaycastParams.new()
+rayParams.FilterType = Enum.RaycastFilterType.Exclude
+rayParams.FilterDescendantsInstances = sitModel and {model, sitModel} or {model}
+local function groundAt(x, z, fromY)
+	local r = workspace:Raycast(Vector3.new(x, fromY + 12, z), Vector3.new(0, -40, 0), rayParams)
+	return r and r.Position.Y
+end
+local footOffset = pivot0.Position.Y - (mesh.Position.Y - mesh.Size.Y / 2)   -- pivot height above his paws
+local groundY = pivot0.Position.Y
+model:SetAttribute("TractorTarget", true)
+model:SetAttribute("Lifted", false)
+model:SetAttribute("Following", false); model:SetAttribute("Moving", false)
+model:SetAttribute("Sitting", false); model:SetAttribute("Speed", 0)
+
+local fwd0 = Vector3.new(0, 0, -1)
+if bones.Hips and bones.Head then
+	local f = bones.Head.WorldPosition - bones.Hips.WorldPosition
+	f = Vector3.new(f.X, 0, f.Z)
+	if f.Magnitude > 0.1 then fwd0 = f.Unit end
+end
+local yawDelta = 0
+
+-- sitting pup: its own heading and foot height, so it can be dropped in wherever the standing dog is
+local sitBones, sitRot0, sitFwd0, sitFoot = {}, nil, Vector3.new(0, 0, -1), 0
+local function setVisible(m, alpha, solid)   -- alpha 0 = fully shown, 1 = hidden
+	if not m then return end
+	for _, p in ipairs(m:GetDescendants()) do
+		if p:IsA("BasePart") then p.Transparency = alpha; p.CanCollide = solid; p.CanQuery = solid; p.CanTouch = solid end
+	end
+end
+if sitModel then
+	for _, b in ipairs(sitMesh:GetDescendants()) do if b:IsA("Bone") then sitBones[b.Name] = b end end
+	local sp = sitModel:GetPivot()
+	sitRot0 = sp.Rotation
+	if sitBones.Hips and sitBones.Head then
+		local f = sitBones.Head.WorldPosition - sitBones.Hips.WorldPosition
+		f = Vector3.new(f.X, 0, f.Z)
+		if f.Magnitude > 0.1 then sitFwd0 = f.Unit end
+	end
+	sitFoot = sp.Position.Y - (sitMesh.Position.Y - sitMesh.Size.Y / 2)   -- pivot height above his lowest point
+	setVisible(sitModel, 1, false)
+end
+local fade = 0            -- 0 = standing dog shown, 1 = sitting pup shown
+local function placeSitPup(pos, gy)
+	if not sitModel then return end
+	local nose = CFrame.Angles(0, yawDelta, 0):VectorToWorldSpace(fwd0)
+	local turn = math.atan2(sitFwd0.X * nose.Z - sitFwd0.Z * nose.X, sitFwd0.X * nose.X + sitFwd0.Z * nose.Z)
+	sitModel:PivotTo(CFrame.new(pos.X, gy + sitFoot, pos.Z) * CFrame.Angles(0, -turn, 0) * sitRot0)
+end
+
+local att = mesh:FindFirstChild("PromptAttachment") or Instance.new("Attachment")
+att.Name = "PromptAttachment"; att.Parent = mesh
+local function placeAttachment()
+	local top = mesh.Position + Vector3.new(0, mesh.Size.Y / 2 + 1.2, 0)
+	if bones.Head then top = bones.Head.WorldPosition + Vector3.new(0, 1.4, 0) end
+	if fade > 0.5 and sitBones.Head then top = sitBones.Head.WorldPosition + Vector3.new(0, 1.4, 0) end
+	att.WorldPosition = top
+end
+placeAttachment()
+for _, old in ipairs(mesh:GetChildren()) do if old:IsA("ProximityPrompt") then old:Destroy() end end
+local prompt = att:FindFirstChildOfClass("ProximityPrompt") or Instance.new("ProximityPrompt")
+prompt.ActionText = "Come here, boy!"; prompt.ObjectText = "Pup"; prompt.HoldDuration = 0
+prompt.MaxActivationDistance = 9; prompt.RequiresLineOfSight = false
+prompt.UIOffset = Vector2.new(260, -170); prompt.Parent = att
+
+local following = nil
+local wasMoving = false
+local idleSince = os.clock()
+local standUpUntil = 0
+prompt.Triggered:Connect(function(player)
+	if following == player then
+		following = nil; wasMoving = false; prompt.ActionText = "Come here, boy!"; idleSince = os.clock()
+	else
+		following = player; prompt.ActionText = "Stay"
+		if model:GetAttribute("Sitting") then standUpUntil = os.clock() + STAND_UP_TIME end
+		model:SetAttribute("Sitting", false)
+	end
+	model:SetAttribute("Following", following ~= nil)
+	prompt.Enabled = false
+	task.delay(3, function() prompt.Enabled = true end)
+end)
+
+RunService.Heartbeat:Connect(function(dt)
+	local moving = false
+	local pos = model:GetPivot().Position
+	local now = os.clock()
+	if model:GetAttribute("Lifted") then
+		if model:GetAttribute("Moving") then model:SetAttribute("Moving", false) end
+		if model:GetAttribute("Sitting") then model:SetAttribute("Sitting", false) end
+		idleSince = now
+		return
+	end
+	local gy = groundAt(pos.X, pos.Z, pos.Y)
+	if gy then groundY = gy + footOffset end
+	if math.abs(pos.Y - groundY) > 0.02 then
+		local dy = groundY - pos.Y
+		pos = Vector3.new(pos.X, pos.Y + math.clamp(dy, -14 * dt, 14 * dt), pos.Z)
+		if not following then
+			model:PivotTo(CFrame.new(pos) * CFrame.Angles(0, yawDelta, 0) * rot0); placeAttachment()
+		end
+	end
+	if following then
+		local char = following.Character
+		local root = char and char:FindFirstChild("HumanoidRootPart")
+		if not root then following = nil; model:SetAttribute("Following", false); prompt.ActionText = "Come here, boy!"; idleSince = now return end
+		local target = Vector3.new(root.Position.X, 0, root.Position.Z)
+		local toT = target - Vector3.new(pos.X, 0, pos.Z)
+		local dist = toT.Magnitude
+		if now >= standUpUntil then
+			if dist > 0.5 then
+				local nose = CFrame.Angles(0, yawDelta, 0):VectorToWorldSpace(fwd0)
+				local want = toT.Unit
+				local d = math.atan2(nose.X * want.Z - nose.Z * want.X, nose.X * want.X + nose.Z * want.Z)
+				yawDelta += math.clamp(-d, -TURN * dt, TURN * dt)
+			end
+			-- hysteresis: start walking only when clearly too far, keep walking until close
+			if not wasMoving and dist > FOLLOW_DIST + 1.5 then wasMoving = true end
+			if wasMoving and dist <= FOLLOW_DIST then wasMoving = false end
+			if wasMoving then
+				local step = math.min(SPEED * dt, dist - FOLLOW_DIST)
+				pos = pos + toT.Unit * step
+				moving = true
+				model:SetAttribute("Speed", step / math.max(dt, 1e-3))
+				local gy2 = groundAt(pos.X, pos.Z, pos.Y)
+				if gy2 then groundY = gy2 + footOffset end
+			end
+		end
+		local y = pos.Y + math.clamp(groundY - pos.Y, -14 * dt, 14 * dt)
+		model:PivotTo(CFrame.new(pos.X, y, pos.Z) * CFrame.Angles(0, yawDelta, 0) * rot0)
+		placeAttachment()
+		idleSince = now
+	else
+		-- nothing to do: sit down after a moment
+		if not model:GetAttribute("Sitting") and now - idleSince > SIT_DELAY then model:SetAttribute("Sitting", true) end
+	end
+	if not moving and model:GetAttribute("Speed") ~= 0 then model:SetAttribute("Speed", 0) end
+	if model:GetAttribute("Moving") ~= moving then model:SetAttribute("Moving", moving) end
+	-- swap: crossfade between the standing dog and the sitting pup
+	if sitModel then
+		local target = model:GetAttribute("Sitting") and 1 or 0
+		local nf = fade + math.clamp(target - fade, -dt / FADE_TIME, dt / FADE_TIME)
+		if nf ~= fade or target == 1 then
+			local p = model:GetPivot().Position
+			if nf > 0 then placeSitPup(p, groundY - footOffset) end
+			if nf ~= fade then
+				fade = nf
+				setVisible(model, fade, fade < 0.5)
+				setVisible(sitModel, 1 - fade, fade >= 0.5)
+				placeAttachment()
+			end
+		end
+	end
+end)
+print("PupBrain ready on", model:GetFullName())
+]==])
+mk("PupAnim", Enum.RunContext.Client, [==[
+-- PupAnim (client): poses the bones every frame. All rotations are about the DOG's axes (forward / up / left),
+-- computed from the bone's rest frame, so they behave the same however Studio oriented the bones on import.
+local RunService = game:GetService("RunService")
+
+local function findDog()
+	for _, p in ipairs(workspace:GetDescendants()) do
+		if p:IsA("MeshPart") and p:FindFirstChild("FrontUpper.L", true) then return p end
+	end
+end
+local mesh = findDog()
+local waited = 0
+while not mesh and waited < 15 do task.wait(0.5); waited += 0.5; mesh = findDog() end
+if not mesh then warn(script.Name .. ": no standing rigged dog found (needs a bone named FrontUpper.L)") return end
+local model = mesh:FindFirstAncestorOfClass("Model") or mesh
+local bones = {}
+for _, b in ipairs(mesh:GetDescendants()) do if b:IsA("Bone") then bones[b.Name] = b end end
+
+local ORDER = {"Hips", "Chest", "Neck", "Head", "Ear.L", "Ear.R", "Tail1", "Tail2",
+	"FrontUpper.L", "FrontLower.L", "FrontPaw.L", "FrontUpper.R", "FrontLower.R", "FrontPaw.R",
+	"HindUpper.L", "HindLower.L", "HindPaw.L", "HindUpper.R", "HindLower.R", "HindPaw.R"}
+local BLENDER_HEIGHT = 5.0          -- the rig was built on a 5-unit-tall dog; offsets below are in those units
+
+-- dog axes, remembered in the mesh's own frame so they follow him when he turns
+local fwdL = Vector3.new(0, 0, -1)
+if bones.Hips and bones.Head then
+	local f = bones.Head.WorldPosition - bones.Hips.WorldPosition
+	f = Vector3.new(f.X, 0, f.Z)
+	if f.Magnitude > 0.1 then fwdL = mesh.CFrame:VectorToObjectSpace(f.Unit) end
+end
+local upL = mesh.CFrame:VectorToObjectSpace(Vector3.yAxis)
+local leftL = upL:Cross(fwdL)
+local fwdW, upW, leftW = fwdL, upL, leftL
+local scale = 1
+
+local want = {}   -- name -> {pitch, yaw, roll, offF, offU, offL} (degrees, blender units)
+local function pose(name, pitch, yaw, roll, offF, offU, offL)
+	local w = want[name]
+	if not w then w = {0, 0, 0, 0, 0, 0}; want[name] = w end
+	w[1] += pitch or 0; w[2] += yaw or 0; w[3] += roll or 0
+	w[4] += offF or 0; w[5] += offU or 0; w[6] += offL or 0
+end
+local function apply()
+	for _, name in ipairs(ORDER) do
+		local b = bones[name]
+		if b then
+			local w = want[name]
+			if not w then
+				b.Transform = CFrame.identity
+			else
+				local parent = b.Parent
+				local pw = (parent:IsA("Bone") and parent.TransformedWorldCFrame) or mesh.CFrame
+				local R = (pw * b.CFrame).Rotation
+				local lLeft, lUp, lFwd = R:VectorToObjectSpace(leftW), R:VectorToObjectSpace(upW), R:VectorToObjectSpace(fwdW)
+				local off = R:VectorToObjectSpace((fwdW * w[4] + upW * w[5] + leftW * w[6]) * scale)
+				b.Transform = CFrame.new(off)
+					* CFrame.fromAxisAngle(lUp, math.rad(w[2]))
+					* CFrame.fromAxisAngle(lLeft, math.rad(w[1]))
+					* CFrame.fromAxisAngle(lFwd, math.rad(w[3]))
+			end
+		end
+	end
+end
+
+local rng = Random.new()
+local t, phase = 0, 0
+local walk, sit = 0, 0
+local lookYaw, lookTarget, lookTimer = 0, 0, 0
+local howlT, nextHowl = -1, rng:NextNumber(12, 24)
+local earTwitch, earTimer = 0, rng:NextNumber(2, 5)
+local lastState, sitReported = nil, false
+local NECK_FIX, HEAD_FIX = -8, -14      -- the model's head is cast turned to his left; straighten it a little
+local STRIDE = 3.0                      -- stride length in leg-lengths; lower = faster steps
+
+RunService.Heartbeat:Connect(function(dt)
+	t += dt
+	scale = mesh.Size.Y / BLENDER_HEIGHT
+	fwdW = mesh.CFrame:VectorToWorldSpace(fwdL); upW = mesh.CFrame:VectorToWorldSpace(upL); leftW = mesh.CFrame:VectorToWorldSpace(leftL)
+	table.clear(want)
+	local moving = model:GetAttribute("Moving") == true
+	local following = model:GetAttribute("Following") == true
+	local sitting = model:GetAttribute("Sitting") == true
+	local lifted = model:GetAttribute("Lifted") == true
+	local speed = model:GetAttribute("Speed") or 0
+	walk += ((moving and 1 or 0) - walk) * math.min(1, dt * 5)
+	sit += ((sitting and 1 or 0) - sit) * math.min(1, dt * 3)
+	local sp = 0        -- the sit pose is handled by swapping to the sitting pup; keep him standing underneath
+	-- status lines for the Output window / log
+	local state = (lifted and "LIFTED") or (moving and "WALKING") or (sitting and "SITTING") or (following and "WAITING") or "STANDING"
+	if state ~= lastState then print(string.format("PupAnim state -> %s (sit blend %.2f, walk blend %.2f)", state, sit, walk)); lastState = state end
+	if sitting and sit > 0.98 and not sitReported then print("PupAnim: fully sitting"); sitReported = true elseif not sitting then sitReported = false end
+	local legLen = 1.55 * scale
+	if walk > 0.02 then phase += dt * 2 * math.pi * math.max(speed, 3) / (STRIDE * legLen) end
+	local s1, s2 = math.sin(phase), math.sin(phase + math.pi)      -- diagonal pairs: FL+HR, FR+HL
+
+	-- body: breathing, walk bob, sit drop
+	local breathe = math.sin(t * 1.3) * 0.5
+	pose("Hips", -54 * sp, 0, 0, 0.15 * sp, math.sin(t * 1.3) * 0.02 + 0.06 * math.abs(math.sin(phase)) * walk - 2.0 * sp, 0)
+	pose("Chest", -breathe - 2 * walk + 6 * sp, 0, 0)
+
+	-- head: look around, or watch the person; howl only while sitting
+	lookTimer -= dt
+	if lookTimer <= 0 then lookTarget = following and 0 or rng:NextNumber(-25, 25); lookTimer = rng:NextNumber(3, 6) end
+	lookYaw += (lookTarget - lookYaw) * math.min(1, dt * 2)
+	local pitch = 0
+	if sitting and howlT < 0 and t > nextHowl then howlT = 0 end
+	if howlT >= 0 then
+		howlT += dt
+		local k = math.min(howlT / 3.5, 1)
+		pitch = -40 * math.sin(k * math.pi) ^ 0.6
+		if howlT >= 3.5 or not sitting then howlT = -1; nextHowl = t + rng:NextNumber(14, 28) end
+	end
+	local bob = math.sin(phase * 2) * 3 * walk
+	pose("Neck", pitch * 0.4 + 16 * sp + bob * 0.5, NECK_FIX + lookYaw * 0.4, 0)
+	pose("Head", pitch * 0.6 + math.sin(t * 0.8) * 2 + 16 * sp - bob, HEAD_FIX + lookYaw * 0.6, 0)
+
+	-- ears: soft sway, a twitch now and then, flop with the steps
+	earTimer -= dt
+	if earTimer <= 0 then earTwitch = 1; earTimer = rng:NextNumber(3, 8) end
+	earTwitch = math.max(0, earTwitch - dt * 3)
+	local sway = math.sin(t * 2.1) * 3
+	local flop = math.sin(phase * 2) * 14 * walk
+	pose("Ear.L", 0, 0, -(sway + earTwitch * 20 + flop))
+	pose("Ear.R", 0, 0, sway + (howlT >= 0 and 12 or 0) + flop)
+
+	-- tail: wag, faster when moving or howling; carried a little higher when sitting
+	local wagSpeed = (moving or howlT >= 0) and 8 or 3
+	local wag = math.sin(t * wagSpeed)
+	pose("Tail1", 30 * sp, wag * 22, 0)
+	pose("Tail2", 10 * sp, wag * 18, 0)
+
+	-- legs: walk cycle (front: swing, knee bends on the forward swing; hind: hock kicks back)
+	local function frontLeg(side, s)
+		pose("FrontUpper" .. side, -26 * s * walk + 50 * sp, 0, 0)
+		pose("FrontLower" .. side, (8 + 14 * s) * walk, 0, 0)
+		pose("FrontPaw" .. side, 10 * s * walk + 4 * sp, 0, 0)
+	end
+	local function hindLeg(side, s)
+		pose("HindUpper" .. side, -24 * s * walk - 81 * sp, 0, 0)
+		pose("HindLower" .. side, (-4 - 10 * s) * walk + 135 * sp, 0, 0)
+		pose("HindPaw" .. side, (15 + 25 * s) * walk - 51 * sp, 0, 0)
+	end
+	frontLeg(".L", s1); hindLeg(".R", s1)
+	frontLeg(".R", s2); hindLeg(".L", s2)
+	if lifted then
+		-- dangling in the beam: paddle a little
+		for i, n in ipairs({"FrontUpper.L", "FrontUpper.R", "HindUpper.L", "HindUpper.R"}) do
+			pose(n, math.sin(t * 5 + i * 1.6) * 12, 0, 0)
+		end
+	end
+	apply()
+end)
+print("PupAnim running on client for", mesh:GetFullName())
+]==])
+mk("SitAnim", Enum.RunContext.Client, [==[
+-- SitAnim (client): idle for the sitting pup (breathing, look-around, ears, tail, howl). Runs only while he is shown.
+local RunService = game:GetService("RunService")
+local function findSit()
+	for _, p in ipairs(workspace:GetDescendants()) do
+		if p:IsA("MeshPart") and p:FindFirstChild("Hips", true) and not p:FindFirstChild("FrontUpper.L", true) then return p end
+	end
+end
+local mesh = findSit()
+local waited = 0
+while not mesh and waited < 15 do task.wait(0.5); waited += 0.5; mesh = findSit() end
+if not mesh then return end
+local standing
+for _, p in ipairs(workspace:GetDescendants()) do
+	if p:IsA("MeshPart") and p:FindFirstChild("FrontUpper.L", true) then standing = p:FindFirstAncestorOfClass("Model") or p end
+end
+local bones = {}
+for _, b in ipairs(mesh:GetDescendants()) do if b:IsA("Bone") then bones[b.Name] = b end end
+local function set(name, cf) local b = bones[name]; if b then b.Transform = cf end end
+local rng = Random.new()
+local t = 0
+local lookYaw, lookTarget, lookTimer = 0, 0, 0
+local howlT, nextHowl = -1, rng:NextNumber(10, 20)
+local earTwitch, earTimer = 0, rng:NextNumber(2, 5)
+RunService.Heartbeat:Connect(function(dt)
+	t += dt
+	if mesh.Transparency > 0.95 then return end     -- hidden: skip
+	local following = standing and standing:GetAttribute("Following") == true
+	local breathe = math.sin(t * 1.3) * 0.5
+	set("Chest", CFrame.Angles(math.rad(-breathe), 0, 0))
+	set("Hips", CFrame.new(0, math.sin(t * 1.3) * 0.02, 0))
+	lookTimer -= dt
+	if lookTimer <= 0 then lookTarget = following and 0 or rng:NextNumber(-28, 28); lookTimer = rng:NextNumber(3, 6) end
+	lookYaw += (lookTarget - lookYaw) * math.min(1, dt * 2)
+	local pitch = 0
+	if howlT < 0 and t > nextHowl then howlT = 0 end
+	if howlT >= 0 then
+		howlT += dt
+		local k = math.min(howlT / 3.5, 1)
+		pitch = -40 * math.sin(k * math.pi) ^ 0.6
+		if howlT >= 3.5 then howlT = -1; nextHowl = t + rng:NextNumber(14, 28) end
+	end
+	set("Neck", CFrame.Angles(math.rad(pitch * 0.4), math.rad(lookYaw * 0.4), 0))
+	set("Head", CFrame.Angles(math.rad(pitch * 0.6 + math.sin(t * 0.8) * 2), math.rad(lookYaw * 0.6), 0))
+	earTimer -= dt
+	if earTimer <= 0 then earTwitch = 1; earTimer = rng:NextNumber(3, 8) end
+	earTwitch = math.max(0, earTwitch - dt * 3)
+	local sway = math.sin(t * 2.1) * 3
+	set("Ear.L", CFrame.Angles(math.rad(-sway - earTwitch * 25), 0, 0))
+	set("Ear.R", CFrame.Angles(math.rad(sway + (howlT >= 0 and 15 or 0)), 0, 0))
+	local wagSpeed = howlT >= 0 and 7 or 3
+	local wag = math.sin(t * wagSpeed)
+	set("Tail1", CFrame.Angles(0, 0, math.rad(wag * 22)))
+	set("Tail2", CFrame.Angles(0, 0, math.rad(wag * 18)))
+end)
+print("SitAnim running on client for", mesh:GetFullName())
+]==])
+folder.Parent = ws
+print("StandingPupScripts installed. Press PLAY to test, then Alt+P to publish.")

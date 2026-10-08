@@ -1,0 +1,7 @@
+Tail weights on head (x < 0.1, z > 1.5): 663
+Head/Neck weights on body/pogo (z < 1.45): 2092
+Head/Neck weights on tail (x > 0.15): 82
+
+Lower pogo stick (z < 0.7) bone distributions:
+Lower pogo bones: {'Root': 596, 'Chest': 632, 'Neck': 408, 'Tail1': 116}
+DONE

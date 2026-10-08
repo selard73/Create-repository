@@ -1,0 +1,26 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">PR6</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026: south corner tidy after fix5 - the sand I carried round the quay's south-west corner became a lumpy blob in the
+-- water. Cells x 216..232, z -716..-696, y -56..-44 get the open-water profile again (copied from a clear column at x 208..212,
+-- z -712..-708); the beach now starts at x 232 and the quay corner stands in the water. Also reports aquarium fish vs RestCFrame.
+local T=workspace.Terrain
+local ref=Region3.new(Vector3.new(208,-56,-712),Vector3.new(212,-44,-708))
+local rm,ro=T:ReadVoxels(ref,4)
+local reg=Region3.new(Vector3.new(216,-56,-716),Vector3.new(232,-44,-696))
+local mats,occ=T:ReadVoxels(reg,4)
+local n=0
+for ix=1,#mats do for iy=1,#mats[1] do for iz=1,#mats[1][1] do
+	mats[ix][iy][iz]=rm[1][iy][1] occ[ix][iy][iz]=ro[1][iy][1] n+=1
+end end end
+T:WriteVoxels(reg,4,mats,occ)
+warn('PRM6@cells',n,'ref profile',rm[1][1][1],ro[1][1][1],rm[1][2][1],ro[1][2][1],rm[1][3][1],ro[1][3][1])
+-- fish check (read-only): each fish's pivot vs its (shifted) RestCFrame
+local A=workspace.PortoNocciola['03 Fish market']:FindFirstChild('Framed live seafood aquarium',true)
+local worst=0
+if A then for _,f in ipairs(A:GetDescendants()) do
+	local r=f:GetAttribute('RestCFrame')
+	if f:IsA('Model') and typeof(r)=='CFrame' then worst=math.max(worst,(f:GetPivot().Position-r.Position).Magnitude) end
+end end
+warn('PRM6@DONE fish worst distance to rest',worst)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

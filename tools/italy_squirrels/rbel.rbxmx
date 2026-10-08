@@ -1,0 +1,25 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">RenBella</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 (Shannon: change the pottery store's name to 'All Things Bella'): the shop sign on Casa Azzurra's
+-- fascia ('Painted shop lettering' TextLabel, was 'CASA AZZURRA') -> 'ALL THINGS BELLA'. Old text kept in attribute OldText.
+-- The longer name must still fit: TextScaled is turned on if it was off (OldTextScaled kept).
+local CA=workspace.PortoNocciola['02 Pastel waterfront']:FindFirstChild('Casa Azzurra')
+local L=CA and CA:FindFirstChild('Painted shop lettering',true)
+local t=L and L:FindFirstChildWhichIsA('TextLabel',true)
+if not t then warn('QBL@ABORT') return end
+t:SetAttribute('OldText',t.Text) t:SetAttribute('OldTextScaled',t.TextScaled)
+t.Text='ALL THINGS BELLA'
+if not t.TextScaled then t.TextScaled=true end
+game:GetService('ChangeHistoryService'):SetWaypoint('Shop sign: All Things Bella')
+local host=CA:FindFirstChild('Shop name fascia',true)
+warn('QBL@RENAMED',t:GetFullName(),'font',tostring(t.FontFace and t.FontFace.Family),'scaled',t.TextScaled,'size',t.TextSize)
+if host then
+	local p=host:IsA('BasePart') and host or host:FindFirstChildWhichIsA('BasePart',true)
+	if p then
+		local cam=workspace.CurrentCamera
+		cam.CameraType=Enum.CameraType.Fixed cam.Focus=p.CFrame
+		cam.CFrame=CFrame.lookAt(p.Position+Vector3.new(-16,-3,0),p.Position)
+	end
+end
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

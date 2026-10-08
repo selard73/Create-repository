@@ -1,0 +1,19 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">ProbeV8</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+for _,n in ipairs({'MoveV7'}) do for i=1,3 do local x=game:FindFirstChild(n,true) if x then x:Destroy() end end end
+local cart=workspace.Travel.Points.TravelCart_porto
+local cpv=cart:GetPivot() local cf0,sz0=cart:GetBoundingBox()
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Include rp.FilterDescendantsInstances={workspace.Terrain}
+local cop=OverlapParams.new() cop.FilterType=Enum.RaycastFilterType.Exclude cop.FilterDescendantsInstances={cart,workspace.ComingSoonWall,workspace.Terrain}
+for _,c in ipairs({{243,-568},{242,-569},{244,-567},{241,-570},{240,-572},{238,-570},{245,-572}}) do
+	local g=workspace:Raycast(Vector3.new(c[1],-20,c[2]),Vector3.new(0,-40,0),rp)
+	local s=''
+	if g then
+		local box=CFrame.new(c[1],g.Position.Y+sz0.Y/2+0.3,c[2])*(cpv-cpv.Position)
+		for i,p in ipairs(workspace:GetPartBoundsInBox(box,sz0+Vector3.new(0.6,0,0.6),cop)) do if i<=4 then s=s..p:GetFullName():sub(11,70)..' | ' end end
+	end
+	warn('QK@'..c[1]..','..c[2]..'@ground '..tostring(g and g.Position.Y)..' '..tostring(g and g.Material)..'@'..s)
+end
+warn('QK@END')
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

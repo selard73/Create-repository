@@ -1,0 +1,103 @@
+local placed = {}
+-- ---------------------------------------------------------------- table dressing (plain Parts) ----
+local function mkPart(parent, name, size, cf, col, shape)
+	local p = Instance.new("Part"); p.Name = name; p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false; p.Locked = true
+	p.Material = Enum.Material.SmoothPlastic; p.Color = col; p.Size = size; p.CFrame = cf; p.CastShadow = true
+	if shape then p.Shape = shape end
+	p.Parent = parent
+	return p
+end
+local function mkBall(parent, name, d, cf, col) return mkPart(parent, name, Vector3.new(d, d, d), cf, col, Enum.PartType.Ball) end
+local function mkEgg(parent, name, size, cf, col)                     -- a Block with a Sphere mesh: an ellipsoid of any proportions
+	local p = mkPart(parent, name, size, cf, col)
+	local m = Instance.new("SpecialMesh"); m.MeshType = Enum.MeshType.Sphere; m.Parent = p
+	return p
+end
+local function mkDisc(parent, name, r, h, cf, col)                   -- an upright cylinder (Roblox cylinders lie along X)
+	return mkPart(parent, name, Vector3.new(h, r * 2, r * 2), cf * CFrame.Angles(0, 0, math.pi / 2), col, Enum.PartType.Cylinder)
+end
+-- a cafe table: cream cloth with a blue hem, two settings with croissants, a posy in a vase
+local function dressCafeTable(ct)
+	local tbl = ct:FindFirstChild("Table")
+	if not tbl then return end
+	local top = tbl.Position.Y + tbl.Size.Y / 2
+	local c = Vector3.new(tbl.Position.X, top, tbl.Position.Z)
+	local r = math.max(tbl.Size.X, tbl.Size.Z) / 2
+	local CLOTH, HEM, SILVER = C(250, 246, 232), C(96, 140, 190), C(206, 210, 216)
+	mkDisc(ct, "Cloth", r + 0.16, 0.06, CFrame.new(c + Vector3.new(0, 0.03, 0)), CLOTH)
+	mkDisc(ct, "Cloth", r + 0.10, 0.52, CFrame.new(c - Vector3.new(0, 0.26, 0)), CLOTH)
+	mkDisc(ct, "Hem", r + 0.12, 0.07, CFrame.new(c - Vector3.new(0, 0.50, 0)), HEM)
+	for _, sz in ipairs({-0.62, 0.62}) do
+		local dir = sz > 0 and 1 or -1
+		mkDisc(ct, "Plate", 0.36, 0.04, CFrame.new(c + Vector3.new(0, 0.08, sz)), C(252, 252, 248))
+		mkDisc(ct, "PlateRim", 0.24, 0.015, CFrame.new(c + Vector3.new(0, 0.105, sz)), C(226, 234, 242))
+		local g = mkDisc(ct, "Glass", 0.1, 0.32, CFrame.new(c + Vector3.new(0.52, 0.22, sz * 0.7)), C(214, 232, 242)); g.Transparency = 0.45
+		mkPart(ct, "Knife", Vector3.new(0.05, 0.02, 0.5), CFrame.new(c + Vector3.new(0.48, 0.07, sz)), SILVER)
+		mkPart(ct, "Fork", Vector3.new(0.05, 0.02, 0.5), CFrame.new(c + Vector3.new(-0.48, 0.07, sz)), SILVER)
+		for _, o in ipairs({{-0.14, 0.05}, {0, 0.1}, {0.14, 0.05}}) do
+			mkBall(ct, "Croissant", 0.15, CFrame.new(c + Vector3.new(o[1], 0.16, sz + o[2] * dir)), C(224, 172, 94))
+		end
+	end
+	mkDisc(ct, "Vase", 0.12, 0.34, CFrame.new(c + Vector3.new(0, 0.23, 0)), C(80, 120, 180))
+	for _, o in ipairs({{-0.1, 0.02, C(240, 90, 120)}, {0.09, -0.05, C(250, 200, 70)}, {0.02, 0.1, C(230, 80, 70)}}) do
+		mkPart(ct, "Stem", Vector3.new(0.03, 0.32, 0.03), CFrame.new(c + Vector3.new(o[1] * 0.5, 0.56, o[2] * 0.5)), C(90, 140, 70))
+		mkBall(ct, "Bloom", 0.17, CFrame.new(c + Vector3.new(o[1], 0.74, o[2])), o[3])
+	end
+end
+-- the long table: the kit's plates, glasses and bottles come off; twelve settings go back on at the table's edges
+-- (plate, glass, knife, fork) so the middle 1.2 studs stay free for the food, which is sized to fit that band
+local function dressLongTable(lt)
+	local plank = lt:FindFirstChild("Plank")
+	if not plank then return end
+	for _, p in ipairs(lt:GetChildren()) do
+		if p:IsA("BasePart") and (p.Name:sub(1, 6) == "Bottle" or p.Name == "Plate" or p.Name == "Glass") then p:Destroy() end
+	end
+	local topY = plank.Position.Y + plank.Size.Y / 2
+	local function at(x, y, z)
+		local w = plank.CFrame:PointToWorldSpace(Vector3.new(x, 0, z))
+		return CFrame.new(w.X, topY + y, w.Z)
+	end
+	local function atR(x, y, z, yaw) return at(x, y, z) * plank.CFrame.Rotation * CFrame.Angles(0, yaw, 0) end
+	local SILVER, WOOD, WHITE, GLASS = C(206, 210, 216), C(150, 112, 76), C(252, 252, 248), C(214, 232, 242)
+	for i = 0, 5 do
+		local x = -5.0 + i * 2.0
+		for _, s in ipairs({-1, 1}) do
+			local z = s * 1.22
+			mkDisc(lt, "Plate", 0.52, 0.04, at(x, 0.02, z), WHITE)
+			mkDisc(lt, "PlateRim", 0.36, 0.015, at(x, 0.045, z), C(226, 234, 242))
+			local g = mkDisc(lt, "Glass", 0.1, 0.32, at(x + 0.95, 0.16, s * 0.88), GLASS); g.Transparency = 0.45
+			mkPart(lt, "Fork", Vector3.new(0.05, 0.02, 0.5), atR(x - 0.70, 0.01, z, 0), SILVER)
+			mkPart(lt, "Knife", Vector3.new(0.05, 0.02, 0.5), atR(x + 0.70, 0.01, z, 0), SILVER)
+		end
+	end
+	-- bread basket
+	mkDisc(lt, "Basket", 0.5, 0.22, at(-5.0, 0.11, 0), C(184, 148, 102))
+	for k, o in ipairs({{0.25, 0.12}, {-0.2, -0.1}, {0.05, 0.02}}) do
+		mkPart(lt, "Baguette", Vector3.new(1.3, 0.24, 0.24), atR(-5.0 + o[2], 0.32 + k * 0.03, o[2] * 0.8, o[1]), C(216, 170, 98), Enum.PartType.Cylinder)
+	end
+	-- cheese board
+	mkDisc(lt, "Board", 0.6, 0.06, at(-3.0, 0.03, 0), WOOD)
+	mkDisc(lt, "Cheese", 0.32, 0.2, at(-3.2, 0.16, 0.1), C(240, 204, 100))
+	mkPart(lt, "Cheese", Vector3.new(0.4, 0.18, 0.26), atR(-2.62, 0.15, -0.2, 0.6), C(240, 204, 100))
+	mkDisc(lt, "Brie", 0.2, 0.11, at(-2.68, 0.115, 0.3), C(250, 246, 226))
+	for _, o in ipairs({{-3.35, -0.35}, {-3.25, -0.44}, {-3.45, -0.45}}) do mkBall(lt, "Grape", 0.13, at(o[1], 0.125, o[2]), C(98, 58, 132)) end
+	-- roast chicken on a platter with potatoes
+	mkDisc(lt, "Platter", 0.6, 0.05, at(-1.0, 0.025, 0), WHITE)
+	mkEgg(lt, "Chicken", Vector3.new(1.0, 0.58, 0.7), atR(-1.0, 0.34, 0, 0), C(200, 128, 62))
+	mkEgg(lt, "Drumstick", Vector3.new(0.34, 0.22, 0.22), atR(-0.55, 0.19, 0.32, 0.5), C(196, 120, 58))
+	mkEgg(lt, "Drumstick", Vector3.new(0.34, 0.22, 0.22), atR(-1.45, 0.19, 0.32, -0.5), C(196, 120, 58))
+	for _, o in ipairs({{-1.5, -0.38}, {-1.2, -0.45}, {-0.7, -0.42}, {-0.45, -0.25}}) do mkBall(lt, "Potato", 0.2, at(o[1], 0.15, o[2]), C(232, 196, 110)) end
+	-- salad
+	mkDisc(lt, "Bowl", 0.5, 0.34, at(1.0, 0.17, 0), C(250, 246, 232))
+	mkEgg(lt, "Salad", Vector3.new(0.9, 0.42, 0.9), at(1.0, 0.44, 0), C(100, 168, 70))
+	for _, o in ipairs({{0.8, 0.12}, {1.18, -0.15}, {1.03, 0.26}}) do mkBall(lt, "Tomato", 0.17, at(o[1], 0.62, o[2]), C(216, 50, 50)) end
+	-- strawberry tart
+	mkDisc(lt, "Tart", 0.55, 0.14, at(3.0, 0.07, 0), C(222, 178, 110))
+	mkDisc(lt, "Tart", 0.46, 0.05, at(3.0, 0.165, 0), C(204, 58, 58))
+	for i = 0, 5 do local a = i / 6 * 6.283 mkBall(lt, "Strawberry", 0.14, at(3.0 + math.cos(a) * 0.3, 0.24, math.sin(a) * 0.3), C(214, 40, 44)) end
+	-- fruit bowl
+	mkDisc(lt, "Bowl", 0.5, 0.3, at(5.0, 0.15, 0), C(96, 140, 190))
+	mkBall(lt, "Apple", 0.28, at(4.85, 0.4, -0.12), C(200, 50, 50)); mkBall(lt, "Apple", 0.27, at(5.2, 0.38, 0.14), C(140, 190, 60))
+	mkBall(lt, "Orange", 0.25, at(4.88, 0.55, 0.18), C(240, 150, 40)); mkEgg(lt, "Pear", Vector3.new(0.24, 0.34, 0.24), at(5.24, 0.56, -0.17), C(200, 210, 90))
+	for i = 0, 5 do mkBall(lt, "Grape", 0.13, at(5.0 + (i % 3 - 1) * 0.12, 0.66 + math.floor(i / 3) * 0.09, (i % 2) * 0.1 - 0.02), C(98, 58, 132)) end
+end

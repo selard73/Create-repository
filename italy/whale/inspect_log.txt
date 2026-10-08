@@ -1,0 +1,8 @@
+obj Mesh_0 type MESH loc (0.0, 0.0, 0.0) rot (-0.0, 0.0, 0.0) scale (1.0, 1.0, 1.0) dims (1.321, 1.9, 0.642)
+mesh Mesh_0: verts 196010 polys 392016 tris 392016 uv layers ['UVMap'] materials ['Material.001']
+  world bbox min (-0.662, -0.95, -0.321) max (0.659, 0.951, 0.321) size (1.321, 1.9, 0.642)
+  tex node Image Texture image Image_0 C:\Users\slard\roblox-props\italy\whale\src\Meshy_AI_Blue_Whale_1007123321_texture.fbm\Image_0.jpg
+  tex node Image Texture.001 image Image_2 C:\Users\slard\roblox-props\italy\whale\src\Meshy_AI_Blue_Whale_1007123321_texture.fbm\Image_2.jpg
+  tex node Image Texture.002 image texture_0_roughness.png C:\Users\slard\roblox-props\italy\whale\src\Meshy_AI_Blue_Whale_1007123321_texture.fbm\texture_0_roughness.png
+  tex node Image Texture.003 image texture_0_metallic.png C:\Users\slard\roblox-props\italy\whale\src\Meshy_AI_Blue_Whale_1007123321_texture.fbm\texture_0_metallic.png
+INSPECT_DONE

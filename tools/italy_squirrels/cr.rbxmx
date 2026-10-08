@@ -1,0 +1,6 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">SwapE</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026: put Shannon's camera back where she left it this morning
+workspace.CurrentCamera.CFrame=CFrame.new(120, 40, -760, -0.953582704, -0.059270829, 0.2952407, -0, 0.980438173, 0.196827129, -0.301131397, 0.187690943, -0.934928834)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

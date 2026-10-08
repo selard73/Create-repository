@@ -1,0 +1,2 @@
+dominant vertex counts {'Root': 889, 'LegsLF': 124, 'LegsLB': 166, 'LegsRF': 122, 'LegsRB': 171, 'ClawL': 274, 'ClawR': 256}
+RIG_DONE

@@ -1,0 +1,76 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">QP2</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 read-only survey part 2 for the +8 promenade (only the EDITOR CAMERA moves; her camera is printed first so it can be restored).
+-- 1) her camera; 2) children of 03 Fish market / 09 Harbour finish / 10 details; 3) a 1-stud top-down occupancy grid
+-- x 200..275, z -588..-722 (ray from y -42 down) as text rows; 4) a straight-down camera for the picture + calibration.
+local cam=workspace.CurrentCamera
+local c=cam.CFrame
+warn('QP2@cam',string.format('%.3f,%.3f,%.3f, %.5f,%.5f,%.5f, %.5f,%.5f,%.5f, %.5f,%.5f,%.5f',c:GetComponents()),'fov',cam.FieldOfView,'focus',cam.Focus.Position)
+local P=workspace.PortoNocciola
+local function f(v) return string.format('%.1f,%.1f,%.1f',v.X,v.Y,v.Z) end
+local function box(m)
+	if m:IsA('BasePart') then local s=m.Size local cf=m.CFrame
+		local mn=Vector3.new(1e9,1e9,1e9) local mx=-mn
+		for _,k in ipairs({Vector3.new(1,1,1),Vector3.new(1,1,-1),Vector3.new(1,-1,1),Vector3.new(1,-1,-1),Vector3.new(-1,1,1),Vector3.new(-1,1,-1),Vector3.new(-1,-1,1),Vector3.new(-1,-1,-1)}) do
+			local w=cf:PointToWorldSpace(s/2*k) mn=mn:Min(w) mx=mx:Max(w) end
+		return mn,mx
+	end
+	local cf,sz=m:GetBoundingBox() return cf.Position-sz/2,cf.Position+sz/2
+end
+for _,nm in ipairs({'03 Fish market','09 Harbour finish','10 Italian waterfront details'}) do
+	local g=P:FindFirstChild(nm)
+	if g then for _,ch in ipairs(g:GetChildren()) do
+		if ch:IsA('BasePart') or ch:IsA('Model') then
+			local ok,a,b=pcall(box,ch)
+			if ok then warn('QP2@child',nm,'|',ch.ClassName,ch.Name,'min',f(a),'max',f(b)) end
+		end
+	end end
+end
+-- section index per top-level PortoNocciola child (first 2 chars of its name), squirrels = S
+local function owner(inst)
+	local m=inst
+	while m and m.Parent~=P and m.Parent~=workspace do m=m.Parent end
+	if not m then return '?' end
+	if m.Parent==workspace then
+		if m.Name:match('squirrel') then return 'S' end
+		return 'w'
+	end
+	return m.Name:sub(1,2)
+end
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Exclude rp.FilterDescendantsInstances={}
+for z=-588,-722,-1 do
+	local cls,own={},{}
+	for x=200,275 do
+		local r=workspace:Raycast(Vector3.new(x,-42,z),Vector3.new(0,-15,0),rp)
+		local ch,o=' ','  '
+		if r then
+			local y=r.Position.Y
+			if r.Instance==workspace.Terrain then
+				ch=(r.Material==Enum.Material.Water) and '~' or 's' o='TT'
+			else
+				o=owner(r.Instance)
+				if o=='S' then ch='S'
+				elseif y<-47.5 then ch='p'
+				elseif y<-46.0 then ch='.'
+				elseif y<-44.5 then ch='+'
+				else ch='#' end
+			end
+		end
+		table.insert(cls,ch) table.insert(own,(#o==1) and (o..o) or o)
+	end
+	warn('QP2@g',z,table.concat(cls))
+	warn('QP2@o',z,table.concat(own,' '))
+end
+-- straight-down editor camera for the top-down picture (sea at the TOP of the screen, north on the left)
+cam.FieldOfView=30
+local target=Vector3.new(238,-46.7,-655)
+cam.CFrame=CFrame.lookAt(target+Vector3.new(0,141.8,0),target,Vector3.new(-1,0,0))
+cam.Focus=CFrame.new(target)
+warn('QP2@vp',cam.ViewportSize)
+for _,p in ipairs({Vector3.new(200,-46.7,-590),Vector3.new(276,-46.7,-590),Vector3.new(200,-46.7,-720),Vector3.new(276,-46.7,-720),target}) do
+	local v=cam:WorldToViewportPoint(p)
+	warn('QP2@cal',f(p),'->',string.format('%.2f,%.2f',v.X,v.Y))
+end
+warn('QP2@DONE')
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

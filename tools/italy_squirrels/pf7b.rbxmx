@@ -1,0 +1,34 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">PF7B</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026: undo fix_flags7's stair-side rock lump (wrong spot) from PromenadeBackup.TerrainStairBefore, then report every
+-- Sentiero del Faro stair slab south of z -794 (bottom y, x span) so the stepped hollow under the upper part can be filled.
+local SS=game:GetService('ServerStorage')
+local T=workspace.Terrain
+local tb=SS.PromenadeBackup:FindFirstChild('TerrainStairBefore')
+if tb then T:PasteRegion(tb,Vector3int16.new(74,-16,-203),true) warn('PRF7B@restored lump region') end
+local S=workspace.PortoNocciola:FindFirstChild('Sentiero del Faro',true)
+local rows={}
+for _,d in ipairs(S:GetDescendants()) do
+	if d:IsA('BasePart') and d.Position.Z<-794 and d.Position.Z>-860 and math.max(d.Size.X,d.Size.Y,d.Size.Z)>=3 then
+		local cf,s=d.CFrame,d.Size/2
+		local mn,mx=Vector3.new(1e9,1e9,1e9),Vector3.new(-1e9,-1e9,-1e9)
+		for _,k in ipairs({Vector3.new(1,1,1),Vector3.new(1,1,-1),Vector3.new(1,-1,1),Vector3.new(1,-1,-1),Vector3.new(-1,1,1),Vector3.new(-1,1,-1),Vector3.new(-1,-1,1),Vector3.new(-1,-1,-1)}) do
+			local w=cf:PointToWorldSpace(s*k) mn=mn:Min(w) mx=mx:Max(w) end
+		table.insert(rows,{d.Position.Z,string.format('%s z %.1f..%.1f x %.1f..%.1f y %.1f..%.1f',d.Name,mn.Z,mx.Z,mn.X,mx.X,mn.Y,mx.Y)})
+	end
+end
+table.sort(rows,function(a,b) return a[1]>b[1] end)
+for i,r in ipairs(rows) do if i<=70 then warn('PRF7B@part',r[2]) end end
+-- terrain surface under the stair's west half, every 2 studs in z (what the hollow looks like)
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Include rp.FilterDescendantsInstances={T} rp.IgnoreWater=false
+for z=-796,-840,-2 do
+	local row={}
+	for x=304,324,2 do
+		local r=workspace:Raycast(Vector3.new(x,-20,z),Vector3.new(0,-50,0),rp)
+		table.insert(row,r and string.format('%.0f%s',r.Position.Y,r.Material==Enum.Material.Water and 'w' or '') or '-')
+	end
+	warn('PRF7B@terr z',z,table.concat(row,' '))
+end
+warn('PRF7B@DONE parts',#rows)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

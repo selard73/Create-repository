@@ -1,0 +1,11 @@
+-- Oct 4 2026: registry entry for Tito the Tightrope Walker (bio A, Shannon's pick), after Penny.
+local reg=workspace.SquirrelScripts.SquirrelRegistry
+local rs=reg.Source
+local anchor=[['is this seat taken?'"},]]..'\n'
+local a,b=rs:find(anchor,1,true)
+if not a or rs:find('tightrope_squirrel',1,true) then warn('QG@ABORT anchor/dup',a) return end
+local add='\t\t{id = "tightrope_squirrel",    map = "porto", name = "Tito the Tightrope Walker",\n\t\t bio = "Practises for the circus on Signora Rosa\'s washing line every afternoon. She has asked him to stop. He says he will, the moment he reaches the other side."},\n'
+reg.Source=rs:sub(1,b)..add..rs:sub(b+1)
+game:GetService('ChangeHistoryService'):SetWaypoint('Tito registry')
+local n=0 for _ in reg.Source:gmatch('map = "porto"') do n+=1 end
+warn('QG@OK porto entries',n,'tito',reg.Source:find('Tito the Tightrope',1,true)~=nil)

@@ -1,0 +1,1484 @@
+REPLAY BUNDLE (Oct 7 2026, dumped from the live Studio before the restart)
+===== SquirrelRegistry =====
+
+-- SquirrelRegistry: the one list of every squirrel in the game. Both the server and the HUD read this.
+-- id      stable key used for saving finds (the model in the world is named "<id>_color" / "<id>_gray")
+-- map     which map the squirrel lives on (see maps below)
+-- name    what the tag, badge and card show
+-- bio     the card text
+-- face    optional badge framing tweaks: dist (camera distance, default 1.35), up (aim height, default 0), camUp (camera height, default 0.05)
+-- Add new squirrels here; nothing else needs editing.
+return {
+	maps = {
+		{id = "forest",  name = "The Great Acorn Forest"},
+		{id = "village", name = "Rue de Noisette"},
+		{id = "domaine", name = "Château de l'Acorn"},
+		{id = "porto",   name = "Porto Nocciola",
+		 areas = {{id = "harbour", name = "The Harbour"}, {id = "borgo", name = "Via della Piazza"}, {id = "groves", name = "The Groves"}}},   -- The Groves (lemon + olive groves, lighthouse coast) added Oct 7 2026   -- Oct 7 2026 (Shannon): two sections of 15 squirrels each
+	},
+	squirrels = {
+		{id = "customs_squirrel",      map = "porto", area = "harbour", name = "Customs Officer Squirrel",
+		 bio = "Stamps every passport that comes into Porto Nocciola, including the ones that arrive by waterfall. Always asks if you have anything to declare, then waits very politely while you drip."},
+		{id = "fishmonger_squirrel",      map = "porto", area = "harbour", name = "Fish Market Squirrel",
+		 bio = "Opens his stall at dawn and starts shouting prices before the sun is fully up. The seagulls have learned his whole sales pitch and now join in on the chorus."},
+		{id = "deckhand_squirrel",      map = "porto", area = "harbour", name = "Gino the Deck Hand",
+		 bio = "Swabs the deck of the Stella Marina six times a day, even on days she never leaves the harbour. Knows forty sailor's knots and has tied most of them in his own tail by accident."},
+		{id = "netmender_squirrel",      map = "porto", area = "harbour", name = "Net Mending Squirrel",
+		 bio = "Has mended every net in the harbour at least twice and remembers each hole by name. Swears the biggest one was made by a whale. The fishermen say it was the Fish Market Squirrel."},
+		{id = "gelato_squirrel",      map = "porto", area = "harbour", name = "Gelato Squirrel",
+		 bio = "Names a new flavour every morning after the first customer through the door. Today's special is Lemon Surprise, named after a very sour-faced tourist."},
+		{id = "boatpainter_squirrel",  map = "porto", area = "harbour", name = "Boat Painter Squirrel",
+		 bio = "Gives the Nuova Alba a fresh coat every spring. His overalls have had more coats than the boat."},
+		{id = "realtor_squirrel",      map = "porto", area = "harbour", name = "Signora Chiave",
+		 bio = "Every house she sells has a sea view. For some of them you have to stand on the roof."},
+		{id = "italytourist_squirrel", map = "porto", area = "harbour", name = "Penny the Tourist",
+		 bio = "A red squirrel from Savannah, Georgia, who won the trip in a pecan-pie contest. Lemon sundress, sunflower hat, red sunglasses, camera on a strap. She has learned one word of Italian, ciao, and uses it for hello, goodbye, thank you and 'is this seat taken?'"},
+		{id = "tightrope_squirrel",    map = "porto", area = "harbour", name = "Tightrope Walker Squirrel",
+		 bio = "Practises for the circus on Signora Rosa's washing line every afternoon. She has asked him to stop. He says he will, the moment he reaches the other side."},
+		{id = "seacaptain_squirrel",   map = "porto", area = "harbour", name = "Boat Captain Squirrel",
+		 bio = "Steers the Azzurra by the stars. On cloudy nights he steers by the smell of the bakery."},
+		{id = "sunbather_squirrel",    map = "porto", area = "harbour", name = "Sunbather Squirrel",
+		 bio = "Has been watching the horizon all summer, waiting for the perfect wave. Porto Nocciola is a very calm harbour."},
+		{id = "crabcatcher_squirrel",  map = "porto", area = "harbour", name = "Crab Catcher Squirrel",
+		 bio = "Walks sideways along the rocks so the crabs will think he's one of them. So far it has only fooled the tourists."},
+		{id = "conductor_squirrel",    map = "porto", area = "harbour", name = "Conductor Squirrel",
+		 bio = "Punches every ticket with a perfect little star. Nobody has ever had the heart to tell him the funicolare is free."},
+		{id = "lifeguard_squirrel",    map = "porto", area = "harbour", name = "Lifeguard Squirrel",
+		 bio = "Has blown his whistle at every single wave this summer. Not one of them has listened."},
+		{id = "octopus_squirrel",    map = "porto", area = "harbour", name = "Octopus Catcher Squirrel",
+		 bio = "Keeps losing his bait to the octopus. Last week he lost the bucket too."},
+		
+		{id = "sassyshopper_squirrel",   map = "porto", area = "borgo", name = "Sassy Shopper Squirrel",
+		 bio = "Three silk scarves, new leather shoes and a hat the size of a pizza. Every staircase in Porto is her runway."},
+		{id = "pogo_squirrel",           map = "porto", area = "borgo", name = "Pogo Squirrel",
+		 bio = "Takes three flights of stairs in one boing. Treats gravity as a suggestion."},
+		{id = "pizzadelivery_squirrel",  map = "porto", area = "borgo", name = "Pizza Delivery Squirrel",
+		 bio = "Thirty minutes or less, forty-seven flights of stairs, one Vespa with no brakes. Mind the switchbacks."},
+		{id = "baker_squirrel",          map = "porto", area = "borgo", name = "Baker Squirrel",
+		 bio = "Up at four to knead the focaccia. Ask for gluten-free and he will look at you very sadly through his whiskers."},
+		{id = "giulia_market_squirrel",  map = "porto", area = "borgo", name = "Giulia",
+		 bio = "Home from the market with a baguette, tomatoes and both bags. She carries them herself. The hill isn't going to climb itself."},
+		{id = "officer_acorn_police_squirrel", map = "porto", area = "borgo", name = "Officer Acorn",
+		 bio = "Keeps law and order on the marina. Fines seagulls for speeding and checks every dinghy's papers. Polishes his badge first."},
+		{id = "goldenyears_squirrel",    map = "porto", area = "borgo", name = "Golden Years Squirrels",
+		 bio = "Have walked to the fountain together every evening for fifty-four years. Walk slowly, hold hands, never skip gelato."},
+		{id = "goodneighbor_squirrel",   map = "porto", area = "borgo", name = "Good Neighbor Squirrel",
+		 bio = "Her lasagna can be smelled two streets away, which is exactly how far the neighbours run for a plate."},
+		{id = "operasinger_squirrel",    map = "porto", area = "borgo", name = "The Fat Lady Squirrel",
+		 bio = "The show isn't over until she sings. The problem is, she never stops."},
+		{id = "detective_squirrel",    map = "forest", name = "Mr. Holmes Squirrel",   face = {dist = 1.7, up = -0.02},
+		 bio = "Solves mysteries nobody asked him to solve. Currently investigating the Case of the Missing Acorn. He ate it."},
+		{id = "rainy_day_squirrel",    map = "forest", name = "Rainy Day Squirrel",    face = {dist = 1.6, up = -0.09, camUp = -0.24},
+		 bio = "Ready for weather at all times, even indoors. Has never once been caught without her umbrella. Or her spare umbrella."},
+		{id = "squirrel_buccaneer",    map = "forest", name = "Buccaneer Squirrel",
+		 bio = "Sailed the seven puddles in search of buried acorns. Has a treasure map, but keeps reading it upside down."},
+		{id = "squirrel_scientist",    map = "forest", name = "El Scientifico",
+		 bio = "Holds three degrees in Acorn Physics and one in Explosions. Every experiment ends with 'well, THAT was interesting.'"},
+		{id = "surfing_squirrel",      map = "forest", name = "Surfer Dude Squirrel",
+		 bio = "Rides the gnarliest waves in the forest, which are mostly puddles. Says 'dude' more than any squirrel should."},
+		{id = "super_squirrel",        map = "forest", name = "Nacho Libre Squirrel",  face = {dist = 1.75, up = -0.04},
+		 bio = "Masked defender of the forest and its snacks. Weakness: nachos. Also cheese. Also anything with cheese on it."},
+		{id = "gordo_squirrel",        map = "forest", name = "Gordo Squirrel",
+		 bio = "Gordo has never met an acorn he didn't like. Or two. Or the whole tree. Hobbies include napping, snacking, and napping after snacking."},
+		{id = "fairy_squirrel",        map = "forest", name = "Fairy Squirrel",        face = {dist = 1.5, up = -0.02},
+		 bio = "Sprinkles glitter wherever she goes, mostly by accident. Grants wishes on Tuesdays, but only small ones, like finding a really good acorn."},
+		{id = "ski_squirrel",          map = "forest", name = "Ski-a-roo Squirrel",
+		 bio = "Skis all year round, snow or no snow. Has yet to make it down a hill without hugging a tree."},
+		{id = "ballerina_squirrel",    map = "forest", name = "Ballerina Squirrel",
+		 bio = "Practices pirouettes on tree branches, to the great alarm of the birds. The tutu is very serious business."},
+		{id = "baking_betty_squirrel", map = "forest", name = "Baking Betty Squirrel",
+		 bio = "Bakes forty cupcakes a day and eats thirty-nine of them for quality control. Her frosting is legendary. So is her sugar rush."},
+		{id = "kite_squirrel",         map = "forest", name = "Kite Flyer Squirrel",  face = {dist = 1.02, up = -0.162},
+		 bio = "Waits all week for a good gust, then gives up and runs the whole forest to make his own. Holds the spool very tight, in case the kite ever wins."},
+		{id = "parachute_squirrel",    map = "forest", name = "Sky Diving Squirrel",  face = {dist = 0.68, up = -0.272},
+		 bio = "Jumps out of perfectly good trees for fun. Packs the chute himself, which explains both the confidence and the occasional surprise."},
+		{id = "birdwatch_squirrel",    map = "forest", name = "Bird Watching Squirrel",  face = {up = 0.03},
+		 bio = "Keeps a list of every bird he has seen. It runs to four pages, and two of the entries are just 'brown one'."},
+		{id = "ranger_squirrel",       map = "forest", name = "Forest Ranger Squirrel",  face = {up = 0.07},
+		 bio = "Knows every trail and every tree by name. Has given the same safety talk four hundred times and still means every word of it."},
+		{id = "mailman_squirrel",      map = "village", name = "Gérard the Mailman Squirrel",  face = {dist = 1.69, up = -0.015, side = -0.002},
+		 bio = "Has delivered the mail in this town for thirty-one years, and read most of it aloud, with commentary. Buries an acorn in every third flowerpot. Has opinions about your handwriting."},
+		{id = "philosopher_squirrel",  map = "village", name = "Philosopher Squirrel",  face = {dist = 1.53, up = -0.064, side = 0.003},
+		 bio = "Spends his days at the café wondering whether a squirrel nobody ever finds was really hiding at all. Has been on the same cup of coffee since Tuesday."},
+		{id = "waiter_squirrel",       map = "village", name = "French Waiter Squirrel",  face = {dist = 1.35, up = -0.031, side = 0.002},
+		 bio = "Carries his tray with one paw at all times, even while napping. Will bring your café au lait eventually, and sigh very dramatically while doing it."},
+		{id = "mime_squirrel",         map = "village", name = "Marcel the Mime Squirrel",  face = {dist = 1.55, up = -0.007, side = 0.063},
+		 bio = "Has been trapped inside an invisible box since 1987. Refuses to say how he got in. Refuses to say anything at all, actually."},
+		{id = "cyclist_squirrel",      map = "village", name = "Cyclist Squirrel",  face = {dist = 1.30, up = -0.024, side = 0.029},
+		 bio = "Has been training for the Tour de France for years. Owns the helmet, the gloves and the very tight shorts. Still working on the part where he actually rides the bike."},
+		{id = "glam_squirrel",         map = "village", name = "Glam Squirrel",  face = {dist = 1.41, up = -0.020, side = -0.002},
+		 bio = "Never leaves home without her pearls and sunglasses, even to pick up a croissant. Treats every sidewalk like a runway, and every sidewalk agrees."},
+		{id = "bird_feeder_squirrel",  map = "village", name = "Bird Feeder Squirrel",  face = {dist = 1.40, up = -0.144, side = 0.091},
+		 bio = "Shows up at the fountain every morning with a pocketful of breadcrumbs, rain or shine. The pigeons started a fan club. Then they started a union."},
+		{id = "firefighter_squirrel",  map = "village", name = "Firefighter Squirrel",  face = {dist = 1.56, up = -0.023, side = -0.018},
+		 bio = "Has rescued nine cats from trees, which is very brave for a squirrel. Slides down the fire pole even when there is no fire. Especially when there is no fire."},
+		{id = "tourist_squirrel",      map = "village", name = "Dale the Tourist Squirrel",  face = {dist = 1.35, up = -0.020, side = -0.024},
+		 bio = "A fox squirrel from Tulsa who arrived in somebody's carry-on bag. Bathrobe over cargo shorts, one boot, one flip-flop, a map for a cape. Asks the way to the Eiffel Tower every morning. He hears it is the tallest tree in France."},
+		{id = "painter_squirrel",      map = "village", name = "French Painter Squirrel",  face = {dist = 1.48, up = -0.007, side = -0.004},
+		 bio = "Has painted the town fountain three hundred times and calls every one a masterpiece. Somehow wears more paint than he has ever put on a canvas."},
+		{id = "florist_squirrel",      map = "village", name = "Florist Squirrel",  face = {dist = 1.46, up = 0.002, side = -0.035},
+		 bio = "Talks to every flower in the shop and swears the tulips talk back. Has sneezed through nine springs in a row and would not trade her job for anything."},
+		{id = "spy_squirrel",          map = "village", name = "International Spy Squirrel",  face = {dist = 1.30, up = -0.048, side = -0.096},
+		 bio = "Has a secret code name, a secret hideout and a secret handshake. Keeps forgetting all three, which he insists is part of the cover."},
+		{id = "fashion_squirrel",      map = "village", name = "Margaux the Designer Squirrel",  face = {up = 0.06},
+		 bio = "Margaux Delacroix-Pim, fashion designer. Keeps a pencil behind each ear and a third in her tail. Sketches a new collection every morning and has changed her mind about it by lunch. The glasses are not prescription, they are a statement."},
+		{id = "fishing_squirrel",      map = "village", name = "Fishing Squirrel",  face = {up = 0.05},
+		 bio = "On the bank since dawn. Has caught exactly one fish, which he is fond of, so he puts it back every evening and catches it again."},
+		{id = "gardener_squirrel",     map = "domaine", name = "Gardener Squirrel",  face = {up = 0.04},
+		 bio = "Grows the finest vegetables on the estate and will happily list every one of them for you. There is one pumpkin he calls the big fellow, and nobody is allowed to eat it."},
+		{id = "church_mouse",         map = "domaine", name = "The Church Mouse",  face = {up = 0.05},
+		 bio = "Takes his duties extremely seriously. Has a sermon ready for every day of the year and will gladly give you one if you slow down anywhere near the door."},
+		{id = "sleepy_sylvain",       map = "domaine", name = "Sleepy Sylvain",  face = {up = 0.02},
+		 bio = "Has never once been awake before noon. Farmer Fernand gave up on him years ago. So did the rooster."},
+		{id = "vintner_squirrel",        map = "domaine", name = "Vintner Squirrel",
+		 bio = "Swears every vintage is the finest ever, then says the same thing next year. His cellar has one barrel. He calls it the collection."},
+		{id = "lavender_lucie",          map = "domaine", name = "Lavender Lucie",
+		 bio = "Sprays lavender perfume on anything that stands still long enough. Says the colour is the best thing on the estate, and the scent is a very close second."},
+		{id = "beekeeper_squirrel",      map = "domaine", name = "Beekeeper Squirrel",
+		 bio = "Talks to the bees and insists they talk back. So far they have only said 'bzz', which she counts as agreement."},
+		{id = "farmer_fernand",          map = "domaine", name = "Farmer Fernand",
+		 bio = "Up before the rooster, mostly to remind the rooster. Owns one tractor, two hens' worth of opinions, and a hat older than the barn."},
+		{id = "scarecrow_squirrel",      map = "domaine", name = "Scarecrow Squirrel",
+		 bio = "Took the job to scare crows and befriended every one of them instead. The crows now help him wave."},
+		{id = "tractor_toto",            map = "domaine", name = "Tractor Toto",
+		 bio = "Has never driven the tractor. Has polished it, named it, and sung to it. Its name is also Toto."},
+		{id = "sunflower_squirrel",      map = "domaine", name = "Sunflower Squirrel",
+		 bio = "Turns to face the sun all day and gets a stiff neck every evening. Says it is worth it. Says it every evening."},
+		{id = "grape_stomper_gigi",      map = "domaine", name = "Grape Stomper Gigi",
+		 bio = "Stomps grapes with the enthusiasm of someone who thinks it is dancing. Her feet have been purple since a harvest she will not name."},
+		{id = "shepherd_squirrel",       map = "domaine", name = "Shepherd Squirrel",
+		 bio = "Guards one lamb with tremendous seriousness. The lamb mostly guards him back. They have never lost each other, or anything else."},
+		{id = "chevre_squirrel",         map = "domaine", name = "Chèvre Squirrel",
+		 bio = "Makes goat cheese and keeps it cool down the well. Also goes down the well when it is time to wash up."},
+		{id = "truffle_hunter",          map = "domaine", name = "Truffle Hunter",
+		 bio = "His pig can find a truffle at forty paces. He can find the pig at about four. They are working on it."},
+		{id = "picnic_pierre",           map = "domaine", name = "Picnic Pierre",
+		 bio = "Climbed the windmill with a baguette and never came back down. Insists lunch tastes better up there. Will not discuss how he intends to get down."},
+	},
+}
+
+===== TitleServer =====
+-- TitleServer: works out each player's honour from their per-map finds, keeps the name tag over their head, announces
+-- newly earned titles and awards the matching Roblox badge when one is configured.
+local Players = game:GetService("Players")
+local BadgeService = game:GetService("BadgeService")
+local RunService = game:GetService("RunService")
+local H = script.Parent
+local ev = H:WaitForChild("HonourEarned")
+local dbg = H:WaitForChild("HonourDebug")
+local C = Color3.fromRGB
+local Registry = require(workspace:WaitForChild("SquirrelScripts"):WaitForChild("SquirrelRegistry"))
+local TOTAL = {}
+for _, e in ipairs(Registry.squirrels) do TOTAL[e.map] = (TOTAL[e.map] or 0) + 1 end
+local TIERS = {
+	{map = "forest",  title = "Squirrel Friend",                 badge = "Badge_forest",  colour = C(205, 127, 50)},
+	{map = "village", title = "Squirrel Whisperer",             badge = "Badge_village", colour = C(200, 204, 212)},
+	{map = "domaine", title = "Squirrel Sage", badge = "Badge_domaine", colour = C(240, 196, 60)},   -- (was "Grand Keeper of the Great Acorn": too like the statue - Shannon, Sep 26)
+	{map = "porto",   title = "Squirrel Maestro",               badge = "Badge_porto",   colour = C(46, 150, 214), need = 15},   -- Oct 4 2026 (Shannon): first 15 Porto Nocciola squirrels (a count: Porto will grow)
+	{map = "porto",   title = "Squirrel Genius",                badge = "Badge_genius",  colour = C(166, 104, 232), need = 30},   -- Oct 7 2026 (Shannon): 30 Porto squirrels = the harbour 15 + Via della Piazza's 15
+	{map = "porto",   title = "Squirrel Luminary",              badge = "Badge_luminary", colour = C(150, 180, 70), need = 45},  -- Oct 7 2026 (Shannon): all 45 = + The Groves' 15
+}
+local tierOf = {}          -- player -> current tier (0..3)
+local forced = {}          -- Studio-only test override
+local function computeTier(player)
+	if forced[player] then return forced[player] end
+	local tier = 0
+	for i, t in ipairs(TIERS) do
+		local n = player:GetAttribute("Found_" .. t.map)
+		if n == nil or n < (t.need or TOTAL[t.map] or 1) then break end
+		tier = i
+	end
+	return tier
+end
+local function award(player, tier)
+	local t = TIERS[tier]
+	local id = t and H:GetAttribute(t.badge)
+	if not id or id <= 0 then return end
+	task.spawn(function()
+		local ok, err = pcall(function() BadgeService:AwardBadgeAsync(player.UserId, id) end)
+		if not ok then ok, err = pcall(function() BadgeService:AwardBadge(player.UserId, id) end) end
+		if not ok then warn("TitleServer: badge award failed: " .. tostring(err)) end
+	end)
+end
+-- the name tag: name on top, the title underneath with a medallion
+local function tag(player, char)
+	local head = char:WaitForChild("Head", 10)
+	local hum = char:FindFirstChildOfClass("Humanoid")
+	if not head then return end
+	if hum then hum.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None end
+	local old = head:FindFirstChild("HonourTag"); if old then old:Destroy() end
+	local gui = Instance.new("BillboardGui"); gui.Name = "HonourTag"; gui.Size = UDim2.new(0, 260, 0, 64); gui.StudsOffset = Vector3.new(0, 2.4, 0)
+	gui.MaxDistance = 70; gui.LightInfluence = 0; gui.Parent = head
+	local name = Instance.new("TextLabel"); name.Name = "Name"; name.Size = UDim2.new(1, 0, 0, 30); name.BackgroundTransparency = 1
+	name.Font = Enum.Font.FredokaOne; name.TextSize = 24; name.TextColor3 = C(255, 255, 255); name.TextStrokeTransparency = 0.4; name.Text = player.DisplayName; name.Parent = gui
+	local title = Instance.new("TextLabel"); title.Name = "Title"; title.Size = UDim2.new(1, 0, 0, 24); title.Position = UDim2.new(0, 0, 0, 30); title.BackgroundTransparency = 1
+	title.Font = Enum.Font.Antique; title.TextSize = 21; title.TextColor3 = C(255, 222, 110); title.TextStrokeTransparency = 0.3; title.Text = ""; title.Parent = gui
+	return gui
+end
+local function refreshTag(player)
+	local char = player.Character
+	local head = char and char:FindFirstChild("Head")
+	local gui = head and head:FindFirstChild("HonourTag")
+	if not gui then return end
+	local tier = tierOf[player] or 0
+	local champ = player:GetAttribute("ChampionTitle"); if champ == "" or tier >= 4 then champ = nil end; local pk = player:GetAttribute("PortoKeeperTitle"); if pk and pk ~= "" then champ = pk end; --[[Oct 7 2026: the Guardian of the Harbour shows over everything]] --[[Oct 5 2026: Squirrel Maestro shows over the Keeper title]] gui.Size = UDim2.new(0, champ and 380 or 260, 0, 64); gui.Title.Text = champ or (tier > 0 and TIERS[tier].title or "")
+	gui.Title.TextColor3 = champ and C(255, 214, 60) or (tier > 0 and TIERS[tier].colour or C(255, 222, 110))
+end
+local function update(player, announce)
+	local tier = computeTier(player)
+	local was = tierOf[player] or 0
+	tierOf[player] = tier
+	player:SetAttribute("HonourTier", tier)
+	local champT = player:GetAttribute("ChampionTitle"); local pk = player:GetAttribute("PortoKeeperTitle"); player:SetAttribute("HonourTitle", (pk and pk ~= "") and pk or ((champT and champT ~= "" and tier < 4) and champT or (tier > 0 and TIERS[tier].title or "")))
+	refreshTag(player)
+	if tier > was then
+		for i = was + 1, tier do award(player, i) end            -- every badge earned, not only the top one
+		if announce then ev:FireAllClients(player, tier, TIERS[tier].title) end
+	end
+end
+local function watch(player)
+	tierOf[player] = 0
+	player.CharacterAdded:Connect(function(char) task.defer(function() tag(player, char); refreshTag(player) end) end)
+	if player.Character then task.defer(function() tag(player, player.Character); refreshTag(player) end) end
+	for _, t in ipairs(TIERS) do
+		player:GetAttributeChangedSignal("Found_" .. t.map):Connect(function() update(player, true) end)
+	end
+	player:GetAttributeChangedSignal("ChampionTitle"):Connect(function() update(player, false) end); player:GetAttributeChangedSignal("PortoKeeperTitle"):Connect(function() update(player, false) end); task.delay(1, function() if player.Parent then update(player, false) end end)   -- the saved finds arrive a moment after joining
+end
+Players.PlayerAdded:Connect(watch)
+for _, p in ipairs(Players:GetPlayers()) do watch(p) end
+Players.PlayerRemoving:Connect(function(p) tierOf[p] = nil; forced[p] = nil end)
+if RunService:IsStudio() then                                        -- Studio-only: pretend a tier, to see the honours without 35 finds
+	dbg.OnServerEvent:Connect(function(player, tier)
+		forced[player] = (tier and tier > 0) and math.clamp(tier, 1, #TIERS) or nil
+		update(player, true)
+	end)
+end
+
+===== TitleClient =====
+-- TitleClient: the honour pill on screen, and the celebration when a title is earned (banner, sparkles, fanfare, chat).
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local Debris = game:GetService("Debris")
+local player = Players.LocalPlayer
+local H = script.Parent
+local ev = H:WaitForChild("HonourEarned")
+local C = Color3.fromRGB
+local COLOURS = {C(205, 127, 50), C(200, 204, 212), C(240, 196, 60), C(46, 150, 214), C(166, 104, 232), C(150, 180, 70)}
+local function medallion(parent, size, colour)                        -- a round medal with a little acorn drawn from frames
+	local m = Instance.new("Frame"); m.Name = "Medal"; m.Size = UDim2.new(0, size, 0, size); m.BackgroundColor3 = colour; m.BorderSizePixel = 0; m.Parent = parent
+	local mc = Instance.new("UICorner"); mc.CornerRadius = UDim.new(0.5, 0); mc.Parent = m
+	local ring = Instance.new("UIStroke"); ring.Color = C(80, 52, 30); ring.Thickness = 2; ring.Parent = m
+	local nut = Instance.new("Frame"); nut.Size = UDim2.new(0.42, 0, 0.44, 0); nut.Position = UDim2.new(0.29, 0, 0.36, 0); nut.BackgroundColor3 = C(196, 138, 78); nut.BorderSizePixel = 0; nut.Parent = m
+	local nc = Instance.new("UICorner"); nc.CornerRadius = UDim.new(0.5, 0); nc.Parent = nut
+	local cap = Instance.new("Frame"); cap.Size = UDim2.new(0.52, 0, 0.26, 0); cap.Position = UDim2.new(0.24, 0, 0.2, 0); cap.BackgroundColor3 = C(104, 66, 38); cap.BorderSizePixel = 0; cap.Parent = m
+	local cc = Instance.new("UICorner"); cc.CornerRadius = UDim.new(0.45, 0); cc.Parent = cap
+	local stem = Instance.new("Frame"); stem.Size = UDim2.new(0.08, 0, 0.14, 0); stem.Position = UDim2.new(0.46, 0, 0.1, 0); stem.BackgroundColor3 = C(80, 52, 30); stem.BorderSizePixel = 0; stem.Parent = m
+	return m
+end
+local gui = Instance.new("ScreenGui"); gui.Name = "HonourBar"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.Parent = player:WaitForChild("PlayerGui")
+local pill = Instance.new("Frame"); pill.Name = "Pill"; pill.Size = UDim2.new(0, 400, 0, 44); pill.Position = UDim2.new(0.5, -200, 0, 10); pill.BackgroundColor3 = C(38, 30, 52)
+pill.BackgroundTransparency = 0.15; pill.BorderSizePixel = 0; pill.Visible = false; pill.Parent = gui
+local pc = Instance.new("UICorner"); pc.CornerRadius = UDim.new(0, 22); pc.Parent = pill
+local ps = Instance.new("UIStroke"); ps.Color = C(240, 200, 90); ps.Thickness = 2; ps.Parent = pill
+local pm = medallion(pill, 34, COLOURS[1]); pm.Position = UDim2.new(0, 6, 0, 5)
+local pt = Instance.new("TextLabel"); pt.Size = UDim2.new(1, -52, 1, 0); pt.Position = UDim2.new(0, 46, 0, 0); pt.BackgroundTransparency = 1
+pt.Font = Enum.Font.Antique; pt.TextSize = 24; pt.TextColor3 = C(255, 214, 90); pt.TextScaled = false; pt.TextWrapped = false; pt.Text = ""; pt.Parent = pill
+-- ONE LINE, ALWAYS. TextScaled quietly turns wrapping on, and in a phone-width pill it broke the long title over
+-- two lines (Shannon: "that looks bad"). The size is measured instead: the largest, up to 24, at which the whole
+-- title fits the label on a single line.
+local TextService = game:GetService("TextService")
+local pillW = 400
+local function fitTitle()
+	local avail = pillW - 52 - 10
+	local size = 24
+	while size > 10 do
+		local b = TextService:GetTextSize(pt.Text, size, pt.Font, Vector2.new(4000, 100))
+		if b.X <= avail then break end
+		size -= 1
+	end
+	pt.TextSize = size
+end
+-- THE WIDTH COMES FROM THE SCREEN. A fixed 400 ran into the buttons top-left (menu, chat, mic, Hint: about 330 px)
+-- and the counters top-right (about 220 px) on a phone (Shannon). The pill takes what is left between them, at
+-- most 400, at least 230, and TextScaled shrinks the longest title to fit.
+local function fitPill()
+	local cam = workspace.CurrentCamera
+	local vw = cam and cam.ViewportSize.X or 1280
+	local w = math.clamp(vw - 2 * 345, 230, 400)
+	pillW = w
+	pill.Size = UDim2.new(0, w, 0, 44); pill.Position = UDim2.new(0.5, -w / 2, 0, 10)
+	fitTitle()
+end
+fitPill()
+if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(fitPill) end
+local function refreshPill()
+	local tier = player:GetAttribute("HonourTier") or 0
+	pill.Visible = tier > 0
+	if tier > 0 then pt.Text = player:GetAttribute("HonourTitle") or ""; pm.BackgroundColor3 = COLOURS[tier]; fitTitle() end
+end
+player:GetAttributeChangedSignal("HonourTier"):Connect(refreshPill)
+player:GetAttributeChangedSignal("HonourTitle"):Connect(refreshPill)
+refreshPill()
+-- the celebration
+local banner = Instance.new("Frame"); banner.Name = "Banner"; banner.Size = UDim2.new(0, 640, 0, 120); banner.Position = UDim2.new(0.5, -320, 0.3, 0); banner.BackgroundColor3 = C(38, 30, 52)
+banner.BackgroundTransparency = 0.1; banner.BorderSizePixel = 0; banner.Visible = false; banner.Parent = gui
+local bc = Instance.new("UICorner"); bc.CornerRadius = UDim.new(0, 18); bc.Parent = banner
+local bs = Instance.new("UIStroke"); bs.Color = C(240, 200, 90); bs.Thickness = 3; bs.Parent = banner
+local bm = medallion(banner, 72, COLOURS[1]); bm.Position = UDim2.new(0, 22, 0.5, -36)
+local b1 = Instance.new("TextLabel"); b1.Size = UDim2.new(1, -120, 0, 40); b1.Position = UDim2.new(0, 108, 0, 18); b1.BackgroundTransparency = 1
+b1.Font = Enum.Font.FredokaOne; b1.TextSize = 26; b1.TextColor3 = C(255, 246, 220); b1.TextXAlignment = Enum.TextXAlignment.Left; b1.Text = ""; b1.Parent = banner
+local b2 = Instance.new("TextLabel"); b2.Size = UDim2.new(1, -120, 0, 44); b2.Position = UDim2.new(0, 108, 0, 58); b2.BackgroundTransparency = 1
+b2.Font = Enum.Font.Antique; b2.TextSize = 40; b2.TextColor3 = C(255, 214, 90); b2.TextXAlignment = Enum.TextXAlignment.Left; b2.TextScaled = true; b2.Text = ""; b2.Parent = banner
+local b2c = Instance.new("UITextSizeConstraint"); b2c.MaxTextSize = 40; b2c.Parent = b2
+local shownAt = 0
+local function celebrate(tier, title)
+	bm.BackgroundColor3 = COLOURS[tier] or COLOURS[1]
+	b1.Text = tier == 6 and "All of The Groves found! You are now a" or tier == 5 and "All of Via della Piazza found! You are now a" or tier == 4 and "15 harbour squirrels found! You are now a" or tier == 3 and "All 44 squirrels found! You are now a" or "A section complete! You are now a"
+	b2.Text = title
+	banner.Visible = true; banner.Position = UDim2.new(0.5, -320, 0.24, 0)
+	TweenService:Create(banner, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, -320, 0.3, 0)}):Play()
+	local t = os.clock(); shownAt = t
+	task.delay(6, function() if shownAt == t then banner.Visible = false end end)
+	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://1845415163"; s.Volume = 0.6; s.Parent = gui; s:Play(); Debris:AddItem(s, 6)
+	local char = player.Character
+	local head = char and char:FindFirstChild("Head")
+	if head then
+		local a = Instance.new("Attachment"); a.Position = Vector3.new(0, 1, 0); a.Parent = head
+		local pe = Instance.new("ParticleEmitter"); pe.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+		pe.Color = ColorSequence.new(COLOURS[tier] or COLOURS[1], C(255, 250, 220)); pe.Size = NumberSequence.new(0.6, 0); pe.Lifetime = NumberRange.new(1, 1.6)
+		pe.Speed = NumberRange.new(4, 7); pe.SpreadAngle = Vector2.new(180, 180); pe.Acceleration = Vector3.new(0, -6, 0); pe.LightEmission = 0.8; pe.Rate = 0; pe.Parent = a
+		pe:Emit(60); task.delay(0.8, function() pe:Emit(40) end)
+		Debris:AddItem(a, 5)
+	end
+end
+ev.OnClientEvent:Connect(function(who, tier, title)
+	if who == player then celebrate(tier, title) end
+	pcall(function()
+		local tcs = game:GetService("TextChatService")
+		local ch = tcs:FindFirstChild("TextChannels") and tcs.TextChannels:FindFirstChild("RBXGeneral")
+		if ch then ch:DisplaySystemMessage(string.format("%s is now a %s!", who.DisplayName, title)) end   -- ("a": everyone who finds all 44 is a Squirrel Sage)
+	end)
+end)
+
+===== BadgeIcons =====
+-- BadgeIcons: each badge's current picture, straight from Roblox, onto this folder for the case to show
+local BadgeService = game:GetService("BadgeService")
+local F = script.Parent
+local SOURCES = {
+	Icon_champion = {"Champion", "Badge_champion"}, Icon_wise = {"DailyQuestion", "Badge_wise"},
+	Icon_forest = {"Honours", "Badge_forest"}, Icon_village = {"Honours", "Badge_village"}, Icon_domaine = {"Honours", "Badge_domaine"},
+	Icon_porto = {"Honours", "Badge_porto"}, Icon_genius = {"Honours", "Badge_genius"}, Icon_luminary = {"Honours", "Badge_luminary"},
+}
+for attr, src in pairs(SOURCES) do
+	task.spawn(function()
+		local home = workspace:WaitForChild(src[1], 30)
+		local id = home and tonumber(home:GetAttribute(src[2])) or 0
+		if id <= 0 then return end
+		local ok, info = pcall(function() return BadgeService:GetBadgeInfoAsync(id) end)
+		if ok and type(info) == "table" and (tonumber(info.IconImageId) or 0) > 0 then F:SetAttribute(attr, info.IconImageId) end
+	end)
+end
+
+===== PortoKeeperServer =====
+-- PortoKeeperServer: the Guardian of the Harbour. The first player ever to find all of Porto Nocciola's squirrels (attribute
+-- Need on this folder, 45 = three sections of 15) wins once, for good: a marble statue of them on the plinth by the
+-- lighthouse, holding the harbour key; the plaque names them; the title shows over their head; a badge when Badge_key is set.
+-- The statue is made by Champion.MakeStatue (the same figure as the French Keeper), so every statue in the game matches.
+-- Record: DataStore "PortoKeeper_v1", key "first" (Shannon, Oct 7 2026: a new store, separate from all player saves).
+local Players = game:GetService("Players")
+local RS = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+local DSS = game:GetService("DataStoreService")
+local BadgeService = game:GetService("BadgeService")
+local F = script.Parent
+local ev = RS:WaitForChild("PortoKeeperEvent")
+local STUDIO = RunService:IsStudio()
+local store
+if not STUDIO then pcall(function() store = DSS:GetDataStore("PortoKeeper_v1") end) end
+local GOLD, GOLD_D, GOLD_DD = Color3.new(1, 0.807843, 0.25098), Color3.new(0.839216, 0.627451, 0.172549), Color3.new(0.745098, 0.533333, 0.156863)
+local function need() return tonumber(F:GetAttribute("Need")) or 45 end
+local function title() return F:GetAttribute("Title") or "Guardian of the Harbour" end
+local function dateOf(t) return os.date("!%B %d, %Y", t) end
+
+-- ---- the key ----
+local function part(name, size, color, shape)
+	local p = Instance.new("Part"); p.Name = name; p.Size = size; p.Color = color; p.Material = Enum.Material.SmoothPlastic
+	p.Anchored = true; p.CanCollide = false; p.CanQuery = false
+	if shape then p.Shape = shape end
+	return p
+end
+local KEY_H = 3.6   -- the key below is drawn 3.6 tall at s = 1
+local function keyPose(s)
+	return {
+		Shaft = {CFrame.new(0, 0, 0) * CFrame.Angles(0, 0, math.rad(90)), Vector3.new(2.3 * s, 0.34 * s, 0.34 * s), GOLD, Enum.PartType.Cylinder},
+		Nut = {CFrame.new(0, 1.57 * s, 0), Vector3.new(0.95 * s, 0.95 * s, 0.95 * s), GOLD, Enum.PartType.Ball},
+		Cap = {CFrame.new(0, 2.01 * s, 0) * CFrame.Angles(0, 0, math.rad(90)), Vector3.new(0.36 * s, 1.06 * s, 1.06 * s), GOLD_D, Enum.PartType.Cylinder},
+		Lip = {CFrame.new(0, 1.81 * s, 0) * CFrame.Angles(0, 0, math.rad(90)), Vector3.new(0.14 * s, 0.9 * s, 0.9 * s), GOLD_DD, Enum.PartType.Cylinder},
+		Stem = {CFrame.new(0, 2.25 * s, 0), Vector3.new(0.17 * s, 0.26 * s, 0.17 * s), GOLD_DD, nil},
+		Bit1 = {CFrame.new(0.38 * s, -0.95 * s, 0), Vector3.new(0.5 * s, 0.3 * s, 0.34 * s), GOLD, nil},
+		Bit2 = {CFrame.new(0.3 * s, -0.55 * s, 0), Vector3.new(0.34 * s, 0.3 * s, 0.34 * s), GOLD, nil},
+	}
+end
+local function extents(m)
+	local lo, hi = Vector3.new(1e9, 1e9, 1e9), Vector3.new(-1e9, -1e9, -1e9)
+	for _, p in ipairs(m:GetDescendants()) do
+		if p:IsA("BasePart") then
+			local h = p.Size / 2
+			for _, sx in ipairs({-1, 1}) do for _, sy in ipairs({-1, 1}) do for _, sz in ipairs({-1, 1}) do
+				local c = p.CFrame * Vector3.new(h.X * sx, h.Y * sy, h.Z * sz); lo = lo:Min(c); hi = hi:Max(c)
+			end end end
+		end
+	end
+	return lo, hi
+end
+-- a key `height` tall, standing with its bottom at (x, bottomY, z), turned by yaw
+local function makeKey(height, x, bottomY, z, yaw, parent)
+	local s = height / KEY_H
+	local k = Instance.new("Model"); k.Name = "Key"
+	local pose = keyPose(s)
+	for name, d in pairs(pose) do local p = part(name, d[2], d[3], d[4]); p.CFrame = d[1]; p.Parent = k end
+	k.PrimaryPart = k.Shaft
+	local lo = extents(k)
+	local base = CFrame.new(x, bottomY - lo.Y, z) * CFrame.Angles(0, yaw, 0)
+	for name, d in pairs(pose) do k[name].CFrame = base * d[1] end
+	k.WorldPivot = CFrame.new(x, bottomY + height / 2, z)
+	k.Parent = parent
+	return k
+end
+local function facingYaw() local f = F:GetAttribute("Facing") or Vector3.new(0, 0, -1) return math.atan2(f.X, f.Z) + math.pi end
+
+-- ---- the plaque ----
+local words = F:WaitForChild("Plinth"):WaitForChild("Plaque"):WaitForChild("Words")
+local function setPlaque(rec)
+	words.Title.Text = title():upper()
+	words.Day.Text = "OF PORTO NOCCIOLA"
+	if rec then
+		words.Who.Text = tostring(rec.name or "?")
+		words.Note.Text = "First to find all " .. tostring(rec.total or need()) .. " squirrels of Porto Nocciola, on " .. dateOf(rec.t or os.time())
+	else
+		words.Who.Text = "This could be you"
+		words.Note.Text = "Be the first to find all " .. tostring(need()) .. " squirrels of Porto Nocciola and your statue will stand here, holding the harbour key."
+	end
+end
+
+-- ---- the statue ----
+local building = false
+local function buildStatue(rec)
+	while building do task.wait(0.2) end
+	building = true
+	for _, n in ipairs({"Figure", "Key", "GiantAcorn"}) do local o = F:FindFirstChild(n); if o then o:Destroy() end end
+	setPlaque(rec)
+	local PX, PZ, TOP = F:GetAttribute("PlinthX"), F:GetAttribute("PlinthZ"), F:GetAttribute("TopY")
+	local FX = F:GetAttribute("FigureX") or PX
+	if not rec then
+		makeKey(F:GetAttribute("RestKeyHeight") or 3.4, PX, TOP, PZ, facingYaw(), F)
+		building = false
+		return
+	end
+	local mk = workspace:FindFirstChild("Champion") and workspace.Champion:FindFirstChild("MakeStatue")
+	local model, acorn
+	if mk then
+		local ok, m, a = pcall(function() return mk:Invoke(rec, {x = FX, top = TOP, z = PZ, parent = F, name = "Figure", scale = F:GetAttribute("Scale") or 1.5, look = F:GetAttribute("Facing") or Vector3.new(0, 0, -1)}) end)
+		if ok then model, acorn = m, a else warn("PortoKeeper: MakeStatue failed: " .. tostring(m)) end
+	end
+	if acorn then acorn:Destroy() end
+	if model then
+		-- the key in the raised hand, sized to the figure like the French acorn (a share of the body height)
+		local holdSide = (workspace.Champion:GetAttribute("HoldHand") == "Right") and "Right" or "Left"
+		local hand = model:FindFirstChild(holdSide .. "Hand")
+		local lo, hi = extents(model)
+		local bodyH = hi.Y - lo.Y
+		local h = math.clamp(bodyH * (F:GetAttribute("KeyShare") or 0.42), 1.5, 6)
+		if hand then
+			makeKey(h, hand.Position.X, hand.Position.Y + hand.Size.Y / 2 - 0.15, hand.Position.Z, facingYaw(), F)
+		else
+			makeKey(h, FX, hi.Y, PZ, facingYaw(), F)
+		end
+		print(string.format("PortoKeeper: the statue of %s stands by the lighthouse", tostring(rec.name)))
+	else
+		makeKey(F:GetAttribute("RestKeyHeight") or 3.4, PX, TOP, PZ, facingYaw(), F)
+	end
+	building = false
+end
+
+-- ---- the record ----
+local first = nil        -- the winner's record, once known
+local loaded = false
+local function giveBadge(player)
+	local id = tonumber(F:GetAttribute("Badge_key")) or 0
+	if id <= 0 or STUDIO then return end
+	task.spawn(function()
+		local okH, has = pcall(function() return BadgeService:UserHasBadgeAsync(player.UserId, id) end)
+		if okH and not has then
+			local ok, e = pcall(function() BadgeService:AwardBadgeAsync(player.UserId, id) end)
+			if not ok then warn("PortoKeeper: badge award failed: " .. tostring(e)) end
+		end
+	end)
+end
+local function applyTitle(player)
+	if first and first.uid == player.UserId then
+		player:SetAttribute("PortoKeeperTitle", title())
+		giveBadge(player)
+	end
+end
+local function claim(rec)
+	if STUDIO or not store then
+		if first then return false, first end
+		first = rec
+		return true
+	end
+	for attempt = 1, 3 do
+		local won, holder = false, nil
+		local ok = pcall(function()
+			store:UpdateAsync("first", function(old)
+				if old ~= nil then won = false; holder = old; return nil end
+				won = true; return rec
+			end)
+		end)
+		if ok then return won, holder end
+		task.wait(2 * attempt)
+	end
+	return false, nil
+end
+local function load()
+	if STUDIO or not store then loaded = true; return end
+	for attempt = 1, 5 do
+		local ok, v = pcall(function() return store:GetAsync("first") end)
+		if ok then if type(v) == "table" and v.uid then first = v end loaded = true; return end
+		task.wait(2 * attempt)
+	end
+	loaded = true
+end
+local function celebrate(rec)
+	ev:FireAllClients("crowned", rec)
+	task.spawn(buildStatue, rec)
+end
+local function crown(player, force)
+	local listed = tostring(F:GetAttribute("NoKeeperUserIds") or ""):find("%f[%d]" .. tostring(player.UserId) .. "%f[%D]") ~= nil
+	local owner = (game.CreatorType == Enum.CreatorType.User and player.UserId == game.CreatorId)
+	if (listed or owner) and not force then
+		print(string.format("PortoKeeper: %s found them all but takes no Guardian slot (owner / NoKeeperUserIds)", player.Name))
+		return
+	end
+	local t0 = os.clock()
+	while not loaded and os.clock() - t0 < 60 do task.wait(0.5) end
+	if first then
+		ev:FireClient(player, first.uid == player.UserId and "already" or "late", first.name)
+		return
+	end
+	local rec = {uid = player.UserId, name = player.DisplayName, user = player.Name, t = os.time(), total = need()}
+	local won, holder = claim(rec)
+	if not won then
+		if holder then first = holder; ev:FireClient(player, "late", holder.name) end
+		return
+	end
+	first = rec
+	applyTitle(player)
+	print(string.format("PortoKeeper: %s is the %s (all %d Porto squirrels)", player.Name, title(), rec.total))
+	celebrate(rec)
+end
+
+-- ---- watching every player's Porto finds (Found_porto is kept by SquirrelSetup) ----
+local function watch(player)
+	task.spawn(function()
+		local t0 = os.clock()
+		while player.Parent and not loaded and os.clock() - t0 < 60 do task.wait(0.5) end
+		if not player.Parent then return end
+		applyTitle(player)
+		local last = tonumber(player:GetAttribute("Found_porto")) or 0
+		player:GetAttributeChangedSignal("Found_porto"):Connect(function()
+			local now = tonumber(player:GetAttribute("Found_porto")) or 0
+			if now >= need() and last < need() then task.spawn(crown, player) end
+			last = now
+		end)
+	end)
+end
+Players.PlayerAdded:Connect(watch)
+for _, p in ipairs(Players:GetPlayers()) do watch(p) end
+
+task.spawn(function()
+	load()
+	buildStatue(first)
+	for _, p in ipairs(Players:GetPlayers()) do applyTitle(p) end
+end)
+if STUDIO then
+	-- Studio only: KeeperDebug:Invoke(player) crowns that player (owner too); KeeperDebug:Invoke(nil) clears back to the placeholder
+	local dbg = Instance.new("BindableFunction"); dbg.Name = "KeeperDebug"; dbg.Parent = F
+	dbg.OnInvoke = function(player)
+		if not player then
+			if first then local p = Players:GetPlayerByUserId(first.uid) if p then p:SetAttribute("PortoKeeperTitle", nil) end end
+			first = nil; buildStatue(nil); return "cleared"
+		end
+		first = nil; crown(player, true); return player:GetAttribute("PortoKeeperTitle")
+	end
+end
+print("PortoKeeper: ready (" .. title() .. " at " .. need() .. " squirrels)")
+
+===== PortoKeeperClient =====
+-- PortoKeeperClient: a banner and a chat line when someone becomes the Guardian of the Harbour; a quiet note to late finders.
+local RS = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local StarterGui = game:GetService("StarterGui")
+local ev = RS:WaitForChild("PortoKeeperEvent")
+local player = Players.LocalPlayer
+local C = Color3.fromRGB
+local function chat(text)
+	pcall(function() StarterGui:SetCore("ChatMakeSystemMessage", {Text = text, Color = C(255, 214, 90), Font = Enum.Font.GothamBold, TextSize = 18}) end)
+end
+local function banner(big, small)
+	local pg = player:WaitForChild("PlayerGui")
+	local gui = Instance.new("ScreenGui"); gui.Name = "PortoKeeperBanner"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 26; gui.Parent = pg
+	local f = Instance.new("Frame"); f.AnchorPoint = Vector2.new(0.5, 0); f.Position = UDim2.new(0.5, 0, 0, -140); f.Size = UDim2.fromOffset(620, 110)
+	f.BackgroundColor3 = C(28, 32, 60); f.BackgroundTransparency = 0.08; f.Parent = gui
+	local corner = Instance.new("UICorner"); corner.CornerRadius = UDim.new(0, 18); corner.Parent = f
+	local stroke = Instance.new("UIStroke"); stroke.Color = C(232, 191, 74); stroke.Thickness = 4; stroke.Parent = f
+	local t1 = Instance.new("TextLabel"); t1.Size = UDim2.new(1, -30, 0, 54); t1.Position = UDim2.new(0, 15, 0, 10); t1.BackgroundTransparency = 1
+	t1.Font = Enum.Font.FredokaOne; t1.TextScaled = true; t1.TextColor3 = C(255, 222, 110); t1.Text = big; t1.Parent = f
+	local t2 = Instance.new("TextLabel"); t2.Size = UDim2.new(1, -30, 0, 32); t2.Position = UDim2.new(0, 15, 0, 66); t2.BackgroundTransparency = 1
+	t2.Font = Enum.Font.Merriweather; t2.TextScaled = true; t2.TextColor3 = C(255, 246, 220); t2.Text = small; t2.Parent = f
+	local sc = Instance.new("UIScale"); sc.Parent = f
+	local vw = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize.X or 1000
+	sc.Scale = math.min(1, (vw - 24) / 620)
+	TweenService:Create(f, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0, 70)}):Play()
+	task.delay(9, function()
+		TweenService:Create(f, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(0.5, 0, 0, -140)}):Play()
+		task.wait(0.5); gui:Destroy()
+	end)
+end
+ev.OnClientEvent:Connect(function(what, a)
+	if what == "crowned" and type(a) == "table" then
+		local t = workspace:FindFirstChild("PortoKeeper") and workspace.PortoKeeper:GetAttribute("Title") or "Guardian of the Harbour"
+		if a.uid == player.UserId then
+			banner("You are the " .. t .. "!", "Your statue stands by the lighthouse, holding the harbour key")
+		else
+			banner(tostring(a.name) .. " is the " .. t .. "!", "First to find all " .. tostring(a.total or 45) .. " squirrels of Porto Nocciola")
+		end
+		chat(string.format("%s found all %d squirrels of Porto Nocciola first and is the %s. Their statue stands by the lighthouse.", tostring(a.name), tonumber(a.total) or 45, t))
+	elseif what == "late" then
+		chat(string.format("You found every squirrel in Porto Nocciola! %s got there first and holds the harbour key.", tostring(a)))
+	elseif what == "already" then
+		chat("You already hold the harbour key, Guardian.")
+	end
+end)
+
+===== SquirrelAnim =====
+
+-- SquirrelAnim (client): idle bones + reveal effect. Runs on the client because Bone.Transform must be set there.
+local CollectionService = game:GetService("CollectionService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+
+local function isSquirrelMesh(p)
+	return p:IsA("MeshPart") and p:FindFirstChild("Tail2", true) ~= nil and p:FindFirstChild("Root", true) ~= nil
+end
+local function getTex(mesh)
+	local sa = mesh:FindFirstChildOfClass("SurfaceAppearance")
+	if sa then return sa.ColorMap end
+	return mesh.TextureID
+end
+local function setTex(mesh, id)
+	local sa = mesh:FindFirstChildOfClass("SurfaceAppearance")
+	if sa then
+		local ok = pcall(function() sa.ColorMap = id end)   -- SurfaceAppearance is plugin-only at runtime
+		if not ok then mesh.TextureID = id end
+	else
+		mesh.TextureID = id
+	end
+end
+
+local ev = ReplicatedStorage:WaitForChild("SquirrelFound", 30)
+local sync = ReplicatedStorage:WaitForChild("SquirrelSync", 30)
+local rng = Random.new()
+local BLENDER_HEIGHT = 2.4
+local ORDER = {"Root", "Chest", "Neck", "Head", "Tail1", "Tail2"}
+
+local squirrels = {}     -- model -> state
+local setCompanion
+local ensureHud, updateCounter, addBadge, fillBadge, ensureBadges, openCard, closeCard, nameTag, faceCamera, makeViewport, circleWindow, openAlbum, closeAlbum   -- defined below
+local CIRCLE = 46            -- portrait diameter inside a 62 px tile
+local foundIds = {}        -- every id this player has found, on any map (from the server)
+local function addSquirrel(model)
+	if squirrels[model] then return end
+	local mesh
+	for _, p in ipairs(model:GetDescendants()) do if isSquirrelMesh(p) then mesh = p break end end
+	if not mesh then return end
+	local bones = {}
+	for _, b in ipairs(mesh:GetDescendants()) do if b:IsA("Bone") then bones[b.Name] = b end end
+	-- squirrel axes in the mesh's own frame: forward = root -> head, up = world up
+	local fwdL = Vector3.new(0, 0, -1)
+	if bones.Root and bones.Head then
+		local f = bones.Head.WorldPosition - bones.Root.WorldPosition
+		f = Vector3.new(f.X, 0, f.Z)
+		if f.Magnitude > 0.05 then fwdL = mesh.CFrame:VectorToObjectSpace(f.Unit) end
+	end
+	local upL = mesh.CFrame:VectorToObjectSpace(Vector3.yAxis)
+	local st = {
+		mesh = mesh, bones = bones, fwdL = fwdL, upL = upL, leftL = upL:Cross(fwdL),
+		t = rng:NextNumber(0, 10), lookYaw = 0, lookTarget = 0, lookTimer = rng:NextNumber(1, 4), tilt = 0, tiltTarget = 0,
+		flick = 0, flickTimer = rng:NextNumber(4, 10), hop = 0, hopTimer = rng:NextNumber(8, 20),
+		found = false, revealT = -1, want = {},
+		noHead = model:GetAttribute("NoHeadAnim") == true or model:GetAttribute("NoTurn") == true,
+		noTurn = model:GetAttribute("NoTurn") == true,
+		idleHop = model:GetAttribute("IdleHop") == true or model:GetAttribute("Hops") == true,
+		bouncy = model:GetAttribute("Bouncy") == true or mesh:GetAttribute("Bouncy") == true,
+		driftDown = model:GetAttribute("DriftDown") == true, dr = nil, landed = false,
+		home = mesh.CFrame,          -- where the place put him; a reset sends him back up there
+	}
+	squirrels[model] = st
+end
+local tracked = 0
+local applyInitial      -- defined below
+local function scan()
+	local added = false
+	for _, model in ipairs(CollectionService:GetTagged("Squirrel")) do
+		if not squirrels[model] then addSquirrel(model); if squirrels[model] then added = true end end
+	end
+	if added then
+		local n = 0
+		for _ in pairs(squirrels) do n += 1 end
+		tracked = n
+		print("SquirrelAnim: tracking " .. n .. " squirrels")
+		if applyInitial then task.defer(applyInitial) end
+	end
+end
+-- tags can replicate after this script starts and the added-signal does not always fire for them, so keep looking
+CollectionService:GetInstanceAddedSignal("Squirrel"):Connect(function() scan() end)
+CollectionService:GetInstanceRemovedSignal("Squirrel"):Connect(function(model) squirrels[model] = nil end)
+task.spawn(function()
+	while true do scan(); task.wait(tracked == 0 and 0.5 or 3) end
+end)
+
+local function byId(id)
+	for model, st in pairs(squirrels) do if model:GetAttribute("SquirrelId") == id then return model, st end end
+end
+
+-- start gray for everything this player has not found yet (per-player mode); shared mode already has the right texture
+-- how far a squirrel's lowest corner sits above the ground below him
+local function groundDropOf(mesh)
+	local rp = RaycastParams.new()
+	rp.FilterType = Enum.RaycastFilterType.Exclude
+	rp.FilterDescendantsInstances = {mesh:FindFirstAncestorOfClass("Model") or mesh}
+	local hit = workspace:Raycast(mesh.Position + Vector3.new(0, 4, 0), Vector3.new(0, -500, 0), rp)
+	local gy = hit and hit.Position.Y or 0
+	local lo = math.huge
+	for _, sx in ipairs({-1, 1}) do for _, sy in ipairs({-1, 1}) do for _, sz in ipairs({-1, 1}) do
+		local w = mesh.CFrame:PointToWorldSpace(Vector3.new(sx * mesh.Size.X / 2, sy * mesh.Size.Y / 2, sz * mesh.Size.Z / 2))
+		if w.Y < lo then lo = w.Y end
+	end end end
+	return lo - gy
+end
+-- upright, feet on the ground, keeping the way he is facing
+local function setDown(mesh)
+	local fl = Vector3.new(mesh.CFrame.LookVector.X, 0, mesh.CFrame.LookVector.Z)
+	if fl.Magnitude < 0.05 then fl = Vector3.new(0, 0, -1) end
+	local p = mesh.CFrame.Position
+	mesh.CFrame = CFrame.lookAt(p, p + fl.Unit)
+	mesh.CFrame = mesh.CFrame - Vector3.new(0, groundDropOf(mesh), 0)
+end
+applyInitial = function()
+	local list = sync and sync:InvokeServer() or {}
+	local foundSet = {}
+	for _, id in ipairs(list) do foundSet[id] = true; foundIds[id] = true end
+	local perPlayer = script.Parent:GetAttribute("PerPlayer") ~= false
+	for model, st in pairs(squirrels) do
+		local id = model:GetAttribute("SquirrelId")
+		local gray, color = st.mesh:GetAttribute("GrayTexture"), st.mesh:GetAttribute("ColorTexture")
+		if foundSet[id] then st.found = true; if color then setTex(st.mesh, color) end
+			if st.driftDown and not st.landed then setDown(st.mesh); st.landed = true end
+		elseif perPlayer and gray then setTex(st.mesh, gray) end
+		setCompanion(model, foundSet[id] == true)
+	end
+	ensureHud(); ensureBadges(); updateCounter()
+end
+scan()
+
+-- floating name tag: rises out of the squirrel with sparkles, holds, then fades
+local TweenService = game:GetService("TweenService")
+local Registry = require(script.Parent:WaitForChild("SquirrelRegistry"))
+local regById, regOrder = {}, {}
+for i, e in ipairs(Registry.squirrels) do regById[e.id] = e; regOrder[e.id] = i end
+local function idOf(model) return model:GetAttribute("SquirrelId") or (model.Name:lower():gsub("_color$", "")) end
+local function prettyName(model)
+	local dn = model:GetAttribute("DisplayName")
+	if dn and dn ~= "" then return dn end
+	local e = regById[idOf(model)]
+	if e then return e.name end
+	local n = model.Name:gsub("_color$", ""):gsub("_gray$", ""):gsub("_", " ")
+	n = n:gsub("(%a)([%w']*)", function(a, b) return a:upper() .. b end)
+	return n
+end
+-- ---- HUD: counter + a round face badge for every squirrel this player has found ----
+local Players = game:GetService("Players")
+local hud, grid, counter
+local badges = {}
+-- theme (Shannon's mock-up, Sep 17): navy panel in a dark rim with a neon cyan edge, tiles like pressed buttons, gold and
+-- cyan ringed portraits with an acorn tag, dim "?" tiles for squirrels not found yet, a glossy yellow pill button
+local RGB = Color3.fromRGB
+local FACE, FACE_DEEP, RIM = RGB(250, 241, 219), RGB(234, 220, 189), RGB(118, 80, 46)
+local SLOT, SLOT_LO, SLOT_EDGE = RGB(228, 212, 179), RGB(210, 191, 153), RGB(162, 131, 90)
+local EDGE, INK, INK_DIM = RGB(203, 150, 48), RGB(64, 42, 22), RGB(132, 108, 80)
+local GOLD, GOLD_LIGHT, GOLD_DARK = RGB(255, 202, 62), RGB(255, 236, 150), RGB(190, 128, 22)
+local BTN_INK, BTN_RIM = RGB(84, 48, 18), RGB(150, 98, 36)        -- the button lettering and its rim, in acorn brown
+local BUTTON_GRADIENT = ColorSequence.new({ColorSequenceKeypoint.new(0, RGB(255, 226, 96)), ColorSequenceKeypoint.new(0.3, RGB(251, 203, 38)), ColorSequenceKeypoint.new(0.7, RGB(238, 174, 22)), ColorSequenceKeypoint.new(1, RGB(212, 142, 10))})
+local BTN_H = 38
+local CREAM = RGB(255, 248, 225)
+local PANEL = SLOT                                  -- mask tint: hides the square corners of each portrait, so it matches the tile
+local TILE, COLS, HUD_W = 62, 5, 358
+local PORTRAIT_ZOOM, PORTRAIT_DOWN = 1.15, 0.05    -- the coin shows head, shoulders and paws, not just the face
+local hudHolder
+local FONT = Font.new("rbxasset://fonts/families/FredokaOne.json")                          -- the lettering the signs and the HUD use
+local FONT_BUTTON = Font.new("rbxasset://fonts/families/FredokaOne.json")
+local FONT_TEXT = Font.new("rbxasset://fonts/families/FredokaOne.json")
+local TEXTURE = "rbxasset://textures/particles/smoke_main.dds"
+local function maskId() return script.Parent:GetAttribute("MaskImage") or "rbxassetid://77268792392056" end
+local function corner(parent, r) local c = Instance.new("UICorner"); c.CornerRadius = r; c.Parent = parent; return c end
+local function stroke(parent, color, th, tr) local st = Instance.new("UIStroke"); st.Color = color; st.Thickness = th; st.Transparency = tr or 0; st.Parent = parent; return st end
+local function gradient(parent, top, bottom, rot) local g = Instance.new("UIGradient"); g.Color = ColorSequence.new(top, bottom); g.Rotation = rot or 90; g.Parent = parent; return g end
+-- a faint cloudy texture over a surface (the built-in smoke tile) so panels and tiles read as material, not flat colour
+local function texture(parent, z, tileSize, tr, radius, color)
+	local t = Instance.new("ImageLabel"); t.Name = "Texture"; t.Size = UDim2.fromScale(1, 1); t.BackgroundTransparency = 1
+	t.Image = TEXTURE; t.ScaleType = Enum.ScaleType.Tile; t.TileSize = UDim2.fromOffset(tileSize, tileSize); t.ImageTransparency = tr
+	t.ImageColor3 = color or RGB(188, 158, 110); t.ZIndex = z; t.Parent = parent
+	corner(t, radius)
+	return t
+end
+-- panel: dark rim with a soft outer glow, the neon line, a navy face with a vertical sheen and texture.
+-- Returns the face (content goes in it) and the rim (position and size go on it).
+local function neonPanel(parent, z, radius)
+	local rim = Instance.new("Frame"); rim.Name = "Rim"; rim.BackgroundColor3 = RIM; rim.ZIndex = z; rim.Parent = parent
+	corner(rim, UDim.new(0, radius + 5)); stroke(rim, EDGE, 6, 0.8)
+	local rp = Instance.new("UIPadding"); rp.PaddingTop = UDim.new(0, 5); rp.PaddingBottom = UDim.new(0, 5); rp.PaddingLeft = UDim.new(0, 5); rp.PaddingRight = UDim.new(0, 5); rp.Parent = rim
+	local face = Instance.new("Frame"); face.Name = "Face"; face.Size = UDim2.fromScale(1, 1); face.BackgroundColor3 = FACE; face.ZIndex = z + 1; face.Parent = rim
+	corner(face, UDim.new(0, radius)); stroke(face, EDGE, 3, 0.05)
+	gradient(face, RGB(253, 247, 232), FACE_DEEP)
+	texture(face, z + 1, 180, 0.9, UDim.new(0, radius))
+	local sheen = Instance.new("Frame"); sheen.Name = "Sheen"; sheen.Size = UDim2.new(1, -10, 0, 70); sheen.Position = UDim2.fromOffset(5, 5)
+	sheen.BackgroundColor3 = RGB(255, 255, 255); sheen.BackgroundTransparency = 0.94; sheen.ZIndex = z + 1; sheen.Parent = face
+	corner(sheen, UDim.new(0, radius - 3)); gradient(sheen, RGB(255, 255, 255), FACE)
+	return face, rim
+end
+-- a pressed tile a portrait sits in (flat colour on purpose: the portrait mask is tinted to match it)
+local function tile(parent, size, z)
+	local t = Instance.new("Frame"); t.Name = "Tile"; t.Size = UDim2.fromOffset(size, size); t.BackgroundColor3 = SLOT; t.ZIndex = z; t.Parent = parent
+	corner(t, UDim.new(0, 12)); stroke(t, SLOT_EDGE, 2, 0.1)
+	texture(t, z, 90, 0.93, UDim.new(0, 12))
+	return t
+end
+-- a little acorn hanging off the bottom of a ring
+local function acorn(parent, w, z)
+	local a = Instance.new("Frame"); a.Name = "Acorn"; a.Size = UDim2.fromOffset(w, math.floor(w * 1.2)); a.AnchorPoint = Vector2.new(0.5, 0)
+	a.Position = UDim2.new(0.5, 0, 1, -math.floor(w * 0.6)); a.BackgroundTransparency = 1; a.ZIndex = z; a.Parent = parent
+	local nut = Instance.new("Frame"); nut.Size = UDim2.new(0.78, 0, 0.7, 0); nut.AnchorPoint = Vector2.new(0.5, 1); nut.Position = UDim2.new(0.5, 0, 1, 0)
+	nut.BackgroundColor3 = RGB(206, 136, 62); nut.ZIndex = z; nut.Parent = a
+	corner(nut, UDim.new(0.5, 0)); stroke(nut, RGB(92, 52, 18), 1, 0.15); gradient(nut, RGB(230, 164, 86), RGB(160, 96, 36))
+	local cap = Instance.new("Frame"); cap.Size = UDim2.new(1, 0, 0.42, 0); cap.Position = UDim2.new(0, 0, 0.14, 0)
+	cap.BackgroundColor3 = RGB(126, 76, 34); cap.ZIndex = z + 1; cap.Parent = a
+	corner(cap, UDim.new(0.5, 0)); stroke(cap, RGB(70, 40, 14), 1, 0.15); gradient(cap, RGB(156, 100, 48), RGB(96, 56, 22))
+	local stem = Instance.new("Frame"); stem.Size = UDim2.new(0.16, 0, 0.22, 0); stem.AnchorPoint = Vector2.new(0.5, 0); stem.Position = UDim2.new(0.5, 0, 0, 0)
+	stem.BackgroundColor3 = RGB(88, 52, 20); stem.ZIndex = z; stem.Parent = a
+	corner(stem, UDim.new(0.5, 0))
+	return a
+end
+-- the chunky yellow pill button: saturated gold shaded like a tube (lemon highlight on top, amber below), a thick bright
+-- cyan rim with a soft glow outside it, and big rounded teal lettering with a dark-teal edge and a shadow so it stands
+-- off the button. The background stays white so the gradient shows its own colours (BackgroundColor3 multiplies it);
+-- the lettering sits ABOVE the gloss strip so it stays crisp.
+-- a glowing neon line on the edge of a rounded object: a bright core plus halo bands fading outward and inward.
+-- UIStroke draws outward from its frame's edge, so inset frames put their bands inside the object.
+local function neonEdge(target, z)
+	-- concentric rings: each frame is expanded so its stroke starts where the previous one ends
+	local function ring(expand, th, tr, col)
+		local f = Instance.new("Frame"); f.Name = "Glow"; f.Size = UDim2.new(1, 2 * expand, 1, 2 * expand); f.Position = UDim2.fromOffset(-expand, -expand)
+		f.BackgroundTransparency = 1; f.ZIndex = z; f.Parent = target
+		corner(f, UDim.new(1, 0)); stroke(f, col, th, tr)
+	end
+	stroke(target, RGB(96, 58, 22), 1.5, 0.15)                     -- dark hairline between the yellow and the line
+	ring(1.5, 2.5, 0, RGB(255, 231, 160))                         -- the teal line; no glow (Shannon: the line is enough)
+end
+local function pillButton(parent, text, height, textSize, z)
+	local b = Instance.new("TextButton"); b.Size = UDim2.new(1, 0, 0, height); b.BackgroundColor3 = RGB(255, 255, 255); b.Text = ""
+	b.AutoButtonColor = false; b.ZIndex = z; b.Parent = parent
+	corner(b, UDim.new(1, 0))
+	local g = Instance.new("UIGradient"); g.Color = BUTTON_GRADIENT; g.Rotation = 90; g.Parent = b
+	neonEdge(b, z)
+	local gloss = Instance.new("Frame"); gloss.Size = UDim2.new(1, -26, 0.3, 0); gloss.Position = UDim2.new(0, 13, 0, 4); gloss.BackgroundColor3 = RGB(255, 250, 215)
+	gloss.BackgroundTransparency = 0.78; gloss.ZIndex = z + 1; gloss.Parent = b
+	corner(gloss, UDim.new(1, 0))
+	-- molded-plastic lettering: the glyph face is shaded light teal (top) to deeper teal (bottom), and its outline is
+	-- shaded the same way, pale along the top edges and dark along the bottom edges, so every letter reads as a lit,
+	-- rounded solid. Underneath, a soft amber shadow (the yellow going darker) seats it on the button.
+	local function glyphs(dx, dy, color, tr, zz)
+		local l = Instance.new("TextLabel"); l.Size = UDim2.fromScale(1, 1); l.Position = UDim2.fromOffset(dx, dy); l.BackgroundTransparency = 1
+		l.Text = text; l.FontFace = FONT_BUTTON; l.TextSize = textSize; l.TextColor3 = color; l.TextTransparency = tr; l.ZIndex = zz; l.Parent = b
+		return l
+	end
+	-- extruded lettering (Shannon's crop: the letters have squared-off side walls under the face, like pieces cut from
+	-- a slab and set on the button). Copies of the text step down in the side colour to build the wall, a warm contact
+	-- shadow pools under the wall, and the flat face goes on top with a hairline edge that is lit on top.
+	local shade = glyphs(0, 3, RGB(176, 114, 16), 0.84, z + 2)
+	local ss = Instance.new("UIStroke"); ss.Color = RGB(190, 124, 20); ss.Thickness = 1.5; ss.Transparency = 0.82; ss.LineJoinMode = Enum.LineJoinMode.Round; ss.Parent = shade
+	local wall = {{0, 1, RGB(104, 62, 26)}}
+	for i, w in ipairs(wall) do
+		local side = glyphs(w[1], w[2], w[3], 0, z + 2 + i)
+		local ws = Instance.new("UIStroke"); ws.Color = w[3]; ws.Thickness = 0.8; ws.LineJoinMode = Enum.LineJoinMode.Miter; ws.Parent = side
+	end
+	local label = glyphs(0, 0, RGB(255, 255, 255), 0, z + 6)
+	local tg = Instance.new("UIGradient"); tg.Rotation = 90
+	tg.Color = ColorSequence.new(RGB(88, 50, 20))                               -- flat face: the shading was doing too much
+	tg.Parent = label
+	local ls = Instance.new("UIStroke"); ls.Color = RGB(255, 255, 255); ls.Thickness = 1; ls.Transparency = 0.25; ls.LineJoinMode = Enum.LineJoinMode.Miter; ls.Parent = label
+	local lg = Instance.new("UIGradient"); lg.Rotation = 90                     -- the face's squared edge: lit on top, side colour below
+	lg.Color = ColorSequence.new(RGB(255, 246, 220))                            -- one clean cream hairline, not a bevel
+	lg.Parent = ls
+	b.MouseEnter:Connect(function() TweenService:Create(gloss, TweenInfo.new(0.12), {BackgroundTransparency = 0.6}):Play() end)
+	b.MouseLeave:Connect(function() TweenService:Create(gloss, TweenInfo.new(0.12), {BackgroundTransparency = 0.78}):Play() end)
+	return b
+end
+-- a round yellow button with an x, for closing the album and the card
+local function closeButton(parent, z, onClick)
+	local close = Instance.new("TextButton"); close.Size = UDim2.fromOffset(34, 34); close.AnchorPoint = Vector2.new(1, 0)
+	close.Position = UDim2.new(1, -10, 0, 10); close.BackgroundColor3 = RGB(255, 255, 255); close.Text = "x"; close.AutoButtonColor = false
+	close.FontFace = FONT; close.TextSize = 20; close.TextColor3 = BTN_INK; close.ZIndex = z; close.Parent = parent
+	corner(close, UDim.new(1, 0)); stroke(close, BTN_RIM, 2, 0.05)
+	local g = Instance.new("UIGradient"); g.Color = BUTTON_GRADIENT; g.Rotation = 90; g.Parent = close
+	close.MouseEnter:Connect(function() close.BackgroundColor3 = RGB(255, 255, 235) end)
+	close.MouseLeave:Connect(function() close.BackgroundColor3 = RGB(255, 255, 255) end)
+	close.MouseButton1Click:Connect(onClick)
+	return close
+end
+ensureHud = function()
+	if hud then return end
+	local pg = Players.LocalPlayer:WaitForChild("PlayerGui")
+	hud = Instance.new("ScreenGui"); hud.Name = "SquirrelHUD"; hud.ResetOnSpawn = false; hud.IgnoreGuiInset = true
+	hud.DisplayOrder = 5; hud.Parent = pg
+	-- sizes are set by hand in updateCounter (no AutomaticSize: the texture and sheen layers would feed back into it)
+	hudHolder = Instance.new("Frame"); hudHolder.Name = "Panel"; hudHolder.AnchorPoint = Vector2.new(1, 0); hudHolder.Position = UDim2.new(1, -10, 0, 8)
+	hudHolder.Size = UDim2.fromOffset(HUD_W, 200); hudHolder.BackgroundTransparency = 1; hudHolder.Parent = hud
+	local face, rim = neonPanel(hudHolder, 1, 16)
+	rim.Size = UDim2.fromScale(1, 1)
+	local content = Instance.new("Frame"); content.Name = "Content"; content.Size = UDim2.fromScale(1, 1); content.BackgroundTransparency = 1; content.ZIndex = 3; content.Parent = face
+	local ppad = Instance.new("UIPadding"); ppad.PaddingTop = UDim.new(0, 8); ppad.PaddingBottom = UDim.new(0, 10)
+	ppad.PaddingLeft = UDim.new(0, 10); ppad.PaddingRight = UDim.new(0, 10); ppad.Parent = content
+	local list = Instance.new("UIListLayout"); list.FillDirection = Enum.FillDirection.Vertical
+	list.HorizontalAlignment = Enum.HorizontalAlignment.Center; list.Padding = UDim.new(0, 8); list.SortOrder = Enum.SortOrder.LayoutOrder; list.Parent = content
+	counter = Instance.new("TextLabel"); counter.Name = "Counter"; counter.Size = UDim2.new(1, 0, 0, 22); counter.BackgroundTransparency = 1; counter.TextWrapped = true
+	counter.FontFace = FONT; counter.TextScaled = true; counter.TextColor3 = INK; counter.TextXAlignment = Enum.TextXAlignment.Center; counter.Text = ""
+	counter.ZIndex = 3; counter.LayoutOrder = 1; counter.Parent = content
+	local ctc = Instance.new("UITextSizeConstraint"); ctc.MaxTextSize = 16; ctc.MinTextSize = 10; ctc.Parent = counter   -- one line shrinks to fit the panel
+	stroke(counter, RGB(255, 250, 233), 1.5, 0.35).LineJoinMode = Enum.LineJoinMode.Round
+	grid = Instance.new("Frame"); grid.Name = "Badges"; grid.Size = UDim2.new(1, 0, 0, TILE)
+	grid.BackgroundTransparency = 1; grid.LayoutOrder = 2; grid.ZIndex = 3; grid.Parent = content
+	local gl = Instance.new("UIGridLayout"); gl.CellSize = UDim2.fromOffset(TILE, TILE); gl.CellPadding = UDim2.fromOffset(4, 4)
+	gl.FillDirection = Enum.FillDirection.Horizontal; gl.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	gl.StartCorner = Enum.StartCorner.TopLeft; gl.SortOrder = Enum.SortOrder.LayoutOrder; gl.Parent = grid
+	local albumBtn = pillButton(content, "Open Album", BTN_H, 24, 3); albumBtn.LayoutOrder = 3
+	albumBtn.MouseButton1Click:Connect(function() if album then closeAlbum() else openAlbum() end end)
+end
+-- which map is the player standing in? (workspace.Zones holds one Part per map with a MapId attribute)
+local function currentMapId()
+	local mapId = script.Parent:GetAttribute("MapId") or "forest"
+	local zones = workspace:FindFirstChild("Zones")
+	local char = Players.LocalPlayer.Character
+	local root = char and char:FindFirstChild("HumanoidRootPart")
+	if zones and root then
+		for _, z in ipairs(zones:GetChildren()) do
+			if z:IsA("BasePart") and z:GetAttribute("MapId") then
+				local rel = z.CFrame:PointToObjectSpace(root.Position)
+				if math.abs(rel.X) <= z.Size.X / 2 and math.abs(rel.Z) <= z.Size.Z / 2 then return z:GetAttribute("MapId"), z:GetAttribute("Area") end
+			end
+		end
+	end
+	return mapId, nil
+end
+-- a map's areas (Porto Nocciola: the harbour and Il Borgo, Oct 7 2026); nil for a map without them
+local function areasOf(mapId)
+	for _, m in ipairs(Registry.maps) do if m.id == mapId then return m.areas end end
+	return nil
+end
+updateCounter = function()
+	if not counter then return end
+	local n = 0
+	for _, st in pairs(squirrels) do if st.found then n += 1 end end
+	local mapId, areaId = currentMapId()   -- areaId: the Porto area (harbour / borgo) the player stands in, nil elsewhere
+	local hereFound, hereTotal, all = 0, 0, 0
+	for _, e in ipairs(Registry.squirrels) do
+		if e.map == mapId and (areaId == nil or e.area == nil or e.area == areaId) then hereTotal += 1; if foundIds[e.id] then hereFound += 1 end end
+	end
+	for _ in pairs(foundIds) do all += 1 end
+	local mapName = mapId
+	for _, m in ipairs(Registry.maps) do if m.id == mapId then mapName = m.name end end
+	for _, a in ipairs(areasOf(mapId) or {}) do if a.id == areaId then mapName = mapName .. " · " .. a.name end end   -- "Porto Nocciola · The Harbour"
+	local counts = string.format("%d / %d      All maps  %d / %d", hereFound, hereTotal, all, script.Parent:GetAttribute("AllTotal") or #Registry.squirrels)
+	-- long map names get their own (wrapping) line so the counts are never pushed out of the panel
+	if (utf8.len(mapName) or #mapName) > 28 then
+		counter.Text = mapName .. string.char(10) .. counts
+	else
+		counter.Text = mapName .. "  " .. counts
+	end
+	-- the badge panel shows only the squirrels of the map the player is standing in
+	local visible = 0
+	for model, b in pairs(badges) do
+		local e = regById[idOf(model)]
+		b.cell.Visible = (e ~= nil) and (e.map == mapId and (areaId == nil or e.area == nil or e.area == areaId))   -- registry squirrels only: runtime clones (golden squirrel, backpack pal) get no tile (Oct 7 2026)
+		if b.cell.Visible then visible += 1 end
+	end
+	local rows = math.max(1, math.ceil(visible / COLS))
+	local lines = select(2, counter.Text:gsub("\n", "")) + 1
+	counter.Size = UDim2.new(1, 0, 0, 22 * lines)
+	grid.Size = UDim2.new(1, 0, 0, rows * (TILE + 4) - 4)
+	if hudHolder then hudHolder.Size = UDim2.fromOffset(HUD_W, 10 + 8 + 22 * lines + 8 + rows * (TILE + 4) - 4 + 8 + BTN_H + 10) end
+end
+-- ---- the card: full squirrel turning slowly, name, and a bio ----
+-- the modals live in the band above the Roblox hotbar (Oct 7 2026, Shannon: no overlap with the tool icons)
+local HOTBAR_H = 72          -- the Roblox backpack hotbar at the bottom of the window
+local function modalBand()   -- returns the usable height, the y of its centre and the width, in the HUD's own pixels
+	local vs = hud.AbsoluteSize
+	local avail = math.max(200, vs.Y - HOTBAR_H - 16)
+	return avail, 8 + avail / 2, vs.X
+end
+local card, cardConn, cardInputs
+local cardFromAlbum, albumScrollPos   -- a card opened from the album goes back to it on close, at the same scroll (Oct 7 2026)
+closeCard = function()
+	if cardConn then cardConn:Disconnect(); cardConn = nil end
+	if cardInputs then for _, c in ipairs(cardInputs) do c:Disconnect() end; cardInputs = nil end
+	if card then card:Destroy(); card = nil end
+	if cardFromAlbum then cardFromAlbum = false; openAlbum(albumScrollPos) end
+end
+openCard = function(model, st, fromAlbum)
+	cardFromAlbum = false; closeCard(); ensureHud()
+	cardFromAlbum = fromAlbum == true
+	local mesh = st.mesh
+	card = Instance.new("Frame"); card.Name = "Card"; card.Size = UDim2.fromScale(1, 1); card.BackgroundColor3 = Color3.new(0, 0, 0)
+	card.BackgroundTransparency = 0.45; card.ZIndex = 20; card.Parent = hud
+	local backdrop = Instance.new("TextButton"); backdrop.Size = UDim2.fromScale(1, 1); backdrop.BackgroundTransparency = 1; backdrop.Text = ""
+	backdrop.ZIndex = 20; backdrop.Parent = card; backdrop.MouseButton1Click:Connect(closeCard)
+	local panel, prim = neonPanel(card, 21, 22)
+	local avail, bandY, bandW = modalBand()
+	local L
+	if avail < 480 then
+		-- short screen (phone in landscape, a short window): portrait on the left, name and bio on the right
+		local Hc = math.clamp(avail, 300, 420)
+		local tileS = Hc - 52          -- 16 above, 20 below for the "n / n · drag to spin" line, 16 margin
+		L = {w = 720, h = Hc, tile = tileS, bigAnchor = Vector2.new(0, 0), bigPos = UDim2.new(0, 16, 0, 16),
+			hintSize = UDim2.new(0, tileS, 0, 16), hintPos = UDim2.new(0, 16, 0, 16 + tileS + 4),
+			titleSize = UDim2.new(1, -(tileS + 56), 0, 44), titlePos = UDim2.new(0, tileS + 36, 0, 22),
+			bioSize = UDim2.new(1, -(tileS + 56), 0, Hc - 100), bioPos = UDim2.new(0, tileS + 36, 0, 78),
+			column = {pos = UDim2.new(0, tileS + 36, 0, 16), size = UDim2.new(1, -(tileS + 56), 0, Hc - 32)}}
+	else
+		L = {w = 432, h = 566, tile = 326, bigAnchor = Vector2.new(0.5, 0), bigPos = UDim2.new(0.5, 0, 0, 16),
+			hintSize = UDim2.new(1, 0, 0, 16), hintPos = UDim2.new(0, 0, 0, 350),
+			titleSize = UDim2.new(1, -40, 0, 40), titlePos = UDim2.new(0, 20, 0, 368),
+			bioSize = UDim2.new(1, -44, 0, 120), bioPos = UDim2.new(0, 22, 0, 414)}
+	end
+	L.scale = math.min(1, avail / L.h, (bandW - 24) / L.w)
+	prim.AnchorPoint = Vector2.new(0.5, 0.5); prim.Position = UDim2.new(0.5, 0, 0, bandY); prim.Size = UDim2.fromOffset(L.w, L.h)
+	local big = tile(panel, L.tile, 22); big.AnchorPoint = L.bigAnchor; big.Position = L.bigPos
+	local ring = circleWindow(big, L.tile - 38, 22, true)
+	ring.AnchorPoint = Vector2.new(0.5, 0.5); ring.Position = UDim2.new(0.5, 0, 0.5, -6)
+	local vp = Instance.new("ViewportFrame"); vp.Size = UDim2.fromScale(1, 1); vp.BackgroundTransparency = 1
+	vp.Ambient = Color3.fromRGB(150, 150, 165); vp.LightColor = Color3.fromRGB(255, 252, 245); vp.LightDirection = Vector3.new(-0.5, -1, -0.4)
+	vp.ZIndex = 24; vp.Parent = ring
+	local copy = mesh:Clone()
+	for _, c in ipairs(copy:GetChildren()) do if not c:IsA("Bone") then c:Destroy() end end
+	local color = mesh:GetAttribute("ColorTexture"); if color then setTex(copy, color) end
+	copy.Parent = vp
+	local cam = Instance.new("Camera"); cam.FieldOfView = 30; cam.Parent = vp; vp.CurrentCamera = cam
+	local centre = mesh.Position
+	local dist = mesh.Size.Magnitude * 1.3         -- close: fills the circle for a sharper render, the mask crops the spill that the whole squirrel, tail included, stays inside the circle
+	local fwd = mesh.CFrame:VectorToWorldSpace(st.fwdL)
+	local ang0 = math.atan2(fwd.X, fwd.Z)
+	-- turntable: spins slowly on its own; click and drag on the squirrel to turn it yourself
+	local UIS = game:GetService("UserInputService")
+	local ang, elev = ang0, 0.22
+	local dragging, lastPos, idle = false, nil, 0
+	vp.Active = false
+	local grab = Instance.new("TextButton"); grab.Name = "Spin"; grab.Size = UDim2.fromScale(1, 1)
+	grab.BackgroundTransparency = 1; grab.Text = ""; grab.AutoButtonColor = false; grab.ZIndex = 25; grab.Parent = ring
+	grab.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true; lastPos = input.Position; idle = 0
+		end
+	end)
+	local c1 = UIS.InputChanged:Connect(function(input)
+		if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+			local d = input.Position - lastPos; lastPos = input.Position
+			ang -= d.X * 0.012
+			elev = math.clamp(elev + d.Y * 0.006, -0.5, 0.9)
+		end
+	end)
+	local c2 = UIS.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then dragging = false end
+	end)
+	cardInputs = {c1, c2}
+	cardConn = RunService.RenderStepped:Connect(function(dt)
+		local off = Vector3.new(math.sin(ang), 0, math.cos(ang)) * dist + Vector3.new(0, dist * elev, 0)
+		cam.CFrame = CFrame.lookAt(centre + off, centre)
+	end)
+	local hint = Instance.new("TextLabel"); hint.Size = L.hintSize; hint.Position = L.hintPos
+	hint.BackgroundTransparency = 1; hint.Text = "drag to spin"; hint.TextSize = 12
+	hint.FontFace = FONT_TEXT; hint.TextColor3 = INK_DIM
+	hint.ZIndex = 22; hint.Parent = panel
+	local title = Instance.new("TextLabel"); title.Size = L.titleSize; title.Position = L.titlePos
+	title.BackgroundTransparency = 1; title.Text = prettyName(model); title.TextScaled = true
+	title.FontFace = FONT; title.TextColor3 = RGB(58, 36, 16)                   -- darkest thing on the page, so it leads
+	title.ZIndex = 22; title.Parent = panel
+	local tc = Instance.new("UITextSizeConstraint"); tc.MaxTextSize = 28; tc.Parent = title
+	local bio = Instance.new("TextLabel"); bio.Size = L.bioSize; bio.Position = L.bioPos
+	bio.BackgroundTransparency = 1; bio.Text = model:GetAttribute("Bio") or ""; bio.TextWrapped = true; bio.TextScaled = true
+	bio.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.SemiBold); bio.TextColor3 = INK
+	bio.TextYAlignment = Enum.TextYAlignment.Top; bio.ZIndex = 22; bio.Parent = panel
+	local bc = Instance.new("UITextSizeConstraint"); bc.MaxTextSize = 17; bc.MinTextSize = 11; bc.Parent = bio
+	if L.column then
+		-- short screens: the name and the bio sit together as one block, centred in the right column (Oct 7 2026)
+		local col = Instance.new("Frame"); col.Name = "Column"; col.BackgroundTransparency = 1; col.Position = L.column.pos; col.Size = L.column.size; col.ZIndex = 22; col.Parent = panel
+		local ll = Instance.new("UIListLayout"); ll.FillDirection = Enum.FillDirection.Vertical; ll.VerticalAlignment = Enum.VerticalAlignment.Center
+		ll.HorizontalAlignment = Enum.HorizontalAlignment.Center; ll.Padding = UDim.new(0, 10); ll.SortOrder = Enum.SortOrder.LayoutOrder; ll.Parent = col
+		title.Size = UDim2.new(1, 0, 0, 44); title.Position = UDim2.new(); title.LayoutOrder = 1; title.Parent = col
+		bc:Destroy()
+		bio.TextScaled = false; bio.TextSize = 17; bio.AutomaticSize = Enum.AutomaticSize.Y; bio.Size = UDim2.new(1, 0, 0, 0); bio.Position = UDim2.new(); bio.LayoutOrder = 2; bio.Parent = col
+	end
+	-- carousel (Oct 7 2026, Shannon): step to the previous / next found squirrel in album order without closing the card
+	local order = {}
+	for m, s in pairs(squirrels) do if s.found and regOrder[idOf(m)] then table.insert(order, {model = m, st = s, k = regOrder[idOf(m)]}) end end
+	table.sort(order, function(a, b) return a.k < b.k end)
+	local at = 0
+	for i, o in ipairs(order) do if o.model == model then at = i end end
+	local function go(d)
+		if #order < 2 or at == 0 then return end
+		local o = order[((at - 1 + d) % #order) + 1]
+		openCard(o.model, o.st, cardFromAlbum)
+	end
+	if at > 0 then hint.Text = string.format("%d / %d   ·   drag to spin", at, #order) end
+	if #order > 1 and at > 0 then
+		for _, side in ipairs({{-1, "‹", UDim2.new(0, -30, 0.5, 0)}, {1, "›", UDim2.new(1, 30, 0.5, 0)}}) do
+			local b = Instance.new("TextButton"); b.Name = side[1] < 0 and "Prev" or "Next"; b.AnchorPoint = Vector2.new(0.5, 0.5); b.Position = side[3]
+			b.Size = UDim2.fromOffset(44, 68); b.BackgroundColor3 = RIM; b.AutoButtonColor = true; b.Text = side[2]; b.TextSize = 44
+			b.FontFace = FONT; b.TextColor3 = RGB(255, 250, 233); b.ZIndex = 26; b.Parent = prim
+			corner(b, UDim.new(0, 14)); stroke(b, EDGE, 3, 0.6)
+			b.MouseButton1Click:Connect(function() go(side[1]) end)
+		end
+		local c3 = UIS.InputBegan:Connect(function(input, gp)
+			if gp then return end
+			if input.KeyCode == Enum.KeyCode.Left then go(-1) elseif input.KeyCode == Enum.KeyCode.Right then go(1) end
+		end)
+		table.insert(cardInputs, c3)
+	end
+	closeButton(panel, 23, closeCard)
+	local sc = Instance.new("UIScale"); sc.Scale = L.scale * 0.7; sc.Parent = prim
+	TweenService:Create(sc, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Scale = L.scale}):Play()
+end
+
+-- ---- the album: every squirrel on every map, opened from the "Album" button ----
+local album
+closeAlbum = function() if album then album:Destroy(); album = nil end end
+openAlbum = function(restorePos)
+	closeAlbum(); ensureHud()
+	album = Instance.new("Frame"); album.Name = "Album"; album.Size = UDim2.fromScale(1, 1); album.BackgroundColor3 = Color3.new(0, 0, 0)
+	album.BackgroundTransparency = 0.45; album.ZIndex = 30; album.Parent = hud
+	local backdrop = Instance.new("TextButton"); backdrop.Size = UDim2.fromScale(1, 1); backdrop.BackgroundTransparency = 1; backdrop.Text = ""
+	backdrop.ZIndex = 30; backdrop.Parent = album; backdrop.MouseButton1Click:Connect(closeAlbum)
+	local panel, rim = neonPanel(album, 31, 22)
+	local avail, bandY, bandW = modalBand()
+	rim.AnchorPoint = Vector2.new(0.5, 0.5); rim.Position = UDim2.new(0.5, 0, 0, bandY); rim.Size = UDim2.fromOffset(math.min(600, bandW - 24), avail)
+	local title = Instance.new("TextLabel"); title.Size = UDim2.new(1, -80, 0, 44); title.Position = UDim2.new(0, 24, 0, 12)
+	title.BackgroundTransparency = 1; title.TextXAlignment = Enum.TextXAlignment.Left; title.TextSize = 28
+	title.FontFace = FONT; title.TextColor3 = INK
+	local all, allTotal = 0, script.Parent:GetAttribute("AllTotal") or #Registry.squirrels
+	for _ in pairs(foundIds) do all += 1 end
+	title.Text = string.format("Squirrel Album   %d / %d", all, allTotal); title.ZIndex = 33; title.Parent = panel
+	stroke(title, RGB(255, 250, 233), 1.5, 0.35).LineJoinMode = Enum.LineJoinMode.Round
+	closeButton(panel, 34, closeAlbum)
+	local scroll = Instance.new("ScrollingFrame"); scroll.Position = UDim2.new(0, 18, 0, 64); scroll.Size = UDim2.new(1, -36, 1, -80)
+	scroll.BackgroundTransparency = 1; scroll.BorderSizePixel = 0; scroll.ScrollBarThickness = 6; scroll.ScrollBarImageColor3 = EDGE; scroll.ZIndex = 33
+	scroll.AutomaticCanvasSize = Enum.AutomaticSize.Y; scroll.CanvasSize = UDim2.new(); scroll.Parent = panel
+	local list = Instance.new("UIListLayout"); list.Padding = UDim.new(0, 12); list.SortOrder = Enum.SortOrder.LayoutOrder; list.Parent = scroll
+	local sectionOf = {}      -- map id -> its section frame (to open at the map the player is on)
+	-- squirrels present on this map, by id, for faces and cards
+	local here = {}
+	for model, st in pairs(squirrels) do here[idOf(model)] = {model = model, st = st} end
+	for mi, map in ipairs(Registry.maps) do
+		local mapFound, mapTotal = 0, 0
+		for _, e in ipairs(Registry.squirrels) do if e.map == map.id then mapTotal += 1; if foundIds[e.id] then mapFound += 1 end end end
+		local section = Instance.new("Frame"); section.Size = UDim2.new(1, 0, 0, 0); section.AutomaticSize = Enum.AutomaticSize.Y
+		section.BackgroundTransparency = 1; section.LayoutOrder = mi; section.ZIndex = 33; section.Parent = scroll; sectionOf[map.id] = section
+		local sl = Instance.new("UIListLayout"); sl.SortOrder = Enum.SortOrder.LayoutOrder; sl.Padding = UDim.new(0, 6); sl.Parent = section
+		local head = Instance.new("TextLabel"); head.Size = UDim2.new(1, 0, 0, 24); head.BackgroundTransparency = 1
+		head.AutomaticSize = Enum.AutomaticSize.Y; head.TextWrapped = true; head.LayoutOrder = 1
+		head.TextXAlignment = Enum.TextXAlignment.Left; head.TextSize = 18; head.ZIndex = 33
+		head.FontFace = FONT; head.TextColor3 = INK
+		head.Text = string.format("%s   %d / %d", map.name, mapFound, mapTotal); head.Parent = section
+		stroke(head, RGB(255, 250, 233), 1.5, 0.35).LineJoinMode = Enum.LineJoinMode.Round
+		-- one grid per area (Porto Nocciola: the harbour, Il Borgo), or a single grid for a map without areas (Oct 7 2026)
+		local groups = {}
+		for _, a in ipairs(areasOf(map.id) or {}) do table.insert(groups, a) end
+		if #groups == 0 then groups = {{id = nil}} end
+		local order = 1
+		for _, g in ipairs(groups) do
+			if g.name then
+				local gFound, gTotal = 0, 0
+				for _, e in ipairs(Registry.squirrels) do if e.map == map.id and e.area == g.id then gTotal += 1; if foundIds[e.id] then gFound += 1 end end end
+				order += 1
+				local sub = Instance.new("TextLabel"); sub.Size = UDim2.new(1, 0, 0, 18); sub.BackgroundTransparency = 1; sub.LayoutOrder = order
+				sub.TextXAlignment = Enum.TextXAlignment.Left; sub.TextSize = 14; sub.ZIndex = 33; sub.FontFace = FONT_TEXT; sub.TextColor3 = INK_DIM
+				sub.Text = string.format("%s   %d / %d", g.name, gFound, gTotal); sub.Parent = section; sectionOf[map.id .. "/" .. g.id] = sub
+			end
+			order += 1
+			local grid = Instance.new("Frame"); grid.LayoutOrder = order; grid.Size = UDim2.new(1, 0, 0, 0)
+			grid.AutomaticSize = Enum.AutomaticSize.Y; grid.BackgroundTransparency = 1; grid.ZIndex = 33; grid.Parent = section
+			local gl = Instance.new("UIGridLayout"); gl.CellSize = UDim2.fromOffset(TILE + 6, TILE + 24); gl.CellPadding = UDim2.fromOffset(4, 6)
+			gl.SortOrder = Enum.SortOrder.LayoutOrder; gl.Parent = grid
+			local n = 0
+			for _, e in ipairs(Registry.squirrels) do
+				if e.map == map.id and (g.id == nil or e.area == g.id) then
+					n += 1
+					local cell = Instance.new("Frame"); cell.BackgroundTransparency = 1; cell.LayoutOrder = n; cell.ZIndex = 33; cell.Parent = grid
+					local isFound = foundIds[e.id] == true
+					local t = tile(cell, TILE, 34); t.AnchorPoint = Vector2.new(0.5, 0); t.Position = UDim2.new(0.5, 0, 0, 0)
+					local box = circleWindow(t, CIRCLE, 35, isFound)
+					box.AnchorPoint = Vector2.new(0.5, 0.5); box.Position = UDim2.new(0.5, 0, 0.5, -2)
+					if isFound then acorn(box, 15, 44) end
+					local h = here[e.id]
+					if isFound and h then
+						makeViewport(box, h.st, faceCamera(h.st))
+					else
+						local q = Instance.new("TextLabel"); q.Size = UDim2.fromScale(1, 1); q.BackgroundTransparency = 1
+						q.Text = isFound and e.name:sub(1, 1) or "?"; q.TextSize = isFound and 26 or 30
+						q.FontFace = FONT; q.TextColor3 = isFound and INK or INK_DIM; q.TextTransparency = isFound and 0 or 0.15; q.ZIndex = 43; q.Parent = box
+					end
+					local name = Instance.new("TextLabel"); name.Size = UDim2.new(1, 0, 0, 20); name.Position = UDim2.new(0, 0, 0, TILE + 3)
+					name.BackgroundTransparency = 1; name.Text = isFound and e.name or ""; name.TextWrapped = true; name.TextScaled = true
+					name.FontFace = FONT_TEXT; name.TextColor3 = INK; name.ZIndex = 34; name.Parent = cell
+					local nc = Instance.new("UITextSizeConstraint"); nc.MaxTextSize = 10; nc.MinTextSize = 7; nc.Parent = name
+					if isFound and h then
+						local btn = Instance.new("TextButton"); btn.Size = UDim2.fromScale(1, 1); btn.BackgroundTransparency = 1; btn.Text = ""
+						btn.ZIndex = 45; btn.Parent = cell
+						btn.MouseButton1Click:Connect(function() albumScrollPos = scroll.CanvasPosition; closeAlbum(); openCard(h.model, h.st, true) end)
+					end
+				end
+			end
+		end
+	end
+	-- open at the map the player is standing on, or back where the album was before a card (Oct 7 2026)
+	local hereId, hereArea = currentMapId()
+	task.spawn(function()
+		RunService.RenderStepped:Wait(); RunService.RenderStepped:Wait()
+		if not album then return end
+		if restorePos then scroll.CanvasPosition = restorePos return end
+		local sec = (hereArea and sectionOf[hereId .. "/" .. hereArea]) or sectionOf[hereId]
+		if sec then scroll.CanvasPosition = Vector2.new(0, math.max(0, sec.AbsolutePosition.Y - scroll.AbsolutePosition.Y + scroll.CanvasPosition.Y)) end
+	end)
+	local sc = Instance.new("UIScale"); sc.Scale = 0.85; sc.Parent = rim
+	TweenService:Create(sc, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Scale = 1}):Play()
+end
+
+local badgeOrder = 0
+-- per-squirrel framing tweaks (fractions of body height); a model's FaceDist / FaceUp / FaceCamUp attributes override
+local FACE = setmetatable({}, {__index = function(_, name)
+	for _, e in ipairs(Registry.squirrels) do if e.name == name and e.face then return e.face end end
+	return nil
+end})
+faceCamera = function(st)
+	-- portrait crop: head and shoulders fill the circle, the rest is hidden by the mask
+	local mesh, model = st.mesh, st.mesh:FindFirstAncestorOfClass("Model")
+	local H = mesh.Size.Y
+	local fwd = mesh.CFrame:VectorToWorldSpace(st.fwdL)
+	local left = Vector3.yAxis:Cross(fwd)
+	local tw = (model and FACE[model:GetAttribute("DisplayName") or ""]) or {}
+	local dist = ((model and model:GetAttribute("FaceDist")) or tw.dist or 1.35) * PORTRAIT_ZOOM
+	local up = (model and model:GetAttribute("FaceUp")) or tw.up or 0
+	local camUp = (model and model:GetAttribute("FaceCamUp")) or tw.camUp or 0.05
+	local side = (model and model:GetAttribute("FaceSide")) or tw.side or 0
+	local bottom = mesh.Position - Vector3.new(0, H / 2, 0)
+	local centre = bottom + Vector3.new(0, (0.70 + up - PORTRAIT_DOWN) * H, 0) + fwd * (0.30 * H)
+	-- centre sideways on where the head actually is (some squirrels lean or turn a little)
+	if st.bones.Head then
+		local d = st.bones.Head.WorldPosition - centre
+		centre = centre + left * d:Dot(left)
+	end
+	centre = centre + left * (side * H)   -- per-squirrel sideways nudge (turned heads, big side tails)
+	local cam = Instance.new("Camera"); cam.FieldOfView = 24
+	cam.CFrame = CFrame.lookAt(centre + fwd * (dist * H) + Vector3.new(0, camUp * H, 0), centre)
+	return cam
+end
+makeViewport = function(parent, st, cam)
+	local vp = Instance.new("ViewportFrame"); vp.Size = UDim2.fromScale(1, 1); vp.BackgroundTransparency = 1
+	vp.Ambient = Color3.fromRGB(190, 190, 200); vp.LightColor = Color3.fromRGB(255, 250, 240); vp.LightDirection = Vector3.new(-0.4, -1, -0.6)
+	vp.ZIndex = parent.ZIndex + 2; vp.Parent = parent
+	local copy = st.mesh:Clone()
+	for _, c in ipairs(copy:GetChildren()) do if not c:IsA("Bone") then c:Destroy() end end
+	local color = st.mesh:GetAttribute("ColorTexture"); if color then setTex(copy, color) end
+	copy.Parent = vp
+	cam.Parent = vp; vp.CurrentCamera = cam
+	return vp
+end
+-- the coin: a portrait window that sits proud of its tile. Layers, bottom up: drop shadow, dark disc, the 3D render
+-- (makeViewport puts it at z + 2), the mask (transparent circle tinted like the tile), a soft cyan glow, the cyan ring,
+-- the gold bevel (a gradient-lit stroke, light on top, dark amber below), a thin highlight on the inner lip.
+-- Squirrels not found yet get a plain dim ring instead.
+circleWindow = function(parent, size, z, found)
+	local box = Instance.new("Frame"); box.Size = UDim2.fromOffset(size, size); box.AnchorPoint = Vector2.new(0.5, 0)
+	box.Position = UDim2.new(0.5, 0, 0, 0); box.BackgroundTransparency = 1; box.ZIndex = z; box.Parent = parent
+	local function ringFrame(inset, zz)
+		local f = Instance.new("Frame"); f.Size = UDim2.new(1, -2 * inset, 1, -2 * inset); f.Position = UDim2.fromOffset(inset, inset)
+		f.BackgroundTransparency = 1; f.ZIndex = zz; f.Parent = box
+		corner(f, UDim.new(1, 0))
+		return f
+	end
+	if found then
+		local shadow = ringFrame(-1, z); shadow.Name = "Shadow"; shadow.Position = UDim2.fromOffset(-1, 3)
+		shadow.BackgroundColor3 = RGB(0, 0, 0); shadow.BackgroundTransparency = 0.5
+	end
+	local disc = Instance.new("Frame"); disc.Name = "Disc"; disc.Size = UDim2.fromScale(1, 1); disc.BackgroundColor3 = found and RGB(206, 230, 242) or SLOT_LO; disc.ZIndex = z + 1; disc.Parent = box
+	corner(disc, UDim.new(1, 0))
+	if found then gradient(disc, RGB(210, 234, 246), RGB(244, 233, 202)) end    -- sky at the top, warm ground below
+	local mask = Instance.new("ImageLabel"); mask.Name = "Mask"; mask.Size = UDim2.fromScale(1, 1); mask.BackgroundTransparency = 1
+	mask.Image = maskId(); mask.ImageColor3 = PANEL; mask.ScaleType = Enum.ScaleType.Fit; mask.ZIndex = z + 3; mask.Parent = box
+	if found then
+		stroke(ringFrame(3, z + 4), EDGE, 6, 0.78)                                  -- soft glow
+		stroke(ringFrame(4, z + 5), EDGE, 2, 0.05)                                  -- the gold ring
+		stroke(ringFrame(-1, z + 5), RGB(90, 56, 8), 1.5, 0.35)                     -- dark edge under the bevel
+		local bevel = stroke(ringFrame(0, z + 6), GOLD, 4)
+		local gg = Instance.new("UIGradient"); gg.Rotation = 90
+		gg.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, RGB(255, 244, 190)), ColorSequenceKeypoint.new(0.35, RGB(252, 206, 70)), ColorSequenceKeypoint.new(1, RGB(160, 100, 16))})
+		gg.Parent = bevel
+		stroke(ringFrame(2, z + 7), RGB(255, 252, 230), 1, 0.55)                    -- highlight on the inner lip
+	else
+		stroke(ringFrame(1, z + 5), INK_DIM, 2, 0.45)
+	end
+	return box, disc, mask
+end
+addBadge = function(model, st)
+	ensureHud()
+	if badges[model] then return badges[model] end
+	badgeOrder += 1
+	local cell = Instance.new("Frame"); cell.Name = model.Name; cell.BackgroundTransparency = 1; cell.LayoutOrder = badgeOrder; cell.ZIndex = 3; cell.Parent = grid
+	local t = tile(cell, TILE, 3)
+	local box = circleWindow(t, CIRCLE, 4, false)
+	box.AnchorPoint = Vector2.new(0.5, 0.5); box.Position = UDim2.new(0.5, 0, 0.5, -2)
+	local q = Instance.new("TextLabel"); q.Size = UDim2.fromScale(1, 1); q.BackgroundTransparency = 1; q.Text = "?"
+	q.FontFace = FONT; q.TextSize = 30; q.TextColor3 = INK_DIM; q.TextTransparency = 0.15; q.ZIndex = 12; q.Parent = box
+	local b = {cell = cell, tile = t, box = box, filled = false}
+	local btn = Instance.new("TextButton"); btn.Size = UDim2.fromScale(1, 1); btn.BackgroundTransparency = 1; btn.Text = ""
+	btn.ZIndex = 16; btn.Parent = cell
+	btn.MouseButton1Click:Connect(function() if b.filled then openCard(model, st) end end)
+	btn.MouseEnter:Connect(function() if b.filled then TweenService:Create(b.box, TweenInfo.new(0.15), {Position = UDim2.new(0.5, 0, 0.5, -4)}):Play() end end)
+	btn.MouseLeave:Connect(function() if b.filled then TweenService:Create(b.box, TweenInfo.new(0.15), {Position = UDim2.new(0.5, 0, 0.5, -2)}):Play() end end)
+	badges[model] = b
+	updateCounter()
+	return b
+end
+fillBadge = function(model, st)
+	local b = addBadge(model, st)
+	if b.filled then return end
+	b.filled = true
+	b.box:Destroy()                                   -- the "?" window goes; a proper coin takes its place
+	local box = circleWindow(b.tile, CIRCLE, 4, true)
+	box.AnchorPoint = Vector2.new(0.5, 0.5); box.Position = UDim2.new(0.5, 0, 0.5, -2)
+	b.box = box
+	makeViewport(box, st, faceCamera(st))             -- z 6: over the disc (5), under the mask (7) and the rings (8 to 11)
+	acorn(box, 15, 13)
+	local scale = Instance.new("UIScale"); scale.Scale = 0.4; scale.Parent = b.cell
+	TweenService:Create(scale, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Scale = 1}):Play()
+	updateCounter()
+end
+ensureBadges = function()
+	local list = {}
+	for model, st in pairs(squirrels) do table.insert(list, {model = model, st = st}) end
+	table.sort(list, function(a, b) return (regOrder[idOf(a.model)] or 999) < (regOrder[idOf(b.model)] or 999) end)
+	for _, e in ipairs(list) do addBadge(e.model, e.st); if e.st.found then fillBadge(e.model, e.st) end end
+end
+
+nameTag = function(model, mesh)
+	local folder = script.Parent
+	local T = folder:GetAttribute("NameTagSeconds") or 3.2        -- seconds from appear to gone
+	local RISE = 3.5
+	local top = mesh.Position + Vector3.new(0, mesh.Size.Y * 0.5 + 0.5, 0)
+	local anchor = Instance.new("Part"); anchor.Name = "NameTagAnchor"; anchor.Anchored = true; anchor.CanCollide = false
+	anchor.CanQuery = false; anchor.CanTouch = false; anchor.Transparency = 1; anchor.Size = Vector3.new(3, 1.2, 3)
+	anchor.Position = top; anchor.Parent = workspace
+	local W, H = 120, 52
+	local gui = Instance.new("BillboardGui"); gui.Size = UDim2.fromOffset(W, H); gui.AlwaysOnTop = true
+	gui.MaxDistance = 150; gui.LightInfluence = 0; gui.Parent = anchor
+	local function makeLabel(z)
+		local l = Instance.new("TextLabel"); l.Size = UDim2.fromScale(1, 1); l.BackgroundTransparency = 1
+		l.Text = prettyName(model); l.FontFace = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Bold)
+		l.TextWrapped = true; l.TextScaled = true; l.ZIndex = z; l.TextTransparency = 1; l.Parent = gui
+		local c = Instance.new("UITextSizeConstraint"); c.MaxTextSize = 13; c.MinTextSize = 8; c.Parent = l
+		return l
+	end
+	local shadow = makeLabel(1)
+	shadow.Position = UDim2.new(0, 2, 0, 3); shadow.TextColor3 = Color3.fromRGB(0, 0, 0)
+	local ss = Instance.new("UIStroke"); ss.Thickness = 2; ss.Color = Color3.fromRGB(0, 0, 0); ss.Transparency = 1; ss.Parent = shadow
+	local label = makeLabel(2)
+	label.TextColor3 = Color3.fromRGB(255, 255, 255)
+	local stroke = Instance.new("UIStroke"); stroke.Thickness = 1.5; stroke.Color = Color3.fromRGB(0, 0, 0); stroke.LineJoinMode = Enum.LineJoinMode.Round; stroke.Transparency = 1; stroke.Parent = label
+	-- sparkles: spawn on a sphere around the words and fly outward, big enough to read from a distance
+	local function emitter(color, size, rate, life, speed)
+		local pe = Instance.new("ParticleEmitter"); pe.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+		pe.Color = color
+		pe.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.2, size), NumberSequenceKeypoint.new(1, 0)})
+		pe.Transparency = NumberSequence.new(0); pe.Lifetime = life; pe.Speed = speed
+		pe.Shape = Enum.ParticleEmitterShape.Sphere; pe.ShapeStyle = Enum.ParticleEmitterShapeStyle.Surface
+		pe.ShapeInOut = Enum.ParticleEmitterShapeInOut.Outward; pe.SpreadAngle = Vector2.new(25, 25)
+		pe.Rate = rate; pe.LightEmission = 1; pe.LightInfluence = 0; pe.Brightness = 2
+		pe.Rotation = NumberRange.new(0, 360); pe.RotSpeed = NumberRange.new(-150, 150); pe.Drag = 2
+		pe.Acceleration = Vector3.new(0, 1.5, 0); pe.ZOffset = 0.5; pe.Parent = anchor
+		return pe
+	end
+	local gold = emitter(ColorSequence.new(Color3.fromRGB(255, 230, 150), Color3.fromRGB(255, 200, 90)), 0.9, 30, NumberRange.new(0.9, 1.6), NumberRange.new(2, 5))
+	local white = emitter(ColorSequence.new(Color3.fromRGB(255, 255, 255), Color3.fromRGB(220, 240, 255)), 0.6, 22, NumberRange.new(0.7, 1.3), NumberRange.new(1.5, 4))
+	gold:Emit(60); white:Emit(40)
+	-- straight up, fade in fast, fade out as it climbs
+	local FADE_FROM = 0.25
+	local t = 0
+	local conn
+	conn = RunService.RenderStepped:Connect(function(dt)
+		t += dt
+		local k = math.clamp(t / T, 0, 1)
+		local ease = 1 - (1 - k) ^ 2
+		anchor.Position = top + Vector3.new(0, RISE * ease, 0)
+		local vis = math.clamp(1 - t / 0.3, 0, 1)                   -- fade in over 0.3 s
+		if k > FADE_FROM then vis = math.max(vis, (k - FADE_FROM) / (1 - FADE_FROM)) end
+		label.TextTransparency = vis; stroke.Transparency = vis
+		shadow.TextTransparency = 0.55 + 0.45 * vis; ss.Transparency = 0.55 + 0.45 * vis
+		if k > 0.55 then gold.Enabled = false; white.Enabled = false end
+		if k >= 1 then conn:Disconnect(); task.delay(1.5, function() anchor:Destroy() end) end
+	end)
+end
+
+-- a squirrel can have a Companion: a prop that turns to colour with him (the truffle hunter's pig)
+setCompanion = function(model, found)
+	local name = model and model:GetAttribute("Companion")
+	if not name then return end
+	local c = workspace:FindFirstChild(name)
+	if not c then return end
+	for _, p in ipairs(c:GetDescendants()) do
+		if p:IsA("MeshPart") then
+			local id = found and p:GetAttribute("ColorTexture") or p:GetAttribute("GrayTexture")
+			if id then setTex(p, id) end
+		end
+	end
+end
+
+-- ---- the reveal that takes over the screen: starburst, the squirrel large, its name, then away into the menu ----
+local revealGui
+local function screenReveal(model, st)
+	if revealGui then revealGui:Destroy(); revealGui = nil end
+	local pg = Players.LocalPlayer:FindFirstChild("PlayerGui")
+	if not pg then return end
+	local cam0 = workspace.CurrentCamera
+	local vpSize = cam0 and cam0.ViewportSize or Vector2.new(1280, 720)
+	local S = math.min(vpSize.X, vpSize.Y)
+
+	local gui = Instance.new("ScreenGui")
+	gui.Name = "SquirrelReveal"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 9
+	gui.Parent = pg
+	revealGui = gui
+	game:GetService("Debris"):AddItem(gui, 8)   -- a backstop: the overlay can never be left on screen
+
+	-- everything lives in one square holder, so the flight to the menu is a single tween of this frame
+	local hold = Instance.new("Frame"); hold.Name = "Hold"; hold.AnchorPoint = Vector2.new(0.5, 0.5)
+	hold.Position = UDim2.fromScale(0.5, 0.46); hold.Size = UDim2.fromOffset(S * 0.5, S * 0.5)
+	hold.Backgro... (truncated)

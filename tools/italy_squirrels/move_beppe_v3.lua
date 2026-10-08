@@ -1,0 +1,47 @@
+-- Oct 4 2026: Beppe + his crate to Shannon's circle: just north of the stand's front-right post (252,-639), facing the quay
+local market=workspace.PortoNocciola['03 Fish market']
+local bc=market.BeppeCrate
+local col=workspace.fishmonger_squirrel_color local cm=col.Squirrel
+local B={} for _,d in ipairs(col:GetDescendants()) do if d:IsA('Bone') then B[d.Name]=d end end
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Exclude rp.FilterDescendantsInstances={bc,col,workspace.ComingSoonWall}
+local look=Vector3.new(238,0,-636)
+local op=OverlapParams.new() op.FilterType=Enum.RaycastFilterType.Exclude op.FilterDescendantsInstances={bc,col,workspace.ComingSoonWall}
+local spot
+for _,c in ipairs({{253.4,-637.2},{253.0,-637.0},{253.8,-637.0},{253.4,-636.6},{252.8,-636.6},{254.2,-637.2},{253.4,-636.0}}) do
+	local g=workspace:Raycast(Vector3.new(c[1],-38,c[2]),Vector3.new(0,-30,0),rp)
+	if g and #workspace:GetPartBoundsInBox(CFrame.new(c[1],g.Position.Y+1.0,c[2]),Vector3.new(2.3,1.8,2.3),op)==0 then spot=Vector3.new(c[1],g.Position.Y,c[2]) break end
+end
+assert(spot,'no free spot')
+-- turn Beppe to face the quay
+local rel=cm.CFrame:Inverse()*col:GetPivot() col:PivotTo(CFrame.new(cm.Position)*rel)
+local want=(look-spot)*Vector3.new(1,0,1)
+for i=1,2 do
+	local face=(B.Head.WorldPosition-cm.Position)*Vector3.new(1,0,1)
+	local a=math.atan2(want.X,want.Z)-math.atan2(face.X,face.Z)
+	local c=CFrame.new(cm.Position) col:PivotTo(c*CFrame.Angles(0,a,0)*c:Inverse()*col:GetPivot())
+end
+-- crate under him, turned with him (stencil to the front), Beppe's feet centred on the lid
+local face=((B.Head.WorldPosition-cm.Position)*Vector3.new(1,0,1)).Unit
+local Ry=CFrame.Angles(0,math.rad(cm.Orientation.Y),0)
+if Ry:VectorToWorldSpace(Vector3.new(0,0,1)):Dot(face)<0 then Ry=Ry*CFrame.Angles(0,math.pi,0) end
+local bcf=bc:GetPivot() local floorY=bcf.Position.Y
+local lowest=1e9 for _,p in ipairs(bc:GetDescendants()) do if p:IsA('BasePart') then lowest=math.min(lowest,p.Position.Y-p.Size.Y/2) end end
+local lift=spot.Y-lowest
+bc:PivotTo(CFrame.new(spot.X,bcf.Position.Y+lift,spot.Z)*Ry*(bcf-bcf.Position))
+local top=-1e9 for _,p in ipairs(bc:GetChildren()) do if p.Name=='Lid' then top=math.max(top,p.Position.Y+p.Size.Y/2) end end
+local hl=cm.CFrame:PointToObjectSpace(B.Head.WorldPosition) local tl=cm.CFrame:PointToObjectSpace(B.Tail1.WorldPosition)
+local sz,sx,k=hl.Z<0 and 1 or -1,tl.X<0 and 1 or -1,3.4/cm.Size.Y
+local R=cm.CFrame-cm.Position
+local fc=R:VectorToWorldSpace(Vector3.new(sx*(-0.265),0,sz*(-0.185))*k)
+col:PivotTo(col:GetPivot()+Vector3.new(spot.X-fc.X-cm.Position.X,top+0.02-(cm.Position.Y-cm.Size.Y/2),spot.Z-fc.Z-cm.Position.Z))
+local gp=RaycastParams.new() gp.FilterType=Enum.RaycastFilterType.Include gp.FilterDescendantsInstances={bc}
+local bottom=cm.Position.Y-cm.Size.Y/2 local out=''
+for _,f in ipairs({{-0.85,-0.82},{0.32,-0.82},{-0.85,0.45},{0.32,0.45},{-0.27,-0.19}}) do
+	local w=Vector3.new(cm.Position.X,0,cm.Position.Z)+R:VectorToWorldSpace(Vector3.new(sx*f[1],0,sz*f[2])*k)
+	local q=workspace:Raycast(Vector3.new(w.X,bottom+3,w.Z),Vector3.new(0,-10,0),gp)
+	out=out..string.format(' %.2f%s',q and (bottom-q.Position.Y) or 99,q and q.Instance.Name:sub(1,4) or '')
+end
+local cf,s=bc:GetBoundingBox()
+game:GetService('ChangeHistoryService'):SetWaypoint('Beppe + crate at the front-right post')
+warn('BEPPE_V3 spot',spot,'feet',out,'crate overlaps',#workspace:GetPartBoundsInBox(cf,s*0.92,op))
+workspace.CurrentCamera.CFrame=CFrame.lookAt(Vector3.new(240,-39,-627),Vector3.new(254,-45,-640))

@@ -1,0 +1,33 @@
+-- Oct 5 2026 read-only: the pieces of PortoNocciola['04 Piers and fishing boats'] (two levels), size, centre,
+-- top height and any squirrel standing over each one. Pieces under 3 studs long are skipped.
+local S=workspace.PortoNocciola:FindFirstChild('04 Piers and fishing boats')
+if not S then warn('QB2@ABORT') return end
+local sq={}
+for _,m in ipairs(workspace:GetChildren()) do
+	if m:IsA('Model') and m.Name:match('_squirrel_color$') and m:FindFirstChild('Squirrel') then
+		table.insert(sq,{(m.Name:gsub('_squirrel_color$','')),m.Squirrel.Position})
+	end
+end
+local function report(m,depth)
+	local cf,sz
+	if m:IsA('Model') then cf,sz=m:GetBoundingBox() elseif m:IsA('BasePart') then cf,sz=m.CFrame,m.Size else return end
+	if math.max(sz.X,sz.Z)<3 then return end
+	local near={}
+	for _,s in ipairs(sq) do
+		local l=cf:PointToObjectSpace(s[2])
+		if math.abs(l.X)<sz.X/2+0.5 and math.abs(l.Z)<sz.Z/2+0.5 and math.abs(l.Y)<sz.Y/2+4 then table.insert(near,s[1]) end
+	end
+	warn(string.format('QB2@%s%s [%s] centre %.1f,%.1f,%.1f size %.1f x %.1f x %.1f top %.2f yaw %.0f %s',string.rep('  ',depth),m.Name,m.ClassName,
+		cf.Position.X,cf.Position.Y,cf.Position.Z,sz.X,sz.Y,sz.Z,cf.Position.Y+sz.Y/2,math.deg(math.atan2(-cf.LookVector.X,-cf.LookVector.Z)),
+		#near>0 and ('SQUIRREL '..table.concat(near,',')) or ''))
+end
+for _,c in ipairs(S:GetChildren()) do
+	report(c,0)
+	if c:IsA('Model') or c:IsA('Folder') then
+		local k=0
+		for _,g in ipairs(c:GetChildren()) do
+			if g:IsA('Model') then k+=1 if k<=12 then report(g,1) end end
+		end
+	end
+end
+warn('QB2@DONE')

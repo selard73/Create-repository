@@ -1,0 +1,9 @@
+Vertices with Z > 1.6 and X between -0.7 and 0.7:
+X slice [-1.2 .. -0.9]: count=114, Y range=0.096..0.881, Z range=1.607..2.040
+X slice [-0.9 .. -0.6]: count=170, Y range=0.052..0.942, Z range=1.613..2.084
+X slice [-0.6 .. -0.3]: count=233, Y range=-0.210..0.927, Z range=1.603..2.181
+X slice [-0.3 .. 0.0]: count=441, Y range=-0.386..0.764, Z range=1.600..2.400
+X slice [0.0 .. 0.3]: count=368, Y range=-0.409..0.466, Z range=1.609..2.388
+X slice [0.3 .. 0.6]: count=389, Y range=-0.294..0.395, Z range=1.602..2.280
+
+DONE

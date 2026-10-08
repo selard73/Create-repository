@@ -1,0 +1,17 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">ProbeP8</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+local found={}
+for _,d in ipairs(workspace:GetDescendants()) do
+	if d:IsA('BasePart') then
+		local p=d.Position
+		if p.X>276 and p.X<300 and p.Z>-665 and p.Z<-570 and p.Y>-44 and p.Y<-20 then
+			local s=d.Size local mx=math.max(s.X,s.Y,s.Z) local mn=math.min(s.X,s.Y,s.Z)
+			local mid=s.X+s.Y+s.Z-mx-mn
+			if mx>2.5 and mid<0.25 then
+				warn(string.format('QW@%s@%s@(%.2f,%.2f,%.2f)@s(%.2f,%.2f,%.2f)@lv(%.2f,%.2f,%.2f)@rv(%.2f,%.2f,%.2f)',d:GetFullName():gsub('Workspace.PortoNocciola.',''),d.ClassName,p.X,p.Y,p.Z,s.X,s.Y,s.Z,d.CFrame.LookVector.X,d.CFrame.LookVector.Y,d.CFrame.LookVector.Z,d.CFrame.RightVector.X,d.CFrame.RightVector.Y,d.CFrame.RightVector.Z))
+			end
+		end
+	end
+end
+warn('QW@END')
+
+end]]></ProtectedString></Properties></Item></Item></roblox>

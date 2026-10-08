@@ -1,0 +1,87 @@
+-- hf1 Oct 4 2026 (Shannon: the painted wall "looks TERRIBLE" from the hillside town - its base and slanted end show).
+-- Remove the backdrop wall and its gorge script; instead a LocalScript hides every French building, tree, sign, tower and
+-- effect FOR THAT PLAYER while their character is in Porto Nocciola (south of z -560), and brings them back when they
+-- leave. Nothing changes on the server or for anyone else. Kept visible: SouthGorge (the ridge, its pines, the aqueduct,
+-- the gorge and the cliffs), PortoNocciola, and other players' characters.
+local bd=workspace:FindFirstChild('PortoBackdrop') if bd then bd:Destroy() end
+local SPS=game.StarterPlayer.StarterPlayerScripts
+local g=SPS:FindFirstChild('BackdropGorgeHide') if g then g:Destroy() end
+local old=SPS:FindFirstChild('HideFranceFromPorto') if old then old:Destroy() end
+local s=Instance.new('LocalScript') s.Name='HideFranceFromPorto'
+s.Source=[==[-- HideFranceFromPorto (Oct 4 2026, Shannon): while you are in Porto Nocciola nothing of the French map is drawn for you,
+-- so you cannot see France from Italy. Everything north of the cliff line (z > -540) - parts, signs (Surface/Billboard
+-- GUIs) and effects - is hidden locally while your character is south of z -560, and restored when you leave.
+-- Not hidden: workspace.SouthGorge (the ridge between the maps, its trees, the aqueduct, the gorge, the falls cliffs),
+-- workspace.PortoNocciola, and characters. Terrain cannot be hidden; beyond the ridge it reads as plain countryside.
+local Players=game:GetService('Players')
+local player=Players.LocalPlayer
+local LINE_Z=-540
+local IN_PORTO_Z=-560
+local OUT_Z=-530
+local function skipRoots() return {workspace:FindFirstChild('SouthGorge'),workspace:FindFirstChild('PortoNocciola'),workspace.CurrentCamera} end
+local hidden={}
+local active=false
+local busy=false
+local function posOf(inst)
+	if inst:IsA('BasePart') then return inst.Position end
+	local p=inst.Parent
+	if inst:IsA('SurfaceGui') or inst:IsA('BillboardGui') then local a=inst.Adornee or p if a and a:IsA('BasePart') then return a.Position end if a and a:IsA('Attachment') then return a.WorldPosition end return nil end
+	if p and p:IsA('BasePart') then return p.Position end
+	if p and p:IsA('Attachment') then return p.WorldPosition end
+	return nil
+end
+local EFFECT={ParticleEmitter=true,Beam=true,Trail=true,Fire=true,Smoke=true,Sparkles=true,PointLight=true,SpotLight=true,SurfaceLight=true}
+local function skipped(inst,roots)
+	for _,r in ipairs(roots) do if r and inst:IsDescendantOf(r) then return true end end
+	local m=inst:FindFirstAncestorOfClass('Model')
+	while m do if m:FindFirstChildOfClass('Humanoid') then return true end m=m.Parent and m.Parent:FindFirstAncestorOfClass('Model') end
+	return false
+end
+local function hideOne(inst,roots)
+	if hidden[inst]~=nil then return end
+	local isPart=inst:IsA('BasePart')
+	local isGui=inst:IsA('SurfaceGui') or inst:IsA('BillboardGui')
+	local isFx=EFFECT[inst.ClassName]
+	if not (isPart or isGui or isFx) then return end
+	local p=posOf(inst)
+	if not p or p.Z<=LINE_Z then return end
+	if skipped(inst,roots) then return end
+	if isPart then hidden[inst]=inst.LocalTransparencyModifier inst.LocalTransparencyModifier=1
+	else hidden[inst]=inst.Enabled inst.Enabled=false end
+end
+local function hideAll()
+	busy=true
+	local roots=skipRoots()
+	local list=workspace:GetDescendants()
+	for i,inst in ipairs(list) do
+		if not active then break end
+		hideOne(inst,roots)
+		if i%3000==0 then task.wait() end
+	end
+	busy=false
+end
+local function restoreAll()
+	for inst,prev in pairs(hidden) do
+		if inst.Parent then
+			if inst:IsA('BasePart') then inst.LocalTransparencyModifier=prev else inst.Enabled=prev end
+		end
+	end
+	hidden={}
+end
+workspace.DescendantAdded:Connect(function(inst)
+	if active then task.defer(function() if active then hideOne(inst,skipRoots()) end end) end
+end)
+while true do
+	task.wait(0.5)
+	local c=player.Character
+	local r=c and c:FindFirstChild('HumanoidRootPart')
+	if r then
+		local z=r.Position.Z
+		if not active and z<IN_PORTO_Z then active=true task.spawn(hideAll)
+		elseif active and z>OUT_Z then active=false restoreAll() end
+	end
+end
+]==]
+s.Parent=SPS
+game:GetService('ChangeHistoryService'):SetWaypoint('Hide France from Porto')
+warn('QH@OK backdrop removed',workspace:FindFirstChild('PortoBackdrop')==nil,'script',#s.Source)

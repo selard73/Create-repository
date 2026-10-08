@@ -1,0 +1,17 @@
+1. Low chassis (z < 0.85 -> Root): 2415 verts
+2. Scooter front/handlebars (y < -0.45, z < 1.40 -> Root): 712 verts
+3. Pizza box & rack (y > 0.45, z < 1.38 -> Root): 520 verts
+4. Torso/arms (-0.45 <= y <= 0.35, 0.85 <= z < 1.40 -> Chest): 951 verts
+5. Head/helmet (z >= 1.40, y <= 0.05 -> Head): 0 verts
+6. Tail (y >= 0.15 -> Tail1/Tail2): 278 verts
+Head tail leaks: 0
+Bone Root vert count: 3954
+Bone Chest vert count: 2375
+Bone Neck vert count: 1285
+Bone Head vert count: 1305
+Bone Tail1 vert count: 1344
+Bone Tail2 vert count: 1154
+Saved fixed blend.
+Exported color FBX.
+Exported gray FBX.
+PIZZA_FIX_DONE

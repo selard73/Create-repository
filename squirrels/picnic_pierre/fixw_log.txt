@@ -1,0 +1,2 @@
+head->chest soft falloff z 1.01..1.31: 1760 vertices adjusted
+FIXW_DONE

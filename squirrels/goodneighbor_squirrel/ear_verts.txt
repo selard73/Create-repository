@@ -1,0 +1,5 @@
+Ear vertices:
+Tail pts (Y > 0.45, Z > 1.2): 590
+  Tail max Z: 1.93
+  Tail Y range: [0.45, 0.97]
+  Tail X range: [-0.76, 0.03]

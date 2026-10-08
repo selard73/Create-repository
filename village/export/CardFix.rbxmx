@@ -1,0 +1,34 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+  <Item class="Folder" referent="RBX0"><Properties><string name="Name">CardFix</string></Properties>
+    <Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[-- CardFix: in the enlarged squirrel card, drop the acorn hanging off the bottom of the ring (it stays on the small
+-- thumbnails), stop the turntable spinning by itself, and give the portrait its own drag surface so turning the
+-- squirrel no longer counts as a click on the backdrop (which closed the card).
+-- Run in edit mode: require(workspace.CardFix.PatchModule)()  (packed by village/make_patch.py)
+return function()
+	local anim = workspace:WaitForChild("SquirrelScripts"):WaitForChild("SquirrelAnim")
+	local CR = string.char(13) .. string.char(10)
+	local src = anim.Source:gsub(CR, string.char(10))        -- the live script carries Windows line breaks; match on plain ones
+	local done = {}
+	local function swap(text, replacement, label)
+		local i, j = src:find(text, 1, true)
+		if not i then return false end
+		src = src:sub(1, i - 1) .. replacement .. src:sub(j + 1)
+		table.insert(done, label)
+		return true
+	end
+	-- the acorn charm on the big ring (openCard only; the thumbnails call acorn() elsewhere and keep theirs)
+	swap("\tacorn(ring, 44, 31)\n", "", "acorn removed")
+	-- the idle turntable
+	swap("\t\tif not dragging then\n\t\t\tidle += dt\n\t\t\tif idle > 1.5 then ang += dt * 0.5 end          -- resume the slow spin a moment after you let go\n\t\tend\n", "", "auto-spin removed")
+	-- a real button over the portrait: it swallows the click, so dragging the squirrel never closes the card
+	swap("\tvp.Active = true\n\tvp.InputBegan:Connect(function(input)",
+		"\tvp.Active = false\n\tlocal grab = Instance.new(\"TextButton\"); grab.Name = \"Spin\"; grab.Size = UDim2.fromScale(1, 1)\n"
+		.. "\tgrab.BackgroundTransparency = 1; grab.Text = \"\"; grab.AutoButtonColor = false; grab.ZIndex = 25; grab.Parent = ring\n"
+		.. "\tgrab.InputBegan:Connect(function(input)", "drag surface added")
+	if #done == 0 then print("CardFix: nothing to change (already applied)") return end
+	anim.Source = src
+	print("CardFix: " .. table.concat(done, ", "))
+end
+]]></ProtectedString></Properties></Item>
+  </Item>
+</roblox>

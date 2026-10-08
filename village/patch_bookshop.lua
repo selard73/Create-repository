@@ -1,0 +1,146 @@
+-- PatchBookshop: the LIBRAIRIE's window showed the generic shop shelves (jars, tins, boxes). This clears the two display
+-- copies in its bay and builds a bookshop interior from Parts: two tall bookcases full of spines, a rolling ladder, a
+-- front table of stacked books with one lying open, a "Nouveautés" card, a globe and a reading lamp.
+-- Applied to the SAVED street without rebuilding it. Run in edit mode: require(workspace.PatchBookshop.PatchModule)()
+return function()
+	local C = Color3.fromRGB
+	local props = workspace:WaitForChild("Village"):WaitForChild("Props")
+	local lib
+	for _, h in ipairs(props:GetChildren()) do
+		local t = h:FindFirstChildWhichIsA("TextLabel", true)
+		if t and t.Text == "LIBRAIRIE" then lib = h end
+	end
+	assert(lib, "PatchBookshop: no LIBRAIRIE house")
+	local pane
+	for _, g in ipairs(lib:GetDescendants()) do
+		if g:IsA("BasePart") and g.Name:sub(1, 5) == "Glass" and g.Name:sub(1, 9) ~= "GlassDoor" and g.Size.X > 4 then pane = g end
+	end
+	assert(pane, "PatchBookshop: no shop pane")
+	local hb = lib:GetBoundingBox()
+	local dz = (hb.Position.Z - pane.Position.Z) > 0 and 1 or -1          -- into the shop
+	local ox, oy, oz = pane.Position.X, pane.Position.Y - pane.Size.Y / 2 + 0.14, pane.Position.Z
+	local W = pane.Size.X
+	-- clear the old displays in this bay (and any earlier bookshop)
+	local removed = 0
+	for _, m in ipairs(props:GetChildren()) do
+		if m:IsA("Model") and m.Name:sub(1, 4) == "disp" then
+			local bb = m:GetBoundingBox()
+			if math.abs(bb.Position.X - ox) < W / 2 and (bb.Position.Z - oz) * dz > 0 and math.abs(bb.Position.Z - oz) < 6 then m:Destroy(); removed += 1 end
+		end
+	end
+	local shop = Instance.new("Model"); shop.Name = "disp_bookshop"
+	local rng = Random.new(41)
+	local function P(x, y, z) return Vector3.new(ox + x, oy + y, oz + dz * z) end     -- x along the window, y up from the floor, z into the shop
+	local function part(name, size, cf, col, shape)
+		local p = Instance.new("Part"); p.Name = name; p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false; p.Locked = true
+		p.Material = Enum.Material.SmoothPlastic; p.Color = col; p.Size = size; p.CFrame = cf; p.CastShadow = true
+		if shape then p.Shape = shape end
+		p.Parent = shop
+		return p
+	end
+	local function box(name, size, x, y, z, col) return part(name, size, CFrame.new(P(x, y, z)), col) end
+	local DARK, WOOD, CREAM = C(92, 62, 42), C(120, 84, 56), C(236, 222, 196)
+	local SPINES = {C(200, 70, 70), C(70, 110, 180), C(90, 150, 100), C(230, 190, 80), C(120, 90, 160), C(240, 235, 220), C(60, 60, 70),
+		C(40, 140, 150), C(230, 120, 50), C(150, 100, 60), C(220, 120, 160), C(40, 60, 120), C(170, 40, 60), C(100, 170, 200)}
+	local function spine() return SPINES[rng:NextInteger(1, #SPINES)] end
+	local nBooks = 0
+
+	-- floor and back wall of the bay
+	box("Floor", Vector3.new(W + 0.2, 0.1, 4.6), 0, -0.03, 2.3, WOOD)
+	box("BackWall", Vector3.new(W + 0.2, 7.4, 0.15), 0, 3.6, 4.55, CREAM)
+	box("Rug", Vector3.new(3.4, 0.03, 1.8), 0, 0.035, 2.9, C(160, 50, 60))
+	box("Rug", Vector3.new(3.0, 0.035, 1.4), 0, 0.037, 2.9, C(200, 90, 90))
+
+	-- two tall bookcases at the back, every shelf packed with spines
+	local SHELF_Y = {0.15, 1.45, 2.75, 4.05, 5.35}
+	for _, cx in ipairs({-2.9, 2.9}) do
+		local cw, depth, zc, top = 5.0, 1.0, 4.0, 6.5
+		box("Case", Vector3.new(0.12, top, depth), cx - cw / 2 + 0.06, top / 2, zc, DARK)
+		box("Case", Vector3.new(0.12, top, depth), cx + cw / 2 - 0.06, top / 2, zc, DARK)
+		box("Case", Vector3.new(cw, top, 0.12), cx, top / 2, zc + depth / 2 - 0.06, DARK)      -- back board (thin, tall)
+		box("Case", Vector3.new(cw, 0.1, depth), cx, top - 0.05, zc, DARK)
+		for si, sy in ipairs(SHELF_Y) do
+			box("Shelf", Vector3.new(cw - 0.24, 0.1, depth), cx, sy, zc, DARK)
+			local x = cx - cw / 2 + 0.18
+			local xEnd = cx + cw / 2 - 0.18
+			local lying = (si % 2 == 0)                        -- every other shelf ends with a small flat stack
+			local limit = lying and xEnd - 1.0 or xEnd
+			while x < limit do
+				local w = rng:NextNumber(0.14, 0.3)
+				if x + w > limit then break end
+				local h = rng:NextNumber(0.78, 1.12)
+				local lean = 0
+				if rng:NextNumber() < 0.12 and x + w + 0.25 < limit then lean = rng:NextNumber(0.14, 0.22) * (rng:NextNumber() < 0.5 and 1 or -1) end
+				local cf = CFrame.new(P(x + w / 2, sy + 0.05 + h / 2, zc - 0.05)) * CFrame.Angles(0, 0, lean)
+				part("Book", Vector3.new(w, h, 0.8), cf, spine())
+				if rng:NextNumber() < 0.4 then                     -- a title band on the spine
+					part("Band", Vector3.new(w + 0.01, 0.12, 0.02), cf * CFrame.new(0, rng:NextNumber(-0.25, 0.25), -0.4), C(245, 235, 200))
+				end
+				nBooks += 1
+				x += w + (lean ~= 0 and 0.22 or 0.01)
+			end
+			if lying then
+				for k = 0, 2 do
+					local yaw = rng:NextNumber(-0.1, 0.1)
+					part("Book", Vector3.new(0.9 - k * 0.05, 0.16, 0.7), CFrame.new(P(xEnd - 0.5, sy + 0.05 + 0.08 + k * 0.16, zc)) * CFrame.Angles(0, yaw, 0), spine())
+					nBooks += 1
+				end
+			end
+		end
+	end
+
+	-- a rolling ladder leaning on the right bookcase
+	do
+		local a = math.atan2(1.2, 5.8)
+		local base = CFrame.new(P(4.0, 2.95, 2.9)) * CFrame.Angles(dz * a, 0, 0)
+		for _, sx in ipairs({-0.45, 0.45}) do part("Ladder", Vector3.new(0.1, 6.0, 0.1), base * CFrame.new(sx, 0, 0), C(150, 110, 70)) end
+		for k = -3, 3 do part("Ladder", Vector3.new(0.9, 0.08, 0.08), base * CFrame.new(0, k * 0.85, 0), C(150, 110, 70)) end
+		part("Rail", Vector3.new(0.06, 0.06, 5.0), CFrame.new(P(2.9, 6.6, 3.45)), C(190, 170, 110))
+	end
+
+	-- the front table with stacks and an open book
+	do
+		local ty, tz = 2.2, 1.3
+		box("Table", Vector3.new(7.2, 0.12, 1.6), 0, ty - 0.06, tz, WOOD)
+		box("Table", Vector3.new(7.0, 0.5, 1.3), 0, ty - 0.35, tz, WOOD)
+		for _, sx in ipairs({-3.45, 3.45}) do for _, sz in ipairs({-0.65, 0.65}) do box("Table", Vector3.new(0.14, ty - 0.1, 0.14), sx, (ty - 0.1) / 2, tz + sz, WOOD) end end
+		for _, sx in ipairs({-2.7, -1.35, 1.35, 2.7}) do
+			local n = rng:NextInteger(3, 5)
+			local y = ty
+			for k = 1, n do
+				local h = rng:NextNumber(0.13, 0.2)
+				part("Book", Vector3.new(rng:NextNumber(0.85, 1.05), h, rng:NextNumber(0.65, 0.8)), CFrame.new(P(sx, y + h / 2, tz + rng:NextNumber(-0.08, 0.08))) * CFrame.Angles(0, rng:NextNumber(-0.16, 0.16), 0), spine())
+				y += h; nBooks += 1
+			end
+		end
+		-- the open book: cover, two fanned page blocks
+		part("Book", Vector3.new(1.3, 0.05, 0.9), CFrame.new(P(0, ty + 0.025, tz)) * CFrame.Angles(0, 0.08, 0), C(60, 60, 70))
+		for _, s in ipairs({-1, 1}) do
+			part("Page", Vector3.new(0.6, 0.06, 0.84), CFrame.new(P(s * 0.31, ty + 0.1, tz)) * CFrame.Angles(0, 0.08, s * 0.16), C(250, 248, 240))
+			for l = 1, 4 do part("Line", Vector3.new(0.4, 0.008, 0.03), CFrame.new(P(s * 0.31, ty + 0.135, tz - 0.3 + l * 0.15)) * CFrame.Angles(0, 0.08, s * 0.16), C(120, 120, 130)) end
+		end
+		nBooks += 1
+		-- "Nouveautés" card standing at the back of the table
+		local yaw = (dz == -1) and math.pi or 0
+		local card = part("Card", Vector3.new(1.4, 0.7, 0.04), CFrame.new(P(0, ty + 0.4, tz + 0.62)) * CFrame.Angles(0, yaw, 0) * CFrame.Angles(0.22, 0, 0), C(250, 246, 236))
+		local gui = Instance.new("SurfaceGui"); gui.Face = Enum.NormalId.Front; gui.CanvasSize = Vector2.new(280, 140); gui.LightInfluence = 0.6; gui.Parent = card
+		local lbl = Instance.new("TextLabel"); lbl.Size = UDim2.fromScale(1, 1); lbl.BackgroundTransparency = 1; lbl.Text = "Nouveautés"
+		lbl.Font = Enum.Font.Antique; lbl.TextScaled = true; lbl.TextColor3 = C(70, 40, 30); lbl.Parent = gui
+	end
+
+	-- a globe on a stand at the left, a reading lamp at the right
+	do
+		part("Globe", Vector3.new(0.7, 0.06, 0.7), CFrame.new(P(-4.9, 0.03, 1.1)) * CFrame.Angles(0, 0, math.pi / 2), C(80, 60, 40), Enum.PartType.Cylinder)
+		box("Globe", Vector3.new(0.08, 2.6, 0.08), -4.9, 1.35, 1.1, C(190, 170, 110))
+		part("Globe", Vector3.new(1.15, 1.15, 1.15), CFrame.new(P(-4.9, 3.15, 1.1)), C(70, 130, 180), Enum.PartType.Ball)
+		for _, o in ipairs({{0.42, 0.25, 0.3}, {-0.35, -0.1, 0.42}, {0.1, 0.45, -0.38}, {-0.3, 0.35, -0.3}}) do
+			part("Land", Vector3.new(0.42, 0.42, 0.42), CFrame.new(P(-4.9 + o[1], 3.15 + o[2], 1.1 + o[3])), C(110, 160, 90), Enum.PartType.Ball)
+		end
+		part("Lamp", Vector3.new(0.6, 0.06, 0.6), CFrame.new(P(4.9, 0.03, 1.0)) * CFrame.Angles(0, 0, math.pi / 2), C(60, 50, 40), Enum.PartType.Cylinder)
+		box("Lamp", Vector3.new(0.08, 4.6, 0.08), 4.9, 2.35, 1.0, C(200, 170, 90))
+		local shade = part("Lamp", Vector3.new(0.5, 1.1, 1.1), CFrame.new(P(4.9, 4.9, 1.0)) * CFrame.Angles(0, 0, math.pi / 2), C(40, 110, 70), Enum.PartType.Cylinder)
+		local L = Instance.new("PointLight"); L.Range = 9; L.Brightness = 0.9; L.Color = C(255, 226, 170); L.Shadows = false; L.Parent = shade
+	end
+	shop.Parent = props
+	print(string.format("PatchBookshop: %d old displays removed, bookshop built (%d books) behind %s at %.1f,%.1f", removed, nBooks, pane.Name, ox, oz))
+end

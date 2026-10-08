@@ -1,0 +1,9 @@
+region [-1.5, 1.5, -1.0, 1.0, 0.0, 1.56] Head+Neck -> Chest: 3637 vertices
+region [-1.5, 1.5, -1.0, 1.0, 1.56, 2.45] Tail1+Tail2 -> Chest: 1992 vertices
+region [-1.5, 1.5, 0.25, 1.0, 0.0, 2.45] Head+Neck -> Chest: 614 vertices
+head->chest soft falloff z 1.26..1.56: 0 vertices adjusted
+tail->root below z 1.2 and y < 0.5: 2223 vertices
+after: region [-1.5, 1.5, -1.0, 1.0, 0.0, 1.56] 4609 verts, mean Head+Neck weight 0.000, max 0.00
+after: region [-1.5, 1.5, -1.0, 1.0, 1.56, 2.45] 2817 verts, mean Tail1+Tail2 weight 0.000, max 0.00
+after: region [-1.5, 1.5, 0.25, 1.0, 0.0, 2.45] 1909 verts, mean Head+Neck weight 0.000, max 0.00
+FIXW_DONE

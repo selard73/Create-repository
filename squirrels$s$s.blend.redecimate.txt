@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Users\slard\roblox-props\squirrels\redecimate.py", line 8, in <module>
+    bpy.ops.wm.open_mainfile(filepath=BL)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+RuntimeError: Error: Cannot read file "C:\Users\slard\roblox-props\squirrels$s$s.blend": No such file or directory
+

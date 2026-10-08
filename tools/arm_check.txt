@@ -1,0 +1,15 @@
+Arm verts: 477
+Root: 0.115
+Chest: 0.403
+Neck: 0.234
+Head: 0.192
+Tail1: 0.034
+Tail2: 0.020
+
+Bodice verts: 1650
+Root: 0.154
+Chest: 0.450
+Neck: 0.297
+Head: 0.064
+Tail1: 0.022
+Tail2: 0.006

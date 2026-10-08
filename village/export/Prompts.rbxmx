@@ -1,0 +1,74 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+  <Item class="Folder" referent="RBX0"><Properties><string name="Name">Prompts</string></Properties>
+    <Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[-- PromptUI: a compact custom look for every ProximityPrompt in the game (the default panel is big and sits on top of
+-- whatever the player is doing). A prompt on something the player carries (the watering can) shows above their head;
+-- prompts on things in the world show just above the thing. Tapping or clicking the pill works like pressing the key.
+-- Run in edit mode: require(workspace.Prompts.PatchModule)()  (packed by village/make_patch.py)
+return function()
+	local old = workspace:FindFirstChild("PromptUI"); if old then old:Destroy() end
+	local F = Instance.new("Folder"); F.Name = "PromptUI"; F.Parent = workspace
+	local CLIENT = [==[
+local Players = game:GetService("Players")
+local PPS = game:GetService("ProximityPromptService")
+local TextService = game:GetService("TextService")
+local player = Players.LocalPlayer
+local C = Color3.fromRGB
+local FONT = Enum.Font.FredokaOne
+local function customise(p) if p:IsA("ProximityPrompt") then p.Style = Enum.ProximityPromptStyle.Custom end end
+for _, d in ipairs(workspace:GetDescendants()) do customise(d) end
+workspace.DescendantAdded:Connect(customise)
+local live = {}
+local function keyName(prompt, inputType)
+	if inputType == Enum.ProximityPromptInputType.Touch then return nil end
+	if inputType == Enum.ProximityPromptInputType.Gamepad then return (prompt.GamepadKeyCode.Name:gsub("^Button", "")) end
+	return prompt.KeyboardKeyCode.Name
+end
+PPS.PromptShown:Connect(function(prompt, inputType)
+	if prompt.Style ~= Enum.ProximityPromptStyle.Custom then return end
+	local char = player.Character
+	local onMe = char and prompt:IsDescendantOf(char)
+	local part = prompt.Parent
+	if part and not part:IsA("BasePart") then part = part:FindFirstChildWhichIsA("BasePart", true) end
+	local adornee = (onMe and char:FindFirstChild("Head")) or part
+	if not adornee then return end
+	local key = keyName(prompt, inputType)
+	local action, object = prompt.ActionText, prompt.ObjectText
+	local wA = TextService:GetTextSize(action, 16, FONT, Vector2.new(500, 40)).X
+	local wO = object ~= "" and TextService:GetTextSize(object, 11, FONT, Vector2.new(500, 40)).X or 0
+	local x = key and 40 or 10
+	local w = math.max(wA, wO) + x + 14
+	local gui = Instance.new("BillboardGui"); gui.Name = "PromptUI"; gui.Size = UDim2.new(0, w, 0, object ~= "" and 40 or 30); gui.AlwaysOnTop = true; gui.MaxDistance = 60
+	gui.Adornee = adornee
+	gui.StudsOffset = onMe and Vector3.new(0, 4.0, 0) or Vector3.new(0, adornee.Size.Y / 2 + 1.1, 0)
+	gui.Parent = player:WaitForChild("PlayerGui")
+	local btn = Instance.new("TextButton"); btn.Size = UDim2.fromScale(1, 1); btn.BackgroundColor3 = C(38, 30, 52); btn.BackgroundTransparency = 0.15; btn.BorderSizePixel = 0
+	btn.Text = ""; btn.AutoButtonColor = false; btn.Parent = gui
+	local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0, 12); c.Parent = btn
+	local s = Instance.new("UIStroke"); s.Color = C(240, 200, 90); s.Thickness = 1.5; s.Parent = btn
+	if key then
+		local kb = Instance.new("TextLabel"); kb.Size = UDim2.new(0, 26, 0, 26); kb.Position = UDim2.new(0, 6, 0.5, -13); kb.BackgroundColor3 = C(255, 246, 220)
+		kb.Text = key; kb.Font = FONT; kb.TextSize = 15; kb.TextColor3 = C(38, 30, 52); kb.Parent = btn
+		local kc = Instance.new("UICorner"); kc.CornerRadius = UDim.new(0, 6); kc.Parent = kb
+	end
+	if object ~= "" then
+		local o = Instance.new("TextLabel"); o.Size = UDim2.new(1, -x - 6, 0, 13); o.Position = UDim2.new(0, x, 0, 4); o.BackgroundTransparency = 1
+		o.Font = FONT; o.TextSize = 11; o.TextColor3 = C(200, 190, 210); o.TextXAlignment = Enum.TextXAlignment.Left; o.Text = object; o.Parent = btn
+	end
+	local a = Instance.new("TextLabel"); a.Size = UDim2.new(1, -x - 6, 0, 18); a.Position = UDim2.new(0, x, 0, object ~= "" and 18 or 6); a.BackgroundTransparency = 1
+	a.Font = FONT; a.TextSize = 16; a.TextColor3 = C(255, 246, 220); a.TextXAlignment = Enum.TextXAlignment.Left; a.Text = action; a.Parent = btn
+	btn.InputBegan:Connect(function(io) if io.UserInputType == Enum.UserInputType.Touch or io.UserInputType == Enum.UserInputType.MouseButton1 then prompt:InputHoldBegin() end end)
+	btn.InputEnded:Connect(function(io) if io.UserInputType == Enum.UserInputType.Touch or io.UserInputType == Enum.UserInputType.MouseButton1 then prompt:InputHoldEnd() end end)
+	if live[prompt] then live[prompt]:Destroy() end
+	live[prompt] = gui
+end)
+PPS.PromptHidden:Connect(function(prompt)
+	local gui = live[prompt]
+	if gui then gui:Destroy(); live[prompt] = nil end
+end)
+]==]
+	local s = Instance.new("Script"); s.Name = "PromptClient"; s.RunContext = Enum.RunContext.Client; s.Source = CLIENT; s.Parent = F
+	print("PromptUI installed: compact custom prompts, carried-item prompts over the player's head")
+end
+]]></ProtectedString></Properties></Item>
+  </Item>
+</roblox>

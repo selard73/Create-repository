@@ -1,0 +1,66 @@
+-- Oct 4 2026 (her idea, my pick of pier): Lello out of La Limonaia to the far (sea) end of Molo dei Pescatori, the fishermen's
+-- pier by the fish market, facing back along the pier toward people walking out from the gangway. Feet on the pier's own
+-- planks, flat, with nothing (posts, ropes, bollards) inside his body box.
+local col=workspace:FindFirstChild('octopus_squirrel_color')
+local molo=workspace.PortoNocciola['04 Piers and fishing boats']:FindFirstChild('Molo dei Pescatori')
+if not (col and molo) then warn('QO@ABORT',col,molo) return end
+local mcf,msz=molo:GetBoundingBox()
+-- the pier's long horizontal axis
+local ax={mcf.RightVector,mcf.LookVector} local ln={msz.X,msz.Z}
+local LONG=(ln[1]>ln[2]) and ax[1] or ax[2] local HALF=math.max(ln[1],ln[2])/2
+LONG=(LONG*Vector3.new(1,0,1)).Unit
+local ACROSS=LONG:Cross(Vector3.yAxis).Unit
+local CEN=mcf.Position*Vector3.new(1,0,1)
+local GANG=Vector3.new(240,0,-637)                                    -- the gangway from the quay joins about here
+-- the sea end = the end farther from the gangway
+local END=((CEN+LONG*HALF)-GANG).Magnitude>((CEN-LONG*HALF)-GANG).Magnitude and 1 or -1
+local cm=col.Squirrel
+local Bn={} for _,x in ipairs(col:GetDescendants()) do if x:IsA('Bone') then Bn[x.Name]=x end end
+local function axes() local hl=cm.CFrame:PointToObjectSpace(Bn.Head.WorldPosition) return hl.Z<0 and 1 or -1 end
+local function face(want)
+	for i=1,3 do
+		local sz=axes() local R=cm.CFrame-cm.Position
+		local fwd=R:VectorToWorldSpace(Vector3.new(0,0,-sz))*Vector3.new(1,0,1)
+		local ang=math.atan2(want.X,want.Z)-math.atan2(fwd.X,fwd.Z)
+		local c=CFrame.new(cm.Position) col:PivotTo(c*CFrame.Angles(0,ang,0)*c:Inverse()*col:GetPivot())
+	end
+end
+local feet={{-0.60,-0.50},{-0.32,-0.50},{-0.60,-0.20},{-0.32,-0.20},{0.31,-0.42},{0.72,-0.42},{0.31,-0.02},{0.72,-0.02}}
+local k=3.4/cm.Size.Y
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Include rp.FilterDescendantsInstances={molo}
+local op=OverlapParams.new() op.FilterType=Enum.RaycastFilterType.Exclude op.FilterDescendantsInstances={col,workspace:FindFirstChild('SquirrelTwins'),workspace.Terrain}
+local TOP=mcf.Position.Y+msz.Y/2+2
+local WANT=-LONG*END                                                   -- back along the pier, toward the people
+face(WANT)
+local sz=axes() local R=cm.CFrame-cm.Position
+local fc=R:VectorToWorldSpace(Vector3.new(0.06,0,sz*-0.27)*k)
+local best,tried=nil,0
+for t=HALF-0.8,HALF-6,-0.25 do for da=-1.6,1.6,0.2 do
+	tried+=1
+	local c=CEN+LONG*(END*t)+ACROSS*da
+	local hi,lo,ok=-1e9,1e9,true
+	for _,f in ipairs(feet) do
+		local w=c-fc+R:VectorToWorldSpace(Vector3.new(f[1],0,sz*f[2])*k)
+		local q=workspace:Raycast(Vector3.new(w.X,TOP,w.Z),Vector3.new(0,-14,0),rp)
+		if not q then ok=false break end
+		hi=math.max(hi,q.Position.Y) lo=math.min(lo,q.Position.Y)
+	end
+	if ok and hi-lo<0.2 then
+		local hits=workspace:GetPartBoundsInBox(CFrame.new(c.X,hi+1.4,c.Z),Vector3.new(1.6,2.0,1.6),op)
+		local blocked=false
+		for _,h in ipairs(hits) do local m=math.max(h.Size.X,h.Size.Y,h.Size.Z) if h.Transparency<0.9 and m<12 then blocked=true break end end
+		if not blocked then
+			local score=(hi-lo)*10+(HALF-t)*0.5+math.abs(da)*0.4             -- flat, as near the end as clear, middle of the deck
+			if not best or score<best.s then best={s=score,c=c,y=hi,t=t,da=da,spread=hi-lo} end
+		end
+	end
+end end
+if not best then warn('QO@ABORT no clear spot at the pier end; tried',tried,'half',HALF) return end
+local L=Vector3.new(best.c.X,best.y,best.c.Z)
+col:PivotTo(col:GetPivot()+Vector3.new(L.X-fc.X-cm.Position.X,L.Y+0.02-(cm.Position.Y-cm.Size.Y/2),L.Z-fc.Z-cm.Position.Z))
+game:GetService('ChangeHistoryService'):SetWaypoint('Lello to the end of Molo dei Pescatori')
+warn('QO@PIER feet',L,'from end',HALF-best.t,'across',best.da,'spread',best.spread,'facing',WANT,'long',LONG,'end',END)
+local cam=workspace.CurrentCamera
+local tt=L+Vector3.new(0,1.4,0)
+cam.Focus=CFrame.new(tt)
+cam.CFrame=CFrame.lookAt(tt+WANT*8+ACROSS*2.5+Vector3.new(0,2.5,0),tt)

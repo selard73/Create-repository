@@ -1,0 +1,5 @@
+objects: [('Mesh_0', 2543416, 1242978)]
+faces 2543416 quads 0 ngons 0 verts 1242978
+loose edges 0
+bbox (-0.96, -1.22, -1.18) (0.89, 1.18, 1.18)
+RAW_DONE

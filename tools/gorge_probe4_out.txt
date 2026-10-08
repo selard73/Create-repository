@@ -1,0 +1,26 @@
+﻿PART %s parent=%s size=%.2f,%.2f,%.2f pos=%.1f,%.1f,%.1f rot=%.0f,%.0f,%.0f tex=%s sa=%s anch=%s",
+MODEL rock_roblox Model 18
+PART SouthRock_E01 parent=rock_roblox size=38.47,41.66,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_E02 parent=rock_roblox size=44.77,47.26,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_E03 parent=rock_roblox size=57.50,52.91,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_E04 parent=rock_roblox size=30.73,52.84,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_E05 parent=rock_roblox size=26.12,49.94,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_E06 parent=rock_roblox size=58.93,47.50,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_E07 parent=rock_roblox size=49.75,52.29,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_E08 parent=rock_roblox size=38.32,52.29,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_E09 parent=rock_roblox size=50.03,49.10,25.50 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_W01 parent=rock_roblox size=29.13,41.66,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_W02 parent=rock_roblox size=48.89,51.41,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_W03 parent=rock_roblox size=62.53,51.49,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_W04 parent=rock_roblox size=51.88,48.60,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_W05 parent=rock_roblox size=62.38,48.60,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_W06 parent=rock_roblox size=57.49,54.18,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_W07 parent=rock_roblox size=47.77,54.22,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_W08 parent=rock_roblox size=27.89,52.29,39.00 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+PART SouthRock_W09 parent=rock_roblox size=21.51,49.10,25.50 pos=487.9,247.1,-262.0 rot=-0,0,0 tex=rbxassetid://131222358558225 sa=- anch=true
+MODEL aqueduct_roblox Model 5
+PART AqArch parent=aqueduct_roblox size=54.60,28.13,10.60 pos=487.9,298.2,-262.0 rot=-0,0,0 tex= sa=- anch=true
+PART AqCap parent=aqueduct_roblox size=107.20,3.70,7.20 pos=487.9,298.2,-262.0 rot=-0,0,0 tex= sa=- anch=true
+PART AqKnob parent=aqueduct_roblox size=26.70,17.00,11.10 pos=487.9,298.2,-262.0 rot=-0,0,0 tex= sa=- anch=true
+PART AqLedge parent=aqueduct_roblox size=88.00,15.60,10.80 pos=487.9,298.2,-262.0 rot=-0,0,0 tex= sa=- anch=true
+PART AqStone parent=aqueduct_roblox size=107.20,51.60,13.00 pos=487.9,298.2,-262.0 rot=-0,0,0 tex=rbxassetid://124541706499311 sa=- anch=true

@@ -1,0 +1,29 @@
+Total verts: 7451
+Pan verts: 1738
+Pan Head/Neck total weight: 0.0000
+Face verts: 1123
+Face Tail total weight: 0.0000
+Tail verts: 1564
+Tail Head/Neck total weight: 0.0000
+Vertices with BOTH Head > 0.05 AND Tail > 0.05: 23
+  idx 117 pos (-0.34, 0.15, 1.80) Head=0.84 Tail=0.10
+  idx 575 pos (-0.32, 0.18, 1.64) Head=0.09 Tail=0.86
+  idx 971 pos (-0.43, 0.19, 2.01) Head=0.92 Tail=0.05
+  idx 1085 pos (-0.28, 0.16, 1.60) Head=0.07 Tail=0.85
+  idx 1485 pos (-0.36, 0.20, 1.86) Head=0.84 Tail=0.12
+  idx 1533 pos (-0.29, 0.16, 1.58) Head=0.06 Tail=0.86
+  idx 1590 pos (-0.17, 0.18, 1.57) Head=0.07 Tail=0.82
+  idx 1918 pos (-0.37, 0.19, 1.92) Head=0.88 Tail=0.09
+  idx 2340 pos (-0.40, 0.20, 1.98) Head=0.91 Tail=0.06
+  idx 2373 pos (-0.37, 0.19, 1.97) Head=0.90 Tail=0.07
+  idx 2418 pos (-0.31, 0.17, 1.78) Head=0.80 Tail=0.13
+  idx 2432 pos (-0.27, 0.19, 1.76) Head=0.74 Tail=0.18
+  idx 2458 pos (-0.18, 0.17, 1.69) Head=0.78 Tail=0.12
+  idx 3352 pos (-0.34, 0.19, 1.64) Head=0.09 Tail=0.87
+  idx 3373 pos (-0.32, 0.19, 1.79) Head=0.79 Tail=0.15
+  idx 3833 pos (-0.27, 0.18, 1.63) Head=0.11 Tail=0.83
+  idx 3864 pos (-0.21, 0.18, 1.60) Head=0.10 Tail=0.83
+  idx 5643 pos (-0.35, 0.18, 1.61) Head=0.06 Tail=0.88
+  idx 5708 pos (-0.24, 0.17, 1.57) Head=0.06 Tail=0.85
+  idx 6202 pos (-0.23, 0.16, 1.57) Head=0.06 Tail=0.84
+AUDIT_COMPLETE

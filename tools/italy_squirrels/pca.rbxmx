@@ -1,0 +1,25 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">PCA</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 read-only: every text-bearing thing on Casa Azzurra (the pottery shop) - TextLabels, Decals/Textures
+-- with names, and parts named like a sign - with positions, so the shop sign can be renamed 'All Things Bella'.
+local CA=workspace.PortoNocciola['02 Pastel waterfront']:FindFirstChild('Casa Azzurra')
+if not CA then warn('QCA@ABORT') return end
+local cf,sz=CA:GetBoundingBox()
+warn('QCA@house centre',cf.Position,'size',sz)
+for _,d in ipairs(CA:GetDescendants()) do
+	if d:IsA('TextLabel') or d:IsA('TextButton') or d:IsA('TextBox') then
+		local sg=d:FindFirstAncestorWhichIsA('SurfaceGui') or d:FindFirstAncestorWhichIsA('BillboardGui')
+		local host=sg and (sg.Adornee or sg.Parent)
+		warn('QCA@text',d:GetFullName(),'=',d.Text,'| on',host and host:GetFullName() or '?')
+	elseif d:IsA('Decal') or d:IsA('Texture') then
+		warn('QCA@decal',d:GetFullName(),d.Texture)
+	elseif d:IsA('BasePart') then
+		local n=d.Name:lower()
+		if n:match('sign') or n:match('letter') or n:match('board') or n:match('plaque') or n:match('name') then
+			warn('QCA@signpart',d:GetFullName(),d.ClassName,d.Position,d.Size)
+		end
+	end
+end
+warn('QCA@DONE')
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

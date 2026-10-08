@@ -1,0 +1,20 @@
+rule ['yellow', 'white-low', 'other'] box [-1, 1, -0.7, 2, -0.1, 2.5] Head+Neck -> Chest: 916 vertices
+rule ['yellow', 'white-low', 'other'] box [-1, 1, -2, -0.7, -0.1, 0.92] Head+Neck -> Chest: 34 vertices
+rule ['brown'] box [-1, 1, -0.7, 2, -0.1, 0.98] Head+Neck -> Chest: 166 vertices
+rule ['brown'] box [-1, -0.05, -2, -0.7, -0.1, 0.98] Head+Neck -> Chest: 79 vertices
+rule ['blue'] box [-1, 1, -2, 2, -0.1, 0.9] Head+Neck -> Chest: 151 vertices
+rule ['gray'] box [-1, 1, -2, 2, -0.1, 0.9] Head+Neck -> Chest: 297 vertices
+rule ['gray'] box [-1, 1, -0.7, 0.1, 0.9, 1.05] Head+Neck -> Chest soft [0.9, 1.05]: 14 vertices
+rule ['*'] box [-1, 1, -2, 2, -0.1, 0.35] Head+Neck+Chest -> Root: 191 vertices
+after, per colour class (head = Head+Neck):
+   gray         1784  head 0.23  chest 0.04  root 0.28  tail 0.43
+   yellow       1043  head 0.00  chest 0.44  root 0.55  tail 0.00
+   brown         264  head 0.05  chest 0.48  root 0.47  tail 0.00
+   blue          182  head 0.09  chest 0.39  root 0.52  tail 0.00
+   white-high     70  head 0.91  chest 0.01  root 0.06  tail 0.00
+   white-low      67  head 0.00  chest 0.19  root 0.79  tail 0.00
+   pink/red       46  head 0.96  chest 0.01  root 0.01  tail 0.00
+   dark           22  head 0.96  chest 0.00  root 0.01  tail 0.00
+   other           5  head 0.00  chest 0.41  root 0.57  tail 0.00
+   gray fur below z 0.9 in front half: 388 verts, head 0.00
+FIXC_DONE

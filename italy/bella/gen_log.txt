@@ -1,0 +1,12 @@
+Lamp: 8 parts, 1832 tris, parts ['Lamp_Brass', 'Lamp_Bulb', 'Lamp_Grout', 'Lamp_SGAqua', 'Lamp_SGWhite', 'Lamp_SGGreen', 'Lamp_SGCobalt', 'Lamp_SGAmber']
+Vase: 7 parts, 916 tris, parts ['Vase_SGGreen', 'Vase_SGAmber', 'Vase_SGWhite', 'Vase_SGAqua', 'Vase_SGCobalt', 'Vase_Stem', 'Vase_Flower']
+Box: 11 parts, 828 tris, parts ['Box_WoodWhite', 'Box_Brass', 'Box_ShellPink', 'Box_ShellCream', 'Box_ShellPeach', 'Box_SGGreen', 'Box_SGAqua', 'Box_SGWhite', 'Box_SGAmber', 'Box_SGCobalt', 'Box_Front']
+Sun: 8 parts, 560 tris, parts ['Sun_Driftwood', 'Sun_String', 'Sun_SGCobalt', 'Sun_SGAmber', 'Sun_SGAqua', 'Sun_SGGreen', 'Sun_SGWhite', 'Sun_Front']
+Mirror: 11 parts, 1228 tris, parts ['Mirror_WoodLight', 'Mirror_Mirror', 'Mirror_WoodWhite', 'Mirror_ShellCream', 'Mirror_SGAqua', 'Mirror_ShellPink', 'Mirror_SGAmber', 'Mirror_ShellPeach', 'Mirror_SGGreen', 'Mirror_SGWhite', 'Mirror_Front']
+Candle: 7 parts, 716 tris, parts ['Candle_Grout', 'Candle_SGAqua', 'Candle_SGCobalt', 'Candle_SGGreen', 'Candle_SGWhite', 'Candle_Candle', 'Candle_Flame']
+Neck: 6 parts, 656 tris, parts ['Neck_Brass', 'Neck_Pearl', 'Neck_SGWhite', 'Neck_SGAqua', 'Neck_ShellPink', 'Neck_Front']
+FBX_DONE
+shot prev_left.png
+shot prev_right.png
+shot prev_close.png
+RENDER_DONE

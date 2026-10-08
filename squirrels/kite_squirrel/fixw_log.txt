@@ -1,0 +1,3 @@
+region [-0.05, 3.0, -2.0, 2.0, 0.8, 3.4] Head+Neck+Tail1+Tail2 -> Chest: 657 vertices
+after: region [-0.05, 3.0, -2.0, 2.0, 0.8, 3.4] 657 verts, mean Head+Neck+Tail1+Tail2 weight 0.000, max 0.00
+FIXW_DONE

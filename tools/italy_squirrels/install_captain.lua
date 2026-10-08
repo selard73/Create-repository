@@ -1,0 +1,60 @@
+-- Oct 4 2026: sea captain on the Azzurra (the boat out on the water, '04 Piers and fishing boats'), on the hull floor just
+-- forward of the cabin (boat-frame dz -1.7, between the rowing seat and the cabin), facing the town (the boat's RightVector, east).
+-- Placement only (registry entry waits for Shannon's name/bio pick). No asserts after the first edit: warn + return.
+local id='seacaptain_squirrel'
+local col,gry=workspace:FindFirstChild(id..'_color'),workspace:FindFirstChild(id..'_gray')
+if not (col and gry) then warn('QK@ABORT missing import') return end
+local boat=workspace.PortoNocciola['04 Piers and fishing boats']:FindFirstChild('Azzurra')
+if not boat then warn('QK@ABORT no Azzurra') return end
+local bc,bs=boat:GetBoundingBox()
+local ip=RaycastParams.new() ip.FilterType=Enum.RaycastFilterType.Include ip.FilterDescendantsInstances={boat}
+local top=bc*Vector3.new(0,0,-1.7)
+local fl=workspace:Raycast(Vector3.new(top.X,bc.Y+bs.Y/2+2,top.Z),Vector3.new(0,-bs.Y-6,0),ip)
+if not fl then warn('QK@ABORT no deck') return end
+local L=fl.Position
+warn('QK@DECK',L,fl.Instance.Name)
+local want=(bc.RightVector*Vector3.new(1,0,1)).Unit
+local cm,gm=col.Squirrel,gry.Squirrel
+local B={} for _,d in ipairs(col:GetDescendants()) do if d:IsA('Bone') then B[d.Name]=d end end
+local rel=cm.CFrame:Inverse()*col:GetPivot() col:PivotTo(CFrame.new(cm.Position)*rel)
+local function axes()
+	local hl=cm.CFrame:PointToObjectSpace(B.Head.WorldPosition) local tl=cm.CFrame:PointToObjectSpace(B.Tail1.WorldPosition)
+	return hl.Z<0 and 1 or -1, 1  -- sx fixed: the FBX import mapping is the same for every squirrel (proved by Tito's foot on the rope); the old tail-side guess flips for tails on +x
+end
+-- face by the mesh's own forward axis (Blender -Y -> local -sz*Z), not the head bone (off-centre on this rig)
+for i=1,3 do
+	local sz,sx=axes()
+	local R=cm.CFrame-cm.Position
+	local fwd=R:VectorToWorldSpace(Vector3.new(0,0,-sz))*Vector3.new(1,0,1)
+	local ang=math.atan2(want.X,want.Z)-math.atan2(fwd.X,fwd.Z)
+	local c=CFrame.new(cm.Position) col:PivotTo(c*CFrame.Angles(0,ang,0)*c:Inverse()*col:GetPivot())
+end
+local sz,sx=axes()
+local k=3.4/cm.Size.Y
+local R=cm.CFrame-cm.Position
+-- feet (feet_probe, Blender units): L x -0.66..-0.26 y -0.51..-0.06, R x -0.10..0.29 y -0.52..-0.06; centre (-0.19,-0.29)
+local fc=R:VectorToWorldSpace(Vector3.new(sx*-0.19,0,sz*-0.29)*k)
+col:PivotTo(col:GetPivot()+Vector3.new(L.X-fc.X-cm.Position.X,L.Y+0.02-(cm.Position.Y-cm.Size.Y/2),L.Z-fc.Z-cm.Position.Z))
+cm:SetAttribute('ColorTexture',cm.TextureID) cm:SetAttribute('GrayTexture',gm.TextureID)
+local twins=workspace:FindFirstChild('SquirrelTwins')
+if twins then gry.Parent=twins gry:PivotTo(gry:GetPivot()+Vector3.new(0,-400-gry:GetPivot().Y,0)) end
+game:GetService('ChangeHistoryService'):SetWaypoint('Sea captain on the Azzurra')
+local feet={{-0.6,-0.45},{-0.3,-0.45},{-0.6,-0.1},{-0.3,-0.1},{-0.05,-0.45},{0.25,-0.45},{-0.05,-0.1},{0.25,-0.1}}
+for _,f in ipairs(feet) do
+	local w=cm.Position+R:VectorToWorldSpace(Vector3.new(sx*f[1],0,sz*f[2])*k)
+	local q=workspace:Raycast(Vector3.new(w.X,L.Y+1.5,w.Z),Vector3.new(0,-3,0),ip)
+	warn(string.format('QK@FOOT %.2f,%.2f hit %s y %.2f',f[1],f[2],q and q.Instance.Name or 'none',q and q.Position.Y or 0))
+end
+-- body footprint corners at runtime vs the hull: what is under / around each corner at knee height
+local hs=cm.Size*k/2
+for _,c in ipairs({{-1,-1},{1,-1},{-1,1},{1,1}}) do
+	local w=cm.Position+R:VectorToWorldSpace(Vector3.new(c[1]*hs.X,0,c[2]*hs.Z))
+	local q=workspace:Raycast(Vector3.new(w.X,L.Y+1.0,w.Z),Vector3.new(0,-3,0),ip)
+	warn(string.format('QK@CORNER %d,%d under %s y %.2f',c[1],c[2],q and q.Instance.Name or 'none',q and q.Position.Y or 0))
+end
+local fw=R:VectorToWorldSpace(Vector3.new(0,0,-sz))
+warn('QK@PLACED',cm.Position,'facing',fw)
+local cam=workspace.CurrentCamera
+local t=L+Vector3.new(0,1.8,0)
+cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(L+want*10+Vector3.new(0,3,0)+(want:Cross(Vector3.yAxis))*3,t)

@@ -1,0 +1,5 @@
+auto weights: 0 / 8000 vertices unweighted
+head/jaw hand weights on 2958 vertices, 847 mostly jaw
+vertices >50% per bone: Hips 114, Chest 229, Neck 103, Head 1899, Jaw 847, FrontUpper.L 134, FrontLower.L 120, FrontFoot.L 266, FrontUpper.R 108, FrontLower.R 119, FrontFoot.R 255, Tail1 383, Tail2 368, Tail3 371, Tail4 388, Tail5 335, HindUpper.L 77, HindLower.L 78, HindFoot.L 220, HindUpper.R 182, HindLower.R 40, HindFoot.R 201
+exported croc_rigged.fbx
+RIG_DONE

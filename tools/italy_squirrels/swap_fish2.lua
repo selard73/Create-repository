@@ -1,0 +1,71 @@
+-- Oct 5 2026: swap a live squirrel's model for Shannon's new Meshy model (same id, same spot, same facing).
+-- Needs the NEW <id>_color + <id>_gray imported (Import Queue) at the workspace root. The OLD pair (colour model whose
+-- Squirrel has a ColorTexture attribute, gray twin in SquirrelTwins) goes to ServerStorage.SquirrelSwapBackup.
+-- Registry/bubble are untouched (same id). No asserts after the first edit: warn + return.
+local id='fishmonger_squirrel'
+local OLDF={-0.33,-0.30}   -- old feet centre (Blender units) as its installer used it
+local OLDSX='one'          -- 'one' = sx 1, 'tail' = move_beppe_v3's tail-side guess
+local NEWF={-0.22,-0.40}   -- new feet centre (feet_probe), sx = 1
+local old,new
+for _,m in ipairs(workspace:GetChildren()) do
+	if m.Name==id..'_color' and m:IsA('Model') and m:FindFirstChild('Squirrel') then
+		if m.Squirrel:GetAttribute('ColorTexture') then old=m else new=m end
+	end
+end
+local twins=workspace:FindFirstChild('SquirrelTwins')
+local oldg=twins and twins:FindFirstChild(id..'_gray')
+local newg=workspace:FindFirstChild(id..'_gray')
+if not (old and new and oldg and newg) then warn('QS@ABORT',id,'old',old,'new',new,'oldg',oldg,'newg',newg) return end
+local function bones(m) local B={} for _,d in ipairs(m:GetDescendants()) do if d:IsA('Bone') then B[d.Name]=d end end return B end
+-- old: feet centre + facing
+local ocm=old.Squirrel local OB=bones(old)
+local ohl=ocm.CFrame:PointToObjectSpace(OB.Head.WorldPosition)
+local osz=ohl.Z<0 and 1 or -1
+local osx=1
+if OLDSX=='tail' then local tl=ocm.CFrame:PointToObjectSpace(OB.Tail1.WorldPosition) osx=tl.X<0 and 1 or -1 end
+local oR=ocm.CFrame-ocm.Position
+local ok_=3.4/ocm.Size.Y
+local ofc=oR:VectorToWorldSpace(Vector3.new(osx*OLDF[1],0,osz*OLDF[2])*ok_)
+local L=Vector3.new(ocm.Position.X+ofc.X,ocm.Position.Y-ocm.Size.Y/2,ocm.Position.Z+ofc.Z)
+local want=oR:VectorToWorldSpace(Vector3.new(0,0,-osz))*Vector3.new(1,0,1)
+-- new: upright, face the same way, feet centre on L
+local cm=new.Squirrel local B=bones(new)
+local rel=cm.CFrame:Inverse()*new:GetPivot() new:PivotTo(CFrame.new(cm.Position)*rel)
+local function sz_() local hl=cm.CFrame:PointToObjectSpace(B.Head.WorldPosition) return hl.Z<0 and 1 or -1 end
+for i=1,3 do
+	local R=cm.CFrame-cm.Position
+	local fwd=R:VectorToWorldSpace(Vector3.new(0,0,-sz_()))*Vector3.new(1,0,1)
+	local ang=math.atan2(want.X,want.Z)-math.atan2(fwd.X,fwd.Z)
+	local c=CFrame.new(cm.Position) new:PivotTo(c*CFrame.Angles(0,ang,0)*c:Inverse()*new:GetPivot())
+end
+local sz=sz_() local R=cm.CFrame-cm.Position local k=3.4/cm.Size.Y
+local fc=R:VectorToWorldSpace(Vector3.new(NEWF[1],0,sz*NEWF[2])*k)
+new:PivotTo(new:GetPivot()+Vector3.new(L.X-fc.X-cm.Position.X,L.Y-(cm.Position.Y-cm.Size.Y/2),L.Z-fc.Z-cm.Position.Z))
+-- carry over attributes + any extra children of the old model (not the mesh/bones)
+for k2,v in pairs(old:GetAttributes()) do if not k2:match('^RBX_') then new:SetAttribute(k2,v) end end
+for k2,v in pairs(ocm:GetAttributes()) do if not k2:match('^RBX_') then cm:SetAttribute(k2,v) end end
+cm:SetAttribute('ColorTexture',cm.TextureID) cm:SetAttribute('GrayTexture',newg.Squirrel.TextureID)
+local moved={}
+for _,ch in ipairs(old:GetChildren()) do
+	if ch~=ocm and not ch:IsA('Bone') and ch.Name~='AnimationController' and not new:FindFirstChild(ch.Name) then
+		ch.Parent=new table.insert(moved,ch.Name)
+	end
+end
+for _,ch in ipairs(ocm:GetChildren()) do
+	if not ch:IsA('Bone') and not ch:IsA('SurfaceAppearance') and not cm:FindFirstChild(ch.Name) then
+		ch.Parent=cm table.insert(moved,'Squirrel.'..ch.Name)
+	end
+end
+-- gray twin
+newg.Parent=twins newg:PivotTo(newg:GetPivot()+Vector3.new(0,-400-newg:GetPivot().Y,0))
+-- backup the old pair
+local SS=game:GetService('ServerStorage')
+local bk=SS:FindFirstChild('SquirrelSwapBackup') or Instance.new('Folder',SS) bk.Name='SquirrelSwapBackup'
+old.Name=id..'_color_old_oct5b' old.Parent=bk
+oldg.Name=id..'_gray_old_oct5b' oldg.Parent=bk
+game:GetService('ChangeHistoryService'):SetWaypoint('Swap '..id..' model')
+warn('QS@OK',id,'feet',L,'facing',want.Unit,'new pos',cm.Position,'size',cm.Size,'moved',table.concat(moved,','))
+local cam=workspace.CurrentCamera
+local t=L+Vector3.new(0,1.6,0)
+cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(L+want.Unit*8+Vector3.new(2,2.5,0),t)

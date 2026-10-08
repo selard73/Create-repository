@@ -1,0 +1,89 @@
+-- Oct 4 2026: Tonio the Conductor (conductor_squirrel, Meshy "Squirrel Conductor", 7k tris) on the bottom funicular station's
+-- NORTH platform near its downhill end where riders come in, facing out toward the harbour; registry after Enzo (bio A).
+-- No asserts after the first edit: warn + return.
+local id='conductor_squirrel'
+local col,gry=workspace:FindFirstChild(id..'_color'),workspace:FindFirstChild(id..'_gray')
+if not (col and gry) then warn('QT@ABORT missing import') return end
+local F=workspace.PortoNocciola['15 Funicolare']
+local st for _,c in ipairs(F:GetChildren()) do if c:IsA('Model') and c.Name:find('BASSA') then st=c end end
+if not st then warn('QT@ABORT no bottom station') return end
+local plat,bd=nil,1e9
+for _,p in ipairs(st:GetChildren()) do
+	if p:IsA('BasePart') and p.Name=='Stone boarding platform' then
+		local dd=(Vector3.new(p.Position.X,0,p.Position.Z)-Vector3.new(346.38,0,-596.11)).Magnitude
+		if dd<bd then bd=dd plat=p end
+	end
+end
+if not plat then warn('QT@ABORT no platform') return end
+local A,B=F:GetAttribute('Bottom'),F:GetAttribute('Top')
+local d=Vector3.new(B.X-A.X,0,B.Z-A.Z).Unit
+local r=Vector3.new(-d.Z,0,d.X)
+local TARGET=plat.Position*Vector3.new(1,0,1)-d*5+r*0.5
+local WANT=(r-d*0.5).Unit
+local cm,gm=col.Squirrel,gry.Squirrel
+local Bn={} for _,x in ipairs(col:GetDescendants()) do if x:IsA('Bone') then Bn[x.Name]=x end end
+local rel=cm.CFrame:Inverse()*col:GetPivot() col:PivotTo(CFrame.new(cm.Position)*rel)
+local function axes()
+	local hl=cm.CFrame:PointToObjectSpace(Bn.Head.WorldPosition)
+	return hl.Z<0 and 1 or -1, 1
+end
+local function face(want)
+	for i=1,3 do
+		local sz=axes()
+		local R=cm.CFrame-cm.Position
+		local fwd=R:VectorToWorldSpace(Vector3.new(0,0,-sz))*Vector3.new(1,0,1)
+		local ang=math.atan2(want.X,want.Z)-math.atan2(fwd.X,fwd.Z)
+		local c=CFrame.new(cm.Position) col:PivotTo(c*CFrame.Angles(0,ang,0)*c:Inverse()*col:GetPivot())
+	end
+end
+-- feet (feet_probe): L x -0.57..-0.16 y -0.43..-0.02, R x 0.12..0.39 y -0.61..-0.14; centre (-0.09,-0.31)
+local feet={{-0.53,-0.40},{-0.20,-0.40},{-0.53,-0.06},{-0.20,-0.06},{0.15,-0.58},{0.36,-0.58},{0.15,-0.17},{0.36,-0.17}}
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Include rp.FilterDescendantsInstances={plat}
+local op=OverlapParams.new() op.FilterType=Enum.RaycastFilterType.Exclude op.FilterDescendantsInstances={col,gry,plat,workspace.Terrain,F.Cars}
+local k=3.4/cm.Size.Y
+local best
+face(WANT)
+local sz=axes()
+local R=cm.CFrame-cm.Position
+local fc=R:VectorToWorldSpace(Vector3.new(-0.09,0,sz*-0.31)*k)
+for dx=-1,1,0.25 do for dz=-1,1,0.25 do
+	local c=TARGET+d*dx+r*dz
+	local hi,lo,ok=-1e9,1e9,true
+	for _,f in ipairs(feet) do
+		local w=c-fc+R:VectorToWorldSpace(Vector3.new(f[1],0,sz*f[2])*k)
+		local q=workspace:Raycast(Vector3.new(w.X,plat.Position.Y+8,w.Z),Vector3.new(0,-12,0),rp)
+		if not q then ok=false break end
+		hi=math.max(hi,q.Position.Y) lo=math.min(lo,q.Position.Y)
+	end
+	if ok then
+		for _,hit in ipairs(workspace:GetPartBoundsInBox(CFrame.new(c.X,hi+1.8,c.Z),Vector3.new(1.8,3.2,1.8),op)) do
+			if hit.Transparency<0.95 then ok=false break end
+		end
+	end
+	if ok then
+		local score=(hi-lo)*10+math.abs(dx)*0.3+math.abs(dz)*0.3
+		if not best or score<best.s then best={s=score,c=c,y=hi,spread=hi-lo} end
+	end
+end end
+if not best then warn('QT@ABORT no clear platform spot') return end
+local L=Vector3.new(best.c.X,best.y,best.c.Z)
+col:PivotTo(col:GetPivot()+Vector3.new(L.X-fc.X-cm.Position.X,L.Y+0.02-(cm.Position.Y-cm.Size.Y/2),L.Z-fc.Z-cm.Position.Z))
+cm:SetAttribute('ColorTexture',cm.TextureID) cm:SetAttribute('GrayTexture',gm.TextureID)
+local twins=workspace:FindFirstChild('SquirrelTwins')
+if twins then gry.Parent=twins gry:PivotTo(gry:GetPivot()+Vector3.new(0,-400-gry:GetPivot().Y,0)) end
+game:GetService('ChangeHistoryService'):SetWaypoint('Tonio on the funicular platform')
+warn('QT@PLACED',cm.Position,'feet centre',L,'spread',best.spread,'facing',R:VectorToWorldSpace(Vector3.new(0,0,-sz)))
+local cam=workspace.CurrentCamera
+local t=L+Vector3.new(0,1.6,0)
+cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(t+WANT*8+Vector3.new(0,1.5,0)-d*2,t)
+-- registry: Tonio the Conductor (bio A, Shannon's pick), after Enzo
+local reg=workspace.SquirrelScripts.SquirrelRegistry
+local rs=reg.Source
+local a,b=rs:find('So far it has only fooled the tourists."},\n',1,true)
+if not a or rs:find('conductor_squirrel',1,true) then warn('QT@REG_SKIP anchor/dup',a) return end
+local add='\t\t{id = "conductor_squirrel",    map = "porto", name = "Tonio the Conductor",\n\t\t bio = "Punches every ticket with a perfect little star. Nobody has ever had the heart to tell him the funicolare is free."},\n'
+reg.Source=rs:sub(1,b)..add..rs:sub(b+1)
+game:GetService('ChangeHistoryService'):SetWaypoint('Tonio registry')
+local n=0 for _ in reg.Source:gmatch('map = "porto"') do n+=1 end
+warn('QT@REG porto entries',n,'tonio',reg.Source:find('Tonio the Conductor',1,true)~=nil)

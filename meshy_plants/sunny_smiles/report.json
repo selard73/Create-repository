@@ -1,0 +1,21 @@
+{
+  "input": "C:\\Users\\slard\\roblox-props\\meshy_plants\\sunny_smiles\\Meshy_AI_Sunny_Smiles_0924155401_texture_fbx\\Meshy_AI_Sunny_Smiles_0924155401_texture.fbx",
+  "name": "Sunflower",
+  "meshes_in": 1,
+  "dims_in": [
+    0.905,
+    0.351,
+    1.904
+  ],
+  "dims_out": [
+    3.329,
+    1.29,
+    7.0
+  ],
+  "tris_before": 703970,
+  "tris_after": 8000,
+  "fbx": "C:\\Users\\slard\\roblox-props\\meshy_plants\\sunny_smiles\\Sunflower.fbx",
+  "obj": "C:\\Users\\slard\\roblox-props\\meshy_plants\\sunny_smiles\\Sunflower.obj",
+  "preview": "C:\\Users\\slard\\roblox-props\\meshy_plants\\sunny_smiles\\Sunflower_preview.png",
+  "ok": true
+}

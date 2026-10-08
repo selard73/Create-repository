@@ -1,0 +1,13 @@
+rule ['pink/red'] box [-1, 1, -0.7, 0.4, -0.1, 1.45] Head+Neck -> Chest: 189 vertices
+after, per colour class (head = Head+Neck):
+   brown        1782  head 0.43  chest 0.06  root 0.15  tail 0.34
+   pink/red      545  head 0.08  chest 0.45  root 0.45  tail 0.01
+   blue          453  head 0.00  chest 0.19  root 0.78  tail 0.01
+   other         351  head 0.65  chest 0.18  root 0.15  tail 0.00
+   white-high    192  head 0.39  chest 0.38  root 0.22  tail 0.00
+   white-low     127  head 0.00  chest 0.37  root 0.61  tail 0.00
+   gray           19  head 0.22  chest 0.28  root 0.48  tail 0.00
+   yellow         12  head 0.98  chest 0.01  root 0.00  tail 0.00
+   dark            1  head 0.00  chest 0.60  root 0.40  tail 0.00
+   gray fur below z 0.9 in front half: 9 verts, head 0.00
+FIXC_DONE

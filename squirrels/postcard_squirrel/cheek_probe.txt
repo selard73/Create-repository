@@ -1,0 +1,1 @@
+verts x<-0.45 z>1.5: 309; dominant bone counts {'chest>0.2 (cheek zone)': 90, 'Chest': 115, 'Head': 194}

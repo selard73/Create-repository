@@ -1,0 +1,145 @@
+-- Oct 4 2026 (Shannon: "tide pools should be natural"): replace Codex's three ring-of-boulders pools by the sandy cove
+-- with a natural terrain-rock shelf and irregular shallow pools carved into it, plus a little sea life.
+-- Backups first: terrain region copy + the old pool parts moved (not deleted) to ServerStorage.TidePoolBackup.
+-- No asserts after the first edit: warn + return.
+local T=workspace.Terrain
+local cove=workspace.PortoNocciola['14 Lighthouse coast']:FindFirstChild('Cala della Sabbia and tide pools')
+if not cove then warn('QP@ABORT no cove') return end
+if cove:FindFirstChild('Natural tide pools') then warn('QP@ABORT already built') return end
+local SS=game:GetService('ServerStorage')
+-- ---------- backups ----------
+local bk=SS:FindFirstChild('TidePoolBackup') or Instance.new('Folder')
+bk.Name='TidePoolBackup' bk.Parent=SS
+local reg=Region3int16.new(Vector3int16.new(276/4,-68/4,-812/4),Vector3int16.new(316/4-1,-44/4-1,-756/4-1))
+local tr=T:CopyRegion(reg) tr.Name='Terrain_x276_y-68_z-812' tr:SetAttribute('Corner',Vector3.new(276,-68,-812)) tr.Parent=bk
+local old=Instance.new('Folder') old.Name='OldRingPools' old.Parent=bk
+local moved=0
+for _,d in ipairs(cove:GetChildren()) do
+	if d:IsA('BasePart') and (d.Name=='Tide pool rock rim' or d.Name=='Tide pool rock basin' or d.Name=='Still tide pool water' or d.Name=='Tide pool shells') then
+		d.Parent=old moved+=1
+	end
+end
+warn('QP@BACKUP terrain + parts moved',moved)
+-- ---------- shelf ----------
+local poly={{299,-762},{295,-764},{290,-768},{287,-774},{285.5,-781},{286,-788},{288.5,-794},{292.5,-799},{297,-804},{302,-807.5},{307.5,-807},{311,-804},{311,-796},{304,-794},{300,-793},{299.5,-780}}
+local function inside(x,z)
+	local c=false local j=#poly
+	for i=1,#poly do
+		local xi,zi=poly[i][1],poly[i][2] local xj,zj=poly[j][1],poly[j][2]
+		if ((zi>z)~=(zj>z)) and (x<(xj-xi)*(z-zi)/(zj-zi)+xi) then c=not c end
+		j=i
+	end
+	return c
+end
+local rng=Random.new(1004)
+local function top(x,z)        -- shelf top: ~ -50.9 by the cove, ~ -51.9 at the sea edge, plus small noise
+	local t=math.clamp((299.5-x)/13,0,1)
+	if z<-794 then t=math.clamp((311-x)/16,0,1)*0.6+math.clamp((-794-z)/14,0,1)*0.4 end
+	return -50.9-1.0*t+math.noise(x*0.21,z*0.21)*0.35
+end
+local nb=0
+-- skirt: big balls down to the sea bed so the shelf is one solid rock, not floating lumps
+for x=284,312,4.5 do for z=-809,-760,4.5 do
+	local jx,jz=x+rng:NextNumber(-1,1),z+rng:NextNumber(-1,1)
+	if inside(jx,jz) then T:FillBall(Vector3.new(jx,top(jx,jz)-5.6,jz),4.6,Enum.Material.Rock) nb+=1 end
+end end
+-- top: smaller balls whose tops trace the shelf surface (bumpy, rounded, natural)
+for x=284,312,2.2 do for z=-809,-760,2.2 do
+	local jx,jz=x+rng:NextNumber(-0.7,0.7),z+rng:NextNumber(-0.7,0.7)
+	if inside(jx,jz) then local r=rng:NextNumber(2.2,3.0) T:FillBall(Vector3.new(jx,top(jx,jz)-r,jz),r,Enum.Material.Rock) nb+=1 end
+end end
+-- a few loose boulders on the seaward edge
+for _,b in ipairs({{286.2,-776,1.6},{285.8,-786,1.9},{289.5,-796.5,1.5},{299,-806,1.7},{309.5,-807,1.4}}) do
+	T:FillBall(Vector3.new(b[1],-52.6+b[3]*0.45,b[2]),b[3],Enum.Material.Slate) nb+=1
+end
+warn('QP@SHELF balls',nb)
+-- ---------- pools: carved hollows, then the air in them becomes water ----------
+local pools={
+	{{294,-770,2.4},{296.4,-772.4,2.1}},                       -- kidney
+	{{290.6,-779.5,2.2},{291.6,-782.6,2.3},{290.4,-785.8,2.0}},  -- long crack-like pool
+	{{296.8,-786.5,2.0}},                                        -- round puddle
+	{{293.2,-793.6,2.5},{295.6,-795.8,2.1}},                     -- bigger pool
+	{{302.4,-800.5,2.2},{304.8,-802.2,1.9}},                     -- by the stairs
+	{{298.2,-777.2,1.6}},                                        -- little one
+}
+local PY=-52.2
+for pi,p in ipairs(pools) do
+	local lo,hi=Vector3.new(1e9,0,1e9),Vector3.new(-1e9,0,-1e9)
+	for _,b in ipairs(p) do
+		T:FillBall(Vector3.new(b[1],PY,b[2]),b[3],Enum.Material.Air)
+		lo=Vector3.new(math.min(lo.X,b[1]-b[3]),0,math.min(lo.Z,b[2]-b[3])) hi=Vector3.new(math.max(hi.X,b[1]+b[3]),0,math.max(hi.Z,b[2]+b[3]))
+	end
+	local r=Region3.new(Vector3.new(lo.X,-56,lo.Z),Vector3.new(hi.X,-52,hi.Z)):ExpandToGrid(4)
+	T:ReplaceMaterial(r,4,Enum.Material.Air,Enum.Material.Water)
+end
+warn('QP@POOLS',#pools)
+-- ---------- sea life ----------
+local F=Instance.new('Folder') F.Name='Natural tide pools' F.Parent=cove
+local function part(name,size,cf,color,mat,shape)
+	local p=Instance.new('Part') p.Name=name p.Size=size p.CFrame=cf p.Color=color p.Material=mat or Enum.Material.SmoothPlastic
+	if shape then p.Shape=shape end
+	p.Anchored=true p.CanCollide=false p.CanTouch=false p.CastShadow=false p.Parent=F return p
+end
+local dn=RaycastParams.new() dn.FilterType=Enum.RaycastFilterType.Include dn.FilterDescendantsInstances={T} dn.IgnoreWater=true
+local function floor(x,z) local r=workspace:Raycast(Vector3.new(x,-46,z),Vector3.new(0,-14,0),dn) return r and r.Position, r and r.Normal end
+local function starfish(x,z,col,rot)
+	local p,n=floor(x,z) if not p then return end
+	local base=CFrame.new(p+Vector3.new(0,0.06,0))*CFrame.Angles(0,math.rad(rot),0)
+	part('Starfish centre',Vector3.new(0.34,0.12,0.34),base,col,Enum.Material.SmoothPlastic,Enum.PartType.Cylinder).CFrame=base*CFrame.Angles(0,0,math.rad(90))
+	for i=0,4 do
+		local a=base*CFrame.Angles(0,math.rad(72*i),0)*CFrame.new(0,0,-0.36)
+		part('Starfish arm',Vector3.new(0.2,0.1,0.55),a,col)
+	end
+end
+local function anemone(x,z,col)
+	local p=floor(x,z) if not p then return end
+	part('Sea anemone stalk',Vector3.new(0.35,0.42,0.42),CFrame.new(p+Vector3.new(0,0.17,0))*CFrame.Angles(0,0,math.rad(90)),col,Enum.Material.SmoothPlastic,Enum.PartType.Cylinder)
+	for i=0,6 do
+		local a=CFrame.new(p+Vector3.new(0,0.38,0))*CFrame.Angles(0,math.rad(51*i),0)*CFrame.new(0,0.04,-0.17)
+		part('Sea anemone tentacle',Vector3.new(0.13,0.13,0.13),a,col:Lerp(Color3.new(1,1,1),0.25),Enum.Material.SmoothPlastic,Enum.PartType.Ball)
+	end
+end
+local function seaweed(x,z,h)
+	local p=floor(x,z) if not p then return end
+	for i=0,2 do
+		local a=CFrame.new(p)*CFrame.Angles(0,math.rad(rng:NextNumber(0,360)),0)*CFrame.Angles(math.rad(rng:NextNumber(-22,22)),0,0)*CFrame.new(0,h/2,0)
+		part('Seaweed frond',Vector3.new(0.12,h*rng:NextNumber(0.7,1.1),0.32),a,Color3.fromRGB(58,112,52):Lerp(Color3.fromRGB(96,128,44),rng:NextNumber()),Enum.Material.SmoothPlastic)
+	end
+end
+local function shell(x,z)
+	local p=floor(x,z) if not p then return end
+	part('Snail shell',Vector3.new(0.3,0.22,0.3),CFrame.new(p+Vector3.new(0,0.1,0))*CFrame.Angles(0,math.rad(rng:NextNumber(0,360)),math.rad(15)),Color3.fromRGB(122,104,86),Enum.Material.SmoothPlastic,Enum.PartType.Ball)
+end
+local function crab(x,z,rot)
+	local p=floor(x,z) if not p then return end
+	local c=CFrame.new(p+Vector3.new(0,0.18,0))*CFrame.Angles(0,math.rad(rot),0)
+	local red=Color3.fromRGB(214,92,52)
+	part('Crab body',Vector3.new(0.8,0.3,0.6),c,red,Enum.Material.SmoothPlastic,Enum.PartType.Ball)
+	for s=-1,1,2 do
+		part('Crab claw',Vector3.new(0.26,0.2,0.3),c*CFrame.new(s*0.42,0.05,-0.42),red,Enum.Material.SmoothPlastic,Enum.PartType.Ball)
+		part('Crab eye',Vector3.new(0.08,0.08,0.08),c*CFrame.new(s*0.12,0.2,-0.26),Color3.fromRGB(25,25,25),Enum.Material.SmoothPlastic,Enum.PartType.Ball)
+		for k=0,2 do part('Crab leg',Vector3.new(0.34,0.06,0.06),c*CFrame.new(s*0.48,-0.08,-0.1+k*0.17)*CFrame.Angles(0,0,math.rad(-s*25)),red) end
+	end
+end
+starfish(291.0,-783.5,Color3.fromRGB(232,122,52),10)
+starfish(294.0,-794.4,Color3.fromRGB(196,72,96),40)
+starfish(303.0,-801.0,Color3.fromRGB(240,150,60),75)
+anemone(295.2,-771.0,Color3.fromRGB(226,98,128))
+anemone(296.6,-787.2,Color3.fromRGB(110,170,120))
+anemone(290.6,-779.3,Color3.fromRGB(232,120,150))
+for _,s in ipairs({{292.3,-768.6,1.1},{297.6,-773.6,0.9},{289.4,-781.6,1.2},{292.6,-786.9,1.0},{291.4,-792.1,1.1},{297.2,-797.0,0.9},{301.0,-799.0,1.0},{306.0,-803.3,0.8},{299.3,-776.0,0.8}}) do seaweed(s[1],s[2],s[3]) end
+for _,s in ipairs({{293.6,-771.5},{297.0,-785.8},{294.6,-796.6},{304.2,-801.4},{298.5,-777.6}}) do shell(s[1],s[2]) end
+crab(299.2,-790.6,-60)
+game:GetService('ChangeHistoryService'):SetWaypoint('Natural tide pools')
+-- report: what each pool centre looks like now
+for pi,p in ipairs(pools) do
+	local b=p[1]
+	local w=workspace:Raycast(Vector3.new(b[1],-46,b[2]),Vector3.new(0,-14,0))
+	local fl=floor(b[1],b[2])
+	warn(string.format('QP@POOL%d surface %s y %.2f, floor y %s',pi,w and (w.Instance==T and w.Material.Name or w.Instance.Name) or 'none',w and w.Position.Y or 0,fl and string.format('%.2f',fl.Y) or 'none'))
+end
+local cam=workspace.CurrentCamera
+local t=Vector3.new(295,-52,-786)
+cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(Vector3.new(276,-40,-772),t)
+warn('QP@DONE parts',#F:GetChildren())

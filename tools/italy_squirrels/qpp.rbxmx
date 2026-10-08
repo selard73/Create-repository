@@ -1,0 +1,33 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">QPP</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 read-only pre-publish check: harbour reference parts where they were this morning, no leftover patch
+-- folders or loose imported squirrel models at the workspace root, and today's swapped squirrels wired up.
+local PN=workspace:FindFirstChild('PortoNocciola')
+local function p(x) return x and (x:IsA('Model') and x:GetPivot().Position or x.Position) end
+local function near(v,x,y,z) return v and (v-Vector3.new(x,y,z)).Magnitude<0.05 end
+local bell=PN and PN:FindFirstChild('Brass harbour bell',true)
+local chair=PN and PN:FindFirstChild('Chair_Wood',true)
+local crate=PN and PN:FindFirstChild('BeppeCrate',true)
+warn('QP@bell',p(bell),near(p(bell),251,-41,-596.67) and 'OK' or 'MOVED?')
+warn('QP@chair',p(chair),near(p(chair),258.4,-45.04,-714.27) and 'OK' or 'MOVED?')
+-- Oct 5 2026: BeppeCrate expected x 248.4 after the promenade +10 build (fish stall moved 5 out; was 253.4)
+warn('QP@crate',p(crate),(p(crate) and math.abs(p(crate).X-248.4)<0.05 and math.abs(p(crate).Z+637.2)<0.05) and 'OK' or 'MOVED?')
+local left={}
+for _,c in ipairs(workspace:GetChildren()) do
+	if c:FindFirstChild('PatchModule') then table.insert(left,'patch:'..c.Name) end
+	if c:IsA('Model') and c.Name:match('_squirrel_gray$') then table.insert(left,'loose gray:'..c.Name) end
+	if c:IsA('Model') and c.Name:match('_squirrel_color$') and c:FindFirstChild('Squirrel') and not c.Squirrel:GetAttribute('ColorTexture') then
+		table.insert(left,'unswapped:'..c.Name) end
+end
+warn('QP@leftovers',#left>0 and table.concat(left,', ') or 'none')
+local twins=workspace:FindFirstChild('SquirrelTwins')
+for _,id in ipairs({'sunbather_squirrel','lifeguard_squirrel','octopus_squirrel','seacaptain_squirrel'}) do
+	local c=workspace:FindFirstChild(id..'_color') local g=twins and twins:FindFirstChild(id..'_gray')
+	local cm=c and c:FindFirstChild('Squirrel')
+	warn('QP@'..id,'colour',c~=nil,'twin',g~=nil,'ColorTexture',cm and cm:GetAttribute('ColorTexture')==cm.TextureID,
+		'GrayTexture ok',(cm and g and g:FindFirstChild('Squirrel') and cm:GetAttribute('GrayTexture')==g.Squirrel.TextureID) or false,
+		'pos',cm and cm.Position)
+end
+warn('QP@DONE')
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

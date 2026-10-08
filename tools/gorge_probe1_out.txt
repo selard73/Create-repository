@@ -1,0 +1,54 @@
+﻿CAM", cam.FieldOfView, table.concat({cam.CFrame:GetComponents()}, ","))
+profile: per z, x 60..260 step 4; char = top material (~ water); then bed depth at water centre")
+CAM 70 474.6000061035156,85.47929382324219,-230,0.9230769276618958,0.12581174075603485,-0.3634561598300934,-0,0.9449860453605652,0.32711052894592285,0.38461536169052124,-0.3019481897354126,0.8722947835922241
+profile: per z, x 60..260 step 4; char = top material (~ water); then bed depth at water centre
+Z -180 ggggggggggg~~gggg~~ggm~~~~~eggggggggggggggggggggggg | water x 104..164 bed 0.2
+Z -200 ggggggggggg~~gmm~~gggmm~~~~ssgggggggggggggggggggggg | water x 104..164 bed 1.1
+Z -220 gggggggggggggggggggggggsgs~~~~~gggggggggggggggggggg | water x 164..180 bed -7.4
+Z -240 gggggggggggggggggggggggggggg~~~~~~ggggggggggggggggg | water x 172..192 bed -8.0
+Z -260 ggggggggg.ggg.gggggggggggggggss~~~~~~ssgggggggggggg | water x 184..204 bed -8.0
+Z -280 ........................gggss~~~~~~~ssggg.......... | water x 176..200 bed -8.1
+Z -300 ....................gggsss~~~~~~sssgg.............. | water x 164..184 bed -8.4
+Z -320 ...............gggg~~~~~~~~sgggg................... | water x 136..164 bed -8.6
+Z -340 ..........gggss~~~~~~~mgggg........................ | water x 120..144 bed -8.4
+Z -360 .......gggg~~~~~~~sggg............................. | water x 104..128 bed -8.5
+Z -380 ......gggs~~~~~~ssgg............................... | water x 100..120 bed -8.2
+Z -400 ........ggs~~~~~~ssgg.............................. | water x 104..124 bed -8.0
+Z -420 ...........gggm~~~~~ssggg.......................... | water x 120..136 bed -7.9
+Z -440 ................gggg~~~~~ssggg..................... | water x 140..156 bed -7.9
+Z -460 .....................gggs~~~~~~sggg................ | water x 160..180 bed -4.9
+Z -480 .........................gggs~~~~~~msggg........... | water x 176..196 bed -7.9
+Z -500 ............................gggs~~~~~~ssgg......... | water x 188..208 bed -8.2
+Z -520 ...........................gggs~~~~~~~~ggg......... | water x 184..212 bed -8.3
+Z -540 ........................gggss~~~~~~~ssggg.......... | water x 176..200 bed -8.0
+Z -560 ....................gggss~~~~~~~~gggg.............. | water x 160..188 bed -8.6
+Z -580 ...............ggggmr~~~~~~sgggg................... | water x 144..164 bed -8.5
+Z -600 ..........ggggm~~~~~~~ssgg......................... | water x 120..144 bed -8.5
+Z -620 .......gggs~~~~~~~mmggg............................ | water x 104..128 bed -8.3
+Z -640 .......ggs~~~~~~ssgg............................... | water x 100..120 bed -8.2
+Z -660 ........ggsm~~~~~msgg.............................. | water x 108..124 bed -8.4
+Z -680 ...........gggmm~~~~~sggg.......................... | water x 124..140 bed -7.6
+Z -700 ................gggss~~~~~sggg..................... | water x 144..160 bed -7.4
+Z -720 .....................gggss~~~~~mggg................ | water x 164..180 bed -7.9
+Z -740 ..........................ggss~~~~~ssggg........... | water x 180..196 bed -8.5
+Z -760 ............................ggss~~~~~~ssgg......... | water x 188..208 bed -8.2
+Z -780 ...........................gggs~~~~~~~ssgg......... | water x 184..208 bed -8.1
+Z -800 .........................gggs~~~~~~~mgggg.......... | water x 176..200 bed -8.2
+Z -820 ....................gggss~~~~~~~~gggg.............. | water x 160..188 bed -8.6
+Z -840 ...............gggg~~~~~~~~sgggg................... | water x 136..164 bed -8.7
+Z -860 ..........ggggm~~~~~~~ssgg......................... | water x 120..144 bed -8.6
+Z -880 .......gggmm~~~~~~ssggg............................ | water x 108..128 bed -8.3
+Z -900 ......gggss~~~~~ssgg............................... | water x 104..120 bed -8.4
+H z-230 10t 10t 9t 11t 8t 10t 0t 10t 13t 11t 2t 3t 8p 9p 6t 10t 14t 220p
+H z-270 0p 0p 0p 0p 0p 0p 0p -1t 0p 0p 0p 12t 31p 71p 59p 13t 14t 13t
+H z-320 0p 0p 0p 0p 0p 0p -1t 0p 0p 0p 0p 0p 0p 0p 0p 0p 0p 0p
+H z-400 0p 0p 0p 0p 0p -0t 0p 0p 0p 0p 0p 0p 0p 0p 0p 0p 0p 0p
+H z-600 0p 0p 0p 0p 0p 0p 0t 0p 0p 0p 0p 0p 0p 0p 0p 0p 0p 0p
+OUT Workspace.Village.Props n=61 x 95..217 z -822..-297
+OUT Workspace.SandstoneClimb (invisible) n=56 x 467..567 z -273..-261
+OUT Workspace.HangGlider n=53 x 475..489 z -260..-252
+OUT Workspace.SandstoneClimb n=109 x 441..592 z -267..-252
+OUT Workspace.BasketLift n=11 x 490..495 z -254..-253
+LIGHT 14.5 fogend 1100 atmo true sky Sky
+ATMO density 0.30000001192092896 haze 0 offset 0.25 glare 0
+DONE

@@ -1,0 +1,19 @@
+-- READ-ONLY probe: who puts the slingshot / binoculars in the Backpack, and how. QT@ lines (script, line no, text).
+for _,d in ipairs(game:GetDescendants()) do
+	if d:IsA('LuaSourceContainer') and not d:GetFullName():find('Backup') and not d:GetFullName():find('ServerStorage.Before') then
+		local ok,s=pcall(function() return d.Source end)
+		if ok and (s:find('SlingshotTool',1,true) or s:find('BinocularsTool',1,true) or s:find('Backpack',1,true)) then
+			local n=0
+			for line in (s..'\n'):gmatch('(.-)\n') do n+=1
+				if line:find('Tool',1,true) or line:find('Backpack',1,true) or line:find('StarterGear',1,true) then
+					warn('QT@'..d:GetFullName()..'@'..n..'@'..line:sub(1,200))
+				end
+			end
+		end
+	end
+end
+for _,n in ipairs({'SlingshotTool','BinocularsTool','Slingshot'}) do
+	local t=game.ServerStorage:FindFirstChild(n)
+	if t then local k={} for _,c in ipairs(t:GetChildren()) do table.insert(k,c.Name..':'..c.ClassName) end warn('QT@KIDS@'..n..'@'..t.ClassName..'@'..table.concat(k,' ')) end
+end
+warn('QT@END')

@@ -1,0 +1,4 @@
+nose tip (-0.335, -0.822, 1.777)
+ZINC_DONE
+nose tip (-0.335, -0.822, 1.777)
+ZINC_DONE

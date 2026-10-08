@@ -1,0 +1,13 @@
+Z max: 2.400
+Y min (front): -0.851
+Y max (back): 0.851
+X min: -0.817
+X max: 0.817
+Head (z > 1.2): count=3509, centroid=(-0.105, -0.381, 1.664)
+Head (z > 1.4): count=2749, centroid=(-0.109, -0.355, 1.765)
+Head (z > 1.6): count=1872, centroid=(-0.154, -0.326, 1.883)
+Head (z > 1.8): count=1375, centroid=(-0.206, -0.328, 1.959)
+Tail (z > 0.6): count=735, centroid=(-0.228, 0.518, 1.273)
+Tail (z > 0.8): count=692, centroid=(-0.232, 0.532, 1.309)
+Tail (z > 1.0): count=622, centroid=(-0.243, 0.548, 1.356)
+Tail (z > 1.2): count=411, centroid=(-0.266, 0.544, 1.479)

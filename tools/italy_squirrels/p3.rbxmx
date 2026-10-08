@@ -1,0 +1,25 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">ProbeP3</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+local col=workspace:FindFirstChild('boatpainter_squirrel_color')
+if not col then warn('QX@NOSQ') return end
+local cm=col.Squirrel
+local cam=workspace.CurrentCamera
+warn('QX@SQ',cm.Position,'size',cm.Size,'parent',col.Parent:GetFullName())
+warn('QX@CAM',cam.CFrame.Position,cam.CFrame.LookVector,cam.CameraType)
+local B={} for _,d in ipairs(col:GetDescendants()) do if d:IsA('Bone') then B[d.Name]=d end end
+warn('QX@HEAD',B.Head and B.Head.WorldPosition)
+-- big parts near the squirrel (ignores CanQuery): anything whose box contains points within 6 studs west/north/south
+local pts={}
+for _,o in ipairs({{-2,0},{-4,0},{-6,0},{0,2},{0,4},{0,-2},{0,-4},{2,0},{3,0}}) do table.insert(pts,cm.Position+Vector3.new(o[1],0,o[2])) end
+for _,p in ipairs(workspace.PortoNocciola:GetDescendants()) do
+	if p:IsA('BasePart') and p.Transparency<1 and p.Size.Magnitude>3 then
+		for i,q in ipairs(pts) do
+			local l=p.CFrame:PointToObjectSpace(q)
+			if math.abs(l.X)<=p.Size.X/2 and math.abs(l.Y)<=p.Size.Y/2 and math.abs(l.Z)<=p.Size.Z/2 then
+				warn(string.format('QX@IN pt%d %s %s',i,p:GetFullName(),tostring(p.Size))) break
+			end
+		end
+	end
+end
+warn('QX@END')
+
+end]]></ProtectedString></Properties></Item></Item></roblox>

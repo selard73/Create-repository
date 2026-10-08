@@ -1,0 +1,140 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">PlaceBella</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 (Shannon OK'd the window): dress All Things Bella (Casa Azzurra) with the sea-glass + shell props from
+-- italy/bella/gen_bella.py (imported as workspace.bella_props: MeshParts named <Prop>_<Material>, each prop built
+-- around the same origin; <Prop>_Front markers show the front). Old pottery -> ServerStorage.BellaBackup (attr FromPath),
+-- except the two end hand-made vases of the right window. Street = -X. Front row on the platform (x ~267.85, clear to
+-- the ceiling), small things on the back shelf (x ~269.0, top ~-43.18). Price tags: small cards facing the street.
+local CA=workspace.PortoNocciola['02 Pastel waterfront']['Casa Azzurra']
+local SF=CA:FindFirstChild('Finished exterior shopfront')
+local LW,RW=SF and SF:FindFirstChild('Left glazed display window'),SF and SF:FindFirstChild('Right glazed display window')
+local IMP=workspace:FindFirstChild('bella_props')
+if not (LW and RW and IMP) then warn('QBE@ABORT',LW,RW,IMP) return end
+local COL={SGAqua={0.55,0.86,0.82},SGGreen={0.56,0.80,0.56},SGWhite={0.90,0.95,0.94},SGCobalt={0.26,0.46,0.86},SGAmber={0.86,0.62,0.30},
+	ShellCream={0.97,0.91,0.80},ShellPink={0.96,0.75,0.72},ShellPeach={0.98,0.80,0.62},Brass={0.80,0.65,0.35},WoodLight={0.80,0.66,0.48},
+	WoodWhite={0.95,0.94,0.90},Grout={0.38,0.40,0.42},Bulb={1.0,0.92,0.70},Pearl={0.97,0.96,0.93},Mirror={0.80,0.86,0.90},
+	Velvet={0.16,0.36,0.38},Candle={0.97,0.94,0.86},Flame={1.0,0.70,0.25},String={0.86,0.83,0.76},Driftwood={0.70,0.62,0.52},
+	Flower={0.88,0.80,0.62},Stem={0.60,0.53,0.38}}
+-- props: target = bottom-centre point (or hanging top for Sun), price in acorns
+local PL={
+	Lamp={win=LW,pos=Vector3.new(267.86,-45.32,-647.35),price=150},
+	Box={win=LW,pos=Vector3.new(267.86,-45.32,-645.75),price=90},
+	Vase={win=LW,pos=Vector3.new(269.03,-43.18,-646.56),price=80,shelf=true},
+	Sun={win=RW,top=Vector3.new(267.30,-40.72,-658.0),price=60},
+	Mirror={win=RW,pos=Vector3.new(267.90,-45.32,-656.1),price=120},
+	Neck={win=RW,pos=Vector3.new(267.90,-45.32,-653.9),price=70},
+	Candle={win=RW,pos=Vector3.new(269.03,-43.19,-655.64),price=40,shelf=true},
+}
+-- 1) old pottery out (not platform/shelf/supports; keep the right window's two end vases)
+local SS=game:GetService('ServerStorage')
+local BK=SS:FindFirstChild('BellaBackup') or Instance.new('Folder',SS) BK.Name='BellaBackup'
+local KEEP={['Full-depth wooden display platform']=true,['Warm timber display shelf']=true,['Grounded shelf side support']=true}
+local VASE={['Hand-thrown display vase']=true,['Pottery vase foot']=true,['Vase neck']=true,['Open vase mouth']=true,['Vase rolled lip']=true}
+local zs={}
+for _,d in ipairs(RW:GetDescendants()) do if d:IsA('BasePart') and d.Name=='Hand-thrown display vase' then table.insert(zs,d.Position.Z) end end
+table.sort(zs)
+local keepZ={zs[1],zs[#zs]}
+local moved,kept=0,0
+for _,W in ipairs({LW,RW}) do
+	local set
+	for _,c in ipairs(W:GetChildren()) do if c.Name:match('^Italian window set') then set=c end end
+	if set then
+		local f=Instance.new('Folder',BK) f.Name=W.Name
+		for _,d in ipairs(set:GetDescendants()) do
+			if d:IsA('BasePart') and not KEEP[d.Name] then
+				local keepIt=false
+				if W==RW and VASE[d.Name] then for _,z in ipairs(keepZ) do if z and math.abs(d.Position.Z-z)<0.45 then keepIt=true end end end
+				if keepIt then kept+=1 else d:SetAttribute('FromPath',d.Parent:GetFullName()) d.Parent=f moved+=1 end
+			end
+		end
+	end
+end
+-- 2) group the imported parts per prop
+local groups={}
+for _,d in ipairs(IMP:GetDescendants()) do
+	if d:IsA('BasePart') then
+		local pre,mat=d.Name:match('^(%a+)_(%a+)$')
+		if pre and PL[pre] then groups[pre]=groups[pre] or {} table.insert(groups[pre],{p=d,mat=mat}) end
+	end
+end
+local OUT=Instance.new('Model') OUT.Name='All Things Bella display' OUT.Parent=SF
+local function bbox(list)
+	local lo,hi=Vector3.new(1e9,1e9,1e9),Vector3.new(-1e9,-1e9,-1e9)
+	for _,e in ipairs(list) do
+		if e.mat~='Front' then
+			local cf,s=e.p.CFrame,e.p.Size
+			local ex=Vector3.new(math.abs(cf.RightVector.X)*s.X+math.abs(cf.UpVector.X)*s.Y+math.abs(cf.LookVector.X)*s.Z,
+				math.abs(cf.RightVector.Y)*s.X+math.abs(cf.UpVector.Y)*s.Y+math.abs(cf.LookVector.Y)*s.Z,
+				math.abs(cf.RightVector.Z)*s.X+math.abs(cf.UpVector.Z)*s.Y+math.abs(cf.LookVector.Z)*s.Z)/2
+			lo=Vector3.new(math.min(lo.X,e.p.Position.X-ex.X),math.min(lo.Y,e.p.Position.Y-ex.Y),math.min(lo.Z,e.p.Position.Z-ex.Z))
+			hi=Vector3.new(math.max(hi.X,e.p.Position.X+ex.X),math.max(hi.Y,e.p.Position.Y+ex.Y),math.max(hi.Z,e.p.Position.Z+ex.Z))
+		end
+	end
+	return lo,hi
+end
+local report={}
+for name,cfg in pairs(PL) do
+	local list=groups[name]
+	if list then
+		local M=Instance.new('Model') M.Name=name M.Parent=OUT
+		for _,e in ipairs(list) do e.p.Parent=M end
+		local lo,hi=bbox(list)
+		local c=(lo+hi)/2
+		-- turn so the front marker points to the street (-X); symmetric props keep their turn
+		local fm
+		for _,e in ipairs(list) do if e.mat=='Front' then fm=e.p end end
+		if fm then
+			local d=(fm.Position-c)*Vector3.new(1,0,1)
+			if d.Magnitude>1e-3 then
+				local ang=math.atan2(-1,0)-math.atan2(d.Unit.X,d.Unit.Z)
+				local pc=CFrame.new(c)
+				for _,e in ipairs(list) do e.p.CFrame=pc*CFrame.Angles(0,ang,0)*pc:Inverse()*e.p.CFrame end
+			end
+			fm:Destroy()
+		end
+		lo,hi=bbox(list) c=(lo+hi)/2
+		local target
+		if cfg.top then target=Vector3.new(cfg.top.X-c.X,cfg.top.Y-hi.Y,cfg.top.Z-c.Z)
+		else target=Vector3.new(cfg.pos.X-c.X,cfg.pos.Y+0.005-lo.Y,cfg.pos.Z-c.Z) end
+		for _,e in ipairs(list) do
+			local p=e.p
+			if p.Parent then
+				p.CFrame=p.CFrame+target
+				p.Anchored=true p.CanCollide=false p.CanTouch=false p.CanQuery=false
+				local col=COL[e.mat] if col then p.Color=Color3.new(col[1],col[2],col[3]) end
+				pcall(function() p.TextureID='' end)
+				if e.mat:match('^SG') then p.Material=Enum.Material.SmoothPlastic p.Transparency=0.12 p.Reflectance=0.06
+				elseif e.mat=='Brass' then p.Material=Enum.Material.Metal
+				elseif e.mat=='Mirror' then p.Material=Enum.Material.SmoothPlastic p.Reflectance=0.55
+				elseif e.mat=='Pearl' then p.Material=Enum.Material.SmoothPlastic p.Reflectance=0.12
+				elseif e.mat=='Bulb' or e.mat=='Flame' then p.Material=Enum.Material.Neon p.CastShadow=false
+					local L=Instance.new('PointLight',p) L.Color=Color3.fromRGB(255,214,150) L.Shadows=false
+					L.Brightness=(e.mat=='Bulb') and 1.4 or 0.8 L.Range=(e.mat=='Bulb') and 9 or 5
+				elseif e.mat=='Velvet' then p.Material=Enum.Material.Fabric
+				else p.Material=Enum.Material.SmoothPlastic end
+			end
+		end
+		-- price tag: a small card leaning back, facing the street, beside the item's front
+		local lo2,hi2=bbox(list)
+		local tz=cfg.top and cfg.top.Z or cfg.pos.Z            -- straight in front of the item
+		local ty=(cfg.shelf and cfg.pos.Y or -45.32)+0.13
+		local tx=cfg.shelf and 268.5 or 267.45
+		local tag=Instance.new('Part') tag.Name='Price tag' tag.Size=Vector3.new(0.4,0.24,0.025)
+		tag.Anchored=true tag.CanCollide=false tag.CanTouch=false tag.CanQuery=false tag.Color=Color3.fromRGB(250,246,236) tag.Material=Enum.Material.SmoothPlastic
+		tag.CFrame=CFrame.lookAt(Vector3.new(tx,ty,tz),Vector3.new(tx-1,ty,tz))*CFrame.Angles(math.rad(-18),0,0)
+		local sg=Instance.new('SurfaceGui',tag) sg.Face=Enum.NormalId.Front sg.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud sg.PixelsPerStud=200
+		local t=Instance.new('TextLabel',sg) t.Size=UDim2.fromScale(1,1) t.BackgroundTransparency=1 t.TextScaled=true
+		t.Text='🌰 '..cfg.price t.TextColor3=Color3.fromRGB(70,52,36) t.Font=Enum.Font.GothamBold
+		tag.Parent=M
+		table.insert(report,string.format('%s %.2fx%.2fx%.2f',name,hi2.X-lo2.X,hi2.Y-lo2.Y,hi2.Z-lo2.Z))
+	else table.insert(report,name..' MISSING') end
+end
+IMP:Destroy()
+game:GetService('ChangeHistoryService'):SetWaypoint('All Things Bella window display')
+warn('QBE@DONE pottery moved',moved,'kept',kept,'| props',table.concat(report,' | '))
+local cam=workspace.CurrentCamera
+cam.CameraType=Enum.CameraType.Fixed
+local at=Vector3.new(267.9,-44.0,-652.0)
+cam.Focus=CFrame.new(at) cam.CFrame=CFrame.lookAt(at+Vector3.new(-9.5,1.2,0),at)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

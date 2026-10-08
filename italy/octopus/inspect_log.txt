@@ -1,0 +1,8 @@
+obj Mesh_0 type MESH loc (0.0, 0.0, 0.0) rot (-0.0, 0.0, 0.0) scale (1.0, 1.0, 1.0) dims (1.9, 1.837, 0.9)
+mesh Mesh_0: verts 616137 polys 1232414 tris 1232414 uv layers ['UVMap'] materials ['Material.001']
+  world bbox min (-0.951, -0.917, -0.453) max (0.95, 0.92, 0.447) size (1.9, 1.837, 0.9)
+  tex node Image Texture image Image_0 C:\Users\slard\roblox-props\italy\octopus\src\Meshy_AI_Grumpy_Octopus_1008122609_texture.fbm\Image_0.jpg
+  tex node Image Texture.001 image Image_2 C:\Users\slard\roblox-props\italy\octopus\src\Meshy_AI_Grumpy_Octopus_1008122609_texture.fbm\Image_2.jpg
+  tex node Image Texture.002 image texture_0_roughness.png C:\Users\slard\roblox-props\italy\octopus\src\Meshy_AI_Grumpy_Octopus_1008122609_texture.fbm\texture_0_roughness.png
+  tex node Image Texture.003 image texture_0_metallic.png C:\Users\slard\roblox-props\italy\octopus\src\Meshy_AI_Grumpy_Octopus_1008122609_texture.fbm\texture_0_metallic.png
+INSPECT_DONE

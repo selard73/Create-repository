@@ -1,0 +1,6 @@
+[
+  {"classes": ["yellow", "blue", "brown", "other", "white-low"], "box": [-1, 1, -2, 2, -0.1, 1.42], "from": ["Head", "Neck"], "to": "Chest"},
+  {"classes": ["pink/red"], "box": [-1, -0.3, -2, 2, -0.1, 1.42], "from": ["Head", "Neck"], "to": "Chest"},
+  {"classes": ["white-high", "gray"], "box": [-1, 1, -2, 2, -0.1, 1.2], "from": ["Head", "Neck"], "to": "Chest"},
+  {"classes": ["gray"], "box": [-1, 1, -0.6, 2, 1.2, 1.45], "soft": [1.2, 1.45], "from": ["Head", "Neck"], "to": "Chest"}
+]

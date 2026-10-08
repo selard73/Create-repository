@@ -1,0 +1,12 @@
+-- READ-ONLY probe 3 (Oct 4 2026): dump ShopServer + ShopClient + SquirrelSetup lines 180-310 in 450-char chunks. QE@ lines.
+local function dump(tag,s)
+	for i=1,#s,450 do warn('QE@'..tag..'@'..string.format('%06d',i)..'@'..s:sub(i,i+449)) end
+end
+dump('SSRV',workspace.Shop.ShopServer.Source)
+dump('SCLI',workspace.Shop.ShopClient.Source)
+local ss=workspace.SquirrelScripts.SquirrelSetup.Source
+local a,n=0,0
+for line in (ss..'\n'):gmatch('(.-)\n') do n+=1 if n==180 then a=1 end if n>=180 and n<=310 then end end
+local lines={} for line in (ss..'\n'):gmatch('(.-)\n') do table.insert(lines,line) end
+dump('SSET',table.concat(lines,'\n',180,math.min(310,#lines)))
+warn('QE@END')

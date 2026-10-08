@@ -1,0 +1,5 @@
+Root verts count: 1423
+Root min Z: 0.0000, max Z: 0.6993
+Left foot min Z: 0.0000
+Right foot min Z: 0.0004
+Pin min Z: 0.0000

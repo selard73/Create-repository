@@ -1,0 +1,14 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">RemoReg</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 4 2026: registry entry for Capitano Remo (bio F, Shannon's pick), after Tito.
+local reg=workspace.SquirrelScripts.SquirrelRegistry
+local rs=reg.Source
+local anchor='the moment he reaches the other side."},\n'
+local a,b=rs:find(anchor,1,true)
+if not a or rs:find('seacaptain_squirrel',1,true) then warn('QJ@ABORT anchor/dup',a) return end
+local add='\t\t{id = "seacaptain_squirrel",   map = "porto", name = "Capitano Remo",\n\t\t bio = "Steers the Azzurra by the stars. On cloudy nights he steers by the smell of the bakery."},\n'
+reg.Source=rs:sub(1,b)..add..rs:sub(b+1)
+game:GetService('ChangeHistoryService'):SetWaypoint('Capitano Remo registry')
+local n=0 for _ in reg.Source:gmatch('map = "porto"') do n+=1 end
+warn('QJ@OK porto entries',n,'remo',reg.Source:find('Capitano Remo',1,true)~=nil)
+
+end]]></ProtectedString></Properties></Item></Item></roblox>

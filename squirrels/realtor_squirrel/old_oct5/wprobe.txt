@@ -1,0 +1,7 @@
+keys {'Chest': 255, 'Head': 28}
+   Chest y -0.35..0.18
+   Head y -0.41..0.12
+bag {'Root': 191, 'Chest': 390}
+   Chest y -0.6..-0.21
+   Root y -0.78..-0.21
+WP_DONE

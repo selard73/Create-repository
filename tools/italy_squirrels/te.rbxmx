@@ -1,0 +1,16 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">SwapE</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026: the new Enzo came in facing away from the pool (his head bone sits almost over the body centre, so the
+-- head-side test picked the wrong sign). Turn him 180 degrees about his feet centre.
+local col=workspace.crabcatcher_squirrel_color
+local L=Vector3.new(296.5295715332031,-51.42793655395508,-774.4993286132812)
+local c=CFrame.new(L)
+col:PivotTo(c*CFrame.Angles(0,math.pi,0)*c:Inverse()*col:GetPivot())
+game:GetService('ChangeHistoryService'):SetWaypoint('Enzo faces the pool')
+warn('QE@TURNED',col.Squirrel.Position)
+local want=Vector3.new(-0.376,0,0.9266)
+local t=L+Vector3.new(0,1.6,0)
+workspace.CurrentCamera.Focus=CFrame.new(t)
+workspace.CurrentCamera.CFrame=CFrame.lookAt(t+want*8+Vector3.new(2,2,0),t)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

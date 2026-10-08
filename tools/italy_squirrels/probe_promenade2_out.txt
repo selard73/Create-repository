@@ -1,0 +1,309 @@
+﻿QP2@cam 280.740,-71.609,-714.400, 0.74056,0.05511,-0.66972, 0.00000,0.99663,0.08201, 0.67199,-0.06073,0.73807 fov 75 focus 285.6404724121094, -72.20903778076172, -719.800048828125
+QP2@child 03 Fish market | Model Stored fishing nets beside market min 255.8,-46.4,-641.1 max 259.3,-44.2,-638.6
+QP2@child 03 Fish market | Model Slatted fish crate min 255.7,-46.8,-645.1 max 258.3,-45.4,-642.9
+QP2@child 03 Fish market | Model Blue ice display counter min 247.2,-44.1,-646.7 max 259.2,-42.8,-643.3
+QP2@child 03 Fish market | Model Slatted fish crate min 255.7,-46.8,-651.1 max 258.3,-45.4,-648.9
+QP2@child 03 Fish market | Model Connected timber market canopy frame min 248.8,-41.0,-648.8 max 261.1,-39.9,-641.2
+QP2@child 03 Fish market | Part Market striped roof min 251.0,-40.4,-642.8 max 259.0,-39.2,-641.7
+QP2@child 03 Fish market | Part Market post min 251.9,-46.8,-639.1 max 252.1,-39.7,-638.9
+QP2@child 03 Fish market | Part Market post min 257.9,-46.8,-651.1 max 258.1,-40.5,-650.9
+QP2@child 03 Fish market | Model Slatted fish crate min 255.7,-46.8,-648.1 max 258.3,-45.4,-645.9
+QP2@child 03 Fish market | Part Market striped roof min 251.0,-40.4,-645.0 max 259.0,-39.2,-643.9
+QP2@child 03 Fish market | Part Market striped roof min 251.0,-40.4,-650.5 max 259.0,-39.2,-649.4
+QP2@child 03 Fish market | Part Market striped roof min 251.0,-40.4,-651.6 max 259.0,-39.2,-650.5
+QP2@child 03 Fish market | Part Market striped roof min 251.0,-40.4,-649.4 max 259.0,-39.2,-648.3
+QP2@child 03 Fish market | Model BeppeCrate min 252.0,-46.7,-638.7 max 254.9,-45.0,-635.7
+QP2@child 03 Fish market | Part Market striped roof min 251.0,-40.4,-641.7 max 259.0,-39.2,-640.6
+QP2@child 03 Fish market | Part Market striped roof min 251.0,-40.4,-648.3 max 259.0,-39.2,-647.2
+QP2@child 03 Fish market | Part Market striped roof min 251.0,-40.4,-639.5 max 259.0,-39.2,-638.4
+QP2@child 03 Fish market | Part Market striped roof min 251.0,-40.4,-640.6 max 259.0,-39.2,-639.5
+QP2@child 03 Fish market | Part Market striped roof min 251.0,-40.4,-646.1 max 259.0,-39.2,-645.0
+QP2@child 03 Fish market | Part Hand painted sign min 250.9,-41.1,-650.0 max 251.0,-40.1,-640.0
+QP2@child 03 Fish market | Part Market striped roof min 251.0,-40.4,-647.2 max 259.0,-39.2,-646.1
+QP2@child 03 Fish market | Part Fish market counter min 251.7,-46.8,-650.8 max 254.7,-44.1,-639.2
+QP2@child 03 Fish market | Part Market striped roof min 251.0,-40.4,-643.9 max 259.0,-39.2,-642.8
+QP2@child 03 Fish market | Part Market post min 251.9,-46.8,-651.1 max 252.1,-39.7,-650.9
+QP2@child 03 Fish market | Part Market post min 257.9,-46.8,-639.1 max 258.1,-40.5,-638.9
+QP2@child 03 Fish market | Model Framed live seafood aquarium min 250.3,-46.7,-656.2 max 256.9,-41.9,-653.0
+QP2@child 09 Harbour finish | Part Gelateria side passage paving min 277.9,-47.0,-633.5 max 284.3,-46.8,-592.5
+QP2@child 09 Harbour finish | Part South terrace seam foundation min 249.0,-51.0,-672.8 max 282.0,-47.0,-670.2
+QP2@child 09 Harbour finish | Part South terrace seam paving min 249.0,-47.0,-672.9 max 282.0,-46.8,-670.1
+QP2@child 09 Harbour finish | Part Gelateria side passage foundation min 277.9,-51.0,-633.5 max 284.3,-47.0,-592.5
+QP2@child 10 Italian waterfront details | Model Gelateria cafe table settings min 260.5,-43.9,-635.0 max 261.5,-43.4,-619.0
+QP2@g -588 ~~~~~~~~~~~~~~~~~~ssssssssssssssssssssssssssssppppppssssssssssssssssssssssss
+QP2@o -588 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -589 ~~~~~~~~~~~~~~~~~~ssssssssssssssssssssssssssssppppppssssssssssssssssssssssss
+QP2@o -589 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -590 ~~~~~~~~~~~~~~~~~~~sssssssssssssssssssssssssssppppppssssssssssssssssssssssss
+QP2@o -590 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -591 ~~~~~~~~~~~~~~~~~~~~ssssssssssssssssssssssssss....S.ssssssssssssssssssssssss
+QP2@o -591 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 SS 01 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -592 ~~~~~~~~~~~~~~~~~~~~ssssssssssssssssssssss...s....S.ssssssssssssssssssssssss
+QP2@o -592 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 TT 01 01 01 01 SS 01 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -593 ~~~~~~~~~~~~~~~~~~~~~ssssssssssssssssssss...................................
+QP2@o -593 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -594 ~~~~~~~~~~~~~~~~~~~~~ssssssssssssssssss.....................................
+QP2@o -594 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -595 ~~~~~~~~~~~~~~~~~~~~~~sssssssssssssss.......................................
+QP2@o -595 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -596 ~~~~~~~~~~~~~~~~~~~~~~sssssssssssss.........................................
+QP2@o -596 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -597 ~~~~~~~~~~~~~~~~~~~~~~~ssssssssss...........................................
+QP2@o -597 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -598 ~~~~~~~~~~~~~~~~~~~~~~~~sssssss......................+......................
+QP2@o -598 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -599 ~~~~~~~~~~~~~~~~~~~~~~~~ssss.........................+......................
+QP2@o -599 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -600 ~~~~~~~~~~~~~~~~~~~~~~~~~sss.........................+......................
+QP2@o -600 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -601 ~~~~~~~~~~~~~~~~~~~~~~~~~sss.........................+......................
+QP2@o -601 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -602 ~~~~~~~~~~~~~~~~~~~~~~~~~~sss........................+......................
+QP2@o -602 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 06 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -603 ~~~~~~~~~~~~~~~~~~~~~~~~~~sss...............................................
+QP2@o -603 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 11 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -604 ~~~~~~~~~~~~~~~~~~~~~~~~~~ssss..............................................
+QP2@o -604 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -605 ~~~~~~~~~~~~~~~~~~~~~~~~~~~sss..............................................
+QP2@o -605 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -606 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss......................+......................
+QP2@o -606 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -607 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ss......................+......................
+QP2@o -607 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -608 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss.....................+......................
+QP2@o -608 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -609 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss.....................+......................
+QP2@o -609 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -610 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss.....................+......................
+QP2@o -610 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -611 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss...........................................
+QP2@o -611 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -612 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss...........................................
+QP2@o -612 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 01 01 01 01 01 01 01 01 01
+QP2@g -613 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss..........................................
+QP2@o -613 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -614 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss.....++...................................
+QP2@o -614 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 06 06 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -615 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss.....++...................................
+QP2@o -615 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 06 06 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -616 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss.........................................
+QP2@o -616 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -617 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss.....++..................................
+QP2@o -617 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 06 06 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -618 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss....++...................+..............
+QP2@o -618 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 06 06 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 06 01 01 01 01 02 02 02 02 02 02 02 02 02 02
+QP2@g -619 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss........................###.............
+QP2@o -619 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 11 01 01 01 01 01 01 01 06 06 06 01 01 01 02 02 02 02 02 02 02 02 02 02
+QP2@g -620 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss.......................###..+..........
+QP2@o -620 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 11 11 11 01 01 01 01 01 01 01 06 06 06 01 01 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -621 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss.......................###..+..........
+QP2@o -621 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 11 11 11 01 01 01 01 01 01 01 01 01 01 06 06 06 01 01 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -622 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss........................+...+..........
+QP2@o -622 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 11 06 01 01 01 01 01 01 01 01 01 01 01 01 01 01 06 01 01 01 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -623 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss...........................+......###.
+QP2@o -623 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -624 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss...........................+......###.
+QP2@o -624 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -625 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss.......................S..+......###.
+QP2@o -625 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 SS 01 01 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -626 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss.......................SS.+......###.
+QP2@o -626 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 SS SS 01 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -627 ~~~~~~~~~~~~pppppppppp~~~~~~~~~~~~~ssss..........................+......###.
+QP2@o -627 TT TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -628 ~~~~~~~~~~~pppppSppppp~~~~~~~~~~~~~ssss.................................###.
+QP2@o -628 TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 SS 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02
+QP2@g -629 ~~~~~~~~~~~~pppppppppp~~~~~~~~~~~~~~ssss................................###.
+QP2@o -629 TT TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02
+QP2@g -630 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss................................###.
+QP2@o -630 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02
+QP2@g -631 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss................................###.
+QP2@o -631 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02
+QP2@g -632 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss.....................+...+......###.
+QP2@o -632 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 06 01 01 01 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -633 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss...................###..+..........
+QP2@o -633 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 06 06 06 01 01 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -634 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss...................###..+..........
+QP2@o -634 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 06 06 06 01 01 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -635 ~~~~~~~~~~~~~~~ppppppppppppppppppppp........................###.............
+QP2@o -635 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 06 06 06 01 01 01 02 02 02 02 02 02 02 02 02 02
+QP2@g -636 ~~~~~~~~~~~~~~~~pppppppppppppppppppp.........................+..............
+QP2@o -636 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 06 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -637 ~~~~~~~~~~~~~~~~pppppppppppppppppppp.................SS.....................
+QP2@o -637 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 01 01 01 01 01 01 01 01 01 01 SS SS 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -638 ~~~~~~~~~~~~~~~~pppppppppppppppppppp.................++.....................
+QP2@o -638 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 01 01 01 01 01 01 01 01 01 01 03 03 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -639 ~~~~~~~~~~~~~~~ppppppppppppppppppppp................###.....................
+QP2@o -639 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -640 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss..........###.....................
+QP2@o -640 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 03 03 03 01 01 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -641 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss.........###............##..+....
+QP2@o -641 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 03 03 03 11 11 11 11 01 01 01 01 01 01 01 01 03 03 01 01 03 01 01 01 01
+QP2@g -642 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss.........###............##.++....
+QP2@o -642 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 11 11 11 03 03 03 11 11 11 11 01 01 01 01 01 01 01 01 03 03 01 03 03 01 01 01 01
+QP2@g -643 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss.........###.............+.+.....
+QP2@o -643 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 01 01 03 01 03 01 01 01 01 01
+QP2@g -644 ~~~~~~~~~~~~~~~~~~~~~pp~~~~pp~~~~~~~~~sssss.........###.....................
+QP2@o -644 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 04 04 TT TT TT TT 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02
+QP2@g -645 ~~~~~~~~~~~~~~~~~~~pppppppppppp~~~~~~~sssss.........###............+........
+QP2@o -645 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -646 ~~~~~~~~~~~~~~~~~~ppppSSppppppp~~~~~~~sssss.........###............+........
+QP2@o -646 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 SS SS 04 04 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -647 ~~~~~~~~~~~~~~~~~~~pppppppppppp~~~~~~~sssss.........###............+........
+QP2@o -647 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -648 ~~~~~~~~~~~~~~~~~~~~~pp~~~~pp~~~~~~~~~sssss.........###............+........
+QP2@o -648 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 04 04 TT TT TT TT 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 06 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -649 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss.........###.....................
+QP2@o -649 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -650 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss.........###.....................
+QP2@o -650 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -651 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss.................................
+QP2@o -651 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -652 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss..........+++....................
+QP2@o -652 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -653 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss..........+++...........+........
+QP2@o -653 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -654 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss..........+++...........+........
+QP2@o -654 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -655 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss..........+++...........+........
+QP2@o -655 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -656 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss..........+++...........+........
+QP2@o -656 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -657 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss..........+++...........+........
+QP2@o -657 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 03 03 03 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -658 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss........................+........
+QP2@o -658 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -659 ~~~ppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss........................+........
+QP2@o -659 TT TT TT 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -660 ~~pppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss.................................
+QP2@o -660 TT TT 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02
+QP2@g -661 ~~ppppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss.................................
+QP2@o -661 TT TT 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -662 ~~ppppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssss.................................
+QP2@o -662 TT TT 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -663 ~pppppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssss.................................
+QP2@o -663 TT 04 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -664 ~pppppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssss.................................
+QP2@o -664 TT 04 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -665 ~ppppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssss.................................
+QP2@o -665 TT 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -666 pppppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss..................................
+QP2@o -666 04 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -667 ~~pppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss.......++.........................
+QP2@o -667 TT TT 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 06 06 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -668 ~ppSppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss.......++.........................
+QP2@o -668 TT 04 04 SS 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 06 06 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -669 ~pSpp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss..................................
+QP2@o -669 TT 04 SS 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -670 ~ppppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss......++............+...........#.
+QP2@o -670 TT 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 06 06 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -671 ~pppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss.......++............+...........#.
+QP2@o -671 TT 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 06 06 01 01 01 01 01 01 01 09 09 09 09 09 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -672 ppppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss.....................+...........#.
+QP2@o -672 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 09 09 09 09 09 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -673 ~pppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss.....................+...........#.
+QP2@o -673 TT 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -674 ~ppp~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss.....................+...........#.
+QP2@o -674 TT 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -675 ~~p~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssss.....................+...........#.
+QP2@o -675 TT TT 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 06 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -676 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss......................+...........#.
+QP2@o -676 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -677 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss..................................#.
+QP2@o -677 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -678 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss..................................#.
+QP2@o -678 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -679 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sss..................................#.
+QP2@o -679 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -680 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ss...................................#.
+QP2@o -680 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -681 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ss.......................+...........#.
+QP2@o -681 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -682 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ss.......................+...........#.
+QP2@o -682 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -683 ~~~~~~~~ppppppppppppppppppppppppp.............................+...........#.
+QP2@o -683 TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -684 ~~~~~~~~ppppppppppppppppppppppppp.............................+...........#.
+QP2@o -684 TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -685 ~~~~~~~~ppppppppppppppppppppppppp.............................+...........#.
+QP2@o -685 TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -686 ~~~~~~~~ppppppppppppppppppppppppp.............................+...........#.
+QP2@o -686 TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -687 ~~~~~~~~ppppppppppppppppppppppppp...........................................
+QP2@o -687 TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 02 02 02 02 02 02 02 02 02 02 02 02 02 02
+QP2@g -688 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~s......................................
+QP2@o -688 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -689 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.......................................
+QP2@o -689 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -690 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.......................................
+QP2@o -690 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -691 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~..........................S.............
+QP2@o -691 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 SS 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -692 ~~~~~~~~~~~~~pp~ppp~~~~~~~~~~~~~~~~~..........................SS............
+QP2@o -692 TT TT TT TT TT TT TT TT TT TT TT TT TT 04 04 TT 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 11 01 11 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 SS SS 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -693 ~~~~~~~~~~~pppppppppp~~~~~~~~~~~~~~~........................................
+QP2@o -693 TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+QP2@g -694 ~~~~~~~~~~ppppppppppp~~~~~~~~~~~~~~~.................................###...S
+QP2@o -694 TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 11 11 11 11 11 11 11 06 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 05 05 05 01 01 01 SS
+QP2@g -695 ~~~~~~~~~~~pppppppppp~~~~~~~~~~~~~~.................................####...S
+QP2@o -695 TT TT TT TT TT TT TT TT TT TT TT 04 04 04 04 04 04 04 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 05 05 05 05 01 01 01 SS
+QP2@g -696 ~~~~~~~~~~~~~pp~ppp~~~~~~~~~~~~~~~~.................................####....
+QP2@o -696 TT TT TT TT TT TT TT TT TT TT TT TT TT 04 04 TT 04 04 04 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 01 11 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 05 05 05 05 01 01 01 01
+QP2@g -697 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.................................###.....
+QP2@o -697 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 05 05 05 01 01 01 01 01
+QP2@g -698 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~................ssssssssss......#####....
+QP2@o -698 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 01 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 TT TT TT TT TT TT TT TT TT TT 08 08 08 08 08 08 05 05 05 05 05 08 08 08 08
+QP2@g -699 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...............sssssssssss.......###.....
+QP2@o -699 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 TT TT TT TT TT TT TT TT TT TT TT 08 08 08 08 08 08 08 05 05 05 08 08 08 08 08
+QP2@g -700 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~s............sssssssssss......#####....
+QP2@o -700 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 11 11 11 11 11 11 11 11 11 11 11 11 TT TT TT TT TT TT TT TT TT TT TT 08 08 08 08 08 08 05 05 05 05 05 08 08 08 08
+QP2@g -701 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssss........sssssssssss.......###.....
+QP2@o -701 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 11 11 11 11 11 11 11 11 TT TT TT TT TT TT TT TT TT TT TT 08 08 08 08 08 08 08 05 05 05 08 08 08 08 08
+QP2@g -702 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssssssss....sssssssssss......+##......
+QP2@o -702 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 11 11 11 11 TT TT TT TT TT TT TT TT TT TT TT 08 08 08 08 08 08 05 05 05 08 08 08 08 08 08
+QP2@g -703 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssssssssssssssssssssss......####.....
+QP2@o -703 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 08 08 08 08 08 08 05 05 05 05 08 08 08 08 08
+QP2@g -704 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssssssssssssssssssssss.......##......
+QP2@o -704 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 08 08 08 08 08 08 08 05 05 08 08 08 08 08 08
+QP2@g -705 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssssssssssssssssssssss.......#.......
+QP2@o -705 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 08 08 08 08 08 08 08 05 08 08 08 08 08 08 08
+QP2@g -706 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssssssssssssssssssssss...............
+QP2@o -706 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 08 08 08 08 08 08 08 08 08 08 08 08 08 08 08
+QP2@g -707 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssssssssssssssssssssssssssssssssssssss
+QP2@o -707 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -708 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssssssssssssssssssssssssssssssssssssss
+QP2@o -708 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -709 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssssssss.ssssssssssssssssssssssssssss
+QP2@o -709 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 06 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -710 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssssssss.ssssss..ssssssssssssssssssss
+QP2@o -710 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 06 TT TT TT TT TT TT Li Li TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -711 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssssssssssssssss..ssssssssssssssssssss
+QP2@o -711 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT Li Li TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -712 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssssssssss.sssss...ssssssssssssssssssss
+QP2@o -712 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 06 TT TT TT TT TT Li Li Li TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -713 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssssssssss.ssss..psss#sssssssssssssssss
+QP2@o -713 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT 06 TT TT TT TT Li Li Li TT TT TT Li TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -714 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssssssssssssssss...ss#S#+sssssssssssssss
+QP2@o -714 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT Li Li Li TT TT Li SS Li Li TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -715 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssssssssssssssssp.ssss#Sssssssssssssssss
+QP2@o -715 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT Li Li TT TT TT TT Li SS TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -716 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssssssssssssssssssssssssssssssssssssssss
+QP2@o -716 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -717 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sssssssssssssssssssssssssssssssssssssssss
+QP2@o -717 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -718 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssssssssssssssssssssssssssssssssssssssss
+QP2@o -718 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -719 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssssssssssssssssssssssssssssssssssssssss
+QP2@o -719 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -720 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssssssssssssssssssssssssssssssssssssssss
+QP2@o -720 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -721 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssssssssssssssssssssssssssssssssssssssss
+QP2@o -721 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@g -722 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ssssssssssssssssssssssssssssssssssssssssss
+QP2@o -722 TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT
+QP2@vp 1672, 445
+QP2@cal 200.0,-46.7,-590.0 -> 455.36,-0.03
+QP2@cal 276.0,-46.7,-590.0 -> 455.36,445.03
+QP2@cal 200.0,-46.7,-720.0 -> 1216.64,-0.03
+QP2@cal 276.0,-46.7,-720.0 -> 1216.64,445.03
+QP2@cal 238.0,-46.7,-655.0 -> 836.00,222.50
+QP2@DONE

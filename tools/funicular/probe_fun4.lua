@@ -1,0 +1,26 @@
+-- READ-ONLY probe 4: what either car touches near the top stop (the car's own box swept over the last 24 studs of travel,
+-- both sides of the track). QF4@ lines: car, travel fraction, part path, centre, size, colour.
+local F=workspace.PortoNocciola['15 Funicolare']
+local A,B=F:GetAttribute('Bottom'),F:GetAttribute('Top')
+local d=Vector3.new(B.X-A.X,0,B.Z-A.Z).Unit
+local r=Vector3.new(-d.Z,0,d.X)
+local rot=CFrame.lookAt(Vector3.zero,d).Rotation
+local len=(B-A).Magnitude
+local op=OverlapParams.new() op.FilterType=Enum.RaycastFilterType.Exclude op.FilterDescendantsInstances={F.Cars,workspace.Terrain}
+local seen={}
+for _,car in ipairs(F.Cars:GetChildren()) do
+	local off=car:GetAttribute('Offset')
+	local bcf,bsz=car:GetBoundingBox()
+	local rel=car:GetPivot():ToObjectSpace(bcf)
+	for k=0,24,1 do
+		local f=1-k/len
+		local piv=CFrame.new(A:Lerp(B,f)+r*off)*rot
+		for _,h in ipairs(workspace:GetPartBoundsInBox(piv*rel,bsz-Vector3.new(0.2,0.2,0.2),op)) do
+			local key=car.Name..h:GetFullName()..tostring(h.Position)
+			if not seen[key] and h.Transparency<1 then seen[key]=true
+				warn(string.format('QF4@%s@k%d@%s@%s@c(%.1f,%.1f,%.1f)@s(%.1f,%.1f,%.1f)@col(%d,%d,%d)@%s',car.Name,k,h.ClassName,h:GetFullName(),h.Position.X,h.Position.Y,h.Position.Z,h.Size.X,h.Size.Y,h.Size.Z,h.Color.R*255,h.Color.G*255,h.Color.B*255,h.Material.Name))
+			end
+		end
+	end
+end
+warn('QF4@END')

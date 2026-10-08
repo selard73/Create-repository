@@ -1,0 +1,2 @@
+framed 2.40 wide about (0.0, 0.0, 1.2)
+PREVIEW_DONE

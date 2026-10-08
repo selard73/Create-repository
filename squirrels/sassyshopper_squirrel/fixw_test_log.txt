@@ -1,0 +1,15 @@
+Rule 1 (bags/body z<1.55 Head+Neck->Chest): 0 verts
+Rule 2 (entire head/face/ears Tail1+Tail2->Head): 271 verts
+Rule 3 (actual tail x<-0.72 Head+Neck->Tail2): 0 verts
+Rule 4 (lower tail/hips Tail->Root): 0 verts
+Post-fix tail leaks on head/face: 0
+Bone Root vert count: 3474
+Bone Chest vert count: 4025
+Bone Neck vert count: 736
+Bone Head vert count: 1389
+Bone Tail1 vert count: 792
+Bone Tail2 vert count: 781
+Saved fixed blend file.
+Exported color FBX.
+Exported gray FBX.
+FIX_ALL_DONE

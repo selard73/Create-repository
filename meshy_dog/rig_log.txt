@@ -1,0 +1,4 @@
+bound with automatic weights
+vertices with no weight: 0 / 4752
+exported pup_rigged.fbx
+RIG_DONE
