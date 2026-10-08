@@ -1,0 +1,37 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">PPot</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 read-only: find the pottery shop in Porto Nocciola - its model, every sign text on it, and its window /
+-- display parts, so it can be renamed 'All Things Bella' and dressed with pretty things.
+local PN=workspace.PortoNocciola
+local hits={}
+for _,d in ipairs(PN:GetDescendants()) do
+	if (d:IsA('Model') or d:IsA('Folder')) then
+		local n=d.Name:lower()
+		if n:match('potter') or n:match('ceramic') or n:match('ceramich') or n:match('terracott') or n:match('vasi') or n:match('maiolic') then
+			table.insert(hits,d)
+		end
+	end
+	if (d:IsA('TextLabel') or d:IsA('TextButton')) and d.Text and (d.Text:lower():match('potter') or d.Text:lower():match('ceramic') or d.Text:lower():match('ceramich')) then
+		warn('QPT@text',d:GetFullName(),'=',d.Text)
+	end
+end
+for _,m in ipairs(hits) do
+	local cf,sz
+	if m:IsA('Model') then cf,sz=m:GetBoundingBox() end
+	warn('QPT@model',m:GetFullName(),cf and string.format('centre %.1f,%.1f,%.1f size %.1f,%.1f,%.1f',cf.Position.X,cf.Position.Y,cf.Position.Z,sz.X,sz.Y,sz.Z) or '')
+	local seen={}
+	for _,d in ipairs(m:GetDescendants()) do
+		if d:IsA('TextLabel') then warn('QPT@  label',d:GetFullName(),'=',d.Text) end
+		if d:IsA('BasePart') then
+			local n=d.Name:lower()
+			if (n:match('window') or n:match('glass') or n:match('display') or n:match('shelf') or n:match('sign') or n:match('vase') or n:match('pot')) and not seen[d.Name] then
+				seen[d.Name]=0
+			end
+			if seen[d.Name] then seen[d.Name]+=1 end
+		end
+	end
+	for n,c in pairs(seen) do warn('QPT@  part',n,'x'..c) end
+end
+warn('QPT@DONE',#hits)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

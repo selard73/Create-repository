@@ -1,0 +1,6 @@
+piece [-0.6, 0.25, -1.15, -0.7, 0.6, 1.36] seed [-0.22, -0.96, 0.95]: 321 verts in piece, 321 moved Head+Neck -> Chest
+region [-1.0, 1.0, -2.0, 2.0, -0.1, 0.35] Head+Neck+Chest -> Root: 350 vertices
+head->chest soft falloff z 0.97..1.22: 675 vertices adjusted
+after: region [-0.6, 0.25, -1.15, -0.7, 0.6, 1.36] 321 verts, mean Head+Neck weight 0.000, max 0.00
+after: region [-1.0, 1.0, -2.0, 2.0, -0.1, 0.35] 514 verts, mean Head+Neck+Chest weight 0.000, max 0.00
+FIXW_DONE

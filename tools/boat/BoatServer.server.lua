@@ -1,0 +1,197 @@
+-- BoatServer: the 1001 Squirrels motorboat. "Take the boat" at the jetty (after all 44 squirrels in the forest, the Rue
+-- and the Chateau), one boat per player, at most MAX_BOATS on the water. The driver's client steers it (BoatClient);
+-- this script builds the boat, seats the player, gives them the physics, runs the wake and cleans up.
+-- Getting out (jump) puts the player back on the jetty and the boat goes away.
+local Players = game:GetService("Players")
+local B = script.Parent
+local ev = B:WaitForChild("BoatEvent")
+local River = workspace:WaitForChild("River")
+local preview = River:WaitForChild("BoatPreview")
+local visual = preview:FindFirstChildWhichIsA("MeshPart", true)
+local prompt = preview:FindFirstChild("BoatPrompt", true)
+
+local NEED = 44
+local MAPS = {"forest", "village", "domaine"}      -- fixed: squirrels added on later maps never lock the boat again
+local MAX_BOATS = 6
+local KEEL_Y = -1.45                                -- keel under WaterY -0.9
+local HULL = Vector3.new(3.7, 1.3, 7.4)
+local HULL_Y = KEEL_Y + HULL.Y / 2
+local JETTY_OUT = Vector3.new(161.9, 0.6 + 3, -164.5)
+local SLOTS = {Vector3.new(151.5, 0, -157.5), Vector3.new(151.2, 0, -147.5), Vector3.new(151, 0, -137.5), Vector3.new(151.5, 0, -178), Vector3.new(152.5, 0, -189)}
+local BOX = {xmin = 140, xmax = 176, zmin = -210, zmax = -118}
+local boats = {}                                    -- player -> model
+local ENGINE = {vol0 = 0.22, vol1 = 0.5, pitch0 = 1.5, pitch1 = 2.0, top = 13}   -- idle -> full speed
+
+local function found(p)
+	local n = 0
+	for _, m in ipairs(MAPS) do n += (p:GetAttribute("Found_" .. m) or 0) end
+	return n
+end
+
+local function weld(a, b)
+	local w = Instance.new("WeldConstraint"); w.Part0 = a; w.Part1 = b; w.Parent = a
+end
+
+-- boats (and their drivers while seated) only bump into other boats: the Baseplate is a union whose rough collision
+-- shape bulges out of the channel walls and snagged the hull, so the river's edges are kept by BoatClient instead
+local PhysicsService = game:GetService("PhysicsService")
+local GROUP = "Boats"
+pcall(function() PhysicsService:RegisterCollisionGroup(GROUP) end)
+local function isolate()
+	for _, g in ipairs(PhysicsService:GetRegisteredCollisionGroups()) do
+		if g.name ~= GROUP then PhysicsService:CollisionGroupSetCollidable(GROUP, g.name, false) end
+	end
+end
+isolate(); task.delay(10, isolate)
+local function riderGroup(char, on)
+	if not char then return end
+	for _, d in ipairs(char:GetDescendants()) do
+		if d:IsA("BasePart") then
+			if on then
+				if d:GetAttribute("BoatOldGroup") == nil then d:SetAttribute("BoatOldGroup", d.CollisionGroup) end
+				d.CollisionGroup = GROUP
+			elseif d:GetAttribute("BoatOldGroup") ~= nil then
+				d.CollisionGroup = d:GetAttribute("BoatOldGroup"); d:SetAttribute("BoatOldGroup", nil)
+			end
+		end
+	end
+end
+
+local function clear(p, putBack)
+	local m = boats[p]; boats[p] = nil
+	if m then m:Destroy() end
+	riderGroup(p.Character, false)
+	if putBack then
+		local char = p.Character
+		local hum = char and char:FindFirstChildOfClass("Humanoid")
+		if hum and hum.Health > 0 then
+			char:PivotTo(CFrame.lookAt(JETTY_OUT, JETTY_OUT + Vector3.new(1, 0, 0)))
+		end
+	end
+end
+
+local function build(p, pos)
+	local m = Instance.new("Model"); m.Name = "Boat_" .. p.UserId
+	local hull = Instance.new("Part"); hull.Name = "Hull"; hull.Size = HULL; hull.Transparency = 1
+	hull.CanCollide = true; hull.CanTouch = false; hull.CollisionGroup = GROUP; hull.TopSurface = Enum.SurfaceType.Smooth; hull.BottomSurface = Enum.SurfaceType.Smooth
+	hull.CustomPhysicalProperties = PhysicalProperties.new(0.4, 0.3, 0.2, 1, 1)
+	hull.CFrame = CFrame.new(pos.X, HULL_Y, pos.Z)   -- identity = bow downstream (-z), like the moored boat
+	hull.Parent = m; m.PrimaryPart = hull
+	local vis = visual:Clone(); vis.Name = "Visual"; vis.Anchored = false; vis.CanCollide = false; vis.CanQuery = false; vis.CanTouch = false; vis.Massless = true
+	for _, c in ipairs(vis:GetChildren()) do c:Destroy() end
+	vis.CFrame = hull.CFrame * CFrame.new(0, (KEEL_Y + vis.Size.Y / 2) - HULL_Y, 0); vis.Parent = m
+	weld(hull, vis)
+	-- the bow ring and stern cleat, copied from the moored boat
+	local fit = preview:FindFirstChild("Fittings")
+	if fit then
+		for _, f in ipairs(fit:GetChildren()) do
+			if f:IsA("BasePart") then
+				local c = f:Clone(); c.Anchored = false; c.Massless = true
+				c.CFrame = vis.CFrame * visual.CFrame:ToObjectSpace(f.CFrame); c.Parent = m
+				weld(hull, c)
+			end
+		end
+	end
+	local seat = Instance.new("VehicleSeat"); seat.Name = "BoatSeat"; seat.Size = Vector3.new(2.2, 0.3, 1.2); seat.Transparency = 1
+	seat.CanCollide = false; seat.Massless = true; seat.MaxSpeed = 0; seat.Torque = 0; seat.TurnSpeed = 0; seat.HeadsUpDisplay = false
+	seat.CFrame = hull.CFrame * CFrame.new(0, (KEEL_Y + 1.25) - HULL_Y, 0); seat.Parent = m
+	weld(hull, seat)
+	local a = Instance.new("Attachment"); a.Name = "Drive"; a.Parent = hull
+	local lv = Instance.new("LinearVelocity"); lv.Name = "Move"; lv.Attachment0 = a; lv.RelativeTo = Enum.ActuatorRelativeTo.World
+	lv.VelocityConstraintMode = Enum.VelocityConstraintMode.Vector; lv.MaxForce = 4e5; lv.VectorVelocity = Vector3.zero; lv.Parent = hull
+	local ao = Instance.new("AlignOrientation"); ao.Name = "Level"; ao.Mode = Enum.OrientationAlignmentMode.OneAttachment; ao.Attachment0 = a
+	ao.MaxTorque = 4e6; ao.Responsiveness = 18; ao.CFrame = CFrame.new(); ao.Parent = hull
+	-- wake: soft white puffs off the stern, rate set from the speed below
+	local stern = Instance.new("Attachment"); stern.Name = "Wake"; stern.Position = Vector3.new(0, (-0.8) - HULL_Y, 4.1); stern.Parent = hull
+	for i, side in ipairs({-1, 1}) do
+		local pe = Instance.new("ParticleEmitter"); pe.Name = "Wake" .. i
+		pe.Texture = "rbxasset://textures/particles/smoke_main.dds"; pe.Color = ColorSequence.new(Color3.fromRGB(245, 250, 252))
+		pe.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.35), NumberSequenceKeypoint.new(1, 1)})
+		pe.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.5), NumberSequenceKeypoint.new(1, 2.2)})
+		pe.Lifetime = NumberRange.new(1.0, 1.5); pe.Speed = NumberRange.new(1.5, 2.5); pe.SpreadAngle = Vector2.new(25, 5)
+		pe.EmissionDirection = Enum.NormalId.Back; pe.Drag = 2; pe.Rate = 0; pe.LightInfluence = 0.6
+		pe.Acceleration = Vector3.new(side * 1.2, 0, 0); pe.Parent = stern
+	end
+	-- engine: Shannon's pick (15067494918, a big diesel), played faster so it sounds like a small outboard;
+	-- volume and pitch follow the speed in the loop below. On the hull, so nearby players hear it too.
+	local snd = Instance.new("Sound"); snd.Name = "Engine"; snd.SoundId = "rbxassetid://15067494918"; snd.Looped = true
+	snd.Volume = ENGINE.vol0; snd.PlaybackSpeed = ENGINE.pitch0
+	snd.RollOffMode = Enum.RollOffMode.InverseTapered; snd.RollOffMinDistance = 8; snd.RollOffMaxDistance = 80
+	snd.Parent = hull
+	snd:Play()
+	m:SetAttribute("Owner", p.UserId)
+	m.Parent = B
+	return m, seat, hull
+end
+
+local function take(p)
+	if boats[p] then return end
+	local char = p.Character
+	local hum = char and char:FindFirstChildOfClass("Humanoid")
+	local hrp = char and char:FindFirstChild("HumanoidRootPart")
+	if not (hum and hrp) or hum.Health <= 0 then return end
+	local n = found(p)
+	if n < NEED then
+		ev:FireClient(p, "no", string.format("Find all %d squirrels to take the boat out. You have found %d.", NEED, n))
+		return
+	end
+	if (hrp.Position - visual.Position).Magnitude > 16 then return end
+	local count = 0
+	for _ in pairs(boats) do count += 1 end
+	if count >= MAX_BOATS then ev:FireClient(p, "no", "All the boats are out on the river. Try again in a moment."); return end
+	local slot
+	for _, s in ipairs(SLOTS) do
+		local free = true
+		for _, m in pairs(boats) do
+			if m.PrimaryPart and (m.PrimaryPart.Position * Vector3.new(1, 0, 1) - s).Magnitude < 7.5 then free = false end
+		end
+		if free then slot = s break end
+	end
+	if not slot then ev:FireClient(p, "no", "The water by the jetty is busy. Try again in a moment."); return end
+	local m, seat, hull = build(p, slot)
+	boats[p] = m
+	hum.Sit = false
+	-- move the player into the boat first: seating them from the jetty dragged the boat onto the jetty
+	char:PivotTo(seat.CFrame * CFrame.new(0, 2.6, 0))
+	riderGroup(char, true)
+	pcall(function() hull:SetNetworkOwner(p) end)
+	seat:Sit(hum)
+	ev:FireClient(p, "go")
+	seat:GetPropertyChangedSignal("Occupant"):Connect(function()
+		if seat.Occupant == nil and boats[p] == m then task.wait(0.15); if boats[p] == m then clear(p, true) end end
+	end)
+	hum.Died:Connect(function() if boats[p] == m then clear(p, false) end end)
+end
+
+if prompt then prompt.Triggered:Connect(take) else warn("BoatServer: no BoatPrompt on River.BoatPreview") end
+Players.PlayerRemoving:Connect(function(p) clear(p, false) end)
+Players.PlayerAdded:Connect(function(p) p.CharacterAdded:Connect(function() if boats[p] then clear(p, false) end end) end)
+for _, p in ipairs(Players:GetPlayers()) do p.CharacterAdded:Connect(function() if boats[p] then clear(p, false) end end) end
+
+-- watchdog + wake, 5 times a second
+while true do
+	task.wait(0.2)
+	for p, m in pairs(boats) do
+		local hull = m.PrimaryPart
+		local seat = m:FindFirstChild("BoatSeat")
+		if not (hull and seat) or not seat.Occupant then
+			if m:GetAttribute("Empty") then clear(p, true) else m:SetAttribute("Empty", true) end
+		else
+			m:SetAttribute("Empty", nil)
+			local q = hull.Position
+			if q.X < BOX.xmin or q.X > BOX.xmax or q.Z < BOX.zmin or q.Z > BOX.zmax or q.Y < -6 or q.Y > 6 then
+				clear(p, true)
+			else
+				local v = hull.AssemblyLinearVelocity * Vector3.new(1, 0, 1)
+				local rate = math.clamp((v.Magnitude - 1.5) * 3, 0, 36)
+				for _, pe in ipairs(hull.Wake:GetChildren()) do pe.Rate = rate end
+				local snd = hull:FindFirstChild("Engine")
+				if snd then
+					local f = math.clamp(v.Magnitude / ENGINE.top, 0, 1)
+					snd.Volume += ((ENGINE.vol0 + (ENGINE.vol1 - ENGINE.vol0) * f) - snd.Volume) * 0.5
+					snd.PlaybackSpeed += ((ENGINE.pitch0 + (ENGINE.pitch1 - ENGINE.pitch0) * f) - snd.PlaybackSpeed) * 0.5
+				end
+			end
+		end
+	end
+end

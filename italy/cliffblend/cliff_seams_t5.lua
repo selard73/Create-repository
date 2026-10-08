@@ -1,0 +1,59 @@
+-- ct5 Oct 4 2026 (cliff blend, step 5): bury the two vertical seams where the striped cliff piece meets the smooth terrain
+-- limestone. Over the last ~22 studs of each end of the piece, ragged limestone terrain bulges out in front of the piece's
+-- face (up to ~7 studs thick at the very end, thinning to nothing inward, uneven with height), so the stripes disappear
+-- behind rock instead of stopping on a straight line. East end: kept above the harbour->station path (y > -40, z > -580).
+-- Water cells are never touched. Backup: ServerStorage.CliffBlendBackup5.
+local T=workspace.Terrain
+local SS=game:GetService('ServerStorage')
+local LIME=Enum.Material.Limestone local WATER=Enum.Material.Water
+local rock=workspace.SouthGorge.Rock
+local parts={} for _,p in ipairs(rock:GetChildren()) do if p:IsA('BasePart') and p.Name:find('^SouthCliff_') then table.insert(parts,p) end end
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Include rp.FilterDescendantsInstances=parts
+local function n(a) return math.sin(a*0.37+1.1)*0.5+math.sin(a*0.91+0.3)*0.3+math.sin(a*1.73)*0.2 end
+local bk=SS:FindFirstChild('CliffBlendBackup5') if not bk then bk=Instance.new('Folder') bk.Name='CliffBlendBackup5' bk.Parent=SS end
+local added=0
+local function seam(tag,x0,x1,inward,yMin,zMax)
+	local r=Region3.new(Vector3.new(x0,-56,-610),Vector3.new(x1,48,-528)):ExpandToGrid(4)
+	local mn=r.CFrame.Position-r.Size/2 local mx=r.CFrame.Position+r.Size/2
+	if not bk:FindFirstChild(tag) then
+		local tr=T:CopyRegion(Region3int16.new(Vector3int16.new(mn.X/4,mn.Y/4,mn.Z/4),Vector3int16.new(mx.X/4-1,mx.Y/4-1,mx.Z/4-1)))
+		tr.Name=tag tr:SetAttribute('Corner',mn) tr.Parent=bk
+	end
+	local mat,occ=T:ReadVoxels(r,4)
+	for i=1,mat.Size.X do
+		local x=mn.X+(i-0.5)*4
+		local dIn=inward(x)
+		if dIn>=-4 and dIn<=22 then
+			for j=1,mat.Size.Y do
+				local y=mn.Y+(j-0.5)*4
+				if y>=yMin then
+					-- where is the piece's face at this x and height? (ray from the harbour side, northward)
+					local h=workspace:Raycast(Vector3.new(x,y,-640),Vector3.new(0,0,140),rp)
+					if h then
+						local thick=7*math.clamp(1-math.max(dIn,0)/22,0,1)^1.2*(0.65+0.35*(n(y*0.6+x*0.2)+1)/2)
+						if thick>1 then
+							local zFront=h.Position.Z-thick
+							for k=1,mat.Size.Z do
+								local z=mn.Z+(k-0.5)*4
+								if z>=zFront and z<=h.Position.Z+4 and z<=zMax and mat[i][j][k]~=WATER then
+									local o=math.clamp((z-zFront)/4+0.5,0,1)
+									if o>occ[i][j][k] then occ[i][j][k]=o mat[i][j][k]=LIME added+=1 end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+	T:WriteVoxels(r,4,mat,occ)
+end
+-- west end of the piece is at x ~40.5 (inward = +x); east end at x ~330.3 (inward = -x)
+seam('West',28,68,function(x) return x-40.5 end,-50,-520)
+seam('East',300,340,function(x) return 330.3-x end,-40,-580)
+game:GetService('ChangeHistoryService'):SetWaypoint('Cliff blend seams t5')
+warn('QB@T5 seam cells',added)
+local cam=workspace.CurrentCamera
+local t=Vector3.new(320,0,-570)
+cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(Vector3.new(330,40,-760),t)

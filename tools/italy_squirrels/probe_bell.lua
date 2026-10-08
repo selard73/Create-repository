@@ -1,0 +1,17 @@
+-- Oct 5 2026 read-only: sounds that could be a bell, and the harbour bell's surroundings
+local seen={}
+for _,s in ipairs(game:GetDescendants()) do
+	if s:IsA('Sound') then
+		local n=(s.Name..' '..(s.Parent and s.Parent.Name or '')):lower()
+		if n:find('bell') or n:find('ding') or n:find('chime') or n:find('ring') or n:find('church') then
+			warn('QB@SND',s:GetFullName(),s.SoundId,s.Volume,s.PlaybackSpeed)
+		end
+		seen[s.SoundId]=(seen[s.SoundId] or 0)+1
+	end
+end
+local cap=workspace.PortoNocciola['02 Pastel waterfront']['Capitaneria del Porto']
+for _,d in ipairs(cap:GetChildren()) do
+	if d.Name:find('Bell') then warn('QB@PART',d.Name,d.ClassName,d.Anchored,d.CFrame,d.Size, #d:GetChildren()) for _,c in ipairs(d:GetChildren()) do warn('QB@  child',c.Name,c.ClassName) end end
+end
+for _,d in ipairs(cap:GetDescendants()) do if d:IsA('Weld') or d:IsA('WeldConstraint') or d:IsA('ProximityPrompt') or d:IsA('ClickDetector') then warn('QB@J',d:GetFullName()) end end
+warn('QB@DONE')

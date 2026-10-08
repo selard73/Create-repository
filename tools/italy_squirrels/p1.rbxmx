@@ -1,0 +1,29 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">ProbeP1</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+local root=workspace:FindFirstChild('PortoNocciola')
+local seen={}
+local function rep(tag,inst)
+	if seen[inst] then return end seen[inst]=true
+	local cf,sz
+	if inst:IsA('Model') then cf,sz=inst:GetBoundingBox() else cf,sz=inst.CFrame,inst.Size end
+	warn(string.format('QP@%s@%s@%s@c(%.1f,%.1f,%.1f)@s(%.1f,%.1f,%.1f)@top %.2f',tag,inst:GetFullName(),inst.ClassName,cf.X,cf.Y,cf.Z,sz.X,sz.Y,sz.Z,cf.Y+sz.Y/2))
+end
+for _,d in ipairs(workspace:GetDescendants()) do
+	local n=d.Name:lower()
+	if (d:IsA('Model') or d:IsA('BasePart')) then
+		local ok=false
+		local p=d.Parent
+		local inPorto=root and d:IsDescendantOf(root)
+		if n:find('barrel') or n:find('botte') or n:find('cask') then
+			if inPorto or (d:IsA('BasePart') and d.Position.Z<-540) then
+				if not (p and (p.Name:lower():find('barrel') or p.Name:lower():find('botte'))) then rep('BARREL',d) end
+			end
+		elseif n:find('boat') or n:find('barca') or n:find('stella') or n:find('hull') or n:find('gozzo') or n:find('dinghy') then
+			if inPorto then
+				if not (p and (p.Name:lower():find('boat') or p.Name:lower():find('barca'))) then rep('BOAT',d) end
+			end
+		end
+	end
+end
+warn('QP@END')
+
+end]]></ProtectedString></Properties></Item></Item></roblox>

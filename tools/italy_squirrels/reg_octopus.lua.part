@@ -1,0 +1,11 @@
+-- registry: Lello the Octopus Catcher (bio D, Shannon's pick), after Rocco
+local reg=workspace.SquirrelScripts.SquirrelRegistry
+local rs=reg.Source
+local a,b=rs:find('Not one of them has listened."},\n',1,true)
+if not a or rs:find('octopus_squirrel',1,true) then warn('QL@REG_SKIP anchor/dup',a) return end
+local add='\t\t{id = "octopus_squirrel",    map = "porto", name = "Lello the Octopus Catcher",\n\t\t bio = "Keeps losing his bait to the octopus. Last week he lost the bucket too."},\n'
+reg.Source=rs:sub(1,b)..add..rs:sub(b+1)
+game:GetService('ChangeHistoryService'):SetWaypoint('Lello registry')
+local n=0 for _ in reg.Source:gmatch('map = "porto"') do n+=1 end
+local t=0 for _ in reg.Source:gmatch('{id = ') do t+=1 end
+warn('QL@REG porto entries',n,'total',t,'lello',reg.Source:find('Lello the Octopus Catcher',1,true)~=nil)

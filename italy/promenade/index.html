@@ -1,0 +1,145 @@
+<title>Porto Promenade +8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Nunito+Sans:wght@400;600;700&display=swap">
+<style>
+/* Layout: one reading column; the two top-down shots run full column width, tables below */
+:root {
+  --bg: #f3f6f6; --panel: #ffffff; --fg: #1d2a2e; --muted: #5a6b70; --line: #d6e0e1;
+  --sea: #1f8a86; --bad: #c4473b; --good: #2f8a4c;
+  --display: 'Fraunces', Georgia, serif; --body: 'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #12191b; --panel: #1a2427; --fg: #e4ecec; --muted: #9aaeb1; --line: #2c3a3e;
+  --sea: #4cc2bb; --bad: #ff8a7d; --good: #7ad79a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #12191b; --panel: #1a2427; --fg: #e4ecec; --muted: #9aaeb1; --line: #2c3a3e;
+  --sea: #4cc2bb; --bad: #ff8a7d; --good: #7ad79a; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font: 16px/1.55 var(--body); }
+.shots { display: grid; gap: 18px; }
+main { max-width: 980px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 56px; display: grid; gap: 28px; }
+h1 { font: 600 clamp(1.7rem, 4vw, 2.4rem)/1.15 var(--display); margin: 0; text-wrap: balance; }
+h2 { font: 600 1.25rem/1.3 var(--display); margin: 0 0 10px; text-wrap: balance; }
+p { margin: 0; max-width: 68ch; }
+.lede { color: var(--muted); }
+figure { margin: 0; display: grid; gap: 8px; }
+figure img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+figcaption { color: var(--muted); font-size: .92rem; }
+.tag { font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: .78rem; }
+.tag.now { color: var(--bad); } .tag.plan { color: var(--good); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 480px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: .8rem; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+td.n { white-space: nowrap; font-weight: 700; }
+.bad { color: var(--bad); } .good { color: var(--good); }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px 18px 16px; display: grid; gap: 10px; min-width: 0; }
+ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.ask { border-color: var(--sea); }
+</style>
+<main>
+  <header style="display:grid;gap:10px">
+    <h1>Harbour promenade, 10 studs wider</h1>
+    <p class="lede">Published as v1080. Round 2 fixes below are in Studio only, not published yet. Straight-down shots: shops at the top, sea at the bottom, north to the right. Numbers are walking-lane widths in studs.</p>
+  </header>
+
+  <section class="ask">
+    <h2>Round 3 (in Studio, not published)</h2>
+    <ul>
+      <li><b>Lemon tree:</b> at the mouth of the alley between Bottega and ALL THINGS BELLA, not back inside it.</li>
+      <li><b>Bottom of the rock:</b> the rock now goes down into the water, so the dark seam where it sat on the sea is gone.</li>
+      <li><b>The circle on the beach:</b> it was a tiny decorative tide pool (a flat "water" disk ringed by 12 stones) left from the original build. It's removed and kept in storage.</li>
+    </ul>
+  </section>
+
+  <div class="shots">
+    <figure><img src="r3_tree.jpg" alt="Lemon tree at the mouth of the alley between Bottega and ALL THINGS BELLA"><figcaption>The tree at the start of the alley.</figcaption></figure>
+    <figure><img src="r3_rock.jpg" alt="The rock under the stair meeting the water beside the Crab Catcher"><figcaption>The rock now meets the water.</figcaption></figure>
+    <figure><img src="r3_beach.jpg" alt="Beach by the path wall with the little pool removed"><figcaption>The beach without the little pool.</figcaption></figure>
+  </div>
+
+  <section class="ask">
+    <h2>Round 2: your four new flags (in Studio, not published)</h2>
+    <ul>
+      <li><b>Stepped rock edge by the tide pools:</b> the upper flight of the stone stair to the lighthouse path was built from slabs that stop in mid-air, so from the beach you saw a stepped underside with a dark gap. Rock now fills in under the stair, so the stair sits on a rocky outcrop. It can be made smaller or given a grassy top if it feels too bulky.</li>
+      <li><b>By the step (Tourist's wall):</b> a small tide pool was half buried under the path wall. The whole pool (rim stones and water) moved 5&frac12; studs out onto the open sand.</li>
+      <li><b>Lemon tree:</b> moved 3 studs left, to the corner by the alley, clear of the ALL THINGS BELLA window.</li>
+      <li><b>Lamp:</b> removed from in front of ALL THINGS BELLA (kept in storage in case you want it back).</li>
+    </ul>
+  </section>
+
+  <div class="shots">
+    <figure><img src="r2_stair_before.jpg" alt="Stone stair from the beach before: stepped underside over a hollow"><figcaption>Stair from the beach, before: the stepped underside and the dark gap (left).</figcaption></figure>
+    <figure><img src="r2_stair_after.jpg" alt="Stone stair from the beach after: rock outcrop under the stair"><figcaption>After: the stair sits on rock.</figcaption></figure>
+    <figure><img src="r2_stair_crab.jpg" alt="The new rock beside the Crab Catcher's tide pools"><figcaption>Beside the Crab Catcher: the new rock next to his pools.</figcaption></figure>
+    <figure><img src="r2_pool.jpg" alt="The small tide pool now complete on open sand beside the path wall"><figcaption>The tide pool, now whole and out on the sand.</figcaption></figure>
+    <figure><img src="r2_bella.jpg" alt="ALL THINGS BELLA front with the lemon tree at the alley corner and no lamp"><figcaption>ALL THINGS BELLA: tree at the alley corner, no lamp.</figcaption></figure>
+  </div>
+
+  <figure>
+    <span class="tag now">Before</span>
+    <img src="now.jpg" alt="Top-down view of the promenade before widening, with lanes of 4 and 7 studs">
+  </figure>
+
+  <figure>
+    <span class="tag plan">After (real Studio shot)</span>
+    <img src="after.jpg" alt="Top-down view of the promenade after widening by 10 studs, with lanes of 9 to 14 studs, a sandy strip along the wall foot, and grass and beach at the two ends">
+    <figcaption>The yellow dashes show where the edge used to be. The sandy strip along the foot of the wall is the one you picked; it stops beside the piers and the moored boats.</figcaption>
+  </figure>
+
+  <section>
+    <h2>Walking lanes</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Where</th><th>Before</th><th>After</th></tr></thead>
+      <tbody>
+        <tr><td>In front of the fish stall (pier landing)</td><td class="n bad">4</td><td class="n good">9</td></tr>
+        <tr><td>Behind the fish stall, along ALL THINGS BELLA</td><td class="n bad">7</td><td class="n good">12</td></tr>
+        <tr><td>Quay edge to the bench by Bottega</td><td class="n bad">7</td><td class="n good">12</td></tr>
+        <tr><td>Bench to Bottega del Pescatore</td><td class="n good">8</td><td class="n good">14</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <div class="shots">
+    <figure><img src="walk.jpg" alt="Eye-level view walking south along the wider promenade past the gelato tables"><figcaption>Walking south from the Capitaneria: the gelato tables on the right, lots of room to the edge.</figcaption></figure>
+    <figure><img src="sea.jpg" alt="View from the water of the new quay wall with a sandy strip at its foot"><figcaption>From the water: the stone wall stands on the seabed with filled ground behind it, and a thin sandy foot runs along the bottom.</figcaption></figure>
+    <figure><img src="gangway.jpg" alt="Molo dei Pescatori with its shorter gangway and the Stella Marina beside it"><figcaption>Molo dei Pescatori at full length again, with its original 14-stud gangway. The Stella Marina (with Gino) moved out with the pier and is still tied to her post.</figcaption></figure>
+    <figure><img src="aerial.jpg" alt="Aerial view of the harbour from the north with the wider promenade"><figcaption>From above the arrival grass. The north end of the quay now sits in a grassy bank, like before.</figcaption></figure>
+    <figure><img src="south.jpg" alt="South end of the quay meeting the lifeguard beach"><figcaption>South end: the beach sand now runs around the end of the quay, next to La Limonaia.</figcaption></figure>
+  </div>
+
+  <section>
+    <h2>Your five flags, fixed</h2>
+    <ul>
+      <li><b>North end edge:</b> the old foundation blocks are back under the old paving line, so the end is one solid stone face with a straight top edge.</li>
+      <li><b>Crates:</b> back in the alleyway beside the Gelateria. They were part of the fish market model, so they had slid out with the stall.</li>
+      <li><b>Fish:</b> each fish remembers a fixed resting spot, which was still the old one. All 12 now point inside the moved tank, and they sit exactly on those spots. The fish caught in the drying nets had the same problem and are fixed too.</li>
+      <li><b>South corner:</b> the sand shelf over the water is gone. The quay corner stands in the water and the beach slopes in beside it.</li>
+      <li><b>South face:</b> solid and closed down to the sand.</li>
+      <li><b>Also fixed:</b> the crab game's sell spot at Beppe's crate now moves with Beppe.</li>
+    </ul>
+  </section>
+
+  <div class="shots">
+    <figure><img src="fix_north.jpg" alt="North end of the quay from the arrival grass: one solid stone face"><figcaption>North end from the arrival grass.</figcaption></figure>
+    <figure><img src="fix_southcorner.jpg" alt="South-west corner of the quay standing in the water with the beach beside it"><figcaption>South corner from the water.</figcaption></figure>
+    <figure><img src="fix_southface.jpg" alt="South face of the quay from the lifeguard beach"><figcaption>South face from the lifeguard beach.</figcaption></figure>
+    <figure><img src="fix_alley.jpg" alt="Fish stall with the crates back in the alley by the Gelateria"><figcaption>Crates back in the alley (behind the gelato table).</figcaption></figure>
+  </div>
+
+  <section>
+    <h2>What changed</h2>
+    <ul>
+      <li><b>10 studs out:</b> the whole curved quay wall, its paving and foundations, the bollards, the two edge lanterns, the north bench and both net racks.</li>
+      <li><b>Piers and boats, 10 studs out (your flag):</b> both piers at full length with their original 14-stud gangways, and all four boats with their ropes: the Rosina (Octopus Catcher), the Stella Marina (Gino), the Azzurra (Boat Captain) and La Limonaia. The buoys stayed.</li>
+      <li><b>5 studs out:</b> the fish stall with the Fish Market Squirrel on Beppe's crate, two middle lanterns and the bench by Bottega.</li>
+            <li><b>Ground:</b> solid ground under the new strip, the sandy foot along the wall, a grass bank at the north corner and beach sand around the south end.</li>
+      <li><b>Untouched:</b> shop fronts, gelato tables, lemon trees, the Capitaneria and bell, the Net Mender, the Boat Painter.</li>
+      <li><b>Safety:</b> everything that moved has a backup in ServerStorage (PromenadeBackup, including the terrain), and one script puts it all back if needed. The pre-publish check passes.</li>
+    </ul>
+  </section>
+
+  <section class="ask">
+    <h2>Your call</h2>
+    <p>Have a look at the round 2 fixes. Say "publish" when they're right, or tell me what to change (for example a smaller rock).</p>
+  </section>
+</main>

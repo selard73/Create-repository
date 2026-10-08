@@ -1,0 +1,5 @@
+BEFORE: zone z >= 1.65: 915 verts, MIXED 0 (mean body 0.00), BODY 0; fade band 1.45-1.65: 1 partial verts
+note: 15 fully body-bound verts behind the face near the neck; cells (0.00,-0.25,1.50)x5, (-0.25,-0.25,1.50)x4, (0.25,-0.25,1.50)x3, (-0.50,-0.50,1.25)x1, (-0.25,-0.25,1.25)x1, (0.25,-0.50,1.25)x1
+faded body weight back to Head on 56 vertices
+AFTER: zone z >= 1.65: 915 verts, MIXED 0 (mean body 0.00), BODY 0; fade band 1.45-1.65: 0 partial verts
+CROWN_FIX_DONE

@@ -1,0 +1,8 @@
+Hips: loc (0.0, 0.932, -0.484) rot(xyz deg) (33.7, -0.0, 0.0)
+Chest: loc (0.0, 0.0, 0.0) rot(xyz deg) (-13.4, -0.0, 0.0)
+Neck: loc (0.0, 0.0, 0.0) rot(xyz deg) (-4.7, -0.0, 0.0)
+Head: loc (0.0, 0.0, -0.0) rot(xyz deg) (-5.7, -0.0, 0.0)
+HindLeg.L: loc (0.0, -0.0, -0.0) rot(xyz deg) (5.7, 0.4, -7.9)
+FrontLeg.L: loc (0.0, -0.0, -0.0) rot(xyz deg) (-19.6, 0.1, 0.7)
+Tail1: loc (0.0, -0.0, 0.0) rot(xyz deg) (62.5, -8.3, 13.6)
+STAND_DONE

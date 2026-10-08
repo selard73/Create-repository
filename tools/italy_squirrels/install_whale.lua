@@ -1,0 +1,312 @@
+-- Oct 7 2026: the Porto Nocciola whale. First run: expects the Import 3D result (Model 'whale_color' with MeshPart 'Whale'
+-- + bones) somewhere under workspace. Later runs (patch mode): finds workspace.PortoWhale and only updates the settings + script.
+-- Tagged output: QW@ lines.
+local LENGTH   = 60          -- studs nose to flukes
+local WATER_Y  = -52.9         -- sea surface
+local ROUTE    = "200,-840;90,-940;40,-1110;210,-1215;340,-1165;362,-1102;215,-985"         -- "x,z;x,z;..." closed loop, from the survey
+local BLOW_AT  = "1,6"       -- waypoint numbers where it pauses to blow
+local SPEED    = 7           -- studs/s
+local BLOW_DUR = 12        -- seconds per blow pause
+local SOUND_ID = "rbxassetid://9114454664"      -- her pick (rbxassetid://...), "" = no sound yet
+local BED_Y    = -77           -- nil, or the sea bed: the belly stays above it
+local SRC = [==[
+-- WhaleClient (Script, RunContext Client, parented in workspace.PortoWhale): Porto Nocciola's whale.
+-- Swims a closed route out at sea, pauses at its blow stations to spout, then dives on and surfaces again.
+-- Everything is computed from the server clock, so every player sees the same whale in the same place.
+local RunService = game:GetService("RunService")
+local model = script.Parent
+local mesh = model:FindFirstChildWhichIsA("MeshPart", true)
+if not mesh then warn("Whale: no mesh") return end
+local bones = {}
+for _, b in ipairs(mesh:GetDescendants()) do if b:IsA("Bone") then bones[b.Name] = b end end
+local blowAtt = mesh:FindFirstChild("Blowhole")
+local spout = blowAtt and blowAtt:FindFirstChild("Spout")
+local blowSound = blowAtt and blowAtt:FindFirstChild("Blow")
+local function num(name, default) local v = model:GetAttribute(name) return typeof(v) == "number" and v or default end
+
+-- object-space axes measured by the installer (which way the nose and the back point inside the mesh)
+local fwdObj = model:GetAttribute("FwdObj") or Vector3.new(0, 0, -1)
+local upObj = model:GetAttribute("UpObj") or Vector3.new(0, 1, 0)
+local backObj = -fwdObj
+local rightObj = upObj:Cross(backObj)
+local R_inv = CFrame.fromMatrix(Vector3.zero, rightObj, upObj, backObj):Inverse()
+local function along(v) return math.abs(v.X) * mesh.Size.X + math.abs(v.Y) * mesh.Size.Y + math.abs(v.Z) * mesh.Size.Z end
+local L, H = along(fwdObj), along(upObj)
+
+local WATER_Y = num("WaterY", -52.9)
+local SPEED = num("Speed", 7)          -- studs/s while cruising
+local BLOW = num("BlowDur", 12)        -- seconds paused at a blow station
+local RAMP = num("Ramp", 8)            -- seconds to slow down / speed up at a station
+local DIVE = num("DiveDepth", 0.45)    -- fraction of the body height it sinks after the blow
+local SHOW = num("CruiseShow", 0.2)    -- fraction of the body height above the water while cruising
+local STROKE = num("Stroke", 0.8)      -- one tail stroke per this fraction of the body length
+local BED_Y = model:GetAttribute("BedY")  -- optional floor: the belly never goes below this
+
+-- ---------- route: closed Catmull-Rom spline through the waypoints ----------
+local route = {}
+for x, z in string.gmatch(model:GetAttribute("Route") or "", "([-%d%.]+),([-%d%.]+)") do
+	table.insert(route, Vector3.new(tonumber(x), 0, tonumber(z)))
+end
+if #route < 3 then warn("Whale: Route needs 3+ points") return end
+local blowIdx = {}
+for i in string.gmatch(model:GetAttribute("BlowAt") or "1", "%d+") do blowIdx[tonumber(i)] = true end
+local n = #route
+local function P(i) return route[((i - 1) % n) + 1] end
+local function cr(i, u)
+	local p0, p1, p2, p3 = P(i - 1), P(i), P(i + 1), P(i + 2)
+	local u2, u3 = u * u, u * u * u
+	return 0.5 * ((2 * p1) + (-p0 + p2) * u + (2 * p0 - 5 * p1 + 4 * p2 - p3) * u2 + (-p0 + 3 * p1 - 3 * p2 + p3) * u3)
+end
+local SAMP = 24
+local pts, dist = {}, {}      -- sampled points and their arc length
+local stationS = {}            -- arc length of each blow station
+local acc = 0
+for i = 1, n do
+	if blowIdx[i] then table.insert(stationS, acc) end
+	for k = 0, SAMP - 1 do
+		local p = cr(i, k / SAMP)
+		if #pts > 0 then acc += (p - pts[#pts]).Magnitude end
+		table.insert(pts, p) table.insert(dist, acc)
+	end
+end
+local p0 = pts[1]
+acc += (p0 - pts[#pts]).Magnitude
+table.insert(pts, p0) table.insert(dist, acc)
+local LEN = acc
+if #stationS == 0 then stationS = {0} end
+table.sort(stationS)
+
+local function posAt(s)
+	s = s % LEN
+	local lo, hi = 1, #dist
+	while hi - lo > 1 do
+		local mid = (lo + hi) // 2
+		if dist[mid] <= s then lo = mid else hi = mid end
+	end
+	local d0, d1 = dist[lo], dist[hi]
+	local t = d1 > d0 and (s - d0) / (d1 - d0) or 0
+	local p = pts[lo]:Lerp(pts[hi], t)
+	local dir = (pts[hi] - pts[lo])
+	if dir.Magnitude < 1e-3 then dir = pts[math.min(hi + 1, #pts)] - pts[lo] end
+	return p, dir.Unit
+end
+
+-- ---------- schedule: blow at station 1, swim to station 2, blow, ... swim back round to station 1 ----------
+local segs = {}
+local T = 0
+for k, s in ipairs(stationS) do
+	table.insert(segs, {kind = "blow", t0 = T, t1 = T + BLOW, s = s}) T += BLOW
+	local s2 = stationS[k + 1] or (stationS[1] + LEN)
+	local dur = (s2 - s) / SPEED
+	if dur > 0.01 then table.insert(segs, {kind = "swim", t0 = T, t1 = T + dur, s0 = s, s1 = s2}) T += dur end
+end
+
+local function trapezoid(u, r)      -- distance fraction at time fraction u, ramps of fraction r at both ends
+	if r <= 0 then return u end
+	local vp = 1 / (1 - r)
+	if u < r then return vp * u * u / (2 * r) end
+	if u > 1 - r then return 1 - vp * (1 - u) * (1 - u) / (2 * r) end
+	return vp * (r / 2 + (u - r))
+end
+local function smooth(x) x = math.clamp(x, 0, 1) return x * x * (3 - 2 * x) end
+local function bump(x) return math.sin(math.pi * math.clamp(x, 0, 1)) end
+
+-- ---------- bones: each one's pitch / flap axis in its own frame, measured at rest ----------
+local axis = {}
+for name, b in pairs(bones) do
+	local w = b.WorldCFrame
+	axis[name] = {
+		pitch = w:VectorToObjectSpace(mesh.CFrame:VectorToWorldSpace(rightObj)),
+		flap = w:VectorToObjectSpace(mesh.CFrame:VectorToWorldSpace(fwdObj)),
+	}
+end
+local SPINE = {{"Head", -3, 0}, {"Spine1", 4, 0.6}, {"Spine2", 7, 1.2}, {"Tail", 11, 1.8}, {"Flukes", 16, 2.4}}
+local LIFT = {Spine1 = 0.15, Spine2 = 0.35, Tail = 0.65, Flukes = 1.0}
+local SIGN = num("TailSign", 1)   -- flip if the tail lifts the wrong way in Studio
+
+local phi, lastS, lastBlowKey = 0, nil, nil
+local function step(dt)
+	local now = workspace:GetServerTimeNow()
+	local t = now % T
+	local seg
+	for _, sg in ipairs(segs) do if t >= sg.t0 and t < sg.t1 then seg = sg break end end
+	seg = seg or segs[#segs]
+	local s, speedNow, blowT, sinceBlow, blowKey = 0, 0, nil, nil, nil
+	if seg.kind == "blow" then
+		s = seg.s
+		blowT = t - seg.t0
+		blowKey = math.floor(now / T) * 100 + seg.t0
+	else
+		local dur = seg.t1 - seg.t0
+		local u = (t - seg.t0) / dur
+		local r = math.min(0.3, RAMP / dur)
+		s = seg.s0 + (seg.s1 - seg.s0) * trapezoid(u, r)
+		sinceBlow = t - seg.t0
+	end
+	if lastS then
+		local ds = (s - lastS) % LEN
+		if ds > LEN / 2 then ds = 0 end
+		speedNow = ds / math.max(dt, 1e-3)
+		phi += ds * 2 * math.pi / (STROKE * L)
+	end
+	lastS = s
+	if speedNow < 0.5 then phi += dt * 0.5 end
+
+	-- depth, pitch, tail lift
+	local y = WATER_Y - H / 2 + SHOW * H
+	local pitch, lift = 0, 0
+	if blowT then
+		y += 0.08 * H * smooth(blowT / 1.5)
+	elseif sinceBlow then
+		local d = sinceBlow
+		local sink = d < 4 and smooth(d / 4) or math.exp(-(d - 4) / 14)
+		y -= DIVE * H * sink
+		pitch = -math.rad(22) * bump(d / 6)
+		lift = math.rad(32) * bump((d - 0.3) / 5)
+	end
+	if typeof(BED_Y) == "number" then y = math.max(y, BED_Y + H / 2 + 0.5) end
+	y += 0.03 * H * math.sin(phi)
+
+	local p, dir = posAt(s)
+	local gain = 0.15 + 0.85 * math.clamp(speedNow / SPEED, 0, 1)
+	local roll = math.rad(2) * math.sin(phi - 1) * gain
+	mesh.CFrame = CFrame.lookAt(Vector3.new(p.X, y, p.Z), Vector3.new(p.X + dir.X, y, p.Z + dir.Z))
+		* CFrame.Angles(pitch, 0, roll) * R_inv
+
+	for _, e in ipairs(SPINE) do
+		local b = bones[e[1]]
+		if b then
+			local a = math.rad(e[2]) * math.sin(phi - e[3]) * gain + SIGN * lift * (LIFT[e[1]] or 0)
+			b.Transform = CFrame.fromAxisAngle(axis[e[1]].pitch, a)
+		end
+	end
+	local flap = math.rad(7) * math.sin(phi * 0.5) * (0.4 + 0.6 * gain)
+	if bones.FlipperL then bones.FlipperL.Transform = CFrame.fromAxisAngle(axis.FlipperL.flap, flap) end
+	if bones.FlipperR then bones.FlipperR.Transform = CFrame.fromAxisAngle(axis.FlipperR.flap, -flap) end
+
+	-- the spout: 2 s into the pause, for 2 s
+	if spout then spout.Enabled = (blowT ~= nil and blowT >= 2 and blowT < 4) end
+	if blowT and blowT >= 2 and blowKey ~= lastBlowKey then
+		lastBlowKey = blowKey
+		if blowSound and blowSound.SoundId ~= "" then blowSound:Play() end
+	end
+end
+RunService.Heartbeat:Connect(step)
+
+]==]
+
+-- route safety: every waypoint and the midpoints between them must be over water, or nothing is touched
+do
+	local rp = RaycastParams.new() rp.FilterType = Enum.RaycastFilterType.Include rp.FilterDescendantsInstances = {workspace.Terrain} rp.IgnoreWater = false
+	local wp = {}
+	for x, z in string.gmatch(ROUTE, "([-%d%.]+),([-%d%.]+)") do table.insert(wp, Vector3.new(tonumber(x), 0, tonumber(z))) end
+	local bad = 0
+	for i, p in ipairs(wp) do
+		local q = wp[(i % #wp) + 1]
+		for _, s in ipairs({p, (p + q) / 2}) do
+			local h = workspace:Raycast(Vector3.new(s.X, 20, s.Z), Vector3.new(0, -150, 0), rp)
+			local ok = h and h.Material == Enum.Material.Water
+			if not ok then bad += 1 warn(string.format('QW@ROUTE_LAND %.0f,%.0f -> %s', s.X, s.Z, h and tostring(h.Material) or 'nothing')) end
+		end
+	end
+	if #wp > 0 and bad > 0 then warn('QW@ABORT route touches land at ' .. bad .. ' point(s); fix ROUTE first') return end
+	if #wp > 0 then warn('QW@ROUTE ok: ' .. #wp .. ' waypoints over water') end
+end
+
+local existing = workspace:FindFirstChild('PortoWhale')
+local imported = workspace:FindFirstChild('whale_color', true)
+if imported and imported:IsA('MeshPart') then imported = imported.Parent end
+local model, mesh
+if imported and imported:FindFirstChild('Whale', true) then
+	model = imported
+	mesh = model:FindFirstChild('Whale', true)
+elseif existing then
+	model = existing
+	mesh = model:FindFirstChildWhichIsA('MeshPart', true)
+else
+	warn('QW@ABORT nothing to install: import whale_color.fbx first (Import 3D) or have a PortoWhale') return
+end
+local fresh = (model ~= existing)
+local bones = {}
+for _, b in ipairs(mesh:GetDescendants()) do if b:IsA('Bone') then bones[b.Name] = b end end
+for _, need in ipairs({'Root', 'Head', 'Flukes', 'FlipperL', 'FlipperR'}) do
+	if not bones[need] then warn('QW@ABORT missing bone', need) return end
+end
+
+-- which way the nose and the back point inside the mesh (object space)
+local function obj(b) return mesh.CFrame:PointToObjectSpace(b.WorldPosition) end
+local fwd = (obj(bones.Head) - obj(bones.Flukes)).Unit
+local sz = mesh.Size
+local up = Vector3.new(1, 0, 0)
+if sz.Y <= sz.X and sz.Y <= sz.Z then up = Vector3.new(0, 1, 0) elseif sz.Z <= sz.X and sz.Z <= sz.Y then up = Vector3.new(0, 0, 1) end
+up = (up - fwd * up:Dot(fwd)).Unit
+if (obj(bones.FlipperL) - obj(bones.Root)):Dot(up) > 0 then up = -up end   -- flippers hang below the spine
+local back = -fwd
+local right = up:Cross(back)
+local function along(v) return math.abs(v.X) * sz.X + math.abs(v.Y) * sz.Y + math.abs(v.Z) * sz.Z end
+warn('QW@AXES fwd', fwd, 'up', up, 'size', sz, 'length now', along(fwd))
+
+if fresh then
+	if existing then existing.Name = 'PortoWhale_old' existing.Parent = game:GetService('ServerStorage') warn('QW@ old PortoWhale parked in ServerStorage') end
+	model.Name = 'PortoWhale'
+	model.Parent = workspace
+	model.ModelStreamingMode = Enum.ModelStreamingMode.Persistent
+	for _, d in ipairs(model:GetDescendants()) do
+		if d:IsA('BasePart') then d.Anchored = true d.CanCollide = false d.CanQuery = false d.CanTouch = false d.CastShadow = false end
+	end
+	model:ScaleTo(model:GetScale() * LENGTH / along(fwd))
+	sz = mesh.Size
+	warn('QW@SCALED length', along(fwd), 'height', along(up))
+end
+
+model:SetAttribute('FwdObj', fwd) model:SetAttribute('UpObj', up)
+model:SetAttribute('WaterY', WATER_Y) model:SetAttribute('Route', ROUTE) model:SetAttribute('BlowAt', BLOW_AT)
+model:SetAttribute('Speed', SPEED) model:SetAttribute('BlowDur', BLOW_DUR)
+if BED_Y then model:SetAttribute('BedY', BED_Y) else model:SetAttribute('BedY', nil) end
+
+-- blowhole: top of the head (Blender 0.436 toward the nose, 0.321 up, on a 1.901-long whale)
+local k = along(fwd) / 1.901
+local att = mesh:FindFirstChild('Blowhole') or Instance.new('Attachment')
+att.Name = 'Blowhole'
+att.CFrame = CFrame.fromMatrix(fwd * (0.436 * k) + up * (0.321 * k), right, up, back)
+att.Parent = mesh
+local pe = att:FindFirstChild('Spout') or Instance.new('ParticleEmitter')
+-- Spout v3 (Oct 7): a gentle, graceful plume. Round soft particles, no stretching, slower with drag so the top softens; dense so it reads as one stream.
+pe.Name = 'Spout'
+pe.Texture = 'rbxasset://textures/particles/smoke_main.dds'
+pe.Color = ColorSequence.new(Color3.fromRGB(235, 246, 255))
+pe.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 1.0 * k / 31.6), NumberSequenceKeypoint.new(0.4, 2.0 * k / 31.6), NumberSequenceKeypoint.new(1, 3.2 * k / 31.6)})
+pe.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.2), NumberSequenceKeypoint.new(0.5, 0.45), NumberSequenceKeypoint.new(1, 1)})
+pe.Lifetime = NumberRange.new(1.6, 1.9)
+pe.Speed = NumberRange.new(28 * k / 31.6, 32 * k / 31.6)      -- apex ~ 9-12 studs with the drag
+pe.Acceleration = Vector3.new(0, -34, 0)
+pe.Drag = 0.6
+pe.SpreadAngle = Vector2.new(3, 3)
+pe.EmissionDirection = Enum.NormalId.Top
+pe.Orientation = Enum.ParticleOrientation.FacingCamera
+pe.Squash = NumberSequence.new(0)
+pe.Rate = 90
+pe.LightEmission = 0.15
+pe.LightInfluence = 0.7
+pe.Rotation = NumberRange.new(-180, 180) pe.RotSpeed = NumberRange.new(-20, 20)
+pe.Enabled = false
+pe.Parent = att
+local snd = att:FindFirstChild('Blow') or Instance.new('Sound')
+snd.Name = 'Blow' snd.SoundId = SOUND_ID snd.Volume = 1.2
+snd.RollOffMode = Enum.RollOffMode.InverseTapered snd.RollOffMinDistance = 60 snd.RollOffMaxDistance = 900
+snd.Parent = att
+
+-- the client script
+local sc = model:FindFirstChild('WhaleClient')
+if not sc then sc = Instance.new('Script') sc.Name = 'WhaleClient' sc.RunContext = Enum.RunContext.Client sc.Parent = model end
+sc.Source = SRC
+
+-- park it at the first route point so it is not sitting at the origin in edit mode
+local x, z = string.match(ROUTE, "([-%d%.]+),([-%d%.]+)")
+if x then
+	local p = Vector3.new(tonumber(x), WATER_Y - along(up) / 2 + 0.2 * along(up), tonumber(z))
+	local x2, z2 = string.match(ROUTE, "[-%d%.]+,[-%d%.]+;([-%d%.]+),([-%d%.]+)")
+	local look = x2 and Vector3.new(tonumber(x2), p.Y, tonumber(z2)) or p + Vector3.new(0, 0, -1)
+	mesh.CFrame = CFrame.lookAt(p, look) * CFrame.fromMatrix(Vector3.zero, right, up, back):Inverse()
+end
+warn('QW@OK', fresh and 'installed' or 'patched', 'length', along(fwd), 'height', along(up), 'route points', select(2, ROUTE:gsub(';', '')) + 1, 'blow at', BLOW_AT)

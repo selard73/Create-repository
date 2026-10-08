@@ -1,0 +1,2 @@
+===== mailman_squirrel: neck starts z 1.57, head centre (0.00,-0.79,1.97), zone z >= 1.77: 871 verts | MIXED 0 | BODY 0
+CROWN_DONE

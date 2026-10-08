@@ -1,0 +1,22 @@
+Workspace.SquirrelScripts.SquirrelSetup@198@						player:SetAttribute("Item_" .. id, tonumber(n) + ((owedItems[uid] or {})[id] or 0))
+Workspace.SquirrelScripts.SquirrelSetup@217@		player:SetAttribute('Item_porto', math.max(1, tonumber(player:GetAttribute('Item_porto')) or 0))
+Workspace.SquirrelScripts.SquirrelSetup@232@	local gain = owed[uid] or 0                                   -- captured BEFORE the call: UpdateAsync can
+Workspace.SquirrelScripts.SquirrelSetup@236@		store:UpdateAsync("u" .. uid, function(old)                -- while it is in flight
+Workspace.SquirrelScripts.SquirrelSetup@289@local itemEv = game:GetService("ReplicatedStorage"):FindFirstChild("AwardItems")
+Workspace.SquirrelScripts.SquirrelSetup@299@		local have = (player:GetAttribute("Item_" .. id) or 0) + n
+Workspace.SquirrelScripts.SquirrelSetup@300@		player:SetAttribute("Item_" .. id, have > 0 and have or 0)
+Workspace.SquirrelScripts.SquirrelSetup@418@			store:UpdateAsync("u" .. uid, function(old)
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioFullFinds_20261002@197@						player:SetAttribute("Item_" .. id, tonumber(n) + ((owedItems[uid] or {})[id] or 0))
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioFullFinds_20261002@224@	local gain = owed[uid] or 0                                   -- captured BEFORE the call: UpdateAsync can
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioFullFinds_20261002@228@		store:UpdateAsync("u" .. uid, function(old)                -- while it is in flight
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioFullFinds_20261002@281@local itemEv = game:GetService("ReplicatedStorage"):FindFirstChild("AwardItems")
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioFullFinds_20261002@291@		local have = (player:GetAttribute("Item_" .. id) or 0) + n
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioFullFinds_20261002@292@		player:SetAttribute("Item_" .. id, have > 0 and have or 0)
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioFullFinds_20261002@410@			store:UpdateAsync("u" .. uid, function(old)
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioPortoUnlock_20261002@198@						player:SetAttribute("Item_" .. id, tonumber(n) + ((owedItems[uid] or {})[id] or 0))
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioPortoUnlock_20261002@230@	local gain = owed[uid] or 0                                   -- captured BEFORE the call: UpdateAsync can
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioPortoUnlock_20261002@234@		store:UpdateAsync("u" .. uid, function(old)                -- while it is in flight
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioPortoUnlock_20261002@287@local itemEv = game:GetService("ReplicatedStorage"):FindFirstChild("AwardItems")
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioPortoUnlock_20261002@297@		local have = (player:GetAttribute("Item_" .. id) or 0) + n
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioPortoUnlock_20261002@298@		player:SetAttribute("Item_" .. id, have > 0 and have or 0)
+ServerStorage.PortoEnvironmentBackup_20261001.SquirrelSetup_beforeStudioPortoUnlock_20261002@416@			store:UpdateAsync("u" .. uid, function(old)

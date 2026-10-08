@@ -1,0 +1,23 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">ProbeP11</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+local pb=workspace.PortoNocciola['04 Piers and fishing boats']
+for _,m in ipairs(pb:GetChildren()) do
+	if m:IsA('Model') then local c,s=m:GetBoundingBox() warn(string.format('QB@M %s c(%.1f,%.1f,%.1f) s(%.1f,%.1f,%.1f) look(%.2f,%.2f,%.2f)',m.Name,c.X,c.Y,c.Z,s.X,s.Y,s.Z,c.LookVector.X,c.LookVector.Y,c.LookVector.Z)) end
+end
+local boat=pb:FindFirstChild('Azzurra')
+if not boat then warn('QB@END no Azzurra') return end
+local c,s=boat:GetBoundingBox()
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Include rp.FilterDescendantsInstances={boat}
+local names,codes={},0
+local function code(n) if not names[n] then codes+=1 names[n]=string.char(64+codes) warn('QB@KEY '..names[n]..' '..n) end return names[n] end
+for dz=-s.Z/2,s.Z/2,1 do
+	local row={}
+	for dx=-s.X/2,s.X/2,0.7 do
+		local o=c*Vector3.new(dx,s.Y/2+5,dz)
+		local r=workspace:Raycast(o,Vector3.new(0,-s.Y-10,0),rp)
+		table.insert(row,r and (code(r.Instance.Name)..string.format('%04.1f',-r.Position.Y)) or '-----')
+	end
+	warn(string.format('QB@dz%+05.1f %s',dz,table.concat(row,' ')))
+end
+warn('QB@END')
+
+end]]></ProtectedString></Properties></Item></Item></roblox>

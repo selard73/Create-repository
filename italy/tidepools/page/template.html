@@ -1,0 +1,60 @@
+<title>Porto Nocciola Tide Pools</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* layout: one reading column; the renders run full column width, before/after pair at the top */
+:root{
+  --bg:#eef3f2; --panel:#ffffff; --ink:#17302f; --muted:#56706d; --accent:#1d7a76; --line:#cfdcda;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1918;--panel:#16231f;--ink:#e2ecea;--muted:#9fb5b1;--accent:#5cc2bd;--line:#2a3b38;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1918;--panel:#16231f;--ink:#e2ecea;--muted:#9fb5b1;--accent:#5cc2bd;--line:#2a3b38;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.55}
+.wrap{max-width:62rem;margin:0 auto;padding-inline:16px;padding-block:2rem 3rem;display:grid;gap:2rem}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(1.8rem,4vw,2.6rem)}
+h2{font-size:1.3rem}
+p{margin:0;max-width:65ch}
+.eyebrow{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.head{display:grid;gap:.6rem}
+.pair{display:grid;grid-template-columns:1fr 1.6fr;gap:1rem;align-items:start}
+@media (max-width:640px){.pair{grid-template-columns:1fr}}
+figure{margin:0;display:grid;gap:.45rem;min-width:0}
+figure img{width:100%;height:auto;border-radius:6px;border:1px solid var(--line);display:block}
+figcaption{font-size:.92rem;color:var(--muted)}
+.tag{font-weight:600;color:var(--ink)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:640px){.grid{grid-template-columns:1fr}}
+section{display:grid;gap:.8rem}
+ul{margin:0;padding-left:1.2rem;display:grid;gap:.35rem;max-width:65ch}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:1rem 1.2rem;display:grid;gap:.5rem}
+</style>
+<div class="wrap">
+  <header class="head">
+    <div class="eyebrow">1001 Squirrels · Porto Nocciola · the sandy cove</div>
+    <h1>Natural tide pools, preview</h1>
+    <p>A low limestone shelf along the cove's sea edge with six rock pools of different shapes. Rendered in Blender at the real game position (x 285–311, z −762 to −808). Nothing has been changed in Studio yet.</p>
+  </header>
+
+  <div class="pair">
+    <figure><img alt="The current pools: three round stone basins ringed with identical boulders in open water" src="data:image/jpeg;base64,{{old}}"><figcaption><span class="tag">Now.</span> Three ring basins sitting in deep water.</figcaption></figure>
+    <figure><img alt="Preview from above: a cream rock shelf beside the cove with six irregular pools" src="data:image/jpeg;base64,{{above}}"><figcaption><span class="tag">Proposed, from the same side.</span> The white blocks stand in for the sandy cove and the causeway.</figcaption></figure>
+  </div>
+
+  <div class="grid">
+    <figure><img alt="Standing on the sandy cove looking over the shelf to the sea" src="data:image/jpeg;base64,{{cove}}"><figcaption><span class="tag">From the sandy cove.</span> What a player sees stepping down from the stairs.</figcaption></figure>
+    <figure><img alt="Low view from the sea edge across the pools" src="data:image/jpeg;base64,{{low}}"><figcaption><span class="tag">From the water's edge.</span> The shelf sits about ½ to 1½ studs above the sea.</figcaption></figure>
+  </div>
+  <figure><img alt="Close-up of one pool: shallow clear water, green algae at the water line" src="data:image/jpeg;base64,{{close}}"><figcaption><span class="tag">One pool close up.</span> Shallow clear water, green algae where the water meets the rock, damp patches around it.</figcaption></figure>
+
+  <section>
+    <h2>What goes in after your OK</h2>
+    <ul>
+      <li>The shelf and the pool water go into Studio as two models, with the rock texture you see here.</li>
+      <li>The three ring basins move to ServerStorage as a backup, not deleted.</li>
+      <li>Sea life in and around the pools: starfish, sea anemones, seaweed on the rims, snail shells and a little crab.</li>
+      <li>The sea in these renders is flat; in the game it is the real moving water.</li>
+    </ul>
+  </section>
+  <div class="note"><h2>Your call</h2><p>Tell me in the chat: go ahead, or what to change (more or fewer pools, bigger or smaller, rock colour, how high above the water).</p></div>
+</div>

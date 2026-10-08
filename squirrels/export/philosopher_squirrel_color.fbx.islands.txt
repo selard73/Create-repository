@@ -1,0 +1,4 @@
+QQISL object Squirrel: 7000 faces, 1 islands, bbox [-0.007, -0.013, 0.0] .. [0.007, 0.013, 0.024]
+QQISL   island 7000 faces, centre [0.0, 0.0, 0.012] size [0.013, 0.026, 0.024]
+QQISL   biggest island 7000 faces
+DONE

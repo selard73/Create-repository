@@ -1,0 +1,3 @@
+after limited dissolve: 1509510 tris
+after decimate: 188562 tris
+DONE3

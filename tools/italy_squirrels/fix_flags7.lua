@@ -1,0 +1,57 @@
+-- Oct 5 2026 her 4 flags after v1080:
+-- a) the BELLA lamp (Quay lantern at 262,-648, left alone by the promenade build) -> ServerStorage.PromenadeBackup.Removed;
+-- b) the BELLA lemon tree (260.1,-659.8) 3 studs "to the left" (-Z, toward the Bottega alley);
+-- c) the small tide pool cut by the Sentiero del Faro wall (08 Coastal finishing: 'Tide pool rim rock' x13 + 'Tide pool water'
+--    round 306,-722) moved 5.5 studs west onto open sand, re-seated on the sand;
+-- d) the stepped hollow under the lower Sentiero del Faro stair (seen from the Cala della Sabbia tide pools): rock hillside
+--    filled up to 2.5 below the stair's nosing line along its west face (FillBlock never replaces sea water).
+local SS=game:GetService('ServerStorage')
+local P=workspace.PortoNocciola
+local T=workspace.Terrain
+local BK=SS:FindFirstChild('PromenadeBackup')
+if not BK then warn('PRF7@ABORT no backup folder') return end
+if P:GetAttribute('PromFix7') then warn('PRF7@ABORT already ran') return end
+local Z=P['06 Piazza details and planting']
+local function near(m,x,z,r) local cf=m:GetBoundingBox() return math.abs(cf.Position.X-x)<r and math.abs(cf.Position.Z-z)<r end
+-- a) lamp
+local RM=BK:FindFirstChild('Removed') or Instance.new('Folder') RM.Name='Removed' RM.Parent=BK
+local lamp
+for _,c in ipairs(Z:GetChildren()) do if c:IsA('Model') and c.Name=='Quay lantern' and near(c,262,-648,1) then lamp=c end end
+if lamp then lamp:SetAttribute('OrigParent',lamp.Parent:GetFullName()) lamp.Parent=RM end
+-- b) tree
+local tree
+for _,c in ipairs(Z:GetChildren()) do if c:IsA('Model') and c.Name=='Lemon tree' and near(c,260.1,-659.8,1) then tree=c end end
+if tree then tree:SetAttribute('PromOldPivot',tree:GetPivot()) tree:PivotTo(tree:GetPivot()+Vector3.new(0,0,-3)) end
+-- c) tide pool
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Include rp.FilterDescendantsInstances={T} rp.IgnoreWater=true
+local function h(x,z) local r=workspace:Raycast(Vector3.new(x,-40,z),Vector3.new(0,-30,0),rp) return r and r.Position.Y end
+local CF=P['08 Coastal finishing']
+local pool={}
+for _,d in ipairs(CF:GetDescendants()) do
+	if d:IsA('BasePart') and (d.Name=='Tide pool rim rock' or d.Name=='Tide pool water') and math.abs(d.Position.X-306)<4 and math.abs(d.Position.Z+722)<4 then table.insert(pool,d) end
+end
+local DXP=Vector3.new(-5.5,0,0)
+local sum,n=0,0
+for _,d in ipairs(pool) do
+	if d.Position.X<305 then local a,b=h(d.Position.X,d.Position.Z),h(d.Position.X-5.5,d.Position.Z) if a and b then sum+=b-a n+=1 end end
+end
+local dy=(n>0) and sum/n or 0
+for _,d in ipairs(pool) do d:SetAttribute('PromOldCF',d.CFrame) d.CFrame=d.CFrame+DXP+Vector3.new(0,dy,0) end
+-- d) stair-side rock fill
+local tb=T:CopyRegion(Region3int16.new(Vector3int16.new(74,-16,-203),Vector3int16.new(79,-8,-192)))   -- x 296..320, y -64..-32, z -812..-768
+tb.Name='TerrainStairBefore' tb:SetAttribute('Corner',Vector3.new(74,-16,-203)) tb.Parent=BK
+local hm=Enum.Material.Rock
+local s=workspace:Raycast(Vector3.new(306,-30,-786),Vector3.new(0,-40,0),rp)
+if s and s.Material~=Enum.Material.Water and s.Material~=Enum.Material.Sand then hm=s.Material end
+local rows=0
+for z=-774,-794,-1 do   -- lower flight only; the crab catcher's pools at z ~ -805 stay clear
+	local cx=323.6+(320.4-323.6)*((-769.1-z)/(-769.1+792.9))
+	local face=(z>=-796.8) and (cx-5.94) or 312.8
+	local top
+	if z>=-793.2 then top=-46.4+(-769.4-z)*0.521 else top=-34.0 end
+	top-=2.5
+	local x0,x1=face-5,face+0.5
+	T:FillBlock(CFrame.new((x0+x1)/2,(top-62)/2,z),Vector3.new(x1-x0,top+62,1.05),hm) rows+=1
+end
+P:SetAttribute('PromFix7',true)
+warn('PRF7@DONE lamp',lamp~=nil,'tree',tree~=nil,'pool parts',#pool,'pool dy',dy,'stair rows',rows,'rock material',hm.Name)

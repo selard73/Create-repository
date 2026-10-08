@@ -1,0 +1,4 @@
+texels in eye box 63379
+iris centre [ 0.137 -0.342  2.001] radius ~0.143 from 7896 brown texels
+recoloured 1153 white texels inside the iris and 2673 below it with [0.329 0.2   0.153]
+EYE_DONE

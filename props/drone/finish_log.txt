@@ -1,0 +1,2 @@
+tris 5999 size <Vector (8.9517, 7.8259, 2.4000)>
+FINISH_DONE

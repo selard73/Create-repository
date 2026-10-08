@@ -1,0 +1,5 @@
+verts 6002 tris 12000 bbox min (-0.661, -0.95, -0.321) max (0.661, 0.95, 0.321) length 1.901
+flipperL n=493 base (0.389, -0.351, -0.061) tip (0.622, -0.415, -0.17); flipperR n=504 base (-0.389, -0.351, -0.057) tip (-0.625, -0.414, -0.17)
+blowhole (top of head) (0.038, -0.436, 0.321); nose (0.006, -0.95, 0.138)
+dominant counts {'Root': 731, 'Head': 2205, 'Spine1': 659, 'Spine2': 598, 'Tail': 635, 'Flukes': 591, 'FlipperL': 223, 'FlipperR': 230}
+RIG_DONE

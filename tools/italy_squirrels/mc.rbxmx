@@ -1,0 +1,35 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">SwapK</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 (Shannon: "move him so he is standing on the chair"): the new Boat Captain stands on the Azzurra's small
+-- rowing seat just in front of him (seat centre 202.478,-670.703, top -51.44), same facing; feet centre (0.23,-0.60).
+local seat
+for _,b in ipairs(workspace:GetPartBoundsInBox(CFrame.new(202.48,-51.58,-670.70),Vector3.new(0.5,0.5,0.5))) do
+	if b.Name=='Rowing seat' then seat=b end
+end
+if not seat then warn('QCS@ABORT no seat') return end
+local col=workspace.seacaptain_squirrel_color local cm=col.Squirrel
+local B={} for _,d in ipairs(col:GetDescendants()) do if d:IsA('Bone') then B[d.Name]=d end end
+local hl=cm.CFrame:PointToObjectSpace(B.Head.WorldPosition) local sz=hl.Z<0 and 1 or -1
+local k=3.4/cm.Size.Y
+local R=cm.CFrame-cm.Position
+local fc=R:VectorToWorldSpace(Vector3.new(0.23,0,sz*-0.60)*k)
+local top=seat.Position.Y+seat.Size.Y/2
+local L=Vector3.new(seat.Position.X,top,seat.Position.Z)
+local before=cm.Position
+col:PivotTo(col:GetPivot()+Vector3.new(L.X-fc.X-cm.Position.X,L.Y+0.02-(cm.Position.Y-cm.Size.Y/2),L.Z-fc.Z-cm.Position.Z))
+-- feet check on the seat
+local ip=RaycastParams.new() ip.FilterType=Enum.RaycastFilterType.Include ip.FilterDescendantsInstances={seat}
+local miss=0
+for _,f in ipairs({{-0.15,-0.75},{-0.15,-0.45},{0.6,-0.75},{0.6,-0.45},{0.23,-0.6}}) do
+	local w=Vector3.new(cm.Position.X,0,cm.Position.Z)+R:VectorToWorldSpace(Vector3.new(f[1],0,sz*f[2])*k)
+	if not workspace:Raycast(Vector3.new(w.X,top+2,w.Z),Vector3.new(0,-4,0),ip) then miss+=1 end
+end
+game:GetService('ChangeHistoryService'):SetWaypoint('Captain on the rowing seat')
+warn('QCS@MOVED from',before,'to',cm.Position,'feet',L,'foot points off the seat',miss..'/5')
+local fwd=R:VectorToWorldSpace(Vector3.new(0,0,-sz))*Vector3.new(1,0,1)
+local t=L+Vector3.new(0,1.6,0)
+workspace.CurrentCamera.CameraType=Enum.CameraType.Fixed
+workspace.CurrentCamera.Focus=CFrame.new(t)
+workspace.CurrentCamera.CFrame=CFrame.lookAt(t+fwd.Unit*7+Vector3.new(0,1.5,0),t)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

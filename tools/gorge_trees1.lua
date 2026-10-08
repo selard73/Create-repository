@@ -1,0 +1,103 @@
+-- gorge_trees1: CHANGES THE PLACE (Shannon's yes for step 4, Sep 30 ~17:25). (1) Kit trees (pines, olives, cypresses -
+-- no round bushes) along the gorge's rims and over the south hills, each cloned from the game's own kits like the
+-- Sandstone Climb's plants, measured onto the REAL terrain (skipped where it lands in the gorge, on flat ground, or
+-- off the terrain). (2) The old village-kit riverside props south of the wall hidden in place (not deleted).
+local TREES = {{"pine_tall",162.8,-258.0,1.31,19},{"olive_tree",165.4,-265.8,1.01,18},{"pine_tall",157.7,-273.8,1.37,351},{"olive_tree",153.5,-279.5,1.10,177},{"olive_tree",148.4,-287.8,1.07,317},{"pine_tall",147.1,-295.0,1.55,82},{"cypress",137.9,-304.4,0.96,0},{"cypress",128.1,-310.7,0.88,117},{"pine_tall",121.0,-319.1,1.48,161},{"pine_tall",113.6,-326.3,1.33,288},{"pine_tall",108.8,-333.8,1.21,336},{"olive_tree",104.7,-339.5,1.09,342},{"pine_tall",93.7,-347.8,1.30,267},{"cypress",86.2,-354.9,0.92,80},{"olive_tree",75.4,-362.4,1.16,136},{"pine_tall",64.6,-371.4,1.36,287},{"pine_tall",71.1,-400.2,1.58,357},{"olive_tree",83.4,-407.1,1.04,257},{"cypress",97.3,-415.3,0.92,345},{"pine_squat",107.8,-423.3,1.20,151},{"olive_tree",111.6,-429.2,1.08,356},{"cypress",120.5,-437.0,0.87,146},{"pine_tall",127.2,-444.5,1.26,190},{"cypress",133.3,-453.0,0.93,38},{"olive_tree",140.1,-460.7,1.01,1},{"pine_tall",150.6,-468.5,1.57,320},{"pine_squat",153.1,-475.0,1.46,121},{"pine_squat",156.9,-483.3,1.38,265},{"pine_tall",163.7,-489.9,1.20,14},{"olive_tree",169.7,-498.9,1.05,18},{"pine_tall",170.7,-504.3,1.34,132},{"olive_tree",170.4,-512.5,1.20,339},{"cypress",166.6,-521.0,0.97,83},{"olive_tree",162.6,-528.0,1.18,193},{"olive_tree",165.6,-536.8,1.01,191},{"pine_squat",167.2,-542.0,1.21,200},{"cypress",169.1,-549.8,0.93,203},{"olive_tree",219.3,-257.7,1.06,199},{"olive_tree",222.3,-264.0,1.19,344},{"pine_tall",222.8,-273.2,1.30,17},{"pine_tall",219.2,-279.4,1.27,248},{"pine_tall",218.7,-289.3,1.28,244},{"pine_tall",213.3,-295.6,1.31,176},{"olive_tree",203.6,-303.9,1.18,90},{"pine_tall",192.0,-311.7,1.57,131},{"pine_tall",184.8,-319.5,1.22,77},{"pine_squat",177.8,-324.1,1.47,87},{"olive_tree",174.2,-331.7,1.03,307},{"pine_tall",167.0,-341.0,1.45,183},{"olive_tree",157.7,-347.2,1.21,174},{"pine_tall",155.2,-355.9,1.55,151},{"cypress",152.5,-363.4,0.86,100},{"pine_squat",154.5,-370.4,1.33,9},{"pine_tall",155.5,-399.2,1.25,134},{"cypress",158.3,-408.3,0.97,7},{"pine_tall",152.3,-414.2,1.47,94},{"pine_tall",160.8,-421.8,1.58,26},{"pine_tall",168.3,-431.4,1.36,267},{"pine_tall",177.0,-438.5,1.37,139},{"pine_tall",184.4,-444.6,1.33,159},{"olive_tree",191.7,-451.7,1.13,201},{"pine_squat",199.3,-460.3,1.44,93},{"olive_tree",205.7,-468.0,1.24,50},{"cypress",213.2,-475.6,0.92,317},{"olive_tree",217.5,-483.8,1.09,294},{"olive_tree",225.9,-489.6,1.00,360},{"pine_tall",232.4,-498.9,1.46,68},{"olive_tree",231.3,-506.9,1.02,57},{"olive_tree",230.9,-513.8,1.21,2},{"cypress",230.6,-521.8,0.99,294},{"olive_tree",225.9,-528.8,1.07,210},{"cypress",218.3,-534.1,0.90,206},{"cypress",208.3,-542.3,1.00,214},{"pine_tall",192.1,-549.6,1.47,176},{"cypress",64.2,-375.4,0.95,236},{"cypress",63.1,-392.6,0.95,94},{"cypress",157.5,-375.4,0.95,109},{"cypress",156.3,-392.6,0.95,186},{"pine_squat",865.1,-382.9,1.38,32},{"pine_squat",887.0,-655.0,1.30,189},{"pine_tall",881.6,-317.9,1.46,295},{"pine_tall",167.3,-645.7,1.48,296},{"pine_tall",-222.3,-298.2,1.39,153},{"pine_tall",247.9,-642.0,1.21,241},{"pine_squat",473.3,-310.2,1.27,165},{"pine_tall",920.1,-942.7,1.24,246},{"olive_tree",203.1,-384.0,1.10,296},{"cypress",-137.7,-732.4,0.91,146},{"pine_tall",-18.7,-355.6,1.57,110},{"pine_tall",-202.0,-285.8,1.38,161},{"pine_tall",374.4,-475.4,1.38,154},{"pine_tall",325.9,-735.6,1.35,242},{"pine_tall",769.9,-409.1,1.40,293},{"pine_tall",188.4,-618.3,1.51,232},{"pine_squat",54.9,-359.3,1.45,36},{"cypress",59.5,-345.2,0.87,331},{"olive_tree",-183.5,-893.6,1.15,52},{"pine_squat",271.2,-611.5,1.28,164},{"pine_tall",693.5,-684.0,1.58,14},{"pine_squat",-103.7,-599.5,1.22,122},{"pine_tall",196.2,-354.9,1.55,303},{"olive_tree",-49.9,-312.7,1.18,16},{"pine_tall",704.9,-908.0,1.54,174},{"pine_tall",-71.0,-792.9,1.22,30},{"pine_tall",479.9,-340.1,1.22,13},{"pine_tall",692.5,-310.3,1.52,15},{"pine_squat",788.8,-456.3,1.27,335},{"pine_tall",-176.3,-909.5,1.52,137},{"pine_tall",824.0,-690.2,1.21,186},{"olive_tree",239.5,-729.2,1.11,20},{"pine_tall",45.6,-317.0,1.27,167},{"pine_tall",568.7,-562.3,1.24,218},{"pine_squat",897.6,-463.6,1.20,103},{"pine_squat",759.4,-631.0,1.49,77},{"cypress",756.8,-396.9,1.00,302},{"pine_tall",372.1,-765.2,1.23,357},{"pine_tall",425.1,-808.1,1.43,354},{"pine_squat",750.9,-976.0,1.37,255},{"pine_tall",593.6,-971.0,1.32,85},{"olive_tree",593.0,-390.0,1.04,318},{"cypress",605.8,-330.9,0.85,57},{"pine_squat",431.0,-290.1,1.41,137},{"cypress",832.7,-763.9,0.98,43},{"pine_squat",302.9,-971.6,1.27,14},{"cypress",-24.4,-941.8,0.91,297},{"pine_tall",926.4,-939.8,1.50,225},{"olive_tree",708.2,-341.3,1.23,323},{"olive_tree",312.5,-337.1,1.04,135},{"pine_tall",944.2,-459.3,1.35,339},{"pine_tall",-110.5,-694.0,1.51,359},{"cypress",-82.5,-374.1,0.97,284},{"pine_tall",-172.7,-980.8,1.45,3},{"pine_tall",294.9,-744.6,1.29,327},{"olive_tree",435.3,-289.7,1.09,300},{"cypress",246.2,-491.8,1.00,70},{"pine_tall",-29.1,-977.7,1.36,222},{"pine_tall",334.9,-340.3,1.54,147},{"olive_tree",-93.8,-360.3,1.09,160},{"pine_squat",893.8,-290.1,1.34,24},{"pine_squat",481.9,-560.4,1.21,188},{"pine_tall",779.0,-403.8,1.37,263},{"cypress",-43.5,-407.3,0.92,129},{"olive_tree",230.1,-413.4,1.19,236},{"pine_tall",763.8,-906.9,1.32,146},{"olive_tree",-115.1,-604.2,1.18,268},{"pine_tall",953.6,-420.6,1.28,75},{"pine_tall",80.5,-295.9,1.41,42},{"pine_squat",111.0,-282.1,1.35,170},{"pine_squat",-14.3,-298.9,1.48,354},{"pine_squat",368.2,-388.2,1.34,28},{"pine_tall",662.7,-741.9,1.58,335},{"cypress",106.3,-295.1,0.99,290},{"pine_tall",681.2,-864.0,1.58,47},{"pine_tall",572.5,-390.7,1.53,15},{"pine_tall",958.6,-435.0,1.46,204},{"cypress",564.7,-663.0,0.92,89},{"olive_tree",919.1,-437.2,1.01,285},{"pine_tall",673.0,-738.0,1.30,213},{"cypress",375.5,-762.8,0.88,61},{"pine_tall",384.1,-311.0,1.22,351},{"cypress",63.6,-716.6,1.00,126},{"pine_tall",366.7,-903.7,1.55,80},{"pine_tall",192.0,-837.0,1.59,170},{"pine_tall",277.1,-650.2,1.55,230},{"pine_tall",503.1,-740.8,1.42,247},{"cypress",378.7,-354.0,0.93,202},{"pine_tall",-200.9,-856.0,1.22,16},{"pine_squat",498.9,-394.2,1.37,127},{"cypress",-146.0,-882.2,0.99,194},{"pine_squat",337.4,-460.0,1.33,39},{"olive_tree",891.9,-539.8,1.15,219},{"pine_tall",-211.3,-294.2,1.56,305},{"pine_tall",286.5,-786.2,1.21,241},{"cypress",664.3,-315.3,0.95,75},{"pine_tall",125.3,-933.1,1.30,87},{"pine_tall",664.8,-758.8,1.29,104},{"pine_tall",446.7,-401.2,1.59,195},{"pine_tall",373.7,-939.0,1.43,103},{"cypress",708.6,-434.8,0.92,276},{"pine_squat",699.9,-817.0,1.36,23},{"pine_tall",680.5,-462.9,1.42,348},{"pine_tall",813.3,-894.3,1.49,106},{"pine_squat",213.6,-858.5,1.42,219},{"pine_tall",15.6,-957.1,1.21,204},{"olive_tree",-9.4,-472.6,1.09,115},{"pine_squat",970.2,-389.4,1.35,190},{"olive_tree",403.0,-386.7,1.24,44},{"pine_squat",617.9,-650.8,1.32,77},{"pine_squat",639.6,-896.0,1.23,220},{"pine_tall",10.9,-355.5,1.31,212},{"pine_tall",263.0,-338.6,1.53,293},{"pine_tall",712.0,-955.0,1.33,16},{"pine_tall",-86.1,-356.3,1.38,189},{"pine_tall",86.6,-909.8,1.60,8},{"pine_tall",31.0,-417.1,1.51,346},{"pine_tall",505.3,-418.5,1.48,229},{"pine_tall",70.0,-413.5,1.48,146},{"pine_tall",561.8,-408.8,1.34,332},{"pine_tall",449.4,-813.8,1.24,176},{"pine_tall",770.5,-288.9,1.50,58},{"pine_squat",564.7,-547.3,1.29,274},{"olive_tree",835.7,-638.2,1.18,310},{"olive_tree",788.3,-414.1,1.09,167},{"olive_tree",-3.6,-295.7,1.15,127},{"pine_tall",970.8,-545.2,1.28,219},{"pine_tall",519.3,-643.6,1.38,314},{"pine_tall",229.4,-798.2,1.53,87},{"cypress",616.9,-903.4,0.93,277},{"pine_tall",-187.2,-302.4,1.56,77},{"pine_tall",84.2,-257.5,1.29,104},{"olive_tree",516.1,-342.0,1.14,328},{"pine_tall",658.0,-543.3,1.48,53},{"pine_tall",812.2,-296.3,1.40,225},{"pine_squat",386.3,-289.1,1.22,183},{"pine_tall",158.4,-367.1,1.46,359},{"pine_tall",470.8,-442.0,1.58,40},{"pine_tall",834.2,-428.7,1.43,223},{"pine_tall",423.4,-426.7,1.33,8},{"pine_tall",761.2,-744.0,1.60,128},{"pine_tall",95.8,-720.2,1.40,40},{"cypress",-171.2,-343.6,0.96,178},{"pine_tall",752.6,-434.4,1.58,274},{"pine_tall",105.6,-305.3,1.49,162},{"pine_tall",641.9,-960.2,1.40,90},{"pine_tall",198.4,-423.6,1.24,291},{"pine_tall",742.2,-366.4,1.47,289},{"pine_squat",847.4,-340.3,1.25,355},{"pine_tall",882.9,-952.3,1.27,200},{"pine_tall",-149.4,-322.9,1.46,264},{"pine_squat",1.2,-424.5,1.29,229},{"pine_squat",-69.3,-365.9,1.28,30},{"pine_tall",-92.4,-261.0,1.58,85},{"pine_tall",-199.1,-425.8,1.36,354},{"pine_squat",-162.2,-694.7,1.48,274},{"cypress",888.7,-506.6,0.91,3},{"pine_tall",1.9,-518.6,1.29,331},{"pine_tall",87.1,-841.9,1.33,181},{"olive_tree",280.9,-554.1,1.12,74},{"pine_tall",975.1,-728.5,1.32,266},{"pine_tall",594.6,-558.9,1.22,327},{"cypress",78.1,-260.7,0.94,116},{"pine_tall",576.5,-854.7,1.53,131},{"pine_squat",89.7,-335.0,1.46,328},{"pine_tall",-72.6,-912.4,1.47,76},{"pine_tall",876.0,-731.2,1.39,116},{"pine_tall",976.0,-389.2,1.49,320},{"pine_squat",247.7,-253.6,1.40,44},{"pine_squat",79.6,-259.8,1.25,175},{"cypress",753.0,-332.9,0.97,295},{"olive_tree",975.2,-802.7,1.20,86},{"pine_squat",346.1,-963.6,1.22,260},{"pine_tall",-168.8,-248.8,1.43,147},{"pine_tall",364.7,-891.0,1.36,335},{"cypress",891.2,-810.6,0.97,166},{"olive_tree",743.9,-333.1,1.13,259},{"olive_tree",-0.2,-261.8,1.17,268},{"olive_tree",624.2,-364.4,1.17,328},{"cypress",829.1,-355.3,0.91,167},{"olive_tree",465.4,-616.7,1.03,336},{"pine_tall",-36.8,-258.0,1.55,130},{"pine_tall",76.1,-711.9,1.50,19},{"cypress",771.6,-403.0,0.95,241},{"olive_tree",603.3,-372.7,1.01,93},{"cypress",761.3,-939.3,0.86,31},{"pine_squat",287.6,-955.7,1.46,335},{"pine_tall",417.9,-411.1,1.33,74},{"cypress",880.5,-733.2,0.87,125},{"pine_squat",711.5,-357.0,1.44,24},{"olive_tree",432.9,-371.1,1.03,237},{"pine_squat",345.8,-713.2,1.40,248},{"pine_tall",462.0,-345.1,1.52,230},{"cypress",71.9,-250.1,0.95,124},{"pine_tall",796.2,-974.8,1.30,89},{"pine_tall",130.4,-603.3,1.26,119},{"pine_tall",213.0,-761.0,1.42,116},{"pine_squat",575.6,-655.2,1.39,166},{"pine_tall",-69.8,-250.8,1.51,185},{"pine_squat",697.3,-983.7,1.49,74},{"pine_tall",958.9,-454.1,1.45,53},{"pine_tall",-50.7,-461.5,1.29,50},{"olive_tree",-44.4,-444.0,1.16,100},{"pine_tall",262.3,-468.4,1.52,11},{"pine_tall",463.5,-474.5,1.20,183},{"pine_tall",-225.9,-449.7,1.32,302},{"pine_tall",569.0,-566.6,1.41,241},{"pine_tall",864.1,-915.9,1.24,118},{"pine_tall",779.4,-396.7,1.56,196},{"pine_squat",-165.8,-258.6,1.41,40},{"pine_tall",370.9,-337.3,1.24,117},{"cypress",708.0,-351.9,0.93,154},{"pine_tall",183.3,-924.1,1.35,262},{"pine_tall",640.1,-409.5,1.40,317},{"pine_squat",32.2,-553.9,1.31,279},{"pine_squat",171.7,-750.6,1.26,108},{"pine_squat",873.8,-890.2,1.22,304},{"pine_tall",-70.3,-923.4,1.53,276},{"pine_tall",831.1,-873.3,1.39,242},{"pine_tall",62.1,-289.9,1.30,192},{"pine_tall",587.0,-319.7,1.25,35},{"pine_tall",567.0,-667.5,1.28,331},{"cypress",847.9,-646.7,0.87,66},{"pine_tall",578.7,-432.1,1.55,350},{"pine_squat",287.3,-237.9,1.36,117},{"pine_tall",177.8,-338.9,1.57,55},{"pine_tall",400.4,-338.5,1.47,182},{"olive_tree",567.3,-680.3,1.21,68},{"pine_squat",57.9,-400.0,1.26,293},{"pine_tall",-41.8,-277.4,1.55,200},{"pine_tall",786.7,-432.0,1.48,174},{"pine_tall",359.5,-541.8,1.56,32},{"cypress",224.0,-698.0,0.96,37},{"cypress",384.1,-389.2,0.87,2},{"pine_tall",-156.5,-301.0,1.41,260},{"pine_tall",-204.6,-336.3,1.24,294},{"pine_tall",918.4,-849.1,1.41,44},{"pine_tall",769.7,-692.2,1.35,13},{"cypress",244.7,-629.4,0.98,66},{"olive_tree",-145.9,-659.1,1.15,203},{"olive_tree",19.7,-729.2,1.20,26},{"cypress",910.5,-310.6,0.91,130},{"olive_tree",384.7,-823.0,1.09,250},{"olive_tree",-222.5,-840.2,1.14,37},{"pine_tall",518.7,-537.1,1.28,318},{"cypress",361.7,-885.3,0.88,178},{"pine_tall",578.7,-349.0,1.26,88},{"pine_tall",612.1,-918.0,1.22,142},{"cypress",852.8,-375.5,0.93,343},{"cypress",620.3,-867.2,0.95,265},{"cypress",603.7,-309.3,0.87,270},{"pine_squat",952.9,-923.3,1.47,316}}
+
+local C = Color3.fromRGB
+local KITS = {pine_tall = "ForestKit", pine_squat = "ForestKit", bush_small = "ForestKit", olive_tree = "DomaineKit", cypress = "DomaineKit", boxwood = "DomaineKit"}
+local COLOURS = {
+	pine_tall = {Foliage = C(72, 120, 74), Trunk = C(104, 78, 56)}, pine_squat = {Foliage = C(72, 120, 74), Trunk = C(104, 78, 56)},
+	olive_tree = {Olive = C(152, 170, 132), OTrunk = C(108, 88, 66)}, cypress = {Cypress = C(54, 88, 58), OTrunk = C(108, 88, 66)},
+}
+local rng = Random.new(3009)
+local G = workspace:FindFirstChild("SouthGorge"); assert(G, "SouthGorge folder missing")
+local old = G:FindFirstChild("Trees"); if old then old:Destroy() end
+local TF = Instance.new("Folder"); TF.Name = "Trees"; TF.Parent = G
+local tp = RaycastParams.new(); tp.FilterType = Enum.RaycastFilterType.Include; tp.FilterDescendantsInstances = {workspace.Terrain}; tp.IgnoreWater = false
+local function aabb(m)
+	local lo, hi = Vector3.new(math.huge, math.huge, math.huge), Vector3.new(-math.huge, -math.huge, -math.huge)
+	for _, q in ipairs(m:GetDescendants()) do
+		if q:IsA("BasePart") then
+			local cf, s = q.CFrame, q.Size / 2
+			local ext = Vector3.new(
+				math.abs(cf.RightVector.X) * s.X + math.abs(cf.UpVector.X) * s.Y + math.abs(cf.LookVector.X) * s.Z,
+				math.abs(cf.RightVector.Y) * s.X + math.abs(cf.UpVector.Y) * s.Y + math.abs(cf.LookVector.Y) * s.Z,
+				math.abs(cf.RightVector.Z) * s.X + math.abs(cf.UpVector.Z) * s.Y + math.abs(cf.LookVector.Z) * s.Z)
+			lo = lo:Min(cf.Position - ext); hi = hi:Max(cf.Position + ext)
+		end
+	end
+	return lo, hi
+end
+local missing = {}
+local function kit(name, x, y, z, scale, yaw)
+	local home = workspace:FindFirstChild(KITS[name])
+	local src = home and home:FindFirstChild(name)
+	if not src and name == "pine_tall" then src = home and home:FindFirstChild("pine_squat"); scale = scale * 1.6 end   -- fallback
+	if not src then missing[name] = (missing[name] or 0) + 1 return nil end
+	local m = src:Clone()
+	if scale and scale ~= 1 then m:ScaleTo(m:GetScale() * scale) end
+	local lo, hi = aabb(m)
+	local c = (lo + hi) / 2
+	m:PivotTo(CFrame.new(c) * CFrame.Angles(0, math.rad(yaw), 0) * CFrame.new(-c) * m:GetPivot())
+	lo, hi = aabb(m)
+	m:PivotTo(m:GetPivot() + Vector3.new(x - (lo.X + hi.X) / 2, y - lo.Y, z - (lo.Z + hi.Z) / 2))
+	local col = COLOURS[name] or {}
+	for _, q in ipairs(m:GetDescendants()) do
+		if q:IsA("BasePart") then
+			q.Anchored = true; q.Transparency = 0; q.CanCollide = false; q.CanQuery = false; q.CanTouch = false
+			if col[q.Name] then q.Color = col[q.Name] end
+		end
+	end
+	m.Parent = TF
+	return m
+end
+local placed, skipped = 0, {nohit = 0, water = 0, beach = 0, flat = 0, gorge = 0}
+for _, t in ipairs(TREES) do
+	local name, x, z, scale, yaw = t[1], t[2], t[3], t[4], t[5]
+	local hit = workspace:Raycast(Vector3.new(x, 300, z), Vector3.new(0, -600, 0), tp)
+	if not hit then skipped.nohit += 1
+	elseif hit.Material == Enum.Material.Water then skipped.water += 1
+	elseif hit.Material == Enum.Material.Sand or hit.Material == Enum.Material.Mud then skipped.beach += 1
+	elseif hit.Position.Y < 1.0 then skipped.flat += 1
+	else
+		-- the ground must be about level under the tree (no tree perched on the gorge's cut edge): 4 rays 1.5 studs out
+		local ok, y0 = true, hit.Position.Y
+		for _, d in ipairs({Vector3.new(1.5, 0, 0), Vector3.new(-1.5, 0, 0), Vector3.new(0, 0, 1.5), Vector3.new(0, 0, -1.5)}) do
+			local h2 = workspace:Raycast(Vector3.new(x, 300, z) + d, Vector3.new(0, -600, 0), tp)
+			if not h2 or h2.Material == Enum.Material.Water or math.abs(h2.Position.Y - y0) > 2.5 then ok = false break end
+		end
+		if not ok then skipped.gorge += 1
+		else
+			if kit(name, x, y0 - 0.15, z, scale, yaw) then placed += 1 end   -- 0.15 into the ground: no gap under the trunk
+		end
+	end
+end
+local ms = {}
+for k, v in pairs(missing) do ms[#ms + 1] = k .. "=" .. v end
+print(string.format("QQ TR1 trees placed %d of %d; skipped: no terrain %d, water %d, beach %d, flat ground %d, uneven/edge %d; kit missing: %s",
+	placed, #TREES, skipped.nohit, skipped.water, skipped.beach, skipped.flat, skipped.gorge, #ms > 0 and table.concat(ms, ",") or "none"))
+-- (2) the old riverside props south of the wall: hidden in place
+local props = workspace:FindFirstChild("Village") and workspace.Village:FindFirstChild("Props")
+local hid, parts = 0, 0
+if props then
+	for _, ch in ipairs(props:GetChildren()) do
+		if (ch.Name == "riverside" or ch.Name == "plane_tree") and ch:IsA("Model") then
+			local cf, sz = ch:GetBoundingBox()
+			if cf.Position.Z + sz.Z / 2 < -210 then
+				for _, q in ipairs(ch:GetDescendants()) do
+					if q:IsA("BasePart") then
+						if q:GetAttribute("OldTransparency") == nil then q:SetAttribute("OldTransparency", q.Transparency) end
+						if q:GetAttribute("OldCanCollide") == nil then q:SetAttribute("OldCanCollide", q.CanCollide) end
+						q.Transparency = 1; q.CanCollide = false; q.CanQuery = false; q.CanTouch = false; q.CastShadow = false
+						parts += 1
+					end
+				end
+				ch:SetAttribute("HiddenForGorge", true)
+				hid += 1
+			end
+		end
+	end
+end
+print(string.format("QQ TR1 hidden old props: %d models (%d parts), tagged HiddenForGorge with OldTransparency/OldCanCollide kept", hid, parts))
+print("QQ TR1 DONE")

@@ -1,0 +1,96 @@
+
+
+# ================================================================ the headwall and its cave ================
+CXE, ZE = G.headwall_centre()
+RBAR = G.R_END
+NTH = int(round(RBAR * math.pi / 1.5))
+THETAS = np.linspace(0.0, math.pi, NTH + 1)
+
+
+def hw_column(theta):
+    s = -1 if theta < math.pi / 2 else 1
+    ztheta = ZE - RBAR * theta                                # arc length as the along-wall coordinate (relief, texture)
+    T = G.headwall_T(theta); yf = T - G.RR
+    R = G.headwall_R(theta)
+    dx, dz = -math.cos(theta), -math.sin(theta)
+    ys = Y0 + (yf - Y0) * (np.arange(N_FACE + 1) / N_FACE)
+    calm = 1 - 0.5 * math.exp(-((theta - math.pi / 2) / 0.35) ** 2)          # calmer relief round the arch
+    d = R + G.lean(ys) + G.undercut(ys) - G.relief(np.full(ys.shape, ztheta), ys, T, s) * calm
+    pts = [(CXE + dd * dx, yy, ZE + dd * dz) for yy, dd in zip(ys, d)]; vs = [float(v) for v in ys]
+    df = float(d[-1])
+    for k in range(1, N_LIP + 1):
+        th = (k / N_LIP) * (math.pi / 2)
+        dd = df + G.RR - G.RR * math.cos(th)
+        pts.append((CXE + dd * dx, yf + G.RR * math.sin(th), ZE + dd * dz)); vs.append(V_TOP0 + 0.3 * k / N_LIP)
+    for k in range(1, N_STRIP + 1):
+        f = k / N_STRIP
+        dd = df + G.RR + f * G.TOP_STRIP
+        pts.append((CXE + dd * dx, T - 2.5 * f * f, ZE + dd * dz)); vs.append(V_TOP0 + 0.3 + 2.5 * f)
+    return pts, vs, ztheta
+
+
+def arch_inside(p):
+    """is world point p inside the cave arch opening (in the headwall's plan)? Straight sides up to y 1, a semicircle
+    of radius ARCH_W/2 above, the top at ARCH_H - 1 (about 5 above the water)."""
+    off = math.atan2(-(p[2] - ZE), -(p[0] - CXE))             # angle of the point round the centre (0 west .. pi east)
+    a = RBAR * (off - math.pi / 2)                            # arc offset from the apex
+    r = G.ARCH_W / 2
+    if abs(a) >= r or p[1] < -1.6:
+        return False
+    return p[1] < 1.0 + math.sqrt(max(0.0, r * r - a * a))
+
+
+_cols = [hw_column(t) for t in THETAS]
+_P = np.array([c[0] for c in _cols]); _V = np.array([c[1] for c in _cols]); _ZT = [c[2] for c in _cols]
+_dx = np.zeros_like(_P); _dy = np.zeros_like(_P)
+_dx[1:-1] = _P[2:] - _P[:-2]; _dx[0] = _P[1] - _P[0]; _dx[-1] = _P[-1] - _P[-2]
+_dy[:, 1:-1] = _P[:, 2:] - _P[:, :-2]; _dy[:, 0] = _P[:, 1] - _P[:, 0]; _dy[:, -1] = _P[:, -1] - _P[:, -2]
+_N = np.cross(_dx, _dy); _ln = np.linalg.norm(_N, axis=2, keepdims=True); _ln[_ln == 0] = 1; _N = _N / _ln
+hw = Mesh("SouthRock_End", "Strata", smooth=True)
+_idx = {}
+for ci in range(_P.shape[0]):
+    for ri in range(_P.shape[1]):
+        _idx[ci, ri] = hw.vert(_P[ci, ri], uv_of(_ZT[ci], _V[ci, ri]), _N[ci, ri])
+_skipped = 0
+for ci in range(_P.shape[0] - 1):
+    for ri in range(_P.shape[1] - 1):
+        corners = [_P[ci, ri], _P[ci + 1, ri], _P[ci + 1, ri + 1], _P[ci, ri + 1]]
+        if all(arch_inside(c) for c in corners):
+            _skipped += 1; continue
+        a, b, c, d = _idx[ci, ri], _idx[ci + 1, ri], _idx[ci + 1, ri + 1], _idx[ci, ri + 1]
+        hw.f.append((a, b, c)); hw.f.append((a, c, d))
+ROCK.append(hw)
+
+# the tunnel: a half-tube of rock going straight into the headwall from the arch (a little inside the face), straight
+# sides below y 1 down under the water, and a dark back wall
+cave = Mesh("SouthRock_Cave", "Strata", smooth=False)
+back = Mesh("CaveBack", "CaveDark")
+_r = G.ARCH_W / 2
+_faceR = G.headwall_R(math.pi / 2) + float(G.lean(np.array([1.0]))[0])
+z_mouth = ZE - (_faceR - 0.6)                                 # just inside the face
+z_back = z_mouth - G.TUNNEL_D
+_ring = [(CXE - _r, -2.0), (CXE - _r, 1.0)]
+for k in range(1, 10):
+    ang = math.pi * (1 - k / 10.0)
+    _ring.append((CXE + _r * math.cos(ang), 1.0 + _r * math.sin(ang)))
+_ring += [(CXE + _r, 1.0), (CXE + _r, -2.0)]
+_axis = (CXE, 1.0, (z_mouth + z_back) / 2)
+for k in range(len(_ring) - 1):
+    (xa, ya), (xb, yb) = _ring[k], _ring[k + 1]
+    A, B = (xa, ya, z_mouth), (xb, yb, z_mouth); C, D = (xb, yb, z_back), (xa, ya, z_back)
+    n = np.cross(np.subtract(B, A), np.subtract(D, A))
+    if np.dot(n, np.subtract(_axis, A)) < 0:                  # faces point INTO the tunnel
+        A, B, C, D = A, D, C, B
+    cave.quad_flat(A, B, C, D, lambda p, nn: ((z_mouth - p[2]) / U_TILE + 0.37, (p[1] - G.YV0) / (G.YV1 - G.YV0)))
+_pts_b = [(x, y, z_back) for (x, y) in _ring]
+_cb = (CXE, 0.0, z_back)
+for k in range(len(_pts_b) - 1):
+    a, b = _pts_b[k], _pts_b[k + 1]
+    n = np.cross(np.subtract(a, _cb), np.subtract(b, _cb))
+    if n[2] > 0:                                              # the back wall faces the mouth (+z)
+        back.tri_flat(_cb, a, b)
+    else:
+        back.tri_flat(_cb, b, a)
+ROCK.append(cave); ROCK.append(back)
+END_PIECES = {"SouthRock_W08", "SouthRock_E08", "SouthRock_W09", "SouthRock_E09", "SouthRock_End", "SouthRock_Cave", "CaveBack"}
+print("headwall: columns", NTH + 1, "R %.2f" % RBAR, "arch quads skipped", _skipped, "| tunnel z %.1f..%.1f" % (z_mouth, z_back))

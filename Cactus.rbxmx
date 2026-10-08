@@ -1,0 +1,2613 @@
+<?xml version="1.0" ?>
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+  <Item class="Model" referent="RBX86">
+    <Properties>
+      <string name="Name">Cactus</string>
+      <Ref name="PrimaryPart">RBX2</Ref>
+    </Properties>
+    <Item class="Part" referent="RBX2">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">true</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289745972</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>0.2</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">1296</token>
+        <string name="Name">ClayMound</string>
+        <Vector3 name="size">
+          <X>3.6</X>
+          <Y>0.8</Y>
+          <Z>3.6</Z>
+        </Vector3>
+        <token name="shape">1</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+      <Item class="SpecialMesh" referent="RBX1">
+        <Properties>
+          <token name="MeshType">3</token>
+          <Vector3 name="Scale">
+            <X>1</X>
+            <Y>1</Y>
+            <Z>1</Z>
+          </Vector3>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="Part" referent="RBX4">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">true</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4285305926</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>4.5</Y>
+          <Z>0</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">1312</token>
+        <string name="Name">Body</string>
+        <Vector3 name="size">
+          <X>9.0</X>
+          <Y>2.4</Y>
+          <Z>2.4</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+      <Item class="PointLight" referent="RBX3">
+        <Properties>
+          <float name="Brightness">1.0</float>
+          <Color3 name="Color">
+            <R>0.510</R>
+            <G>1.000</G>
+            <B>0.510</B>
+          </Color3>
+          <float name="Range">14</float>
+          <bool name="Shadows">false</bool>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="Part" referent="RBX5">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">true</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4285305926</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>9.0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">1312</token>
+        <string name="Name">BodyTop</string>
+        <Vector3 name="size">
+          <X>2.4</X>
+          <Y>2.4</Y>
+          <Z>2.4</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX6">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0.9786087062764156</X>
+          <Y>7.666500000000001</Y>
+          <Z>0.5649999999999998</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Rib</string>
+        <Vector3 name="size">
+          <X>3.2670000000000003</X>
+          <Y>0.24</Y>
+          <Z>0.24</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX7">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0.9786087062764156</X>
+          <Y>5.1915000000000004</Y>
+          <Z>0.5649999999999998</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">RibFade</string>
+        <Vector3 name="size">
+          <X>1.6830000000000003</X>
+          <Y>0.192</Y>
+          <Z>0.192</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.55</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX8">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>6.919254415182545e-17</X>
+          <Y>7.666500000000001</Y>
+          <Z>1.13</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Rib</string>
+        <Vector3 name="size">
+          <X>3.2670000000000003</X>
+          <Y>0.24</Y>
+          <Z>0.24</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX9">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>6.919254415182545e-17</X>
+          <Y>5.1915000000000004</Y>
+          <Z>1.13</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">RibFade</string>
+        <Vector3 name="size">
+          <X>1.6830000000000003</X>
+          <Y>0.192</Y>
+          <Z>0.192</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.55</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX10">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-0.9786087062764154</X>
+          <Y>7.666500000000001</Y>
+          <Z>0.5650000000000003</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Rib</string>
+        <Vector3 name="size">
+          <X>3.2670000000000003</X>
+          <Y>0.24</Y>
+          <Z>0.24</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX11">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-0.9786087062764154</X>
+          <Y>5.1915000000000004</Y>
+          <Z>0.5650000000000003</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">RibFade</string>
+        <Vector3 name="size">
+          <X>1.6830000000000003</X>
+          <Y>0.192</Y>
+          <Z>0.192</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.55</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX12">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-0.9786087062764157</X>
+          <Y>7.666500000000001</Y>
+          <Z>-0.5649999999999996</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Rib</string>
+        <Vector3 name="size">
+          <X>3.2670000000000003</X>
+          <Y>0.24</Y>
+          <Z>0.24</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX13">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-0.9786087062764157</X>
+          <Y>5.1915000000000004</Y>
+          <Z>-0.5649999999999996</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">RibFade</string>
+        <Vector3 name="size">
+          <X>1.6830000000000003</X>
+          <Y>0.192</Y>
+          <Z>0.192</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.55</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX14">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.0757763245547634e-16</X>
+          <Y>7.666500000000001</Y>
+          <Z>-1.13</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Rib</string>
+        <Vector3 name="size">
+          <X>3.2670000000000003</X>
+          <Y>0.24</Y>
+          <Z>0.24</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX15">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.0757763245547634e-16</X>
+          <Y>5.1915000000000004</Y>
+          <Z>-1.13</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">RibFade</string>
+        <Vector3 name="size">
+          <X>1.6830000000000003</X>
+          <Y>0.192</Y>
+          <Z>0.192</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.55</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX16">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0.9786087062764157</X>
+          <Y>7.666500000000001</Y>
+          <Z>-0.5649999999999996</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Rib</string>
+        <Vector3 name="size">
+          <X>3.2670000000000003</X>
+          <Y>0.24</Y>
+          <Z>0.24</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX17">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0.9786087062764157</X>
+          <Y>5.1915000000000004</Y>
+          <Z>-0.5649999999999996</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">RibFade</string>
+        <Vector3 name="size">
+          <X>1.6830000000000003</X>
+          <Y>0.192</Y>
+          <Z>0.192</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.55</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX18">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">true</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4285305926</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-1.1</X>
+          <Y>3.8</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">1312</token>
+        <string name="Name">Arm</string>
+        <Vector3 name="size">
+          <X>2.2</X>
+          <Y>1.5</Y>
+          <Z>1.5</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX19">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">true</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4285305926</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.2</X>
+          <Y>3.8</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">1312</token>
+        <string name="Name">Elbow</string>
+        <Vector3 name="size">
+          <X>1.5</X>
+          <Y>1.5</Y>
+          <Z>1.5</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX20">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">true</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4285305926</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.2</X>
+          <Y>6.0</Y>
+          <Z>0</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">1312</token>
+        <string name="Name">Forearm</string>
+        <Vector3 name="size">
+          <X>4.3999999999999995</X>
+          <Y>1.5</Y>
+          <Z>1.5</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX21">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">true</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4285305926</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.2</X>
+          <Y>8.2</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">1312</token>
+        <string name="Name">Tip</string>
+        <Vector3 name="size">
+          <X>1.5</X>
+          <Y>1.5</Y>
+          <Z>1.5</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX22">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.2</X>
+          <Y>7.528799999999999</Y>
+          <Z>-0.69</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Rib</string>
+        <Vector3 name="size">
+          <X>1.7424</X>
+          <Y>0.2</Y>
+          <Z>0.2</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX23">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.2</X>
+          <Y>6.208799999999998</Y>
+          <Z>-0.69</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">RibFade</string>
+        <Vector3 name="size">
+          <X>0.8976</X>
+          <Y>0.16000000000000003</Y>
+          <Z>0.16000000000000003</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.55</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX24">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.2</X>
+          <Y>7.528799999999999</Y>
+          <Z>0.69</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Rib</string>
+        <Vector3 name="size">
+          <X>1.7424</X>
+          <Y>0.2</Y>
+          <Z>0.2</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX25">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.2</X>
+          <Y>6.208799999999998</Y>
+          <Z>0.69</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">RibFade</string>
+        <Vector3 name="size">
+          <X>0.8976</X>
+          <Y>0.16000000000000003</Y>
+          <Z>0.16000000000000003</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.55</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX26">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">true</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4285305926</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>1.1</X>
+          <Y>5.0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">1312</token>
+        <string name="Name">Arm</string>
+        <Vector3 name="size">
+          <X>2.2</X>
+          <Y>1.4</Y>
+          <Z>1.4</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX27">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">true</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4285305926</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.2</X>
+          <Y>5.0</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">1312</token>
+        <string name="Name">Elbow</string>
+        <Vector3 name="size">
+          <X>1.4</X>
+          <Y>1.4</Y>
+          <Z>1.4</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX28">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">true</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4285305926</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.2</X>
+          <Y>6.9</Y>
+          <Z>0</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">1312</token>
+        <string name="Name">Forearm</string>
+        <Vector3 name="size">
+          <X>3.8000000000000007</X>
+          <Y>1.4</Y>
+          <Z>1.4</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX29">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">true</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4285305926</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.2</X>
+          <Y>8.8</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">1312</token>
+        <string name="Name">Tip</string>
+        <Vector3 name="size">
+          <X>1.4</X>
+          <Y>1.4</Y>
+          <Z>1.4</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX30">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.2</X>
+          <Y>8.2476</Y>
+          <Z>-0.6399999999999999</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Rib</string>
+        <Vector3 name="size">
+          <X>1.5048000000000001</X>
+          <Y>0.2</Y>
+          <Z>0.2</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX31">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.2</X>
+          <Y>7.1076</Y>
+          <Z>-0.6399999999999999</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">RibFade</string>
+        <Vector3 name="size">
+          <X>0.7752000000000001</X>
+          <Y>0.16000000000000003</Y>
+          <Z>0.16000000000000003</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.55</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX32">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.2</X>
+          <Y>8.2476</Y>
+          <Z>0.6399999999999999</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Rib</string>
+        <Vector3 name="size">
+          <X>1.5048000000000001</X>
+          <Y>0.2</Y>
+          <Z>0.2</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX33">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4289394040</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.2</X>
+          <Y>7.1076</Y>
+          <Z>0.6399999999999999</Z>
+          <R00>0</R00>
+          <R01>-1</R01>
+          <R02>0</R02>
+          <R10>1</R10>
+          <R11>0</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">RibFade</string>
+        <Vector3 name="size">
+          <X>0.7752000000000001</X>
+          <Y>0.16000000000000003</Y>
+          <Z>0.16000000000000003</Z>
+        </Vector3>
+        <token name="shape">2</token>
+        <float name="Transparency">0.55</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX34">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>1.12763114494309</X>
+          <Y>1.4</Y>
+          <Z>0.41042417199080244</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX35">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-0.20837781320031637</X>
+          <Y>2.6</Y>
+          <Z>1.1817693036146495</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX36">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-1.12763114494309</X>
+          <Y>3.3</Y>
+          <Z>-0.4104241719908024</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX37">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0.6000000000000001</X>
+          <Y>4.4</Y>
+          <Z>-1.0392304845413263</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX38">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0.7713451316238472</X>
+          <Y>5.6</Y>
+          <Z>0.9192533317427736</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX39">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-1.0392304845413265</X>
+          <Y>6.7</Y>
+          <Z>0.5999999999999999</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX40">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-0.4104241719908022</X>
+          <Y>7.6</Y>
+          <Z>-1.12763114494309</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX41">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>1.1817693036146495</X>
+          <Y>8.6</Y>
+          <Z>-0.20837781320031645</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX42">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.2</X>
+          <Y>5.5</Y>
+          <Z>0.72</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX43">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.2</X>
+          <Y>7.0</Y>
+          <Z>-0.7</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX44">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.2</X>
+          <Y>6.4</Y>
+          <Z>0.68</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX45">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.2</X>
+          <Y>7.8</Y>
+          <Z>-0.66</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX46">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294967255</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0.5</X>
+          <Y>9.9</Y>
+          <Z>0.9</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">Spine</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX47">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0.55</X>
+          <Y>10.25</Y>
+          <Z>0.0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX48">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0.3889087296526012</X>
+          <Y>10.25</Y>
+          <Z>0.3889087296526012</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX49">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>3.367778697655222e-17</X>
+          <Y>10.25</Y>
+          <Z>0.55</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX50">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-0.38890872965260115</X>
+          <Y>10.25</Y>
+          <Z>0.3889087296526012</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX51">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-0.55</X>
+          <Y>10.25</Y>
+          <Z>6.735557395310444e-17</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX52">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-0.38890872965260126</X>
+          <Y>10.25</Y>
+          <Z>-0.38890872965260115</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX53">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-1.0103336092965664e-16</X>
+          <Y>10.25</Y>
+          <Z>-0.55</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX54">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0.3889087296526011</X>
+          <Y>10.25</Y>
+          <Z>-0.38890872965260126</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX56">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294914096</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>0</X>
+          <Y>10.5</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">FlowerCore</string>
+        <Vector3 name="size">
+          <X>0.7</X>
+          <Y>0.7</Y>
+          <Z>0.7</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+      <Item class="PointLight" referent="RBX55">
+        <Properties>
+          <float name="Brightness">1.2</float>
+          <Color3 name="Color">
+            <R>1.000</R>
+            <G>0.471</G>
+            <B>0.431</B>
+          </Color3>
+          <float name="Range">6</float>
+          <bool name="Shadows">false</bool>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="Part" referent="RBX57">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-1.6500000000000001</X>
+          <Y>9.0</Y>
+          <Z>0.0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX58">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294940360</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-1.811091270347399</X>
+          <Y>9.0</Y>
+          <Z>0.3889087296526012</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX59">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.2</X>
+          <Y>9.0</Y>
+          <Z>0.55</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX60">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294940360</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.5889087296526014</X>
+          <Y>9.0</Y>
+          <Z>0.3889087296526012</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX61">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.75</X>
+          <Y>9.0</Y>
+          <Z>6.735557395310444e-17</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX62">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294940360</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.5889087296526014</X>
+          <Y>9.0</Y>
+          <Z>-0.38890872965260115</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX63">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.2</X>
+          <Y>9.0</Y>
+          <Z>-0.55</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX64">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294940360</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-1.8110912703473991</X>
+          <Y>9.0</Y>
+          <Z>-0.38890872965260126</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX65">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294956614</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-1.9737258300203049</X>
+          <Y>9.32</Y>
+          <Z>0.22627416997969524</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">272</token>
+        <string name="Name">Stamen</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX66">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294956614</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.4262741699796955</X>
+          <Y>9.32</Y>
+          <Z>0.22627416997969524</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">272</token>
+        <string name="Name">Stamen</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX67">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294956614</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.4262741699796955</X>
+          <Y>9.32</Y>
+          <Z>-0.22627416997969518</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">272</token>
+        <string name="Name">Stamen</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX68">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294956614</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-1.973725830020305</X>
+          <Y>9.32</Y>
+          <Z>-0.22627416997969527</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">272</token>
+        <string name="Name">Stamen</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX70">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294914096</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>-2.2</X>
+          <Y>9.25</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">FlowerCore</string>
+        <Vector3 name="size">
+          <X>0.7</X>
+          <Y>0.7</Y>
+          <Z>0.7</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+      <Item class="PointLight" referent="RBX69">
+        <Properties>
+          <float name="Brightness">1.2</float>
+          <Color3 name="Color">
+            <R>1.000</R>
+            <G>0.471</G>
+            <B>0.431</B>
+          </Color3>
+          <float name="Range">6</float>
+          <bool name="Shadows">false</bool>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="Part" referent="RBX71">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.75</X>
+          <Y>9.55</Y>
+          <Z>0.0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX72">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294940360</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.5889087296526014</X>
+          <Y>9.55</Y>
+          <Z>0.3889087296526012</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX73">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.2</X>
+          <Y>9.55</Y>
+          <Z>0.55</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX74">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294940360</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>1.811091270347399</X>
+          <Y>9.55</Y>
+          <Z>0.3889087296526012</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX75">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>1.6500000000000001</X>
+          <Y>9.55</Y>
+          <Z>6.735557395310444e-17</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX76">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294940360</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>1.811091270347399</X>
+          <Y>9.55</Y>
+          <Z>-0.38890872965260115</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX77">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294637292</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.2</X>
+          <Y>9.55</Y>
+          <Z>-0.55</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX78">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294940360</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.5889087296526014</X>
+          <Y>9.55</Y>
+          <Z>-0.38890872965260126</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">256</token>
+        <string name="Name">Petal</string>
+        <Vector3 name="size">
+          <X>0.62</X>
+          <Y>0.62</Y>
+          <Z>0.62</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX79">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294956614</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.4262741699796955</X>
+          <Y>9.870000000000001</Y>
+          <Z>0.22627416997969524</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">272</token>
+        <string name="Name">Stamen</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX80">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294956614</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>1.9737258300203049</X>
+          <Y>9.870000000000001</Y>
+          <Z>0.22627416997969524</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">272</token>
+        <string name="Name">Stamen</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX81">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294956614</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>1.9737258300203049</X>
+          <Y>9.870000000000001</Y>
+          <Z>-0.22627416997969518</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">272</token>
+        <string name="Name">Stamen</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX82">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294956614</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.4262741699796955</X>
+          <Y>9.870000000000001</Y>
+          <Z>-0.22627416997969527</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">272</token>
+        <string name="Name">Stamen</string>
+        <Vector3 name="size">
+          <X>0.3</X>
+          <Y>0.3</Y>
+          <Z>0.3</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+    </Item>
+    <Item class="Part" referent="RBX84">
+      <Properties>
+        <bool name="Anchored">true</bool>
+        <bool name="CanCollide">false</bool>
+        <token name="BottomSurface">0</token>
+        <token name="TopSurface">0</token>
+        <Color3uint8 name="Color3uint8">4294914096</Color3uint8>
+        <CoordinateFrame name="CFrame">
+          <X>2.2</X>
+          <Y>9.8</Y>
+          <Z>0</Z>
+          <R00>1</R00>
+          <R01>0</R01>
+          <R02>0</R02>
+          <R10>0</R10>
+          <R11>1</R11>
+          <R12>0</R12>
+          <R20>0</R20>
+          <R21>0</R21>
+          <R22>1</R22>
+        </CoordinateFrame>
+        <token name="Material">288</token>
+        <string name="Name">FlowerCore</string>
+        <Vector3 name="size">
+          <X>0.7</X>
+          <Y>0.7</Y>
+          <Z>0.7</Z>
+        </Vector3>
+        <token name="shape">0</token>
+        <float name="Transparency">0.0</float>
+      </Properties>
+      <Item class="PointLight" referent="RBX83">
+        <Properties>
+          <float name="Brightness">1.2</float>
+          <Color3 name="Color">
+            <R>1.000</R>
+            <G>0.471</G>
+            <B>0.431</B>
+          </Color3>
+          <float name="Range">6</float>
+          <bool name="Shadows">false</bool>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="Highlight" referent="RBX85">
+      <Properties>
+        <token name="DepthMode">1</token>
+        <bool name="Enabled">true</bool>
+        <Color3 name="FillColor">
+          <R>1</R>
+          <G>1</G>
+          <B>1</B>
+        </Color3>
+        <float name="FillTransparency">1</float>
+        <Color3 name="OutlineColor">
+          <R>0.667</R>
+          <G>0.961</G>
+          <B>0.471</B>
+        </Color3>
+        <float name="OutlineTransparency">0.3</float>
+      </Properties>
+    </Item>
+  </Item>
+</roblox>

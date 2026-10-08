@@ -1,0 +1,3 @@
+TidePoolShelf verts 3927 dims (31.5, 6.335, 52.0)
+TidePoolWater verts 2080 dims (17.107, 0.485, 35.12)
+FBX_DONE

@@ -1,0 +1,185 @@
+@@LANDMARKS_BEGIN@@
+HOUSE|Borgo 3 • Casa 2|389|-758|20|20|2|body 390,-758 14x13 yaw 66 col 220,191,128|roof 178,92,62
+HOUSE|Borgo 1 • Casa 2|365|-685|26|26|4|body 364,-685 22x20 yaw -83 col 198,112,84|roof 178,92,62
+HOUSE|PIZZERIA DELLA PIAZZA|437|-778|24|26|26|body 436,-778 24x20 yaw -90 col 220,191,128|roof 178,92,62
+HOUSE|Borgo 6 • Casa 3|463|-717|30|31|27|body 463,-717 23x21 yaw 72 col 221,132,101|roof 178,92,62
+HOUSE|Borgo 5 • Casa 4|433|-723|26|27|26|body 432,-723 20x18 yaw -108 col 230,183,166|roof 178,92,62
+HOUSE|Borgo 11 • Casa 1|574|-832|27|27|50|body 574,-832 22x20 yaw 100 col 230,183,166|roof 178,92,62
+HOUSE|Borgo 10 • Casa 3|557|-748|22|22|49|body 558,-748 16x14 yaw 111 col 198,112,84|roof 178,92,62
+HOUSE|Borgo 4 • Casa 3|370|-849|28|28|4|body 370,-849 21x19 yaw -71 col 220,191,128|roof 178,92,62
+HOUSE|Borgo 9 • Casa 3|540|-707|18|17|48|body 539,-707 13x12 yaw -109 col 220,191,128|roof 178,92,62
+HOUSE|Borgo 7 • Casa 2|451|-862|20|18|24|body 450,-862 14x13 yaw -105 col 181,196,172|roof 178,92,62
+HOUSE|Borgo 4 • Casa 1|382|-817|25|25|4|body 381,-817 19x17 yaw -71 col 221,132,101|roof 178,92,62
+HOUSE|Borgo 12 • Casa 5|555|-921|21|20|49|body 554,-921 15x14 yaw -109 col 221,132,101|roof 178,92,62
+HOUSE|Borgo 3 • Casa 4|407|-791|23|22|3|body 407,-791 16x14 yaw 66 col 198,112,84|roof 178,92,62
+HOUSE|Borgo 5 • Casa 2|432|-678|30|29|19|body 432,-678 22x22 yaw -76 col 220,159,79|roof 178,92,62
+HOUSE|Borgo 1 • Casa 1|369|-666|21|19|-4|body 369,-666 16x16 yaw -83 col 220,159,79|roof 178,92,62
+HOUSE|Borgo 11 • Casa 4|570|-885|23|22|57|body 570,-885 16x15 yaw 71 col 220,159,79|roof 178,92,62
+HOUSE|Borgo 7 • Casa 6|451|-935|21|20|17|body 451,-935 15x14 yaw -74 col 158,186,185|roof 178,92,62
+HOUSE|Borgo 11 • Casa 2|567|-848|17|16|48|body 568,-848 13x12 yaw 100 col 221,132,101|roof 178,92,62
+HOUSE|Borgo 9 • Casa 4|537|-725|25|25|49|body 537,-725 18x16 yaw -69 col 221,132,101|roof 178,92,62
+HOUSE|Borgo 9 • Casa 6|522|-758|31|32|58|body 522,-758 23x22 yaw -69 col 198,112,84|roof 178,92,62
+HOUSE|Borgo 1 • Casa 4|364|-718|22|21|-4|body 363,-718 18x17 yaw -86 col 230,183,166|roof 178,92,62
+HOUSE|Borgo 9 • Casa 5|532|-741|22|22|49|body 531,-741 16x14 yaw -69 col 230,183,166|roof 178,92,62
+HOUSE|Borgo 7 • Casa 3|453|-878|26|25|33|body 453,-878 19x18 yaw -105 col 220,159,79|roof 178,92,62
+HOUSE|Borgo 1 • Casa 3|368|-703|17|15|2|body 367,-703 13x12 yaw -86 col 181,196,172|roof 178,92,62
+HOUSE|Borgo 3 • Casa 5|414|-816|27|27|-4|body 414,-816 20x19 yaw 109 col 230,183,166|roof 178,92,62
+HOUSE|Borgo 5 • Casa 1|442|-662|19|18|24|body 441,-662 14x13 yaw -76 col 198,112,84|roof 178,92,62
+HOUSE|Borgo 6 • Casa 1|464|-682|24|23|25|body 464,-682 18x17 yaw 104 col 181,196,172|roof 178,92,62
+HOUSE|Borgo 12 • Casa 1|544|-844|19|17|56|body 543,-844 14x13 yaw -80 col 198,112,84|roof 178,92,62
+HOUSE|Borgo 8 • Casa 3|480|-925|22|22|25|body 481,-925 17x15 yaw 106 col 221,132,101|roof 178,92,62
+HOUSE|Borgo 2 • Casa 1|399|-663|26|26|12|body 400,-663 22x21 yaw 97 col 198,112,84
+HOUSE|Borgo 6 • Casa 2|457|-696|19|18|32|body 458,-696 14x13 yaw 104 col 198,112,84
+HOUSE|Borgo 12 • Casa 3|542|-885|24|23|41|body 541,-885 17x16 yaw -109 col 230,183,166|roof 178,92,62
+HOUSE|Borgo 8 • Casa 1|481|-880|20|20|25|body 482,-880 15x14 yaw 75 col 198,112,84|roof 178,92,62
+HOUSE|Borgo 8 • Casa 2|490|-906|29|30|27|body 490,-906 23x21 yaw 106 col 220,191,128|roof 178,92,62
+HOUSE|Borgo 3 • Casa 1|390|-739|21|21|3|body 390,-739 18x16 yaw 94 col 230,183,166|roof 178,92,62
+HOUSE|Borgo 3 • Casa 3|402|-773|31|32|4|body 402,-773 23x21 yaw 66 col 158,186,185|roof 178,92,62
+HOUSE|Borgo 12 • Casa 4|544|-904|31|31|51|body 544,-904 23x22 yaw -109 col 181,196,172|roof 178,92,62
+HOUSE|Borgo 7 • Casa 5|452|-916|29|30|26|body 452,-916 23x21 yaw -74 col 158,186,185|roof 178,92,62
+HOUSE|Borgo 7 • Casa 1|442|-845|29|28|19|body 442,-846 22x21 yaw -105 col 230,183,166|roof 178,92,62
+HOUSE|Borgo 9 • Casa 1|525|-673|24|23|41|body 524,-673 17x16 yaw -109 col 158,186,185|roof 178,92,62
+HOUSE|Borgo 9 • Casa 2|529|-692|29|29|50|body 528,-692 22x20 yaw -109 col 158,186,185|roof 178,92,62
+HOUSE|Borgo 7 • Casa 4|459|-894|23|21|18|body 459,-894 16x16 yaw -105 col 220,159,79|roof 178,92,62
+HOUSE|Borgo 4 • Casa 2|378|-833|20|19|-5|body 377,-833 14x13 yaw -71 col 158,186,185|roof 178,92,62
+HOUSE|Borgo 11 • Casa 3|566|-864|23|23|50|body 566,-864 19x17 yaw 100 col 220,191,128|roof 178,92,62
+HOUSE|Borgo 2 • Casa 2|394|-681|19|18|10|body 395,-681 15x14 yaw 97 col 220,159,79
+HOUSE|Borgo 1 • Casa 5|361|-737|24|24|4|body 360,-737 21x19 yaw -86 col 230,183,166|roof 178,92,62
+HOUSE|IL FORNO • PANETTERIA|496|-778|24|25|18|body 497,-778 23x20 yaw 90 col 181,196,172|roof 178,92,62
+HOUSE|Borgo 10 • Casa 1|563|-705|20|19|41|body 564,-705 14x13 yaw 71 col 230,183,166
+HOUSE|Borgo 11 • Casa 5|580|-902|32|32|43|body 581,-902 23x23 yaw 71 col 220,159,79|roof 178,92,62
+OBJ|Lemon and olive terraces|670|-853|105|194|69|13 Hillside town
+OBJ|Upper street bench|534|-796|4|6|16|Usable village seating
+OBJ|Lower street bench|373|-775|3|6|-31|Usable village seating
+OBJ|Lighthouse sea bench|489|-1140|3|6|6|Usable village seating
+OBJ|Church square bench|396|-966|6|2|-8|Usable village seating
+OBJ|West piazza bench|450|-818|6|5|-8|Usable village seating
+OBJ|East piazza bench|475|-818|6|4|-8|Usable village seating
+OBJ|Pink house corner lemon tree|445|-829|5|4|-5|13 Hillside town
+OBJ|Fontana del Limone|464|-794|14|13|-3|13 Hillside town
+OBJ|Piazza corner lemon tree|431|-792|5|4|-5|13 Hillside town
+OBJ|Silver olive tree|424|-981|9|8|-4|Chiesa di Santa Marina exterior
+OBJ|Sailing club stored dinghy 1|435|-966|7|3|-9|14 Lighthouse coast
+OBJ|Sailing club fitted dinghy court|440|-958|25|40|-11|14 Lighthouse coast
+OBJ|Sailing club stored dinghy 2|435|-973|7|3|-9|14 Lighthouse coast
+OBJ|Coastal stone pine grove|614|-971|27|23|44|16 Mediterranean planting
+OBJ|Mediterranean umbrella pine|740|-861|22|21|113|16 Mediterranean planting
+OBJ|Silver olive tree|611|-833|11|10|53|16 Mediterranean planting
+OBJ|Silver olive tree|578|-1048|12|11|13|16 Mediterranean planting
+OBJ|Silver olive tree|662|-1003|12|12|23|16 Mediterranean planting
+OBJ|Silver olive tree|574|-809|11|10|24|16 Mediterranean planting
+OBJ|Silver olive tree|347|-802|9|9|-35|16 Mediterranean planting
+OBJ|Silver olive tree|601|-824|10|9|22|16 Mediterranean planting
+OBJ|Mediterranean umbrella pine|652|-713|20|19|54|16 Mediterranean planting
+OBJ|Coastal stone pine grove|684|-719|20|18|69|16 Mediterranean planting
+OBJ|Coastal stone pine grove|636|-968|27|23|45|16 Mediterranean planting
+OBJ|Silver olive tree|476|-1137|9|8|10|16 Mediterranean planting
+OBJ|Mediterranean umbrella pine|625|-679|22|21|62|16 Mediterranean planting
+OBJ|Coastal stone pine grove|431|-878|19|17|-2|16 Mediterranean planting
+OBJ|Mediterranean umbrella pine|565|-1062|21|20|24|16 Mediterranean planting
+OBJ|Silver olive tree|689|-1007|12|11|22|16 Mediterranean planting
+OBJ|Silver olive tree|370|-784|11|11|-23|16 Mediterranean planting
+OBJ|Silver olive tree|692|-988|11|10|24|16 Mediterranean planting
+OBJ|Coastal stone pine grove|403|-844|20|17|-14|16 Mediterranean planting
+OBJ|Coastal stone pine grove|615|-917|23|20|37|16 Mediterranean planting
+OBJ|Cypress among hillside scrub|655|-968|5|5|41|16 Mediterranean planting
+OBJ|Mediterranean umbrella pine|697|-738|24|22|84|16 Mediterranean planting
+OBJ|Coastal stone pine grove|581|-937|21|19|34|16 Mediterranean planting
+OBJ|Mediterranean umbrella pine|736|-803|25|24|105|16 Mediterranean planting
+OBJ|Cypress among hillside scrub|688|-734|4|4|76|16 Mediterranean planting
+OBJ|Silver olive tree|355|-783|10|10|-34|16 Mediterranean planting
+OBJ|Silver olive tree|582|-1068|14|13|15|16 Mediterranean planting
+OBJ|Coastal stone pine grove|505|-1094|20|17|22|16 Mediterranean planting
+OBJ|Mediterranean umbrella pine|343|-823|18|17|-22|16 Mediterranean planting
+OBJ|Coastal stone pine grove|755|-719|19|17|-29|16 Mediterranean planting
+OBJ|Coastal stone pine grove|753|-758|24|21|-19|16 Mediterranean planting
+OBJ|Coastal stone pine grove|668|-699|26|23|65|16 Mediterranean planting
+OBJ|Silver olive tree|344|-790|13|12|-34|16 Mediterranean planting
+OBJ|Coastal stone pine grove|747|-731|27|23|-21|16 Mediterranean planting
+OBJ|Coastal stone pine grove|413|-868|26|23|4|16 Mediterranean planting
+OBJ|Coastal stone pine grove|498|-873|22|19|8|16 Mediterranean planting
+OBJ|Coastal stone pine grove|507|-885|26|23|14|16 Mediterranean planting
+OBJ|Cypress among hillside scrub|675|-691|4|4|65|16 Mediterranean planting
+OBJ|Coastal stone pine grove|464|-1117|24|21|26|16 Mediterranean planting
+OBJ|Cypress among hillside scrub|727|-721|4|4|106|16 Mediterranean planting
+OBJ|Silver olive tree|684|-1014|11|10|-34|16 Mediterranean planting
+OBJ|Coastal stone pine grove|624|-996|26|22|38|16 Mediterranean planting
+OBJ|Cypress among hillside scrub|687|-678|4|4|79|16 Mediterranean planting
+OBJ|Coastal stone pine grove|734|-758|25|22|115|16 Mediterranean planting
+OBJ|Coastal stone pine grove|644|-996|26|22|38|16 Mediterranean planting
+OBJ|Coastal stone pine grove|517|-907|21|18|9|16 Mediterranean planting
+OBJ|Silver olive tree|561|-1036|9|9|11|16 Mediterranean planting
+OBJ|Cypress among hillside scrub|738|-733|5|5|119|16 Mediterranean planting
+OBJ|Coastal stone pine grove|520|-1109|22|18|23|16 Mediterranean planting
+OBJ|Mediterranean umbrella pine|593|-859|22|21|36|16 Mediterranean planting
+OBJ|Coastal stone pine grove|656|-984|23|20|39|16 Mediterranean planting
+OBJ|Coastal stone pine grove|612|-943|20|18|61|16 Mediterranean planting
+OBJ|Italian cypress|507|-688|3|3|27|16 Mediterranean planting
+OBJ|Coastal stone pine grove|631|-988|20|17|33|16 Mediterranean planting
+OBJ|Coastal stone pine grove|579|-961|23|20|35|16 Mediterranean planting
+OBJ|Mediterranean umbrella pine|605|-914|22|21|37|16 Mediterranean planting
+OBJ|Coastal stone pine grove|727|-738|18|16|105|16 Mediterranean planting
+OBJ|Coastal stone pine grove|596|-936|18|16|57|16 Mediterranean planting
+OBJ|Cypress among hillside scrub|416|-840|4|4|-13|16 Mediterranean planting
+OBJ|Silver olive tree|611|-972|11|10|28|16 Mediterranean planting
+OBJ|Silver olive tree|573|-1026|14|13|25|16 Mediterranean planting
+OBJ|Silver olive tree|587|-1038|14|13|15|16 Mediterranean planting
+OBJ|Coastal stone pine grove|667|-990|22|19|35|16 Mediterranean planting
+OBJ|Cypress among hillside scrub|610|-989|4|4|35|16 Mediterranean planting
+OBJ|Silver olive tree|416|-880|13|12|-11|16 Mediterranean planting
+OBJ|Coastal stone pine grove|663|-723|19|16|56|16 Mediterranean planting
+OBJ|Silver olive tree|561|-1060|13|12|14|16 Mediterranean planting
+OBJ|Coastal stone pine grove|404|-876|24|22|1|16 Mediterranean planting
+OBJ|Cypress among hillside scrub|599|-923|5|5|43|16 Mediterranean planting
+OBJ|Coastal stone pine grove|688|-709|23|20|75|16 Mediterranean planting
+OBJ|Silver olive tree|601|-806|12|11|29|16 Mediterranean planting
+OBJ|Coastal stone pine grove|607|-925|21|19|63|16 Mediterranean planting
+OBJ|Silver olive tree|603|-845|10|9|25|16 Mediterranean planting
+OBJ|Silver olive tree|588|-812|11|10|22|16 Mediterranean planting
+OBJ|05 Boatyard and nets|253|-666|46|78|-41|PortoNocciola
+OBJ|04 Piers and fishing boats|202|-682|62|113|-39|PortoNocciola
+OBJ|Lemon tree|249|-600|6|5|-40|06 Piazza details and planting
+OBJ|Harbour bench|247|-711|2|5|-45|06 Piazza details and planting
+OBJ|Lemon tree|304|-684|5|4|-40|06 Piazza details and planting
+OBJ|Lemon tree|256|-615|6|5|-40|06 Piazza details and planting
+OBJ|Harbour bench|230|-616|4|5|-43|06 Piazza details and planting
+OBJ|Lemon tree|293|-636|6|5|-40|06 Piazza details and planting
+OBJ|Lemon tree|338|-619|7|6|-40|06 Piazza details and planting
+OBJ|Lemon tree|278|-690|5|5|-40|06 Piazza details and planting
+OBJ|Lemon tree|329|-603|7|6|-40|06 Piazza details and planting
+OBJ|Lemon tree|313|-644|6|5|-42|06 Piazza details and planting
+OBJ|Lemon tree|338|-656|7|6|-42|06 Piazza details and planting
+OBJ|Lemon tree|317|-700|7|6|-42|06 Piazza details and planting
+OBJ|Lemon tree|330|-675|7|7|-43|06 Piazza details and planting
+OBJ|Lemon tree|330|-638|7|6|-41|06 Piazza details and planting
+OBJ|Harbour bench|244|-669|3|5|-43|06 Piazza details and planting
+OBJ|Lemon tree|262|-664|5|5|-40|06 Piazza details and planting
+OBJ|Rescue Boat SALVATAGGIO|253|-713|6|7|-46|Lifeguard Post
+OBJ|Olive Picker's crate|561|-1041|1|3|4|PortoNocciola
+@@LANDMARKS_END@@
+# key landmark boxes (bounding boxes of the models' parts, Edit DataModel, Oct 7 2026)
+KEY|Faro di Porto Nocciola|x 504..536|z -1194..-1162|ytop 74
+KEY|Keeper cottage exterior|x 545..565|z -1157..-1137|ytop 24
+KEY|Lighthouse cottage approach|x 494..549|z -1150..-1119
+KEY|Torre di Guardia|x 574..596|z -1017..-995|ytop 40
+KEY|Watchtower approach|x 546..590|z -1001..-984
+KEY|Grotta Azzurra|x 426..473|z -1126..-1096|ytop -33
+KEY|Spiaggia dei Ciottoli|x 390..442|z -1084..-1050|ytop -50
+KEY|Prato dei Fiori coastal meadow|x 441..599|z -1140..-1021|ytop 13
+KEY|Chiesa di Santa Marina exterior|x 380..433|z -1001..-923|ytop 45
+KEY|Circolo Velico exterior|x 425..449|z -963..-938|ytop 10
+KEY|Sailing club fitted dinghy court|x 428..452|z -978..-938
+KEY|Cala della Sabbia and tide pools|x 282..342|z -811..-754|ytop -44
+KEY|Torre dell Orologio|x 485..502|z -825..-809|ytop 44
+KEY|Fontana del Limone|x 457..471|z -801..-787
+KEY|Piazza del Limone paving|x 428..501|z -828..-762|ytop -12
+KEY|Lemon and olive terraces|x 618..723|z -950..-756|ytop 69
+KEY|PORTO STAZIONE BASSA|x 330..356|z -618..-592|ytop -36
+KEY|BELVEDERE STAZIONE ALTA|x 685..711|z -673..-647|ytop 71
+KEY|Funicular rails|x 345..700|z -662..-600
+KEY|Piers and fishing boats|x 170..233|z -739..-626
+KEY|Lifeguard Post|x 250..262|z -716..-709
+# survey 'b' clusters that are not houses (probed Oct 7): (539,-1201) (481,-1200) (454,-1166) (363,-1028) = "Layered coastal rock" (14 Lighthouse coast);
+#   (408,-1074) = "Pebble beach foundation" (Spiaggia dei Ciottoli, Pebble); (295,-795) = "TidePoolWater" (Cala della Sabbia natural tide pools);
+#   (488,-1158) = PortoKeeper Key plinth; (436,-1104) = Grotta Azzurra; (701,-653) = Belvedere stazione alta; (344,-608) = stazione bassa
+# trees/shrubs in 16 Mediterranean planting are not hit by raycasts (not queryable), so the tree icons come from the OBJ positions above

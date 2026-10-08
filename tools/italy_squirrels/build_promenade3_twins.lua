@@ -1,0 +1,21 @@
+-- Oct 5 2026 PROMENADE +10, step 3: the grey "not found yet" twins (workspace.SquirrelTwins) follow their colour squirrels
+-- (fishmonger -5 X with the fish stall, deckhand/Gino -2 X with the Stella Marina). Only moves a twin that sits on the
+-- colour model's OLD spot (PromOldPivot); stores PromOldPivot on the twin for revert_promenade1.lua.
+local TW=workspace:FindFirstChild('SquirrelTwins')
+if not TW then warn('PRM3@ABORT no SquirrelTwins') return end
+for _,id in ipairs({'fishmonger_squirrel','deckhand_squirrel'}) do
+	local c=workspace:FindFirstChild(id..'_color') local g=TW:FindFirstChild(id..'_gray')
+	local old=c and c:GetAttribute('PromOldPivot')
+	if not (c and g and old) then warn('PRM3@skip',id,'colour',c~=nil,'twin',g~=nil,'old',old~=nil)
+	else
+		local gp=g:GetPivot()
+		local dist=(gp.Position-old.Position).Magnitude
+		if g:GetAttribute('PromOldPivot') then warn('PRM3@already',id)
+		elseif dist<0.5 then
+			local d=c:GetPivot().Position-old.Position
+			g:SetAttribute('PromOldPivot',gp) g:PivotTo(gp+d)
+			warn('PRM3@moved',id,'by',d,'now',g:GetPivot().Position)
+		else warn('PRM3@notsame',id,'twin at',gp.Position,'colour old',old.Position,'dist',dist) end
+	end
+end
+warn('PRM3@DONE')

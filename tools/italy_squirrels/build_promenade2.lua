@@ -1,0 +1,72 @@
+-- Oct 5 2026 PROMENADE +10, step 2 (terrain): solid ground under the new quay strip + a thin sandy foot along the new wall
+-- (her pick "Wall + sandy foot"; no foot beside the piers / Stella Marina / La Limonaia).
+-- Backup: ServerStorage.PromenadeBackup.TerrainBefore (TerrainRegion, attribute Corner) -> Terrain:PasteRegion(r, Vector3int16 corner, true).
+local SS=game:GetService('ServerStorage')
+local T=workspace.Terrain
+local BK=SS:FindFirstChild('PromenadeBackup')
+if not BK then warn('PRM2@ABORT no PromenadeBackup (step 1 not run?)') return end
+if BK:FindFirstChild('TerrainBefore') then warn('PRM2@ABORT TerrainBefore exists - step 2 already ran') return end
+local W=workspace.PortoNocciola['01 Curved waterfront']
+-- backup region (4-stud aligned)
+local lo,hi=Vector3.new(204,-72,-716),Vector3.new(252,-40,-580)
+local tr=T:CopyRegion(Region3int16.new(Vector3int16.new(lo.X/4,lo.Y/4,lo.Z/4),Vector3int16.new(hi.X/4-1,hi.Y/4-1,hi.Z/4-1)))
+tr.Name='TerrainBefore' tr:SetAttribute('Corner',Vector3.new(lo.X/4,lo.Y/4,lo.Z/4)) tr.Parent=BK
+
+-- moved wall: sea face per z = min x of coping/ashlar overlapping z
+local stones={}
+for _,p in ipairs(W:GetChildren()) do
+	if p:IsA('BasePart') and (p.Name=='Seawall ashlar' or p.Name=='Rounded coping stone') then
+		local cf,s=p.CFrame,p.Size/2
+		local mn,mx=Vector3.new(1e9,1e9,1e9),Vector3.new(-1e9,-1e9,-1e9)
+		for _,k in ipairs({Vector3.new(1,1,1),Vector3.new(1,1,-1),Vector3.new(1,-1,1),Vector3.new(1,-1,-1),Vector3.new(-1,1,1),Vector3.new(-1,1,-1),Vector3.new(-1,-1,1),Vector3.new(-1,-1,-1)}) do
+			local w=cf:PointToWorldSpace(s*k) mn=mn:Min(w) mx=mx:Max(w) end
+		table.insert(stones,{mn,mx})
+	end
+end
+local function wallX(z)
+	local best
+	for _,b in ipairs(stones) do if b[1].Z-0.6<=z and z<=b[2].Z+0.6 then best=math.min(best or 1e9,b[1].X) end end
+	return best
+end
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Include rp.FilterDescendantsInstances={T} rp.IgnoreWater=true
+local function bed(x,z)
+	local r=workspace:Raycast(Vector3.new(x,-40,z),Vector3.new(0,-40,0),rp)
+	if r then return r.Position.Y,r.Material end
+	return -64,Enum.Material.Sand
+end
+local function footWidth(z)
+	if z<=-632.5 and z>=-650.5 then return 0 end   -- Pescatori pier + gangway + Stella Marina
+	if z<=-680.5 and z>=-699.0 then return 0 end   -- Reti pier + La Limonaia
+	return 3
+end
+local rows,feet,minBed,maxBed=0,0,99,-99
+for z=-593,-703,-1 do
+	local xw=wallX(z)
+	if xw then
+		rows+=1
+		-- 1) solid ground under the strip, seabed -> -56 (a cell boundary: the cells holding the water surface stay water)
+		local yb,mat=bed(xw+0.5,z)
+		local yb2=bed(xw-1.5,z)
+		local floor=math.min(yb,yb2)-1
+		minBed=math.min(minBed,floor) maxBed=math.max(maxBed,floor)
+		if floor< -56 then
+			local x0,x1=xw-0.3,xw+10.6
+			T:FillBlock(CFrame.new((x0+x1)/2,(floor-56)/2,z),Vector3.new(x1-x0,-56-floor,1.05),mat)
+		end
+		-- 2) sandy foot: three 1-stud steps stepping down from the wall into the water
+		local w=footWidth(z)
+		if w>0 then
+			feet+=1
+			local tops={-52.35,-52.95,-53.6}
+			for i=1,3 do
+				local xa=xw-i local xb=xw-i+1
+				local yb3=bed(xa+0.5,z)
+				local bottom=math.min(yb3,-56)-1
+				if tops[i]>bottom then
+					T:FillBlock(CFrame.new((xa+xb)/2,(tops[i]+bottom)/2,z),Vector3.new(1,tops[i]-bottom,1.05),Enum.Material.Sand)
+				end
+			end
+		end
+	end
+end
+warn('PRM2@DONE rows',rows,'foot rows',feet,'floor range',minBed,maxBed)

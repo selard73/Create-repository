@@ -1,0 +1,2 @@
+Pin top: 651 verts, X: -1.09..-0.40
+Head center: 1349 verts, X: -0.45..0.76

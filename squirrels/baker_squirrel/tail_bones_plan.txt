@@ -1,0 +1,5 @@
+Tail verts: 1482
+Tail base: 0.481, 0.334, 0.082
+Tail top: 0.585, 0.428, 2.043
+Tail tip candidates count: 189
+Tail tip mean: 0.626, 0.434, 1.924

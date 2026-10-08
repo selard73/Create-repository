@@ -1,0 +1,3 @@
+imported 1 meshes
+centre -0.02,-0.00,2.50 size 5.00
+RENDER_DONE C:\Users\slard\roblox-props\meshy_dog\pup_render.png

@@ -1,0 +1,43 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">GelatoFront</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+local col=workspace.gelato_squirrel_color local cm=col.Squirrel
+local B={} for _,d in ipairs(col:GetDescendants()) do if d:IsA('Bone') then B[d.Name]=d end end
+local function turn(want)
+	for i=1,2 do
+		local face=(B.Head.WorldPosition-cm.Position)*Vector3.new(1,0,1)
+		local a=math.atan2(want.X,want.Z)-math.atan2(face.X,face.Z)
+		local c=CFrame.new(cm.Position) col:PivotTo(c*CFrame.Angles(0,a,0)*c:Inverse()*col:GetPivot())
+	end
+end
+turn(Vector3.new(-1,0,0))
+local hl=cm.CFrame:PointToObjectSpace(B.Head.WorldPosition) local tl=cm.CFrame:PointToObjectSpace(B.Tail1.WorldPosition)
+local sz,sx,k=hl.Z<0 and 1 or -1,tl.X<0 and 1 or -1,3.4/cm.Size.Y
+local R=cm.CFrame-cm.Position
+local feet={{-0.55,-0.75},{-0.2,-0.75},{-0.55,-0.4},{-0.2,-0.4},{0.6,-0.6},{0.95,-0.6},{0.6,-0.3},{0.95,-0.3}}
+local gp=RaycastParams.new() gp.FilterType=Enum.RaycastFilterType.Exclude gp.FilterDescendantsInstances={col,workspace.ComingSoonWall}
+local op=OverlapParams.new() op.FilterType=Enum.RaycastFilterType.Exclude op.FilterDescendantsInstances={col,workspace.ComingSoonWall}
+local best
+for x=262.0,264.2,0.1 do for z=-634.2,-631.9,0.1 do
+	local c=Vector3.new(x,0,z)
+	local ok,hi,lo=true,-1e9,1e9
+	for _,f in ipairs(feet) do
+		local w=c+R:VectorToWorldSpace(Vector3.new(sx*f[1],0,sz*f[2])*k)
+		local q=workspace:Raycast(Vector3.new(w.X,-44,w.Z),Vector3.new(0,-6,0),gp)
+		if not q then ok=false break end hi=math.max(hi,q.Position.Y) lo=math.min(lo,q.Position.Y)
+	end
+	if ok and hi-lo<0.08 then
+		-- body box at game size must not touch the riser/sill/posts
+		local body=workspace:GetPartBoundsInBox(CFrame.new(c.X,hi+1.8,c.Z)*(R),Vector3.new(2.0,3.2,1.6),op)
+		if #body==0 then
+			local s=math.abs(z+633.04)*2+math.abs(x-264.0)
+			if not best or s<best.s then best={s=s,c=c,y=hi} end
+		end
+	end
+end end
+if not best then warn('QP@NOSPOT') return end
+col:PivotTo(col:GetPivot()+Vector3.new(best.c.X-cm.Position.X,best.y+0.02-(cm.Position.Y-cm.Size.Y/2),best.c.Z-cm.Position.Z))
+game:GetService('ChangeHistoryService'):SetWaypoint('Giulia in front of the gelateria window')
+warn('QP@PLACED',cm.Position,'floor',best.y)
+local cam=workspace.CurrentCamera cam.CFrame=CFrame.lookAt(Vector3.new(254,-42.5,-631),Vector3.new(best.c.X,best.y+1.6,best.c.Z)) cam.Focus=CFrame.new(best.c.X,best.y+1.6,best.c.Z)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

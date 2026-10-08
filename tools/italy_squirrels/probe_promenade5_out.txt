@@ -1,0 +1,35 @@
+﻿QP5@left Workspace.CrabGame.SellSpot Part 253.41,-44.76,-637.20 size 1.00,1.00,1.00 T 1
+QP5@left Workspace.PortoNocciola.06 Piazza details and planting.Chair leg Part 260.50,-46.02,-635.75 size 0.12,1.55,0.12 T 0
+QP5@left Workspace.PortoNocciola.06 Piazza details and planting.Cafe chair seat Part 261.00,-45.25,-636.25 size 1.35,0.15,1.30 T 0
+QP5@left Workspace.PortoNocciola.06 Piazza details and planting.Chair leg Part 261.50,-46.02,-635.75 size 0.12,1.55,0.12 T 0
+QP5@left Workspace.PortoNocciola.06 Piazza details and planting.Gelateria automatic chair seats.Gelateria Chair Seat Seat 261.00,-45.18,-636.25 size 1.35,0.24,1.30 T 1
+QP5@left Workspace.PortoNocciola.06 Piazza details and planting.Chair back Part 261.00,-44.50,-636.80 size 1.30,0.16,0.12 T 0
+QP5@left Workspace.PortoNocciola.06 Piazza details and planting.Chair back Part 261.00,-44.80,-636.80 size 1.30,0.16,0.12 T 0
+QP5@left Workspace.PortoNocciola.06 Piazza details and planting.Chair leg Part 261.50,-46.02,-636.75 size 0.12,1.55,0.12 T 0
+QP5@left Workspace.PortoNocciola.06 Piazza details and planting.Chair leg Part 260.50,-46.02,-636.75 size 0.12,1.55,0.12 T 0
+QP5@left Workspace.PortoNocciola.06 Piazza details and planting.Chair back Part 261.00,-44.20,-636.80 size 1.30,0.16,0.12 T 0
+QP5@left Workspace.PortoNocciola.10 Italian waterfront details.Gelateria cafe table settings.Espresso cup Part 261.00,-44.03,-634.78 size 0.31,0.27,0.27 T 0
+QP5@left Workspace.PortoNocciola.10 Italian waterfront details.Gelateria cafe table settings.Espresso saucer Part 261.00,-44.20,-634.78 size 0.06,0.48,0.48 T 0
+QP5@left Workspace.PortoNocciola.10 Italian waterfront details.Gelateria cafe table settings.Espresso surface Part 261.00,-43.87,-634.78 size 0.01,0.21,0.21 T 0
+QP5@left Workspace.fishmonger_squirrel_color.Squirrel MeshPart 248.75,-43.74,-636.86 size 2.15,2.40,2.00 T 0
+QP5@left count 14
+QP5@script Workspace.QP5.PatchModule key aquarium | ish?) that did
+QP5@script StarterPlayer.StarterPlayerScripts.PortoMarketAquariumMotion key Aquarium | rvice('RunService') local Players=game:GetService('Players') local TAG='PNMarketAquarium' local tanks={} local function disconnectAll(connections)  for _,connection in ipairs(connections) do connection
+QP5@script ServerStorage.PortoEnvironmentBackup_20261001.BeforeNetConnections20261002.TemporaryHarborPropReview20261002 key -654 | ('HumanoidRootPart',10));local V=Vector3.new local lanes={  {'Market front',249,-654,-637},  {'Market rear and relocated lamp',264,-653,-643},  {'South net rack bypass',258,-680,-670},  {'North net rac
+QP5@group Folder AlleyCrates min 261.47,-46.77,-642.98 max 273.59,-43.51,-640.51
+QP5@edge 01 Curved waterfront.North quay seam cap Part 242.80,-46.88,-593.30 size 2.90,0.20,2.90 fill nil moved false
+QP5@edge 01 Curved waterfront.Closed quay seam cap Part 243.00,-46.88,-596.50 size 2.90,0.20,4.50 fill nil moved false
+QP5@edge 01 Curved waterfront.North quay seam masonry Part 242.80,-48.06,-593.30 size 2.80,2.45,2.80 fill nil moved false
+QP5@edge 01 Curved waterfront.Realigned stair tread Part 248.50,-47.05,-592.15 size 6.20,0.20,1.16 fill nil moved false
+QP5@edge 01 Curved waterfront.Realigned stair masonry Part 248.50,-48.36,-591.05 size 6.00,1.89,1.16 fill nil moved false
+QP5@edge 01 Curved waterfront.Closed quay seam Part 243.00,-48.06,-596.50 size 2.80,2.45,4.40 fill nil moved false
+QP5@edge 01 Curved waterfront.Realigned stair tread Part 248.50,-47.65,-589.95 size 6.20,0.20,1.16 fill nil moved false
+QP5@edge 01 Curved waterfront.Realigned stair masonry Part 248.50,-48.51,-589.95 size 6.00,1.59,1.16 fill nil moved false
+QP5@edge 01 Curved waterfront.Realigned stair masonry Part 248.50,-48.21,-592.15 size 6.00,2.19,1.16 fill nil moved false
+QP5@edge 01 Curved waterfront.Realigned stair tread Part 248.50,-47.35,-591.05 size 6.20,0.20,1.16 fill nil moved false
+QP5@edge 01 Curved waterfront.Realigned stair landing Part 248.50,-46.92,-593.00 size 6.20,0.24,2.00 fill nil moved false
+QP5@edge 11 Fitted surface joins.Quay fitted around gangway WedgePart 227.02,-46.83,-699.77 size 0.35,5.54,3.02 fill nil moved true
+QP5@edge 11 Fitted surface joins.Quay fitted around gangway WedgePart 234.44,-46.83,-701.83 size 0.35,8.21,3.91 fill nil moved true
+QP5@edge 11 Fitted surface joins.Quay fitted around gangway WedgePart 237.02,-46.90,-699.77 size 0.35,5.54,3.02 fill true moved false
+QP5@edge 11 Fitted surface joins.Quay fitted around gangway WedgePart 244.44,-46.90,-701.83 size 0.35,8.21,3.91 fill true moved false
+QP5@DONE

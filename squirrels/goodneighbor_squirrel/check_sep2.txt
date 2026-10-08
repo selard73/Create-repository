@@ -1,0 +1,5 @@
+Z > 1.91: total=1031, max Y=0.69
+Z > 1.92: total=998, max Y=0.63
+Z > 1.93: total=958, max Y=0.63
+Z > 1.94: total=922, max Y=0.42
+Z > 1.95: total=897, max Y=0.42

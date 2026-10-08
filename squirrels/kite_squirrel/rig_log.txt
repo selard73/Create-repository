@@ -1,0 +1,3 @@
+body x -0.66; head centre (-0.56, -0.78, 1.57) n=217; tail low (-0.93, 0.67, 1.35) mid (-1.06, 0.82, 1.74) tip (-1.02, 0.67, 2.21) n=426
+bound; vertices with no weight: 0 / 3490
+RIG_DONE

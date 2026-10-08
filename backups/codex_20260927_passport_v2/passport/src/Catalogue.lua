@@ -1,0 +1,20 @@
+-- Stable ids are saved in the existing item ledger. Never rename released ids.
+return {
+ {id="rescue", name="Swamp rescuer", area="forest", icon="rescue", hint="Free a baby squirrel from a cage in the swamp."},
+ {id="riddle", name="Curious mind", area="forest", icon="book", hint="Have a go at the forest question board. Every answer counts."},
+ {id="race", name="Forest dash", area="forest", icon="flag", hint="Finish a timed squirrel race in the forest."},
+ {id="hoop", name="Nothing but net", area="forest", icon="hoop", item="slingshot", hint="Score a basket at the forest hoop. A shot costs 1 acorn; a basket awards 3."},
+ {id="find", name="A new friend", area="forest", icon="rescue", hint="Find a squirrel you have not collected yet."},
+ {id="gold", name="Golden discovery", area="gold", icon="rescue", hint="Find today's Golden Squirrel. Your clue is on the Clues page."},
+ {id="book", name="One more page", area="village", icon="book", hint="Open a book in the bookstore. All stories are free to read."},
+ {id="coffee", name="Café zoomies", area="village", icon="coffee", hint="Sit with a coffee at the café and enjoy the zoomies."},
+ {id="cheese", name="A little mischief", area="village", icon="cheese", hint="Try the cheese in the Rue. A small snack with a big surprise."},
+ {id="bubbles", name="A splash of colour", area="village", icon="bubbles", hint="Choose coloured bubbles for the village fountain."},
+ {id="glace", name="Brain freeze!", area="village", icon="glace", hint="Eat a glace until the brain freeze arrives."},
+ {id="hat", name="Hats off!", area="village", icon="hat", hint="Buy or wear a hat from the Chapelier. An owned hat counts too."},
+ {id="portrait", name="A moment on canvas", area="village", icon="portrait", hint="Sit for the painter by the river and have your portrait painted."},
+ {id="baguette", name="Baguette bandit", area="village", icon="baguette", hint="Grab the baguette in the chase. This activity needs other players."},
+ {id="zipline", name="Above the treetops", area="domaine", icon="ziphandle", item="ziphandle", hint="Use your handle to take a zipline ride across the map."},
+ {id="climb", name="Ring the bell", area="domaine", icon="bell", hint="Finish the Sandstone Climb and ring the summit bell."},
+ {id="glider", name="A squirrel's-eye view", area="domaine", icon="glider", item="glider", hint="Launch your hang glider from the Sandstone summit."},
+}

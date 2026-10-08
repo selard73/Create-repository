@@ -1,0 +1,13 @@
+local T=workspace.Terrain
+local bk=game:GetService('ServerStorage'):FindFirstChild('TidePoolBackup')
+local tr=bk and bk:FindFirstChild('Terrain_x276_y-68_z-812')
+warn('QX@TR',tr and tr.ClassName,tr and tostring(tr.SizeInCells),tr and tostring(tr.IsSmooth))
+-- what does the terrain hold now along a line through the shelf (x 284..312 at z -781), at y -50 / -54 / -58
+for _,y in ipairs({-50,-54,-58}) do
+	local reg=Region3.new(Vector3.new(280,y-2,-784),Vector3.new(316,y+2,-780)):ExpandToGrid(4)
+	local mats,occ=T:ReadVoxels(reg,4)
+	local s={}
+	for x=1,mats.Size.X do table.insert(s,mats[x][1][1].Name:sub(1,2)..string.format('%.1f',occ[x][1][1])) end
+	warn('QX@y'..y..' '..table.concat(s,' '))
+end
+warn('QX@END')

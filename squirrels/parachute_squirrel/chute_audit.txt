@@ -1,0 +1,6 @@
+canopy (z>3.05): n=1313 x -2.29..2.29 y -1.00..0.61 z 3.05..4.76 | Head 0.70, Tail2 0.29, Root 0.00, Chest 0.00
+risers (2.45<z<3.05): n=172 x -1.93..1.97 y -0.86..-0.39 z 2.45..3.04 | Head 0.71, Tail2 0.19, Root 0.04, Chest 0.04, Neck 0.01
+head+helmet (1.6<z<2.45): n=298 x -1.15..0.25 y -0.96..1.04 z 1.60..2.45 | Head 0.66, Neck 0.10, Tail2 0.10, Tail1 0.05, Chest 0.04, Root 0.01
+raised paws (1.4<z<2.0, |x+0.45|>0.7): n=315 x -1.98..1.01 y -0.97..1.13 z 1.40..2.00 | Head 0.41, Neck 0.16, Tail1 0.14, Tail2 0.11, Chest 0.10, Root 0.08
+legs (z<0.9): n=653 x -1.65..0.70 y -0.89..1.03 z 0.00..0.90 | Root 0.55, Chest 0.23, Tail1 0.13, Head 0.05, Neck 0.02, Tail2 0.00
+DONE

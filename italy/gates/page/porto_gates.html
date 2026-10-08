@@ -1,0 +1,299 @@
+<title>Porto Nocciola Gates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; the chart leads, then the gates in two groups (Harbour -> town, town -> Groves),
+   each gate a two-picture row (the spot in Studio | the design). Colours follow the in-game chart. */
+:root {
+  --bg: #eef0ee;          /* Porto stone, cool */
+  --panel: #ffffff;
+  --ink: #1f2430;
+  --muted: #5d6470;
+  --rule: #d3d7d4;
+  --old: #c8322f;         /* the wall that is already there (red on the chart) */
+  --new: #7428b8;         /* the proposed wall + Groves gates (purple on the chart) */
+  --sea: #2d5c9a;         /* the funicular marker */
+  --chip: #e4e7e4;
+  --display: "Alegreya SC", Georgia, "Times New Roman", serif;
+  --body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15181d; --panel: #1e232a; --ink: #e8e9e6; --muted: #a2a8b1; --rule: #343a43;
+    --old: #f06a5f; --new: #b88ae8; --sea: #7fa9e0; --chip: #2a3039; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15181d; --panel: #1e232a; --ink: #e8e9e6; --muted: #a2a8b1; --rule: #343a43;
+  --old: #f06a5f; --new: #b88ae8; --sea: #7fa9e0; --chip: #2a3039; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.5; }
+.wrap { max-width: 980px; margin: 0 auto; padding-inline: 18px; padding-block: 28px 64px; display: grid; gap: 34px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; text-wrap: balance; margin: 0; line-height: 1.15; }
+h1 { font-size: clamp(30px, 5vw, 44px); }
+h2 { font-size: 26px; }
+h3 { font-size: 21px; }
+p { margin: 0; max-width: 68ch; }
+.lede { display: grid; gap: 10px; }
+.lede .sub { color: var(--muted); font-size: 18px; }
+.status { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { font-family: var(--mono); font-size: 12.5px; background: var(--chip); border-radius: 999px; padding: 3px 11px; color: var(--ink); }
+figure { margin: 0; display: grid; gap: 8px; min-width: 0; }
+figure img { width: 100%; height: auto; display: block; border-radius: 6px; border: 1px solid var(--rule); background: var(--panel); }
+figcaption { font-size: 14px; color: var(--muted); }
+.chart { display: grid; gap: 14px; }
+.toggle { display: flex; flex-wrap: wrap; gap: 8px; }
+.toggle button { font: 500 15px var(--body); color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 7px 14px; cursor: pointer; }
+.toggle button[aria-pressed="true"] { border-color: var(--new); box-shadow: inset 0 0 0 1px var(--new); }
+.toggle button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 15px; }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.dash { width: 30px; height: 0; border-top: 4px dashed currentColor; }
+.dot { width: 22px; height: 22px; border-radius: 50%; border: 3px solid currentColor; display: inline-grid; place-items: center; font: 700 12px var(--body); background: var(--panel); }
+.c-old { color: var(--old); } .c-new { color: var(--new); } .c-sea { color: var(--sea); }
+.choices { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px; display: grid; gap: 12px; }
+.choices ol { margin: 0; padding-left: 22px; display: grid; gap: 10px; }
+.choices li { max-width: 72ch; }
+.group { display: grid; gap: 22px; }
+.group > header { display: grid; gap: 6px; border-top: 2px solid var(--ink); padding-top: 14px; }
+.group > header p { color: var(--muted); }
+.gate { display: grid; gap: 12px; padding-bottom: 22px; border-bottom: 1px solid var(--rule); }
+.gate:last-child { border-bottom: 0; }
+.gate-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.num { width: 36px; height: 36px; border-radius: 50%; border: 3px solid currentColor; display: grid; place-items: center; font: 700 17px var(--body); flex: none; background: var(--panel); }
+.pics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pics.one { grid-template-columns: 1fr; max-width: 600px; }
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; font-size: 16px; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; min-width: 0; }
+.sign { font-family: var(--display); font-weight: 500; letter-spacing: 0.02em; }
+.where { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.note { font-size: 15px; color: var(--muted); }
+@media (max-width: 640px) {
+  .pics { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: 1fr; }
+  .facts dt { margin-top: 6px; }
+}
+</style>
+
+<div class="wrap">
+  <section class="lede">
+    <h1>Porto Nocciola Gates</h1>
+    <p class="sub">All seven gates and both walls are built in Studio and tested. Nothing is published: it waits for your look in the morning.</p>
+    <div class="status">
+      <span class="pill">built in Studio, not published</span>
+      <span class="pill">7 gates + the funicular</span>
+      <span class="pill">Oct 8 2026, overnight</span>
+    </div>
+  </section>
+
+  <section class="group" aria-labelledby="h-spread">
+    <header>
+      <h2 id="h-spread">The Groves squirrels: spreading them out</h2>
+      <p>Blue stay where they are. Red lines go from where five squirrels stand now to a suggested new spot (green). Nothing has moved yet.</p>
+    </header>
+    <figure><img src="img/groves_spread.jpg" alt="Map of The Groves with nine squirrels staying (blue) and five moving (red lines to green dots) to the olive terraces, the hilltop, the watchtower and the grassy strip" width="968" height="1069" loading="lazy"><figcaption>South is at the top, like the in-game map.</figcaption></figure>
+    <div class="choices">
+      <ol>
+        <li><b>Olive Picker</b> → an olive terrace, among the trees he picks from.</li>
+        <li><b>Butterfly Catcher</b> → the lower lemon terrace, where the flowers are.</li>
+        <li><b>Photographer</b> → the hilltop above the terraces, photographing the whole bay.</li>
+        <li><b>Guitarist</b> → playing at the foot of the watchtower.</li>
+        <li><b>Treasure Hunter</b> → digging in the grassy strip by the east point.</li>
+      </ol>
+      <p class="note">That leaves something to find in every corner: the beach, the meadow, the lighthouse, the watchtower, the east point, the terraces and the hilltop. Any of these can go somewhere else if you prefer.</p>
+    </div>
+  </section>
+
+  <section class="group" aria-labelledby="h-built">
+    <header>
+      <h2 id="h-built">Built overnight</h2>
+      <p>These are the gates as they stand in Studio now, closed. When you play as yourself they open, because you have found every squirrel.</p>
+    </header>
+    <div class="pics">
+      <figure><img src="img/built_g1.jpg" alt="The stone Porta del Borgo arch with its plaque, iron fan and two wooden doors, at the foot of the town stairs" width="1202" height="676" loading="lazy"><figcaption>1. Porta del Borgo, at the foot of the town stairs beside the funicular.</figcaption></figure>
+      <figure><img src="img/built_g2.jpg" alt="An iron double gate between ochre pillars under an iron arch with a Lighthouse Path sign, at the foot of the cliff stairs" width="1202" height="676" loading="lazy"><figcaption>2. Lighthouse Path, where the cliff path leaves the quay.</figcaption></figure>
+      <figure><img src="img/built_g3.jpg" alt="Two wooden bollards with a rope and a board reading Beach closed, high tide, at the top of the Beach steps with the sea behind" width="1202" height="676" loading="lazy"><figcaption>3. Beach rope, at the top of the Beach steps. When it opens, the rope and board are put away.</figcaption></figure>
+      <figure><img src="img/built_g4.jpg" alt="An iron double gate between stone posts on the coast path, with a To the Lighthouse sign and the lighthouse framed behind" width="1202" height="676" loading="lazy"><figcaption>4. To the Lighthouse, on the coast path past both junctions.</figcaption></figure>
+      <figure><img src="img/built_g5.jpg" alt="An iron double gate between stone posts with low dry-stone walls each side and a Flower Meadow sign, the lighthouse behind" width="1202" height="676" loading="lazy"><figcaption>5. Flower Meadow, on the path from Via Alta, before the watchtower branch.</figcaption></figure>
+      <figure><img src="img/built_g6.jpg" alt="A wooden double farm gate with a yellow Lemon Grove sign on the stair landing, stairs climbing behind it" width="1202" height="676" loading="lazy"><figcaption>6. Lemon Grove, on the Salita degli Ulivi landing.</figcaption></figure>
+      <figure><img src="img/built_g7.jpg" alt="A wooden double farm gate with a Lemon Grove sign on the path from the funicular top, rock slope on one side" width="1202" height="676" loading="lazy"><figcaption>7. Lemon Grove, on the path from the funicular top (the Belvedere).</figcaption></figure>
+      <figure><img src="img/pizza_after.jpg" alt="Chef Nutmeg standing between the two café tables in front of the pizzeria, out from under the striped awning" width="1202" height="676" loading="lazy"><figcaption>Also tonight: Chef Nutmeg out from under the pizzeria awning.</figcaption></figure>
+    </div>
+
+    <div class="choices">
+      <h3>What the play tests showed</h3>
+      <ol>
+        <li><b>7 Harbour finds:</b> both harbour gates shut, every wall solid, the notes read "Find 10 squirrels in The Harbour to open this gate / 7 / 10 found so far". Walking into the Porta del Borgo stops you at the doors. Standing in the town sends you straight back to the gate with France's message.</li>
+        <li><b>10 Harbour finds:</b> the doors and the iron gate swing open with the creak, the walls let you through, and you can walk up the town stairs and stay there.</li>
+        <li><b>10 Harbour + 7 Via della Piazza:</b> the five Groves gates stay shut with their notes. Standing in the meadow, on the pebble beach or on the lemon terraces sends you back to the nearest gate on the town side.</li>
+        <li><b>10 Via della Piazza:</b> all five swing open (the beach rope is put away), you can walk into the meadow and down the Beach steps.</li>
+        <li><b>The map:</b> Via della Piazza and The Groves are covered until their gates open for you, and each Porto area shows its own count.</li>
+        <li><b>No wall stands on a path</b> anywhere along either line, checked stud by stud. The Flower Meadow gate moved 9 studs up the path so the watchtower path is all behind it.</li>
+      </ol>
+    </div>
+
+    <div class="choices">
+      <h3>Everything changed tonight (Studio only)</h3>
+      <ol>
+        <li>The new world map in the map panel, and the map window kept clear of the jump button on phones.</li>
+        <li>The "More Squirrels Coming Soon" letters removed. The old coming-soon wall is in ServerStorage, replaced by the gates.</li>
+        <li>Chef Nutmeg moved out from under the awning.</li>
+        <li>Every railing in Porto made solid: stairs, balconies, the lighthouse gallery, the pier gangways and the roof terraces (3,404 pieces).</li>
+        <li>The gates and the two invisible walls, opening at 10 finds in the area before, with France's note and message.</li>
+        <li>Tonio and the funicular: 10 Harbour squirrels instead of 15 ("Please come back and ride when you have found 10 squirrels in the harbor.").</li>
+        <li>The strip south of the lemon terraces belongs to The Groves now.</li>
+      </ol>
+      <p class="note">If anything about the gates misbehaves, untick the Enabled attribute on Workspace.PortoGates: every gate and wall opens for everyone until it is ticked again.</p>
+    </div>
+
+    <div class="choices">
+      <h3>Still yours to decide</h3>
+      <ol>
+        <li><b>Publish</b> (Alt+P) once you have looked.</li>
+        <li><b>The Daily Acorns card</b> can still sit on top of the map on a phone if you open the map before tapping Collect. Should opening the map close it?</li>
+        <li><b>The windmill gallery railing</b> at Château de l'Acorn (France) is still walk-through. Solid too?</li>
+      </ol>
+    </div>
+  </section>
+
+  <h2>The plan you approved</h2>
+
+  <section class="chart" aria-labelledby="h-map">
+    <h2 id="h-map">Every way between the three areas</h2>
+    <p>I traced all 15 paths in Porto and checked where each one crosses from one area into the next. There are seven crossings plus the funicular. Because players can climb almost any slope, every gate also needs an invisible wall between the gates, the same way the harbour wall works today.</p>
+    <div class="toggle" role="group" aria-label="Choose the wall layout">
+      <button type="button" id="optA" aria-pressed="true">Option A: one wall line (recommended)</button>
+      <button type="button" id="optB" aria-pressed="false">Option B: areas exactly as now</button>
+    </div>
+    <figure id="figA">
+      <img src="img/plan_overview.jpg" alt="Map of Porto Nocciola, south at the top, with the harbour wall in red, a proposed purple wall between the town and The Groves, and numbered gates 1 to 7 plus F for the funicular" width="1181" height="1235">
+      <figcaption>Option A. The strip south of the lemon terraces (hatched, no squirrels in it) joins The Groves, so one wall runs from the sea, along the town's south edge, up the east side of the town and across to the terraces. The terraces connect to the meadow and the watchtower naturally.</figcaption>
+    </figure>
+    <figure id="figB" hidden>
+      <img src="img/plan_overview_b.jpg" alt="The same map with the areas exactly as they are today: the wall runs across to the east point and the lemon terraces get a fence of their own" width="1181" height="1235">
+      <figcaption>Option B. The areas stay exactly as they are now. The wall runs across to the east point, and the lemon terraces get a fence on three sides of their own, with the strip south of them staying part of Via della Piazza.</figcaption>
+    </figure>
+    <div class="legend">
+      <span class="c-old"><i class="dash"></i>Wall that is already there (it now opens at 10 Harbour finds)</span>
+      <span class="c-new"><i class="dash"></i>New wall between Via della Piazza and The Groves</span>
+      <span class="c-old"><i class="dot">1</i>Harbour → town gate</span>
+      <span class="c-new"><i class="dot">3</i>Town → Groves gate</span>
+      <span class="c-sea"><i class="dot">F</i>Funicular</span>
+    </div>
+  </section>
+
+  <section class="choices" aria-labelledby="h-choices">
+    <h2 id="h-choices">Your answers</h2>
+    <ol>
+      <li><b>Option A:</b> the strip south of the lemon terraces joins The Groves, one wall.</li>
+      <li><b>The designs:</b> all fine as drawn.</li>
+      <li><b>The signs</b> in English, except the arch: <span class="sign">Porta del Borgo</span>, <span class="sign">Lighthouse Path</span>, <span class="sign">Beach closed – high tide!</span>, <span class="sign">To the Lighthouse</span>, <span class="sign">Flower Meadow</span>, <span class="sign">Lemon Grove</span>.</li>
+      <li><b>The note</b> like France: <i>“Find 10 squirrels in The Harbour to open this gate / 7 / 10 found so far”</i>.</li>
+    </ol>
+    <p class="note">How every gate behaves (same as France): it opens only for the player who has the finds, it swings open with a creak, and anyone who gets round it anyway is walked back to the gate. The funicular conductor follows the same rule, 10 Harbour finds instead of 15. The “More Squirrels Coming Soon” letters are already gone from Studio (not published yet).</p>
+  </section>
+
+  <section class="group" aria-labelledby="h-g1">
+    <header>
+      <h2 id="h-g1">From The Harbour into Via della Piazza</h2>
+      <p>Opens with 10 squirrels found in The Harbour.</p>
+    </header>
+
+    <article class="gate">
+      <div class="gate-head"><span class="num c-old">1</span><h3>Porta del Borgo</h3></div>
+      <div class="pics">
+        <figure><img src="img/spot_1.jpg" alt="Studio view of the harbour quay: the stone stairs up between two rocks, next to the funicular station" width="1202" height="676" loading="lazy"><figcaption>The spot: foot of the main stone stairs into town, beside the funicular station.</figcaption></figure>
+        <figure><img src="img/g1_porta_del_borgo.jpg" alt="Concept: a pale stone town arch with a terracotta-tiled top, an iron fan in the arch and two studded wooden doors, with a player for scale" width="1200" height="800" loading="lazy"><figcaption>Design: stone town arch, two wooden doors, an iron fan in the arch.</figcaption></figure>
+      </div>
+      <dl class="facts">
+        <dt>Path</dt><dd>Lower town approach, the main way up from the quay <span class="where">(359, −47, −627)</span></dd>
+        <dt>Opens by</dt><dd>both doors swinging inward, with a creak</dd>
+        <dt>Sign</dt><dd class="sign">Porta del Borgo</dd>
+      </dl>
+    </article>
+
+    <article class="gate">
+      <div class="gate-head"><span class="num c-old">2</span><h3>Sentiero gate</h3></div>
+      <div class="pics">
+        <figure><img src="img/spot_2.jpg" alt="Studio view of the stone walk along the shore and the stairs where the cliff path starts up from the harbour" width="1202" height="676" loading="lazy"><figcaption>The spot: where the Sentiero del Faro leaves the quay and starts up the cliff.</figcaption></figure>
+        <figure><img src="img/g2_sentiero_iron.jpg" alt="Concept: a double iron gate with spear-topped bars between two ochre pillars with ball finials" width="1200" height="800" loading="lazy"><figcaption>Design: double iron gate between ochre pillars.</figcaption></figure>
+      </div>
+      <dl class="facts">
+        <dt>Path</dt><dd>Sentiero del Faro, harbour end <span class="where">(323, −52, −771)</span></dd>
+        <dt>Opens by</dt><dd>both leaves swinging open</dd>
+        <dt>Sign</dt><dd class="sign">Lighthouse Path</dd>
+      </dl>
+    </article>
+
+    <article class="gate">
+      <div class="gate-head"><span class="num c-sea">F</span><h3>Funicolare</h3></div>
+      <p>No gate here. Tonio the conductor already checks before he lets you ride. His number changes from 15 to 10 Harbour finds, so the funicular, the stairs and the cliff path all open together.</p>
+    </article>
+  </section>
+
+  <section class="group" aria-labelledby="h-g2">
+    <header>
+      <h2 id="h-g2">From Via della Piazza into The Groves</h2>
+      <p>Opens with 10 squirrels found in Via della Piazza.</p>
+    </header>
+
+    <article class="gate">
+      <div class="gate-head"><span class="num c-new">3</span><h3>Beach rope</h3><span class="num c-new">4</span><h3>Coast path gate</h3></div>
+      <div class="pics one">
+        <figure><img src="img/spot_34.jpg" alt="Studio view from above of the cliff-top crossroads: the coast path, the beach stairs going down to the left, and the stairs up from the sailing club" width="1202" height="676" loading="lazy"><figcaption>The crossroads at the south end of town. The coast path, the stairs from the church square and the stairs from the sailing club all meet here. Gate 3 closes the Beach steps down to the pebble cove; gate 4 closes the coast path on toward the lighthouse. The crossroads itself stays in town.</figcaption></figure>
+      </div>
+      <div class="pics">
+        <figure><img src="img/g3_beach_rope.jpg" alt="Concept: two wooden bollards with a sagging rope and a short chain, and a hanging board reading Spiaggia chiusa, alta marea" width="1200" height="800" loading="lazy"><figcaption>3. Rope and chain across the top of the Beach steps, with a hanging board. When it opens, the rope and board are put away.</figcaption></figure>
+        <figure><img src="img/g4_dry_stone_iron.jpg" alt="Concept: a single iron gate between stone posts in a low dry-stone wall, with a sign reading Faro, proprietà privata" width="1200" height="800" loading="lazy"><figcaption>4. Iron gate in a low dry-stone wall, sign on the gate.</figcaption></figure>
+      </div>
+      <dl class="facts">
+        <dt>Gate 3</dt><dd>top of the Beach steps <span class="where">(379, −5, −1003)</span> · <span class="sign">Beach closed – high tide!</span></dd>
+        <dt>Gate 4</dt><dd>Sentiero del Faro, past the crossroads <span class="where">(423, 1, −1031)</span> · <span class="sign">To the Lighthouse</span></dd>
+      </dl>
+    </article>
+
+    <article class="gate">
+      <div class="gate-head"><span class="num c-new">5</span><h3>Meadow gate</h3></div>
+      <div class="pics">
+        <figure><img src="img/spot_5.jpg" alt="Studio view down the path from the upper town toward the meadow and the lighthouse, with the watchtower on the right" width="1202" height="676" loading="lazy"><figcaption>The spot: on the path from Via Alta to the meadow, just before it forks to the watchtower. The Hiker stays on the Groves side.</figcaption></figure>
+        <figure><img src="img/g4_dry_stone_iron.jpg" alt="Concept: the same iron gate in a dry-stone wall" width="1200" height="800" loading="lazy"><figcaption>Design: the same iron gate in a dry-stone wall as gate 4, with its own sign.</figcaption></figure>
+      </div>
+      <dl class="facts">
+        <dt>Path</dt><dd>Upper town to meadow <span class="where">(552, 12, −978): moved up the path when built, before the watchtower branch</span></dd>
+        <dt>Sign</dt><dd class="sign">Flower Meadow</dd>
+      </dl>
+    </article>
+
+    <article class="gate">
+      <div class="gate-head"><span class="num c-new">6</span><span class="num c-new">7</span><h3>Terrace gates</h3></div>
+      <div class="pics">
+        <figure><img src="img/spot_67.jpg" alt="Studio view of the Salita degli Ulivi stairs climbing to the top lemon terrace, with the path from the funicular top coming in from the right" width="1202" height="676" loading="lazy"><figcaption>The spot: the stairs up from Via Alta (6) and the path from the funicular top (7) both arrive at the top lemon terrace, where the Lemon Seller stands. One gate on each, just below him.</figcaption></figure>
+        <figure><img src="img/g5_farm_gate.jpg" alt="Concept: a five-bar wooden farm gate with a diagonal brace between wooden posts, low stone terrace walls and lemon trees behind" width="1200" height="800" loading="lazy"><figcaption>Design: wooden five-bar farm gate, like the vineyard gates in France.</figcaption></figure>
+      </div>
+      <dl class="facts">
+        <dt>Gate 6</dt><dd>Salita degli Ulivi, landing below the top terrace <span class="where">(680, 49, −759)</span></dd>
+        <dt>Gate 7</dt><dd>path from the Belvedere (funicular top) <span class="where">(703, 59, −759)</span></dd>
+        <dt>Sign</dt><dd class="sign">Lemon Grove</dd>
+      </dl>
+    </article>
+  </section>
+
+  <p class="note">The pictures on the right are quick concept models at the game's scale. The figure is a standard 5-stud player. In the game they'll be built from Parts in Porto's own stone, stucco and terracotta colours.</p>
+</div>
+
+<script>
+(function () {
+  var a = document.getElementById('optA'), b = document.getElementById('optB');
+  var fa = document.getElementById('figA'), fb = document.getElementById('figB');
+  function pick(useB) {
+    a.setAttribute('aria-pressed', String(!useB)); b.setAttribute('aria-pressed', String(useB));
+    fa.hidden = useB; fb.hidden = !useB;
+  }
+  a.addEventListener('click', function () { pick(false); });
+  b.addEventListener('click', function () { pick(true); });
+})();
+</script>

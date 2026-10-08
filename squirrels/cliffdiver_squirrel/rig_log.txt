@@ -1,0 +1,12 @@
+body x 0.0; head centre (0.03, -0.85, 1.92) n=1157; tail low (-0.01, 0.65, 1.13) mid (-0.05, 0.76, 1.76) tip (-0.01, 0.66, 2.16) n=3188
+bound; vertices with no weight: 0 / 7342
+Traceback (most recent call last):
+  File "C:\Users\slard\roblox-props\squirrels\rig_squirrel.py", line 76, in <module>
+    export("gray", os.path.join(OUTD, f"{NAME}_gray_1k.png"))
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\slard\roblox-props\squirrels\rig_squirrel.py", line 70, in export
+    tex.image = bpy.data.images.load(png)
+                ~~~~~~~~~~~~~~~~~~~~^^^^^
+RuntimeError: Error: Cannot read 'C:\Users\slard\roblox-props\squirrels\cliffdiver_squirrel\cliffdiver_squirrel_gray_1k.png': No such file or directory
+
+

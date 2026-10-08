@@ -1,0 +1,3 @@
+head->chest soft falloff z 1.06..1.36: 1800 vertices adjusted
+tail->root below z 9.0 and y < 9.0: 934 vertices
+FIXW_DONE

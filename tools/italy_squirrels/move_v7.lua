@@ -1,0 +1,49 @@
+-- Oct 4 2026 (Shannon's circles): travel cart to the grass by the cliff foot NE of the Porto dais; the quay steps (+ Timbro on them)
+-- slid 8 studs west to the middle of the stone-wall stretch between the white seam block and the old steps.
+local CH=game:GetService('ChangeHistoryService')
+local wf=workspace.PortoNocciola['01 Curved waterfront']
+local DX=-8
+-- 1) steps
+local parts={}
+for _,p in ipairs(wf:GetChildren()) do
+	if p:IsA('BasePart') and p.Name:sub(1,15)=='Realigned stair' and p.Position.X>252 and p.Position.X<261 and p.Position.Z>-595 and p.Position.Z<-587 then table.insert(parts,p) end
+end
+assert(#parts>=8,'steps found '..#parts)
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Include rp.FilterDescendantsInstances={workspace.Terrain}
+local g0=workspace:Raycast(Vector3.new(256.5,-40,-587.6),Vector3.new(0,-20,0),rp)
+local g1=workspace:Raycast(Vector3.new(256.5+DX,-40,-587.6),Vector3.new(0,-20,0),rp)
+warn('QJ@STEPS@grass old',g0 and g0.Position.Y,'new',g1 and g1.Position.Y)
+local op=OverlapParams.new() op.FilterType=Enum.RaycastFilterType.Exclude
+local ex={workspace.ComingSoonWall,workspace.Terrain,workspace.customs_squirrel_color} for _,p in ipairs(parts) do table.insert(ex,p) end op.FilterDescendantsInstances=ex
+local hits=workspace:GetPartBoundsInBox(CFrame.new(256.5+DX,-47.6,-590.4),Vector3.new(6.0,1.8,3.9),op)
+local hs='' for i=1,math.min(#hits,6) do hs=hs..hits[i]:GetFullName():sub(25)..' | ' end
+warn('QJ@STEPS@blocking at new spot',#hits,hs)
+for _,p in ipairs(parts) do p.CFrame=p.CFrame+Vector3.new(DX,0,0) end
+local t=workspace.customs_squirrel_color t:PivotTo(t:GetPivot()+Vector3.new(DX,0,0))
+local pv=workspace:Raycast(Vector3.new(256.5+DX,-40,-595.5),Vector3.new(0,-20,0),RaycastParams.new())
+warn('QJ@STEPS@moved',#parts,'quay top behind new landing',pv and pv.Instance.Name,pv and pv.Position.Y)
+-- 2) travel cart
+local cart=workspace.Travel.Points.TravelCart_porto
+local cpv=cart:GetPivot()
+local cf0,sz0=cart:GetBoundingBox()
+local bottomOff=cf0.Position.Y-sz0.Y/2-cpv.Position.Y
+local cop=OverlapParams.new() cop.FilterType=Enum.RaycastFilterType.Exclude cop.FilterDescendantsInstances={cart,workspace.ComingSoonWall}
+local placed
+for _,c in ipairs({{243,-568},{242,-569},{244,-567},{241,-570},{245,-569},{243,-571},{240,-568}}) do
+	local g=workspace:Raycast(Vector3.new(c[1],-30,c[2]),Vector3.new(0,-30,0),rp)
+	if g and g.Position.Y<-45 then
+		local box=CFrame.new(c[1],g.Position.Y+sz0.Y/2+0.3,c[2])*(cpv-cpv.Position)
+		local h=workspace:GetPartBoundsInBox(box,sz0+Vector3.new(0.6,0,0.6),cop)
+		local terr=0 for _,p in ipairs(h) do if p:IsA('Terrain') then terr+=1 end end
+		if #h-terr==0 then
+			cart:PivotTo(CFrame.new(c[1],g.Position.Y-bottomOff+0.02,c[2])*(cpv-cpv.Position))
+			placed=c break
+		end
+	end
+end
+assert(placed,'no clear spot for the cart')
+local cfn=cart:GetBoundingBox()
+warn('QJ@CART@moved to',cfn.Position)
+CH:SetWaypoint('Cart by the cliff, steps + Timbro 8 studs west')
+workspace.CurrentCamera.CFrame=CFrame.lookAt(Vector3.new(226,-41,-577),Vector3.new(246,-46,-588))
+warn('QJ@END')

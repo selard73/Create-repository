@@ -1,0 +1,12 @@
+engine BLENDER_EEVEE
+trees placed 151
+objects 424
+rendered boat_approach
+rendered boat_under
+rendered glider_view
+rendered overview
+rendered pier_close
+rendered abutment
+rendered downstream_back
+rendered strata_close
+rendered top_cap

@@ -1,0 +1,3 @@
+bounds (-1.07, -0.71, -1.07) (1.07, 0.71, 1.07)
+ICON_DONE
+CARRIER_DONE

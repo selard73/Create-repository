@@ -1,0 +1,100 @@
+ATTR Top=700, 60, -660 | Bottom=345, -46.79999923706055, -605
+CARPIV Car_Crema 700.535888671875, 60, -656.541259765625 offset 3.5
+CARPIV Car_Rosso 344.4641418457031, -46.79999923706055, -608.458740234375 offset -3.5
+ST@BELVE@Station pitched canopy@Part@c(699.87,70.00,-654.31)@s(12.00,0.35,21.00)@top 70.17@rot(-0,-81,-9)@T0.00
+ST@BELVE@BELVEDERE • STAZIONE ALTA@Part@c(688.34,68.20,-658.19)@s(20.00,1.60,0.18)@top 69.00@rot(-0,99,0)@T0.00
+ST@BELVE@FUNICOLARE
+ST@BELVE@Bench Seat@Seat@c(695.28,61.64,-668.27)@s(2.20,0.30,1.20)@top 61.79@rot(-0,-171,0)@T1.00
+ST@BELVE@Bench Seat@Seat@c(692.91,61.64,-667.91)@s(2.20,0.30,1.20)@top 61.79@rot(-0,-171,0)@T1.00
+ST@BELVE@Bench Seat@Seat@c(695.63,61.64,-650.32)@s(2.20,0.30,1.20)@top 61.79@rot(-0,9,0)@T1.00
+ST@BELVE@Station timber column@Part@c(694.77,64.50,-648.06)@s(0.40,9.00,0.40)@top 69.00@rot(-0,-81,0)@T0.00
+ST@BELVE@Stone boarding platform@Part@c(701.38,59.00,-651.11)@s(5.00,2.00,17.00)@top 60.00@rot(-0,-81,0)@T0.00
+ST@BELVE@Station timber column@Part@c(708.60,64.50,-650.20)@s(0.40,9.00,0.40)@top 69.00@rot(-0,-81,0)@T0.00
+ST@BELVE@Bench back support@Part@c(692.10,62.00,-668.52)@s(0.14,2.10,0.14)@top 63.05@rot(-0,-171,0)@T0.00
+ST@BELVE@Bench back support@Part@c(695.86,62.00,-669.10)@s(0.14,2.10,0.14)@top 63.05@rot(-0,-171,0)@T0.00
+ST@BELVE@Bench iron leg@Part@c(692.20,60.80,-667.90)@s(0.18,1.60,1.40)@top 61.60@rot(-0,-171,0)@T0.00
+ST@BELVE@Bench back slat@Part@c(696.92,63.00,-649.81)@s(5.00,0.23,0.16)@top 63.12@rot(-0,9,0)@T0.00
+ST@BELVE@Platform safety line@Part@c(701.01,60.02,-653.48)@s(0.16,0.04,16.00)@top 60.04@rot(-0,-81,0)@T0.00
+ST@BELVE@Station pitched canopy@Part@c(698.15,70.00,-665.38)@s(12.00,0.35,21.00)@top 70.17@rot(-0,-81,9)@T0.00
+ST@BELVE@Station end crossing@Part@c(689.62,59.00,-658.39)@s(23.00,2.00,5.00)@top 60.00@rot(-0,-81,0)@T0.00
+ST@BELVE@Bench back support@Part@c(698.81,62.00,-650.07)@s(0.14,2.10,0.14)@top 63.05@rot(-0,9,0)@T0.00
+ST@BELVE@Bench iron leg@Part@c(698.71,60.80,-650.69)@s(0.18,1.60,1.40)@top 61.60@rot(-0,9,0)@T0.00
+ST@BELVE@Bench back support@Part@c(695.05,62.00,-649.49)@s(0.14,2.10,0.14)@top 63.05@rot(-0,9,0)@T0.00
+ST@BELVE@Bench iron leg@Part@c(694.95,60.80,-650.11)@s(0.18,1.60,1.40)@top 61.60@rot(-0,9,0)@T0.00
+ST@BELVE@Bench Seat@Seat@c(698.00,61.64,-650.68)@s(2.20,0.30,1.20)@top 61.79@rot(-0,9,0)@T1.00
+ST@BELVE@Bench back slat@Part@c(696.92,62.60,-649.81)@s(5.00,0.23,0.16)@top 62.71@rot(-0,9,0)@T0.00
+ST@BELVE@Bench back slat@Part@c(696.92,62.20,-649.81)@s(5.00,0.23,0.16)@top 62.32@rot(-0,9,0)@T0.00
+ST@BELVE@Bench seat slat@Part@c(696.89,61.55,-650.04)@s(5.00,0.18,0.32)@top 61.64@rot(-0,9,0)@T0.00
+ST@BELVE@Bench seat slat@Part@c(696.83,61.55,-650.40)@s(5.00,0.18,0.32)@top 61.64@rot(-0,9,0)@T0.00
+ST@BELVE@Bench seat slat@Part@c(696.78,61.55,-650.77)@s(5.00,0.18,0.32)@top 61.64@rot(-0,9,0)@T0.00
+ST@BELVE@Sign mounting strap@Part@c(691.24,66.88,-669.77)@s(0.95,0.12,0.12)@top 66.94@rot(-0,99,0)@T0.00
+ST@BELVE@Sign mounting strap@Part@c(691.24,65.52,-669.77)@s(0.95,0.12,0.12)@top 65.58@rot(-0,99,0)@T0.00
+ST@BELVE@Station timber column@Part@c(705.23,64.50,-671.94)@s(0.40,9.00,0.40)@top 69.00@rot(-0,-81,0)@T0.00
+ST@BELVE@Stone boarding platform@Part@c(698.62,59.00,-668.89)@s(5.00,2.00,17.00)@top 60.00@rot(-0,-81,0)@T0.00
+ST@BELVE@Bench seat slat@Part@c(694.13,61.55,-667.82)@s(5.00,0.18,0.32)@top 61.64@rot(-0,-171,0)@T0.00
+ST@BELVE@Platform safety line@Part@c(698.99,60.02,-666.52)@s(0.16,0.04,16.00)@top 60.04@rot(-0,-81,0)@T0.00
+ST@BELVE@Station timber column@Part@c(691.40,64.50,-669.80)@s(0.40,9.00,0.40)@top 69.00@rot(-0,-81,0)@T0.00
+ST@BELVE@Bench back slat@Part@c(693.98,62.60,-668.78)@s(5.00,0.23,0.16)@top 62.71@rot(-0,-171,0)@T0.00
+ST@BELVE@Bench back slat@Part@c(693.98,62.20,-668.78)@s(5.00,0.23,0.16)@top 62.32@rot(-0,-171,0)@T0.00
+ST@BELVE@Bench seat slat@Part@c(694.02,61.55,-668.56)@s(5.00,0.18,0.32)@top 61.64@rot(-0,-171,0)@T0.00
+ST@BELVE@Bench iron leg@Part@c(695.95,60.80,-668.48)@s(0.18,1.60,1.40)@top 61.60@rot(-0,-171,0)@T0.00
+ST@BELVE@Bench back slat@Part@c(693.98,63.00,-668.78)@s(5.00,0.23,0.16)@top 63.12@rot(-0,-171,0)@T0.00
+ST@BELVE@Bench seat slat@Part@c(694.08,61.55,-668.19)@s(5.00,0.18,0.32)@top 61.64@rot(-0,-171,0)@T0.00
+ST@PORTO@Bench back support@Part@c(337.10,-44.80,-613.52)@s(0.14,2.10,0.14)@top -43.75@rot(-0,-171,0)@T0.00
+ST@PORTO@Stone boarding platform@Part@c(346.38,-47.80,-596.11)@s(5.00,2.00,17.00)@top -46.80@rot(-0,-81,0)@T0.00
+ST@PORTO@Station timber column@Part@c(339.77,-42.30,-593.06)@s(0.40,9.00,0.40)@top -37.80@rot(-0,-81,0)@T0.00
+ST@PORTO@Platform safety line@Part@c(346.01,-46.78,-598.48)@s(0.16,0.04,16.00)@top -46.76@rot(-0,-81,0)@T0.00
+ST@PORTO@Station timber column@Part@c(353.60,-42.30,-595.20)@s(0.40,9.00,0.40)@top -37.80@rot(-0,-81,0)@T0.00
+ST@PORTO@Bench back slat@Part@c(338.98,-44.60,-613.78)@s(5.00,0.23,0.16)@top -44.48@rot(-0,-171,0)@T0.00
+ST@PORTO@Bench back slat@Part@c(338.98,-43.80,-613.78)@s(5.00,0.23,0.16)@top -43.68@rot(-0,-171,0)@T0.00
+ST@PORTO@Bench back slat@Part@c(338.98,-44.20,-613.78)@s(5.00,0.23,0.16)@top -44.09@rot(-0,-171,0)@T0.00
+ST@PORTO@Stone boarding platform@Part@c(343.62,-47.80,-613.89)@s(5.00,2.00,17.00)@top -46.80@rot(-0,-81,0)@T0.00
+ST@PORTO@Bench iron leg@Part@c(340.95,-46.00,-613.48)@s(0.18,1.60,1.40)@top -45.20@rot(-0,-171,0)@T0.00
+ST@PORTO@Bench back support@Part@c(340.86,-44.80,-614.10)@s(0.14,2.10,0.14)@top -43.75@rot(-0,-171,0)@T0.00
+ST@PORTO@Sign mounting strap@Part@c(336.24,-39.92,-614.77)@s(0.95,0.12,0.12)@top -39.86@rot(-0,99,0)@T0.00
+ST@PORTO@Bench seat slat@Part@c(339.08,-45.25,-613.19)@s(5.00,0.18,0.32)@top -45.16@rot(-0,-171,0)@T0.00
+ST@PORTO@Bench seat slat@Part@c(339.02,-45.25,-613.56)@s(5.00,0.18,0.32)@top -45.16@rot(-0,-171,0)@T0.00
+ST@PORTO@Bench seat slat@Part@c(341.89,-45.25,-595.04)@s(5.00,0.18,0.32)@top -45.16@rot(-0,9,0)@T0.00
+ST@PORTO@Bench back slat@Part@c(341.92,-44.20,-594.81)@s(5.00,0.23,0.16)@top -44.09@rot(-0,9,0)@T0.00
+ST@PORTO@Bench back slat@Part@c(341.92,-44.60,-594.81)@s(5.00,0.23,0.16)@top -44.48@rot(-0,9,0)@T0.00
+ST@PORTO@Bench seat slat@Part@c(341.78,-45.25,-595.77)@s(5.00,0.18,0.32)@top -45.16@rot(-0,9,0)@T0.00
+ST@PORTO@Bench back slat@Part@c(341.92,-43.80,-594.81)@s(5.00,0.23,0.16)@top -43.68@rot(-0,9,0)@T0.00
+ST@PORTO@Bench iron leg@Part@c(337.20,-46.00,-612.90)@s(0.18,1.60,1.40)@top -45.20@rot(-0,-171,0)@T0.00
+ST@PORTO@Bench iron leg@Part@c(339.95,-46.00,-595.11)@s(0.18,1.60,1.40)@top -45.20@rot(-0,9,0)@T0.00
+ST@PORTO@Platform safety line@Part@c(343.99,-46.78,-611.52)@s(0.16,0.04,16.00)@top -46.76@rot(-0,-81,0)@T0.00
+ST@PORTO@Station timber column@Part@c(350.23,-42.30,-616.94)@s(0.40,9.00,0.40)@top -37.80@rot(-0,-81,0)@T0.00
+ST@PORTO@Bench seat slat@Part@c(341.83,-45.25,-595.40)@s(5.00,0.18,0.32)@top -45.16@rot(-0,9,0)@T0.00
+ST@PORTO@Station timber column@Part@c(336.40,-42.30,-614.80)@s(0.40,9.00,0.40)@top -37.80@rot(-0,-81,0)@T0.00
+ST@PORTO@Bench seat slat@Part@c(339.13,-45.25,-612.82)@s(5.00,0.18,0.32)@top -45.16@rot(-0,-171,0)@T0.00
+ST@PORTO@Bench Seat@Seat@c(340.28,-45.16,-613.27)@s(2.20,0.30,1.20)@top -45.01@rot(-0,-171,0)@T1.00
+ST@PORTO@FUNICOLARE
+ST@PORTO@Bench Seat@Seat@c(343.00,-45.16,-595.68)@s(2.20,0.30,1.20)@top -45.01@rot(-0,9,0)@T1.00
+ST@PORTO@Bench Seat@Seat@c(340.63,-45.16,-595.32)@s(2.20,0.30,1.20)@top -45.01@rot(-0,9,0)@T1.00
+ST@PORTO@Bench Seat@Seat@c(337.91,-45.16,-612.91)@s(2.20,0.30,1.20)@top -45.01@rot(-0,-171,0)@T1.00
+ST@PORTO@PORTO • STAZIONE BASSA@Part@c(333.34,-38.60,-603.19)@s(20.00,1.60,0.18)@top -37.80@rot(-0,99,0)@T0.00
+ST@PORTO@Sign mounting strap@Part@c(336.24,-41.28,-614.77)@s(0.95,0.12,0.12)@top -41.22@rot(-0,99,0)@T0.00
+ST@PORTO@Station end crossing@Part@c(334.62,-47.80,-603.39)@s(23.00,2.00,5.00)@top -46.80@rot(-0,-81,0)@T0.00
+ST@PORTO@Bench back support@Part@c(343.81,-44.80,-595.07)@s(0.14,2.10,0.14)@top -43.75@rot(-0,9,0)@T0.00
+ST@PORTO@Bench iron leg@Part@c(343.71,-46.00,-595.69)@s(0.18,1.60,1.40)@top -45.20@rot(-0,9,0)@T0.00
+ST@PORTO@Bench back support@Part@c(340.05,-44.80,-594.49)@s(0.14,2.10,0.14)@top -43.75@rot(-0,9,0)@T0.00
+ST@PORTO@Station pitched canopy@Part@c(344.87,-36.80,-599.31)@s(12.00,0.35,21.00)@top -36.62@rot(-0,-81,-9)@T0.00
+ST@PORTO@Station pitched canopy@Part@c(343.15,-36.80,-610.38)@s(12.00,0.35,21.00)@top -36.62@rot(-0,-81,9)@T0.00
+RAIL@Haul cable@c(521.96,5.90,-635.96)@s(374.77,0.10,0.10)@look(0.282,-0.959,-0.044)@up(-0.153,0.000,-0.988)
+RAIL@Continuous steel running rail@c(522.84,5.97,-630.33)@s(374.77,0.20,0.20)@look(0.282,-0.959,-0.044)@up(-0.153,0.000,-0.988)
+RAIL@Continuous steel running rail@c(522.16,5.97,-634.67)@s(374.77,0.20,0.20)@look(0.282,-0.959,-0.044)@up(-0.153,0.000,-0.988)
+RAIL@Continuous steel running rail@c(523.23,5.97,-627.76)@s(374.77,0.20,0.20)@look(0.282,-0.959,-0.044)@up(-0.153,0.000,-0.988)
+RAIL@Continuous steel running rail@c(521.77,5.97,-637.24)@s(374.77,0.20,0.20)@look(0.282,-0.959,-0.044)@up(-0.153,0.000,-0.988)
+RAIL@Haul cable@c(523.04,5.90,-629.04)@s(374.77,0.10,0.10)@look(0.282,-0.959,-0.044)@up(-0.153,0.000,-0.988)
+RAILY Car_Crema z -3.9  x-1.3:- x1.3:-
+RAILY Car_Crema z -2.8  x-1.3:- x1.3:-
+RAILY Car_Crema z 0  x-1.3:- x1.3:-
+RAILY Car_Crema z 2.8  x-1.3:- x1.3:-
+RAILY Car_Crema z 3.9  x-1.3:- x1.3:-
+RAILY Car_Rosso z -3.9  x-1.3:- x1.3:-
+RAILY Car_Rosso z -2.8  x-1.3:- x1.3:-
+RAILY Car_Rosso z 0  x-1.3:- x1.3:-
+RAILY Car_Rosso z 2.8  x-1.3:- x1.3:-
+RAILY Car_Rosso z 3.9  x-1.3:- x1.3:-
+PATH@Workspace.PortoNocciola.12 Country landscape.Connected streets and coastal routes.Upper terrace path.Continuous fitted paving@c(700.23,7.03,-662.33)@s(10.00,105.95,4.75)@up(0.00,1.00,0.00)@look(-0.10,0.00,1.00)@Part
+PATH@Workspace.PortoNocciola.12 Country landscape.Connected streets and coastal routes.Upper terrace path.Solid turning landing@c(700.00,5.43,-660.00)@s(109.14,10.30,10.30)@up(-1.00,-0.00,0.00)@look(-0.00,-0.00,-1.00)@Part
+END

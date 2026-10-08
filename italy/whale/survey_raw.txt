@@ -1,0 +1,226 @@
+QW@ROW z=-560 L11 . L18 L18 . . L19 L7 L12 L13 L13 . . L0 L-47 w-53/13 w-53/11 L-48 L7 . . L5 L15 . L18 . L18
+QW@ROW z=-585 L-32 L-29 L-31 L-32 L-28 L-28 L-31 L-35 L-42 L-42 L-22 L-50 L-47 L-48 L-48 w-53/7 w-53/6 L-49 L-49 L-49 L-48 L-28 L-43 L-34 L-32 L-30 L-31
+QW@ROW z=-610 L-48 L-49 L-49 L-49 L-48 L-47 L-48 L-47 L-48 L-49 L-48 L-49 L-48 L-47 L-49 w-53/5 w-53/6 w-53/1 L-49 L-49 L-49 L-51 L-48 L-39 L-32 L-23 L-13
+QW@ROW z=-635 L-48 L-49 L-48 L-48 L-49 L-48 L-48 L-48 L-47 L-48 L-48 L-48 L-49 L-48 L-48 w-53/5 w-53/6 w-53/4 L-50 L-49 L-49 L-48 L-36 L-39 L-32 L-30 L-18
+QW@ROW z=-660 L-48 L-47 L-48 L-47 L-48 L-49 L-48 L-49 L-48 L-47 L-48 L-47 L-48 L-49 L-49 w-53/5 w-53/6 w-53/4 L-49 L-49 L-49 L-49 L-44 L-36 L-36 L-35 L-14
+QW@ROW z=-685 L-52 L-48 L-47 L-48 L-47 L-49 L-50 L-48 L-48 L-47 L-46 L-48 L-48 L-49 L-53 w-53/5 w-53/6 w-53/4 L-49 L-49 L-49 L-49 L-49 L-36 L-36 L-32 L-14
+QW@ROW z=-710 w-53/6 w-53/3 L-49 L-48 L-48 L-48 L-49 L-49 L-47 L-48 L-47 L-47 L-49 L-48 w-53/3 w-53/6 w-53/6 w-53/4 L-48 L-47 L-49 L-53 L-47 L-36 L-34 L-19 L-14
+QW@ROW z=-735 w-53/9 w-53/9 w-53/6 L-52 L-50 L-50 L-49 L-49 L-48 L-48 L-49 L-48 L-48 L-49 w-53/4 w-53/6 w-53/6 w-53/4 L-49 L-50 w-53/1 w-53/7 L-42 L-36 L-36 L-14 L-14
+QW@ROW z=-760 w-53/9 w-53/9 w-53/9 w-53/8 w-53/5 w-53/5 w-53/5 w-53/4 L-53 L-49 L-49 L-49 L-47 L-52 w-53/5 w-53/7 w-53/7 w-53/6 w-53/2 w-53/5 w-53/8 w-53/8 L-41 L-36 L-35 L-32 L-14
+QW@ROW z=-785 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/7 w-53/2 L-49 L-48 L-48 w-53/4 w-53/8 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-53 L-44 L-34 L-36 L-35 L-16
+QW@ROW z=-810 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/8 w-53/3 L-51 w-53/0 w-53/8 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-36 L-43 L-36 L-36 L-36 L-28
+QW@ROW z=-835 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/7 w-53/8 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/8 L-34 L-36 L-35 L-35 L-36 L-14
+QW@ROW z=-860 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-40 L-34 L-36 L-35 L-34 L-19 L-14
+QW@ROW z=-885 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-34 L-34 L-36 L-39 L-24 L-23 L-14
+QW@ROW z=-910 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-35 L-34 L-35 L-28 L-25 L-24 L-18
+QW@ROW z=-935 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-36 L-34 L-19 L-31 L-21 L-17 L-14
+QW@ROW z=-960 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-43 L-34 L-10 L-28 L-15 L-14 L-14
+QW@ROW z=-985 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-51 L-34 L-43 L-4 L-13 L-7 L-14
+QW@ROW z=-1010 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-45 L-40 L-13 L-2 L-6 L-6
+QW@ROW z=-1035 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/7 L-33 L-37 L-1 L1
+QW@ROW z=-1060 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-51 L-49 L-0
+QW@ROW z=-1085 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-52 L2
+QW@ROW z=-1110 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/1 L-52
+QW@ROW z=-1135 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-15
+QW@ROW z=-1160 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 L-36
+QW@ROW z=-1185 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/9 w-53/4
+QW@GRID x -200..450 step 25 (left to right), rows z -560..-1200
+QW@NAME Workspace.Domaine.Props.cellar_front.CellarPierR [Part] at 605.2,13.7,-108.0 size 6x9x3
+QW@NAME Workspace.Domaine.Props.cellar_front.CellarPierL [Part] at 594.8,13.7,-108.0 size 6x9x3
+QW@NAME Workspace.Village.Props.riverside.Rock3 [MeshPart] at 140.8,0.4,-575.5 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 141.4,0.6,-577.1 size 3x1x3
+QW@NAME Workspace.Village.Props.riverside.Rock3 [MeshPart] at 218.4,0.5,114.4 size 3x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock2 [MeshPart] at 214.2,0.4,114.3 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 216.7,0.7,115.3 size 3x1x3
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 182.7,0.7,405.5 size 3x1x3
+QW@NAME Workspace.Village.Props.riverside.Rock2 [MeshPart] at 185.4,0.4,405.6 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock3 [MeshPart] at 181.4,0.5,406.8 size 3x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 135.3,0.5,24.8 size 3x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 144.6,0.6,-246.7 size 3x1x3
+QW@NAME Workspace.Village.Props.riverside.Rock3 [MeshPart] at 144.5,0.4,-244.9 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 154.2,0.7,-819.3 size 3x1x3
+QW@NAME Workspace.Village.Props.riverside.Rock3 [MeshPart] at 155.1,0.5,-817.6 size 3x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock2 [MeshPart] at 155.1,0.4,-821.9 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 146.2,0.5,232.1 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock3 [MeshPart] at 128.3,0.5,-502.9 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 129.1,0.7,-501.2 size 3x1x3
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 121.1,0.4,489.6 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock2 [MeshPart] at 168.1,0.4,581.9 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 170.3,0.7,583.5 size 3x1x3
+QW@NAME Workspace.Village.Props.riverside.Rock3 [MeshPart] at 172.2,0.5,583.2 size 3x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 215.8,0.5,-372.6 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 152.1,0.5,-13.8 size 3x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 191.7,0.6,-418.1 size 3x1x3
+QW@NAME Workspace.Village.Props.riverside.Rock3 [MeshPart] at 193.0,0.4,-419.2 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 172.0,0.4,-54.3 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock3 [MeshPart] at 215.3,0.4,-662.3 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 213.7,0.5,-662.7 size 3x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 183.7,0.4,-402.5 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock3 [MeshPart] at 141.3,0.4,-50.1 size 2x1x2
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 140.7,0.6,-51.7 size 3x1x3
+QW@NAME Workspace.Village.Props.riverside.Rock1 [MeshPart] at 165.0,-0.4,-27.2 size 2x1x2
+QW@NAME Workspace.Forest.rock_big_s70 [Model] at -0.8,1.8,-37.4 size 6x4x6
+QW@NAME Workspace.Forest.rock_big_s70.Rock1 [MeshPart] at -0.9,1.1,-36.9 size 5x2x6
+QW@NAME Workspace.Forest.rock_big_s70.Rock2 [MeshPart] at -1.1,2.8,-37.5 size 3x2x3
+QW@NAME Workspace.Forest.rock_big_s70.Rock3 [MeshPart] at 1.0,0.5,-38.8 size 2x1x2
+QW@NAME Workspace.Forest.rock_cluster_s39 [Model] at -62.3,0.5,14.0 size 5x1x4
+QW@NAME Workspace.Forest.rock_cluster_s39.Rock1 [MeshPart] at -62.1,0.6,13.6 size 3x1x2
+QW@NAME Workspace.Forest.rock_cluster [Model] at 48.8,0.5,-191.2 size 5x1x4
+QW@NAME Workspace.Forest.rock_cluster.Rock1 [MeshPart] at 49.2,0.5,-191.4 size 2x1x2
+QW@NAME Workspace.Forest.rock_big [Model] at 90.6,2.1,-82.6 size 7x5x7
+QW@NAME Workspace.Forest.rock_big.Rock1 [MeshPart] at 90.1,1.4,-82.3 size 6x3x7
+QW@NAME Workspace.Forest.rock_big.Rock3 [MeshPart] at 93.4,0.6,-81.9 size 3x2x3
+QW@NAME Workspace.Forest.rock_big.Rock2 [MeshPart] at 90.5,3.3,-83.0 size 4x2x4
+QW@NAME Workspace.Forest.rock_cluster_s65 [Model] at -18.0,0.5,18.8 size 5x1x4
+QW@NAME Workspace.Forest.rock_cluster_s65.Rock1 [MeshPart] at -18.4,0.6,18.6 size 3x1x2
+QW@NAME Workspace.Forest.rock_cluster_s67 [Model] at -7.8,0.5,-26.5 size 5x1x4
+QW@NAME Workspace.Forest.rock_cluster_s67.Rock1 [MeshPart] at -7.7,0.6,-26.9 size 3x1x2
+QW@NAME Workspace.Forest.rock_cluster_s44 [Model] at -46.8,0.5,-201.0 size 5x1x4
+QW@NAME Workspace.Forest.rock_cluster_s44.Rock1 [MeshPart] at -46.5,0.6,-201.3 size 3x1x2
+QW@NAME Workspace.Forest.rock_cluster [Model] at 47.5,0.6,-159.5 size 5x1x4
+QW@NAME Workspace.Forest.rock_cluster.Rock3 [MeshPart] at 49.4,0.4,-158.6 size 2x1x2
+QW@NAME Workspace.Forest.rock_cluster.Rock1 [MeshPart] at 48.0,0.6,-159.3 size 3x1x2
+QW@NAME Workspace.Forest.rock_cluster [Model] at -103.3,0.6,-184.6 size 6x1x5
+QW@NAME Workspace.Forest.rock_cluster.Rock3 [MeshPart] at -101.1,0.5,-183.6 size 2x1x2
+QW@NAME Workspace.Forest.rock_cluster.Rock1 [MeshPart] at -102.8,0.7,-184.4 size 3x1x3
+QW@NAME Workspace.Forest.rock_big_s99 [Model] at 82.6,1.8,-206.3 size 6x4x6
+QW@NAME Workspace.Forest.rock_big_s99.Rock3 [MeshPart] at 84.9,0.5,-206.1 size 2x1x2
+QW@NAME Workspace.Forest.rock_big_s99.Rock2 [MeshPart] at 82.4,2.8,-206.6 size 3x2x3
+QW@NAME Workspace.Forest.rock_big_s99.Rock1 [MeshPart] at 82.1,1.1,-206.1 size 5x2x6
+QW@NAME Workspace.Forest.rock_cluster_s63 [Model] at -19.5,0.5,-31.4 size 5x1x4
+QW@NAME Workspace.Forest.rock_cluster_s63.Rock1 [MeshPart] at -19.3,0.6,-31.8 size 3x1x2
+QW@NAME Workspace.Forest.rock_cluster [Model] at 19.7,0.7,-163.8 size 7x2x6
+QW@NAME Workspace.Forest.rock_cluster.Rock1 [MeshPart] at 20.0,0.8,-164.3 size 4x2x3
+QW@NAME Workspace.Forest.rock_cluster.Rock3 [MeshPart] at 21.4,0.6,-165.9 size 3x1x2
+QW@NAME Workspace.Forest.rock_cluster.Rock2 [MeshPart] at 17.1,0.5,-164.3 size 2x1x2
+QW@NAME Workspace.Forest.rock_cluster [Model] at 88.2,0.5,-127.3 size 5x1x4
+QW@NAME Workspace.Forest.rock_cluster.Rock1 [MeshPart] at 88.6,0.5,-127.3 size 3x1x2
+QW@NAME Workspace.Forest.rock_big [Model] at 124.0,1.8,-212.5 size 7x4x7
+QW@NAME Workspace.Forest.rock_big.Rock2 [MeshPart] at 124.3,3.0,-212.2 size 4x2x4
+QW@NAME Workspace.Forest.rock_big.Rock1 [MeshPart] at 124.4,1.0,-212.9 size 6x3x7
+QW@NAME Workspace.Forest.rock_big.Rock3 [MeshPart] at 121.4,0.3,-211.7 size 2x2x3
+QW@NAME Workspace.Forest.rock_cluster [Model] at -74.4,0.5,-112.6 size 5x1x4
+QW@NAME Workspace.Forest.rock_cluster.Rock1 [MeshPart] at -74.3,0.6,-113.0 size 3x1x2
+QW@NAME Workspace.Forest.rock_cluster [Model] at 93.6,0.5,-133.9 size 5x1x4
+QW@NAME Workspace.Forest.rock_cluster.Rock1 [MeshPart] at 93.5,0.5,-133.5 size 2x1x2
+QW@NAME Workspace.Forest.rock_cluster [Model] at -28.1,0.6,-50.8 size 6x1x4
+QW@NAME Workspace.Forest.rock_cluster.Rock3 [MeshPart] at -29.8,0.5,-52.0 size 2x1x2
+QW@NAMES total 400
+QW@TOP Lagoon [Folder] centre 114,2,-176 extent 40x7x57
+QW@TOP Domaine [Folder] centre 524,23,-110 extent 344x45x274
+QW@TOP HatShop [Folder] centre 312,176,-149 extent 25x351x26
+QW@TOP SquirrelTwins [Folder] centre 353,-395,-473 extent 709x10x959
+QW@TOP Boundary [Folder] centre 284,54,-110 extent 833x107x280
+QW@TOP Village [Folder] centre 221,16,-118 extent 252x35x1407
+QW@TOP DomaineKit [Folder] centre -203,-61,3 extent 404x134x20
+QW@TOP VillageKit [Folder] centre 147,6,-36 extent 635x121x303
+QW@TOP Zones [Folder] centre 263,-50,-109 extent 526x1x22
+QW@TOP Forest [Folder] centre 3,6,-96 extent 258x12x235
+QW@TOP ForestKit [Folder] centre 6,105,-42 extent 116x9x3
+QW@TOP PostOffice [Folder] centre 190,3,-137 extent 0x3x1
+QW@TOP Garden [Folder] centre 370,2,-120 extent 32x2x20
+QW@TOP Cheese [Folder] centre 205,3,-137 extent 2x3x1
+QW@TOP MillRide [Folder] centre 585,15,-52 extent 4x3x2
+QW@TOP Bookshop [Folder] centre 335,156,-151 extent 25x311x30
+QW@TOP Speed [Folder] centre 236,3,-89 extent 68x1x29
+QW@TOP ForestRace [Folder] centre 8,6,7 extent 16x11x20
+QW@TOP Trampolines [Folder] centre 282,10,-129 extent 706x18x216
+QW@TOP DressShop [Folder] centre 304,201,-110 extent 25x401x26
+QW@TOP DailyQuestion [Folder] centre 81,4,-72 extent 175x3x128
+QW@TOP Chapel [Folder] centre 655,174,-172 extent 26x316x26
+QW@TOP ToadstoolRun [Folder] centre 503,12,-239 extent 286x18x5
+QW@TOP Baguette [Folder] centre 189,3,-105 extent 1x3x1
+QW@TOP Glaces [Folder] centre 247,5,-62 extent 6x8x7
+QW@TOP Champion [Folder] centre 260,2,-56 extent 0x4x4
+QW@TOP HallOfFame [Folder] centre 352,12,-45 extent 162x19x46
+QW@TOP SandstoneClimb [Folder] centre 516,56,-258 extent 151x103x30
+QW@TOP BasketLift [Folder] centre 492,78,-251 extent 5x10x6
+QW@TOP HangGlider [Folder] centre 481,76,-254 extent 16x17x13
+QW@TOP River [Folder] centre 155,-0,-113 extent 24x5x117
+QW@TOP SouthGorge [Folder] centre 375,9,-425 extent 1202x124x374
+QW@TOP Travel [Folder] centre 340,-21,-311 extent 177x55x532
+QW@TOP ComingSoonWall [Folder] centre 316,-12,-815 extent 84x13x499
+QW@TOP CrabGame [Folder] centre 248,-45,-637 extent 0x0x0
+QW@TOP PortoNocciola [Model] centre 461,-34,-902 extent 615x606x180
+QW@TOP glam_squirrel_color [Model] centre 296,2,-106 extent 2x3x4
+QW@TOP FarmTower [Model] centre 682,49,-151 extent 15x79x43
+QW@TOP gordo_squirrel_color [Model] centre -3,2,-149 extent 3x4x3
+QW@TOP gelato_squirrel_color [Model] centre 263,-46,-626 extent 1x3x2
+QW@TOP SpawnDais_forest [Model] centre 3,0,1 extent 10x2x10
+QW@TOP ForestTower [Model] centre -23,40,4 extent 15x78x43
+QW@TOP bird_feeder_squirrel_color [Model] centre 265,2,-97 extent 2x3x3
+QW@TOP cyclist_squirrel_color [Model] centre 328,2,-122 extent 2x3x3
+QW@TOP SpawnDais_domaine [Model] centre 438,3,-36 extent 11x3x11
+QW@TOP HoopFarm [Model] centre 664,24,-1 extent 25x23x22
+QW@TOP PortraitGallery [Model] centre 203,2,-9 extent 15x5x33
+QW@TOP HoopVillage [Model] centre 310,12,-176 extent 25x29x9
+QW@TOP netmender_squirrel_color [Model] centre 262,-46,-692 extent 3x2x2
+QW@TOP Hoop [Model] centre 41,12,-65 extent 25x29x9
+QW@TOP tourist_squirrel_color [Model] centre 178,2,-105 extent 2x3x3
+QW@TOP tractor_toto_color [Model] centre 507,6,-55 extent 3x2x3
+QW@TOP truffle_hunter_color [Model] centre 540,7,-98 extent 3x4x3
+QW@TOP SpawnDais_village [Model] centre 196,0,-36 extent 10x2x10
+QW@TOP painter_squirrel_color [Model] centre 187,2,-20 extent 2x3x4
+QW@TOP SpawnDais_porto [Model] centre 232,-48,-580 extent 10x3x10
+QW@TOP ballerina_squirrel_color [Model] centre 32,4,-136 extent 2x4x3
+QW@TOP ZiplineBack [Model] centre 286,44,-178 extent 790x33x40
+QW@TOP florist_squirrel_color [Model] centre 334,2,-103 extent 2x3x4
+QW@TOP customs_squirrel_color [Model] centre 250,-46,-592 extent 2x2x2
+QW@TOP farmer_fernand_color [Model] centre 452,5,-62 extent 3x3x3
+QW@TOP beekeeper_squirrel_color [Model] centre 504,6,-180 extent 2x4x3
+QW@TOP ranger_squirrel_color [Model] centre -0,2,-200 extent 2x3x3
+QW@TOP baker_squirrel_color [Model] centre 482,-11,-790 extent 2x2x2
+QW@TOP philosopher_squirrel_color [Model] centre 331,2,-136 extent 2x3x4
+QW@TOP super_squirrel_color [Model] centre 91,2,-40 extent 2x4x3
+QW@TOP sunbather_squirrel_color [Model] centre 278,-51,-743 extent 2x1x2
+QW@TOP goodneighbor_squirrel_color [Model] centre 547,13,-735 extent 2x2x2
+QW@TOP sunflower_squirrel_color [Model] centre 441,5,-92 extent 3x3x3
+QW@TOP realtor_squirrel_color [Model] centre 297,-46,-679 extent 2x1x2
+QW@TOP mime_squirrel_color [Model] centre 244,2,-78 extent 2x3x4
+QW@TOP fashion_squirrel_color [Model] centre 314,2,-71 extent 2x4x3
+QW@TOP chevre_squirrel_color [Model] centre 478,5,-74 extent 2x4x3
+QW@TOP vintner_squirrel_color [Model] centre 580,15,-183 extent 2x4x3
+QW@TOP parachute_squirrel_color [Model] centre 60,9,-18 extent 3x2x3
+QW@TOP surfing_squirrel_color [Model] centre -16,2,-47 extent 2x4x3
+QW@TOP shepherd_squirrel_color [Model] centre 521,7,-78 extent 4x2x3
+QW@TOP operasinger_squirrel_color [Model] centre 443,-11,-791 extent 2x2x2
+QW@TOP Zipline [Model] centre 333,39,-47 extent 716x29x35
+QW@TOP fishmonger_squirrel_color [Model] centre 249,-44,-637 extent 2x2x2
+QW@TOP truffle_pig [Model] centre 537,6,-97 extent 2x1x2
+QW@TOP goldenyears_squirrel_color [Model] centre 462,-11,-825 extent 3x2x2
+QW@TOP tightrope_squirrel_color [Model] centre 289,-31,-651 extent 2x2x2
+QW@TOP grape_stomper_gigi_color [Model] centre 598,13,-119 extent 3x3x3
+QW@TOP spy_squirrel_color [Model] centre 167,2,-114 extent 3x3x3
+QW@TOP detective_squirrel_color [Model] centre 31,2,-186 extent 2x4x3
+QW@TOP mailman_squirrel_color [Model] centre 186,2,-139 extent 2x3x4
+QW@TOP lifeguard_squirrel_color [Model] centre 258,-42,-714 extent 2x2x2
+QW@TOP baking_betty_squirrel_color [Model] centre -18,2,-93 extent 2x4x3
+QW@TOP conductor_squirrel_color [Model] centre 329,-46,-611 extent 2x2x2
+QW@TOP pogo_squirrel_color [Model] centre 381,-33,-648 extent 2x1x2
+QW@TOP boatpainter_squirrel_color [Model] centre 275,-43,-695 extent 2x1x2
+QW@TOP squirrel_buccaneer_color [Model] centre -42,4,-143 extent 2x4x3
+QW@TOP picnic_pierre_color [Model] centre 582,35,-62 extent 2x3x3
+QW@TOP seacaptain_squirrel_color [Model] centre 192,-51,-668 extent 2x2x2
+QW@TOP octopus_squirrel_color [Model] centre 206,-50,-628 extent 2x2x2
+QW@TOP crabcatcher_squirrel_color [Model] centre 306,-50,-806 extent 2x2x2
+QW@TOP gardener_squirrel_color [Model] centre 374,2,-120 extent 2x4x3
+QW@TOP scarecrow_squirrel_color [Model] centre 424,4,-102 extent 3x3x3
+QW@TOP pizzadelivery_squirrel_color [Model] centre 348,-8,-952 extent 1x2x2
+QW@TOP waiter_squirrel_color [Model] centre 217,2,-106 extent 2x3x4
+QW@TOP firefighter_squirrel_color [Model] centre 200,25,-144 extent 2x3x4
+QW@TOP kite_squirrel_color [Model] centre -105,2,-97 extent 3x3x3
+QW@TOP fishing_squirrel_color [Model] centre 166,2,-55 extent 2x5x3
+QW@TOP fairy_squirrel_color [Model] centre 18,2,-52 extent 2x4x3
+QW@TOP deckhand_squirrel_color [Model] centre 212,-51,-647 extent 2x2x2
+QW@TOP church_mouse_color [Model] centre 646,15,-156 extent 2x2x3
+QW@TOP sleepy_sylvain_color [Model] centre 548,12,-65 extent 3x4x3
+QW@TOP italytourist_squirrel_color [Model] centre 309,-46,-721 extent 2x1x2
+QW@TOP squirrel_scientist_color [Model] centre 54,4,-113 extent 2x4x3
+QW@TOP ski_squirrel_color [Model] centre 80,4,-123 extent 4x4x3
+QW@TOP rainy_day_squirrel_color [Model] centre 68,2,-153 extent 2x3x3
+QW@TOP lavender_lucie_color [Model] centre 465,3,-171 extent 3x2x3
+QW@TOP sassyshopper_squirrel_color [Model] centre 564,13,-942 extent 3x2x2
+QW@TOP farmer_rooster [Model] centre 449,4,-61 extent 1x2x1
+QW@TOP birdwatch_squirrel_color [Model] centre 110,2,-84 extent 2x4x3
+QW@SURVEY_DONE
+QW@STATE placeVersion=1135 registry=2 porto=0 whale=false

@@ -1,0 +1,17 @@
+-- Oct 5 2026 read-only: dump StarterPlayerScripts.PortoMarketAquariumMotion + what carries the PNMarketAquarium tag
+local s=game:GetService('StarterPlayer').StarterPlayerScripts:FindFirstChild('PortoMarketAquariumMotion')
+if s then
+	local src=s.Source
+	warn('QAQ@len',#src)
+	for i=1,#src,700 do warn('QAQ@src',i,(src:sub(i,i+699):gsub('\n',' \\n '))) end
+end
+local CS=game:GetService('CollectionService')
+for _,t in ipairs(CS:GetTagged('PNMarketAquarium')) do
+	local attrs={} for k,v in pairs(t:GetAttributes()) do table.insert(attrs,k..'='..tostring(v)) end
+	warn('QAQ@tagged',t:GetFullName(),t.ClassName,table.concat(attrs,' ; '))
+	for _,d in ipairs(t:GetDescendants()) do
+		local a={} for k,v in pairs(d:GetAttributes()) do table.insert(a,k..'='..tostring(v)) end
+		if #a>0 then warn('QAQ@attr',d:GetFullName(),table.concat(a,' ; ')) end
+	end
+end
+warn('QAQ@DONE')

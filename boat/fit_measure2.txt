@@ -1,0 +1,4 @@
+y -3.3 top 1.968 outer_x -0.922 outer band z 1.709..1.952
+y -3.1 top 1.956 outer_x -1.158 outer band z 1.659..1.943
+y -2.9 top 1.940 outer_x -1.298 outer band z 1.906..1.906
+y -2.7 top 1.932 outer_x -1.414 outer band z 1.646..1.932

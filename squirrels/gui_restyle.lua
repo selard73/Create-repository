@@ -1,0 +1,49 @@
+local anim = workspace.SquirrelScripts.SquirrelAnim
+local src = anim.Source
+local R = {
+	{[====[local NAVY, NAVY_DEEP, RIM = RGB(24, 52, 112), RGB(13, 32, 82), RGB(8, 18, 48)]====], [====[local FACE, FACE_DEEP, RIM = RGB(62, 48, 78), RGB(42, 32, 54), RGB(26, 19, 34)]====]},
+	{[====[local SLOT, SLOT_LO, SLOT_EDGE = RGB(34, 68, 136), RGB(22, 48, 104), RGB(10, 24, 62)]====], [====[local SLOT, SLOT_LO, SLOT_EDGE = RGB(45, 34, 57), RGB(35, 26, 45), RGB(24, 17, 31)]====]},
+	{[====[local CYAN, CYAN_TEXT, CYAN_DIM = RGB(72, 236, 255), RGB(222, 248, 255), RGB(96, 196, 230)]====], [====[local EDGE, INK, INK_DIM = RGB(240, 200, 90), RGB(255, 246, 220), RGB(186, 166, 140)]====]},
+	{[====[local TEAL, TEAL_EDGE = RGB(46, 178, 203), RGB(94, 226, 246)      -- the button lettering and its rim (sampled from the mock-up)]====], [====[local BTN_INK, BTN_RIM = RGB(84, 48, 18), RGB(120, 74, 28)        -- the button lettering and its rim, in acorn brown]====]},
+	{[====[NAVY_DEEP]====], [====[FACE_DEEP]====]},
+	{[====[NAVY]====], [====[FACE]====]},
+	{[====[CYAN_TEXT]====], [====[INK]====]},
+	{[====[CYAN_DIM]====], [====[INK_DIM]====]},
+	{[====[CYAN]====], [====[EDGE]====]},
+	{[====[TEAL_EDGE]====], [====[BTN_RIM]====]},
+	{[====[TEAL]====], [====[BTN_INK]====]},
+	{[====[t.ImageColor3 = color or RGB(150, 205, 255)]====], [====[t.ImageColor3 = color or RGB(255, 228, 186)]====]},
+	{[====[gradient(face, RGB(32, 70, 142), FACE_DEEP)]====], [====[gradient(face, RGB(76, 59, 94), FACE_DEEP)]====]},
+	{[====[gradient(sheen, RGB(255, 255, 255), RGB(24, 52, 112))]====], [====[gradient(sheen, RGB(255, 255, 255), FACE)]====]},
+	{[====[stroke(target, RGB(8, 30, 56), 1.5, 0.15)]====], [====[stroke(target, RGB(58, 33, 12), 1.5, 0.15)]====]},
+	{[====[ring(1.5, 2.5, 0, RGB(120, 238, 255))]====], [====[ring(1.5, 2.5, 0, RGB(255, 222, 130))]====]},
+	{[====[RGB(4, 14, 40)]====], [====[RGB(30, 20, 14)]====]},
+	{[====[local FONT = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.ExtraBold)   -- clean rounded bold, like the mock-up]====], [====[local FONT = Font.new("rbxasset://fonts/families/FredokaOne.json")                          -- the lettering the signs and the HUD use]====]},
+	{[====[local FONT_BUTTON = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Heavy)]====], [====[local FONT_BUTTON = Font.new("rbxasset://fonts/families/FredokaOne.json")]====]},
+	{[====[local FONT_TEXT = Font.new("rbxasset://fonts/families/Nunito.json", Enum.FontWeight.Bold)]====], [====[local FONT_TEXT = Font.new("rbxasset://fonts/families/FredokaOne.json")]====]},
+}
+local counts, total = {}, 0
+local function sub(s, old, new)
+	local out, i, n = {}, 1, 0
+	while true do
+		local a, b = string.find(s, old, i, true)
+		if not a then break end
+		out[#out + 1] = string.sub(s, i, a - 1); out[#out + 1] = new; i = b + 1; n += 1
+	end
+	out[#out + 1] = string.sub(s, i)
+	return table.concat(out), n
+end
+for k, r in ipairs(R) do
+	local n
+	src, n = sub(src, r[1], r[2])
+	counts[k] = n; total += n
+end
+-- the four palette lines MUST have landed, or the renames below them would leave undefined colours
+local ok = counts[1] == 1 and counts[2] == 1 and counts[3] == 1 and counts[4] == 1
+if not ok then
+	warn(string.format("QQ RESTYLE ABORTED - palette lines found %d/%d/%d/%d, script untouched", counts[1], counts[2], counts[3], counts[4]))
+	return
+end
+local leftover = select(2, string.gsub(src, "CYAN", "")) + select(2, string.gsub(src, "NAVY", "")) + select(2, string.gsub(src, "TEAL", ""))
+anim.Source = src
+warn(string.format("QQ restyle applied: %d replacements, %d old colour names left", total, leftover))

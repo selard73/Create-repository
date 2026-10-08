@@ -1,0 +1,135 @@
+<title>Squirrel Card Layouts</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@600;700&display=swap">
+<style>
+/* Layout: one column of three options; each option shows the same card in Shannon's Studio window and on a phone, at half size. */
+:root{
+  --bg:#f3eee2; --fg:#2b2416; --muted:#6d6252; --line:#d9cfb8;
+  --navy:#1e2b4d; --navy2:#243561; --rim:#b8902e; --gold:#e8bf4a; --cream:#fff6dc; --cream-dim:#d9cfb0;
+  --hotbar:#2c2c33; --sky:#79b7d8; --sand:#e9dcb8;
+  --display:"Fredoka","Nunito",system-ui,sans-serif; --body:"Nunito",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#17151a; --fg:#efe7d6; --muted:#b3a890; --line:#3a3540; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#17151a; --fg:#efe7d6; --muted:#b3a890; --line:#3a3540; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);margin:0;padding-block:28px 48px;padding-inline:16px}
+.wrap{max-width:900px;margin:0 auto;display:grid;gap:36px}
+h1{font-family:var(--display);font-weight:700;font-size:1.9rem;margin:0 0 6px;text-wrap:balance}
+.lead{color:var(--muted);margin:0;max-width:62ch;line-height:1.5}
+.opt{display:grid;gap:12px;border-top:1px solid var(--line);padding-top:22px}
+.opt h2{font-family:var(--display);font-weight:600;font-size:1.25rem;margin:0}
+.opt h2 b{display:inline-block;background:var(--gold);color:#3a2a08;border-radius:8px;padding:1px 9px;margin-right:8px;font-family:var(--display)}
+.opt p{margin:0;color:var(--muted);line-height:1.5;max-width:66ch}
+.screens{display:grid;gap:14px;grid-template-columns:1fr;overflow-x:auto;padding-bottom:4px}
+.screen{position:relative;background:linear-gradient(var(--sky),var(--sand));border-radius:10px;overflow:hidden;border:1px solid var(--line);flex:none}
+.screen .label{position:absolute;left:8px;top:6px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#fff;opacity:.85;font-weight:700}
+.screen .hotbar{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);display:flex;gap:4px}
+.screen .hotbar i{width:28px;height:28px;border-radius:5px;background:var(--hotbar);opacity:.9;display:block}
+.desk{width:836px;height:222px}
+.phone{width:422px;height:195px}
+/* the card, drawn at half size */
+.card{position:absolute;left:50%;transform:translate(-50%,-50%);background:var(--navy);border:3px solid var(--rim);border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.35);color:var(--cream)}
+.card::before{content:"";position:absolute;inset:3px;border-radius:10px;background:linear-gradient(var(--navy2),var(--navy));pointer-events:none}
+.card > *{position:relative}
+.ring{border-radius:50%;background:radial-gradient(#fff9e6,#f1dfa4);border:3px solid var(--gold);display:grid;place-items:center;font-size:30px}
+.name{font-family:var(--display);font-weight:700;color:#ffe8a3;line-height:1.1}
+.bio{font-family:var(--body);font-weight:600;color:var(--cream);line-height:1.3}
+.hint{font-size:7px;color:var(--cream-dim)}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:18px;height:28px;border-radius:6px;background:var(--rim);color:#2a1d05;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:16px;line-height:1}
+.arrow.l{left:-24px}.arrow.r{right:-24px}
+.strip{position:absolute;display:flex;gap:4px;align-items:center}
+.strip i{width:16px;height:16px;border-radius:50%;background:#f1dfa4;border:1.5px solid var(--gold);display:block}
+.strip i.on{outline:2px solid #fff;outline-offset:1px}
+.strip i.dim{opacity:.45}
+.note{font-size:.85rem;color:var(--muted)}
+.pick{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);line-height:1.5}
+</style>
+<div class="wrap">
+  <header>
+    <h1>Squirrel card layouts</h1>
+    <p class="lead">Three ways to fit the squirrel card above the hotbar. Each is drawn at half size in your Studio window (1672 by 445) and on a phone in landscape (844 by 390). The grey tiles are the Roblox tool icons; the card never crosses them (the previews are fixed-size now, so they no longer squash on a narrow browser). Every option gets the carousel arrows.</p>
+  </header>
+
+  <section class="opt">
+    <h2><b>A</b> Two columns</h2>
+    <p>Portrait on the left; the name and bio sit together as one block, centred in the right column, with the bio at a fixed readable size. Uses the width that short screens have plenty of; the portrait stays big and spinnable.</p>
+    <div class="screens">
+      <div class="screen desk"><span class="label">Studio window</span>
+        <div class="card" style="width:360px;height:180px;top:94px">
+          <div class="ring" style="position:absolute;left:10px;top:10px;width:150px;height:150px">🐿️</div>
+          <div class="hint" style="position:absolute;left:10px;top:166px;width:160px;text-align:center">3 / 24 · drag to spin</div>
+          <div class="name" style="position:absolute;left:186px;top:46px;right:14px;font-size:16px;text-align:center">Officer Acorn</div>
+          <div class="bio" style="position:absolute;left:186px;top:74px;right:14px;font-size:9px;text-align:center">Keeps law and order on the marina. Fines seagulls for speeding and checks every dinghy's papers. Polishes his badge first.</div>
+          <span class="arrow l">‹</span><span class="arrow r">›</span>
+        </div>
+        <div class="hotbar"><i></i><i></i></div>
+      </div>
+      <div class="screen phone"><span class="label">Phone</span>
+        <div class="card" style="width:300px;height:150px;top:80px">
+          <div class="ring" style="position:absolute;left:9px;top:9px;width:124px;height:124px;font-size:26px">🐿️</div>
+          <div class="hint" style="position:absolute;left:9px;top:137px;width:134px;text-align:center">3 / 24 · drag to spin</div>
+          <div class="name" style="position:absolute;left:154px;top:38px;right:12px;font-size:14px;text-align:center">Officer Acorn</div>
+          <div class="bio" style="position:absolute;left:154px;top:62px;right:12px;font-size:8px;text-align:center">Keeps law and order on the marina. Fines seagulls for speeding and checks every dinghy's papers. Polishes his badge first.</div>
+          <span class="arrow l">‹</span><span class="arrow r">›</span>
+        </div>
+        <div class="hotbar"><i></i><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <h2><b>B</b> The tall card, shrunk to fit</h2>
+    <p>Keeps today's card exactly as it is and scales the whole thing down until it clears the hotbar. Nothing moves, but on a short screen everything is small: the bio text ends up around 11 px.</p>
+    <div class="screens">
+      <div class="screen desk"><span class="label">Studio window</span>
+        <div class="card" style="width:137px;height:180px;top:94px">
+          <div class="ring" style="position:absolute;left:50%;top:6px;transform:translateX(-50%);width:100px;height:100px;font-size:24px">🐿️</div>
+          <div class="hint" style="position:absolute;left:0;right:0;top:110px;text-align:center;font-size:6px">3 / 24 · drag to spin</div>
+          <div class="name" style="position:absolute;left:8px;right:8px;top:120px;font-size:11px;text-align:center">Officer Acorn</div>
+          <div class="bio" style="position:absolute;left:8px;right:8px;top:136px;font-size:5.5px;text-align:center">Keeps law and order on the marina. Fines seagulls for speeding and checks every dinghy's papers.</div>
+          <span class="arrow l">‹</span><span class="arrow r">›</span>
+        </div>
+        <div class="hotbar"><i></i><i></i></div>
+      </div>
+      <div class="screen phone"><span class="label">Phone</span>
+        <div class="card" style="width:114px;height:150px;top:80px">
+          <div class="ring" style="position:absolute;left:50%;top:5px;transform:translateX(-50%);width:84px;height:84px;font-size:20px">🐿️</div>
+          <div class="hint" style="position:absolute;left:0;right:0;top:92px;text-align:center;font-size:5px">3 / 24 · drag to spin</div>
+          <div class="name" style="position:absolute;left:6px;right:6px;top:100px;font-size:9px;text-align:center">Officer Acorn</div>
+          <div class="bio" style="position:absolute;left:6px;right:6px;top:114px;font-size:4.6px;text-align:center">Keeps law and order on the marina. Fines seagulls for speeding and checks every dinghy's papers.</div>
+          <span class="arrow l">‹</span><span class="arrow r">›</span>
+        </div>
+        <div class="hotbar"><i></i><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="opt">
+    <h2><b>C</b> Two columns with a face strip</h2>
+    <p>Option A plus a row of small faces along the bottom of the text column: the neighbours in the album order, the current one ringed, greyed if not found yet. Tap a face to jump, or use the arrows. A little busier, but you can see where you are in the album.</p>
+    <div class="screens">
+      <div class="screen desk"><span class="label">Studio window</span>
+        <div class="card" style="width:360px;height:180px;top:94px">
+          <div class="ring" style="position:absolute;left:10px;top:10px;width:150px;height:150px">🐿️</div>
+          <div class="hint" style="position:absolute;left:10px;top:166px;width:160px;text-align:center">drag to spin</div>
+          <div class="name" style="position:absolute;left:186px;top:12px;right:14px;font-size:16px">Officer Acorn</div>
+          <div class="bio" style="position:absolute;left:186px;top:38px;right:14px;font-size:9px">Keeps law and order on the marina. Fines seagulls for speeding and checks every dinghy's papers. Polishes his badge first.</div>
+          <div class="strip" style="left:186px;bottom:12px"><span class="arrow" style="position:static;transform:none;width:14px;height:20px;font-size:12px">‹</span><i class="dim"></i><i></i><i></i><i class="on"></i><i></i><i class="dim"></i><i class="dim"></i><span class="arrow" style="position:static;transform:none;width:14px;height:20px;font-size:12px">›</span><span class="hint" style="margin-left:4px">3 / 24</span></div>
+        </div>
+        <div class="hotbar"><i></i><i></i></div>
+      </div>
+      <div class="screen phone"><span class="label">Phone</span>
+        <div class="card" style="width:300px;height:150px;top:80px">
+          <div class="ring" style="position:absolute;left:9px;top:9px;width:124px;height:124px;font-size:26px">🐿️</div>
+          <div class="hint" style="position:absolute;left:9px;top:137px;width:134px;text-align:center">drag to spin</div>
+          <div class="name" style="position:absolute;left:154px;top:10px;right:12px;font-size:14px">Officer Acorn</div>
+          <div class="bio" style="position:absolute;left:154px;top:32px;right:12px;font-size:8px">Keeps law and order on the marina. Fines seagulls for speeding and checks every dinghy's papers.</div>
+          <div class="strip" style="left:154px;bottom:10px"><span class="arrow" style="position:static;transform:none;width:12px;height:18px;font-size:11px">‹</span><i class="dim" style="width:13px;height:13px"></i><i style="width:13px;height:13px"></i><i class="on" style="width:13px;height:13px"></i><i style="width:13px;height:13px"></i><i class="dim" style="width:13px;height:13px"></i><span class="arrow" style="position:static;transform:none;width:12px;height:18px;font-size:11px">›</span><span class="hint" style="margin-left:4px">3 / 24</span></div>
+        </div>
+        <div class="hotbar"><i></i><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pick">
+    <p>On a tall screen (a desktop window taller than about 650 px) every option shows today's tall card unchanged, with the arrows added. The carousel steps through the squirrels you have found, in album order, wrapping at the ends; the left and right arrow keys work too. Say A, B or C.</p>
+  </section>
+</div>

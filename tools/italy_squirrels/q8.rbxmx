@@ -1,0 +1,9 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">Probe8</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- READ-ONLY: dump the two tool givers in 450-char chunks (QG2@).
+local function dump(tag,s) for i=1,#s,450 do warn('QG2@'..tag..'@'..string.format('%06d',i)..'@'..s:sub(i,i+449)) end end
+dump('SLING',workspace.Hoop.SlingServer.Source)
+dump('BINO',workspace.Binoculars.BinocularsServer.Source)
+warn('QG2@END')
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

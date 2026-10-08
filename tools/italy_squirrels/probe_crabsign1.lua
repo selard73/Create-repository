@@ -1,0 +1,38 @@
+-- READ-ONLY probe (Oct 4 2026): surface map around where the cove sand meets the tide-pool shelf, for the crab-area sign. QG@ lines.
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Exclude
+local ex={} for _,n in ipairs({'SquirrelTwins','ComingSoonWall'}) do local o=workspace:FindFirstChild(n) if o then table.insert(ex,o) end end
+rp.FilterDescendantsInstances=ex
+local code={} local legend={} local nextc=65
+local function tag(q)
+	if not q then return '.' end
+	local key
+	if q.Instance==workspace.Terrain then key='T:'..q.Material.Name else key=q.Instance.Name..'<'..(q.Instance.Parent and q.Instance.Parent.Name or '') end
+	if not code[key] then code[key]=string.char(nextc) nextc+=1 if nextc==91 then nextc=97 end legend[code[key]]=key end
+	return code[key]
+end
+for z=-735,-815,-2 do
+	local row,hs={},{}
+	for x=270,320,2 do
+		local q=workspace:Raycast(Vector3.new(x,-20,z),Vector3.new(0,-50,0),rp)
+		table.insert(row,tag(q))
+		if x%10==0 then table.insert(hs,q and string.format('%.1f',q.Position.Y) or '-') end
+	end
+	warn('QG@R',z,table.concat(row),table.concat(hs,' '))
+end
+local l={} for c,k in pairs(legend) do table.insert(l,c..'='..k) end table.sort(l)
+for i=1,#l,8 do warn('QG@L',table.concat(l,' | ',i,math.min(i+7,#l))) end
+-- named models near the shelf entrance
+local seen={}
+for _,d in ipairs(workspace.PortoNocciola:GetDescendants()) do
+	if d:IsA('BasePart') then
+		local p=d.Position
+		if p.X>282 and p.X<318 and p.Z<-740 and p.Z>-812 and p.Y>-60 then
+			local par=d.Parent and d.Parent.Name or ''
+			local k=par..'/'..d.Name
+			if not seen[k] then seen[k]=0 end seen[k]+=1
+		end
+	end
+end
+local s={} for k,n in pairs(seen) do table.insert(s,k..' x'..n) end table.sort(s)
+for i=1,#s,6 do warn('QG@P',table.concat(s,' | ',i,math.min(i+5,#s))) end
+warn('QG@END')

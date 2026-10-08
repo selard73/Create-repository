@@ -1,0 +1,25 @@
+grid 91x66 inside cells 247
+lens faces 9 x 0.29..0.55 z 1.74..1.82
+                         RRRRRRRR             
+                            RRRRRRR           
+                             RRRRRRR          
+                                 RRRRR        
+     RRRRRR                      RRRRRR       
+     RRRRRRRRR                    RRRRRRR     
+     RRRRRRRRRRR                      RRR     
+      RRRRRRRRRRRR                            
+      RRR    RRRRRRR                          
+              RRRRRRRRR                       
+ RRRRRRRR       RRRRRRRRRR                    
+ RRRRRRRRRR      RRRRRRRRRRRRRRRRR            
+    RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR           
+RRR  RRRRRRRRRRRR....RRR......RRRRR RRR       
+RRR  RRRR   RRRRR...............RRRRRRR       
+            RRRRRR...RRRR.......RRRRRRR       
+             RRRRRRRRRRRRR......RRRRRRR       
+             RRRRRRRRRRRRRRRRRRRRRR           
+              RRRRRRRRRRRRRRRRRRRRRRR         
+     RRRRRRR  RRRRRRR     RRRRRRRRRRR         
+     RRRRRRRRR   RRRR       RRRR.RRRR         
+  RRRRRRRRRRRR                  RRRR          
+LENS_DONE

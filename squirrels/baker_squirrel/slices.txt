@@ -1,0 +1,12 @@
+Z=1.25: count=139
+   Center Y range: [-0.497, 0.591]
+Z=1.30: count=143
+   Center Y range: [-0.512, 0.501]
+Z=1.35: count=138
+   Center Y range: [-0.497, 0.626]
+Z=1.40: count=100
+   Center Y range: [-0.441, 0.482]
+Z=1.45: count=96
+   Center Y range: [-0.452, 0.622]
+Z=1.50: count=163
+   Center Y range: [-0.558, 0.542]

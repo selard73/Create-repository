@@ -1,0 +1,11 @@
+[
+  {"classes": ["other", "blue"], "box": [-1, 1, -2, 2, -0.1, 1.6], "from": ["Head", "Neck"], "to": "Chest"},
+  {"classes": ["yellow"], "box": [-1, 1, -2, 2, -0.1, 1.6], "from": ["Head", "Neck"], "to": "Chest"},
+  {"classes": ["pink/red"], "box": [-1, 1, -2, 2, -0.1, 1.30], "from": ["Head", "Neck"], "to": "Chest"},
+  {"classes": ["pink/red"], "box": [-1, -0.2, -2, 2, 1.30, 1.6], "from": ["Head", "Neck"], "to": "Chest"},
+  {"classes": ["pink/red"], "box": [-0.2, 0.3, -2, 2, 1.30, 1.40], "from": ["Head", "Neck"], "to": "Chest"},
+  {"classes": ["white-high", "brown", "white-low", "gray"], "box": [-1, 1, -2, 2, -0.1, 1.26], "from": ["Head", "Neck"], "to": "Chest"},
+  {"classes": ["white-high", "brown"], "box": [-1, -0.2, -1.45, -1.0, 1.26, 1.5], "from": ["Head", "Neck"], "to": "Chest"},
+  {"classes": ["white-high", "brown"], "box": [-1, 1, -0.7, 2, 1.26, 1.38], "soft": [1.26, 1.38], "from": ["Head", "Neck"], "to": "Chest"},
+  {"classes": ["*"], "box": [-1, 1, -2, 2, -0.1, 0.35], "from": ["Head", "Neck", "Chest"], "to": "Root"}
+]

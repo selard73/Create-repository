@@ -1,0 +1,25 @@
+-- READ-ONLY probe (Oct 4 2026): the funicular - its models, the car's parts, scripts, the track ends. QF1@ lines.
+local hits={}
+for _,d in ipairs(game:GetDescendants()) do
+	local n=d.Name:lower()
+	if (n:find('funic') or n:find('cable car') or n:find('funi')) and not d:IsDescendantOf(game.ServerStorage) then
+		table.insert(hits,d)
+	end
+end
+for i,d in ipairs(hits) do
+	if i>60 then break end
+	local extra=''
+	if d:IsA('Model') then local cf,s=d:GetBoundingBox() extra=string.format(' box c(%.1f,%.1f,%.1f) s(%.1f,%.1f,%.1f) kids %d',cf.X,cf.Y,cf.Z,s.X,s.Y,s.Z,#d:GetChildren())
+	elseif d:IsA('BasePart') then extra=string.format(' c(%.1f,%.1f,%.1f) s(%.1f,%.1f,%.1f)',d.Position.X,d.Position.Y,d.Position.Z,d.Size.X,d.Size.Y,d.Size.Z)
+	elseif d:IsA('LuaSourceContainer') then extra=' src '..#d.Source end
+	warn('QF1@'..d.ClassName..'@'..d:GetFullName()..extra)
+end
+warn('QF1@N',#hits)
+-- scripts mentioning funicular
+for _,d in ipairs(game:GetDescendants()) do
+	if d:IsA('LuaSourceContainer') and not d:IsDescendantOf(game.ServerStorage) then
+		local ok,s=pcall(function() return d.Source end)
+		if ok and s:lower():find('funic') then warn('QF1@SCRIPT@'..d:GetFullName()..'@'..#s) end
+	end
+end
+warn('QF1@END')

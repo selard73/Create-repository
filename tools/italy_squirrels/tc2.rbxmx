@@ -1,0 +1,60 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">TonioMove</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 4 2026 (her fix): Tonio to where Shannon's character stood in the play test: (328.85, ground -46.8, -610.58) on the
+-- Lower town approach paving at the bottom station's entrance, facing like her (-0.946,0,0.325).
+local id='conductor_squirrel'
+local col=workspace:FindFirstChild(id..'_color')
+local gry=workspace:FindFirstChild('SquirrelTwins') and workspace.SquirrelTwins:FindFirstChild(id..'_gray')
+if not col then warn('QT@ABORT missing') return end
+local TARGET=Vector3.new(328.85,0,-610.58)
+local WANT=Vector3.new(-0.946,0,0.325).Unit
+local cm=col.Squirrel
+local Bn={} for _,x in ipairs(col:GetDescendants()) do if x:IsA('Bone') then Bn[x.Name]=x end end
+local rel=cm.CFrame:Inverse()*col:GetPivot() col:PivotTo(CFrame.new(cm.Position)*rel)
+local function axes()
+	local hl=cm.CFrame:PointToObjectSpace(Bn.Head.WorldPosition)
+	return hl.Z<0 and 1 or -1, 1
+end
+local function face(want)
+	for i=1,3 do
+		local sz=axes()
+		local R=cm.CFrame-cm.Position
+		local fwd=R:VectorToWorldSpace(Vector3.new(0,0,-sz))*Vector3.new(1,0,1)
+		local ang=math.atan2(want.X,want.Z)-math.atan2(fwd.X,fwd.Z)
+		local c=CFrame.new(cm.Position) col:PivotTo(c*CFrame.Angles(0,ang,0)*c:Inverse()*col:GetPivot())
+	end
+end
+local feet={{-0.53,-0.40},{-0.20,-0.40},{-0.53,-0.06},{-0.20,-0.06},{0.15,-0.58},{0.36,-0.58},{0.15,-0.17},{0.36,-0.17}}
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Exclude
+rp.FilterDescendantsInstances={col,workspace:FindFirstChild('SquirrelTwins'),workspace:FindFirstChild('ComingSoonWall')}
+local k=3.4/cm.Size.Y
+face(WANT)
+local sz=axes()
+local R=cm.CFrame-cm.Position
+local fc=R:VectorToWorldSpace(Vector3.new(-0.09,0,sz*-0.31)*k)
+local best
+for dx=-0.3,0.3,0.1 do for dz=-0.3,0.3,0.1 do
+	local c=TARGET+Vector3.new(dx,0,dz)
+	local hi,lo,ok=-1e9,1e9,true
+	for _,f in ipairs(feet) do
+		local w=c-fc+R:VectorToWorldSpace(Vector3.new(f[1],0,sz*f[2])*k)
+		local q=workspace:Raycast(Vector3.new(w.X,-40,w.Z),Vector3.new(0,-12,0),rp)
+		if not q then ok=false break end
+		hi=math.max(hi,q.Position.Y) lo=math.min(lo,q.Position.Y)
+	end
+	if ok then
+		local score=(hi-lo)*10+math.abs(dx)+math.abs(dz)
+		if not best or score<best.s then best={s=score,c=c,y=hi,spread=hi-lo} end
+	end
+end end
+if not best then warn('QT@ABORT no ground') return end
+local L=Vector3.new(best.c.X,best.y,best.c.Z)
+col:PivotTo(col:GetPivot()+Vector3.new(L.X-fc.X-cm.Position.X,L.Y+0.02-(cm.Position.Y-cm.Size.Y/2),L.Z-fc.Z-cm.Position.Z))
+game:GetService('ChangeHistoryService'):SetWaypoint('Tonio to her spot')
+warn('QT@MOVED feet centre',L,'spread',best.spread,'facing',R:VectorToWorldSpace(Vector3.new(0,0,-sz)))
+local cam=workspace.CurrentCamera
+local t=L+Vector3.new(0,1.6,0)
+cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(t+WANT*7+Vector3.new(0,1.5,0),t)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

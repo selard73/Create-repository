@@ -1,0 +1,287 @@
+<title>Porto Squirrel Batch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600&display=swap">
+<style>
+/* layout: one column of squirrel sheets, newest first; renders side by side, stacking on phones */
+:root {
+  --bg: #f3f1ea; --paper: #fffdf7; --ink: #2b2433; --muted: #6c6474; --line: #e2dccd;
+  --sea: #1f6f8b; --lemon: #e8b931; --ok: #3f8f5a; --wait: #b7791f; --work: #1f6f8b;
+  --display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #1b1a22; --paper: #24222d; --ink: #f1ece2; --muted: #a9a2b2; --line: #39364a;
+  --sea: #6fb7d1; --lemon: #f0c94e; --ok: #6cc28a; --wait: #e2a94a; --work: #6fb7d1; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #1b1a22; --paper: #24222d; --ink: #f1ece2; --muted: #a9a2b2; --line: #39364a;
+  --sea: #6fb7d1; --lemon: #f0c94e; --ok: #6cc28a; --wait: #e2a94a; --work: #6fb7d1; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 980px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 56px; display: grid; gap: 28px; }
+.top h1 { font-family: var(--display); font-weight: 600; font-size: clamp(28px, 5vw, 40px); margin: 0; text-wrap: balance; }
+.top p { margin: 6px 0 0; color: var(--muted); max-width: 62ch; }
+.tally { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.tally span { font-family: var(--display); font-weight: 500; font-size: 15px; padding: 4px 12px; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.sq { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 20px; display: grid; gap: 16px; }
+.sq-head { display: grid; gap: 4px; justify-items: start; }
+.eyebrow { margin: 0; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--sea); font-weight: 600; }
+.sq h2 { font-family: var(--display); font-weight: 600; font-size: 28px; margin: 0; }
+.chip { font-size: 14px; font-weight: 600; padding: 3px 12px; border-radius: 999px; border: 1.5px solid currentColor; }
+.chip-ok { color: var(--ok); } .chip-wait { color: var(--wait); } .chip-work { color: var(--work); }
+.figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+figure { margin: 0; display: grid; gap: 6px; }
+figure img { width: 100%; border-radius: 12px; border: 1px solid var(--line); background: #eef0f3; }
+figcaption { font-size: 13px; color: var(--muted); }
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 0; }
+.facts dt { font-weight: 600; color: var(--muted); }
+.facts dd { margin: 0; min-width: 0; }
+.notes { margin: 0; padding-left: 20px; color: var(--muted); display: grid; gap: 4px; }
+@media (max-width: 520px) { .facts { grid-template-columns: 1fr; } .facts dd { margin-bottom: 6px; } }
+</style>
+<main class="wrap">
+  <div class="top">
+    <h1>Porto Squirrel Batch</h1>
+    <p>The last 21 Porto Nocciola squirrels, one at a time. Newest at the top. Nothing goes into Studio until you say so.</p>
+    <div class="tally"><span>Via della Piazza 15 / 15 in Studio</span><span>The Groves 14 / 15 in Studio</span></div>
+  </div>
+  
+<section class="sq" id="worldmap">
+  <header class="sq-head">
+    <p class="eyebrow">The map · squirrel new chart</p>
+    <h2>The whole of Porto Nocciola on the map</h2>
+    <span class="chip chip-wait">Drawn, not in the game yet. Your OK?</span>
+  </header>
+  <div class="figs"><figure><img src="img/world_chart2_s.jpg" alt="The new chart (same parchment style): France at the bottom unchanged, the gorge and falls, then the harbour, the hillside town with Piazza del Limone and its fountain, the church, the funicular, the lemon and olive terraces, the olive grove, the meadow, the watchtower, the pebble cove and the lighthouse at the tip. No writing on it: the game puts the name plates and counts on top" loading="lazy"><figcaption>The new chart (same parchment style): France at the bottom unchanged, the gorge and falls, then the harbour, the hillside town with Piazza del Limone and its fountain, the church, the funicular, the lemon and olive terraces, the olive grove, the meadow, the watchtower, the pebble cove and the lighthouse at the tip. No writing on it: the game puts the name plates and counts on top</figcaption></figure><figure><img src="img/drone_fixed_s.jpg" alt="Your fix: the drone now hovers about 4 studs in front of the Drone Flyer, a little above his head (Studio view)" loading="lazy"><figcaption>Your fix: the drone now hovers about 4 studs in front of the Drone Flyer, a little above his head (Studio view)</figcaption></figure></div>
+  <dl class="facts"><dt>In the game</dt><dd>Each area gets its own name plate and count: The Harbour 15, Via della Piazza 15, The Groves 14; a &#x27;?&#x27; covers an area until you can go there; the &#x27;You are here&#x27; dot works everywhere in Porto</dd><dt>Fixed tonight</dt><dd>Feet: every squirrel now stands exactly where it was placed (the keeper and his wife were 0.2 studs into the stone). The count: 88 / 88 (Pogo, the Baker, the Sassy Shopper and Pizza Delivery had &#x27;_2&#x27; ids; old finds now count). Butterfly Catcher: head still, no pulling. Butterflies: rounded front and back wings that sweep up and down. Drone: in front of him</dd><dt>Checked</dt><dd>Play test: all four fixes measured; 88 squirrels, Porto 44; the drone 4.2 studs in front, 1.4 above his head</dd></dl>
+  <ul class="notes"><li>Next after your OK: upload the chart (two halves, Roblox&#x27;s 1024-pixel limit), switch the map to it, add the three area plates, then a phone check of the map.</li></ul>
+</section>
+<section class="sq" id="butterfly">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 14 of 15</p>
+    <h2>Butterfly Catcher Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/butterfly_placed_s.jpg" alt="Placed (your spot): running through the windflower patch with her net up, the keeper&#x27;s cottage on the left (Studio view, drawn small in Edit mode; the butterflies show as thin slivers here because they only flap in play)" loading="lazy"><figcaption>Placed (your spot): running through the windflower patch with her net up, the keeper&#x27;s cottage on the left (Studio view, drawn small in Edit mode; the butterflies show as thin slivers here because they only flap in play)</figcaption></figure><figure><img src="img/butterfly_q34.jpg" alt="Head turned, three-quarter view: the net, hoop and handle stay in her paws; hat and face turn together" loading="lazy"><figcaption>Head turned, three-quarter view: the net, hoop and handle stay in her paws; hat and face turn together</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Butterfly Catcher Squirrel</dd><dt>Bio</dt><dd>Has never caught a single butterfly. Her net has caught three hats and a sandwich.</dd><dt>Spot</dt><dd>The windflower patch of the meadow, between the Drone Flyer and the keeper&#x27;s cottage, facing the meadow path</dd><dt>Butterflies</dt><dd>Blue, orange and yellow, flapping and looping round the top of her net at head height. Play-tested: all three move (the first version stood still because the game loads them a moment after the script starts; fixed)</dd></dl>
+  <ul class="notes"><li>Calico fur, green bucket hat with a daisy, floral shirt, green shorts, a satchel with a butterfly on it, a big butterfly net.</li></ul>
+</section>
+<section class="sq" id="guitar">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 13 of 15</p>
+    <h2>Guitarist Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/guitar_placed_back_s.jpg" alt="Placed (your spot): in the olive grove, mid-hop, playing toward the Olive Picker on his crate (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed (your spot): in the olive grove, mid-hop, playing toward the Olive Picker on his crate (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/guitar_placed_front_s.jpg" alt="From the front: eyes closed, playing" loading="lazy"><figcaption>From the front: eyes closed, playing</figcaption></figure><figure><img src="img/guitar_q34.jpg" alt="Head turned, three-quarter view: the guitar stays in his paws, the hat turns with his head" loading="lazy"><figcaption>Head turned, three-quarter view: the guitar stays in his paws, the hat turns with his head</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Guitarist Squirrel</dd><dt>Bio</dt><dd>Knows one song. He plays it very well, and very often.</dd><dt>Spot</dt><dd>The olive grove shade, about 6 studs from the Olive Picker, playing to him</dd></dl>
+  <ul class="notes"><li>Wide black hat with a feather, red neckerchief, white shirt and dark waistcoat, eyes closed, mid-hop with a small guitar.</li></ul>
+</section>
+<section class="sq" id="glass">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 12 of 15</p>
+    <h2>Sea Glass Collector Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/glass_placed_s.jpg" alt="Placed and turned (your fix): on the sand at the bottom of the Beach steps, facing people as they step off the stairs, sea glass held up to the light (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed and turned (your fix): on the sand at the bottom of the Beach steps, facing people as they step off the stairs, sea glass held up to the light (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/glass_q34.jpg" alt="Head turned, three-quarter view: the sea glass and basket stay in her paws" loading="lazy"><figcaption>Head turned, three-quarter view: the sea glass and basket stay in her paws</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Sea Glass Collector Squirrel</dd><dt>Bio</dt><dd>Has a jar of sea glass for every colour of the sea. She is still looking for the purple one.</dd><dt>Spot</dt><dd>The sandy north end of the pebble cove, beside the bottom of the Beach steps</dd></dl>
+  <ul class="notes"><li>Teal knotted top, khaki shorts, sandals with a little flower, a woven basket of sea glass, one green piece held up to the light.</li></ul>
+</section>
+<section class="sq" id="drone">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 11 of 15</p>
+    <h2>Drone Flyer Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/drone_placed_s.jpg" alt="Placed (your spot): the open middle of the meadow, controller in his paws, his drone hovering above and in front of him (Studio view, drawn small in Edit mode). Play-tested: the drone bobs and drifts about 2.2 to 2.9 studs above his head, no errors" loading="lazy"><figcaption>Placed (your spot): the open middle of the meadow, controller in his paws, his drone hovering above and in front of him (Studio view, drawn small in Edit mode). Play-tested: the drone bobs and drifts about 2.2 to 2.9 studs above his head, no errors</figcaption></figure><figure><img src="img/drone_q34.jpg" alt="Head turned, three-quarter view: the controller stays in his paws" loading="lazy"><figcaption>Head turned, three-quarter view: the controller stays in his paws</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Drone Flyer Squirrel</dd><dt>Bio</dt><dd>His drone has been to the top of the lighthouse more often than the lighthouse keeper.</dd><dt>Spot</dt><dd>The open middle of the Prato dei Fiori meadow, facing people coming down from the town</dd><dt>Drone</dt><dd>Your Meshy drone, 1.8 studs wide, can&#x27;t be clicked or bumped into; it only animates when a player is within 160 studs</dd></dl>
+  <ul class="notes"><li>Gray fur, teal cap with a drone badge, teal jacket, white T-shirt, black cargo shorts, teal sneakers, a remote controller.</li></ul>
+</section>
+<section class="sq" id="photo">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 10 of 15</p>
+    <h2>Photographer Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/photo_placed_back_s.jpg" alt="Placed (your pick): on the grassy rise of the meadow, camera aimed at the lighthouse with the keeper by its door in the shot (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed (your pick): on the grassy rise of the meadow, camera aimed at the lighthouse with the keeper by its door in the shot (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/photo_placed_front_s.jpg" alt="From the lighthouse side: he is taking your picture; the keeper&#x27;s wife by her cottage behind him" loading="lazy"><figcaption>From the lighthouse side: he is taking your picture; the keeper&#x27;s wife by her cottage behind him</figcaption></figure><figure><img src="img/photo_rest.jpg" alt="Close-up: one eye to the camera, the other winking. His head stays still (NoHeadAnim) so the camera never leaves his eye; his tail still sways" loading="lazy"><figcaption>Close-up: one eye to the camera, the other winking. His head stays still (NoHeadAnim) so the camera never leaves his eye; his tail still sways</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Photographer Squirrel</dd><dt>Bio</dt><dd>Always says one more. It is never one more.</dd><dt>Spot</dt><dd>The grassy rise of the meadow north of the lighthouse, shooting the lighthouse and its keeper</dd></dl>
+  <ul class="notes"><li>Khaki safari vest and cargo shorts, hiking shoes, a big black camera with a red strap, a camera bag at his hip.</li></ul>
+</section>
+<section class="sq" id="wife">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 9 of 15</p>
+    <h2>The Lighthouse Keeper&#x27;s Wife</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/wife_placed_s.jpg" alt="Placed: on the cottage&#x27;s stone path with her laundry basket, facing people coming up the path. Note: she is on the window side of the door (left as you look at the house), not the right as I wrote; the right side is narrower and drops to grass. Say if you want her moved (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed: on the cottage&#x27;s stone path with her laundry basket, facing people coming up the path. Note: she is on the window side of the door (left as you look at the house), not the right as I wrote; the right side is narrower and drops to grass. Say if you want her moved (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/wife_q34.jpg" alt="Head turned, three-quarter view: the laundry basket, apron and dress stay put" loading="lazy"><figcaption>Head turned, three-quarter view: the laundry basket, apron and dress stay put</figcaption></figure><figure><img src="img/wife_close.jpg" alt="Close-up, head turned: bandana, ears and whiskers move together" loading="lazy"><figcaption>Close-up, head turned: bandana, ears and whiskers move together</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>The Lighthouse Keeper&#x27;s Wife</dd><dt>Bio</dt><dd>Married the lighthouse keeper for the view. Stayed for the laundry. There is a lot of laundry.</dd><dt>Spot</dt><dd>The keeper&#x27;s cottage by the lighthouse, on the stone path beside the green front door</dd></dl>
+  <ul class="notes"><li>Red anchor-print bandana, blue dress, cream apron with an anchor, a basket of folded laundry.</li></ul>
+</section>
+<section class="sq" id="keeper">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 8 of 15</p>
+    <h2>Lighthouse Keeper Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/keeper_placed_s.jpg" alt="Placed (your spot): on the round stone base of the Faro di Porto Nocciola beside the green door, lantern in hand, facing the meadow path (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed (your spot): on the round stone base of the Faro di Porto Nocciola beside the green door, lantern in hand, facing the meadow path (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/keeper_q34.jpg" alt="Head turned, three-quarter view: the lantern, binoculars and coat stay put" loading="lazy"><figcaption>Head turned, three-quarter view: the lantern, binoculars and coat stay put</figcaption></figure><figure><img src="img/keeper_close.jpg" alt="Close-up, head turned: cap, ears and whiskers move together; the raised paw keeps hold of the lantern" loading="lazy"><figcaption>Close-up, head turned: cap, ears and whiskers move together; the raised paw keeps hold of the lantern</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Lighthouse Keeper Squirrel</dd><dt>Bio</dt><dd>Has kept the light burning for forty years. Carries a lantern anyway, in case the lighthouse forgets.</dd><dt>Spot</dt><dd>The lighthouse&#x27;s round stone base, just right of the door, facing the meadow path</dd></dl>
+  <ul class="notes"><li>White captain&#x27;s cap with a lighthouse badge, navy coat with brass buttons, striped jumper, binoculars, a lantern.</li></ul>
+</section>
+<section class="sq" id="treasure">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 7 of 15</p>
+    <h2>Treasure Hunter Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/treasure_placed_s.jpg" alt="Placed (your spot): on the pebble beach, sweeping his detector toward the water (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed (your spot): on the pebble beach, sweeping his detector toward the water (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/treasure_beach_s.jpg" alt="From the Beach steps: the snorkeler at the water&#x27;s edge (left) and the treasure hunter (right), both well clear of the cave" loading="lazy"><figcaption>From the Beach steps: the snorkeler at the water&#x27;s edge (left) and the treasure hunter (right), both well clear of the cave</figcaption></figure><figure><img src="img/treasure_q34.jpg" alt="Head turned, three-quarter view: the detector, backpack and tail stay put; whiskers turn with his head" loading="lazy"><figcaption>Head turned, three-quarter view: the detector, backpack and tail stay put; whiskers turn with his head</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Treasure Hunter Squirrel</dd><dt>Bio</dt><dd>Has found forty-two bottle caps, a spoon and someone&#x27;s car keys. The treasure is still out there.</dd><dt>Spot</dt><dd>The pebble beach near the foot of the Beach steps, sweeping toward the water</dd></dl>
+  <ul class="notes"><li>Safari hat with a brass buckle, Hawaiian shirt, cargo shorts, flip-flops, a khaki backpack and a metal detector.</li></ul>
+</section>
+<section class="sq" id="star">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 6 of 15</p>
+    <h2>Stargazer Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/star_placed_side_s.jpg" alt="Placed (your spot): on the open grass at the meadow&#x27;s west edge, eye to the telescope, aimed up and south-west over the sea (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed (your spot): on the open grass at the meadow&#x27;s west edge, eye to the telescope, aimed up and south-west over the sea (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/star_placed_back_s.jpg" alt="From the meadow path: looking out to sea through his telescope" loading="lazy"><figcaption>From the meadow path: looking out to sea through his telescope</figcaption></figure><figure><img src="img/star_q34.jpg" alt="Head turned, three-quarter view: the telescope and tripod stay put" loading="lazy"><figcaption>Head turned, three-quarter view: the telescope and tripod stay put</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Stargazer Squirrel</dd><dt>Bio</dt><dd>Has discovered three new stars. Two of them were the lighthouse.</dd><dt>Spot</dt><dd>The open grass at the west edge of the Prato dei Fiori meadow, above the sea</dd></dl>
+  <ul class="notes"><li>Navy cap and fleece vest, binoculars, a small canvas bag, a brass-trimmed telescope on a wooden tripod.</li></ul>
+</section>
+<section class="sq" id="diver">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 5 of 15</p>
+    <h2>Cliff Diver Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/diver_placed_front_s.jpg" alt="Placed (your spot): on the east point, at the end of the flat rock by the olive tree, ready to dive, the lighthouse behind (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed (your spot): on the east point, at the end of the flat rock by the olive tree, ready to dive, the lighthouse behind (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/diver_placed_back_s.jpg" alt="From the land side: he faces straight out to sea over the 58-stud drop" loading="lazy"><figcaption>From the land side: he faces straight out to sea over the 58-stud drop</figcaption></figure><figure><img src="img/diver_cliff_sea_s.jpg" alt="The cliff from the sea" loading="lazy"><figcaption>The cliff from the sea</figcaption></figure><figure><img src="img/diver_q34.jpg" alt="Head turned, three-quarter view: goggles, ears and whiskers move with his head; arms stay swept back" loading="lazy"><figcaption>Head turned, three-quarter view: goggles, ears and whiskers move with his head; arms stay swept back</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Cliff Diver Squirrel</dd><dt>Bio</dt><dd>Scores his own dives out of ten. They have all been tens.</dd><dt>Spot</dt><dd>The rocky point on the east side of The Groves, above a sheer drop into deep water</dd></dl>
+  <ul class="notes"><li>Leaning forward, arms swept back, goggles on his forehead, striped swim shorts.</li><li>The olive tree beside him floats about 2 studs above the rock (it was like that before). Say if you want it set down.</li></ul>
+</section>
+<section class="sq" id="hiker">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 4 of 15</p>
+    <h2>Hiker Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/hiker_placed_s.jpg" alt="Placed (your spot): on the grass where the tower path leaves the main path, the Torre di Guardia beside him, facing people coming down from the town (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed (your spot): on the grass where the tower path leaves the main path, the Torre di Guardia beside him, facing people coming down from the town (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/hiker_q34.jpg" alt="Head turned, three-quarter view: walking stick, backpack and tail stay put" loading="lazy"><figcaption>Head turned, three-quarter view: walking stick, backpack and tail stay put</figcaption></figure><figure><img src="img/hiker_close.jpg" alt="Close-up, head turned: hat, ears and face move together; the backpack strap and map stay on his back" loading="lazy"><figcaption>Close-up, head turned: hat, ears and face move together; the backpack strap and map stay on his back</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Hiker Squirrel</dd><dt>Bio</dt><dd>Packed for a three-day trek. The watchtower is a four-minute walk.</dd><dt>Spot</dt><dd>The grass corner where the tower path leaves the main path, just inside The Groves</dd></dl>
+  <ul class="notes"><li>Ranger hat with a mountain badge, green vest, cargo shorts, hiking boots, a walking stick, a backpack with a rolled map and a water bottle.</li></ul>
+</section>
+<section class="sq" id="snorkel">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 3 of 15</p>
+    <h2>Snorkel Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/snorkel_placed_front_s.jpg" alt="Placed (your spot): on the pebble beach at the water&#x27;s edge, fins flat on the stones, facing the sea; the Beach steps behind him (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed (your spot): on the pebble beach at the water&#x27;s edge, fins flat on the stones, facing the sea; the Beach steps behind him (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/snorkel_placed_steps_s.jpg" alt="Coming down the Beach steps: he is at the waterline looking out to sea" loading="lazy"><figcaption>Coming down the Beach steps: he is at the waterline looking out to sea</figcaption></figure><figure><img src="img/snorkel_q34.jpg" alt="Head turned, three-quarter view: mask and snorkel turn with his head, paws stay on the straps" loading="lazy"><figcaption>Head turned, three-quarter view: mask and snorkel turn with his head, paws stay on the straps</figcaption></figure><figure><img src="img/snorkel_close.jpg" alt="Close-up, head turned away: the snorkel stays on the mask" loading="lazy"><figcaption>Close-up, head turned away: the snorkel stays on the mask</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Snorkel Squirrel</dd><dt>Bio</dt><dd>Has seen every fish in the bay. He has named all of them Gerald.</dd><dt>Spot</dt><dd>Spiaggia dei Ciottoli, the pebble cove under the west cliffs: at the water&#x27;s edge near the foot of the Beach steps, facing the sea, well away from the cave</dd></dl>
+  <ul class="notes"><li>Mask on his forehead, blue snorkel, orange-strapped backpack, shark-print swim shorts, orange and black fins.</li><li>The cave stays free for the octopus and the captured squirrels.</li></ul>
+</section>
+<section class="sq" id="olive">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 2 of 15</p>
+    <h2>Olive Picker Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/olive_placed_west_s.jpg" alt="Turned to face the grove path (your fix): on his crate under the small olive tree, reaching up into it (Studio view, drawn small in Edit mode; in play his fist ends just under the tree&#x27;s pair of olives)" loading="lazy"><figcaption>Turned to face the grove path (your fix): on his crate under the small olive tree, reaching up into it (Studio view, drawn small in Edit mode; in play his fist ends just under the tree&#x27;s pair of olives)</figcaption></figure><figure><img src="img/olive_q34.jpg" alt="Head turned, three-quarter view: the raised arm and the basket stay put" loading="lazy"><figcaption>Head turned, three-quarter view: the raised arm and the basket stay put</figcaption></figure><figure><img src="img/olive_close.jpg" alt="Close-up, head turned: cap, ears and whiskers move with his head, the arm stays clean" loading="lazy"><figcaption>Close-up, head turned: cap, ears and whiskers move with his head, the arm stays clean</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Olive Picker Squirrel</dd><dt>Bio</dt><dd>Picks one olive for the basket and one for himself. The basket is still empty.</dd><dt>Spot</dt><dd>The olive grove in The Groves, under the small tree nearest the path, facing the path, standing on a crate (a copy of the terraces&#x27; orchard crate, on its side, 1.7 high)</dd><dt>Reach</dt><dd>In the game his fist ends about 0.2 studs under the tree&#x27;s own pair of olives</dd></dl>
+  <ul class="notes"><li>Grey-brown fur, green cap and overalls, cream shirt, a tea towel at his belt, an empty basket.</li></ul>
+</section>
+<section class="sq" id="lemon">
+  <header class="sq-head">
+    <p class="eyebrow">The Groves · squirrel 1 of 15</p>
+    <h2>Lemon Seller Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/lemon_placed_s.jpg" alt="Placed (your spot A): seen from the top of the Salita degli Ulivi stairs. He stands beside the crate of lemons, facing the stairs, the olive tree behind him (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed (your spot A): seen from the top of the Salita degli Ulivi stairs. He stands beside the crate of lemons, facing the stairs, the olive tree behind him (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/lemon_placed_close_s.jpg" alt="Closer: straw hat, basket of lemons, both feet flat on the grass (ground under his feet differs by under 0.1 stud)" loading="lazy"><figcaption>Closer: straw hat, basket of lemons, both feet flat on the grass (ground under his feet differs by under 0.1 stud)</figcaption></figure><figure><img src="img/lemon_q34.jpg" alt="Head turned, three-quarter view" loading="lazy"><figcaption>Head turned, three-quarter view</figcaption></figure><figure><img src="img/lemon_close.jpg" alt="Close-up, head turned: hat, ears and face move together; the basket stays in his paws" loading="lazy"><figcaption>Close-up, head turned: hat, ears and face move together; the basket stays in his paws</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Lemon Seller Squirrel</dd><dt>Bio</dt><dd>Swears every lemon in his basket came off the tree behind him. The tree behind him is an olive tree.</dd><dt>Spot</dt><dd>Top terrace of the lemon and olive terraces, beside the crate of lemons at the top of the Salita degli Ulivi stairs, facing people as they come up</dd><dt>Zone</dt><dd>The terraces (x 617 to 800, z -949 to -756) are now a Groves zone, so standing by him shows The Groves list. The rest of Via della Piazza is unchanged</dd></dl>
+  <ul class="notes"><li>Straw hat, green overalls and apron, a big basket of lemons.</li><li>The lowest terrace (the one with the lemon trees) has its own crate and LIMONETO sign buried in the rock at its north end. Say if you want them dug out.</li></ul>
+</section>
+<section class="sq" id="postcard">
+  <header class="sq-head">
+    <p class="eyebrow">Via della Piazza · squirrel 15 of 15</p>
+    <h2>Postcard Squirrel</h2>
+    <span class="chip chip-wait">Placed in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/post_placed_s.jpg" alt="Placed halfway up the Sentiero del Faro, moved 1.3 studs off the sea railing (your note), facing people coming up from the harbour (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed halfway up the Sentiero del Faro, moved 1.3 studs off the sea railing (your note), facing people coming up from the harbour (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/post_q34.jpg" alt="Head turned, three-quarter view" loading="lazy"><figcaption>Head turned, three-quarter view</figcaption></figure><figure><img src="img/post_rest.jpg" alt="Close-up, head straight" loading="lazy"><figcaption>Close-up, head straight</figcaption></figure><figure><img src="img/post_close.jpg" alt="Same camera, head turned: the postcard fan stays in his paw, his cheek turns with his head" loading="lazy"><figcaption>Same camera, head turned: the postcard fan stays in his paw, his cheek turns with his head</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Postcard Squirrel</dd><dt>Bio</dt><dd>Sells postcards of the view to people standing in front of the view. Business is excellent.</dd><dt>Spot</dt><dd>Halfway up the Sentiero del Faro, the stone path by the water to the lighthouse: on its sea-side edge at about y -17, facing people coming up from the harbour (inside Via della Piazza&#x27;s coastal zone, so he counts there)</dd></dl>
+  <ul class="notes"><li>Flat cap, green waistcoat, a satchel of postcards, a fan of cards in one paw and a display board of six in the other.</li><li>To import: postcard_squirrel_color.fbx and postcard_squirrel_gray.fbx (roblox-props\squirrels\postcard_squirrel).</li></ul>
+</section>
+<section class="sq" id="clockmaker">
+  <header class="sq-head">
+    <p class="eyebrow">Via della Piazza · squirrel 14 of 15</p>
+    <h2>Clock Keeper Squirrel</h2>
+    <span class="chip chip-wait">On his balcony in Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/clock_placed_s.jpg" alt="On his new balcony under the west clock (a copy of the town&#x27;s balconies, flower box taken off so he shows), drawn here at his game size" loading="lazy"><figcaption>On his new balcony under the west clock (a copy of the town&#x27;s balconies, flower box taken off so he shows), drawn here at his game size</figcaption></figure><figure><img src="img/clock_q34.jpg" alt="Head turned, three-quarter view" loading="lazy"><figcaption>Head turned, three-quarter view</figcaption></figure><figure><img src="img/clock_rest.jpg" alt="Close-up, head straight" loading="lazy"><figcaption>Close-up, head straight</figcaption></figure><figure><img src="img/clock_close.jpg" alt="Same camera, head turned: glasses, whiskers and face move together; the key stays in his paw" loading="lazy"><figcaption>Same camera, head turned: glasses, whiskers and face move together; the key stays in his paw</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Clock Keeper Squirrel</dd><dt>Bio</dt><dd>Winds the town clock every morning at seven. It runs ten minutes fast, and so does he.</dd><dt>Spot</dt><dd>A new balcony under the clock on the Torre dell&#x27;Orologio, facing the fountain; clickable from the foot of the tower (32-stud reach)</dd></dl>
+  <ul class="notes"><li>Standing, with a brass winding key, an oil can, round glasses and a flat cap.</li><li>Rig: the key was picked out as its own piece (a gold-colour filter caught his glasses&#x27; gold arm and smeared it), so his whiskers and glasses stay with his head.</li><li>To import: clockmaker_squirrel_color.fbx and clockmaker_squirrel_gray.fbx (roblox-props\squirrels\clockmaker_squirrel).</li></ul>
+</section>
+<section class="sq" id="churchmouse">
+  <header class="sq-head">
+    <p class="eyebrow">Via della Piazza · squirrel 13 of 15</p>
+    <h2>The Church Mouse&#x27;s Cousin</h2>
+    <span class="chip chip-wait">Placed in Studio. Try it in a play test</span>
+  </header>
+  <div class="figs"><figure><img src="img/mouse_placed_s.jpg" alt="Placed in front of the Chiesa di Santa Marina, beside the arched doors and the bench, facing the forecourt (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Placed in front of the Chiesa di Santa Marina, beside the arched doors and the bench, facing the forecourt (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/mouse_q34.jpg" alt="Head turned, three-quarter view" loading="lazy"><figcaption>Head turned, three-quarter view</figcaption></figure><figure><img src="img/mouse_rest.jpg" alt="Close-up, head straight" loading="lazy"><figcaption>Close-up, head straight</figcaption></figure><figure><img src="img/mouse_close.jpg" alt="Same camera, head turned: cap, ears and face move together" loading="lazy"><figcaption>Same camera, head turned: cap, ears and face move together</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>The Church Mouse&#x27;s Cousin (the French one is The Church Mouse, at the Chateau&#x27;s chapel)</dd><dt>Bio</dt><dd>Quiet as a church mouse. No one has had the heart to tell him he isn&#x27;t a squirrel.</dd><dt>Spot</dt><dd>In front of the Chiesa di Santa Marina doors, a little to one side, facing the forecourt</dd></dl>
+  <ul class="notes"><li>An actual mouse: big round ears, flat cap, waistcoat, a red prayer book held to his chest, a thin pink tail.</li><li>The prayer book and paws are pinned to his chest; the tail bones only take the tail.</li><li>To import: church_mouse_cousin_color.fbx and church_mouse_cousin_gray.fbx (roblox-props\squirrels\church_mouse_cousin).</li></ul>
+</section>
+<section class="sq" id="pizzamaker">
+  <header class="sq-head">
+    <p class="eyebrow">Via della Piazza · squirrel 12 of 15</p>
+    <h2>Chef Nutmeg, the Pizza Maker</h2>
+    <span class="chip chip-wait">Placed in Studio. Try it in a play test</span>
+  </header>
+  <div class="figs"><figure><img src="img/table_pizza_s.jpg" alt="Pizzeria table 1, beside him: a pizza on a wooden board with two slices cut out, one on each plate, the espresso cup between them" loading="lazy"><figcaption>Pizzeria table 1, beside him: a pizza on a wooden board with two slices cut out, one on each plate, the espresso cup between them</figcaption></figure><figure><img src="img/chef_dough_s.jpg" alt="Placed at the pizzeria front with his pizza dough: a plain pale base with a puffy rim, no toppings, flying above his raised paw (Studio view, drawn small in Edit mode). In play each toss lands back on his paw and flies about 3 studs up, spinning, every 1.5 s" loading="lazy"><figcaption>Placed at the pizzeria front with his pizza dough: a plain pale base with a puffy rim, no toppings, flying above his raised paw (Studio view, drawn small in Edit mode). In play each toss lands back on his paw and flies about 3 studs up, spinning, every 1.5 s</figcaption></figure><figure><img src="img/chef_q34.jpg" alt="Head turned, three-quarter view" loading="lazy"><figcaption>Head turned, three-quarter view</figcaption></figure><figure><img src="img/chef_rest.jpg" alt="Close-up, head straight" loading="lazy"><figcaption>Close-up, head straight</figcaption></figure><figure><img src="img/chef_close.jpg" alt="Same camera, head turned away: the orange band is his own cheek fluff seen side-on, not a stretch" loading="lazy"><figcaption>Same camera, head turned away: the orange band is his own cheek fluff seen side-on, not a stretch</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Chef Nutmeg (Meshy&#x27;s name for him)</dd><dt>Bio</dt><dd>Spins every pizza over his head before it goes in the oven. Most of them come back down.</dd><dt>Spot</dt><dd>In front of the Pizzeria della Piazza shopfront, just south of its café table, facing the fountain</dd><dt>Dough</dt><dd>Plain pizza dough (no toppings) floating above his raised paw, spinning and tossed up and down</dd></dl>
+  <ul class="notes"><li>Both paws are pinned to his chest; the raised paw was picked out as one connected piece so his cheek next to it still turns with his head.</li><li>To import: pizzamaker_squirrel_color.fbx and pizzamaker_squirrel_gray.fbx (roblox-props\squirrels\pizzamaker_squirrel).</li></ul>
+</section>
+<section class="sq" id="accordion">
+  <header class="sq-head">
+    <p class="eyebrow">Via della Piazza · squirrel 11 of 15</p>
+    <h2>Nino, the Accordion Player</h2>
+    <span class="chip chip-wait">Placed in Studio. Try it in a play test</span>
+  </header>
+  <div class="figs"><figure><img src="img/duo_lemon_s.jpg" alt="Your lemon tree: potted, in the corner where the yellow wall ends, close to the edge" loading="lazy"><figcaption>Your lemon tree: potted, in the corner where the yellow wall ends, close to the edge</figcaption></figure><figure><img src="img/duo_fixed_s.jpg" alt="Your fix: Nino and the Fat Lady both face straight out into the square, each about 0.8 studs farther from the wall (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Your fix: Nino and the Fat Lady both face straight out into the square, each about 0.8 studs farther from the wall (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/acc_q34.jpg" alt="Head turned, three-quarter view" loading="lazy"><figcaption>Head turned, three-quarter view</figcaption></figure><figure><img src="img/acc_close.jpg" alt="Close-up with the head turned away" loading="lazy"><figcaption>Close-up with the head turned away</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Nino the Accordion Player</dd><dt>Bio</dt><dd>Has played for the Fat Lady for thirty years. He has never once heard the end of a song.</dd><dt>Spot</dt><dd>Beside the Fat Lady at the yellow pizzeria wall in Piazza del Limone, both facing the square</dd></dl>
+  <ul class="notes"><li>The accordion, straps and both paws are pinned to his chest; the face stays clean on a head turn.</li><li>Style: this model came from the furry 9:40 picture, so he has textured fur and longer legs than the flat-style squirrels. The flat cutout (Downloads\accordion_squirrel_for_meshy.png) is there if you want a matching remake.</li><li>To import: accordion_squirrel_color.fbx and accordion_squirrel_gray.fbx (roblox-props\squirrels\accordion_squirrel).</li></ul>
+</section>
+<section class="sq" id="broomseller">
+  <header class="sq-head">
+    <p class="eyebrow">Via della Piazza · squirrel 10 of 15</p>
+    <h2>Broomtail Squirrel, the Broom Seller</h2>
+    <span class="chip chip-wait">Moved up the steps. Your look?</span>
+  </header>
+  <div class="figs"><figure><img src="img/scopa_up_s.jpg" alt="Moved one story up (your spot): the walkway at the top of the Scalinata dei Fiori by the lilac house, cart along the edge with its sign to the stairs, walkway left open (Studio view, drawn small in Edit mode)" loading="lazy"><figcaption>Moved one story up (your spot): the walkway at the top of the Scalinata dei Fiori by the lilac house, cart along the edge with its sign to the stairs, walkway left open (Studio view, drawn small in Edit mode)</figcaption></figure><figure><img src="img/scopa_placed_s.jpg" alt="Placed (Studio view; he is drawn smaller in Edit mode and grows to game size in play): lilac house, right of door 27, cart on his left with the lettered sign" loading="lazy"><figcaption>Placed (Studio view; he is drawn smaller in Edit mode and grows to game size in play): lilac house, right of door 27, cart on his left with the lettered sign</figcaption></figure><figure><img src="img/broom_q34.jpg" alt="Head turned, three-quarter view" loading="lazy"><figcaption>Head turned, three-quarter view</figcaption></figure><figure><img src="img/broom_close.jpg" alt="Close-up with the head turned away" loading="lazy"><figcaption>Close-up with the head turned away</figcaption></figure><figure><img src="img/cart_q34.jpg" alt="His cart (Meshy, 18k triangles). The scribbled sign gets real lettering in Studio" loading="lazy"><figcaption>His cart (Meshy, 18k triangles). The scribbled sign gets real lettering in Studio</figcaption></figure><figure><img src="img/cart_side.jpg" alt="Cart from the side" loading="lazy"><figcaption>Cart from the side</figcaption></figure></div>
+  <dl class="facts"><dt>Name</dt><dd>Broomtail Squirrel (renamed from Signor Scopa)</dd><dt>Bio</dt><dd>Every broom comes with a free demonstration. So does your doorstep, whether you asked or not.</dd><dt>Spot</dt><dd>Top of the Scalinata dei Fiori (one story up from the lilac-house street), on the walkway near the upper street</dd></dl>
+  <ul class="notes"><li>The broom and both paws are pinned to his chest, so they stay put when he turns his head.</li><li>Colours sharpened the same way as the harbour squirrels.</li><li>To import: broomseller_squirrel_color.fbx and broomseller_squirrel_gray.fbx (roblox-props\squirrels\broomseller_squirrel) and broomcart.fbx (roblox-props\props\broomcart).</li></ul>
+</section>
+  
+<section class="sq" id="calf">
+  <header class="sq-head">
+    <p class="eyebrow">The bay · your idea</p>
+    <h2>The whale calf</h2>
+    <span class="chip chip-wait">In Studio, not published</span>
+  </header>
+  <div class="figs"><figure><img src="img/whale_calf_s.jpg" alt="The mama whale and her calf side by side in the bay, seen from behind" loading="lazy"><figcaption>Mama and calf from behind: her big flukes in front, the calf's small back and tail beside her</figcaption></figure></div>
+  <dl class="facts">
+    <dt>Size</dt><dd>A copy of the mama at 0.42 scale: about 25 studs long (she is 60).</dd>
+    <dt>Swims</dt><dd>On her route, 14 studs to her side (the open-sea side, away from the shore) and 1.2 s behind her; they stop side by side at the blow stations.</dd>
+    <dt>Spout</dt><dd>A smaller spout a beat after hers, and a higher, softer blow sound.</dd>
+    <dt>Checked</dt><dd>Play test: side gap 14.0 studs at the blow stop and while swimming, no errors.</dd>
+  </dl>
+</section>
+<section class="sq" id="phonehud">
+  <header class="sq-head">
+    <p class="eyebrow">Phones · your notes</p>
+    <h2>Squirrel panel, cards and the title pill</h2>
+    <span class="chip chip-wait">Fixed in Studio, measured on a 666 x 374 phone, not published yet</span>
+  </header>
+  <dl class="facts">
+    <dt>Windows</dt><dd>The album and the card start just under the top icons (y 64 instead of 114) and end above the tool bar where they did; they sit on top of everything, covering the Hint button.</dd>
+    <dt>Card</dt><dd>Measured: card y 76 to 281, name y 120 to 158, bio y 167 to 245 (no overlap), bio text about 19 px on screen (was about 12), both arrows and the close button fully on screen.</dd>
+    <dt>Panel</dt><dd>The panel was 10 px too narrow, so each row wrapped one tile early and the last squirrel hung out of the box. Measured: 15 harbour tiles, the last row ends at y 227, the Album button starts at 235.</dd>
+    <dt>Title pill</dt><dd>It now fits the real gap between the Roblox buttons and the four icons. Measured: x 216 to 430 (Roblox buttons end at 208, Passport starts at 440), "Squirrel Maestro" at full size.</dd>
+    <dt>Hint</dt><dd>Top left under the Roblox menu, x 12 to 116, y 64 to 104.</dd>
+  </dl>
+</section>
+</main>

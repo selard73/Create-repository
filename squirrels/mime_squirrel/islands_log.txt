@@ -1,0 +1,3 @@
+1 islands, total verts 3495
+#00 verts  3495  x -0.84.. 0.84  y -1.40.. 1.40  z  0.00.. 2.40  centre ( 0.10,-0.25, 1.12)  head 0.47 chest 0.01 tail 0.21
+ISLANDS_DONE

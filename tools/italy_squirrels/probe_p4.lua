@@ -1,0 +1,15 @@
+for _,area in ipairs(workspace.PortoNocciola:GetChildren()) do
+	for _,m in ipairs(area:GetChildren()) do
+		if m:IsA('Model') then
+			local cf,sz=m:GetBoundingBox()
+			if sz.Y>8 then
+				local doors=0
+				for _,d in ipairs(m:GetDescendants()) do if d:IsA('BasePart') and d.Name:lower():find('door') then doors+=1 end end
+				local wall
+				for _,d in ipairs(m:GetDescendants()) do if d:IsA('BasePart') and (d.Name:lower():find('wall') or d.Name:lower():find('facade') or d.Name:lower():find('render')) and d.Size.Magnitude>8 then wall=d break end end
+				warn(string.format('QY@%s/%s@c(%.0f,%.0f,%.0f)@s(%.0f,%.0f,%.0f)@doors %d@%s',area.Name,m.Name,cf.X,cf.Y,cf.Z,sz.X,sz.Y,sz.Z,doors,wall and (wall.Name..' '..tostring(wall.BrickColor)..' '..string.format('%.2f,%.2f,%.2f',wall.Color.R,wall.Color.G,wall.Color.B)) or '-'))
+			end
+		end
+	end
+end
+warn('QY@END')

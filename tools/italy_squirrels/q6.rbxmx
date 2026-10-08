@@ -1,0 +1,43 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">Probe6</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- READ-ONLY client probe: does anything actually SHOWN overlap the crab panel's shown pieces? (screen space, gui inset)
+local pg=game.Players.LocalPlayer.PlayerGui
+local cg=pg:FindFirstChild('CrabGui')
+if not cg then warn('QO@NOGUI') return end
+local function shown(o)
+	local x=o
+	while x and x~=pg do
+		if x:IsA('GuiObject') and not x.Visible then return false end
+		if x:IsA('ScreenGui') and not x.Enabled then return false end
+		x=x.Parent
+	end
+	return true
+end
+local function drawn(o)
+	if o:IsA('TextLabel') or o:IsA('TextButton') or o:IsA('TextBox') then return o.BackgroundTransparency<1 or (o.Text~='' and o.TextTransparency<1) end
+	if o:IsA('ImageLabel') or o:IsA('ImageButton') then return o.BackgroundTransparency<1 or (o.Image~='' and o.ImageTransparency<1) end
+	return o.BackgroundTransparency<1
+end
+local vp=workspace.CurrentCamera.ViewportSize
+local mine={}
+for _,c in ipairs({cg.Root.CastButton,cg.Root.Bucket,cg.Root.Note}) do
+	if shown(c) and drawn(c) then table.insert(mine,c) end
+end
+local n=0
+for _,o in ipairs(pg:GetDescendants()) do
+	if o:IsA('GuiObject') and not o:IsDescendantOf(cg) and shown(o) and drawn(o) then
+		local p,z=o.AbsolutePosition,o.AbsoluteSize
+		if z.X>2 and z.Y>2 and not (z.X>=vp.X*0.9 and z.Y>=vp.Y*0.9) then
+			for _,c in ipairs(mine) do
+				local a,s=c.AbsolutePosition,c.AbsoluteSize
+				if p.X<a.X+s.X and p.X+z.X>a.X and p.Y<a.Y+s.Y and p.Y+z.Y>a.Y then
+					n+=1 warn('QO@HIT',c.Name,o:GetFullName(),p,z)
+				end
+			end
+		end
+	end
+end
+for _,c in ipairs(mine) do warn('QO@MINE',c.Name,c.AbsolutePosition,c.AbsoluteSize) end
+warn('QO@N',n,'viewport',vp)
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

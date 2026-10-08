@@ -1,0 +1,4 @@
+Pin top verts: 744
+X range: -1.09 .. -0.50
+Y range: -0.68 .. 0.24
+Z range: 1.30 .. 2.35

@@ -1,0 +1,5 @@
+piece [-0.9, -0.2, -1.0, -0.15, 0.5, 1.12] seed [-0.49, -0.58, 0.75]: 662 verts in piece, 662 moved Head+Neck -> Chest
+region [-1.0, 1.0, -2.0, 2.0, -0.1, 0.35] Head+Neck+Chest -> Root: 330 vertices
+after: region [-0.9, -0.2, -1.0, -0.15, 0.5, 1.12] 662 verts, mean Head+Neck weight 0.000, max 0.00
+after: region [-1.0, 1.0, -2.0, 2.0, -0.1, 0.35] 498 verts, mean Head+Neck+Chest weight 0.000, max 0.00
+FIXW_DONE

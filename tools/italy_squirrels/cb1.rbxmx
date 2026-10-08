@@ -1,0 +1,41 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">ProbeCB1</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- cb1 read-only: terrain height maps either side of the falls cliff, the cliff mesh's own top/front, and parts in the zones
+local T=workspace.Terrain
+local rpT=RaycastParams.new() rpT.FilterType=Enum.RaycastFilterType.Include rpT.FilterDescendantsInstances={T}
+local rock=workspace:FindFirstChild('SouthGorge') and workspace.SouthGorge:FindFirstChild('Rock')
+local rpM=RaycastParams.new() rpM.FilterType=Enum.RaycastFilterType.Include rpM.FilterDescendantsInstances={rock}
+local MAT={Grass='G',Sandstone='S',Limestone='L',Rock='R',Slate='T',Sand='s',Mud='M',Ground='D',Water='W',Pebble='P',LeafyGrass='g',Basalt='B',Cobblestone='C',Pavement='V'}
+local function zone(tag,x0,x1)
+	for z=-640,-496,4 do
+		local hs,ms,mm={}, {}, {}
+		for x=x0,x1,4 do
+			local h=workspace:Raycast(Vector3.new(x,140,z),Vector3.new(0,-220,0),rpT)
+			table.insert(hs,h and math.floor(h.Position.Y+0.5) or -99)
+			table.insert(ms,h and (MAT[h.Material.Name] or '?') or '.')
+			local m=rock and workspace:Raycast(Vector3.new(x,140,z),Vector3.new(0,-220,0),rpM)
+			table.insert(mm,m and math.floor(m.Position.Y+0.5) or -99)
+		end
+		warn('QC@'..tag..'H '..z..' '..table.concat(hs,','))
+		warn('QC@'..tag..'M '..z..' '..table.concat(ms,''))
+		warn('QC@'..tag..'R '..z..' '..table.concat(mm,','))
+	end
+end
+zone('W',-140,96)
+zone('E',304,560)
+-- parts (not terrain, not my gorge rock/trees, not walls) whose boxes reach into the zones
+local seen=0
+for _,p in ipairs(workspace:GetDescendants()) do
+	if p:IsA('BasePart') and p.Transparency<1 and not p:IsDescendantOf(workspace.SouthGorge) then
+		local c,s=p.Position,p.Size
+		local r=math.max(s.X,s.Z)/2
+		if c.Z+r>-640 and c.Z-r<-496 and ((c.X+r>-140 and c.X-r<96) or (c.X+r>304 and c.X-r<560)) and c.Y>-60 and c.Y<120 then
+			seen+=1 if seen<=60 then warn('QC@P',p:GetFullName():sub(-70),math.floor(c.X),math.floor(c.Y),math.floor(c.Z),math.floor(s.X),math.floor(s.Y),math.floor(s.Z)) end
+		end
+	end
+end
+warn('QC@Pcount',seen)
+for _,p in ipairs(rock:GetChildren()) do if p:IsA('BasePart') and p.Name:find('Cliff') then warn('QC@mesh',p.Name,p.Position,p.Size) end end
+warn('QC@END')
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

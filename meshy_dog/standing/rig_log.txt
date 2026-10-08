@@ -1,0 +1,4 @@
+POSE rest: lowest overall z 0.00, rump lowest z 0.02, front half lowest z 0.01, head top z 5.00
+POSE walk: lowest overall z 0.06, rump lowest z 0.11, front half lowest z 0.06, head top z 5.23
+POSE sit: lowest overall z -0.47, rump lowest z -0.06, front half lowest z -0.45, head top z 5.57
+RIG_DONE

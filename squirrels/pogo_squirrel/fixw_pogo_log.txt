@@ -1,0 +1,16 @@
+1. Lower pogo stick (z < 0.85 -> Root): 1109 verts
+2. Mid body / handlebars (0.85 <= z < 1.50 Head+Neck -> Chest): 1684 verts
+3. Stray tail in front (z < 1.50, y < 0.1 -> Chest): 478 verts
+4. Entire head/face/cap (x < 0.10, z >= 1.50 Tail1+Tail2 -> Head): 754 verts
+5. Tail region (x >= 0.15 Head+Neck -> Tail2): 9 verts
+Bone Root vert count: 1938
+Bone Chest vert count: 2445
+Bone Neck vert count: 1005
+Bone Head vert count: 3055
+Bone Tail1 vert count: 1266
+Bone Tail2 vert count: 823
+Head tail leaks: 0
+Saved fixed blend file.
+Exported color FBX.
+Exported gray FBX.
+POGO_FIX_ALL_DONE

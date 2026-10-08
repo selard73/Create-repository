@@ -1,0 +1,50 @@
+-- Oct 4 2026: Beppe's whole body centred over the crate (not only his feet); Nonno Reti turned to face south (-z)
+local function bones(col) local B={} for _,d in ipairs(col:GetDescendants()) do if d:IsA('Bone') then B[d.Name]=d end end return B end
+local function turnTo(col,want)
+	local cm=col.Squirrel local B=bones(col)
+	for i=1,2 do
+		local face=(B.Head.WorldPosition-cm.Position)*Vector3.new(1,0,1)
+		local a=math.atan2(want.X,want.Z)-math.atan2(face.X,face.Z)
+		local c=CFrame.new(cm.Position) col:PivotTo(c*CFrame.Angles(0,a,0)*c:Inverse()*col:GetPivot())
+	end
+end
+local function feetCheck(col,feet,gp)
+	local cm=col.Squirrel local B=bones(col)
+	local hl=cm.CFrame:PointToObjectSpace(B.Head.WorldPosition) local tl=cm.CFrame:PointToObjectSpace(B.Tail1.WorldPosition)
+	local sz,sx,k=hl.Z<0 and 1 or -1,tl.X<0 and 1 or -1,3.4/cm.Size.Y
+	local R=cm.CFrame-cm.Position local bottom=cm.Position.Y-cm.Size.Y/2 local out,all='',true
+	for _,f in ipairs(feet) do
+		local w=Vector3.new(cm.Position.X,0,cm.Position.Z)+R:VectorToWorldSpace(Vector3.new(sx*f[1],0,sz*f[2])*k)
+		local q=workspace:Raycast(Vector3.new(w.X,bottom+3,w.Z),Vector3.new(0,-10,0),gp)
+		local gap=q and (bottom-q.Position.Y) or 99
+		if math.abs(gap)>0.06 then all=false end
+		out=out..string.format(' %.2f',gap)
+	end
+	return all,out
+end
+-- Beppe: slide from feet-centred toward body-centred over the crate, as far as the feet stay on the lid
+local bc=workspace.PortoNocciola['03 Fish market'].BeppeCrate
+local col=workspace.fishmonger_squirrel_color local cm=col.Squirrel
+local lid for _,p in ipairs(bc:GetChildren()) do if p.Name=='Lid' then lid=p break end end
+local ccf=bc:GetBoundingBox() local cc=Vector3.new(ccf.Position.X,0,ccf.Position.Z)
+local gp=RaycastParams.new() gp.FilterType=Enum.RaycastFilterType.Include gp.FilterDescendantsInstances={bc}
+local feetB={{-0.85,-0.82},{0.32,-0.82},{-0.85,0.45},{0.32,0.45},{-0.27,-0.19}}
+local start=Vector3.new(cm.Position.X,0,cm.Position.Z)       -- feet-centred now
+local chosen=0 local msg=''
+for _,fr in ipairs({1,0.85,0.7,0.55,0.4,0.25,0}) do
+	local target=start:Lerp(cc,fr)
+	col:PivotTo(col:GetPivot()+Vector3.new(target.X-cm.Position.X,0,target.Z-cm.Position.Z))
+	local ok,out=feetCheck(col,feetB,gp)
+	if ok then chosen=fr msg=out break end
+end
+warn('BEPPE_CENTRED fraction',chosen,'feet',msg,'body offset from crate centre',(Vector3.new(cm.Position.X,0,cm.Position.Z)-cc).Magnitude)
+-- Nonno Reti: face south (-z), feet re-checked on the paving
+local nc=workspace.netmender_squirrel_color
+turnTo(nc,Vector3.new(0,0,-1))
+local ng=RaycastParams.new() ng.FilterType=Enum.RaycastFilterType.Exclude ng.FilterDescendantsInstances={nc,workspace.ComingSoonWall}
+local nm=nc.Squirrel
+local hit=workspace:Raycast(Vector3.new(nm.Position.X,-40,nm.Position.Z),Vector3.new(0,-20,0),ng)
+nc:PivotTo(nc:GetPivot()+Vector3.new(0,hit.Position.Y+0.02-(nm.Position.Y-nm.Size.Y/2),0))
+local ok,out=feetCheck(nc,{{-0.82,-1.48},{0.59,-1.48},{-0.82,0.31},{0.59,0.31}},ng)
+warn('NONNO_SOUTH feet',out,'ori',nm.Orientation)
+game:GetService('ChangeHistoryService'):SetWaypoint('Beppe centred, Nonno faces south')

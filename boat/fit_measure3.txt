@@ -1,0 +1,6 @@
+y 1.7 top 1.912 flat x -1.587..-1.587  outer -1.923
+y 1.9 top 1.912 flat x -1.870..-1.514  outer -1.897
+y 2.1 top 1.883 flat x -1.865..-1.484  outer -1.865
+y 2.3 top 1.912 flat x -1.806..-1.451  outer -1.830
+y 2.5 top 1.911 flat x -1.766..-1.766  outer -1.793
+y 2.7 top 1.922 flat x -1.733..-1.210  outer -1.757

@@ -1,0 +1,7 @@
+POST n=48 x -0.507..0.420 y -4.000..-3.554 z 1.857..2.218
+BOWRIM y -3.6..-3.3 zmax 1.987 xmax 0.879
+BOWRIM y -3.3..-3.0 zmax 1.964 xmax 1.192
+BOWRIM y -3.0..-2.7 zmax 1.944 xmax 1.396
+STERNRIM y 2.6..2.9 top 1.922 |x| 1.210..1.757
+TRANSOM ymax 4.000
+MIDRIM top 1.901 |x| 1.693..2.068

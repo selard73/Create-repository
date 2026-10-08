@@ -1,0 +1,30 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">Probe9</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- READ-ONLY probe: how finding (tagging) a squirrel is recorded and signalled, and how Porto finds are counted. QN@ lines.
+local function scan(scr,pats)
+	local ok,s=pcall(function() return scr.Source end)
+	if not ok then return end
+	local n=0
+	for line in (s..'\n'):gmatch('(.-)\n') do n+=1
+		for _,p in ipairs(pats) do
+			if line:find(p,1,true) then warn('QN@'..scr.Name..'@'..n..'@'..line:sub(1,190)) break end
+		end
+	end
+end
+local S=workspace.SquirrelScripts
+for _,n in ipairs({'SquirrelSetup','SquirrelAnim'}) do
+	local s=S:FindFirstChild(n)
+	if s then scan(s,{'Found_','FoundIds','FireClient','FireAllClients','RemoteEvent','OnServerEvent','OnClientEvent','porto','Porto','tagged','Tagged','found(','Found(','BindableEvent'}) end
+end
+-- any remotes / bindables that look like a find signal
+for _,d in ipairs(game.ReplicatedStorage:GetDescendants()) do
+	if d:IsA('RemoteEvent') or d:IsA('BindableEvent') or d:IsA('RemoteFunction') then
+		if d.Name:lower():find('found') or d.Name:lower():find('find') or d.Name:lower():find('squirrel') or d.Name:lower():find('tag') then warn('QN@RS@'..d:GetFullName()..'@'..d.ClassName) end
+	end
+end
+for _,d in ipairs(S:GetDescendants()) do
+	if d:IsA('RemoteEvent') or d:IsA('BindableEvent') or d:IsA('RemoteFunction') then warn('QN@SS@'..d:GetFullName()..'@'..d.ClassName) end
+end
+warn('QN@END')
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

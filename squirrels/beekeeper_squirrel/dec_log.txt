@@ -1,0 +1,7 @@
+has custom normals: True
+uv layers: ['UVMap'], materials: 1
+sharp edges 0, seams 0
+cleared custom split normals
+delimit now set()
+decimated 2543416 -> 174096
+DEC_DONE

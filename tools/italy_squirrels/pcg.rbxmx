@@ -1,0 +1,41 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">PCG</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+-- Oct 5 2026 read-only: (1) every part of the lifeguard chair (near Chair_Wood 258.4,-45.04,-714.27), (2) every
+-- see-through part of the two funicular cars (Transparency > 0.05 or Glass material), with names, sizes, materials.
+local PN=workspace.PortoNocciola
+local chair=PN:FindFirstChild('Chair_Wood',true)
+if chair then
+	local root=chair.Parent
+	warn('QCG@chair model',chair:GetFullName(),'class',chair.ClassName,'parent',root and root:GetFullName())
+	local list=chair:IsA('Model') and chair:GetDescendants() or {chair}
+	if #list<2 and root then list=root:GetDescendants() end
+	for _,d in ipairs(list) do
+		if d:IsA('BasePart') and (d.Position-(chair:IsA('Model') and chair:GetPivot().Position or chair.Position)).Magnitude<4.5 then
+			warn(string.format('QCG@  %s [%s] %s pos %.2f,%.2f,%.2f size %.2f,%.2f,%.2f col %d,%d,%d T%.2f',d.Name,d.ClassName,d.Material.Name,
+				d.Position.X,d.Position.Y,d.Position.Z,d.Size.X,d.Size.Y,d.Size.Z,d.Color.R*255,d.Color.G*255,d.Color.B*255,d.Transparency))
+		end
+	end
+else warn('QCG@ no Chair_Wood') end
+local F=PN:FindFirstChild('15 Funicolare')
+if F then
+	for _,carName in ipairs({'Car_Rosso','Car_Crema'}) do
+		local car=F:FindFirstChild(carName,true)
+		if car then
+			local n,g=0,{}
+			for _,d in ipairs(car:GetDescendants()) do
+				if d:IsA('BasePart') then
+					n+=1
+					if d.Transparency>0.05 or d.Material==Enum.Material.Glass then
+						local k=d.Name..'|'..d.Material.Name..'|'..string.format('%.2f',d.Transparency)
+						g[k]=(g[k] or 0)+1
+					end
+				end
+			end
+			warn('QCG@car',carName,'parts',n)
+			for k,c in pairs(g) do warn('QCG@  see-through',k,'x'..c) end
+		else warn('QCG@ no',carName) end
+	end
+else warn('QCG@ no 15 Funicolare') end
+warn('QCG@DONE')
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

@@ -1,0 +1,2389 @@
+x -1.05 y +0.45 z 1.35 n   3 rgb 148,117,100  Tail2 0.67 Tail1 0.33
+x -1.05 y +0.50 z 1.30 n   1 rgb 143,111, 94  Tail2 0.55 Tail1 0.45
+x -1.00 y +0.30 z 1.25 n   1 rgb 134,102, 85  Tail1 0.52 Tail2 0.47
+x -1.00 y +0.30 z 1.35 n   1 rgb 137,104, 87  Tail2 0.68 Tail1 0.32
+x -1.00 y +0.35 z 1.20 n   1 rgb 135,104, 85  Tail1 0.68 Tail2 0.32
+x -1.00 y +0.35 z 1.25 n   1 rgb 135,103, 87  Tail1 0.50 Tail2 0.50
+x -1.00 y +0.35 z 1.30 n   1 rgb 142,111, 96  Tail2 0.51 Tail1 0.49
+x -1.00 y +0.35 z 1.40 n   1 rgb 143,113, 96  Tail2 0.78 Tail1 0.22
+x -1.00 y +0.35 z 1.45 n   2 rgb 135,104, 87  Tail2 0.84 Tail1 0.15
+x -1.00 y +0.40 z 1.20 n   1 rgb 137,105, 88  Tail1 0.65 Tail2 0.35
+x -1.00 y +0.40 z 1.25 n   1 rgb 138,108, 93  Tail1 0.58 Tail2 0.42
+x -1.00 y +0.40 z 1.30 n   1 rgb 141,107, 91  Tail2 0.59 Tail1 0.41
+x -1.00 y +0.40 z 1.35 n   1 rgb 140,109, 92  Tail2 0.69 Tail1 0.31
+x -1.00 y +0.40 z 1.40 n   1 rgb 138,106, 90  Tail2 0.77 Tail1 0.23
+x -1.00 y +0.40 z 1.45 n   1 rgb 144,113, 97  Tail2 0.81 Tail1 0.18
+x -1.00 y +0.40 z 1.50 n   1 rgb 136,105, 89  Tail2 0.87 Tail1 0.13
+x -1.00 y +0.45 z 1.15 n   1 rgb 138,106, 89  Tail1 0.68 Tail2 0.32
+x -1.00 y +0.45 z 1.25 n   1 rgb 142,112, 93  Tail1 0.53 Tail2 0.47
+x -1.00 y +0.45 z 1.35 n   2 rgb 146,115, 98  Tail2 0.65 Tail1 0.35
+x -1.00 y +0.45 z 1.45 n   1 rgb 139,108, 91  Tail2 0.83 Tail1 0.17
+x -1.00 y +0.50 z 1.20 n   5 rgb 144,113, 97  Tail1 0.56 Tail2 0.44
+x -1.00 y +0.50 z 1.25 n   2 rgb 145,114, 98  Tail1 0.52 Tail2 0.48
+x -1.00 y +0.50 z 1.30 n   1 rgb 142,110, 94  Tail2 0.61 Tail1 0.39
+x -1.00 y +0.50 z 1.35 n   5 rgb 143,111, 95  Tail2 0.72 Tail1 0.28
+x -1.00 y +0.50 z 1.40 n   4 rgb 143,112, 95  Tail2 0.77 Tail1 0.23
+x -1.00 y +0.50 z 1.45 n   1 rgb 141,108, 91  Tail2 0.87 Tail1 0.13
+x -1.00 y +0.50 z 1.50 n   1 rgb 155,125,111  Tail2 0.92 Tail1 0.08
+x -1.00 y +0.55 z 1.20 n   3 rgb 140,108, 91  Tail1 0.54 Tail2 0.46
+x -1.00 y +0.55 z 1.25 n   3 rgb 175,150,137  Tail1 0.50 Tail2 0.50
+x -1.00 y +0.55 z 1.30 n   3 rgb 147,116,101  Tail2 0.55 Tail1 0.45
+x -1.00 y +0.55 z 1.35 n   6 rgb 143,111, 94  Tail2 0.70 Tail1 0.30
+x -1.00 y +0.55 z 1.40 n   5 rgb 145,117,102  Tail2 0.79 Tail1 0.21
+x -1.00 y +0.60 z 1.20 n   1 rgb 141,108, 91  Tail1 0.52 Tail2 0.48
+x -1.00 y +0.60 z 1.25 n   5 rgb 171,150,137  Tail2 0.54 Tail1 0.46
+x -1.00 y +0.60 z 1.30 n   3 rgb 140,110, 93  Tail2 0.56 Tail1 0.44
+x -1.00 y +0.60 z 1.35 n   3 rgb 166,155,148  Tail2 0.73 Tail1 0.27
+x -1.00 y +0.60 z 1.40 n   1 rgb 114, 89, 73  Tail2 0.76 Tail1 0.24
+x -1.00 y +0.60 z 1.45 n   1 rgb 129, 99, 84  Tail2 0.84 Tail1 0.16
+x -0.95 y +0.25 z 1.25 n   1 rgb 130, 98, 81  Tail1 0.50 Tail2 0.49
+x -0.95 y +0.25 z 1.35 n   1 rgb 129, 95, 77  Tail2 0.65 Tail1 0.35
+x -0.95 y +0.25 z 1.40 n   1 rgb 134,101, 84  Tail2 0.77 Tail1 0.23
+x -0.95 y +0.30 z 1.20 n   1 rgb 137,101, 83  Tail1 0.67 Tail2 0.33
+x -0.95 y +0.30 z 1.25 n   1 rgb 131, 98, 80  Tail1 0.61 Tail2 0.39
+x -0.95 y +0.30 z 1.30 n   2 rgb 129, 96, 77  Tail2 0.59 Tail1 0.40
+x -0.95 y +0.30 z 1.40 n   2 rgb 135,103, 85  Tail2 0.78 Tail1 0.22
+x -0.95 y +0.30 z 1.45 n   2 rgb 130, 99, 82  Tail2 0.85 Tail1 0.15
+x -0.95 y +0.35 z 1.15 n   2 rgb 134,102, 84  Tail1 0.76 Tail2 0.24
+x -0.95 y +0.35 z 1.50 n   2 rgb 135,104, 86  Tail2 0.90 Tail1 0.10
+x -0.95 y +0.40 z 1.15 n   2 rgb 138,106, 90  Tail1 0.77 Tail2 0.23
+x -0.95 y +0.45 z 1.10 n   4 rgb 141,111, 95  Tail1 0.79 Tail2 0.21
+x -0.95 y +0.45 z 1.15 n   1 rgb 142,113, 96  Tail1 0.75 Tail2 0.25
+x -0.95 y +0.45 z 1.55 n   4 rgb 143,112, 96  Tail2 0.93 Tail1 0.07
+x -0.95 y +0.50 z 1.05 n   1 rgb 141,111, 95  Tail1 0.74 Tail2 0.26
+x -0.95 y +0.50 z 1.10 n   6 rgb 146,118,102  Tail1 0.74 Tail2 0.26
+x -0.95 y +0.50 z 1.15 n   1 rgb 140,108, 92  Tail1 0.72 Tail2 0.28
+x -0.95 y +0.50 z 1.50 n   2 rgb 144,113, 96  Tail2 0.92 Tail1 0.08
+x -0.95 y +0.50 z 1.55 n   3 rgb 158,132,118  Tail2 0.93 Tail1 0.07
+x -0.95 y +0.55 z 1.10 n   2 rgb 146,115,101  Tail1 0.71 Tail2 0.29
+x -0.95 y +0.55 z 1.15 n   6 rgb 138,107, 91  Tail1 0.64 Tail2 0.36
+x -0.95 y +0.55 z 1.50 n   2 rgb 139,108, 89  Tail2 0.92 Tail1 0.08
+x -0.95 y +0.55 z 1.55 n   3 rgb 138,110, 94  Tail2 0.94 Tail1 0.06
+x -0.95 y +0.60 z 1.10 n   1 rgb 135,104, 88  Tail1 0.62 Tail2 0.38
+x -0.95 y +0.60 z 1.15 n   4 rgb 150,123,109  Tail1 0.62 Tail2 0.38
+x -0.95 y +0.60 z 1.20 n   3 rgb 139,107, 91  Tail1 0.55 Tail2 0.45
+x -0.95 y +0.60 z 1.30 n   1 rgb 254,243,236  Tail2 0.54 Tail1 0.46
+x -0.95 y +0.60 z 1.40 n   1 rgb 133,104, 88  Tail2 0.77 Tail1 0.23
+x -0.95 y +0.60 z 1.45 n   1 rgb 135,104, 88  Tail2 0.87 Tail1 0.13
+x -0.95 y +0.65 z 1.20 n   1 rgb 140,107, 91  Tail1 0.56 Tail2 0.44
+x -0.95 y +0.65 z 1.25 n   2 rgb 135,103, 87  Tail2 0.52 Tail1 0.48
+x -0.95 y +0.65 z 1.30 n   2 rgb 180,159,145  Tail2 0.56 Tail1 0.44
+x -0.95 y +0.65 z 1.35 n   2 rgb 132,101, 84  Tail2 0.64 Tail1 0.36
+x -0.95 y +0.65 z 1.40 n   1 rgb 127, 97, 80  Tail2 0.79 Tail1 0.21
+x -0.95 y +0.65 z 1.45 n   1 rgb 132,102, 85  Tail2 0.86 Tail1 0.14
+x -0.90 y +0.20 z 1.40 n   3 rgb 132, 99, 81  Tail2 0.79 Tail1 0.21
+x -0.90 y +0.25 z 1.20 n   1 rgb 135,103, 83  Tail1 0.63 Tail2 0.37
+x -0.90 y +0.25 z 1.30 n   1 rgb 137,103, 84  Tail2 0.60 Tail1 0.40
+x -0.90 y +0.25 z 1.40 n   1 rgb 131, 98, 79  Tail2 0.79 Tail1 0.21
+x -0.90 y +0.25 z 1.45 n   2 rgb 133,101, 81  Tail2 0.84 Tail1 0.16
+x -0.90 y +0.25 z 1.50 n   1 rgb 134,102, 83  Tail2 0.89 Tail1 0.11
+x -0.90 y +0.30 z 1.15 n   2 rgb 134,102, 82  Tail1 0.77 Tail2 0.23
+x -0.90 y +0.30 z 1.20 n   1 rgb 131, 98, 80  Tail1 0.68 Tail2 0.32
+x -0.90 y +0.30 z 1.55 n   1 rgb 138,106, 88  Tail2 0.91 Tail1 0.09
+x -0.90 y +0.35 z 1.10 n   1 rgb 134,102, 81  Tail1 0.87 Tail2 0.12
+x -0.90 y +0.35 z 1.55 n   1 rgb 135,104, 88  Tail2 0.93 Tail1 0.07
+x -0.90 y +0.35 z 1.60 n   1 rgb 132,100, 83  Tail2 0.95 Tail1 0.05
+x -0.90 y +0.40 z 1.05 n   1 rgb 132,100, 81  Tail1 0.89 Tail2 0.11
+x -0.90 y +0.40 z 1.10 n   1 rgb 133,102, 84  Tail1 0.87 Tail2 0.13
+x -0.90 y +0.40 z 1.55 n   1 rgb 134,103, 86  Tail2 0.94 Tail1 0.06
+x -0.90 y +0.40 z 1.60 n   3 rgb 137,109, 91  Tail2 0.96 Tail1 0.03
+x -0.90 y +0.45 z 1.05 n   1 rgb 140,110, 91  Tail1 0.91 Tail2 0.09
+x -0.90 y +0.45 z 1.60 n   2 rgb 135,104, 87  Tail2 0.96 Tail1 0.04
+x -0.90 y +0.50 z 1.05 n   2 rgb 141,112, 95  Tail1 0.81 Tail2 0.19
+x -0.90 y +0.50 z 1.10 n   1 rgb 148,128,115  Tail1 0.82 Tail2 0.18
+x -0.90 y +0.50 z 1.55 n   2 rgb 142,112, 95  Tail2 0.95 Tail1 0.05
+x -0.90 y +0.50 z 1.60 n   3 rgb 136,105, 89  Tail2 0.96 Tail1 0.03
+x -0.90 y +0.55 z 1.05 n   2 rgb 135,105, 88  Tail1 0.86 Tail2 0.14
+x -0.90 y +0.55 z 1.10 n   1 rgb 139,109, 94  Tail1 0.82 Tail2 0.18
+x -0.90 y +0.55 z 1.55 n   3 rgb 135,105, 87  Tail2 0.94 Tail1 0.06
+x -0.90 y +0.60 z 1.10 n   5 rgb 137,108, 90  Tail1 0.71 Tail2 0.29
+x -0.90 y +0.60 z 1.15 n   1 rgb 136,105, 88  Tail1 0.60 Tail2 0.40
+x -0.90 y +0.60 z 1.20 n   1 rgb 137,107, 89  Tail1 0.57 Tail2 0.43
+x -0.90 y +0.60 z 1.50 n   1 rgb 132,102, 85  Tail2 0.92 Tail1 0.08
+x -0.90 y +0.60 z 1.55 n   1 rgb 140,109, 92  Tail2 0.94 Tail1 0.06
+x -0.90 y +0.65 z 1.15 n   3 rgb 139,107, 91  Tail1 0.60 Tail2 0.40
+x -0.90 y +0.65 z 1.20 n   3 rgb 152,129,115  Tail1 0.56 Tail2 0.44
+x -0.90 y +0.65 z 1.35 n   1 rgb 129, 99, 82  Tail2 0.74 Tail1 0.26
+x -0.90 y +0.65 z 1.45 n   1 rgb 128, 98, 82  Tail2 0.87 Tail1 0.13
+x -0.90 y +0.65 z 1.50 n   1 rgb 127, 98, 82  Tail2 0.91 Tail1 0.09
+x -0.90 y +0.70 z 1.15 n   1 rgb 129,100, 83  Tail1 0.55 Tail2 0.45
+x -0.90 y +0.70 z 1.20 n   4 rgb 138,110, 96  Tail1 0.53 Tail2 0.47
+x -0.90 y +0.70 z 1.25 n   1 rgb 127, 97, 81  Tail2 0.52 Tail1 0.48
+x -0.90 y +0.70 z 1.30 n   1 rgb 125, 95, 80  Tail2 0.58 Tail1 0.42
+x -0.85 y +0.20 z 1.30 n   2 rgb 131, 99, 80  Tail2 0.65 Tail1 0.35
+x -0.85 y +0.20 z 1.35 n   1 rgb 132, 99, 81  Tail2 0.72 Tail1 0.27
+x -0.85 y +0.20 z 1.45 n   1 rgb 136,104, 85  Tail2 0.85 Tail1 0.15
+x -0.85 y +0.20 z 1.50 n   2 rgb 131, 98, 80  Tail2 0.88 Tail1 0.11
+x -0.85 y +0.25 z 1.20 n   1 rgb 129, 96, 78  Tail1 0.65 Tail2 0.34
+x -0.85 y +0.25 z 1.55 n   2 rgb 136,103, 85  Tail2 0.92 Tail1 0.08
+x -0.85 y +0.30 z 1.15 n   1 rgb 134,101, 81  Tail1 0.80 Tail2 0.20
+x -0.85 y +0.30 z 1.55 n   1 rgb 130, 98, 80  Tail2 0.93 Tail1 0.06
+x -0.85 y +0.30 z 1.60 n   1 rgb 132,101, 83  Tail2 0.94 Tail1 0.05
+x -0.85 y +0.35 z 1.05 n   1 rgb 131, 98, 78  Tail1 0.93 Tail2 0.07
+x -0.85 y +0.35 z 1.60 n   1 rgb 135,110, 94  Tail2 0.96 Tail1 0.03
+x -0.85 y +0.35 z 1.65 n   1 rgb 133,104, 88  Tail2 0.97 Tail1 0.01
+x -0.85 y +0.40 z 1.05 n   1 rgb 131,100, 81  Tail1 0.91 Tail2 0.09
+x -0.85 y +0.40 z 1.65 n   2 rgb 130,102, 85  Tail2 0.97 Tail1 0.01
+x -0.85 y +0.45 z 1.00 n   1 rgb 148,112,107  Tail1 0.92 Tail2 0.08
+x -0.85 y +0.45 z 1.05 n   5 rgb 145,116,100  Tail1 0.92 Tail2 0.08
+x -0.85 y +0.45 z 1.65 n   3 rgb 138,112, 97  Tail2 0.98
+x -0.85 y +0.50 z 1.00 n   1 rgb 145,116, 99  Tail1 0.91 Tail2 0.09
+x -0.85 y +0.50 z 1.05 n   9 rgb 138,108, 90  Tail1 0.89 Tail2 0.11
+x -0.85 y +0.50 z 1.65 n   1 rgb 132,102, 84  Tail2 0.98
+x -0.85 y +0.55 z 1.00 n   1 rgb 133,101, 86  Tail1 0.87 Tail2 0.13
+x -0.85 y +0.55 z 1.05 n   1 rgb 128, 98, 82  Tail1 0.88 Tail2 0.12
+x -0.85 y +0.55 z 1.60 n   1 rgb 131,101, 85  Tail2 0.97 Tail1 0.01
+x -0.85 y +0.60 z 1.05 n   3 rgb 133,102, 85  Tail1 0.86 Tail2 0.14
+x -0.85 y +0.60 z 1.10 n   4 rgb 135,104, 87  Tail1 0.82 Tail2 0.18
+x -0.85 y +0.60 z 1.60 n   2 rgb 127, 96, 80  Tail2 0.96 Tail1 0.02
+x -0.85 y +0.65 z 1.10 n   2 rgb 129, 98, 82  Tail1 0.79 Tail2 0.21
+x -0.85 y +0.65 z 1.50 n   2 rgb 127, 98, 81  Tail2 0.94 Tail1 0.06
+x -0.85 y +0.65 z 1.55 n   1 rgb 128, 98, 82  Tail2 0.95 Tail1 0.05
+x -0.85 y +0.70 z 1.15 n   1 rgb 125, 96, 80  Tail1 0.61 Tail2 0.39
+x -0.85 y +0.70 z 1.20 n   2 rgb 125, 96, 80  Tail1 0.55 Tail2 0.45
+x -0.85 y +0.70 z 1.30 n   1 rgb 125, 95, 79  Tail2 0.58 Tail1 0.42
+x -0.85 y +0.70 z 1.35 n   1 rgb 132,102, 85  Tail2 0.74 Tail1 0.26
+x -0.85 y +0.70 z 1.40 n   1 rgb 127, 97, 80  Tail2 0.85 Tail1 0.15
+x -0.85 y +0.70 z 1.45 n   2 rgb 128, 99, 82  Tail2 0.88 Tail1 0.12
+x -0.85 y +0.70 z 1.50 n   1 rgb 125, 95, 78  Tail2 0.92 Tail1 0.08
+x -0.85 y +0.75 z 1.25 n   1 rgb 126, 96, 81  Tail2 0.58 Tail1 0.42
+x -0.85 y +0.75 z 1.35 n   1 rgb 128, 98, 82  Tail2 0.73 Tail1 0.27
+x -0.85 y +0.75 z 1.40 n   1 rgb 125, 96, 78  Tail2 0.81 Tail1 0.19
+x -0.80 y +0.15 z 1.35 n   2 rgb 132, 99, 80  Tail2 0.72 Tail1 0.27
+x -0.80 y +0.15 z 1.45 n   4 rgb 132, 99, 80  Tail2 0.84 Tail1 0.16
+x -0.80 y +0.15 z 1.50 n   1 rgb 134,101, 83  Tail2 0.87 Tail1 0.12
+x -0.80 y +0.20 z 1.25 n   1 rgb 131, 99, 79  Tail2 0.52 Tail1 0.48
+x -0.80 y +0.20 z 1.55 n   1 rgb 136,105, 85  Tail2 0.90 Tail1 0.10
+x -0.80 y +0.20 z 1.60 n   1 rgb 131, 98, 79  Tail2 0.92 Tail1 0.07
+x -0.80 y +0.25 z 1.20 n   1 rgb 127, 94, 75  Tail1 0.66 Tail2 0.33
+x -0.80 y +0.25 z 1.25 n   2 rgb 130, 97, 77  Tail1 0.55 Tail2 0.45
+x -0.80 y +0.25 z 1.55 n   1 rgb 132, 99, 80  Tail2 0.91 Tail1 0.09
+x -0.80 y +0.25 z 1.60 n   2 rgb 132, 99, 82  Tail2 0.94 Tail1 0.05
+x -0.80 y +0.30 z 1.10 n   2 rgb 135,103, 83  Tail1 0.87 Tail2 0.13
+x -0.80 y +0.30 z 1.15 n   1 rgb 128, 96, 76  Tail1 0.85 Tail2 0.15
+x -0.80 y +0.30 z 1.65 n   1 rgb 130, 98, 80  Tail2 0.96 Tail1 0.03
+x -0.80 y +0.35 z 1.05 n   2 rgb 133,100, 80  Tail1 0.94 Tail2 0.06
+x -0.80 y +0.35 z 1.65 n   2 rgb 138,108, 92  Tail2 0.97 Tail1 0.01
+x -0.80 y +0.40 z 1.00 n   1 rgb 134,103, 85  Tail1 0.96 Tail2 0.02
+x -0.80 y +0.40 z 1.65 n   3 rgb 200,185,173  Tail2 0.98 Tail1 0.00
+x -0.80 y +0.40 z 1.70 n   2 rgb 133,105, 88  Tail2 0.98
+x -0.80 y +0.45 z 1.00 n   2 rgb 181,164,154  Tail1 0.92 Tail2 0.08
+x -0.80 y +0.45 z 1.65 n   2 rgb 140,111, 94  Tail2 0.98
+x -0.80 y +0.45 z 1.70 n   2 rgb 130,101, 84  Tail2 0.99
+x -0.80 y +0.50 z 1.00 n   2 rgb 133,102, 84  Tail1 0.95 Tail2 0.04
+x -0.80 y +0.50 z 1.65 n   4 rgb 147,121,108  Tail2 0.99
+x -0.80 y +0.55 z 1.00 n   3 rgb 141,115,103  Tail1 0.88 Tail2 0.12
+x -0.80 y +0.55 z 1.05 n   3 rgb 167,146,134  Tail1 0.90 Tail2 0.10
+x -0.80 y +0.55 z 1.65 n   3 rgb 136,109, 93  Tail2 0.98
+x -0.80 y +0.60 z 1.05 n   2 rgb 135,104, 87  Tail1 0.85 Tail2 0.15
+x -0.80 y +0.60 z 1.10 n   1 rgb 133,100, 83  Tail1 0.82 Tail2 0.18
+x -0.80 y +0.60 z 1.60 n   1 rgb 128, 98, 82  Tail2 0.97 Tail1 0.01
+x -0.80 y +0.65 z 1.05 n   2 rgb 166,141,128  Tail1 0.82 Tail2 0.18
+x -0.80 y +0.65 z 1.10 n   7 rgb 141,114,100  Tail1 0.80 Tail2 0.19
+x -0.80 y +0.65 z 1.15 n   1 rgb 127, 96, 80  Tail1 0.74 Tail2 0.25
+x -0.80 y +0.65 z 1.60 n   1 rgb 128, 98, 81  Tail2 0.96 Tail1 0.02
+x -0.80 y +0.70 z 1.15 n   1 rgb 128, 98, 81  Tail1 0.73 Tail2 0.27
+x -0.80 y +0.70 z 1.45 n   2 rgb 126, 96, 80  Tail2 0.90 Tail1 0.10
+x -0.80 y +0.70 z 1.50 n   1 rgb 125, 95, 77  Tail2 0.93 Tail1 0.07
+x -0.80 y +0.70 z 1.55 n   1 rgb 128, 97, 81  Tail2 0.95 Tail1 0.05
+x -0.80 y +0.75 z 1.25 n   1 rgb 131,100, 83  Tail2 0.53 Tail1 0.47
+x -0.80 y +0.75 z 1.30 n   1 rgb 124, 95, 78  Tail2 0.66 Tail1 0.34
+x -0.80 y +0.75 z 1.35 n   2 rgb 128, 97, 81  Tail2 0.78 Tail1 0.22
+x -0.80 y +0.75 z 1.40 n   1 rgb 130,100, 82  Tail2 0.83 Tail1 0.17
+x -0.75 y +0.10 z 1.35 n   1 rgb 134,100, 82  Tail2 0.74 Tail1 0.26
+x -0.75 y +0.15 z 1.30 n   1 rgb 136,103, 85  Tail2 0.65 Tail1 0.34
+x -0.75 y +0.15 z 1.35 n   1 rgb 131, 98, 79  Tail2 0.70 Tail1 0.29
+x -0.75 y +0.15 z 1.40 n   2 rgb 132, 99, 80  Tail2 0.78 Tail1 0.21
+x -0.75 y +0.15 z 1.45 n   1 rgb 130, 96, 78  Tail2 0.83 Tail1 0.16
+x -0.75 y +0.15 z 1.50 n   1 rgb 131, 97, 78  Tail2 0.88 Tail1 0.11
+x -0.75 y +0.20 z 1.25 n   2 rgb 131, 98, 80  Tail2 0.53 Tail1 0.47
+x -0.75 y +0.20 z 1.30 n   1 rgb 129, 97, 78  Tail2 0.61 Tail1 0.38
+x -0.75 y +0.20 z 1.55 n   1 rgb 129, 96, 77  Tail2 0.91 Tail1 0.09
+x -0.75 y +0.20 z 1.60 n   1 rgb 135,101, 82  Tail2 0.92 Tail1 0.08
+x -0.75 y +0.25 z 1.20 n   1 rgb 131, 97, 78  Tail1 0.59 Tail2 0.40
+x -0.75 y +0.25 z 1.65 n   2 rgb 134,100, 83  Tail2 0.95 Tail1 0.04
+x -0.75 y +0.30 z 1.10 n   2 rgb 128, 96, 76  Tail1 0.87 Tail2 0.13
+x -0.75 y +0.30 z 1.15 n   1 rgb 131, 98, 78  Tail1 0.78 Tail2 0.21
+x -0.75 y +0.30 z 1.65 n   2 rgb 134,103, 85  Tail2 0.97 Tail1 0.01
+x -0.75 y +0.35 z 1.05 n   3 rgb 129, 96, 76  Tail1 0.96 Tail2 0.03
+x -0.75 y +0.35 z 1.10 n   2 rgb 130, 98, 78  Tail1 0.93 Tail2 0.07
+x -0.75 y +0.35 z 1.70 n   2 rgb 130,100, 82  Tail2 0.98
+x -0.75 y +0.40 z 1.00 n   1 rgb 132,100, 80  Tail1 0.97 Tail2 0.00
+x -0.75 y +0.40 z 1.05 n   2 rgb 132,100, 80  Tail1 0.97 Tail2 0.01
+x -0.75 y +0.40 z 1.65 n   1 rgb 219,207,197  Tail2 0.98
+x -0.75 y +0.40 z 1.70 n   1 rgb 126,101, 79  Tail2 0.99
+x -0.75 y +0.45 z 1.00 n   4 rgb 135,105, 87  Tail1 0.98 Tail2 0.00
+x -0.75 y +0.45 z 1.65 n   3 rgb 147,120,106  Tail2 0.99
+x -0.75 y +0.45 z 1.70 n   4 rgb 134,107, 90  Tail2 0.99
+x -0.75 y +0.50 z 1.00 n   1 rgb 133,100, 81  Tail1 0.97 Tail2 0.01
+x -0.75 y +0.50 z 1.65 n   2 rgb 133,103, 86  Tail2 0.99
+x -0.75 y +0.50 z 1.70 n   2 rgb 128,100, 82  Tail2 0.99
+x -0.75 y +0.55 z 1.00 n   3 rgb 132,100, 83  Tail1 0.94 Tail2 0.06
+x -0.75 y +0.55 z 1.65 n   3 rgb 131,104, 89  Tail2 0.99
+x -0.75 y +0.60 z 1.05 n   2 rgb 130, 99, 83  Tail1 0.91 Tail2 0.09
+x -0.75 y +0.60 z 1.65 n   1 rgb 131,100, 82  Tail2 0.98
+x -0.75 y +0.65 z 1.10 n   1 rgb 128, 98, 82  Tail1 0.86 Tail2 0.14
+x -0.75 y +0.65 z 1.55 n   1 rgb 124, 95, 78  Tail2 0.96 Tail1 0.04
+x -0.75 y +0.70 z 1.15 n   1 rgb 128, 97, 81  Tail1 0.78 Tail2 0.22
+x -0.75 y +0.70 z 1.20 n   1 rgb 127, 96, 79  Tail1 0.66 Tail2 0.34
+x -0.75 y +0.70 z 1.50 n   2 rgb 124, 95, 78  Tail2 0.94 Tail1 0.06
+x -0.75 y +0.75 z 1.25 n   1 rgb 130,100, 83  Tail2 0.54 Tail1 0.46
+x -0.75 y +0.75 z 1.30 n   2 rgb 125, 94, 79  Tail2 0.73 Tail1 0.27
+x -0.75 y +0.75 z 1.35 n   1 rgb 129, 99, 84  Tail2 0.75 Tail1 0.25
+x -0.75 y +0.75 z 1.40 n   1 rgb 127, 99, 81  Tail2 0.84 Tail1 0.16
+x -0.75 y +0.75 z 1.45 n   1 rgb 126, 97, 79  Tail2 0.91 Tail1 0.09
+x -0.70 y +0.15 z 1.30 n   2 rgb 132,100, 80  Tail2 0.63 Tail1 0.36
+x -0.70 y +0.15 z 1.45 n   1 rgb 129, 95, 77  Tail2 0.80 Tail1 0.19
+x -0.70 y +0.15 z 1.50 n   2 rgb 132, 98, 80  Tail2 0.85 Tail1 0.14
+x -0.70 y +0.15 z 1.55 n   1 rgb 129, 96, 76  Tail2 0.89 Tail1 0.10
+x -0.70 y +0.15 z 1.60 n   1 rgb 132, 99, 80  Tail2 0.91 Tail1 0.08
+x -0.70 y +0.20 z 1.20 n   1 rgb 133, 99, 80  Tail1 0.57 Tail2 0.42
+x -0.70 y +0.20 z 1.25 n   1 rgb 127, 94, 76  Tail2 0.55 Tail1 0.44
+x -0.70 y +0.20 z 1.60 n   1 rgb 127, 94, 75  Tail2 0.93 Tail1 0.06
+x -0.70 y +0.20 z 1.65 n   1 rgb 128, 94, 76  Tail2 0.94 Tail1 0.06
+x -0.70 y +0.25 z 1.20 n   1 rgb 134,100, 81  Tail1 0.69 Tail2 0.30
+x -0.70 y +0.25 z 1.65 n   2 rgb 130, 98, 80  Tail2 0.95 Tail1 0.04
+x -0.70 y +0.30 z 1.15 n   1 rgb 129, 97, 77  Tail1 0.81 Tail2 0.19
+x -0.70 y +0.30 z 1.20 n   1 rgb 129, 96, 77  Tail1 0.74 Tail2 0.26
+x -0.70 y +0.30 z 1.70 n   1 rgb 134,104, 84  Tail2 0.97
+x -0.70 y +0.35 z 1.05 n   1 rgb 131, 99, 79  Tail1 0.98
+x -0.70 y +0.35 z 1.10 n   2 rgb 129, 96, 77  Tail1 0.91 Tail2 0.09
+x -0.70 y +0.35 z 1.70 n   1 rgb 127, 96, 81  Tail2 0.99
+x -0.70 y +0.40 z 1.00 n   1 rgb 129, 99, 78  Tail1 0.99
+x -0.70 y +0.40 z 1.05 n   6 rgb 132,101, 81  Tail1 0.99 Tail2 0.00
+x -0.70 y +0.40 z 1.70 n   1 rgb 131,101, 84  Tail2 0.99
+x -0.70 y +0.45 z 1.00 n   3 rgb 135,105, 88  Tail1 0.98 Tail2 0.00
+x -0.70 y +0.45 z 1.05 n   1 rgb 142,116,101  Tail1 0.98
+x -0.70 y +0.50 z 1.00 n   7 rgb 147,122,107  Tail1 0.97 Tail2 0.01
+x -0.70 y +0.50 z 1.70 n   4 rgb 131,101, 84  Tail2 0.99
+x -0.70 y +0.55 z 1.00 n   4 rgb 128,104, 93  Tail1 0.96 Tail2 0.03
+x -0.70 y +0.55 z 1.05 n   1 rgb 132,100, 83  Tail1 0.94 Tail2 0.06
+x -0.70 y +0.55 z 1.70 n   1 rgb 130, 98, 80  Tail2 0.99
+x -0.70 y +0.60 z 1.00 n   3 rgb 131,105, 90  Tail1 0.93 Tail2 0.07
+x -0.70 y +0.60 z 1.05 n   5 rgb 128, 97, 82  Tail1 0.92 Tail2 0.08
+x -0.70 y +0.60 z 1.65 n   1 rgb 130, 99, 82  Tail2 0.99
+x -0.70 y +0.65 z 1.05 n   1 rgb 125, 95, 79  Tail1 0.89 Tail2 0.11
+x -0.70 y +0.65 z 1.10 n   2 rgb 126, 96, 80  Tail1 0.85 Tail2 0.15
+x -0.70 y +0.65 z 1.60 n   1 rgb 128, 99, 82  Tail2 0.97 Tail1 0.00
+x -0.70 y +0.70 z 1.20 n   1 rgb 125, 95, 78  Tail1 0.60 Tail2 0.39
+x -0.70 y +0.70 z 1.50 n   1 rgb 126, 96, 80  Tail2 0.94 Tail1 0.06
+x -0.70 y +0.70 z 1.55 n   1 rgb 128, 97, 82  Tail2 0.95 Tail1 0.05
+x -0.70 y +0.75 z 1.25 n   1 rgb 126, 97, 80  Tail2 0.63 Tail1 0.37
+x -0.70 y +0.75 z 1.35 n   1 rgb 128, 99, 81  Tail2 0.76 Tail1 0.24
+x -0.70 y +0.75 z 1.40 n   1 rgb 126, 96, 80  Tail2 0.83 Tail1 0.17
+x -0.70 y +0.75 z 1.45 n   1 rgb 128, 98, 81  Tail2 0.89 Tail1 0.11
+x -0.65 y +0.10 z 1.35 n   2 rgb 130, 96, 78  Tail2 0.68 Tail1 0.31
+x -0.65 y +0.10 z 1.45 n   2 rgb 128, 95, 76  Tail2 0.79 Tail1 0.20
+x -0.65 y +0.10 z 1.50 n   1 rgb 129, 96, 77  Tail2 0.82 Tail1 0.17
+x -0.65 y +0.15 z 1.25 n   2 rgb 128, 96, 76  Tail1 0.52 Tail2 0.47
+x -0.65 y +0.15 z 1.30 n   1 rgb 132, 97, 79  Tail2 0.63 Tail1 0.36
+x -0.65 y +0.15 z 1.50 n   1 rgb 128, 96, 77  Tail2 0.85 Tail1 0.14
+x -0.65 y +0.20 z 1.60 n   1 rgb 132,100, 81  Tail2 0.90 Tail1 0.08
+x -0.65 y +0.20 z 1.65 n   1 rgb 134,102, 84  Tail2 0.92 Tail1 0.07
+x -0.65 y +0.25 z 1.10 n   1 rgb 129, 96, 76  Tail1 0.83 Tail2 0.16
+x -0.65 y +0.25 z 1.15 n   1 rgb 128, 95, 75  Tail1 0.80 Tail2 0.19
+x -0.65 y +0.25 z 1.20 n   1 rgb 129, 96, 78  Tail1 0.70 Tail2 0.29
+x -0.65 y +0.25 z 1.65 n   1 rgb 127, 95, 77  Tail2 0.95 Tail1 0.03
+x -0.65 y +0.25 z 1.70 n   1 rgb 131, 98, 80  Tail2 0.95 Tail1 0.02
+x -0.65 y +0.30 z 1.10 n   3 rgb 129, 97, 78  Tail1 0.87 Tail2 0.12
+x -0.65 y +0.30 z 1.70 n   3 rgb 131,102, 85  Tail2 0.97 Tail1 0.00
+x -0.65 y +0.35 z 1.05 n   2 rgb 141,108, 90  Tail1 0.93 Tail2 0.07
+x -0.65 y +0.35 z 1.10 n   1 rgb 131, 99, 80  Tail1 0.89 Tail2 0.11
+x -0.65 y +0.35 z 1.70 n   5 rgb 130,100, 84  Tail2 0.98
+x -0.65 y +0.40 z 1.10 n   5 rgb 134,105, 88  Tail1 0.95 Tail2 0.04
+x -0.65 y +0.40 z 1.70 n   1 rgb 129, 98, 81  Tail2 0.99
+x -0.65 y +0.45 z 1.00 n   3 rgb 135,105, 87  Tail1 0.99
+x -0.65 y +0.45 z 1.05 n   3 rgb 142,113,100  Tail1 0.96 Tail2 0.02
+x -0.65 y +0.45 z 1.10 n   1 rgb 146,118,101  Tail1 0.96 Tail2 0.03
+x -0.65 y +0.45 z 1.70 n   4 rgb 127, 99, 88  Tail2 1.00
+x -0.65 y +0.50 z 1.00 n   1 rgb 152,130,118  Tail1 0.97
+x -0.65 y +0.50 z 1.05 n   5 rgb 174,158,149  Tail1 0.97 Tail2 0.02
+x -0.65 y +0.50 z 1.10 n   3 rgb 132,102, 86  Tail1 0.93 Tail2 0.06
+x -0.65 y +0.50 z 1.70 n   1 rgb 128, 98, 80  Tail2 0.99
+x -0.65 y +0.55 z 1.05 n   8 rgb 147,120,106  Tail1 0.94 Tail2 0.05
+x -0.65 y +0.55 z 1.10 n   1 rgb 125, 95, 79  Tail1 0.91 Tail2 0.09
+x -0.65 y +0.60 z 1.05 n   2 rgb 126, 96, 80  Tail1 0.92 Tail2 0.08
+x -0.65 y +0.60 z 1.10 n   2 rgb 127, 96, 80  Tail1 0.87 Tail2 0.12
+x -0.65 y +0.60 z 1.65 n   1 rgb 125, 94, 79  Tail2 0.98
+x -0.65 y +0.65 z 1.15 n   2 rgb 123, 92, 77  Tail1 0.79 Tail2 0.21
+x -0.65 y +0.65 z 1.60 n   3 rgb 127, 96, 79  Tail2 0.97 Tail1 0.01
+x -0.65 y +0.70 z 1.20 n   2 rgb 123, 93, 76  Tail1 0.61 Tail2 0.39
+x -0.65 y +0.70 z 1.30 n   1 rgb 125, 95, 78  Tail2 0.65 Tail1 0.35
+x -0.65 y +0.70 z 1.50 n   1 rgb 127, 96, 80  Tail2 0.92 Tail1 0.08
+x -0.65 y +0.70 z 1.55 n   1 rgb 127, 97, 80  Tail2 0.94 Tail1 0.06
+x -0.65 y +0.75 z 1.25 n   1 rgb 125, 95, 79  Tail2 0.59 Tail1 0.41
+x -0.65 y +0.75 z 1.35 n   1 rgb 126, 97, 80  Tail2 0.76 Tail1 0.24
+x -0.65 y +0.75 z 1.40 n   2 rgb 127, 97, 79  Tail2 0.85 Tail1 0.15
+x -0.65 y +0.75 z 1.45 n   1 rgb 123, 94, 77  Tail2 0.90 Tail1 0.10
+x -0.60 y +0.10 z 1.25 n   1 rgb 128, 96, 76  Tail2 0.53 Tail1 0.46
+x -0.60 y +0.10 z 1.30 n   1 rgb 129, 97, 77  Tail2 0.59 Tail1 0.39
+x -0.60 y +0.10 z 1.35 n   1 rgb 127, 95, 76  Tail2 0.63 Tail1 0.36
+x -0.60 y +0.10 z 1.40 n   3 rgb 133,100, 82  Tail2 0.72 Tail1 0.26
+x -0.60 y +0.10 z 1.50 n   1 rgb 132, 97, 78  Tail2 0.79 Tail1 0.19
+x -0.60 y +0.15 z 1.55 n   3 rgb 131, 97, 78  Tail2 0.86 Tail1 0.12
+x -0.60 y +0.20 z 1.10 n   1 rgb 128, 96, 77  Tail1 0.81 Tail2 0.18
+x -0.60 y +0.20 z 1.15 n   1 rgb 131, 99, 80  Root 0.99
+x -0.60 y +0.20 z 1.20 n   1 rgb 129, 97, 77  Root 0.99
+x -0.60 y +0.20 z 1.65 n   1 rgb 127, 96, 77  Tail2 0.92 Tail1 0.06
+x -0.60 y +0.25 z 0.95 n   1 rgb 131, 99, 79  Tail1 0.93 Tail2 0.05
+x -0.60 y +0.25 z 1.05 n   1 rgb 134,100, 81  Tail1 0.85 Tail2 0.14
+x -0.60 y +0.25 z 1.65 n   1 rgb 128, 95, 75  Tail2 0.92 Tail1 0.06
+x -0.60 y +0.30 z 0.80 n   1 rgb 130, 97, 78  Tail1 0.94 Root 0.01
+x -0.60 y +0.30 z 0.85 n   1 rgb 126, 92, 75  Tail1 0.95 Tail2 0.00
+x -0.60 y +0.30 z 1.00 n   1 rgb 127, 96, 77  Tail1 0.94 Tail2 0.05
+x -0.60 y +0.30 z 1.05 n   1 rgb 133,103, 83  Tail1 0.92 Tail2 0.08
+x -0.60 y +0.30 z 1.70 n   2 rgb 132,102, 85  Tail2 0.95 Tail1 0.02
+x -0.60 y +0.35 z 0.70 n   1 rgb 134,104, 87  Tail1 0.92 Root 0.05
+x -0.60 y +0.35 z 0.75 n   1 rgb 130, 97, 78  Tail1 0.93 Root 0.04
+x -0.60 y +0.35 z 0.80 n   2 rgb 133,101, 83  Tail1 0.94 Root 0.01
+x -0.60 y +0.35 z 0.85 n   2 rgb 134,102, 84  Tail1 0.96
+x -0.60 y +0.35 z 0.90 n   1 rgb 137,108, 89  Tail1 0.97
+x -0.60 y +0.35 z 0.95 n   2 rgb 132,100, 81  Tail1 0.96 Tail2 0.01
+x -0.60 y +0.35 z 1.00 n   3 rgb 138,107, 87  Tail1 0.95 Tail2 0.04
+x -0.60 y +0.35 z 1.05 n   1 rgb 132, 97, 78  Tail1 0.92 Tail2 0.07
+x -0.60 y +0.35 z 1.70 n   3 rgb 129,100, 82  Tail2 0.98
+x -0.60 y +0.40 z 0.60 n   1 rgb 143,113, 95  Tail1 0.90 Root 0.07
+x -0.60 y +0.40 z 0.65 n   1 rgb 135,103, 86  Tail1 0.91 Root 0.06
+x -0.60 y +0.40 z 0.70 n   2 rgb 137,105, 87  Tail1 0.92 Root 0.05
+x -0.60 y +0.40 z 0.75 n   2 rgb 135,105, 88  Tail1 0.94 Root 0.02
+x -0.60 y +0.40 z 0.80 n   1 rgb 139,108, 90  Tail1 0.94 Root 0.02
+x -0.60 y +0.40 z 0.85 n   2 rgb 138,108, 92  Tail1 0.96
+x -0.60 y +0.40 z 0.90 n   2 rgb 141,111, 93  Tail1 0.96 Tail2 0.00
+x -0.60 y +0.40 z 0.95 n   1 rgb 139,108, 89  Tail1 0.96 Tail2 0.01
+x -0.60 y +0.40 z 1.00 n   3 rgb 139,108, 89  Tail1 0.95 Tail2 0.03
+x -0.60 y +0.40 z 1.70 n   1 rgb 129, 99, 81  Tail2 1.00
+x -0.60 y +0.45 z 0.65 n   4 rgb 140,108, 91  Tail1 0.90 Root 0.07
+x -0.60 y +0.45 z 0.70 n   2 rgb 150,129,110  Tail1 0.92 Root 0.05
+x -0.60 y +0.45 z 0.75 n   5 rgb 182,167,155  Tail1 0.93 Root 0.03 Tail2 0.00
+x -0.60 y +0.45 z 0.80 n   2 rgb 141,114,100  Tail1 0.94 Root 0.02 Tail2 0.00
+x -0.60 y +0.45 z 0.85 n   5 rgb 159,139,125  Tail1 0.95 Tail2 0.00
+x -0.60 y +0.45 z 0.90 n   4 rgb 200,181,168  Tail1 0.95 Tail2 0.01
+x -0.60 y +0.45 z 0.95 n   2 rgb 144,115, 99  Tail1 0.95 Tail2 0.02
+x -0.60 y +0.45 z 1.00 n   7 rgb 171,147,134  Tail1 0.95 Tail2 0.03
+x -0.60 y +0.45 z 1.05 n   2 rgb 133,101, 85  Tail1 0.94 Tail2 0.05
+x -0.60 y +0.45 z 1.70 n   3 rgb 166,142,134  Tail2 1.00
+x -0.60 y +0.50 z 0.65 n   1 rgb 137,105, 89  Tail1 0.91 Root 0.06 Tail2 0.00
+x -0.60 y +0.50 z 0.70 n   3 rgb 132,102, 85  Tail1 0.92 Root 0.05 Tail2 0.01
+x -0.60 y +0.50 z 0.75 n   5 rgb 174,151,139  Tail1 0.92 Root 0.04 Tail2 0.01
+x -0.60 y +0.50 z 0.80 n   1 rgb 131,100, 83  Tail1 0.94 Tail2 0.01 Root 0.01
+x -0.60 y +0.50 z 0.85 n   5 rgb 152,126,112  Tail1 0.94 Tail2 0.02 Root 0.00
+x -0.60 y +0.50 z 0.90 n   7 rgb 174,155,148  Tail1 0.94 Tail2 0.02
+x -0.60 y +0.50 z 0.95 n   4 rgb 134,103, 86  Tail1 0.94 Tail2 0.05
+x -0.60 y +0.50 z 1.00 n   5 rgb 198,185,178  Tail1 0.94 Tail2 0.05
+x -0.60 y +0.50 z 1.05 n   1 rgb 126, 95, 80  Tail1 0.92 Tail2 0.07
+x -0.60 y +0.50 z 1.10 n   2 rgb 138,113, 99  Tail1 0.93 Tail2 0.07
+x -0.60 y +0.50 z 1.70 n   1 rgb 131,100, 82  Tail2 0.99
+x -0.60 y +0.55 z 0.75 n   1 rgb 171,158,147  Tail1 0.92 Root 0.04 Tail2 0.01
+x -0.60 y +0.55 z 0.80 n   1 rgb 134,102, 85  Tail1 0.93 Tail2 0.02 Root 0.01
+x -0.60 y +0.55 z 0.85 n   1 rgb 142,122,112  Tail1 0.93 Tail2 0.03 Root 0.00
+x -0.60 y +0.55 z 0.90 n   4 rgb 182,162,149  Tail1 0.93 Tail2 0.05
+x -0.60 y +0.55 z 1.10 n   3 rgb 124, 94, 75  Tail1 0.88 Tail2 0.11
+x -0.60 y +0.55 z 1.15 n   1 rgb 120, 90, 74  Tail1 0.83 Tail2 0.16
+x -0.60 y +0.55 z 1.65 n   1 rgb 129, 97, 82  Tail2 0.98
+x -0.60 y +0.55 z 1.70 n   1 rgb 129, 98, 82  Tail2 0.98
+x -0.60 y +0.60 z 1.10 n   1 rgb 121, 93, 76  Tail1 0.88 Tail2 0.11
+x -0.60 y +0.60 z 1.15 n   2 rgb 122, 93, 75  Tail1 0.78 Tail2 0.21
+x -0.60 y +0.65 z 1.15 n   1 rgb 121, 93, 75  Tail1 0.71 Tail2 0.28
+x -0.60 y +0.65 z 1.20 n   1 rgb 122, 93, 76  Tail1 0.59 Tail2 0.40
+x -0.60 y +0.70 z 1.25 n   1 rgb 122, 93, 76  Tail2 0.53 Tail1 0.47
+x -0.60 y +0.70 z 1.45 n   1 rgb 124, 94, 78  Tail2 0.89 Tail1 0.11
+x -0.60 y +0.70 z 1.55 n   2 rgb 126, 95, 79  Tail2 0.94 Tail1 0.06
+x -0.55 y +0.05 z 1.70 n   1 rgb 226, 45,117  Head 0.93 Chest 0.01 Neck 0.01
+x -0.55 y +0.10 z 1.25 n   1 rgb 127, 95, 75  Tail1 0.50 Tail2 0.48
+x -0.55 y +0.10 z 1.30 n   1 rgb 130, 97, 77  Tail2 0.54 Tail1 0.44
+x -0.55 y +0.10 z 1.40 n   1 rgb 128, 95, 77  Tail2 0.72 Tail1 0.26
+x -0.55 y +0.10 z 1.45 n   1 rgb 129, 96, 76  Tail2 0.74 Tail1 0.23
+x -0.55 y +0.10 z 1.50 n   2 rgb 132, 99, 79  Tail2 0.79 Tail1 0.18
+x -0.55 y +0.15 z 1.15 n   2 rgb 129, 97, 77  Root 0.98
+x -0.55 y +0.15 z 1.20 n   1 rgb 130, 97, 78  Root 0.98
+x -0.55 y +0.15 z 1.60 n   1 rgb 130, 96, 78  Tail2 0.87 Tail1 0.11
+x -0.55 y +0.20 z 1.00 n   2 rgb 130, 97, 78  Root 0.49 Tail1 0.45 Tail2 0.04
+x -0.55 y +0.20 z 1.10 n   1 rgb 132, 99, 80  Root 0.98
+x -0.55 y +0.20 z 1.60 n   1 rgb 128, 96, 76  Tail2 0.87 Tail1 0.10
+x -0.55 y +0.25 z 0.70 n   1 rgb 134,101, 81  Tail1 0.91 Root 0.06 Tail2 0.00
+x -0.55 y +0.25 z 0.75 n   1 rgb 131, 99, 80  Tail1 0.93 Root 0.03 Tail2 0.00
+x -0.55 y +0.25 z 0.80 n   3 rgb 130, 98, 78  Tail1 0.93 Root 0.03 Tail2 0.01
+x -0.55 y +0.25 z 0.90 n   2 rgb 129, 96, 77  Tail1 0.93 Tail2 0.04 Root 0.00
+x -0.55 y +0.25 z 1.00 n   1 rgb 131, 98, 78  Tail1 0.92 Tail2 0.07
+x -0.55 y +0.25 z 1.65 n   1 rgb 128, 98, 80  Tail2 0.92 Tail1 0.06
+x -0.55 y +0.30 z 0.60 n   1 rgb 130, 98, 78  Tail1 0.89 Root 0.08
+x -0.55 y +0.30 z 0.65 n   1 rgb 133,100, 79  Tail1 0.90 Root 0.07
+x -0.55 y +0.30 z 0.70 n   1 rgb 129, 97, 77  Tail1 0.91 Root 0.06
+x -0.55 y +0.30 z 0.90 n   1 rgb 128, 96, 76  Tail1 0.95 Tail2 0.02
+x -0.55 y +0.30 z 1.65 n   1 rgb 130,100, 82  Tail2 0.94 Tail1 0.04
+x -0.55 y +0.30 z 1.70 n   2 rgb 140, 91, 84  Tail2 0.94 Tail1 0.03
+x -0.55 y +0.35 z 0.55 n   2 rgb 134,102, 85  Tail1 0.88 Root 0.09
+x -0.55 y +0.35 z 0.65 n   1 rgb 138,107, 89  Tail1 0.90 Root 0.07
+x -0.55 y +0.35 z 1.70 n   6 rgb 130,100, 83  Tail2 0.95 Tail1 0.02
+x -0.55 y +0.40 z 0.50 n   1 rgb 139,108, 90  Tail1 0.86 Root 0.10
+x -0.55 y +0.40 z 0.55 n   1 rgb 132,103, 85  Tail1 0.88 Root 0.09
+x -0.55 y +0.40 z 0.60 n   1 rgb 133,103, 85  Tail1 0.89 Root 0.08
+x -0.55 y +0.40 z 0.65 n   1 rgb 134,103, 84  Tail1 0.90 Root 0.07
+x -0.55 y +0.40 z 1.70 n   2 rgb 131,101, 83  Tail2 0.97 Tail1 0.01
+x -0.55 y +0.45 z 0.55 n   4 rgb 141,112, 95  Tail1 0.87 Root 0.09
+x -0.55 y +0.45 z 0.60 n   5 rgb 182,168,160  Tail1 0.89 Root 0.08
+x -0.55 y +0.45 z 0.65 n   1 rgb 146,119,103  Tail1 0.90 Root 0.07
+x -0.55 y +0.45 z 1.70 n   1 rgb 130,100, 83  Tail2 0.99
+x -0.55 y +0.50 z 0.60 n   3 rgb 153,123,107  Tail1 0.89 Root 0.07 Tail2 0.00
+x -0.55 y +0.50 z 0.65 n   5 rgb 186,169,161  Tail1 0.90 Root 0.07 Tail2 0.00
+x -0.55 y +0.50 z 0.70 n   1 rgb 114, 89, 79  Tail1 0.92 Root 0.05 Tail2 0.01
+x -0.55 y +0.50 z 0.75 n   1 rgb 245,248,247  Tail1 0.92 Root 0.04 Tail2 0.01
+x -0.55 y +0.50 z 1.00 n   2 rgb 140,106, 93  Tail1 0.93 Tail2 0.06
+x -0.55 y +0.50 z 1.05 n   1 rgb 127, 99, 84  Tail1 0.90 Tail2 0.08
+x -0.55 y +0.50 z 1.70 n   6 rgb 143,109, 99  Tail2 0.98
+x -0.55 y +0.55 z 0.65 n   5 rgb 176,158,145  Tail1 0.90 Root 0.07 Tail2 0.00
+x -0.55 y +0.55 z 0.70 n   1 rgb 135,103, 87  Tail1 0.91 Root 0.05 Tail2 0.01
+x -0.55 y +0.55 z 0.75 n   6 rgb 179,164,155  Tail1 0.92 Root 0.04 Tail2 0.01
+x -0.55 y +0.55 z 0.80 n   3 rgb 145,124,112  Tail1 0.92 Root 0.03 Tail2 0.02
+x -0.55 y +0.55 z 0.85 n   4 rgb 165,146,134  Tail1 0.93 Tail2 0.03 Root 0.00
+x -0.55 y +0.55 z 0.90 n   3 rgb 134,103, 89  Tail1 0.93 Tail2 0.05
+x -0.55 y +0.55 z 0.95 n   4 rgb 148,130,117  Tail1 0.91 Tail2 0.07
+x -0.55 y +0.55 z 1.00 n   6 rgb 157,135,125  Tail1 0.90 Tail2 0.08
+x -0.55 y +0.55 z 1.10 n   1 rgb 129, 98, 82  Tail1 0.85 Tail2 0.14
+x -0.55 y +0.60 z 0.70 n   1 rgb 126, 95, 80  Tail1 0.91 Root 0.06 Tail2 0.01
+x -0.55 y +0.60 z 0.75 n   1 rgb 131,101, 86  Tail1 0.91 Root 0.04 Tail2 0.02
+x -0.55 y +0.60 z 0.80 n   2 rgb 128, 99, 84  Tail1 0.92 Root 0.03 Tail2 0.03
+x -0.55 y +0.60 z 0.85 n   2 rgb 129, 98, 83  Tail1 0.92 Tail2 0.04 Root 0.01
+x -0.55 y +0.60 z 0.90 n   1 rgb 131,100, 83  Tail1 0.91 Tail2 0.06
+x -0.55 y +0.60 z 1.10 n   1 rgb 126, 96, 80  Tail1 0.83 Tail2 0.16
+x -0.55 y +0.60 z 1.15 n   2 rgb 124, 95, 77  Tail1 0.72 Tail2 0.27
+x -0.55 y +0.60 z 1.60 n   1 rgb 125, 93, 77  Tail2 0.95 Tail1 0.04
+x -0.55 y +0.60 z 1.65 n   2 rgb 127, 96, 79  Tail2 0.97 Tail1 0.01
+x -0.55 y +0.65 z 1.25 n   2 rgb 127, 98, 80  Tail2 0.51 Tail1 0.49
+x -0.55 y +0.65 z 1.60 n   1 rgb 125, 94, 78  Tail2 0.94 Tail1 0.05
+x -0.55 y +0.70 z 1.30 n   1 rgb 123, 93, 77  Tail2 0.66 Tail1 0.34
+x -0.55 y +0.70 z 1.35 n   1 rgb 125, 95, 80  Tail2 0.76 Tail1 0.24
+x -0.55 y +0.70 z 1.40 n   1 rgb 126, 96, 78  Tail2 0.84 Tail1 0.16
+x -0.55 y +0.70 z 1.45 n   2 rgb 127, 97, 80  Tail2 0.87 Tail1 0.13
+x -0.55 y +0.70 z 1.55 n   2 rgb 126, 95, 78  Tail2 0.93 Tail1 0.07
+x -0.50 y +0.00 z 1.90 n   1 rgb 239, 38,116  Head 0.93 Chest 0.00 Neck 0.00
+x -0.50 y +0.05 z 1.35 n   1 rgb 128, 94, 76  Tail2 0.56 Tail1 0.41
+x -0.50 y +0.05 z 1.40 n   1 rgb 131, 98, 78  Tail2 0.62 Tail1 0.35
+x -0.50 y +0.05 z 1.65 n   4 rgb 232, 47,117  Head 0.93 Chest 0.01 Neck 0.01
+x -0.50 y +0.05 z 1.70 n   2 rgb 226, 38,117  Head 0.93 Chest 0.01 Neck 0.01
+x -0.50 y +0.05 z 1.90 n   1 rgb 228, 46,115  Head 0.93 Chest 0.00 Neck 0.00
+x -0.50 y +0.05 z 1.95 n   1 rgb 241, 25,116  Head 0.93 Chest 0.00 Neck 0.00
+x -0.50 y +0.05 z 2.00 n   2 rgb 209, 25, 94  Head 0.93 Chest 0.00 Neck 0.00
+x -0.50 y +0.10 z 1.15 n   2 rgb 127, 96, 76  Root 0.98
+x -0.50 y +0.10 z 1.30 n   1 rgb 130, 99, 78  Tail2 0.54 Tail1 0.44
+x -0.50 y +0.10 z 1.45 n   3 rgb 134,101, 81  Tail2 0.71 Tail1 0.26
+x -0.50 y +0.10 z 1.50 n   1 rgb 130, 98, 78  Tail2 0.73 Tail1 0.23 Head 0.00
+x -0.50 y +0.10 z 1.65 n   3 rgb 225, 39,112  Head 0.93 Chest 0.01 Neck 0.01
+x -0.50 y +0.10 z 1.85 n   1 rgb 226, 46,115  Head 0.92 Chest 0.00 Neck 0.00
+x -0.50 y +0.10 z 1.90 n   1 rgb 229, 45,116  Head 0.93 Chest 0.00 Neck 0.00
+x -0.50 y +0.10 z 1.95 n   2 rgb 227, 38,115  Head 0.93 Chest 0.00 Neck 0.00
+x -0.50 y +0.10 z 2.00 n   2 rgb 211, 25,100  Head 0.93 Chest 0.00 Neck 0.00
+x -0.50 y +0.15 z 0.95 n   1 rgb 128, 96, 77  Root 0.97
+x -0.50 y +0.15 z 1.05 n   1 rgb 129, 96, 77  Root 0.98
+x -0.50 y +0.15 z 1.50 n   1 rgb 127, 93, 76  Tail2 0.78 Tail1 0.18 Head 0.00
+x -0.50 y +0.15 z 1.55 n   1 rgb 128, 95, 77  Tail2 0.80 Tail1 0.16 Head 0.01
+x -0.50 y +0.15 z 1.60 n   1 rgb 127, 94, 76  Tail2 0.82 Tail1 0.14 Head 0.01
+x -0.50 y +0.15 z 1.90 n   1 rgb 222, 36,108  Head 0.92 Chest 0.00 Neck 0.00
+x -0.50 y +0.15 z 1.95 n   3 rgb 211, 33,104  Head 0.93 Chest 0.00 Neck 0.00
+x -0.50 y +0.20 z 0.75 n   1 rgb 133, 99, 80  Tail1 0.90 Root 0.06 Tail2 0.01
+x -0.50 y +0.20 z 0.80 n   1 rgb 127, 95, 75  Tail1 0.91 Root 0.03 Tail2 0.02
+x -0.50 y +0.20 z 0.85 n   1 rgb 134,102, 81  Root 0.97
+x -0.50 y +0.20 z 0.90 n   1 rgb 127, 96, 76  Root 0.98
+x -0.50 y +0.20 z 0.95 n   1 rgb 132,100, 79  Root 0.97
+x -0.50 y +0.20 z 1.60 n   1 rgb 133,101, 81  Tail2 0.86 Tail1 0.10 Head 0.00
+x -0.50 y +0.20 z 1.90 n   1 rgb 215, 34,105  Head 0.92 Chest 0.00 Neck 0.00
+x -0.50 y +0.25 z 0.60 n   1 rgb 129, 96, 76  Tail1 0.87 Root 0.10
+x -0.50 y +0.25 z 0.65 n   2 rgb 130, 98, 78  Tail1 0.88 Root 0.08 Tail2 0.00
+x -0.50 y +0.25 z 0.70 n   1 rgb 129, 96, 75  Tail1 0.90 Root 0.06 Tail2 0.00
+x -0.50 y +0.25 z 1.65 n   1 rgb 127, 97, 78  Tail2 0.89 Tail1 0.08
+x -0.50 y +0.30 z 0.55 n   2 rgb 132, 99, 82  Tail1 0.86 Root 0.11
+x -0.50 y +0.30 z 0.60 n   1 rgb 129, 96, 77  Tail1 0.87 Root 0.09
+x -0.50 y +0.30 z 1.65 n   3 rgb 134, 93, 79  Tail2 0.92 Tail1 0.06
+x -0.50 y +0.35 z 0.50 n   2 rgb 132,101, 83  Tail1 0.85 Root 0.12
+x -0.50 y +0.35 z 1.70 n   4 rgb 130,100, 83  Tail2 0.93 Tail1 0.04
+x -0.50 y +0.40 z 0.50 n   2 rgb 137,106, 88  Tail1 0.86 Root 0.11
+x -0.50 y +0.40 z 0.55 n   1 rgb 166,142,133  Tail1 0.86 Root 0.10
+x -0.50 y +0.40 z 1.70 n   4 rgb 131,101, 84  Tail2 0.95 Tail1 0.03
+x -0.50 y +0.45 z 0.50 n   6 rgb 149,124,110  Tail1 0.86 Root 0.11
+x -0.50 y +0.45 z 0.55 n   2 rgb 154,126,110  Tail1 0.87 Root 0.10
+x -0.50 y +0.45 z 1.70 n   1 rgb 129, 99, 83  Tail2 0.95 Tail1 0.02
+x -0.50 y +0.50 z 0.55 n   4 rgb 177,153,141  Tail1 0.87 Root 0.10
+x -0.50 y +0.50 z 0.60 n   1 rgb 192,186,182  Tail1 0.89 Root 0.07 Tail2 0.00
+x -0.50 y +0.50 z 1.65 n   1 rgb 129, 97, 81  Tail2 0.96 Tail1 0.02
+x -0.50 y +0.50 z 1.70 n   2 rgb 133,103, 88  Tail2 0.96 Tail1 0.02
+x -0.50 y +0.55 z 0.55 n   2 rgb 149,127,114  Tail1 0.87 Root 0.09
+x -0.50 y +0.55 z 0.60 n   4 rgb 144,118,104  Tail1 0.89 Root 0.08 Tail2 0.00
+x -0.50 y +0.55 z 0.65 n   1 rgb 128, 96, 81  Tail1 0.89 Root 0.07 Tail2 0.01
+x -0.50 y +0.55 z 0.75 n   2 rgb 227,228,226  Tail1 0.91 Root 0.04 Tail2 0.02
+x -0.50 y +0.55 z 1.65 n   1 rgb 129,100, 82  Tail2 0.95 Tail1 0.03
+x -0.50 y +0.60 z 0.65 n   1 rgb 122, 92, 77  Tail1 0.90 Root 0.06 Tail2 0.01
+x -0.50 y +0.60 z 0.70 n   3 rgb 161,138,126  Tail1 0.91 Root 0.05 Tail2 0.02
+x -0.50 y +0.60 z 0.75 n   1 rgb 125, 95, 79  Tail1 0.91 Root 0.04 Tail2 0.03
+x -0.50 y +0.60 z 0.80 n   1 rgb 128, 96, 81  Tail1 0.91 Tail2 0.03 Root 0.03
+x -0.50 y +0.60 z 0.85 n   3 rgb 124, 94, 79  Tail1 0.91 Tail2 0.05 Root 0.01
+x -0.50 y +0.60 z 0.90 n   1 rgb 127, 97, 82  Tail1 0.90 Tail2 0.07 Root 0.00
+x -0.50 y +0.60 z 0.95 n   2 rgb 127, 97, 81  Tail1 0.89 Tail2 0.08
+x -0.50 y +0.60 z 1.00 n   3 rgb 124, 94, 81  Tail1 0.87 Tail2 0.11
+x -0.50 y +0.60 z 1.05 n   1 rgb 127, 97, 80  Tail1 0.84 Tail2 0.14
+x -0.50 y +0.60 z 1.10 n   1 rgb 124, 94, 78  Tail1 0.79 Tail2 0.20
+x -0.50 y +0.60 z 1.65 n   1 rgb 125, 94, 79  Tail2 0.95 Tail1 0.04
+x -0.50 y +0.65 z 0.85 n   1 rgb 130, 99, 83  Tail1 0.91 Tail2 0.06 Root 0.01
+x -0.50 y +0.65 z 1.30 n   1 rgb 127, 97, 80  Tail2 0.64 Tail1 0.36
+x -0.50 y +0.65 z 1.55 n   2 rgb 125, 94, 78  Tail2 0.91 Tail1 0.09
+x -0.50 y +0.70 z 1.45 n   1 rgb 127, 96, 80  Tail2 0.85 Tail1 0.14
+x -0.50 y +0.70 z 1.50 n   1 rgb 127, 96, 80  Tail2 0.87 Tail1 0.13
+x -0.45 y -0.40 z 1.70 n   1 rgb 254,206,137  Head 0.90 Chest 0.03 Neck 0.03
+x -0.45 y -0.35 z 1.70 n   1 rgb 254,200,130  Head 0.90 Chest 0.03 Neck 0.03
+x -0.45 y -0.30 z 1.65 n   2 rgb 254,203,141  Head 0.89 Chest 0.03 Neck 0.03
+x -0.45 y -0.25 z 1.65 n   1 rgb 254,201,127  Head 0.90 Chest 0.03 Neck 0.03
+x -0.45 y -0.20 z 1.60 n   1 rgb 254,203,132  Head 0.90 Chest 0.03 Neck 0.03
+x -0.45 y -0.20 z 1.65 n   2 rgb 252,202,127  Head 0.90 Chest 0.03 Neck 0.03
+x -0.45 y -0.15 z 1.65 n   1 rgb 254,204,133  Head 0.91 Chest 0.03 Neck 0.03
+x -0.45 y -0.10 z 1.60 n   1 rgb 254,206,135  Head 0.91 Chest 0.03 Neck 0.03
+x -0.45 y -0.05 z 1.60 n   2 rgb 242,128,128  Head 0.93 Chest 0.02 Neck 0.02
+x -0.45 y -0.05 z 1.65 n   2 rgb 224, 44,116  Head 0.93 Chest 0.01 Neck 0.01
+x -0.45 y -0.05 z 1.85 n   1 rgb 245, 25,122  Head 0.92 Chest 0.00 Neck 0.00
+x -0.45 y -0.05 z 1.90 n   1 rgb 241, 26,119  Head 0.92 Chest 0.00 Neck 0.00
+x -0.45 y +0.00 z 1.60 n   1 rgb 236, 48,122  Head 0.93 Chest 0.01 Neck 0.01
+x -0.45 y +0.00 z 1.65 n   4 rgb 229, 51,116  Head 0.93 Chest 0.01 Neck 0.01
+x -0.45 y +0.00 z 1.85 n   7 rgb 225, 35,111  Head 0.92 Chest 0.00 Neck 0.00
+x -0.45 y +0.00 z 1.90 n   1 rgb 241, 27,119  Head 0.93 Chest 0.00 Neck 0.00
+x -0.45 y +0.00 z 1.95 n   1 rgb 241, 25,116  Head 0.93 Chest 0.00 Neck 0.00
+x -0.45 y +0.05 z 1.25 n   1 rgb 129, 96, 76  Tail1 0.56 Tail2 0.41
+x -0.45 y +0.05 z 1.30 n   1 rgb 126, 94, 74  Tail2 0.50 Tail1 0.47
+x -0.45 y +0.05 z 1.60 n   3 rgb 230, 47,116  Head 0.93 Chest 0.02 Neck 0.01
+x -0.45 y +0.05 z 1.65 n   3 rgb 227, 43,113  Head 0.93 Chest 0.01 Neck 0.01
+x -0.45 y +0.05 z 1.70 n   1 rgb 227, 47,115  Head 0.93 Chest 0.01 Neck 0.01
+x -0.45 y +0.05 z 1.80 n   5 rgb 222, 39,110  Head 0.92 Chest 0.01 Neck 0.01
+x -0.45 y +0.05 z 1.85 n   1 rgb 216, 33,107  Head 0.92 Chest 0.00 Neck 0.00
+x -0.45 y +0.05 z 1.90 n   1 rgb 212, 30,103  Head 0.92 Chest 0.01 Neck 0.00
+x -0.45 y +0.05 z 2.00 n   3 rgb 219, 24,103  Head 0.93 Chest 0.00 Neck 0.00
+x -0.45 y +0.10 z 1.35 n   1 rgb 126, 93, 73  Tail2 0.58 Tail1 0.38
+x -0.45 y +0.10 z 1.40 n   1 rgb 134,103, 82  Tail2 0.61 Tail1 0.35
+x -0.45 y +0.10 z 1.50 n   2 rgb 128, 96, 77  Tail2 0.72 Tail1 0.23 Head 0.02
+x -0.45 y +0.10 z 1.60 n   1 rgb 226, 43,114  Head 0.93 Chest 0.01 Neck 0.01
+x -0.45 y +0.10 z 1.65 n   1 rgb 215, 37,106  Head 0.93 Chest 0.01 Neck 0.01
+x -0.45 y +0.10 z 1.85 n   1 rgb 224, 38,111  Head 0.92 Chest 0.00 Neck 0.00
+x -0.45 y +0.15 z 0.90 n   1 rgb 132,100, 80  Root 0.98
+x -0.45 y +0.15 z 1.00 n   2 rgb 129, 97, 77  Root 0.97
+x -0.45 y +0.15 z 1.55 n   1 rgb 128, 94, 76  Tail2 0.74 Tail1 0.20 Head 0.04
+x -0.45 y +0.15 z 1.85 n   1 rgb 210, 35,105  Head 0.92 Chest 0.00 Neck 0.00
+x -0.45 y +0.20 z 0.65 n   1 rgb 131, 98, 78  Tail1 0.86 Root 0.10 Tail2 0.00
+x -0.45 y +0.20 z 0.70 n   1 rgb 128, 95, 76  Root 0.97
+x -0.45 y +0.20 z 0.75 n   1 rgb 131, 98, 79  Tail1 0.90 Root 0.06 Tail2 0.02
+x -0.45 y +0.20 z 0.80 n   1 rgb 130, 98, 78  Root 0.99
+x -0.45 y +0.20 z 1.55 n   1 rgb 130, 99, 80  Tail2 0.78 Tail1 0.16 Head 0.04
+x -0.45 y +0.20 z 1.60 n   1 rgb 126, 92, 75  Tail2 0.84 Tail1 0.11 Head 0.02
+x -0.45 y +0.20 z 1.90 n   1 rgb 211, 30,105  Head 0.92 Chest 0.00 Neck 0.00
+x -0.45 y +0.20 z 1.95 n   3 rgb 210, 28,103  Head 0.92 Chest 0.00 Neck 0.00
+x -0.45 y +0.25 z 0.50 n   1 rgb 131, 99, 79  Tail1 0.83 Root 0.14
+x -0.45 y +0.25 z 0.55 n   1 rgb 131,100, 80  Tail1 0.84 Root 0.12
+x -0.45 y +0.25 z 0.60 n   1 rgb 129, 97, 77  Tail1 0.86 Root 0.11
+x -0.45 y +0.25 z 1.60 n   1 rgb 131,102, 84  Tail2 0.84 Tail1 0.11 Head 0.03
+x -0.45 y +0.30 z 0.50 n   2 rgb 133,100, 81  Tail1 0.83 Root 0.13
+x -0.45 y +0.30 z 1.65 n   1 rgb 130,101, 83  Tail2 0.89 Tail1 0.08 Head 0.00
+x -0.45 y +0.30 z 1.70 n   1 rgb 128, 99, 81  Tail2 0.90 Tail1 0.07
+x -0.45 y +0.35 z 0.45 n   1 rgb 137,104, 88  Tail1 0.83 Root 0.13
+x -0.45 y +0.35 z 0.50 n   1 rgb 134,102, 84  Tail1 0.84 Root 0.13
+x -0.45 y +0.35 z 1.70 n   1 rgb 129, 97, 82  Tail2 0.91 Tail1 0.07
+x -0.45 y +0.40 z 0.40 n   1 rgb 138,107, 89  Tail1 0.82 Root 0.14
+x -0.45 y +0.40 z 0.45 n   6 rgb 167,143,130  Tail1 0.83 Root 0.14
+x -0.45 y +0.40 z 1.65 n   2 rgb 129, 99, 81  Tail2 0.91 Tail1 0.06
+x -0.45 y +0.40 z 1.70 n   2 rgb 129, 99, 82  Tail2 0.91 Tail1 0.07
+x -0.45 y +0.45 z 0.45 n   3 rgb 133,104, 82  Tail1 0.83 Root 0.13
+x -0.45 y +0.45 z 1.65 n   1 rgb 133,101, 85  Tail2 0.91 Tail1 0.07
+x -0.45 y +0.45 z 1.70 n   1 rgb 130,100, 83  Tail2 0.91 Tail1 0.06
+x -0.45 y +0.50 z 0.50 n   4 rgb 150,125,113  Tail1 0.85 Root 0.11
+x -0.45 y +0.50 z 1.65 n   5 rgb 129, 98, 82  Tail2 0.92 Tail1 0.07
+x -0.45 y +0.55 z 0.50 n   1 rgb 142,110, 93  Tail1 0.86 Root 0.10
+x -0.45 y +0.55 z 0.55 n   3 rgb 170,145,131  Tail1 0.87 Root 0.10
+x -0.45 y +0.60 z 0.60 n   2 rgb 126, 96, 80  Tail1 0.88 Root 0.08 Tail2 0.00
+x -0.45 y +0.60 z 0.65 n   4 rgb 136,110, 97  Tail1 0.89 Root 0.07 Tail2 0.01
+x -0.45 y +0.60 z 0.75 n   1 rgb 124, 94, 78  Tail1 0.90 Root 0.05 Tail2 0.03
+x -0.45 y +0.60 z 1.60 n   1 rgb 126, 96, 79  Tail2 0.91 Tail1 0.08
+x -0.45 y +0.65 z 0.80 n   1 rgb 128, 96, 80  Tail1 0.90 Tail2 0.05 Root 0.04
+x -0.45 y +0.65 z 0.85 n   1 rgb 128, 96, 80  Tail1 0.90 Tail2 0.06 Root 0.03
+x -0.45 y +0.65 z 0.90 n   2 rgb 127, 97, 82  Tail1 0.89 Tail2 0.07 Root 0.01
+x -0.45 y +0.65 z 1.05 n   1 rgb 127, 97, 82  Tail1 0.79 Tail2 0.19
+x -0.45 y +0.65 z 1.15 n   1 rgb 125, 94, 79  Tail1 0.70 Tail2 0.28
+x -0.45 y +0.65 z 1.20 n   2 rgb 125, 93, 77  Tail1 0.60 Tail2 0.39
+x -0.45 y +0.65 z 1.55 n   1 rgb 125, 94, 78  Tail2 0.88 Tail1 0.11
+x -0.45 y +0.65 z 1.60 n   1 rgb 125, 94, 78  Tail2 0.91 Tail1 0.08
+x -0.45 y +0.70 z 1.35 n   1 rgb 126, 95, 79  Tail2 0.68 Tail1 0.31
+x -0.45 y +0.70 z 1.40 n   1 rgb 129, 99, 81  Tail2 0.80 Tail1 0.20
+x -0.45 y +0.70 z 1.50 n   1 rgb 128, 97, 80  Tail2 0.87 Tail1 0.12
+x -0.40 y -0.50 z 1.80 n   1 rgb 254,204,142  Head 0.91 Chest 0.02 Neck 0.02
+x -0.40 y -0.45 z 1.75 n   1 rgb 254,206,138  Head 0.90 Chest 0.03 Neck 0.02
+x -0.40 y -0.40 z 1.75 n   2 rgb 253,200,130  Head 0.90 Chest 0.03 Neck 0.03
+x -0.40 y -0.35 z 1.70 n   1 rgb 253,201,130  Head 0.89 Chest 0.03 Neck 0.03
+x -0.40 y -0.35 z 1.75 n   1 rgb 252,196,122  Head 0.90 Chest 0.03 Neck 0.02
+x -0.40 y -0.30 z 1.70 n   1 rgb 254,202,131  Head 0.89 Chest 0.03 Neck 0.03
+x -0.40 y -0.25 z 1.70 n   1 rgb 254,203,130  Head 0.90 Chest 0.03 Neck 0.03
+x -0.40 y -0.20 z 1.65 n   2 rgb 253,199,129  Head 0.90 Chest 0.04 Neck 0.03
+x -0.40 y -0.20 z 1.70 n   2 rgb 249,197,128  Head 0.90 Chest 0.03 Neck 0.03
+x -0.40 y -0.15 z 1.65 n   2 rgb 251,199,125  Head 0.90 Chest 0.03 Neck 0.03
+x -0.40 y -0.15 z 1.70 n   1 rgb 242,192,120  Head 0.91 Chest 0.03 Neck 0.02
+x -0.40 y -0.05 z 1.65 n   1 rgb 227, 44,116  Head 0.93 Chest 0.01 Neck 0.01
+x -0.40 y -0.05 z 1.75 n   2 rgb 223, 37,109  Head 0.92 Chest 0.01 Neck 0.01
+x -0.40 y -0.05 z 1.90 n   2 rgb 218, 35,108  Head 0.92 Chest 0.00 Neck 0.00
+x -0.40 y +0.00 z 1.55 n   1 rgb 254,204,130  Head 0.92 Chest 0.03 Neck 0.03
+x -0.40 y +0.00 z 1.60 n   4 rgb 243,123,124  Head 0.93 Chest 0.02 Neck 0.02
+x -0.40 y +0.00 z 1.65 n   1 rgb 223, 40,111  Head 0.93 Chest 0.01 Neck 0.01
+x -0.40 y +0.00 z 1.75 n   1 rgb 226, 39,112  Head 0.92 Chest 0.01 Neck 0.01
+x -0.40 y +0.00 z 1.85 n   1 rgb 216, 32,106  Head 0.92 Chest 0.01 Neck 0.01
+x -0.40 y +0.00 z 1.90 n   1 rgb 212, 31,102  Head 0.92 Chest 0.01 Neck 0.00
+x -0.40 y +0.00 z 2.00 n   1 rgb 236, 26,120  Head 0.92 Chest 0.01 Neck 0.00
+x -0.40 y +0.05 z 1.25 n   1 rgb 130, 98, 77  Tail1 0.61 Tail2 0.36
+x -0.40 y +0.05 z 1.30 n   1 rgb 132,101, 81  Tail1 0.52 Tail2 0.44
+x -0.40 y +0.05 z 1.35 n   1 rgb 129, 98, 78  Tail2 0.50 Tail1 0.46
+x -0.40 y +0.05 z 1.55 n   1 rgb 248,181,128  Head 0.93 Chest 0.02 Neck 0.02
+x -0.40 y +0.05 z 1.60 n   3 rgb 235, 54,119  Head 0.93 Chest 0.02 Neck 0.02
+x -0.40 y +0.05 z 1.80 n   1 rgb 219, 34,108  Head 0.92 Chest 0.01 Neck 0.00
+x -0.40 y +0.05 z 1.85 n   4 rgb 211, 29,104  Head 0.92 Chest 0.01 Neck 0.01
+x -0.40 y +0.05 z 1.90 n   3 rgb 212, 30,103  Head 0.92 Chest 0.01 Neck 0.00
+x -0.40 y +0.05 z 2.00 n   1 rgb 213, 24, 98  Head 0.92 Chest 0.01 Neck 0.01
+x -0.40 y +0.10 z 1.00 n   2 rgb 131, 99, 78  Root 0.97
+x -0.40 y +0.10 z 1.05 n   1 rgb 133,101, 82  Root 0.97
+x -0.40 y +0.10 z 1.15 n   1 rgb 131, 98, 79  Root 0.97
+x -0.40 y +0.10 z 1.40 n   2 rgb 130, 97, 78  Tail2 0.59 Tail1 0.36 Head 0.02
+x -0.40 y +0.10 z 1.65 n   1 rgb 214, 35,105  Head 0.93 Chest 0.01 Neck 0.01
+x -0.40 y +0.10 z 1.75 n   1 rgb 211, 30,105  Head 0.93 Chest 0.01 Neck 0.01
+x -0.40 y +0.10 z 1.80 n   1 rgb 212, 34,104  Head 0.92 Chest 0.01 Neck 0.00
+x -0.40 y +0.10 z 1.85 n   2 rgb 208, 29,104  Head 0.92 Chest 0.01 Neck 0.01
+x -0.40 y +0.15 z 0.85 n   1 rgb 128, 96, 77  Root 0.99
+x -0.40 y +0.15 z 0.90 n   1 rgb 128, 97, 76  Root 0.98
+x -0.40 y +0.15 z 1.50 n   1 rgb 127, 95, 76  Tail2 0.70 Tail1 0.23 Head 0.05
+x -0.40 y +0.15 z 1.55 n   1 rgb 130, 98, 79  Tail2 0.71 Tail1 0.20 Head 0.06
+x -0.40 y +0.15 z 1.85 n   1 rgb 211, 30,105  Head 0.92 Chest 0.01 Neck 0.00
+x -0.40 y +0.15 z 1.90 n   2 rgb 210, 27,104  Head 0.92 Chest 0.01 Neck 0.00
+x -0.40 y +0.15 z 1.95 n   1 rgb 209, 25,104  Head 0.92 Chest 0.00 Neck 0.00
+x -0.40 y +0.15 z 2.00 n   1 rgb 203, 24, 89  Head 0.92 Chest 0.00 Neck 0.00
+x -0.40 y +0.20 z 0.55 n   2 rgb 133,100, 81  Tail1 0.82 Root 0.14
+x -0.40 y +0.20 z 0.70 n   1 rgb 127, 94, 74  Root 0.97
+x -0.40 y +0.20 z 0.75 n   2 rgb 130, 98, 78  Root 0.98
+x -0.40 y +0.20 z 1.60 n   1 rgb 130, 98, 81  Tail2 0.77 Tail1 0.15 Head 0.06
+x -0.40 y +0.20 z 1.95 n   1 rgb 211, 27,104  Head 0.92 Chest 0.00 Neck 0.00
+x -0.40 y +0.25 z 0.50 n   1 rgb 133,100, 79  Tail1 0.79 Root 0.17
+x -0.40 y +0.25 z 0.55 n   1 rgb 129, 95, 75  Tail1 0.81 Root 0.15
+x -0.40 y +0.30 z 0.40 n   1 rgb 136,106, 91  Tail1 0.79 Root 0.17
+x -0.40 y +0.30 z 0.45 n   3 rgb 133,100, 82  Tail1 0.80 Root 0.16
+x -0.40 y +0.30 z 0.50 n   1 rgb 133,100, 81  Tail1 0.81 Root 0.15
+x -0.40 y +0.30 z 1.65 n   3 rgb 130,100, 82  Tail2 0.83 Tail1 0.11 Head 0.03
+x -0.40 y +0.35 z 0.40 n   1 rgb 137,107, 91  Tail1 0.79 Root 0.17
+x -0.40 y +0.35 z 0.45 n   1 rgb 141,111, 93  Tail1 0.81 Root 0.15
+x -0.40 y +0.35 z 1.65 n   5 rgb 146, 83, 82  Tail2 0.69 Head 0.21 Tail1 0.07
+x -0.40 y +0.40 z 0.40 n   2 rgb 135,103, 87  Tail1 0.81 Root 0.15
+x -0.40 y +0.40 z 0.45 n   1 rgb 135,108, 96  Tail1 0.81 Root 0.15
+x -0.40 y +0.40 z 1.65 n   2 rgb 128, 98, 81  Tail2 0.87 Tail1 0.10 Head 0.00
+x -0.40 y +0.45 z 0.45 n   5 rgb 132,100, 86  Tail1 0.82 Root 0.14
+x -0.40 y +0.45 z 1.65 n   3 rgb 143,116,102  Tail2 0.89 Tail1 0.09
+x -0.40 y +0.50 z 0.45 n   5 rgb 142,116,104  Tail1 0.83 Root 0.14
+x -0.40 y +0.50 z 0.50 n   1 rgb 130, 98, 82  Tail1 0.84 Root 0.12
+x -0.40 y +0.50 z 1.65 n   1 rgb 128, 98, 82  Tail2 0.88 Tail1 0.10
+x -0.40 y +0.55 z 0.50 n   2 rgb 126, 95, 79  Tail1 0.85 Root 0.11
+x -0.40 y +0.55 z 0.55 n   1 rgb 127, 96, 80  Tail1 0.86 Root 0.10 Tail2 0.00
+x -0.40 y +0.55 z 1.60 n   1 rgb 127, 96, 81  Tail2 0.85 Tail1 0.13
+x -0.40 y +0.55 z 1.65 n   1 rgb 127, 95, 80  Tail2 0.89 Tail1 0.09
+x -0.40 y +0.60 z 0.55 n   1 rgb 124, 93, 78  Tail1 0.87 Root 0.09 Tail2 0.00
+x -0.40 y +0.60 z 0.60 n   4 rgb 126, 96, 80  Tail1 0.88 Root 0.08 Tail2 0.01
+x -0.40 y +0.60 z 0.70 n   1 rgb 126, 96, 80  Tail1 0.89 Root 0.06 Tail2 0.03
+x -0.40 y +0.60 z 1.55 n   1 rgb 125, 93, 78  Tail2 0.86 Tail1 0.13
+x -0.40 y +0.65 z 0.65 n   1 rgb 131,100, 83  Tail1 0.88 Root 0.07 Tail2 0.02
+x -0.40 y +0.65 z 0.70 n   1 rgb 127, 97, 80  Tail1 0.89 Root 0.06 Tail2 0.02
+x -0.40 y +0.65 z 0.80 n   2 rgb 124, 93, 77  Tail1 0.89 Tail2 0.05 Root 0.04
+x -0.40 y +0.65 z 0.90 n   1 rgb 125, 96, 79  Tail1 0.88 Tail2 0.08 Root 0.01
+x -0.40 y +0.65 z 0.95 n   1 rgb 127, 98, 82  Tail1 0.85 Tail2 0.11 Root 0.00
+x -0.40 y +0.65 z 1.00 n   1 rgb 125, 95, 79  Tail1 0.82 Tail2 0.16
+x -0.40 y +0.65 z 1.10 n   1 rgb 125, 95, 80  Tail1 0.76 Tail2 0.22
+x -0.40 y +0.65 z 1.20 n   1 rgb 128, 98, 83  Tail1 0.57 Tail2 0.41
+x -0.40 y +0.65 z 1.25 n   1 rgb 125, 94, 79  Tail2 0.51 Tail1 0.48
+x -0.40 y +0.65 z 1.30 n   1 rgb 123, 92, 76  Tail2 0.57 Tail1 0.41
+x -0.40 y +0.65 z 1.45 n   1 rgb 128, 97, 80  Tail2 0.81 Tail1 0.18
+x -0.40 y +0.65 z 1.50 n   2 rgb 125, 94, 78  Tail2 0.83 Tail1 0.16
+x -0.40 y +0.65 z 1.55 n   1 rgb 125, 93, 78  Tail2 0.85 Tail1 0.14
+x -0.40 y +0.70 z 1.40 n   1 rgb 127, 95, 80  Tail2 0.76 Tail1 0.23
+x -0.40 y +0.70 z 1.45 n   1 rgb 126, 96, 80  Tail2 0.80 Tail1 0.19
+x -0.35 y -0.55 z 1.80 n   1 rgb 254,206,138  Head 0.92 Chest 0.02 Neck 0.02
+x -0.35 y -0.55 z 1.85 n   2 rgb 251,200,122  Head 0.92 Chest 0.02 Neck 0.01
+x -0.35 y -0.50 z 1.80 n   2 rgb 251,200,129  Head 0.91 Chest 0.02 Neck 0.02
+x -0.35 y -0.50 z 1.85 n   1 rgb 254,195,119  Head 0.92 Chest 0.02 Neck 0.02
+x -0.35 y -0.45 z 1.80 n   2 rgb 252,197,123  Head 0.91 Chest 0.02 Neck 0.02
+x -0.35 y -0.40 z 1.75 n   1 rgb 254,204,138  Head 0.90 Chest 0.03 Neck 0.03
+x -0.35 y -0.40 z 1.80 n   3 rgb 252,199,124  Head 0.91 Chest 0.02 Neck 0.02
+x -0.35 y -0.35 z 1.75 n   1 rgb 254,204,136  Head 0.89 Chest 0.03 Neck 0.03
+x -0.35 y -0.35 z 1.80 n   1 rgb 254,195,120  Head 0.91 Chest 0.02 Neck 0.02
+x -0.35 y -0.30 z 1.70 n   1 rgb 253,201,131  Head 0.89 Chest 0.04 Neck 0.03
+x -0.35 y -0.30 z 1.75 n   2 rgb 253,200,131  Head 0.89 Chest 0.03 Neck 0.03
+x -0.35 y -0.25 z 1.75 n   2 rgb 253,202,132  Head 0.91 Chest 0.02 Neck 0.02
+x -0.35 y -0.25 z 1.95 n   1 rgb 130,100, 81  Head 0.90 Chest 0.03 Neck 0.03
+x -0.35 y -0.25 z 2.05 n   2 rgb 130, 97, 75  Head 0.90 Chest 0.03 Neck 0.03
+x -0.35 y -0.25 z 2.15 n   2 rgb 134,105, 74  Head 0.89 Chest 0.04 Neck 0.04
+x -0.35 y -0.25 z 2.20 n   2 rgb 132,106, 79  Head 0.89 Chest 0.04 Neck 0.04
+x -0.35 y -0.20 z 1.70 n   1 rgb 249,201,125  Head 0.88 Chest 0.05 Neck 0.04
+x -0.35 y -0.20 z 1.90 n   1 rgb 135,109, 77  Head 0.90 Chest 0.03 Neck 0.03
+x -0.35 y -0.20 z 1.95 n   2 rgb 133,105, 77  Head 0.90 Chest 0.03 Neck 0.03
+x -0.35 y -0.20 z 2.00 n   1 rgb 127,101, 79  Head 0.90 Chest 0.03 Neck 0.03
+x -0.35 y -0.20 z 2.05 n   2 rgb 131,109, 79  Head 0.89 Chest 0.04 Neck 0.03
+x -0.35 y -0.20 z 2.10 n   1 rgb 134,108, 80  Head 0.89 Chest 0.04 Neck 0.04
+x -0.35 y -0.20 z 2.15 n   1 rgb 133,105, 78  Head 0.89 Chest 0.04 Neck 0.04
+x -0.35 y -0.20 z 2.20 n   3 rgb 135,105, 76  Head 0.89 Chest 0.04 Neck 0.04
+x -0.35 y -0.15 z 1.65 n   1 rgb 252,202,132  Head 0.89 Chest 0.04 Neck 0.04
+x -0.35 y -0.15 z 1.70 n   2 rgb 253,199,122  Head 0.91 Chest 0.02 Neck 0.02
+x -0.35 y -0.15 z 2.00 n   2 rgb 134,108, 78  Head 0.90 Chest 0.03 Neck 0.03
+x -0.35 y -0.15 z 2.10 n   2 rgb 128,105, 73  Head 0.89 Chest 0.04 Neck 0.04
+x -0.35 y -0.15 z 2.15 n   1 rgb 131,105, 75  Head 0.89 Chest 0.04 Neck 0.04
+x -0.35 y -0.10 z 1.65 n   2 rgb 252,199,129  Head 0.89 Chest 0.05 Neck 0.04
+x -0.35 y -0.05 z 1.80 n   1 rgb 218, 31,107  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y -0.05 z 1.85 n   1 rgb 222, 36,109  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y -0.05 z 1.90 n   2 rgb 218, 33,106  Head 0.91 Chest 0.01 Neck 0.01
+x -0.35 y -0.05 z 1.95 n   1 rgb 210, 28, 97  Head 0.91 Chest 0.01 Neck 0.01
+x -0.35 y +0.00 z 1.60 n   5 rgb 253,200,130  Head 0.92 Chest 0.03 Neck 0.03
+x -0.35 y +0.00 z 1.65 n   3 rgb 253,201,130  Head 0.92 Chest 0.03 Neck 0.02
+x -0.35 y +0.00 z 1.75 n   1 rgb 221, 39,110  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y +0.00 z 1.85 n   1 rgb 222, 36,109  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y +0.00 z 1.90 n   1 rgb 215, 31,104  Head 0.91 Chest 0.01 Neck 0.01
+x -0.35 y +0.00 z 1.95 n   2 rgb 208, 28, 95  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y +0.00 z 2.00 n   2 rgb 208, 28, 94  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y +0.05 z 1.15 n   1 rgb 131, 98, 79  Root 0.96
+x -0.35 y +0.05 z 1.20 n   2 rgb 130, 97, 77  Root 0.48 Tail1 0.32 Tail2 0.16
+x -0.35 y +0.05 z 1.25 n   2 rgb 129, 98, 77  Tail1 0.61 Tail2 0.35
+x -0.35 y +0.05 z 1.60 n   1 rgb 236, 66,118  Head 0.93 Chest 0.02 Neck 0.02
+x -0.35 y +0.05 z 1.65 n   1 rgb 223, 93,141  Head 0.93 Chest 0.02 Neck 0.02
+x -0.35 y +0.05 z 1.75 n   1 rgb 209, 28,104  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y +0.05 z 1.85 n   2 rgb 210, 29,103  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y +0.05 z 1.90 n   1 rgb 212, 30,102  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y +0.05 z 2.00 n   1 rgb 200, 27, 88  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y +0.10 z 1.00 n   2 rgb 133,100, 80  Root 0.97
+x -0.35 y +0.10 z 1.05 n   2 rgb 125, 93, 74  Root 0.96
+x -0.35 y +0.10 z 1.10 n   1 rgb 128, 96, 76  Root 0.96
+x -0.35 y +0.10 z 1.35 n   2 rgb 127, 93, 75  Tail1 0.51 Tail2 0.44 Head 0.00
+x -0.35 y +0.10 z 1.45 n   2 rgb 130, 98, 78  Tail2 0.59 Tail1 0.34 Head 0.04
+x -0.35 y +0.10 z 1.55 n   2 rgb 253,202,129  Head 0.93 Chest 0.02 Neck 0.02
+x -0.35 y +0.10 z 1.75 n   2 rgb 209, 29,104  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y +0.10 z 1.80 n   1 rgb 209, 30,105  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y +0.10 z 1.85 n   2 rgb 209, 28,104  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y +0.10 z 1.90 n   2 rgb 208, 27,103  Head 0.91 Chest 0.01 Neck 0.01
+x -0.35 y +0.10 z 1.95 n   2 rgb 209, 26,104  Head 0.92 Chest 0.01 Neck 0.01
+x -0.35 y +0.15 z 0.85 n   1 rgb 129, 96, 77  Root 0.99
+x -0.35 y +0.15 z 0.90 n   2 rgb 129, 96, 77  Root 0.98
+x -0.35 y +0.15 z 1.45 n   2 rgb 129, 98, 76  Tail2 0.61 Tail1 0.32 Head 0.05
+x -0.35 y +0.15 z 1.50 n   2 rgb 127, 94, 75  Tail2 0.65 Tail1 0.24 Head 0.08
+x -0.35 y +0.15 z 1.55 n   2 rgb 254,200,127  Head 0.94 Chest 0.01 Neck 0.01
+x -0.35 y +0.15 z 1.60 n   1 rgb 253,200,128  Head 0.94 Chest 0.01 Neck 0.01
+x -0.35 y +0.20 z 0.45 n   1 rgb 129, 95, 76  Tail1 0.76 Root 0.20
+x -0.35 y +0.20 z 0.65 n   2 rgb 125, 93, 74  Root 0.96
+x -0.35 y +0.20 z 0.70 n   1 rgb 123, 92, 74  Root 0.96
+x -0.35 y +0.20 z 0.75 n   1 rgb 129, 97, 78  Root 0.98
+x -0.35 y +0.20 z 1.55 n   1 rgb 129,101, 84  Tail2 0.68 Tail1 0.18 Head 0.10
+x -0.35 y +0.25 z 0.40 n   1 rgb 136,103, 84  Tail1 0.75 Root 0.20
+x -0.35 y +0.25 z 0.45 n   1 rgb 134, 99, 80  Tail1 0.78 Root 0.18
+x -0.35 y +0.30 z 0.40 n   3 rgb 146,125,110  Tail1 0.76 Root 0.20
+x -0.35 y +0.30 z 0.45 n   1 rgb 135,102, 82  Tail1 0.77 Root 0.19
+x -0.35 y +0.30 z 1.60 n   4 rgb 179, 43, 85  Head 0.73 Tail2 0.19 Tail1 0.03
+x -0.35 y +0.35 z 0.40 n   3 rgb 142,112, 94  Tail1 0.77 Root 0.19
+x -0.35 y +0.35 z 1.60 n   3 rgb 146, 79, 84  Tail2 0.76 Tail1 0.16 Head 0.06
+x -0.35 y +0.40 z 0.40 n   4 rgb 141,114, 96  Tail1 0.77 Root 0.19
+x -0.35 y +0.40 z 1.65 n   1 rgb 126, 97, 80  Tail2 0.83 Tail1 0.12 Head 0.02
+x -0.35 y +0.45 z 0.40 n   1 rgb 137,104, 87  Tail1 0.81 Root 0.15
+x -0.35 y +0.45 z 1.60 n   1 rgb 128, 97, 80  Tail2 0.82 Tail1 0.14
+x -0.35 y +0.45 z 1.65 n   2 rgb 128, 97, 82  Tail2 0.84 Tail1 0.12 Head 0.00
+x -0.35 y +0.50 z 0.45 n   3 rgb 128, 97, 80  Tail1 0.82 Root 0.15
+x -0.35 y +0.50 z 1.65 n   1 rgb 127, 98, 81  Tail2 0.86 Tail1 0.11
+x -0.35 y +0.55 z 0.55 n   1 rgb 125, 94, 79  Tail1 0.85 Root 0.12
+x -0.35 y +0.55 z 1.55 n   2 rgb 125, 95, 79  Tail2 0.81 Tail1 0.17
+x -0.35 y +0.55 z 1.60 n   1 rgb 128, 97, 82  Tail2 0.85 Tail1 0.13
+x -0.35 y +0.60 z 0.55 n   1 rgb 123, 93, 77  Tail1 0.84 Root 0.12 Tail2 0.00
+x -0.35 y +0.60 z 0.65 n   1 rgb 123, 93, 78  Tail1 0.88 Root 0.08 Tail2 0.02
+x -0.35 y +0.60 z 1.50 n   1 rgb 123, 93, 77  Tail2 0.79 Tail1 0.20
+x -0.35 y +0.60 z 1.55 n   2 rgb 125, 94, 79  Tail2 0.80 Tail1 0.18
+x -0.35 y +0.65 z 0.70 n   1 rgb 126, 97, 81  Tail1 0.88 Root 0.07 Tail2 0.03
+x -0.35 y +0.65 z 0.75 n   1 rgb 126, 96, 81  Tail1 0.89 Root 0.06 Tail2 0.04
+x -0.35 y +0.65 z 0.80 n   2 rgb 124, 94, 78  Tail1 0.88 Tail2 0.06 Root 0.05
+x -0.35 y +0.65 z 0.85 n   1 rgb 125, 94, 78  Tail1 0.88 Tail2 0.07 Root 0.02
+x -0.35 y +0.65 z 0.90 n   1 rgb 127, 97, 81  Tail1 0.88 Tail2 0.08 Root 0.03
+x -0.35 y +0.65 z 0.95 n   1 rgb 119, 90, 75  Tail1 0.86 Tail2 0.10 Root 0.02
+x -0.35 y +0.65 z 1.00 n   1 rgb 127, 96, 80  Tail1 0.83 Tail2 0.14 Root 0.00
+x -0.35 y +0.65 z 1.10 n   1 rgb 125, 94, 78  Tail1 0.75 Tail2 0.22
+x -0.35 y +0.65 z 1.15 n   1 rgb 125, 95, 79  Tail1 0.68 Tail2 0.30
+x -0.35 y +0.65 z 1.30 n   1 rgb 127, 98, 81  Tail2 0.51 Tail1 0.48
+x -0.35 y +0.65 z 1.35 n   1 rgb 127, 97, 82  Tail2 0.62 Tail1 0.37
+x -0.35 y +0.65 z 1.45 n   1 rgb 126, 96, 80  Tail2 0.73 Tail1 0.25
+x -0.35 y +0.65 z 1.50 n   1 rgb 127, 96, 81  Tail2 0.78 Tail1 0.21
+x -0.30 y -0.60 z 1.85 n   1 rgb 254,200,142  Head 0.93 Chest 0.01 Neck 0.01
+x -0.30 y -0.55 z 1.85 n   3 rgb 254,199,125  Head 0.92 Chest 0.01 Neck 0.01
+x -0.30 y -0.45 z 1.85 n   1 rgb 254,195,119  Head 0.92 Chest 0.02 Neck 0.02
+x -0.30 y -0.40 z 1.80 n   2 rgb 252,200,130  Head 0.90 Chest 0.03 Neck 0.03
+x -0.30 y -0.40 z 1.85 n   2 rgb 252,196,121  Head 0.92 Chest 0.02 Neck 0.02
+x -0.30 y -0.30 z 1.75 n   2 rgb 251,199,128  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y -0.30 z 1.80 n   1 rgb 251,202,133  Head 0.90 Chest 0.02 Neck 0.02
+x -0.30 y -0.30 z 2.15 n   1 rgb 133,103, 71  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y -0.30 z 2.20 n   1 rgb 137,107, 76  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y -0.25 z 1.75 n   1 rgb 250,197,127  Head 0.88 Chest 0.05 Neck 0.05
+x -0.30 y -0.25 z 1.85 n   1 rgb 131,106, 77  Head 0.90 Chest 0.03 Neck 0.02
+x -0.30 y -0.25 z 1.90 n   1 rgb 254,157,132  Head 0.90 Chest 0.03 Neck 0.03
+x -0.30 y -0.25 z 1.95 n   2 rgb 208,130,103  Head 0.90 Chest 0.03 Neck 0.03
+x -0.30 y -0.25 z 2.10 n   1 rgb 254,159,136  Head 0.90 Chest 0.04 Neck 0.03
+x -0.30 y -0.25 z 2.15 n   2 rgb 253,162,140  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y -0.25 z 2.20 n   3 rgb 134,104, 74  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y -0.20 z 0.60 n   2 rgb 172,100, 37  Root 0.67 Chest 0.27
+x -0.30 y -0.20 z 1.75 n   1 rgb 252,203,133  Head 0.91 Chest 0.02 Neck 0.02
+x -0.30 y -0.20 z 1.85 n   2 rgb 131,106, 75  Head 0.90 Chest 0.03 Neck 0.02
+x -0.30 y -0.20 z 1.90 n   1 rgb 138,111, 82  Head 0.90 Chest 0.03 Neck 0.03
+x -0.30 y -0.20 z 2.20 n   2 rgb 134,103, 72  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y -0.15 z 0.65 n   5 rgb 168, 98, 38  Root 0.67 Chest 0.28
+x -0.30 y -0.15 z 0.80 n   1 rgb 145, 79, 21  Root 0.61 Chest 0.35
+x -0.30 y -0.15 z 1.75 n   1 rgb 252,198,136  Head 0.91 Chest 0.02 Neck 0.02
+x -0.30 y -0.15 z 1.90 n   3 rgb 138,111, 82  Head 0.90 Chest 0.03 Neck 0.03
+x -0.30 y -0.15 z 2.00 n   1 rgb 132,108, 77  Head 0.90 Chest 0.03 Neck 0.03
+x -0.30 y -0.15 z 2.10 n   1 rgb 130,104, 77  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y -0.15 z 2.15 n   1 rgb 131,102, 70  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y -0.10 z 0.65 n   3 rgb 163,100, 49  Root 0.67 Chest 0.28
+x -0.30 y -0.10 z 0.70 n   5 rgb 169, 99, 41  Root 0.66 Chest 0.29
+x -0.30 y -0.10 z 0.80 n   1 rgb 148, 79, 18  Root 0.61 Chest 0.36
+x -0.30 y -0.10 z 1.70 n   3 rgb 252,201,130  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y -0.10 z 1.75 n   1 rgb 254,202,124  Head 0.92 Chest 0.02 Neck 0.02
+x -0.30 y -0.10 z 1.95 n   2 rgb 220, 34,104  Head 0.90 Chest 0.03 Neck 0.02
+x -0.30 y -0.05 z 1.65 n   1 rgb 250,198,128  Head 0.89 Chest 0.05 Neck 0.05
+x -0.30 y -0.05 z 1.70 n   1 rgb 253,201,133  Head 0.93 Chest 0.02 Neck 0.02
+x -0.30 y -0.05 z 1.85 n   1 rgb 223, 37,111  Head 0.92 Chest 0.01 Neck 0.01
+x -0.30 y -0.05 z 1.90 n   7 rgb 213, 30,101  Head 0.91 Chest 0.01 Neck 0.01
+x -0.30 y -0.05 z 1.95 n   4 rgb 218, 34,107  Head 0.90 Chest 0.02 Neck 0.02
+x -0.30 y -0.05 z 2.10 n   1 rgb 254,200,128  Head 0.88 Chest 0.05 Neck 0.05
+x -0.30 y -0.05 z 2.15 n   1 rgb 254,200,129  Head 0.88 Chest 0.05 Neck 0.05
+x -0.30 y +0.00 z 1.65 n   1 rgb 254,201,133  Head 0.89 Chest 0.05 Neck 0.05
+x -0.30 y +0.00 z 1.70 n   3 rgb 228, 90,115  Head 0.93 Chest 0.02 Neck 0.02
+x -0.30 y +0.00 z 1.85 n   1 rgb 220, 35,107  Head 0.92 Chest 0.02 Neck 0.01
+x -0.30 y +0.00 z 1.90 n   8 rgb 219, 43,108  Head 0.91 Chest 0.01 Neck 0.01
+x -0.30 y +0.00 z 1.95 n   2 rgb 210, 29, 98  Head 0.91 Chest 0.01 Neck 0.01
+x -0.30 y +0.00 z 2.00 n   2 rgb 204, 25, 93  Head 0.91 Chest 0.02 Neck 0.02
+x -0.30 y +0.00 z 2.10 n   2 rgb 252,195,125  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y +0.00 z 2.15 n   2 rgb 254,201,129  Head 0.88 Chest 0.05 Neck 0.05
+x -0.30 y +0.05 z 1.15 n   1 rgb 128, 94, 75  Root 0.96
+x -0.30 y +0.05 z 1.20 n   1 rgb 130, 96, 78  Tail1 0.66 Tail2 0.30
+x -0.30 y +0.05 z 1.65 n   3 rgb 251,201,134  Head 0.92 Chest 0.03 Neck 0.03
+x -0.30 y +0.05 z 1.70 n   1 rgb 209, 23, 97  Head 0.93 Chest 0.01 Neck 0.01
+x -0.30 y +0.05 z 1.80 n   1 rgb 209, 27,104  Head 0.92 Chest 0.02 Neck 0.02
+x -0.30 y +0.05 z 1.85 n   1 rgb 210, 28,103  Head 0.91 Chest 0.02 Neck 0.01
+x -0.30 y +0.05 z 1.90 n   1 rgb 214, 28,105  Head 0.91 Chest 0.02 Neck 0.02
+x -0.30 y +0.05 z 1.95 n   1 rgb 209, 27,104  Head 0.91 Chest 0.02 Neck 0.02
+x -0.30 y +0.05 z 2.05 n   1 rgb 252,199,129  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y +0.05 z 2.10 n   1 rgb 254,203,131  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y +0.05 z 2.15 n   4 rgb 252,196,128  Head 0.88 Chest 0.05 Neck 0.05
+x -0.30 y +0.10 z 1.00 n   1 rgb 129, 96, 76  Root 0.97
+x -0.30 y +0.10 z 1.10 n   2 rgb 129, 95, 76  Root 0.96
+x -0.30 y +0.10 z 1.15 n   1 rgb 127, 96, 75  Root 0.96
+x -0.30 y +0.10 z 1.20 n   1 rgb 129, 97, 75  Root 0.96
+x -0.30 y +0.10 z 1.30 n   2 rgb 129, 97, 77  Tail1 0.61 Tail2 0.35
+x -0.30 y +0.10 z 1.35 n   1 rgb 127, 95, 76  Tail1 0.54 Tail2 0.41 Head 0.01
+x -0.30 y +0.10 z 1.60 n   1 rgb 253,201,130  Head 0.91 Chest 0.03 Neck 0.03
+x -0.30 y +0.10 z 1.65 n   3 rgb 253,203,135  Head 0.93 Chest 0.02 Neck 0.02
+x -0.30 y +0.10 z 2.05 n   4 rgb 253,204,137  Head 0.89 Chest 0.04 Neck 0.04
+x -0.30 y +0.10 z 2.10 n   2 rgb 250,196,130  Head 0.88 Chest 0.05 Neck 0.04
+x -0.30 y +0.10 z 2.15 n   1 rgb 254,203,133  Head 0.88 Chest 0.05 Neck 0.05
+x -0.30 y +0.15 z 0.95 n   1 rgb 129, 95, 77  Root 0.98
+x -0.30 y +0.15 z 1.40 n   1 rgb 130, 97, 78  Tail2 0.51 Tail1 0.41 Head 0.05
+x -0.30 y +0.15 z 1.55 n   1 rgb 252,201,132  Head 0.93 Chest 0.02 Neck 0.02
+x -0.30 y +0.15 z 1.60 n   3 rgb 253,201,132  Head 0.93 Chest 0.02 Neck 0.02
+x -0.30 y +0.15 z 2.10 n   2 rgb 252,201,134  Head 0.88 Chest 0.05 Neck 0.04
+x -0.30 y +0.20 z 0.50 n   2 rgb 128, 94, 75  Tail1 0.74 Root 0.21
+x -0.30 y +0.20 z 0.55 n   2 rgb 135, 94, 73  Root 0.95
+x -0.30 y +0.20 z 0.60 n   1 rgb 126, 92, 76  Root 0.95
+x -0.30 y +0.20 z 0.65 n   1 rgb 125, 94, 74  Root 0.95
+x -0.30 y +0.20 z 0.70 n   1 rgb 124, 94, 73  Root 0.97
+x -0.30 y +0.20 z 0.75 n   1 rgb 125, 95, 78  Root 0.98
+x -0.30 y +0.20 z 0.80 n   1 rgb 125, 91, 71  Root 0.99
+x -0.30 y +0.20 z 0.85 n   1 rgb 130, 98, 79  Root 0.99
+x -0.30 y +0.20 z 1.50 n   1 rgb 127, 95, 75  Tail2 0.60 Tail1 0.25 Head 0.11
+x -0.30 y +0.20 z 1.55 n   2 rgb 254,204,134  Head 0.94 Chest 0.01 Neck 0.01
+x -0.30 y +0.25 z 0.40 n   3 rgb 133, 99, 80  Tail1 0.73 Root 0.22 Chest 0.00
+x -0.30 y +0.25 z 0.45 n   1 rgb 135,102, 83  Tail1 0.75 Root 0.21
+x -0.30 y +0.25 z 1.50 n   1 rgb 127, 97, 79  Tail2 0.64 Tail1 0.18 Head 0.13
+x -0.30 y +0.25 z 1.55 n   7 rgb 192,144,101  Head 0.60 Tail2 0.28 Tail1 0.07
+x -0.30 y +0.30 z 0.40 n   1 rgb 137,106, 88  Tail1 0.73 Root 0.23
+x -0.30 y +0.30 z 1.55 n   5 rgb 155, 70, 82  Head 0.44 Tail2 0.40 Tail1 0.11
+x -0.30 y +0.30 z 1.60 n   1 rgb 203, 23, 87  Head 0.97
+x -0.30 y +0.35 z 0.35 n   2 rgb 136,105, 88  Tail1 0.75 Root 0.21
+x -0.30 y +0.35 z 0.40 n   3 rgb 134,102, 86  Tail1 0.75 Root 0.21
+x -0.30 y +0.35 z 1.55 n   2 rgb 130, 98, 79  Tail2 0.70 Tail1 0.20 Head 0.07
+x -0.30 y +0.35 z 1.60 n   3 rgb 182, 45, 88  Head 0.67 Tail2 0.23 Tail1 0.07
+x -0.30 y +0.40 z 0.40 n   5 rgb 137,106, 89  Tail1 0.76 Root 0.20
+x -0.30 y +0.40 z 1.60 n   1 rgb 131,101, 83  Tail2 0.77 Tail1 0.17 Head 0.04
+x -0.30 y +0.45 z 0.40 n   1 rgb 133,102, 85  Tail1 0.78 Root 0.18
+x -0.30 y +0.45 z 1.55 n   2 rgb 127, 96, 80  Tail2 0.73 Tail1 0.22 Head 0.02
+x -0.30 y +0.45 z 1.60 n   1 rgb 126, 96, 80  Tail2 0.78 Tail1 0.17 Head 0.01
+x -0.30 y +0.50 z 0.40 n   2 rgb 130, 99, 82  Tail1 0.79 Root 0.17
+x -0.30 y +0.50 z 0.45 n   1 rgb 124, 93, 76  Tail1 0.81 Root 0.15
+x -0.30 y +0.50 z 1.55 n   2 rgb 126, 96, 80  Tail2 0.75 Tail1 0.21
+x -0.30 y +0.50 z 1.60 n   1 rgb 130,101, 84  Tail2 0.80 Tail1 0.16
+x -0.30 y +0.55 z 0.50 n   1 rgb 123, 93, 76  Tail1 0.82 Root 0.14 Tail2 0.00
+x -0.30 y +0.55 z 1.45 n   1 rgb 124, 94, 79  Tail2 0.70 Tail1 0.28
+x -0.30 y +0.55 z 1.50 n   1 rgb 125, 94, 78  Tail2 0.76 Tail1 0.22
+x -0.30 y +0.55 z 1.55 n   1 rgb 125, 95, 80  Tail2 0.75 Tail1 0.22
+x -0.30 y +0.60 z 0.60 n   1 rgb 127, 97, 82  Tail1 0.86 Root 0.10 Tail2 0.01
+x -0.30 y +0.60 z 0.65 n   1 rgb 125, 94, 78  Tail1 0.87 Root 0.09 Tail2 0.02
+x -0.30 y +0.60 z 0.70 n   2 rgb 124, 94, 78  Tail1 0.87 Root 0.08 Tail2 0.03
+x -0.30 y +0.60 z 0.75 n   1 rgb 125, 94, 79  Tail1 0.88 Root 0.07 Tail2 0.04
+x -0.30 y +0.60 z 0.80 n   1 rgb 123, 92, 78  Tail1 0.87 Root 0.06 Tail2 0.06
+x -0.30 y +0.60 z 1.45 n   1 rgb 123, 94, 79  Tail2 0.72 Tail1 0.26
+x -0.30 y +0.65 z 0.75 n   1 rgb 123, 93, 78  Tail1 0.87 Root 0.07 Tail2 0.05
+x -0.30 y +0.65 z 0.85 n   2 rgb 122, 92, 77  Tail1 0.87 Tail2 0.08 Root 0.04
+x -0.30 y +0.65 z 0.90 n   1 rgb 127, 96, 81  Tail1 0.86 Tail2 0.09 Root 0.03
+x -0.30 y +0.65 z 0.95 n   1 rgb 121, 91, 75  Tail1 0.85 Tail2 0.11 Root 0.02
+x -0.30 y +0.65 z 1.00 n   1 rgb 124, 95, 78  Tail1 0.83 Tail2 0.14 Root 0.01
+x -0.30 y +0.65 z 1.05 n   1 rgb 122, 92, 76  Tail1 0.81 Tail2 0.16 Root 0.00
+x -0.30 y +0.65 z 1.25 n   1 rgb 123, 95, 79  Tail1 0.54 Tail2 0.44
+x -0.30 y +0.65 z 1.35 n   1 rgb 129, 99, 83  Tail2 0.61 Tail1 0.37
+x -0.30 y +0.65 z 1.40 n   1 rgb 127, 97, 81  Tail2 0.66 Tail1 0.32
+x -0.25 y -0.60 z 1.90 n   2 rgb 252,200,124  Head 0.93 Chest 0.01 Neck 0.01
+x -0.25 y -0.55 z 1.85 n   2 rgb 251,198,128  Head 0.92 Chest 0.02 Neck 0.01
+x -0.25 y -0.55 z 1.90 n   1 rgb 254,202,123  Head 0.93 Chest 0.01 Neck 0.01
+x -0.25 y -0.50 z 1.85 n   2 rgb 252,198,130  Head 0.92 Chest 0.02 Neck 0.02
+x -0.25 y -0.50 z 1.90 n   2 rgb 253,196,120  Head 0.93 Chest 0.01 Neck 0.01
+x -0.25 y -0.45 z 1.85 n   1 rgb 249,197,127  Head 0.92 Chest 0.02 Neck 0.02
+x -0.25 y -0.45 z 1.90 n   2 rgb 253,196,120  Head 0.92 Chest 0.01 Neck 0.01
+x -0.25 y -0.35 z 1.80 n   1 rgb 250,197,129  Head 0.90 Chest 0.03 Neck 0.03
+x -0.25 y -0.35 z 1.85 n   2 rgb 252,197,131  Head 0.91 Chest 0.02 Neck 0.02
+x -0.25 y -0.35 z 2.10 n   2 rgb 132,102, 71  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y -0.35 z 2.15 n   1 rgb 135,107, 75  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y -0.30 z 0.70 n   1 rgb 164, 95, 25  Root 0.63 Chest 0.34
+x -0.25 y -0.30 z 1.80 n   3 rgb 253,203,134  Head 0.90 Chest 0.03 Neck 0.03
+x -0.25 y -0.30 z 1.85 n   1 rgb 254,196,127  Head 0.90 Chest 0.02 Neck 0.02
+x -0.25 y -0.30 z 2.10 n   1 rgb 248,172,143  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y -0.30 z 2.15 n   2 rgb 134,104, 74  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y -0.30 z 2.20 n   1 rgb 131,101, 72  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y -0.25 z 0.60 n   2 rgb 175,104, 36  Root 0.67 Chest 0.28
+x -0.25 y -0.25 z 0.65 n   3 rgb 158, 89, 23  Root 0.65 Chest 0.31
+x -0.25 y -0.25 z 0.70 n   3 rgb 196,120, 29  Root 0.64 Chest 0.33
+x -0.25 y -0.25 z 1.75 n   1 rgb 254,200,133  Head 0.87 Chest 0.05 Neck 0.05
+x -0.25 y -0.25 z 1.80 n   1 rgb 254,203,133  Head 0.90 Chest 0.02 Neck 0.02
+x -0.25 y -0.25 z 1.85 n   3 rgb 188,141, 87  Head 0.90 Chest 0.02 Neck 0.02
+x -0.25 y -0.25 z 1.95 n   1 rgb 254,158,128  Head 0.90 Chest 0.03 Neck 0.03
+x -0.25 y -0.25 z 2.05 n   1 rgb 250,154,125  Head 0.90 Chest 0.03 Neck 0.03
+x -0.25 y -0.25 z 2.20 n   1 rgb 132,100, 72  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y -0.20 z 0.75 n   2 rgb 178,109, 41  Root 0.62 Chest 0.35
+x -0.25 y -0.20 z 1.75 n   3 rgb 251,201,133  Head 0.88 Chest 0.05 Neck 0.04
+x -0.25 y -0.20 z 1.80 n   1 rgb 136,115, 79  Head 0.90 Chest 0.02 Neck 0.02
+x -0.25 y -0.20 z 1.85 n   3 rgb 144,111, 78  Head 0.90 Chest 0.02 Neck 0.02
+x -0.25 y -0.20 z 2.10 n   1 rgb 203, 16, 91  Head 0.89 Chest 0.05 Neck 0.04
+x -0.25 y -0.20 z 2.15 n   1 rgb 132,100, 70  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y -0.15 z 0.75 n   2 rgb 179,107, 46  Root 0.63 Chest 0.34
+x -0.25 y -0.15 z 0.80 n   1 rgb 203,129, 58  Root 0.61 Chest 0.36
+x -0.25 y -0.15 z 1.75 n   1 rgb 253,200,130  Head 0.91 Chest 0.02 Neck 0.02
+x -0.25 y -0.15 z 1.85 n   1 rgb 138,114, 81  Head 0.90 Chest 0.02 Neck 0.02
+x -0.25 y -0.15 z 1.90 n   1 rgb 217, 37,109  Head 0.90 Chest 0.03 Neck 0.02
+x -0.25 y -0.15 z 1.95 n   1 rgb 136,108, 78  Head 0.90 Chest 0.03 Neck 0.03
+x -0.25 y -0.15 z 2.00 n   1 rgb 149, 87, 92  Head 0.90 Chest 0.03 Neck 0.03
+x -0.25 y -0.15 z 2.05 n   3 rgb 194, 33, 93  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y -0.15 z 2.10 n   1 rgb 201, 25, 91  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y -0.10 z 0.60 n   3 rgb 170,102, 40  Root 0.69 Chest 0.25
+x -0.25 y -0.10 z 0.80 n   3 rgb 163, 93, 30  Root 0.61 Chest 0.35
+x -0.25 y -0.10 z 0.85 n   2 rgb 192,119, 51  Root 0.59 Chest 0.37
+x -0.25 y -0.10 z 1.70 n   1 rgb 252,200,131  Head 0.86 Chest 0.06 Neck 0.06
+x -0.25 y -0.10 z 1.80 n   1 rgb 254,198,128  Head 0.91 Chest 0.02 Neck 0.02
+x -0.25 y -0.10 z 1.85 n   1 rgb 254,189,116  Head 0.91 Chest 0.02 Neck 0.02
+x -0.25 y -0.10 z 1.95 n   1 rgb 217, 36,108  Head 0.90 Chest 0.03 Neck 0.02
+x -0.25 y -0.10 z 2.00 n   1 rgb 220, 23,112  Head 0.90 Chest 0.03 Neck 0.03
+x -0.25 y -0.10 z 2.05 n   5 rgb 230,138,120  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y -0.10 z 2.10 n   2 rgb 250,195,127  Head 0.89 Chest 0.05 Neck 0.04
+x -0.25 y -0.10 z 2.15 n   2 rgb 252,195,124  Head 0.88 Chest 0.05 Neck 0.05
+x -0.25 y -0.10 z 2.20 n   3 rgb 254,199,126  Head 0.87 Chest 0.06 Neck 0.06
+x -0.25 y -0.10 z 2.25 n   1 rgb 254,202,128  Head 0.87 Chest 0.06 Neck 0.06
+x -0.25 y -0.05 z 0.65 n   2 rgb 170,102, 45  Root 0.68 Chest 0.26
+x -0.25 y -0.05 z 1.70 n   2 rgb 253,201,131  Head 0.86 Chest 0.06 Neck 0.06
+x -0.25 y -0.05 z 1.85 n   1 rgb 220, 33,109  Head 0.91 Chest 0.02 Neck 0.02
+x -0.25 y -0.05 z 1.90 n   2 rgb 221, 35,108  Head 0.91 Chest 0.02 Neck 0.02
+x -0.25 y -0.05 z 2.00 n   5 rgb 237,128,118  Head 0.90 Chest 0.03 Neck 0.03
+x -0.25 y -0.05 z 2.05 n   1 rgb 254,197,126  Head 0.89 Chest 0.04 Neck 0.03
+x -0.25 y -0.05 z 2.10 n   2 rgb 249,190,118  Head 0.89 Chest 0.05 Neck 0.04
+x -0.25 y -0.05 z 2.15 n   3 rgb 252,196,125  Head 0.88 Chest 0.05 Neck 0.05
+x -0.25 y -0.05 z 2.20 n   1 rgb 252,195,121  Head 0.88 Chest 0.05 Neck 0.05
+x -0.25 y -0.05 z 2.25 n   1 rgb 254,197,122  Head 0.87 Chest 0.06 Neck 0.06
+x -0.25 y +0.00 z 1.65 n   1 rgb 254,202,134  Head 0.87 Chest 0.06 Neck 0.06
+x -0.25 y +0.00 z 1.70 n   2 rgb 253,200,130  Head 0.90 Chest 0.04 Neck 0.04
+x -0.25 y +0.00 z 1.75 n   1 rgb 254,208,135  Head 0.92 Chest 0.02 Neck 0.02
+x -0.25 y +0.00 z 1.80 n   2 rgb 207, 26,103  Head 0.92 Chest 0.02 Neck 0.02
+x -0.25 y +0.00 z 1.85 n   3 rgb 229, 86,114  Head 0.92 Chest 0.02 Neck 0.02
+x -0.25 y +0.00 z 1.90 n   2 rgb 232, 53,113  Head 0.91 Chest 0.01 Neck 0.01
+x -0.25 y +0.00 z 1.95 n   5 rgb 223, 66,111  Head 0.91 Chest 0.02 Neck 0.02
+x -0.25 y +0.00 z 2.00 n   3 rgb 239,137,122  Head 0.90 Chest 0.03 Neck 0.03
+x -0.25 y +0.00 z 2.05 n   2 rgb 251,191,121  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y +0.00 z 2.20 n   1 rgb 254,201,123  Head 0.88 Chest 0.05 Neck 0.05
+x -0.25 y +0.00 z 2.25 n   1 rgb 253,198,123  Head 0.88 Chest 0.05 Neck 0.05
+x -0.25 y +0.05 z 1.65 n   1 rgb 252,200,130  Head 0.90 Chest 0.05 Neck 0.05
+x -0.25 y +0.05 z 1.70 n   2 rgb 254,205,135  Head 0.93 Chest 0.02 Neck 0.02
+x -0.25 y +0.05 z 1.80 n   1 rgb 211, 27,103  Head 0.91 Chest 0.02 Neck 0.02
+x -0.25 y +0.05 z 1.85 n   2 rgb 209, 27,103  Head 0.91 Chest 0.02 Neck 0.02
+x -0.25 y +0.05 z 1.90 n   5 rgb 209, 27,104  Head 0.91 Chest 0.02 Neck 0.02
+x -0.25 y +0.05 z 1.95 n   4 rgb 242,160,130  Head 0.90 Chest 0.03 Neck 0.02
+x -0.25 y +0.05 z 2.00 n   5 rgb 252,200,131  Head 0.89 Chest 0.03 Neck 0.03
+x -0.25 y +0.05 z 2.20 n   1 rgb 253,196,121  Head 0.88 Chest 0.05 Neck 0.05
+x -0.25 y +0.10 z 1.05 n   2 rgb 129, 95, 77  Root 0.96
+x -0.25 y +0.10 z 1.10 n   1 rgb 131, 98, 79  Root 0.96
+x -0.25 y +0.10 z 1.15 n   2 rgb 132, 99, 80  Root 0.96
+x -0.25 y +0.10 z 1.20 n   1 rgb 125, 93, 73  Tail1 0.69 Tail2 0.27
+x -0.25 y +0.10 z 1.25 n   3 rgb 125, 92, 73  Tail1 0.66 Tail2 0.30
+x -0.25 y +0.10 z 1.30 n   2 rgb 128, 96, 78  Tail1 0.59 Tail2 0.36 Head 0.01
+x -0.25 y +0.10 z 1.65 n   1 rgb 254,200,130  Head 0.90 Chest 0.05 Neck 0.05
+x -0.25 y +0.10 z 1.70 n   1 rgb 254,205,136  Head 0.93 Chest 0.02 Neck 0.02
+x -0.25 y +0.10 z 1.85 n   1 rgb 208, 28,104  Head 0.91 Chest 0.03 Neck 0.03
+x -0.25 y +0.10 z 1.90 n   2 rgb 228,115,116  Head 0.90 Chest 0.03 Neck 0.03
+x -0.25 y +0.10 z 1.95 n   3 rgb 253,206,139  Head 0.89 Chest 0.03 Neck 0.03
+x -0.25 y +0.10 z 2.00 n   1 rgb 249,198,132  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y +0.10 z 2.15 n   1 rgb 254,199,124  Head 0.88 Chest 0.05 Neck 0.05
+x -0.25 y +0.15 z 0.95 n   2 rgb 129, 96, 76  Root 0.98
+x -0.25 y +0.15 z 1.00 n   1 rgb 127, 96, 77  Root 0.97
+x -0.25 y +0.15 z 1.35 n   1 rgb 128, 95, 77  Tail1 0.58 Tail2 0.37 Head 0.02
+x -0.25 y +0.15 z 1.45 n   1 rgb 133,102, 81  Tail2 0.50 Tail1 0.42 Head 0.06
+x -0.25 y +0.15 z 1.60 n   1 rgb 254,201,132  Head 0.91 Chest 0.04 Neck 0.04
+x -0.25 y +0.15 z 1.65 n   2 rgb 253,200,130  Head 0.91 Chest 0.04 Neck 0.04
+x -0.25 y +0.15 z 1.95 n   2 rgb 250,200,133  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y +0.15 z 2.00 n   2 rgb 247,195,130  Head 0.89 Chest 0.04 Neck 0.04
+x -0.25 y +0.15 z 2.05 n   2 rgb 248,196,130  Head 0.88 Chest 0.04 Neck 0.04
+x -0.25 y +0.15 z 2.10 n   2 rgb 253,202,133  Head 0.88 Chest 0.05 Neck 0.05
+x -0.25 y +0.15 z 2.15 n   2 rgb 253,199,128  Head 0.88 Chest 0.05 Neck 0.05
+x -0.25 y +0.20 z 0.45 n   2 rgb 133,100, 80  Tail1 0.71 Root 0.24 Chest 0.00
+x -0.25 y +0.20 z 0.55 n   1 rgb 129, 93, 74  Root 0.95 Chest 0.01
+x -0.25 y +0.20 z 0.70 n   3 rgb 126, 95, 74  Tail1 0.76 Root 0.18 Tail2 0.02
+x -0.25 y +0.20 z 0.75 n   1 rgb 124, 93, 75  Tail1 0.79 Root 0.15 Tail2 0.03
+x -0.25 y +0.20 z 0.90 n   1 rgb 128, 97, 78  Root 0.99
+x -0.25 y +0.20 z 1.40 n   1 rgb 126, 94, 74  Tail2 0.47 Tail1 0.44 Head 0.06
+x -0.25 y +0.20 z 1.45 n   1 rgb 126, 95, 75  Tail2 0.50 Tail1 0.40 Head 0.07
+x -0.25 y +0.20 z 1.55 n   2 rgb 251,199,130  Head 0.92 Chest 0.03 Neck 0.03
+x -0.25 y +0.20 z 2.00 n   3 rgb 252,202,135  Head 0.88 Chest 0.04 Neck 0.04
+x -0.25 y +0.20 z 2.05 n   3 rgb 253,204,137  Head 0.88 Chest 0.05 Neck 0.04
+x -0.25 y +0.25 z 0.40 n   1 rgb 134,100, 80  Tail1 0.69 Root 0.26 Chest 0.01
+x -0.25 y +0.25 z 0.45 n   1 rgb 130, 97, 77  Tail1 0.69 Root 0.26 Chest 0.01
+x -0.25 y +0.25 z 0.80 n   1 rgb 126, 97, 80  Tail1 0.81 Root 0.12 Tail2 0.05
+x -0.25 y +0.25 z 1.45 n   4 rgb 127, 95, 77  Tail2 0.51 Tail1 0.38 Head 0.07
+x -0.25 y +0.25 z 1.50 n   4 rgb 129, 97, 79  Tail2 0.52 Tail1 0.36 Head 0.08
+x -0.25 y +0.25 z 1.60 n   1 rgb 251,202,133  Head 0.92 Chest 0.03 Neck 0.03
+x -0.25 y +0.25 z 2.05 n   1 rgb 254,205,137  Head 0.88 Chest 0.05 Neck 0.05
+x -0.25 y +0.25 z 2.10 n   1 rgb 254,204,137  Head 0.88 Chest 0.05 Neck 0.05
+x -0.25 y +0.30 z 0.35 n   1 rgb 220,213,206  Tail1 0.69 Root 0.27 Chest 0.01
+x -0.25 y +0.30 z 0.40 n   1 rgb 138,107, 89  Tail1 0.69 Root 0.26 Chest 0.01
+x -0.25 y +0.30 z 1.50 n   3 rgb 127, 96, 78  Tail2 0.55 Tail1 0.33 Head 0.08
+x -0.25 y +0.30 z 1.55 n   1 rgb 132, 98, 81  Tail2 0.62 Tail1 0.27 Head 0.08
+x -0.25 y +0.35 z 0.35 n   3 rgb 187,170,158  Tail1 0.70 Root 0.26 Chest 0.00
+x -0.25 y +0.35 z 1.50 n   2 rgb 155, 72, 87  Head 0.51 Tail2 0.31 Tail1 0.15
+x -0.25 y +0.35 z 1.55 n   5 rgb 156,121, 93  Tail2 0.53 Head 0.23 Tail1 0.21
+x -0.25 y +0.40 z 0.35 n   1 rgb 138,106, 88  Tail1 0.70 Root 0.26 Chest 0.00
+x -0.25 y +0.40 z 0.40 n   1 rgb 138,105, 87  Tail1 0.74 Root 0.22
+x -0.25 y +0.40 z 1.50 n   1 rgb 127, 97, 80  Tail2 0.62 Tail1 0.31 Head 0.04
+x -0.25 y +0.40 z 1.55 n   3 rgb 128, 99, 81  Tail2 0.65 Tail1 0.28 Head 0.05
+x -0.25 y +0.45 z 0.40 n   2 rgb 136,104, 87  Tail1 0.76 Root 0.20
+x -0.25 y +0.45 z 1.50 n   1 rgb 128, 99, 82  Tail2 0.65 Tail1 0.29 Head 0.02
+x -0.25 y +0.45 z 1.55 n   3 rgb 129, 99, 83  Tail2 0.70 Tail1 0.25 Head 0.02
+x -0.25 y +0.50 z 0.45 n   1 rgb 126, 94, 77  Tail1 0.78 Root 0.18
+x -0.25 y +0.50 z 1.45 n   1 rgb 125, 95, 80  Tail2 0.61 Tail1 0.36
+x -0.25 y +0.50 z 1.50 n   2 rgb 125, 96, 80  Tail2 0.68 Tail1 0.28 Head 0.00
+x -0.25 y +0.55 z 0.50 n   1 rgb 125, 95, 78  Tail1 0.80 Root 0.16
+x -0.25 y +0.55 z 0.55 n   2 rgb 125, 94, 78  Tail1 0.82 Root 0.14 Tail2 0.00
+x -0.25 y +0.55 z 0.60 n   2 rgb 126, 95, 79  Tail1 0.82 Root 0.13 Tail2 0.01
+x -0.25 y +0.55 z 0.65 n   1 rgb 120, 90, 75  Tail1 0.83 Root 0.12 Tail2 0.02
+x -0.25 y +0.55 z 0.70 n   1 rgb 122, 92, 76  Tail1 0.85 Root 0.10 Tail2 0.04
+x -0.25 y +0.55 z 1.40 n   1 rgb 127, 96, 79  Tail2 0.59 Tail1 0.38
+x -0.25 y +0.55 z 1.45 n   1 rgb 125, 96, 80  Tail2 0.61 Tail1 0.36
+x -0.25 y +0.55 z 1.50 n   1 rgb 125, 96, 80  Tail2 0.70 Tail1 0.27
+x -0.25 y +0.60 z 0.70 n   1 rgb 120, 91, 75  Tail1 0.86 Root 0.08 Tail2 0.04
+x -0.25 y +0.60 z 0.80 n   2 rgb 121, 91, 75  Tail1 0.86 Root 0.07 Tail2 0.06
+x -0.25 y +0.60 z 0.90 n   1 rgb 122, 91, 75  Tail1 0.86 Tail2 0.09 Root 0.04
+x -0.25 y +0.60 z 0.95 n   1 rgb 123, 94, 76  Tail1 0.84 Tail2 0.12 Root 0.02
+x -0.25 y +0.60 z 1.05 n   1 rgb 123, 94, 77  Tail1 0.78 Tail2 0.19
+x -0.25 y +0.60 z 1.20 n   1 rgb 121, 91, 75  Tail1 0.61 Tail2 0.36
+x -0.25 y +0.60 z 1.30 n   1 rgb 128, 98, 82  Tail2 0.51 Tail1 0.46
+x -0.25 y +0.60 z 1.35 n   1 rgb 124, 95, 78  Tail2 0.56 Tail1 0.42
+x -0.25 y +0.60 z 1.40 n   2 rgb 125, 95, 79  Tail2 0.62 Tail1 0.36
+x -0.25 y +0.65 z 1.15 n   1 rgb 128, 97, 81  Tail1 0.71 Tail2 0.27
+x -0.20 y -0.50 z 1.90 n   1 rgb 254,203,124  Head 0.93 Chest 0.01 Neck 0.01
+x -0.20 y -0.45 z 1.85 n   1 rgb 253,200,129  Head 0.92 Chest 0.02 Neck 0.02
+x -0.20 y -0.45 z 1.90 n   3 rgb 254,200,125  Head 0.92 Chest 0.02 Neck 0.02
+x -0.20 y -0.40 z 1.50 n   2 rgb 153,120,100  Head 0.83 Chest 0.08 Neck 0.07
+x -0.20 y -0.40 z 1.55 n   1 rgb 146,114, 97  Head 0.83 Chest 0.08 Neck 0.07
+x -0.20 y -0.40 z 1.85 n   1 rgb 254,204,131  Head 0.91 Chest 0.03 Neck 0.03
+x -0.20 y -0.40 z 1.90 n   4 rgb 252,198,127  Head 0.92 Chest 0.02 Neck 0.02
+x -0.20 y -0.40 z 2.10 n   1 rgb 136,107, 76  Head 0.90 Chest 0.04 Neck 0.04
+x -0.20 y -0.35 z 0.65 n   2 rgb 169, 94, 21  Root 0.64 Chest 0.34
+x -0.20 y -0.35 z 1.50 n   6 rgb 153,121,102  Head 0.80 Chest 0.09 Neck 0.08
+x -0.20 y -0.35 z 1.55 n   2 rgb 147,116, 98  Head 0.82 Chest 0.09 Neck 0.08
+x -0.20 y -0.35 z 1.85 n   2 rgb 252,199,129  Head 0.90 Chest 0.03 Neck 0.03
+x -0.20 y -0.35 z 2.00 n   2 rgb 194,131,103  Head 0.90 Chest 0.03 Neck 0.03
+x -0.20 y -0.35 z 2.05 n   1 rgb 133,105, 73  Head 0.90 Chest 0.04 Neck 0.03
+x -0.20 y -0.35 z 2.10 n   1 rgb 135,106, 74  Head 0.89 Chest 0.04 Neck 0.04
+x -0.20 y -0.35 z 2.15 n   1 rgb 135,106, 74  Head 0.89 Chest 0.04 Neck 0.04
+x -0.20 y -0.30 z 0.60 n   2 rgb 170, 99, 29  Root 0.67 Chest 0.29
+x -0.20 y -0.30 z 0.65 n   6 rgb 171, 99, 22  Root 0.65 Chest 0.32
+x -0.20 y -0.30 z 0.70 n   3 rgb 193,120, 33  Root 0.63 Chest 0.35
+x -0.20 y -0.30 z 0.75 n   2 rgb 185,112, 36  Root 0.62 Chest 0.37
+x -0.20 y -0.30 z 1.45 n   2 rgb 155,123,107  Head 0.76 Chest 0.12 Neck 0.10
+x -0.20 y -0.30 z 1.50 n   3 rgb 156,125,109  Head 0.79 Chest 0.10 Neck 0.09
+x -0.20 y -0.30 z 1.55 n   4 rgb 153,121,104  Head 0.80 Chest 0.10 Neck 0.09
+x -0.20 y -0.30 z 1.60 n   1 rgb 149,118,101  Head 0.82 Chest 0.09 Neck 0.08
+x -0.20 y -0.30 z 1.80 n   1 rgb 252,200,130  Head 0.89 Chest 0.05 Neck 0.04
+x -0.20 y -0.30 z 1.85 n   1 rgb 251,198,129  Head 0.88 Chest 0.05 Neck 0.05
+x -0.20 y -0.30 z 1.90 n   1 rgb 246,190,122  Head 0.91 Chest 0.02 Neck 0.02
+x -0.20 y -0.30 z 2.10 n   1 rgb 182, 35, 74  Head 0.88 Chest 0.05 Neck 0.05
+x -0.20 y -0.30 z 2.15 n   2 rgb 132,100, 70  Head 0.89 Chest 0.05 Neck 0.04
+x -0.20 y -0.25 z 0.65 n   2 rgb 174,103, 39  Root 0.66 Chest 0.31
+x -0.20 y -0.25 z 0.75 n  12 rgb 191,118, 40  Root 0.63 Chest 0.35
+x -0.20 y -0.25 z 0.80 n   1 rgb 162, 91, 21  Root 0.60 Chest 0.39
+x -0.20 y -0.25 z 1.45 n   1 rgb 166,137,119  Head 0.73 Chest 0.13 Neck 0.12
+x -0.20 y -0.25 z 1.50 n   7 rgb 149,118,100  Head 0.74 Chest 0.13 Neck 0.12
+x -0.20 y -0.25 z 1.55 n   6 rgb 153,121,105  Head 0.77 Chest 0.12 Neck 0.11
+x -0.20 y -0.25 z 1.60 n   1 rgb 146,115, 97  Head 0.79 Chest 0.11 Neck 0.10
+x -0.20 y -0.25 z 1.85 n   1 rgb 251,195,124  Head 0.90 Chest 0.02 Neck 0.02
+x -0.20 y -0.25 z 1.90 n   3 rgb 252,165,126  Head 0.90 Chest 0.03 Neck 0.02
+x -0.20 y -0.25 z 1.95 n   1 rgb 250,156,127  Head 0.90 Chest 0.03 Neck 0.03
+x -0.20 y -0.25 z 2.10 n   3 rgb 207, 10, 93  Head 0.88 Chest 0.05 Neck 0.05
+x -0.20 y -0.20 z 0.35 n   1 rgb 129, 98, 81  Root 0.86 Chest 0.10
+x -0.20 y -0.20 z 0.45 n   1 rgb 132,100, 81  Root 0.83 Chest 0.13
+x -0.20 y -0.20 z 0.50 n   1 rgb 136,103, 83  Root 0.79 Chest 0.16
+x -0.20 y -0.20 z 0.75 n   1 rgb 178,106, 40  Root 0.63 Chest 0.33
+x -0.20 y -0.20 z 1.50 n   4 rgb 148,117,100  Head 0.69 Chest 0.16 Neck 0.14
+x -0.20 y -0.20 z 1.55 n   3 rgb 150,118,101  Head 0.72 Chest 0.14 Neck 0.13
+x -0.20 y -0.20 z 1.60 n   1 rgb 152,122,106  Head 0.75 Chest 0.13 Neck 0.12
+x -0.20 y -0.20 z 1.80 n   1 rgb 252,199,128  Head 0.85 Chest 0.06 Neck 0.06
+x -0.20 y -0.20 z 1.85 n   6 rgb 212,165,108  Head 0.90 Chest 0.02 Neck 0.02
+x -0.20 y -0.20 z 1.90 n   6 rgb 184,138,102  Head 0.90 Chest 0.02 Neck 0.02
+x -0.20 y -0.20 z 1.95 n   1 rgb 144, 95, 73  Head 0.90 Chest 0.02 Neck 0.02
+x -0.20 y -0.20 z 2.00 n   2 rgb 144,105, 80  Head 0.90 Chest 0.02 Neck 0.02
+x -0.20 y -0.20 z 2.05 n   1 rgb 148, 94, 72  Head 0.90 Chest 0.02 Neck 0.02
+x -0.20 y -0.20 z 2.10 n   3 rgb 218,163,127  Head 0.88 Chest 0.05 Neck 0.05
+x -0.20 y -0.20 z 2.15 n   2 rgb 252,204,135  Head 0.87 Chest 0.06 Neck 0.06
+x -0.20 y -0.20 z 2.20 n   2 rgb 253,203,136  Head 0.87 Chest 0.06 Neck 0.06
+x -0.20 y -0.15 z 0.35 n   1 rgb 131,100, 82  Root 0.87 Chest 0.09
+x -0.20 y -0.15 z 0.40 n   2 rgb 132,100, 83  Root 0.85 Chest 0.11
+x -0.20 y -0.15 z 0.45 n   1 rgb 133,100, 81  Root 0.81 Chest 0.14
+x -0.20 y -0.15 z 0.60 n   2 rgb 166,103, 47  Root 0.71 Chest 0.23
+x -0.20 y -0.15 z 1.50 n   3 rgb 140,111, 92  Head 0.69 Chest 0.16 Neck 0.15
+x -0.20 y -0.15 z 1.55 n   1 rgb 133,102, 85  Head 0.69 Chest 0.16 Neck 0.14
+x -0.20 y -0.15 z 1.75 n   1 rgb 252,199,131  Head 0.84 Chest 0.07 Neck 0.07
+x -0.20 y -0.15 z 1.80 n   2 rgb 253,200,131  Head 0.85 Chest 0.07 Neck 0.07
+x -0.20 y -0.15 z 1.85 n   3 rgb 177,135, 96  Head 0.90 Chest 0.02 Neck 0.02
+x -0.20 y -0.15 z 1.90 n   1 rgb 142,102, 80  Head 0.90 Chest 0.03 Neck 0.02
+x -0.20 y -0.15 z 1.95 n   1 rgb 144,103, 80  Head 0.90 Chest 0.02 Neck 0.02
+x -0.20 y -0.15 z 2.05 n   1 rgb 210,119,118  Head 0.89 Chest 0.05 Neck 0.04
+x -0.20 y -0.15 z 2.10 n   3 rgb 213,102,105  Head 0.88 Chest 0.05 Neck 0.05
+x -0.20 y -0.15 z 2.15 n   4 rgb 253,200,134  Head 0.87 Chest 0.05 Neck 0.05
+x -0.20 y -0.15 z 2.20 n   1 rgb 254,204,135  Head 0.86 Chest 0.06 Neck 0.06
+x -0.20 y -0.15 z 2.25 n   4 rgb 252,202,132  Head 0.86 Chest 0.06 Neck 0.06
+x -0.20 y -0.10 z 0.30 n   1 rgb 132,100, 83  Root 0.88 Chest 0.09
+x -0.20 y -0.10 z 0.35 n   1 rgb 133,101, 83  Root 0.86 Chest 0.10
+x -0.20 y -0.10 z 0.45 n   1 rgb 134,101, 84  Root 0.83 Chest 0.13
+x -0.20 y -0.10 z 0.50 n   1 rgb 129, 97, 78  Root 0.80 Chest 0.15
+x -0.20 y -0.10 z 0.60 n   3 rgb 167,102, 45  Root 0.70 Chest 0.23
+x -0.20 y -0.10 z 0.85 n   3 rgb 174,104, 40  Root 0.58 Chest 0.38
+x -0.20 y -0.10 z 0.90 n   5 rgb 169, 99, 37  Root 0.55 Chest 0.41
+x -0.20 y -0.10 z 0.95 n   2 rgb 181,109, 42  Root 0.53 Chest 0.44
+x -0.20 y -0.10 z 1.75 n   1 rgb 253,201,132  Head 0.84 Chest 0.07 Neck 0.07
+x -0.20 y -0.10 z 1.80 n   2 rgb 253,198,129  Head 0.91 Chest 0.02 Neck 0.02
+x -0.20 y -0.10 z 2.20 n   2 rgb 254,202,135  Head 0.87 Chest 0.06 Neck 0.06
+x -0.20 y -0.10 z 2.25 n   1 rgb 254,203,130  Head 0.87 Chest 0.06 Neck 0.06
+x -0.20 y -0.10 z 2.30 n   2 rgb 254,199,122  Head 0.86 Chest 0.06 Neck 0.06
+x -0.20 y -0.05 z 0.45 n   1 rgb 136,104, 87  Root 0.84 Chest 0.11
+x -0.20 y -0.05 z 0.55 n   1 rgb 134,103, 84  Root 0.79 Chest 0.15
+x -0.20 y -0.05 z 0.60 n   1 rgb 140, 99, 74  Root 0.70 Chest 0.23
+x -0.20 y -0.05 z 0.65 n   2 rgb 173,103, 38  Root 0.68 Chest 0.25
+x -0.20 y -0.05 z 0.70 n   3 rgb 172,102, 36  Root 0.67 Chest 0.27
+x -0.20 y -0.05 z 0.75 n   1 rgb 173,103, 39  Root 0.63 Chest 0.31
+x -0.20 y -0.05 z 0.90 n   4 rgb 167, 98, 37  Root 0.55 Chest 0.41
+x -0.20 y -0.05 z 1.75 n   1 rgb 252,203,129  Head 0.82 Chest 0.08 Neck 0.08
+x -0.20 y -0.05 z 1.80 n   1 rgb 253,201,127  Head 0.91 Chest 0.02 Neck 0.02
+x -0.20 y -0.05 z 2.25 n   1 rgb 253,196,120  Head 0.87 Chest 0.06 Neck 0.06
+x -0.20 y -0.05 z 2.30 n   1 rgb 254,199,123  Head 0.86 Chest 0.06 Neck 0.06
+x -0.20 y +0.00 z 1.70 n   3 rgb 253,200,132  Head 0.84 Chest 0.07 Neck 0.07
+x -0.20 y +0.00 z 1.75 n   3 rgb 253,203,133  Head 0.88 Chest 0.04 Neck 0.04
+x -0.20 y +0.00 z 1.80 n   1 rgb 254,197,127  Head 0.92 Chest 0.02 Neck 0.02
+x -0.20 y +0.00 z 2.25 n   2 rgb 254,200,125  Head 0.87 Chest 0.06 Neck 0.06
+x -0.20 y +0.05 z 1.70 n   1 rgb 254,203,136  Head 0.92 Chest 0.03 Neck 0.03
+x -0.20 y +0.05 z 1.75 n   1 rgb 254,204,133  Head 0.92 Chest 0.03 Neck 0.02
+x -0.20 y +0.10 z 1.10 n   6 rgb 131, 97, 78  Root 0.96
+x -0.20 y +0.10 z 1.15 n   1 rgb 129, 96, 76  Root 0.96
+x -0.20 y +0.10 z 1.65 n   3 rgb 250,202,131  Head 0.88 Chest 0.05 Neck 0.05
+x -0.20 y +0.10 z 1.80 n   2 rgb 210, 27,100  Head 0.91 Chest 0.03 Neck 0.03
+x -0.20 y +0.10 z 1.90 n   1 rgb 250,199,131  Head 0.90 Chest 0.03 Neck 0.03
+x -0.20 y +0.10 z 2.20 n   1 rgb 253,196,119  Head 0.87 Chest 0.05 Neck 0.05
+x -0.20 y +0.15 z 1.00 n   2 rgb 130, 96, 78  Root 0.98
+x -0.20 y +0.15 z 1.05 n   3 rgb 126, 94, 75  Root 0.96
+x -0.20 y +0.15 z 1.10 n   3 rgb 131,100, 80  Root 0.96
+x -0.20 y +0.15 z 1.15 n   1 rgb 131, 97, 78  Root 0.96
+x -0.20 y +0.15 z 1.20 n   3 rgb 128, 95, 76  Tail1 0.48 Root 0.32 Tail2 0.16
+x -0.20 y +0.15 z 1.25 n   2 rgb 127, 95, 76  Tail1 0.66 Tail2 0.29 Head 0.00
+x -0.20 y +0.15 z 1.30 n   6 rgb 128, 97, 78  Tail1 0.62 Tail2 0.32 Head 0.01
+x -0.20 y +0.15 z 1.35 n   3 rgb 130, 99, 78  Tail1 0.61 Tail2 0.33 Head 0.01
+x -0.20 y +0.15 z 1.70 n   1 rgb 254,204,137  Head 0.92 Chest 0.03 Neck 0.03
+x -0.20 y +0.15 z 1.80 n   1 rgb 208, 28,104  Head 0.91 Chest 0.03 Neck 0.03
+x -0.20 y +0.15 z 1.85 n   3 rgb 208, 27,104  Head 0.90 Chest 0.03 Neck 0.03
+x -0.20 y +0.15 z 1.90 n   2 rgb 252,204,137  Head 0.90 Chest 0.03 Neck 0.03
+x -0.20 y +0.15 z 2.20 n   1 rgb 254,201,126  Head 0.87 Chest 0.06 Neck 0.06
+x -0.20 y +0.20 z 0.45 n   1 rgb 132, 99, 83  Tail1 0.66 Root 0.29 Chest 0.01
+x -0.20 y +0.20 z 0.50 n   2 rgb 132, 96, 76  Root 0.94 Chest 0.02
+x -0.20 y +0.20 z 0.55 n   1 rgb 129, 95, 77  Root 0.94 Chest 0.01
+x -0.20 y +0.20 z 0.65 n   1 rgb 122, 91, 73  Tail1 0.69 Root 0.26 Tail2 0.01
+x -0.20 y +0.20 z 0.90 n   1 rgb 130, 99, 81  Root 0.99
+x -0.20 y +0.20 z 0.95 n   1 rgb 131, 98, 79  Root 0.99
+x -0.20 y +0.20 z 1.25 n   2 rgb 126, 95, 76  Tail1 0.67 Tail2 0.28 Head 0.00
+x -0.20 y +0.20 z 1.35 n   2 rgb 127, 95, 75  Tail1 0.56 Tail2 0.38 Head 0.03
+x -0.20 y +0.20 z 1.40 n   1 rgb 127, 94, 74  Tail2 0.47 Tail1 0.44 Head 0.06
+x -0.20 y +0.20 z 1.60 n   1 rgb 254,202,132  Head 0.90 Chest 0.05 Neck 0.05
+x -0.20 y +0.20 z 1.85 n   2 rgb 209, 29,104  Head 0.90 Chest 0.04 Neck 0.04
+x -0.20 y +0.20 z 1.95 n   1 rgb 249,197,129  Head 0.89 Chest 0.04 Neck 0.04
+x -0.20 y +0.25 z 0.40 n   3 rgb 138,106, 89  Tail1 0.67 Root 0.28 Chest 0.01
+x -0.20 y +0.25 z 0.65 n   1 rgb 124, 92, 74  Tail1 0.66 Root 0.28 Chest 0.01
+x -0.20 y +0.25 z 0.70 n   2 rgb 125, 95, 79  Tail1 0.73 Root 0.21 Tail2 0.02
+x -0.20 y +0.25 z 0.75 n   1 rgb 132, 97, 83  Tail1 0.77 Root 0.16 Tail2 0.04
+x -0.20 y +0.25 z 0.80 n   3 rgb 127, 97, 80  Tail1 0.81 Root 0.12 Tail2 0.06
+x -0.20 y +0.25 z 0.90 n   1 rgb 122, 94, 76  Tail1 0.83 Root 0.08 Tail2 0.08
+x -0.20 y +0.25 z 1.35 n   1 rgb 123, 93, 75  Tail1 0.55 Tail2 0.39 Head 0.03
+x -0.20 y +0.25 z 1.40 n   3 rgb 129, 98, 80  Tail1 0.46 Tail2 0.45 Head 0.05
+x -0.20 y +0.25 z 1.45 n   2 rgb 128, 96, 78  Tail2 0.49 Tail1 0.41 Head 0.07
+x -0.20 y +0.25 z 1.95 n   2 rgb 251,200,133  Head 0.88 Chest 0.05 Neck 0.04
+x -0.20 y +0.25 z 2.00 n   1 rgb 250,198,130  Head 0.88 Chest 0.05 Neck 0.05
+x -0.20 y +0.25 z 2.05 n   2 rgb 253,203,134  Head 0.88 Chest 0.05 Neck 0.05
+x -0.20 y +0.25 z 2.10 n   1 rgb 254,204,136  Head 0.87 Chest 0.05 Neck 0.05
+x -0.20 y +0.25 z 2.15 n   1 rgb 254,203,132  Head 0.87 Chest 0.05 Neck 0.05
+x -0.20 y +0.30 z 0.35 n   2 rgb 136,106, 90  Tail1 0.67 Root 0.28 Chest 0.01
+x -0.20 y +0.30 z 0.40 n   1 rgb 140,110, 93  Tail1 0.69 Root 0.26 Chest 0.01
+x -0.20 y +0.30 z 0.85 n   1 rgb 127, 97, 80  Tail1 0.81 Root 0.10 Tail2 0.07
+x -0.20 y +0.30 z 1.40 n   1 rgb 125, 94, 77  Tail1 0.48 Tail2 0.45 Head 0.05
+x -0.20 y +0.30 z 1.45 n   1 rgb 127, 95, 77  Tail2 0.49 Tail1 0.43 Head 0.05
+x -0.20 y +0.30 z 1.55 n   2 rgb 253,199,130  Head 0.91 Chest 0.04 Neck 0.03
+x -0.20 y +0.30 z 1.60 n   1 rgb 252,198,130  Head 0.92 Chest 0.03 Neck 0.03
+x -0.20 y +0.30 z 2.00 n   1 rgb 254,208,139  Head 0.87 Chest 0.05 Neck 0.05
+x -0.20 y +0.30 z 2.05 n   2 rgb 252,204,135  Head 0.87 Chest 0.05 Neck 0.05
+x -0.20 y +0.35 z 0.35 n   4 rgb 137,105, 87  Tail1 0.68 Root 0.27 Chest 0.01
+x -0.20 y +0.35 z 0.40 n   4 rgb 159,133,117  Tail1 0.69 Root 0.26 Chest 0.01
+x -0.20 y +0.35 z 1.45 n   5 rgb 127, 98, 81  Tail2 0.51 Tail1 0.42 Head 0.04
+x -0.20 y +0.35 z 1.50 n   2 rgb 126, 99, 84  Tail2 0.54 Tail1 0.38 Head 0.05
+x -0.20 y +0.35 z 1.55 n   3 rgb 253,203,133  Head 0.91 Chest 0.04 Neck 0.03
+x -0.20 y +0.40 z 0.35 n   1 rgb 131,100, 84  Tail1 0.69 Root 0.26 Chest 0.01
+x -0.20 y +0.40 z 0.40 n   3 rgb 135,109, 93  Tail1 0.70 Root 0.25 Chest 0.00
+x -0.20 y +0.40 z 1.45 n   1 rgb 124, 95, 78  Tail2 0.50 Tail1 0.44 Head 0.03
+x -0.20 y +0.40 z 1.55 n   1 rgb 251,201,133  Head 0.91 Chest 0.04 Neck 0.04
+x -0.20 y +0.45 z 0.40 n   3 rgb 127, 96, 79  Tail1 0.73 Root 0.22 Chest 0.00
+x -0.20 y +0.45 z 0.45 n   1 rgb 122, 92, 75  Tail1 0.74 Root 0.21
+x -0.20 y +0.45 z 1.45 n   2 rgb 127, 98, 81  Tail2 0.54 Tail1 0.41 Head 0.02
+x -0.20 y +0.45 z 1.50 n   1 rgb 126, 96, 80  Tail2 0.62 Tail1 0.34 Head 0.01
+x -0.20 y +0.50 z 0.45 n   1 rgb 128, 97, 80  Tail1 0.76 Root 0.19
+x -0.20 y +0.50 z 0.50 n   1 rgb 125, 93, 78  Tail1 0.77 Root 0.19
+x -0.20 y +0.50 z 0.65 n   1 rgb 119, 89, 75  Tail1 0.79 Root 0.16 Tail2 0.02
+x -0.20 y +0.50 z 0.70 n   1 rgb 120, 89, 74  Tail1 0.81 Root 0.13 Tail2 0.04
+x -0.20 y +0.50 z 0.75 n   1 rgb 123, 93, 78  Tail1 0.82 Root 0.11 Tail2 0.05
+x -0.20 y +0.50 z 1.40 n   1 rgb 124, 94, 78  Tail2 0.53 Tail1 0.43
+x -0.20 y +0.55 z 0.65 n   2 rgb 123, 93, 78  Tail1 0.81 Root 0.14 Tail2 0.02
+x -0.20 y +0.55 z 0.70 n   1 rgb 122, 93, 77  Tail1 0.80 Root 0.14 Tail2 0.03
+x -0.20 y +0.55 z 0.75 n   2 rgb 121, 92, 75  Tail1 0.83 Root 0.10 Tail2 0.05
+x -0.20 y +0.55 z 0.80 n   1 rgb 122, 91, 76  Tail1 0.84 Root 0.09 Tail2 0.06
+x -0.20 y +0.55 z 0.85 n   1 rgb 121, 90, 74  Tail1 0.85 Tail2 0.08 Root 0.06
+x -0.20 y +0.55 z 0.90 n   1 rgb 120, 90, 74  Tail1 0.84 Tail2 0.10 Root 0.05
+x -0.20 y +0.55 z 0.95 n   1 rgb 121, 91, 75  Tail1 0.83 Tail2 0.11 Root 0.04
+x -0.20 y +0.55 z 1.30 n   1 rgb 122, 93, 77  Tail1 0.53 Tail2 0.44
+x -0.20 y +0.55 z 1.35 n   2 rgb 124, 94, 78  Tail2 0.49 Tail1 0.48
+x -0.20 y +0.55 z 1.40 n   1 rgb 126, 97, 81  Tail2 0.52 Tail1 0.44
+x -0.20 y +0.60 z 0.90 n   1 rgb 126, 95, 80  Tail1 0.86 Tail2 0.08 Root 0.05
+x -0.20 y +0.60 z 0.95 n   2 rgb 123, 94, 77  Tail1 0.84 Tail2 0.11 Root 0.03
+x -0.20 y +0.60 z 1.10 n   2 rgb 123, 93, 77  Tail1 0.78 Tail2 0.19
+x -0.20 y +0.60 z 1.25 n   1 rgb 126, 96, 80  Tail1 0.56 Tail2 0.41
+x -0.20 y +0.60 z 1.30 n   1 rgb 122, 92, 76  Tail1 0.57 Tail2 0.40
+x -0.15 y -0.60 z 1.95 n   2 rgb 252,199,129  Head 0.94 Chest 0.00 Neck 0.00
+x -0.15 y -0.60 z 2.00 n   1 rgb 254,200,123  Head 0.94
+x -0.15 y -0.55 z 1.95 n   3 rgb 252,197,124  Head 0.93 Chest 0.01 Neck 0.01
+x -0.15 y -0.55 z 2.00 n   1 rgb 254,198,122  Head 0.94 Chest 0.00 Neck 0.00
+x -0.15 y -0.45 z 1.50 n   1 rgb 150,118,100  Head 0.86 Chest 0.06 Neck 0.06
+x -0.15 y -0.45 z 1.55 n   2 rgb 149,117, 97  Head 0.86 Chest 0.06 Neck 0.05
+x -0.15 y -0.45 z 1.60 n   1 rgb 148,117, 98  Head 0.86 Chest 0.06 Neck 0.05
+x -0.15 y -0.45 z 1.90 n   2 rgb 252,200,129  Head 0.92 Chest 0.02 Neck 0.02
+x -0.15 y -0.40 z 0.60 n   3 rgb 173,100, 26  Root 0.67 Chest 0.31
+x -0.15 y -0.40 z 0.75 n   1 rgb 193,118, 38  Root 0.59 Chest 0.40
+x -0.15 y -0.40 z 1.45 n   2 rgb 150,118, 98  Head 0.82 Chest 0.08 Neck 0.07
+x -0.15 y -0.40 z 1.50 n   1 rgb 149,116, 98  Head 0.83 Chest 0.08 Neck 0.07
+x -0.15 y -0.40 z 1.55 n   2 rgb 146,116, 97  Head 0.84 Chest 0.07 Neck 0.06
+x -0.15 y -0.40 z 1.60 n   1 rgb 142,112, 95  Head 0.86 Chest 0.06 Neck 0.06
+x -0.15 y -0.40 z 1.90 n   1 rgb 252,201,130  Head 0.91 Chest 0.03 Neck 0.03
+x -0.15 y -0.40 z 1.95 n   1 rgb 254,201,127  Head 0.91 Chest 0.02 Neck 0.02
+x -0.15 y -0.40 z 2.00 n   2 rgb 135,108, 77  Head 0.91 Chest 0.03 Neck 0.03
+x -0.15 y -0.40 z 2.05 n   2 rgb 133,104, 75  Head 0.90 Chest 0.04 Neck 0.03
+x -0.15 y -0.35 z 0.60 n   2 rgb 169, 98, 30  Root 0.67 Chest 0.29
+x -0.15 y -0.35 z 0.75 n   3 rgb 206,127, 39  Root 0.61 Chest 0.38
+x -0.15 y -0.35 z 1.45 n   5 rgb 149,117, 99  Head 0.79 Chest 0.10 Neck 0.08
+x -0.15 y -0.35 z 1.60 n   2 rgb 152,120,104  Head 0.84 Chest 0.08 Neck 0.07
+x -0.15 y -0.35 z 1.65 n   1 rgb 151,119,103  Head 0.86 Chest 0.06 Neck 0.06
+x -0.15 y -0.35 z 1.90 n   2 rgb 190,151,101  Head 0.91 Chest 0.03 Neck 0.03
+x -0.15 y -0.35 z 1.95 n   3 rgb 208,163,107  Head 0.91 Chest 0.02 Neck 0.02
+x -0.15 y -0.35 z 2.05 n   1 rgb 133,102, 73  Head 0.89 Chest 0.04 Neck 0.04
+x -0.15 y -0.30 z 0.40 n   1 rgb 135,100, 82  Root 0.84 Chest 0.12
+x -0.15 y -0.30 z 0.75 n   7 rgb 171, 99, 23  Root 0.62 Chest 0.37
+x -0.15 y -0.30 z 0.80 n   2 rgb 187,115, 42  Root 0.58 Chest 0.41
+x -0.15 y -0.30 z 1.45 n   7 rgb 150,123,107  Head 0.75 Chest 0.12 Neck 0.10
+x -0.15 y -0.30 z 1.60 n   1 rgb 148,117,100  Head 0.83 Chest 0.08 Neck 0.08
+x -0.15 y -0.30 z 1.65 n   1 rgb 135,102, 84  Head 0.83 Chest 0.09 Neck 0.08
+x -0.15 y -0.30 z 1.95 n   4 rgb 196,125, 96  Head 0.91 Chest 0.03 Neck 0.02
+x -0.15 y -0.30 z 2.00 n   1 rgb 146, 99, 74  Head 0.90 Chest 0.03 Neck 0.02
+x -0.15 y -0.30 z 2.05 n   2 rgb 168, 54, 78  Head 0.89 Chest 0.04 Neck 0.04
+x -0.15 y -0.30 z 2.15 n   1 rgb 203, 21, 91  Head 0.88 Chest 0.05 Neck 0.05
+x -0.15 y -0.25 z 0.35 n   1 rgb 136,105, 85  Root 0.86 Chest 0.10
+x -0.15 y -0.25 z 0.40 n   1 rgb 134,103, 84  Root 0.84 Chest 0.12
+x -0.15 y -0.25 z 0.45 n   1 rgb 130, 98, 79  Root 0.82 Chest 0.13
+x -0.15 y -0.25 z 0.50 n   1 rgb 136,103, 84  Root 0.79 Chest 0.16
+x -0.15 y -0.25 z 0.55 n   1 rgb 136, 98, 77  Root 0.72 Chest 0.22
+x -0.15 y -0.25 z 0.80 n   1 rgb 204,130, 60  Root 0.59 Chest 0.39
+x -0.15 y -0.25 z 0.85 n   1 rgb 163, 94, 28  Root 0.59 Chest 0.39
+x -0.15 y -0.25 z 1.40 n   2 rgb 149,120,103  Head 0.70 Chest 0.15 Neck 0.12
+x -0.15 y -0.25 z 1.45 n   4 rgb 147,119,101  Head 0.70 Chest 0.15 Neck 0.13
+x -0.15 y -0.25 z 1.60 n   2 rgb 145,114, 97  Head 0.80 Chest 0.10 Neck 0.09
+x -0.15 y -0.25 z 1.80 n   1 rgb 131,100, 80  Head 0.86 Chest 0.07 Neck 0.07
+x -0.15 y -0.25 z 1.85 n   2 rgb 254,203,132  Head 0.87 Chest 0.06 Neck 0.06
+x -0.15 y -0.25 z 1.90 n   1 rgb 249,160,113  Head 0.90 Chest 0.03 Neck 0.02
+x -0.15 y -0.25 z 1.95 n   3 rgb 253,172,124  Head 0.90 Chest 0.03 Neck 0.02
+x -0.15 y -0.25 z 2.00 n   1 rgb 146,100, 74  Head 0.90 Chest 0.02 Neck 0.02
+x -0.15 y -0.25 z 2.05 n   3 rgb 166,105, 83  Head 0.90 Chest 0.02 Neck 0.02
+x -0.15 y -0.25 z 2.10 n   1 rgb 192,  9, 84  Head 0.87 Chest 0.06 Neck 0.05
+x -0.15 y -0.25 z 2.15 n   3 rgb 179, 54, 80  Head 0.87 Chest 0.06 Neck 0.06
+x -0.15 y -0.20 z 0.55 n   3 rgb 158, 99, 59  Root 0.72 Chest 0.22
+x -0.15 y -0.20 z 0.90 n   1 rgb 204,128, 57  Root 0.54 Chest 0.45
+x -0.15 y -0.20 z 1.40 n   1 rgb 134,102, 86  Head 0.68 Chest 0.16 Neck 0.13
+x -0.15 y -0.20 z 1.45 n   3 rgb 141,110, 93  Head 0.63 Chest 0.18 Neck 0.16
+x -0.15 y -0.20 z 1.50 n   1 rgb 136,105, 88  Head 0.68 Chest 0.16 Neck 0.15
+x -0.15 y -0.20 z 1.60 n   2 rgb 135,103, 86  Head 0.75 Chest 0.13 Neck 0.12
+x -0.15 y -0.20 z 1.65 n   1 rgb 140,106, 87  Head 0.79 Chest 0.11 Neck 0.10
+x -0.15 y -0.20 z 1.90 n   3 rgb 228,179,121  Head 0.88 Chest 0.05 Neck 0.05
+x -0.15 y -0.20 z 1.95 n   1 rgb 254,173,144  Head 0.90 Chest 0.03 Neck 0.02
+x -0.15 y -0.20 z 2.00 n   1 rgb 254,160,145  Head 0.90 Chest 0.02 Neck 0.02
+x -0.15 y -0.20 z 2.15 n   2 rgb 252,202,134  Head 0.87 Chest 0.06 Neck 0.06
+x -0.15 y -0.20 z 2.20 n   3 rgb 250,200,132  Head 0.86 Chest 0.07 Neck 0.06
+x -0.15 y -0.20 z 2.25 n   2 rgb 253,203,138  Head 0.84 Chest 0.07 Neck 0.07
+x -0.15 y -0.20 z 2.30 n   2 rgb 254,202,135  Head 0.84 Chest 0.07 Neck 0.07
+x -0.15 y -0.15 z 0.55 n   1 rgb 135, 98, 75  Root 0.73 Chest 0.20
+x -0.15 y -0.15 z 1.45 n   8 rgb 136,104, 88  Head 0.60 Chest 0.20 Neck 0.18
+x -0.15 y -0.15 z 1.50 n   3 rgb 137,107, 90  Head 0.63 Chest 0.19 Neck 0.17
+x -0.15 y -0.15 z 1.55 n   3 rgb 132,101, 86  Head 0.65 Chest 0.18 Neck 0.16
+x -0.15 y -0.15 z 1.65 n   1 rgb 135,105, 86  Head 0.74 Chest 0.13 Neck 0.12
+x -0.15 y -0.15 z 1.85 n   1 rgb 254,204,132  Head 0.84 Chest 0.07 Neck 0.07
+x -0.15 y -0.15 z 2.30 n   3 rgb 254,202,128  Head 0.84 Chest 0.07 Neck 0.07
+x -0.15 y -0.10 z 0.60 n   2 rgb 143,101, 72  Root 0.73 Chest 0.21
+x -0.15 y -0.10 z 0.65 n   1 rgb 162, 92, 26  Root 0.72 Chest 0.22
+x -0.15 y -0.10 z 0.90 n   5 rgb 171,101, 38  Root 0.54 Chest 0.43
+x -0.15 y -0.10 z 0.95 n   2 rgb 192,123, 57  Root 0.51 Chest 0.46
+x -0.15 y -0.10 z 1.50 n   2 rgb 135,105, 89  Head 0.59 Chest 0.21 Neck 0.19
+x -0.15 y -0.10 z 1.65 n   1 rgb 138,107, 90  Head 0.64 Chest 0.18 Neck 0.17
+x -0.15 y -0.10 z 1.80 n   1 rgb 131,100, 81  Head 0.80 Chest 0.10 Neck 0.09
+x -0.15 y -0.10 z 1.85 n   2 rgb 190,149,104  Head 0.81 Chest 0.09 Neck 0.09
+x -0.15 y -0.10 z 2.30 n   1 rgb 254,200,124  Head 0.85 Chest 0.07 Neck 0.07
+x -0.15 y -0.05 z 0.35 n   1 rgb 132,101, 84  Root 0.87 Chest 0.09
+x -0.15 y -0.05 z 0.65 n   1 rgb 148,102, 67  Root 0.69 Chest 0.24
+x -0.15 y -0.05 z 0.75 n   1 rgb 173,102, 39  Root 0.63 Chest 0.30
+x -0.15 y -0.05 z 0.85 n   5 rgb 167, 98, 35  Root 0.57 Chest 0.38
+x -0.15 y -0.05 z 0.90 n   5 rgb 168, 98, 35  Root 0.53 Chest 0.43
+x -0.15 y -0.05 z 0.95 n   6 rgb 173,102, 41  Root 0.50 Chest 0.47
+x -0.15 y -0.05 z 1.00 n   1 rgb 171,102, 38  Chest 0.50 Root 0.46
+x -0.15 y -0.05 z 1.55 n   1 rgb 127, 99, 84  Head 0.49 Chest 0.26 Neck 0.25
+x -0.15 y -0.05 z 1.80 n   2 rgb 192,153,111  Head 0.75 Chest 0.12 Neck 0.12
+x -0.15 y +0.00 z 0.40 n   1 rgb 133,101, 84  Root 0.87 Chest 0.09
+x -0.15 y +0.00 z 0.45 n   1 rgb 131, 99, 81  Root 0.86 Chest 0.10
+x -0.15 y +0.00 z 0.50 n   1 rgb 131,100, 83  Root 0.84 Chest 0.12
+x -0.15 y +0.00 z 0.60 n   1 rgb 133,101, 81  Root 0.82 Chest 0.15
+x -0.15 y +0.00 z 0.65 n   1 rgb 132,103, 86  Root 0.76 Chest 0.19
+x -0.15 y +0.00 z 1.75 n   2 rgb 193,152,108  Head 0.73 Chest 0.13 Neck 0.13
+x -0.15 y +0.00 z 1.80 n   2 rgb 252,206,139  Head 0.73 Chest 0.13 Neck 0.12
+x -0.15 y +0.00 z 2.30 n   2 rgb 254,199,123  Head 0.87 Chest 0.06 Neck 0.06
+x -0.15 y +0.05 z 1.70 n   2 rgb 250,199,129  Head 0.81 Chest 0.09 Neck 0.09
+x -0.15 y +0.05 z 1.80 n   1 rgb 253,205,138  Head 0.74 Chest 0.12 Neck 0.11
+x -0.15 y +0.10 z 1.70 n   2 rgb 252,200,131  Head 0.84 Chest 0.08 Neck 0.07
+x -0.15 y +0.10 z 1.75 n   1 rgb 252,203,141  Head 0.92 Chest 0.03 Neck 0.03
+x -0.15 y +0.10 z 2.25 n   1 rgb 254,200,126  Head 0.87 Chest 0.06 Neck 0.06
+x -0.15 y +0.15 z 1.15 n   1 rgb 129, 96, 76  Root 0.96
+x -0.15 y +0.15 z 1.20 n   2 rgb 132, 99, 81  Root 0.48 Tail1 0.36 Tail2 0.12
+x -0.15 y +0.15 z 1.70 n   3 rgb 253,202,135  Head 0.92 Chest 0.03 Neck 0.03
+x -0.15 y +0.15 z 1.75 n   2 rgb 209, 26,103  Head 0.91 Chest 0.04 Neck 0.04
+x -0.15 y +0.20 z 0.45 n   2 rgb 136,104, 86  Tail1 0.59 Root 0.35 Chest 0.03
+x -0.15 y +0.20 z 0.60 n   1 rgb 124, 89, 72  Tail1 0.63 Root 0.31 Chest 0.02
+x -0.15 y +0.20 z 0.65 n   1 rgb 123, 90, 72  Tail1 0.59 Root 0.35 Chest 0.02
+x -0.15 y +0.20 z 0.95 n   1 rgb 129, 97, 77  Tail1 0.83 Tail2 0.11 Root 0.05
+x -0.15 y +0.20 z 1.00 n   2 rgb 130, 98, 79  Root 0.50 Tail1 0.41 Tail2 0.06
+x -0.15 y +0.20 z 1.05 n   1 rgb 125, 92, 74  Root 0.96
+x -0.15 y +0.20 z 1.10 n   3 rgb 129, 97, 78  Tail1 0.78 Tail2 0.17 Root 0.01
+x -0.15 y +0.20 z 1.15 n   1 rgb 136,102, 83  Root 0.95
+x -0.15 y +0.20 z 1.20 n   3 rgb 129, 97, 79  Root 0.64 Tail1 0.24 Tail2 0.08
+x -0.15 y +0.20 z 1.25 n   2 rgb 128, 96, 76  Tail1 0.69 Tail2 0.26
+x -0.15 y +0.20 z 1.65 n   2 rgb 254,208,138  Head 0.86 Chest 0.07 Neck 0.07
+x -0.15 y +0.20 z 1.90 n   2 rgb 253,207,136  Head 0.89 Chest 0.04 Neck 0.04
+x -0.15 y +0.20 z 2.20 n   1 rgb 253,195,123  Head 0.87 Chest 0.06 Neck 0.06
+x -0.15 y +0.25 z 0.40 n   2 rgb 140,108, 90  Tail1 0.62 Root 0.33 Chest 0.03
+x -0.15 y +0.25 z 0.65 n   2 rgb 123, 93, 75  Tail1 0.60 Root 0.34 Chest 0.02
+x -0.15 y +0.25 z 0.70 n   1 rgb 123, 92, 75  Tail1 0.67 Root 0.26 Tail2 0.01
+x -0.15 y +0.25 z 0.90 n   1 rgb 127, 97, 77  Tail1 0.82 Root 0.08 Tail2 0.08
+x -0.15 y +0.25 z 0.95 n   2 rgb 129, 96, 80  Tail1 0.82 Tail2 0.10 Root 0.06
+x -0.15 y +0.25 z 1.00 n   7 rgb 127, 96, 78  Tail1 0.82 Tail2 0.12 Root 0.04
+x -0.15 y +0.25 z 1.10 n   1 rgb 127, 97, 77  Tail1 0.79 Tail2 0.16 Root 0.02
+x -0.15 y +0.25 z 1.20 n   2 rgb 126, 95, 75  Tail1 0.72 Tail2 0.23
+x -0.15 y +0.25 z 1.25 n   1 rgb 128, 95, 76  Tail1 0.69 Tail2 0.26
+x -0.15 y +0.25 z 1.30 n   3 rgb 128, 96, 77  Tail1 0.63 Tail2 0.32 Head 0.01
+x -0.15 y +0.25 z 1.35 n   6 rgb 128, 96, 77  Tail1 0.58 Tail2 0.36 Head 0.02
+x -0.15 y +0.25 z 1.65 n   3 rgb 253,202,134  Head 0.90 Chest 0.04 Neck 0.04
+x -0.15 y +0.25 z 1.85 n   2 rgb 207, 27,103  Head 0.89 Chest 0.04 Neck 0.04
+x -0.15 y +0.25 z 1.90 n   3 rgb 252,202,135  Head 0.89 Chest 0.05 Neck 0.04
+x -0.15 y +0.25 z 1.95 n   2 rgb 253,203,136  Head 0.88 Chest 0.05 Neck 0.05
+x -0.15 y +0.25 z 2.20 n   1 rgb 254,200,125  Head 0.86 Chest 0.06 Neck 0.06
+x -0.15 y +0.30 z 0.35 n   1 rgb 132,100, 84  Tail1 0.66 Root 0.29 Chest 0.01
+x -0.15 y +0.30 z 0.40 n   1 rgb 142,111, 95  Tail1 0.63 Root 0.32 Chest 0.02
+x -0.15 y +0.30 z 0.70 n   3 rgb 126, 95, 80  Tail1 0.68 Root 0.26 Tail2 0.02
+x -0.15 y +0.30 z 0.75 n   2 rgb 124, 95, 79  Tail1 0.75 Root 0.18 Tail2 0.05
+x -0.15 y +0.30 z 0.85 n   1 rgb 126, 97, 81  Tail1 0.79 Root 0.12 Tail2 0.06
+x -0.15 y +0.30 z 0.90 n   2 rgb 126, 96, 80  Tail1 0.82 Root 0.09 Tail2 0.08
+x -0.15 y +0.30 z 0.95 n   3 rgb 126, 96, 79  Tail1 0.82 Tail2 0.10 Root 0.06
+x -0.15 y +0.30 z 1.30 n   2 rgb 129,101, 83  Tail1 0.64 Tail2 0.31 Head 0.00
+x -0.15 y +0.30 z 1.35 n   1 rgb 128, 97, 79  Tail1 0.59 Tail2 0.35 Head 0.01
+x -0.15 y +0.30 z 1.40 n   1 rgb 129, 95, 77  Tail1 0.53 Tail2 0.40 Head 0.03
+x -0.15 y +0.30 z 1.60 n   4 rgb 252,199,130  Head 0.90 Chest 0.05 Neck 0.05
+x -0.15 y +0.30 z 1.65 n   2 rgb 251,200,131  Head 0.91 Chest 0.04 Neck 0.04
+x -0.15 y +0.30 z 1.95 n   1 rgb 254,206,138  Head 0.88 Chest 0.05 Neck 0.05
+x -0.15 y +0.30 z 2.00 n   2 rgb 251,199,131  Head 0.87 Chest 0.05 Neck 0.05
+x -0.15 y +0.30 z 2.05 n   1 rgb 254,204,136  Head 0.87 Chest 0.05 Neck 0.05
+x -0.15 y +0.30 z 2.10 n   2 rgb 254,204,135  Head 0.87 Chest 0.05 Neck 0.05
+x -0.15 y +0.35 z 0.35 n   1 rgb 138,106, 90  Tail1 0.66 Root 0.29 Chest 0.02
+x -0.15 y +0.35 z 0.40 n   1 rgb 132, 99, 82  Tail1 0.66 Root 0.29 Chest 0.02
+x -0.15 y +0.35 z 0.70 n   1 rgb 127, 98, 82  Tail1 0.68 Root 0.26 Tail2 0.02
+x -0.15 y +0.35 z 0.80 n   4 rgb 128, 97, 79  Tail1 0.79 Root 0.14 Tail2 0.06
+x -0.15 y +0.35 z 0.95 n   3 rgb 124, 95, 79  Tail1 0.82 Tail2 0.10 Root 0.07
+x -0.15 y +0.35 z 1.30 n   3 rgb 133,104, 87  Tail1 0.61 Tail2 0.34 Head 0.00
+x -0.15 y +0.35 z 1.35 n   1 rgb 124, 94, 78  Tail1 0.55 Tail2 0.40 Head 0.02
+x -0.15 y +0.35 z 1.40 n   2 rgb 128, 98, 81  Tail1 0.49 Tail2 0.44 Head 0.03
+x -0.15 y +0.35 z 1.60 n   1 rgb 254,205,136  Head 0.91 Chest 0.04 Neck 0.04
+x -0.15 y +0.35 z 1.65 n   1 rgb 253,200,133  Head 0.91 Chest 0.04 Neck 0.04
+x -0.15 y +0.35 z 2.05 n   2 rgb 252,202,134  Head 0.87 Chest 0.05 Neck 0.05
+x -0.15 y +0.40 z 0.40 n   3 rgb 129, 98, 80  Tail1 0.68 Root 0.27 Chest 0.01
+x -0.15 y +0.40 z 0.75 n   3 rgb 118, 89, 74  Tail1 0.76 Root 0.17 Tail2 0.04
+x -0.15 y +0.40 z 0.80 n   2 rgb 123, 93, 76  Tail1 0.79 Root 0.13 Tail2 0.06
+x -0.15 y +0.40 z 0.85 n   1 rgb 127, 96, 80  Tail1 0.82 Root 0.09 Tail2 0.07
+x -0.15 y +0.40 z 1.35 n   4 rgb 154,130,117  Tail1 0.58 Tail2 0.37 Head 0.00
+x -0.15 y +0.40 z 1.55 n   1 rgb 249,202,132  Head 0.90 Chest 0.05 Neck 0.05
+x -0.15 y +0.45 z 0.45 n   2 rgb 126, 97, 79  Tail1 0.70 Root 0.25 Chest 0.01
+x -0.15 y +0.45 z 0.50 n   1 rgb 123, 92, 76  Tail1 0.70 Root 0.25 Chest 0.01
+x -0.15 y +0.45 z 0.55 n   1 rgb 124, 94, 78  Tail1 0.70 Root 0.25 Chest 0.01
+x -0.15 y +0.45 z 0.65 n   1 rgb 124, 95, 79  Tail1 0.74 Root 0.20 Tail2 0.01
+x -0.15 y +0.45 z 0.70 n   3 rgb 120, 90, 74  Tail1 0.76 Root 0.18 Tail2 0.03
+x -0.15 y +0.45 z 0.75 n   1 rgb 121, 91, 75  Tail1 0.78 Root 0.15 Tail2 0.04
+x -0.15 y +0.45 z 0.80 n   1 rgb 121, 91, 75  Tail1 0.80 Root 0.13 Tail2 0.06
+x -0.15 y +0.45 z 0.85 n   1 rgb 119, 90, 73  Tail1 0.82 Root 0.09 Tail2 0.07
+x -0.15 y +0.45 z 0.90 n   1 rgb 123, 92, 78  Tail1 0.83 Tail2 0.08 Root 0.08
+x -0.15 y +0.45 z 0.95 n   1 rgb 120, 91, 75  Tail1 0.82 Tail2 0.11 Root 0.05
+x -0.15 y +0.45 z 1.35 n   1 rgb 124, 94, 78  Tail1 0.58 Tail2 0.38
+x -0.15 y +0.45 z 1.40 n   3 rgb 126, 97, 81  Tail1 0.50 Tail2 0.45 Head 0.00
+x -0.15 y +0.50 z 0.50 n   1 rgb 125, 94, 78  Tail1 0.73 Root 0.22
+x -0.15 y +0.50 z 0.55 n   3 rgb 123, 93, 77  Tail1 0.74 Root 0.21 Tail2 0.00
+x -0.15 y +0.50 z 0.60 n   2 rgb 123, 92, 76  Tail1 0.76 Root 0.18 Tail2 0.01
+x -0.15 y +0.50 z 0.65 n   1 rgb 120, 89, 73  Tail1 0.76 Root 0.18 Tail2 0.02
+x -0.15 y +0.50 z 0.75 n   1 rgb 122, 93, 78  Tail1 0.81 Root 0.12 Tail2 0.05
+x -0.15 y +0.50 z 0.80 n   1 rgb 121, 90, 75  Tail1 0.83 Root 0.10 Tail2 0.06
+x -0.15 y +0.50 z 0.85 n   1 rgb 123, 92, 76  Tail1 0.83 Root 0.09 Tail2 0.07
+x -0.15 y +0.50 z 0.90 n   1 rgb 121, 92, 76  Tail1 0.83 Tail2 0.09 Root 0.07
+x -0.15 y +0.50 z 0.95 n   2 rgb 122, 92, 75  Tail1 0.83 Tail2 0.11 Root 0.05
+x -0.15 y +0.50 z 1.00 n   1 rgb 122, 93, 76  Tail1 0.81 Tail2 0.14 Root 0.03
+x -0.15 y +0.50 z 1.35 n   1 rgb 125, 96, 80  Tail1 0.55 Tail2 0.41
+x -0.15 y +0.55 z 0.85 n   1 rgb 125, 94, 77  Tail1 0.84 Tail2 0.08 Root 0.07
+x -0.15 y +0.55 z 0.90 n   1 rgb 119, 89, 71  Tail1 0.84 Tail2 0.09 Root 0.06
+x -0.15 y +0.55 z 1.05 n   2 rgb 121, 92, 75  Tail1 0.80 Tail2 0.16 Root 0.01
+x -0.15 y +0.55 z 1.10 n   2 rgb 120, 92, 75  Tail1 0.75 Tail2 0.21
+x -0.15 y +0.55 z 1.15 n   1 rgb 123, 93, 76  Tail1 0.70 Tail2 0.26
+x -0.15 y +0.55 z 1.20 n   1 rgb 123, 92, 77  Tail1 0.68 Tail2 0.29
+x -0.15 y +0.55 z 1.30 n   2 rgb 124, 94, 78  Tail1 0.59 Tail2 0.37
+x -0.15 y +0.55 z 1.35 n   1 rgb 122, 93, 77  Tail1 0.53 Tail2 0.43
+x -0.15 y +0.60 z 1.05 n   1 rgb 126, 96, 79  Tail1 0.79 Tail2 0.17 Root 0.01
+x -0.15 y +0.60 z 1.15 n   1 rgb 123, 93, 77  Tail1 0.71 Tail2 0.26
+x -0.10 y -0.60 z 2.00 n   1 rgb 253,194,119  Head 0.95
+x -0.10 y -0.55 z 1.95 n   2 rgb 251,198,128  Head 0.94 Chest 0.01 Neck 0.01
+x -0.10 y -0.50 z 1.45 n   1 rgb 252,216,180  Head 0.88 Chest 0.05 Neck 0.05
+x -0.10 y -0.50 z 1.50 n   4 rgb 188,154,128  Head 0.88 Chest 0.05 Neck 0.04
+x -0.10 y -0.50 z 1.55 n   2 rgb 186,153,132  Head 0.89 Chest 0.04 Neck 0.04
+x -0.10 y -0.50 z 1.60 n   1 rgb 148,114, 95  Head 0.89 Neck 0.04 Chest 0.03
+x -0.10 y -0.50 z 1.95 n   1 rgb 248,193,126  Head 0.94 Chest 0.01 Neck 0.01
+x -0.10 y -0.50 z 2.00 n   4 rgb 252,199,126  Head 0.94 Chest 0.00 Neck 0.00
+x -0.10 y -0.45 z 0.60 n   3 rgb 175,100, 28  Root 0.66 Chest 0.32
+x -0.10 y -0.45 z 0.65 n   2 rgb 171, 97, 24  Root 0.66 Chest 0.32
+x -0.10 y -0.45 z 1.45 n   2 rgb 158,129,106  Head 0.87 Chest 0.06 Neck 0.05
+x -0.10 y -0.45 z 1.50 n   2 rgb 148,116,100  Head 0.87 Chest 0.06 Neck 0.05
+x -0.10 y -0.45 z 1.60 n   1 rgb 145,114, 96  Head 0.88 Neck 0.04 Chest 0.04
+x -0.10 y -0.45 z 1.65 n   1 rgb 137,105, 86  Head 0.88 Chest 0.05 Neck 0.05
+x -0.10 y -0.45 z 1.95 n   1 rgb 254,195,119  Head 0.93 Chest 0.01 Neck 0.01
+x -0.10 y -0.45 z 2.00 n   1 rgb 254,201,125  Head 0.93 Chest 0.01 Neck 0.01
+x -0.10 y -0.40 z 0.60 n   3 rgb 174,101, 28  Root 0.66 Chest 0.31
+x -0.10 y -0.40 z 0.65 n   1 rgb 171, 99, 25  Root 0.64 Chest 0.35
+x -0.10 y -0.40 z 0.75 n   3 rgb 178,105, 31  Root 0.58 Chest 0.42
+x -0.10 y -0.40 z 1.45 n   1 rgb 151,119,100  Head 0.85 Chest 0.07 Neck 0.06
+x -0.10 y -0.40 z 1.65 n   1 rgb 136,104, 85  Head 0.89 Neck 0.04 Chest 0.04
+x -0.10 y -0.40 z 1.70 n   1 rgb 131, 97, 79  Head 0.90 Chest 0.05 Neck 0.05
+x -0.10 y -0.40 z 1.90 n   1 rgb 250,198,129  Head 0.91 Chest 0.03 Neck 0.03
+x -0.10 y -0.40 z 1.95 n   1 rgb 245,195,125  Head 0.91 Chest 0.02 Neck 0.02
+x -0.10 y -0.40 z 2.00 n   1 rgb 132,101, 73  Head 0.91 Chest 0.03 Neck 0.03
+x -0.10 y -0.35 z 0.55 n   1 rgb 160,100, 51  Root 0.70 Chest 0.26
+x -0.10 y -0.35 z 0.75 n   1 rgb 167, 96, 26  Root 0.61 Chest 0.38
+x -0.10 y -0.35 z 1.15 n   1 rgb 254,225,221  Chest 0.73 Root 0.12 Head 0.09
+x -0.10 y -0.35 z 1.40 n   2 rgb 149,118, 98  Head 0.80 Chest 0.10 Neck 0.08
+x -0.10 y -0.35 z 1.65 n   2 rgb 141,109, 90  Head 0.88 Chest 0.06 Neck 0.06
+x -0.10 y -0.35 z 1.75 n   1 rgb 135,100, 83  Head 0.89 Chest 0.05 Neck 0.05
+x -0.10 y -0.35 z 1.90 n   2 rgb 253,201,133  Head 0.91 Chest 0.03 Neck 0.03
+x -0.10 y -0.35 z 2.00 n   4 rgb 220,173,122  Head 0.91 Chest 0.03 Neck 0.03
+x -0.10 y -0.35 z 2.05 n   2 rgb 235,111,117  Head 0.89 Chest 0.05 Neck 0.05
+x -0.10 y -0.30 z 0.35 n   1 rgb 129, 96, 78  Root 0.86 Chest 0.10
+x -0.10 y -0.30 z 0.45 n   2 rgb 133,100, 81  Root 0.81 Chest 0.14
+x -0.10 y -0.30 z 0.55 n   1 rgb 170,100, 34  Root 0.72 Chest 0.23
+x -0.10 y -0.30 z 1.10 n   2 rgb 253,164,185  Chest 0.77 Root 0.11 Head 0.06
+x -0.10 y -0.30 z 1.40 n   4 rgb 142,111, 92  Head 0.76 Chest 0.12 Neck 0.10
+x -0.10 y -0.30 z 1.95 n   4 rgb 189,135, 95  Head 0.90 Chest 0.03 Neck 0.03
+x -0.10 y -0.30 z 2.00 n   1 rgb 149,102, 77  Head 0.90 Chest 0.03 Neck 0.02
+x -0.10 y -0.30 z 2.15 n   2 rgb 209, 91,111  Head 0.87 Chest 0.06 Neck 0.06
+x -0.10 y -0.30 z 2.20 n   1 rgb 171,132, 97  Head 0.86 Chest 0.06 Neck 0.06
+x -0.10 y -0.25 z 0.55 n   1 rgb 163, 98, 47  Root 0.72 Chest 0.22
+x -0.10 y -0.25 z 1.10 n   2 rgb 252,222,219  Chest 0.80 Root 0.11 Head 0.05
+x -0.10 y -0.25 z 1.40 n   3 rgb 133,109, 93  Head 0.67 Chest 0.16 Neck 0.14
+x -0.10 y -0.25 z 1.45 n   1 rgb 144,112, 95  Head 0.70 Chest 0.15 Neck 0.12
+x -0.10 y -0.25 z 1.90 n   1 rgb 127, 98, 80  Head 0.89 Chest 0.05 Neck 0.05
+x -0.10 y -0.25 z 2.15 n   1 rgb 254,203,119  Head 0.86 Chest 0.06 Neck 0.06
+x -0.10 y -0.25 z 2.20 n   3 rgb 254,203,133  Head 0.85 Chest 0.07 Neck 0.07
+x -0.10 y -0.25 z 2.25 n   1 rgb 254,204,135  Head 0.84 Chest 0.07 Neck 0.07
+x -0.10 y -0.20 z 0.95 n   1 rgb 203,128, 58  Chest 0.52 Root 0.48
+x -0.10 y -0.20 z 2.25 n   2 rgb 250,199,131  Head 0.84 Chest 0.07 Neck 0.07
+x -0.10 y -0.15 z 1.40 n   1 rgb 132, 97, 81  Head 0.56 Chest 0.22 Neck 0.19
+x -0.10 y -0.15 z 2.35 n   1 rgb 254,203,126  Head 0.84 Chest 0.07 Neck 0.07
+x -0.10 y -0.10 z 0.95 n   1 rgb 159, 89, 27  Chest 0.50 Root 0.48
+x -0.10 y -0.10 z 1.45 n   4 rgb 132,103, 87  Head 0.46 Chest 0.27 Neck 0.24
+x -0.10 y -0.10 z 2.35 n   1 rgb 254,198,121  Head 0.85 Chest 0.07 Neck 0.07
+x -0.10 y -0.05 z 0.75 n   1 rgb 132, 99, 83  Root 0.69 Chest 0.25
+x -0.10 y -0.05 z 0.80 n   2 rgb 145, 95, 54  Root 0.63 Chest 0.31
+x -0.10 y -0.05 z 0.85 n   4 rgb 158, 91, 27  Root 0.56 Chest 0.38
+x -0.10 y -0.05 z 0.90 n   4 rgb 166, 95, 33  Root 0.50 Chest 0.45
+x -0.10 y -0.05 z 0.95 n   1 rgb 178,100, 34  Chest 0.50 Root 0.47
+x -0.10 y -0.05 z 1.00 n   2 rgb 170,100, 29  Chest 0.53 Root 0.44
+x -0.10 y -0.05 z 2.30 n   1 rgb 254,201,124  Head 0.86 Chest 0.06 Neck 0.06
+x -0.10 y +0.00 z 0.35 n   1 rgb 127, 95, 77  Root 0.88 Chest 0.08
+x -0.10 y +0.00 z 0.90 n   1 rgb 165, 97, 35  Root 0.52 Chest 0.44
+x -0.10 y +0.00 z 0.95 n   1 rgb 164, 96, 32  Root 0.49 Chest 0.48
+x -0.10 y +0.00 z 1.00 n   1 rgb 175,105, 27  Chest 0.55 Root 0.41 Neck 0.00
+x -0.10 y +0.00 z 1.50 n   1 rgb 128, 99, 84  Head 0.38 Chest 0.31 Neck 0.30
+x -0.10 y +0.00 z 1.65 n   1 rgb 134,102, 85  Head 0.47 Chest 0.27 Neck 0.26
+x -0.10 y +0.05 z 0.60 n   1 rgb 132,102, 85  Root 0.86 Chest 0.12
+x -0.10 y +0.05 z 0.65 n   1 rgb 129, 99, 81  Root 0.82 Chest 0.16
+x -0.10 y +0.05 z 1.75 n   1 rgb 132,101, 84  Head 0.59 Chest 0.20 Neck 0.20
+x -0.10 y +0.05 z 1.80 n   1 rgb 163,120, 92  Head 0.69 Chest 0.15 Neck 0.15
+x -0.10 y +0.05 z 1.85 n   4 rgb 166,126, 94  Head 0.67 Chest 0.16 Neck 0.16
+x -0.10 y +0.05 z 1.90 n   1 rgb 145, 98, 73  Head 0.66 Chest 0.16 Neck 0.16
+x -0.10 y +0.10 z 1.75 n   2 rgb 253,202,132  Head 0.74 Chest 0.12 Neck 0.12
+x -0.10 y +0.10 z 2.25 n   1 rgb 252,196,120  Head 0.87 Chest 0.06 Neck 0.06
+x -0.10 y +0.15 z 1.70 n   1 rgb 254,208,140  Head 0.80 Chest 0.09 Neck 0.09
+x -0.10 y +0.15 z 1.75 n   1 rgb 252,201,134  Head 0.91 Chest 0.04 Neck 0.04
+x -0.10 y +0.15 z 2.20 n   1 rgb 254,200,125  Head 0.86 Chest 0.06 Neck 0.06
+x -0.10 y +0.15 z 2.25 n   1 rgb 254,197,120  Head 0.86 Chest 0.06 Neck 0.06
+x -0.10 y +0.20 z 0.45 n   2 rgb 136,105, 87  Tail1 0.55 Root 0.38 Chest 0.04
+x -0.10 y +0.20 z 0.55 n   1 rgb 134,102, 84  Root 0.93 Chest 0.05
+x -0.10 y +0.20 z 0.60 n   2 rgb 125, 93, 76  Root 0.93 Chest 0.05
+x -0.10 y +0.20 z 0.65 n   1 rgb 126, 95, 76  Root 0.93 Chest 0.04
+x -0.10 y +0.20 z 1.70 n   4 rgb 254,207,138  Head 0.84 Chest 0.08 Neck 0.07
+x -0.10 y +0.20 z 1.75 n   1 rgb 207, 22,101  Head 0.90 Chest 0.04 Neck 0.04
+x -0.10 y +0.20 z 2.20 n   2 rgb 254,196,121  Head 0.86 Chest 0.06 Neck 0.06
+x -0.10 y +0.25 z 0.40 n   3 rgb 139,108, 91  Tail1 0.59 Root 0.35 Chest 0.03
+x -0.10 y +0.25 z 0.65 n   1 rgb 123, 82, 71  Tail1 0.51 Root 0.42 Chest 0.03
+x -0.10 y +0.25 z 1.15 n   2 rgb 130, 98, 78  Tail1 0.76 Tail2 0.19 Root 0.00
+x -0.10 y +0.25 z 1.20 n   2 rgb 127, 95, 78  Tail1 0.73 Tail2 0.22
+x -0.10 y +0.25 z 1.25 n   2 rgb 128, 96, 76  Tail1 0.71 Tail2 0.24
+x -0.10 y +0.25 z 1.85 n   3 rgb 206, 32,102  Head 0.89 Chest 0.05 Neck 0.05
+x -0.10 y +0.25 z 1.90 n   1 rgb 251,199,131  Head 0.88 Chest 0.05 Neck 0.05
+x -0.10 y +0.25 z 2.15 n   1 rgb 253,199,126  Head 0.86 Chest 0.06 Neck 0.06
+x -0.10 y +0.30 z 0.40 n   2 rgb 138,105, 89  Tail1 0.60 Root 0.34 Chest 0.03
+x -0.10 y +0.30 z 0.65 n   2 rgb 123, 94, 78  Tail1 0.60 Root 0.34 Chest 0.02
+x -0.10 y +0.30 z 1.05 n   1 rgb 126, 93, 75  Tail1 0.80 Tail2 0.14 Root 0.03
+x -0.10 y +0.30 z 1.10 n   2 rgb 127, 96, 78  Tail1 0.79 Tail2 0.16 Root 0.02
+x -0.10 y +0.30 z 1.15 n   1 rgb 128, 98, 79  Tail1 0.75 Tail2 0.20 Root 0.00
+x -0.10 y +0.30 z 1.20 n   1 rgb 125, 93, 75  Tail1 0.71 Tail2 0.24
+x -0.10 y +0.30 z 1.25 n   1 rgb 128, 96, 76  Tail1 0.66 Tail2 0.29
+x -0.10 y +0.30 z 1.60 n   1 rgb 254,201,130  Head 0.88 Chest 0.06 Neck 0.06
+x -0.10 y +0.30 z 1.65 n   1 rgb 254,208,138  Head 0.87 Chest 0.06 Neck 0.06
+x -0.10 y +0.30 z 1.90 n   2 rgb 251,200,134  Head 0.88 Chest 0.05 Neck 0.05
+x -0.10 y +0.30 z 1.95 n   1 rgb 253,202,134  Head 0.88 Chest 0.05 Neck 0.05
+x -0.10 y +0.30 z 2.15 n   1 rgb 251,199,131  Head 0.87 Chest 0.06 Neck 0.06
+x -0.10 y +0.35 z 0.40 n   2 rgb 137,107, 89  Tail1 0.62 Root 0.33 Chest 0.03
+x -0.10 y +0.35 z 0.65 n   1 rgb 120, 89, 73  Tail1 0.61 Root 0.33 Chest 0.02
+x -0.10 y +0.35 z 0.70 n   1 rgb 121, 90, 75  Tail1 0.67 Root 0.27 Tail2 0.02
+x -0.10 y +0.35 z 0.95 n   4 rgb 125, 95, 78  Tail1 0.82 Tail2 0.10 Root 0.06
+x -0.10 y +0.35 z 1.00 n   1 rgb 128, 97, 79  Tail1 0.81 Tail2 0.13 Root 0.04
+x -0.10 y +0.35 z 1.05 n   4 rgb 127, 98, 80  Tail1 0.79 Tail2 0.15 Root 0.02
+x -0.10 y +0.35 z 1.10 n   4 rgb 126, 95, 78  Tail1 0.78 Tail2 0.17 Root 0.01
+x -0.10 y +0.35 z 1.20 n   7 rgb 137,111, 96  Tail1 0.71 Tail2 0.25
+x -0.10 y +0.35 z 1.25 n   4 rgb 133,104, 89  Tail1 0.68 Tail2 0.27
+x -0.10 y +0.35 z 1.30 n   3 rgb 125, 94, 78  Tail1 0.64 Tail2 0.31
+x -0.10 y +0.35 z 1.35 n   3 rgb 129, 98, 81  Tail1 0.61 Tail2 0.33 Head 0.00
+x -0.10 y +0.35 z 1.95 n   1 rgb 249,196,130  Head 0.87 Chest 0.05 Neck 0.05
+x -0.10 y +0.35 z 2.00 n   3 rgb 253,205,137  Head 0.87 Chest 0.05 Neck 0.05
+x -0.10 y +0.35 z 2.05 n   1 rgb 250,198,130  Head 0.87 Chest 0.05 Neck 0.05
+x -0.10 y +0.35 z 2.10 n   1 rgb 254,203,137  Head 0.86 Chest 0.06 Neck 0.06
+x -0.10 y +0.40 z 0.40 n   2 rgb 127, 96, 79  Tail1 0.65 Root 0.29 Chest 0.02
+x -0.10 y +0.40 z 0.45 n   1 rgb 128, 98, 81  Tail1 0.65 Root 0.29 Chest 0.02
+x -0.10 y +0.40 z 0.50 n   2 rgb 122, 92, 75  Tail1 0.64 Root 0.30 Chest 0.02
+x -0.10 y +0.40 z 0.60 n   1 rgb 124, 94, 77  Tail1 0.61 Root 0.33 Chest 0.02
+x -0.10 y +0.40 z 0.65 n   3 rgb 121, 91, 75  Tail1 0.65 Root 0.29 Tail2 0.01
+x -0.10 y +0.40 z 1.00 n   2 rgb 122, 93, 76  Tail1 0.81 Tail2 0.13 Root 0.04
+x -0.10 y +0.40 z 1.05 n   1 rgb 121, 91, 74  Tail1 0.80 Tail2 0.15 Root 0.02
+x -0.10 y +0.40 z 1.10 n   1 rgb 131,100, 85  Tail1 0.79 Tail2 0.16 Root 0.02
+x -0.10 y +0.40 z 1.15 n   1 rgb 126, 97, 80  Tail1 0.76 Tail2 0.19 Root 0.00
+x -0.10 y +0.40 z 1.20 n   1 rgb 123, 91, 75  Tail1 0.70 Tail2 0.25
+x -0.10 y +0.40 z 1.25 n   2 rgb 128, 98, 80  Tail1 0.68 Tail2 0.28
+x -0.10 y +0.40 z 1.30 n   2 rgb 123, 96, 80  Tail1 0.64 Tail2 0.32
+x -0.10 y +0.40 z 1.35 n   3 rgb 135,108, 92  Tail1 0.60 Tail2 0.35
+x -0.10 y +0.40 z 1.55 n   1 rgb 254,202,129  Head 0.89 Chest 0.05 Neck 0.05
+x -0.10 y +0.40 z 1.60 n   2 rgb 251,199,129  Head 0.89 Chest 0.05 Neck 0.05
+x -0.10 y +0.45 z 0.55 n   1 rgb 125, 95, 78  Tail1 0.66 Root 0.29 Chest 0.01
+x -0.10 y +0.45 z 0.60 n   1 rgb 122, 92, 76  Tail1 0.68 Root 0.27 Chest 0.01
+x -0.10 y +0.45 z 1.05 n   2 rgb 125, 96, 78  Tail1 0.79 Tail2 0.16 Root 0.02
+x -0.10 y +0.45 z 1.10 n   3 rgb 124, 94, 78  Tail1 0.76 Tail2 0.19 Root 0.01
+x -0.10 y +0.45 z 1.15 n   2 rgb 124, 94, 78  Tail1 0.74 Tail2 0.21 Root 0.00
+x -0.10 y +0.45 z 1.25 n   2 rgb 125, 94, 79  Tail1 0.67 Tail2 0.29
+x -0.10 y +0.45 z 1.30 n   3 rgb 123, 94, 77  Tail1 0.63 Tail2 0.33
+x -0.10 y +0.45 z 1.35 n   2 rgb 124, 95, 79  Tail1 0.59 Tail2 0.37
+x -0.10 y +0.50 z 1.10 n   1 rgb 123, 92, 76  Tail1 0.77 Tail2 0.19 Root 0.01
+x -0.10 y +0.50 z 1.15 n   2 rgb 123, 93, 76  Tail1 0.72 Tail2 0.24
+x -0.10 y +0.50 z 1.20 n   1 rgb 122, 92, 76  Tail1 0.67 Tail2 0.29
+x -0.10 y +0.50 z 1.25 n   3 rgb 124, 95, 79  Tail1 0.65 Tail2 0.31
+x -0.10 y +0.55 z 1.20 n   1 rgb 123, 94, 77  Tail1 0.68 Tail2 0.28
+x -0.05 y -0.60 z 2.05 n   2 rgb 254,200,123  Head 0.95
+x -0.05 y -0.55 z 1.60 n   1 rgb 243,210,179  Head 0.91 Neck 0.03 Chest 0.02
+x -0.05 y -0.55 z 2.05 n   1 rgb 254,194,119  Head 0.95
+x -0.05 y -0.50 z 1.00 n   1 rgb 136,103, 84  Chest 0.76 Root 0.24
+x -0.05 y -0.50 z 1.05 n   1 rgb 133,101, 82  Chest 0.76 Root 0.22 Head 0.01
+x -0.05 y -0.50 z 1.50 n   1 rgb 254,222,186  Head 0.91 Chest 0.03 Neck 0.03
+x -0.05 y -0.50 z 1.60 n   1 rgb 153,120,102  Head 0.91 Neck 0.03 Chest 0.02
+x -0.05 y -0.50 z 1.65 n   1 rgb 136,102, 84  Head 0.90 Neck 0.03 Chest 0.02
+x -0.05 y -0.50 z 2.00 n   3 rgb 253,199,125  Head 0.94 Chest 0.01 Neck 0.00
+x -0.05 y -0.45 z 0.60 n   1 rgb 177,103, 28  Root 0.66 Chest 0.32
+x -0.05 y -0.45 z 0.65 n   3 rgb 173,100, 29  Root 0.64 Chest 0.35
+x -0.05 y -0.45 z 0.75 n   1 rgb 171, 99, 31  Root 0.56 Chest 0.43
+x -0.05 y -0.45 z 0.80 n   3 rgb 180,108, 36  Root 0.55 Chest 0.45
+x -0.05 y -0.45 z 0.95 n   1 rgb 132,101, 83  Chest 0.75 Root 0.25
+x -0.05 y -0.45 z 1.00 n   1 rgb 134,101, 84  Chest 0.77 Root 0.23
+x -0.05 y -0.45 z 1.05 n   1 rgb 136,103, 83  Chest 0.77 Root 0.22 Head 0.01
+x -0.05 y -0.45 z 1.45 n   3 rgb 202,169,142  Head 0.87 Chest 0.06 Neck 0.05
+x -0.05 y -0.45 z 1.65 n   1 rgb 135,101, 82  Head 0.90 Neck 0.03 Chest 0.02
+x -0.05 y -0.45 z 1.70 n   2 rgb  51, 44, 41  Head 0.92 Neck 0.02 Chest 0.01
+x -0.05 y -0.45 z 1.75 n   8 rgb 135,109, 91  Head 0.92 Neck 0.02 Chest 0.01
+x -0.05 y -0.45 z 1.80 n   1 rgb 132,100, 80  Head 0.93 Neck 0.01 Chest 0.01
+x -0.05 y -0.45 z 1.85 n   2 rgb  69, 56, 45  Head 0.94 Neck 0.00 Chest 0.00
+x -0.05 y -0.45 z 2.00 n   4 rgb 250,197,127  Head 0.93 Chest 0.01 Neck 0.01
+x -0.05 y -0.45 z 2.05 n   2 rgb 254,200,123  Head 0.93 Chest 0.01 Neck 0.01
+x -0.05 y -0.40 z 0.75 n   2 rgb 170, 99, 25  Root 0.57 Chest 0.42
+x -0.05 y -0.40 z 0.80 n   1 rgb 202,130, 59  Root 0.55 Chest 0.44
+x -0.05 y -0.40 z 0.95 n   1 rgb 133,104, 87  Chest 0.75 Root 0.25
+x -0.05 y -0.40 z 1.00 n   1 rgb 133,101, 82  Chest 0.78 Root 0.22
+x -0.05 y -0.40 z 1.05 n   1 rgb 134,102, 82  Chest 0.78 Root 0.20 Head 0.01
+x -0.05 y -0.40 z 1.10 n   1 rgb 134, 99, 80  Chest 0.72 Root 0.19 Head 0.05
+x -0.05 y -0.40 z 1.15 n   2 rgb 254,222,224  Chest 0.69 Root 0.13 Head 0.10
+x -0.05 y -0.40 z 1.40 n   4 rgb 148,117, 98  Head 0.83 Chest 0.08 Neck 0.07
+x -0.05 y -0.40 z 1.70 n   1 rgb 135,100, 81  Head 0.91 Neck 0.03 Chest 0.02
+x -0.05 y -0.40 z 1.80 n   1 rgb 132, 99, 80  Head 0.92 Neck 0.02 Chest 0.02
+x -0.05 y -0.40 z 1.85 n   1 rgb 130,100, 79  Head 0.93 Neck 0.01 Chest 0.01
+x -0.05 y -0.40 z 2.00 n   1 rgb 252,200,130  Head 0.93 Chest 0.02 Neck 0.01
+x -0.05 y -0.35 z 0.50 n   1 rgb 133,100, 80  Root 0.79 Chest 0.16
+x -0.05 y -0.35 z 0.55 n   3 rgb 171, 99, 33  Root 0.70 Chest 0.27
+x -0.05 y -0.35 z 0.60 n   1 rgb 172,101, 33  Root 0.69 Chest 0.28
+x -0.05 y -0.35 z 0.90 n   1 rgb 204,127, 58  Chest 0.53 Root 0.46
+x -0.05 y -0.35 z 1.10 n   2 rgb 134,102, 85  Chest 0.73 Root 0.17 Head 0.05
+x -0.05 y -0.35 z 1.15 n   3 rgb 252,162,189  Chest 0.71 Root 0.12 Head 0.09
+x -0.05 y -0.35 z 1.40 n   2 rgb 151,118, 99  Head 0.78 Chest 0.12 Neck 0.09
+x -0.05 y -0.35 z 1.90 n   1 rgb 130, 99, 81  Head 0.92 Chest 0.03 Neck 0.03
+x -0.05 y -0.35 z 1.95 n   1 rgb 253,201,129  Head 0.92 Chest 0.02 Neck 0.02
+x -0.05 y -0.35 z 2.00 n   2 rgb 240,170,121  Head 0.91 Chest 0.03 Neck 0.03
+x -0.05 y -0.35 z 2.10 n   1 rgb 224, 31,110  Head 0.89 Chest 0.05 Neck 0.05
+x -0.05 y -0.35 z 2.20 n   1 rgb 206, 22, 96  Head 0.86 Chest 0.07 Neck 0.06
+x -0.05 y -0.30 z 0.30 n   1 rgb 137,105, 86  Root 0.87 Chest 0.09
+x -0.05 y -0.30 z 0.35 n   1 rgb 133,100, 81  Root 0.86 Chest 0.11
+x -0.05 y -0.30 z 0.40 n   1 rgb 130, 98, 80  Root 0.84 Chest 0.12
+x -0.05 y -0.30 z 0.55 n   2 rgb 138, 97, 75  Root 0.72 Chest 0.24
+x -0.05 y -0.30 z 1.00 n   2 rgb 178, 96, 97  Chest 0.85 Root 0.15 Head 0.00
+x -0.05 y -0.30 z 1.05 n   4 rgb 189, 90,108  Chest 0.83 Root 0.13 Head 0.02
+x -0.05 y -0.30 z 1.10 n   2 rgb 191, 88,108  Chest 0.74 Root 0.14 Head 0.07
+x -0.05 y -0.30 z 1.15 n   2 rgb 248, 83,136  Chest 0.70 Root 0.13 Head 0.09
+x -0.05 y -0.30 z 1.35 n   1 rgb 130,100, 85  Head 0.75 Chest 0.13 Neck 0.10
+x -0.05 y -0.30 z 1.40 n   1 rgb 132,103, 89  Head 0.74 Chest 0.14 Neck 0.11
+x -0.05 y -0.30 z 1.95 n   1 rgb 137,100, 60  Head 0.92 Chest 0.03 Neck 0.02
+x -0.05 y -0.30 z 2.20 n   2 rgb 202,160,107  Head 0.85 Chest 0.07 Neck 0.07
+x -0.05 y -0.25 z 1.00 n   2 rgb 192, 86,110  Chest 0.88 Root 0.12 Head 0.00
+x -0.05 y -0.25 z 1.05 n   3 rgb 249, 88,143  Chest 0.84 Root 0.12 Head 0.02
+x -0.05 y -0.25 z 1.10 n   5 rgb 253,124,162  Chest 0.78 Root 0.12 Head 0.06
+x -0.05 y -0.25 z 1.20 n   1 rgb 246, 86,134  Chest 0.71 Head 0.11 Root 0.09
+x -0.05 y -0.25 z 1.40 n   1 rgb 129,102, 86  Head 0.63 Chest 0.20 Neck 0.15
+x -0.05 y -0.25 z 2.20 n   2 rgb 254,205,133  Head 0.84 Chest 0.07 Neck 0.07
+x -0.05 y -0.25 z 2.25 n   3 rgb 250,199,130  Head 0.84 Chest 0.07 Neck 0.07
+x -0.05 y -0.25 z 2.30 n   1 rgb 247,197,128  Head 0.83 Chest 0.08 Neck 0.08
+x -0.05 y -0.20 z 2.30 n   2 rgb 253,203,134  Head 0.83 Chest 0.08 Neck 0.08
+x -0.05 y -0.20 z 2.35 n   1 rgb 254,204,130  Head 0.83 Chest 0.08 Neck 0.08
+x -0.05 y -0.15 z 0.95 n   1 rgb 172, 99, 35  Chest 0.54 Root 0.46
+x -0.05 y -0.15 z 1.40 n   1 rgb 126, 95, 79  Head 0.45 Chest 0.28 Neck 0.23
+x -0.05 y -0.15 z 2.35 n   3 rgb 254,198,122  Head 0.84 Chest 0.08 Neck 0.07
+x -0.05 y -0.10 z 0.85 n   2 rgb 141, 95, 60  Root 0.59 Chest 0.35
+x -0.05 y -0.10 z 0.90 n   1 rgb 150, 83, 28  Chest 0.52 Root 0.45
+x -0.05 y -0.10 z 0.95 n   1 rgb 156, 89, 27  Chest 0.51 Root 0.46
+x -0.05 y -0.10 z 2.35 n   2 rgb 254,198,121  Head 0.85 Chest 0.07 Neck 0.07
+x -0.05 y -0.05 z 0.85 n   4 rgb 162, 92, 28  Root 0.56 Chest 0.38
+x -0.05 y -0.05 z 0.90 n   1 rgb 160, 81, 28  Root 0.50 Chest 0.45
+x -0.05 y -0.05 z 1.00 n   1 rgb 171, 96, 18  Chest 0.55 Root 0.42
+x -0.05 y -0.05 z 1.95 n   1 rgb 147,102, 78  Head 0.68 Chest 0.15 Neck 0.15
+x -0.05 y -0.05 z 2.35 n   1 rgb 254,202,124  Head 0.86 Chest 0.07 Neck 0.07
+x -0.05 y +0.00 z 0.80 n   1 rgb 124, 96, 79  Root 0.69 Chest 0.26
+x -0.05 y +0.00 z 0.85 n   1 rgb 249, 68,133  Root 0.54 Chest 0.39
+x -0.05 y +0.00 z 1.00 n   2 rgb 169,101, 35  Chest 0.57 Root 0.40
+x -0.05 y +0.00 z 1.05 n   1 rgb 164, 96, 34  Chest 0.60 Root 0.36 Neck 0.01
+x -0.05 y +0.00 z 1.95 n   1 rgb 153,110, 84  Head 0.67 Chest 0.16 Neck 0.15
+x -0.05 y +0.05 z 0.35 n   1 rgb 131,100, 85  Root 0.89 Chest 0.07
+x -0.05 y +0.05 z 0.45 n   1 rgb 130, 98, 81  Root 0.91 Chest 0.08
+x -0.05 y +0.05 z 0.80 n   1 rgb 128, 97, 81  Root 0.66 Chest 0.30
+x -0.05 y +0.05 z 1.50 n   1 rgb 129, 99, 82  Chest 0.36 Neck 0.35 Head 0.28
+x -0.05 y +0.05 z 1.55 n   1 rgb 127, 97, 82  Chest 0.35 Neck 0.34 Head 0.31
+x -0.05 y +0.05 z 1.90 n   1 rgb 152,106, 80  Head 0.66 Chest 0.17 Neck 0.16
+x -0.05 y +0.05 z 2.30 n   1 rgb 254,198,120  Head 0.86 Chest 0.06 Neck 0.06
+x -0.05 y +0.10 z 0.55 n   1 rgb 156, 83,100  Root 0.90 Chest 0.08
+x -0.05 y +0.10 z 0.75 n   1 rgb 126, 96, 79  Root 0.77 Chest 0.20
+x -0.05 y +0.10 z 1.65 n   1 rgb 132,103, 86  Head 0.39 Chest 0.30 Neck 0.30
+x -0.05 y +0.10 z 1.80 n   1 rgb 131,100, 83  Head 0.59 Chest 0.20 Neck 0.19
+x -0.05 y +0.10 z 1.85 n   3 rgb 207,161,107  Head 0.65 Chest 0.17 Neck 0.16
+x -0.05 y +0.10 z 1.90 n   1 rgb 152,106, 81  Head 0.65 Chest 0.17 Neck 0.16
+x -0.05 y +0.10 z 2.30 n   1 rgb 254,197,121  Head 0.86 Chest 0.06 Neck 0.06
+x -0.05 y +0.15 z 0.65 n   1 rgb 129, 97, 82  Root 0.76 Chest 0.22
+x -0.05 y +0.15 z 0.70 n   1 rgb 128, 99, 81  Root 0.75 Chest 0.23
+x -0.05 y +0.15 z 1.70 n   1 rgb 130, 99, 83  Head 0.44 Chest 0.28 Neck 0.27
+x -0.05 y +0.15 z 1.75 n   2 rgb 254,200,130  Head 0.77 Chest 0.11 Neck 0.11
+x -0.05 y +0.15 z 1.85 n   1 rgb 253,202,130  Head 0.68 Chest 0.15 Neck 0.15
+x -0.05 y +0.20 z 0.45 n   1 rgb 136,103, 85  Tail1 0.51 Root 0.42 Chest 0.05
+x -0.05 y +0.20 z 0.55 n   2 rgb 135,103, 85  Root 0.55 Chest 0.44
+x -0.05 y +0.20 z 1.75 n   1 rgb 254,205,136  Head 0.90 Chest 0.05 Neck 0.04
+x -0.05 y +0.20 z 2.25 n   1 rgb 254,197,120  Head 0.86 Chest 0.06 Neck 0.06
+x -0.05 y +0.25 z 0.45 n   1 rgb 136,104, 86  Tail1 0.51 Root 0.42 Chest 0.06
+x -0.05 y +0.25 z 0.65 n   1 rgb 123, 94, 76  Root 0.49 Tail1 0.44 Chest 0.05
+x -0.05 y +0.25 z 1.70 n   3 rgb 251,202,133  Head 0.90 Chest 0.05 Neck 0.04
+x -0.05 y +0.25 z 1.75 n   1 rgb 191, 65, 73  Head 0.90 Chest 0.05 Neck 0.04
+x -0.05 y +0.25 z 2.20 n   1 rgb 254,202,125  Head 0.85 Chest 0.06 Neck 0.06
+x -0.05 y +0.30 z 0.40 n   1 rgb 137,105, 87  Tail1 0.58 Root 0.36 Chest 0.04
+x -0.05 y +0.30 z 0.65 n   1 rgb 123, 93, 77  Root 0.50 Tail1 0.43 Chest 0.04
+x -0.05 y +0.30 z 1.65 n   1 rgb 252,199,127  Head 0.84 Chest 0.08 Neck 0.07
+x -0.05 y +0.30 z 1.70 n   1 rgb 254,204,136  Head 0.90 Chest 0.05 Neck 0.05
+x -0.05 y +0.30 z 1.85 n   4 rgb 205, 35, 98  Head 0.88 Chest 0.05 Neck 0.05
+x -0.05 y +0.30 z 1.90 n   3 rgb 252,201,133  Head 0.88 Chest 0.05 Neck 0.05
+x -0.05 y +0.30 z 1.95 n   2 rgb 252,200,132  Head 0.88 Chest 0.05 Neck 0.05
+x -0.05 y +0.35 z 0.45 n   4 rgb 127, 96, 80  Tail1 0.58 Root 0.36 Chest 0.04
+x -0.05 y +0.35 z 0.60 n   1 rgb 123, 93, 79  Tail1 0.51 Root 0.42 Chest 0.03
+x -0.05 y +0.35 z 0.65 n   1 rgb 122, 91, 75  Tail1 0.53 Root 0.40 Chest 0.03
+x -0.05 y +0.35 z 1.60 n   1 rgb 254,202,132  Head 0.88 Chest 0.06 Neck 0.06
+x -0.05 y +0.35 z 1.65 n   2 rgb 253,201,133  Head 0.88 Chest 0.06 Neck 0.06
+x -0.05 y +0.35 z 1.95 n   2 rgb 250,196,129  Head 0.87 Chest 0.05 Neck 0.05
+x -0.05 y +0.35 z 2.00 n   2 rgb 253,203,136  Head 0.87 Chest 0.05 Neck 0.05
+x -0.05 y +0.35 z 2.05 n   1 rgb 254,208,140  Head 0.87 Chest 0.05 Neck 0.05
+x -0.05 y +0.35 z 2.10 n   2 rgb 254,206,136  Head 0.87 Chest 0.06 Neck 0.05
+x -0.05 y +0.40 z 0.45 n   1 rgb 126, 95, 79  Tail1 0.60 Root 0.34 Chest 0.03
+x -0.05 y +0.40 z 1.20 n   1 rgb 118, 90, 72  Tail1 0.72 Tail2 0.24
+x -0.05 y +0.40 z 1.65 n   1 rgb 252,203,136  Head 0.89 Chest 0.05 Neck 0.05
+x -0.05 y +0.45 z 1.55 n   1 rgb 254,204,130  Head 0.88 Chest 0.06 Neck 0.06
+x -0.05 y +0.45 z 1.60 n   1 rgb 253,198,127  Head 0.88 Chest 0.06 Neck 0.06
+x -0.05 y +0.50 z 1.55 n   1 rgb 253,204,137  Head 0.88 Chest 0.06 Neck 0.06
+x -0.05 y +0.50 z 1.60 n   1 rgb 254,206,137  Head 0.88 Chest 0.06 Neck 0.06
+x +0.00 y -0.60 z 2.05 n   2 rgb 252,201,134  Head 0.95
+x +0.00 y -0.60 z 2.10 n   1 rgb 254,198,125  Head 0.96
+x +0.00 y -0.55 z 0.95 n   2 rgb 133,100, 81  Chest 0.76 Root 0.24
+x +0.00 y -0.55 z 1.00 n   1 rgb 135,102, 82  Chest 0.76 Root 0.23
+x +0.00 y -0.55 z 1.55 n   1 rgb 251,215,179  Head 0.92 Neck 0.02 Chest 0.01
+x +0.00 y -0.55 z 1.60 n   2 rgb 223,188,157  Head 0.93 Neck 0.01 Chest 0.01
+x +0.00 y -0.55 z 2.00 n   1 rgb 254,201,135  Head 0.95
+x +0.00 y -0.55 z 2.05 n   4 rgb 253,199,128  Head 0.95
+x +0.00 y -0.50 z 0.90 n   1 rgb 134,100, 80  Chest 0.74 Root 0.26
+x +0.00 y -0.50 z 0.95 n   2 rgb 132,101, 82  Chest 0.74 Root 0.26
+x +0.00 y -0.50 z 1.05 n   1 rgb 134, 99, 81  Chest 0.74 Root 0.22 Head 0.02
+x +0.00 y -0.50 z 1.50 n   1 rgb 253,218,184  Head 0.92 Chest 0.03 Neck 0.02
+x +0.00 y -0.50 z 1.65 n   2 rgb 144,113, 94  Head 0.91 Neck 0.03 Chest 0.00
+x +0.00 y -0.50 z 1.80 n   3 rgb 168,151,129  Head 0.93 Neck 0.01 Chest 0.00
+x +0.00 y -0.50 z 1.90 n   3 rgb  28, 21, 18  Head 0.94
+x +0.00 y -0.50 z 2.00 n   1 rgb 250,195,116  Head 0.94 Chest 0.00
+x +0.00 y -0.50 z 2.05 n   2 rgb 254,198,121  Head 0.94 Chest 0.00 Neck 0.00
+x +0.00 y -0.45 z 0.85 n   1 rgb 167, 98, 26  Chest 0.54 Root 0.46
+x +0.00 y -0.45 z 1.10 n   1 rgb 131, 99, 79  Chest 0.69 Root 0.19 Head 0.06
+x +0.00 y -0.45 z 1.15 n   3 rgb 213,183,175  Chest 0.67 Root 0.15 Head 0.10
+x +0.00 y -0.45 z 1.20 n   1 rgb 254,226,224  Chest 0.67 Root 0.13 Head 0.11
+x +0.00 y -0.45 z 1.40 n   1 rgb 252,219,181  Head 0.89 Chest 0.05 Neck 0.04
+x +0.00 y -0.45 z 1.65 n   4 rgb 170,145,131  Head 0.91 Neck 0.03 Chest 0.00
+x +0.00 y -0.45 z 1.70 n   3 rgb 107, 88, 77  Head 0.92 Neck 0.02 Chest 0.01
+x +0.00 y -0.45 z 1.75 n  10 rgb  73, 65, 57  Head 0.92 Neck 0.01 Chest 0.00
+x +0.00 y -0.45 z 1.80 n   7 rgb 147,131,111  Head 0.93 Neck 0.00 Chest 0.00
+x +0.00 y -0.45 z 1.85 n   1 rgb  28, 23, 22  Head 0.94 Neck 0.00 Chest 0.00
+x +0.00 y -0.45 z 1.90 n   4 rgb 103, 86, 73  Head 0.95 Neck 0.00 Chest 0.00
+x +0.00 y -0.45 z 1.95 n   2 rgb  19, 16, 12  Head 0.95
+x +0.00 y -0.45 z 2.00 n   2 rgb 253,200,125  Head 0.94 Chest 0.01 Neck 0.01
+x +0.00 y -0.40 z 0.60 n   1 rgb 184, 93, 43  Root 0.67 Chest 0.31
+x +0.00 y -0.40 z 0.65 n   1 rgb 173,100, 30  Root 0.65 Chest 0.34
+x +0.00 y -0.40 z 0.85 n  17 rgb 172,100, 27  Chest 0.52 Root 0.48
+x +0.00 y -0.40 z 0.90 n   5 rgb 176,103, 31  Chest 0.56 Root 0.43
+x +0.00 y -0.40 z 0.95 n   1 rgb 147,104, 82  Chest 0.70 Root 0.30
+x +0.00 y -0.40 z 1.15 n   1 rgb 249, 82,138  Chest 0.67 Root 0.13 Head 0.11
+x +0.00 y -0.40 z 1.40 n   2 rgb 236,203,169  Head 0.85 Chest 0.08 Neck 0.06
+x +0.00 y -0.40 z 1.95 n   1 rgb 130, 98, 80  Head 0.93 Chest 0.01 Neck 0.01
+x +0.00 y -0.40 z 2.10 n   1 rgb 237,150,114  Head 0.90 Chest 0.05 Neck 0.05
+x +0.00 y -0.35 z 0.40 n   1 rgb 135,102, 82  Root 0.85 Chest 0.11
+x +0.00 y -0.35 z 0.45 n   2 rgb 131, 98, 79  Root 0.82 Chest 0.13
+x +0.00 y -0.35 z 0.60 n   4 rgb 178, 97, 49  Root 0.68 Chest 0.30
+x +0.00 y -0.35 z 0.65 n   2 rgb 183, 98, 37  Root 0.64 Chest 0.35
+x +0.00 y -0.35 z 0.95 n   2 rgb 129, 99, 83  Chest 0.77 Root 0.23
+x +0.00 y -0.35 z 1.15 n   2 rgb 190, 90,107  Chest 0.67 Root 0.15 Head 0.10
+x +0.00 y -0.35 z 1.20 n   2 rgb 192, 92,108  Chest 0.65 Root 0.13 Head 0.12
+x +0.00 y -0.35 z 2.00 n   2 rgb 190,149,103  Head 0.93 Chest 0.01 Neck 0.01
+x +0.00 y -0.35 z 2.10 n   1 rgb 252,190,127  Head 0.89 Chest 0.05 Neck 0.05
+x +0.00 y -0.35 z 2.15 n   1 rgb 211, 30, 99  Head 0.86 Chest 0.06 Neck 0.06
+x +0.00 y -0.35 z 2.20 n   1 rgb 210, 28, 99  Head 0.86 Chest 0.07 Neck 0.07
+x +0.00 y -0.30 z 0.35 n   1 rgb 135,102, 83  Root 0.87 Chest 0.10
+x +0.00 y -0.30 z 0.95 n   1 rgb 200,125, 45  Chest 0.57 Root 0.43
+x +0.00 y -0.30 z 1.00 n   1 rgb 136, 95, 80  Chest 0.82 Root 0.17
+x +0.00 y -0.30 z 1.15 n   2 rgb 178, 97,122  Chest 0.65 Root 0.14 Head 0.11
+x +0.00 y -0.30 z 1.35 n   2 rgb 149,115, 97  Head 0.72 Chest 0.15 Neck 0.11
+x +0.00 y -0.30 z 2.20 n   2 rgb 226,112,103  Head 0.85 Chest 0.07 Neck 0.07
+x +0.00 y -0.30 z 2.25 n   2 rgb 251,199,130  Head 0.84 Chest 0.07 Neck 0.07
+x +0.00 y -0.25 z 0.95 n   1 rgb 148, 84, 23  Chest 0.59 Root 0.40
+x +0.00 y -0.25 z 1.00 n   3 rgb 204,121,137  Chest 0.87 Root 0.12
+x +0.00 y -0.25 z 1.05 n   3 rgb 134,101, 86  Chest 0.80 Root 0.15 Head 0.03
+x +0.00 y -0.25 z 1.10 n   1 rgb 132,100, 83  Chest 0.75 Root 0.14 Head 0.06
+x +0.00 y -0.25 z 1.15 n   2 rgb 245, 95,140  Chest 0.67 Root 0.13 Head 0.10
+x +0.00 y -0.25 z 1.30 n   1 rgb 254,223,222  Chest 0.62 Head 0.16 Neck 0.15
+x +0.00 y -0.25 z 2.25 n   2 rgb 254,204,136  Head 0.84 Chest 0.08 Neck 0.08
+x +0.00 y -0.25 z 2.30 n   4 rgb 252,202,135  Head 0.83 Chest 0.08 Neck 0.08
+x +0.00 y -0.25 z 2.35 n   1 rgb 254,205,137  Head 0.83 Chest 0.08 Neck 0.08
+x +0.00 y -0.20 z 0.90 n   1 rgb 249, 94,138  Chest 0.61 Root 0.39
+x +0.00 y -0.20 z 1.00 n   2 rgb 189,156,148  Chest 0.88 Root 0.12 Head 0.00
+x +0.00 y -0.20 z 1.05 n   2 rgb 247,114,152  Chest 0.84 Root 0.12 Head 0.03
+x +0.00 y -0.20 z 1.10 n   1 rgb 248,101,143  Chest 0.77 Root 0.13 Head 0.05
+x +0.00 y -0.20 z 1.15 n   2 rgb 196,100,114  Chest 0.71 Root 0.13 Head 0.09
+x +0.00 y -0.20 z 1.25 n   1 rgb 247, 83,132  Chest 0.67 Head 0.14 Neck 0.13
+x +0.00 y -0.20 z 1.35 n   1 rgb 128,100, 93  Head 0.59 Chest 0.23 Neck 0.16
+x +0.00 y -0.20 z 2.00 n   1 rgb 148, 99, 74  Head 0.70 Chest 0.14 Neck 0.14
+x +0.00 y -0.20 z 2.35 n   3 rgb 254,203,132  Head 0.83 Chest 0.08 Neck 0.08
+x +0.00 y -0.15 z 0.90 n   1 rgb 151, 90, 31  Chest 0.58 Root 0.41
+x +0.00 y -0.15 z 0.95 n   1 rgb 156, 90, 27  Chest 0.57 Root 0.42
+x +0.00 y -0.15 z 1.15 n   1 rgb 245, 75,132  Chest 0.79 Root 0.08 Head 0.08
+x +0.00 y -0.15 z 1.20 n   2 rgb 253,222,221  Chest 0.76 Head 0.10 Neck 0.07
+x +0.00 y -0.15 z 1.40 n   1 rgb 131,100, 84  Head 0.40 Chest 0.33 Neck 0.25
+x +0.00 y -0.15 z 2.00 n   3 rgb 144, 94, 70  Head 0.70 Chest 0.14 Neck 0.14
+x +0.00 y -0.15 z 2.40 n   1 rgb 254,199,122  Head 0.83 Chest 0.08 Neck 0.08
+x +0.00 y -0.10 z 2.00 n   1 rgb 147, 99, 74  Head 0.70 Chest 0.15 Neck 0.14
+x +0.00 y -0.10 z 2.40 n   1 rgb 254,195,119  Head 0.84 Chest 0.07 Neck 0.07
+x +0.00 y -0.05 z 1.05 n   1 rgb 173, 99, 36  Chest 0.63 Root 0.33 Neck 0.00
+x +0.00 y -0.05 z 1.10 n   1 rgb 176,103, 37  Chest 0.65 Root 0.30 Neck 0.01
+x +0.00 y -0.05 z 1.40 n   1 rgb 131,100, 84  Chest 0.37 Head 0.31 Neck 0.30
+x +0.00 y -0.05 z 1.95 n   1 rgb 151,106, 81  Head 0.69 Chest 0.15 Neck 0.15
+x +0.00 y -0.05 z 2.00 n   1 rgb 146, 98, 74  Head 0.69 Chest 0.15 Neck 0.15
+x +0.00 y -0.05 z 2.35 n   1 rgb 254,196,119  Head 0.85 Chest 0.07 Neck 0.07
+x +0.00 y +0.00 z 0.35 n   1 rgb 125, 96, 78  Root 0.89 Chest 0.07
+x +0.00 y +0.00 z 0.85 n   1 rgb 137, 95, 74  Root 0.56 Chest 0.38
+x +0.00 y +0.00 z 0.95 n   1 rgb 254,223,223  Chest 0.54 Root 0.41
+x +0.00 y +0.00 z 1.05 n   1 rgb 163, 95, 33  Chest 0.62 Root 0.35 Neck 0.00
+x +0.00 y +0.00 z 1.10 n   1 rgb 163, 96, 34  Chest 0.66 Root 0.30 Neck 0.01
+x +0.00 y +0.00 z 1.45 n   1 rgb 128, 97, 82  Chest 0.40 Neck 0.34 Head 0.24
+x +0.00 y +0.00 z 1.95 n   7 rgb 149,103, 79  Head 0.68 Chest 0.16 Neck 0.15
+x +0.00 y +0.00 z 2.00 n   2 rgb 147,100, 77  Head 0.68 Chest 0.15 Neck 0.15
+x +0.00 y +0.00 z 2.35 n   2 rgb 254,201,124  Head 0.86 Chest 0.07 Neck 0.06
+x +0.00 y +0.05 z 0.35 n   1 rgb 128, 99, 82  Root 0.89 Chest 0.08
+x +0.00 y +0.05 z 0.40 n   1 rgb 128, 97, 81  Root 0.89 Chest 0.09
+x +0.00 y +0.05 z 0.85 n   3 rgb 248, 79,128  Root 0.55 Chest 0.40
+x +0.00 y +0.05 z 1.95 n   2 rgb 148,102, 78  Head 0.67 Chest 0.16 Neck 0.16
+x +0.00 y +0.05 z 2.30 n   1 rgb 254,201,120  Head 0.86 Chest 0.06 Neck 0.06
+x +0.00 y +0.10 z 0.40 n   1 rgb 128, 97, 81  Root 0.87 Chest 0.12
+x +0.00 y +0.10 z 0.80 n   1 rgb 129, 99, 82  Root 0.68 Chest 0.29
+x +0.00 y +0.10 z 0.85 n   2 rgb 186, 83,106  Root 0.56 Chest 0.40
+x +0.00 y +0.10 z 1.85 n   1 rgb 252,203,131  Head 0.65 Chest 0.17 Neck 0.17
+x +0.00 y +0.10 z 1.90 n   3 rgb 143, 99, 77  Head 0.65 Chest 0.17 Neck 0.16
+x +0.00 y +0.10 z 2.30 n   1 rgb 254,201,125  Head 0.86 Chest 0.06 Neck 0.06
+x +0.00 y +0.15 z 0.50 n   1 rgb 145,116, 97  Root 0.84 Chest 0.15
+x +0.00 y +0.15 z 0.60 n   2 rgb 132, 96, 83  Root 0.71 Chest 0.28
+x +0.00 y +0.15 z 0.75 n   1 rgb 127, 98, 81  Root 0.74 Chest 0.24
+x +0.00 y +0.15 z 1.55 n   1 rgb 128, 98, 84  Chest 0.37 Neck 0.36 Head 0.27
+x +0.00 y +0.15 z 1.60 n   1 rgb 130, 98, 79  Chest 0.34 Neck 0.33 Head 0.32
+x +0.00 y +0.15 z 1.75 n   1 rgb 130,100, 84  Head 0.45 Chest 0.27 Neck 0.27
+x +0.00 y +0.15 z 1.80 n   1 rgb 131,100, 83  Head 0.57 Chest 0.21 Neck 0.21
+x +0.00 y +0.15 z 1.85 n   1 rgb 254,202,129  Head 0.67 Chest 0.16 Neck 0.16
+x +0.00 y +0.15 z 2.25 n   1 rgb 254,196,119  Head 0.86 Chest 0.06 Neck 0.06
+x +0.00 y +0.15 z 2.30 n   1 rgb 254,198,123  Head 0.86 Chest 0.06 Neck 0.06
+x +0.00 y +0.20 z 0.50 n   3 rgb 135,103, 85  Root 0.56 Tail1 0.36 Chest 0.07
+x +0.00 y +0.20 z 0.55 n   1 rgb 133,100, 82  Root 0.60 Chest 0.39
+x +0.00 y +0.20 z 0.65 n   3 rgb 123, 90, 74  Root 0.68 Chest 0.21 Tail1 0.10
+x +0.00 y +0.20 z 1.70 n   1 rgb 254,211,139  Head 0.79 Chest 0.10 Neck 0.10
+x +0.00 y +0.20 z 1.75 n   1 rgb 254,201,129  Head 0.73 Chest 0.12 Neck 0.12
+x +0.00 y +0.20 z 2.25 n   1 rgb 254,195,119  Head 0.86 Chest 0.06 Neck 0.06
+x +0.00 y +0.25 z 0.50 n   3 rgb 137,105, 87  Root 0.52 Tail1 0.39 Chest 0.07
+x +0.00 y +0.25 z 0.65 n   2 rgb 125, 93, 76  Root 0.67 Tail1 0.26 Chest 0.06
+x +0.00 y +0.25 z 1.70 n   1 rgb 254,209,136  Head 0.80 Chest 0.09 Neck 0.09
+x +0.00 y +0.25 z 1.75 n   3 rgb 253,206,138  Head 0.85 Chest 0.07 Neck 0.07
+x +0.00 y +0.25 z 1.80 n   1 rgb 193,  0, 69  Head 0.89 Chest 0.05 Neck 0.05
+x +0.00 y +0.25 z 2.20 n   1 rgb 254,196,120  Head 0.85 Chest 0.07 Neck 0.07
+x +0.00 y +0.30 z 0.50 n   5 rgb 128, 98, 81  Root 0.50 Tail1 0.41 Chest 0.07
+x +0.00 y +0.30 z 0.55 n   1 rgb 123, 94, 75  Root 0.52 Tail1 0.40 Chest 0.06
+x +0.00 y +0.30 z 0.65 n   1 rgb 125, 93, 78  Root 0.53 Tail1 0.40 Chest 0.05
+x +0.00 y +0.30 z 1.65 n   1 rgb 254,209,136  Head 0.83 Chest 0.08 Neck 0.08
+x +0.00 y +0.30 z 1.70 n   1 rgb 252,196,126  Head 0.80 Chest 0.09 Neck 0.09
+x +0.00 y +0.30 z 1.80 n   1 rgb 208, 23,100  Head 0.89 Chest 0.05 Neck 0.05
+x +0.00 y +0.30 z 1.90 n   1 rgb 254,206,138  Head 0.88 Chest 0.05 Neck 0.05
+x +0.00 y +0.30 z 2.20 n   2 rgb 253,199,124  Head 0.85 Chest 0.06 Neck 0.06
+x +0.00 y +0.35 z 0.50 n   2 rgb 167,111, 72  Root 0.48 Tail1 0.44 Chest 0.06
+x +0.00 y +0.35 z 0.55 n   7 rgb 123, 92, 76  Root 0.49 Tail1 0.43 Chest 0.06
+x +0.00 y +0.35 z 0.65 n   1 rgb 125, 92, 77  Root 0.51 Tail1 0.42 Chest 0.04
+x +0.00 y +0.35 z 1.90 n   1 rgb 206, 24,101  Head 0.87 Chest 0.05 Neck 0.05
+x +0.00 y +0.35 z 1.95 n   2 rgb 254,205,136  Head 0.87 Chest 0.06 Neck 0.05
+x +0.00 y +0.35 z 2.00 n   3 rgb 252,202,135  Head 0.87 Chest 0.06 Neck 0.05
+x +0.00 y +0.35 z 2.10 n   1 rgb 254,206,139  Head 0.86 Chest 0.06 Neck 0.06
+x +0.00 y +0.35 z 2.15 n   2 rgb 251,200,133  Head 0.86 Chest 0.06 Neck 0.06
+x +0.00 y +0.40 z 1.60 n   1 rgb 254,203,131  Head 0.87 Chest 0.07 Neck 0.07
+x +0.00 y +0.40 z 1.65 n   1 rgb 254,203,131  Head 0.86 Chest 0.07 Neck 0.07
+x +0.00 y +0.40 z 2.05 n   4 rgb 252,203,136  Head 0.87 Chest 0.06 Neck 0.05
+x +0.00 y +0.40 z 2.10 n   3 rgb 252,201,133  Head 0.86 Chest 0.06 Neck 0.06
+x +0.00 y +0.45 z 1.65 n   1 rgb 245,198,128  Head 0.88 Chest 0.06 Neck 0.06
+x +0.00 y +0.50 z 1.60 n   1 rgb 252,200,132  Head 0.87 Chest 0.06 Neck 0.06
+x +0.05 y -0.60 z 1.00 n   1 rgb 133, 98, 79  Chest 0.76 Root 0.23
+x +0.05 y -0.60 z 2.10 n   2 rgb 253,199,126  Head 0.96
+x +0.05 y -0.55 z 0.90 n   1 rgb 137,106, 84  Chest 0.74 Root 0.25
+x +0.05 y -0.55 z 0.95 n   1 rgb 135,104, 84  Chest 0.75 Root 0.25
+x +0.05 y -0.55 z 1.05 n   1 rgb 137,106, 86  Chest 0.74 Root 0.23 Head 0.02
+x +0.05 y -0.55 z 1.50 n   1 rgb 254,222,184  Head 0.94 Neck 0.00
+x +0.05 y -0.55 z 1.60 n   2 rgb 183,150,125  Head 0.94 Neck 0.01
+x +0.05 y -0.55 z 2.05 n   1 rgb 253,202,134  Head 0.96
+x +0.05 y -0.55 z 2.10 n   2 rgb 254,199,121  Head 0.95
+x +0.05 y -0.50 z 0.90 n   1 rgb 135,102, 86  Chest 0.72 Root 0.28
+x +0.05 y -0.50 z 1.05 n   1 rgb 135,104, 84  Chest 0.72 Root 0.22 Head 0.04
+x +0.05 y -0.50 z 1.10 n   1 rgb 139,103, 84  Chest 0.71 Root 0.21 Head 0.05
+x +0.05 y -0.50 z 1.65 n   2 rgb 191,176,167  Head 0.93 Neck 0.02
+x +0.05 y -0.50 z 1.85 n   1 rgb 150,119, 99  Head 0.94
+x +0.05 y -0.50 z 1.90 n   2 rgb 139,119,101  Head 0.94
+x +0.05 y -0.50 z 1.95 n   2 rgb  28, 20, 17  Head 0.95
+x +0.05 y -0.45 z 1.10 n   1 rgb 126, 95, 75  Chest 0.68 Root 0.19 Head 0.07
+x +0.05 y -0.45 z 1.15 n   2 rgb 249,220,222  Chest 0.67 Root 0.14 Head 0.10
+x +0.05 y -0.45 z 1.65 n   1 rgb 147,119,100  Head 0.92 Neck 0.02
+x +0.05 y -0.45 z 1.70 n   1 rgb 254,253,253  Head 0.93 Neck 0.00
+x +0.05 y -0.45 z 1.80 n   2 rgb   0,  0,  0  Head 0.93 Neck 0.00
+x +0.05 y -0.45 z 1.85 n   1 rgb  11, 11, 11  Head 0.94
+x +0.05 y -0.45 z 1.95 n   2 rgb  17, 16, 15  Head 0.95
+x +0.05 y -0.45 z 2.05 n   1 rgb 254,197,120  Head 0.95
+x +0.05 y -0.40 z 0.70 n   1 rgb 174,101, 27  Root 0.60 Chest 0.39
+x +0.05 y -0.40 z 0.85 n   3 rgb 169, 97, 30  Chest 0.55 Root 0.45
+x +0.05 y -0.40 z 0.90 n  13 rgb 165, 99, 34  Chest 0.61 Root 0.38
+x +0.05 y -0.40 z 0.95 n  10 rgb 124, 82, 51  Chest 0.67 Root 0.33
+x +0.05 y -0.40 z 1.15 n   1 rgb 253,225,221  Chest 0.68 Root 0.15 Head 0.09
+x +0.05 y -0.40 z 1.20 n   3 rgb 245, 95,141  Chest 0.65 Root 0.14 Head 0.12
+x +0.05 y -0.40 z 2.00 n   2 rgb 195,149,103  Head 0.94 Chest 0.01 Neck 0.00
+x +0.05 y -0.40 z 2.05 n   1 rgb 251,193,120  Head 0.91 Chest 0.03 Neck 0.03
+x +0.05 y -0.40 z 2.10 n   1 rgb 254,194,124  Head 0.91 Chest 0.03 Neck 0.03
+x +0.05 y -0.35 z 0.45 n   1 rgb 133,101, 81  Root 0.82 Chest 0.13
+x +0.05 y -0.35 z 0.70 n   2 rgb 153,100, 58  Root 0.63 Chest 0.37
+x +0.05 y -0.35 z 0.75 n   2 rgb 175,100, 33  Root 0.56 Chest 0.44
+x +0.05 y -0.35 z 0.80 n   1 rgb 171, 98, 27  Chest 0.53 Root 0.47
+x +0.05 y -0.35 z 0.85 n   4 rgb 169, 96, 26  Chest 0.56 Root 0.43
+x +0.05 y -0.35 z 0.90 n   7 rgb 168, 96, 22  Chest 0.57 Root 0.43
+x +0.05 y -0.35 z 0.95 n   2 rgb 142, 92, 54  Chest 0.70 Root 0.30
+x +0.05 y -0.35 z 1.20 n   3 rgb 223, 92,123  Chest 0.64 Head 0.13 Root 0.12
+x +0.05 y -0.35 z 1.40 n   1 rgb 248,215,178  Head 0.82 Chest 0.10 Neck 0.07
+x +0.05 y -0.35 z 2.15 n   2 rgb 213, 30, 95  Head 0.88 Chest 0.06 Neck 0.06
+x +0.05 y -0.30 z 0.30 n   1 rgb 133,101, 82  Root 0.88 Chest 0.09
+x +0.05 y -0.30 z 0.40 n   1 rgb 130,100, 80  Root 0.85 Chest 0.11
+x +0.05 y -0.30 z 0.75 n   1 rgb 146,103, 72  Root 0.57 Chest 0.42
+x +0.05 y -0.30 z 0.90 n   1 rgb 213,100,140  Chest 0.61 Root 0.39
+x +0.05 y -0.30 z 1.00 n   1 rgb 129, 99, 82  Chest 0.79 Root 0.21
+x +0.05 y -0.30 z 2.20 n   1 rgb 254,203,125  Head 0.85 Chest 0.07 Neck 0.07
+x +0.05 y -0.30 z 2.25 n   2 rgb 227,114,113  Head 0.85 Chest 0.07 Neck 0.07
+x +0.05 y -0.25 z 0.90 n   1 rgb 245, 94,135  Chest 0.62 Root 0.38
+x +0.05 y -0.25 z 1.00 n   3 rgb 206,136,145  Chest 0.83 Root 0.17
+x +0.05 y -0.25 z 1.05 n   2 rgb 185, 97,108  Chest 0.80 Root 0.15 Head 0.03
+x +0.05 y -0.25 z 1.30 n   1 rgb 254,226,226  Chest 0.57 Head 0.19 Neck 0.17
+x +0.05 y -0.25 z 2.30 n   2 rgb 253,204,136  Head 0.84 Chest 0.08 Neck 0.07
+x +0.05 y -0.25 z 2.35 n   2 rgb 246,198,127  Head 0.83 Chest 0.08 Neck 0.08
+x +0.05 y -0.20 z 1.05 n   1 rgb 249,106,145  Chest 0.80 Root 0.13 Head 0.03
+x +0.05 y -0.20 z 1.10 n   3 rgb 183, 99,116  Chest 0.76 Root 0.13 Head 0.06
+x +0.05 y -0.20 z 1.30 n   2 rgb 249,155,179  Chest 0.61 Neck 0.17 Head 0.16
+x +0.05 y -0.20 z 2.00 n   1 rgb 149, 99, 74  Head 0.70 Chest 0.14 Neck 0.14
+x +0.05 y -0.20 z 2.35 n   2 rgb 254,203,132  Head 0.83 Chest 0.08 Neck 0.08
+x +0.05 y -0.15 z 1.00 n   1 rgb 249, 90,134  Chest 0.79 Root 0.21
+x +0.05 y -0.15 z 1.05 n   1 rgb 248, 88,135  Chest 0.83 Root 0.15 Head 0.01
+x +0.05 y -0.15 z 1.10 n   3 rgb 211,137,148  Chest 0.83 Root 0.10 Head 0.04
+x +0.05 y -0.15 z 1.30 n   2 rgb 249,153,181  Chest 0.70 Neck 0.13 Head 0.12
+x +0.05 y -0.15 z 2.00 n   4 rgb 144, 96, 72  Head 0.70 Chest 0.14 Neck 0.14
+x +0.05 y -0.15 z 2.40 n   1 rgb 253,195,119  Head 0.84 Chest 0.08 Neck 0.08
+x +0.05 y -0.10 z 1.00 n   1 rgb 254,223,220  Chest 0.74 Root 0.25
+x +0.05 y -0.10 z 1.05 n   1 rgb 250, 88,134  Chest 0.81 Root 0.18 Head 0.00
+x +0.05 y -0.10 z 1.10 n   1 rgb 250, 87,131  Chest 0.86 Root 0.08 Head 0.03
+x +0.05 y -0.10 z 1.15 n   1 rgb 249, 90,138  Chest 0.84 Root 0.07 Head 0.05
+x +0.05 y -0.10 z 1.20 n   1 rgb 253,222,223  Chest 0.86 Root 0.05 Head 0.05
+x +0.05 y -0.10 z 1.40 n   1 rgb 127, 96, 79  Chest 0.40 Neck 0.29 Head 0.29
+x +0.05 y -0.10 z 2.00 n   9 rgb 146, 98, 74  Head 0.70 Chest 0.15 Neck 0.14
+x +0.05 y -0.05 z 0.30 n   1 rgb 123, 94, 78  Root 0.90 Chest 0.07
+x +0.05 y -0.05 z 1.05 n   1 rgb 251,145,179  Chest 0.81 Root 0.16 Head 0.00
+x +0.05 y -0.05 z 1.15 n   1 rgb 250, 88,135  Chest 0.89 Root 0.07 Head 0.03
+x +0.05 y -0.05 z 2.00 n  12 rgb 146, 99, 76  Head 0.69 Chest 0.15 Neck 0.15
+x +0.05 y +0.00 z 0.30 n   3 rgb 130, 99, 82  Root 0.90 Chest 0.07
+x +0.05 y +0.00 z 0.35 n   3 rgb 202,168,129  Root 0.90 Chest 0.07
+x +0.05 y +0.00 z 1.00 n   1 rgb 254,225,224  Chest 0.70 Root 0.25
+x +0.05 y +0.00 z 1.10 n   1 rgb 163, 96, 33  Chest 0.67 Root 0.28 Neck 0.01
+x +0.05 y +0.00 z 1.95 n   2 rgb 177,136,102  Head 0.68 Chest 0.16 Neck 0.15
+x +0.05 y +0.00 z 2.00 n   4 rgb 152,108, 83  Head 0.69 Chest 0.15 Neck 0.15
+x +0.05 y +0.00 z 2.35 n   1 rgb 254,201,127  Head 0.86 Chest 0.07 Neck 0.07
+x +0.05 y +0.00 z 2.40 n   1 rgb 253,196,123  Head 0.85 Chest 0.07 Neck 0.07
+x +0.05 y +0.05 z 0.35 n   3 rgb 135,103, 82  Root 0.90 Chest 0.07
+x +0.05 y +0.05 z 1.45 n   1 rgb 127, 98, 80  Chest 0.41 Neck 0.38 Head 0.18
+x +0.05 y +0.05 z 1.95 n   7 rgb 155,111, 86  Head 0.67 Chest 0.16 Neck 0.16
+x +0.05 y +0.05 z 2.00 n   3 rgb 146, 99, 76  Head 0.68 Chest 0.15 Neck 0.15
+x +0.05 y +0.10 z 0.40 n   1 rgb 175,141,118  Root 0.91 Chest 0.06
+x +0.05 y +0.10 z 1.50 n   1 rgb 127, 96, 79  Chest 0.39 Neck 0.38 Head 0.22
+x +0.05 y +0.10 z 1.90 n   3 rgb 173,134, 97  Head 0.63 Chest 0.18 Neck 0.18
+x +0.05 y +0.10 z 1.95 n   2 rgb 146,101, 78  Head 0.66 Chest 0.16 Neck 0.16
+x +0.05 y +0.10 z 2.35 n   1 rgb 254,197,120  Head 0.86 Chest 0.06 Neck 0.06
+x +0.05 y +0.15 z 0.85 n   3 rgb 247, 76,129  Root 0.55 Chest 0.42
+x +0.05 y +0.15 z 1.60 n   1 rgb 127, 98, 80  Chest 0.37 Neck 0.36 Head 0.26
+x +0.05 y +0.15 z 1.85 n   3 rgb 171,135, 99  Head 0.62 Chest 0.19 Neck 0.18
+x +0.05 y +0.15 z 1.90 n   1 rgb 134,100, 81  Head 0.62 Chest 0.18 Neck 0.18
+x +0.05 y +0.15 z 2.30 n   1 rgb 253,195,119  Head 0.86 Chest 0.06 Neck 0.06
+x +0.05 y +0.20 z 0.55 n   2 rgb 236, 73,125  Root 0.73 Chest 0.26
+x +0.05 y +0.20 z 0.65 n   2 rgb 122, 90, 74  Root 0.72 Chest 0.17 Tail1 0.10
+x +0.05 y +0.20 z 0.70 n   1 rgb 120, 89, 73  Root 0.76 Tail1 0.14 Chest 0.09
+x +0.05 y +0.20 z 0.75 n   1 rgb 130,101, 83  Root 0.76 Chest 0.23
+x +0.05 y +0.20 z 1.65 n   1 rgb 130, 99, 84  Chest 0.34 Neck 0.33 Head 0.32
+x +0.05 y +0.20 z 1.70 n   1 rgb 128, 99, 83  Head 0.37 Chest 0.31 Neck 0.31
+x +0.05 y +0.20 z 1.85 n   2 rgb 253,202,129  Head 0.64 Chest 0.17 Neck 0.17
+x +0.05 y +0.25 z 0.50 n   2 rgb 136,104, 87  Root 0.56 Tail1 0.35 Chest 0.08
+x +0.05 y +0.25 z 0.65 n   4 rgb 123, 93, 77  Root 0.71 Tail1 0.22 Chest 0.06
+x +0.05 y +0.25 z 0.70 n   2 rgb 123, 91, 72  Root 0.74 Tail1 0.18 Chest 0.07
+x +0.05 y +0.25 z 2.25 n   2 rgb 254,196,119  Head 0.85 Chest 0.07 Neck 0.07
+x +0.05 y +0.30 z 0.50 n   2 rgb 127, 95, 79  Root 0.55 Tail1 0.37 Chest 0.07
+x +0.05 y +0.30 z 0.55 n   1 rgb 127, 97, 79  Root 0.55 Tail1 0.37 Chest 0.07
+x +0.05 y +0.30 z 0.65 n   4 rgb 123, 93, 77  Root 0.71 Tail1 0.22 Chest 0.06
+x +0.05 y +0.30 z 1.70 n   2 rgb 252,202,134  Head 0.89 Chest 0.06 Neck 0.05
+x +0.05 y +0.30 z 1.80 n   2 rgb 231,110,132  Head 0.88 Chest 0.05 Neck 0.05
+x +0.05 y +0.30 z 2.25 n   1 rgb 251,196,122  Head 0.85 Chest 0.07 Neck 0.07
+x +0.05 y +0.35 z 0.55 n   2 rgb 123, 93, 76  Root 0.56 Tail1 0.37 Chest 0.06
+x +0.05 y +0.35 z 0.60 n   1 rgb 126, 96, 78  Root 0.57 Tail1 0.36 Chest 0.05
+x +0.05 y +0.35 z 1.70 n   3 rgb 253,200,130  Head 0.84 Chest 0.08 Neck 0.08
+x +0.05 y +0.35 z 1.85 n   1 rgb 206, 27,101  Head 0.87 Chest 0.06 Neck 0.05
+x +0.05 y +0.35 z 1.90 n   2 rgb 252,201,142  Head 0.87 Chest 0.06 Neck 0.05
+x +0.05 y +0.35 z 1.95 n   3 rgb 252,201,133  Head 0.87 Chest 0.06 Neck 0.05
+x +0.05 y +0.35 z 2.00 n   1 rgb 249,197,129  Head 0.86 Chest 0.06 Neck 0.05
+x +0.05 y +0.40 z 1.65 n   2 rgb 253,202,132  Head 0.85 Chest 0.07 Neck 0.07
+x +0.05 y +0.40 z 1.70 n   2 rgb 251,200,133  Head 0.88 Chest 0.06 Neck 0.06
+x +0.05 y +0.45 z 1.60 n   1 rgb 254,203,127  Head 0.86 Chest 0.07 Neck 0.07
+x +0.05 y +0.45 z 1.65 n   2 rgb 252,198,128  Head 0.86 Chest 0.07 Neck 0.07
+x +0.05 y +0.50 z 1.60 n   2 rgb 252,205,135  Head 0.86 Chest 0.07 Neck 0.07
+x +0.05 y +0.50 z 1.65 n   1 rgb 254,204,135  Head 0.87 Chest 0.06 Neck 0.06
+x +0.05 y +0.55 z 1.60 n   2 rgb 254,204,138  Head 0.86 Chest 0.07 Neck 0.07
+x +0.10 y -0.60 z 0.95 n   1 rgb 132,100, 81  Chest 0.76 Root 0.24
+x +0.10 y -0.60 z 2.10 n   3 rgb 253,198,122  Head 0.96
+x +0.10 y -0.55 z 0.90 n   1 rgb 135, 99, 79  Chest 0.74 Root 0.26
+x +0.10 y -0.55 z 1.05 n   1 rgb 137,103, 85  Chest 0.71 Root 0.22 Head 0.04
+x +0.10 y -0.55 z 1.10 n   1 rgb 133,100, 82  Chest 0.70 Root 0.22 Head 0.05
+x +0.10 y -0.55 z 1.55 n   2 rgb 253,218,182  Head 0.96
+x +0.10 y -0.55 z 1.65 n   2 rgb 148,122,102  Head 0.95
+x +0.10 y -0.55 z 2.05 n   1 rgb 254,195,119  Head 0.96
+x +0.10 y -0.55 z 2.10 n   8 rgb 253,200,125  Head 0.96
+x +0.10 y -0.50 z 0.90 n   1 rgb 140,100, 80  Chest 0.73 Root 0.27
+x +0.10 y -0.50 z 1.05 n   1 rgb 133,100, 82  Chest 0.73 Root 0.21 Head 0.04
+x +0.10 y -0.50 z 1.10 n   2 rgb 134,102, 83  Chest 0.71 Root 0.21 Head 0.05
+x +0.10 y -0.50 z 1.45 n   1 rgb 252,220,183  Head 0.93 Chest 0.02 Neck 0.01
+x +0.10 y -0.50 z 1.65 n   1 rgb 152,122,105  Head 0.96
+x +0.10 y -0.50 z 1.70 n   1 rgb  50, 25, 11  Head 0.95
+x +0.10 y -0.50 z 1.75 n   1 rgb 254,254,252  Head 0.94
+x +0.10 y -0.50 z 1.80 n   1 rgb 254,253,252  Head 0.95
+x +0.10 y -0.50 z 1.85 n   2 rgb 133,115, 99  Head 0.94
+x +0.10 y -0.50 z 1.90 n   2 rgb 127,110, 93  Head 0.94
+x +0.10 y -0.50 z 1.95 n   2 rgb  35, 28, 22  Head 0.95
+x +0.10 y -0.50 z 2.05 n   4 rgb 252,197,120  Head 0.95
+x +0.10 y -0.50 z 2.10 n   3 rgb 254,199,121  Head 0.95 Chest 0.00 Neck 0.00
+x +0.10 y -0.45 z 0.90 n   1 rgb 131,101, 80  Chest 0.71 Root 0.28
+x +0.10 y -0.45 z 1.05 n   1 rgb 131, 98, 80  Chest 0.73 Root 0.20 Head 0.04
+x +0.10 y -0.45 z 1.15 n   1 rgb 254,226,224  Chest 0.68 Root 0.14 Head 0.10
+x +0.10 y -0.45 z 1.85 n   2 rgb  96, 96, 96  Head 0.94
+x +0.10 y -0.45 z 2.00 n   1 rgb 134,101, 83  Head 0.95
+x +0.10 y -0.45 z 2.05 n   1 rgb 254,201,121  Head 0.95
+x +0.10 y -0.45 z 2.10 n   3 rgb 254,198,120  Head 0.93 Chest 0.01 Neck 0.01
+x +0.10 y -0.40 z 0.90 n   5 rgb 171, 89, 52  Chest 0.64 Root 0.35
+x +0.10 y -0.40 z 0.95 n   4 rgb 186, 90,105  Chest 0.71 Root 0.29
+x +0.10 y -0.40 z 1.15 n   6 rgb 214,134,145  Chest 0.68 Root 0.15 Head 0.09
+x +0.10 y -0.40 z 2.05 n   1 rgb 254,200,122  Head 0.94 Chest 0.01 Neck 0.00
+x +0.10 y -0.40 z 2.10 n   3 rgb 234,134,112  Head 0.91 Chest 0.04 Neck 0.04
+x +0.10 y -0.35 z 0.45 n   1 rgb 133,101, 82  Root 0.83 Chest 0.12
+x +0.10 y -0.35 z 0.50 n   3 rgb 227,193,161  Root 0.80 Chest 0.15
+x +0.10 y -0.35 z 0.55 n   5 rgb 187,155,127  Root 0.76 Chest 0.20
+x +0.10 y -0.35 z 0.60 n   5 rgb 168,132,109  Root 0.72 Chest 0.25
+x +0.10 y -0.35 z 0.65 n   4 rgb 185,153,126  Root 0.67 Chest 0.31
+x +0.10 y -0.35 z 0.70 n   3 rgb 245,165,163  Root 0.60 Chest 0.40
+x +0.10 y -0.35 z 0.80 n   2 rgb 173, 95, 24  Chest 0.51 Root 0.48
+x +0.10 y -0.35 z 0.85 n   4 rgb 209, 90, 80  Chest 0.56 Root 0.43
+x +0.10 y -0.35 z 0.90 n   1 rgb 152, 87, 26  Chest 0.63 Root 0.36
+x +0.10 y -0.35 z 0.95 n   1 rgb 130, 99, 81  Chest 0.72 Root 0.28
+x +0.10 y -0.35 z 1.20 n   2 rgb 196, 89,105  Chest 0.64 Root 0.13 Head 0.12
+x +0.10 y -0.35 z 2.05 n   1 rgb 245,196,125  Head 0.94 Chest 0.01 Neck 0.00
+x +0.10 y -0.35 z 2.20 n   1 rgb 205, 32, 94  Head 0.86 Chest 0.07 Neck 0.06
+x +0.10 y -0.35 z 2.25 n   1 rgb 207, 25, 98  Head 0.86 Chest 0.07 Neck 0.07
+x +0.10 y -0.30 z 0.40 n   3 rgb 162,131,107  Root 0.86 Chest 0.10
+x +0.10 y -0.30 z 0.45 n   3 rgb 162,131,106  Root 0.84 Chest 0.12
+x +0.10 y -0.30 z 0.85 n   2 rgb 209, 91, 80  Chest 0.57 Root 0.43
+x +0.10 y -0.30 z 0.90 n   1 rgb 168, 94, 41  Chest 0.59 Root 0.40
+x +0.10 y -0.30 z 1.05 n   2 rgb 192, 95,113  Chest 0.79 Root 0.19 Head 0.01
+x +0.10 y -0.30 z 2.25 n   2 rgb 227,112,105  Head 0.85 Chest 0.07 Neck 0.07
+x +0.10 y -0.25 z 0.35 n   1 rgb 232,199,165  Root 0.89 Chest 0.08
+x +0.10 y -0.25 z 0.40 n   1 rgb 159,125,103  Root 0.88 Chest 0.09
+x +0.10 y -0.25 z 1.00 n   2 rgb 200, 95,121  Chest 0.83 Root 0.17 Head 0.00
+x +0.10 y -0.25 z 1.05 n   2 rgb 206,147,164  Chest 0.81 Root 0.18 Head 0.01
+x +0.10 y -0.25 z 1.30 n   1 rgb 251,221,222  Chest 0.53 Head 0.21 Neck 0.20
+x +0.10 y -0.25 z 2.25 n   1 rgb 254,204,134  Head 0.85 Chest 0.07 Neck 0.07
+x +0.10 y -0.25 z 2.35 n   1 rgb 251,199,129  Head 0.83 Chest 0.08 Neck 0.08
+x +0.10 y -0.20 z 0.35 n   1 rgb 229,195,167  Root 0.90 Chest 0.08
+x +0.10 y -0.20 z 1.05 n   1 rgb 136,105, 95  Chest 0.81 Root 0.14 Head 0.03
+x +0.10 y -0.20 z 1.30 n   1 rgb 249,223,226  Chest 0.57 Neck 0.20 Head 0.19
+x +0.10 y -0.20 z 2.05 n   1 rgb 149,101, 78  Head 0.70 Chest 0.14 Neck 0.14
+x +0.10 y -0.20 z 2.35 n   1 rgb 254,203,130  Head 0.83 Chest 0.08 Neck 0.08
+x +0.10 y -0.20 z 2.40 n   1 rgb 254,201,128  Head 0.83 Chest 0.08 Neck 0.08
+x +0.10 y -0.15 z 0.30 n   1 rgb 132,101, 82  Root 0.90 Chest 0.08
+x +0.10 y -0.15 z 0.35 n   1 rgb 242,211,179  Root 0.90 Chest 0.07
+x +0.10 y -0.15 z 1.05 n   1 rgb 253,223,220  Chest 0.83 Root 0.13 Head 0.02
+x +0.10 y -0.15 z 2.05 n   3 rgb 149,100, 76  Head 0.70 Chest 0.14 Neck 0.14
+x +0.10 y -0.15 z 2.40 n   1 rgb 254,202,123  Head 0.84 Chest 0.08 Neck 0.08
+x +0.10 y -0.10 z 0.30 n   2 rgb 242,208,171  Root 0.90 Chest 0.07
+x +0.10 y -0.10 z 0.35 n   1 rgb 243,208,174  Root 0.91 Chest 0.07
+x +0.10 y -0.10 z 1.10 n   1 rgb 254,223,219  Chest 0.86 Root 0.11 Head 0.02
+x +0.10 y -0.10 z 1.30 n   1 rgb 246, 72,126  Chest 0.75 Neck 0.14 Head 0.08
+x +0.10 y -0.10 z 2.00 n   4 rgb 147, 98, 74  Head 0.70 Chest 0.15 Neck 0.14
+x +0.10 y -0.10 z 2.05 n   3 rgb 147, 99, 74  Head 0.70 Chest 0.15 Neck 0.14
+x +0.10 y -0.10 z 2.40 n   1 rgb 254,203,127  Head 0.84 Chest 0.07 Neck 0.07
+x +0.10 y -0.05 z 0.30 n   2 rgb 245,210,175  Root 0.90 Chest 0.07
+x +0.10 y -0.05 z 1.05 n   1 rgb 249, 93,140  Chest 0.86 Root 0.12 Head 0.01
+x +0.10 y -0.05 z 1.10 n   2 rgb 253,221,223  Chest 0.88 Root 0.09 Head 0.01
+x +0.10 y -0.05 z 1.20 n   1 rgb 250, 73,129  Chest 0.89 Head 0.04 Neck 0.04
+x +0.10 y -0.05 z 1.25 n   1 rgb 254,221,222  Chest 0.88 Neck 0.05 Head 0.04
+x +0.10 y -0.05 z 2.00 n   7 rgb 146, 98, 75  Head 0.70 Chest 0.15 Neck 0.14
+x +0.10 y -0.05 z 2.05 n   6 rgb 146, 98, 74  Head 0.70 Chest 0.15 Neck 0.14
+x +0.10 y -0.05 z 2.40 n   2 rgb 254,197,120  Head 0.85 Chest 0.07 Neck 0.07
+x +0.10 y +0.00 z 0.35 n   2 rgb 240,202,167  Root 0.91 Chest 0.07
+x +0.10 y +0.00 z 1.05 n   1 rgb 253,205,227  Chest 0.88 Root 0.09
+x +0.10 y +0.00 z 1.15 n   5 rgb 170, 99, 35  Chest 0.74 Root 0.21 Neck 0.02
+x +0.10 y +0.00 z 1.20 n   2 rgb 169,100, 36  Chest 0.75 Root 0.19 Neck 0.02
+x +0.10 y +0.00 z 1.40 n   1 rgb 129, 97, 82  Chest 0.42 Neck 0.41 Head 0.15
+x +0.10 y +0.00 z 2.00 n   3 rgb 159,117, 88  Head 0.68 Chest 0.16 Neck 0.15
+x +0.10 y +0.05 z 0.40 n   1 rgb 241,205,172  Root 0.93 Chest 0.03
+x +0.10 y +0.05 z 1.00 n   1 rgb 243, 75,129  Chest 0.75 Root 0.22
+x +0.10 y +0.05 z 1.05 n   1 rgb 247, 73,126  Chest 0.84 Root 0.13
+x +0.10 y +0.05 z 1.15 n   1 rgb 164, 99, 37  Chest 0.74 Root 0.21 Neck 0.02
+x +0.10 y +0.05 z 1.95 n   3 rgb 159,118, 91  Head 0.67 Chest 0.16 Neck 0.16
+x +0.10 y +0.05 z 2.00 n   5 rgb 152,106, 82  Head 0.68 Chest 0.16 Neck 0.15
+x +0.10 y +0.05 z 2.35 n   1 rgb 254,197,120  Head 0.86 Chest 0.06 Neck 0.06
+x +0.10 y +0.10 z 1.95 n   4 rgb 165,123, 92  Head 0.66 Chest 0.16 Neck 0.16
+x +0.10 y +0.15 z 0.85 n   2 rgb 178, 92, 97  Root 0.57 Chest 0.40
+x +0.10 y +0.15 z 1.55 n   1 rgb 128, 99, 82  Chest 0.40 Neck 0.39 Head 0.21
+x +0.10 y +0.15 z 2.30 n   1 rgb 254,196,121  Head 0.86 Chest 0.06 Neck 0.06
+x +0.10 y +0.20 z 0.55 n   2 rgb 200, 96,118  Root 0.79 Tail1 0.14 Chest 0.06
+x +0.10 y +0.20 z 0.75 n   1 rgb 131,102, 85  Root 0.82 Chest 0.11 Tail1 0.06
+x +0.10 y +0.20 z 0.85 n   2 rgb 229, 81,121  Root 0.56 Chest 0.42
+x +0.10 y +0.20 z 1.60 n   1 rgb 133,102, 87  Chest 0.39 Neck 0.38 Head 0.23
+x +0.10 y +0.20 z 1.65 n   1 rgb 128,103, 85  Chest 0.36 Neck 0.35 Head 0.29
+x +0.10 y +0.20 z 1.75 n   1 rgb 129,100, 89  Head 0.43 Chest 0.28 Neck 0.28
+x +0.10 y +0.20 z 1.80 n   1 rgb 130,100, 86  Head 0.53 Chest 0.23 Neck 0.23
+x +0.10 y +0.20 z 1.85 n   1 rgb 254,204,132  Head 0.60 Chest 0.20 Neck 0.19
+x +0.10 y +0.20 z 2.25 n   1 rgb 254,195,119  Head 0.86 Chest 0.06 Neck 0.06
+x +0.10 y +0.20 z 2.30 n   1 rgb 254,202,125  Head 0.86 Chest 0.06 Neck 0.06
+x +0.10 y +0.25 z 0.55 n   2 rgb 133,101, 82  Root 0.72 Tail1 0.20 Chest 0.07
+x +0.10 y +0.25 z 0.60 n   2 rgb 127, 96, 79  Root 0.78 Tail1 0.16 Chest 0.06
+x +0.10 y +0.25 z 0.70 n   2 rgb 123, 92, 75  Root 0.79 Tail1 0.13 Chest 0.07
+x +0.10 y +0.25 z 1.75 n   1 rgb 254,202,132  Head 0.71 Chest 0.13 Neck 0.13
+x +0.10 y +0.30 z 0.60 n   5 rgb 134,102, 81  Root 0.73 Tail1 0.20 Chest 0.06
+x +0.10 y +0.30 z 0.65 n   3 rgb 125, 95, 78  Root 0.76 Tail1 0.17 Chest 0.06
+x +0.10 y +0.30 z 1.75 n   2 rgb 248,199,129  Head 0.80 Chest 0.09 Neck 0.09
+x +0.10 y +0.30 z 1.80 n   1 rgb 251,201,134  Head 0.87 Chest 0.06 Neck 0.06
+x +0.10 y +0.30 z 2.25 n   1 rgb 254,199,124  Head 0.85 Chest 0.07 Neck 0.07
+x +0.10 y +0.35 z 1.70 n   1 rgb 254,202,129  Head 0.79 Chest 0.10 Neck 0.10
+x +0.10 y +0.35 z 1.80 n   1 rgb 208, 25,103  Head 0.87 Chest 0.06 Neck 0.06
+x +0.10 y +0.35 z 1.90 n   1 rgb 208, 28,105  Head 0.87 Chest 0.06 Neck 0.06
+x +0.10 y +0.35 z 2.00 n   1 rgb 249,198,128  Head 0.86 Chest 0.06 Neck 0.06
+x +0.10 y +0.35 z 2.15 n   1 rgb 249,196,130  Head 0.86 Chest 0.06 Neck 0.06
+x +0.10 y +0.35 z 2.20 n   2 rgb 254,203,136  Head 0.86 Chest 0.06 Neck 0.06
+x +0.10 y +0.40 z 2.00 n   1 rgb 249,198,130  Head 0.86 Chest 0.06 Neck 0.06
+x +0.10 y +0.40 z 2.05 n   5 rgb 251,201,133  Head 0.86 Chest 0.06 Neck 0.06
+x +0.10 y +0.40 z 2.10 n   2 rgb 253,204,134  Head 0.86 Chest 0.06 Neck 0.06
+x +0.10 y +0.40 z 2.15 n   1 rgb 254,204,137  Head 0.86 Chest 0.06 Neck 0.06
+x +0.10 y +0.45 z 1.65 n   2 rgb 254,203,131  Head 0.83 Chest 0.08 Neck 0.08
+x +0.10 y +0.45 z 1.70 n   1 rgb 251,201,134  Head 0.86 Chest 0.07 Neck 0.06
+x +0.10 y +0.55 z 1.60 n   1 rgb 254,204,137  Head 0.85 Chest 0.07 Neck 0.07
+x +0.15 y -0.60 z 0.95 n   1 rgb 134,103, 86  Chest 0.76 Root 0.24
+x +0.15 y -0.60 z 1.60 n   2 rgb 253,219,182  Head 0.98
+x +0.15 y -0.60 z 2.10 n   1 rgb 244,119,132  Head 0.96
+x +0.15 y -0.55 z 0.90 n   1 rgb 132, 98, 82  Chest 0.76 Root 0.24
+x +0.15 y -0.55 z 1.60 n   5 rgb 221,181,150  Head 0.97
+x +0.15 y -0.55 z 1.65 n   1 rgb 154,120, 98  Head 0.98
+x +0.15 y -0.50 z 1.50 n   1 rgb 252,219,182  Head 0.96
+x +0.15 y -0.50 z 1.60 n   4 rgb 137, 78, 65  Head 0.98
+x +0.15 y -0.50 z 1.65 n   1 rgb 153,123,107  Head 0.96
+x +0.15 y -0.50 z 1.70 n   1 rgb  11, 11, 12  Head 0.97
+x +0.15 y -0.50 z 1.75 n   1 rgb   4,  6,  4  Head 0.96
+x +0.15 y -0.50 z 1.80 n   2 rgb  63, 52, 57  Head 0.97
+x +0.15 y -0.50 z 1.85 n   3 rgb 217,187,157  Head 0.95
+x +0.15 y -0.50 z 1.90 n   2 rgb  18, 12,  9  Head 0.94
+x +0.15 y -0.45 z 0.95 n   1 rgb 127, 98, 80  Chest 0.75 Root 0.25
+x +0.15 y -0.45 z 1.00 n   1 rgb 128, 97, 79  Chest 0.76 Root 0.24
+x +0.15 y -0.45 z 1.05 n   3 rgb 130, 99, 81  Chest 0.75 Root 0.22 Head 0.01
+x +0.15 y -0.45 z 1.60 n   1 rgb  99, 31, 27  Head 0.97
+x +0.15 y -0.45 z 2.05 n   1 rgb 253,203,136  Head 0.95 Chest 0.00
+x +0.15 y -0.40 z 0.70 n   1 rgb 251, 75,131  Root 0.54 Chest 0.45
+x +0.15 y -0.40 z 0.90 n   2 rgb 110, 71, 38  Chest 0.69 Root 0.31
+x +0.15 y -0.40 z 1.00 n   2 rgb 130, 99, 81  Chest 0.76 Root 0.24
+x +0.15 y -0.40 z 1.05 n   1 rgb 131, 99, 82  Chest 0.75 Root 0.21 Head 0.02
+x +0.15 y -0.40 z 1.10 n   2 rgb 193,162,153  Chest 0.72 Root 0.16 Head 0.06
+x +0.15 y -0.40 z 1.55 n   1 rgb 107, 38, 31  Head 0.97 Neck 0.00
+x +0.15 y -0.40 z 2.05 n   1 rgb 252,204,137  Head 0.94 Chest 0.01 Neck 0.01
+x +0.15 y -0.40 z 2.10 n   1 rgb 254,202,126  Head 0.91 Chest 0.03 Neck 0.03
+x +0.15 y -0.40 z 2.15 n   1 rgb 251,178,138  Head 0.91 Chest 0.04 Neck 0.04
+x +0.15 y -0.35 z 0.70 n   3 rgb 253,211,143  Root 0.58 Chest 0.42
+x +0.15 y -0.35 z 0.75 n   1 rgb 132, 99, 82  Root 0.59 Chest 0.40
+x +0.15 y -0.35 z 0.80 n   1 rgb 252, 87,135  Chest 0.51 Root 0.48
+x +0.15 y -0.35 z 1.10 n   2 rgb 197,165,159  Chest 0.75 Root 0.17 Head 0.04
+x +0.15 y -0.35 z 1.15 n   2 rgb 248,150,176  Chest 0.68 Root 0.13 Head 0.10
+x +0.15 y -0.35 z 1.20 n   1 rgb  14, 11, 18  Chest 0.62 Head 0.13 Root 0.12
+x +0.15 y -0.35 z 2.05 n   1 rgb 146,110, 85  Head 0.94 Chest 0.01 Neck 0.01
+x +0.15 y -0.35 z 2.20 n   2 rgb 203, 27, 90  Head 0.87 Chest 0.06 Neck 0.06
+x +0.15 y -0.30 z 0.45 n   2 rgb 251,216,179  Root 0.85 Chest 0.11
+x +0.15 y -0.30 z 0.50 n   1 rgb 247,214,177  Root 0.81 Chest 0.13
+x +0.15 y -0.30 z 1.05 n   2 rgb 201,169,160  Chest 0.78 Root 0.18 Head 0.02
+x +0.15 y -0.30 z 1.10 n   1 rgb 254,206,230  Chest 0.76 Root 0.13 Head 0.06
+x +0.15 y -0.30 z 1.15 n   1 rgb 246, 81,133  Chest 0.72 Root 0.11 Head 0.09
+x +0.15 y -0.30 z 1.20 n   2 rgb 254,227,226  Chest 0.62 Head 0.15 Neck 0.13
+x +0.15 y -0.30 z 1.25 n   3 rgb 177,102,130  Chest 0.54 Head 0.20 Neck 0.18
+x +0.15 y -0.30 z 1.30 n   1 rgb  24, 27, 31  Chest 0.47 Head 0.24 Neck 0.22
+x +0.15 y -0.30 z 1.35 n   1 rgb 243,215,177  Head 0.87 Chest 0.07 Neck 0.06
+x +0.15 y -0.30 z 2.25 n   2 rgb 220, 76,109  Head 0.86 Chest 0.07 Neck 0.07
+x +0.15 y -0.25 z 0.35 n   1 rgb 248,214,176  Root 0.89 Chest 0.08
+x +0.15 y -0.25 z 0.40 n   2 rgb 249,215,178  Root 0.87 Chest 0.09
+x +0.15 y -0.25 z 1.30 n   2 rgb 135, 59, 84  Chest 0.47 Head 0.24 Neck 0.24
+x +0.15 y -0.25 z 1.35 n   1 rgb 250,215,179  Head 0.65 Chest 0.21 Neck 0.13
+x +0.15 y -0.25 z 2.30 n   2 rgb 253,202,131  Head 0.85 Chest 0.07 Neck 0.07
+x +0.15 y -0.20 z 0.35 n   1 rgb 245,209,176  Root 0.90 Chest 0.08
+x +0.15 y -0.20 z 1.30 n   2 rgb 240,181,200  Chest 0.44 Neck 0.31 Head 0.22
+x +0.15 y -0.20 z 1.35 n   1 rgb 130,114, 99  Chest 0.45 Head 0.35 Neck 0.20
+x +0.15 y -0.20 z 2.35 n   3 rgb 253,203,134  Head 0.84 Chest 0.08 Neck 0.08
+x +0.15 y -0.15 z 0.35 n   2 rgb 244,209,173  Root 0.91 Chest 0.07
+x +0.15 y -0.15 z 1.35 n   4 rgb 112, 58, 69  Chest 0.61 Neck 0.22 Head 0.16
+x +0.15 y -0.15 z 2.40 n   1 rgb 254,197,122  Head 0.83 Chest 0.08 Neck 0.08
+x +0.15 y -0.10 z 0.35 n   1 rgb 244,206,171  Root 0.93 Chest 0.05
+x +0.15 y -0.10 z 1.35 n   3 rgb 113, 96, 92  Chest 0.57 Neck 0.30 Head 0.12
+x +0.15 y -0.10 z 1.40 n   1 rgb  25, 17,  7  Chest 0.51 Neck 0.36 Head 0.11
+x +0.15 y -0.10 z 2.40 n   1 rgb 254,195,120  Head 0.84 Chest 0.07 Neck 0.07
+x +0.15 y -0.05 z 0.35 n   1 rgb 245,209,175  Root 0.92 Chest 0.05
+x +0.15 y +0.00 z 0.35 n   1 rgb 243,205,171  Root 0.93 Chest 0.04
+x +0.15 y +0.00 z 1.10 n   2 rgb 245,149,173  Chest 0.90 Root 0.06 Head 0.00
+x +0.15 y +0.00 z 1.15 n   1 rgb 172,105, 44  Chest 0.76 Root 0.20 Neck 0.02
+x +0.15 y +0.00 z 1.20 n   1 rgb 175,103, 38  Chest 0.81 Root 0.13 Neck 0.03
+x +0.15 y +0.00 z 2.40 n   2 rgb 254,198,121  Head 0.86 Chest 0.07 Neck 0.07
+x +0.15 y +0.05 z 1.20 n   1 rgb 163, 96, 31  Chest 0.79 Root 0.15 Neck 0.02
+x +0.15 y +0.05 z 1.25 n   1 rgb 174,101, 38  Chest 0.86 Root 0.07 Neck 0.05
+x +0.15 y +0.05 z 1.45 n   1 rgb 122, 92, 77  Neck 0.42 Chest 0.42 Head 0.14
+x +0.15 y +0.05 z 2.35 n   2 rgb 254,195,119  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.10 z 0.40 n   1 rgb 233,197,166  Root 0.95 Chest 0.01
+x +0.15 y +0.10 z 0.95 n   1 rgb 244, 77,129  Chest 0.76 Root 0.23
+x +0.15 y +0.10 z 1.05 n   1 rgb 245, 76,126  Chest 0.87 Root 0.12
+x +0.15 y +0.10 z 1.50 n   1 rgb 128, 98, 84  Chest 0.41 Neck 0.41 Head 0.16
+x +0.15 y +0.10 z 2.35 n   1 rgb 254,199,122  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.15 z 0.40 n   1 rgb 189,155,128  Root 0.95
+x +0.15 y +0.15 z 1.50 n   1 rgb 130,100, 84  Chest 0.41 Neck 0.40 Head 0.18
+x +0.15 y +0.20 z 0.50 n   1 rgb 131,100, 84  Root 0.94 Tail1 0.03
+x +0.15 y +0.20 z 0.80 n   1 rgb 129,100, 82  Root 0.84 Chest 0.14
+x +0.15 y +0.20 z 0.85 n   1 rgb 200,101,104  Root 0.70 Chest 0.29
+x +0.15 y +0.20 z 1.85 n   3 rgb 169,134, 99  Head 0.59 Chest 0.20 Neck 0.20
+x +0.15 y +0.20 z 2.30 n   1 rgb 254,200,122  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.25 z 0.60 n   3 rgb 124, 94, 76  Root 0.82 Tail1 0.13 Chest 0.05
+x +0.15 y +0.25 z 0.65 n   3 rgb 127, 96, 80  Root 0.86 Tail1 0.09 Chest 0.05
+x +0.15 y +0.25 z 0.70 n   1 rgb 122, 90, 75  Root 0.84 Tail1 0.09 Chest 0.07
+x +0.15 y +0.25 z 1.75 n   1 rgb 254,205,133  Head 0.72 Chest 0.13 Neck 0.13
+x +0.15 y +0.25 z 1.80 n   1 rgb 254,201,131  Head 0.71 Chest 0.14 Neck 0.13
+x +0.15 y +0.25 z 1.85 n   1 rgb 253,201,127  Head 0.64 Chest 0.17 Neck 0.17
+x +0.15 y +0.25 z 2.25 n   1 rgb 253,195,119  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.25 z 2.30 n   1 rgb 253,194,119  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.30 z 1.75 n   1 rgb 254,199,127  Head 0.76 Chest 0.11 Neck 0.11
+x +0.15 y +0.30 z 1.85 n   1 rgb 194,  6, 66  Head 0.87 Chest 0.06 Neck 0.06
+x +0.15 y +0.35 z 1.75 n   4 rgb 251,200,130  Head 0.84 Chest 0.07 Neck 0.07
+x +0.15 y +0.35 z 1.85 n   1 rgb 206, 28,101  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.35 z 1.90 n   1 rgb 204, 22, 95  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.35 z 1.95 n   3 rgb 253,202,132  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.35 z 2.00 n   2 rgb 248,196,128  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.35 z 2.05 n   1 rgb 250,199,129  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.35 z 2.20 n   3 rgb 252,201,134  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.40 z 1.70 n   1 rgb 254,206,133  Head 0.80 Chest 0.09 Neck 0.09
+x +0.15 y +0.40 z 1.75 n   2 rgb 252,201,134  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.40 z 2.00 n   1 rgb 254,206,138  Head 0.86 Chest 0.06 Neck 0.06
+x +0.15 y +0.40 z 2.10 n   1 rgb 254,204,137  Head 0.87 Chest 0.06 Neck 0.06
+x +0.15 y +0.40 z 2.15 n   2 rgb 254,203,136  Head 0.87 Chest 0.06 Neck 0.06
+x +0.15 y +0.45 z 1.65 n   1 rgb 253,204,131  Head 0.83 Chest 0.08 Neck 0.08
+x +0.15 y +0.45 z 1.70 n   1 rgb 250,199,128  Head 0.86 Chest 0.07 Neck 0.06
+x +0.15 y +0.50 z 1.60 n   1 rgb 251,203,130  Head 0.84 Chest 0.08 Neck 0.07
+x +0.15 y +0.50 z 1.65 n   2 rgb 254,204,131  Head 0.83 Chest 0.08 Neck 0.07
+x +0.15 y +0.50 z 1.70 n   2 rgb 251,201,130  Head 0.85 Chest 0.07 Neck 0.07
+x +0.15 y +0.55 z 1.60 n   1 rgb 254,206,139  Head 0.84 Chest 0.07 Neck 0.07
+x +0.15 y +0.55 z 1.65 n   1 rgb 254,204,136  Head 0.84 Chest 0.07 Neck 0.07
+x +0.20 y -0.60 z 1.60 n   3 rgb 228,194,163  Head 0.98
+x +0.20 y -0.60 z 1.65 n   1 rgb 174,138,111  Head 0.98
+x +0.20 y -0.60 z 2.05 n   1 rgb 212, 17,104  Head 0.97
+x +0.20 y -0.60 z 2.10 n   1 rgb 210, 18,102  Head 0.97
+x +0.20 y -0.60 z 2.15 n   1 rgb 254,201,124  Head 0.96
+x +0.20 y -0.55 z 0.90 n   1 rgb 132,101, 81  Chest 0.76 Root 0.24
+x +0.20 y -0.55 z 0.95 n   1 rgb 136,103, 85  Chest 0.76 Root 0.24
+x +0.20 y -0.55 z 1.05 n   1 rgb 132, 99, 81  Chest 0.71 Root 0.22 Head 0.05
+x +0.20 y -0.55 z 1.60 n   1 rgb  94, 37, 26  Head 0.98
+x +0.20 y -0.55 z 1.65 n   3 rgb 149,117,100  Head 0.98
+x +0.20 y -0.55 z 2.10 n   3 rgb 252,199,126  Head 0.96
+x +0.20 y -0.55 z 2.15 n   2 rgb 254,196,118  Head 0.97
+x +0.20 y -0.50 z 1.00 n   1 rgb 130, 99, 81  Chest 0.77 Root 0.23
+x +0.20 y -0.50 z 1.55 n   2 rgb 178,128,109  Head 0.96
+x +0.20 y -0.50 z 1.65 n   3 rgb 183,153,126  Head 0.98
+x +0.20 y -0.50 z 1.70 n   1 rgb   9,  9,  9  Head 0.98
+x +0.20 y -0.50 z 1.75 n   1 rgb 254,221,185  Head 0.98
+x +0.20 y -0.50 z 1.80 n   1 rgb 252,223,188  Head 0.98
+x +0.20 y -0.50 z 1.90 n   1 rgb 140,108, 90  Head 0.95
+x +0.20 y -0.50 z 2.10 n   3 rgb 253,200,128  Head 0.95
+x +0.20 y -0.45 z 1.45 n   1 rgb 251,219,182  Head 0.96
+x +0.20 y -0.45 z 1.60 n   2 rgb  96, 30, 27  Head 0.98
+x +0.20 y -0.45 z 2.05 n   1 rgb 135,100, 83  Head 0.94 Chest 0.00
+x +0.20 y -0.45 z 2.10 n   1 rgb 254,197,118  Head 0.93 Chest 0.01 Neck 0.01
+x +0.20 y -0.45 z 2.15 n   1 rgb 254,198,120  Head 0.94 Chest 0.01 Neck 0.01
+x +0.20 y -0.40 z 1.00 n   3 rgb 102, 51, 70  Chest 0.76 Root 0.24
+x +0.20 y -0.40 z 1.10 n   3 rgb 101, 92, 96  Chest 0.73 Root 0.17 Head 0.05
+x +0.20 y -0.40 z 1.55 n   3 rgb 103, 35, 29  Head 0.97 Neck 0.01
+x +0.20 y -0.35 z 0.80 n   1 rgb 254,226,223  Chest 0.51 Root 0.48
+x +0.20 y -0.35 z 0.95 n   1 rgb 253,223,222  Chest 0.72 Root 0.28
+x +0.20 y -0.35 z 1.10 n   1 rgb 254,222,221  Chest 0.78 Root 0.11 Head 0.06
+x +0.20 y -0.35 z 2.20 n   1 rgb 209, 30, 94  Head 0.88 Chest 0.06 Neck 0.06
+x +0.20 y -0.30 z 1.25 n   2 rgb 249,175,196  Chest 0.54 Head 0.20 Neck 0.18
+x +0.20 y -0.30 z 1.30 n   1 rgb  28, 26, 31  Chest 0.42 Head 0.28 Neck 0.25
+x +0.20 y -0.25 z 0.40 n   1 rgb 250,215,178  Root 0.89 Chest 0.08
+x +0.20 y -0.25 z 1.25 n   1 rgb 242, 96,148  Chest 0.43 Head 0.27 Neck 0.24
+x +0.20 y -0.25 z 1.30 n   1 rgb 253,225,225  Chest 0.40 Head 0.29 Neck 0.26
+x +0.20 y -0.25 z 2.25 n   1 rgb 254,201,120  Head 0.86 Chest 0.07 Neck 0.07
+x +0.20 y -0.25 z 2.30 n   1 rgb 254,204,134  Head 0.85 Chest 0.07 Neck 0.07
+x +0.20 y -0.20 z 1.30 n   5 rgb 202,155,162  Chest 0.36 Neck 0.34 Head 0.28
+x +0.20 y -0.20 z 1.35 n   2 rgb 170,138,114  Head 0.37 Chest 0.36 Neck 0.26
+x +0.20 y -0.20 z 2.30 n   1 rgb 249,200,130  Head 0.85 Chest 0.07 Neck 0.07
+x +0.20 y -0.15 z 1.35 n   1 rgb 253,222,218  Chest 0.45 Neck 0.37 Head 0.17
+x +0.20 y -0.15 z 2.40 n   2 rgb 254,201,124  Head 0.84 Chest 0.08 Neck 0.07
+x +0.20 y -0.10 z 1.35 n   5 rgb 201,144,157  Chest 0.57 Neck 0.33 Head 0.09
+x +0.20 y -0.05 z 1.30 n   1 rgb 244, 77,129  Chest 0.85 Neck 0.11 Head 0.01
+x +0.20 y -0.05 z 1.35 n   3 rgb  89, 32, 54  Chest 0.59 Neck 0.32 Head 0.07
+x +0.20 y -0.05 z 1.40 n   1 rgb 129, 97, 80  Neck 0.46 Chest 0.45 Head 0.07
+x +0.20 y -0.05 z 2.40 n   1 rgb 252,194,119  Head 0.85 Chest 0.07 Neck 0.07
+x +0.20 y +0.00 z 1.15 n   1 rgb 244, 76,128  Chest 0.95 Root 0.01
+x +0.20 y +0.00 z 1.20 n   1 rgb 206,172,156  Chest 0.86 Root 0.09 Neck 0.03
+x +0.20 y +0.00 z 1.25 n   4 rgb 175,102, 38  Chest 0.87 Root 0.06 Neck 0.05
+x +0.20 y +0.05 z 0.35 n   1 rgb 243,207,172  Root 0.96 Chest 0.00
+x +0.20 y +0.05 z 1.05 n   1 rgb 254,219,225  Chest 0.92 Root 0.07
+x +0.20 y +0.05 z 1.20 n   1 rgb 159, 92, 26  Chest 0.85 Root 0.09 Neck 0.03
+x +0.20 y +0.05 z 1.25 n   1 rgb 163, 96, 33  Chest 0.86 Root 0.08 Neck 0.04
+x +0.20 y +0.15 z 1.95 n   1 rgb 133,102, 82  Head 0.63 Chest 0.18 Neck 0.18
+x +0.20 y +0.15 z 2.35 n   1 rgb 254,196,119  Head 0.87 Chest 0.06 Neck 0.06
+x +0.20 y +0.20 z 0.85 n   2 rgb 153, 91, 85  Root 0.63 Chest 0.36
+x +0.20 y +0.20 z 1.65 n   1 rgb 126, 97, 80  Chest 0.38 Neck 0.37 Head 0.25
+x +0.20 y +0.20 z 1.80 n   1 rgb 128,102, 85  Head 0.45 Chest 0.27 Neck 0.27
+x +0.20 y +0.20 z 1.85 n   1 rgb 253,201,126  Head 0.63 Chest 0.18 Neck 0.17
+x +0.20 y +0.20 z 1.90 n   1 rgb 127, 97, 79  Head 0.61 Chest 0.19 Neck 0.18
+x +0.20 y +0.25 z 0.55 n   1 rgb 130, 99, 81  Root 0.92 Tail1 0.05
+x +0.20 y +0.25 z 0.75 n   1 rgb 132,100, 85  Root 0.89 Chest 0.08 Tail1 0.01
+x +0.20 y +0.25 z 0.85 n   1 rgb 251, 75,131  Root 0.59 Chest 0.40
+x +0.20 y +0.25 z 2.25 n   1 rgb 253,198,121  Head 0.87 Chest 0.06 Neck 0.06
+x +0.20 y +0.25 z 2.30 n   1 rgb 254,203,126  Head 0.87 Chest 0.06 Neck 0.06
+x +0.20 y +0.30 z 1.75 n   1 rgb 253,201,128  Head 0.73 Chest 0.12 Neck 0.12
+x +0.20 y +0.30 z 1.80 n   1 rgb 254,204,136  Head 0.86 Chest 0.06 Neck 0.06
+x +0.20 y +0.35 z 1.80 n   1 rgb 252,197,132  Head 0.86 Chest 0.06 Neck 0.06
+x +0.20 y +0.35 z 1.85 n   1 rgb 210, 27,104  Head 0.86 Chest 0.06 Neck 0.06
+x +0.20 y +0.35 z 2.10 n   2 rgb 249,195,128  Head 0.87 Chest 0.06 Neck 0.06
+x +0.20 y +0.35 z 2.15 n   1 rgb 248,197,128  Head 0.87 Chest 0.06 Neck 0.06
+x +0.20 y +0.35 z 2.20 n   1 rgb 254,205,138  Head 0.87 Chest 0.06 Neck 0.06
+x +0.20 y +0.50 z 1.70 n   1 rgb 254,203,136  Head 0.85 Chest 0.07 Neck 0.07
+x +0.20 y +0.55 z 1.65 n   1 rgb 254,204,135  Head 0.84 Chest 0.07 Neck 0.07
+PROBE_DONE

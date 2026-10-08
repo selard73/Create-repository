@@ -1,0 +1,84 @@
+-- the Sky Diving Squirrel speaks in a comic speech bubble over him, up and to the right (camera-relative, so it never sits on
+-- his Talk prompt): a white OVAL with a thin plain rim, a small tail at the bottom left and a soft shadow - the shape of her
+-- reference image (clipboard, Oct 1 2026 09:23; the shape only, not its colours, and less tail) - text in BuilderSans Medium. It scales in and fades out. One of
+-- Shannon's squirrel sounds from the Lagoon's SpeechSounds with the first line; a long line comes as several bubbles.
+local CIRCLE = "rbxassetid://3570695787"                                    -- a plain white disc; stretched it is the oval
+local PAPER, SHADOW, TEXT_INK = Color3.fromRGB(255, 255, 255), Color3.fromRGB(30, 20, 30), Color3.fromRGB(55, 45, 42)
+local RIM = Color3.fromRGB(120, 80, 46)                                      -- the game's bubble brown, thin
+local TEXT_FONT = Font.new("rbxasset://fonts/families/BuilderSans.json", Enum.FontWeight.Medium)
+local TweenService = game:GetService("TweenService")
+local sqBubble = nil
+local function squirrelBubble(model, text, secs, withSound)
+	local anchor = model and (model.PrimaryPart or model:FindFirstChildWhichIsA("BasePart", true))
+	if not (anchor and text) then return end
+	if sqBubble and sqBubble.Parent then sqBubble:Destroy() end
+	secs = secs or 3.5
+	-- a plump oval, about 1.35 wide to 1 tall (her reference), the text wrapped into a few short lines inside it
+	local W, H = 180, 134
+	if #text > 30 then W, H = 220, 164 end
+	if #text > 55 then W, H = 260, 196 end
+	if #text > 90 then W, H = 300, 226 end
+	local bg = Instance.new("BillboardGui"); bg.Name = "SquirrelBubble"; bg.Size = UDim2.fromOffset(W + 8, H + 16)
+	bg.StudsOffset = Vector3.new(0, 1.5, 0); bg.ExtentsOffset = Vector3.new(0.9, 1.0, 0)   -- up and to the right of him
+	bg.AlwaysOnTop = true; bg.LightInfluence = 0; bg.MaxDistance = 80; bg.Adornee = anchor
+	-- everything sits in one frame so the whole bubble scales in together
+	local root = Instance.new("Frame"); root.Name = "Root"; root.AnchorPoint = Vector2.new(0.5, 0.5); root.Position = UDim2.fromScale(0.5, 0.5)
+	root.Size = UDim2.fromOffset(W, H); root.BackgroundTransparency = 1; root.Parent = bg
+	local scale = Instance.new("UIScale"); scale.Scale = 0.86; scale.Parent = root
+	local function disc(name, size, pos, colour, z, transparency)
+		local i = Instance.new("ImageLabel"); i.Name = name; i.Size = size; i.Position = pos; i.BackgroundTransparency = 1
+		i.Image = CIRCLE; i.ImageColor3 = colour; i.ImageTransparency = transparency or 0; i.ScaleType = Enum.ScaleType.Stretch; i.ZIndex = z; i.Parent = root
+		return i
+	end
+	local shadow = disc("Shadow", UDim2.new(1, 2, 1, 2), UDim2.fromOffset(2, 5), SHADOW, 1, 0.8)
+	local rim = disc("Rim", UDim2.new(1, 3, 1, 3), UDim2.fromOffset(-1.5, -1.5), RIM, 2)
+	local paper = disc("Paper", UDim2.fromScale(1, 1), UDim2.fromOffset(0, 0), PAPER, 3)
+	-- the tail: a small diamond whose top half hides under the oval
+	local tx, ty = 0.3, 0.98                                                   -- where the oval's lower edge passes at 30% across
+	local tail = Instance.new("Frame"); tail.Name = "Tail"; tail.AnchorPoint = Vector2.new(0.5, 0.5); tail.Position = UDim2.new(tx, 0, ty, 1)
+	tail.Size = UDim2.fromOffset(11, 11); tail.Rotation = 45; tail.BackgroundColor3 = PAPER; tail.BorderSizePixel = 0; tail.ZIndex = 2; tail.Parent = root
+	local tc = Instance.new("UICorner"); tc.CornerRadius = UDim.new(0, 2); tc.Parent = tail
+	local ts = Instance.new("UIStroke"); ts.Color = RIM; ts.Thickness = 1.5; ts.Parent = tail
+	local cover = Instance.new("Frame"); cover.Name = "Cover"; cover.AnchorPoint = Vector2.new(0.5, 0.5); cover.Position = UDim2.new(tx, 0, ty, -3)
+	cover.Size = UDim2.fromOffset(11, 7); cover.BackgroundColor3 = PAPER; cover.BorderSizePixel = 0; cover.ZIndex = 4; cover.Parent = root
+	local l = Instance.new("TextLabel"); l.AnchorPoint = Vector2.new(0.5, 0.5); l.Position = UDim2.fromScale(0.5, 0.47); l.Size = UDim2.new(0.70, 0, 0.72, 0)
+	l.BackgroundTransparency = 1; l.FontFace = TEXT_FONT; l.TextSize = 16; l.TextWrapped = true; l.TextColor3 = TEXT_INK; l.Text = text; l.ZIndex = 5; l.Parent = root
+	bg.Parent = player:WaitForChild("PlayerGui")
+	sqBubble = bg
+	TweenService:Create(scale, TweenInfo.new(0.18, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Scale = 1}):Play()
+	if withSound then
+		local lag = workspace:FindFirstChild("Lagoon")
+		local ids = {}
+		for d in tostring(lag and lag:GetAttribute("SpeechSounds") or "73324775979494, 90860503936571, 9119556839"):gmatch("%d+") do table.insert(ids, d) end
+		if #ids > 0 then
+			local s = Instance.new("Sound"); s.SoundId = "rbxassetid://" .. ids[math.random(#ids)]; s.Volume = 0.9
+			s.RollOffMode = Enum.RollOffMode.InverseTapered; s.RollOffMinDistance = 10; s.RollOffMaxDistance = 80; s.Parent = anchor
+			s:Play(); game:GetService("Debris"):AddItem(s, 8)
+			task.delay((lag and lag:GetAttribute("SpeechMax")) or 4, function()
+				if s.Parent and s.IsPlaying then TweenService:Create(s, TweenInfo.new(0.5), {Volume = 0}):Play() end
+			end)
+		end
+	end
+	task.delay(secs - 0.3, function()
+		if not bg.Parent then return end
+		local ti = TweenInfo.new(0.3)
+		for _, o in ipairs({shadow, rim, paper}) do TweenService:Create(o, ti, {ImageTransparency = 1}):Play() end
+		for _, o in ipairs({tail, cover}) do TweenService:Create(o, ti, {BackgroundTransparency = 1}):Play() end
+		TweenService:Create(ts, ti, {Transparency = 1}):Play()
+		TweenService:Create(l, ti, {TextTransparency = 1}):Play()
+	end)
+	task.delay(secs, function() if bg.Parent then bg:Destroy() end end)
+end
+local function squirrelSay(lines)
+	local sq = workspace:FindFirstChild("parachute_squirrel_color")
+	if not sq then return end
+	local prompt = sq:FindFirstChild("ChutePrompt", true)                    -- his Talk prompt steps aside while he speaks
+	task.spawn(function()
+		if prompt then prompt.Enabled = false end
+		for i, line in ipairs(lines) do
+			squirrelBubble(sq, line, 3.5, i == 1)
+			task.wait(3.6)
+		end
+		if prompt and prompt.Parent then prompt.Enabled = true end
+	end)
+end

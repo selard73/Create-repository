@@ -1,0 +1,26 @@
+local cart=workspace.Travel.Points.TravelCart_porto
+local cpv=cart:GetPivot() local cf0,sz0=cart:GetBoundingBox()
+local bottomOff=cf0.Position.Y-sz0.Y/2-cpv.Position.Y
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Include rp.FilterDescendantsInstances={workspace.Terrain}
+local xp=RaycastParams.new() xp.FilterType=Enum.RaycastFilterType.Exclude xp.FilterDescendantsInstances={cart,workspace.ComingSoonWall,workspace.Terrain}
+local R=cpv-cpv.Position
+local hx,hz=sz0.X/2,sz0.Z/2
+local placed
+for _,c in ipairs({{243,-568},{242,-569},{244,-567},{241,-570},{240,-572},{245,-570}}) do
+	local g=workspace:Raycast(Vector3.new(c[1],-20,c[2]),Vector3.new(0,-40,0),rp)
+	if g then
+		local ok=true
+		for _,h in ipairs({0.8,2.0,3.4}) do
+			local o=Vector3.new(c[1],g.Position.Y+h,c[2])
+			for a=0,315,45 do
+				local d=Vector3.new(math.sin(math.rad(a)),0,math.cos(math.rad(a)))
+				local l=R:VectorToObjectSpace(d) local reach=math.min(math.abs(l.X)>1e-3 and hx/math.abs(l.X) or 1e9, math.abs(l.Z)>1e-3 and hz/math.abs(l.Z) or 1e9)+0.6
+				if workspace:Raycast(o,d*reach,xp) then ok=false end
+			end
+		end
+		if ok then cart:PivotTo(CFrame.new(c[1],g.Position.Y-bottomOff+0.02,c[2])*R) placed=c break end
+	end
+end
+warn('QL@CART@',placed and (placed[1]..','..placed[2]) or 'NONE',cart:GetBoundingBox().Position)
+game:GetService('ChangeHistoryService'):SetWaypoint('Travel cart by the cliff foot')
+workspace.CurrentCamera.CFrame=CFrame.lookAt(Vector3.new(218,-41,-584),Vector3.new(240,-46,-575))

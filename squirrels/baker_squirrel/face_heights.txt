@@ -1,0 +1,3 @@
+Face verts count: 2057
+Min face Z: 0.004, Max face Z: 2.400
+Apron top Z: 1.349

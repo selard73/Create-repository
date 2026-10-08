@@ -1,0 +1,44 @@
+-- Oct 5 2026: the new Sunbather's right foot floats 0.25-0.47 over the bay's sloping sand (left foot + surfboard base
+-- touch). Try sliding him 0..0.8 studs toward his LEFT (up the slope) and settling him down, keep the spot whose
+-- highest gap is smallest while nothing sinks more than 0.25 into the sand. Same facing. warn + return if no better.
+local PTS={{-0.25,-0.35},{-0.06,-0.02},{0.52,-0.08},{0.84,-0.30},{-0.50,-0.30},{-0.40,-0.10}}
+local col=workspace:FindFirstChild('sunbather_squirrel_color')
+if not (col and col:FindFirstChild('Squirrel')) then warn('QSS@ABORT') return end
+local cm=col.Squirrel
+local B={} for _,d in ipairs(col:GetDescendants()) do if d:IsA('Bone') then B[d.Name]=d end end
+local hl=cm.CFrame:PointToObjectSpace(B.Head.WorldPosition) local sz=hl.Z<0 and 1 or -1
+local k=3.4/cm.Size.Y local R=cm.CFrame-cm.Position
+local right=R:VectorToWorldSpace(Vector3.new(1,0,0))*Vector3.new(1,0,1)
+local fwd=R:VectorToWorldSpace(Vector3.new(0,0,-sz))*Vector3.new(1,0,1)
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Exclude
+rp.FilterDescendantsInstances={col,workspace:FindFirstChild('SquirrelTwins')}
+local function gaps(shift)
+	local sole=cm.Position.Y-cm.Size.Y/2
+	local g={}
+	for _,f in ipairs(PTS) do
+		local w=cm.Position+shift+R:VectorToWorldSpace(Vector3.new(f[1],0,sz*f[2])*k)
+		local h=workspace:Raycast(Vector3.new(w.X,sole+2,w.Z),Vector3.new(0,-6,0),rp)
+		if not h then return nil end
+		table.insert(g,sole-h.Position.Y)
+	end
+	return g
+end
+local function score(g) -- drop so the lowest point sinks at most 0.25, then the worst float left
+	local lo,hi=math.min(table.unpack(g)),math.max(table.unpack(g))
+	local drop=math.max(0,lo+0.25) drop=math.min(drop,hi)  -- never push below the lowest+0.25
+	return hi-drop,drop
+end
+local g0=gaps(Vector3.zero) local s0=score(g0)
+local best,bs,bd=Vector3.zero,s0,select(2,score(g0))
+for i=0,8 do
+	for _,j in ipairs({0,0.2,-0.2}) do
+		local sh=-right.Unit*(i*0.1)+fwd.Unit*j
+		local g=gaps(sh)
+		if g then local s,d=score(g) if s<bs-0.02 then best,bs,bd=sh,s,d end end
+	end
+end
+col:PivotTo(col:GetPivot()+best-Vector3.new(0,bd,0))
+game:GetService('ChangeHistoryService'):SetWaypoint('Settle sunbather on the sand')
+local after=gaps(Vector3.zero)
+local t={} for _,v in ipairs(after or {}) do table.insert(t,string.format('%.2f',v)) end
+warn('QSS@MOVED slide',string.format('%.2f',best.Magnitude),'down',string.format('%.2f',bd),'worst float before',string.format('%.2f',s0+0),'gaps now (feet x4, board x2)',table.concat(t,' '))

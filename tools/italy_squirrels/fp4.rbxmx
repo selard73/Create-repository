@@ -1,0 +1,7 @@
+<roblox version="4"><Item class="Folder" referent="RBX0"><Properties><string name="Name">RestoreRosso</string></Properties><Item class="ModuleScript" referent="RBX1"><Properties><string name="Name">PatchModule</string><ProtectedString name="Source"><![CDATA[return function()
+local car=workspace.PortoNocciola['15 Funicolare'].Cars.Car_Rosso
+local from=car:GetAttribute('PhotoFrom')
+if from then car:PivotTo(from) car:SetAttribute('PhotoFrom',nil) warn('QP@RESTORED',from.Position) else warn('QP@NOTHING') end
+
+end
+]]></ProtectedString></Properties></Item></Item></roblox>

@@ -1,0 +1,41 @@
+-- Oct 5 2026 her round-3 flags: (1) BELLA lemon tree to her circled spot in front of Bottega's north corner (bbox centre
+-- 256.8,-669.6; canopy stays clear of the facade at x 259); (2) the new rock under the Sentiero stair still sat ON the sea
+-- (dark seam) -> water/air under any land cell in that region becomes that land's material; (3) the little tide pool
+-- (12 rim stones + glass water disk, moved in round 2) -> ServerStorage.PromenadeBackup.Removed.
+local SS=game:GetService('ServerStorage')
+local P=workspace.PortoNocciola
+local T=workspace.Terrain
+local RM=SS.PromenadeBackup:FindFirstChild('Removed')
+if P:GetAttribute('PromFix8') then warn('PRF8@ABORT already ran') return end
+-- 1) tree
+local Z=P['06 Piazza details and planting'] local tree
+for _,c in ipairs(Z:GetChildren()) do
+	if c:IsA('Model') and c.Name=='Lemon tree' then local cf=c:GetBoundingBox() if math.abs(cf.Position.X-260.1)<1 and math.abs(cf.Position.Z+662.8)<1 then tree=c end end
+end
+if tree then
+	local cf=tree:GetBoundingBox()
+	tree:PivotTo(tree:GetPivot()+Vector3.new(256.8-cf.Position.X,0,-669.6-cf.Position.Z))
+end
+-- 3) tide pool away
+local n=0
+for _,d in ipairs(P['08 Coastal finishing']:GetDescendants()) do
+	if d:IsA('BasePart') and (d.Name=='Tide pool rim rock' or d.Name=='Tide pool water') and d:GetAttribute('PromOldCF') then
+		d:SetAttribute('OrigParent',d.Parent:GetFullName()) d.Parent=RM n+=1
+	end
+end
+-- 2) close under land in the stair-rock region
+local reg=Region3.new(Vector3.new(300,-64,-840),Vector3.new(328,-24,-792))
+local mats,occ=T:ReadVoxels(reg,4)
+local ch=0
+for ix=1,#mats do for iz=1,#mats[1][1] do
+	local land
+	for iy=#mats[1],1,-1 do
+		local m=mats[ix][iy][iz]
+		if m~=Enum.Material.Air and m~=Enum.Material.Water and occ[ix][iy][iz]>0.25 then land=m
+		elseif land and (m==Enum.Material.Water or m==Enum.Material.Air) then mats[ix][iy][iz]=land occ[ix][iy][iz]=1 ch+=1 end
+	end
+end end
+T:WriteVoxels(reg,4,mats,occ)
+P:SetAttribute('PromFix8',true)
+local tc=tree and tree:GetBoundingBox()
+warn('PRF8@DONE tree',tc and tc.Position,'pool parts removed',n,'terrain cells closed',ch)

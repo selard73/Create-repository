@@ -1,0 +1,7 @@
+meshes 1 verts 592017 tris 1184246
+merged 3 duplicate verts (dist 0.000019)
+islands 2 biggest [565164, 26850] singles 0
+tris after merge 1184243
+  pass -> 414485
+  pass -> 279999
+PREMERGE_DONE

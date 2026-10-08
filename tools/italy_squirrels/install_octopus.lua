@@ -1,0 +1,83 @@
+-- Oct 4 2026 (her pick): Lello the Octopus Catcher (octopus_squirrel, Meshy 'Octopus Catch of the Day', 7k tris) standing in
+-- the rowboat La Limonaia moored by the pier, facing the gangway where players come; registry after Rocco (bio D). Squirrel 15.
+local id='octopus_squirrel'
+local col,gry=workspace:FindFirstChild(id..'_color'),workspace:FindFirstChild(id..'_gray')
+if not (col and gry) then warn('QL@ABORT missing import',col,gry) return end
+local boat=workspace.PortoNocciola['04 Piers and fishing boats']:FindFirstChild('La Limonaia')
+if not boat then warn('QL@ABORT no La Limonaia') return end
+local nsc=0 for _,d in ipairs(boat:GetDescendants()) do if d:IsA('LuaSourceContainer') then nsc+=1 end end
+local bcf,bsz=boat:GetBoundingBox()
+local LONG=(bsz.X>bsz.Z) and bcf.RightVector or bcf.LookVector LONG=(LONG*Vector3.new(1,0,1)).Unit
+local ACROSS=LONG:Cross(Vector3.yAxis).Unit
+local SPOT=bcf.Position*Vector3.new(1,0,1)
+local GANG=Vector3.new(233,0,-686)
+local WANT=((GANG-SPOT)*Vector3.new(1,0,1)).Unit                   -- facing the gangway where players come
+local rp=RaycastParams.new() rp.FilterType=Enum.RaycastFilterType.Include rp.FilterDescendantsInstances={boat}
+local TOP=bcf.Position.Y+bsz.Y/2+2
+local function ground(p) local q=workspace:Raycast(Vector3.new(p.X,TOP,p.Z),Vector3.new(0,-8,0),rp) return q and q.Position.Y, q and q.Instance end
+warn('QL@BOAT La Limonaia centre',bcf.Position,'size',bsz,'scripts',nsc)
+
+-- ---------- Lello (same placement code as Tonio/Rocco); feet on the boat's floor
+local cm,gm=col.Squirrel,gry.Squirrel
+local Bn={} for _,x in ipairs(col:GetDescendants()) do if x:IsA('Bone') then Bn[x.Name]=x end end
+local rel=cm.CFrame:Inverse()*col:GetPivot() col:PivotTo(CFrame.new(cm.Position)*rel)
+local function axes()
+	local hl=cm.CFrame:PointToObjectSpace(Bn.Head.WorldPosition)
+	return hl.Z<0 and 1 or -1, 1
+end
+local function face(want)
+	for i=1,3 do
+		local sz=axes()
+		local R=cm.CFrame-cm.Position
+		local fwd=R:VectorToWorldSpace(Vector3.new(0,0,-sz))*Vector3.new(1,0,1)
+		local ang=math.atan2(want.X,want.Z)-math.atan2(fwd.X,fwd.Z)
+		local c=CFrame.new(cm.Position) col:PivotTo(c*CFrame.Angles(0,ang,0)*c:Inverse()*col:GetPivot())
+	end
+end
+-- feet (feet_probe): L x -0.65..-0.27 y -0.55..-0.15, R x 0.26..0.78 y -0.47..0.04; centre (0.06,-0.27)
+local feet={{-0.60,-0.50},{-0.32,-0.50},{-0.60,-0.20},{-0.32,-0.20},{0.31,-0.42},{0.72,-0.42},{0.31,-0.02},{0.72,-0.02}}
+local k=3.4/cm.Size.Y
+face(WANT)
+local sz=axes()
+local R=cm.CFrame-cm.Position
+local fc=R:VectorToWorldSpace(Vector3.new(0.06,0,sz*-0.27)*k)
+local best
+for dl=-3,3,0.25 do for da=-0.6,0.6,0.2 do
+	local c=SPOT+LONG*dl+ACROSS*da
+	local hi,lo,ok=-1e9,1e9,true
+	for _,f in ipairs(feet) do
+		local w=c-fc+R:VectorToWorldSpace(Vector3.new(f[1],0,sz*f[2])*k)
+		local y=ground(w)
+		if not y then ok=false break end
+		hi=math.max(hi,y) lo=math.min(lo,y)
+	end
+	if ok then
+		local score=(hi-lo)*10+hi*0.5+math.abs(dl)*0.15+math.abs(da)*0.3   -- flat, low (the floor, not a seat), near the middle
+		if not best or score<best.s then best={s=score,c=c,y=hi,spread=hi-lo} end
+	end
+end end
+if not best then warn('QL@ABORT no floor in the boat') return end
+local L=Vector3.new(best.c.X,best.y,best.c.Z)
+col:PivotTo(col:GetPivot()+Vector3.new(L.X-fc.X-cm.Position.X,L.Y+0.02-(cm.Position.Y-cm.Size.Y/2),L.Z-fc.Z-cm.Position.Z))
+cm:SetAttribute('ColorTexture',cm.TextureID) cm:SetAttribute('GrayTexture',gm.TextureID)
+local twins=workspace:FindFirstChild('SquirrelTwins')
+if twins then gry.Parent=twins gry:PivotTo(gry:GetPivot()+Vector3.new(0,-400-gry:GetPivot().Y,0)) end
+warn('QL@LELLO feet centre',L,'spread',best.spread,'facing',R:VectorToWorldSpace(Vector3.new(0,0,-sz)))
+
+game:GetService('ChangeHistoryService'):SetWaypoint('Lello in La Limonaia')
+local cam=workspace.CurrentCamera
+local t=L+Vector3.new(0,1.4,0)
+cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(t+WANT*9+ACROSS*3+Vector3.new(0,3.5,0),t)
+
+-- registry: Lello the Octopus Catcher (bio D, Shannon's pick), after Rocco
+local reg=workspace.SquirrelScripts.SquirrelRegistry
+local rs=reg.Source
+local a,b=rs:find('Not one of them has listened."},\n',1,true)
+if not a or rs:find('octopus_squirrel',1,true) then warn('QL@REG_SKIP anchor/dup',a) return end
+local add='\t\t{id = "octopus_squirrel",    map = "porto", name = "Lello the Octopus Catcher",\n\t\t bio = "Keeps losing his bait to the octopus. Last week he lost the bucket too."},\n'
+reg.Source=rs:sub(1,b)..add..rs:sub(b+1)
+game:GetService('ChangeHistoryService'):SetWaypoint('Lello registry')
+local n=0 for _ in reg.Source:gmatch('map = "porto"') do n+=1 end
+local t=0 for _ in reg.Source:gmatch('{id = ') do t+=1 end
+warn('QL@REG porto entries',n,'total',t,'lello',reg.Source:find('Lello the Octopus Catcher',1,true)~=nil)

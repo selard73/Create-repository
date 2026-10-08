@@ -1,0 +1,52 @@
+-- Oct 5 2026 (Shannon: Octopus Catcher "on the deck of a moored fishing boat"): the Rosina is an open rowboat
+-- (floor 2.4 wide between three Rowing seats 1.65 apart; his feet span 1.75), so he stands on her MIDDLE rowing seat
+-- like the Boat Captain once did on the Azzurra. The seat runs across the boat (2.5 along Z, 1.1 along X), so he faces
+-- along the boat toward the gangway (+X): people walking out along Molo dei Pescatori see his front.
+local NEWF={-0.06,-0.30}
+local FEET={{-0.62,-0.45},{-0.35,-0.05},{-0.45,-0.25},{0.20,-0.50},{0.50,-0.25},{0.35,-0.35}}
+local WANT=Vector3.new(1,0,0)
+local boat=workspace.PortoNocciola['04 Piers and fishing boats']:FindFirstChild('Rosina')
+local col=workspace:FindFirstChild('octopus_squirrel_color')
+if not (boat and col and col:FindFirstChild('Squirrel')) then warn('QOS@ABORT') return end
+local seats={}
+for _,d in ipairs(boat:GetDescendants()) do if d.Name=='Rowing seat' and d:IsA('BasePart') then table.insert(seats,d) end end
+if #seats==0 then warn('QOS@ABORT no seats') return end
+local bcf=boat:GetBoundingBox()
+table.sort(seats,function(a,b) return math.abs(a.Position.X-bcf.Position.X)<math.abs(b.Position.X-bcf.Position.X) end)
+local seat=seats[1]
+local top=seat.Position.Y+seat.Size.Y/2
+local L=Vector3.new(seat.Position.X,top,seat.Position.Z)
+local cm=col.Squirrel
+local B={} for _,d in ipairs(col:GetDescendants()) do if d:IsA('Bone') then B[d.Name]=d end end
+local function sz_() local hl=cm.CFrame:PointToObjectSpace(B.Head.WorldPosition) return hl.Z<0 and 1 or -1 end
+local rel=cm.CFrame:Inverse()*col:GetPivot() col:PivotTo(CFrame.new(cm.Position)*rel)
+for i=1,3 do
+	local R=cm.CFrame-cm.Position
+	local fwd=R:VectorToWorldSpace(Vector3.new(0,0,-sz_()))*Vector3.new(1,0,1)
+	local ang=math.atan2(WANT.X,WANT.Z)-math.atan2(fwd.X,fwd.Z)
+	local c=CFrame.new(cm.Position) col:PivotTo(c*CFrame.Angles(0,ang,0)*c:Inverse()*col:GetPivot())
+end
+local sz=sz_() local R=cm.CFrame-cm.Position local k=3.4/cm.Size.Y
+local fc=R:VectorToWorldSpace(Vector3.new(NEWF[1],0,sz*NEWF[2])*k)
+col:PivotTo(col:GetPivot()+Vector3.new(L.X-fc.X-cm.Position.X,L.Y+0.02-(cm.Position.Y-cm.Size.Y/2),L.Z-fc.Z-cm.Position.Z))
+-- report: feet on the seat, and boat parts (any CanQuery) inside his box above the seat
+local inc=RaycastParams.new() inc.FilterType=Enum.RaycastFilterType.Include inc.FilterDescendantsInstances={seat}
+local miss=0
+for _,f in ipairs(FEET) do
+	local w=cm.Position+R:VectorToWorldSpace(Vector3.new(f[1],0,sz*f[2])*k)
+	if not workspace:Raycast(Vector3.new(w.X,top+1,w.Z),Vector3.new(0,-2,0),inc) then miss+=1 end
+end
+local cut={}
+for _,d in ipairs(boat:GetDescendants()) do
+	if d:IsA('BasePart') and d~=seat then
+		local l=cm.CFrame:PointToObjectSpace(d.Position)
+		local e=cm.Size/2+d.Size/2
+		if math.abs(l.X)<e.X*0.8 and math.abs(l.Y)<e.Y*0.8 and math.abs(l.Z)<e.Z*0.8 and d.Position.Y+d.Size.Y/2>top+0.05 then table.insert(cut,d.Name) end
+	end
+end
+game:GetService('ChangeHistoryService'):SetWaypoint('Octopus Catcher onto the Rosina seat')
+warn('QOS@MOVED feet',L,'seat x',string.format('%.2f',seat.Position.X),'foot points off the seat',miss..'/'..#FEET,'facing',R:VectorToWorldSpace(Vector3.new(0,0,-sz)),'near his box:',#cut>0 and table.concat(cut,',') or 'nothing')
+local t=L+Vector3.new(0,1.6,0)
+local cam=workspace.CurrentCamera
+cam.CameraType=Enum.CameraType.Fixed cam.Focus=CFrame.new(t)
+cam.CFrame=CFrame.lookAt(t+Vector3.new(7,2.5,-4),t)

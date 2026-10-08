@@ -1,0 +1,6 @@
+head centre (0.0, -0.66, 1.69), neck starts z 1.29
+below-neck verts following the HEAD (>0.25): 402 verts, bbox x -1.11..0.21 y -0.57..0.04 z 0.82..1.19, nearest to head centre 0.53
+low or wide verts following the TAIL (>0.25): 157 verts, bbox x -0.51..1.11 y -0.16..0.97 z 0.14..2.34, nearest to head centre 0.78
+face check: 148 verts within 0.4 of head centre, mean head weight 0.917
+head-bound verts above the neck: farthest from head centre 1.03, 95th percentile 0.89
+AUDIT_DONE

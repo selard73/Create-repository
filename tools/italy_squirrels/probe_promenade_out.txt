@@ -1,0 +1,540 @@
+﻿QPR@group 0 Workspace.PortoNocciola.02 Pastel waterfront n 9136 min 250.5,-47.8,-689.0 max 314.9,-1.5,-595.0
+QPR@item Model Workspace.PortoNocciola.02 Pastel waterfront.Bottega del Pescatore n 1236 min 259.0,-47.8,-689.0 max 278.9,-24.6,-667.0
+QPR@item Model Workspace.PortoNocciola.02 Pastel waterfront.Gelateria al Limone n 1447 min 262.5,-47.8,-637.0 max 281.4,-9.2,-617.0
+QPR@item Model Workspace.PortoNocciola.02 Pastel waterfront.Capitaneria del Porto n 972 min 250.5,-47.8,-613.0 max 267.4,-16.9,-595.0
+QPR@item Model Workspace.PortoNocciola.02 Pastel waterfront.Casa Azzurra n 1001 min 264.0,-47.8,-661.5 max 283.9,-16.9,-642.5
+QPR@group 0 Workspace.PortoNocciola.08 Coastal finishing n 185 min 261.0,-52.9,-724.8 max 309.3,-30.9,-625.9
+QPR@item Part Workspace.PortoNocciola.08 Coastal finishing.Boatyard stone base n 1 min 261.0,-52.9,-707.0 max 281.0,-46.9,-691.0
+QPR@item Part Workspace.PortoNocciola.08 Coastal finishing.Boatyard paving n 1 min 261.0,-47.0,-707.0 max 281.0,-46.8,-691.0
+QPR@group 0 Workspace.PortoNocciola.04 Piers and fishing boats n 1209 min 170.4,-57.8,-738.6 max 242.9,-38.8,-625.7
+QPR@item Model Workspace.PortoNocciola.04 Piers and fishing boats.Rosina n 89 min 210.6,-53.1,-630.3 max 221.4,-51.0,-625.7
+QPR@group 1 Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings n 114 min 209.7,-51.5,-694.9 max 221.0,-47.9,-628.5
+QPR@group 2 Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina n 38 min 211.1,-51.5,-634.7 max 215.9,-47.9,-628.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 212.1,-50.7,-630.2 max 212.4,-50.4,-629.8
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 211.8,-50.9,-629.8 max 212.1,-50.6,-629.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 211.5,-51.0,-629.5 max 211.9,-50.8,-629.0
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 211.2,-51.2,-629.1 max 211.6,-51.0,-628.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 212.6,-50.3,-630.9 max 213.0,-50.1,-630.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 212.3,-50.5,-630.6 max 212.7,-50.3,-630.1
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 213.5,-49.8,-632.0 max 213.9,-49.5,-631.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 213.2,-50.0,-631.7 max 213.6,-49.7,-631.2
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 212.9,-50.2,-631.3 max 213.3,-49.9,-630.9
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 213.8,-49.6,-632.4 max 214.2,-49.3,-632.0
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 214.1,-49.3,-632.8 max 214.4,-49.1,-632.3
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.3,-51.5,-628.7 max 211.4,-51.4,-628.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.3,-51.4,-628.6 max 211.4,-51.3,-628.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.3,-51.4,-628.6 max 211.4,-51.3,-628.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.2,-51.4,-628.8 max 211.3,-51.4,-628.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.2,-51.5,-628.8 max 211.3,-51.4,-628.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.2,-51.5,-628.7 max 211.3,-51.4,-628.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.2,-51.5,-628.7 max 211.3,-51.4,-628.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.1,-51.3,-628.8 max 211.2,-51.3,-628.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.1,-51.4,-628.8 max 211.2,-51.3,-628.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.1,-51.4,-628.8 max 211.3,-51.3,-628.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.2,-51.2,-628.8 max 211.3,-51.1,-628.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.1,-51.3,-628.8 max 211.3,-51.2,-628.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.1,-51.3,-628.8 max 211.3,-51.2,-628.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.2,-51.2,-628.7 max 211.3,-51.1,-628.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.3,-51.2,-628.7 max 211.4,-51.2,-628.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.3,-51.3,-628.6 max 211.4,-51.2,-628.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.3,-51.3,-628.6 max 211.4,-51.3,-628.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.3,-51.2,-628.7 max 211.4,-51.1,-628.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.2,-51.2,-628.7 max 211.3,-51.1,-628.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Gunwale tie loop n 1 min 211.3,-51.3,-628.6 max 211.4,-51.2,-628.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Post hitch n 1 min 215.8,-48.0,-634.7 max 215.9,-47.9,-634.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Tied rope tail n 1 min 215.8,-48.3,-634.6 max 215.9,-48.0,-634.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 215.2,-48.5,-634.3 max 215.6,-48.2,-633.8
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 215.5,-48.2,-634.6 max 215.9,-47.9,-634.2
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 214.9,-48.7,-633.9 max 215.3,-48.4,-633.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 214.4,-49.1,-633.2 max 214.7,-48.8,-632.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Rosina.Attached mooring rope n 1 min 214.6,-48.9,-633.5 max 215.0,-48.6,-633.1
+QPR@group 2 Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia n 38 min 209.7,-51.5,-694.9 max 213.5,-47.9,-687.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Post hitch n 1 min 213.3,-48.0,-687.5 max 213.5,-47.9,-687.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Tied rope tail n 1 min 213.3,-48.3,-687.5 max 213.4,-48.0,-687.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 212.5,-48.9,-689.3 max 212.8,-48.6,-688.8
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 212.7,-48.7,-688.8 max 213.0,-48.4,-688.3
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 212.9,-48.5,-688.4 max 213.2,-48.2,-687.9
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 212.3,-49.2,-689.7 max 212.6,-48.9,-689.2
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 211.8,-49.6,-690.6 max 212.1,-49.3,-690.1
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 212.0,-49.4,-690.2 max 212.3,-49.1,-689.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 210.9,-50.4,-692.4 max 211.3,-50.1,-691.9
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 211.4,-50.0,-691.5 max 211.7,-49.7,-691.0
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 211.6,-49.8,-691.1 max 211.9,-49.5,-690.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.7,-51.3,-694.9 max 209.8,-51.3,-694.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.7,-51.3,-694.9 max 209.8,-51.2,-694.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.7,-51.4,-694.9 max 209.8,-51.3,-694.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.7,-51.4,-694.9 max 209.8,-51.3,-694.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.7,-51.4,-694.8 max 209.8,-51.4,-694.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.8,-51.5,-694.8 max 209.9,-51.4,-694.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.7,-51.5,-694.8 max 209.8,-51.4,-694.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.8,-51.5,-694.7 max 209.9,-51.4,-694.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.8,-51.4,-694.7 max 210.0,-51.3,-694.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.8,-51.5,-694.7 max 209.9,-51.4,-694.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.9,-51.3,-694.7 max 210.0,-51.3,-694.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.8,-51.4,-694.7 max 210.0,-51.3,-694.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.9,-51.3,-694.7 max 210.0,-51.2,-694.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 210.3,-50.9,-693.8 max 210.6,-50.7,-693.2
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 210.5,-50.8,-693.3 max 210.8,-50.5,-692.8
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 211.2,-50.2,-692.0 max 211.5,-49.9,-691.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 210.7,-50.6,-692.9 max 211.0,-50.3,-692.3
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.8,-51.3,-694.7 max 210.0,-51.2,-694.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 209.9,-51.3,-694.7 max 210.2,-51.0,-694.1
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 210.1,-51.1,-694.2 max 210.4,-50.9,-693.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.8,-51.2,-694.7 max 209.9,-51.1,-694.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.8,-51.2,-694.7 max 209.9,-51.1,-694.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.8,-51.2,-694.7 max 209.9,-51.2,-694.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.7,-51.3,-694.8 max 209.8,-51.2,-694.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.8,-51.2,-694.8 max 209.9,-51.1,-694.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Gunwale tie loop n 1 min 209.7,-51.2,-694.8 max 209.8,-51.1,-694.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.La Limonaia.Attached mooring rope n 1 min 213.1,-48.2,-687.9 max 213.4,-47.9,-687.4
+QPR@group 2 Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina n 38 min 219.8,-51.5,-647.8 max 221.0,-47.9,-639.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.4,-647.6 max 220.0,-51.3,-647.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.5,-647.6 max 220.0,-51.4,-647.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.3,-647.6 max 220.0,-51.2,-647.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.4,-647.6 max 220.0,-51.3,-647.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.5,-647.7 max 220.0,-51.4,-647.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.9,-48.2,-640.0 max 221.0,-47.9,-639.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Tied rope tail n 1 min 220.9,-48.3,-639.5 max 221.0,-48.0,-639.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Post hitch n 1 min 220.9,-48.0,-639.5 max 221.0,-47.9,-639.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.8,-48.5,-640.5 max 220.9,-48.2,-639.9
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.7,-48.7,-641.0 max 220.9,-48.4,-640.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.1,-50.9,-646.6 max 220.2,-50.7,-646.0
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.2,-50.6,-645.5 max 220.3,-50.3,-645.0
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.3,-50.2,-644.5 max 220.5,-49.9,-644.0
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.1,-50.8,-646.0 max 220.3,-50.5,-645.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.3,-647.6 max 220.0,-51.2,-647.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.0,-51.1,-647.1 max 220.1,-50.9,-646.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 219.9,-51.3,-647.6 max 220.1,-51.0,-647.0
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.4,-49.8,-643.5 max 220.6,-49.5,-643.0
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.5,-49.6,-643.0 max 220.6,-49.3,-642.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.6,-49.2,-642.0 max 220.8,-48.9,-641.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.6,-49.4,-642.5 max 220.7,-49.1,-642.0
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.7,-48.9,-641.5 max 220.8,-48.6,-641.0
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.2,-50.4,-645.0 max 220.4,-50.1,-644.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Attached mooring rope n 1 min 220.4,-50.0,-644.0 max 220.5,-49.7,-643.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.4,-647.8 max 220.0,-51.4,-647.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.5,-647.8 max 220.0,-51.4,-647.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.5,-647.7 max 220.0,-51.4,-647.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.8,-51.3,-647.8 max 219.9,-51.3,-647.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.8,-51.4,-647.8 max 220.0,-51.3,-647.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.2,-647.8 max 220.0,-51.1,-647.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.8,-51.4,-647.8 max 219.9,-51.3,-647.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.2,-647.7 max 220.0,-51.1,-647.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.8,-51.3,-647.8 max 219.9,-51.2,-647.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.2,-647.7 max 220.0,-51.1,-647.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.8,-51.3,-647.8 max 220.0,-51.2,-647.7
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.2,-647.7 max 220.0,-51.1,-647.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.2,-647.6 max 220.0,-51.2,-647.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Attached boat moorings.Stella Marina.Gunwale tie loop n 1 min 219.9,-51.3,-647.6 max 220.0,-51.3,-647.5
+QPR@item Model Workspace.PortoNocciola.04 Piers and fishing boats.Molo dei Pescatori n 243 min 214.5,-57.8,-639.5 max 241.5,-47.7,-634.5
+QPR@item Model Workspace.PortoNocciola.04 Piers and fishing boats.Azzurra n 156 min 199.2,-53.1,-675.6 max 207.1,-43.8,-658.2
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway edge beam n 1 min 229.0,-48.7,-639.7 max 242.8,-46.1,-639.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 239.9,-46.2,-687.6 max 240.1,-44.1,-687.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway edge beam n 1 min 229.0,-48.7,-634.5 max 242.8,-46.1,-634.3
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 228.9,-48.6,-639.6 max 229.1,-46.5,-639.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 232.4,-48.0,-634.5 max 232.5,-45.9,-634.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 239.3,-46.8,-634.5 max 239.4,-44.7,-634.4
+QPR@item Model Workspace.PortoNocciola.04 Piers and fishing boats.La Limonaia n 175 min 209.1,-53.1,-696.5 max 220.9,-51.0,-691.5
+QPR@item Model Workspace.PortoNocciola.04 Piers and fishing boats.Molo delle Reti n 289 min 207.0,-57.8,-687.5 max 237.0,-47.7,-682.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 235.8,-47.4,-639.6 max 236.0,-45.3,-639.5
+QPR@item Model Workspace.PortoNocciola.04 Piers and fishing boats.Stella Marina n 105 min 217.6,-53.1,-648.6 max 230.4,-38.8,-643.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway edge beam n 1 min 226.0,-48.7,-687.7 max 240.0,-46.1,-687.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 236.4,-46.8,-687.6 max 236.6,-44.7,-687.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 232.9,-47.4,-687.6 max 233.1,-45.3,-687.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 239.3,-46.8,-639.6 max 239.4,-44.7,-639.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gentle timber gangway n 1 min 229.0,-48.9,-639.7 max 242.8,-46.2,-634.3
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway handrail n 1 min 226.0,-46.5,-682.5 max 240.0,-44.0,-682.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Buoy cap n 1 min 225.6,-52.6,-720.4 max 226.4,-51.9,-719.6
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gentle timber gangway n 1 min 226.0,-48.9,-687.7 max 240.0,-46.2,-682.3
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Harbour buoy n 1 min 225.4,-53.5,-720.6 max 226.6,-52.0,-719.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway edge beam n 1 min 226.0,-48.7,-682.5 max 240.0,-46.1,-682.3
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 232.9,-47.4,-682.5 max 233.1,-45.3,-682.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway handrail n 1 min 226.0,-46.5,-687.6 max 240.0,-44.0,-687.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 236.4,-46.8,-682.5 max 236.6,-44.7,-682.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 239.9,-46.2,-682.5 max 240.1,-44.1,-682.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway handrail n 1 min 229.0,-46.5,-639.6 max 242.8,-44.0,-639.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 229.4,-48.0,-687.6 max 229.6,-45.9,-687.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 242.7,-46.2,-634.5 max 242.9,-44.1,-634.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway handrail n 1 min 229.0,-46.5,-634.5 max 242.8,-44.0,-634.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 242.7,-46.2,-639.6 max 242.9,-44.1,-639.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 225.9,-48.6,-687.6 max 226.1,-46.5,-687.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 235.8,-47.4,-634.5 max 236.0,-45.3,-634.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 229.4,-48.0,-682.5 max 229.6,-45.9,-682.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 232.4,-48.0,-639.6 max 232.5,-45.9,-639.5
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 225.9,-48.6,-682.5 max 226.1,-46.5,-682.4
+QPR@item Part Workspace.PortoNocciola.04 Piers and fishing boats.Gangway short post n 1 min 228.9,-48.6,-634.5 max 229.1,-46.5,-634.4
+QPR@group 0 Workspace.PortoNocciola.06 Piazza details and planting n 551 min 235.4,-49.6,-713.5 max 341.5,-37.1,-597.8
+QPR@item Model Workspace.PortoNocciola.06 Piazza details and planting.Quay lantern n 10 min 245.4,-46.7,-622.6 max 246.6,-37.1,-621.4
+QPR@item Model Workspace.PortoNocciola.06 Piazza details and planting.Quay lantern n 10 min 247.4,-46.7,-675.6 max 248.6,-37.1,-674.4
+QPR@item Model Workspace.PortoNocciola.06 Piazza details and planting.Lemon tree n 34 min 257.6,-46.8,-662.2 max 262.6,-40.1,-657.4
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair back n 1 min 260.4,-44.9,-617.3 max 261.7,-44.7,-617.1
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 260.4,-46.8,-635.8 max 260.6,-45.2,-635.7
+QPR@item Model Workspace.PortoNocciola.06 Piazza details and planting.Quay lantern n 10 min 235.4,-46.7,-602.6 max 236.6,-37.1,-601.4
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Cafe chair seat n 1 min 260.3,-45.3,-622.9 max 261.7,-45.2,-621.6
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 260.4,-46.8,-632.3 max 260.6,-45.2,-632.2
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Cafe chair seat n 1 min 260.3,-45.3,-636.9 max 261.7,-45.2,-635.6
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Cafe chair seat n 1 min 260.3,-45.3,-618.4 max 261.7,-45.2,-617.1
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Table foot n 1 min 260.2,-46.8,-634.8 max 261.8,-46.7,-633.2
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair back n 1 min 260.4,-44.3,-617.3 max 261.7,-44.1,-617.1
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 261.4,-46.8,-635.8 max 261.6,-45.2,-635.7
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 261.4,-46.8,-632.3 max 261.6,-45.2,-632.2
+QPR@item Model Workspace.PortoNocciola.06 Piazza details and planting.Harbour bench n 11 min 246.2,-48.4,-713.5 max 248.0,-44.8,-708.5
+QPR@item Model Workspace.PortoNocciola.06 Piazza details and planting.Harbour bench n 11 min 238.3,-46.7,-618.6 max 241.8,-43.2,-613.3
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Table pedestal n 1 min 260.9,-46.7,-620.1 max 261.1,-44.3,-619.9
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Table foot n 1 min 260.2,-46.8,-620.8 max 261.8,-46.7,-619.2
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 260.4,-46.8,-617.3 max 260.6,-45.2,-617.2
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 261.4,-46.8,-617.3 max 261.6,-45.2,-617.2
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 260.4,-46.8,-618.3 max 260.6,-45.2,-618.2
+QPR@item Model Workspace.PortoNocciola.06 Piazza details and planting.Lemon tree n 34 min 246.2,-46.8,-602.3 max 251.8,-40.2,-597.8
+QPR@item Model Workspace.PortoNocciola.06 Piazza details and planting.Harbour bench n 11 min 247.7,-46.7,-671.6 max 250.5,-43.2,-666.4
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair back n 1 min 260.4,-44.3,-631.3 max 261.7,-44.1,-631.1
+QPR@item Model Workspace.PortoNocciola.06 Piazza details and planting.Lemon tree n 34 min 253.3,-46.8,-617.7 max 258.8,-40.3,-612.5
+QPR@item Model Workspace.PortoNocciola.06 Piazza details and planting.Quay lantern n 10 min 261.4,-46.8,-648.6 max 262.6,-37.2,-647.4
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair back n 1 min 260.4,-44.6,-636.9 max 261.6,-44.4,-636.7
+QPR@item Model Workspace.PortoNocciola.06 Piazza details and planting.Quay lantern n 10 min 243.4,-46.7,-694.6 max 244.6,-37.1,-693.4
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair back n 1 min 260.4,-44.6,-622.9 max 261.7,-44.4,-622.7
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair back n 1 min 260.4,-44.9,-631.3 max 261.7,-44.7,-631.1
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair back n 1 min 260.4,-44.9,-636.9 max 261.6,-44.7,-636.7
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair back n 1 min 260.4,-44.6,-631.3 max 261.6,-44.4,-631.1
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 261.4,-46.8,-636.8 max 261.6,-45.2,-636.7
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair back n 1 min 260.4,-44.9,-622.9 max 261.6,-44.7,-622.7
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Cafe tabletop n 1 min 259.6,-44.4,-621.5 max 262.5,-44.2,-618.5
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 261.4,-46.8,-618.3 max 261.6,-45.2,-618.2
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair back n 1 min 260.4,-44.3,-622.9 max 261.6,-44.1,-622.7
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Table pedestal n 1 min 260.9,-46.7,-634.1 max 261.1,-44.3,-633.9
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Cafe tabletop n 1 min 259.5,-44.4,-635.5 max 262.5,-44.2,-632.5
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair back n 1 min 260.4,-44.6,-617.3 max 261.6,-44.4,-617.1
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Cafe chair seat n 1 min 260.3,-45.3,-632.4 max 261.7,-45.2,-631.1
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 261.4,-46.8,-621.8 max 261.6,-45.2,-621.7
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 260.4,-46.8,-631.3 max 260.6,-45.2,-631.2
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 261.4,-46.8,-631.3 max 261.6,-45.2,-631.2
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 261.4,-46.8,-622.8 max 261.6,-45.2,-622.7
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 260.4,-46.8,-622.8 max 260.6,-45.2,-622.7
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 260.4,-46.8,-621.8 max 260.6,-45.2,-621.7
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair leg n 1 min 260.4,-46.8,-636.8 max 260.6,-45.2,-636.7
+QPR@item Part Workspace.PortoNocciola.06 Piazza details and planting.Chair back n 1 min 260.4,-44.3,-636.9 max 261.6,-44.1,-636.7
+QPR@item Model Workspace.PortoNocciola.03 Fish market n 2480 min 250.9,-46.8,-657.9 max 278.7,-39.2,-636.1
+QPR@group 0 Workspace.PortoNocciola.05 Boatyard and nets n 789 min 239.6,-46.9,-705.1 max 275.8,-40.7,-626.7
+QPR@item Model Workspace.PortoNocciola.05 Boatyard and nets.Nets drying on rack n 299 min 239.6,-46.7,-697.7 max 240.3,-41.3,-691.3
+QPR@item Model Workspace.PortoNocciola.05 Boatyard and nets.Nets drying on rack n 299 min 240.8,-46.7,-627.4 max 247.2,-41.4,-626.7
+QPR@item Model Workspace.PortoNocciola.05 Boatyard and nets.Oak barrel n 45 min 264.0,-46.8,-694.2 max 266.0,-44.6,-692.2
+QPR@item Model Workspace.PortoNocciola.05 Boatyard and nets.Nuova Alba n 88 min 266.1,-44.9,-705.1 max 272.1,-42.8,-692.8
+QPR@item Part Workspace.PortoNocciola.05 Boatyard and nets.Trestle crossbeam n 1 min 266.2,-44.9,-702.8 max 270.7,-44.6,-701.5
+QPR@item Part Workspace.PortoNocciola.05 Boatyard and nets.Boat trestle leg n 1 min 266.6,-46.8,-702.1 max 267.3,-44.6,-701.6
+QPR@item Part Workspace.PortoNocciola.05 Boatyard and nets.Hand painted sign n 1 min 267.0,-42.1,-691.9 max 273.9,-40.7,-690.3
+QPR@item Part Workspace.PortoNocciola.05 Boatyard and nets.Trestle crossbeam n 1 min 267.3,-44.9,-696.5 max 271.8,-44.6,-695.2
+QPR@item Part Workspace.PortoNocciola.05 Boatyard and nets.Boat trestle leg n 1 min 270.7,-46.8,-696.4 max 271.4,-44.6,-695.9
+QPR@item Part Workspace.PortoNocciola.05 Boatyard and nets.Boat trestle leg n 1 min 269.5,-46.8,-702.7 max 270.3,-44.6,-702.2
+QPR@item Part Workspace.PortoNocciola.05 Boatyard and nets.Boat trestle leg n 1 min 267.7,-46.8,-695.8 max 268.5,-44.6,-695.3
+QPR@item Part Workspace.PortoNocciola.05 Boatyard and nets.Boatyard sign timber post n 1 min 267.3,-46.9,-690.7 max 267.6,-42.0,-690.5
+QPR@group 0 Workspace.PortoNocciola.01 Curved waterfront n 919 min 227.2,-54.4,-702.9 max 315.0,-45.4,-585.0
+QPR@item Model Workspace.PortoNocciola.01 Curved waterfront.Mooring bollard n 169 min 245.4,-46.7,-665.6 max 248.2,-45.4,-663.7
+QPR@item Model Workspace.PortoNocciola.01 Curved waterfront.Mooring bollard n 169 min 238.4,-46.7,-689.6 max 241.3,-45.4,-687.8
+QPR@item Model Workspace.PortoNocciola.01 Curved waterfront.Mooring bollard n 169 min 246.4,-46.7,-638.6 max 249.2,-45.4,-636.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 227.3,-52.2,-601.0 max 228.5,-50.8,-599.2
+QPR@item Model Workspace.PortoNocciola.01 Curved waterfront.Mooring bollard n 169 min 235.4,-46.7,-611.6 max 238.1,-45.4,-609.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 237.5,-53.8,-685.9 max 238.7,-52.3,-683.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 235.4,-49.1,-693.7 max 236.6,-47.6,-691.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.8,-52.2,-637.8 max 242.0,-50.8,-635.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-53.8,-645.7 max 243.4,-52.3,-643.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.8,-50.7,-637.8 max 242.0,-49.2,-635.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Stone terrace foundation n 1 min 251.0,-53.3,-670.5 max 291.0,-47.0,-627.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.1,-52.2,-675.4 max 241.1,-50.8,-672.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 234.0,-49.1,-617.1 max 235.4,-47.6,-614.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 234.5,-47.0,-696.8 max 236.4,-46.6,-694.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-49.1,-645.7 max 243.4,-47.6,-643.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.1,-49.1,-635.1 max 241.3,-47.6,-632.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-50.7,-645.7 max 243.4,-49.2,-643.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Stone terrace foundation n 1 min 244.0,-53.3,-627.5 max 278.0,-47.0,-592.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 229.5,-52.2,-605.8 max 230.7,-50.8,-604.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 234.7,-52.2,-696.2 max 235.9,-50.8,-693.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 227.2,-47.0,-600.8 max 229.1,-46.6,-598.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 234.0,-53.8,-617.1 max 235.4,-52.3,-614.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-50.7,-651.1 max 243.4,-49.2,-648.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 234.0,-50.7,-698.8 max 235.1,-49.2,-696.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair tread n 1 min 245.4,-48.1,-589.4 max 251.6,-47.9,-588.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-49.1,-648.4 max 243.4,-47.6,-645.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 230.3,-47.0,-607.5 max 232.2,-46.6,-605.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 237.0,-50.7,-624.4 max 238.4,-49.2,-621.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 238.3,-49.1,-683.4 max 239.4,-47.6,-680.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 238.5,-47.0,-629.0 max 240.4,-46.6,-626.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair masonry n 1 min 245.5,-49.3,-588.3 max 251.5,-48.3,-587.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 232.0,-50.7,-612.2 max 233.4,-49.2,-609.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 233.0,-49.1,-614.7 max 234.4,-47.6,-612.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair masonry n 1 min 245.5,-49.3,-589.4 max 251.5,-48.0,-588.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 227.3,-49.1,-601.0 max 228.5,-47.6,-599.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 233.0,-52.2,-614.7 max 234.4,-50.8,-612.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 235.0,-50.7,-619.5 max 236.4,-49.2,-617.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 237.5,-49.1,-685.9 max 238.7,-47.6,-683.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 236.1,-49.1,-691.1 max 237.3,-47.6,-688.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 233.0,-53.8,-614.7 max 234.4,-52.3,-612.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 231.0,-52.2,-609.8 max 232.4,-50.8,-607.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 238.3,-52.2,-683.4 max 239.4,-50.8,-680.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair tread n 1 min 245.4,-48.4,-588.3 max 251.6,-48.2,-587.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-49.1,-651.1 max 243.4,-47.6,-648.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 241.8,-53.8,-667.3 max 242.9,-52.3,-664.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.7,-53.8,-672.7 max 241.7,-52.3,-670.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-53.8,-648.4 max 243.4,-52.3,-645.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-53.8,-659.2 max 243.4,-52.3,-656.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-53.8,-656.5 max 243.4,-52.3,-653.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 242.8,-47.0,-654.8 max 244.2,-46.6,-652.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 236.0,-53.8,-621.9 max 237.4,-52.3,-619.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.1,-50.7,-675.4 max 241.1,-49.2,-672.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 239.0,-49.1,-680.8 max 240.0,-47.6,-678.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.North quay seam cap n 1 min 241.4,-47.0,-594.8 max 244.3,-46.8,-591.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 234.7,-53.8,-696.2 max 235.9,-52.3,-693.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 229.5,-53.8,-605.8 max 230.7,-52.3,-604.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 238.8,-47.0,-681.0 max 240.7,-46.6,-678.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 239.5,-49.1,-678.1 max 240.6,-47.6,-675.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 228.1,-52.2,-602.6 max 229.2,-50.8,-600.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 239.3,-47.0,-678.6 max 241.2,-46.6,-676.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 238.3,-53.8,-683.4 max 239.4,-52.3,-680.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Closed quay seam cap n 1 min 241.6,-47.0,-598.8 max 244.5,-46.8,-594.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-53.8,-653.8 max 243.4,-52.3,-651.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 233.9,-47.0,-699.0 max 235.8,-46.6,-696.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 242.2,-47.0,-643.3 max 244.2,-46.6,-640.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 233.0,-50.7,-614.7 max 234.4,-49.2,-612.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 234.0,-52.2,-698.8 max 235.1,-50.8,-696.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 228.1,-50.7,-602.6 max 229.2,-49.2,-600.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.8,-49.1,-637.8 max 242.0,-47.6,-635.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 238.7,-50.7,-629.7 max 239.9,-49.2,-626.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 234.0,-53.8,-698.8 max 235.1,-52.3,-696.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 235.1,-47.0,-694.5 max 237.1,-46.6,-692.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 230.3,-52.2,-607.4 max 231.5,-50.8,-605.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-52.2,-645.7 max 243.4,-50.8,-643.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 241.2,-53.8,-670.0 max 242.3,-52.3,-667.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 237.5,-50.7,-685.9 max 238.7,-49.2,-683.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Pier landing stone infill n 1 min 240.5,-46.9,-639.8 max 245.1,-46.7,-634.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 236.0,-49.1,-621.9 max 237.4,-47.6,-619.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.4,-53.8,-664.6 max 243.4,-52.3,-661.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 239.4,-50.7,-632.4 max 240.6,-49.2,-629.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 235.0,-52.2,-619.5 max 236.4,-50.8,-617.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 228.4,-47.0,-603.5 max 230.3,-46.6,-601.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.1,-50.7,-635.1 max 241.3,-49.2,-632.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.North quay seam masonry n 1 min 241.4,-49.3,-594.7 max 244.2,-46.8,-591.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 228.8,-53.8,-604.2 max 230.0,-52.3,-602.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Piazza paving n 1 min 245.5,-47.0,-697.5 max 280.5,-46.8,-672.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Worn limestone promenade n 1 min 238.0,-47.0,-643.4 max 258.0,-46.7,-620.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 241.6,-47.0,-640.9 max 243.6,-46.6,-638.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 237.0,-52.2,-624.4 max 238.4,-50.8,-621.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 239.7,-47.0,-633.8 max 241.7,-46.6,-631.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 241.0,-47.0,-638.5 max 242.9,-46.6,-635.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 235.0,-53.8,-619.5 max 236.4,-52.3,-617.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair tread n 1 min 245.4,-49.0,-586.1 max 251.6,-48.8,-585.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 238.0,-50.7,-627.0 max 239.1,-49.2,-624.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-52.2,-651.1 max 243.4,-50.8,-648.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 238.0,-49.1,-627.0 max 239.1,-47.6,-624.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 232.0,-52.2,-612.2 max 233.4,-50.8,-609.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Worn limestone promenade n 1 min 239.0,-47.0,-684.2 max 258.1,-46.7,-661.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 242.8,-47.0,-662.0 max 244.2,-46.6,-659.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 232.0,-53.8,-612.2 max 233.4,-52.3,-609.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair tread n 1 min 245.4,-47.2,-592.7 max 251.6,-47.0,-591.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.7,-49.1,-672.7 max 241.7,-47.6,-670.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 230.3,-50.7,-607.4 max 231.5,-49.2,-605.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Worn limestone promenade n 1 min 231.0,-47.0,-624.6 max 252.4,-46.7,-601.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.1,-53.8,-675.4 max 241.1,-52.3,-672.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-49.1,-662.0 max 243.4,-47.6,-659.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 237.0,-53.8,-624.4 max 238.4,-52.3,-621.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 240.8,-47.0,-671.5 max 242.7,-46.6,-668.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 235.4,-52.2,-693.7 max 236.6,-50.8,-691.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 235.4,-53.8,-693.7 max 236.6,-52.3,-691.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-53.8,-662.0 max 243.4,-52.3,-659.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Quay foundation n 1 min 239.2,-54.4,-684.1 max 257.9,-47.0,-661.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 237.5,-52.2,-685.9 max 238.7,-50.8,-683.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 242.8,-47.0,-657.2 max 244.2,-46.6,-654.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 230.9,-47.0,-609.6 max 233.0,-46.6,-607.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 240.3,-47.0,-673.9 max 242.2,-46.6,-671.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 241.3,-47.0,-669.1 max 243.2,-46.6,-666.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 241.2,-52.2,-670.0 max 242.3,-50.8,-667.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 232.0,-49.1,-612.2 max 233.4,-47.6,-609.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 236.1,-50.7,-691.1 max 237.3,-49.2,-688.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 239.5,-50.7,-678.1 max 240.6,-49.2,-675.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 230.3,-49.1,-607.4 max 231.5,-47.6,-605.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Pier landing stone infill n 1 min 237.7,-46.9,-687.8 max 242.3,-46.7,-682.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair masonry n 1 min 245.5,-49.3,-587.2 max 251.5,-48.6,-586.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 236.8,-49.1,-688.5 max 238.0,-47.6,-685.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair masonry n 1 min 245.5,-49.3,-586.1 max 251.5,-48.9,-585.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 227.8,-47.0,-602.1 max 229.7,-46.6,-600.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 230.3,-53.8,-607.4 max 231.5,-52.3,-605.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 241.5,-49.1,-640.5 max 242.7,-47.6,-637.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 239.0,-50.7,-680.8 max 240.0,-49.2,-678.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 228.8,-49.1,-604.2 max 230.0,-47.6,-602.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.3,-49.1,-643.2 max 243.4,-47.6,-640.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair masonry n 1 min 245.5,-49.3,-591.6 max 251.5,-47.4,-590.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 231.0,-49.1,-609.8 max 232.4,-47.6,-607.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.4,-52.2,-664.6 max 243.4,-50.8,-661.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 227.3,-53.8,-601.0 max 228.5,-52.3,-599.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 228.8,-50.7,-604.2 max 230.0,-49.2,-602.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 239.4,-52.2,-632.4 max 240.6,-50.8,-629.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Worn limestone promenade n 1 min 227.3,-47.0,-607.5 max 245.1,-46.7,-592.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-49.1,-656.5 max 243.4,-47.6,-653.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-53.8,-651.1 max 243.4,-52.3,-648.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 229.7,-47.0,-606.1 max 231.6,-46.6,-604.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 241.5,-50.7,-640.5 max 242.7,-49.2,-637.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 242.8,-47.0,-647.7 max 244.2,-46.6,-645.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 234.0,-49.1,-698.8 max 235.1,-47.6,-696.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 235.7,-47.0,-692.3 max 237.7,-46.6,-689.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.3,-52.2,-643.2 max 243.4,-50.8,-640.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 236.8,-52.2,-688.5 max 238.0,-50.8,-685.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Closed quay seam n 1 min 241.6,-49.3,-598.7 max 244.4,-46.8,-594.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-50.7,-648.4 max 243.4,-49.2,-645.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair tread n 1 min 245.4,-47.8,-590.5 max 251.6,-47.6,-589.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 229.1,-47.0,-604.8 max 230.9,-46.6,-602.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 242.8,-47.0,-650.1 max 244.2,-46.6,-647.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 239.1,-47.0,-631.4 max 241.1,-46.6,-628.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 236.8,-50.7,-688.5 max 238.0,-49.2,-685.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Quay foundation n 1 min 227.5,-54.4,-607.4 max 244.9,-47.0,-592.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-52.2,-653.8 max 243.4,-50.8,-651.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 228.1,-53.8,-602.6 max 229.2,-52.3,-600.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 239.0,-52.2,-680.8 max 240.0,-50.8,-678.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.1,-49.1,-675.4 max 241.1,-47.6,-672.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 231.0,-50.7,-609.8 max 232.4,-49.2,-607.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 229.5,-50.7,-605.8 max 230.7,-49.2,-604.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 238.0,-53.8,-627.0 max 239.1,-52.3,-624.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 242.8,-47.0,-652.5 max 244.2,-46.6,-650.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.8,-53.8,-637.8 max 242.0,-52.3,-635.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Quay foundation n 1 min 231.2,-54.4,-624.4 max 252.2,-47.0,-601.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair masonry n 1 min 245.5,-49.3,-590.5 max 251.5,-47.7,-589.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-52.2,-659.2 max 243.4,-50.8,-656.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.3,-50.7,-643.2 max 243.4,-49.2,-640.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 241.8,-49.1,-667.3 max 242.9,-47.6,-664.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 242.3,-47.0,-664.4 max 244.2,-46.6,-661.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Quay foundation n 1 min 238.2,-54.4,-643.3 max 257.8,-47.0,-620.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Worn limestone promenade n 1 min 243.0,-47.0,-662.2 max 258.4,-46.7,-642.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-52.2,-648.4 max 243.4,-50.8,-645.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 237.0,-49.1,-624.4 max 238.4,-47.6,-621.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-50.7,-659.2 max 243.4,-49.2,-656.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 239.4,-49.1,-632.4 max 240.6,-47.6,-629.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 232.7,-47.0,-613.8 max 234.8,-46.6,-611.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 235.3,-47.0,-620.2 max 237.4,-46.6,-617.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-52.2,-662.0 max 243.4,-50.8,-659.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 241.2,-50.7,-670.0 max 242.3,-49.2,-667.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 234.7,-50.7,-696.2 max 235.9,-49.2,-693.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 236.0,-52.2,-621.9 max 237.4,-50.8,-619.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 237.0,-47.0,-624.4 max 239.2,-46.6,-621.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 238.7,-53.8,-629.7 max 239.9,-52.3,-626.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 241.8,-52.2,-667.3 max 242.9,-50.8,-664.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 238.7,-52.2,-629.7 max 239.9,-50.8,-626.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 228.1,-49.1,-602.6 max 229.2,-47.6,-600.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 236.1,-52.2,-691.1 max 237.3,-50.8,-688.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-50.7,-653.8 max 243.4,-49.2,-651.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.1,-53.8,-635.1 max 241.3,-52.3,-632.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair masonry n 1 min 245.5,-49.3,-592.7 max 251.5,-47.1,-591.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 236.0,-50.7,-621.9 max 237.4,-49.2,-619.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair tread n 1 min 245.4,-48.7,-587.2 max 251.6,-48.5,-586.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Piazza paving n 1 min 251.0,-47.0,-670.5 max 291.0,-46.8,-627.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 239.8,-47.0,-676.3 max 241.7,-46.6,-673.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-50.7,-662.0 max 243.4,-49.2,-659.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-52.2,-656.5 max 243.4,-50.8,-653.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Quay foundation n 1 min 243.2,-54.4,-662.2 max 258.2,-47.0,-642.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Stone terrace foundation n 1 min 245.5,-53.3,-697.5 max 280.5,-47.0,-672.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 229.5,-49.1,-605.8 max 230.7,-47.6,-604.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.4,-50.7,-664.6 max 243.4,-49.2,-661.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 231.0,-53.8,-609.8 max 232.4,-52.3,-607.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 234.4,-47.0,-618.1 max 236.5,-46.6,-615.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.1,-52.2,-635.1 max 241.3,-50.8,-632.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 242.8,-47.0,-659.6 max 244.2,-46.6,-657.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 234.0,-52.2,-617.1 max 235.4,-50.8,-614.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.7,-50.7,-672.7 max 241.7,-49.2,-670.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 235.0,-49.1,-619.5 max 236.4,-47.6,-617.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 241.2,-49.1,-670.0 max 242.3,-47.6,-667.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Quay foundation n 1 min 234.2,-54.4,-702.9 max 253.7,-47.0,-680.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 233.5,-47.0,-615.9 max 235.7,-46.6,-613.3
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 241.8,-50.7,-667.3 max 242.9,-49.2,-664.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 236.1,-53.8,-691.1 max 237.3,-52.3,-688.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 234.0,-50.7,-617.1 max 235.4,-49.2,-614.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 238.3,-50.7,-683.4 max 239.4,-49.2,-680.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 239.0,-53.8,-680.8 max 240.0,-52.3,-678.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 241.5,-53.8,-640.5 max 242.7,-52.3,-637.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-49.1,-653.8 max 243.4,-47.6,-651.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 235.4,-50.7,-693.7 max 236.6,-49.2,-691.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 238.7,-49.1,-629.7 max 239.9,-47.6,-626.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 236.8,-53.8,-688.5 max 238.0,-52.3,-685.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-49.1,-659.2 max 243.4,-47.6,-656.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 241.5,-52.2,-640.5 max 242.7,-50.8,-637.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.3,-53.8,-643.2 max 243.4,-52.3,-640.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 240.7,-52.2,-672.7 max 241.7,-50.8,-670.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair tread n 1 min 245.4,-47.5,-591.6 max 251.6,-47.3,-590.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 234.7,-49.1,-696.2 max 235.9,-47.6,-693.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.9,-50.7,-656.5 max 243.4,-49.2,-653.9
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 236.2,-47.0,-622.3 max 238.3,-46.6,-619.7
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 242.4,-49.1,-664.6 max 243.4,-47.6,-661.8
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 238.0,-52.2,-627.0 max 239.1,-50.8,-624.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 242.8,-47.0,-645.3 max 244.2,-46.6,-643.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 228.8,-52.2,-604.2 max 230.0,-50.8,-602.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Piazza paving n 1 min 244.0,-47.0,-627.5 max 278.0,-46.8,-592.5
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 239.4,-53.8,-632.4 max 240.6,-52.3,-629.6
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 227.3,-50.7,-601.0 max 228.5,-49.2,-599.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 239.5,-52.2,-678.1 max 240.6,-50.8,-675.4
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Realigned stair landing n 1 min 245.4,-47.0,-594.0 max 251.6,-46.8,-592.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 237.8,-47.0,-626.7 max 239.8,-46.6,-624.0
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 231.8,-47.0,-611.7 max 233.9,-46.6,-609.1
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Rounded coping stone n 1 min 241.8,-47.0,-666.8 max 243.7,-46.6,-664.2
+QPR@item Part Workspace.PortoNocciola.01 Curved waterfront.Seawall ashlar n 1 min 239.5,-53.8,-678.1 max 240.6,-52.3,-675.4
+QPR@item Model Workspace.PortoNocciola.Lifeguard Post n 10 min 250.5,-48.1,-716.4 max 262.2,-37.0,-709.4
+QPR@group 0 Workspace.PortoNocciola.11 Fitted surface joins n 33 min 230.3,-49.2,-706.0 max 315.0,-46.7,-601.0
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Quay fitted around gangway n 1 min 242.6,-47.0,-703.0 max 260.1,-46.7,-684.7
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 239.0,-49.1,-680.8 max 239.0,-46.7,-680.7
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 239.0,-49.1,-681.1 max 240.0,-46.7,-680.7
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Quay fitted around gangway n 1 min 239.1,-47.0,-681.2 max 240.1,-46.7,-680.2
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Quay fitted around gangway n 1 min 238.6,-47.0,-683.0 max 240.1,-46.7,-681.5
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Quay fitted around gangway n 1 min 238.0,-47.0,-682.2 max 239.7,-46.7,-680.5
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Quay fitted around gangway n 1 min 237.2,-47.0,-700.6 max 242.9,-46.7,-687.8
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Quay fitted around gangway n 1 min 239.3,-47.0,-682.2 max 240.8,-46.7,-680.8
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Quay fitted around gangway n 1 min 237.1,-47.0,-688.4 max 240.1,-46.7,-687.1
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Quay fitted around gangway n 1 min 234.0,-47.0,-701.9 max 240.1,-46.7,-697.7
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Quay fitted around gangway n 1 min 231.7,-47.0,-698.9 max 239.4,-46.7,-687.8
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 253.9,-49.1,-684.9 max 254.1,-46.7,-684.0
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 243.0,-49.1,-662.0 max 243.0,-46.7,-661.8
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 244.0,-49.1,-664.9 max 258.4,-46.7,-659.1
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 239.8,-49.1,-684.9 max 254.1,-46.7,-681.0
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 243.0,-49.1,-662.0 max 244.0,-46.7,-661.8
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 257.8,-49.1,-665.0 max 258.7,-46.7,-662.0
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 243.0,-49.1,-643.2 max 244.0,-46.7,-642.8
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 243.0,-49.1,-643.3 max 243.1,-46.7,-643.0
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 244.0,-49.1,-646.5 max 258.4,-46.7,-639.5
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Quay fitted around gangway n 1 min 230.3,-47.0,-700.6 max 249.9,-46.7,-680.8
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Quay fitted around gangway n 1 min 240.1,-47.0,-706.0 max 248.8,-46.7,-697.7
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Quay fitted around gangway n 1 min 240.1,-47.0,-689.3 max 253.9,-46.7,-676.1
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 252.3,-49.1,-620.4 max 252.9,-46.7,-618.5
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 238.0,-49.1,-624.4 max 238.1,-46.7,-624.3
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 238.0,-49.1,-624.4 max 239.0,-46.7,-624.0
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 257.5,-49.1,-643.0 max 258.9,-46.7,-639.3
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 231.1,-49.1,-607.4 max 232.0,-46.7,-607.0
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 231.8,-49.1,-607.0 max 245.3,-46.7,-601.0
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 238.5,-49.1,-624.0 max 252.8,-46.7,-618.5
+QPR@item WedgePart Workspace.PortoNocciola.11 Fitted surface joins.Fitted quay corner n 1 min 245.1,-49.1,-601.5 max 245.3,-46.7,-601.0
+QPR@item Model Workspace.PortoNocciola.10 Italian waterfront details n 18 min 260.8,-44.2,-635.0 max 261.2,-43.1,-619.0
+QPR@item Model Workspace.PortoNocciola.09 Harbour finish n 4 min 249.0,-51.0,-672.9 max 284.3,-46.8,-592.5
+QPR@root Workspace.netmender_squirrel_color min 261.6,-46.8,-693.1 max 263.2,-44.4,-690.1
+QPR@root Workspace.customs_squirrel_color min 248.8,-47.2,-592.7 max 251.3,-44.8,-590.5
+QPR@root Workspace.fishmonger_squirrel_color min 252.7,-44.9,-638.0 max 254.8,-42.5,-635.7
+QPR@root Workspace.SpawnDais_porto min 226.8,-49.6,-585.2 max 237.2,-47.1,-574.8
+QPR@root Workspace.octopus_squirrel_color min 215.2,-51.4,-629.1 max 216.8,-49.0,-626.7
+QPR@root Workspace.deckhand_squirrel_color min 221.1,-52.5,-647.3 max 223.6,-50.1,-645.1
+QPR@root Workspace.seacaptain_squirrel_color min 201.5,-52.5,-669.4 max 203.3,-50.1,-667.3
+QPR@root Workspace.lifeguard_squirrel_color min 257.1,-43.5,-715.4 max 259.7,-41.1,-712.9
+QPR@root Workspace.gelato_squirrel_color min 261.2,-46.8,-626.3 max 264.0,-44.4,-624.9
+QPR@ray z -600 200:-52.9:T:Water | 201:-52.9:T:Water | 202:-52.9:T:Water | 203:-52.9:T:Water | 204:-52.9:T:Water | 205:-52.9:T:Water | 206:-52.9:T:Water | 207:-52.9:T:Water | 208:-52.9:T:Water | 209:-52.9:T:Water | 210:-52.9:T:Water | 211:-52.9:T:Water | 212:-52.9:T:Water | 213:-52.9:T:Water | 214:-52.9:T:Water | 215:-52.9:T:Water | 216:-52.9:T:Water | 217:-52.9:T:Water | 218:-52.9:T:Water | 219:-52.9:T:Water | 220:-52.9:T:Water | 221:-52.9:T:Water | 222:-52.9:T:Water | 223:-52.9:T:Water | 224:-52.9:T:Water | 225:-52.9:T:Sand | 226:-52.4:T:Sand | 227:-52.0:T:Grass | 228:-46.6:Rounded coping | 229:-46.7:Worn limestone | 230:-46.7:Worn limestone | 231:-46.7:Worn limestone | 232:-46.7:Worn limestone | 233:-46.7:Worn limestone | 234:-46.7:Worn limestone | 235:-46.7:Worn limestone | 236:-46.7:Worn limestone | 237:-46.7:Worn limestone | 238:-46.7:Worn limestone | 239:-46.7:Worn limestone | 240:-46.7:Worn limestone | 241:-46.7:Wor
+QPR@ray z -615 200:-52.9:T:Water | 201:-52.9:T:Water | 202:-52.9:T:Water | 203:-52.9:T:Water | 204:-52.9:T:Water | 205:-52.9:T:Water | 206:-52.9:T:Water | 207:-52.9:T:Water | 208:-52.9:T:Water | 209:-52.9:T:Water | 210:-52.9:T:Water | 211:-52.9:T:Water | 212:-52.9:T:Water | 213:-52.9:T:Water | 214:-52.9:T:Water | 215:-52.9:T:Water | 216:-52.9:T:Water | 217:-52.9:T:Water | 218:-52.9:T:Water | 219:-52.9:T:Water | 220:-52.9:T:Water | 221:-52.9:T:Water | 222:-52.9:T:Water | 223:-52.9:T:Water | 224:-52.9:T:Water | 225:-52.9:T:Water | 226:-52.9:T:Water | 227:-52.9:T:Water | 228:-52.9:T:Water | 229:-53.2:T:Water | 230:-53.5:T:Water | 231:-53.2:T:Sand | 232:-52.7:T:Sand | 233:-52.4:T:Sand | 234:-46.6:Rounded coping | 235:-46.6:Rounded coping | 236:-46.7:Worn limestone | 237:-46.7:Worn limestone | 238:-46.7:Worn limestone | 239:-44.5:Bench Seat | 240:-44.5:Bench Seat | 241:-46.7:Worn limestone | 242:-46.7:Worn limestone | 243:-46.7:
+QPR@ray z -628 200:-52.9:T:Water | 201:-52.9:T:Water | 202:-52.9:T:Water | 203:-52.9:T:Water | 204:-52.9:T:Water | 205:-52.9:T:Water | 206:-52.9:T:Water | 207:-52.9:T:Water | 208:-52.9:T:Water | 209:-52.9:T:Water | 210:-52.9:T:Water | 211:-51.6:Tapered forede | 212:-52.5:Fitted bow flo | 213:-52.5:Hull floor | 214:-51.4:Rowing seat | 215:-52.5:Hull floor | 216:-49.1:Squirrel | 217:-52.5:Hull floor | 218:-52.5:Hull floor | 219:-51.4:Rowing seat | 220:-52.5:Fitted stern f | 221:-51.3:Transom | 222:-52.9:T:Water | 223:-52.9:T:Water | 224:-52.9:T:Water | 225:-52.9:T:Water | 226:-52.9:T:Water | 227:-52.9:T:Water | 228:-52.9:T:Water | 229:-52.9:T:Water | 230:-52.9:T:Water | 231:-52.9:T:Water | 232:-52.9:T:Water | 233:-53.2:T:Water | 234:-53.5:T:Water | 235:-53.3:T:Sand | 236:-52.9:T:Sand | 237:-52.6:T:Sand | 238:-52.3:T:Sand | 239:-46.6:Rounded coping | 240:-46.6:Rounded coping | 241:-46.7:Worn limestone | 242:-46.7:Worn limeston
+QPR@ray z -637 200:-52.9:T:Water | 201:-52.9:T:Water | 202:-52.9:T:Water | 203:-52.9:T:Water | 204:-52.9:T:Water | 205:-52.9:T:Water | 206:-52.9:T:Water | 207:-52.9:T:Water | 208:-52.9:T:Water | 209:-52.9:T:Water | 210:-52.9:T:Water | 211:-52.9:T:Water | 212:-52.9:T:Water | 213:-52.9:T:Water | 214:-52.9:T:Water | 215:-52.9:T:Water | 216:-48.7:Weathered deck | 217:-48.7:Weathered deck | 218:-48.7:Weathered deck | 219:-48.7:Weathered deck | 220:-48.7:Weathered deck | 221:-48.7:Weathered deck | 222:-48.7:Weathered deck | 223:-48.7:Weathered deck | 224:-48.7:Weathered deck | 225:-48.7:Weathered deck | 226:-48.7:Weathered deck | 227:-48.7:Weathered deck | 228:-48.7:Weathered deck | 229:-48.6:Gentle timber  | 230:-48.4:Gentle timber  | 231:-48.3:Gentle timber  | 232:-48.1:Gentle timber  | 233:-47.9:Gentle timber  | 234:-47.7:Gentle timber  | 235:-47.6:Gentle timber  | 236:-47.4:Gentle timber  | 237:-47.2:Gentle timber  | 238:-47.
+QPR@ray z -646 200:-52.9:T:Water | 201:-52.9:T:Water | 202:-52.9:T:Water | 203:-52.9:T:Water | 204:-52.9:T:Water | 205:-52.9:T:Water | 206:-52.9:T:Water | 207:-52.9:T:Water | 208:-52.9:T:Water | 209:-52.9:T:Water | 210:-52.9:T:Water | 211:-52.9:T:Water | 212:-52.9:T:Water | 213:-52.9:T:Water | 214:-52.9:T:Water | 215:-52.9:T:Water | 216:-52.9:T:Water | 217:-52.9:T:Water | 218:-51.6:Tapered forede | 219:-51.6:Tapered forede | 220:-52.5:Fitted bow flo | 221:-51.4:Rowing seat | 222:-50.6:Squirrel | 223:-50.3:Squirrel | 224:-51.4:Rowing seat | 225:-51.4:Rowing seat | 226:-52.5:Hull floor | 227:-52.5:Hull floor | 228:-51.4:Rowing seat | 229:-52.5:Fitted stern f | 230:-51.3:Transom | 231:-52.9:T:Water | 232:-52.9:T:Water | 233:-52.9:T:Water | 234:-52.9:T:Water | 235:-52.9:T:Water | 236:-52.9:T:Water | 237:-53.4:T:Water | 238:-53.6:T:Sand | 239:-53.1:T:Sand | 240:-52.7:T:Sand | 241:-52.3:T:Sand | 242:-52.0:T:Sand | 243:-46.6:Round
+QPR@ray z -660 200:-52.9:T:Water | 201:-52.9:T:Water | 202:-51.8:Painted clinke | 203:-52.5:Fitted stern f | 204:-52.5:Fitted stern f | 205:-52.5:Fitted stern f | 206:-52.9:T:Water | 207:-52.9:T:Water | 208:-52.9:T:Water | 209:-52.9:T:Water | 210:-52.9:T:Water | 211:-52.9:T:Water | 212:-52.9:T:Water | 213:-52.9:T:Water | 214:-52.9:T:Water | 215:-52.9:T:Water | 216:-52.9:T:Water | 217:-52.9:T:Water | 218:-52.9:T:Water | 219:-52.9:T:Water | 220:-52.9:T:Water | 221:-52.9:T:Water | 222:-52.9:T:Water | 223:-52.9:T:Water | 224:-52.9:T:Water | 225:-52.9:T:Water | 226:-52.9:T:Water | 227:-52.9:T:Water | 228:-52.9:T:Water | 229:-52.9:T:Water | 230:-52.9:T:Water | 231:-52.9:T:Water | 232:-52.9:T:Water | 233:-52.9:T:Water | 234:-52.9:T:Water | 235:-52.9:T:Water | 236:-52.9:T:Water | 237:-52.9:T:Water | 238:-52.3:T:Sand | 239:-51.5:T:Grass | 240:-50.8:T:Grass | 241:-50.1:T:Grass | 242:-49.6:T:Grass | 243:-46.6:Rounded coping | 244:-46.
+QPR@ray z -672 200:-51.4:Painted clinke | 201:-52.5:Fitted bow flo | 202:-52.5:Fitted bow flo | 203:-52.5:Hull floor | 204:-52.5:Hull floor | 205:-52.9:T:Water | 206:-52.9:T:Water | 207:-52.9:T:Water | 208:-52.9:T:Water | 209:-52.9:T:Water | 210:-52.9:T:Water | 211:-52.9:T:Water | 212:-52.9:T:Water | 213:-52.9:T:Water | 214:-52.9:T:Water | 215:-52.9:T:Water | 216:-52.9:T:Water | 217:-52.9:T:Water | 218:-52.9:T:Water | 219:-52.9:T:Water | 220:-52.9:T:Water | 221:-52.9:T:Water | 222:-52.9:T:Water | 223:-52.9:T:Water | 224:-52.9:T:Water | 225:-52.9:T:Water | 226:-52.9:T:Water | 227:-52.9:T:Water | 228:-52.9:T:Water | 229:-52.9:T:Water | 230:-52.9:T:Water | 231:-52.9:T:Water | 232:-52.9:T:Water | 233:-52.9:T:Water | 234:-52.9:T:Water | 235:-52.9:T:Water | 236:-52.9:T:Water | 237:-52.5:T:Sand | 238:-51.7:T:Sand | 239:-51.0:T:Grass | 240:-50.4:T:Grass | 241:-46.6:Rounded coping | 242:-46.6:Rounded coping | 243:-46.7:Worn limeston
+QPR@ray z -685 200:-52.9:T:Water | 201:-52.9:T:Water | 202:-52.9:T:Water | 203:-52.9:T:Water | 204:-52.9:T:Water | 205:-52.9:T:Water | 206:-52.9:T:Water | 207:-52.9:T:Water | 208:-48.7:Weathered deck | 209:-48.7:Weathered deck | 210:-48.7:Weathered deck | 211:-48.7:Weathered deck | 212:-48.7:Weathered deck | 213:-48.7:Weathered deck | 214:-48.7:Weathered deck | 215:-48.7:Weathered deck | 216:-48.7:Weathered deck | 217:-48.7:Weathered deck | 218:-48.7:Weathered deck | 219:-48.7:Weathered deck | 220:-48.7:Weathered deck | 221:-48.7:Weathered deck | 222:-48.7:Weathered deck | 223:-48.7:Weathered deck | 224:-48.7:Weathered deck | 225:-48.7:Weathered deck | 226:-48.6:Gentle timber  | 227:-48.4:Gentle timber  | 228:-48.3:Gentle timber  | 229:-48.1:Gentle timber  | 230:-47.9:Gentle timber  | 231:-47.7:Gentle timber  | 232:-47.6:Gentle timber  | 233:-47.4:Gentle timber  | 234:-47.2:Gentle timber  | 235:-47.1:Gentle timber  | 236:-4
+QPR@ray z -700 200:-52.9:T:Water | 201:-52.9:T:Water | 202:-52.9:T:Water | 203:-52.9:T:Water | 204:-52.9:T:Water | 205:-52.9:T:Water | 206:-52.9:T:Water | 207:-52.9:T:Water | 208:-52.9:T:Water | 209:-52.9:T:Water | 210:-52.9:T:Water | 211:-52.9:T:Water | 212:-52.9:T:Water | 213:-52.9:T:Water | 214:-52.9:T:Water | 215:-52.9:T:Water | 216:-52.9:T:Water | 217:-52.9:T:Water | 218:-52.9:T:Water | 219:-52.9:T:Water | 220:-52.9:T:Water | 221:-52.9:T:Water | 222:-52.9:T:Water | 223:-52.9:T:Water | 224:-52.9:T:Water | 225:-52.9:T:Water | 226:-52.9:T:Water | 227:-52.9:T:Water | 228:-52.9:T:Water | 229:-52.9:T:Water | 230:-52.9:T:Water | 231:-52.9:T:Water | 232:-52.9:T:Water | 233:-52.9:T:Water | 234:-52.9:T:Water | 235:-52.9:T:Water | 236:-52.9:T:Water | 237:-52.6:T:Sand | 238:-46.7:Quay fitted ar | 239:-46.7:Quay fitted ar | 240:-46.7:Quay fitted ar | 241:-46.7:Quay fitted ar | 242:-46.7:Quay fitted ar | 243:-46.7:Quay fitted ar | 2
+QPR@terr z -600 200:-52.9:Water | 202:-52.9:Water | 204:-52.9:Water | 206:-52.9:Water | 208:-52.9:Water | 210:-52.9:Water | 212:-52.9:Water | 214:-52.9:Water | 216:-52.9:Water | 218:-52.9:Water | 220:-52.9:Water | 222:-52.9:Water | 224:-52.9:Water | 226:-52.4:Sand | 228:-51.5:Grass | 230:-50.9:Grass | 232:-50.3:Grass | 234:-49.7:Grass | 236:-49.2:Grass | 238:-49.1:Grass | 240:-49.0:Grass | 242:-49.0:Grass | 244:-49.0:Grass | 246:-49.0:Grass | 248:-49.0:Grass | 250:-49.0:Grass | 252:-49.0:Grass | 254:-49.0:Grass | 256:-49.0:Grass | 258:-49.0:Grass | 260:-49.0:Grass | 262:-49.0:Grass | 264:-49.0:Grass | 266:-49.0:Grass | 268:-49.0:Grass | 270:-49.0:Grass
+QPR@terr z -637 200:-52.9:Water | 202:-52.9:Water | 204:-52.9:Water | 206:-52.9:Water | 208:-52.9:Water | 210:-52.9:Water | 212:-52.9:Water | 214:-52.9:Water | 216:-52.9:Water | 218:-52.9:Water | 220:-52.9:Water | 222:-52.9:Water | 224:-52.9:Water | 226:-52.9:Water | 228:-52.9:Water | 230:-52.9:Water | 232:-52.9:Water | 234:-52.9:Water | 236:-52.9:Water | 238:-53.4:Sand | 240:-52.5:Sand | 242:-51.9:Sand | 244:-51.2:Sand | 246:-50.7:Grass | 248:-50.2:Grass | 250:-49.6:Grass | 252:-49.2:Grass | 254:-49.1:Grass | 256:-49.0:Grass | 258:-49.0:Grass | 260:-49.0:Grass | 262:-49.0:Grass | 264:-49.0:Grass | 266:-49.0:Grass | 268:-49.0:Grass | 270:-49.0:Grass
+QPR@terr z -660 200:-52.9:Water | 202:-52.9:Water | 204:-52.9:Water | 206:-52.9:Water | 208:-52.9:Water | 210:-52.9:Water | 212:-52.9:Water | 214:-52.9:Water | 216:-52.9:Water | 218:-52.9:Water | 220:-52.9:Water | 222:-52.9:Water | 224:-52.9:Water | 226:-52.9:Water | 228:-52.9:Water | 230:-52.9:Water | 232:-52.9:Water | 234:-52.9:Water | 236:-52.9:Water | 238:-52.3:Sand | 240:-50.8:Grass | 242:-49.6:Grass | 244:-49.1:Grass | 246:-49.1:Grass | 248:-49.0:Grass | 250:-49.0:Grass | 252:-49.0:Grass | 254:-49.0:Grass | 256:-49.0:Grass | 258:-49.0:Grass | 260:-49.0:Grass | 262:-49.0:Grass | 264:-49.0:Grass | 266:-49.0:Grass | 268:-49.0:Grass | 270:-49.0:Grass
+QPR@terr z -685 200:-52.9:Water | 202:-52.9:Water | 204:-52.9:Water | 206:-52.9:Water | 208:-52.9:Water | 210:-52.9:Water | 212:-52.9:Water | 214:-52.9:Water | 216:-52.9:Water | 218:-52.9:Water | 220:-52.9:Water | 222:-52.9:Water | 224:-52.9:Water | 226:-52.9:Water | 228:-52.9:Water | 230:-52.9:Water | 232:-52.9:Water | 234:-52.9:Water | 236:-52.9:Water | 238:-51.9:Sand | 240:-50.5:Grass | 242:-49.4:Grass | 244:-49.0:Grass | 246:-49.0:Grass | 248:-49.0:Grass | 250:-49.0:Grass | 252:-49.0:Grass | 254:-49.0:Grass | 256:-49.0:Grass | 258:-49.0:Grass | 260:-49.0:Grass | 262:-49.0:Grass | 264:-49.0:Grass | 266:-49.0:Grass | 268:-49.0:Grass | 270:-49.0:Grass
+QPR@terr z -700 200:-52.9:Water | 202:-52.9:Water | 204:-52.9:Water | 206:-52.9:Water | 208:-52.9:Water | 210:-52.9:Water | 212:-52.9:Water | 214:-52.9:Water | 216:-52.9:Water | 218:-52.9:Water | 220:-52.9:Water | 222:-52.9:Water | 224:-52.9:Water | 226:-52.9:Water | 228:-52.9:Water | 230:-52.9:Water | 232:-52.9:Water | 234:-52.9:Water | 236:-52.9:Water | 238:-51.9:Sand | 240:-50.5:Grass | 242:-49.4:Grass | 244:-49.0:Grass | 246:-48.8:Grass | 248:-48.5:Grass | 250:-48.1:Grass | 252:-47.7:Grass | 254:-47.4:Grass | 256:-47.2:Grass | 258:-47.7:Grass | 260:-48.1:Grass | 262:-48.5:Grass | 264:-49.0:Grass | 266:-49.0:Grass | 268:-49.0:Grass | 270:-49.0:Grass
+QPR@squirrel Workspace.netmender_squirrel_color 262.4,-45.6,-691.6 size 1.6,3.0,2.4
+QPR@squirrel Workspace.customs_squirrel_color 250.0,-46.0,-591.6 size 2.0,1.5,2.4
+QPR@squirrel Workspace.fishmonger_squirrel_color 253.7,-43.7,-636.9 size 2.2,2.0,2.4
+QPR@squirrel Workspace.octopus_squirrel_color 216.0,-50.2,-627.9 size 2.3,1.6,2.4
+QPR@squirrel Workspace.deckhand_squirrel_color 222.3,-51.3,-646.2 size 2.0,1.6,2.4
+QPR@squirrel Workspace.seacaptain_squirrel_color 202.4,-51.3,-668.4 size 1.9,1.6,2.4
+QPR@squirrel Workspace.lifeguard_squirrel_color 258.4,-42.3,-714.1 size 2.0,1.7,2.4
+QPR@squirrel Workspace.gelato_squirrel_color 262.6,-45.6,-625.6 size 1.4,2.8,2.4
+QPR@DONE items 497
