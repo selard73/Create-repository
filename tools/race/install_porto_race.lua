@@ -620,7 +620,7 @@ end)
 	return F
 end
 
-build({gateX = 431.5, gateZ = -812, boardX = 431.5, boardZ = -824, boardTurn = 0, groundFrom = -8, groundDepth = 20, store = "PortoRace_v1", minSeconds = 45, maxMinutes = 20, bestAcorns = 10})
+build({gateX = 436, gateZ = -812, boardX = 431.5, boardZ = -824, boardTurn = 0, groundFrom = -8, groundDepth = 20, store = "PortoRace_v1", minSeconds = 45, maxMinutes = 20, bestAcorns = 10})
 
 do
 	local F = workspace:FindFirstChild("PortoRace")

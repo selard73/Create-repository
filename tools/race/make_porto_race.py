@@ -15,7 +15,7 @@ build = (ROOT / "boundary/build_race.lua").read_text(encoding="utf-8")
 
 # the piazza (job 36 survey): gate and board. The gate faces +x in the build (runners go through heading east);
 # boardTurn turns the board about the vertical. Edit after the survey.
-POS = dict(gateX=431.5, gateZ=-812, boardX=431.5, boardZ=-824, boardTurn=0, groundFrom=-8, groundDepth=20)   # job 36c: the piazza's west edge (floor y -12 ends at x ~431, a 23-stud drop beyond), right of the singers (443,-12,-792)
+POS = dict(gateX=436, gateZ=-812, boardX=431.5, boardZ=-824, boardTurn=0, groundFrom=-8, groundDepth=20)   # job 36c: the piazza's west edge (floor y -12 ends at x ~431, a 23-stud drop beyond), right of the singers (443,-12,-792)
 NAME, SHORT = "Piazza Race", "piazza"
 
 def sub(old, new, count=None):
