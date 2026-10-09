@@ -621,5 +621,24 @@ end)
 end
 
 build({gateX = 452, gateZ = -960, boardX = 452, boardZ = -976, boardTurn = 0, groundFrom = -8, groundDepth = 20, store = "PortoRace_v1", minSeconds = 45, maxMinutes = 20, bestAcorns = 10})
+
+do
+	local F = workspace:FindFirstChild("PortoRace")
+	local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude; rp.FilterDescendantsInstances = {F}
+	local function settle(m, scale, yaw)
+		local cf = m:GetPivot()
+		m:ScaleTo(scale)
+		m:PivotTo(CFrame.new(cf.Position) * CFrame.Angles(0, math.rad(yaw), 0) * (cf - cf.Position))
+		local lo = math.huge
+		for _, q in ipairs(m:GetDescendants()) do if q:IsA("BasePart") then lo = math.min(lo, q.Position.Y - q.Size.Y / 2) end end
+		local hit = workspace:Raycast(Vector3.new(cf.Position.X, -8, cf.Position.Z), Vector3.new(0, -20, 0), rp)
+		local gy = hit and hit.Position.Y or (cf.Position.Y - 6)
+		m:PivotTo(CFrame.new(0, gy - lo, 0) * m:GetPivot())
+	end
+	settle(F.StartGate, 0.6, 180)
+	settle(F.RaceBoard, 0.6, 180)
+	local pad = F.StartGate:FindFirstChild("StartPad")
+	if pad then F:SetAttribute("StartX", pad.Position.X); F:SetAttribute("StartY", pad.Position.Y - pad.Size.Y / 2 + 0.4); F:SetAttribute("StartZ", pad.Position.Z) end
+end
 local F = workspace:FindFirstChild("PortoRace")
-print(string.format("QQ RACE DONE: %s; gate %s; board %s", F and "workspace.PortoRace built" or "NO FOLDER", F and tostring(F.StartGate.StartPad.Position) or "?", F and tostring(F.RaceBoard.Face.Position) or "?"))
+print(string.format("QQ RACE DONE: %s; gate %s; board %s; start %s,%s,%s", F and "workspace.PortoRace built" or "NO FOLDER", F and tostring(F.StartGate.StartPad.Position) or "?", F and tostring(F.RaceBoard.Face.Position) or "?", tostring(F and F:GetAttribute("StartX")), tostring(F and F:GetAttribute("StartY")), tostring(F and F:GetAttribute("StartZ"))))

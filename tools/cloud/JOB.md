@@ -349,3 +349,9 @@ Attributes Yaw, Distance, Width, Follow, Drop, Off. Send the `QQ VRW` line; Shan
 ## Job 41: Bella's panel steps aside for the reveal (Studio EDIT; ask Shannon first; after job 39)
 
 tools/porto/seaglass5.lua (SeaGlassClient after job 39). Send the `QQ SG5` line. No publish.
+
+## Job 37b: the Piazza Race gate and board smaller and turned (Studio EDIT, re-run; ask Shannon first)
+
+Shannon (VR): the race sign and leaderboard are "overwhelming, the wrong direction, huge". The re-run of
+tools/race/install_porto_race.lua scales both to 60% and turns them 180 degrees (fronts toward the policeman's side;
+runners now go west through the gate), set back on the cobbles; StartX/Y/Z follow the pad. Send the `QQ RACE` line.
