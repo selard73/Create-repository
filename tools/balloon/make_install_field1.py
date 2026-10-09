@@ -60,7 +60,7 @@ F:SetAttribute("Center", Vector3.new(106, -48.5, -648)); F:SetAttribute("Need", 
 F:SetAttribute("PadYours", Vector3.new(72, 0, -646)); F:SetAttribute("ShowBalloons", false); F:SetAttribute("GustLean", 18); F:SetAttribute("PadYaw", 70); F:SetAttribute("PadTethered", Vector3.new(128, 0, -676))
 F:SetAttribute("DriftCenter", Vector3.new(190, 18, -650)); F:SetAttribute("DriftRadius", 55); F:SetAttribute("DriftHeights", "18,33"); F:SetAttribute("DriftPeriods", "150,110")
 F:SetAttribute("RiseHeight", 85); F:SetAttribute("RiseTime", 16); F:SetAttribute("HoverTime", 8); F:SetAttribute("GustTime", 18); F:SetAttribute("StormTime", 12); F:SetAttribute("SignTime", 6)
-F:SetAttribute("GustDir", Vector3.new(0.45, 0, -1)); F:SetAttribute("GustSpeed", 22); F:SetAttribute("ThunderSoundId", 92640524897440); F:SetAttribute("StormSoundId", 74201402219129); F:SetAttribute("WindSoundId", 0)
+F:SetAttribute("GustDir", Vector3.new(0.45, 0, -1)); F:SetAttribute("GustSpeed", 22); F:SetAttribute("ThunderSoundId", 92640524897440); F:SetAttribute("StormSoundId", 74201402219129); F:SetAttribute("WindSoundId", 93035214379043)
 for k, v in pairs(keep) do F:SetAttribute(k, v) end
 local sv = Instance.new("Script"); sv.Name = "BalloonServer"; sv.RunContext = Enum.RunContext.Server; sv.Source = @@SERVER@@; sv.Parent = F
 local cl = Instance.new("Script"); cl.Name = "BalloonClient"; cl.RunContext = Enum.RunContext.Client; cl.Source = @@CLIENT@@; cl.Parent = F

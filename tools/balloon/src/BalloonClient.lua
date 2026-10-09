@@ -150,7 +150,7 @@ wind.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.55), Num
 wind.LightEmission = 0.4; wind.Orientation = Enum.ParticleOrientation.VelocityParallel; wind.Squash = NumberSequence.new(-1.6)
 windPart = Instance.new("Part"); windPart.Name = "WindSource"; windPart.Anchored = true; windPart.CanCollide = false; windPart.CanQuery = false; windPart.Transparency = 1; windPart.Size = Vector3.new(14, 10, 1); wind.Parent = windPart; windPart.Parent = workspace
 local storming = false
-local stormSound = nil   -- the storm's own sound (StormSoundId, Shannon's pick), looped from the clouds closing in until home
+local stormSound, windSound = nil, nil   -- Shannon's picks: the wind (WindSoundId) loops through the gust, then the storm (StormSoundId) takes over
 local clouds = workspace.Terrain:FindFirstChildOfClass("Clouds")
 local function bolt(near)
 	-- a jagged bolt of Neon parts from the clouds down towards the sea, gone in a blink
@@ -174,6 +174,7 @@ local function stormOn(secs)
 		stormSound = Instance.new("Sound"); stormSound.SoundId = "rbxassetid://" .. tostring(sid); stormSound.Looped = true; stormSound.Volume = 0; stormSound.Parent = SoundService; stormSound:Play()
 		TweenService:Create(stormSound, TweenInfo.new(4), {Volume = 0.6}):Play()
 	end
+	if windSound then local w = windSound; windSound = nil; TweenService:Create(w, TweenInfo.new(5), {Volume = 0}):Play(); game:GetService("Debris"):AddItem(w, 5.5) end   -- the wind gives way to the storm
 	-- clouds close in first, then the light goes, then the fog
 	if clouds then TweenService:Create(clouds, TweenInfo.new(7, Enum.EasingStyle.Sine), {Cover = 1, Density = 1, Color = Color3.fromRGB(70, 72, 80)}):Play() end
 	TweenService:Create(Lighting, TweenInfo.new(9, Enum.EasingStyle.Sine), {Brightness = 0.35, OutdoorAmbient = Color3.fromRGB(55, 58, 68), FogColor = Color3.fromRGB(96, 100, 110)}):Play()
@@ -209,6 +210,7 @@ local function stormOff()
 	if clouds and saved.cover ~= nil then TweenService:Create(clouds, TweenInfo.new(4, Enum.EasingStyle.Sine), {Cover = saved.cover, Density = saved.cdensity, Color = saved.ccolor}):Play() end
 	wind.Enabled = false
 	if stormSound then local s = stormSound; stormSound = nil; TweenService:Create(s, TweenInfo.new(3), {Volume = 0}):Play(); game:GetService("Debris"):AddItem(s, 3.5) end
+	if windSound then local w = windSound; windSound = nil; TweenService:Create(w, TweenInfo.new(2), {Volume = 0}):Play(); game:GetService("Debris"):AddItem(w, 2.5) end
 	saved = nil
 end
 
@@ -226,7 +228,11 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 		if name == "rise" then showToast("Up you go! Look at Porto Nocciola from the sky.", 5)
 		elseif name == "gust" then
 			showToast("Whoosh! A gust takes the balloon out to sea!", 4)
-			sound(num("WindSoundId", 0), 0.7)
+			local wid = num("WindSoundId", 0)
+			if wid > 0 and not windSound then
+				windSound = Instance.new("Sound"); windSound.SoundId = "rbxassetid://" .. tostring(wid); windSound.Looped = true; windSound.Volume = 0; windSound.Parent = SoundService; windSound:Play()
+				TweenService:Create(windSound, TweenInfo.new(1.5), {Volume = 0.7}):Play()
+			end
 			wind.Enabled = true
 			task.delay(secs + num("StormTime", 12) * 0.6, function() wind.Enabled = false end)
 			task.delay(math.max(0, secs - 6), function() if flying then stormOn(num("StormTime", 12) + num("SignTime", 6) + 3) end end)
