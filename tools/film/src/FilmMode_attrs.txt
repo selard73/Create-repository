@@ -1,0 +1,7 @@
+workspace.FilmMode (Folder), exported from Studio Oct 9 2026 (read-only)
+attributes:
+OwnerIds = 9611145467 (string)
+children:
+Tours (ModuleScript, 3266 chars)  -> tools/film/src/Tours.lua
+FilmClient (Script, RunContext Client, Enabled true, 19539 chars)  -> tools/film/src/FilmClient.lua
+VRTestClient (Script, RunContext Client, Enabled true, 3588 chars)  (not exported)
