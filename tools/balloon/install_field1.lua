@@ -240,7 +240,8 @@ local cl = Instance.new("Script"); cl.Name = "BalloonClient"; cl.RunContext = En
 -- server clock, so every player sees the same sky), every flame flickers, and the flight's weather and signs happen here:
 -- the gust, the storm fog and lightning, the "To Be Continued" sign, the fade and the return. World-space where it can be,
 -- so a VR headset sees it with the control panel closed. Oct 9 late: the map music drops as you climb, the lighthouse turns
--- its light once the storm is dark, and /promo (the owner, desktop) films a flight for a video.
+-- its light once the storm is dark, and /promo (the owner, desktop) films a flight for a video. The flying balloon is
+-- drawn from a short history of the server's positions so it moves smoothly from any camera (see "smooth flight").
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
@@ -480,6 +481,66 @@ local function stormOff()
 	saved = nil
 end
 
+-- ---------- smooth flight ----------
+-- The server moves the balloon every heartbeat, but a client is sent about twenty positions a second, so seen from a
+-- camera that is not riding along the balloon moved in steps (Shannon, the promo camera: "jittery"). While a flight is on,
+-- this client keeps the positions it is sent and draws the balloon a tenth of a second behind them, moving smoothly in
+-- between; the seat goes with it, so the rider does too. Written before physics (Stepped) so the rider and the basket
+-- agree, and again before the frame is drawn in case a server position landed in between. Local only.
+local smooth = nil   -- {basket, parts = {part -> offset from the basket}, samples = {{arrived, cf}, ...}, written, shown}
+local function smoothWrite(S, cf)
+	S.basket.CFrame = cf
+	for p, o in pairs(S.parts) do if p.Parent then p.CFrame = cf * o end end
+	S.written = cf; S.shown = cf
+end
+local function smoothStart()
+	local b = yours and yours:FindFirstChild("Basket", true)
+	if not b then return end
+	local parts = {}
+	for _, p in ipairs(yours:GetDescendants()) do if p:IsA("BasePart") and p ~= b then parts[p] = b.CFrame:Inverse() * p.CFrame end end
+	smooth = {basket = b, parts = parts, samples = {}, written = nil, shown = nil}
+end
+local function smoothStop()
+	local S = smooth; smooth = nil
+	if S and #S.samples > 0 and S.basket.Parent then smoothWrite(S, S.samples[#S.samples][2]) end   -- land on the newest server position (home, under the black)
+end
+local function smoothSample(S, now)
+	local cf = S.basket.CFrame
+	if S.written == nil or not cf:FuzzyEq(S.written, 1e-3) then   -- not what we wrote: a position from the server
+		table.insert(S.samples, {now, cf})
+		if #S.samples > 10 then table.remove(S.samples, 1) end
+	end
+end
+local function smoothStep(advance)
+	local S = smooth; if not S then return end
+	if not S.basket.Parent then smooth = nil return end
+	local now = os.clock()
+	smoothSample(S, now)
+	local n = #S.samples
+	if n == 0 then return end
+	if now - S.samples[n][1] > 2 then smoothStop() return end   -- nothing from the server for two seconds: the flight is over
+	if not advance then if S.shown then smoothWrite(S, S.shown) end return end
+	local r = now - num("SmoothDelay", 0.1)
+	local show
+	if r <= S.samples[1][1] then show = S.samples[1][2]
+	elseif r >= S.samples[n][1] then
+		local a, c = S.samples[n - 1], S.samples[n]
+		if a and c[1] - a[1] > 1e-3 then   -- past the newest: carry on at the last speed, a moment at most
+			local k = math.min((r - c[1]) / (c[1] - a[1]), 2)
+			show = CFrame.new(c[2].Position + (c[2].Position - a[2].Position) * k) * c[2].Rotation
+		else show = c[2] end
+	else
+		for i = 1, n - 1 do
+			local a, c = S.samples[i], S.samples[i + 1]
+			if r >= a[1] and r < c[1] then show = a[2]:Lerp(c[2], (r - a[1]) / math.max(c[1] - a[1], 1e-3)) break end
+		end
+		show = show or S.samples[n][2]
+	end
+	smoothWrite(S, show)
+end
+RunService.Stepped:Connect(function() smoothStep(true) end)
+RunService:BindToRenderStep("BalloonSmooth", Enum.RenderPriority.Camera.Value - 10, function() smoothStep(false) end)
+
 -- ---------- the map music ----------
 -- The map music drops as the balloon climbs and comes back on the field (Shannon: "the game music should become a little
 -- less as the balloon ascends"). MapMusic.MusicClient plays SoundService.MusicA / MusicB; this only ever lowers a track
@@ -537,7 +598,7 @@ local function promoStart()
 	local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude; rp.FilterDescendantsInstances = {F, player.Character}
 	local hit = workspace:Raycast(grass + Vector3.new(0, 30, 0), Vector3.new(0, -60, 0), rp)
 	grass = Vector3.new(grass.X, (hit and hit.Position.Y or home.Y) + 2.5, grass.Z)
-	local pos, lastShot = nil, nil
+	local pos, lookS, lastShot = nil, nil, nil
 	RunService:BindToRenderStep("BalloonPromo", Enum.RenderPriority.Camera.Value + 1, function(dt)
 		if not (yours and yours.Parent) then return end
 		local t = os.clock() - t0
@@ -547,8 +608,8 @@ local function promoStart()
 		elseif t < T.rise + T.hover then shot = 2; local a = math.pi + (t - 7) * 0.13; want = L + Vector3.new(math.cos(a) * 36, -2, math.sin(a) * 36); look = L   -- a slow circle, the town behind
 		elseif t < T.rise + T.hover + T.gust then shot = 3; want = L - dir * 42 + side * 10 + Vector3.new(0, 10, 0); look = L + dir * 12   -- the chase out to sea
 		else shot = 4; local a = (t - T.rise - T.hover - T.gust) * 0.08; want = L + (dir * math.cos(a) + side * math.sin(a)) * 18 + Vector3.new(0, 3, 0); look = L end   -- close, in the storm; the sign comes up on the screen
-		if shot ~= lastShot or not pos then pos = want; lastShot = shot else pos = pos:Lerp(want, 1 - math.exp(-dt * (shot == 3 and 1.6 or 4))) end
-		cam.CFrame = CFrame.lookAt(pos, look)
+		if shot ~= lastShot or not pos then pos = want; lookS = look; lastShot = shot else pos = pos:Lerp(want, 1 - math.exp(-dt * (shot == 3 and 1.6 or 4))); lookS = lookS:Lerp(look, 1 - math.exp(-dt * 8)) end
+		cam.CFrame = CFrame.lookAt(pos, lookS)
 	end)
 end
 local function armPromo()
@@ -575,6 +636,7 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 		local m = yours
 		local fl = m and m:FindFirstChild("Flame", true)
 		if name == "board" and fl and flames[fl] then flames[fl].flare = 1; task.delay(3, function() if flames[fl] then flames[fl].flare = 0 end end) end
+		if name == "board" then smoothStart() elseif name == "home" then smoothStop() end
 		if who ~= player then return end
 		if name == "board" then flying = true; promoStart() end
 		if name == "rise" then showToast("Up you go, traveler! Look at Porto Nocciola from the sky.", 5); duckMusic(true, secs)
