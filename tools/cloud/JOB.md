@@ -425,3 +425,12 @@ patches workspace.FilmMode.Tours (3266 chars, 1 find) and FilmClient (19539 char
 press it, climb aboard, and from liftoff the camera runs the shot plan (grass, circle, chase, storm close-up, the sign) with
 the UI hidden except BalloonGui; back to normal 2 s after being set down; F8 cancels. Backups FilmClient_pre_balloon1 /
 Tours_pre_balloon1. Send the `QQ FILM` line. No publish. Sources: tools/film/src (runner's export + *_balloon1 patched copies).
+Job 46 addendum (Shannon's phone screenshot): the "Your balloon is ready" sign that hung over the balloon is gone ("messy
+and all over the place ... not permanent"); the word at the 44th squirrel now floats up the screen once and off the top.
+
+## Job 50: Bella's panel inside the screen (Studio EDIT; ask Shannon first)
+
+Shannon's phone: "its too far right getting cut off". tools/porto/seaglass7.lua (SeaGlassClient after job 48, about 15059
+chars, 1 find): the panel's face moves into an inner frame that carries the phone scale; the panel keeps a plain pixel
+size anchored at the right, and is nudged left a frame later if its right edge is still past the screen. Backup
+HudBackup.SeaGlassClient_pre_seaglass7. Send the `QQ SG7` line. No publish.

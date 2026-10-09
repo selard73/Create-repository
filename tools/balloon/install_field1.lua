@@ -340,21 +340,28 @@ local function mine()
 	return n
 end
 local function flown() return (tonumber(player:GetAttribute("Item_balloon_flights")) or 0) > 0 end
--- the sign over your balloon, seen from across the harbour, until your first flight
-local beacon = Instance.new("BillboardGui"); beacon.Name = "ReadyBeacon"; beacon.Size = UDim2.fromOffset(360, 96); beacon.StudsOffsetWorldSpace = Vector3.new(0, 34, 0)
-beacon.AlwaysOnTop = true; beacon.LightInfluence = 0; beacon.MaxDistance = 1400; beacon.Enabled = false
-local beaconText = Instance.new("TextLabel"); beaconText.Size = UDim2.fromScale(1, 1); beaconText.BackgroundColor3 = Color3.fromRGB(255, 246, 220); beaconText.BackgroundTransparency = 0.15
-beaconText.TextColor3 = Color3.fromRGB(58, 36, 16); beaconText.Font = Enum.Font.GothamBold; beaconText.TextScaled = true; beaconText.TextWrapped = true
-beaconText.Text = "Your balloon is ready!\nClimb aboard"; beaconText.Parent = beacon
-local bc = Instance.new("UICorner"); bc.CornerRadius = UDim.new(0, 14); bc.Parent = beaconText
-if yours then beacon.Adornee = yours:FindFirstChild("Envelope", true) or yours.PrimaryPart; beacon.Parent = pg end
+-- the one word when the last squirrel is found: it floats up the screen once and drifts off the top (Shannon, Oct 9:
+-- the sign that hung over the balloon was "messy and all over the place ... not permanent")
+local function floatNotice(text, secs)
+	local v = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1280, 720)
+	local l = Instance.new("TextLabel"); l.AnchorPoint = Vector2.new(0.5, 0.5); l.Size = UDim2.fromOffset(math.min(520, v.X - 60), 0); l.AutomaticSize = Enum.AutomaticSize.Y
+	l.Position = UDim2.fromScale(0.5, 0.8); l.BackgroundColor3 = Color3.fromRGB(255, 246, 220); l.BackgroundTransparency = 1; l.TextTransparency = 1
+	l.TextColor3 = Color3.fromRGB(58, 36, 16); l.Font = Enum.Font.GothamBold; l.TextSize = 20; l.TextWrapped = true; l.Text = text; l.ZIndex = 20; l.Parent = gui
+	local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0, 14); c.Parent = l
+	local p = Instance.new("UIPadding"); p.PaddingTop = UDim.new(0, 10); p.PaddingBottom = UDim.new(0, 10); p.PaddingLeft = UDim.new(0, 14); p.PaddingRight = UDim.new(0, 14); p.Parent = l
+	TweenService:Create(l, TweenInfo.new(0.8), {BackgroundTransparency = 0.1, TextTransparency = 0}):Play()
+	TweenService:Create(l, TweenInfo.new(secs, Enum.EasingStyle.Sine), {Position = UDim2.fromScale(0.5, 0.3)}):Play()   -- floats up
+	task.delay(secs, function()
+		TweenService:Create(l, TweenInfo.new(2.2, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {Position = UDim2.fromScale(0.5, -0.2), BackgroundTransparency = 1, TextTransparency = 1}):Play()   -- and off the top
+		game:GetService("Debris"):AddItem(l, 2.4)
+	end)
+end
 local function updatePrompt()
 	local n, need = mine(), num("Need", 44)
 	if prompt then
 		if n >= need then prompt.ObjectText = "Your balloon"; prompt.ActionText = "All aboard"
 		else prompt.ObjectText = string.format("Your balloon (%d of %d squirrels)", n, need); prompt.ActionText = "Find them all first" end
 	end
-	beacon.Enabled = n >= need and not flown()
 end
 updatePrompt()
 player:GetAttributeChangedSignal("Item_balloon_flights"):Connect(updatePrompt)
@@ -367,7 +374,7 @@ local function onCount()
 	if n >= need and lastCount < need and not announced and not flown() then
 		announced = true
 		task.delay(1.5, function()
-			showToast(string.format("You found all %d squirrels of Porto Nocciola! Your balloon is waiting on the far shore across the harbour. Get yourself over there and climb aboard!", need), 12)
+			floatNotice(string.format("All %d squirrels of Porto Nocciola found! Your balloon is waiting on the far shore across the harbour. All aboard!", need), 7)
 			local s = Instance.new("Sound"); s.SoundId = "rbxassetid://9116394876"; s.Volume = 0.5; s.Parent = SoundService; s:Play(); game:GetService("Debris"):AddItem(s, 10)
 		end)
 	end

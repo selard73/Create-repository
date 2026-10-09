@@ -118,13 +118,23 @@ local function refresh()
 		end
 	end
 end
+-- the panel's face scales as one piece inside it; the panel itself keeps a plain pixel size, so its right edge is where it
+-- is anchored (with the scale on the panel a phone cut it off at the right - Shannon, Oct 9)
+local inner = Instance.new("Frame"); inner.Name = "Inner"; inner.BackgroundTransparency = 1; inner.ZIndex = 8; inner.Parent = panel
+for _, c in ipairs(panel:GetChildren()) do if c ~= inner and c:IsA("GuiObject") then c.Parent = inner end end
 local function layout()
 	local v = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1280, 720)
 	local h = ROW_Y + #R.recipes * ROW_H + 24
-	local sc = panel:FindFirstChild("PhoneScale") or Instance.new("UIScale"); sc.Name = "PhoneScale"; sc.Parent = panel
+	local sc = inner:FindFirstChild("PhoneScale") or Instance.new("UIScale"); sc.Name = "PhoneScale"; sc.Parent = inner
 	local s = math.clamp((v.Y - 130) / h, 0.6, 1); sc.Scale = s -- a phone keeps the top HUD bar and the jump button clear
-	panel.Size = UDim2.fromOffset(math.min(380, (v.X - 24) / s), math.min(h, (v.Y - 16) / s))
+	local w, hh = math.min(380, (v.X - 24) / s), math.min(h, (v.Y - 16) / s)
+	inner.Size = UDim2.fromOffset(w, hh)
+	panel.Size = UDim2.fromOffset(w * s, hh * s)
 	panel.Position = UDim2.new(1, phone() and -4 or -14, 0.5, 0)   -- a phone: hard against the right edge (Oct 9)
+	task.defer(function()   -- and never past it, whatever the screen does
+		local over = panel.AbsolutePosition.X + panel.AbsoluteSize.X - (v.X - 2)
+		if over > 0 then panel.Position = panel.Position - UDim2.fromOffset(over, 0) end
+	end)
 end
 local function closePanel()
 	if not open then return end
