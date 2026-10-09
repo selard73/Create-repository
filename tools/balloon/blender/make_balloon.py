@@ -2,7 +2,9 @@
 # reference: twelve rainbow gores on a teardrop envelope, tan load tapes, cables to a burner frame on four leather
 # uprights, a wicker basket with a padded rim, sandbags and a coiled rope). 1 Blender unit = 1 stud, Z up, the basket
 # floor centre at the origin. One 512 px texture atlas for everything; the flame is its own object (Neon in Roblox).
-# Objects: Envelope, EnvelopeInner, Rigging, Basket, Flame (each well under Roblox's 20k triangle limit).
+# Oct 9 later: Shannon's second reference ("more like this but rainbow"): a taller envelope of 24 narrow gores, a dark
+# band round the upper body with cream pinstripes, a gold collar at the mouth, longer cables to a small basket.
+# Objects: Envelope, Seams, EnvelopeInner, Rigging, Basket, Flame (each well under Roblox's 20k triangle limit).
 # Run: python make_balloon.py <out_dir> [--render]   (writes balloon.fbx, balloon.glb, balloon_atlas.png, previews)
 import bpy, bmesh, math, sys, os
 import numpy as np
@@ -45,22 +47,20 @@ for k, cc in enumerate((0.74, 0.56, 0.33)):
 # leather (two browns) with a soft grain
 grain = 0.92 + 0.08 * np.sin(xx[:256, 256:] * 0.9) * np.sin(yy[:256, 256:] * 0.7)
 for k, (a, b) in enumerate(((0.50, 0.30), (0.29, 0.16), (0.16, 0.08))):
-    img[:256, 256:384, k] = a * grain[:, :128]
-    img[:256, 384:448, k] = b * grain[:, 128:192]
-cu = (xx[:256, 448:] - 448 + 0.5) / 64.0
-for k in range(3):
-    img[:256, 448:, k] = 0.86 + 0.14 * np.sin(np.pi * cu)          # white cloth, a little shaded at its edges
-# the wavy white band round the upper envelope (Shannon's picture), painted into every gore column so it runs round
-gv = (yy[256:, :384] - 256 + 0.5) / 256.0
-gu = ((xx[256:, :384] % 64) + 0.5) / 64.0
-mid = 0.725 + 0.022 * np.sin(2 * np.pi * gu)
-d = np.abs(gv - mid)
-band = d < 0.040
-edge = (d >= 0.040) & (d < 0.046)
-for k in range(3):
-    ch = img[256:, :384, k]
-    ch[band] = 0.97 - 0.10 * (d[band] / 0.040) ** 2
-    ch[edge] = 0.62
+    img[:256, 256:352, k] = a * grain[:, :96]
+    img[:256, 352:416, k] = b * grain[:, 96:160]
+nu = (xx[:256, 416:464] - 416 + 0.5) / 48.0
+for k, cc in enumerate((0.11, 0.13, 0.30)):                    # navy band cloth
+    img[:256, 416:464, k] = cc * (0.80 + 0.20 * np.sin(np.pi * nu))
+gu = (xx[:256, 464:] - 464 + 0.5) / 48.0; gvv = (yy[:256, 464:] + 0.5) / 256.0
+gold = 0.85 + 0.15 * np.sin(np.pi * gu)
+diamond = (np.abs(gu - 0.5) / 0.42 + np.abs(gvv - 0.5) / 0.26) < 1
+dot = (np.abs(gu - 0.5) / 0.12 + np.abs(gvv - 0.5) / 0.07) < 1
+rim = (gvv < 0.08) | (gvv > 0.92)
+for k, (cc, dd) in enumerate(((0.86, 0.45), (0.64, 0.28), (0.26, 0.10))):   # gold collar with a diamond chain
+    ch = cc * gold
+    ch = np.where(diamond, dd * gold, ch); ch = np.where(dot, cc * 1.1, ch); ch = np.where(rim, dd * 0.8, ch)
+    img[:256, 464:, k] = np.clip(ch, 0, 1)
 atlas = bpy.data.images.new("balloon_atlas", S, S, alpha=False)
 atlas.pixels.foreach_set(img.ravel())
 atlas.filepath_raw = os.path.join(OUT, "balloon_atlas.png"); atlas.file_format = "PNG"; atlas.save()
@@ -87,9 +87,10 @@ def gore_uv(c): return (c / 8 + 0.004, 0.502, (c + 1) / 8 - 0.004, 0.998)
 TAN = (6 / 8 + 0.01, 0.51, 7 / 8 - 0.01, 0.99)
 METAL = (7 / 8 + 0.01, 0.51, 1 - 0.01, 0.99)
 WICKER = (0.002, 0.002, 0.498, 0.498)
-LEATHER = (0.502, 0.002, 0.748, 0.498)
-DARK = (0.752, 0.002, 0.873, 0.498)
-WHITE = (0.877, 0.002, 0.998, 0.498)
+LEATHER = (0.502, 0.002, 0.685, 0.498)
+DARK = (0.689, 0.002, 0.81, 0.498)
+NAVY = (0.816, 0.002, 0.904, 0.498)
+GOLD = (0.910, 0.002, 0.998, 0.998 * 0.5)
 
 class Builder:
     def __init__(self): self.v, self.f, self.uv = [], [], []
@@ -148,14 +149,14 @@ def lathe(B, profile, sides, region, flip=False, centre=(0, 0, 0)):
     B.grid(pts, region, flip=flip, wrap=True)
 
 # ---------------- the envelope ----------------
-R, H, Z_MOUTH, N_GORE, SEG = 15.0, 36.0, 13.0, 12, 8
-Y_EQ = 0.58 * H
-R_MOUTH = 0.17 * R
+R, H, Z_MOUTH, N_GORE, SEG = 14.0, 40.0, 16.0, 24, 5
+Y_EQ = 0.62 * H
+R_MOUTH = 0.16 * R
 def env_rings():
     out = []
     for i in range(28):                                  # lower: mouth to the equator
         s = i / 27
-        out.append((R_MOUTH + (R - R_MOUTH) * (1 - (1 - s) ** 2.2), s * Y_EQ))
+        out.append((R_MOUTH + (R - R_MOUTH) * (1 - (1 - s) ** 1.8), s * Y_EQ))
     for i in range(1, 21):                               # the dome
         ph = (math.pi / 2) * (i / 21) ** 0.9
         out.append((R * math.cos(ph), Y_EQ + (H - Y_EQ) * math.sin(ph)))
@@ -168,7 +169,7 @@ def env_point(r, z, theta, scale=1.0):
     return (rr * math.cos(theta), rr * math.sin(theta), Z_MOUTH + z)
 
 def envelope(B, scale=1.0, flip=False):
-    order = [5, 0, 1, 2, 3, 4]                           # purple, red, orange, yellow, green, blue, as in the picture
+    order = [0, 1, 2, 3, 4, 5]                           # red, orange, yellow, green, blue, purple, round four times
     for g in range(N_GORE):
         pts = []
         for (r, z) in RINGS:
@@ -187,31 +188,29 @@ def envelope(B, scale=1.0, flip=False):
 
 E = Builder()
 envelope(E)
+RZ = np.array([z for (r, z) in RINGS]); RR = np.array([r for (r, z) in RINGS])
+def r_at(z): return float(np.interp(z, RZ, RR))
+def band(B, z0, z1, off, region, rows=3):
+    """a strip round the envelope between heights z0..z1 (above the mouth), on the surface; the region repeats per gore"""
+    for g in range(N_GORE):
+        pts = []
+        for i in range(rows):
+            z = z0 + (z1 - z0) * i / (rows - 1)
+            pts.append([env_point(r_at(z) + off, z, 2 * math.pi * (g + j / SEG) / N_GORE) for j in range(SEG + 1)])
+        B.grid(pts, region)
+ZB = Y_EQ + 0.30 * (H - Y_EQ)                            # the dark band, just above the widest part
+band(E, ZB - 0.95, ZB + 0.95, 0.05, NAVY)
+for zz in (ZB - 1.2, ZB + 1.2):                          # cream pinstripes either side of it
+    tube(E, [env_point(r_at(zz) + 0.07, zz, 2 * math.pi * k / (N_GORE * SEG)) for k in range(N_GORE * SEG)], 0.07, 4, TAN, closed=True)
+band(E, 0.0, 2.6, 0.07, GOLD, rows=4)                    # the gold collar at the mouth
+Sm = Builder()
 for g in range(N_GORE):                                  # load tapes on every seam
     th = 2 * math.pi * g / N_GORE
-    tube(E, [env_point(r + 0.06, z, th) for (r, z) in RINGS], 0.14, 5, TAN)
+    tube(Sm, [env_point(r + 0.05, z, th) for (r, z) in RINGS], 0.1, 4, TAN)
+Sm.object("Seams", MAT)
 tube(E, [env_point(R_MOUTH + 0.05, 0.05, 2 * math.pi * k / 48) for k in range(48)], 0.2, 6, TAN, closed=True)
 rc, zc = RINGS[-1]
 tube(E, [(rc * math.cos(2 * math.pi * k / 32), rc * math.sin(2 * math.pi * k / 32), Z_MOUTH + zc + 0.05) for k in range(32)], 0.18, 6, TAN, closed=True)
-# white swags draped round the balloon below its widest point, one scallop per gore (Shannon's picture)
-RZ = np.array([z for (r, z) in RINGS]); RR = np.array([r for (r, z) in RINGS])
-def r_at(z): return float(np.interp(z, RZ, RR))
-Z_LINE, DEEP, THIN = Y_EQ * 0.86, 3.0, 1.1
-for g in range(N_GORE):
-    rows = []
-    for (amp, off) in ((THIN, 0.10), (DEEP, 0.10)):
-        row = []
-        for j in range(13):
-            u = j / 12
-            z = Z_LINE - amp * math.sin(math.pi * u)
-            th = 2 * math.pi * (g + u) / N_GORE
-            row.append(env_point(r_at(z) + off + 0.18 * math.sin(math.pi * u), z, th))
-        rows.append(row)
-    mid = [tuple((np.array(a) + np.array(b)) / 2 + 0.06 * np.array((math.cos(2 * math.pi * (g + j / 12) / N_GORE), math.sin(2 * math.pi * (g + j / 12) / N_GORE), 0)))
-           for j, (a, b) in enumerate(zip(rows[0], rows[1]))]
-    E.grid([rows[0], mid, rows[1]], WHITE)
-    E.grid([rows[0], mid, rows[1]], WHITE, flip=True)          # both faces: it is cloth
-tube(E, [env_point(r_at(Z_LINE) + 0.12, Z_LINE, 2 * math.pi * k / (N_GORE * SEG)) for k in range(N_GORE * SEG)], 0.1, 5, TAN, closed=True)
 E.object("Envelope", MAT)
 EI = Builder(); envelope(EI, scale=0.985, flip=True); EI.object("EnvelopeInner", MAT)
 
@@ -230,7 +229,7 @@ for sx in (-0.55, 0.55):                                 # two burner cans with 
         z = Z_FRAME + 0.15 + k * 0.25
         tube(Rg, [(sx + 0.48 * math.cos(2 * math.pi * a / 14), 0.48 * math.sin(2 * math.pi * a / 14), z) for a in range(14)], 0.05, 4, METAL, closed=True)
 tube(Rg, [(-0.55, 0, Z_FRAME + 0.6), (0.55, 0, Z_FRAME + 0.6)], 0.08, 6, METAL)
-for g in range(N_GORE):                                  # cables from every load tape to the nearest frame corner
+for g in range(0, N_GORE, 2):                            # cables from every other load tape to the nearest frame corner
     th = 2 * math.pi * g / N_GORE
     mx, my = R_MOUTH * math.cos(th), R_MOUTH * math.sin(th)
     c = min(corners, key=lambda q: (q[0] - mx) ** 2 + (q[1] - my) ** 2)
@@ -306,6 +305,6 @@ if RENDER:
         cam.rotation_euler = (math.atan2(math.hypot(d[0], d[1]), -d[2]), 0, math.atan2(d[1], d[0]) - math.pi / 2)
         cam.data.lens = lens
         sc.render.filepath = os.path.join(OUT, name); bpy.ops.render.render(write_still=True)
-    shot((52, -62, 14), (0, 0, 24), 42, "preview_full.png")
+    shot((60, -72, 16), (0, 0, 28), 42, "preview_full.png")
     shot((9, -10.5, 6.5), (0, 0, 5.5), 30, "preview_basket.png")
 print("DONE", OUT)
