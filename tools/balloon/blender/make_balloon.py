@@ -235,7 +235,36 @@ for (sx, sy) in ((1, 1), (-1, 1), (-1, -1), (1, -1)):   # sandbags on short rope
     lathe(Bk, prof, 10, LEATHER, centre=(cx, cy, BASKET_H - 1.7))
     tube(Bk, [(cx, cy, BASKET_H - 0.78), (sx * (TOP_HALF - 0.05), sy * (TOP_HALF - 0.05), BASKET_H)], 0.04, 4, TAN)
 for k in range(3):                                       # a coiled rope on the side
-    tube(Bk, [(TOP_HALF + 0.12 + 0.05 * k, 0.6 + 0.55 * math.cos(2 * math.pi * a / 16), 2.0 + 0.04 * k + 0.55 * math.sin(2 * math.pi * a / 16)) for a in range(16)], 0.09, 5, TAN, closed=True)
+    tube(Bk, [(TOP_HALF + 0.12 + 0.05 * k, 0.6 + 0.55 * math.cos(2 * math.pi * a / 16), 1.35 + 0.04 * k + 0.55 * math.sin(2 * math.pi * a / 16)) for a in range(16)], 0.09, 5, TAN, closed=True)
+# bunting (Shannon: "drape some decorative colorful things around the sides"): a sagging rope on each side with
+# rainbow pennants, thin wedges so they show from both sides
+def flag(B, top_l, top_r, tip, normal, c):
+    u0, v0, u1, v1 = gore_uv(c); uc, vc = (u0 + u1) / 2, (v0 + v1) / 2
+    n = np.array(normal) * 0.025
+    f = [B.add_vert(np.array(q) + n) for q in (top_l, top_r, tip)]
+    b = [B.add_vert(np.array(q) - n) for q in (top_l, top_r, tip)]
+    uv3, uv4 = [(uc, vc)] * 3, [(uc, vc)] * 4
+    B.face([f[0], f[2], f[1]], uv3); B.face([b[0], b[1], b[2]], uv3)
+    for i in range(3):
+        j = (i + 1) % 3
+        B.face([f[i], f[j], b[j], b[i]], uv4)
+SQ = [(1, 1), (-1, 1), (-1, -1), (1, -1)]
+FLAGS, SAG, ZB = 7, 0.55, BASKET_H - 0.22
+ci = 0
+for k in range(4):
+    a, b = np.array(SQ[k], float), np.array(SQ[(k + 1) % 4], float)
+    out = (a + b) / 2; out /= np.linalg.norm(out)       # the side's outward direction
+    def at(s):
+        z = ZB - SAG * 4 * s * (1 - s)
+        half = BOT_HALF + (TOP_HALF - BOT_HALF) * z / BASKET_H + 0.12
+        xy = (a + (b - a) * s) * half
+        return np.array((xy[0], xy[1], z))
+    tube(Bk, [at(s) for s in np.linspace(0.04, 0.96, 14)], 0.035, 4, TAN)
+    for i in range(FLAGS):
+        s0, s1 = 0.08 + 0.84 * i / FLAGS, 0.08 + 0.84 * (i + 0.8) / FLAGS
+        pl, pr = at(s0), at(s1)
+        tip = (pl + pr) / 2 + np.array((0, 0, -0.75)) + 0.05 * np.array((out[0], out[1], 0))
+        flag(Bk, pl, pr, tip, (out[0], out[1], 0), ci % 6); ci += 1
 Bk.object("Basket", MAT)
 
 # ---------------- the flame ----------------
