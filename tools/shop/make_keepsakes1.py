@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Builds tools/shop/keepsakes1.lua (job 43): keepsakes in the Acorn Store's inventory. Shannon, Oct 9: "if you make the
 perfume bottle it says yours, but where do you see that you have it in your inventory?" Two rows on the Porto tab of
-workspace.Shop.ShopClient (34513 chars, the job 42 text): "Parfum bottle" and "Pearl", shown only once owned, labelled
+workspace.Shop.ShopClient (34513 chars, the job 42 text): "Parfum bottle", shown only once owned (the pearl is a find that sells, not a keepsake: Shannon), labelled
 "yours", never for sale. Five exact finds; original -> ServerStorage.HudBackup.ShopClient_pre_keepsakes1.
 Run from the repo root: python3 tools/shop/make_keepsakes1.py
 """
@@ -15,9 +15,9 @@ P = [
      'glide into the Rue.", once = true},\n'
      '\t-- keepsakes (Oct 9 2026): not for sale here; the row shows once the thing is yours\n'
      '\t{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},\n'
-     '\t{id = "pearl",         name = "Pearl",         blurb = "From the oyster at the back of the Grotta Azzurra. Bella pays well for it in a box of shells.", keepsake = true},\n}\n'),
+     '}\n'),
     ('\tcrabtrap = {italy = true}, camera = {italy = true},\n}\n',
-     '\tcrabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true}, pearl = {italy = true},\n}\n'),
+     '\tcrabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true},\n}\n'),
     ('\t\t\telseif item.once and owned then\n\t\t\t\tlabel = "owned"\n',
      '\t\t\telseif item.keepsake then\n\t\t\t\tlabel = owned and "yours" or "find it"\n\t\t\telseif item.once and owned then\n\t\t\t\tlabel = "owned"\n'),
     ('\t\t\tif not selling then label = "soon" end\n', '\t\t\tif not selling and not item.keepsake then label = "soon" end\n'),
@@ -26,7 +26,7 @@ P = [
      '\t\t\tif item.keepsake then rec.frame.Visible = owned and onTab(item) end   -- a keepsake row shows once it is yours\n'),
 ]
 def tbl(pairs_): return "{" + ", ".join("{%s, %s}" % (L(a), L(b)) for a, b in pairs_) + "}"
-lua = r'''-- shop/keepsakes1 (job 43): EDIT mode. Keepsake rows in the Acorn Store (Porto tab): Parfum bottle and Pearl, shown
+lua = r'''-- shop/keepsakes1 (job 43): EDIT mode. Keepsake row in the Acorn Store (Porto tab): Parfum bottle, shown
 -- once owned, "yours", never for sale. Five exact finds in workspace.Shop.ShopClient (34513 chars); compiled before
 -- writing; original -> ServerStorage.HudBackup.ShopClient_pre_keepsakes1. Output lines "QQ KEEP".
 if game:GetService("RunService"):IsRunning() then warn("QQ KEEP ABORT - Play mode") return end

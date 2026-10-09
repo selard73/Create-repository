@@ -1,4 +1,4 @@
--- shop/keepsakes1 (job 43): EDIT mode. Keepsake rows in the Acorn Store (Porto tab): Parfum bottle and Pearl, shown
+-- shop/keepsakes1 (job 43): EDIT mode. Keepsake row in the Acorn Store (Porto tab): Parfum bottle, shown
 -- once owned, "yours", never for sale. Five exact finds in workspace.Shop.ShopClient (34513 chars); compiled before
 -- writing; original -> ServerStorage.HudBackup.ShopClient_pre_keepsakes1. Output lines "QQ KEEP".
 if game:GetService("RunService"):IsRunning() then warn("QQ KEEP ABORT - Play mode") return end
@@ -14,13 +14,12 @@ glide into the Rue.", once = true},
 glide into the Rue.", once = true},
 	-- keepsakes (Oct 9 2026): not for sale here; the row shows once the thing is yours
 	{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},
-	{id = "pearl",         name = "Pearl",         blurb = "From the oyster at the back of the Grotta Azzurra. Bella pays well for it in a box of shells.", keepsake = true},
 }
 ]===]}, {[===[
 	crabtrap = {italy = true}, camera = {italy = true},
 }
 ]===], [===[
-	crabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true}, pearl = {italy = true},
+	crabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true},
 }
 ]===]}, {[===[
 			elseif item.once and owned then

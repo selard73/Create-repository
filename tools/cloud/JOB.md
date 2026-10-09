@@ -369,6 +369,6 @@ the edge; the banner and board read from the piazza.
 ## Job 43: keepsakes in the Acorn Store (Studio EDIT; ask Shannon first)
 
 Shannon: "where do you see that you have the perfume bottle in your inventory?" tools/shop/keepsakes1.lua patches
-workspace.Shop.ShopClient (34513 chars, 5 finds): rows "Parfum bottle" and "Pearl" on the Porto tab, shown once owned,
+workspace.Shop.ShopClient (34513 chars, 5 finds): row "Parfum bottle" on the Porto tab, shown once owned (the pearl sells, not a keepsake),
 labelled "yours", never for sale. Send the `QQ KEEP` line; play test: with Item_parfum_bottle = 1 the row shows on the
 Porto tab as "yours"; with 0 it is hidden; France tab unchanged; no errors. No publish.
