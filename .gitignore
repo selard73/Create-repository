@@ -37,3 +37,6 @@ node_modules/
 # Operating system clutter.
 .DS_Store
 Thumbs.db
+
+# the one model the runner downloads for Studio (job 23)
+!tools/balloon/model_meshy/balloon_meshy.fbx
