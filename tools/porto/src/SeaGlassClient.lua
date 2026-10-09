@@ -1,0 +1,153 @@
+-- SeaGlassClient (workspace.SeaGlass, RunContext Client): Bella's beach finds on your screen (Oct 9 2026). A little toast when
+-- you pick something up; Bella's panel (her prompt opens it): your finds in a row, the four things she makes, Make buttons
+-- that light up when you have the pieces. One panel in the middle of the screen, sized for a phone (it sets the PlayerGui
+-- attribute OpenPanel like the other panels, so the camera and the rest step aside). Bella speaks through SquirrelBubble.
+local Players = game:GetService("Players")
+local RS = game:GetService("ReplicatedStorage")
+local UIS = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local player = Players.LocalPlayer
+local pg = player:WaitForChild("PlayerGui")
+local G = script.Parent
+local R = require(G:WaitForChild("Recipes"))
+local ev = G:WaitForChild("SeaGlassEvent")
+local Bubble
+pcall(function() Bubble = require(RS:WaitForChild("SquirrelBubble", 10)) end)
+local C = Color3.fromRGB
+local FONT = Font.new("rbxasset://fonts/families/FredokaOne.json")
+local CREAM, INK, GOLD, BROWN, GREEN, GREY = C(255, 246, 220), C(58, 36, 16), C(255, 202, 62), C(58, 36, 16), C(112, 160, 84), C(214, 202, 176)
+local function item(id) return tonumber(player:GetAttribute("Item_" .. id)) or 0 end
+local function corner(o, r) local c = Instance.new("UICorner") c.CornerRadius = UDim.new(0, r) c.Parent = o end
+local function stroke(o, col, th) local s = Instance.new("UIStroke") s.Color = col s.Thickness = th s.Parent = o return s end
+local function bella() return workspace:FindFirstChild("seaglass_squirrel_color") end
+local function say(line, secs)
+	local m = bella()
+	if Bubble and m then pcall(function() Bubble.say(m, line, {secs = secs or 4.5}) end) end
+end
+
+local gui = Instance.new("ScreenGui"); gui.Name = "SeaGlassGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 7; gui.Parent = pg
+
+-- ---------- the toast ----------
+local toast = Instance.new("TextLabel"); toast.Name = "Toast"; toast.AnchorPoint = Vector2.new(0.5, 1); toast.Size = UDim2.fromOffset(300, 34)
+toast.BackgroundColor3 = BROWN; toast.BackgroundTransparency = 0.12; toast.BorderSizePixel = 0; toast.FontFace = FONT; toast.TextSize = 16
+toast.TextColor3 = CREAM; toast.TextScaled = true; toast.Visible = false; toast.ZIndex = 8; toast.Parent = gui
+corner(toast, 10); stroke(toast, GOLD, 2)
+local toastAt = 0
+local function showToast(text, secs)
+	local v = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1280, 720)
+	toast.Size = UDim2.fromOffset(math.min(320, v.X - 40), 34)
+	toast.Position = UDim2.fromOffset(v.X / 2, v.Y - 120)
+	toast.Text = text; toast.Visible = true
+	toastAt = os.clock(); local t = toastAt
+	task.delay(secs or 2.5, function() if toastAt == t then toast.Visible = false end end)
+end
+
+-- ---------- the panel ----------
+local panel = Instance.new("Frame"); panel.Name = "Panel"; panel.AnchorPoint = Vector2.new(0.5, 0.5); panel.Position = UDim2.fromScale(0.5, 0.5)
+panel.BackgroundColor3 = BROWN; panel.BackgroundTransparency = 0.06; panel.BorderSizePixel = 0; panel.Visible = false; panel.ZIndex = 8; panel.Parent = gui
+corner(panel, 14); stroke(panel, GOLD, 2)
+local title = Instance.new("TextLabel"); title.Position = UDim2.fromOffset(14, 8); title.Size = UDim2.new(1, -70, 0, 28); title.BackgroundTransparency = 1
+title.FontFace = FONT; title.TextSize = 20; title.TextColor3 = GOLD; title.TextXAlignment = Enum.TextXAlignment.Left; title.Text = "Bella's beach finds"; title.ZIndex = 9; title.Parent = panel
+local closeBtn = Instance.new("TextButton"); closeBtn.AnchorPoint = Vector2.new(1, 0); closeBtn.Position = UDim2.new(1, -8, 0, 6); closeBtn.Size = UDim2.fromOffset(36, 32)
+closeBtn.BackgroundColor3 = C(170, 70, 50); closeBtn.BorderSizePixel = 0; closeBtn.FontFace = FONT; closeBtn.TextSize = 18; closeBtn.TextColor3 = CREAM; closeBtn.Text = "X"; closeBtn.ZIndex = 9; closeBtn.Parent = panel
+corner(closeBtn, 8)
+local findsRow = Instance.new("Frame"); findsRow.Position = UDim2.fromOffset(10, 42); findsRow.Size = UDim2.new(1, -20, 0, 58); findsRow.BackgroundTransparency = 1; findsRow.ZIndex = 9; findsRow.Parent = panel
+local dots = {}
+for i, k in ipairs(R.kinds) do
+	local cell = Instance.new("Frame"); cell.Size = UDim2.new(1 / #R.kinds, 0, 1, 0); cell.Position = UDim2.new((i - 1) / #R.kinds, 0, 0, 0); cell.BackgroundTransparency = 1; cell.ZIndex = 9; cell.Parent = findsRow
+	local d = Instance.new("Frame"); d.AnchorPoint = Vector2.new(0.5, 0); d.Position = UDim2.new(0.5, 0, 0, 2); d.Size = UDim2.fromOffset(22, k.glass and 22 or 18); d.BackgroundColor3 = k.colour; d.BorderSizePixel = 0; d.ZIndex = 10; d.Parent = cell
+	corner(d, k.glass and 11 or 6); stroke(d, k.rare and GOLD or C(90, 64, 40), 1.5)
+	local n = Instance.new("TextLabel"); n.AnchorPoint = Vector2.new(0.5, 0); n.Position = UDim2.new(0.5, 0, 0, 27); n.Size = UDim2.fromOffset(40, 16); n.BackgroundTransparency = 1
+	n.FontFace = FONT; n.TextSize = 14; n.TextColor3 = CREAM; n.Text = "0"; n.ZIndex = 10; n.Parent = cell
+	local s = Instance.new("TextLabel"); s.AnchorPoint = Vector2.new(0.5, 0); s.Position = UDim2.new(0.5, 0, 0, 42); s.Size = UDim2.fromOffset(46, 14); s.BackgroundTransparency = 1
+	s.FontFace = FONT; s.TextSize = 11; s.TextColor3 = C(220, 205, 180); s.Text = k.short; s.ZIndex = 10; s.Parent = cell
+	dots[k.id] = n
+end
+local rows = {}
+local ROW_Y, ROW_H = 106, 46
+for i, r in ipairs(R.recipes) do
+	local row = Instance.new("Frame"); row.Position = UDim2.fromOffset(10, ROW_Y + (i - 1) * ROW_H); row.Size = UDim2.new(1, -20, 0, ROW_H - 6)
+	row.BackgroundColor3 = C(78, 52, 28); row.BorderSizePixel = 0; row.ZIndex = 9; row.Parent = panel
+	corner(row, 10)
+	local nm = Instance.new("TextLabel"); nm.Position = UDim2.fromOffset(10, 3); nm.Size = UDim2.new(1, -130, 0, 18); nm.BackgroundTransparency = 1
+	nm.FontFace = FONT; nm.TextSize = 15; nm.TextColor3 = CREAM; nm.TextXAlignment = Enum.TextXAlignment.Left; nm.TextTruncate = Enum.TextTruncate.AtEnd; nm.Text = r.name; nm.ZIndex = 10; nm.Parent = row
+	local nd = Instance.new("TextLabel"); nd.Position = UDim2.fromOffset(10, 21); nd.Size = UDim2.new(1, -130, 0, 16); nd.BackgroundTransparency = 1
+	nd.FontFace = FONT; nd.TextSize = 12; nd.TextColor3 = C(220, 205, 180); nd.TextXAlignment = Enum.TextXAlignment.Left; nd.TextTruncate = Enum.TextTruncate.AtEnd; nd.Text = R.needsText(r); nd.ZIndex = 10; nd.Parent = row
+	local b = Instance.new("TextButton"); b.AnchorPoint = Vector2.new(1, 0.5); b.Position = UDim2.new(1, -8, 0.5, 0); b.Size = UDim2.fromOffset(112, 30)
+	b.BackgroundColor3 = GOLD; b.BorderSizePixel = 0; b.FontFace = FONT; b.TextSize = 14; b.TextColor3 = C(84, 48, 18); b.AutoButtonColor = false; b.ZIndex = 10; b.Parent = row
+	corner(b, 8)
+	b.MouseButton1Click:Connect(function() ev:FireServer("make", r.id) end)
+	rows[r.id] = {btn = b, name = nm}
+end
+local note = Instance.new("TextLabel"); note.Position = UDim2.fromOffset(12, ROW_Y + #R.recipes * ROW_H - 2); note.Size = UDim2.new(1, -24, 0, 22); note.BackgroundTransparency = 1
+note.FontFace = FONT; note.TextSize = 13; note.TextColor3 = C(220, 205, 180); note.TextScaled = true; note.Text = ""; note.ZIndex = 9; note.Parent = panel
+local function canMake(r)
+	if r.keep and item(r.keep) > 0 then return false, "made" end
+	for id, n in pairs(r.needs) do if item(id) < n then return false end end
+	return true
+end
+local function refresh()
+	for _, k in ipairs(R.kinds) do dots[k.id].Text = tostring(item(k.id)) end
+	for _, r in ipairs(R.recipes) do
+		local ok, why = canMake(r)
+		local b = rows[r.id].btn
+		if why == "made" then b.Text = "Yours"; b.BackgroundColor3 = GREEN; b.TextColor3 = CREAM
+		else
+			b.Text = r.keep and "Make & keep" or ("Make  " .. r.pay .. " acorns")
+			b.BackgroundColor3 = ok and GOLD or GREY; b.TextColor3 = ok and C(84, 48, 18) or C(120, 100, 80)
+		end
+	end
+end
+local function layout()
+	local v = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1280, 720)
+	local h = ROW_Y + #R.recipes * ROW_H + 24
+	panel.Size = UDim2.fromOffset(math.min(380, v.X - 24), math.min(h, v.Y - 16))
+end
+local open = false
+local function closePanel()
+	if not open then return end
+	open = false; panel.Visible = false
+	if pg:GetAttribute("OpenPanel") == "seaglass" then pg:SetAttribute("OpenPanel", nil) end
+end
+local function openPanel()
+	if pg:GetAttribute("OpenPanel") ~= nil and pg:GetAttribute("OpenPanel") ~= "seaglass" then return end
+	layout(); refresh(); note.Text = ""
+	open = true; panel.Visible = true; pg:SetAttribute("OpenPanel", "seaglass")
+	local any = false
+	for _, k in ipairs(R.kinds) do if item(k.id) > 0 then any = true break end end
+	say(any and "Ciao! Let me see what the sea gave you today." or "Ciao, I'm Bella! Bring me pretty things from the sand and we'll make something.", 4.5)
+end
+closeBtn.MouseButton1Click:Connect(closePanel)
+UIS.InputBegan:Connect(function(input, gp)
+	if open and not gp and input.KeyCode == Enum.KeyCode.Escape then closePanel() end
+end)
+-- walked away from Bella: the panel goes
+task.spawn(function()
+	while true do
+		task.wait(0.5)
+		if open then
+			local m, root = bella(), player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+			if not m or not root or (m:GetPivot().Position - root.Position).Magnitude > 16 then closePanel() end
+		end
+	end
+end)
+for _, k in ipairs(R.kinds) do player:GetAttributeChangedSignal("Item_" .. k.id):Connect(function() if open then refresh() end end) end
+player:GetAttributeChangedSignal("Item_parfum_bottle"):Connect(function() if open then refresh() end end)
+if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function() if open then layout() end end) end
+
+ev.OnClientEvent:Connect(function(what, a, b, c, d)
+	if what == "open" then openPanel()
+	elseif what == "found" then
+		local name, count, rare = b, c, d
+		showToast(string.format("%s! You have %d.", name, count), rare and 4 or 2.5)
+		if rare then say("Is that... the purple one?! Bring it to me!", 5) end
+	elseif what == "made" then
+		local name, pay, line = b, c, d
+		note.Text = pay > 0 and string.format("Bella pays %d acorns for the %s.", pay, name:lower()) or ("The " .. name:lower() .. " is yours to keep.")
+		say(line or "Bellissima!", 5)
+		refresh()
+	elseif what == "nope" then
+		note.Text = tostring(a)
+	end
+end)
+print("SeaGlassClient: ready")

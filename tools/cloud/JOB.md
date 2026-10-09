@@ -155,3 +155,27 @@ Creator Store search): "opera aria", "soprano", "opera duet", "Italian opera". P
 for use in this game (usable by this experience, not restricted), 20-90 s long, with a clear singing voice. Send one
 line each to the cloud session and to Shannon: id | title | length | why it fits. Do not place them in the game;
 Shannon previews them in Studio and picks one.
+
+## Job 17: the Italy passport page + Bella's beach game (Studio EDIT, one installer; ask Shannon first)
+
+What it does (all exact-string patches with guards, or new instances; originals -> ServerStorage.HudBackup.*_pre_italy):
+- Passport: 11 Porto outings added to the Catalogue (friends of the harbour / Via della Piazza / Groves, the harbour bell,
+  cappuccino, a lemon, Beppe's crabs, the funicular, the opera, the Grotta rescue, Bella's beach finds), their Journal
+  lines, their pictures (existing PassportArt models reused), progress lines on the Italy tab.
+- PolpoServer: its rescue now stamps porto_polpo instead of the French swamp "rescue".
+- New workspace.PortoPassport.PortoActivities: fires the outings (finds per area from FoundIds; cappuccino echo of
+  "coffee" in Porto; lemon and crab sales from the item ledger; the brass harbour bell's prompt; a funicular ride; a
+  "Listen" prompt + Sound 9042832054 on the opera singer).
+- New RS.PortoAreas module; new workspace.SeaGlass (server, client, Recipes, RemoteEvent, Pieces): sea glass and shells
+  on the sand round the seaglass squirrel (Bella), pickup prompts, Bella's prompt + panel, four recipes.
+1. Fetch and read:
+   https://raw.githubusercontent.com/selard73/Create-repository/claude/epic-hawking-188q4l/tools/porto/install_italy.lua
+   It refuses to run unless Catalogue is 7793, Journal 12486, PassportVisuals 3783 and PassportClient 27056 chars and
+   every find hits once; it compiles every patched Source and every new script before writing anything.
+2. Tell Shannon; with her yes run it (Edit mode, execute_luau). Send the `QQ ITA` line (or the ABORT line).
+3. Then a desktop play test as the owner, in Porto: (a) are there sea glass / shell pieces on the sand near the
+   seaglass squirrel (workspace.SeaGlass.Pieces should hold 8 "Find" models)? pick one up: toast + Item_<kind> +1;
+   (b) walk to the squirrel, use her prompt: the panel opens, Make buttons grey until you have the pieces;
+   (c) at the opera singer in the piazza: "Listen" plays the aria; (d) the harbour office bell: ring it;
+   (e) open the Passport, Porto Nocciola tab: the new outings listed, bell and opera stamped. Note any error in the
+   Output (first error verbatim). Stop the play test; Studio back to Edit. Send the findings. No publish.
