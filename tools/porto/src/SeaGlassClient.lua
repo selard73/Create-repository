@@ -131,7 +131,7 @@ local function layout()
 	inner.Size = UDim2.fromOffset(w, hh)
 	panel.Size = UDim2.fromOffset(w * s, hh * s)
 	panel.AnchorPoint = Vector2.new(1, 0.5)   -- anchored by its right edge (the construction line still said the centre; half of it hung off a phone - Oct 9)
-	panel.Position = UDim2.new(1, -14, 0.5, 0)   -- 14 px off the right edge on every screen (Shannon's phone: "zero space")
+	panel.Position = UDim2.new(1, phone() and -14 or -30, 0.5, 0)   -- 14 px off the right edge on a phone ("perfect"), 30 on a desktop ("a little to the left") - Shannon, Oct 9
 	task.defer(function()   -- and never past it, whatever the screen does
 		local over = panel.AbsolutePosition.X + panel.AbsoluteSize.X - (v.X - 2)
 		if over > 0 then panel.Position = panel.Position - UDim2.fromOffset(over, 0) end
@@ -176,7 +176,7 @@ local Debris = game:GetService("Debris")
 -- (Shannon: "behind her character, low and small"; "on top of everything ... big and prominent for a moment")
 local function screenReveal(src)
 	local v = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1280, 720)
-	local size = math.floor(math.min(v.Y * 0.64, v.X * 0.42))
+	local size = math.floor(math.min(v.Y * (phone() and 0.64 or 0.5), v.X * 0.42))   -- a phone needs most of its height; a desktop half
 	local vp = Instance.new("ViewportFrame"); vp.Name = "Reveal"; vp.AnchorPoint = Vector2.new(0.5, 0.5); vp.Position = UDim2.fromScale(0.5, 0.5); vp.Size = UDim2.fromOffset(size * 0.6, size * 0.6)
 	vp.BackgroundColor3 = BROWN; vp.BackgroundTransparency = 1; vp.ImageTransparency = 1; vp.ZIndex = 30
 	vp.Ambient = Color3.fromRGB(190, 180, 160); vp.LightColor = Color3.fromRGB(255, 240, 210); vp.LightDirection = Vector3.new(-0.6, -1, -0.4)
@@ -206,7 +206,7 @@ end
 local function reveal(id)
 	local ok, m = pcall(R.build, id)
 	if not ok or not m then return end
-	if phone() then pcall(screenReveal, m:Clone()) end   -- a phone: big and on top; the world one below carries on (and its sound)
+	if not UIS.VREnabled then pcall(screenReveal, m:Clone()) end   -- every flat screen (desktop too - Shannon): big and on top; the world one below carries on (and its sound); VR keeps the world one
 	local root = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
 	local cam = workspace.CurrentCamera
 	local base = root and (root.CFrame * CFrame.new(-1.7, 0.6, -3.0)) or (cam and cam.CFrame * CFrame.new(-1.2, -0.8, -5)) or CFrame.new()   -- left and low: clear of her bubble (Oct 9)

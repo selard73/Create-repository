@@ -458,3 +458,10 @@ middle of the screen (ViewportFrame, ZIndex 30) for five seconds, then fades; th
 HudBackup.SeaGlassClient_pre_seaglass9. Send the `QQ SG9` line. No publish.
 Result job 52: QQ SG9 DONE 15822 -> 18296; backup HudBackup.SeaGlassClient_pre_seaglass9. Not published; Shannon tests in the phone simulator.
 Shannon (phone simulator): "Bella is perfect on the phone now."
+
+## Job 53: Bella's reveal window on desktop too; panel 30 px in on a desktop (Studio EDIT; ask Shannon first)
+
+Shannon on desktop: "make the same change for the reveal that we did on phone, you cannot see the reveal; edge the picker
+modal a little to the left". tools/porto/seaglass10.lua (SeaGlassClient after job 52, about 18296 chars, 3 finds): the
+reveal window on every flat screen (VR keeps the world reveal), half the screen height on a desktop; the panel 30 px in on
+a desktop (14 on a phone, "perfect"). Backup HudBackup.SeaGlassClient_pre_seaglass10. Send the `QQ SG10` line. No publish.
