@@ -1,16 +1,17 @@
 -- balloon/field_ground1 (job 47): EDIT mode, terrain. Shannon (Oct 9): "if I turn the camera in a certain direction on
--- this part of land I can see under the ground" (the balloon field, the far shore). Looks for hollows under the field's
--- ground: 80 studs each way round BalloonField.Center, from 36 studs under the grass to 12 above, in 4-stud voxels. In
--- every column the top solid voxel is the cap; each air voxel under it is filled with the cap's material, down to solid
--- rock, the sea (water is left as it is; it runs under the shore) or the bottom of the box. Reads first and writes nothing
--- if there is no hollow. Backup before writing: ServerStorage.HudBackup.FieldGround_pre1 (a TerrainRegion; undo =
+-- this part of land I can see under the ground" (the balloon field, the far shore). Thickens the ground under the field:
+-- 80 studs each way round BalloonField.Center, from 24 studs under the grass to 12 above, in 4-stud voxels. In every
+-- column the top solid voxel is the cap; the three voxels under it (12 studs) are made solid in the cap's material where
+-- they are air, and deeper air that has rock under it again (a pocket) is filled too. Water ends a column (the sea runs
+-- under the shore); the void under the whole land mass is left alone. Reads first and writes nothing if there is nothing
+-- to fill. Backup before writing: ServerStorage.HudBackup.FieldGround_pre1 (a TerrainRegion; undo =
 -- workspace.Terrain:PasteRegion(it, Vector3int16.new(it:GetAttribute("CX"), it:GetAttribute("CY"), it:GetAttribute("CZ")), true)).
 -- Output lines "QQ GROUND".
 if game:GetService("RunService"):IsRunning() then warn("QQ GROUND ABORT - Play mode") return end
 local T = workspace.Terrain
 local F = workspace:FindFirstChild("BalloonField")
 local C = F and F:GetAttribute("Center") or Vector3.new(106, -48.5, -648)
-local R, DOWN, UP = 80, 36, 12
+local R, DOWN, UP, CRUST = 80, 24, 12, 3   -- CRUST: voxels under the cap kept solid
 local region = Region3.new(Vector3.new(C.X - R, C.Y - DOWN, C.Z - R), Vector3.new(C.X + R, C.Y + UP, C.Z + R)):ExpandToGrid(4)
 local mats, occs = T:ReadVoxels(region, 4)
 local size = mats.Size
@@ -19,12 +20,13 @@ local Air, Water = Enum.Material.Air, Enum.Material.Water
 local filled, hollowCols, lowY, highY, examples = 0, 0, math.huge, -math.huge, {}
 for x = 1, size.X do
 	for z = 1, size.Z do
-		local capMat, colFilled = nil, 0
+		local capMat, capY, colFilled, lowestSolid = nil, nil, 0, nil
+		for y = 1, size.Y do local m, o = mats[x][y][z], occs[x][y][z]; if m ~= Air and m ~= Water and o > 0 then lowestSolid = y break end end
 		for y = size.Y, 1, -1 do
 			local m, o = mats[x][y][z], occs[x][y][z]
 			if m == Water then capMat = nil   -- the sea under the shore: leave it, and whatever lies under it
-			elseif m ~= Air and o > 0 then capMat = capMat or m   -- the cap (the first solid voxel from the top), or rock under it
-			elseif capMat then   -- air under the cap: a hollow
+			elseif m ~= Air and o > 0 then if not capMat then capMat, capY = m, y end   -- the cap (the first solid voxel from the top), or rock under it
+			elseif capMat and (capY - y <= CRUST or (lowestSolid and y > lowestSolid)) then   -- air in the crust under the cap, or a pocket with rock below
 				mats[x][y][z] = capMat; occs[x][y][z] = 1
 				filled += 1; colFilled += 1
 				local wy = lo.Y + (y - 0.5) * 4
@@ -35,7 +37,7 @@ for x = 1, size.X do
 		if colFilled > 0 then hollowCols += 1 end
 	end
 end
-print(string.format("QQ GROUND box %s..%s (%dx%dx%d voxels): %d columns, %d with a hollow, %d air voxels under a cap", tostring(lo), tostring(lo + region.Size), size.X, size.Y, size.Z, size.X * size.Z, hollowCols, filled))
+print(string.format("QQ GROUND box %s..%s (%dx%dx%d voxels): %d columns, %d with a hollow, %d air voxels in the crust or a pocket", tostring(lo), tostring(lo + region.Size), size.X, size.Y, size.Z, size.X * size.Z, hollowCols, filled))
 if filled == 0 then print("QQ GROUND DONE: nothing to fill - no air under the ground here; the see-through is something else (tell the cloud session where you stand and which way you look)") return end
 local SS = game:GetService("ServerStorage")
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS

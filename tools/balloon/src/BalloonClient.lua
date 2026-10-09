@@ -263,8 +263,9 @@ local function smoothStart()
 	smooth = {basket = b, parts = parts, samples = {}, written = nil, shown = nil}
 end
 local function smoothStop()
-	local S = smooth; smooth = nil
-	if S and #S.samples > 0 and S.basket.Parent then smoothWrite(S, S.samples[#S.samples][2]) end   -- land on the newest server position (home, under the black)
+	-- nothing is written here: the server's home position comes down the same stream as the "home" event, properties first,
+	-- so by now the parts hold it (writing our newest sample over it would leave the balloon in the sky - review, Oct 9)
+	smooth = nil
 end
 local function smoothSample(S, now)
 	local cf = S.basket.CFrame
@@ -280,7 +281,7 @@ local function smoothStep(advance)
 	smoothSample(S, now)
 	local n = #S.samples
 	if n == 0 then return end
-	if now - S.samples[n][1] > 2 then smoothStop() return end   -- nothing from the server for two seconds: the flight is over
+	if now - S.samples[n][1] > 2 then smoothWrite(S, S.samples[n][2]); smoothStop() return end   -- nothing from the server for two seconds: the flight is over; sit on its last position
 	if not advance then if S.shown then smoothWrite(S, S.shown) end return end
 	local r = now - num("SmoothDelay", 0.1)
 	local show
