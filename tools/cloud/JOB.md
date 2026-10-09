@@ -457,3 +457,4 @@ bubble's anchor is a third of the way down the screen; on a phone the reveal als
 middle of the screen (ViewportFrame, ZIndex 30) for five seconds, then fades; the world reveal and its sound stay. Backup
 HudBackup.SeaGlassClient_pre_seaglass9. Send the `QQ SG9` line. No publish.
 Result job 52: QQ SG9 DONE 15822 -> 18296; backup HudBackup.SeaGlassClient_pre_seaglass9. Not published; Shannon tests in the phone simulator.
+Shannon (phone simulator): "Bella is perfect on the phone now."
