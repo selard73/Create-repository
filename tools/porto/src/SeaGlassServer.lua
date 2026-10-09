@@ -152,7 +152,7 @@ if pearlKind then
 		pr.ActionText = "Take the pearl"
 		pr.Triggered:Connect(function(p)
 			if taking[m] or not m.Parent then return end
-			if item(p, "pearl") >= 1 then ev:FireClient(p, "toast", "You already found the pearl. Bella can make a shell box for it!") return end
+			if item(p, "pearl") >= 1 then ev:FireClient(p, "toast", "You already have the pearl. Bella pays well for it in a box of shells!") return end
 			taking[m] = true
 			awardItems:Fire(p, "pearl", 1)
 			ev:FireClient(p, "found", "pearl", pearlKind.name, 1, true)

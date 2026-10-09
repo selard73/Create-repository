@@ -135,7 +135,6 @@ task.spawn(function()
 end)
 for _, k in ipairs(R.kinds) do player:GetAttributeChangedSignal("Item_" .. k.id):Connect(function() if open then refresh() end end) end
 player:GetAttributeChangedSignal("Item_parfum_bottle"):Connect(function() if open then refresh() end end)
-player:GetAttributeChangedSignal("Item_shell_box"):Connect(function() if open then refresh() end end)
 if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function() if open then layout() end end) end
 
 -- the reveal (Oct 9 2026): what Bella made with you rises and spins in front of you, sparkling, then fades

@@ -21,8 +21,8 @@ local PATCHES = {{Rc, "Recipes", {{[===[
 }
 ]===], [===[
 		line = "The purple one! A bottle like this deserves a scent of its own. Keep it safe for France."},
-	{id = "shellbox", name = "Shell box with a pearl", needs = {shell_scallop = 2, shell_spiral = 1, shell_cowrie = 1, pearl = 1}, keep = "shell_box",
-		line = "A pearl from the Grotta! It needs a box of shells to live in. Keep it with your treasures."},
+	{id = "shellbox", name = "Shell box with a pearl", needs = {shell_scallop = 2, shell_spiral = 1, shell_cowrie = 1, pearl = 1}, pay = 150,
+		line = "A pearl from the Grotta! In a box of shells it is worth a fortune. My finest piece yet!"},
 }
 ]===]}, {[===[
 function R.needsText(r)
@@ -140,11 +140,6 @@ ev.OnClientEvent:Connect(function(what, a, b, c, d)
 ]===], [===[
 	elseif what == "toast" then showToast(tostring(a), 4)
 	elseif what == "nope" then
-]===]}, {[===[
-player:GetAttributeChangedSignal("Item_parfum_bottle"):Connect(function() if open then refresh() end end)
-]===], [===[
-player:GetAttributeChangedSignal("Item_parfum_bottle"):Connect(function() if open then refresh() end end)
-player:GetAttributeChangedSignal("Item_shell_box"):Connect(function() if open then refresh() end end)
 ]===]}}}, {Sv, "SeaGlassServer", {{[===[
 	else
 		body.Shape = Enum.PartType.Ball; body.Size = Vector3.new(0.42, 0.26, 0.3); body.Material = Enum.Material.SmoothPlastic; body.Reflectance = 0.1
@@ -183,7 +178,7 @@ if pearlKind then
 		pr.ActionText = "Take the pearl"
 		pr.Triggered:Connect(function(p)
 			if taking[m] or not m.Parent then return end
-			if item(p, "pearl") >= 1 then ev:FireClient(p, "toast", "You already found the pearl. Bella can make a shell box for it!") return end
+			if item(p, "pearl") >= 1 then ev:FireClient(p, "toast", "You already have the pearl. Bella pays well for it in a box of shells!") return end
 			taking[m] = true
 			awardItems:Fire(p, "pearl", 1)
 			ev:FireClient(p, "found", "pearl", pearlKind.name, 1, true)

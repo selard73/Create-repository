@@ -8,7 +8,7 @@ The made thing is built from parts (Recipes gets R.build) and shown in the WORLD
 it with the control panel closed): it rises, spins, sparkles and glows for five seconds, with the gallery's chime, then
 fades. The pearl is a new kind that never lies on a beach (weight 0): one open oyster at the back of the Grotta Azzurra
 behind Polpo's cages (job 31b survey: back ledge x 500..522, cages at y -48), one pearl per player (Item_pearl), the
-oyster back PearlRespawn seconds after a pickup. New recipe "Shell box with a pearl" (keep: Item_shell_box).
+oyster back PearlRespawn seconds after a pickup. New recipe "Shell box with a pearl" (sells for 150 acorns: the pearl makes it the dearest piece).
 Patches workspace.SeaGlass.Recipes (2701 chars), SeaGlassClient (10622, the job 18 text) and SeaGlassServer (9327, the
 job 32 text) by exact finds; originals -> ServerStorage.HudBackup.*_pre_seaglass3. Run from the repo root.
 """
@@ -24,8 +24,8 @@ _rec0 = (SRC / "SeaGlassRecipes.lua").read_text(encoding="utf-8")
 REC_K_F = re.search(r'\t\{id = "shell_cowrie",[^\n]*\n\}\n', _rec0).group(0)      # the last kind line and the table's closing brace, as the file spells them
 REC_K_R = REC_K_F[:-2] + '\t{id = "pearl",          name = "Pearl",             short = "pearl",   colour = Color3.fromRGB(246, 242, 236), pearl = true, weight = 0, rare = true},   -- never on a beach: one oyster at the back of the Grotta (Oct 9 2026)\n}\n'
 REC_P_F = re.search(r'\t\tline = "The purple one![^\n]*\n\}\n', _rec0).group(0)
-REC_P_R = REC_P_F[:-2] + ('\t{id = "shellbox", name = "Shell box with a pearl", needs = {shell_scallop = 2, shell_spiral = 1, shell_cowrie = 1, pearl = 1}, keep = "shell_box",\n'
-           '\t\tline = "A pearl from the Grotta! It needs a box of shells to live in. Keep it with your treasures."},\n}\n')
+REC_P_R = REC_P_F[:-2] + ('\t{id = "shellbox", name = "Shell box with a pearl", needs = {shell_scallop = 2, shell_spiral = 1, shell_cowrie = 1, pearl = 1}, pay = 150,\n'
+           '\t\tline = "A pearl from the Grotta! In a box of shells it is worth a fortune. My finest piece yet!"},\n}\n')
 REC_B_F = "function R.needsText(r)\n"
 REC_B_R = '''-- what each thing looks like (Oct 9 2026, the reveal): a Model of anchored parts round a hidden Core at its middle
 local function part(m, shape, size, colour, material, cf, transparency)
@@ -133,7 +133,7 @@ CL_F4 = '\telseif what == "nope" then\n'
 CL_R4 = '\telseif what == "toast" then showToast(tostring(a), 4)\n\telseif what == "nope" then\n'
 CL_F5 = 'player:GetAttributeChangedSignal("Item_parfum_bottle"):Connect(function() if open then refresh() end end)\n'
 CL_R5 = CL_F5 + 'player:GetAttributeChangedSignal("Item_shell_box"):Connect(function() if open then refresh() end end)\n'
-CLIENT = [(CL_F1, CL_R1), (CL_F2, CL_R2), (CL_F3, CL_R3), (CL_F4, CL_R4), (CL_F5, CL_R5)]
+CLIENT = [(CL_F1, CL_R1), (CL_F2, CL_R2), (CL_F3, CL_R3), (CL_F4, CL_R4)]   # (the shell box sells; no keep item to watch)
 
 # ---------------- SeaGlassServer ----------------
 SV_F1 = '\telse\n\t\tbody.Shape = Enum.PartType.Ball; body.Size = Vector3.new(0.42, 0.26, 0.3); body.Material = Enum.Material.SmoothPlastic; body.Reflectance = 0.1\n'
@@ -167,7 +167,7 @@ if pearlKind then
 		pr.ActionText = "Take the pearl"
 		pr.Triggered:Connect(function(p)
 			if taking[m] or not m.Parent then return end
-			if item(p, "pearl") >= 1 then ev:FireClient(p, "toast", "You already found the pearl. Bella can make a shell box for it!") return end
+			if item(p, "pearl") >= 1 then ev:FireClient(p, "toast", "You already have the pearl. Bella pays well for it in a box of shells!") return end
 			taking[m] = true
 			awardItems:Fire(p, "pearl", 1)
 			ev:FireClient(p, "found", "pearl", pearlKind.name, 1, true)

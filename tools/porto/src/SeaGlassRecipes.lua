@@ -24,8 +24,8 @@ R.recipes = {
 		line = "Mosaic all the way round, with a scallop for the front. My best seller!"},
 	{id = "parfum", name = "Parfum bottle", needs = {seaglass_purple = 1, seaglass_white = 2, seaglass_blue = 1}, keep = "parfum_bottle",
 		line = "The purple one! A bottle like this deserves a scent of its own. Keep it safe for France."},
-	{id = "shellbox", name = "Shell box with a pearl", needs = {shell_scallop = 2, shell_spiral = 1, shell_cowrie = 1, pearl = 1}, keep = "shell_box",
-		line = "A pearl from the Grotta! It needs a box of shells to live in. Keep it with your treasures."},
+	{id = "shellbox", name = "Shell box with a pearl", needs = {shell_scallop = 2, shell_spiral = 1, shell_cowrie = 1, pearl = 1}, pay = 150,
+		line = "A pearl from the Grotta! In a box of shells it is worth a fortune. My finest piece yet!"},
 }
 R.byRecipe = {}
 for _, r in ipairs(R.recipes) do R.byRecipe[r.id] = r end
