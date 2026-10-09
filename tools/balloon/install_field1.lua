@@ -42,7 +42,7 @@ F:SetAttribute("Center", Vector3.new(106, -48.5, -648)); F:SetAttribute("Need", 
 F:SetAttribute("PadYours", Vector3.new(72, 0, -646)); F:SetAttribute("ShowBalloons", false); F:SetAttribute("GustLean", 18); F:SetAttribute("PadYaw", 70); F:SetAttribute("PadTethered", Vector3.new(128, 0, -676))
 F:SetAttribute("DriftCenter", Vector3.new(190, 18, -650)); F:SetAttribute("DriftRadius", 55); F:SetAttribute("DriftHeights", "18,33"); F:SetAttribute("DriftPeriods", "150,110")
 F:SetAttribute("RiseHeight", 85); F:SetAttribute("RiseTime", 16); F:SetAttribute("HoverTime", 8); F:SetAttribute("GustTime", 18); F:SetAttribute("StormTime", 12); F:SetAttribute("SignTime", 6)
-F:SetAttribute("GustDir", Vector3.new(0.45, 0, -1)); F:SetAttribute("GustSpeed", 22); F:SetAttribute("ThunderSoundId", 92640524897440); F:SetAttribute("WindSoundId", 0)
+F:SetAttribute("GustDir", Vector3.new(0.45, 0, -1)); F:SetAttribute("GustSpeed", 22); F:SetAttribute("ThunderSoundId", 92640524897440); F:SetAttribute("StormSoundId", 74201402219129); F:SetAttribute("WindSoundId", 0)
 for k, v in pairs(keep) do F:SetAttribute(k, v) end
 local sv = Instance.new("Script"); sv.Name = "BalloonServer"; sv.RunContext = Enum.RunContext.Server; sv.Source = [===[
 -- BalloonServer (workspace.BalloonField): the hot air balloon field on the far shore across the harbour (Shannon, Oct 9
@@ -373,6 +373,7 @@ wind.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.55), Num
 wind.LightEmission = 0.4; wind.Orientation = Enum.ParticleOrientation.VelocityParallel; wind.Squash = NumberSequence.new(-1.6)
 windPart = Instance.new("Part"); windPart.Name = "WindSource"; windPart.Anchored = true; windPart.CanCollide = false; windPart.CanQuery = false; windPart.Transparency = 1; windPart.Size = Vector3.new(14, 10, 1); wind.Parent = windPart; windPart.Parent = workspace
 local storming = false
+local stormSound = nil   -- the storm's own sound (StormSoundId, Shannon's pick), looped from the clouds closing in until home
 local clouds = workspace.Terrain:FindFirstChildOfClass("Clouds")
 local function bolt(near)
 	-- a jagged bolt of Neon parts from the clouds down towards the sea, gone in a blink
@@ -391,6 +392,11 @@ end
 local function stormOn(secs)
 	if not saved then saved = {FogEnd = Lighting.FogEnd, FogStart = Lighting.FogStart, FogColor = Lighting.FogColor, Brightness = Lighting.Brightness, Ambient = Lighting.Ambient, OutdoorAmbient = Lighting.OutdoorAmbient,
 		density = atmo and atmo.Density, haze = atmo and atmo.Haze, color = atmo and atmo.Color, cover = clouds and clouds.Cover, cdensity = clouds and clouds.Density, ccolor = clouds and clouds.Color} end
+	local sid = num("StormSoundId", 0)
+	if sid > 0 and not stormSound then
+		stormSound = Instance.new("Sound"); stormSound.SoundId = "rbxassetid://" .. tostring(sid); stormSound.Looped = true; stormSound.Volume = 0; stormSound.Parent = SoundService; stormSound:Play()
+		TweenService:Create(stormSound, TweenInfo.new(4), {Volume = 0.6}):Play()
+	end
 	-- clouds close in first, then the light goes, then the fog
 	if clouds then TweenService:Create(clouds, TweenInfo.new(7, Enum.EasingStyle.Sine), {Cover = 1, Density = 1, Color = Color3.fromRGB(70, 72, 80)}):Play() end
 	TweenService:Create(Lighting, TweenInfo.new(9, Enum.EasingStyle.Sine), {Brightness = 0.35, OutdoorAmbient = Color3.fromRGB(55, 58, 68), FogColor = Color3.fromRGB(96, 100, 110)}):Play()
@@ -425,6 +431,7 @@ local function stormOff()
 	if atmo then TweenService:Create(atmo, TweenInfo.new(3, Enum.EasingStyle.Sine), {Density = saved.density, Haze = saved.haze, Color = saved.color}):Play() end
 	if clouds and saved.cover ~= nil then TweenService:Create(clouds, TweenInfo.new(4, Enum.EasingStyle.Sine), {Cover = saved.cover, Density = saved.cdensity, Color = saved.ccolor}):Play() end
 	wind.Enabled = false
+	if stormSound then local s = stormSound; stormSound = nil; TweenService:Create(s, TweenInfo.new(3), {Volume = 0}):Play(); game:GetService("Debris"):AddItem(s, 3.5) end
 	saved = nil
 end
 
