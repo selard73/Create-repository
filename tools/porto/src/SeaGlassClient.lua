@@ -20,9 +20,29 @@ local function item(id) return tonumber(player:GetAttribute("Item_" .. id)) or 0
 local function corner(o, r) local c = Instance.new("UICorner") c.CornerRadius = UDim.new(0, r) c.Parent = o end
 local function stroke(o, col, th) local s = Instance.new("UIStroke") s.Color = col s.Thickness = th s.Parent = o return s end
 local function bella() return workspace:FindFirstChild("seaglass_squirrel_color") end
+local open = false
+local phoneAnchor   -- a phone: Bella's words pinned to the left of the screen (an invisible part her bubble follows), clear of the panel (Oct 9)
+local function phone() local cam = workspace.CurrentCamera; return UIS.TouchEnabled and cam ~= nil and cam.ViewportSize.Y < 560 end
 local function say(line, secs)
 	local m = bella()
-	if Bubble and m then pcall(function() Bubble.say(m, line, {secs = secs or 4.5}) end) end
+	if not (Bubble and m) then return end
+	if open and phone() then
+		local cam = workspace.CurrentCamera
+		if not (phoneAnchor and phoneAnchor.Parent) then
+			phoneAnchor = Instance.new("Part"); phoneAnchor.Name = "BellaWordsAnchor"; phoneAnchor.Anchored = true; phoneAnchor.CanCollide = false; phoneAnchor.CanQuery = false; phoneAnchor.CanTouch = false
+			phoneAnchor.Transparency = 1; phoneAnchor.CastShadow = false; phoneAnchor.Size = Vector3.new(0.05, 0.05, 0.05); phoneAnchor.Parent = cam
+			local conn; conn = game:GetService("RunService").RenderStepped:Connect(function()
+				if not (phoneAnchor and phoneAnchor.Parent) then conn:Disconnect() return end
+				local c = workspace.CurrentCamera; if not c then return end
+				local v = c.ViewportSize
+				local ray = c:ScreenPointToRay(v.X * 0.17, v.Y * 0.5)   -- the bubble's middle: a sixth of the way in, mid-height
+				phoneAnchor.CFrame = CFrame.new(ray.Origin + ray.Direction * 6 - Vector3.new(0, 1.5, 0))
+			end)
+		end
+		pcall(function() Bubble.say(phoneAnchor, line, {secs = secs or 4.5}) end)
+		return
+	end
+	pcall(function() Bubble.say(m, line, {secs = secs or 4.5}) end)
 end
 
 local gui = Instance.new("ScreenGui"); gui.Name = "SeaGlassGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 16; gui.Parent = pg
@@ -104,8 +124,8 @@ local function layout()
 	local sc = panel:FindFirstChild("PhoneScale") or Instance.new("UIScale"); sc.Name = "PhoneScale"; sc.Parent = panel
 	local s = math.clamp((v.Y - 130) / h, 0.6, 1); sc.Scale = s -- a phone keeps the top HUD bar and the jump button clear
 	panel.Size = UDim2.fromOffset(math.min(380, (v.X - 24) / s), math.min(h, (v.Y - 16) / s))
+	panel.Position = UDim2.new(1, phone() and -4 or -14, 0.5, 0)   -- a phone: hard against the right edge (Oct 9)
 end
-local open = false
 local function closePanel()
 	if not open then return end
 	open = false; panel.Visible = false
@@ -147,6 +167,7 @@ local function reveal(id)
 	local root = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
 	local cam = workspace.CurrentCamera
 	local base = root and (root.CFrame * CFrame.new(-1.7, 0.6, -3.0)) or (cam and cam.CFrame * CFrame.new(-1.2, -0.8, -5)) or CFrame.new()   -- left and low: clear of her bubble (Oct 9)
+	if phone() and cam then local bm = bella(); local d = bm and (bm:GetPivot().Position - cam.CFrame.Position).Magnitude or 8; base = cam.CFrame * CFrame.new(0, -0.9, -math.max(3.5, d - 2.5)) end   -- a phone: dead centre, just in front of Bella (Oct 9)
 	local look = cam and Vector3.new(cam.CFrame.LookVector.X, 0, cam.CFrame.LookVector.Z) or Vector3.new(0, 0, -1)
 	if look.Magnitude > 0.01 then base = CFrame.new(base.Position, base.Position - look.Unit) end
 	local core = m.PrimaryPart

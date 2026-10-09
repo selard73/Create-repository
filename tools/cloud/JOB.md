@@ -388,3 +388,12 @@ fix (wind.Enabled before wind exists). Run tools/balloon/install_field1.lua in f
 it now measures the Faro's lantern -> attribute LightAt). Send the `QQ FIELD` line including "lantern ... from ...". No publish.
 Result: applied in place (runner): BalloonClient 26755 / BalloonServer 10373; lantern (520, 71.7, -1178) from
 PortoNocciola."14 Lighthouse coast"."Faro di Porto Nocciola"."Lantern roof"; backup HudBackup.BalloonClient_pre_fbd12c5. Not published.
+
+## Job 48: Bella's game on a phone (Studio EDIT; ask Shannon first)
+
+Shannon (mobile): "the speech bubble is still behind the picker screen and the reveal is behind the speech bubble ... picker
+to the far right, speech bubble to the left (ok over the hint and medal bar for a moment), reveal in the middle".
+tools/porto/seaglass6.lua: on a phone (touch, viewport under 560 high) with the panel open, Bella's words sit at the left of
+the screen (her bubble follows an invisible anchor held there), the reveal rises in the middle just in front of her, the
+panel hugs the right edge. Desktop/tablet/VR unchanged. Four exact finds, length about 13331 (±60), backup
+HudBackup.SeaGlassClient_pre_seaglass6. Send the `QQ SG6` line. No publish.
