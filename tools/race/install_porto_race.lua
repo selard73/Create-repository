@@ -65,7 +65,7 @@ local build = function(opts)
 	for _, dy in ipairs({-1.72, 1.72}) do part("Trim", Vector3.new(0.3, 0.25, 12.6), CFrame.new(GX, g + 8.3 + dy, GZ), GOLD, Enum.Material.SmoothPlastic, gate).CanCollide = false end
 	for _, face in ipairs({Enum.NormalId.Left, Enum.NormalId.Right}) do
 		local sg = Instance.new("SurfaceGui"); sg.Face = face; sg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud; sg.PixelsPerStud = 40; sg.LightInfluence = 0.2; sg.Parent = banner
-		local t1 = text(sg, "FOREST RACE", 62, CREAM, 8, 70); local st = Instance.new("UIStroke"); st.Color = C(30, 60, 36); st.Thickness = 3; st.Parent = t1
+		local t1 = text(sg, "PIAZZA RACE", 62, CREAM, 8, 70); local st = Instance.new("UIStroke"); st.Color = C(30, 60, 36); st.Thickness = 3; st.Parent = t1
 		text(sg, "race the clock - find all 15 squirrels", 26, C(255, 226, 150), 80, 34)
 	end
 	for i = 0, 12 do                                          -- the chequered start line
@@ -97,7 +97,7 @@ local build = function(opts)
 	face.CanCollide = false
 	local sg = Instance.new("SurfaceGui"); sg.Name = "Board"; sg.Face = Enum.NormalId.Left; sg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
 	sg.PixelsPerStud = 50; sg.LightInfluence = 0.3; sg.Parent = face
-	text(sg, "FASTEST IN THE FOREST", 34, C(84, 48, 18), 6, 40)
+	text(sg, "FASTEST IN THE PIAZZA", 34, C(84, 48, 18), 6, 40)
 	text(sg, "all 15 squirrels of the Via della Piazza, against the clock", 17, C(130, 96, 60), 44, 22, Enum.Font.Merriweather)
 	for i = 1, 10 do
 		local row = Instance.new("Frame"); row.Name = "Row" .. i; row.BackgroundTransparency = (i % 2 == 0) and 1 or 0.9; row.BackgroundColor3 = C(200, 170, 120)
@@ -174,7 +174,7 @@ local F = script.Parent
 local ev = RS:WaitForChild("PortoRaceEvent")
 local awardItems = RS:WaitForChild("AwardItems")
 local awardAcorns = RS:WaitForChild("AwardAcorns")
-local MAP = F:GetAttribute("Map") or "forest"
+local MAP = F:GetAttribute("Map") or "porto_borgo"
 local Registry = require(workspace:WaitForChild("SquirrelScripts"):WaitForChild("SquirrelRegistry"))
 local isRace = {}
 local Areas = require(RS:WaitForChild("PortoAreas"))   -- the fifteen of the Via della Piazza (PortoAreas.lists.borgo)
