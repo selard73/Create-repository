@@ -465,3 +465,22 @@ Shannon on desktop: "make the same change for the reveal that we did on phone, y
 modal a little to the left". tools/porto/seaglass10.lua (SeaGlassClient after job 52, about 18296 chars, 3 finds): the
 reveal window on every flat screen (VR keeps the world reveal), half the screen height on a desktop; the panel 30 px in on
 a desktop (14 on a phone, "perfect"). Backup HudBackup.SeaGlassClient_pre_seaglass10. Send the `QQ SG10` line. No publish.
+
+## Job 54: the balloon in VR - stand-off camera, notes in the world (Studio EDIT, client in place; ask Shannon first)
+
+Shannon (VR): the ride's view "tied directly to the player ... very close up to the basket, cannot zoom out or reorient";
+the notes "super super tiny". BalloonClient (tools/balloon/install_field1.lua, client only; server unchanged): in a
+headset the flight's camera stands 30 studs off the balloon, a little above, turning slowly round it; a flick of the right
+thumbstick turns it 30 degrees; normal camera again on the ground (attributes VRCamDistance 30 / VRCamHeight 4 to tune).
+The ride's words are a sign over the basket; the 44th-squirrel word is a card in front of you that floats up; BalloonGui
+is marked VRWindowSkip. Flat screens unchanged. `QQ FIELD` line. No publish.
+
+## Job 55: squirrel speech bubbles beside the speaker's head in VR (Studio EDIT; ask Shannon first)
+
+Shannon (VR): "the speech bubbles do not work well with the head turn thing either, better just have those come up beside
+the speaker's head in the game only". tools/bubble/bubble_vr1.lua patches ReplicatedStorage.SquirrelBubble (expects 5785
+chars = the repo copy; 1 find): in a headset the same paper bubble is a BillboardGui up and to the right of the speaker's
+head; flat screens unchanged. Backup HudBackup.SquirrelBubble_pre_vr1. Send the `QQ BUB` line. No publish.
+
+Next (not built yet; Shannon's bigger VR ask): the pop-ups that are not game things (the picker, the control panel, the
+rest of the VR window) grabbable with the controller and left where she puts them, instead of following the head.

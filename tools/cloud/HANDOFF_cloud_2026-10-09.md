@@ -83,3 +83,6 @@ The runner: send_message to its session id (bridge:session_01FmVm5n3mKMAfYwLsZWt
 - Dresses from the French map on her new avatar: "that avatar had no arms when I put on the dress". Revisit the dress
   shop's wear code (village/dresses/build_dressshop.lua: what it hides or replaces on the character) against other body
   types / bundles; make sure nothing looks weird on any avatar. Not started; she said "save that idea for later".
+- VR UI (Shannon, Oct 9 night): the head-following VR window "is not a good technique". Done so far: the balloon's notes and
+  the squirrel bubbles are world things in VR (jobs 54, 55). To do: make the VR window / panels grabbable with the
+  controller (point + grip to drag; stays where put; re-grab to move), so the picker and the rest sit where she wants them.

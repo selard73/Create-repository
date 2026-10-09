@@ -301,7 +301,7 @@ end)
 
 -- ---------- screen and world text ----------
 local pg = player:WaitForChild("PlayerGui")
-local gui = Instance.new("ScreenGui"); gui.Name = "BalloonGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 17; gui.Parent = pg
+local gui = Instance.new("ScreenGui"); gui.Name = "BalloonGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 17; gui:SetAttribute("VRWindowSkip", true); gui.Parent = pg   -- (in VR everything here is a world thing instead)
 local toast = Instance.new("TextLabel"); toast.AnchorPoint = Vector2.new(0.5, 0); toast.Position = UDim2.new(0.5, 0, 0, 92); toast.Size = UDim2.fromOffset(420, 36)
 toast.BackgroundColor3 = Color3.fromRGB(255, 246, 220); toast.TextColor3 = Color3.fromRGB(58, 36, 16); toast.Font = Enum.Font.GothamBold; toast.TextSize = 16
 toast.TextWrapped = true; toast.Visible = false; toast.Parent = gui
@@ -313,7 +313,25 @@ sign.BackgroundColor3 = Color3.fromRGB(255, 246, 220); sign.BackgroundTransparen
 sign.Text = "To Be Continued\nMore to come soon"; sign.Visible = false; sign.ZIndex = 21; sign.Parent = gui
 local sc = Instance.new("UICorner"); sc.CornerRadius = UDim.new(0, 14); sc.Parent = sign
 local toastUntil = 0
+-- VR: a note is a sign in the world, not screen text (Shannon: the screen notes were "super super tiny ... you might not see
+-- it at all"): the ride's words hang over the basket, where you are or where you look from
+local rideNote, rideNoteText = nil, nil
+local function vrNote(text, secs)
+	local b = yours and yours:FindFirstChild("Basket", true)
+	if not b then return end
+	if not (rideNote and rideNote.Parent) then
+		rideNote = Instance.new("BillboardGui"); rideNote.Name = "RideNote"; rideNote.Size = UDim2.fromScale(12, 2.4); rideNote.StudsOffsetWorldSpace = Vector3.new(0, 5.5, 0)
+		rideNote.AlwaysOnTop = true; rideNote.LightInfluence = 0; rideNote.MaxDistance = 250; rideNote.Adornee = b; rideNote.Enabled = false; rideNote.Parent = b
+		rideNoteText = Instance.new("TextLabel"); rideNoteText.Size = UDim2.fromScale(1, 1); rideNoteText.BackgroundColor3 = Color3.fromRGB(255, 246, 220); rideNoteText.BackgroundTransparency = 0.12
+		rideNoteText.TextColor3 = Color3.fromRGB(58, 36, 16); rideNoteText.Font = Enum.Font.GothamBold; rideNoteText.TextScaled = true; rideNoteText.TextWrapped = true; rideNoteText.Parent = rideNote
+		local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0.2, 0); c.Parent = rideNoteText
+		local p = Instance.new("UIPadding"); p.PaddingLeft = UDim.new(0.03, 0); p.PaddingRight = UDim.new(0.03, 0); p.PaddingTop = UDim.new(0.08, 0); p.PaddingBottom = UDim.new(0.08, 0); p.Parent = rideNoteText
+	end
+	rideNoteText.Text = text; rideNote.Enabled = true; toastUntil = os.clock() + secs
+	task.delay(secs, function() if os.clock() >= toastUntil - 0.05 and rideNote then rideNote.Enabled = false end end)
+end
 local function showToast(text, secs)
+	if VR then vrNote(text, secs or 3) return end
 	toast.Text = text; toast.Visible = true; toastUntil = os.clock() + (secs or 3)
 	task.delay(secs or 3, function() if os.clock() >= toastUntil - 0.05 then toast.Visible = false end end)
 end
@@ -343,6 +361,22 @@ local function flown() return (tonumber(player:GetAttribute("Item_balloon_flight
 -- the one word when the last squirrel is found: it floats up the screen once and drifts off the top (Shannon, Oct 9:
 -- the sign that hung over the balloon was "messy and all over the place ... not permanent")
 local function floatNotice(text, secs)
+	if VR then   -- a card where you are looking at this moment (not pinned to your head), floating up and away
+		local cam = workspace.CurrentCamera
+		local ok, cf = pcall(function() return cam:GetRenderCFrame() end); cf = ok and cf or cam.CFrame
+		local look = Vector3.new(cf.LookVector.X, 0, cf.LookVector.Z); look = look.Magnitude > 0.01 and look.Unit or Vector3.new(0, 0, -1)
+		local part = Instance.new("Part"); part.Name = "FloatNote"; part.Anchored = true; part.CanCollide = false; part.CanQuery = false; part.Transparency = 1; part.Size = Vector3.new(0.2, 0.2, 0.2)
+		part.CFrame = CFrame.new(cf.Position + look * 6 - Vector3.new(0, 0.6, 0)); part.Parent = cam
+		local g = Instance.new("BillboardGui"); g.Size = UDim2.fromScale(7, 2.2); g.AlwaysOnTop = true; g.LightInfluence = 0; g.Parent = part
+		local l = Instance.new("TextLabel"); l.Size = UDim2.fromScale(1, 1); l.BackgroundColor3 = Color3.fromRGB(255, 246, 220); l.BackgroundTransparency = 0.1; l.TextColor3 = Color3.fromRGB(58, 36, 16)
+		l.Font = Enum.Font.GothamBold; l.TextScaled = true; l.TextWrapped = true; l.Text = text; l.Parent = g
+		local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0.15, 0); c.Parent = l
+		local p = Instance.new("UIPadding"); p.PaddingLeft = UDim.new(0.04, 0); p.PaddingRight = UDim.new(0.04, 0); p.PaddingTop = UDim.new(0.08, 0); p.PaddingBottom = UDim.new(0.08, 0); p.Parent = l
+		TweenService:Create(part, TweenInfo.new(secs + 2, Enum.EasingStyle.Sine), {CFrame = part.CFrame + Vector3.new(0, 3, 0)}):Play()
+		task.delay(secs, function() TweenService:Create(l, TweenInfo.new(2), {BackgroundTransparency = 1, TextTransparency = 1}):Play() end)
+		game:GetService("Debris"):AddItem(part, secs + 2.2)
+		return
+	end
 	local v = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1280, 720)
 	local l = Instance.new("TextLabel"); l.AnchorPoint = Vector2.new(0.5, 0.5); l.Size = UDim2.fromOffset(math.min(520, v.X - 60), 0); l.AutomaticSize = Enum.AutomaticSize.Y
 	l.Position = UDim2.fromScale(0.5, 0.8); l.BackgroundColor3 = Color3.fromRGB(255, 246, 220); l.BackgroundTransparency = 1; l.TextTransparency = 1
@@ -571,6 +605,42 @@ local function duckMusic(on, secs)
 end
 task.spawn(function() while true do task.wait(1) if ducked then duckMusic(true, 1.5) end end end)   -- a track MusicClient changes mid-flight drops too
 
+-- ---------- the ride's camera in VR ----------
+-- Shannon (VR): "the view is tied directly to the player ... very close up to the basket and you cannot see anything around
+-- you ... make it video like ... or make the VR so that you can reorient the camera". While you fly, the camera stands off the
+-- balloon - 30 studs out, a little above - and turns slowly round it; a flick of the right thumbstick turns it 30 degrees;
+-- your head looks around from there as always. Back to the normal camera on the ground. Headsets only.
+local vrCam = nil
+local function vrCamStart()
+	if not VR or vrCam then return end
+	local S = {angle = math.pi, target = math.pi, dist = num("VRCamDistance", 30), height = num("VRCamHeight", 4), held = false}
+	vrCam = S
+	S.conn = UIS.InputChanged:Connect(function(input)
+		if input.KeyCode ~= Enum.KeyCode.Thumbstick2 then return end
+		local x = input.Position.X
+		if math.abs(x) > 0.75 then if not S.held then S.held = true; S.target += (x > 0 and -1 or 1) * math.rad(30) end
+		elseif math.abs(x) < 0.3 then S.held = false end
+	end)
+	RunService:BindToRenderStep("BalloonVRCam", Enum.RenderPriority.Camera.Value + 1, function(dt)
+		if vrCam ~= S or not (yours and yours.Parent) then return end
+		local b = yours:GetPivot().Position
+		S.target += dt * 0.05   -- a slow turn round the balloon on its own
+		S.angle += (S.target - S.angle) * (1 - math.exp(-dt * 4))
+		local want = b + Vector3.new(math.cos(S.angle) * S.dist, S.height, math.sin(S.angle) * S.dist)
+		S.pos = S.pos and S.pos:Lerp(want, 1 - math.exp(-dt * 3)) or want
+		local cam = workspace.CurrentCamera; cam.CameraType = Enum.CameraType.Scriptable
+		cam.CFrame = CFrame.lookAt(S.pos, b + Vector3.new(0, 6, 0))
+	end)
+end
+local function vrCamStop()
+	local S = vrCam; vrCam = nil
+	if not S then return end
+	RunService:UnbindFromRenderStep("BalloonVRCam")
+	if S.conn then S.conn:Disconnect() end
+	local cam = workspace.CurrentCamera; cam.CameraType = Enum.CameraType.Custom
+	local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid"); if hum then cam.CameraSubject = hum end
+end
+
 -- ---------- phases ----------
 local flying = false
 ev.OnClientEvent:Connect(function(what, who, name, secs)
@@ -582,7 +652,7 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 		if name == "board" and fl and flames[fl] then flames[fl].flare = 1; task.delay(3, function() if flames[fl] then flames[fl].flare = 0 end end) end
 		if name == "board" then smoothStart() elseif name == "home" then smoothStop() end
 		if who ~= player then return end
-		if name == "board" then flying = true end
+		if name == "board" then flying = true; vrCamStart() end
 		if name == "rise" then showToast("Up you go, traveler! Look at Porto Nocciola from the sky.", 5); duckMusic(true, secs)
 		elseif name == "gust" then
 			showToast("Oh no! Looks like we are in for some bad weather!", 4)
@@ -603,13 +673,13 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 			task.delay(1.8, function() bb.Enabled = false; sign.Visible = false end)
 		elseif name == "home" then
 			flying = false; signBasket = nil; bb.Enabled = false; sign.Visible = false
-			stormOff(); duckMusic(false, 3)
+			stormOff(); duckMusic(false, 3); vrCamStop()
 			task.delay(0.6, function() TweenService:Create(black, TweenInfo.new(1.4), {BackgroundTransparency = 1}):Play(); TweenService:Create(cc, TweenInfo.new(1.4), {Brightness = 0}):Play() end)
 			showToast("Back on the balloon field. More of the journey is coming soon!", 5)
 		end
 	end
 end)
-player.CharacterAdded:Connect(function() flying = false; if storming then stormOff() end; duckMusic(false, 1); black.BackgroundTransparency = 1; cc.Brightness = 0; bb.Enabled = false; sign.Visible = false end)
+player.CharacterAdded:Connect(function() flying = false; if storming then stormOff() end; duckMusic(false, 1); vrCamStop(); black.BackgroundTransparency = 1; cc.Brightness = 0; bb.Enabled = false; sign.Visible = false end)
 print("BalloonClient: ready" .. (VR and " (VR)" or ""))
 ]===]; cl.Parent = F
 for _, s in ipairs({sv, cl}) do local f, err = loadstring(s.Source); if not f then warn("QQ FIELD ABORT - " .. s.Name .. " does not compile: " .. tostring(err)); F:Destroy(); return end end
