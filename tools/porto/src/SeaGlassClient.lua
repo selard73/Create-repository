@@ -43,7 +43,7 @@ local function showToast(text, secs)
 end
 
 -- ---------- the panel ----------
-local panel = Instance.new("Frame"); panel.Name = "Panel"; panel.AnchorPoint = Vector2.new(0.5, 0.5); panel.Position = UDim2.fromScale(0.5, 0.5)
+local panel = Instance.new("Frame"); panel.Name = "Panel"; panel.AnchorPoint = Vector2.new(1, 0.5); panel.Position = UDim2.new(1, -14, 0.5, 0)   -- at the right: Bella and her words stay in view (Oct 9)
 panel.BackgroundColor3 = BROWN; panel.BackgroundTransparency = 0.06; panel.BorderSizePixel = 0; panel.Visible = false; panel.ZIndex = 8; panel.Parent = gui
 corner(panel, 14); stroke(panel, GOLD, 2)
 local title = Instance.new("TextLabel"); title.Position = UDim2.fromOffset(14, 8); title.Size = UDim2.new(1, -70, 0, 28); title.BackgroundTransparency = 1
