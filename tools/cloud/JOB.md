@@ -146,7 +146,9 @@ Shannon: "replace the top map music with this 1848102847".
    rbxassetid://1848102847 in the same format the others use, and send one line to the cloud session with the zone
    name, old id and new id. No publish.
 
-## Job 16: find an opera aria for the duet (READ-ONLY; skip if Shannon has sent an id by then)
+## Job 16: SKIP, Shannon found the opera sound herself: 9042832054. Nothing to do here.
+
+(original text, no longer needed:)
 
 Shannon lost the opera sound she had picked. Search the audio library the way the Grotta sounds were found (Pro SFX /
 Creator Store search): "opera aria", "soprano", "opera duet", "Italian opera". Pick THREE candidates that are allowed
