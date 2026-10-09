@@ -72,7 +72,7 @@ for i, off in ipairs({Vector3.new(4.2, 2.6, 0), Vector3.new(-4.2, 2.6, 0), Vecto
 end
 local seat = invisible(Instance.new("Seat")); seat.Name = "FlightSeat"; seat.Size = Vector3.new(2, 0.6, 2); seat.CanCollide = false
 seat.CFrame = homeCF * CFrame.new(0, num("SeatHeight", 2.0), 0); seat.Parent = yours
-local prompt = Instance.new("ProximityPrompt"); prompt.Name = "BoardPrompt"; prompt.ObjectText = "Your balloon"; prompt.ActionText = "Board"
+local prompt = Instance.new("ProximityPrompt"); prompt.Name = "BoardPrompt"; prompt.ObjectText = "Your balloon"; prompt.ActionText = "All aboard"
 prompt.MaxActivationDistance = 14; prompt.HoldDuration = 0.3; prompt.RequiresLineOfSight = false; prompt.UIOffset = Vector2.new(0, -40)
 prompt.Parent = basket or yours.PrimaryPart or yours:FindFirstChildWhichIsA("BasePart")
 
@@ -159,6 +159,7 @@ local function flight(p)
 		char:PivotTo(homeCF * CFrame.new(7, 3, 2))
 	end
 	ev:FireAllClients("phase", p, "home", 2)
+	prompt.Enabled = true
 	if aborted then print("BalloonServer: flight of " .. p.Name .. " cut short")
 	elseif awardItems and p.Parent == Players then awardItems:Fire(p, "balloon_flights", 1) end
 	busy = nil
@@ -168,7 +169,8 @@ prompt.Triggered:Connect(function(p)
 	local n = portoFound(p)
 	if n < need() then ev:FireClient(p, "locked", n, need()) return end
 	busy = p
+	prompt.Enabled = false   -- no boarding prompt while the balloon is away (Shannon)
 	task.spawn(flight, p)
 end)
-Players.PlayerRemoving:Connect(function(p) if busy == p then busy = nil; task.delay(0.5, setHome) end end)
+Players.PlayerRemoving:Connect(function(p) if busy == p then busy = nil; prompt.Enabled = true; task.delay(0.5, setHome) end end)
 print(string.format("BalloonServer: ready (your balloon at %.0f,%.0f,%.0f; %d squirrels to fly)", homeCF.Position.X, homeCF.Position.Y, homeCF.Position.Z, need()))

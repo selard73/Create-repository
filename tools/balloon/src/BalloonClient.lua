@@ -109,7 +109,7 @@ if yours then beacon.Adornee = yours:FindFirstChild("Envelope", true) or yours.P
 local function updatePrompt()
 	local n, need = mine(), num("Need", 44)
 	if prompt then
-		if n >= need then prompt.ObjectText = "Your balloon"; prompt.ActionText = "Board"
+		if n >= need then prompt.ObjectText = "Your balloon"; prompt.ActionText = "All aboard"
 		else prompt.ObjectText = string.format("Your balloon (%d of %d squirrels)", n, need); prompt.ActionText = "Find them all first" end
 	end
 	beacon.Enabled = n >= need and not flown()
