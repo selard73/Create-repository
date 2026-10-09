@@ -61,3 +61,20 @@ Read this, then `tools/cloud/JOB.md`, then the Oct 8 handoff (HANDOFF_2026-10-08
   on France's 44 (job 26, tools/champion), gallery portraits blink in VR -> bust pictures in VR (job 27, tools/portraits),
   Porto Guardian "not working" = owner excluded by design (Oct 7), Bella's prompt did nothing in VR (cause unknown; asked
   her what she saw). Generators read their anchors from the build files; Studio texts confirmed via job 24 before running.
+
+## State at the end of the Oct 9 cloud session ("Cloud session handoff"; Shannon's cloud credit nearly spent)
+Installed in Studio and PUBLISHED by Shannon (Oct 9 evening): jobs 17-32, 34, 35, 38, 39 (passport pages per map,
+Keeper once, VR gallery portraits, Guardian on arrival, Porto music fixes, Groves music, both beaches, Bella's reveal +
+pearl + shell box (sells 150), Daily auto-collect, Piazza Race + its passport outing).
+Sent to the runner, waiting for Shannon's yes / not yet published: 37c (race gate+board on the piazza's west edge at
+431.5,-12,-812 / -824, 60%, facing in), 41 (Bella's panel at the right of the screen + hidden 6 s during the reveal,
+reveal left/lower), 43 (store row "Parfum bottle" once owned), 40 (VR window: pop-ups on a panel 38 deg right of the body;
+HUD/shop screens stay on Roblox's panel; test in the headset), 33 (balloon field + the finale flight; the imported
+balloon_meshy is the template; attributes on workspace.BalloonField tune everything: GustDir, RiseHeight, DriftCenter...).
+Known open items: the Wardrobe tab inside the Passport will not build on the VR window (WardrobeClient waits on
+PassportGui.Page); VRWindow legibility/size (Width/Distance attributes) to be judged in the headset; passport outing for
+the balloon flight (none yet; Item_balloon_flights records the first flight); the "porto_balloon" moment has no sound ids
+(WindSoundId/ThunderSoundId = 0); the race's music key is the forest "race" track by design.
+Every Studio change has a backup under ServerStorage.HudBackup.*_pre_<job>. Generators live beside each script
+(tools/<area>/make_*.py); the luau CLI for syntax checks is downloaded into the scratchpad (see tools/cloud/JOB.md top).
+The runner: send_message to its session id (bridge:session_01FmVm5n3mKMAfYwLsZWtahf as of Oct 9), commit-SHA raw URLs.
