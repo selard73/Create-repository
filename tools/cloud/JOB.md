@@ -134,3 +134,14 @@ with, verbatim where asked (exact text, tabs kept), no analysis:
    ProximityPrompt or ClickDetector or a Sound); the opera duet models' paths (Subjects "opera": model + model2) and
    any Sound under them; the funicular's server script path and whether it has any "ride complete" moment;
    the Polpo (octopus) server script path and the line where a rescue completes; SpeedServer's PassportActivity line.
+
+## Job 15: new music for the TOP section of Porto (Studio EDIT: one sound id; ask Shannon first)
+
+Shannon: "replace the top map music with this 1848102847".
+1. Find Porto's music zones (MapMusic: polygons such as GrottaPolygon, the harbour, Via della Piazza, The Groves, the
+   upper town) and list each with its current sound id(s) (attribute or Sound.SoundId) in one short table.
+2. Pick the zone that covers the TOP section (the upper town / The Groves, y above the square), show Shannon the table
+   and your pick, and wait for her yes (she may point at a different zone).
+3. With her yes: note the old id in an attribute (OldSoundId_Oct9) on the same object, set the new id
+   rbxassetid://1848102847 in the same format the others use, and send one line to the cloud session with the zone
+   name, old id and new id. No publish.
