@@ -145,3 +145,11 @@ Shannon: "replace the top map music with this 1848102847".
 3. With her yes: note the old id in an attribute (OldSoundId_Oct9) on the same object, set the new id
    rbxassetid://1848102847 in the same format the others use, and send one line to the cloud session with the zone
    name, old id and new id. No publish.
+
+## Job 16: find an opera aria for the duet (READ-ONLY; skip if Shannon has sent an id by then)
+
+Shannon lost the opera sound she had picked. Search the audio library the way the Grotta sounds were found (Pro SFX /
+Creator Store search): "opera aria", "soprano", "opera duet", "Italian opera". Pick THREE candidates that are allowed
+for use in this game (usable by this experience, not restricted), 20-90 s long, with a clear singing voice. Send one
+line each to the cloud session and to Shannon: id | title | length | why it fits. Do not place them in the game;
+Shannon previews them in Studio and picks one.
