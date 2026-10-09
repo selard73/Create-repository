@@ -109,12 +109,14 @@ local open = false
 local function closePanel()
 	if not open then return end
 	open = false; panel.Visible = false
+	local bp = bella() and bella():FindFirstChild("BellaPrompt", true); if bp then bp.Enabled = true end
 	if pg:GetAttribute("OpenPanel") == "seaglass" then pg:SetAttribute("OpenPanel", nil) end
 end
 local function openPanel()
 	if pg:GetAttribute("OpenPanel") ~= nil and pg:GetAttribute("OpenPanel") ~= "seaglass" then return end
 	layout(); refresh(); note.Text = ""
 	open = true; panel.Visible = true; pg:SetAttribute("OpenPanel", "seaglass")
+	local bp = bella() and bella():FindFirstChild("BellaPrompt", true); if bp then bp.Enabled = false end   -- her prompt would draw over the panel (phones)
 	local any = false
 	for _, k in ipairs(R.kinds) do if item(k.id) > 0 then any = true break end end
 	say(any and "Ciao! Let me see what the sea gave you today." or "Ciao, I'm Bella! Bring me pretty things from the sand and we'll make something.", 4.5)

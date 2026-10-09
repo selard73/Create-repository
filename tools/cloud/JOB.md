@@ -330,3 +330,11 @@ passport "porto_race". Send the `QQ RACE` and "PortoRace: installed" lines. Play
 ## Job 38: the Passport outing "Piazza Race" (Studio EDIT; ask Shannon first; after job 37)
 
 tools/race/passport_race1.lua (Catalogue 11291, Journal 14168, PassportVisuals 4105). Send the `QQ PRACE` line. No publish.
+
+## Job 39: fixes to job 34 (Studio EDIT; ask Shannon first)
+
+The pearl's oyster was inside rock: PearlSpot -> 506,-46,-1116 (open sand beside the cages). The shell box SELLS for 150
+acorns (Shannon: not a keepsake, it sells for more because of the rare pearl). Bella's prompt hidden while her panel is
+open (it drew over the buttons on phones). tools/porto/seaglass4.lua (Recipes 8069, SeaGlassServer 12114, SeaGlassClient
+12895). Send the `QQ SG4` line and, from a play test, the "pearl waits at" line and whether the oyster is on the sand and
+reachable. No publish.
