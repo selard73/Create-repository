@@ -43,7 +43,7 @@ F:SetAttribute("PadYours", Vector3.new(72, 0, -646)); F:SetAttribute("ShowBalloo
 F:SetAttribute("DriftCenter", Vector3.new(190, 18, -650)); F:SetAttribute("DriftRadius", 55); F:SetAttribute("DriftHeights", "18,33"); F:SetAttribute("DriftPeriods", "150,110")
 F:SetAttribute("RiseHeight", 85); F:SetAttribute("RiseTime", 16); F:SetAttribute("HoverTime", 8); F:SetAttribute("GustTime", 18); F:SetAttribute("StormTime", 12); F:SetAttribute("SignTime", 6)
 F:SetAttribute("GustDir", Vector3.new(0.45, 0, -1)); F:SetAttribute("GustSpeed", 22); F:SetAttribute("ThunderSoundId", 92640524897440); F:SetAttribute("StormSoundId", 74201402219129); F:SetAttribute("WindSoundId", 93035214379043)
-for k, v in pairs(keep) do F:SetAttribute(k, v) end
+for _, k in ipairs({"ThunderSoundId", "StormSoundId", "WindSoundId"}) do local v = keep[k]; if type(v) == "number" and v > 0 then F:SetAttribute(k, v) end end   -- sounds Shannon set survive a re-run; positions and tuning take the new defaults
 local sv = Instance.new("Script"); sv.Name = "BalloonServer"; sv.RunContext = Enum.RunContext.Server; sv.Source = [===[
 -- BalloonServer (workspace.BalloonField): the hot air balloon field on the far shore across the harbour (Shannon, Oct 9
 -- 2026). Show balloons drift round the shore (the clients move those); YOUR balloon waits on its pad: once a player has
@@ -375,6 +375,9 @@ windPart = Instance.new("Part"); windPart.Name = "WindSource"; windPart.Anchored
 local storming = false
 local stormSound, windSound = nil, nil   -- Shannon's picks: the wind (WindSoundId) loops through the gust, then the storm (StormSoundId) takes over
 local clouds = workspace.Terrain:FindFirstChildOfClass("Clouds")
+if not clouds then   -- the place has no cloud layer: a clear one of our own, rolled in by the storm (local to this client)
+	clouds = Instance.new("Clouds"); clouds.Cover = 0; clouds.Density = 0; clouds.Enabled = true; clouds.Parent = workspace.Terrain
+end
 local function bolt(near)
 	-- a jagged bolt of Neon parts from the clouds down towards the sea, gone in a blink
 	local top = near + Vector3.new((math.random() - 0.5) * 160, 70 + math.random() * 30, (math.random() - 0.5) * 160)

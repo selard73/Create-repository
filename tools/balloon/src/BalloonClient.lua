@@ -152,6 +152,9 @@ windPart = Instance.new("Part"); windPart.Name = "WindSource"; windPart.Anchored
 local storming = false
 local stormSound, windSound = nil, nil   -- Shannon's picks: the wind (WindSoundId) loops through the gust, then the storm (StormSoundId) takes over
 local clouds = workspace.Terrain:FindFirstChildOfClass("Clouds")
+if not clouds then   -- the place has no cloud layer: a clear one of our own, rolled in by the storm (local to this client)
+	clouds = Instance.new("Clouds"); clouds.Cover = 0; clouds.Density = 0; clouds.Enabled = true; clouds.Parent = workspace.Terrain
+end
 local function bolt(near)
 	-- a jagged bolt of Neon parts from the clouds down towards the sea, gone in a blink
 	local top = near + Vector3.new((math.random() - 0.5) * 160, 70 + math.random() * 30, (math.random() - 0.5) * 160)
