@@ -93,3 +93,32 @@ asks on arrival to trim the bar to 3 (ties: crab trap goes first, then slingshot
 3. Optional if she wants it checked before publishing: Device Simulator play test with 4 tools (set Item_camera and
    Item_crabtrap = 1 as in job 7): about 4 s after spawn one tool should go to the bag and the camera stay on the bar;
    Equip the stored one in the store and another should go. Stop the play test, Studio back in Edit. No publish.
+
+## Job 13: move the diver back onto flat sand (DRY first, then Studio EDIT with Shannon's yes)
+
+Shannon: "the scuba diver squirrel is half fixed, he just needs to be moved back a little, his flippers are flat but he
+is sitting on a curved surface; if he is moved back to where it is flat, he will be flush with the ground."
+1. Fetch and read:
+   https://raw.githubusercontent.com/selard73/Create-repository/claude/epic-hawking-188q4l/tools/squirrels/diver_flat1.lua
+2. Run as is (DRY = true): it prints the ground slope at each half-stud inland and the spot it would move him to.
+   Send the `QQ DIVE` lines. If no spot is flatter than 0.08 within 6 studs, say so and stop.
+3. With Shannon's yes: `DRY = false`, run, send the `QQ DIVE` lines. (Attr FlatOct9OrigCF keeps where he was.)
+
+## Job 14: send the game's conventions for the sea glass / shell finding game (READ-ONLY)
+
+Shannon wants the sea glass / shell game next (host: the seaglass squirrel on the Spiaggia at (399.6,-48.8,-1054.8)).
+Send ONE message with, verbatim where asked (exact text, tabs kept), no analysis:
+1. workspace.PhotoGame? no: the CRAB game, which the handoff calls the template: the full Source of CrabServer (where it
+   lives, its length), and the names/paths of its client script and any ModuleScript it uses. If CrabServer is over
+   12000 chars, send instead: its first 60 lines, the function that spawns a crab/trap find, the function that awards the
+   catch (the RS.AwardItems call and the attribute names), and the ProximityPrompt setup.
+2. The Passport: the path of the Catalogue ModuleScript and its entries for "crab" and "photos" verbatim (the whole table
+   entry for each), the Journal.describe lines for those two, the PassportClient hint-progress lines for them, and the
+   path + child names of RS.PassportArt (just the names of its children).
+3. SquirrelBubble: one real call from any script (the line, with its arguments) and the module's path.
+4. The seaglass squirrel: its full path, pivot position, and the names of its children (one level).
+5. AwardItems: the Source of the script that handles RS.AwardItems if under 6000 chars; otherwise the part that saves
+   "Item_" attributes (is there a whitelist of saved keys, or is every Item_* saved?).
+6. The shore: the full names and bounding boxes (x/z min..max) of these folders/models if they exist: "Spiaggia dei
+   Ciottoli", "Cala della Sabbia and tide pools", the sand spit (the Oct 8 voxel region x 418..452 z -1156..-1124), and
+   any other beach/cove under PortoNocciola whose name mentions spiaggia, cala, cove, beach, sand, tide.
