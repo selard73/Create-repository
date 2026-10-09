@@ -484,3 +484,5 @@ head; flat screens unchanged. Backup HudBackup.SquirrelBubble_pre_vr1. Send the 
 
 Next (not built yet; Shannon's bigger VR ask): the pop-ups that are not game things (the picker, the control panel, the
 rest of the VR window) grabbable with the controller and left where she puts them, instead of following the head.
+Results (runner, Edit mode, not tested, not published): 53 SeaGlassClient 18492 (backup _pre_seaglass10); 54 BalloonClient
+32028 (backup BalloonClient_pre_f4d950f); 55 SquirrelBubble 8415 (backup SquirrelBubble_pre_vr1).
