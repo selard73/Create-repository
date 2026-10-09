@@ -14,12 +14,13 @@ local FOOT = 1.2            -- half-width of the footprint sampled (studs)
 local RIG = 0.41 - 0.05     -- bottom of the bounding box above the ground, as the seated squirrels sit
 
 if game:GetService("RunService"):IsRunning() then warn("QQ DIVE ABORT - Play mode") return end
+local twins = workspace:FindFirstChild("SquirrelTwins")
 local m
 for _, d in ipairs(workspace:GetDescendants()) do
-	if d:IsA("Model") and d.Name:lower():find(NAME, 1, true) and d:FindFirstChildWhichIsA("BasePart", true) then m = d break end
+	if d:IsA("Model") and d.Name:lower():find(NAME, 1, true) and d:FindFirstChildWhichIsA("BasePart", true)
+		and not (twins and d:IsDescendantOf(twins)) and not d.Name:lower():find("gray", 1, true) then m = d break end
 end
-if not m then warn("QQ DIVE ABORT - no model named *" .. NAME .. "*") return end
-local twins = workspace:FindFirstChild("SquirrelTwins")
+if not m then warn("QQ DIVE ABORT - no model named *" .. NAME .. "* outside SquirrelTwins") return end
 local params = RaycastParams.new(); params.FilterType = Enum.RaycastFilterType.Exclude; params.IgnoreWater = true
 params.FilterDescendantsInstances = twins and {m, twins} or {m}
 local function groundAt(x, z, y0)
@@ -29,9 +30,12 @@ end
 local pivot = m:GetPivot()
 local bcf, bsize = m:GetBoundingBox()
 local bottom = bcf.Position.Y - bsize.Y / 2
-local look = pivot.LookVector
+-- these rigs' pivots point straight up; the body part ("Squirrel", the PrimaryPart) carries the real facing
+local body = m.PrimaryPart or m:FindFirstChild("Squirrel", true) or m:FindFirstChildWhichIsA("BasePart", true)
+local look = body.CFrame.LookVector
+if math.abs(look.Y) > 0.9 then look = pivot.LookVector end
 local back = -Vector3.new(look.X, 0, look.Z)
-if back.Magnitude < 0.1 then warn("QQ DIVE ABORT - he faces straight up/down?") return end
+if back.Magnitude < 0.1 then warn("QQ DIVE ABORT - neither the body nor the pivot gives a level facing") return end
 back = back.Unit
 local side = Vector3.new(-back.Z, 0, back.X)
 print(string.format("QQ DIVE %s at %s, bottom %.2f, facing (%.2f,%.2f); searching inland along (%.2f,%.2f)", m.Name,
