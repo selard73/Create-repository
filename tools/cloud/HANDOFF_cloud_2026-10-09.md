@@ -57,3 +57,7 @@ Read this, then `tools/cloud/JOB.md`, then the Oct 8 handoff (HANDOFF_2026-10-08
   tools/balloon/model_meshy/balloon_meshy.fbx (blender/meshy_clean.py; bpy 5.2 venv in the scratchpad). Flight she wants:
   up for a view, a gust blows it out to sea, storm fog + lightning, sign 'To Be Continued'. Her own balloon unlocks at 44/44
   Porto squirrels; 3 show balloons. Next: job 23 (import + check), then the field installer.
+- Shannon's VR bug list (Oct 9 evening): passport pages per map (job 25, tools/passport), Keeper statue once per player
+  on France's 44 (job 26, tools/champion), gallery portraits blink in VR -> bust pictures in VR (job 27, tools/portraits),
+  Porto Guardian "not working" = owner excluded by design (Oct 7), Bella's prompt did nothing in VR (cause unknown; asked
+  her what she saw). Generators read their anchors from the build files; Studio texts confirmed via job 24 before running.

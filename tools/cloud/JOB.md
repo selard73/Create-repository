@@ -244,3 +244,28 @@ basket floor at the origin): tools/balloon/model_meshy/balloon_meshy.fbx (textur
    Envelope, Basket, Rigging, Burner, Flame and the embedded textures); Insert. Put it anywhere; it gets moved later.
 3. Fetch and run tools/balloon/balloon_check1.lua. Send every `QQ BLN` line, and a screenshot path of the balloon in
    the viewport if you can take one. Nothing else is changed.
+
+## Job 24: READ-ONLY dump for Shannon's VR bug list (sent to the runner directly; text in the cloud session's message)
+
+PortoKeeper attributes + PortoKeeperServer source; ChampionServer's hallHas / totalSquirrels / SquirrelsFound trigger;
+PortraitClient length; PassportServer's eligible / OnServerInvoke / Found_* line. Nothing changed.
+
+## Job 25: the Passport gives five outings at a time PER MAP (Studio EDIT; ask Shannon first)
+
+Shannon: "I thought it was just supposed to give you 5 then when you finish those give you 5 more, but here it seems to
+just give all of them". _batch = the French page, new _batch_porto = the Porto page (opens once Item_porto >= 1); "Explore
+more" turns that map's page. tools/passport/pages1.lua patches Passport.Journal (13882), PassportServer (any length),
+PassportClient (28273); every find once or nothing changes. Send the `QQ PAGE` lines. Play test: Passport > Outings >
+Porto Nocciola shows at most five outings and a "Well done / Explore more" card when they are all stamped; the French tab
+unchanged. No publish.
+
+## Job 26: the Grand Keeper statue once per player, counted on France's 44 only (Studio EDIT; ask Shannon first)
+
+Shannon: "you could only get one statue once as a player in each map; it has given me the statue twice in the France
+map". tools/champion/once1.lua patches workspace.Champion.ChampionServer (4 finds). Send the `QQ ONCE` lines. No publish.
+
+## Job 27: gallery portraits in VR (Studio EDIT; ask Shannon first)
+
+Shannon: "in the french section, the portraits had the characters in them blinking in and out" (VR). In a headset the
+ViewportFrame sitters are replaced by the sitter's avatar bust picture. tools/portraits/vr1.lua patches
+workspace.PortraitGallery.PortraitClient (3 finds). Send the `QQ VRP` lines. Shannon checks in VR after publishing.
