@@ -206,3 +206,15 @@ resume". While the aria plays, everyone within earshot (80 studs) gets NoMusic (
 2. Tell Shannon; with her yes run it (Edit mode). Send the `QQ HUSH` line.
 3. Play test: at the singer, Listen: the map music fades out while she sings, ~2 s silence after, then it fades back.
    Stop the play test; Studio back in Edit. Send the findings. No publish.
+
+## Job 20: map music back for players who arrive in Porto by travel or the boat (Studio EDIT; ask Shannon first)
+
+TravelServer (arrival in Porto) and BoatServer (boarding) set NoMusic from before Porto had music; nothing cleared it,
+so arrivals heard no music until a respawn. A watcher in PortoActivities clears it once the character stands on its own
+feet past the dock line (not seated, not falling, not silenced by the opera).
+1. Fetch and read tools/porto/porto_music1.lua (commit URL in the cloud session's message). READ-ONLY scan first
+   (QQ MUS lines); it stops if another enabled script sets NoMusic. PortoActivities must be 8292 chars.
+2. Tell Shannon; with her yes run it (Edit mode). Send every `QQ MUS` line.
+3. Play test: start in France, travel to Porto with the map/travel board; on the quay the Porto music should play
+   within ~1 s (char NoMusic nil). If quick, also: set NoMusic = true on the character by hand while standing on the
+   quay; it should clear within ~1 s. Stop; Studio back in Edit. Send the findings. No publish.

@@ -67,6 +67,7 @@ task.spawn(function()
 	if hooked == 0 then warn("PortoActivities: no prompt on a 'Brass harbour bell' - the bell outing cannot be earned") end
 end)
 
+local operaHushed = {}   -- characters the opera has silenced (the music watcher at the end leaves them alone)
 -- ---------- the opera duet: a Listen prompt and the aria ----------
 task.spawn(function()
 	local singer = workspace:WaitForChild("operasinger_squirrel_color", 30)
@@ -96,7 +97,7 @@ task.spawn(function()
 	sound.Ended:Connect(function() prompt.ActionText = "Listen"; listeners = {} end)
 	-- Shannon, Oct 9: "the background music should go silent when she is singing, then pause for 2 seconds after she
 	-- stops, then resume". MusicClient goes silent while the character has NoMusic; hushed[] holds only the ones set here.
-	local hushed = {}
+	local hushed = operaHushed
 	local function release(char) if hushed[char] then hushed[char] = nil; if char.Parent then char:SetAttribute("NoMusic", nil) end end end
 	local endedAt
 	while true do
@@ -158,4 +159,25 @@ end
 Players.PlayerAdded:Connect(watch)
 for _, p in ipairs(Players:GetPlayers()) do watch(p) end
 Players.PlayerRemoving:Connect(function(p) stamped[p] = nil end)
+-- ---------- the map music after travel or the boat (Shannon, Oct 9) ----------
+-- Travel to Porto and the boat set NoMusic (from before Porto had music) and nothing cleared it, so arrivals heard no
+-- music until they respawned. Once a character stands on its own feet in Porto (past the dock line, not seated, not
+-- falling) and the opera is not singing to it, the flag goes and MapMusic.MusicClient plays the Porto track again.
+local MapMusic = workspace:FindFirstChild("MapMusic")
+task.spawn(function()
+	while true do
+		task.wait(1)
+		local portoZ = MapMusic and MapMusic:GetAttribute("PortoZ") or -594
+		for _, p in ipairs(Players:GetPlayers()) do
+			local char = p.Character
+			local root = char and char:FindFirstChild("HumanoidRootPart")
+			local hum = char and char:FindFirstChildOfClass("Humanoid")
+			if root and hum and char:GetAttribute("NoMusic") and not operaHushed[char] and root.Position.Z < portoZ
+				and hum.SeatPart == nil and hum.FloorMaterial ~= Enum.Material.Air then
+				char:SetAttribute("NoMusic", nil)
+			end
+		end
+	end
+end)
+
 print("PortoActivities: ready")
