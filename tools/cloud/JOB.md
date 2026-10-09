@@ -338,3 +338,14 @@ acorns (Shannon: not a keepsake, it sells for more because of the rare pearl). B
 open (it drew over the buttons on phones). tools/porto/seaglass4.lua (Recipes 8069, SeaGlassServer 12114, SeaGlassClient
 12895). Send the `QQ SG4` line and, from a play test, the "pearl waits at" line and whether the oyster is on the sand and
 reachable. No publish.
+
+## Job 40: the VR window (Studio EDIT; ask Shannon first; after its review)
+
+tools/vr/install_vrwindow1.lua: workspace.VRWindow with VRWindowClient. In a headset, every ScreenGui's children move onto
+one floating window 38 degrees to the right of the body's facing (Shannon: in the periphery when facing forward, in full
+view when the head turns right), so pop-ups show with Roblox's control panel open or shut. Desktop/phone unchanged.
+Attributes Yaw, Distance, Width, Follow, Drop, Off. Send the `QQ VRW` line; Shannon tests in the headset after publishing.
+
+## Job 41: Bella's panel steps aside for the reveal (Studio EDIT; ask Shannon first; after job 39)
+
+tools/porto/seaglass5.lua (SeaGlassClient after job 39). Send the `QQ SG5` line. No publish.

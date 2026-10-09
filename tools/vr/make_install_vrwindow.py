@@ -14,11 +14,11 @@ lua = r'''-- vr/install_vrwindow1 (job 40): EDIT mode, re-runnable. The VR windo
 if game:GetService("RunService"):IsRunning() then warn("QQ VRW ABORT - Play mode") return end
 local old = workspace:FindFirstChild("VRWindow"); if old then old:Destroy() end
 local F = Instance.new("Folder"); F.Name = "VRWindow"
-F:SetAttribute("Distance", 2.4); F:SetAttribute("Width", 1.9); F:SetAttribute("Follow", 4); F:SetAttribute("Drop", 0.12); F:SetAttribute("Off", false)
+F:SetAttribute("Yaw", 38); F:SetAttribute("Distance", 2.4); F:SetAttribute("Width", 1.9); F:SetAttribute("Follow", 4); F:SetAttribute("Drop", 0.12); F:SetAttribute("Off", false)
 local c = Instance.new("Script"); c.Name = "VRWindowClient"; c.RunContext = Enum.RunContext.Client; c.Source = @@CLIENT@@; c.Parent = F
 local f, err = loadstring(c.Source); if not f then warn("QQ VRW ABORT - VRWindowClient does not compile: " .. tostring(err)); F:Destroy(); return end
 F.Parent = workspace
-print(string.format("QQ VRW DONE: workspace.VRWindow with VRWindowClient (%d chars); Distance 2.4, Width 1.9, Follow 4, Drop 0.12", #c.Source))
+print(string.format("QQ VRW DONE: workspace.VRWindow with VRWindowClient (%d chars); Yaw 38, Distance 2.4, Width 1.9, Follow 4, Drop 0.12", #c.Source))
 '''
 lua = lua.replace("@@CLIENT@@", L(client))
 (ROOT / "tools/vr/install_vrwindow1.lua").write_text(lua, encoding="utf-8")

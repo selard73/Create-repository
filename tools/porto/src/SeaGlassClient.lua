@@ -184,6 +184,7 @@ ev.OnClientEvent:Connect(function(what, a, b, c, d)
 		say(line or "Bellissima!", 5)
 		refresh()
 		reveal(a)
+		panel.Visible = false; task.delay(6, function() if open then panel.Visible = true; refresh() end end)   -- the panel would sit on the reveal and her words (Shannon, VR)
 	elseif what == "toast" then showToast(tostring(a), 4)
 	elseif what == "nope" then
 		note.Text = tostring(a)

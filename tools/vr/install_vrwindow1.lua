@@ -3,7 +3,7 @@
 if game:GetService("RunService"):IsRunning() then warn("QQ VRW ABORT - Play mode") return end
 local old = workspace:FindFirstChild("VRWindow"); if old then old:Destroy() end
 local F = Instance.new("Folder"); F.Name = "VRWindow"
-F:SetAttribute("Distance", 2.4); F:SetAttribute("Width", 1.9); F:SetAttribute("Follow", 4); F:SetAttribute("Drop", 0.12); F:SetAttribute("Off", false)
+F:SetAttribute("Yaw", 38); F:SetAttribute("Distance", 2.4); F:SetAttribute("Width", 1.9); F:SetAttribute("Follow", 4); F:SetAttribute("Drop", 0.12); F:SetAttribute("Off", false)
 local c = Instance.new("Script"); c.Name = "VRWindowClient"; c.RunContext = Enum.RunContext.Client; c.Source = [===[
 -- VRWindowClient (workspace.VRWindow, RunContext Client): in a VR headset, everything the game puts on the flat screen
 -- (the squirrels' speech, Bella's panel, the Passport, the race clock, toasts, the Daily card...) is shown on ONE floating
@@ -12,8 +12,8 @@ local c = Instance.new("Script"); c.Name = "VRWindowClient"; c.RunContext = Enum
 -- the one shouldn't cover up the other"). How: a client-side part floats in front of the head; a SurfaceGui in PlayerGui
 -- adorned to it is a canvas the size of the real screen; every ScreenGui's children are moved onto it (the game's scripts
 -- keep their references, so buttons and updates work; the VR pointer clicks them). Roblox's panel then carries only
--- Roblox's own menus. Does nothing outside VR. Attributes on the folder: Distance (2.4 studs), Width (1.9 studs),
--- Follow (4, how quickly it catches up), Drop (0.12, how far below eye level), Off (true disables it).
+-- Roblox's own menus. Does nothing outside VR. Attributes on the folder: Yaw (38 degrees to the right of the body's facing), Distance (2.4 studs),
+-- Width (1.9 studs), Follow (4, how quickly it catches up), Drop (0.12, how far below eye level), Off (true disables it).
 local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
 local VRService = game:GetService("VRService")
@@ -43,7 +43,8 @@ fit()
 cam:GetPropertyChangedSignal("ViewportSize"):Connect(fit)
 workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function() cam = workspace.CurrentCamera; part.Parent = cam; fit() end)
 
--- lazy follow: eased toward a spot in front of the head, never hard-locked to it
+-- where it sits: off to the RIGHT of the way the body faces (Shannon: "off to the side, on your right, so if you face
+-- forward you see it out of the corner of your eye, and if you turn your head you see it fully"), eased, never hard-locked
 local current
 local function headCF()
 	local ok, h = pcall(function() return VRService:GetUserCFrame(Enum.UserCFrame.Head) end)
@@ -53,14 +54,18 @@ local function headCF()
 	end
 	return cam.CFrame
 end
+local function bodyForward(head)
+	local root = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+	local v = root and root.CFrame.LookVector or head.LookVector
+	v = Vector3.new(v.X, 0, v.Z)
+	if v.Magnitude < 0.05 then v = Vector3.new(0, 0, -1) end
+	return v.Unit
+end
 RunService.RenderStepped:Connect(function(dt)
 	local head = headCF()
-	local look = head.LookVector
-	local flat = Vector3.new(look.X, 0, look.Z)
-	if flat.Magnitude < 0.05 then flat = Vector3.new(0, 0, -1) else flat = flat.Unit end
-	-- the window sits ahead of the head, level, a little below eye height; it tips to follow a strong up/down look
-	local pitch = math.clamp(math.asin(look.Y), math.rad(-35), math.rad(30))
-	local dir = (CFrame.new(Vector3.zero, flat) * CFrame.Angles(pitch * 0.6, 0, 0)).LookVector
+	local fwd = bodyForward(head)
+	local yaw = math.rad(-num("Yaw", 38))                       -- degrees to the right of the body's facing
+	local dir = (CFrame.new(Vector3.zero, fwd) * CFrame.Angles(0, yaw, 0)).LookVector
 	local pos = head.Position + dir * num("Distance", 2.4) - Vector3.new(0, num("Drop", 0.12), 0)
 	local target = CFrame.lookAt(pos, head.Position)
 	if not current then current = target
@@ -97,4 +102,4 @@ print(string.format("VRWindow: on (%d screens adopted, canvas %dx%d)", (function
 ]===]; c.Parent = F
 local f, err = loadstring(c.Source); if not f then warn("QQ VRW ABORT - VRWindowClient does not compile: " .. tostring(err)); F:Destroy(); return end
 F.Parent = workspace
-print(string.format("QQ VRW DONE: workspace.VRWindow with VRWindowClient (%d chars); Distance 2.4, Width 1.9, Follow 4, Drop 0.12", #c.Source))
+print(string.format("QQ VRW DONE: workspace.VRWindow with VRWindowClient (%d chars); Yaw 38, Distance 2.4, Width 1.9, Follow 4, Drop 0.12", #c.Source))
