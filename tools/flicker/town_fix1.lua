@@ -7,6 +7,9 @@
 -- never cut. MeshParts are reported, not cut (MESH_LOWERS). Runs synchronously with a time budget; rerun to continue
 -- (cut parts no longer pair). Originals -> ServerStorage.CSGBackup_Town; unions get CSGJob = "town1" etc. (same scheme as
 -- square_fix1, so town_undo1.lua walks every pass back). Output lines start with "QQ TWN".
+-- Oct 9 fix: faces at EXACTLY the same height (gap 0.00, the worst flicker, seen as pie-slice shapes on the cut slab)
+-- are found too: each layer's part is excluded from the ray and the ray restarts just above the hit instead of below it.
+-- For a flush pair the part with the bigger footprint is the one cut, so small pieces stay whole.
 
 local DRY = true            -- true: survey + plan only, nothing changes. false: cut.
 local BOX = {x1 = 250, x2 = 800, z1 = -1250, z2 = -500}   -- Porto Nocciola; the square (455,-785), the bottom stop (345,-605), the Grotta (450,-1110)
@@ -94,24 +97,48 @@ local function v3(v) return string.format("(%.1f,%.2f,%.1f)", v.X, v.Y, v.Z) end
 local function count(t) local c = 0; for _ in pairs(t) do c += 1 end; return c end
 local function bump(t, k, n) t[k] = (t[k] or 0) + (n or 1) end
 
--- all visible upward faces in one column, top to bottom
+-- all visible upward faces in one column, top to bottom. Each part hit is excluded for the rest of the column and the
+-- ray restarts just ABOVE the hit, so a face of another part at the very same height (gap 0.00) is seen as well.
+local cparams = RaycastParams.new()
+cparams.FilterType = Enum.RaycastFilterType.Exclude
+cparams.IgnoreWater = true
 local function column(x, z, out)
+	local ex = table.clone(excl)
 	local origin = Vector3.new(x, TOP_Y, z)
 	local n = 0
 	for _ = 1, MAX_LAYERS do
-		local r = workspace:Raycast(origin, Vector3.new(0, BOTTOM_Y - origin.Y, 0), params)
+		cparams.FilterDescendantsInstances = ex
+		local r = workspace:Raycast(origin, Vector3.new(0, BOTTOM_Y - origin.Y, 0), cparams)
 		if not r then break end
 		local p = r.Instance
 		if r.Normal.Y >= UP and not passThrough(p) then n += 1; out[n] = p; out[n + MAX_LAYERS] = r.Position.Y end
-		origin = r.Position - Vector3.new(0, 0.01, 0)
+		table.insert(ex, p)
+		origin = r.Position + Vector3.new(0, 0.02, 0)
+	end
+	-- hits can come back a hair out of height order when faces are flush; sort top to bottom
+	for i = 2, n do
+		local j = i
+		while j > 1 and out[j + MAX_LAYERS] > out[j - 1 + MAX_LAYERS] do
+			out[j], out[j - 1] = out[j - 1], out[j]
+			out[j + MAX_LAYERS], out[j - 1 + MAX_LAYERS] = out[j - 1 + MAX_LAYERS], out[j + MAX_LAYERS]
+			j -= 1
+		end
 	end
 	return n
+end
+local function area(p)   -- horizontal footprint of the bounding box
+	if p == Terrain then return 1e9 end
+	local c, s = p.CFrame, p.Size / 2
+	local ex = math.abs(c.RightVector.X) * s.X + math.abs(c.UpVector.X) * s.Y + math.abs(c.LookVector.X) * s.Z
+	local ez = math.abs(c.RightVector.Z) * s.X + math.abs(c.UpVector.Z) * s.Y + math.abs(c.LookVector.Z) * s.Z
+	return 4 * ex * ez
 end
 
 -- survey: over[L][U] = columns where U's face sits within MAXGAP above L's face
 local function survey(budget)
 	local over, terrainUnder, alone = {}, {}, 0
 	local columns, faces, stackedPts = 0, 0, 0
+	local flush, close = 0, 0   -- gap < 0.006 (same height) and gap < 0.05
 	local buf = {}
 	local nx = 0
 	for x = BOX.x1, BOX.x2, STEP do
@@ -124,7 +151,9 @@ local function survey(budget)
 					local gap = buf[i + MAX_LAYERS] - buf[j + MAX_LAYERS]
 					if gap > MAXGAP then break end
 					local U, L = buf[i], buf[j]
+					if gap < 0.006 and area(U) > area(L) then U, L = L, U end   -- flush: cut the big one under the small one
 					if U ~= L then
+						if gap < 0.006 then flush += 1 elseif gap < 0.05 then close += 1 end
 						if L == Terrain then bump(terrainUnder, label(U))
 						elseif U == Terrain or leaveAlone(U) or leaveAlone(L) then alone += 1
 						else
@@ -140,13 +169,14 @@ local function survey(budget)
 		if nx % 8 == 0 then task.wait() end
 		if budget and os.clock() - t0 > budget then return nil, columns end
 	end
-	return over, columns, faces, stackedPts, terrainUnder, alone
+	return over, columns, faces, stackedPts, terrainUnder, alone, flush, close
 end
 
 print(string.format("QQ TWN SURVEY box x %d..%d z %d..%d step %.2f maxgap %.2f (%s)", BOX.x1, BOX.x2, BOX.z1, BOX.z2, STEP, MAXGAP, DRY and "DRY RUN, nothing changes" or "CUTTING"))
-local over, columns, faces, stackedPts, terrainUnder, alone = survey(TIME_BUDGET * 0.6)
+local over, columns, faces, stackedPts, terrainUnder, alone, flush, close = survey(TIME_BUDGET * 0.6)
 if not over then warn(string.format("QQ TWN ABORT - survey ran out of time after %d columns; raise TIME_BUDGET or STEP", columns)) return end
-print(string.format("QQ TWN columns %d | faces %d | stacked pairs seen %d | left alone (water, whale, boats, cars, gates, ...) %d | %.0f s", columns, faces, stackedPts, alone, os.clock() - t0))
+print(string.format("QQ TWN columns %d | faces %d | stacked pairs seen %d (flush, same height: %d; under 0.05: %d) | left alone (fountain, whale, boats, cars, gates, ...) %d | %.0f s",
+	columns, faces, stackedPts, flush, close, alone, os.clock() - t0))
 
 -- a pair that goes both ways is cut one way only: the one that is on top at more points stays whole
 for L, ups in pairs(over) do
