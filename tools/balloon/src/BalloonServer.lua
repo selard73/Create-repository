@@ -50,6 +50,7 @@ local function makeBalloon(name, kind, cf)
 		if d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false; d.CanQuery = false; d.CanTouch = false end
 	end
 	m:SetAttribute("Kind", kind)
+	m.ModelStreamingMode = (kind == "yours") and Enum.ModelStreamingMode.Persistent or Enum.ModelStreamingMode.Atomic   -- streaming is on: whole balloons, yours always present
 	m:PivotTo(cf)
 	m.Parent = F
 	return m
@@ -70,7 +71,7 @@ for i, off in ipairs({Vector3.new(4.2, 2.6, 0), Vector3.new(-4.2, 2.6, 0), Vecto
 	w.CFrame = homeCF * CFrame.new(off); w.Parent = yours
 end
 local seat = invisible(Instance.new("Seat")); seat.Name = "FlightSeat"; seat.Size = Vector3.new(2, 0.6, 2); seat.CanCollide = false
-seat.CFrame = homeCF * CFrame.new(0, 1.0, 0); seat.Parent = yours
+seat.CFrame = homeCF * CFrame.new(0, num("SeatHeight", 2.0), 0); seat.Parent = yours
 local prompt = Instance.new("ProximityPrompt"); prompt.Name = "BoardPrompt"; prompt.ObjectText = "Your balloon"; prompt.ActionText = "Board"
 prompt.MaxActivationDistance = 14; prompt.HoldDuration = 0.3; prompt.RequiresLineOfSight = false; prompt.UIOffset = Vector2.new(0, -40)
 prompt.Parent = basket or yours.PrimaryPart or yours:FindFirstChildWhichIsA("BasePart")
@@ -81,9 +82,9 @@ do
 	local heights, periods = {}, {}
 	for v in tostring(F:GetAttribute("DriftHeights") or "10,25"):gmatch("[-%d%.]+") do table.insert(heights, tonumber(v)) end
 	for v in tostring(F:GetAttribute("DriftPeriods") or "150,110"):gmatch("[-%d%.]+") do table.insert(periods, tonumber(v)) end
-	local dc = vec("DriftCenter", Vector3.new(120, 15, -650))
+	local dc = vec("DriftCenter", Vector3.new(190, 18, -650))
 	for i = 1, math.max(1, #heights) do
-		local m = makeBalloon("DriftBalloon" .. i, "drift", CFrame.new(dc.X + num("DriftRadius", 75), heights[i] or 15, dc.Z))
+		local m = makeBalloon("DriftBalloon" .. i, "drift", CFrame.new(dc.X + num("DriftRadius", 55), heights[i] or 18, dc.Z))
 		m:SetAttribute("Index", i); m:SetAttribute("Height", heights[i] or 15); m:SetAttribute("Period", periods[i] or 150)
 		m:SetAttribute("Phase", (i - 1) * 2.4)
 	end
@@ -104,9 +105,12 @@ local function flight(p)
 	char:PivotTo(seat.CFrame * CFrame.new(0, 2.6, 0))
 	task.wait(0.1)
 	seat:Sit(hum)
+	task.wait()
+	hum:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)   -- a jump would break the seat weld and end the flight
 	hum.UseJumpPower = true; hum.JumpPower = 0; hum.JumpHeight = 0
-	ev:FireAllClients("phase", p, "board", 2)
 	local T = {rise = num("RiseTime", 16), hover = num("HoverTime", 8), gust = num("GustTime", 18), storm = num("StormTime", 12), sign = num("SignTime", 6), fade = 2.5}
+	ev:FireAllClients("phase", p, "board", 2)
+	ev:FireAllClients("phase", p, "rise", T.rise)
 	local H = num("RiseHeight", 85)
 	local dir = vec("GustDir", Vector3.new(0.45, 0, -1)); dir = Vector3.new(dir.X, 0, dir.Z).Unit
 	local speed = num("GustSpeed", 22)
@@ -138,10 +142,11 @@ local function flight(p)
 		local tilt = (phaseIndex >= 3) and math.rad(7) * ease((t - (T.rise + T.hover)) / 3) or 0
 		local cf = CFrame.new(homeCF.Position + Vector3.new(0, y, 0) + drift + sway) * CFrame.Angles(0, math.rad(num("PadYaw", 70)) + t * 0.04, 0) * CFrame.Angles(tilt * -dir.Z, 0, tilt * dir.X)
 		yours:PivotTo(cf)
-		if seat.Occupant ~= hum or hum.Health <= 0 or p.Parent ~= Players then aborted = true; conn:Disconnect() end
+		if (t > 0.6 and seat.Occupant ~= hum) or hum.Health <= 0 or p.Parent ~= Players then aborted = true; conn:Disconnect() end   -- (the weld takes a physics step to land)
 	end)
 	while conn.Connected do task.wait(0.1) end
 	-- home again
+	hum:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
 	hum.Sit = false
 	task.wait(0.15)
 	setHome()

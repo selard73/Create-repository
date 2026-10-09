@@ -28,19 +28,17 @@ for _, d in ipairs(tpl:GetDescendants()) do
 	end
 end
 local basket = tpl:FindFirstChild("Basket", true)
-if basket then tpl.PrimaryPart = basket end
--- the pivot sits at the basket floor (the model was exported that way); keep it there whatever Studio did on import
-do
-	local lo = math.huge
-	for _, d in ipairs(tpl:GetDescendants()) do if d:IsA("BasePart") and d.Name == "Basket" then lo = math.min(lo, d.Position.Y - d.Size.Y / 2) end end
-	if lo < math.huge then local p = tpl:GetPivot(); tpl.WorldPivot = CFrame.new(p.Position.X, lo, p.Position.Z) end
+if basket then
+	-- the model pivot = the basket floor, upright (a PrimaryPart's PivotOffset is what PivotTo uses; WorldPivot would be ignored)
+	tpl.PrimaryPart = basket
+	basket.PivotOffset = basket.CFrame:Inverse() * CFrame.new(basket.Position - Vector3.new(0, basket.Size.Y / 2, 0))
 end
 tpl.Name = "BalloonTemplate"; tpl.Parent = SS
 local evt = RS:FindFirstChild("BalloonEvent") or Instance.new("RemoteEvent"); evt.Name = "BalloonEvent"; evt.Parent = RS
 local F = Instance.new("Folder"); F.Name = "BalloonField"
 F:SetAttribute("Center", Vector3.new(106, -48.5, -648)); F:SetAttribute("Need", 44)
 F:SetAttribute("PadYours", Vector3.new(96, 0, -646)); F:SetAttribute("PadYaw", 70); F:SetAttribute("PadTethered", Vector3.new(128, 0, -676))
-F:SetAttribute("DriftCenter", Vector3.new(120, 15, -650)); F:SetAttribute("DriftRadius", 75); F:SetAttribute("DriftHeights", "10,25"); F:SetAttribute("DriftPeriods", "150,110")
+F:SetAttribute("DriftCenter", Vector3.new(190, 18, -650)); F:SetAttribute("DriftRadius", 55); F:SetAttribute("DriftHeights", "18,33"); F:SetAttribute("DriftPeriods", "150,110")
 F:SetAttribute("RiseHeight", 85); F:SetAttribute("RiseTime", 16); F:SetAttribute("HoverTime", 8); F:SetAttribute("GustTime", 18); F:SetAttribute("StormTime", 12); F:SetAttribute("SignTime", 6)
 F:SetAttribute("GustDir", Vector3.new(0.45, 0, -1)); F:SetAttribute("GustSpeed", 22); F:SetAttribute("ThunderSoundId", 0); F:SetAttribute("WindSoundId", 0)
 local sv = Instance.new("Script"); sv.Name = "BalloonServer"; sv.RunContext = Enum.RunContext.Server; sv.Source = [===[
@@ -96,6 +94,7 @@ local function makeBalloon(name, kind, cf)
 		if d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false; d.CanQuery = false; d.CanTouch = false end
 	end
 	m:SetAttribute("Kind", kind)
+	m.ModelStreamingMode = (kind == "yours") and Enum.ModelStreamingMode.Persistent or Enum.ModelStreamingMode.Atomic   -- streaming is on: whole balloons, yours always present
 	m:PivotTo(cf)
 	m.Parent = F
 	return m
@@ -116,7 +115,7 @@ for i, off in ipairs({Vector3.new(4.2, 2.6, 0), Vector3.new(-4.2, 2.6, 0), Vecto
 	w.CFrame = homeCF * CFrame.new(off); w.Parent = yours
 end
 local seat = invisible(Instance.new("Seat")); seat.Name = "FlightSeat"; seat.Size = Vector3.new(2, 0.6, 2); seat.CanCollide = false
-seat.CFrame = homeCF * CFrame.new(0, 1.0, 0); seat.Parent = yours
+seat.CFrame = homeCF * CFrame.new(0, num("SeatHeight", 2.0), 0); seat.Parent = yours
 local prompt = Instance.new("ProximityPrompt"); prompt.Name = "BoardPrompt"; prompt.ObjectText = "Your balloon"; prompt.ActionText = "Board"
 prompt.MaxActivationDistance = 14; prompt.HoldDuration = 0.3; prompt.RequiresLineOfSight = false; prompt.UIOffset = Vector2.new(0, -40)
 prompt.Parent = basket or yours.PrimaryPart or yours:FindFirstChildWhichIsA("BasePart")
@@ -127,9 +126,9 @@ do
 	local heights, periods = {}, {}
 	for v in tostring(F:GetAttribute("DriftHeights") or "10,25"):gmatch("[-%d%.]+") do table.insert(heights, tonumber(v)) end
 	for v in tostring(F:GetAttribute("DriftPeriods") or "150,110"):gmatch("[-%d%.]+") do table.insert(periods, tonumber(v)) end
-	local dc = vec("DriftCenter", Vector3.new(120, 15, -650))
+	local dc = vec("DriftCenter", Vector3.new(190, 18, -650))
 	for i = 1, math.max(1, #heights) do
-		local m = makeBalloon("DriftBalloon" .. i, "drift", CFrame.new(dc.X + num("DriftRadius", 75), heights[i] or 15, dc.Z))
+		local m = makeBalloon("DriftBalloon" .. i, "drift", CFrame.new(dc.X + num("DriftRadius", 55), heights[i] or 18, dc.Z))
 		m:SetAttribute("Index", i); m:SetAttribute("Height", heights[i] or 15); m:SetAttribute("Period", periods[i] or 150)
 		m:SetAttribute("Phase", (i - 1) * 2.4)
 	end
@@ -150,9 +149,12 @@ local function flight(p)
 	char:PivotTo(seat.CFrame * CFrame.new(0, 2.6, 0))
 	task.wait(0.1)
 	seat:Sit(hum)
+	task.wait()
+	hum:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)   -- a jump would break the seat weld and end the flight
 	hum.UseJumpPower = true; hum.JumpPower = 0; hum.JumpHeight = 0
-	ev:FireAllClients("phase", p, "board", 2)
 	local T = {rise = num("RiseTime", 16), hover = num("HoverTime", 8), gust = num("GustTime", 18), storm = num("StormTime", 12), sign = num("SignTime", 6), fade = 2.5}
+	ev:FireAllClients("phase", p, "board", 2)
+	ev:FireAllClients("phase", p, "rise", T.rise)
 	local H = num("RiseHeight", 85)
 	local dir = vec("GustDir", Vector3.new(0.45, 0, -1)); dir = Vector3.new(dir.X, 0, dir.Z).Unit
 	local speed = num("GustSpeed", 22)
@@ -184,10 +186,11 @@ local function flight(p)
 		local tilt = (phaseIndex >= 3) and math.rad(7) * ease((t - (T.rise + T.hover)) / 3) or 0
 		local cf = CFrame.new(homeCF.Position + Vector3.new(0, y, 0) + drift + sway) * CFrame.Angles(0, math.rad(num("PadYaw", 70)) + t * 0.04, 0) * CFrame.Angles(tilt * -dir.Z, 0, tilt * dir.X)
 		yours:PivotTo(cf)
-		if seat.Occupant ~= hum or hum.Health <= 0 or p.Parent ~= Players then aborted = true; conn:Disconnect() end
+		if (t > 0.6 and seat.Occupant ~= hum) or hum.Health <= 0 or p.Parent ~= Players then aborted = true; conn:Disconnect() end   -- (the weld takes a physics step to land)
 	end)
 	while conn.Connected do task.wait(0.1) end
 	-- home again
+	hum:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
 	hum.Sit = false
 	task.wait(0.15)
 	setHome()
@@ -242,9 +245,11 @@ end
 for _, m in ipairs(F:GetChildren()) do adopt(m) end
 F.ChildAdded:Connect(function(m) task.wait(0.2); adopt(m) end)
 F.ChildRemoved:Connect(function(m) drift[m] = nil; tethered[m] = nil end)
-local DC, DR = vec("DriftCenter", Vector3.new(120, 15, -650)), num("DriftRadius", 75)
+local DC, DR = vec("DriftCenter", Vector3.new(190, 18, -650)), num("DriftRadius", 55)
+local signBasket = nil
 RunService.RenderStepped:Connect(function()
 	local t = workspace:GetServerTimeNow()
+	if signBasket and signBasket.Parent then signPart.CFrame = signBasket.CFrame * CFrame.new(0, 7, -14) end
 	for m, d in pairs(drift) do
 		if m.Parent then
 			local a = d.phase + 2 * math.pi * t / d.period
@@ -343,6 +348,7 @@ player:GetAttributeChangedSignal("Found_porto"):Connect(onCount)
 -- ---------- the weather ----------
 local saved = nil
 local atmo = Lighting:FindFirstChildOfClass("Atmosphere")
+local cc = Instance.new("ColorCorrectionEffect"); cc.Name = "BalloonFade"; cc.Brightness = 0; cc.Parent = Lighting   -- the fade a headset sees too
 local function sound(id, volume, parent)
 	if not id or id == 0 then return nil end
 	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://" .. tostring(id); s.Volume = volume or 0.5; s.Parent = parent or SoundService; s:Play()
@@ -356,6 +362,7 @@ local function stormOn(secs)
 	TweenService:Create(Lighting, TweenInfo.new(5, Enum.EasingStyle.Sine), {FogEnd = 45, FogStart = 4, FogColor = Color3.fromRGB(120, 124, 132), Brightness = 0.6, OutdoorAmbient = Color3.fromRGB(70, 72, 80)}):Play()
 	if atmo then TweenService:Create(atmo, TweenInfo.new(5, Enum.EasingStyle.Sine), {Density = 0.95, Haze = 10, Color = Color3.fromRGB(130, 134, 140)}):Play() end
 	storming = true
+	local amb = saved.Ambient
 	task.spawn(function()
 		local t0 = os.clock()
 		task.wait(2.5)
@@ -365,7 +372,9 @@ local function stormOn(secs)
 			if not VR then flash.BackgroundTransparency = 0.25 end
 			Lighting.Brightness = 3; Lighting.Ambient = Color3.fromRGB(220, 225, 240)
 			task.wait(hold)
-			flash.BackgroundTransparency = 1; Lighting.Brightness = 0.6; Lighting.Ambient = saved.Ambient
+			flash.BackgroundTransparency = 1
+			if not storming then break end
+			Lighting.Brightness = 0.6; Lighting.Ambient = amb
 			task.delay(0.4 + math.random() * 0.8, function() sound(num("ThunderSoundId", 0), 0.6) end)
 			task.wait(1.4 + math.random() * 2.2)
 		end
@@ -381,7 +390,7 @@ local function stormOff()
 end
 
 -- ---------- phases ----------
-local shaking = nil
+local flying = false
 ev.OnClientEvent:Connect(function(what, who, name, secs)
 	if what == "locked" then showToast(string.format("Find all %d squirrels of Porto Nocciola to fly. %d so far.", name, who), 4)
 	elseif what == "busy" then showToast("The balloon is away. It will be back on the field soon.", 3)
@@ -390,34 +399,37 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 		local fl = m and m:FindFirstChild("Flame", true)
 		if name == "board" and fl and flames[fl] then flames[fl].flare = 1; task.delay(3, function() if flames[fl] then flames[fl].flare = 0 end end) end
 		if who ~= player then return end
+		if name == "board" then flying = true end
 		if name == "rise" then showToast("Up you go! Look at Porto Nocciola from the sky.", 5)
 		elseif name == "gust" then
 			showToast("Whoosh! A gust takes the balloon out to sea!", 4)
 			sound(num("WindSoundId", 0), 0.7)
 			if not VR then
-				local cam = workspace.CurrentCamera; local t0 = os.clock()
-				shaking = RunService.RenderStepped:Connect(function()
+				local t0 = os.clock()
+				RunService:BindToRenderStep("BalloonShake", Enum.RenderPriority.Camera.Value + 1, function()
+					local cam = workspace.CurrentCamera
 					local k = math.max(0, 1 - (os.clock() - t0) / 3) * 0.25
-					cam.CFrame = cam.CFrame * CFrame.Angles(k * (math.random() - 0.5) * 0.2, k * (math.random() - 0.5) * 0.2, 0)
-					if k <= 0 then shaking:Disconnect(); shaking = nil end
+					if cam then cam.CFrame = cam.CFrame * CFrame.Angles(k * (math.random() - 0.5) * 0.2, k * (math.random() - 0.5) * 0.2, 0) end
+					if k <= 0 then RunService:UnbindFromRenderStep("BalloonShake") end
 				end)
 			end
-			task.delay(math.max(0, secs - 6), function() stormOn(num("StormTime", 12) + num("SignTime", 6) + 3) end)
+			task.delay(math.max(0, secs - 6), function() if flying then stormOn(num("StormTime", 12) + num("SignTime", 6) + 3) end end)
 		elseif name == "sign" then
-			local basket = m and m:FindFirstChild("Basket", true)
-			if basket then signPart.CFrame = basket.CFrame * CFrame.new(0, 7, -14) end
+			signBasket = m and m:FindFirstChild("Basket", true)
 			bb.Enabled = true; sign.Visible = not VR
 		elseif name == "fade" then
 			TweenService:Create(black, TweenInfo.new(1.6), {BackgroundTransparency = 0}):Play()
+			TweenService:Create(cc, TweenInfo.new(1.6), {Brightness = -1}):Play()
 			task.delay(1.8, function() bb.Enabled = false; sign.Visible = false end)
 		elseif name == "home" then
+			flying = false; signBasket = nil; bb.Enabled = false; sign.Visible = false
 			stormOff()
-			task.delay(0.6, function() TweenService:Create(black, TweenInfo.new(1.4), {BackgroundTransparency = 1}):Play() end)
+			task.delay(0.6, function() TweenService:Create(black, TweenInfo.new(1.4), {BackgroundTransparency = 1}):Play(); TweenService:Create(cc, TweenInfo.new(1.4), {Brightness = 0}):Play() end)
 			showToast("Back on the balloon field. More of the journey is coming soon!", 5)
 		end
 	end
 end)
-player.CharacterAdded:Connect(function() if storming then stormOff() end; black.BackgroundTransparency = 1; bb.Enabled = false; sign.Visible = false end)
+player.CharacterAdded:Connect(function() flying = false; if storming then stormOff() end; black.BackgroundTransparency = 1; cc.Brightness = 0; bb.Enabled = false; sign.Visible = false end)
 print("BalloonClient: ready" .. (VR and " (VR)" or ""))
 ]===]; cl.Parent = F
 for _, s in ipairs({sv, cl}) do local f, err = loadstring(s.Source); if not f then warn("QQ FIELD ABORT - " .. s.Name .. " does not compile: " .. tostring(err)); F:Destroy(); return end end

@@ -46,19 +46,17 @@ for _, d in ipairs(tpl:GetDescendants()) do
 	end
 end
 local basket = tpl:FindFirstChild("Basket", true)
-if basket then tpl.PrimaryPart = basket end
--- the pivot sits at the basket floor (the model was exported that way); keep it there whatever Studio did on import
-do
-	local lo = math.huge
-	for _, d in ipairs(tpl:GetDescendants()) do if d:IsA("BasePart") and d.Name == "Basket" then lo = math.min(lo, d.Position.Y - d.Size.Y / 2) end end
-	if lo < math.huge then local p = tpl:GetPivot(); tpl.WorldPivot = CFrame.new(p.Position.X, lo, p.Position.Z) end
+if basket then
+	-- the model pivot = the basket floor, upright (a PrimaryPart's PivotOffset is what PivotTo uses; WorldPivot would be ignored)
+	tpl.PrimaryPart = basket
+	basket.PivotOffset = basket.CFrame:Inverse() * CFrame.new(basket.Position - Vector3.new(0, basket.Size.Y / 2, 0))
 end
 tpl.Name = "BalloonTemplate"; tpl.Parent = SS
 local evt = RS:FindFirstChild("BalloonEvent") or Instance.new("RemoteEvent"); evt.Name = "BalloonEvent"; evt.Parent = RS
 local F = Instance.new("Folder"); F.Name = "BalloonField"
 F:SetAttribute("Center", Vector3.new(106, -48.5, -648)); F:SetAttribute("Need", 44)
 F:SetAttribute("PadYours", Vector3.new(96, 0, -646)); F:SetAttribute("PadYaw", 70); F:SetAttribute("PadTethered", Vector3.new(128, 0, -676))
-F:SetAttribute("DriftCenter", Vector3.new(120, 15, -650)); F:SetAttribute("DriftRadius", 75); F:SetAttribute("DriftHeights", "10,25"); F:SetAttribute("DriftPeriods", "150,110")
+F:SetAttribute("DriftCenter", Vector3.new(190, 18, -650)); F:SetAttribute("DriftRadius", 55); F:SetAttribute("DriftHeights", "18,33"); F:SetAttribute("DriftPeriods", "150,110")
 F:SetAttribute("RiseHeight", 85); F:SetAttribute("RiseTime", 16); F:SetAttribute("HoverTime", 8); F:SetAttribute("GustTime", 18); F:SetAttribute("StormTime", 12); F:SetAttribute("SignTime", 6)
 F:SetAttribute("GustDir", Vector3.new(0.45, 0, -1)); F:SetAttribute("GustSpeed", 22); F:SetAttribute("ThunderSoundId", 0); F:SetAttribute("WindSoundId", 0)
 local sv = Instance.new("Script"); sv.Name = "BalloonServer"; sv.RunContext = Enum.RunContext.Server; sv.Source = @@SERVER@@; sv.Parent = F
