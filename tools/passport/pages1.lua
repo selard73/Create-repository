@@ -99,8 +99,13 @@ end
  local batch=s.journal._batch
  if batch then
 ]===], [===[
- local batch=s.journal[J.cityOf(id)=="italy" and "_batch_porto" or "_batch"]
+ local pageKey=J.cityOf(id)=="italy" and "_batch_porto" or "_batch"
+ local batch=s.journal[pageKey]
  if batch then
+]===]}, {[===[
+  if changed then write(p,"_batch",b) end
+]===], [===[
+  if changed then write(p,pageKey,b) end
 ]===]}, {[===[
  p.AttributeChanged:Connect(function(name)if name=="Found_forest" or name=="Found_village" or name=="Found_domaine" then task.defer(fillEmpty,p)end end)]===], [===[
  p.AttributeChanged:Connect(function(name)if name=="Found_forest" or name=="Found_village" or name=="Found_domaine" or name=="Item_porto" then task.defer(function()repairPage(p);fillEmpty(p)end)end end)]===]}, {[===[

@@ -88,7 +88,8 @@ local function fillEmpty(p)
 end
 '''),
     (' local batch=s.journal._batch\n if batch then\n',
-     ' local batch=s.journal[J.cityOf(id)=="italy" and "_batch_porto" or "_batch"]\n if batch then\n'),
+     ' local pageKey=J.cityOf(id)=="italy" and "_batch_porto" or "_batch"\n local batch=s.journal[pageKey]\n if batch then\n'),
+    ('  if changed then write(p,"_batch",b) end\n', '  if changed then write(p,pageKey,b) end\n'),   # (pages2 fixed this in Studio: the stamp went back under the French key)
     (' p.AttributeChanged:Connect(function(name)if name=="Found_forest" or name=="Found_village" or name=="Found_domaine" then task.defer(fillEmpty,p)end end)',
      ' p.AttributeChanged:Connect(function(name)if name=="Found_forest" or name=="Found_village" or name=="Found_domaine" or name=="Item_porto" then task.defer(function()repairPage(p);fillEmpty(p)end)end end)'),
     ('action.OnServerInvoke=function(p,what)\n', 'action.OnServerInvoke=function(p,what,city)\n'),

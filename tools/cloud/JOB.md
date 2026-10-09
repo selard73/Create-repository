@@ -277,3 +277,10 @@ before the Guardian stood (Oct 7). tools/porto_keeper/guardian1.lua: the count c
 FoundIds changes are watched, and a player arriving with all 44 is crowned if no Guardian stands yet. It also prints
 game.CreatorType / CreatorId (the owner exclusion applies only to CreatorType User). Send the `QQ GUARD` lines. No publish.
 Job 26 note: Studio's ChampionServer already counts France only (Oct 3); once1.lua now changes only hallHas (once per player).
+
+## Job 30: passport pages, the one-line fix to job 25 (Studio EDIT; ask Shannon first)
+
+mark() read the stamped outing's page but wrote it back under the French key, so every Porto stamp copied the Porto page
+over the French page (job 25 test: both pages identical, French tab "Keep exploring", Porto header 0 of 5).
+tools/passport/pages2.lua (PassportServer 9188 chars, 2 finds). Send the `QQ PAGE2` line, then a play test: French tab
+shows French outings again, Porto tab its own five with the stamped ones counted. No publish.
