@@ -269,3 +269,11 @@ map". tools/champion/once1.lua patches workspace.Champion.ChampionServer (4 find
 Shannon: "in the french section, the portraits had the characters in them blinking in and out" (VR). In a headset the
 ViewportFrame sitters are replaced by the sitter's avatar bust picture. tools/portraits/vr1.lua patches
 workspace.PortraitGallery.PortraitClient (3 finds). Send the `QQ VRP` lines. Shannon checks in VR after publishing.
+
+## Job 28: the Guardian of the Harbour fires for a player who already has all 44 (Studio EDIT; ask Shannon first)
+
+Job 24 showed PortoKeeperServer crowns only when Found_porto changes across 44 in the live server; Shannon had them all
+before the Guardian stood (Oct 7). tools/porto_keeper/guardian1.lua: the count comes from FoundIds (Porto registry ids),
+FoundIds changes are watched, and a player arriving with all 44 is crowned if no Guardian stands yet. It also prints
+game.CreatorType / CreatorId (the owner exclusion applies only to CreatorType User). Send the `QQ GUARD` lines. No publish.
+Job 26 note: Studio's ChampionServer already counts France only (Oct 3); once1.lua now changes only hallHas (once per player).
