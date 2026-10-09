@@ -363,3 +363,12 @@ where the patio drops off; the leaderboard right next to it". Job 36c: the floor
 Re-run tools/race/install_porto_race.lua: gate along the edge at 431.5,-12,-812 (60%, facing into the piazza; the pad on
 the piazza side), board at 431.5,-824. Send the `QQ RACE` line; play test: Start works at the pad; nothing hangs over
 the edge; the banner and board read from the piazza.
+
+## Job 42: READ-ONLY dump of ShopClient's ITEMS / MAPS_OF / row block. Done.
+
+## Job 43: keepsakes in the Acorn Store (Studio EDIT; ask Shannon first)
+
+Shannon: "where do you see that you have the perfume bottle in your inventory?" tools/shop/keepsakes1.lua patches
+workspace.Shop.ShopClient (34513 chars, 5 finds): rows "Parfum bottle" and "Pearl" on the Porto tab, shown once owned,
+labelled "yours", never for sale. Send the `QQ KEEP` line; play test: with Item_parfum_bottle = 1 the row shows on the
+Porto tab as "yours"; with 0 it is hidden; France tab unchanged; no errors. No publish.
