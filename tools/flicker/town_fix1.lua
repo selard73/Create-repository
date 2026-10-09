@@ -20,11 +20,18 @@ local MAXGAP = 0.3
 local UP = 0.7
 local MAX_LAYERS = 24
 local MIN_POINTS = 4        -- at 0.5 spacing = 1 square stud hidden under the upper before the lower is cut
-local MAX_CUTS = 400        -- per run; the rest next run
+local MAX_CUTS = 600        -- per run; the rest next run
 local TIME_BUDGET = 240     -- seconds; the run stops cutting (and skips the verify) past this, rerun to continue
 local CUT_BELOW = 0.12      -- the cut goes this far below the upper's underside (or below the lower's top, if higher)
 local GROW_H = 0.004
 local MESH_LOWERS = false   -- cut MeshParts that are the lower of a pair? false = report them only
+-- only a floor-type part is ever cut (the lower of a pair); anything else (roofs, gables, walls, rocks) is reported only
+local FLOOR_WORDS = {"paving", "pavement", "floor", "foundation", "footing", "landing", "threshold", "forecourt", "promenade", "quay",
+	"cobble", "stair", "step", "tread", "plinth", "masonry", "terrace", "passage", "join", "seam", "corner", "platform", "apron",
+	"court", "track bed", "pier", "deck", "path", "walk", "street", "road", "piazza", "square", "slab", "curb", "kerb", "coping",
+	"seawall", "ledge", "gangway", "jetty", "dock", "bridge", "ramp", "ground", "flagstone", "tiled", "base", "podium", "esplanade"}
+local NEVER_LOWER = {"roof", "gable", "wall", "window", "door", "lintel", "cornice", "eave", "chimney", "parapet", "balcon", "rock",
+	"cliff", "plaster", "opening", "rail", "post", "column", "pillar", "arch", "beam", "fence", "railing", "awning", "canopy", "sign"}
 local NOT_FLOOR = {"cup", "saucer", "chair", "seat", "table", "squirrel", "lamp", "sign", "pot", "plant", "flower", "umbrella",
 	"awning", "canopy", "bench", "cart", "crate", "barrel", "basket", "fountain", "statue", "pizza", "glass", "bottle", "menu",
 	"trunk", "foliage", "crown", "bush", "hedge", "pad", "prompt", "handle", "bubble", "marker", "pebble", "lemon", "shell",
@@ -85,6 +92,16 @@ local leaveCache = {}
 local function leaveAlone(p)
 	local v = leaveCache[p]
 	if v == nil then v = hasWord(p:GetFullName(), LEAVE_ALONE); leaveCache[p] = v end
+	return v
+end
+local floorCache = {}
+local function floorish(p)   -- may this part be cut?
+	local v = floorCache[p]
+	if v == nil then
+		local n = p.Name
+		v = not hasWord(n, NEVER_LOWER) and hasWord(n, FLOOR_WORDS)
+		floorCache[p] = v
+	end
 	return v
 end
 local passCache = {}
@@ -189,12 +206,13 @@ for L, ups in pairs(over) do
 end
 
 -- the plan
-local plan, meshSkipped, byName = {}, {}, {}
+local plan, meshSkipped, byName, notFloor = {}, {}, {}, {}
 for L, ups in pairs(over) do
 	local total, names = 0, {}
 	for U, c in pairs(ups) do total += c; bump(names, U.Name) end
 	if total >= MIN_POINTS then
-		if L:IsA("MeshPart") and not MESH_LOWERS then bump(meshSkipped, label(L), total)
+		if not floorish(L) then for U, c in pairs(ups) do bump(notFloor, U.Name .. "  OVER  " .. L.Name, c) end
+		elseif L:IsA("MeshPart") and not MESH_LOWERS then bump(meshSkipped, label(L), total)
 		else
 			table.insert(plan, {L = L, ups = ups, total = total, names = names})
 			for U, c in pairs(ups) do bump(byName, U.Name .. "  OVER  " .. L.Name, c) end
@@ -223,6 +241,15 @@ for k, c in pairs(terrainUnder) do table.insert(tu, {k = k, c = c}) end
 table.sort(tu, function(a, b) return a.c > b.c end)
 print(string.format("QQ TWN TERRAIN under a part within %.1f (not cut): %d kinds, top 10:", MAXGAP, #tu))
 for i = 1, math.min(10, #tu) do print(string.format("QQ TWN TERRAIN %2d n=%-6d %s", i, tu[i].c, tu[i].k)) end
+local nfl = {}
+for k, c in pairs(notFloor) do table.insert(nfl, {k = k, c = c}) end
+table.sort(nfl, function(a, b) return a.c > b.c end)
+if #nfl > 0 then
+	local nfPts = 0
+	for _, e in ipairs(nfl) do nfPts += e.c end
+	print(string.format("QQ TWN NOT FLOOR (roofs, walls, rocks...; reported, never cut): %d kinds, %d points, top 12:", #nfl, nfPts))
+	for i = 1, math.min(12, #nfl) do print(string.format("QQ TWN NOTFLOOR %2d n=%-6d %s", i, nfl[i].c, nfl[i].k)) end
+end
 local ms = {}
 for k, c in pairs(meshSkipped) do table.insert(ms, {k = k, c = c}) end
 table.sort(ms, function(a, b) return a.c > b.c end)
@@ -261,10 +288,14 @@ for i, e in ipairs(plan) do
 			local centreY = (newTop + newBottom) / 2
 			c.CFrame = c.CFrame + Vector3.new(0, centreY - c.Position.Y, 0)
 		else
-			-- tilted (ramp, slope): grow 0.5 each way along its most vertical axis, as square_fix1 did
+			-- tilted (ramp, slope): 0.5 up and CUT_BELOW down along its most vertical axis
 			local sz = {s.X + GROW_H, s.Y + GROW_H, s.Z + GROW_H}
-			sz[ax] = sz[ax] + 1.0
+			sz[ax] = sz[ax] + 0.5 + CUT_BELOW
 			c.Size = Vector3.new(sz[1], sz[2], sz[3])
+			local cf = c.CFrame
+			local axisV = ax == 1 and cf.RightVector or ax == 2 and cf.UpVector or cf.LookVector
+			if axisV.Y < 0 then axisV = -axisV end
+			c.CFrame = cf + axisV * ((0.5 - CUT_BELOW) / 2)
 		end
 		c.Anchored = true; c.CanCollide = false
 		table.insert(cutters, c)
