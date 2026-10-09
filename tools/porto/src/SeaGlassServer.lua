@@ -23,7 +23,7 @@ local bella = workspace:WaitForChild("seaglass_squirrel_color", 60)
 local bellaPos = bella and bella:GetPivot().Position or Vector3.new(399.6, -48.8, -1054.8)
 
 -- ---------- where a piece may lie: sand, away from Bella and from each other, nothing built on it ----------
-local tparams = RaycastParams.new(); tparams.FilterType = Enum.RaycastFilterType.Exclude; tparams.IgnoreWater = true
+local tparams = RaycastParams.new(); tparams.FilterType = Enum.RaycastFilterType.Exclude; tparams.IgnoreWater = false -- a ray that meets the sea stops at its surface (Material Water), so no piece lies underwater
 local oparams = OverlapParams.new(); oparams.FilterType = Enum.RaycastFilterType.Exclude; oparams.FilterDescendantsInstances = {workspace.Terrain, pieces}
 local spots = {}
 local function findSpots()

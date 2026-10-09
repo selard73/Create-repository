@@ -179,3 +179,18 @@ What it does (all exact-string patches with guards, or new instances; originals 
    (c) at the opera singer in the piazza: "Listen" plays the aria; (d) the harbour office bell: ring it;
    (e) open the Passport, Porto Nocciola tab: the new outings listed, bell and opera stamped. Note any error in the
    Output (first error verbatim). Stop the play test; Studio back to Edit. Send the findings. No publish.
+
+## Job 18: fixes from the job 17 play test + a look at the harbour bell (Studio EDIT, one script; ask Shannon first)
+
+- Sea glass: 4 of 8 finds lay on the seabed (the spot ray ignored water); now the ray stops at the water surface.
+- Bella's panel: shrinks to fit on a phone (keeps the top HUD bar and jump button clear) and draws above the Daily card.
+- Passport, Porto tab of Outings: lists every Porto outing not yet stamped instead of "Porto Nocciola is new".
+- Harbour bell: READ-ONLY probe first (QQ BELL lines: the prompt, its parent, the bell's own script); nothing changed there.
+1. Fetch and read:
+   https://raw.githubusercontent.com/selard73/Create-repository/claude/epic-hawking-188q4l/tools/porto/italy_fix1.lua
+   It refuses to run unless SeaGlassServer is 8223, SeaGlassClient 10372 and PassportClient 28101 chars and every find
+   hits once; compiles each result first; backups ServerStorage.HudBackup.*_pre_fix1.
+2. Tell Shannon; with her yes run it (Edit mode, execute_luau). Send every `QQ BELL` and `QQ FIX` line in ONE message.
+3. Quick play test (Device Simulator as it is): (a) workspace.SeaGlass.Pieces: the 8 Find positions, all on dry sand?
+   (b) Bella's panel: top HUD bar and jump button visible? (c) Passport > Outings > Porto Nocciola: the unstamped outings
+   listed? Stop the play test; Studio back in Edit. Send the findings in the same message. No publish.

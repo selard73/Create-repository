@@ -25,7 +25,7 @@ local function say(line, secs)
 	if Bubble and m then pcall(function() Bubble.say(m, line, {secs = secs or 4.5}) end) end
 end
 
-local gui = Instance.new("ScreenGui"); gui.Name = "SeaGlassGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 7; gui.Parent = pg
+local gui = Instance.new("ScreenGui"); gui.Name = "SeaGlassGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 16; gui.Parent = pg
 
 -- ---------- the toast ----------
 local toast = Instance.new("TextLabel"); toast.Name = "Toast"; toast.AnchorPoint = Vector2.new(0.5, 1); toast.Size = UDim2.fromOffset(300, 34)
@@ -101,7 +101,9 @@ end
 local function layout()
 	local v = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1280, 720)
 	local h = ROW_Y + #R.recipes * ROW_H + 24
-	panel.Size = UDim2.fromOffset(math.min(380, v.X - 24), math.min(h, v.Y - 16))
+	local sc = panel:FindFirstChild("PhoneScale") or Instance.new("UIScale"); sc.Name = "PhoneScale"; sc.Parent = panel
+	local s = math.clamp((v.Y - 130) / h, 0.6, 1); sc.Scale = s -- a phone keeps the top HUD bar and the jump button clear
+	panel.Size = UDim2.fromOffset(math.min(380, (v.X - 24) / s), math.min(h, (v.Y - 16) / s))
 end
 local open = false
 local function closePanel()
