@@ -10,7 +10,8 @@ local LIFT_MIN = 0.15    -- floating by more than this = seat it
 local SINK_MAX = 0.6     -- sunk by more than this = lift it (bigger = probably on purpose, left alone and reported)
 local SINK = 0.05        -- how far into the ground the bottom goes
 local ALL_MAPS = false   -- false = only Porto (x 250..800, z -1250..-500)
-local ONLY = nil         -- e.g. "Snorkel" to do one squirrel by name; nil = all
+local ONLY = nil         -- e.g. "snorkel" to do one squirrel by name (lower-case substring); nil = list all, move none
+                         -- (a squirrel is only MOVED when ONLY names it: rigged meshes can read as floating when they are not)
 
 if game:GetService("RunService"):IsRunning() then warn("QQ SEAT ABORT - Play mode") return end
 local CS = game:GetService("CollectionService")
@@ -21,11 +22,23 @@ local function bottomOf(m)
 	local cf, size = m:GetBoundingBox()
 	return cf.Position.Y - size.Y / 2, size
 end
+-- in Edit mode most squirrels do not carry the "Squirrel" tag (the game adds it when it runs), so go by name as well
+local cands, seen = {}, {}
+local function consider(m)
+	if m:IsA("Model") and not seen[m] and m:IsDescendantOf(workspace) and m:FindFirstChildWhichIsA("BasePart", true) then
+		local twins = workspace:FindFirstChild("SquirrelTwins")
+		if not (twins and m:IsDescendantOf(twins)) then seen[m] = true; table.insert(cands, m) end
+	end
+end
+for _, m in ipairs(CS:GetTagged("Squirrel")) do consider(m) end
+for _, d in ipairs(workspace:GetDescendants()) do
+	if d:IsA("Model") and d.Name:lower():find("squirrel", 1, true) and not d:FindFirstChildWhichIsA("Model") then consider(d) end
+end
 local rows, moved, floating, sunk = {}, 0, 0, 0
-for _, m in ipairs(CS:GetTagged("Squirrel")) do
-	if m:IsA("Model") and m:IsDescendantOf(workspace) then
+for _, m in ipairs(cands) do
+	do
 		local pivot = m:GetPivot()
-		if (ALL_MAPS or inPorto(pivot.Position)) and (not ONLY or m.Name:lower():find(ONLY:lower(), 1, true)) then
+		if (ALL_MAPS or inPorto(pivot.Position)) then
 			local bottom, size = bottomOf(m)
 			local ex = {m}
 			local twins = workspace:FindFirstChild("SquirrelTwins"); if twins then table.insert(ex, twins) end
@@ -40,7 +53,7 @@ for _, m in ipairs(CS:GetTagged("Squirrel")) do
 				if gap > LIFT_MIN then floating += 1; what = "FLOATING"
 				elseif gap < -SINK_MAX then sunk += 1; what = "sunk (left alone)"
 				elseif gap < -0.15 then what = "a little sunk (fine)" else what = "ok" end
-				local doMove = gap > LIFT_MIN
+				local doMove = gap > LIFT_MIN and ONLY ~= nil and m.Name:lower():find(ONLY:lower(), 1, true) ~= nil
 				local line = string.format("QQ SEAT %-8s %-28s gap %+.2f  bottom %.2f ground %.2f (%s) @ (%.1f,%.2f,%.1f)",
 					what, m.Name, gap, bottom, hit.Position.Y, hit.Instance == workspace.Terrain and ("terrain " .. hit.Material.Name) or hit.Instance.Name, pivot.X, pivot.Y, pivot.Z)
 				if doMove and not DRY then
@@ -50,6 +63,8 @@ for _, m in ipairs(CS:GetTagged("Squirrel")) do
 					line = line .. string.format("  -> moved down %.2f", gap + SINK)
 				elseif doMove then
 					line = line .. string.format("  -> would move down %.2f", gap + SINK)
+				elseif gap > LIFT_MIN then
+					line = line .. "  (name it in ONLY to seat it)"
 				end
 				table.insert(rows, line)
 			end

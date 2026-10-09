@@ -44,10 +44,11 @@ the sand spit, moved Oct 8; others may be too).
 
 1. Fetch and read:
    https://raw.githubusercontent.com/selard73/Create-repository/claude/epic-hawking-188q4l/tools/squirrels/seat_squirrels1.lua
-2. Run it as is (DRY = true): it prints one line per tagged squirrel in Porto with the gap between its feet and the
-   ground below. Send the `QQ SEAT` lines.
-3. Show Shannon the FLOATING ones (gap > 0.15) and what would move. With her yes, set `DRY = false`, run again,
-   send the `QQ SEAT` lines again. Each moved model gets attr SeatOct9OrigCF (its pivot before). No publish.
+2. Run it as is (DRY = true, ONLY = nil): it lists every squirrel model in Porto (tagged "Squirrel" or named
+   *squirrel*) with the gap between its feet and the ground below. Send the `QQ SEAT` lines.
+3. Show Shannon the FLOATING ones (gap > 0.15). She names the ones to seat (the diver / snorkel squirrel for sure).
+   For each: set `DRY = false` and `ONLY = "<part of its name, lower-case>"`, run, send the `QQ SEAT` lines.
+   Each moved model gets attr SeatOct9OrigCF (its pivot before). No publish.
 
 ## Job 10: the town-wide floor cut (Studio EDIT, big: up to ~900 floor parts; Shannon said yes in the cloud thread, ask her again here)
 
