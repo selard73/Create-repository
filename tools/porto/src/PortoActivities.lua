@@ -94,6 +94,26 @@ task.spawn(function()
 		fire(p, "porto_opera", {})
 	end)
 	sound.Ended:Connect(function() prompt.ActionText = "Listen"; listeners = {} end)
+	-- Shannon, Oct 9: "the background music should go silent when she is singing, then pause for 2 seconds after she
+	-- stops, then resume". MusicClient goes silent while the character has NoMusic; hushed[] holds only the ones set here.
+	local hushed = {}
+	local function release(char) if hushed[char] then hushed[char] = nil; if char.Parent then char:SetAttribute("NoMusic", nil) end end end
+	local endedAt
+	while true do
+		task.wait(0.25)
+		if sound.IsPlaying then
+			endedAt = nil
+			for _, pl in ipairs(Players:GetPlayers()) do
+				local char = pl.Character; local root = char and char:FindFirstChild("HumanoidRootPart")
+				if root and (root.Position - part.Position).Magnitude <= sound.RollOffMaxDistance then
+					if not hushed[char] and not char:GetAttribute("NoMusic") then hushed[char] = true; char:SetAttribute("NoMusic", true) end
+				elseif char and hushed[char] then release(char) end
+			end
+		elseif next(hushed) then
+			endedAt = endedAt or os.clock()
+			if os.clock() - endedAt >= num("OperaMusicPause", 2) then for char in pairs(hushed) do release(char) end end
+		end
+	end
 end)
 
 -- ---------- the funicular: in a car at one height, still in it 20 studs higher or lower ----------

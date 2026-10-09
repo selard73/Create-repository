@@ -194,3 +194,15 @@ What it does (all exact-string patches with guards, or new instances; originals 
 3. Quick play test (Device Simulator as it is): (a) workspace.SeaGlass.Pieces: the 8 Find positions, all on dry sand?
    (b) Bella's panel: top HUD bar and jump button visible? (c) Passport > Outings > Porto Nocciola: the unstamped outings
    listed? Stop the play test; Studio back in Edit. Send the findings in the same message. No publish.
+
+## Job 19: map music silent while the opera singer sings (Studio EDIT, one script; ask Shannon first; AFTER job 18)
+
+Shannon: "the background music should go silent when she is singing, then pause for 2 seconds after she stops, then
+resume". While the aria plays, everyone within earshot (80 studs) gets NoMusic (the same switch the boat uses);
+2 s after it ends the music comes back. Characters already on NoMusic (the boat) are not touched.
+1. Fetch and read:
+   https://raw.githubusercontent.com/selard73/Create-repository/claude/epic-hawking-188q4l/tools/porto/opera_hush1.lua
+   It refuses to run unless workspace.PortoPassport.PortoActivities is 7202 chars and the find hits once.
+2. Tell Shannon; with her yes run it (Edit mode). Send the `QQ HUSH` line.
+3. Play test: at the singer, Listen: the map music fades out while she sings, ~2 s silence after, then it fades back.
+   Stop the play test; Studio back in Edit. Send the findings. No publish.
