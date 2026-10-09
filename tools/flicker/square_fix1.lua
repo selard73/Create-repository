@@ -213,7 +213,11 @@ for i, e in ipairs(plan) do
 			for _, tag in ipairs(CS:GetTags(L)) do CS:AddTag(u, tag) end
 			u:SetAttribute("CSGJob", "square1"); u:SetAttribute("CSGCutFrom", L.Name)
 			u:SetAttribute("CSGBackupId", id); u:SetAttribute("CSGCutters", count(e.ups))
+			u:SetAttribute("CSGRestoreFrom", nil); u:SetAttribute("CSGIntermediate", nil)
 			if k == 1 then for _, ch in ipairs(L:GetChildren()) do ch.Parent = u end end
+		end
+		if L:GetAttribute("CSGJob") == "square1" then   -- L is itself a cut from an earlier pass: keep the link to ITS original
+			L:SetAttribute("CSGRestoreFrom", L:GetAttribute("CSGBackupId")); L:SetAttribute("CSGIntermediate", true)
 		end
 		L:SetAttribute("CSGJob", "square1"); L:SetAttribute("CSGBackupId", id); L:SetAttribute("CSGOrigParent", parent:GetFullName())
 		L.Parent = backup
