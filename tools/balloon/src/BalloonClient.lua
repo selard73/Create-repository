@@ -30,7 +30,7 @@ for _, m in ipairs(F:GetChildren()) do adopt(m) end
 F.ChildAdded:Connect(function(m) task.wait(0.2); adopt(m) end)
 F.ChildRemoved:Connect(function(m) drift[m] = nil; tethered[m] = nil end)
 local DC, DR = vec("DriftCenter", Vector3.new(190, 18, -650)), num("DriftRadius", 55)
-local signBasket = nil
+local signBasket, signPart = nil, nil   -- (made below; the loop runs first)
 RunService.RenderStepped:Connect(function()
 	local t = workspace:GetServerTimeNow()
 	if signBasket and signBasket.Parent then signPart.CFrame = signBasket.CFrame * CFrame.new(0, 7, -14) end
@@ -71,7 +71,7 @@ local function showToast(text, secs)
 	task.delay(secs or 3, function() if os.clock() >= toastUntil - 0.05 then toast.Visible = false end end)
 end
 -- the sign in the sky as well: a billboard in front of the basket (readable in VR with the panel closed)
-local signPart = Instance.new("Part"); signPart.Name = "SkySign"; signPart.Anchored = true; signPart.CanCollide = false; signPart.CanQuery = false; signPart.Transparency = 1; signPart.Size = Vector3.new(1, 1, 1)
+signPart = Instance.new("Part"); signPart.Name = "SkySign"; signPart.Anchored = true; signPart.CanCollide = false; signPart.CanQuery = false; signPart.Transparency = 1; signPart.Size = Vector3.new(1, 1, 1)
 local bb = Instance.new("BillboardGui"); bb.Size = UDim2.fromScale(26, 9); bb.AlwaysOnTop = true; bb.LightInfluence = 0; bb.MaxDistance = 200; bb.Enabled = false; bb.Parent = signPart
 local bbText = sign:Clone(); bbText.Visible = true; bbText.Size = UDim2.fromScale(1, 1); bbText.Position = UDim2.fromScale(0.5, 0.5); bbText.Parent = bb
 signPart.Parent = workspace.CurrentCamera
