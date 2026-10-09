@@ -1,23 +1,19 @@
-# Job 6: camera VR aim patch (Studio EDIT: one script's Source; ask Shannon first)
+# Job 7: phone check of the camera (a play test in the Device Simulator; nothing is edited unless Shannon says so)
 
-Shannon: "you can't really aim the shot with the golden circle" in VR. The gold ring followed the avatar's animated hand,
-not the controller. This patch makes the aim the tracked controller itself (gold beam + ring), fills the ring in only
-when the shutter would accept the shot, keeps photos level, and makes the ring and markers survive a respawn.
-Desktop and phone are untouched.
+Shannon, Oct 9, after today's publish: on the phone "it says my camera is equipped but it does not show at the bottom
+of the screen like it did before" / "the camera is not even there". On desktop the camera works (she took a photo today).
+We need to know whether the camera VR aim patch (job 6) broke the phone, or whether it is something else.
 
-1. Fetch and read:
-   https://raw.githubusercontent.com/selard73/Create-repository/claude/epic-hawking-188q4l/tools/camera/vraim_patch.lua
-   It patches workspace.PhotoGame.CameraClient.Source with six exact-string replacements. It refuses to run unless the
-   Source is exactly the Oct 8 v3 text (56602 chars) and every find matches once; it compiles the result before
-   writing; the original goes to ServerStorage.HudBackup.CameraClient_v3_pre_vraim.
-   The patched script, for reference (byte-identical to what the patch produces):
-   https://raw.githubusercontent.com/selard73/Create-repository/claude/epic-hawking-188q4l/italy/camera/CameraClient_v3.lua
-2. Tell Shannon what it changes and wait for her yes.
-3. Run it in Studio, Edit mode, with execute_luau, as is.
-4. Send ONE message to the cloud session "GitHub free credit eligibility" with every Output line starting with
-   `QQ VRA` (one line on success; an ABORT line otherwise). If it errors, send the error text.
-5. Do not publish; Shannon does (Alt+P). Do not play-test unless she asks.
-
-Undo, if wanted: replace CameraClient.Source with the Source of ServerStorage.HudBackup.CameraClient_v3_pre_vraim.
-
-(Job 7, the town-wide floor cut, comes after this: its script is still under review and needs Shannon's yes on the plan.)
+1. Device Simulator ON (her usual phone preset, 667x375 or similar). Studio in Edit mode first.
+2. Play test as the owner (Play, not Run). Wait for the game to load in Porto or go there.
+3. Try to equip the camera: from the game's own hotbar at the bottom (ShopClient HOTBAR) and from the backpack.
+   Note, with a screen capture of each: is the camera slot in the hotbar at all? does equipping show the
+   "Tap to raise the camera" toast? does tapping raise the lens? does the "Postcards wanted" panel appear?
+4. Read the Output / client log for every error or warning from CameraClient, ShopClient, StowServer, or anything
+   mentioning "Camera". Copy the first error in full (message + script + line).
+5. Stop the play test. Make sure Studio is back in Edit mode and the Device Simulator is set back how it was.
+6. Send ONE message to the cloud session "GitHub free credit eligibility": the answers to step 3, the errors from
+   step 4 (verbatim), and the capture paths.
+7. ONLY IF CameraClient throws an error at load or on equip: tell Shannon, and with her yes restore the script
+   (CameraClient.Source = ServerStorage.HudBackup.CameraClient_v3_pre_vraim.Source), repeat steps 2-5, and send
+   the result as well. Do not publish.
