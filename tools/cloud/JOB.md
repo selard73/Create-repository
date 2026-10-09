@@ -65,3 +65,15 @@ ServerStorage.CSGBackup_Town; every union carries CSGJob = "town1"; town_undo1.l
 4. If the CUTS line says fewer were done than planned, run again (same settings) for the rest, and send that output too.
    Stop and report instead if a run shows more than 10% FAILED, or anything looks wrong in Studio.
 5. Do not publish; Shannon does, then checks the quay, the streets and the funicular stop in VR.
+
+## Job 11: send the store's tool-equip code (READ-ONLY; for the phone 3-slot fix)
+
+Job 7 showed the phone hotbar has 3 slots and Shannon carries 4 tools, so the 4th (the camera) gets no slot. The fix
+will live in the HotbarStow handler: on small screens, equipping a 4th tool stores the oldest other one.
+Send ONE message to the cloud session with, verbatim (exact text, tabs kept, no analysis):
+1. From StowServer (wherever it lives: say its full path): the TOOLS table, the RS.HotbarStow OnServerEvent handler
+   (the whole function that handles "store" / "equip" or whatever its verbs are), and any helper it calls to give or
+   take a tool. Also its total Source length in chars.
+2. From workspace.Shop.ShopClient: the lines that fire RS.HotbarStow (the Equip / Store buttons), about 30 lines
+   around each call, and its total Source length.
+3. One line: how ShopClient shows the "equipped" state of a tool in its rows (attribute name or event).
