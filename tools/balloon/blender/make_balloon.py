@@ -46,7 +46,21 @@ for k, cc in enumerate((0.74, 0.56, 0.33)):
 grain = 0.92 + 0.08 * np.sin(xx[:256, 256:] * 0.9) * np.sin(yy[:256, 256:] * 0.7)
 for k, (a, b) in enumerate(((0.50, 0.30), (0.29, 0.16), (0.16, 0.08))):
     img[:256, 256:384, k] = a * grain[:, :128]
-    img[:256, 384:, k] = b * grain[:, 128:]
+    img[:256, 384:448, k] = b * grain[:, 128:192]
+cu = (xx[:256, 448:] - 448 + 0.5) / 64.0
+for k in range(3):
+    img[:256, 448:, k] = 0.86 + 0.14 * np.sin(np.pi * cu)          # white cloth, a little shaded at its edges
+# the wavy white band round the upper envelope (Shannon's picture), painted into every gore column so it runs round
+gv = (yy[256:, :384] - 256 + 0.5) / 256.0
+gu = ((xx[256:, :384] % 64) + 0.5) / 64.0
+mid = 0.725 + 0.022 * np.sin(2 * np.pi * gu)
+d = np.abs(gv - mid)
+band = d < 0.040
+edge = (d >= 0.040) & (d < 0.046)
+for k in range(3):
+    ch = img[256:, :384, k]
+    ch[band] = 0.97 - 0.10 * (d[band] / 0.040) ** 2
+    ch[edge] = 0.62
 atlas = bpy.data.images.new("balloon_atlas", S, S, alpha=False)
 atlas.pixels.foreach_set(img.ravel())
 atlas.filepath_raw = os.path.join(OUT, "balloon_atlas.png"); atlas.file_format = "PNG"; atlas.save()
@@ -74,7 +88,8 @@ TAN = (6 / 8 + 0.01, 0.51, 7 / 8 - 0.01, 0.99)
 METAL = (7 / 8 + 0.01, 0.51, 1 - 0.01, 0.99)
 WICKER = (0.002, 0.002, 0.498, 0.498)
 LEATHER = (0.502, 0.002, 0.748, 0.498)
-DARK = (0.752, 0.002, 0.998, 0.498)
+DARK = (0.752, 0.002, 0.873, 0.498)
+WHITE = (0.877, 0.002, 0.998, 0.498)
 
 class Builder:
     def __init__(self): self.v, self.f, self.uv = [], [], []
@@ -178,6 +193,25 @@ for g in range(N_GORE):                                  # load tapes on every s
 tube(E, [env_point(R_MOUTH + 0.05, 0.05, 2 * math.pi * k / 48) for k in range(48)], 0.2, 6, TAN, closed=True)
 rc, zc = RINGS[-1]
 tube(E, [(rc * math.cos(2 * math.pi * k / 32), rc * math.sin(2 * math.pi * k / 32), Z_MOUTH + zc + 0.05) for k in range(32)], 0.18, 6, TAN, closed=True)
+# white swags draped round the balloon below its widest point, one scallop per gore (Shannon's picture)
+RZ = np.array([z for (r, z) in RINGS]); RR = np.array([r for (r, z) in RINGS])
+def r_at(z): return float(np.interp(z, RZ, RR))
+Z_LINE, DEEP, THIN = Y_EQ * 0.86, 3.0, 1.1
+for g in range(N_GORE):
+    rows = []
+    for (amp, off) in ((THIN, 0.10), (DEEP, 0.10)):
+        row = []
+        for j in range(13):
+            u = j / 12
+            z = Z_LINE - amp * math.sin(math.pi * u)
+            th = 2 * math.pi * (g + u) / N_GORE
+            row.append(env_point(r_at(z) + off + 0.18 * math.sin(math.pi * u), z, th))
+        rows.append(row)
+    mid = [tuple((np.array(a) + np.array(b)) / 2 + 0.06 * np.array((math.cos(2 * math.pi * (g + j / 12) / N_GORE), math.sin(2 * math.pi * (g + j / 12) / N_GORE), 0)))
+           for j, (a, b) in enumerate(zip(rows[0], rows[1]))]
+    E.grid([rows[0], mid, rows[1]], WHITE)
+    E.grid([rows[0], mid, rows[1]], WHITE, flip=True)          # both faces: it is cloth
+tube(E, [env_point(r_at(Z_LINE) + 0.12, Z_LINE, 2 * math.pi * k / (N_GORE * SEG)) for k in range(N_GORE * SEG)], 0.1, 5, TAN, closed=True)
 E.object("Envelope", MAT)
 EI = Builder(); envelope(EI, scale=0.985, flip=True); EI.object("EnvelopeInner", MAT)
 
