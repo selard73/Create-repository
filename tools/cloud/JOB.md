@@ -1,5 +1,5 @@
 # Jobs 7, 8 and 9, in this order. Ask Shannon before each Studio edit; send each result to the cloud session
-# "GitHub free credit eligibility" as ONE message per job (every Output line with the job's QQ tag, unchanged).
+# "Cloud session handoff" as ONE message per job (every Output line with the job's QQ tag, unchanged).
 
 ## Job 7: phone check of the camera (a play test in the Device Simulator; nothing edited unless Shannon says so)
 
