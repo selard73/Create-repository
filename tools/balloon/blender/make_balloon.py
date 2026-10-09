@@ -149,17 +149,21 @@ def lathe(B, profile, sides, region, flip=False, centre=(0, 0, 0)):
     B.grid(pts, region, flip=flip, wrap=True)
 
 # ---------------- the envelope ----------------
-R, H, Z_MOUTH, N_GORE, SEG = 14.0, 40.0, 16.0, 24, 5
-Y_EQ = 0.62 * H
-R_MOUTH = 0.16 * R
+R, H, Z_MOUTH, N_GORE, SEG = 17.0, 38.0, 16.0, 24, 5    # Shannon: "too narrow, it should be fatter"
+Y_EQ = 0.60 * H
+ZB = Y_EQ + 0.06 * (H - Y_EQ)                            # the dark band round the widest part ("down lower")
+R_MOUTH = 0.14 * R
 def env_rings():
     out = []
     for i in range(28):                                  # lower: mouth to the equator
         s = i / 27
-        out.append((R_MOUTH + (R - R_MOUTH) * (1 - (1 - s) ** 1.8), s * Y_EQ))
+        out.append((R_MOUTH + (R - R_MOUTH) * (1 - (1 - s) ** 2.1), s * Y_EQ))
     for i in range(1, 21):                               # the dome
         ph = (math.pi / 2) * (i / 21) ** 0.9
         out.append((R * math.cos(ph), Y_EQ + (H - Y_EQ) * math.sin(ph)))
+    phb = math.asin((ZB - Y_EQ) / (H - Y_EQ))             # an exact ring under the band: the colours change there
+    out.append((R * math.cos(phb), ZB))
+    out.sort(key=lambda q: q[1])
     return out
 RINGS = env_rings()
 def env_point(r, z, theta, scale=1.0):
@@ -170,11 +174,16 @@ def env_point(r, z, theta, scale=1.0):
 
 def envelope(B, scale=1.0, flip=False):
     order = [0, 1, 2, 3, 4, 5]                           # red, orange, yellow, green, blue, purple, round four times
+    top = [3, 5, 1, 4, 0, 2]                             # above the band the colours are mixed up (Shannon)
+    kb = next(i for i, (r, z) in enumerate(RINGS) if abs(z - ZB) < 1e-6)
     for g in range(N_GORE):
         pts = []
         for (r, z) in RINGS:
             pts.append([env_point(r, z, 2 * math.pi * (g + j / SEG) / N_GORE, scale) for j in range(SEG + 1)])
-        B.grid(pts, gore_uv(order[g % 6]), flip=flip)
+        u0, v0, u1, v1 = gore_uv(order[g % 6]); vb = v0 + (v1 - v0) * kb / (len(RINGS) - 1)
+        B.grid(pts[:kb + 1], (u0, v0, u1, vb), flip=flip)
+        u0, _, u1, _ = gore_uv(top[g % 6])
+        B.grid(pts[kb:], (u0, vb, u1, v1), flip=flip)
     # the crown vent cap
     top = B.add_vert((0, 0, Z_MOUTH + H))
     r, z = RINGS[-1]
@@ -198,7 +207,6 @@ def band(B, z0, z1, off, region, rows=3):
             z = z0 + (z1 - z0) * i / (rows - 1)
             pts.append([env_point(r_at(z) + off, z, 2 * math.pi * (g + j / SEG) / N_GORE) for j in range(SEG + 1)])
         B.grid(pts, region)
-ZB = Y_EQ + 0.30 * (H - Y_EQ)                            # the dark band, just above the widest part
 band(E, ZB - 0.95, ZB + 0.95, 0.05, NAVY)
 for zz in (ZB - 1.2, ZB + 1.2):                          # cream pinstripes either side of it
     tube(E, [env_point(r_at(zz) + 0.07, zz, 2 * math.pi * k / (N_GORE * SEG)) for k in range(N_GORE * SEG)], 0.07, 4, TAN, closed=True)
