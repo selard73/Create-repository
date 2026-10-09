@@ -35,7 +35,7 @@ local function say(line, secs)
 				if not (phoneAnchor and phoneAnchor.Parent) then conn:Disconnect() return end
 				local c = workspace.CurrentCamera; if not c then return end
 				local v = c.ViewportSize
-				local ray = c:ScreenPointToRay(v.X * 0.17, v.Y * 0.5)   -- the bubble's middle: a sixth of the way in, mid-height
+				local ray = c:ScreenPointToRay(v.X * 0.17, v.Y * 0.3)   -- the bubble's middle: a sixth of the way in, a third of the way down (it sat too low at half - Shannon)
 				phoneAnchor.CFrame = CFrame.new(ray.Origin + ray.Direction * 6 - Vector3.new(0, 1.5, 0))
 			end)
 		end
@@ -131,7 +131,7 @@ local function layout()
 	inner.Size = UDim2.fromOffset(w, hh)
 	panel.Size = UDim2.fromOffset(w * s, hh * s)
 	panel.AnchorPoint = Vector2.new(1, 0.5)   -- anchored by its right edge (the construction line still said the centre; half of it hung off a phone - Oct 9)
-	panel.Position = UDim2.new(1, phone() and -4 or -14, 0.5, 0)   -- a phone: hard against the right edge (Oct 9)
+	panel.Position = UDim2.new(1, -14, 0.5, 0)   -- 14 px off the right edge on every screen (Shannon's phone: "zero space")
 	task.defer(function()   -- and never past it, whatever the screen does
 		local over = panel.AbsolutePosition.X + panel.AbsoluteSize.X - (v.X - 2)
 		if over > 0 then panel.Position = panel.Position - UDim2.fromOffset(over, 0) end
@@ -172,9 +172,41 @@ if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal
 
 -- the reveal (Oct 9 2026): what Bella made with you rises and spins in front of you, sparkling, then fades
 local Debris = game:GetService("Debris")
+-- a phone: the reveal also comes up big on the screen, on top of everything, spinning in a little window, then fades
+-- (Shannon: "behind her character, low and small"; "on top of everything ... big and prominent for a moment")
+local function screenReveal(src)
+	local v = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1280, 720)
+	local size = math.floor(math.min(v.Y * 0.64, v.X * 0.42))
+	local vp = Instance.new("ViewportFrame"); vp.Name = "Reveal"; vp.AnchorPoint = Vector2.new(0.5, 0.5); vp.Position = UDim2.fromScale(0.5, 0.5); vp.Size = UDim2.fromOffset(size * 0.6, size * 0.6)
+	vp.BackgroundColor3 = BROWN; vp.BackgroundTransparency = 1; vp.ImageTransparency = 1; vp.ZIndex = 30
+	vp.Ambient = Color3.fromRGB(190, 180, 160); vp.LightColor = Color3.fromRGB(255, 240, 210); vp.LightDirection = Vector3.new(-0.6, -1, -0.4)
+	corner(vp, 18); local st = stroke(vp, GOLD, 3)
+	local cam = Instance.new("Camera"); cam.FieldOfView = 40; cam.Parent = vp; vp.CurrentCamera = cam
+	src.Parent = vp
+	local cf, sz = src:GetBoundingBox()
+	local centre, d = cf.Position, math.max(sz.X, sz.Y, sz.Z, 0.5) * 0.5 / math.tan(math.rad(20)) * 1.3
+	cam.CFrame = CFrame.lookAt(centre + Vector3.new(0, d * 0.35, d), centre)
+	vp.Parent = gui
+	TweenService:Create(vp, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = UDim2.fromOffset(size, size)}):Play()
+	TweenService:Create(vp, TweenInfo.new(0.3), {ImageTransparency = 0, BackgroundTransparency = 0.3}):Play()
+	local t0, LIFE = os.clock(), 5.0
+	local conn; conn = game:GetService("RunService").RenderStepped:Connect(function()
+		local t = os.clock() - t0
+		if t > LIFE or not vp.Parent then conn:Disconnect(); return end
+		local a = t * 1.4
+		cam.CFrame = CFrame.lookAt(centre + Vector3.new(math.sin(a) * d, d * 0.35, math.cos(a) * d), centre)
+	end)
+	task.delay(LIFE - 0.9, function()
+		if not vp.Parent then return end
+		TweenService:Create(vp, TweenInfo.new(0.9), {ImageTransparency = 1, BackgroundTransparency = 1}):Play()
+		TweenService:Create(st, TweenInfo.new(0.9), {Transparency = 1}):Play()
+	end)
+	Debris:AddItem(vp, LIFE + 0.1)
+end
 local function reveal(id)
 	local ok, m = pcall(R.build, id)
 	if not ok or not m then return end
+	if phone() then pcall(screenReveal, m:Clone()) end   -- a phone: big and on top; the world one below carries on (and its sound)
 	local root = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
 	local cam = workspace.CurrentCamera
 	local base = root and (root.CFrame * CFrame.new(-1.7, 0.6, -3.0)) or (cam and cam.CFrame * CFrame.new(-1.2, -0.8, -5)) or CFrame.new()   -- left and low: clear of her bubble (Oct 9)

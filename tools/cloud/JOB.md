@@ -446,3 +446,13 @@ Runner's note on job 50: Studio still builds the panel with AnchorPoint (0.5, 0.
 reached it), so Position (1, -4) hung half the panel off a phone screen; job 50's clamp pulled it back a frame later.
 tools/porto/seaglass8.lua sets AnchorPoint (1, 0.5) in the layout itself (1 find, about 15822 chars, backup
 HudBackup.SeaGlassClient_pre_seaglass8). Send the `QQ SG8` line. No publish.
+Job 51 withdrawn (folded into job 52 before it ran).
+
+## Job 52: Bella's game on a phone, round two (Studio EDIT; ask Shannon first) - in place of job 51
+
+Shannon's phone: the panel's right edge has "zero space"; the speech bubble is too low; the reveal is "behind my character
+low and small ... sit on top of everything ... prominent for a moment before it fades". tools/porto/seaglass9.lua
+(SeaGlassClient after job 50, about 15822 chars, 3 finds): the layout anchors the panel by its right edge 14 px in; the
+bubble's anchor is a third of the way down the screen; on a phone the reveal also comes up in a spinning window in the
+middle of the screen (ViewportFrame, ZIndex 30) for five seconds, then fades; the world reveal and its sound stay. Backup
+HudBackup.SeaGlassClient_pre_seaglass9. Send the `QQ SG9` line. No publish.
