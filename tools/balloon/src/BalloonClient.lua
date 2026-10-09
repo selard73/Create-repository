@@ -51,32 +51,6 @@ RunService.RenderStepped:Connect(function()
 	end
 end)
 
--- ---------- the board prompt knows your count (world-space text, good in VR) ----------
-local yours = F:WaitForChild("YourBalloon", 30)
-local prompt = yours and yours:FindFirstChild("BoardPrompt", true)
-local PORTO_ID = {}
-pcall(function()
-	local FRENCH = {forest = true, village = true, domaine = true}
-	local R = require(workspace:WaitForChild("SquirrelScripts", 10):WaitForChild("SquirrelRegistry", 10))
-	for _, q in ipairs(R.squirrels or {}) do if not FRENCH[q.map] then PORTO_ID[q.id] = true end end
-end)
-local function mine()
-	local s = player:GetAttribute("FoundIds")
-	if type(s) ~= "string" or next(PORTO_ID) == nil then return tonumber(player:GetAttribute("Found_porto")) or 0 end
-	local n = 0
-	for id in s:gmatch("[^,]+") do if PORTO_ID[id] then n += 1 end end
-	return n
-end
-local function updatePrompt()
-	if not prompt then return end
-	local n, need = mine(), num("Need", 44)
-	if n >= need then prompt.ObjectText = "Your balloon"; prompt.ActionText = "Board"
-	else prompt.ObjectText = string.format("Your balloon (%d of %d squirrels)", n, need); prompt.ActionText = "Find them all first" end
-end
-updatePrompt()
-player:GetAttributeChangedSignal("FoundIds"):Connect(updatePrompt)
-player:GetAttributeChangedSignal("Found_porto"):Connect(updatePrompt)
-
 -- ---------- screen and world text ----------
 local pg = player:WaitForChild("PlayerGui")
 local gui = Instance.new("ScreenGui"); gui.Name = "BalloonGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 17; gui.Parent = pg
@@ -99,6 +73,59 @@ local signPart = Instance.new("Part"); signPart.Name = "SkySign"; signPart.Ancho
 local bb = Instance.new("BillboardGui"); bb.Size = UDim2.fromScale(26, 9); bb.AlwaysOnTop = true; bb.LightInfluence = 0; bb.MaxDistance = 200; bb.Enabled = false; bb.Parent = signPart
 local bbText = sign:Clone(); bbText.Visible = true; bbText.Size = UDim2.fromScale(1, 1); bbText.Position = UDim2.fromScale(0.5, 0.5); bbText.Parent = bb
 signPart.Parent = workspace.CurrentCamera
+
+-- ---------- the board prompt knows your count (world-space text, good in VR) ----------
+local yours = F:WaitForChild("YourBalloon", 30)
+local prompt = yours and yours:FindFirstChild("BoardPrompt", true)
+local PORTO_ID = {}
+pcall(function()
+	local FRENCH = {forest = true, village = true, domaine = true}
+	local R = require(workspace:WaitForChild("SquirrelScripts", 10):WaitForChild("SquirrelRegistry", 10))
+	for _, q in ipairs(R.squirrels or {}) do if not FRENCH[q.map] then PORTO_ID[q.id] = true end end
+end)
+local function mine()
+	local s = player:GetAttribute("FoundIds")
+	if type(s) ~= "string" or next(PORTO_ID) == nil then return tonumber(player:GetAttribute("Found_porto")) or 0 end
+	local n = 0
+	for id in s:gmatch("[^,]+") do if PORTO_ID[id] then n += 1 end end
+	return n
+end
+local function flown() return (tonumber(player:GetAttribute("Item_balloon_flights")) or 0) > 0 end
+-- the sign over your balloon, seen from across the harbour, until your first flight
+local beacon = Instance.new("BillboardGui"); beacon.Name = "ReadyBeacon"; beacon.Size = UDim2.fromOffset(360, 96); beacon.StudsOffsetWorldSpace = Vector3.new(0, 34, 0)
+beacon.AlwaysOnTop = true; beacon.LightInfluence = 0; beacon.MaxDistance = 1400; beacon.Enabled = false
+local beaconText = Instance.new("TextLabel"); beaconText.Size = UDim2.fromScale(1, 1); beaconText.BackgroundColor3 = Color3.fromRGB(255, 246, 220); beaconText.BackgroundTransparency = 0.15
+beaconText.TextColor3 = Color3.fromRGB(58, 36, 16); beaconText.Font = Enum.Font.GothamBold; beaconText.TextScaled = true; beaconText.TextWrapped = true
+beaconText.Text = "Your balloon is ready!\nClimb aboard"; beaconText.Parent = beacon
+local bc = Instance.new("UICorner"); bc.CornerRadius = UDim.new(0, 14); bc.Parent = beaconText
+if yours then beacon.Adornee = yours:FindFirstChild("Envelope", true) or yours.PrimaryPart; beacon.Parent = pg end
+local function updatePrompt()
+	local n, need = mine(), num("Need", 44)
+	if prompt then
+		if n >= need then prompt.ObjectText = "Your balloon"; prompt.ActionText = "Board"
+		else prompt.ObjectText = string.format("Your balloon (%d of %d squirrels)", n, need); prompt.ActionText = "Find them all first" end
+	end
+	beacon.Enabled = n >= need and not flown()
+end
+updatePrompt()
+player:GetAttributeChangedSignal("Item_balloon_flights"):Connect(updatePrompt)
+-- the moment the last Porto squirrel is found (Shannon: "it tells you to get over there and you get in the balloon")
+local lastCount = mine()
+local announced = false
+local function onCount()
+	local n, need = mine(), num("Need", 44)
+	updatePrompt()
+	if n >= need and lastCount < need and not announced and not flown() then
+		announced = true
+		task.delay(1.5, function()
+			showToast(string.format("You found all %d squirrels of Porto Nocciola! Your balloon is waiting on the far shore across the harbour. Get yourself over there and climb aboard!", need), 12)
+			local s = Instance.new("Sound"); s.SoundId = "rbxassetid://9116394876"; s.Volume = 0.5; s.Parent = SoundService; s:Play(); game:GetService("Debris"):AddItem(s, 10)
+		end)
+	end
+	lastCount = n
+end
+player:GetAttributeChangedSignal("FoundIds"):Connect(onCount)
+player:GetAttributeChangedSignal("Found_porto"):Connect(onCount)
 
 -- ---------- the weather ----------
 local saved = nil

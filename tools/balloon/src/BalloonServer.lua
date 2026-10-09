@@ -12,6 +12,7 @@ local SS = game:GetService("ServerStorage")
 local RunService = game:GetService("RunService")
 local F = script.Parent
 local ev = RS:WaitForChild("BalloonEvent")
+local awardItems = RS:WaitForChild("AwardItems", 10)   -- Item_balloon_flights: the first flight turns the "your balloon is ready" sign off
 local template = SS:WaitForChild("BalloonTemplate", 30)
 if not template then warn("BalloonServer: no ServerStorage.BalloonTemplate") return end
 
@@ -149,7 +150,8 @@ local function flight(p)
 		char:PivotTo(homeCF * CFrame.new(7, 3, 2))
 	end
 	ev:FireAllClients("phase", p, "home", 2)
-	if aborted then print("BalloonServer: flight of " .. p.Name .. " cut short") end
+	if aborted then print("BalloonServer: flight of " .. p.Name .. " cut short")
+	elseif awardItems and p.Parent == Players then awardItems:Fire(p, "balloon_flights", 1) end
 	busy = nil
 end
 prompt.Triggered:Connect(function(p)
