@@ -218,3 +218,10 @@ feet past the dock line (not seated, not falling, not silenced by the opera).
 3. Play test: start in France, travel to Porto with the map/travel board; on the quay the Porto music should play
    within ~1 s (char NoMusic nil). If quick, also: set NoMusic = true on the character by hand while standing on the
    quay; it should clear within ~1 s. Stop; Studio back in Edit. Send the findings. No publish.
+
+## Job 21: new Groves music 130260682627466 (Studio EDIT, tiny; ask Shannon first; AFTER job 20)
+
+Shannon: "please change the grove music to this: 130260682627466" (it was 1848102847 since job 15).
+1. Fetch and read tools/porto/groves_music2.lua (commit URL in the cloud session's message). It swaps every place on
+   workspace.MapMusic that holds 1848102847 to the new id in the same format; the replaced id goes to PrevSoundId_groves.
+2. Tell Shannon; with her yes run it (Edit mode). Send the `QQ GRV` lines. No publish.
