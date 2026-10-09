@@ -12,7 +12,7 @@
 -- For a flush pair the part with the bigger footprint is the one cut, so small pieces stay whole.
 
 local DRY = true            -- true: survey + plan only, nothing changes. false: cut.
-local BOX = {x1 = 250, x2 = 800, z1 = -1250, z2 = -500}   -- Porto Nocciola; the square (455,-785), the bottom stop (345,-605), the Grotta (450,-1110)
+local BOX = {x1 = 200, x2 = 800, z1 = -1250, z2 = -500}   -- Porto Nocciola: spawn quay/piers x 214..250, the square (455,-785), the bottom stop (345,-605), the Grotta (450,-1110)
 local TOP_Y, BOTTOM_Y = 200, -70
 local STEP = 0.5            -- grid spacing; 0.5 town-wide (~1.5M columns). The cut uses the upper's whole footprint, so a
                             -- pair only needs to be seen once.
@@ -44,6 +44,7 @@ if game:GetService("RunService"):IsRunning() then warn("QQ TWN ABORT - Play mode
 local t0 = os.clock()
 local Terrain = workspace.Terrain
 local CS = game:GetService("CollectionService")
+local HS = game:GetService("HttpService")
 local params = RaycastParams.new()
 params.FilterType = Enum.RaycastFilterType.Exclude
 params.IgnoreWater = true
@@ -208,6 +209,8 @@ end
 -- the plan
 local plan, meshSkipped, byName, notFloor = {}, {}, {}, {}
 for L, ups in pairs(over) do
+	local by = L:GetAttribute("CSGCutBy")
+	if by then for U in pairs(ups) do local uid = U:GetAttribute("CSGCutterId"); if uid and by:find(uid, 1, true) then ups[U] = nil end end end
 	local total, names = 0, {}
 	for U, c in pairs(ups) do total += c; bump(names, U.Name) end
 	if total >= MIN_POINTS then
@@ -264,29 +267,34 @@ local GS = game:GetService("GeometryService")
 local SS = game:GetService("ServerStorage")
 local backup = SS:FindFirstChild("CSGBackup_Town")
 if not backup then backup = Instance.new("Folder"); backup.Name = "CSGBackup_Town"; backup.Parent = SS end
-local stamp = os.date("%y%m%d%H%M")
-local okN, failN, doneN = 0, 0, 0
+local stamp = os.date("%y%m%d%H%M%S")
+local okN, failN, doneN, goneN = 0, 0, 0, 0
 for i, e in ipairs(plan) do
 	if i > MAX_CUTS then print(string.format("QQ TWN stopped at MAX_CUTS %d; %d parts left for the next run", MAX_CUTS, #plan - MAX_CUTS)) break end
 	if os.clock() - t0 > TIME_BUDGET then print(string.format("QQ TWN stopped at the time budget after %d cuts; %d parts left for the next run", doneN, #plan - doneN)) break end
 	local L = e.L
 	local Ltop = topY(L)
 	local cutters = {}
+	local cutIds = {}
 	for U in pairs(e.ups) do
+		if not U:GetAttribute("CSGCutterId") then U:SetAttribute("CSGCutterId", HS:GenerateGUID(false)) end
+		table.insert(cutIds, U:GetAttribute("CSGCutterId"))
 		local c = U:Clone()
 		for _, ch in ipairs(c:GetChildren()) do ch:Destroy() end
 		local ax, vert = axes(c)
 		local s = c.Size
 		if vert > 0.9 then
-			-- upright: top = U's top + 0.5, bottom = just below U's underside (or below L's top if U's underside is lower than that)
+			-- upright-ish: top = U's top + 0.5, bottom = just below U's underside (or below L's top if U's underside is lower).
+			-- The resized axis is LOCAL: a small tilt adds E (the other two axes' share of the vertical extent), so solve for h.
 			local newTop = topY(U) + 0.5
 			local newBottom = math.min(bottomY(U), Ltop) - CUT_BELOW
-			local h = newTop - newBottom
+			local sv = {s.X, s.Y, s.Z}
+			local E = vext(U) - vert * sv[ax]
+			local h = math.max(0.2, (newTop - newBottom - E) / vert)
 			local sz = {s.X + GROW_H, s.Y + GROW_H, s.Z + GROW_H}
 			sz[ax] = h
 			c.Size = Vector3.new(sz[1], sz[2], sz[3])
-			local centreY = (newTop + newBottom) / 2
-			c.CFrame = c.CFrame + Vector3.new(0, centreY - c.Position.Y, 0)
+			c.CFrame = c.CFrame + Vector3.new(0, (newTop + newBottom) / 2 - c.Position.Y, 0)
 		else
 			-- tilted (ramp, slope): 0.5 up and CUT_BELOW down along its most vertical axis
 			local sz = {s.X + GROW_H, s.Y + GROW_H, s.Z + GROW_H}
@@ -307,7 +315,21 @@ for i, e in ipairs(plan) do
 	end)
 	for _, c in ipairs(cutters) do c:Destroy() end
 	doneN += 1
-	if not ok or type(res) ~= "table" or #res == 0 then
+	if (not ok and tostring(res):lower():find("empty", 1, true)) or (ok and type(res) == "table" and #res == 0) then
+		-- nothing of L lies outside its cutters: it is fully hidden, so it is retired whole (town_undo1 puts it back)
+		local id = string.format("town1-%s-%04d", stamp, i)
+		local parent = L.Parent
+		local ref = Instance.new("ObjectValue"); ref.Name = "CSGOrigParentRef"; ref.Value = parent; ref.Parent = L
+		local prevJob = L:GetAttribute("CSGJob")
+		if prevJob == "town1" or prevJob == "square1" then
+			L:SetAttribute("CSGRestoreFrom", L:GetAttribute("CSGBackupId")); L:SetAttribute("CSGIntermediate", true); L:SetAttribute("CSGPrevJob", prevJob)
+		end
+		L:SetAttribute("CSGJob", "town1"); L:SetAttribute("CSGBackupId", id); L:SetAttribute("CSGOrigParent", parent:GetFullName())
+		L:SetAttribute("CSGRemoved", "town1")
+		L.Parent = backup
+		goneN += 1
+		print(string.format("QQ TWN CUT %3d removed whole (fully hidden) %s (backup id %s)", i, L.Name, id))
+	elseif not ok or type(res) ~= "table" or #res == 0 then
 		failN += 1
 		warn(string.format("QQ TWN CUT %3d FAILED %s: %s", i, label(L), tostring(res)))
 	else
@@ -325,7 +347,8 @@ for i, e in ipairs(plan) do
 			for _, tag in ipairs(CS:GetTags(L)) do CS:AddTag(u, tag) end
 			u:SetAttribute("CSGJob", "town1"); u:SetAttribute("CSGCutFrom", L.Name)
 			u:SetAttribute("CSGBackupId", id); u:SetAttribute("CSGCutters", count(e.ups))
-			u:SetAttribute("CSGRestoreFrom", nil); u:SetAttribute("CSGIntermediate", nil)
+			u:SetAttribute("CSGRestoreFrom", nil); u:SetAttribute("CSGIntermediate", nil); u:SetAttribute("CSGRemoved", nil)
+			u:SetAttribute("CSGCutBy", ((L:GetAttribute("CSGCutBy") or "") .. ";" .. table.concat(cutIds, ";")):sub(1, 60000))
 			if k == 1 then for _, ch in ipairs(L:GetChildren()) do ch.Parent = u end end
 		end
 		local prevJob = L:GetAttribute("CSGJob")
@@ -341,7 +364,7 @@ for i, e in ipairs(plan) do
 	end
 	if doneN % 5 == 0 then task.wait() end
 end
-print(string.format("QQ TWN CUTS done: %d ok, %d failed, %d of %d planned, originals in ServerStorage.CSGBackup_Town | %.0f s", okN, failN, doneN, #plan, os.clock() - t0))
+print(string.format("QQ TWN CUTS done: %d cut, %d removed whole, %d failed, %d of %d planned, originals in ServerStorage.CSGBackup_Town | %.0f s", okN, goneN, failN, doneN, #plan, os.clock() - t0))
 
 -- verify, if there is time
 if os.clock() - t0 < TIME_BUDGET then

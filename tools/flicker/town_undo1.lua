@@ -23,8 +23,34 @@ while round < 10 do
 	for _, d in ipairs(workspace:GetDescendants()) do
 		if d:IsA("UnionOperation") and d:GetAttribute("CSGJob") == JOB and not stuck[d] then table.insert(todo, d) end
 	end
-	if #todo == 0 then break end
 	local progress = 0
+	-- parts that were retired whole (fully hidden): straight back to where they were
+	for _, e in ipairs(backup:GetChildren()) do
+		if e:GetAttribute("CSGRemoved") == JOB and not stuck[e] then
+			local ref = e:FindFirstChild("CSGOrigParentRef")
+			local parent = ref and ref.Value
+			if not parent then
+				stuck[e] = true
+				warn(string.format("QQ TWU retired part %s has no parent to go back to (%s) - left in the backup", e.Name, tostring(e:GetAttribute("CSGOrigParent"))))
+			else
+				if ref then ref:Destroy() end
+				e:SetAttribute("CSGRemoved", nil); e:SetAttribute("CSGOrigParent", nil)
+				local more = ""
+				if e:GetAttribute("CSGIntermediate") then
+					local prev = e:GetAttribute("CSGPrevJob") or JOB
+					e:SetAttribute("CSGBackupId", e:GetAttribute("CSGRestoreFrom")); e:SetAttribute("CSGJob", prev)
+					e:SetAttribute("CSGRestoreFrom", nil); e:SetAttribute("CSGIntermediate", nil); e:SetAttribute("CSGPrevJob", nil)
+					if prev == JOB then more = " (earlier pass, one more round)" else handedBack += 1; more = " (an earlier " .. prev .. " cut: run its undo to go further back)" end
+				else
+					e:SetAttribute("CSGJob", nil); e:SetAttribute("CSGBackupId", nil)
+				end
+				e.Parent = parent
+				restored += 1; progress += 1
+				print(string.format("QQ TWU round %d: %s put back whole%s", round, e:GetFullName(), more))
+			end
+		end
+	end
+	if #todo == 0 and progress == 0 then break end
 	for _, u in ipairs(todo) do
 		local e = entryById(u:GetAttribute("CSGBackupId"))
 		if not e then

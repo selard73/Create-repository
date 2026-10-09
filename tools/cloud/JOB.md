@@ -48,3 +48,20 @@ the sand spit, moved Oct 8; others may be too).
    ground below. Send the `QQ SEAT` lines.
 3. Show Shannon the FLOATING ones (gap > 0.15) and what would move. With her yes, set `DRY = false`, run again,
    send the `QQ SEAT` lines again. Each moved model gets attr SeatOct9OrigCF (its pivot before). No publish.
+
+## Job 10: the town-wide floor cut (Studio EDIT, big: up to ~900 floor parts; Shannon said yes in the cloud thread, ask her again here)
+
+Same method as the square (jobs 3-4), floors only (paving, foundations, footings, landings, stairs, thresholds, quays,
+promenade, floors); roofs, walls, rocks, the fountain, boats, cars, gates and terrain are never touched. Originals go to
+ServerStorage.CSGBackup_Town; every union carries CSGJob = "town1"; town_undo1.lua walks every pass back.
+
+1. Fetch and read both:
+   https://raw.githubusercontent.com/selard73/Create-repository/claude/epic-hawking-188q4l/tools/flicker/town_fix1.lua
+   https://raw.githubusercontent.com/selard73/Create-repository/claude/epic-hawking-188q4l/tools/flicker/town_undo1.lua
+   (town_fix1 changed since job 5: box from x 200, floor-only lowers, gentler tilted cutters, hidden parts retired whole,
+   no re-cutting on reruns, ids with seconds.)
+2. Run town_fix1 once as is (DRY = true): the fresh plan. Send the `QQ TWN` lines. Tell Shannon the counts and wait for her yes.
+3. With her yes: set `DRY = false`, run. It cuts up to 600 parts within a 240 s budget, then re-surveys. Send the `QQ TWN` lines.
+4. If the CUTS line says fewer were done than planned, run again (same settings) for the rest, and send that output too.
+   Stop and report instead if a run shows more than 10% FAILED, or anything looks wrong in Studio.
+5. Do not publish; Shannon does, then checks the quay, the streets and the funicular stop in VR.
