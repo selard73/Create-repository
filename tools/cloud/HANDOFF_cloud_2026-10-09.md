@@ -6,7 +6,9 @@ Read this, then `tools/cloud/JOB.md`, then the Oct 8 handoff (HANDOFF_2026-10-08
 ## How the work gets into Studio (the bridge)
 - This cloud session cannot reach Roblox Studio. Shannon runs a LOCAL Claude Code session on her PC (Claude Desktop,
   `/remote-control` on, Roblox Studio MCP tools). It appears here only as an inbound messenger: it can SendMessage to the
-  cloud session (which shows in ITS ListAgents under the cloud conversation's title), the cloud session cannot message it.
+  cloud session (which shows in ITS ListAgents under the cloud conversation's title), the cloud session CAN message it back with
+  mcp__claude-code-remote__send_message to the runner's session id (the bridge:session_... id on its messages); give it
+  commit-SHA raw URLs, since the branch raw URL is CDN-cached for minutes.
 - Jobs travel through the repo: the cloud session appends numbered jobs to `tools/cloud/JOB.md` (raw GitHub URL, branch
   claude/epic-hawking-188q4l); Shannon types `next` in the local thread; it fetches the file (curl to
   raw.githubusercontent.com/selard73/Create-repository is allowed in her settings), runs the lowest unfinished job, and
@@ -46,3 +48,8 @@ Read this, then `tools/cloud/JOB.md`, then the Oct 8 handoff (HANDOFF_2026-10-08
 - Shannon is budget-conscious ($250 cloud credit): short messages, no background review workflows unless asked,
   one job at a time with a "publish and look" checkpoint. She found the camera patch review and the town review useful
   but expensive; the camera review's last agent hung and never finished.
+
+## Later on Oct 9 (session "Cloud session handoff")
+- Job 18 (italy_fix1): sea glass off the seabed, Bella's panel scaled on phones, Porto Outings listed. Job 19 (opera_hush1):
+  map music off while the opera singer sings, back 2 s after. Both verified in a play test; not yet published.
+- The harbour bell works: prompts only show when on screen; job 17's camera faced away.
