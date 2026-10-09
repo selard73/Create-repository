@@ -284,3 +284,13 @@ mark() read the stamped outing's page but wrote it back under the French key, so
 over the French page (job 25 test: both pages identical, French tab "Keep exploring", Porto header 0 of 5).
 tools/passport/pages2.lua (PassportServer 9188 chars, 2 finds). Send the `QQ PAGE2` line, then a play test: French tab
 shows French outings again, Porto tab its own five with the stamped ones counted. No publish.
+
+## Job 31: READ-ONLY surveys: Porto's sand patches (beach_survey1) and the Grotta (grotta_survey1). Done / pending.
+
+## Job 32: sea glass and shells on both beaches, more of them (Studio EDIT; ask Shannon first)
+
+Shannon: "more shells scattered on both of the beaches, not just the one beach by Bella". tools/porto/seaglass2.lua patches
+workspace.SeaGlass.SeaGlassServer (8319 chars, 3 finds): boxes per beach (BoxMin/Max, Box2Min/Max ...) with their own
+counts; sets Count 12 (Bella's beach) and Box2 = the harbour beach x 238..326 z -752..-700 with Count2 12. Send the
+`QQ SG2` line; a quick play test: "SeaGlassServer: beach 1 ... beach 2 ..." lines, pieces on both beaches, pickup works
+on the harbour beach too. No publish.

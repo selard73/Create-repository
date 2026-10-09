@@ -25,14 +25,27 @@ local bellaPos = bella and bella:GetPivot().Position or Vector3.new(399.6, -48.8
 -- ---------- where a piece may lie: sand, away from Bella and from each other, nothing built on it ----------
 local tparams = RaycastParams.new(); tparams.FilterType = Enum.RaycastFilterType.Exclude; tparams.IgnoreWater = false -- a ray that meets the sea stops at its surface (Material Water), so no piece lies underwater
 local oparams = OverlapParams.new(); oparams.FilterType = Enum.RaycastFilterType.Exclude; oparams.FilterDescendantsInstances = {workspace.Terrain, pieces}
-local spots = {}
-local function findSpots()
-	local a = G:GetAttribute("BoxMin"); local b = G:GetAttribute("BoxMax")
-	if typeof(a) ~= "Vector3" then a = Vector3.new(388, -60, -1095) end
-	if typeof(b) ~= "Vector3" then b = Vector3.new(445, -40, -1046) end
-	local rng = Random.new(7)
+-- every beach (Oct 9 2026, Shannon: "more shells scattered on both of the beaches"): box 1 is BoxMin/BoxMax, then
+-- Box2Min/Box2Max, Box3Min/Box3Max ... each box keeps its own spots and its own count (Count, Count2, Count3 ...)
+local boxes = {}        -- {min, max, spots = {}, count = n}
+do
+	local i = 1
+	while true do
+		local suffix = i == 1 and "" or tostring(i)
+		local a, b = G:GetAttribute("Box" .. suffix .. "Min"), G:GetAttribute("Box" .. suffix .. "Max")
+		if i == 1 then
+			if typeof(a) ~= "Vector3" then a = Vector3.new(388, -60, -1095) end
+			if typeof(b) ~= "Vector3" then b = Vector3.new(445, -40, -1046) end
+		elseif typeof(a) ~= "Vector3" or typeof(b) ~= "Vector3" then break end
+		table.insert(boxes, {min = a, max = b, spots = {}, count = num("Count" .. suffix, num("Count", 8))})
+		i += 1
+	end
+end
+local function findSpots(box, seed)
+	local a, b, spots = box.min, box.max, box.spots
+	local rng = Random.new(seed)
 	local tries = 0
-	while #spots < 40 and tries < 400 do
+	while #spots < math.max(40, box.count * 4) and tries < 600 do
 		tries += 1
 		local x, z = rng:NextNumber(a.X, b.X), rng:NextNumber(a.Z, b.Z)
 		local hit = workspace:Raycast(Vector3.new(x, b.Y + 20, z), Vector3.new(0, -(b.Y - a.Y + 40), 0), tparams)
@@ -44,10 +57,10 @@ local function findSpots()
 			if ok then table.insert(spots, pos) end
 		end
 	end
-	print(string.format("SeaGlassServer: %d spots on the sand (%d tries)", #spots, tries))
+	print(string.format("SeaGlassServer: beach %d: %d spots on the sand (%d tries) for %d pieces", seed - 6, #spots, tries, box.count))
 end
-findSpots()
-if #spots < 8 then warn("SeaGlassServer: not enough sand spots; set BoxMin/BoxMax on workspace.SeaGlass") end
+for i, box in ipairs(boxes) do findSpots(box, 6 + i) end
+for i, box in ipairs(boxes) do if #box.spots < box.count then warn(string.format("SeaGlassServer: beach %d has only %d sand spots; check its Box%sMin/Max on workspace.SeaGlass", i, #box.spots, i == 1 and "" or tostring(i))) end end
 
 -- ---------- the pieces ----------
 local function pickKind(rng)
@@ -84,32 +97,33 @@ local function build(kind, pos, rng)
 	return m, pr
 end
 
-local used = {}      -- [spotIndex] = piece model
+local used = {}      -- [box][spotIndex] = piece model
 local rng = Random.new()
-local function freeSpot()
+local function freeSpot(box)
+	used[box] = used[box] or {}
 	local free = {}
-	for i in ipairs(spots) do if not used[i] then table.insert(free, i) end end
+	for i in ipairs(box.spots) do if not used[box][i] then table.insert(free, i) end end
 	if #free == 0 then return nil end
 	return free[rng:NextInteger(1, #free)]
 end
 local taking = {}
-local function spawnOne()
-	local i = freeSpot()
+local function spawnOne(box)
+	local i = freeSpot(box)
 	if not i then return end
 	local kind = pickKind(rng)
-	local m, pr = build(kind, spots[i], rng)
-	used[i] = m
+	local m, pr = build(kind, box.spots[i], rng)
+	used[box][i] = m
 	pr.Triggered:Connect(function(p)
 		if taking[m] or not m.Parent then return end
 		taking[m] = true
 		awardItems:Fire(p, kind.id, 1)
 		ev:FireClient(p, "found", kind.id, kind.name, item(p, kind.id) + 1, kind.rare == true)
-		used[i] = nil
+		used[box][i] = nil
 		m:Destroy()
-		task.delay(rng:NextNumber(num("RespawnMin", 45), num("RespawnMax", 90)), spawnOne)
+		task.delay(rng:NextNumber(num("RespawnMin", 45), num("RespawnMax", 90)), function() spawnOne(box) end)
 	end)
 end
-for _ = 1, num("Count", 8) do spawnOne() end
+for _, box in ipairs(boxes) do for _ = 1, box.count do spawnOne(box) end end
 
 -- ---------- Bella ----------
 if bella then
