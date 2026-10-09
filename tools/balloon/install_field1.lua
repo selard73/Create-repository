@@ -4,7 +4,9 @@
 -- Undo: tools/balloon/balloon_undo1.lua. Output lines start with "QQ FIELD".
 if game:GetService("RunService"):IsRunning() then warn("QQ FIELD ABORT - Play mode") return end
 local RS, SS = game:GetService("ReplicatedStorage"), game:GetService("ServerStorage")
-local oldF = workspace:FindFirstChild("BalloonField"); if oldF then oldF:Destroy() end   -- re-runnable: the field is rebuilt from the template
+local oldF = workspace:FindFirstChild("BalloonField")
+local keep = oldF and oldF:GetAttributes() or {}   -- re-runnable: the field is rebuilt from the template; attributes already set (sounds, tuning) are kept
+if oldF then oldF:Destroy() end
 local tpl = SS:FindFirstChild("BalloonTemplate")
 if not tpl then
 	for _, d in ipairs(workspace:GetDescendants()) do
@@ -40,7 +42,8 @@ F:SetAttribute("Center", Vector3.new(106, -48.5, -648)); F:SetAttribute("Need", 
 F:SetAttribute("PadYours", Vector3.new(72, 0, -646)); F:SetAttribute("ShowBalloons", false); F:SetAttribute("GustLean", 18); F:SetAttribute("PadYaw", 70); F:SetAttribute("PadTethered", Vector3.new(128, 0, -676))
 F:SetAttribute("DriftCenter", Vector3.new(190, 18, -650)); F:SetAttribute("DriftRadius", 55); F:SetAttribute("DriftHeights", "18,33"); F:SetAttribute("DriftPeriods", "150,110")
 F:SetAttribute("RiseHeight", 85); F:SetAttribute("RiseTime", 16); F:SetAttribute("HoverTime", 8); F:SetAttribute("GustTime", 18); F:SetAttribute("StormTime", 12); F:SetAttribute("SignTime", 6)
-F:SetAttribute("GustDir", Vector3.new(0.45, 0, -1)); F:SetAttribute("GustSpeed", 22); F:SetAttribute("ThunderSoundId", 0); F:SetAttribute("WindSoundId", 0)
+F:SetAttribute("GustDir", Vector3.new(0.45, 0, -1)); F:SetAttribute("GustSpeed", 22); F:SetAttribute("ThunderSoundId", 92640524897440); F:SetAttribute("WindSoundId", 0)
+for k, v in pairs(keep) do F:SetAttribute(k, v) end
 local sv = Instance.new("Script"); sv.Name = "BalloonServer"; sv.RunContext = Enum.RunContext.Server; sv.Source = [===[
 -- BalloonServer (workspace.BalloonField): the hot air balloon field on the far shore across the harbour (Shannon, Oct 9
 -- 2026). Show balloons drift round the shore (the clients move those); YOUR balloon waits on its pad: once a player has
@@ -250,7 +253,7 @@ for _, m in ipairs(F:GetChildren()) do adopt(m) end
 F.ChildAdded:Connect(function(m) task.wait(0.2); adopt(m) end)
 F.ChildRemoved:Connect(function(m) drift[m] = nil; tethered[m] = nil end)
 local DC, DR = vec("DriftCenter", Vector3.new(190, 18, -650)), num("DriftRadius", 55)
-local signBasket, signPart = nil, nil   -- (made below; the loop runs first)
+local signBasket, signPart, yours, wind, windPart = nil, nil, nil, nil, nil   -- (made below; the loop runs first)
 RunService.RenderStepped:Connect(function()
 	local t = workspace:GetServerTimeNow()
 	if signBasket and signBasket.Parent then signPart.CFrame = signBasket.CFrame * CFrame.new(0, 7, -14) end
@@ -302,7 +305,7 @@ local bbText = sign:Clone(); bbText.Visible = true; bbText.Size = UDim2.fromScal
 signPart.Parent = workspace.CurrentCamera
 
 -- ---------- the board prompt knows your count (world-space text, good in VR) ----------
-local yours = F:WaitForChild("YourBalloon", 30)
+yours = F:WaitForChild("YourBalloon", 30)
 local prompt = yours and yours:FindFirstChild("BoardPrompt", true)
 local PORTO_ID = {}
 pcall(function()
@@ -364,11 +367,11 @@ local function sound(id, volume, parent)
 	game:GetService("Debris"):AddItem(s, 20)
 	return s
 end
-local wind = Instance.new("ParticleEmitter"); wind.Name = "WindStreaks"; wind.Enabled = false; wind.Rate = 90; wind.Lifetime = NumberRange.new(0.5, 0.9)
+wind = Instance.new("ParticleEmitter"); wind.Name = "WindStreaks"; wind.Enabled = false; wind.Rate = 90; wind.Lifetime = NumberRange.new(0.5, 0.9)
 wind.Speed = NumberRange.new(55, 80); wind.SpreadAngle = Vector2.new(8, 8); wind.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.15), NumberSequenceKeypoint.new(1, 0.05)})
 wind.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.55), NumberSequenceKeypoint.new(1, 1)}); wind.Color = ColorSequence.new(Color3.fromRGB(235, 240, 250))
 wind.LightEmission = 0.4; wind.Orientation = Enum.ParticleOrientation.VelocityParallel; wind.Squash = NumberSequence.new(-1.6)
-local windPart = Instance.new("Part"); windPart.Name = "WindSource"; windPart.Anchored = true; windPart.CanCollide = false; windPart.CanQuery = false; windPart.Transparency = 1; windPart.Size = Vector3.new(14, 10, 1); wind.Parent = windPart; windPart.Parent = workspace
+windPart = Instance.new("Part"); windPart.Name = "WindSource"; windPart.Anchored = true; windPart.CanCollide = false; windPart.CanQuery = false; windPart.Transparency = 1; windPart.Size = Vector3.new(14, 10, 1); wind.Parent = windPart; windPart.Parent = workspace
 local storming = false
 local clouds = workspace.Terrain:FindFirstChildOfClass("Clouds")
 local function bolt(near)

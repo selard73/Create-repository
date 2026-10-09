@@ -30,7 +30,7 @@ for _, m in ipairs(F:GetChildren()) do adopt(m) end
 F.ChildAdded:Connect(function(m) task.wait(0.2); adopt(m) end)
 F.ChildRemoved:Connect(function(m) drift[m] = nil; tethered[m] = nil end)
 local DC, DR = vec("DriftCenter", Vector3.new(190, 18, -650)), num("DriftRadius", 55)
-local signBasket, signPart = nil, nil   -- (made below; the loop runs first)
+local signBasket, signPart, yours, wind, windPart = nil, nil, nil, nil, nil   -- (made below; the loop runs first)
 RunService.RenderStepped:Connect(function()
 	local t = workspace:GetServerTimeNow()
 	if signBasket and signBasket.Parent then signPart.CFrame = signBasket.CFrame * CFrame.new(0, 7, -14) end
@@ -82,7 +82,7 @@ local bbText = sign:Clone(); bbText.Visible = true; bbText.Size = UDim2.fromScal
 signPart.Parent = workspace.CurrentCamera
 
 -- ---------- the board prompt knows your count (world-space text, good in VR) ----------
-local yours = F:WaitForChild("YourBalloon", 30)
+yours = F:WaitForChild("YourBalloon", 30)
 local prompt = yours and yours:FindFirstChild("BoardPrompt", true)
 local PORTO_ID = {}
 pcall(function()
@@ -144,11 +144,11 @@ local function sound(id, volume, parent)
 	game:GetService("Debris"):AddItem(s, 20)
 	return s
 end
-local wind = Instance.new("ParticleEmitter"); wind.Name = "WindStreaks"; wind.Enabled = false; wind.Rate = 90; wind.Lifetime = NumberRange.new(0.5, 0.9)
+wind = Instance.new("ParticleEmitter"); wind.Name = "WindStreaks"; wind.Enabled = false; wind.Rate = 90; wind.Lifetime = NumberRange.new(0.5, 0.9)
 wind.Speed = NumberRange.new(55, 80); wind.SpreadAngle = Vector2.new(8, 8); wind.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.15), NumberSequenceKeypoint.new(1, 0.05)})
 wind.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.55), NumberSequenceKeypoint.new(1, 1)}); wind.Color = ColorSequence.new(Color3.fromRGB(235, 240, 250))
 wind.LightEmission = 0.4; wind.Orientation = Enum.ParticleOrientation.VelocityParallel; wind.Squash = NumberSequence.new(-1.6)
-local windPart = Instance.new("Part"); windPart.Name = "WindSource"; windPart.Anchored = true; windPart.CanCollide = false; windPart.CanQuery = false; windPart.Transparency = 1; windPart.Size = Vector3.new(14, 10, 1); wind.Parent = windPart; windPart.Parent = workspace
+windPart = Instance.new("Part"); windPart.Name = "WindSource"; windPart.Anchored = true; windPart.CanCollide = false; windPart.CanQuery = false; windPart.Transparency = 1; windPart.Size = Vector3.new(14, 10, 1); wind.Parent = windPart; windPart.Parent = workspace
 local storming = false
 local clouds = workspace.Terrain:FindFirstChildOfClass("Clouds")
 local function bolt(near)
