@@ -355,3 +355,11 @@ tools/porto/seaglass5.lua (SeaGlassClient after job 39). Send the `QQ SG5` line.
 Shannon (VR): the race sign and leaderboard are "overwhelming, the wrong direction, huge". The re-run of
 tools/race/install_porto_race.lua scales both to 60% and turns them 180 degrees (fronts toward the policeman's side;
 runners now go west through the gate), set back on the cobbles; StartX/Y/Z follow the pad. Send the `QQ RACE` line.
+
+## Job 37c: the Piazza Race gate and board in the piazza (Studio EDIT, re-run; ask Shannon first) - replaces 37b
+
+Shannon: "the start should be in the piazza, the huge drop-off to the right of the opera singer and accordion player,
+where the patio drops off; the leaderboard right next to it". Job 36c: the floor ends at x ~431 with a 23-stud drop.
+Re-run tools/race/install_porto_race.lua: gate along the edge at 431.5,-12,-812 (60%, facing into the piazza; the pad on
+the piazza side), board at 431.5,-824. Send the `QQ RACE` line; play test: Start works at the pad; nothing hangs over
+the edge; the banner and board read from the piazza.
