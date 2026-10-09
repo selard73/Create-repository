@@ -60,13 +60,26 @@ F:SetAttribute("Center", Vector3.new(106, -48.5, -648)); F:SetAttribute("Need", 
 F:SetAttribute("PadYours", Vector3.new(72, 0, -646)); F:SetAttribute("ShowBalloons", false); F:SetAttribute("GustLean", 18); F:SetAttribute("PadYaw", 70); F:SetAttribute("PadTethered", Vector3.new(128, 0, -676))
 F:SetAttribute("DriftCenter", Vector3.new(190, 18, -650)); F:SetAttribute("DriftRadius", 55); F:SetAttribute("DriftHeights", "18,33"); F:SetAttribute("DriftPeriods", "150,110")
 F:SetAttribute("RiseHeight", 85); F:SetAttribute("RiseTime", 16); F:SetAttribute("HoverTime", 8); F:SetAttribute("GustTime", 18); F:SetAttribute("StormTime", 12); F:SetAttribute("SignTime", 6)
+F:SetAttribute("MusicDuck", 0.4); F:SetAttribute("BeamSpin", 0.5); F:SetAttribute("BeamLength", 600); F:SetAttribute("BeamAfter", 6); F:SetAttribute("StormFogEnd", 90); F:SetAttribute("StormDensity", 0.85)
+-- the Faro's lantern for the storm beam: the highest part standing within 18 studs of the lighthouse (door 520,2..8,-1169; keeper's base), roof cap less 3
+local best, bestTop = nil, -math.huge
+for _, d in ipairs(workspace:GetDescendants()) do
+	if d:IsA("BasePart") and d.Transparency < 1 and d.Size.Y >= 0.5 then
+		local dx, dz = d.Position.X - 520, d.Position.Z + 1172
+		local top = d.Position.Y + d.Size.Y / 2
+		local name = d:GetFullName():lower()
+		if dx * dx + dz * dz < 18 * 18 and top > bestTop and top < 140 and not (name:find("drone") or name:find("squirrel") or name:find("gull") or name:find("bird") or name:find("balloon")) then best, bestTop = d, top end
+	end
+end
+local lightAt = best and Vector3.new(best.Position.X, bestTop - 3, best.Position.Z) or Vector3.new(520, 60, -1172)
+F:SetAttribute("LightAt", lightAt)
 F:SetAttribute("GustDir", Vector3.new(0.45, 0, -1)); F:SetAttribute("GustSpeed", 22); F:SetAttribute("ThunderSoundId", 92640524897440); F:SetAttribute("StormSoundId", 74201402219129); F:SetAttribute("WindSoundId", 93035214379043)
 for _, k in ipairs({"ThunderSoundId", "StormSoundId", "WindSoundId"}) do local v = keep[k]; if type(v) == "number" and v > 0 then F:SetAttribute(k, v) end end   -- sounds Shannon set survive a re-run; positions and tuning take the new defaults
 local sv = Instance.new("Script"); sv.Name = "BalloonServer"; sv.RunContext = Enum.RunContext.Server; sv.Source = @@SERVER@@; sv.Parent = F
 local cl = Instance.new("Script"); cl.Name = "BalloonClient"; cl.RunContext = Enum.RunContext.Client; cl.Source = @@CLIENT@@; cl.Parent = F
 for _, s in ipairs({sv, cl}) do local f, err = loadstring(s.Source); if not f then warn("QQ FIELD ABORT - " .. s.Name .. " does not compile: " .. tostring(err)); F:Destroy(); return end end
 F.Parent = workspace
-print(string.format("QQ FIELD DONE: template %s (%s) -> ServerStorage.BalloonTemplate; workspace.BalloonField with BalloonServer %d / BalloonClient %d chars; RS.BalloonEvent", tpl.Name, table.concat(names, ","), #sv.Source, #cl.Source))
+print(string.format("QQ FIELD DONE: template %s (%s) -> ServerStorage.BalloonTemplate; workspace.BalloonField with BalloonServer %d / BalloonClient %d chars; RS.BalloonEvent; lantern %s from %s", tpl.Name, table.concat(names, ","), #sv.Source, #cl.Source, tostring(lightAt), best and best:GetFullName() or "GUESS (no part found)"))
 '''
 for k, v in {"SERVER": L(server), "CLIENT": L(client)}.items():
     assert lua.count("@@" + k + "@@") == 1; lua = lua.replace("@@" + k + "@@", v)

@@ -377,3 +377,12 @@ Porto tab as "yours"; with 0 it is hidden; France tab unchanged; no errors. No p
 
 tools/vr/wardrobe_vr1.lua: WardrobeClient's lookup of PassportGui.Page also looks on the VR window's canvas. Send the
 `QQ WARD` line. No publish.
+
+## Job 45: balloon round 3 (Studio EDIT, full re-run of the installer; ask Shannon first)
+
+Shannon after her phone flight ("the balloon is my most favorite feature"): rise toast "Up you go, traveler!", gust toast
+"Oh no! Looks like we are in for some bad weather!", the map music drops to 40% as the balloon climbs and comes back at
+home, the lighthouse's light turns (a Neon beam, local) once the storm is dark and goes off on the ground, and /promo
+(owner or Studio, desktop) films the next flight with the screen UI hidden for her promo video. Also the runner's join-time
+fix (wind.Enabled before wind exists). Run tools/balloon/install_field1.lua in full (it rebuilds the field; sound ids kept;
+it now measures the Faro's lantern -> attribute LightAt). Send the `QQ FIELD` line including "lantern ... from ...". No publish.

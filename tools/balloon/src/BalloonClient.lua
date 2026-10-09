@@ -1,7 +1,8 @@
 -- BalloonClient (workspace.BalloonField, RunContext Client): the show balloons drift and bob (moved locally from the
 -- server clock, so every player sees the same sky), every flame flickers, and the flight's weather and signs happen here:
 -- the gust, the storm fog and lightning, the "To Be Continued" sign, the fade and the return. World-space where it can be,
--- so a VR headset sees it with the control panel closed.
+-- so a VR headset sees it with the control panel closed. Oct 9 late: the map music drops as you climb, the lighthouse turns
+-- its light once the storm is dark, and /promo (the owner, desktop) films a flight for a video.
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
@@ -30,11 +31,13 @@ for _, m in ipairs(F:GetChildren()) do adopt(m) end
 F.ChildAdded:Connect(function(m) task.wait(0.2); adopt(m) end)
 F.ChildRemoved:Connect(function(m) drift[m] = nil; tethered[m] = nil end)
 local DC, DR = vec("DriftCenter", Vector3.new(190, 18, -650)), num("DriftRadius", 55)
-local signBasket, signPart, yours, wind, windPart = nil, nil, nil, nil, nil   -- (made below; the loop runs first)
+local signBasket, signPart, yours, wind, windPart, beamModel = nil, nil, nil, nil, nil, nil   -- (made below; the loop runs first)
+local LIGHT_AT = vec("LightAt", Vector3.new(520, 60, -1172))   -- the Faro's lantern (the installer measures it)
 RunService.RenderStepped:Connect(function()
 	local t = workspace:GetServerTimeNow()
 	if signBasket and signBasket.Parent then signPart.CFrame = signBasket.CFrame * CFrame.new(0, 7, -14) end
-	if wind.Enabled then
+	if beamModel then beamModel:PivotTo(CFrame.new(LIGHT_AT) * CFrame.Angles(0, t * num("BeamSpin", 0.5), 0)) end
+	if wind and wind.Enabled then
 		local b = yours and yours:FindFirstChild("Basket", true)
 		if b then local d = vec("GustDir", Vector3.new(0.45, 0, -1)); d = Vector3.new(d.X, 0, d.Z).Unit; windPart.CFrame = CFrame.lookAt(b.Position - d * 26 + Vector3.new(0, 4, 0), b.Position + d * 10) end
 	end
@@ -169,6 +172,26 @@ local function bolt(near)
 	local l = Instance.new("PointLight"); l.Brightness = 6; l.Range = 90; l.Color = Color3.fromRGB(220, 230, 255); l.Parent = m:FindFirstChildWhichIsA("BasePart")
 	m.Parent = workspace; game:GetService("Debris"):AddItem(m, 0.12 + math.random() * 0.1)
 end
+-- the lighthouse: once the storm has the sky dark its light turns (Shannon: "shows the light from the lighthouse spinning
+-- like they do"), off again on the ground. Local, like the storm. LightAt = the lantern, measured by the installer.
+local function beamOn()
+	if beamModel then return end
+	local m = Instance.new("Model"); m.Name = "FaroBeam"
+	local warm = Color3.fromRGB(255, 244, 205)
+	local function part(name, size, trans, cf)
+		local p = Instance.new("Part"); p.Name = name; p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false; p.CastShadow = false
+		p.Material = Enum.Material.Neon; p.Color = warm; p.Size = size; p.Transparency = trans; p.CFrame = cf; p.Parent = m
+		return p
+	end
+	local lamp = part("Lamp", Vector3.new(4, 4, 4), 0.05, CFrame.new(LIGHT_AT)); lamp.Shape = Enum.PartType.Ball
+	local pl = Instance.new("PointLight"); pl.Color = warm; pl.Brightness = 4; pl.Range = 60; pl.Parent = lamp
+	local sp = Instance.new("SpotLight"); sp.Color = warm; sp.Brightness = 6; sp.Range = 60; sp.Angle = 14; sp.Face = Enum.NormalId.Front; sp.Parent = lamp
+	-- the beam: four lengths, thin and bright at the lamp, wide and faint far out (it has to show through the storm)
+	local L = num("BeamLength", 600) / 4
+	for i, w in ipairs({{2, 0.25}, {6, 0.45}, {12, 0.62}, {22, 0.8}}) do part("Beam" .. i, Vector3.new(w[1], w[1], L), w[2], CFrame.new(LIGHT_AT) * CFrame.new(0, 0, -(i - 0.5) * L)) end
+	m.PrimaryPart = lamp; m.Parent = workspace; beamModel = m
+end
+local function beamOff() if beamModel then beamModel:Destroy(); beamModel = nil end end
 local function stormOn(secs)
 	if not saved then saved = {FogEnd = Lighting.FogEnd, FogStart = Lighting.FogStart, FogColor = Lighting.FogColor, Brightness = Lighting.Brightness, Ambient = Lighting.Ambient, OutdoorAmbient = Lighting.OutdoorAmbient,
 		density = atmo and atmo.Density, haze = atmo and atmo.Haze, color = atmo and atmo.Color, cover = clouds and clouds.Cover, cdensity = clouds and clouds.Density, ccolor = clouds and clouds.Color} end
@@ -181,9 +204,10 @@ local function stormOn(secs)
 	-- clouds close in first, then the light goes, then the fog
 	if clouds then TweenService:Create(clouds, TweenInfo.new(7, Enum.EasingStyle.Sine), {Cover = 1, Density = 1, Color = Color3.fromRGB(70, 72, 80)}):Play() end
 	TweenService:Create(Lighting, TweenInfo.new(9, Enum.EasingStyle.Sine), {Brightness = 0.35, OutdoorAmbient = Color3.fromRGB(55, 58, 68), FogColor = Color3.fromRGB(96, 100, 110)}):Play()
-	task.delay(4, function() if storming then TweenService:Create(Lighting, TweenInfo.new(6, Enum.EasingStyle.Sine), {FogEnd = 45, FogStart = 4}):Play() end end)
-	if atmo then TweenService:Create(atmo, TweenInfo.new(8, Enum.EasingStyle.Sine), {Density = 0.95, Haze = 10, Color = Color3.fromRGB(110, 114, 122)}):Play() end
+	task.delay(4, function() if storming then TweenService:Create(Lighting, TweenInfo.new(6, Enum.EasingStyle.Sine), {FogEnd = num("StormFogEnd", 90), FogStart = 4}):Play() end end)
+	if atmo then TweenService:Create(atmo, TweenInfo.new(8, Enum.EasingStyle.Sine), {Density = num("StormDensity", 0.85), Haze = 8, Color = Color3.fromRGB(110, 114, 122)}):Play() end
 	storming = true
+	task.delay(num("BeamAfter", 6), function() if storming then beamOn() end end)   -- the lighthouse lights once it is dark
 	local amb = saved.Ambient
 	task.spawn(function()
 		local t0 = os.clock()
@@ -206,6 +230,7 @@ local function stormOn(secs)
 end
 local function stormOff()
 	storming = false
+	beamOff()
 	if not saved then return end
 	TweenService:Create(Lighting, TweenInfo.new(3, Enum.EasingStyle.Sine), {FogEnd = saved.FogEnd, FogStart = saved.FogStart, FogColor = saved.FogColor, Brightness = saved.Brightness, OutdoorAmbient = saved.OutdoorAmbient}):Play()
 	Lighting.Ambient = saved.Ambient
@@ -217,6 +242,92 @@ local function stormOff()
 	saved = nil
 end
 
+-- ---------- the map music ----------
+-- The map music drops as the balloon climbs and comes back on the field (Shannon: "the game music should become a little
+-- less as the balloon ascends"). MapMusic.MusicClient plays SoundService.MusicA / MusicB; this only ever lowers a track
+-- (one it is fading out is left to finish), and lifts the one playing again at home. MusicDuck = the fraction kept.
+local ducked, duckTw = false, {}
+local function musicFull() local mm = workspace:FindFirstChild("MapMusic"); local v = mm and mm:GetAttribute("Volume"); return type(v) == "number" and v or 0.28 end
+local function musicTween(s, target, secs) if duckTw[s] then duckTw[s]:Cancel() end local tw = TweenService:Create(s, TweenInfo.new(secs, Enum.EasingStyle.Sine), {Volume = target}); duckTw[s] = tw; tw:Play() end
+local function duckMusic(on, secs)
+	ducked = on
+	for _, n in ipairs({"MusicA", "MusicB"}) do
+		local s = SoundService:FindFirstChild(n)
+		if s and s:IsA("Sound") and s.IsPlaying then
+			local low = musicFull() * num("MusicDuck", 0.4)
+			if on then if s.Volume > low + 0.01 and not (duckTw[s] and duckTw[s].PlaybackState == Enum.PlaybackState.Playing) then musicTween(s, low, secs) end
+			elseif s.Volume > 0.001 then musicTween(s, musicFull(), secs) end
+		end
+	end
+end
+task.spawn(function() while true do task.wait(1) if ducked then duckMusic(true, 1.5) end end end)   -- a track MusicClient changes mid-flight drops too
+
+-- ---------- the promo camera ----------
+-- Shannon (Oct 9): "one of those camera tour things of going up in the balloon into the storm ending with coming soon;
+-- I want to make a promo video". The owner (or anyone in Studio) types /promo in chat, then climbs aboard: that flight is
+-- filmed by a camera of its own - liftoff from the grass, a slow circle in the climb, a chase through the gust, close in
+-- the storm, the sign - with the rest of the screen hidden. Normal again on the ground. Desktop only; no one else sees it.
+local StarterGui = game:GetService("StarterGui")
+local promoArmed, promoOn, promoHid = false, false, {}
+local function mayPromo() return RunService:IsStudio() or (game.CreatorType == Enum.CreatorType.User and player.UserId == game.CreatorId) end
+local function promoStop()
+	if not promoOn then return end
+	promoOn = false
+	RunService:UnbindFromRenderStep("BalloonPromo")
+	local cam = workspace.CurrentCamera
+	cam.CameraType = Enum.CameraType.Custom
+	local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid"); if hum then cam.CameraSubject = hum end
+	for g in pairs(promoHid) do if g.Parent then g.Enabled = true end end
+	promoHid = {}
+	pcall(function() StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, true) end)
+	UIS.MouseIconEnabled = true
+end
+local function promoStart()
+	if not promoArmed or VR then return end
+	promoArmed = false; promoOn = true
+	for _, g in ipairs(pg:GetChildren()) do if g:IsA("ScreenGui") and g.Enabled and g ~= gui then g.Enabled = false; promoHid[g] = true end end
+	pcall(function() StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false) end)
+	UIS.MouseIconEnabled = false
+	local cam = workspace.CurrentCamera
+	cam.CameraType = Enum.CameraType.Scriptable
+	local t0 = os.clock()
+	local T = {rise = num("RiseTime", 16), hover = num("HoverTime", 8), gust = num("GustTime", 18)}
+	local dir = vec("GustDir", Vector3.new(0.45, 0, -1)); dir = Vector3.new(dir.X, 0, dir.Z).Unit
+	local side = dir:Cross(Vector3.yAxis)
+	local home = yours and yours:GetPivot().Position or cam.CFrame.Position
+	local grass = home - dir * 12 - side * 22   -- the liftoff camera stands on the field, inland of the pad
+	local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude; rp.FilterDescendantsInstances = {F, player.Character}
+	local hit = workspace:Raycast(grass + Vector3.new(0, 30, 0), Vector3.new(0, -60, 0), rp)
+	grass = Vector3.new(grass.X, (hit and hit.Position.Y or home.Y) + 2.5, grass.Z)
+	local pos, lastShot = nil, nil
+	RunService:BindToRenderStep("BalloonPromo", Enum.RenderPriority.Camera.Value + 1, function(dt)
+		if not (yours and yours.Parent) then return end
+		local t = os.clock() - t0
+		local L = yours:GetPivot().Position + Vector3.new(0, 6, 0)   -- the basket and the balloon above it
+		local shot, want, look
+		if t < 7 then shot = 1; want = grass; look = L   -- liftoff, from the grass
+		elseif t < T.rise + T.hover then shot = 2; local a = math.pi + (t - 7) * 0.13; want = L + Vector3.new(math.cos(a) * 36, -2, math.sin(a) * 36); look = L   -- a slow circle, the town behind
+		elseif t < T.rise + T.hover + T.gust then shot = 3; want = L - dir * 42 + side * 10 + Vector3.new(0, 10, 0); look = L + dir * 12   -- the chase out to sea
+		else shot = 4; local a = (t - T.rise - T.hover - T.gust) * 0.08; want = L + (dir * math.cos(a) + side * math.sin(a)) * 18 + Vector3.new(0, 3, 0); look = L end   -- close, in the storm; the sign comes up on the screen
+		if shot ~= lastShot or not pos then pos = want; lastShot = shot else pos = pos:Lerp(want, 1 - math.exp(-dt * (shot == 3 and 1.6 or 4))) end
+		cam.CFrame = CFrame.lookAt(pos, look)
+	end)
+end
+local function armPromo()
+	if not mayPromo() then return end
+	promoArmed = not promoArmed
+	showToast(promoArmed and "Promo camera armed: climb aboard and the flight is filmed. /promo again to cancel." or "Promo camera off.", 4)
+end
+local TCS = game:GetService("TextChatService")
+pcall(function()
+	if TCS.ChatVersion == Enum.ChatVersion.TextChatService then
+		local c = Instance.new("TextChatCommand"); c.Name = "BalloonPromo"; c.PrimaryAlias = "/promo"; c.SecondaryAlias = "/balloonpromo"; c.Parent = TCS
+		c.Triggered:Connect(function(src) if src.UserId == player.UserId then armPromo() end end)
+	end
+end)
+player.Chatted:Connect(function(msg) if TCS.ChatVersion ~= Enum.ChatVersion.TextChatService and msg:lower():match("^/?promo%s*$") then armPromo() end end)
+player:GetAttributeChangedSignal("Promo"):Connect(function() if player:GetAttribute("Promo") and not promoArmed then armPromo() elseif not player:GetAttribute("Promo") and promoArmed then armPromo() end end)
+
 -- ---------- phases ----------
 local flying = false
 ev.OnClientEvent:Connect(function(what, who, name, secs)
@@ -227,10 +338,10 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 		local fl = m and m:FindFirstChild("Flame", true)
 		if name == "board" and fl and flames[fl] then flames[fl].flare = 1; task.delay(3, function() if flames[fl] then flames[fl].flare = 0 end end) end
 		if who ~= player then return end
-		if name == "board" then flying = true end
-		if name == "rise" then showToast("Up you go! Look at Porto Nocciola from the sky.", 5)
+		if name == "board" then flying = true; promoStart() end
+		if name == "rise" then showToast("Up you go, traveler! Look at Porto Nocciola from the sky.", 5); duckMusic(true, secs)
 		elseif name == "gust" then
-			showToast("Whoosh! A gust takes the balloon out to sea!", 4)
+			showToast("Oh no! Looks like we are in for some bad weather!", 4)
 			local wid = num("WindSoundId", 0)
 			if wid > 0 and not windSound then
 				windSound = Instance.new("Sound"); windSound.SoundId = "rbxassetid://" .. tostring(wid); windSound.Looped = true; windSound.Volume = 0; windSound.Parent = SoundService; windSound:Play()
@@ -248,11 +359,11 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 			task.delay(1.8, function() bb.Enabled = false; sign.Visible = false end)
 		elseif name == "home" then
 			flying = false; signBasket = nil; bb.Enabled = false; sign.Visible = false
-			stormOff()
+			stormOff(); duckMusic(false, 3); promoStop()
 			task.delay(0.6, function() TweenService:Create(black, TweenInfo.new(1.4), {BackgroundTransparency = 1}):Play(); TweenService:Create(cc, TweenInfo.new(1.4), {Brightness = 0}):Play() end)
 			showToast("Back on the balloon field. More of the journey is coming soon!", 5)
 		end
 	end
 end)
-player.CharacterAdded:Connect(function() flying = false; if storming then stormOff() end; black.BackgroundTransparency = 1; cc.Brightness = 0; bb.Enabled = false; sign.Visible = false end)
+player.CharacterAdded:Connect(function() flying = false; if storming then stormOff() end; duckMusic(false, 1); promoStop(); black.BackgroundTransparency = 1; cc.Brightness = 0; bb.Enabled = false; sign.Visible = false end)
 print("BalloonClient: ready" .. (VR and " (VR)" or ""))
