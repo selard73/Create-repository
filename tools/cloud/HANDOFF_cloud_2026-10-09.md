@@ -78,3 +78,8 @@ the balloon flight (none yet; Item_balloon_flights records the first flight); th
 Every Studio change has a backup under ServerStorage.HudBackup.*_pre_<job>. Generators live beside each script
 (tools/<area>/make_*.py); the luau CLI for syntax checks is downloaded into the scratchpad (see tools/cloud/JOB.md top).
 The runner: send_message to its session id (bridge:session_01FmVm5n3mKMAfYwLsZWtahf as of Oct 9), commit-SHA raw URLs.
+
+## Saved for later (Shannon, Oct 9 evening)
+- Dresses from the French map on her new avatar: "that avatar had no arms when I put on the dress". Revisit the dress
+  shop's wear code (village/dresses/build_dressshop.lua: what it hides or replaces on the character) against other body
+  types / bundles; make sure nothing looks weird on any avatar. Not started; she said "save that idea for later".
