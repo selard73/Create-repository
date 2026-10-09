@@ -43,15 +43,19 @@ F2 = 'local open = false\nlocal function closePanel()\n'
 R2 = 'local function closePanel()\n'
 F3 = '\tpanel.Size = UDim2.fromOffset(math.min(380, (v.X - 24) / s), math.min(h, (v.Y - 16) / s))\n'
 R3 = F3 + '\tpanel.Position = UDim2.new(1, phone() and -4 or -14, 0.5, 0)   -- a phone: hard against the right edge (Oct 9)\n'
-F4 = '\tlocal base = root and (root.CFrame * CFrame.new(-1.7, 0.6, -3.0)) or (cam and cam.CFrame * CFrame.new(-1.2, -0.8, -5)) or CFrame.new()   -- left and low: clear of her bubble (Oct 9)\n'
-R4 = F4 + '\tif phone() and cam then local bm = bella(); local d = bm and (bm:GetPivot().Position - cam.CFrame.Position).Magnitude or 8; base = cam.CFrame * CFrame.new(0, -0.9, -math.max(3.5, d - 2.5)) end   -- a phone: dead centre, just in front of Bella (Oct 9)\n'
+# Studio still has the reveal base as first written (the runner's pre-check, job 48: seaglass5's reveal finds never reached it);
+# the repo src carries the 'left and low' line, so the src is patched from either form.
+F4 = '\tlocal base = root and (root.CFrame * CFrame.new(0, 1.2, -3.2)) or (cam and cam.CFrame * CFrame.new(0, -0.5, -5)) or CFrame.new()\n'
+F4_SRC = '\tlocal base = root and (root.CFrame * CFrame.new(-1.7, 0.6, -3.0)) or (cam and cam.CFrame * CFrame.new(-1.2, -0.8, -5)) or CFrame.new()   -- left and low: clear of her bubble (Oct 9)\n'
+R4 = F4_SRC + '\tif phone() and cam then local bm = bella(); local d = bm and (bm:GetPivot().Position - cam.CFrame.Position).Magnitude or 8; base = cam.CFrame * CFrame.new(0, -0.9, -math.max(3.5, d - 2.5)) end   -- a phone: dead centre, just in front of Bella (Oct 9)\n'
 PAIRS = [(F1, R1), (F2, R2), (F3, R3), (F4, R4)]
 src = ROOT / "tools/porto/src/SeaGlassClient.lua"; t = src.read_text(encoding="utf-8")
 DELTA = sum(len(b.encode()) - len(a.encode()) for a, b in PAIRS)
-if "BellaWordsAnchor" in t: N = len(t.encode()) - DELTA   # re-run: the src already carries this patch; N is what Studio has before it
-else:
-    N = len(t.encode())
-    for a, b in PAIRS: assert t.count(a) == 1, a[:50]; t = t.replace(a, b)
+N = 13322   # what Studio has after job 41 (the runner's count); the src differs a little (seaglass5's reveal lines), so it is not derived from it
+if "BellaWordsAnchor" not in t:
+    for a, b in PAIRS:
+        if a == F4 and F4 not in t: a = F4_SRC
+        assert t.count(a) == 1, a[:50]; t = t.replace(a, b)
     src.write_text(t, encoding="utf-8")
 lua = r'''-- porto/seaglass6 (job 48): EDIT mode. Bella's game on a phone: her words at the left of the screen, the reveal in the
 -- middle, the panel hard against the right edge (Shannon, mobile). Four exact finds in workspace.SeaGlass.SeaGlassClient

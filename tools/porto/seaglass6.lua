@@ -1,12 +1,12 @@
 -- porto/seaglass6 (job 48): EDIT mode. Bella's game on a phone: her words at the left of the screen, the reveal in the
 -- middle, the panel hard against the right edge (Shannon, mobile). Four exact finds in workspace.SeaGlass.SeaGlassClient
--- (after job 41, about 13331 chars); compiled before writing; original -> ServerStorage.HudBackup.SeaGlassClient_pre_seaglass6.
+-- (after job 41, about 13322 chars); compiled before writing; original -> ServerStorage.HudBackup.SeaGlassClient_pre_seaglass6.
 -- Output "QQ SG6".
 if game:GetService("RunService"):IsRunning() then warn("QQ SG6 ABORT - Play mode") return end
 local G = workspace:FindFirstChild("SeaGlass")
 local s = G and G:FindFirstChild("SeaGlassClient")
 if not s then warn("QQ SG6 ABORT - missing workspace.SeaGlass.SeaGlassClient") return end
-if math.abs(#s.Source - 13331) > 60 then warn(string.format("QQ SG6 ABORT - SeaGlassClient is %d chars, expected about 13331 (job 41 not run yet, or changed); nothing changed", #s.Source)) return end
+if math.abs(#s.Source - 13322) > 60 then warn(string.format("QQ SG6 ABORT - SeaGlassClient is %d chars, expected about 13322 (job 41 not run yet, or changed); nothing changed", #s.Source)) return end
 local o = s.Source
 local before = #o
 for i, p in ipairs({{[===[
@@ -50,7 +50,7 @@ local function closePanel()
 	panel.Size = UDim2.fromOffset(math.min(380, (v.X - 24) / s), math.min(h, (v.Y - 16) / s))
 	panel.Position = UDim2.new(1, phone() and -4 or -14, 0.5, 0)   -- a phone: hard against the right edge (Oct 9)
 ]===]}, {[===[
-	local base = root and (root.CFrame * CFrame.new(-1.7, 0.6, -3.0)) or (cam and cam.CFrame * CFrame.new(-1.2, -0.8, -5)) or CFrame.new()   -- left and low: clear of her bubble (Oct 9)
+	local base = root and (root.CFrame * CFrame.new(0, 1.2, -3.2)) or (cam and cam.CFrame * CFrame.new(0, -0.5, -5)) or CFrame.new()
 ]===], [===[
 	local base = root and (root.CFrame * CFrame.new(-1.7, 0.6, -3.0)) or (cam and cam.CFrame * CFrame.new(-1.2, -0.8, -5)) or CFrame.new()   -- left and low: clear of her bubble (Oct 9)
 	if phone() and cam then local bm = bella(); local d = bm and (bm:GetPivot().Position - cam.CFrame.Position).Magnitude or 8; base = cam.CFrame * CFrame.new(0, -0.9, -math.max(3.5, d - 2.5)) end   -- a phone: dead centre, just in front of Bella (Oct 9)

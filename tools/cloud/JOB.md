@@ -397,3 +397,6 @@ tools/porto/seaglass6.lua: on a phone (touch, viewport under 560 high) with the 
 the screen (her bubble follows an invisible anchor held there), the reveal rises in the middle just in front of her, the
 panel hugs the right edge. Desktop/tablet/VR unchanged. Four exact finds, length about 13331 (±60), backup
 HudBackup.SeaGlassClient_pre_seaglass6. Send the `QQ SG6` line. No publish.
+Note (runner pre-check): Studio's SeaGlassClient is 13322 chars and never received seaglass5's reveal lines (the "left and
+low" base and the 1.8 lift); seaglass6's find 4 now matches the first-written base line and brings the left-and-low base
+with it. The repo src keeps the 1.8 lift, which Studio does not have.
