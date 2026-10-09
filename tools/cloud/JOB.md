@@ -315,3 +315,18 @@ reveal. No publish.
 
 tools/daily/daily_auto1.lua patches workspace.Daily.DailyClient (4 finds; AutoCollect attribute, 15 s). Send the `QQ AUTO`
 line. No publish.
+
+## Job 36: READ-ONLY surveys for the Piazza Race (the town squirrels; the site by the policeman). Done.
+
+## Job 37: the Piazza Race (Studio EDIT, one installer, re-runnable; ask Shannon first)
+
+Shannon: "create a race exactly like the Forest Race... in the neighbourhood area for the middle-level squirrels"; "the
+leaderboard and the start should be next to the sailing club by where the policeman is". tools/race/install_porto_race.lua
+= the Forest Race build with the Porto names: workspace.PortoRace (StartGate at 452,-12,-960 facing east, RaceBoard at
+452,-976), RS.PortoRaceEvent, store PortoRace_v1, the 15 squirrels of RS.PortoAreas.lists.borgo, Item_porto_race_best,
+passport "porto_race". Send the `QQ RACE` and "PortoRace: installed" lines. Play test: Start the race at the gate, the
+15 town squirrels go grey on your screen, click two or three (count ticks), Quit; no errors. No publish.
+
+## Job 38: the Passport outing "Piazza Race" (Studio EDIT; ask Shannon first; after job 37)
+
+tools/race/passport_race1.lua (Catalogue 11291, Journal 14168, PassportVisuals 4105). Send the `QQ PRACE` line. No publish.

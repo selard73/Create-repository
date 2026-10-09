@@ -15,7 +15,7 @@ build = (ROOT / "boundary/build_race.lua").read_text(encoding="utf-8")
 
 # the piazza (job 36 survey): gate and board. The gate faces +x in the build (runners go through heading east);
 # boardTurn turns the board about the vertical. Edit after the survey.
-POS = dict(gateX=0, gateZ=0, boardX=0, boardZ=0, boardTurn=0, groundFrom=60, groundDepth=120)
+POS = dict(gateX=452, gateZ=-960, boardX=452, boardZ=-976, boardTurn=0, groundFrom=-8, groundDepth=20)   # job 36b: flat cobbles at y -12 round the policeman (465,-12,-963)
 NAME, SHORT = "Piazza Race", "piazza"
 
 def sub(old, new, count=None):
