@@ -1,5 +1,5 @@
 -- porto/seaglass5 (job 41): EDIT mode. Bella's panel moves to the right side of the screen (it covered her and her speech
--- bubble) and hides for six seconds when something is made, so the reveal and her words are seen. Two exact finds in workspace.SeaGlass.SeaGlassClient (13151 chars, after job 39); compiled before writing;
+-- bubble) and hides for six seconds when something is made, and the reveal appears to the left and lower, clear of her speech bubble. Four exact finds in workspace.SeaGlass.SeaGlassClient (13151 chars, after job 39); compiled before writing;
 -- original -> ServerStorage.HudBackup.SeaGlassClient_pre_seaglass5. Output "QQ SG5".
 if game:GetService("RunService"):IsRunning() then warn("QQ SG5 ABORT - Play mode") return end
 local G = workspace:FindFirstChild("SeaGlass")
@@ -20,6 +20,14 @@ for i, p in ipairs({{[===[
 local panel = Instance.new("Frame"); panel.Name = "Panel"; panel.AnchorPoint = Vector2.new(0.5, 0.5); panel.Position = UDim2.fromScale(0.5, 0.5)
 ]===], [===[
 local panel = Instance.new("Frame"); panel.Name = "Panel"; panel.AnchorPoint = Vector2.new(1, 0.5); panel.Position = UDim2.new(1, -14, 0.5, 0)   -- at the right: Bella and her words stay in view (Oct 9)
+]===]}, {[===[
+	local base = root and (root.CFrame * CFrame.new(0, 1.2, -3.2)) or (cam and cam.CFrame * CFrame.new(0, -0.5, -5)) or CFrame.new()
+]===], [===[
+	local base = root and (root.CFrame * CFrame.new(-1.7, 0.6, -3.0)) or (cam and cam.CFrame * CFrame.new(-1.2, -0.8, -5)) or CFrame.new()   -- left and low: clear of her bubble (Oct 9)
+]===]}, {[===[
+		local lift = 2.4 * k + 0.15 * math.sin(t * 2.2)
+]===], [===[
+		local lift = 1.8 * k + 0.15 * math.sin(t * 2.2)
 ]===]}}) do
 	local a, b = o:find(p[1], 1, true)
 	if not a then warn("QQ SG5 ABORT - find " .. i .. " not found; nothing changed") return end

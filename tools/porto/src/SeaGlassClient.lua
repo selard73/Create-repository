@@ -146,7 +146,7 @@ local function reveal(id)
 	if not ok or not m then return end
 	local root = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
 	local cam = workspace.CurrentCamera
-	local base = root and (root.CFrame * CFrame.new(0, 1.2, -3.2)) or (cam and cam.CFrame * CFrame.new(0, -0.5, -5)) or CFrame.new()
+	local base = root and (root.CFrame * CFrame.new(-1.7, 0.6, -3.0)) or (cam and cam.CFrame * CFrame.new(-1.2, -0.8, -5)) or CFrame.new()   -- left and low: clear of her bubble (Oct 9)
 	local look = cam and Vector3.new(cam.CFrame.LookVector.X, 0, cam.CFrame.LookVector.Z) or Vector3.new(0, 0, -1)
 	if look.Magnitude > 0.01 then base = CFrame.new(base.Position, base.Position - look.Unit) end
 	local core = m.PrimaryPart
@@ -161,7 +161,7 @@ local function reveal(id)
 		local t = os.clock() - t0
 		if t > LIFE or not m.Parent then conn:Disconnect(); return end
 		local k = math.min(1, t / 1.6); k = k * k * (3 - 2 * k)
-		local lift = 2.4 * k + 0.15 * math.sin(t * 2.2)
+		local lift = 1.8 * k + 0.15 * math.sin(t * 2.2)
 		local spin = t * (3.2 - 1.6 * k) + 0.4 * math.sin(t * 1.1)
 		m:PivotTo(base * CFrame.new(0, lift, 0) * CFrame.Angles(0, spin, math.rad(8) * math.sin(t * 1.7)))
 		if t > LIFE - 0.9 then

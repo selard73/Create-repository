@@ -19,12 +19,17 @@ R1 = F1 + "\t\tpanel.Visible = false; task.delay(6, function() if open then pane
 # the panel sat dead centre, over Bella and her speech bubble (Shannon, desktop): it moves to the right side of the screen
 F2 = "local panel = Instance.new(\"Frame\"); panel.Name = \"Panel\"; panel.AnchorPoint = Vector2.new(0.5, 0.5); panel.Position = UDim2.fromScale(0.5, 0.5)\n"
 R2 = "local panel = Instance.new(\"Frame\"); panel.Name = \"Panel\"; panel.AnchorPoint = Vector2.new(1, 0.5); panel.Position = UDim2.new(1, -14, 0.5, 0)   -- at the right: Bella and her words stay in view (Oct 9)\n"
+# the reveal rose straight between the player and Bella, under her speech bubble: it now appears to the left and lower
+F3 = "\tlocal base = root and (root.CFrame * CFrame.new(0, 1.2, -3.2)) or (cam and cam.CFrame * CFrame.new(0, -0.5, -5)) or CFrame.new()\n"
+R3 = "\tlocal base = root and (root.CFrame * CFrame.new(-1.7, 0.6, -3.0)) or (cam and cam.CFrame * CFrame.new(-1.2, -0.8, -5)) or CFrame.new()   -- left and low: clear of her bubble (Oct 9)\n"
+F4 = "\t\tlocal lift = 2.4 * k + 0.15 * math.sin(t * 2.2)\n"
+R4 = "\t\tlocal lift = 1.8 * k + 0.15 * math.sin(t * 2.2)\n"
 src = ROOT / "tools/porto/src/SeaGlassClient.lua"; t = src.read_text(encoding="utf-8")
-for a, b in ((F1, R1), (F2, R2)):
+for a, b in ((F1, R1), (F2, R2), (F3, R3), (F4, R4)):
     if b not in t: assert t.count(a) == 1, a[:50]; t = t.replace(a, b)
 src.write_text(t, encoding="utf-8")
 lua = r'''-- porto/seaglass5 (job 41): EDIT mode. Bella's panel moves to the right side of the screen (it covered her and her speech
--- bubble) and hides for six seconds when something is made, so the reveal and her words are seen. Two exact finds in workspace.SeaGlass.SeaGlassClient (@@N@@ chars, after job 39); compiled before writing;
+-- bubble) and hides for six seconds when something is made, and the reveal appears to the left and lower, clear of her speech bubble. Four exact finds in workspace.SeaGlass.SeaGlassClient (@@N@@ chars, after job 39); compiled before writing;
 -- original -> ServerStorage.HudBackup.SeaGlassClient_pre_seaglass5. Output "QQ SG5".
 if game:GetService("RunService"):IsRunning() then warn("QQ SG5 ABORT - Play mode") return end
 local G = workspace:FindFirstChild("SeaGlass")
@@ -32,7 +37,7 @@ local s = G and G:FindFirstChild("SeaGlassClient")
 if not s then warn("QQ SG5 ABORT - missing workspace.SeaGlass.SeaGlassClient") return end
 if #s.Source ~= @@N@@ then warn(string.format("QQ SG5 ABORT - SeaGlassClient is %d chars, expected @@N@@ (job 39 not run yet, already patched, or changed); nothing changed", #s.Source)) return end
 local o = s.Source
-for i, p in ipairs({{@@F1@@, @@R1@@}, {@@F2@@, @@R2@@}}) do
+for i, p in ipairs({{@@F1@@, @@R1@@}, {@@F2@@, @@R2@@}, {@@F3@@, @@R3@@}, {@@F4@@, @@R4@@}}) do
 	local a, b = o:find(p[1], 1, true)
 	if not a then warn("QQ SG5 ABORT - find " .. i .. " not found; nothing changed") return end
 	if o:find(p[1], b + 1, true) then warn("QQ SG5 ABORT - find " .. i .. " matches more than once; nothing changed") return end
@@ -46,7 +51,7 @@ local c = s:Clone(); c.Name = "SeaGlassClient_pre_seaglass5"; c.Enabled = false;
 s.Source = o
 print(string.format("QQ SG5 DONE: SeaGlassClient %d chars; backup ServerStorage.HudBackup.SeaGlassClient_pre_seaglass5", #s.Source))
 '''
-for k, v in {"N": str(N), "F1": L(F1), "R1": L(R1), "F2": L(F2), "R2": L(R2)}.items(): lua = lua.replace("@@" + k + "@@", v)
+for k, v in {"N": str(N), "F1": L(F1), "R1": L(R1), "F2": L(F2), "R2": L(R2), "F3": L(F3), "R3": L(R3), "F4": L(F4), "R4": L(R4)}.items(): lua = lua.replace("@@" + k + "@@", v)
 assert "@@" not in lua
 (ROOT / "tools/porto/seaglass5.lua").write_text(lua, encoding="utf-8")
 print("seaglass5.lua", len(lua.encode()), "chars; expects SeaGlassClient", N)
