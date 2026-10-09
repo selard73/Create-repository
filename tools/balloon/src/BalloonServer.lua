@@ -57,7 +57,7 @@ local function makeBalloon(name, kind, cf)
 end
 local function invisible(p) p.Transparency = 1; p.Anchored = true; p.CanQuery = false; p.CanTouch = false; p.CastShadow = false; return p end
 
-local padYours = vec("PadYours", Vector3.new(96, 0, -646))
+local padYours = vec("PadYours", Vector3.new(72, 0, -646))
 local padY = groundY(padYours.X, padYours.Z, CENTER.Y) + 0.1
 local homeCF = CFrame.new(padYours.X, padY, padYours.Z) * CFrame.Angles(0, math.rad(num("PadYaw", 70)), 0)
 local yours = makeBalloon("YourBalloon", "yours", homeCF)
@@ -76,6 +76,7 @@ local prompt = Instance.new("ProximityPrompt"); prompt.Name = "BoardPrompt"; pro
 prompt.MaxActivationDistance = 14; prompt.HoldDuration = 0.3; prompt.RequiresLineOfSight = false; prompt.UIOffset = Vector2.new(0, -40)
 prompt.Parent = basket or yours.PrimaryPart or yours:FindFirstChildWhichIsA("BasePart")
 
+if F:GetAttribute("ShowBalloons") == true then   -- Shannon, Oct 9 evening: just the one balloon you travel in
 local padT = vec("PadTethered", Vector3.new(128, 0, -676))
 makeBalloon("TetheredBalloon", "tethered", CFrame.new(padT.X, groundY(padT.X, padT.Z, CENTER.Y) + 0.1, padT.Z) * CFrame.Angles(0, math.rad(-30), 0))
 do
@@ -89,7 +90,8 @@ do
 		m:SetAttribute("Phase", (i - 1) * 2.4)
 	end
 end
-print("BalloonServer: balloons on the field")
+end
+print("BalloonServer: balloon on the field")
 
 -- ---------- the flight ----------
 local busy = nil
@@ -139,7 +141,9 @@ local function flight(p)
 			drift += dir * v * dt
 		end
 		local sway = Vector3.new(1.4 * math.sin(t * 0.7), 0.4 * math.sin(t * 1.3), 1.1 * math.sin(t * 0.5 + 1))
-		local tilt = (phaseIndex >= 3) and math.rad(7) * ease((t - (T.rise + T.hover)) / 3) or 0
+		-- the gust: a hard lean downwind that wobbles, easing as the storm takes over
+		local gustK = (phaseIndex >= 3) and ease((t - (T.rise + T.hover)) / 2.5) * (phaseIndex >= 4 and 0.55 or 1) or 0
+		local tilt = math.rad(num("GustLean", 18)) * gustK * (0.75 + 0.25 * math.sin(t * 2.3)) + math.rad(3) * gustK * math.sin(t * 5.1)
 		local cf = CFrame.new(homeCF.Position + Vector3.new(0, y, 0) + drift + sway) * CFrame.Angles(0, math.rad(num("PadYaw", 70)) + t * 0.04, 0) * CFrame.Angles(tilt * -dir.Z, 0, tilt * dir.X)
 		yours:PivotTo(cf)
 		if (t > 0.6 and seat.Occupant ~= hum) or hum.Health <= 0 or p.Parent ~= Players then aborted = true; conn:Disconnect() end   -- (the weld takes a physics step to land)

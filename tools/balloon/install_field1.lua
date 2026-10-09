@@ -4,7 +4,7 @@
 -- Undo: tools/balloon/balloon_undo1.lua. Output lines start with "QQ FIELD".
 if game:GetService("RunService"):IsRunning() then warn("QQ FIELD ABORT - Play mode") return end
 local RS, SS = game:GetService("ReplicatedStorage"), game:GetService("ServerStorage")
-if workspace:FindFirstChild("BalloonField") then warn("QQ FIELD ABORT - workspace.BalloonField exists already; run balloon_undo1 first") return end
+local oldF = workspace:FindFirstChild("BalloonField"); if oldF then oldF:Destroy() end   -- re-runnable: the field is rebuilt from the template
 local tpl = SS:FindFirstChild("BalloonTemplate")
 if not tpl then
 	for _, d in ipairs(workspace:GetDescendants()) do
@@ -37,7 +37,7 @@ tpl.Name = "BalloonTemplate"; tpl.Parent = SS
 local evt = RS:FindFirstChild("BalloonEvent") or Instance.new("RemoteEvent"); evt.Name = "BalloonEvent"; evt.Parent = RS
 local F = Instance.new("Folder"); F.Name = "BalloonField"
 F:SetAttribute("Center", Vector3.new(106, -48.5, -648)); F:SetAttribute("Need", 44)
-F:SetAttribute("PadYours", Vector3.new(96, 0, -646)); F:SetAttribute("PadYaw", 70); F:SetAttribute("PadTethered", Vector3.new(128, 0, -676))
+F:SetAttribute("PadYours", Vector3.new(72, 0, -646)); F:SetAttribute("ShowBalloons", false); F:SetAttribute("GustLean", 18); F:SetAttribute("PadYaw", 70); F:SetAttribute("PadTethered", Vector3.new(128, 0, -676))
 F:SetAttribute("DriftCenter", Vector3.new(190, 18, -650)); F:SetAttribute("DriftRadius", 55); F:SetAttribute("DriftHeights", "18,33"); F:SetAttribute("DriftPeriods", "150,110")
 F:SetAttribute("RiseHeight", 85); F:SetAttribute("RiseTime", 16); F:SetAttribute("HoverTime", 8); F:SetAttribute("GustTime", 18); F:SetAttribute("StormTime", 12); F:SetAttribute("SignTime", 6)
 F:SetAttribute("GustDir", Vector3.new(0.45, 0, -1)); F:SetAttribute("GustSpeed", 22); F:SetAttribute("ThunderSoundId", 0); F:SetAttribute("WindSoundId", 0)
@@ -101,7 +101,7 @@ local function makeBalloon(name, kind, cf)
 end
 local function invisible(p) p.Transparency = 1; p.Anchored = true; p.CanQuery = false; p.CanTouch = false; p.CastShadow = false; return p end
 
-local padYours = vec("PadYours", Vector3.new(96, 0, -646))
+local padYours = vec("PadYours", Vector3.new(72, 0, -646))
 local padY = groundY(padYours.X, padYours.Z, CENTER.Y) + 0.1
 local homeCF = CFrame.new(padYours.X, padY, padYours.Z) * CFrame.Angles(0, math.rad(num("PadYaw", 70)), 0)
 local yours = makeBalloon("YourBalloon", "yours", homeCF)
@@ -120,6 +120,7 @@ local prompt = Instance.new("ProximityPrompt"); prompt.Name = "BoardPrompt"; pro
 prompt.MaxActivationDistance = 14; prompt.HoldDuration = 0.3; prompt.RequiresLineOfSight = false; prompt.UIOffset = Vector2.new(0, -40)
 prompt.Parent = basket or yours.PrimaryPart or yours:FindFirstChildWhichIsA("BasePart")
 
+if F:GetAttribute("ShowBalloons") == true then   -- Shannon, Oct 9 evening: just the one balloon you travel in
 local padT = vec("PadTethered", Vector3.new(128, 0, -676))
 makeBalloon("TetheredBalloon", "tethered", CFrame.new(padT.X, groundY(padT.X, padT.Z, CENTER.Y) + 0.1, padT.Z) * CFrame.Angles(0, math.rad(-30), 0))
 do
@@ -133,7 +134,8 @@ do
 		m:SetAttribute("Phase", (i - 1) * 2.4)
 	end
 end
-print("BalloonServer: balloons on the field")
+end
+print("BalloonServer: balloon on the field")
 
 -- ---------- the flight ----------
 local busy = nil
@@ -183,7 +185,9 @@ local function flight(p)
 			drift += dir * v * dt
 		end
 		local sway = Vector3.new(1.4 * math.sin(t * 0.7), 0.4 * math.sin(t * 1.3), 1.1 * math.sin(t * 0.5 + 1))
-		local tilt = (phaseIndex >= 3) and math.rad(7) * ease((t - (T.rise + T.hover)) / 3) or 0
+		-- the gust: a hard lean downwind that wobbles, easing as the storm takes over
+		local gustK = (phaseIndex >= 3) and ease((t - (T.rise + T.hover)) / 2.5) * (phaseIndex >= 4 and 0.55 or 1) or 0
+		local tilt = math.rad(num("GustLean", 18)) * gustK * (0.75 + 0.25 * math.sin(t * 2.3)) + math.rad(3) * gustK * math.sin(t * 5.1)
 		local cf = CFrame.new(homeCF.Position + Vector3.new(0, y, 0) + drift + sway) * CFrame.Angles(0, math.rad(num("PadYaw", 70)) + t * 0.04, 0) * CFrame.Angles(tilt * -dir.Z, 0, tilt * dir.X)
 		yours:PivotTo(cf)
 		if (t > 0.6 and seat.Occupant ~= hum) or hum.Health <= 0 or p.Parent ~= Players then aborted = true; conn:Disconnect() end   -- (the weld takes a physics step to land)
@@ -250,6 +254,10 @@ local signBasket, signPart = nil, nil   -- (made below; the loop runs first)
 RunService.RenderStepped:Connect(function()
 	local t = workspace:GetServerTimeNow()
 	if signBasket and signBasket.Parent then signPart.CFrame = signBasket.CFrame * CFrame.new(0, 7, -14) end
+	if wind.Enabled then
+		local b = yours and yours:FindFirstChild("Basket", true)
+		if b then local d = vec("GustDir", Vector3.new(0.45, 0, -1)); d = Vector3.new(d.X, 0, d.Z).Unit; windPart.CFrame = CFrame.lookAt(b.Position - d * 26 + Vector3.new(0, 4, 0), b.Position + d * 10) end
+	end
 	for m, d in pairs(drift) do
 		if m.Parent then
 			local a = d.phase + 2 * math.pi * t / d.period
@@ -278,9 +286,10 @@ toast.TextWrapped = true; toast.Visible = false; toast.Parent = gui
 local tc = Instance.new("UICorner"); tc.CornerRadius = UDim.new(0, 10); tc.Parent = toast
 local black = Instance.new("Frame"); black.Size = UDim2.fromScale(1, 1); black.BackgroundColor3 = Color3.new(0, 0, 0); black.BackgroundTransparency = 1; black.BorderSizePixel = 0; black.ZIndex = 20; black.Parent = gui
 local flash = Instance.new("Frame"); flash.Size = UDim2.fromScale(1, 1); flash.BackgroundColor3 = Color3.new(1, 1, 1); flash.BackgroundTransparency = 1; flash.BorderSizePixel = 0; flash.ZIndex = 19; flash.Parent = gui
-local sign = Instance.new("TextLabel"); sign.AnchorPoint = Vector2.new(0.5, 0.5); sign.Position = UDim2.fromScale(0.5, 0.42); sign.Size = UDim2.new(0.8, 0, 0, 160)
-sign.BackgroundTransparency = 1; sign.TextColor3 = Color3.fromRGB(255, 240, 200); sign.Font = Enum.Font.Antique; sign.TextScaled = true; sign.TextStrokeTransparency = 0.3
-sign.Text = "To Be Continued…\nMore to come soon!"; sign.Visible = false; sign.ZIndex = 21; sign.Parent = gui
+local sign = Instance.new("TextLabel"); sign.AnchorPoint = Vector2.new(0.5, 0.5); sign.Position = UDim2.fromScale(0.5, 0.42); sign.Size = UDim2.fromOffset(520, 120)
+sign.BackgroundColor3 = Color3.fromRGB(255, 246, 220); sign.BackgroundTransparency = 0.08; sign.TextColor3 = Color3.fromRGB(58, 36, 16); sign.Font = Enum.Font.GothamBold; sign.TextSize = 30; sign.TextWrapped = true
+sign.Text = "To Be Continued\nMore to come soon"; sign.Visible = false; sign.ZIndex = 21; sign.Parent = gui
+local sc = Instance.new("UICorner"); sc.CornerRadius = UDim.new(0, 14); sc.Parent = sign
 local toastUntil = 0
 local function showToast(text, secs)
 	toast.Text = text; toast.Visible = true; toastUntil = os.clock() + (secs or 3)
@@ -288,8 +297,8 @@ local function showToast(text, secs)
 end
 -- the sign in the sky as well: a billboard in front of the basket (readable in VR with the panel closed)
 signPart = Instance.new("Part"); signPart.Name = "SkySign"; signPart.Anchored = true; signPart.CanCollide = false; signPart.CanQuery = false; signPart.Transparency = 1; signPart.Size = Vector3.new(1, 1, 1)
-local bb = Instance.new("BillboardGui"); bb.Size = UDim2.fromScale(26, 9); bb.AlwaysOnTop = true; bb.LightInfluence = 0; bb.MaxDistance = 200; bb.Enabled = false; bb.Parent = signPart
-local bbText = sign:Clone(); bbText.Visible = true; bbText.Size = UDim2.fromScale(1, 1); bbText.Position = UDim2.fromScale(0.5, 0.5); bbText.Parent = bb
+local bb = Instance.new("BillboardGui"); bb.Size = UDim2.fromScale(13, 3); bb.AlwaysOnTop = true; bb.LightInfluence = 0; bb.MaxDistance = 200; bb.Enabled = false; bb.Parent = signPart
+local bbText = sign:Clone(); bbText.Visible = true; bbText.Size = UDim2.fromScale(1, 1); bbText.Position = UDim2.fromScale(0.5, 0.5); bbText.TextScaled = true; bbText.Parent = bb
 signPart.Parent = workspace.CurrentCamera
 
 -- ---------- the board prompt knows your count (world-space text, good in VR) ----------
@@ -355,26 +364,51 @@ local function sound(id, volume, parent)
 	game:GetService("Debris"):AddItem(s, 20)
 	return s
 end
+local wind = Instance.new("ParticleEmitter"); wind.Name = "WindStreaks"; wind.Enabled = false; wind.Rate = 90; wind.Lifetime = NumberRange.new(0.5, 0.9)
+wind.Speed = NumberRange.new(55, 80); wind.SpreadAngle = Vector2.new(8, 8); wind.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.15), NumberSequenceKeypoint.new(1, 0.05)})
+wind.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.55), NumberSequenceKeypoint.new(1, 1)}); wind.Color = ColorSequence.new(Color3.fromRGB(235, 240, 250))
+wind.LightEmission = 0.4; wind.Orientation = Enum.ParticleOrientation.VelocityParallel; wind.Squash = NumberSequence.new(-1.6)
+local windPart = Instance.new("Part"); windPart.Name = "WindSource"; windPart.Anchored = true; windPart.CanCollide = false; windPart.CanQuery = false; windPart.Transparency = 1; windPart.Size = Vector3.new(14, 10, 1); wind.Parent = windPart; windPart.Parent = workspace
 local storming = false
+local clouds = workspace.Terrain:FindFirstChildOfClass("Clouds")
+local function bolt(near)
+	-- a jagged bolt of Neon parts from the clouds down towards the sea, gone in a blink
+	local top = near + Vector3.new((math.random() - 0.5) * 160, 70 + math.random() * 30, (math.random() - 0.5) * 160)
+	local m = Instance.new("Model"); m.Name = "Lightning"
+	local p = top
+	for i = 1, 7 do
+		local q = p + Vector3.new((math.random() - 0.5) * 18, -(10 + math.random() * 8), (math.random() - 0.5) * 18)
+		local seg = Instance.new("Part"); seg.Anchored = true; seg.CanCollide = false; seg.CanQuery = false; seg.Material = Enum.Material.Neon; seg.Color = Color3.fromRGB(225, 235, 255)
+		seg.Size = Vector3.new(0.5, 0.5, (q - p).Magnitude); seg.CFrame = CFrame.lookAt((p + q) / 2, q); seg.Parent = m
+		p = q
+	end
+	local l = Instance.new("PointLight"); l.Brightness = 6; l.Range = 90; l.Color = Color3.fromRGB(220, 230, 255); l.Parent = m:FindFirstChildWhichIsA("BasePart")
+	m.Parent = workspace; game:GetService("Debris"):AddItem(m, 0.12 + math.random() * 0.1)
+end
 local function stormOn(secs)
 	if not saved then saved = {FogEnd = Lighting.FogEnd, FogStart = Lighting.FogStart, FogColor = Lighting.FogColor, Brightness = Lighting.Brightness, Ambient = Lighting.Ambient, OutdoorAmbient = Lighting.OutdoorAmbient,
-		density = atmo and atmo.Density, haze = atmo and atmo.Haze, color = atmo and atmo.Color} end
-	TweenService:Create(Lighting, TweenInfo.new(5, Enum.EasingStyle.Sine), {FogEnd = 45, FogStart = 4, FogColor = Color3.fromRGB(120, 124, 132), Brightness = 0.6, OutdoorAmbient = Color3.fromRGB(70, 72, 80)}):Play()
-	if atmo then TweenService:Create(atmo, TweenInfo.new(5, Enum.EasingStyle.Sine), {Density = 0.95, Haze = 10, Color = Color3.fromRGB(130, 134, 140)}):Play() end
+		density = atmo and atmo.Density, haze = atmo and atmo.Haze, color = atmo and atmo.Color, cover = clouds and clouds.Cover, cdensity = clouds and clouds.Density, ccolor = clouds and clouds.Color} end
+	-- clouds close in first, then the light goes, then the fog
+	if clouds then TweenService:Create(clouds, TweenInfo.new(7, Enum.EasingStyle.Sine), {Cover = 1, Density = 1, Color = Color3.fromRGB(70, 72, 80)}):Play() end
+	TweenService:Create(Lighting, TweenInfo.new(9, Enum.EasingStyle.Sine), {Brightness = 0.35, OutdoorAmbient = Color3.fromRGB(55, 58, 68), FogColor = Color3.fromRGB(96, 100, 110)}):Play()
+	task.delay(4, function() if storming then TweenService:Create(Lighting, TweenInfo.new(6, Enum.EasingStyle.Sine), {FogEnd = 45, FogStart = 4}):Play() end end)
+	if atmo then TweenService:Create(atmo, TweenInfo.new(8, Enum.EasingStyle.Sine), {Density = 0.95, Haze = 10, Color = Color3.fromRGB(110, 114, 122)}):Play() end
 	storming = true
 	local amb = saved.Ambient
 	task.spawn(function()
 		local t0 = os.clock()
 		task.wait(2.5)
 		while storming and os.clock() - t0 < secs + 8 do
-			-- lightning: a white flash on the world (and the screen), thunder a moment later
+			-- lightning: a bolt in the sky, a flash on the world, thunder a moment later
 			local hold = 0.08 + math.random() * 0.1
-			if not VR then flash.BackgroundTransparency = 0.25 end
-			Lighting.Brightness = 3; Lighting.Ambient = Color3.fromRGB(220, 225, 240)
+			local b = yours and yours:FindFirstChild("Basket", true)
+			bolt(b and b.Position or (workspace.CurrentCamera and workspace.CurrentCamera.CFrame.Position) or Vector3.zero)
+			if not VR then flash.BackgroundTransparency = 0.45 end
+			Lighting.Brightness = 2.2; Lighting.Ambient = Color3.fromRGB(200, 205, 225)
 			task.wait(hold)
 			flash.BackgroundTransparency = 1
 			if not storming then break end
-			Lighting.Brightness = 0.6; Lighting.Ambient = amb
+			Lighting.Brightness = 0.35; Lighting.Ambient = amb
 			task.delay(0.4 + math.random() * 0.8, function() sound(num("ThunderSoundId", 0), 0.6) end)
 			task.wait(1.4 + math.random() * 2.2)
 		end
@@ -386,6 +420,8 @@ local function stormOff()
 	TweenService:Create(Lighting, TweenInfo.new(3, Enum.EasingStyle.Sine), {FogEnd = saved.FogEnd, FogStart = saved.FogStart, FogColor = saved.FogColor, Brightness = saved.Brightness, OutdoorAmbient = saved.OutdoorAmbient}):Play()
 	Lighting.Ambient = saved.Ambient
 	if atmo then TweenService:Create(atmo, TweenInfo.new(3, Enum.EasingStyle.Sine), {Density = saved.density, Haze = saved.haze, Color = saved.color}):Play() end
+	if clouds and saved.cover ~= nil then TweenService:Create(clouds, TweenInfo.new(4, Enum.EasingStyle.Sine), {Cover = saved.cover, Density = saved.cdensity, Color = saved.ccolor}):Play() end
+	wind.Enabled = false
 	saved = nil
 end
 
@@ -404,19 +440,12 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 		elseif name == "gust" then
 			showToast("Whoosh! A gust takes the balloon out to sea!", 4)
 			sound(num("WindSoundId", 0), 0.7)
-			if not VR then
-				local t0 = os.clock()
-				RunService:BindToRenderStep("BalloonShake", Enum.RenderPriority.Camera.Value + 1, function()
-					local cam = workspace.CurrentCamera
-					local k = math.max(0, 1 - (os.clock() - t0) / 3) * 0.25
-					if cam then cam.CFrame = cam.CFrame * CFrame.Angles(k * (math.random() - 0.5) * 0.2, k * (math.random() - 0.5) * 0.2, 0) end
-					if k <= 0 then RunService:UnbindFromRenderStep("BalloonShake") end
-				end)
-			end
+			wind.Enabled = true
+			task.delay(secs + num("StormTime", 12) * 0.6, function() wind.Enabled = false end)
 			task.delay(math.max(0, secs - 6), function() if flying then stormOn(num("StormTime", 12) + num("SignTime", 6) + 3) end end)
 		elseif name == "sign" then
 			signBasket = m and m:FindFirstChild("Basket", true)
-			bb.Enabled = true; sign.Visible = not VR
+			bb.Enabled = VR; sign.Visible = not VR
 		elseif name == "fade" then
 			TweenService:Create(black, TweenInfo.new(1.6), {BackgroundTransparency = 0}):Play()
 			TweenService:Create(cc, TweenInfo.new(1.6), {Brightness = -1}):Play()

@@ -22,7 +22,7 @@ lua = r'''-- balloon/install_field1 (job 33): EDIT mode. The hot air balloon fie
 -- Undo: tools/balloon/balloon_undo1.lua. Output lines start with "QQ FIELD".
 if game:GetService("RunService"):IsRunning() then warn("QQ FIELD ABORT - Play mode") return end
 local RS, SS = game:GetService("ReplicatedStorage"), game:GetService("ServerStorage")
-if workspace:FindFirstChild("BalloonField") then warn("QQ FIELD ABORT - workspace.BalloonField exists already; run balloon_undo1 first") return end
+local oldF = workspace:FindFirstChild("BalloonField"); if oldF then oldF:Destroy() end   -- re-runnable: the field is rebuilt from the template
 local tpl = SS:FindFirstChild("BalloonTemplate")
 if not tpl then
 	for _, d in ipairs(workspace:GetDescendants()) do
@@ -55,7 +55,7 @@ tpl.Name = "BalloonTemplate"; tpl.Parent = SS
 local evt = RS:FindFirstChild("BalloonEvent") or Instance.new("RemoteEvent"); evt.Name = "BalloonEvent"; evt.Parent = RS
 local F = Instance.new("Folder"); F.Name = "BalloonField"
 F:SetAttribute("Center", Vector3.new(106, -48.5, -648)); F:SetAttribute("Need", 44)
-F:SetAttribute("PadYours", Vector3.new(96, 0, -646)); F:SetAttribute("PadYaw", 70); F:SetAttribute("PadTethered", Vector3.new(128, 0, -676))
+F:SetAttribute("PadYours", Vector3.new(72, 0, -646)); F:SetAttribute("ShowBalloons", false); F:SetAttribute("GustLean", 18); F:SetAttribute("PadYaw", 70); F:SetAttribute("PadTethered", Vector3.new(128, 0, -676))
 F:SetAttribute("DriftCenter", Vector3.new(190, 18, -650)); F:SetAttribute("DriftRadius", 55); F:SetAttribute("DriftHeights", "18,33"); F:SetAttribute("DriftPeriods", "150,110")
 F:SetAttribute("RiseHeight", 85); F:SetAttribute("RiseTime", 16); F:SetAttribute("HoverTime", 8); F:SetAttribute("GustTime", 18); F:SetAttribute("StormTime", 12); F:SetAttribute("SignTime", 6)
 F:SetAttribute("GustDir", Vector3.new(0.45, 0, -1)); F:SetAttribute("GustSpeed", 22); F:SetAttribute("ThunderSoundId", 0); F:SetAttribute("WindSoundId", 0)
