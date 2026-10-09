@@ -30,8 +30,9 @@ local FLOOR_WORDS = {"paving", "pavement", "floor", "foundation", "footing", "la
 	"cobble", "stair", "step", "tread", "plinth", "masonry", "terrace", "passage", "join", "seam", "corner", "platform", "apron",
 	"court", "track bed", "pier", "deck", "path", "walk", "street", "road", "piazza", "square", "slab", "curb", "kerb", "coping",
 	"seawall", "ledge", "gangway", "jetty", "dock", "bridge", "ramp", "ground", "flagstone", "tiled", "base", "podium", "esplanade"}
-local NEVER_LOWER = {"roof", "gable", "wall", "window", "door", "lintel", "cornice", "eave", "chimney", "parapet", "balcon", "rock",
-	"cliff", "plaster", "opening", "rail", "post", "column", "pillar", "arch", "beam", "fence", "railing", "awning", "canopy", "sign"}
+local NEVER_LOWER = {"roof", "gable", "wall", "window", "door", "lintel", "cornice", "eave", "chimney", "parapet", "balcon", "coastal rock",
+	"cliff", "plaster", "opening", "railing", "post", "column", "pillar", "arch", "beam", "fence", "awning", "canopy", "sign"}
+local ALLOW_LOWER = {"retaining wall", "rocky foundation", "rail pier", "wall footing", "wall base"}   -- hidden tops worth cutting despite a NEVER word
 local NOT_FLOOR = {"cup", "saucer", "chair", "seat", "table", "squirrel", "lamp", "sign", "pot", "plant", "flower", "umbrella",
 	"awning", "canopy", "bench", "cart", "crate", "barrel", "basket", "fountain", "statue", "pizza", "glass", "bottle", "menu",
 	"trunk", "foliage", "crown", "bush", "hedge", "pad", "prompt", "handle", "bubble", "marker", "pebble", "lemon", "shell",
@@ -100,7 +101,7 @@ local function floorish(p)   -- may this part be cut?
 	local v = floorCache[p]
 	if v == nil then
 		local n = p.Name
-		v = not hasWord(n, NEVER_LOWER) and hasWord(n, FLOOR_WORDS)
+		v = hasWord(n, ALLOW_LOWER) or (not hasWord(n, NEVER_LOWER) and hasWord(n, FLOOR_WORDS))
 		floorCache[p] = v
 	end
 	return v
