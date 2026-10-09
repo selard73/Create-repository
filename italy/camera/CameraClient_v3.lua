@@ -337,9 +337,12 @@ local function terrainTiles(world, cf, fov)
 				t.Size = Vector3.new(sp * 1.08, 0.3, stepR * 1.12)
 				local at = hit.Position - Vector3.new(0, 0.15, 0)
 				t.CFrame = CFrame.lookAt(at, at + flat)
-				t.Color = T:GetMaterialColor(mat)
-				if mat == Enum.Material.Water then t.Material = Enum.Material.Glass; t.Transparency = 0.15; t.Reflectance = 0.1
-				else t.Material = PART_MAT[mat.Name] or Enum.Material.SmoothPlastic end
+				if mat == Enum.Material.Water then
+					t.Color = T.WaterColor; t.Material = Enum.Material.Glass; t.Transparency = 0.15; t.Reflectance = 0.1
+				else
+					local okc, col = pcall(T.GetMaterialColor, T, mat)
+					t.Color = okc and col or C(150, 140, 120); t.Material = PART_MAT[mat.Name] or Enum.Material.SmoothPlastic
+				end
 				t.Parent = world
 				n += 1
 			end
@@ -350,7 +353,7 @@ end
 local function buildWorld(cf, fov, extra, ignore)
 	local world = Instance.new("WorldModel"); world.Name = "Scene"
 	local look = cf.LookVector
-	local params = OverlapParams.new(); params.FilterType = Enum.RaycastFilterType.Exclude
+	local params = OverlapParams.new(); params.FilterType = Enum.RaycastFilterType.Exclude; params.MaxParts = 4000
 	local ex = {workspace.CurrentCamera, workspace.Terrain}
 	if player.Character then table.insert(ex, player.Character) end
 	for _, x in ipairs(ignore or {}) do table.insert(ex, x) end

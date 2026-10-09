@@ -34,27 +34,45 @@ for _, m in ipairs(CS:GetTagged("Squirrel")) do consider(m) end
 for _, d in ipairs(workspace:GetDescendants()) do
 	if d:IsA("Model") and d.Name:lower():find("squirrel", 1, true) and not d:FindFirstChildWhichIsA("Model") then consider(d) end
 end
+-- first pass: every squirrel's gap, to learn how the rigs normally sit (their bounding box bottom is not quite the feet)
+local gaps = {}
+local measured = {}
+for _, m in ipairs(cands) do
+	local pivot = m:GetPivot()
+	if ALL_MAPS or inPorto(pivot.Position) then
+		local bottom = bottomOf(m)
+		local ex = {m}
+		local twins = workspace:FindFirstChild("SquirrelTwins"); if twins then table.insert(ex, twins) end
+		params.FilterDescendantsInstances = ex
+		local hit = workspace:Raycast(Vector3.new(pivot.X, bottom + 1, pivot.Z), Vector3.new(0, -30, 0), params)
+		measured[m] = {pivot = pivot, bottom = bottom, hit = hit}
+		if hit then
+			local g = bottom - hit.Position.Y
+			if g > -0.3 and g < 1.0 then table.insert(gaps, g) end   -- perched ones (big gaps) and sunk ones stay out of the average
+		end
+	end
+end
+table.sort(gaps)
+local typical = #gaps > 0 and gaps[math.ceil(#gaps / 2)] or 0   -- the median
+print(string.format("QQ SEAT typical rig gap (median of %d squirrels on the ground): %+.2f; a squirrel is seated down by (its gap - this)", #gaps, typical))
+
 local rows, moved, floating, sunk = {}, 0, 0, 0
 for _, m in ipairs(cands) do
-	do
-		local pivot = m:GetPivot()
-		if (ALL_MAPS or inPorto(pivot.Position)) then
-			local bottom, size = bottomOf(m)
-			local ex = {m}
-			local twins = workspace:FindFirstChild("SquirrelTwins"); if twins then table.insert(ex, twins) end
-			params.FilterDescendantsInstances = ex
-			-- from just above the model's bottom, straight down: the ground under its feet
-			local hit = workspace:Raycast(Vector3.new(pivot.X, bottom + 1, pivot.Z), Vector3.new(0, -30, 0), params)
+	local mm = measured[m]
+	if mm then
+		local pivot = mm.pivot
+		do
+			local bottom, hit = mm.bottom, mm.hit
 			if not hit then
 				table.insert(rows, string.format("QQ SEAT ?? %-28s no ground within 30 below @ (%.1f,%.2f,%.1f)", m.Name, pivot.X, pivot.Y, pivot.Z))
 			else
-				local gap = bottom - hit.Position.Y          -- + floating, - sunk
+				local gap = bottom - hit.Position.Y - typical   -- above the typical rig gap: + floating, - sunk
 				local what = ""
 				if gap > LIFT_MIN then floating += 1; what = "FLOATING"
 				elseif gap < -SINK_MAX then sunk += 1; what = "sunk (left alone)"
 				elseif gap < -0.15 then what = "a little sunk (fine)" else what = "ok" end
 				local doMove = gap > LIFT_MIN and ONLY ~= nil and m.Name:lower():find(ONLY:lower(), 1, true) ~= nil
-				local line = string.format("QQ SEAT %-8s %-28s gap %+.2f  bottom %.2f ground %.2f (%s) @ (%.1f,%.2f,%.1f)",
+				local line = string.format("QQ SEAT %-8s %-28s above typical %+.2f  bottom %.2f ground %.2f (%s) @ (%.1f,%.2f,%.1f)",
 					what, m.Name, gap, bottom, hit.Position.Y, hit.Instance == workspace.Terrain and ("terrain " .. hit.Material.Name) or hit.Instance.Name, pivot.X, pivot.Y, pivot.Z)
 				if doMove and not DRY then
 					m:SetAttribute("SeatOct9OrigCF", pivot)
