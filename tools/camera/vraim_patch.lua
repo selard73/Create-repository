@@ -29,8 +29,9 @@ end]==],
 	[==[
 -- VR aim (Oct 9, Shannon: "you can't really aim the shot with the golden circle"): the avatar's hand follows its walking
 -- animation, not the player, so the held camera pointed wherever the arm swung. The aim is now the controller itself
--- (its tracked CFrame, in world space). Attr VRAimPitch (degrees) tips it: 0 = straight along the controller, negative =
--- down, for a resting grip. Attr VRAimHand "Left" uses the left controller. No tracked controller = the headset's view.
+-- (its tracked CFrame, in world space), with the wrist's roll removed so photos come out level. Attr VRAimPitch
+-- (degrees) tips it: 0 = straight along the controller, negative = down, for a resting grip. Attr VRAimHand "Left" uses
+-- the left controller and its trigger. No tracked controller = the headset's view.
 local function vrHandCF()
 	local cam = workspace.CurrentCamera
 	if not cam then return nil end
@@ -39,8 +40,9 @@ local function vrHandCF()
 	local hand = VRService:GetUserCFrameEnabled(want) and want or (VRService:GetUserCFrameEnabled(other) and other or nil)
 	if not hand then return nil end
 	local u = VRService:GetUserCFrame(hand)
-	local world = cam.CFrame * (u.Rotation + u.Position * cam.HeadScale)
-	return world * CFrame.Angles(math.rad(num("VRAimPitch", 0)), 0, 0)
+	local world = cam.CFrame * (u.Rotation + u.Position * cam.HeadScale) * CFrame.Angles(math.rad(num("VRAimPitch", 0)), 0, 0)
+	local look = world.LookVector
+	return CFrame.lookAt(world.Position, world.Position + look, math.abs(look.Y) > 0.99 and Vector3.zAxis or Vector3.yAxis)
 end
 local function shotCF()
 	local cam = workspace.CurrentCamera
@@ -50,7 +52,7 @@ end]==]},
 	{[==[
 toast(vr() and "Pull the trigger to take a photo" or touch and "Tap to raise the camera" or "Click to raise the camera", 2.5)]==],
 	[==[
-toast(vr() and "Point your controller at the sight. The ring fills in when you have the shot. Then pull the trigger." or touch and "Tap to raise the camera" or "Click to raise the camera", vr() and 4 or 2.5)]==]},
+toast(vr() and "Aim with the controller. When the ring fills in, pull the trigger." or touch and "Tap to raise the camera" or "Click to raise the camera", vr() and 4 or 2.5)]==]},
 	{[==[
 -- in VR: a gold ring where the camera in your hand is pointing
 local aimAtt = Instance.new("Attachment"); aimAtt.Name = "CameraAimPoint"; aimAtt.Parent = workspace.Terrain
@@ -71,39 +73,39 @@ end)]==],
 	[==[
 -- in VR: a gold beam from your controller to a gold ring where it points (Oct 9: the ring used to hang off the avatar's
 -- hand, which swings with the walking animation, so it could not be aimed). The ring fills in, grows and turns cream
--- while every anchor of a wanted postcard sight is inside the shot cone and within reach, so you know when to pull.
+-- while a postcard shot would be accepted right now (the shutter's own test: all of a wanted sight in the cone, in range,
+-- in clear view, at the right moment), so you know when to pull the trigger.
 local aimAtt = Instance.new("Attachment"); aimAtt.Name = "CameraAimPoint"; aimAtt.Parent = workspace.Terrain
 local handAtt = Instance.new("Attachment"); handAtt.Name = "CameraAimHand"; handAtt.Parent = workspace.Terrain
 local beam = Instance.new("Beam"); beam.Name = "CameraAimBeam"; beam.Attachment0 = handAtt; beam.Attachment1 = aimAtt
-beam.Color = ColorSequence.new(GOLD); beam.Transparency = NumberSequence.new(0.35); beam.Width0 = 0.03; beam.Width1 = 0.1
+beam.Color = ColorSequence.new(GOLD); beam.Transparency = NumberSequence.new(0.35); beam.Width0 = 0.03; beam.Width1 = 0.3
 beam.FaceCamera = true; beam.LightEmission = 0.6; beam.LightInfluence = 0; beam.Enabled = false; beam.Parent = workspace.Terrain
 local aim = Instance.new("BillboardGui"); aim.Name = "CameraAim"; aim.Size = UDim2.fromOffset(36, 36); aim.AlwaysOnTop = true; aim.LightInfluence = 0
-aim.Adornee = aimAtt; aim.Enabled = false; aim.Parent = pg
+aim.ResetOnSpawn = false; aim.Adornee = aimAtt; aim.Enabled = false; aim.Parent = pg
 local ring = Instance.new("Frame"); ring.Size = UDim2.fromScale(1, 1); ring.BackgroundTransparency = 1; ring.BackgroundColor3 = GOLD; ring.Parent = aim
 local ringCorner = Instance.new("UICorner"); ringCorner.CornerRadius = UDim.new(0.5, 0); ringCorner.Parent = ring
 local ringStroke = stroke(ring, GOLD, 3)
 local aimLocked, aimCheckAt = false, 0
-local function sightInShot(cf)
-	for _, s in ipairs(Subjects) do
-		if (player:GetAttribute("Item_photo_" .. s.id) or 0) < 1 then
-			local ok, pts = pcall(anchors, s)
-			if ok and #pts > 0 then
-				local maxD = s.id == "whale" and num("WhaleMaxDist", 300) or num("MaxDist", 45)
-				local all = true
-				for _, pt in ipairs(pts) do
-					if (pt - cf.Position).Magnitude > maxD or not inFrame(cf, pt) then all = false break end
-				end
-				if all then return true end
-			end
-		end
-	end
-	return false
-end
 local function setRing(locked)
 	aim.Size = locked and UDim2.fromOffset(50, 50) or UDim2.fromOffset(36, 36)
 	ring.BackgroundTransparency = locked and 0.5 or 1
 	ringStroke.Thickness = locked and 5 or 3
 	ringStroke.Color = locked and CREAM or GOLD
+end
+local aimParams = RaycastParams.new(); aimParams.FilterType = Enum.RaycastFilterType.Exclude
+local function aimHit(cf)   -- where the controller points; invisible parts (boundary walls, prompt spots) are looked through
+	local ex = {player.Character}
+	local origin, left = cf.Position, 80
+	for _ = 1, 5 do
+		aimParams.FilterDescendantsInstances = ex
+		local hit = workspace:Raycast(origin, cf.LookVector * left, aimParams)
+		if not hit then return nil end
+		if hit.Instance == workspace.Terrain or hit.Instance.Transparency < 1 then return hit.Position end
+		table.insert(ex, hit.Instance)
+		left -= (hit.Position - origin).Magnitude; origin = hit.Position
+		if left <= 0 then return nil end
+	end
+	return nil
 end
 RunService.RenderStepped:Connect(function()
 	if raised then hideHeld(true) end
@@ -111,20 +113,33 @@ RunService.RenderStepped:Connect(function()
 	aim.Enabled = on
 	if on then
 		local cf = shotCF()
-		local params = RaycastParams.new(); params.FilterType = Enum.RaycastFilterType.Exclude; params.FilterDescendantsInstances = {player.Character}
-		local hit = workspace:Raycast(cf.Position, cf.LookVector * 80, params)
 		handAtt.WorldPosition = cf.Position
-		aimAtt.WorldPosition = hit and hit.Position or (cf.Position + cf.LookVector * 40)
+		aimAtt.WorldPosition = aimHit(cf) or (cf.Position + cf.LookVector * 40)
 		beam.Enabled = vrHandCF() ~= nil
-		if os.clock() - aimCheckAt > 0.1 then
+		if os.clock() - aimCheckAt > 0.05 then
 			aimCheckAt = os.clock()
-			local locked = sightInShot(cf)
+			local ok, s = pcall(evaluate, cf)
+			local locked = ok and s ~= nil and (player:GetAttribute("Item_photo_" .. s.id) or 0) < 1
 			if locked ~= aimLocked then aimLocked = locked; setRing(locked) end
 		end
 	else
 		beam.Enabled = false
+		if aimLocked then aimLocked = false; setRing(false) end
 	end
+end)
+-- VRAimHand "Left": the left trigger takes the photo too (Tool.Activated only listens to the right one)
+UIS.InputBegan:Connect(function(input, gp)
+	if gp or not (holding and vr()) then return end
+	if input.KeyCode == Enum.KeyCode.ButtonL2 and G:GetAttribute("VRAimHand") == "Left" then shoot() end
 end)]==]},
+	{[==[
+vrSign.AlwaysOnTop = true; vrSign.LightInfluence = 0; vrSign.Parent = pg]==],
+	[==[
+vrSign.AlwaysOnTop = true; vrSign.LightInfluence = 0; vrSign.ResetOnSpawn = false; vrSign.Parent = pg]==]},
+	{[==[
+m.MaxDistance = 3000; m.Enabled = false; m.Parent = pg]==],
+	[==[
+m.MaxDistance = 3000; m.Enabled = false; m.ResetOnSpawn = false; m.Parent = pg]==]},
 }
 for i, p in ipairs(PAIRS) do
 	local a, b = src:find(p[1], 1, true)
