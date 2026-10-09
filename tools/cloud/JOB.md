@@ -434,3 +434,5 @@ Shannon's phone: "its too far right getting cut off". tools/porto/seaglass7.lua 
 chars, 1 find): the panel's face moves into an inner frame that carries the phone scale; the panel keeps a plain pixel
 size anchored at the right, and is nudged left a frame later if its right edge is still past the screen. Backup
 HudBackup.SeaGlassClient_pre_seaglass7. Send the `QQ SG7` line. No publish.
+Job 46 addendum 2 (review): the wind streaks now travel along the gust (EmissionDirection Front; they went straight up), and the
+storm's Brightness drop is its own 2.2 s tween so the lightning flashes are not overwritten by the 9 s tween.

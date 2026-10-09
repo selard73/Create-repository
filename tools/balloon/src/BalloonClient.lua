@@ -159,6 +159,7 @@ wind = Instance.new("ParticleEmitter"); wind.Name = "WindStreaks"; wind.Enabled 
 wind.Speed = NumberRange.new(55, 80); wind.SpreadAngle = Vector2.new(8, 8); wind.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.15), NumberSequenceKeypoint.new(1, 0.05)})
 wind.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.55), NumberSequenceKeypoint.new(1, 1)}); wind.Color = ColorSequence.new(Color3.fromRGB(235, 240, 250))
 wind.LightEmission = 0.4; wind.Orientation = Enum.ParticleOrientation.VelocityParallel; wind.Squash = NumberSequence.new(-1.6)
+wind.EmissionDirection = Enum.NormalId.Front   -- along the gust, past the basket (the default, Top, sent the streaks straight up - review, Oct 9)
 windPart = Instance.new("Part"); windPart.Name = "WindSource"; windPart.Anchored = true; windPart.CanCollide = false; windPart.CanQuery = false; windPart.Transparency = 1; windPart.Size = Vector3.new(14, 10, 1); wind.Parent = windPart; windPart.Parent = workspace
 local storming = false
 local stormSound, windSound = nil, nil   -- Shannon's picks: the wind (WindSoundId) loops through the gust, then the storm (StormSoundId) takes over
@@ -211,7 +212,8 @@ local function stormOn(secs)
 	if windSound then local w = windSound; windSound = nil; TweenService:Create(w, TweenInfo.new(5), {Volume = 0}):Play(); game:GetService("Debris"):AddItem(w, 5.5) end   -- the wind gives way to the storm
 	-- clouds close in first, then the light goes, then the fog
 	if clouds then TweenService:Create(clouds, TweenInfo.new(7, Enum.EasingStyle.Sine), {Cover = 1, Density = 1, Color = Color3.fromRGB(70, 72, 80)}):Play() end
-	TweenService:Create(Lighting, TweenInfo.new(9, Enum.EasingStyle.Sine), {Brightness = 0.35, OutdoorAmbient = Color3.fromRGB(55, 58, 68), FogColor = Color3.fromRGB(96, 100, 110)}):Play()
+	TweenService:Create(Lighting, TweenInfo.new(9, Enum.EasingStyle.Sine), {OutdoorAmbient = Color3.fromRGB(55, 58, 68), FogColor = Color3.fromRGB(96, 100, 110)}):Play()
+	TweenService:Create(Lighting, TweenInfo.new(2.2, Enum.EasingStyle.Sine), {Brightness = 0.35}):Play()   -- settled before the first bolt, so the flashes show (a 9 s tween would overwrite them - review)
 	task.delay(4, function() if storming then TweenService:Create(Lighting, TweenInfo.new(6, Enum.EasingStyle.Sine), {FogEnd = num("StormFogEnd", 90), FogStart = 4}):Play() end end)
 	if atmo then TweenService:Create(atmo, TweenInfo.new(8, Enum.EasingStyle.Sine), {Density = num("StormDensity", 0.85), Haze = 8, Color = Color3.fromRGB(110, 114, 122)}):Play() end
 	storming = true
