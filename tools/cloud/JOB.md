@@ -78,3 +78,18 @@ Send ONE message to the cloud session with, verbatim (exact text, tabs kept, no 
 2. From workspace.Shop.ShopClient: the lines that fire RS.HotbarStow (the Equip / Store buttons), about 30 lines
    around each call, and its total Source length.
 3. One line: how ShopClient shows the "equipped" state of a tool in its rows (attribute name or event).
+
+## Job 12: the phone 3-slot hotbar fix (Studio EDIT: StowServer replaced, ShopClient patched; ask Shannon first)
+
+Job 7 + job 11: Roblox's hotbar shows 3 tools on a phone-sized screen; Shannon owns 4. Fix: the store sends its slot
+count with every Equip/Store; equipping past it stores the tool equipped longest ago and says so on the row; a phone
+asks on arrival to trim the bar to 3 (ties: crab trap goes first, then slingshot, binoculars, camera).
+
+1. Fetch and read:
+   https://raw.githubusercontent.com/selard73/Create-repository/claude/epic-hawking-188q4l/tools/shop/phone_slots_patch.lua
+   It refuses to run unless StowServer is 1534 chars and ShopClient 33513 chars (the job 11 texts) and both finds hit
+   once; compiles both results before writing; backups to ServerStorage.HudBackup.StowServer_pre_slots / ShopClient_pre_slots.
+2. Tell Shannon; with her yes run it (Edit mode, execute_luau). Send the `QQ SLOT` line.
+3. Optional if she wants it checked before publishing: Device Simulator play test with 4 tools (set Item_camera and
+   Item_crabtrap = 1 as in job 7): about 4 s after spawn one tool should go to the bag and the camera stay on the bar;
+   Equip the stored one in the store and another should go. Stop the play test, Studio back in Edit. No publish.
