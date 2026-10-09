@@ -53,3 +53,7 @@ Read this, then `tools/cloud/JOB.md`, then the Oct 8 handoff (HANDOFF_2026-10-08
 - Job 18 (italy_fix1): sea glass off the seabed, Bella's panel scaled on phones, Porto Outings listed. Job 19 (opera_hush1):
   map music off while the opera singer sings, back 2 s after. Both verified in a play test; not yet published.
 - The harbour bell works: prompts only show when on screen; job 17's camera faced away.
+- Balloon field (far shore, centre ~106,-48,-648, grass, nothing built): Shannon's Meshy balloon cleaned in Blender ->
+  tools/balloon/model_meshy/balloon_meshy.fbx (blender/meshy_clean.py; bpy 5.2 venv in the scratchpad). Flight she wants:
+  up for a view, a gust blows it out to sea, storm fog + lightning, sign 'To Be Continued'. Her own balloon unlocks at 44/44
+  Porto squirrels; 3 show balloons. Next: job 23 (import + check), then the field installer.

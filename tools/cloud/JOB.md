@@ -233,12 +233,14 @@ after all 44 Porto squirrels and carries her to the next map.
 1. Ask Shannon to aim the Studio camera at the middle of the spot she means (or select a part there), in Edit mode.
 2. Fetch and run tools/balloon/balloon_survey1.lua (commit URL in the cloud session's message). Send every `QQ BAL` line.
 
-## Job 23: import the Blender balloon into Studio (Shannon imports by hand), then a READ-ONLY check
+## Job 23: import the balloon into Studio (Shannon imports by hand), then a READ-ONLY check
 
-1. Download the model to Shannon's PC (Desktop or Downloads):
-   curl -L -o balloon.fbx https://raw.githubusercontent.com/selard73/Create-repository/<commit>/tools/balloon/model/balloon.fbx
+The balloon is Shannon's Meshy model, cleaned in Blender (broken ropes cut, new cables/frame/burner, 54 studs tall,
+basket floor at the origin): tools/balloon/model_meshy/balloon_meshy.fbx (textures embedded).
+1. Download it to Shannon's PC (Desktop or Downloads):
+   curl -L -o balloon_meshy.fbx https://raw.githubusercontent.com/selard73/Create-repository/<commit>/tools/balloon/model_meshy/balloon_meshy.fbx
    (the commit is in the cloud session's message). Tell Shannon where it is.
-2. Shannon, in Studio (Edit mode): File > Import 3D, pick balloon.fbx; keep the default options (it should show one
-   model with Envelope, EnvelopeInner, Rigging, Basket, Flame and one texture); Insert. Put it anywhere; it gets moved later.
+2. Shannon, in Studio (Edit mode): File > Import 3D, pick balloon_meshy.fbx; keep the default options (one model with
+   Envelope, Basket, Rigging, Burner, Flame and the embedded textures); Insert. Put it anywhere; it gets moved later.
 3. Fetch and run tools/balloon/balloon_check1.lua. Send every `QQ BLN` line, and a screenshot path of the balloon in
    the viewport if you can take one. Nothing else is changed.
