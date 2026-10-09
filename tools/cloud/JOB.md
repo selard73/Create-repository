@@ -400,3 +400,28 @@ HudBackup.SeaGlassClient_pre_seaglass6. Send the `QQ SG6` line. No publish.
 Note (runner pre-check): Studio's SeaGlassClient is 13322 chars and never received seaglass5's reveal lines (the "left and
 low" base and the 1.8 lift); seaglass6's find 4 now matches the first-written base line and brings the left-and-low base
 with it. The repo src keeps the 1.8 lift, which Studio does not have.
+Result job 48: QQ SG6 DONE 13322 -> 15059; backup HudBackup.SeaGlassClient_pre_seaglass6. Not published.
+
+## Job 46: balloon round 4 - smooth flight, no /promo (Studio EDIT, installer re-run or in-place; ask Shannon first)
+
+Shannon filming: "the camera is jittery" (her liftoff shot). The server moves the balloon every heartbeat but a client is
+sent ~20 positions a second; BalloonClient now keeps the last positions and draws the flying balloon 0.1 s behind them,
+smoothly, from Stepped (the rider's weld follows) and again before the frame is drawn; nothing is written at "home" (the
+server's home pose arrives first). The /promo camera is gone (it would not record; see job 49). Also the review fix
+(smoothStop). tools/balloon/install_field1.lua in full (or in place: the client only; server unchanged). `QQ FIELD` line. No publish.
+
+## Job 47: the ground under the balloon field (Studio EDIT, terrain; ask Shannon first)
+
+Shannon: "if I turn the camera in a certain direction on this part of land I can see under the ground".
+tools/balloon/field_ground1.lua: 80 studs round BalloonField.Center, 24 under / 12 over: the three voxels under each
+column's cap are made solid in the cap's material where they are air, pockets with rock below are filled, water ends a
+column, the void under the land mass is left alone. Reads first; writes nothing if nothing to fill. Backup
+HudBackup.FieldGround_pre1 (TerrainRegion, corner in attributes CX/CY/CZ; undo = PasteRegion). Send the `QQ GROUND` lines. No publish.
+
+## Job 49: "Balloon flight" in the F8 filming menu (Studio EDIT; ask Shannon first)
+
+/promo would not record (Win+Alt+R / Win+G dead once it ran); the F8 FilmMode tours record. tools/film/balloon_tour1.lua
+patches workspace.FilmMode.Tours (3266 chars, 1 find) and FilmClient (19539 chars, 2 finds): a "Balloon flight" button;
+press it, climb aboard, and from liftoff the camera runs the shot plan (grass, circle, chase, storm close-up, the sign) with
+the UI hidden except BalloonGui; back to normal 2 s after being set down; F8 cancels. Backups FilmClient_pre_balloon1 /
+Tours_pre_balloon1. Send the `QQ FILM` line. No publish. Sources: tools/film/src (runner's export + *_balloon1 patched copies).

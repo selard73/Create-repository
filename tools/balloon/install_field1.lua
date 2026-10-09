@@ -240,7 +240,7 @@ local cl = Instance.new("Script"); cl.Name = "BalloonClient"; cl.RunContext = En
 -- server clock, so every player sees the same sky), every flame flickers, and the flight's weather and signs happen here:
 -- the gust, the storm fog and lightning, the "To Be Continued" sign, the fade and the return. World-space where it can be,
 -- so a VR headset sees it with the control panel closed. Oct 9 late: the map music drops as you climb, the lighthouse turns
--- its light once the storm is dark, and /promo (the owner, desktop) films a flight for a video. The flying balloon is
+-- its light once the storm is dark (the film of a flight is FilmMode's "Balloon flight" tour, F8). The flying balloon is
 -- drawn from a short history of the server's positions so it moves smoothly from any camera (see "smooth flight").
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
@@ -483,7 +483,7 @@ end
 
 -- ---------- smooth flight ----------
 -- The server moves the balloon every heartbeat, but a client is sent about twenty positions a second, so seen from a
--- camera that is not riding along the balloon moved in steps (Shannon, the promo camera: "jittery"). While a flight is on,
+-- camera that is not riding along the balloon moved in steps (Shannon, filming it: "jittery"). While a flight is on,
 -- this client keeps the positions it is sent and draws the balloon a tenth of a second behind them, moving smoothly in
 -- between; the seat goes with it, so the rider does too. Written before physics (Stepped) so the rider and the basket
 -- agree, and again before the frame is drawn in case a server position landed in between. Local only.
@@ -562,72 +562,6 @@ local function duckMusic(on, secs)
 end
 task.spawn(function() while true do task.wait(1) if ducked then duckMusic(true, 1.5) end end end)   -- a track MusicClient changes mid-flight drops too
 
--- ---------- the promo camera ----------
--- Shannon (Oct 9): "one of those camera tour things of going up in the balloon into the storm ending with coming soon;
--- I want to make a promo video". The owner (or anyone in Studio) types /promo in chat, then climbs aboard: that flight is
--- filmed by a camera of its own - liftoff from the grass, a slow circle in the climb, a chase through the gust, close in
--- the storm, the sign - with the rest of the screen hidden. Normal again on the ground. Desktop only; no one else sees it.
-local StarterGui = game:GetService("StarterGui")
-local promoArmed, promoOn, promoHid = false, false, {}
-local function mayPromo() return RunService:IsStudio() or (game.CreatorType == Enum.CreatorType.User and player.UserId == game.CreatorId) end
-local function promoStop()
-	if not promoOn then return end
-	promoOn = false
-	RunService:UnbindFromRenderStep("BalloonPromo")
-	local cam = workspace.CurrentCamera
-	cam.CameraType = Enum.CameraType.Custom
-	local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid"); if hum then cam.CameraSubject = hum end
-	for g in pairs(promoHid) do if g.Parent then g.Enabled = true end end
-	promoHid = {}
-	pcall(function() StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, true) end)
-	UIS.MouseIconEnabled = true
-end
-local function promoStart()
-	if not promoArmed or VR then return end
-	promoArmed = false; promoOn = true
-	for _, g in ipairs(pg:GetChildren()) do if g:IsA("ScreenGui") and g.Enabled and g ~= gui then g.Enabled = false; promoHid[g] = true end end
-	pcall(function() StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false) end)
-	UIS.MouseIconEnabled = false
-	local cam = workspace.CurrentCamera
-	cam.CameraType = Enum.CameraType.Scriptable
-	local t0 = os.clock()
-	local T = {rise = num("RiseTime", 16), hover = num("HoverTime", 8), gust = num("GustTime", 18)}
-	local dir = vec("GustDir", Vector3.new(0.45, 0, -1)); dir = Vector3.new(dir.X, 0, dir.Z).Unit
-	local side = dir:Cross(Vector3.yAxis)
-	local home = yours and yours:GetPivot().Position or cam.CFrame.Position
-	local grass = home - dir * 12 - side * 22   -- the liftoff camera stands on the field, inland of the pad
-	local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude; rp.FilterDescendantsInstances = {F, player.Character}
-	local hit = workspace:Raycast(grass + Vector3.new(0, 30, 0), Vector3.new(0, -60, 0), rp)
-	grass = Vector3.new(grass.X, (hit and hit.Position.Y or home.Y) + 2.5, grass.Z)
-	local pos, lookS, lastShot = nil, nil, nil
-	RunService:BindToRenderStep("BalloonPromo", Enum.RenderPriority.Camera.Value + 1, function(dt)
-		if not (yours and yours.Parent) then return end
-		local t = os.clock() - t0
-		local L = yours:GetPivot().Position + Vector3.new(0, 6, 0)   -- the basket and the balloon above it
-		local shot, want, look
-		if t < 7 then shot = 1; want = grass; look = L   -- liftoff, from the grass
-		elseif t < T.rise + T.hover then shot = 2; local a = math.pi + (t - 7) * 0.13; want = L + Vector3.new(math.cos(a) * 36, -2, math.sin(a) * 36); look = L   -- a slow circle, the town behind
-		elseif t < T.rise + T.hover + T.gust then shot = 3; want = L - dir * 42 + side * 10 + Vector3.new(0, 10, 0); look = L + dir * 12   -- the chase out to sea
-		else shot = 4; local a = (t - T.rise - T.hover - T.gust) * 0.08; want = L + (dir * math.cos(a) + side * math.sin(a)) * 18 + Vector3.new(0, 3, 0); look = L end   -- close, in the storm; the sign comes up on the screen
-		if shot ~= lastShot or not pos then pos = want; lookS = look; lastShot = shot else pos = pos:Lerp(want, 1 - math.exp(-dt * (shot == 3 and 1.6 or 4))); lookS = lookS:Lerp(look, 1 - math.exp(-dt * 8)) end
-		cam.CFrame = CFrame.lookAt(pos, lookS)
-	end)
-end
-local function armPromo()
-	if not mayPromo() then return end
-	promoArmed = not promoArmed
-	showToast(promoArmed and "Promo camera armed: climb aboard and the flight is filmed. /promo again to cancel." or "Promo camera off.", 4)
-end
-local TCS = game:GetService("TextChatService")
-pcall(function()
-	if TCS.ChatVersion == Enum.ChatVersion.TextChatService then
-		local c = Instance.new("TextChatCommand"); c.Name = "BalloonPromo"; c.PrimaryAlias = "/promo"; c.SecondaryAlias = "/balloonpromo"; c.Parent = TCS
-		c.Triggered:Connect(function(src) if src.UserId == player.UserId then armPromo() end end)
-	end
-end)
-player.Chatted:Connect(function(msg) if TCS.ChatVersion ~= Enum.ChatVersion.TextChatService and msg:lower():match("^/?promo%s*$") then armPromo() end end)
-player:GetAttributeChangedSignal("Promo"):Connect(function() if player:GetAttribute("Promo") and not promoArmed then armPromo() elseif not player:GetAttribute("Promo") and promoArmed then armPromo() end end)
-
 -- ---------- phases ----------
 local flying = false
 ev.OnClientEvent:Connect(function(what, who, name, secs)
@@ -639,7 +573,7 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 		if name == "board" and fl and flames[fl] then flames[fl].flare = 1; task.delay(3, function() if flames[fl] then flames[fl].flare = 0 end end) end
 		if name == "board" then smoothStart() elseif name == "home" then smoothStop() end
 		if who ~= player then return end
-		if name == "board" then flying = true; promoStart() end
+		if name == "board" then flying = true end
 		if name == "rise" then showToast("Up you go, traveler! Look at Porto Nocciola from the sky.", 5); duckMusic(true, secs)
 		elseif name == "gust" then
 			showToast("Oh no! Looks like we are in for some bad weather!", 4)
@@ -660,13 +594,13 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 			task.delay(1.8, function() bb.Enabled = false; sign.Visible = false end)
 		elseif name == "home" then
 			flying = false; signBasket = nil; bb.Enabled = false; sign.Visible = false
-			stormOff(); duckMusic(false, 3); promoStop()
+			stormOff(); duckMusic(false, 3)
 			task.delay(0.6, function() TweenService:Create(black, TweenInfo.new(1.4), {BackgroundTransparency = 1}):Play(); TweenService:Create(cc, TweenInfo.new(1.4), {Brightness = 0}):Play() end)
 			showToast("Back on the balloon field. More of the journey is coming soon!", 5)
 		end
 	end
 end)
-player.CharacterAdded:Connect(function() flying = false; if storming then stormOff() end; duckMusic(false, 1); promoStop(); black.BackgroundTransparency = 1; cc.Brightness = 0; bb.Enabled = false; sign.Visible = false end)
+player.CharacterAdded:Connect(function() flying = false; if storming then stormOff() end; duckMusic(false, 1); black.BackgroundTransparency = 1; cc.Brightness = 0; bb.Enabled = false; sign.Visible = false end)
 print("BalloonClient: ready" .. (VR and " (VR)" or ""))
 ]===]; cl.Parent = F
 for _, s in ipairs({sv, cl}) do local f, err = loadstring(s.Source); if not f then warn("QQ FIELD ABORT - " .. s.Name .. " does not compile: " .. tostring(err)); F:Destroy(); return end end
