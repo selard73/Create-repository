@@ -104,21 +104,33 @@ is sitting on a curved surface; if he is moved back to where it is flat, he will
    Send the `QQ DIVE` lines. If no spot is flatter than 0.08 within 6 studs, say so and stop.
 3. With Shannon's yes: `DRY = false`, run, send the `QQ DIVE` lines. (Attr FlatOct9OrigCF keeps where he was.)
 
-## Job 14: send the game's conventions for the sea glass / shell finding game (READ-ONLY)
+## Job 14: send the game's conventions for the sea glass game AND the Italy passport page (READ-ONLY)
 
-Shannon wants the sea glass / shell game next (host: the seaglass squirrel on the Spiaggia at (399.6,-48.8,-1054.8)).
-Send ONE message with, verbatim where asked (exact text, tabs kept), no analysis:
-1. workspace.PhotoGame? no: the CRAB game, which the handoff calls the template: the full Source of CrabServer (where it
-   lives, its length), and the names/paths of its client script and any ModuleScript it uses. If CrabServer is over
-   12000 chars, send instead: its first 60 lines, the function that spawns a crab/trap find, the function that awards the
-   catch (the RS.AwardItems call and the attribute names), and the ProximityPrompt setup.
-2. The Passport: the path of the Catalogue ModuleScript and its entries for "crab" and "photos" verbatim (the whole table
-   entry for each), the Journal.describe lines for those two, the PassportClient hint-progress lines for them, and the
-   path + child names of RS.PassportArt (just the names of its children).
-3. SquirrelBubble: one real call from any script (the line, with its arguments) and the module's path.
-4. The seaglass squirrel: its full path, pivot position, and the names of its children (one level).
-5. AwardItems: the Source of the script that handles RS.AwardItems if under 6000 chars; otherwise the part that saves
-   "Item_" attributes (is there a whitelist of saved keys, or is every Item_* saved?).
-6. The shore: the full names and bounding boxes (x/z min..max) of these folders/models if they exist: "Spiaggia dei
-   Ciottoli", "Cala della Sabbia and tide pools", the sand spit (the Oct 8 voxel region x 418..452 z -1156..-1124), and
-   any other beach/cove under PortoNocciola whose name mentions spiaggia, cala, cove, beach, sand, tide.
+Shannon wants (a) the sea glass / shell game with the seaglass squirrel ("Bella") on the Spiaggia at (399.6,-48.8,-1054.8)
+and (b) the Porto activities on the passport, built exactly like the French ones. Send ONE message (or two if it is long)
+with, verbatim where asked (exact text, tabs kept), no analysis:
+1. The Passport: paths of workspace.Passport.Catalogue, Journal, the server script and PassportClient, with each one's
+   Source length. The FULL Source of Catalogue (all entries). From Journal: the whole J.describe function. From the
+   server script: the "mark" function (how an activity fired on RS.PassportActivity is recorded; how needAll and the
+   Found_<area> counts work; the attribute or key that records each activity as done). From PassportClient: how the
+   city tabs decide which entries show (the CITIES table and the lines that filter entries by area), and the
+   hint-progress lines for "photos". The children names of RS.PassportArt and the PassportVisuals mapping (where it
+   lives, verbatim if under 3000 chars).
+2. Every place the game fires the passport: grep all scripts (workspace, ServerScriptService, ReplicatedStorage,
+   ServerStorage) for "PassportActivity" and list each as: script full path | the id string fired | the data keys.
+3. How a found squirrel is recorded on the player (the attribute or key pattern, e.g. Found_<id>) and the Porto squirrel
+   REGISTRY ids with display names: from SquirrelRegistry (its path), the entries whose area is porto/italy, as
+   id | name | area (verbatim table rows if under 6000 chars, else id|name|area one per line).
+4. The CRAB game: the full Source of CrabServer if under 12000 chars, else its first 60 lines + the functions that
+   spawn a crab, award the catch (the RS.AwardItems call, how acorns are paid when a crab is sold to the fish seller,
+   the gold crab), and the ProximityPrompt setup. Also the paths of its client script and modules.
+5. SquirrelBubble: the module path and one real call from any script (the line with its arguments).
+6. The seaglass squirrel: full path, pivot, PrimaryPart name, and its children names (one level); its registry id.
+7. AwardItems: the Source of the script handling RS.AwardItems if under 6000 chars; else the part that saves Item_*
+   (is there a whitelist of saved keys?) and how acorns are added (the function or event other scripts use).
+8. The shore around the seaglass squirrel: the terrain materials hit by a 7x7 grid of downward rays over x 370..430,
+   z -1085..-1025 (just the material name per cell, one row per z line), so the finds can be scattered on sand.
+9. Bells and the opera: any part/model/sound in Porto whose name contains "bell" or "campan" (path + whether it has a
+   ProximityPrompt or ClickDetector or a Sound); the opera duet models' paths (Subjects "opera": model + model2) and
+   any Sound under them; the funicular's server script path and whether it has any "ride complete" moment;
+   the Polpo (octopus) server script path and the line where a rescue completes; SpeedServer's PassportActivity line.
