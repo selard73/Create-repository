@@ -135,19 +135,55 @@ task.spawn(function()
 end)
 for _, k in ipairs(R.kinds) do player:GetAttributeChangedSignal("Item_" .. k.id):Connect(function() if open then refresh() end end) end
 player:GetAttributeChangedSignal("Item_parfum_bottle"):Connect(function() if open then refresh() end end)
+player:GetAttributeChangedSignal("Item_shell_box"):Connect(function() if open then refresh() end end)
 if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function() if open then layout() end end) end
 
+-- the reveal (Oct 9 2026): what Bella made with you rises and spins in front of you, sparkling, then fades
+local Debris = game:GetService("Debris")
+local function reveal(id)
+	local ok, m = pcall(R.build, id)
+	if not ok or not m then return end
+	local root = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+	local cam = workspace.CurrentCamera
+	local base = root and (root.CFrame * CFrame.new(0, 1.2, -3.2)) or (cam and cam.CFrame * CFrame.new(0, -0.5, -5)) or CFrame.new()
+	local look = cam and Vector3.new(cam.CFrame.LookVector.X, 0, cam.CFrame.LookVector.Z) or Vector3.new(0, 0, -1)
+	if look.Magnitude > 0.01 then base = CFrame.new(base.Position, base.Position - look.Unit) end
+	local core = m.PrimaryPart
+	local sp = Instance.new("Sparkles"); sp.SparkleColor = Color3.fromRGB(255, 220, 120); sp.Parent = core
+	local l = Instance.new("PointLight"); l.Color = Color3.fromRGB(255, 230, 170); l.Brightness = 1.5; l.Range = 9; l.Shadows = false; l.Parent = core
+	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://9116394876"; s.Volume = 0.45; s.Parent = core
+	m:PivotTo(base); m.Parent = workspace; s:Play()
+	local parts = {}
+	for _, p in ipairs(m:GetDescendants()) do if p:IsA("BasePart") and p ~= core then table.insert(parts, {p = p, t = p.Transparency}) end end
+	local t0 = os.clock(); local LIFE = 5.2
+	local conn; conn = game:GetService("RunService").RenderStepped:Connect(function()
+		local t = os.clock() - t0
+		if t > LIFE or not m.Parent then conn:Disconnect(); return end
+		local k = math.min(1, t / 1.6); k = k * k * (3 - 2 * k)
+		local lift = 2.4 * k + 0.15 * math.sin(t * 2.2)
+		local spin = t * (3.2 - 1.6 * k) + 0.4 * math.sin(t * 1.1)
+		m:PivotTo(base * CFrame.new(0, lift, 0) * CFrame.Angles(0, spin, math.rad(8) * math.sin(t * 1.7)))
+		if t > LIFE - 0.9 then
+			local f = (t - (LIFE - 0.9)) / 0.9
+			for _, e in ipairs(parts) do e.p.Transparency = e.t + (1 - e.t) * f end
+			sp.Enabled = false; l.Brightness = 1.5 * (1 - f)
+		end
+	end)
+	Debris:AddItem(m, LIFE + 0.2)
+end
 ev.OnClientEvent:Connect(function(what, a, b, c, d)
 	if what == "open" then openPanel()
 	elseif what == "found" then
 		local name, count, rare = b, c, d
 		showToast(string.format("%s! You have %d.", name, count), rare and 4 or 2.5)
-		if rare then say("Is that... the purple one?! Bring it to me!", 5) end
+		if rare then say(a == "pearl" and "A pearl! Bring it to me: a pearl deserves a box of shells." or "Is that... the purple one?! Bring it to me!", 5) end
 	elseif what == "made" then
 		local name, pay, line = b, c, d
 		note.Text = pay > 0 and string.format("Bella pays %d acorns for the %s.", pay, name:lower()) or ("The " .. name:lower() .. " is yours to keep.")
 		say(line or "Bellissima!", 5)
 		refresh()
+		reveal(a)
+	elseif what == "toast" then showToast(tostring(a), 4)
 	elseif what == "nope" then
 		note.Text = tostring(a)
 	end

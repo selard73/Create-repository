@@ -86,6 +86,16 @@ local function build(kind, pos, rng)
 	elseif kind.shell == "spiral" then
 		body.Shape = Enum.PartType.Ball; body.Size = Vector3.new(0.3, 0.3, 0.58); body.Material = Enum.Material.Sandstone
 		body.CFrame = CFrame.new(pos + Vector3.new(0, 0.14, 0)) * CFrame.Angles(0, yaw, 0)
+	elseif kind.pearl then
+		-- an open oyster: two shells and the pearl between them, with a soft glow to find it by in the dark of the Grotta
+		body.Shape = Enum.PartType.Ball; body.Size = Vector3.new(0.5, 0.5, 0.5); body.Material = Enum.Material.SmoothPlastic; body.Reflectance = 0.35
+		body.CFrame = CFrame.new(pos + Vector3.new(0, 0.36, 0))
+		for i, ang in ipairs({math.rad(6), math.rad(-58)}) do
+			local sh = Instance.new("Part"); sh.Name = "Shell" .. i; sh.Shape = Enum.PartType.Ball; sh.Size = Vector3.new(1.3, 0.3, 1.1); sh.Color = Color3.fromRGB(214, 196, 170)
+			sh.Material = Enum.Material.Sandstone; sh.Anchored = true; sh.CanCollide = false; sh.CanQuery = false; sh.CanTouch = false; sh.CastShadow = false
+			sh.CFrame = CFrame.new(pos + Vector3.new(0, i == 1 and 0.12 or 0.55, 0)) * CFrame.Angles(0, yaw, 0) * CFrame.new(0, 0, i == 1 and 0 or -0.4) * CFrame.Angles(ang, 0, 0); sh.Parent = m
+		end
+		local l = Instance.new("PointLight"); l.Color = Color3.fromRGB(230, 235, 255); l.Brightness = 0.9; l.Range = 6; l.Shadows = false; l.Parent = body
 	else
 		body.Shape = Enum.PartType.Ball; body.Size = Vector3.new(0.42, 0.26, 0.3); body.Material = Enum.Material.SmoothPlastic; body.Reflectance = 0.1
 		body.CFrame = CFrame.new(pos + Vector3.new(0, 0.12, 0)) * CFrame.Angles(0, yaw, 0)
@@ -124,6 +134,35 @@ local function spawnOne(box)
 	end)
 end
 for _, box in ipairs(boxes) do for _ = 1, box.count do spawnOne(box) end end
+
+-- the pearl (Oct 9 2026, Shannon): one oyster at the back of the Grotta Azzurra, behind Polpo's cages. One pearl per
+-- player (Item_pearl); after a pickup the oyster is back PearlRespawn seconds later for the next player.
+local pearlKind = R.byId.pearl
+if pearlKind then
+	local want = G:GetAttribute("PearlSpot"); if typeof(want) ~= "Vector3" then want = Vector3.new(515, -44, -1121) end
+	local pparams = RaycastParams.new(); pparams.FilterType = Enum.RaycastFilterType.Exclude; pparams.FilterDescendantsInstances = {pieces}; pparams.IgnoreWater = true
+	local spot
+	for _, d in ipairs({Vector3.zero, Vector3.new(2, 0, 0), Vector3.new(-2, 0, 0), Vector3.new(0, 0, 2), Vector3.new(0, 0, -2), Vector3.new(-4, 0, 0), Vector3.new(-4, 0, 3), Vector3.new(-4, 0, -3), Vector3.new(-7, 0, 0)}) do
+		local hit = workspace:Raycast(want + d, Vector3.new(0, -14, 0), pparams)
+		if hit and hit.Normal.Y > 0.6 then spot = hit.Position break end
+	end
+	if not spot then spot = Vector3.new(want.X, want.Y - 5, want.Z); warn("SeaGlassServer: no floor under the pearl spot; using " .. tostring(spot)) end
+	local function spawnPearl()
+		local m, pr = build(pearlKind, spot, rng)
+		pr.ActionText = "Take the pearl"
+		pr.Triggered:Connect(function(p)
+			if taking[m] or not m.Parent then return end
+			if item(p, "pearl") >= 1 then ev:FireClient(p, "toast", "You already found the pearl. Bella can make a shell box for it!") return end
+			taking[m] = true
+			awardItems:Fire(p, "pearl", 1)
+			ev:FireClient(p, "found", "pearl", pearlKind.name, 1, true)
+			m:Destroy()
+			task.delay(num("PearlRespawn", 300), spawnPearl)
+		end)
+	end
+	spawnPearl()
+	print(string.format("SeaGlassServer: the pearl waits at %.0f,%.1f,%.0f", spot.X, spot.Y, spot.Z))
+end
 
 -- ---------- Bella ----------
 if bella then

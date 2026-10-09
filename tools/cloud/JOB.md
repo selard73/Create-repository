@@ -294,3 +294,24 @@ workspace.SeaGlass.SeaGlassServer (8319 chars, 3 finds): boxes per beach (BoxMin
 counts; sets Count 12 (Bella's beach) and Box2 = the harbour beach x 238..326 z -752..-700 with Count2 12. Send the
 `QQ SG2` line; a quick play test: "SeaGlassServer: beach 1 ... beach 2 ..." lines, pieces on both beaches, pickup works
 on the harbour beach too. No publish.
+
+## Job 33: the balloon field (Studio EDIT, one installer; ask Shannon first; AFTER its review)
+
+tools/balloon/install_field1.lua: the imported balloon becomes ServerStorage.BalloonTemplate (anchored, colours, Neon flame);
+workspace.BalloonField on the far shore with BalloonServer / BalloonClient and RS.BalloonEvent: two drifting show balloons,
+one tethered, and YourBalloon on its pad (Board at 44/44 Porto squirrels: rise, gust, storm, "To Be Continued", home).
+Undo: tools/balloon/balloon_undo1.lua. Send the `QQ FIELD` line; play test as the owner (88/88): Board, the whole flight
+(about 65 s), the return; the show balloons drift; no errors. No publish.
+
+## Job 34: Bella's reveal, the pearl and the shell box (Studio EDIT; ask Shannon first)
+
+tools/porto/seaglass3.lua (Recipes 2701, SeaGlassClient 10622, SeaGlassServer 9327; every find once): the made thing rises
+and spins in front of you with sparkles; a pearl in an open oyster at the back of the Grotta (PearlSpot 515,-44,-1121,
+floor found by a ray), one per player, back after 300 s; recipe "Shell box with a pearl". Send the `QQ SG3` line and the
+"SeaGlassServer: the pearl waits at ..." line from a play test; take the pearl; make something at Bella and describe the
+reveal. No publish.
+
+## Job 35: the Daily Acorns card collects itself after 15 s (Studio EDIT; ask Shannon first)
+
+tools/daily/daily_auto1.lua patches workspace.Daily.DailyClient (4 finds; AutoCollect attribute, 15 s). Send the `QQ AUTO`
+line. No publish.

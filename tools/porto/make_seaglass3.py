@@ -12,7 +12,7 @@ oyster back PearlRespawn seconds after a pickup. New recipe "Shell box with a pe
 Patches workspace.SeaGlass.Recipes (2701 chars), SeaGlassClient (10622, the job 18 text) and SeaGlassServer (9327, the
 job 32 text) by exact finds; originals -> ServerStorage.HudBackup.*_pre_seaglass3. Run from the repo root.
 """
-import pathlib
+import pathlib, re
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 SRC = ROOT / "tools/porto/src"
 def L(s, lvl="==="):
@@ -20,12 +20,11 @@ def L(s, lvl="==="):
     return "[" + lvl + "[\n" + s + "]" + lvl + "]"
 
 # ---------------- Recipes ----------------
-REC_K_F = '\t{id = "shell_cowrie",   name = "Cowrie shell",      short = "cowrie",  colour = Color3.fromRGB(215, 170, 130), shell = "cowrie",  weight = 16},\n}\n'
-REC_K_R = ('\t{id = "shell_cowrie",   name = "Cowrie shell",      short = "cowrie",  colour = Color3.fromRGB(215, 170, 130), shell = "cowrie",  weight = 16},\n'
-           '\t{id = "pearl",          name = "Pearl",             short = "pearl",   colour = Color3.fromRGB(246, 242, 236), pearl = true, weight = 0, rare = true},   -- never on a beach: one oyster at the back of the Grotta (Oct 9 2026)\n}\n')
-REC_P_F = '\t\tline = "The purple one! A bottle like this deserves a scent of its own. Keep it safe for France."},\n}\n'
-REC_P_R = ('\t\tline = "The purple one! A bottle like this deserves a scent of its own. Keep it safe for France."},\n'
-           '\t{id = "shellbox", name = "Shell box with a pearl", needs = {shell_scallop = 2, shell_spiral = 1, shell_cowrie = 1, pearl = 1}, keep = "shell_box",\n'
+_rec0 = (SRC / "SeaGlassRecipes.lua").read_text(encoding="utf-8")
+REC_K_F = re.search(r'\t\{id = "shell_cowrie",[^\n]*\n\}\n', _rec0).group(0)      # the last kind line and the table's closing brace, as the file spells them
+REC_K_R = REC_K_F[:-2] + '\t{id = "pearl",          name = "Pearl",             short = "pearl",   colour = Color3.fromRGB(246, 242, 236), pearl = true, weight = 0, rare = true},   -- never on a beach: one oyster at the back of the Grotta (Oct 9 2026)\n}\n'
+REC_P_F = re.search(r'\t\tline = "The purple one![^\n]*\n\}\n', _rec0).group(0)
+REC_P_R = REC_P_F[:-2] + ('\t{id = "shellbox", name = "Shell box with a pearl", needs = {shell_scallop = 2, shell_spiral = 1, shell_cowrie = 1, pearl = 1}, keep = "shell_box",\n'
            '\t\tline = "A pearl from the Grotta! It needs a box of shells to live in. Keep it with your treasures."},\n}\n')
 REC_B_F = "function R.needsText(r)\n"
 REC_B_R = '''-- what each thing looks like (Oct 9 2026, the reveal): a Model of anchored parts round a hidden Core at its middle
