@@ -386,3 +386,5 @@ home, the lighthouse's light turns (a Neon beam, local) once the storm is dark a
 (owner or Studio, desktop) films the next flight with the screen UI hidden for her promo video. Also the runner's join-time
 fix (wind.Enabled before wind exists). Run tools/balloon/install_field1.lua in full (it rebuilds the field; sound ids kept;
 it now measures the Faro's lantern -> attribute LightAt). Send the `QQ FIELD` line including "lantern ... from ...". No publish.
+Result: applied in place (runner): BalloonClient 26755 / BalloonServer 10373; lantern (520, 71.7, -1178) from
+PortoNocciola."14 Lighthouse coast"."Faro di Porto Nocciola"."Lantern roof"; backup HudBackup.BalloonClient_pre_fbd12c5. Not published.
