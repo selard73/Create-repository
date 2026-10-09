@@ -225,3 +225,10 @@ Shannon: "please change the grove music to this: 130260682627466" (it was 184810
 1. Fetch and read tools/porto/groves_music2.lua (commit URL in the cloud session's message). It swaps every place on
    workspace.MapMusic that holds 1848102847 to the new id in the same format; the replaced id goes to PrevSoundId_groves.
 2. Tell Shannon; with her yes run it (Edit mode). Send the `QQ GRV` lines. No publish.
+
+## Job 22: survey the far shore for the hot air balloon field (READ-ONLY)
+
+Shannon: the empty far shore across the harbour is where hot air balloons fly and take off; her own balloon unlocks
+after all 44 Porto squirrels and carries her to the next map.
+1. Ask Shannon to aim the Studio camera at the middle of the spot she means (or select a part there), in Edit mode.
+2. Fetch and run tools/balloon/balloon_survey1.lua (commit URL in the cloud session's message). Send every `QQ BAL` line.
