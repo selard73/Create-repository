@@ -436,3 +436,13 @@ size anchored at the right, and is nudged left a frame later if its right edge i
 HudBackup.SeaGlassClient_pre_seaglass7. Send the `QQ SG7` line. No publish.
 Job 46 addendum 2 (review): the wind streaks now travel along the gust (EmissionDirection Front; they went straight up), and the
 storm's Brightness drop is its own 2.2 s tween so the lightning flashes are not overwritten by the 9 s tween.
+Results (runner, Edit mode, not play-tested, not published): 46 BalloonClient 26395 (backup BalloonClient_pre_080d05e);
+47 190 voxels filled in 187 columns, y -74..-42, first at 42,-50,-582 (backup FieldGround_pre1, corner 6,-19,-182);
+49 Tours 3414 / FilmClient 24618 (backups *_pre_balloon1); 50 SeaGlassClient 15822 (backup _pre_seaglass7).
+
+## Job 51: Bella's panel anchored by its right edge (Studio EDIT; ask Shannon first)
+
+Runner's note on job 50: Studio still builds the panel with AnchorPoint (0.5, 0.5) (seaglass5's anchoring line never
+reached it), so Position (1, -4) hung half the panel off a phone screen; job 50's clamp pulled it back a frame later.
+tools/porto/seaglass8.lua sets AnchorPoint (1, 0.5) in the layout itself (1 find, about 15822 chars, backup
+HudBackup.SeaGlassClient_pre_seaglass8). Send the `QQ SG8` line. No publish.

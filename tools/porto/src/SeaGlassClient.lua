@@ -130,6 +130,7 @@ local function layout()
 	local w, hh = math.min(380, (v.X - 24) / s), math.min(h, (v.Y - 16) / s)
 	inner.Size = UDim2.fromOffset(w, hh)
 	panel.Size = UDim2.fromOffset(w * s, hh * s)
+	panel.AnchorPoint = Vector2.new(1, 0.5)   -- anchored by its right edge (the construction line still said the centre; half of it hung off a phone - Oct 9)
 	panel.Position = UDim2.new(1, phone() and -4 or -14, 0.5, 0)   -- a phone: hard against the right edge (Oct 9)
 	task.defer(function()   -- and never past it, whatever the screen does
 		local over = panel.AbsolutePosition.X + panel.AbsoluteSize.X - (v.X - 2)
