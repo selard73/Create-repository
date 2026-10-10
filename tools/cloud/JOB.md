@@ -836,3 +836,9 @@ Runner 4 dry run of 85f17df: one sandstone box per band took the whole band's z 
 30-46 studs back under the trees); at the west end x 42..54 a Limestone outcrop stands 4-7 studs in front of the mesh on
 purpose and would have been drilled. Round four (commit below): the sandstone swap per 8-stud segment (face z - 2 .. + 8);
 only Grass pokes no deeper than 2 studs shaved (Limestone/Rock left); backup region z -592..-520.
+Result job 83 (runner 4, febeab4, installed under Shannon's "do the whole cliff"; preview matched; not published): 8 backing
+blocks (the terrain is within a stud of the face nearly everywhere, so the material swap does the work), 29 sandstone
+segments along both cliffs (rim on top 4-20 studs deep), 37 shallow grass pokes shaved, limestone outcrops untouched,
+LipPlate 36 (SizeWas kept), backup HudBackup.CliffTop_pre1 (paste at voxel 9,5,-148). Pictures tools/falls/shots/cliff-r4-*
+and cliff-installed-*: no dark patch anywhere along the top; the corner by the falls clean; the pale plate beside the sheet.
+Noted: x 155..160 (the W band's last partial segment) not swapped, looks clean. Shannon publishes when she likes.
