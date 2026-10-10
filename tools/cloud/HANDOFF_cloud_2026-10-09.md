@@ -127,7 +127,13 @@ patched script is backed up first to ServerStorage.HudBackup.*; installers are e
 C:\Users\slard\OneDrive\Desktop. The repo clone on her PC: pull claude/epic-hawking-188q4l before reading or pushing.
 Open this morning (Shannon, VR): the interact pill for the piazza race and the opera singer is missing in VR; every Club
 Rana frog is tipped onto its face; from the balloon only the funicolare's rails show. Job 72 (read-only survey + an export)
-gathers the facts; fixes follow as jobs 73+.
+gathers the facts; fixes follow as jobs 73+ (the VR pill drawn in the world beside the thing you can use; the frog model's
+pivot turn corrected in FountainModeClient and install_modes1 re-run; the funicolare kept loaded from the balloon).
+Deadline: Shannon's Roblox event "Porto Nocciola Opens!" is set for Oct 18, so the Italian map must be finished by then.
+After the three VR bugs, in this order: the waterfall cliff blemishes, the Italy squirrels chatting to passers-by, the
+message in a bottle game (Italian, for the 18th); then the French clothing rebuild. Details under "Housekeeping for later".
+The cloud session writes every script and sends each job here as a commit-SHA raw URL; the runner only runs, reports and
+asks Shannon. If this runner nears 90% of its memory, say so to the cloud session so a runner 5 can be started.
 
 ## State at Oct 10 04:45 UTC (all published unless noted)
 - Live: balloon finale (smooth flight, VR stand-off camera, film tour "Balloon flight" in F8, world notes), Bella's game on
