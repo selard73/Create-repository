@@ -40,7 +40,7 @@ local F = Instance.new("Folder"); F.Name = "FountainModes"
 F:SetAttribute("FountainPath", "PortoNocciola/13 Hillside town/Fontana del Limone")
 F:SetAttribute("Minutes", 2); F:SetAttribute("Reach", 150)   -- two minutes (Shannon: "different from the French one")
 F:SetAttribute("FrogSoundId", 73626983091367); F:SetAttribute("BounceSoundId", 0)
-F:SetAttribute("PetalTexture", ""); F:SetAttribute("PetalSize", 0.55); F:SetAttribute("PetalRate", 0.3); F:SetAttribute("PetalSpeed", 0.4); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalLife", 4.5); F:SetAttribute("CarpetCount", 90)
+F:SetAttribute("PetalTexture", ""); F:SetAttribute("PetalSize", 0.55); F:SetAttribute("PetalRate", 0.3); F:SetAttribute("PetalSpeed", 0.4); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalLife", 3.2); F:SetAttribute("CarpetCount", 90)
 F:SetAttribute("NoodleTexture", ""); F:SetAttribute("NoodleTop", 14); F:SetAttribute("NoodleRim", 20); F:SetAttribute("MeatballEvery", 1.6)
 F:SetAttribute("SignText", "FROG RESORT"); F:SetAttribute("DeckAngle", 0.9)
 F:SetAttribute("RimY", rimY or (c.Y - 2.15 + 1.3)); F:SetAttribute("RimR", rimR); F:SetAttribute("GroundY", groundY)
@@ -160,7 +160,8 @@ local function petalEmitter(src, i)
 	e.Speed = NumberRange.new(src.Speed.Min * k, src.Speed.Max * k)
 	e.Acceleration = Vector3.new(0, -num("PetalFall", 5), 0)
 	e.Drag = num("PetalDrag", 1.2)
-	e.Lifetime = NumberRange.new(num("PetalLife", 4.5), num("PetalLife", 4.5) * 1.4)
+	local life = num("PetalLife", 3.2) * (src.Name == "Stream" and 0.6 or 1)   -- about the time to drift down to the water; the rim streams have less far to go
+	e.Lifetime = NumberRange.new(life, life * 1.4)
 	e.Rate = src.Rate * num("PetalRate", 0.3)
 	e.Rotation = NumberRange.new(0, 360); e.RotSpeed = NumberRange.new(-110, 110)
 	e.Orientation = Enum.ParticleOrientation.FacingCamera
