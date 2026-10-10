@@ -75,9 +75,9 @@ local function paint()
 	set(rInv.btn, "Invite", false)
 end
 local function ask(what)
-	local ok, res = pcall(function() return action:InvokeServer(what) end)
+	local ok, a, b = pcall(function() return action:InvokeServer(what) end)
 	if not ok then return false, "no answer" end
-	return res
+	return a, b
 end
 local function refresh()
 	local ok, st = ask("state")

@@ -1,6 +1,6 @@
 -- install_gifts1.lua (Studio EDIT mode; re-runnable). Job 87. The Gifts system: like + favourite + notifications -> the
 -- Backpack (on trust), join the community -> acorns (checked), invite a friend -> double acorns while you play together
--- (checked by the friend's join data). workspace.Gifts with GiftsServer (7079 chars) and GiftsClient (13828 chars);
+-- (checked by the friend's join data). workspace.Gifts with GiftsServer (8381 chars) and GiftsClient (13830 chars);
 -- ReplicatedStorage.GiftsAction / GiftsEvent. Undo: delete workspace.Gifts and the two remotes. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
@@ -13,7 +13,7 @@ local SERVER = [===[
 --   join the 1001 Squirrels community -> CommunityAcorns (checked here: GroupService:GetGroupsAsync, fresh each time);
 --   invite a friend -> DOUBLE ACORNS for both while they play in the same server (the friend's join carries
 --     Player:GetJoinData().ReferredByPlayerId; every acorn gain under BoostMaxGain is paid again - the Robux acorn
---     packs start at 150 and are never doubled).
+--     packs start at 150 and are never doubled; a single in-game gain of 150 or more is not doubled either).
 -- Claims persist through the AwardItems ledger (Item_gift_like, Item_gift_community, Item_gift_invites on the inviter,
 -- Item_ref_<inviterId> on the invitee so a friend counts once). Attributes on the folder: GroupId, CommunityAcorns,
 -- BoostMaxGain, LikeReward ("backpack"), BoostOn, PopupDelay (the client's), AutoPopup (the client's).
@@ -57,33 +57,46 @@ local function inCommunity(p)
 end
 
 -- ---------- the counter (one request at a time per player, a breath between them) ----------
-local lastAsk = {}
+local lastAsk, busy = {}, {}
+local function settled(p, patch)   -- the state once the ledger's attribute writes have landed (they may be deferred a frame)
+	task.wait()
+	local st = state(p)
+	for k, v in pairs(patch or {}) do st[k] = v end
+	return st
+end
 action.OnServerInvoke = function(p, what)
 	if typeof(p) ~= "Instance" or not p:IsA("Player") then return false, "?" end
-	local now = os.clock()
-	if what ~= "state" and lastAsk[p] and now - lastAsk[p] < 1.5 then return false, "a moment" end
-	lastAsk[p] = now
 	if not loaded(p) then return false, "loading" end
-	if what == "state" then return true, state(p)
-	elseif what == "claimLike" then
-		if item(p, "gift_like") > 0 then return true, state(p) end
-		local reward = str("LikeReward", "backpack")
-		if reward ~= "" and item(p, reward) <= 0 then awardItems:Fire(p, reward, 1) end
-		awardItems:Fire(p, "gift_like", 1)
-		print(string.format("Gifts: %s claimed the like gift (%s)", p.Name, reward))
-		return true, state(p)
-	elseif what == "checkCommunity" then
-		if item(p, "gift_community") > 0 then return true, state(p) end
-		local member, why = inCommunity(p)
-		if not member then return false, why or "not yet" end
-		giveAcorns(p, num("CommunityAcorns", 150))
-		awardItems:Fire(p, "gift_community", 1)
-		print(string.format("Gifts: %s joined the community (+%d acorns)", p.Name, num("CommunityAcorns", 150)))
-		return true, state(p)
-	end
-	return false, "?"
+	if what == "state" then return true, state(p) end
+	local now = os.clock()
+	if busy[p] or (lastAsk[p] and now - lastAsk[p] < 1.5) then return false, "a moment" end
+	lastAsk[p] = now; busy[p] = true
+	local ok, a, b = pcall(function()
+		if what == "claimLike" then
+			if item(p, "gift_like") > 0 then return true, state(p) end
+			local reward = str("LikeReward", "backpack")
+			if reward ~= "" and item(p, reward) <= 0 then awardItems:Fire(p, reward, 1) end
+			awardItems:Fire(p, "gift_like", 1)
+			print(string.format("Gifts: %s claimed the like gift (%s)", p.Name, reward))
+			return true, settled(p, {like = true, backpack = reward ~= "" or nil})
+		elseif what == "checkCommunity" then
+			if item(p, "gift_community") > 0 then return true, state(p) end
+			local member, why = inCommunity(p)
+			if p.Parent ~= Players then return false, "gone" end
+			if item(p, "gift_community") > 0 then return true, state(p) end
+			if not member then return false, why or "not yet" end
+			giveAcorns(p, num("CommunityAcorns", 150))
+			awardItems:Fire(p, "gift_community", 1)
+			print(string.format("Gifts: %s joined the community (+%d acorns)", p.Name, num("CommunityAcorns", 150)))
+			return true, settled(p, {community = true})
+		end
+		return false, "?"
+	end)
+	busy[p] = nil
+	if not ok then warn("Gifts: " .. tostring(a)) return false, "later" end
+	return a, b
 end
-Players.PlayerRemoving:Connect(function(p) lastAsk[p] = nil end)
+Players.PlayerRemoving:Connect(function(p) lastAsk[p] = nil; busy[p] = nil end)
 
 -- ---------- friends who came on an invite: double acorns while both are here ----------
 local partners = {}   -- [player] = {[other] = true}
@@ -116,7 +129,7 @@ local function onJoin(p)
 	while p.Parent == Players and not loaded(p) and os.clock() - t0 < 30 do task.wait(0.5) end
 	if p.Parent ~= Players then return end
 	local inviter = Players:GetPlayerByUserId(refId)
-	if item(p, "ref_" .. refId) == 0 then   -- this friend counts once for that inviter
+	if loaded(p) and item(p, "ref_" .. refId) == 0 then   -- this friend counts once for that inviter (never while the save is unknown)
 		awardItems:Fire(p, "ref_" .. refId, 1)
 		if inviter then awardItems:Fire(inviter, "gift_invites", 1) end
 	end
@@ -125,8 +138,19 @@ local function onJoin(p)
 		print(string.format("Gifts: %s came on %s's invite - double acorns while both are here", p.Name, inviter.Name))
 	end
 end
-Players.PlayerAdded:Connect(function(p) task.spawn(onJoin, p) end)
-for _, p in ipairs(Players:GetPlayers()) do task.spawn(onJoin, p) end
+-- a pair that is already on record (Item_ref_<inviterId> on the friend) is linked again whenever either of them joins
+local function relink(p)
+	local t0 = os.clock()
+	while p.Parent == Players and not loaded(p) and os.clock() - t0 < 30 do task.wait(0.5) end
+	if p.Parent ~= Players or not loaded(p) then return end
+	for _, o in ipairs(Players:GetPlayers()) do
+		if o ~= p and loaded(o) then
+			if item(p, "ref_" .. o.UserId) > 0 or item(o, "ref_" .. p.UserId) > 0 then link(p, o) end
+		end
+	end
+end
+Players.PlayerAdded:Connect(function(p) task.spawn(onJoin, p); task.spawn(relink, p) end)
+for _, p in ipairs(Players:GetPlayers()) do task.spawn(onJoin, p); task.spawn(relink, p) end
 Players.PlayerRemoving:Connect(function(p)
 	for o in pairs(partners[p] or {}) do if partners[o] then partners[o][p] = nil end; refresh(o) end
 	partners[p] = nil
@@ -138,7 +162,7 @@ awardAcorns.Event:Connect(function(p, n, tag)
 	if tag == "gift" then return end
 	if typeof(p) ~= "Instance" or not p:IsA("Player") then return end
 	n = tonumber(n) or 0
-	if n <= 0 or n > num("BoostMaxGain", 140) then return end
+	if n <= 0 or n >= num("BoostMaxGain", 150) then return end   -- (the Robux packs start at 150)
 	if p:GetAttribute("AcornBoost") ~= 2 then return end
 	giveAcorns(p, n)
 end)
@@ -222,9 +246,9 @@ local function paint()
 	set(rInv.btn, "Invite", false)
 end
 local function ask(what)
-	local ok, res = pcall(function() return action:InvokeServer(what) end)
+	local ok, a, b = pcall(function() return action:InvokeServer(what) end)
 	if not ok then return false, "no answer" end
-	return res
+	return a, b
 end
 local function refresh()
 	local ok, st = ask("state")
@@ -365,7 +389,7 @@ if old then
 	for _, s in ipairs(old:GetChildren()) do if s:IsA("BaseScript") then s.Enabled = false end end
 end
 local F = Instance.new("Folder"); F.Name = "Gifts"
-local defaults = {GroupId = 969906332, CommunityAcorns = 150, BoostMaxGain = 140, LikeReward = "backpack", BoostOn = true, PopupDelay = 90, AutoPopup = true}
+local defaults = {GroupId = 969906332, CommunityAcorns = 150, BoostMaxGain = 150, LikeReward = "backpack", BoostOn = true, PopupDelay = 90, AutoPopup = true}
 for k, v in pairs(defaults) do F:SetAttribute(k, attrs[k] ~= nil and attrs[k] or v) end
 local s = Instance.new("Script"); s.Name = "GiftsServer"; s.Source = SERVER; s.Parent = F
 local c = Instance.new("Script"); c.Name = "GiftsClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F

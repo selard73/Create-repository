@@ -2,7 +2,7 @@
 """install_gifts1.lua: the Gifts system (Shannon, Oct 10 2026) - workspace.Gifts {GiftsServer, GiftsClient} and the
 remotes ReplicatedStorage.GiftsAction (RemoteFunction) / GiftsEvent (RemoteEvent). Re-runnable: an existing Gifts folder
 is replaced (its scripts kept in ServerStorage.HudBackup.Gifts_pre_<n>). Attributes on the folder (tune live):
-GroupId 969906332, CommunityAcorns 150, BoostMaxGain 140, LikeReward "backpack", BoostOn true, PopupDelay 90, AutoPopup true.
+GroupId 969906332, CommunityAcorns 150, BoostMaxGain 150, LikeReward "backpack", BoostOn true, PopupDelay 90, AutoPopup true.
 """
 import pathlib
 HERE = pathlib.Path(__file__).resolve().parent
@@ -35,7 +35,7 @@ if old then
 	for _, s in ipairs(old:GetChildren()) do if s:IsA("BaseScript") then s.Enabled = false end end
 end
 local F = Instance.new("Folder"); F.Name = "Gifts"
-local defaults = {{GroupId = 969906332, CommunityAcorns = 150, BoostMaxGain = 140, LikeReward = "backpack", BoostOn = true, PopupDelay = 90, AutoPopup = true}}
+local defaults = {{GroupId = 969906332, CommunityAcorns = 150, BoostMaxGain = 150, LikeReward = "backpack", BoostOn = true, PopupDelay = 90, AutoPopup = true}}
 for k, v in pairs(defaults) do F:SetAttribute(k, attrs[k] ~= nil and attrs[k] or v) end
 local s = Instance.new("Script"); s.Name = "GiftsServer"; s.Source = SERVER; s.Parent = F
 local c = Instance.new("Script"); c.Name = "GiftsClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
