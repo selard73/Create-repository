@@ -43,18 +43,21 @@ NEW = patch(NEW, '\tsaved = nil\nend\n\n-- ---------- smooth flight ----------\n
             '-- IN VR THE FAR VIEW IS HAZED AND THE RIDE RUNS LIGHTER (Shannon, Oct 10: on the headset the funicolare and the far hills\n'
             '-- "come in and out" with everything loaded - the Quest\'s renderer at a low quality step, and the step bounces). A haze\n'
             '-- hides the popping; no shadows, fewer streaks and bolts keep the frame rate up so the step holds. Attributes on the\n'
-            '-- folder: VRHazeStart 350, VRHazeEnd 900 (0 = no haze; with an Atmosphere present its Haze goes to VRHazeAtmo 2.5\n'
-            '-- instead), VRShadowsOff true, VRWindRate 36, VRBoltShare 0.5. The storm takes over later; stormOff puts it all back.\n'
+            '-- folder: VRHazeStart 350, VRHazeEnd 900 (0 = no haze; with an Atmosphere present, which makes Lighting's fog a dead letter,\n'
+            '-- its Density goes to at least VRHazeDensity 0.55 and its Haze to VRHazeAtmo 2.5 instead), VRShadowsOff true, VRWindRate 36,\n'
+            '-- VRBoltShare 0.5. The storm takes over later; stormOff (at home, and on a respawn) puts it all back.\n'
             'local function hazeOn()\n'
             '\tif not VR then return end\n'
             '\tsnapshot()\n'
-            '\tif F:GetAttribute("VRShadowsOff") ~= false then saved.shadows = Lighting.GlobalShadows; Lighting.GlobalShadows = false end\n'
+            '\tif F:GetAttribute("VRShadowsOff") ~= false then if saved.shadows == nil then saved.shadows = Lighting.GlobalShadows end; Lighting.GlobalShadows = false end\n'
             '\tlocal hEnd = num("VRHazeEnd", 900)\n'
             '\tif hEnd <= 0 then return end\n'
-            '\tif atmo then TweenService:Create(atmo, TweenInfo.new(3, Enum.EasingStyle.Sine), {Haze = num("VRHazeAtmo", 2.5)}):Play()\n'
+            '\tif atmo then TweenService:Create(atmo, TweenInfo.new(3, Enum.EasingStyle.Sine), {Haze = num("VRHazeAtmo", 2.5), Density = math.max(atmo.Density, num("VRHazeDensity", 0.55))}):Play()\n'
             '\telse TweenService:Create(Lighting, TweenInfo.new(3, Enum.EasingStyle.Sine), {FogStart = math.min(num("VRHazeStart", 350), hEnd - 50), FogEnd = hEnd}):Play() end\n'
             'end\n'
             '\n-- ---------- smooth flight ----------\n')
+NEW = patch(NEW, 'player.CharacterAdded:Connect(function() flying = false; if storming then stormOff() end;',
+            'player.CharacterAdded:Connect(function() flying = false; if storming or saved then stormOff() end;')   -- (the VR haze too - review)
 NEW = patch(NEW, '\t\tif name == "board" then flying = true; vrCamStart() end\n',
             '\t\tif name == "board" then flying = true; vrCamStart(); hazeOn() end\n')
 assert ']===]' not in NEW
@@ -77,7 +80,7 @@ local f, err = loadstring(NEW); if not f then print("QQ VRRIDE ABORT: the new cl
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 if not hb:FindFirstChild("BalloonClient_pre_vrride1") then local b = Instance.new("ModuleScript"); b.Name = "BalloonClient_pre_vrride1"; b.Source = bc.Source; b.Parent = hb end
 bc.Source = NEW
-for k, v in pairs({{VRHazeStart = 350, VRHazeEnd = 900, VRHazeAtmo = 2.5, VRWindRate = 36, VRBoltShare = 0.5}}) do if bf:GetAttribute(k) == nil then bf:SetAttribute(k, v) end end
+for k, v in pairs({{VRHazeStart = 350, VRHazeEnd = 900, VRHazeAtmo = 2.5, VRHazeDensity = 0.55, VRWindRate = 36, VRBoltShare = 0.5}}) do if bf:GetAttribute(k) == nil then bf:SetAttribute(k, v) end end
 if bf:GetAttribute("VRShadowsOff") == nil then bf:SetAttribute("VRShadowsOff", true) end
 local atmo = game:GetService("Lighting"):FindFirstChildOfClass("Atmosphere")
 print(string.format("QQ VRRIDE DONE: BalloonClient %d -> %d chars (backup HudBackup.BalloonClient_pre_vrride1); haze %s; Lighting has %s", {OLD_LEN}, #bc.Source,
