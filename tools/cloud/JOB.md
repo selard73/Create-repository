@@ -505,3 +505,4 @@ little. Backup HudBackup.SeaGlassClient_pre_seaglass11. Send the `QQ SG11` line.
 
 tools/film/vrtest_remove1.lua: workspace.FilmMode.VRTestClient -> ServerStorage.HudBackup (disabled); any pad left in the
 workspace with a Shadows / Plain floor prompt or a VRTest* name -> HudBackup.VRTestPads. Send the `QQ VRT` line. No publish.
+Result job 56 (runner 3): BalloonClient 32028 -> 32702 (= 8b21dcf), server unchanged; backup HudBackup.BalloonClient_pre_8b21dcf. Not published.
