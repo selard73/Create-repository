@@ -4,7 +4,9 @@ where the funicolare is fades in and out when on the balloon ride"). Streaming d
 headset. Atomic (job 75) brought the whole model in and out together, so it popped as a unit. Now:
   - "15 Funicolare".ModelStreamingMode = PersistentPerPlayer (others still see it stream as a whole, like Atomic);
   - BalloonField attribute RidePersistent = "PortoNocciola/15 Funicolare" (";"-separated workspace paths; add more later);
-  - BalloonServer: ridePersist(p, true) at boarding, ridePersist(p, false) at home (a leaver is dropped by Roblox itself).
+  - BalloonServer: ridePersist(p, true) at boarding, ridePersist(p, false) at home (every flight that boards reaches home,
+    a leaver's included: the Heartbeat check aborts it; the early return before boarding also re-enables the Board prompt,
+    which it did not - review).
 Exact-string patch of the live 10373-char BalloonServer, backup HudBackup.BalloonServer_pre_ride1.
 """
 import pathlib
@@ -22,15 +24,18 @@ NEW = patch(NEW, "local function flight(p)\n", '''-- WHAT THE RIDER MUST KEEP SE
 -- ";" apart; the installer sets them to ModelStreamingMode PersistentPerPlayer) stays loaded for the rider for the ride.
 local function ridePersist(p, on)
 	for path in string.gmatch(tostring(F:GetAttribute("RidePersistent") or ""), "[^;]+") do
+		path = path:match("^%s*(.-)%s*$")
 		local m = workspace
 		for seg in string.gmatch(path, "[^/]+") do m = m and m:FindFirstChild(seg) end
 		if m and m:IsA("Model") then
 			pcall(function() if on then m:AddPersistentPlayer(p) else m:RemovePersistentPlayer(p) end end)
-		end
+		elseif on and path ~= "" then warn("BalloonServer: RidePersistent names no Model at workspace/" .. path) end
 	end
 end
 local function flight(p)
 ''')
+NEW = patch(NEW, "\tif not (hum and root and hum.Health > 0) then busy = nil return end\n",
+            "\tif not (hum and root and hum.Health > 0) then busy = nil; prompt.Enabled = true return end   -- (the prompt went off at the trigger)\n")
 NEW = patch(NEW, '\tev:FireAllClients("phase", p, "board", 2)\n', '\tridePersist(p, true)\n\tev:FireAllClients("phase", p, "board", 2)\n')
 NEW = patch(NEW, '\tev:FireAllClients("phase", p, "home", 2)\n', '\tridePersist(p, false)\n\tev:FireAllClients("phase", p, "home", 2)\n')
 assert "]===]" not in NEW

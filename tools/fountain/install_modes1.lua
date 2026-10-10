@@ -353,12 +353,12 @@ local function stringLights(g, from, to, n)
 	return lights
 end
 -- A SOLID FOOTING on the stone (Shannon, Oct 10: the top-tier frog "floating in mid air", the far rim frog "half suspended on
--- water"): from the spot asked for, then step by step along its own line out from and in toward the centre, the first place
--- where the frog's whole footprint rests on something solid at one height (not the water, not our own parts), at that
--- height. Nothing within reach -> no frog there.
+-- water"): from the spot asked for, then step by step along its own line from the centre (first inward or first outward),
+-- the first place where the frog's whole footprint rests on the fountain's own stone at one height - a ray that meets the
+-- water, the upper bowl, our own parts or anything that is not the fountain does not count. Nothing within reach -> nil.
 local footParams = RaycastParams.new(); footParams.FilterType = Enum.RaycastFilterType.Exclude; footParams.IgnoreWater = true
-local function footing(g, pos, scale, maxDrop)
-	local ex = {g.water, g.ring}
+local function footing(g, pos, scale, maxDrop, inFirst)
+	local ex = {}
 	if scene then table.insert(ex, scene) end
 	if player.Character then table.insert(ex, player.Character) end
 	footParams.FilterDescendantsInstances = ex
@@ -370,16 +370,19 @@ local function footing(g, pos, scale, maxDrop)
 		local lo, hi
 		for _, o in ipairs({Vector3.zero, out * hz, -out * hz, side * hx, -side * hx}) do
 			local hit = workspace:Raycast(p + o + Vector3.new(0, 1.5, 0), Vector3.new(0, -(1.5 + maxDrop), 0), footParams)
-			if not hit then return nil end
+			if not hit or hit.Instance == g.water or hit.Instance == g.ring or not hit.Instance:IsDescendantOf(g.fm) then return nil end
 			lo = math.min(lo or hit.Position.Y, hit.Position.Y); hi = math.max(hi or hit.Position.Y, hit.Position.Y)
 		end
 		if hi - lo > 0.25 then return nil end
 		return hi
 	end
-	for _, d in ipairs({0, 0.15, -0.15, 0.3, -0.3, 0.5, -0.5, 0.7, -0.7, 0.9, -0.9, 1.2, -1.2, 1.5, -1.5}) do
-		local q = pos + out * d
-		local y = test(q)
-		if y then return Vector3.new(q.X, y, q.Z) end
+	local sign = inFirst and -1 or 1
+	for _, k in ipairs({0, 0.15, 0.3, 0.5, 0.7, 0.9, 1.2, 1.5}) do
+		for _, d in ipairs(k == 0 and {0} or {k * sign, -k * sign}) do
+			local q = pos + out * d
+			local y = test(q)
+			if y then return Vector3.new(q.X, y, q.Z) end
+		end
 	end
 	return nil
 end
@@ -399,13 +402,23 @@ local function startFrogs(g)
 	end
 	-- in the water, in a swim ring; two on the rim, one in a sun hat
 	add(frog(facing(around(g, 4.4, 3.1, g.basinY - 0.25), g.centre), 1.0, "SwimRing"), "swim")   -- feet under, the ring on the water (review)
-	local rim1 = footing(g, around(g, g.rimR, 1.2, g.rimY), 1.0, 1.0)
-	if rim1 then add(frog(facing(rim1, g.centre) * CFrame.Angles(0, math.pi, 0), 1.0, "SunHat"), "rim") end
-	local rim2 = footing(g, around(g, g.rimR, 4.9, g.rimY), 0.9, 1.0)
-	if rim2 then add(frog(facing(rim2, g.centre), 0.9, ""), "rim") end
-	-- one up top, by the spout, wherever the top tier gives it a footing
-	local top = footing(g, g.spout + Vector3.new(0.9, 0.05, 0.2), 0.7, 2.5)
-	if top then add(frog(facing(top, g.centre), 0.7, ""), "top") end
+	-- (the stone may not have streamed in yet when the mode starts 150 studs out: these three keep trying for half a minute)
+	local footed = {
+		{name = "rim frog (sun hat)", at = around(g, g.rimR, 1.2, g.rimY), scale = 1.0, drop = 1.0, inFirst = false, yaw = math.pi, acc = "SunHat", kind = "rim"},
+		{name = "rim frog", at = around(g, g.rimR, 4.9, g.rimY), scale = 0.9, drop = 1.0, inFirst = false, yaw = 0, acc = "", kind = "rim"},
+		{name = "top frog", at = g.spout + Vector3.new(0.9, 0.05, 0.2), scale = 0.7, drop = 2.5, inFirst = true, yaw = 0, acc = "", kind = "top"},
+	}
+	local function tryFooted()
+		local left = 0
+		for _, f in ipairs(footed) do
+			if not f.done then
+				local spot = footing(g, f.at, f.scale, f.drop, f.inFirst)
+				if spot then f.done = true; add(frog(facing(spot, g.centre) * CFrame.Angles(0, f.yaw, 0), f.scale, f.acc), f.kind)
+				else left += 1 end
+			end
+		end
+		return left
+	end
 	-- the deck: a parasol, a deck chair with a frog in it and a drink, the sign, a ladder, string lights
 	local deckA = num("DeckAngle", 0.9)
 	local deckPos = around(g, g.rimR + 3.6, deckA, g.groundY)
@@ -428,6 +441,16 @@ local function startFrogs(g)
 	end
 	-- life: the swim ring bobs, the pads sway, now and then a frog hops and croaks
 	local my = gen
+	if tryFooted() > 0 then
+		task.spawn(function()
+			local t0 = os.clock()
+			while gen == my and os.clock() - t0 < 30 do
+				task.wait(0.5)
+				if gen == my and tryFooted() == 0 then return end
+			end
+			if gen == my then for _, f in ipairs(footed) do if not f.done then warn(string.format("FountainModes: no stone footing for the %s near %s", f.name, tostring(f.at))) end end end
+		end)
+	end
 	task.spawn(function()
 		local nextHop = os.clock() + 2
 		local hopping = nil

@@ -723,15 +723,16 @@ the rails cross the headset's streaming range). The VR pills and the other frogs
 
 ## Job 76: frogs with a footing (Studio EDIT, re-run; ask Shannon first)
 
-Re-run tools/fountain/install_modes1.lua at the commit below: the client (27351 chars) now finds each rim frog and the top
+Re-run tools/fountain/install_modes1.lua at the commit below: the client (28366 chars) now finds each rim frog and the top
 frog a solid footing by raycast - from the spot asked for, stepping in and out along its line from the centre, the first
-place where its whole footprint rests on stone at one height (the water and our own parts ignored); nothing found -> no frog
-there. Assets kept; store restored and re-patched identically (10901 / 38666). Send the `QQ FMODE DONE` line. No publish.
+place where its whole footprint rests on the fountain's own stone at one height (water, the upper bowl, anything else
+refused); the three keep trying for 30 s in case the stone has not streamed in yet; none found -> a warning, no frog there. Assets kept; store restored and re-patched identically (10901 / 38666). Send the `QQ FMODE DONE` line. No publish.
 
 ## Job 77: the funicolare stays loaded for the balloon rider (Studio EDIT; ask Shannon first)
 
 tools/balloon/ride_persist1.lua: "15 Funicolare" -> ModelStreamingMode PersistentPerPlayer (everyone else: streams as one
 whole, as Atomic did); BalloonField attribute RidePersistent = "PortoNocciola/15 Funicolare" (";"-separated paths; more can
-be added later); BalloonServer 10373 -> 11156 (ridePersist(p, true) at boarding, (p, false) at home; backup
+be added later); BalloonServer 10373 -> 11362 (ridePersist(p, true) at boarding, (p, false) at home; the early return
+before boarding now re-enables the Board prompt (a pre-existing hole, review); backup
 HudBackup.BalloonServer_pre_ride1). Generator tools/balloon/make_ride_persist1.py. Send the `QQ RIDE` line. No publish.
 Ask Shannon once for both edits (76, 77), run them in that order, one message with the two lines.

@@ -2,7 +2,7 @@
 -- The funicolare stays loaded for a balloon rider for the whole ride (Shannon, Oct 10, VR: "the far side where the
 -- funicolare is fades in and out when on the balloon ride"). "15 Funicolare" -> ModelStreamingMode PersistentPerPlayer
 -- (for everyone else it still streams as one whole, as Atomic did); BalloonField.RidePersistent names it; BalloonServer adds
--- the rider at boarding and drops them at home (10373 -> 11156 chars; backup HudBackup.BalloonServer_pre_ride1).
+-- the rider at boarding and drops them at home (10373 -> 11362 chars; backup HudBackup.BalloonServer_pre_ride1).
 -- Undo: BalloonServer.Source = HudBackup.BalloonServer_pre_ride1.Source; the model back to Atomic. No publish.
 local SS = game:GetService("ServerStorage")
 local town = workspace:FindFirstChild("PortoNocciola"); local M = town and town:FindFirstChild("15 Funicolare")
@@ -114,18 +114,19 @@ local function setHome() yours:PivotTo(homeCF) end
 -- ";" apart; the installer sets them to ModelStreamingMode PersistentPerPlayer) stays loaded for the rider for the ride.
 local function ridePersist(p, on)
 	for path in string.gmatch(tostring(F:GetAttribute("RidePersistent") or ""), "[^;]+") do
+		path = path:match("^%s*(.-)%s*$")
 		local m = workspace
 		for seg in string.gmatch(path, "[^/]+") do m = m and m:FindFirstChild(seg) end
 		if m and m:IsA("Model") then
 			pcall(function() if on then m:AddPersistentPlayer(p) else m:RemovePersistentPlayer(p) end end)
-		end
+		elseif on and path ~= "" then warn("BalloonServer: RidePersistent names no Model at workspace/" .. path) end
 	end
 end
 local function flight(p)
 	local char = p.Character
 	local hum = char and char:FindFirstChildOfClass("Humanoid")
 	local root = char and char:FindFirstChild("HumanoidRootPart")
-	if not (hum and root and hum.Health > 0) then busy = nil return end
+	if not (hum and root and hum.Health > 0) then busy = nil; prompt.Enabled = true return end   -- (the prompt went off at the trigger)
 	local jp, jh, ujp = hum.JumpPower, hum.JumpHeight, hum.UseJumpPower
 	hum.Sit = false
 	char:PivotTo(seat.CFrame * CFrame.new(0, 2.6, 0))

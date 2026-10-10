@@ -102,18 +102,19 @@ local function setHome() yours:PivotTo(homeCF) end
 -- ";" apart; the installer sets them to ModelStreamingMode PersistentPerPlayer) stays loaded for the rider for the ride.
 local function ridePersist(p, on)
 	for path in string.gmatch(tostring(F:GetAttribute("RidePersistent") or ""), "[^;]+") do
+		path = path:match("^%s*(.-)%s*$")
 		local m = workspace
 		for seg in string.gmatch(path, "[^/]+") do m = m and m:FindFirstChild(seg) end
 		if m and m:IsA("Model") then
 			pcall(function() if on then m:AddPersistentPlayer(p) else m:RemovePersistentPlayer(p) end end)
-		end
+		elseif on and path ~= "" then warn("BalloonServer: RidePersistent names no Model at workspace/" .. path) end
 	end
 end
 local function flight(p)
 	local char = p.Character
 	local hum = char and char:FindFirstChildOfClass("Humanoid")
 	local root = char and char:FindFirstChild("HumanoidRootPart")
-	if not (hum and root and hum.Health > 0) then busy = nil return end
+	if not (hum and root and hum.Health > 0) then busy = nil; prompt.Enabled = true return end   -- (the prompt went off at the trigger)
 	local jp, jh, ujp = hum.JumpPower, hum.JumpHeight, hum.UseJumpPower
 	hum.Sit = false
 	char:PivotTo(seat.CFrame * CFrame.new(0, 2.6, 0))
