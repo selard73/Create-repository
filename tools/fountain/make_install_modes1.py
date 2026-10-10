@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Builds tools/fountain/install_modes1.lua (job 61): the Fontana del Limone's bought modes (Shannon, Oct 10 2026) -
-spaghetti with smiling meatballs, the Frog Resort, the petal fountain. ONE Studio script (EDIT mode):
+the Frog Resort (Club Rana) and the petal fountain (the spaghetti fountain was tried and dropped). ONE Studio script (EDIT mode):
   1. workspace.FountainModes (Folder; attributes Minutes 10, Reach 150, FrogSoundId, PetalTexture, the measured RimY/RimR/
      GroundY, ActiveMode/ActiveUntil/ActiveBy empty) with FountainModeClient from tools/fountain/src.
   2. ReplicatedStorage.FountainModeAssets: the models Shannon imported (File > Import 3D of frog.fbx and flowers.fbx) are
      moved in and tidied (anchored, no collisions): Frog (+ Sunglasses/SunHat/SwimRing), LilyPad, Lotus, Flowers.
      Missing imports only warn; the modes run without them (the resort has no frogs until the frog is in).
-  3. The Acorn Store: Price_spaghetti/frogs/petals (25) and Sell_* on workspace.Shop; exact-string patches of ShopServer
+  3. The Acorn Store: Price_fountainmode (25) and Sell_* on workspace.Shop; exact-string patches of ShopServer
      (9261 chars) and ShopClient (35014 chars, the job 59 export): three items on the Porto tab, bought like the French
      fountain colour (one mode at a time for the whole server, a countdown while one runs). Backups ShopServer_pre_modes1
      and ShopClient_pre_modes1 in ServerStorage.HudBackup. Refuses if the store texts are not the exported ones.
@@ -23,12 +23,12 @@ shopc_src = (ROOT / "tools/shop/src/ShopClient.lua").read_text(encoding="utf-8")
 NS, NC = len(server_src.encode()), len(shopc_src.encode())
 assert (NS, NC) == (9261, 35014), (NS, NC)
 
-# ---- ShopServer: one item "fountainmode" with three choices (variant 1..3), one mode at a time, set on purchase ----
+# ---- ShopServer: one item "fountainmode" with two choices (variant 1..2), one mode at a time, set on purchase ----
 S = [
     ('\tzoomies    = {repeatable = true, clock = "zoomiesuntil", home = "Speed", minutes = "ZoomiesMinutes"},   -- a stretch of speed; buying again adds to it\n}\n',
      '\tzoomies    = {repeatable = true, clock = "zoomiesuntil", home = "Speed", minutes = "ZoomiesMinutes"},   -- a stretch of speed; buying again adds to it\n'
-     '\t-- Oct 10 2026: the Fontana del Limone\'s modes (workspace.FountainModes), one row with three choices; the whole server\'s fountain for Minutes, one mode at a time\n'
-     '\tfountainmode = {repeatable = true, modes = {"spaghetti", "frogs", "petals"}},\n'
+     '\t-- Oct 10 2026: the Fontana del Limone\'s modes (workspace.FountainModes), one row with two choices; the whole server\'s fountain for Minutes, one mode at a time\n'
+     '\tfountainmode = {repeatable = true, modes = {"frogs", "petals"}},\n'
      '}\n'),
     ('\tif item.palette then\n\t\tvariant = tonumber(variant)\n\t\tif not variant or variant < 1 or variant > item.palette or variant % 1 ~= 0 then return false, "pick a colour" end\n\tend\n',
      '\tif item.palette then\n\t\tvariant = tonumber(variant)\n\t\tif not variant or variant < 1 or variant > item.palette or variant % 1 ~= 0 then return false, "pick a colour" end\n\tend\n'
@@ -65,15 +65,15 @@ S = [
 C = [
     ('\t{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},\n}\n',
      '\t{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},\n'
-     '\t-- the Fontana del Limone\'s modes (Oct 10 2026): one row, three choices; the whole server\'s fountain for two minutes, one at a time\n'
-     '\t{id = "fountainmode", name = "Fountain magic", blurb = "Pick one and the fountain in the square does it for two minutes - for everyone here: spaghetti with smiling meatballs, Club Rana for the frogs, or a shower of petals.",\n'
-     '\t\tmodes = {{id = "spaghetti", name = "Spaghetti"}, {id = "frogs", name = "Club Rana"}, {id = "petals", name = "Petals"}}},\n'
+     '\t-- the Fontana del Limone\'s modes (Oct 10 2026): one row, two choices; the whole server\'s fountain for two minutes, one at a time\n'
+     '\t{id = "fountainmode", name = "Fountain magic", blurb = "Pick one and the fountain in the square does it for two minutes - for everyone here: Club Rana for the frogs, or a shower of petals.",\n'
+     '\t\tmodes = {{id = "frogs", name = "Club Rana"}, {id = "petals", name = "Petals"}}},\n'
      '}\n'),
     ('\tcrabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true},\n}\n',
      '\tcrabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true}, fountainmode = {italy = true},\n}\n'),
     ('local function mmss(s) return string.format("%d:%02d", math.floor(s / 60), s % 60) end\n',
      '-- the Fontana del Limone\'s modes are the server\'s too (workspace.FountainModes): one at a time, with a countdown\n'
-     'local MODE_NAMES = {spaghetti = "spaghetti fountain", frogs = "Club Rana", petals = "petal fountain"}\n'
+     'local MODE_NAMES = {frogs = "Club Rana", petals = "petal fountain"}\n'
      'local function modeNow()\n'
      '\tlocal FM = workspace:FindFirstChild("FountainModes")\n'
      '\tlocal m = FM and FM:GetAttribute("ActiveMode") or ""\n'
@@ -85,13 +85,13 @@ C = [
      'local function mmss(s) return string.format("%d:%02d", math.floor(s / 60), s % 60) end\n'),
     ('\telse\n\tlocal btn = Instance.new("TextButton")\n',
      '\telseif item.modes then\n'
-     '\t\t-- THREE CHOICES on one row (Shannon: "one line item with different choices"), each the buy button for its mode\n'
+     '\t\t-- THE CHOICES on one row (Shannon: "one line item with different choices"), each the buy button for its mode\n'
      '\t\trec.choices = {}\n'
      '\t\tlocal n = #item.modes\n'
      '\t\tfor i, mode in ipairs(item.modes) do\n'
      '\t\t\tlocal cb = Instance.new("TextButton"); cb.Name = "Choice" .. i; cb.Text = mode.name\n'
-     '\t\t\tcb.AnchorPoint = Vector2.new(1, 0); cb.Position = UDim2.new(1, -12 - (n - i) * 76, 0, 106)   -- three of 72 px: the same span as the colour row\'s six swatches, which fits a phone\n'
-     '\t\t\tcb.Size = UDim2.fromOffset(72, 36); cb.BackgroundColor3 = GOLD; cb.BorderSizePixel = 0; cb.AutoButtonColor = false; cb.ZIndex = 4\n'
+     '\t\t\tcb.AnchorPoint = Vector2.new(1, 0); cb.Position = UDim2.new(1, -12 - (n - i) * 106, 0, 106)   -- two of 100 px, within the colour row\'s swatch span (fits a phone)\n'
+     '\t\t\tcb.Size = UDim2.fromOffset(100, 36); cb.BackgroundColor3 = GOLD; cb.BorderSizePixel = 0; cb.AutoButtonColor = false; cb.ZIndex = 4\n'
      '\t\t\tcb.FontFace = FONT; cb.TextSize = 14; cb.TextColor3 = BTN_INK; cb.TextScaled = false; cb.Parent = row\n'
      '\t\t\tcorner(cb, UDim.new(0, 10)); stroke(cb, RGB(150, 98, 36), 2, 0.2)\n'
      '\t\t\tcb.MouseButton1Click:Connect(function()\n'
@@ -141,7 +141,7 @@ for a, b in C: assert pc.count(a) == 1, ("client", a[:60]); pc = pc.replace(a, b
 
 def tbl(pairs_): return "{" + ", ".join("{%s, %s}" % (L(a), L(b)) for a, b in pairs_) + "}"
 lua = r'''-- fountain/install_modes1 (job 61): EDIT mode, re-runnable. The Fontana del Limone's bought modes (Shannon, Oct 10 2026):
--- spaghetti + smiling meatballs, the Frog Resort, the petal fountain. workspace.FountainModes + its client, the assets
+-- Club Rana (the frogs) and the petal fountain. workspace.FountainModes + its client, the assets
 -- Shannon imported -> ReplicatedStorage.FountainModeAssets, the Acorn Store rows (ShopServer / ShopClient patched, backups
 -- ServerStorage.HudBackup.ShopServer_pre_modes1 / ShopClient_pre_modes1). Output lines "QQ FMODE".
 if game:GetService("RunService"):IsRunning() then warn("QQ FMODE ABORT - Play mode") return end
@@ -184,7 +184,7 @@ F:SetAttribute("FountainPath", "PortoNocciola/13 Hillside town/Fontana del Limon
 F:SetAttribute("Minutes", 2); F:SetAttribute("Reach", 150)   -- two minutes (Shannon: "different from the French one")
 F:SetAttribute("FrogSoundId", 73626983091367); F:SetAttribute("BounceSoundId", 0)
 F:SetAttribute("PetalsPerSecond", 60); F:SetAttribute("PetalMax", 420); F:SetAttribute("PetalSpread", 55); F:SetAttribute("PetalSpeedMin", 6); F:SetAttribute("PetalSpeedMax", 10); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalRest", 2.6); F:SetAttribute("CarpetCount", 90)
-F:SetAttribute("NoodleColumn", 26); F:SetAttribute("NoodleRim", 40); F:SetAttribute("NoodleOver", 18); F:SetAttribute("CoilsBasin", 10); F:SetAttribute("CoilsBowl", 6); F:SetAttribute("NoodleSpeed", 1.0); F:SetAttribute("Sauce", false); F:SetAttribute("SauceBits", 60); F:SetAttribute("SteamRate", 4); F:SetAttribute("MeatballsRim", 7); F:SetAttribute("MeatballEvery", 5); F:SetAttribute("MeatballRest", 7)
+
 F:SetAttribute("SignText", "CLUB RANA"); F:SetAttribute("DeckAngle", 0.9)
 F:SetAttribute("RimY", rimY or (c.Y - 2.15 + 1.3)); F:SetAttribute("RimR", rimR); F:SetAttribute("GroundY", groundY)
 F:SetAttribute("ActiveMode", ""); F:SetAttribute("ActiveUntil", 0); F:SetAttribute("ActiveBy", "")

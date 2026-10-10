@@ -23,8 +23,8 @@ local ITEMS = {
 	crabtrap   = {once = true},                           -- Oct 4 2026: the crab game at Porto Nocciola (workspace.CrabGame)
 	camera     = {once = true},                           -- Oct 8 2026: the postcard camera (workspace.PhotoGame)
 	zoomies    = {repeatable = true, clock = "zoomiesuntil", home = "Speed", minutes = "ZoomiesMinutes"},   -- a stretch of speed; buying again adds to it
-	-- Oct 10 2026: the Fontana del Limone's modes (workspace.FountainModes), one row with three choices; the whole server's fountain for Minutes, one mode at a time
-	fountainmode = {repeatable = true, modes = {"spaghetti", "frogs", "petals"}},
+	-- Oct 10 2026: the Fontana del Limone's modes (workspace.FountainModes), one row with two choices; the whole server's fountain for Minutes, one mode at a time
+	fountainmode = {repeatable = true, modes = {"frogs", "petals"}},
 }
 
 local busy = {}                                        -- one purchase at a time per player

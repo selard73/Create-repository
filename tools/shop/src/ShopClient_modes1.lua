@@ -37,9 +37,9 @@ local ITEMS = {
 	{id = "backpack",   name = "Backpack",        blurb = "Carry your things, and your favourite squirrel, on your back.", once = true},	{id = "glider",     name = "Hang glider",     blurb = "Yours to keep. Take off from the top of the Sandstone Climb and glide into the Rue.", once = true},
 	-- keepsakes (Oct 9 2026): not for sale here; the row shows once the thing is yours
 	{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},
-	-- the Fontana del Limone's modes (Oct 10 2026): one row, three choices; the whole server's fountain for two minutes, one at a time
-	{id = "fountainmode", name = "Fountain magic", blurb = "Pick one and the fountain in the square does it for two minutes - for everyone here: spaghetti with smiling meatballs, Club Rana for the frogs, or a shower of petals.",
-		modes = {{id = "spaghetti", name = "Spaghetti"}, {id = "frogs", name = "Club Rana"}, {id = "petals", name = "Petals"}}},
+	-- the Fontana del Limone's modes (Oct 10 2026): one row, two choices; the whole server's fountain for two minutes, one at a time
+	{id = "fountainmode", name = "Fountain magic", blurb = "Pick one and the fountain in the square does it for two minutes - for everyone here: Club Rana for the frogs, or a shower of petals.",
+		modes = {{id = "frogs", name = "Club Rana"}, {id = "petals", name = "Petals"}}},
 }
 
 -- WHICH MAP SELLS WHAT (Oct 8 2026, Shannon: split the store by map "like the progress menu"): two tabs like the
@@ -154,7 +154,7 @@ local function fountainNow()
 	return 0, 0, nil
 end
 -- the Fontana del Limone's modes are the server's too (workspace.FountainModes): one at a time, with a countdown
-local MODE_NAMES = {spaghetti = "spaghetti fountain", frogs = "Club Rana", petals = "petal fountain"}
+local MODE_NAMES = {frogs = "Club Rana", petals = "petal fountain"}
 local function modeNow()
 	local FM = workspace:FindFirstChild("FountainModes")
 	local m = FM and FM:GetAttribute("ActiveMode") or ""
@@ -277,13 +277,13 @@ for i, item in ipairs(ITEMS) do
 		pl.TextColor3 = INK_DIM; pl.TextXAlignment = Enum.TextXAlignment.Left; pl.Text = ""; pl.ZIndex = 4; pl.Parent = row
 		rec.priceLabel = pl
 	elseif item.modes then
-		-- THREE CHOICES on one row (Shannon: "one line item with different choices"), each the buy button for its mode
+		-- THE CHOICES on one row (Shannon: "one line item with different choices"), each the buy button for its mode
 		rec.choices = {}
 		local n = #item.modes
 		for i, mode in ipairs(item.modes) do
 			local cb = Instance.new("TextButton"); cb.Name = "Choice" .. i; cb.Text = mode.name
-			cb.AnchorPoint = Vector2.new(1, 0); cb.Position = UDim2.new(1, -12 - (n - i) * 76, 0, 106)   -- three of 72 px: the same span as the colour row's six swatches, which fits a phone
-			cb.Size = UDim2.fromOffset(72, 36); cb.BackgroundColor3 = GOLD; cb.BorderSizePixel = 0; cb.AutoButtonColor = false; cb.ZIndex = 4
+			cb.AnchorPoint = Vector2.new(1, 0); cb.Position = UDim2.new(1, -12 - (n - i) * 106, 0, 106)   -- two of 100 px, within the colour row's swatch span (fits a phone)
+			cb.Size = UDim2.fromOffset(100, 36); cb.BackgroundColor3 = GOLD; cb.BorderSizePixel = 0; cb.AutoButtonColor = false; cb.ZIndex = 4
 			cb.FontFace = FONT; cb.TextSize = 14; cb.TextColor3 = BTN_INK; cb.TextScaled = false; cb.Parent = row
 			corner(cb, UDim.new(0, 10)); stroke(cb, RGB(150, 98, 36), 2, 0.2)
 			cb.MouseButton1Click:Connect(function()

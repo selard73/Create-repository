@@ -613,3 +613,19 @@ heap (6 coils), curtains from the bowl's edge (40), over the rim (18); petals 60
 a fifth of them off the basin's rim down to the paving, the ground carpet to 5.5 studs out. Job 66 commit below.
 Result job 66 (runner 3, 53cca9a): FountainModeClient 37269; store unchanged from job 65 (10916 / 38793); Sauce false; assets
 unchanged. Job 65 was published by Shannon at 03:26 UTC (the one-row store, Club Rana, petal meshes); 66 not yet published.
+Shannon: "scrap the spaghetti fountain all together ... keep the frogs and the flowers".
+
+## Job 67: the fountain without the spaghetti (Studio EDIT, re-run; ask Shannon first)
+
+Re-run tools/fountain/install_modes1.lua at the commit below: FountainModes rebuilt with the client minus spaghetti (24809
+chars); the store restored from the pre_modes1 backups and re-patched with two choices, Club Rana / Petals (ShopServer
+9261 -> 10901, ShopClient 35014 -> 38666). `QQ FMODE DONE`. No publish.
+
+## Job 68: the opera spotlight (Studio EDIT; ask Shannon first)
+
+Shannon: "just for the player who presses the button to hear the opera singer: for a moment dim the lights in the world
+and put a spotlight on her and the accordion player until she finishes singing, then bring the lights up again".
+tools/opera/install_lights1.lua: workspace.OperaLights + OperaLightsClient (client-local: on this player's Listen, a
+colour-correction and Lighting dim over 1.6 s, warm spotlights with visible beams and light pools over the singer and
+Nino, until OperaSong stops / the player walks 45 studs away / respawns; up again over 2.2 s). Attributes to tune on the
+folder. Undo: delete workspace.OperaLights. Send the `QQ OPERA` line. No publish.
