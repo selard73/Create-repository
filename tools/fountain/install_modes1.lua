@@ -12,13 +12,14 @@ local backup = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); backup.
 -- one) is put back to the base from the backups first, then patched afresh, so a re-run always gives the current rows.
 local shopDone = cl.Source:find('id = "fountainmode"', 1, true) ~= nil and sv.Source:find("item.modes", 1, true) ~= nil
 local restored = false
+local baseS, baseC = sv.Source, cl.Source   -- the texts the patch starts from; written back only at the end, after every abort point
 if sv.Source:find("modeTaken", 1, true) then
 	local b1, b2 = backup:FindFirstChild("ShopServer_pre_modes1"), backup:FindFirstChild("ShopClient_pre_modes1")
 	if not (b1 and b2 and #b1.Source == 9261 and #b2.Source == 35014) then warn("QQ FMODE ABORT - the store carries an earlier modes patch and HudBackup has no clean ShopServer_pre_modes1 / ShopClient_pre_modes1 to go back to; nothing changed") return end
-	sv.Source = b1.Source; cl.Source = b2.Source; restored = true; shopDone = false
+	baseS, baseC = b1.Source, b2.Source; restored = true; shopDone = false
 end
-if #sv.Source ~= 9261 then warn(string.format("QQ FMODE ABORT - ShopServer is %d chars, expected 9261 (not the job 59 export); nothing changed", #sv.Source)) return end
-if #cl.Source ~= 35014 then warn(string.format("QQ FMODE ABORT - ShopClient is %d chars, expected 35014 (not the job 59 export); nothing changed", #cl.Source)) return end
+if #baseS ~= 9261 then warn(string.format("QQ FMODE ABORT - ShopServer is %d chars, expected 9261 (not the job 59 export); nothing changed", #baseS)) return end
+if #baseC ~= 35014 then warn(string.format("QQ FMODE ABORT - ShopClient is %d chars, expected 35014 (not the job 59 export); nothing changed", #baseC)) return end
 -- the fountain, and its rim and the paving, measured
 local fm = workspace
 for seg in string.gmatch("PortoNocciola/13 Hillside town/Fontana del Limone", "[^/]+") do fm = fm and fm:FindFirstChild(seg) end
@@ -565,7 +566,7 @@ if not shopDone then
 		if not f then warn("QQ FMODE ABORT - patched " .. what .. " does not compile: " .. tostring(err)) return nil end
 		return src
 	end
-	local newS = patch(sv.Source, {{[===[
+	local newS = patch(baseS, {{[===[
 	zoomies    = {repeatable = true, clock = "zoomiesuntil", home = "Speed", minutes = "ZoomiesMinutes"},   -- a stretch of speed; buying again adds to it
 }
 ]===], [===[
@@ -626,7 +627,7 @@ if not shopDone then
 		end
 		return true, price
 ]===]}}, "ShopServer")
-	local newC = newS and patch(cl.Source, {{[===[
+	local newC = newS and patch(baseC, {{[===[
 	{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},
 }
 ]===], [===[
