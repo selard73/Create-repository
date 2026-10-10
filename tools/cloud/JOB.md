@@ -552,3 +552,5 @@ Store rows (ShopServer 9261 -> 10669, ShopClient 35014 -> 37163; backups HudBack
 Price_spaghetti/frogs/petals 25, Sell_* true). Re-runnable (the store patch is skipped once applied; assets are kept).
 Send the `QQ FMODE DONE` line (it names the assets found and the measured rim). Then Shannon publishes and buys each mode
 in the store's Porto tab (25 acorns each; the whole server's fountain for ten minutes, one at a time). No publish by the runner.
+Result job 61 (runner 3, d6e3c38): FountainModes + client 26103; assets Frog, LilyPad, Lotus, Flowers (10 parts coloured);
+ShopServer 10669 / ShopClient 37163 (backups *_pre_modes1); RimY -9.99 at r 6.0, GroundY -12.04. Not play-tested, not published.
