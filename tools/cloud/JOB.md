@@ -653,3 +653,15 @@ Roblox's capture bar (screenshot/record buttons) can sit over the HOLD TO SHOOT 
 stack covers the same area when a prompt is near. In the 667x375 emulator both tools worked. Proposed fix when she says
 so: in Porto (no hoop within range) a touch shot flies where the camera looks and the note says so; touch mode by
 PreferredInput, re-checked on LastInputTypeChanged; the HOLD button moved clear of the capture bar.
+Job 70 result: tools/tools_src/ exported (SlingClient 16373, SlingServer 17641, SlingPose, BinocularsClient 7981, BinocularsHold,
+BinocularsServer, BinocularsPose, DailyClient 14785, QuestionClient 28363). Shannon on her phone: no HOLD button, binoculars
+dead -> the tools started in mouse mode (MouseEnabled true on her phone).
+
+## Job 71: the slingshot and the binoculars on a phone; the hoop note in Porto (Studio EDIT; ask Shannon first)
+
+tools/tools_src/phone_tools1.lua (4 exact patches, all checked before any write; backups HudBackup.*_pre_phone1):
+SlingClient 16373 -> 18368 (touch by UIS.PreferredInput, switching to touch when a finger arrives; HOLD button at the
+bottom middle, 130 px; away from every hoop (HoopRange 150, new attribute on workspace.Hoop) the acorn goes where you
+look - a point shot at the spot in the middle of the screen within 120 studs, else a lob that way - and the note says so);
+BinocularsClient 7981 -> 8602 (the same touch test, following the last input used); DailyClient 14785 -> 15020 and
+QuestionClient 28363 -> 28598 (phone layout by PreferredInput). Send the `QQ PHONE` line. No publish.
