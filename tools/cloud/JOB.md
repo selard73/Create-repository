@@ -769,3 +769,20 @@ Play test (desktop): the top frog on its pad in the upper bowl, level, facing ou
 on stone; Shannon on the screenshots: "club rana looks good". RideProbe 2559 chars, Probe true, 12 sentinels tagged per far
 section; on a desktop at spawn everything reads full (288/288, 12/12 x4) - the headset's numbers decide. Remover:
 tools/balloon/ride_probe_remove1.lua. Shannon publishes and takes one ride reading the sign.
+
+Shannon's ride with the readout (Oct 10): every count full the whole ride (Funicolare 288/288, 12/12 x4) while the funicolare
+and the far hills still came and went -> the Quest's renderer at a low automatic quality step, not streaming. Her pick: haze
+the far view and lighten the ride in VR (merging the funicolare's small parts kept in reserve).
+
+## Job 80: the VR ride hazed and lighter (Studio EDIT; ask Shannon first)
+
+tools/balloon/vr_ride1.lua: BalloonClient 32702 -> (see the installer header) chars, backup HudBackup.BalloonClient_pre_vrride1:
+in VR, at boarding, shadows off for the ride and Lighting fog 350..900 (or the Atmosphere's Haze 2.5 if the place has one);
+the wind streaks at 36/s and half the bolts; the storm takes over as before and the end of the ride puts everything back
+from the one snapshot. Attributes on BalloonField: VRHazeStart/End, VRHazeAtmo, VRShadowsOff, VRWindRate, VRBoltShare.
+Generator tools/balloon/make_vr_ride1.py. Send the `QQ VRRIDE` line. No publish.
+
+## Job 81: the ride readout out again (Studio EDIT; ask Shannon first)
+
+tools/balloon/ride_probe_remove1.lua: deletes BalloonField.RideProbe, the Probe attribute and the 48 RideProbe_* tags. Send
+the `QQ PROBE GONE` line. No publish. Ask Shannon once for both (80, 81); one message with the two lines.
