@@ -640,3 +640,5 @@ Shannon: "the spotlights should be brighter, the darkness of the world a little 
 after you press it, it is very glowy and still there". Re-run tools/opera/install_lights1.lua: SpotBrightness 18 (+ a warm
 fill light on each performer), BeamStrength 0.26, PoolStrength 0.5; DimBrightness 0.16, DimExposure 0.35, ambient blended
 halfway (DimAmbient 0.5), the sun left at 1.0; the Listen prompt hidden on this client while the aria plays. `QQ OPERA`. No publish.
+Result job 69 (runner 3, ce74f19): OperaLightsClient 8757, attributes as planned. Jobs 67 and 68 were published at 03:59 UTC;
+69 not yet published. Not play-tested.
