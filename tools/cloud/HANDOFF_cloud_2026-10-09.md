@@ -136,6 +136,15 @@ message in a bottle game (Italian, for the 18th); then the French clothing rebui
 The cloud session writes every script and sends each job here as a commit-SHA raw URL; the runner only runs, reports and
 asks Shannon. If this runner nears 90% of its memory, say so to the cloud session so a runner 5 can be started.
 
+## Rewards panel (Shannon, Oct 10 afternoon; to build after the VR fixes are confirmed)
+Roblox community "1001 Squirrels" = id 969906332 (owner SelBell 9611145467; public entry allowed; made Oct 10).
+Plan: one "Rewards" panel - favourite the game + turn on notifications (AvatarEditorService favourite check after
+PromptAllowInventoryReadAccess; ExperienceNotificationService PromptOptIn, CanPromptOptInAsync false afterwards = opted in,
+players who cannot be prompted pass) -> the store item `backpack` granted as a purchase would be; join the community
+(Player:IsInGroup 969906332) -> a small reward or folded into the backpack row; invite a friend (SocialService invite
+prompt; Player:GetJoinData().ReferredByPlayerId on the friend's join) -> double acorns 24 h for both. A like is asked for,
+never gated on (no API). Not rule-breaking per the devforum staff answers found Oct 10 (JOB.md has the links).
+
 ## State at Oct 10 04:45 UTC (all published unless noted)
 - Live: balloon finale (smooth flight, VR stand-off camera, film tour "Balloon flight" in F8, world notes), Bella's game on
   phone/desktop/VR, VR speech bubbles beside the head, the piazza race, the Acorn Store's "Fountain magic" row (Club Rana,
