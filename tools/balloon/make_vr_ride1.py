@@ -43,7 +43,7 @@ NEW = patch(NEW, '\tsaved = nil\nend\n\n-- ---------- smooth flight ----------\n
             '-- IN VR THE FAR VIEW IS HAZED AND THE RIDE RUNS LIGHTER (Shannon, Oct 10: on the headset the funicolare and the far hills\n'
             '-- "come in and out" with everything loaded - the Quest\'s renderer at a low quality step, and the step bounces). A haze\n'
             '-- hides the popping; no shadows, fewer streaks and bolts keep the frame rate up so the step holds. Attributes on the\n'
-            '-- folder: VRHazeStart 350, VRHazeEnd 900 (0 = no haze; with an Atmosphere present, which makes Lighting's fog a dead letter,\n'
+            '-- folder: VRHazeStart 350, VRHazeEnd 900 (0 = no haze; with an Atmosphere present, which makes the Lighting fog a dead letter,\n'
             '-- its Density goes to at least VRHazeDensity 0.55 and its Haze to VRHazeAtmo 2.5 instead), VRShadowsOff true, VRWindRate 36,\n'
             '-- VRBoltShare 0.5. The storm takes over later; stormOff (at home, and on a respawn) puts it all back.\n'
             'local function hazeOn()\n'
