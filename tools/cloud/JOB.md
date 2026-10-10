@@ -776,7 +776,8 @@ the far view and lighten the ride in VR (merging the funicolare's small parts ke
 
 ## Job 80: the VR ride hazed and lighter (Studio EDIT; ask Shannon first)
 
-tools/balloon/vr_ride1.lua: BalloonClient 32702 -> (see the installer header) chars, backup HudBackup.BalloonClient_pre_vrride1:
+tools/balloon/vr_ride1.lua: BalloonClient 32702 -> 34420 chars, backup HudBackup.BalloonClient_pre_vrride1 (review: a respawn
+before the storm clears the haze too; with an Atmosphere its Density goes to 0.55):
 in VR, at boarding, shadows off for the ride and Lighting fog 350..900 (or the Atmosphere's Haze 2.5 if the place has one);
 the wind streaks at 36/s and half the bolts; the storm takes over as before and the end of the ride puts everything back
 from the one snapshot. Attributes on BalloonField: VRHazeStart/End, VRHazeAtmo, VRShadowsOff, VRWindRate, VRBoltShare.
