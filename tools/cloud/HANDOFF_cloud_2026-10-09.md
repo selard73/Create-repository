@@ -117,6 +117,7 @@ holds the full list and every result so far.
   her go there (runner 3, Oct 10).
 
 ## Runner 4 (Oct 10 ~12:10 UTC; runner 3 retired at 90% of its memory, idle, nothing pending)
+Runner 4 = session_013fDV99KM4CFnfC1AZkdfJJ (reported "runner 4 ready" at f7fd491, Oct 10 ~12:35 UTC).
 Read this section, then tools/cloud/JOB.md from job 72 down. The cloud session is "Cloud session handoff"
 (session_01Gwhv9KoRg69mUkZf5xktZw): send it "runner 4 ready" as a cross-session message on first contact, then ONE short
 message per job with every QQ line unchanged. The cloud session answers to the bridge:session_... id your messages carry.
