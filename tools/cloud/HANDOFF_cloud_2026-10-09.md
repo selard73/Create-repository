@@ -150,6 +150,9 @@ never gated on (no API). Not rule-breaking per the devforum staff answers found 
 
 ## Runner 5 (when runner 4 nears 90%; runner 4 = session_013fDV99KM4CFnfC1AZkdfJJ was at 72% at Oct 10 ~20:30 UTC)
 Runner 4 stopped taking jobs at ~80% (Oct 10 ~21:30 UTC) after installing jobs 83, 84 and 85. First job for runner 5: 86 (JOB.md).
+PUBLISHED by Shannon at 19:26:56Z Oct 10 (the games API "updated"; the Studio log puts job 85's install at 19:26:17Z): the live
+game carries jobs 81, 83, 84, 85 (the cliff backing + sandstone, LipPlate 36, two lip clumps, the readout gone), BalloonClient
+32702. Her verdict on the live cliff, bulge and sliver pending; job 86 (the sliver) waits for runner 5.
 Same rules as "Runner 4" above; read JOB.md from job 82 down. First contact: "runner 5 ready" to the cloud session
 (session_01Gwhv9KoRg69mUkZf5xktZw). Runner 4's habits worth keeping: a read-only dry run of a script's probes before asking
 Shannon, a Studio PLAY-TEST preview (the script's body run on the test server, discarded on stop, Edit mode checked unchanged
