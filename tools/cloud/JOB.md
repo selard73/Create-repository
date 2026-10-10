@@ -530,3 +530,8 @@ Job 61 build: tools/fountain/src/FountainModeClient.lua (the modes, client-local
 -> install_modes1.lua (FountainModes folder + client, assets from the imports, store rows via exact patches of the job 59 texts).
 Shannon (VR, after publishing 56-58): "the balloon works really well in the vr now"; Bella's reveal "a little too big and in
 your face now, but good enough" (to tone down later: seaglass11's VR block, scale 1.5 and 2.8 studs in front); pads gone.
+
+## Job 62: Bella's reveal in VR a touch smaller (Studio EDIT; ask Shannon first)
+
+Shannon: "maybe slightly smaller please". tools/porto/seaglass12.lua (SeaGlassClient after job 57, about 18853 chars, 2
+finds): 1.15x instead of 1.5x, 3.3 studs off instead of 2.8. Backup HudBackup.SeaGlassClient_pre_seaglass12. `QQ SG12`. No publish.

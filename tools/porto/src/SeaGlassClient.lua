@@ -213,8 +213,8 @@ local function reveal(id)
 	if phone() and cam then local bm = bella(); local d = bm and (bm:GetPivot().Position - cam.CFrame.Position).Magnitude or 8; base = cam.CFrame * CFrame.new(0, -0.9, -math.max(3.5, d - 2.5)) end   -- a phone: dead centre, just in front of Bella (Oct 9)
 	if UIS.VREnabled and cam then   -- VR: in front of your eyes, where you look at this moment (Shannon: "front and center, even in VR")
 		local okc, rcf = pcall(cam.GetRenderCFrame, cam); rcf = okc and rcf or cam.CFrame
-		base = rcf * CFrame.new(0, -0.35, -2.8)
-		pcall(m.ScaleTo, m, 1.5)
+		base = rcf * CFrame.new(0, -0.3, -3.3)   -- (a little farther off: "slightly smaller please", Oct 10)
+		pcall(m.ScaleTo, m, 1.15)
 	end
 	local look = cam and Vector3.new(cam.CFrame.LookVector.X, 0, cam.CFrame.LookVector.Z) or Vector3.new(0, 0, -1)
 	if look.Magnitude > 0.01 then base = CFrame.new(base.Position, base.Position - look.Unit) end
