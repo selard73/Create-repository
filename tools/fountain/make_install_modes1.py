@@ -159,7 +159,7 @@ local assets = RS:FindFirstChild("FountainModeAssets") or Instance.new("Folder")
 local function tidy(m) for _, d in ipairs(m:GetDescendants()) do if d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false; d.CanQuery = false; d.CanTouch = false end end end
 local got = {}
 for _, m in ipairs(workspace:GetChildren()) do
-	if m:IsA("Model") then
+	if m:IsA("Model") and (m.Name:lower() == "frog" or m.Name:lower() == "flowers" or m:FindFirstChild("EyeL", true) or m:FindFirstChild("Lotus_Petals", true)) then
 		if m:FindFirstChild("Body", true) and m:FindFirstChild("EyeL", true) and not assets:FindFirstChild("Frog") then
 			tidy(m); m.Name = "Frog"; m.PrimaryPart = m:FindFirstChild("Body", true); m.Parent = assets; table.insert(got, "Frog")
 		elseif m:FindFirstChild("LilyPad", true) then
@@ -171,6 +171,12 @@ for _, m in ipairs(workspace:GetChildren()) do
 		end
 	end
 end
+-- the flowers' flat Blender colours do not survive Import 3D (they come in grey): set by name, every run
+local COLOURS = {LilyPad = Color3.fromRGB(48, 120, 48), Leaf = Color3.fromRGB(66, 153, 56), Lotus_Petals = Color3.fromRGB(250, 148, 189), Lotus_Centre = Color3.fromRGB(255, 204, 38),
+	Flower_A_Petals = Color3.fromRGB(242, 102, 158), Flower_A_Centre = Color3.fromRGB(255, 204, 38), Flower_B_Petals = Color3.fromRGB(224, 41, 66), Flower_B_Centre = Color3.fromRGB(255, 204, 38),
+	Flower_C_Petals = Color3.fromRGB(158, 87, 219), Flower_C_Centre = Color3.fromRGB(255, 204, 38)}
+local coloured = 0
+for _, d in ipairs(assets:GetDescendants()) do if d:IsA("BasePart") and COLOURS[d.Name] and d.TextureID == "" then d.Color = COLOURS[d.Name]; d.Material = Enum.Material.SmoothPlastic; coloured += 1 end end
 local have = {}
 for _, n in ipairs({"Frog", "LilyPad", "Lotus", "Flowers"}) do if assets:FindFirstChild(n) then table.insert(have, n) end end
 -- the store
@@ -198,7 +204,7 @@ if not shopDone then
 	shopNote = string.format("ShopServer %d -> %d, ShopClient %d -> %d chars; backups HudBackup.ShopServer_pre_modes1 / ShopClient_pre_modes1", @@NS@@, #newS, @@NC@@, #newC)
 end
 game:GetService("ChangeHistoryService"):SetWaypoint("Fountain modes installed")
-print(string.format("QQ FMODE DONE: workspace.FountainModes (client %d chars; rim y %s at r %.1f, paving y %.1f); assets in ReplicatedStorage.FountainModeAssets: %s (moved in now: %s); %s", #cs.Source, tostring(rimY and string.format("%.2f", rimY) or "not measured, default"), rimR, groundY, #have > 0 and table.concat(have, ", ") or "NONE - import frog.fbx and flowers.fbx and run again", #got > 0 and table.concat(got, ", ") or "none", shopNote))
+print(string.format("QQ FMODE DONE: workspace.FountainModes (client %d chars; rim y %s at r %.1f, paving y %.1f); assets in ReplicatedStorage.FountainModeAssets: %s (moved in now: %s; %d flower parts coloured); %s", #cs.Source, tostring(rimY and string.format("%.2f", rimY) or "not measured, default"), rimR, groundY, #have > 0 and table.concat(have, ", ") or "NONE - import frog.fbx and flowers.fbx and run again", #got > 0 and table.concat(got, ", ") or "none", coloured, shopNote))
 '''
 for k, v in {"NS": str(NS), "NC": str(NC), "CLIENT": L(client), "S": tbl(S), "C": tbl(C)}.items(): lua = lua.replace("@@" + k + "@@", v)
 assert "@@" not in lua
