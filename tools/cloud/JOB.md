@@ -812,8 +812,11 @@ LipRockW covers the corner itself; no blue part near the lip (the river is terra
 
 ## Job 83: the cliff's bald spots and the lip's right edge (Studio EDIT; ask Shannon first)
 
-tools/falls/cliff_fix1.lua: (1) SouthCliff_W01/W02/E01 get a backing copy (same mesh and texture, 1.5 studs behind the face,
-no collision) so every opening shows rock behind rock and the recess between the top slabs and the grass is roofed; (2) the
-terrain standing in front of the west cliff's top band (x 100..168, y 26..46) is probed and shaved with thin Air boxes, the
-region backed up first (HudBackup.CliffTop_pre1); (3) FallsB.LipPlate widened to the sheet's width (SizeWas kept). Send the
-`QQ CLIFFFIX` line, then pictures from the same spots as job 82 (b2 and c4 above all). No publish.
+tools/falls/cliff_fix1.lua: (1) a backing WALL of sandstone blocks (4 studs wide, 1.6 thick, y 24 up to the slabs' top) built
+from measurements at run time, one stud behind the furthest-back face point of each segment, along the west cliff's top band
+(x 100..168) and the east cliff's by the notch (x 200..244), in SouthGorge.Rock.CliffBacking: every opening between slabs
+shows sandstone, the recess under the top slabs is filled (review: a shifted copy of the mesh shares its openings - dropped);
+(2) the terrain standing in front of the face or closer behind it than the wall is carved back with thin Air boxes (region
+backed up first: HudBackup.CliffTop_pre1); (3) FallsB.LipPlate widened to the Body sheet's crest width (SizeWas kept). Send
+the `QQ CLIFFFIX` line, then pictures from the same spots as job 82 (b2, d and c4 above all). No publish. Also: identify the
+three small pale grey blocks floating in the sky above the notch in every picture (what and where they are).
