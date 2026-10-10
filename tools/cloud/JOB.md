@@ -713,3 +713,6 @@ tools/porto/funicolare_persist1.lua: workspace.PortoNocciola["15 Funicolare"].Mo
 model comes in whenever its long rails are in range, as they are from the balloon; review: not Persistent, which would load it
 and the cars' every-frame moves for every player in every map); the old value kept in the attribute StreamingWas. Send the `QQ FUNI` line. No publish.
 Ask Shannon once for all three edits (73, 74, 75), then run them in that order and send one message with the three lines.
+Result jobs 73-75 (runner 4, 2249420; Shannon's one yes for all three; not published): PromptClient 23746 -> 30345 (backup
+PromptClient_pre_vr1 = the job 72 export); FountainModes rebuilt, client 25442, assets unchanged, store 10901 / 38666 byte-equal
+to before; "15 Funicolare" Atomic (was Default, kept in StreamingWas). Not play-tested; Shannon publishes and tests in VR.
