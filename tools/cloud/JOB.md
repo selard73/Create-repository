@@ -642,3 +642,14 @@ fill light on each performer), BeamStrength 0.26, PoolStrength 0.5; DimBrightnes
 halfway (DimAmbient 0.5), the sun left at 1.0; the Listen prompt hidden on this client while the aria plays. `QQ OPERA`. No publish.
 Result job 69 (runner 3, ce74f19): OperaLightsClient 8757, attributes as planned. Jobs 67 and 68 were published at 03:59 UTC;
 69 not yet published. Not play-tested.
+
+## Diagnosis (runner 3, Oct 10): phone slingshot / binoculars "not responding" in Porto; the slingshot's hoop note in Italy
+
+Nothing changed yet (Shannon's word awaited). Findings: SlingClient's help text always mentions the hoop; a phone shot
+aims at the nearest AcornHoop and all three are in France (400+ studs from Porto), so in Porto the acorn lobs away towards
+France at 72 degrees and still costs an acorn ("nothing happened"). Both tool clients decide touch mode ONCE at start with
+UIS.TouchEnabled and not UIS.MouseEnabled (MouseEnabled flickered true in the emulator; UIS.PreferredInput is safer).
+Roblox's capture bar (screenshot/record buttons) can sit over the HOLD TO SHOOT button on a phone, and PromptTouch's
+stack covers the same area when a prompt is near. In the 667x375 emulator both tools worked. Proposed fix when she says
+so: in Porto (no hoop within range) a touch shot flies where the camera looks and the note says so; touch mode by
+PreferredInput, re-checked on LastInputTypeChanged; the HOLD button moved clear of the capture bar.
