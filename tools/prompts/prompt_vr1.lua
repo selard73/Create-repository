@@ -1,7 +1,7 @@
 -- prompt_vr1.lua (Studio EDIT mode, run once; re-running is a no-op). Job 73.
 -- workspace.PromptUI.PromptClient: in VR the interact pill is drawn in the world beside the thing itself (it rode on the
 -- player's own head, unseen behind a headset's eyes - Shannon: the race's and the singer's buttons "missing completely").
--- Exact-string patch of the live 23746-char source -> 29987 chars; backup ServerStorage.HudBackup.PromptClient_pre_vr1.
+-- Exact-string patch of the live 23746-char source -> 30345 chars; backup ServerStorage.HudBackup.PromptClient_pre_vr1.
 -- Undo: PromptClient.Source = HudBackup.PromptClient_pre_vr1.Source. Nothing else changes; no publish.
 local SS = game:GetService("ServerStorage")
 local pu = workspace:FindFirstChild("PromptUI"); local pc = pu and pu:FindFirstChild("PromptClient")
@@ -11,7 +11,7 @@ local Players = game:GetService("Players")
 local PPS = game:GetService("ProximityPromptService")
 local TextService = game:GetService("TextService")
 local UIS = game:GetService("UserInputService")
-local VR = game:GetService("VRService").VREnabled
+local VRService = game:GetService("VRService")
 local TweenService = game:GetService("TweenService")
 local player = Players.LocalPlayer
 local C = Color3.fromRGB
@@ -265,7 +265,7 @@ local function syncDailyPromptVisibility()
  dailyBlocked = blocked
  gui.Enabled = not blocked
  touchGui.Enabled = not blocked
- if blocked then release() end
+ if blocked then release(); for _, h in pairs(vrHolds) do h.cancel() end end
  for _, rec in pairs(live) do if rec.hl then rec.hl.Enabled = not blocked end; if rec.vr then rec.holder.Enabled = not blocked end end
 end
 game:GetService("RunService").RenderStepped:Connect(syncDailyPromptVisibility)
@@ -335,11 +335,17 @@ local function showVR(prompt, key)
 		vrHolds[prompt] = nil
 		endAfter(math.max(0, prompt.HoldDuration - (os.clock() - h.began)) + 0.05)
 	end
+	local function cancel()                                   -- the daily card / a panel took the screen: drop the hold now
+		if not vrHolds[prompt] then return end
+		vrHolds[prompt] = nil; seq += 1
+		if s.Parent then s.Color = C(240, 200, 90) end
+		pcall(function() prompt:InputHoldEnd() end)
+	end
 	btn.InputBegan:Connect(function(io)
 		if dailyBlocked then return end
 		if io.UserInputType ~= Enum.UserInputType.MouseButton1 and io.UserInputType ~= Enum.UserInputType.Touch then return end
 		vrPressSeen = true
-		seq += 1; vrHolds[prompt] = {began = os.clock(), finish = finish}; s.Color = C(255, 246, 220)
+		seq += 1; vrHolds[prompt] = {began = os.clock(), finish = finish, cancel = cancel}; s.Color = C(255, 246, 220)
 		pcall(function() prompt:InputHoldBegin() end)
 	end)
 	btn.InputEnded:Connect(function(io)
@@ -364,7 +370,7 @@ PPS.PromptShown:Connect(function(prompt, inputType)
 	local compact = touch and prompt:GetAttribute("PhoneSpot") == "sign" and prompt:FindFirstAncestor("ForestRace") ~= nil
 	local S = compact and 1 or (touch and 1.25 or 1)                     -- a thumb needs a bigger target than a mouse pointer (not too big: Shannon)
 	local key = (not touch) and keyName(prompt, inputType) or nil
-	if VR and not touch then                           -- VR: the pill in the world, by the thing itself
+	if VRService.VREnabled and not touch then           -- VR: the pill in the world, by the thing itself
 		if live[prompt] then local o = live[prompt]; (o.holder or o.pill):Destroy(); if o.hl then o.hl:Destroy() end end
 		live[prompt] = showVR(prompt, key)
 		return
@@ -467,7 +473,7 @@ task.spawn(function()
 	end
 end)
 ]===]
-if #pc.Source == 29987 and pc.Source == NEW then print("QQ PVR DONE (already installed): PromptClient 29987") return end
+if #pc.Source == 30345 and pc.Source == NEW then print("QQ PVR DONE (already installed): PromptClient 30345") return end
 if #pc.Source ~= 23746 then print(string.format("QQ PVR ABORT: PromptClient is %d chars, expected 23746 (not the exported copy; export again)", #pc.Source)) return end
 local f, err = loadstring(NEW); if not f then print("QQ PVR ABORT: the new client does not compile: " .. tostring(err)) return end
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS

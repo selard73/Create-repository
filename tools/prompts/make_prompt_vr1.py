@@ -24,7 +24,7 @@ NEW = SRC
 # 1. VR flag
 NEW = patch(NEW, 'local UIS = game:GetService("UserInputService")\n',
             'local UIS = game:GetService("UserInputService")\n'
-            'local VR = game:GetService("VRService").VREnabled\n')
+            'local VRService = game:GetService("VRService")\n')
 
 # 1b. the VR hold bookkeeping, before release() (the global InputEnded handler below it uses vrHolds)
 NEW = patch(NEW, 'local function release()\n',
@@ -91,11 +91,17 @@ local function showVR(prompt, key)
 		vrHolds[prompt] = nil
 		endAfter(math.max(0, prompt.HoldDuration - (os.clock() - h.began)) + 0.05)
 	end
+	local function cancel()                                   -- the daily card / a panel took the screen: drop the hold now
+		if not vrHolds[prompt] then return end
+		vrHolds[prompt] = nil; seq += 1
+		if s.Parent then s.Color = C(240, 200, 90) end
+		pcall(function() prompt:InputHoldEnd() end)
+	end
 	btn.InputBegan:Connect(function(io)
 		if dailyBlocked then return end
 		if io.UserInputType ~= Enum.UserInputType.MouseButton1 and io.UserInputType ~= Enum.UserInputType.Touch then return end
 		vrPressSeen = true
-		seq += 1; vrHolds[prompt] = {began = os.clock(), finish = finish}; s.Color = C(255, 246, 220)
+		seq += 1; vrHolds[prompt] = {began = os.clock(), finish = finish, cancel = cancel}; s.Color = C(255, 246, 220)
 		pcall(function() prompt:InputHoldBegin() end)
 	end)
 	btn.InputEnded:Connect(function(io)
@@ -115,7 +121,7 @@ NEW = patch(NEW, 'local function keyName(prompt, inputType)\n', SHOW_VR + 'local
 # 3a. PromptShown hands VR over
 NEW = patch(NEW, '\tlocal key = (not touch) and keyName(prompt, inputType) or nil\n',
             '\tlocal key = (not touch) and keyName(prompt, inputType) or nil\n'
-            '\tif VR and not touch then                           -- VR: the pill in the world, by the thing itself\n'
+            '\tif VRService.VREnabled and not touch then           -- VR: the pill in the world, by the thing itself\n'
             '\t\tif live[prompt] then local o = live[prompt]; (o.holder or o.pill):Destroy(); if o.hl then o.hl:Destroy() end end\n'
             '\t\tlive[prompt] = showVR(prompt, key)\n'
             '\t\treturn\n'
@@ -123,6 +129,9 @@ NEW = patch(NEW, '\tlocal key = (not touch) and keyName(prompt, inputType) or ni
 # 3b. the daily-card / panel blocker hides VR pills too
 NEW = patch(NEW, ' for _, rec in pairs(live) do if rec.hl then rec.hl.Enabled = not blocked end end\n',
             ' for _, rec in pairs(live) do if rec.hl then rec.hl.Enabled = not blocked end; if rec.vr then rec.holder.Enabled = not blocked end end\n')
+# 3b'. a panel taking the screen cancels an open VR hold (as release() does for a flat pill)
+NEW = patch(NEW, ' if blocked then release() end\n',
+            ' if blocked then release(); for _, h in pairs(vrHolds) do h.cancel() end end\n')
 # 3c'. a release anywhere ends open VR holds too
 NEW = patch(NEW, 'UIS.InputEnded:Connect(function(io)                   -- a finger that slides off the pill still ends the hold\n'
             '\tif io.UserInputType == Enum.UserInputType.Touch or io.UserInputType == Enum.UserInputType.MouseButton1 then release() end\n',

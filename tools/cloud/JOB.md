@@ -691,7 +691,7 @@ parts) 240-600 studs from the balloon field; rails/cables are 375-stud parts (th
 
 ## Job 73: the interact pill in VR, beside the thing itself (Studio EDIT; ask Shannon first)
 
-tools/prompts/prompt_vr1.lua: exact-string patch of workspace.PromptUI.PromptClient (23746 -> 29987; backup
+tools/prompts/prompt_vr1.lua: exact-string patch of workspace.PromptUI.PromptClient (23746 -> 30345; backup
 HudBackup.PromptClient_pre_vr1): in VR each shown prompt gets a BillboardGui pill on its own part (0.6-0.8 studs tall, the
 controller button on the badge, the object and action texts, the hold fill), pressed with the pointer (a tap completes a
 hold-pill; a release anywhere ends the hold), hidden while the daily card / a panel is open; flat screens unchanged.
