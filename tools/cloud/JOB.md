@@ -565,3 +565,12 @@ Minutes 2, keeps the assets, and turns the three store blurbs from ten to two mi
 Shannon: "the frogs look cute"; the petals "are a blur, falling too quickly, they should be falling in slow dreamy motion" ->
 petal emitters at 0.4x the water's speed, pull 5, drag 1.2, life 4.5-6.3 s, rate 0.3x, slow spin (attributes PetalSpeed/
 PetalFall/PetalDrag/PetalLife). Folded into the job 63 re-run (commit below).
+
+## Job 64: the store's one "Fountain magic" row with three choices; the slow petals; the spaghetti redo (Studio EDIT, re-run; ask Shannon first)
+
+Shannon: "on the store menu they should not be separate things, they should be on one line item with different choices".
+tools/fountain/install_modes1.lua now puts the store back to the job 59 texts from the pre_modes1 backups and patches it
+afresh: one item fountainmode (Price_fountainmode 25, Sell_fountainmode) with three choice buttons (Spaghetti / Frogs /
+Petals) on the Porto tab, the countdown on that row; ShopServer 9261 -> 10916, ShopClient 35014 -> 38670; the first
+version's Price_/Sell_ spaghetti/frogs/petals attributes are removed. Same run rebuilds FountainModes (client 27800: the
+slow petals, the spaghetti redo, Minutes 2). Supersedes job 63 if not yet run. Send the `QQ FMODE DONE` line. No publish.

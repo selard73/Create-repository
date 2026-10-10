@@ -8,11 +8,17 @@ local Shop = workspace:FindFirstChild("Shop")
 local sv = Shop and Shop:FindFirstChild("ShopServer"); local cl = Shop and Shop:FindFirstChild("ShopClient")
 if not (sv and cl) then warn("QQ FMODE ABORT - workspace.Shop.ShopServer / ShopClient missing") return end
 local backup = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); backup.Name = "HudBackup"; backup.Parent = SS
-local shopDone = backup:FindFirstChild("ShopServer_pre_modes1") ~= nil and sv.Source:find("modeTaken", 1, true) ~= nil
-if not shopDone then
-	if #sv.Source ~= 9261 then warn(string.format("QQ FMODE ABORT - ShopServer is %d chars, expected 9261 (not the job 59 export); nothing changed", #sv.Source)) return end
-	if #cl.Source ~= 35014 then warn(string.format("QQ FMODE ABORT - ShopClient is %d chars, expected 35014 (not the job 59 export); nothing changed", #cl.Source)) return end
+-- the store: the job 59 texts are the base. A store already carrying these modes (three rows from the first version, or this
+-- one) is put back to the base from the backups first, then patched afresh, so a re-run always gives the current rows.
+local shopDone = cl.Source:find('id = "fountainmode"', 1, true) ~= nil and sv.Source:find("item.modes", 1, true) ~= nil
+local restored = false
+if sv.Source:find("modeTaken", 1, true) then
+	local b1, b2 = backup:FindFirstChild("ShopServer_pre_modes1"), backup:FindFirstChild("ShopClient_pre_modes1")
+	if not (b1 and b2 and #b1.Source == 9261 and #b2.Source == 35014) then warn("QQ FMODE ABORT - the store carries an earlier modes patch and HudBackup has no clean ShopServer_pre_modes1 / ShopClient_pre_modes1 to go back to; nothing changed") return end
+	sv.Source = b1.Source; cl.Source = b2.Source; restored = true; shopDone = false
 end
+if #sv.Source ~= 9261 then warn(string.format("QQ FMODE ABORT - ShopServer is %d chars, expected 9261 (not the job 59 export); nothing changed", #sv.Source)) return end
+if #cl.Source ~= 35014 then warn(string.format("QQ FMODE ABORT - ShopClient is %d chars, expected 35014 (not the job 59 export); nothing changed", #cl.Source)) return end
 -- the fountain, and its rim and the paving, measured
 local fm = workspace
 for seg in string.gmatch("PortoNocciola/13 Hillside town/Fontana del Limone", "[^/]+") do fm = fm and fm:FindFirstChild(seg) end
@@ -543,17 +549,9 @@ for _, d in ipairs(assets:GetDescendants()) do if d:IsA("BasePart") and COLOURS[
 local have = {}
 for _, n in ipairs({"Frog", "LilyPad", "Lotus", "Flowers"}) do if assets:FindFirstChild(n) then table.insert(have, n) end end
 -- the store
-Shop:SetAttribute("Price_spaghetti", Shop:GetAttribute("Price_spaghetti") or 25); Shop:SetAttribute("Price_frogs", Shop:GetAttribute("Price_frogs") or 25); Shop:SetAttribute("Price_petals", Shop:GetAttribute("Price_petals") or 25)
-Shop:SetAttribute("Sell_spaghetti", true); Shop:SetAttribute("Sell_frogs", true); Shop:SetAttribute("Sell_petals", true)
+Shop:SetAttribute("Price_fountainmode", Shop:GetAttribute("Price_fountainmode") or 25); Shop:SetAttribute("Sell_fountainmode", true)
+for _, w in ipairs({"spaghetti", "frogs", "petals"}) do Shop:SetAttribute("Price_" .. w, nil); Shop:SetAttribute("Sell_" .. w, nil) end   -- (the first version's three rows)
 local shopNote = "store already patched (kept)"
-if shopDone then
-	local o, n = cl.Source, 0
-	for _, w in ipairs({"spaghetti", "frogs", "petals"}) do
-		local a, b = o:find('- ten minutes, for everyone here.", mode = "' .. w .. '"},', 1, true)
-		if a then o = o:sub(1, a - 1) .. '- two minutes, for everyone here.", mode = "' .. w .. '"},' .. o:sub(b + 1); n += 1 end
-	end
-	if n > 0 then local f = loadstring(o); if f then cl.Source = o; shopNote = string.format("store already patched; %d blurbs now say two minutes (ShopClient %d chars)", n, #cl.Source) end end
-end
 if not shopDone then
 	local function patch(src, pairs_, what)
 		for i, p in ipairs(pairs_) do
@@ -571,11 +569,24 @@ if not shopDone then
 }
 ]===], [===[
 	zoomies    = {repeatable = true, clock = "zoomiesuntil", home = "Speed", minutes = "ZoomiesMinutes"},   -- a stretch of speed; buying again adds to it
-	-- Oct 10 2026: the Fontana del Limone's modes (workspace.FountainModes): the whole server's fountain for Minutes, one mode at a time
-	spaghetti  = {repeatable = true, mode = "spaghetti"},
-	frogs      = {repeatable = true, mode = "frogs"},
-	petals     = {repeatable = true, mode = "petals"},
+	-- Oct 10 2026: the Fontana del Limone's modes (workspace.FountainModes), one row with three choices; the whole server's fountain for Minutes, one mode at a time
+	fountainmode = {repeatable = true, modes = {"spaghetti", "frogs", "petals"}},
 }
+]===]}, {[===[
+	if item.palette then
+		variant = tonumber(variant)
+		if not variant or variant < 1 or variant > item.palette or variant % 1 ~= 0 then return false, "pick a colour" end
+	end
+]===], [===[
+	if item.palette then
+		variant = tonumber(variant)
+		if not variant or variant < 1 or variant > item.palette or variant % 1 ~= 0 then return false, "pick a colour" end
+	end
+	-- a fountain mode has to be one of the three (whether the fountain is free is checked again just before paying)
+	if item.modes then
+		variant = tonumber(variant)
+		if not variant or variant < 1 or variant > #item.modes or variant % 1 ~= 0 then return false, "pick one" end
+	end
 ]===]}, {[===[
 	if item.palette and fountainTaken() then return false, fountainTaken() end
 
@@ -592,13 +603,13 @@ if not shopDone then
 		end
 		return nil
 	end
-	if item.mode and modeTaken() then return false, modeTaken() end
+	if item.modes and modeTaken() then return false, modeTaken() end
 
 	-- Enforced HERE]===]}, {[===[
 		if item.palette and fountainTaken() then return false, fountainTaken() end   -- (nothing yields between here and taking it)
 ]===], [===[
 		if item.palette and fountainTaken() then return false, fountainTaken() end   -- (nothing yields between here and taking it)
-		if item.mode and modeTaken() then return false, modeTaken() end
+		if item.modes and modeTaken() then return false, modeTaken() end
 ]===]}, {[===[
 			end
 		end
@@ -606,11 +617,11 @@ if not shopDone then
 ]===], [===[
 			end
 		end
-		if item.mode then
-			-- the Fontana del Limone runs this mode for Minutes (workspace.FountainModes): ActiveMode, ActiveUntil (server time), ActiveBy
+		if item.modes then
+			-- the Fontana del Limone runs the chosen mode for Minutes (workspace.FountainModes): ActiveMode, ActiveUntil (server time), ActiveBy
 			local FM = workspace:FindFirstChild("FountainModes")
-			local minutes = (FM and FM:GetAttribute("Minutes")) or 10
-			if FM then FM:SetAttribute("ActiveBy", player.DisplayName); FM:SetAttribute("ActiveUntil", math.floor(workspace:GetServerTimeNow() + minutes * 60)); FM:SetAttribute("ActiveMode", item.mode) end
+			local minutes = (FM and FM:GetAttribute("Minutes")) or 2
+			if FM then FM:SetAttribute("ActiveBy", player.DisplayName); FM:SetAttribute("ActiveUntil", math.floor(workspace:GetServerTimeNow() + minutes * 60)); FM:SetAttribute("ActiveMode", item.modes[variant]) end
 		end
 		return true, price
 ]===]}}, "ShopServer")
@@ -619,16 +630,15 @@ if not shopDone then
 }
 ]===], [===[
 	{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},
-	-- the Fontana del Limone's modes (Oct 10 2026): the whole server's fountain for two minutes, one at a time
-	{id = "spaghetti", name = "Spaghetti fountain", blurb = "Noodles pour where the water does and smiling meatballs bounce out - two minutes, for everyone here.", mode = "spaghetti"},
-	{id = "frogs",     name = "Frog resort",        blurb = "The frogs move in: lily pads, a parasol, a deck chair, string lights and a lot of croaking - two minutes, for everyone here.", mode = "frogs"},
-	{id = "petals",    name = "Petal fountain",     blurb = "Every jet a stream of flower petals and a carpet of them on the water - two minutes, for everyone here.", mode = "petals"},
+	-- the Fontana del Limone's modes (Oct 10 2026): one row, three choices; the whole server's fountain for two minutes, one at a time
+	{id = "fountainmode", name = "Fountain magic", blurb = "Pick one and the fountain in the square does it for two minutes - for everyone here: spaghetti with smiling meatballs, a frog resort, or a shower of petals.",
+		modes = {{id = "spaghetti", name = "Spaghetti"}, {id = "frogs", name = "Frogs"}, {id = "petals", name = "Petals"}}},
 }
 ]===]}, {[===[
 	crabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true},
 }
 ]===], [===[
-	crabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true}, spaghetti = {italy = true}, frogs = {italy = true}, petals = {italy = true},
+	crabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true}, fountainmode = {italy = true},
 }
 ]===]}, {[===[
 local function mmss(s) return string.format("%d:%02d", math.floor(s / 60), s % 60) end
@@ -645,32 +655,57 @@ local function modeNow()
 end
 local function mmss(s) return string.format("%d:%02d", math.floor(s / 60), s % 60) end
 ]===]}, {[===[
-		if not onSale(item) then say(rec, "not in the shop yet", false) return end
-		attempt(item, rec)
-	end)
+	else
+	local btn = Instance.new("TextButton")
 ]===], [===[
-		if not onSale(item) then say(rec, "not in the shop yet", false) return end
-		if item.mode then local m, left = modeNow(); if m then say(rec, "the fountain is busy - free in " .. mmss(left), false) return end end
-		attempt(item, rec)
-	end)
+	elseif item.modes then
+		-- THREE CHOICES on one row (Shannon: "one line item with different choices"), each the buy button for its mode
+		rec.choices = {}
+		local n = #item.modes
+		for i, mode in ipairs(item.modes) do
+			local cb = Instance.new("TextButton"); cb.Name = "Choice" .. i; cb.Text = mode.name
+			cb.AnchorPoint = Vector2.new(1, 0); cb.Position = UDim2.new(1, -12 - (n - i) * 88, 0, 106)
+			cb.Size = UDim2.fromOffset(82, 36); cb.BackgroundColor3 = GOLD; cb.BorderSizePixel = 0; cb.AutoButtonColor = false; cb.ZIndex = 4
+			cb.FontFace = FONT; cb.TextSize = 15; cb.TextColor3 = BTN_INK; cb.Parent = row
+			corner(cb, UDim.new(0, 10)); stroke(cb, RGB(150, 98, 36), 2, 0.2)
+			cb.MouseButton1Click:Connect(function()
+				if not onSale(item) then say(rec, "not in the shop yet", false) return end
+				local m, left = modeNow()
+				if m then say(rec, "the fountain is busy - free in " .. mmss(left), false) return end
+				attempt(item, rec, i)
+			end)
+			rec.choices[i] = cb
+		end
+		local pl = Instance.new("TextLabel"); pl.Name = "PriceLabel"; pl.Position = UDim2.new(0, 10, 0, 110)
+		pl.Size = UDim2.fromOffset(120, 26); pl.BackgroundTransparency = 1; pl.FontFace = FONT; pl.TextSize = 14
+		pl.TextColor3 = INK_DIM; pl.TextXAlignment = Enum.TextXAlignment.Left; pl.Text = ""; pl.ZIndex = 4; pl.Parent = row
+		rec.priceLabel = pl
+	else
+	local btn = Instance.new("TextButton")
 ]===]}, {[===[
-			else
-				label = tostring(price) .. " acorns"
-			end
+		elseif rec and rec.btn then
+			local price = priceOf(item)
 ]===], [===[
+		elseif rec and rec.choices then                                -- the fountain's modes: whose is running, and until when
+			local price = priceOf(item)
+			local selling = onSale(item)
+			local m, left, by = modeNow()
+			local runIdx = 0
+			for i, c in ipairs(item.modes) do if c.id == m then runIdx = i end end
+			if m then
+				rec.priceLabel.Text = "free in " .. mmss(left)
+				if rec.blurb then rec.blurb.Text = string.format("In use: %s's %s. Free again in %s.", tostring(by), MODE_NAMES[m] or m, mmss(left)) end
 			else
-				label = tostring(price) .. " acorns"
+				rec.priceLabel.Text = selling and (type(price) == "number" and (tostring(price) .. " acorns") or "-") or "soon"
+				if rec.blurb then rec.blurb.Text = item.blurb end
 			end
-			if item.mode then                                            -- a fountain mode: whose is running, and until when
-				local m, left, by = modeNow()
-				if m then label = "free in " .. mmss(left); if rec.blurb then rec.blurb.Text = string.format("In use: %s's %s. Free again in %s.", tostring(by), MODE_NAMES[m] or m, mmss(left)) end
-				elseif rec.blurb then rec.blurb.Text = item.blurb end
+			local can = selling and type(price) == "number" and have >= price and not m
+			for i, b in ipairs(rec.choices) do
+				b.BackgroundColor3 = (i == runIdx) and RGB(112, 160, 84) or (can and GOLD or RGB(214, 202, 176))
+				b.TextColor3 = (i == runIdx) and RGB(255, 255, 255) or (can and BTN_INK or INK_DIM)
 			end
-]===]}, {[===[
-			local affordable = selling and not (item.once and owned) and (item.robux or (type(price) == "number" and have >= price))
-]===], [===[
-			local affordable = selling and not (item.once and owned) and (item.robux or (type(price) == "number" and have >= price))
-			if item.mode and modeNow() then affordable = false end
+		elseif rec and rec.btn then
+			local price = priceOf(item)
 ]===]}, {[===[
 	if FCw then for _, a in ipairs({"ActiveColour", "ActiveUntil", "ActiveBy"}) do FCw:GetAttributeChangedSignal(a):Connect(refresh) end end
 ]===], [===[
@@ -683,10 +718,10 @@ local function mmss(s) return string.format("%d:%02d", math.floor(s / 60), s % 6
 			local running = fountainNow() > 0 or modeNow() ~= nil
 ]===]}}, "ShopClient")
 	if not (newS and newC) then return end
-	local b1 = sv:Clone(); b1.Name = "ShopServer_pre_modes1"; b1.Enabled = false; b1.Parent = backup
-	local b2 = cl:Clone(); b2.Name = "ShopClient_pre_modes1"; b2.Enabled = false; b2.Parent = backup
+	if not backup:FindFirstChild("ShopServer_pre_modes1") then local b1 = sv:Clone(); b1.Name = "ShopServer_pre_modes1"; b1.Enabled = false; b1.Parent = backup end
+	if not backup:FindFirstChild("ShopClient_pre_modes1") then local b2 = cl:Clone(); b2.Name = "ShopClient_pre_modes1"; b2.Enabled = false; b2.Parent = backup end
 	sv.Source = newS; cl.Source = newC
-	shopNote = string.format("ShopServer %d -> %d, ShopClient %d -> %d chars; backups HudBackup.ShopServer_pre_modes1 / ShopClient_pre_modes1", 9261, #newS, 35014, #newC)
+	shopNote = string.format("ShopServer %d -> %d, ShopClient %d -> %d chars%s; backups HudBackup.ShopServer_pre_modes1 / ShopClient_pre_modes1 (the job 59 texts)", 9261, #newS, 35014, #newC, restored and " (the earlier three-row patch undone first)" or "")
 end
 game:GetService("ChangeHistoryService"):SetWaypoint("Fountain modes installed")
 print(string.format("QQ FMODE DONE: workspace.FountainModes (client %d chars; rim y %s at r %.1f, paving y %.1f); assets in ReplicatedStorage.FountainModeAssets: %s (moved in now: %s; %d flower parts coloured); %s", #cs.Source, tostring(rimY and string.format("%.2f", rimY) or "not measured, default"), rimR, groundY, #have > 0 and table.concat(have, ", ") or "NONE - import frog.fbx and flowers.fbx and run again", #got > 0 and table.concat(got, ", ") or "none", coloured, shopNote))

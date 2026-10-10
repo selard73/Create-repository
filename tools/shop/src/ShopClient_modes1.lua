@@ -37,17 +37,16 @@ local ITEMS = {
 	{id = "backpack",   name = "Backpack",        blurb = "Carry your things, and your favourite squirrel, on your back.", once = true},	{id = "glider",     name = "Hang glider",     blurb = "Yours to keep. Take off from the top of the Sandstone Climb and glide into the Rue.", once = true},
 	-- keepsakes (Oct 9 2026): not for sale here; the row shows once the thing is yours
 	{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},
-	-- the Fontana del Limone's modes (Oct 10 2026): the whole server's fountain for two minutes, one at a time
-	{id = "spaghetti", name = "Spaghetti fountain", blurb = "Noodles pour where the water does and smiling meatballs bounce out - two minutes, for everyone here.", mode = "spaghetti"},
-	{id = "frogs",     name = "Frog resort",        blurb = "The frogs move in: lily pads, a parasol, a deck chair, string lights and a lot of croaking - two minutes, for everyone here.", mode = "frogs"},
-	{id = "petals",    name = "Petal fountain",     blurb = "Every jet a stream of flower petals and a carpet of them on the water - two minutes, for everyone here.", mode = "petals"},
+	-- the Fontana del Limone's modes (Oct 10 2026): one row, three choices; the whole server's fountain for two minutes, one at a time
+	{id = "fountainmode", name = "Fountain magic", blurb = "Pick one and the fountain in the square does it for two minutes - for everyone here: spaghetti with smiling meatballs, a frog resort, or a shower of petals.",
+		modes = {{id = "spaghetti", name = "Spaghetti"}, {id = "frogs", name = "Frogs"}, {id = "petals", name = "Petals"}}},
 }
 
 -- WHICH MAP SELLS WHAT (Oct 8 2026, Shannon: split the store by map "like the progress menu"): two tabs like the
 -- Passport's, French Squirrel Country | Porto Nocciola. A thing used on both maps is on both tabs; not listed here = both.
 local MAPS_OF = {
 	seed = {france = true}, ziphandle = {france = true}, bubbles = {france = true}, portrait = {france = true}, glider = {france = true},
-	crabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true}, spaghetti = {italy = true}, frogs = {italy = true}, petals = {italy = true},
+	crabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true}, fountainmode = {italy = true},
 }
 
 local gui = Instance.new("ScreenGui")
@@ -277,6 +276,28 @@ for i, item in ipairs(ITEMS) do
 		pl.Size = UDim2.fromOffset(140, 26); pl.BackgroundTransparency = 1; pl.FontFace = FONT; pl.TextSize = 14
 		pl.TextColor3 = INK_DIM; pl.TextXAlignment = Enum.TextXAlignment.Left; pl.Text = ""; pl.ZIndex = 4; pl.Parent = row
 		rec.priceLabel = pl
+	elseif item.modes then
+		-- THREE CHOICES on one row (Shannon: "one line item with different choices"), each the buy button for its mode
+		rec.choices = {}
+		local n = #item.modes
+		for i, mode in ipairs(item.modes) do
+			local cb = Instance.new("TextButton"); cb.Name = "Choice" .. i; cb.Text = mode.name
+			cb.AnchorPoint = Vector2.new(1, 0); cb.Position = UDim2.new(1, -12 - (n - i) * 88, 0, 106)
+			cb.Size = UDim2.fromOffset(82, 36); cb.BackgroundColor3 = GOLD; cb.BorderSizePixel = 0; cb.AutoButtonColor = false; cb.ZIndex = 4
+			cb.FontFace = FONT; cb.TextSize = 15; cb.TextColor3 = BTN_INK; cb.Parent = row
+			corner(cb, UDim.new(0, 10)); stroke(cb, RGB(150, 98, 36), 2, 0.2)
+			cb.MouseButton1Click:Connect(function()
+				if not onSale(item) then say(rec, "not in the shop yet", false) return end
+				local m, left = modeNow()
+				if m then say(rec, "the fountain is busy - free in " .. mmss(left), false) return end
+				attempt(item, rec, i)
+			end)
+			rec.choices[i] = cb
+		end
+		local pl = Instance.new("TextLabel"); pl.Name = "PriceLabel"; pl.Position = UDim2.new(0, 10, 0, 110)
+		pl.Size = UDim2.fromOffset(120, 26); pl.BackgroundTransparency = 1; pl.FontFace = FONT; pl.TextSize = 14
+		pl.TextColor3 = INK_DIM; pl.TextXAlignment = Enum.TextXAlignment.Left; pl.Text = ""; pl.ZIndex = 4; pl.Parent = row
+		rec.priceLabel = pl
 	else
 	local btn = Instance.new("TextButton")
 	btn.AnchorPoint = Vector2.new(1, 0); btn.Position = UDim2.new(1, -12, 0, 106)
@@ -312,7 +333,6 @@ for i, item in ipairs(ITEMS) do
 			return
 		end
 		if not onSale(item) then say(rec, "not in the shop yet", false) return end
-		if item.mode then local m, left = modeNow(); if m then say(rec, "the fountain is busy - free in " .. mmss(left), false) return end end
 		attempt(item, rec)
 	end)
 	end
@@ -496,6 +516,24 @@ local function refresh()
 				local st = sw:FindFirstChildOfClass("UIStroke")
 				if st then st.Color = (i == runIdx) and RGB(255, 246, 220) or RGB(84, 48, 18); st.Thickness = (i == runIdx) and 3 or 2; st.Transparency = (i == runIdx) and 0 or 0.25 end
 			end
+		elseif rec and rec.choices then                                -- the fountain's modes: whose is running, and until when
+			local price = priceOf(item)
+			local selling = onSale(item)
+			local m, left, by = modeNow()
+			local runIdx = 0
+			for i, c in ipairs(item.modes) do if c.id == m then runIdx = i end end
+			if m then
+				rec.priceLabel.Text = "free in " .. mmss(left)
+				if rec.blurb then rec.blurb.Text = string.format("In use: %s's %s. Free again in %s.", tostring(by), MODE_NAMES[m] or m, mmss(left)) end
+			else
+				rec.priceLabel.Text = selling and (type(price) == "number" and (tostring(price) .. " acorns") or "-") or "soon"
+				if rec.blurb then rec.blurb.Text = item.blurb end
+			end
+			local can = selling and type(price) == "number" and have >= price and not m
+			for i, b in ipairs(rec.choices) do
+				b.BackgroundColor3 = (i == runIdx) and RGB(112, 160, 84) or (can and GOLD or RGB(214, 202, 176))
+				b.TextColor3 = (i == runIdx) and RGB(255, 255, 255) or (can and BTN_INK or INK_DIM)
+			end
 		elseif rec and rec.btn then
 			local price = priceOf(item)
 			local owned = (player:GetAttribute("Item_" .. item.id) or 0) > 0
@@ -513,11 +551,6 @@ local function refresh()
 			else
 				label = tostring(price) .. " acorns"
 			end
-			if item.mode then                                            -- a fountain mode: whose is running, and until when
-				local m, left, by = modeNow()
-				if m then label = "free in " .. mmss(left); if rec.blurb then rec.blurb.Text = string.format("In use: %s's %s. Free again in %s.", tostring(by), MODE_NAMES[m] or m, mmss(left)) end
-				elseif rec.blurb then rec.blurb.Text = item.blurb end
-			end
 			-- Nothing is for sale yet, so every button says so rather than pretending to work. The price stays
 			-- on show above it, because knowing what things will cost is the point of looking.
 			local selling = item.robux or onSale(item)              -- a Robux row is sold by Roblox's prompt
@@ -526,7 +559,6 @@ local function refresh()
 			if rec.btn.Text ~= "..." then rec.btn.Text = label end
 			-- greyed when you cannot have it, either because it is already yours or you are short
 			local affordable = selling and not (item.once and owned) and (item.robux or (type(price) == "number" and have >= price))
-			if item.mode and modeNow() then affordable = false end
 			if item.id == "backpack" and owned then affordable = true end       -- the wear switch is always live
 			rec.btn.BackgroundColor3 = affordable and GOLD or RGB(214, 202, 176)
 			rec.btn.TextColor3 = affordable and BTN_INK or INK_DIM

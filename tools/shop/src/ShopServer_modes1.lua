@@ -23,10 +23,8 @@ local ITEMS = {
 	crabtrap   = {once = true},                           -- Oct 4 2026: the crab game at Porto Nocciola (workspace.CrabGame)
 	camera     = {once = true},                           -- Oct 8 2026: the postcard camera (workspace.PhotoGame)
 	zoomies    = {repeatable = true, clock = "zoomiesuntil", home = "Speed", minutes = "ZoomiesMinutes"},   -- a stretch of speed; buying again adds to it
-	-- Oct 10 2026: the Fontana del Limone's modes (workspace.FountainModes): the whole server's fountain for Minutes, one mode at a time
-	spaghetti  = {repeatable = true, mode = "spaghetti"},
-	frogs      = {repeatable = true, mode = "frogs"},
-	petals     = {repeatable = true, mode = "petals"},
+	-- Oct 10 2026: the Fontana del Limone's modes (workspace.FountainModes), one row with three choices; the whole server's fountain for Minutes, one mode at a time
+	fountainmode = {repeatable = true, modes = {"spaghetti", "frogs", "petals"}},
 }
 
 local busy = {}                                        -- one purchase at a time per player
@@ -43,6 +41,11 @@ local function purchase(player, id, variant)
 	if item.palette then
 		variant = tonumber(variant)
 		if not variant or variant < 1 or variant > item.palette or variant % 1 ~= 0 then return false, "pick a colour" end
+	end
+	-- a fountain mode has to be one of the three (whether the fountain is free is checked again just before paying)
+	if item.modes then
+		variant = tonumber(variant)
+		if not variant or variant < 1 or variant > #item.modes or variant % 1 ~= 0 then return false, "pick one" end
 	end
 	-- THE FOUNTAIN IS THE WHOLE SERVER'S (Shannon, Sep 26: "when somebody turns the fountain color with bubbles, I want
 	-- everybody to be able to see it ... It can only be chosen if it's not currently colored"): one colour at a time
@@ -68,7 +71,7 @@ local function purchase(player, id, variant)
 		end
 		return nil
 	end
-	if item.mode and modeTaken() then return false, modeTaken() end
+	if item.modes and modeTaken() then return false, modeTaken() end
 
 	-- Enforced HERE, not merely greyed out in the panel: a button that only looks disabled is one a
 	-- modified client clicks anyway, and it would take the acorns.
@@ -107,7 +110,7 @@ local function purchase(player, id, variant)
 		local have = player:GetAttribute("Acorns") or 0
 		if have < price then return false, "not enough acorns" end
 		if item.palette and fountainTaken() then return false, fountainTaken() end   -- (nothing yields between here and taking it)
-		if item.mode and modeTaken() then return false, modeTaken() end
+		if item.modes and modeTaken() then return false, modeTaken() end
 
 		if id=="portrait" then
 			local gallery=workspace:FindFirstChild("PortraitGallery")
@@ -156,11 +159,11 @@ local function purchase(player, id, variant)
 				local passport=game:GetService("ReplicatedStorage"):FindFirstChild("PassportActivity");if passport then passport:Fire(player,"bubbles",{colour=({"pink","orange","gold","green","blue","violet"})[variant]}) end
 			end
 		end
-		if item.mode then
-			-- the Fontana del Limone runs this mode for Minutes (workspace.FountainModes): ActiveMode, ActiveUntil (server time), ActiveBy
+		if item.modes then
+			-- the Fontana del Limone runs the chosen mode for Minutes (workspace.FountainModes): ActiveMode, ActiveUntil (server time), ActiveBy
 			local FM = workspace:FindFirstChild("FountainModes")
-			local minutes = (FM and FM:GetAttribute("Minutes")) or 10
-			if FM then FM:SetAttribute("ActiveBy", player.DisplayName); FM:SetAttribute("ActiveUntil", math.floor(workspace:GetServerTimeNow() + minutes * 60)); FM:SetAttribute("ActiveMode", item.mode) end
+			local minutes = (FM and FM:GetAttribute("Minutes")) or 2
+			if FM then FM:SetAttribute("ActiveBy", player.DisplayName); FM:SetAttribute("ActiveUntil", math.floor(workspace:GetServerTimeNow() + minutes * 60)); FM:SetAttribute("ActiveMode", item.modes[variant]) end
 		end
 		return true, price
 	end)
