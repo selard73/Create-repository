@@ -1,6 +1,6 @@
 -- install_gifts1.lua (Studio EDIT mode; re-runnable). Job 87. The Gifts system: like + favourite + notifications -> the
 -- Backpack (on trust), join the community -> acorns (checked), invite a friend -> double acorns while you play together
--- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (19282 chars);
+-- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (17882 chars);
 -- ReplicatedStorage.GiftsAction / GiftsEvent. Undo: delete workspace.Gifts and the two remotes. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
@@ -173,7 +173,7 @@ local CLIENT = [===[
 -- rows: like + favourite + notifications (the Backpack), join the community (acorns), invite a friend (double acorns
 -- while you play together). It pops up once per session, a few seconds after the first squirrel found (or PopupDelay
 -- seconds after the save has loaded if no squirrel turns up), while the first two gifts are unclaimed and no other panel
--- or the daily card is up; a Gifts button in the HUD bar opens it any time. The gold buttons shimmer and twinkle.
+-- or the daily card is up; a Gifts button in the HUD bar opens it any time. The gold buttons carry a moving sheen.
 -- A small "x2" rides on the purse while the doubling is on. Same look as the daily card (navy, gold, cream).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
@@ -219,24 +219,16 @@ local function row(i, title, gift)
 	rows[i] = {title = t, gift = g, btn = btn}
 	return rows[i]
 end
--- the sparkle on a gold button: a sheen that sweeps across, a pale rim that breathes, and little four-point twinkles
--- (a UIGradient multiplies the button's own colour, so a sparkling button is white underneath and the gradient is the gold)
+-- the sparkle on a gold button: a pale sheen that sweeps across, and a light rim that breathes (Shannon: the moving glow
+-- is ok, no twinkles). A UIGradient multiplies the button's own colour, so a sparkling button is white underneath and the
+-- gradient carries the gold.
 local sparkles = {}
 local function sparkle(btn)
-	btn.ClipsDescendants = true
 	local grad = Instance.new("UIGradient"); grad.Name = "Sheen"; grad.Rotation = 18; grad.Offset = Vector2.new(-0.8, 0)
 	grad.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, GOLD), ColorSequenceKeypoint.new(0.42, GOLD), ColorSequenceKeypoint.new(0.5, C(255, 248, 212)), ColorSequenceKeypoint.new(0.58, GOLD), ColorSequenceKeypoint.new(1, GOLD)})
 	grad.Parent = btn
 	local rim = Instance.new("UIStroke"); rim.Name = "Rim"; rim.Color = C(255, 242, 196); rim.Thickness = 1.5; rim.Transparency = 0.3; rim.Parent = btn
-	local sp = {btn = btn, grad = grad, rim = rim, on = true, stars = {}}
-	for i = 1, 4 do
-		local star = Instance.new("Frame"); star.Name = "Twinkle"; star.AnchorPoint = Vector2.new(0.5, 0.5); star.Size = UDim2.fromOffset(0, 0); star.BackgroundTransparency = 1; star.ZIndex = 3; star.Parent = btn
-		for _, dims in ipairs({{0.22, 1}, {1, 0.22}}) do   -- (a thin upright bar and a thin flat bar make the four points)
-			local bar = Instance.new("Frame"); bar.AnchorPoint = Vector2.new(0.5, 0.5); bar.Position = UDim2.fromScale(0.5, 0.5); bar.Size = UDim2.fromScale(dims[1], dims[2])
-			bar.BackgroundColor3 = C(255, 255, 240); bar.BorderSizePixel = 0; bar.ZIndex = 3; bar.Parent = star
-		end
-		sp.stars[i] = star
-	end
+	local sp = {btn = btn, grad = grad, rim = rim, on = true}
 	sparkles[btn] = sp
 	-- the sheen sweep
 	task.spawn(function()
@@ -256,31 +248,11 @@ local function sparkle(btn)
 			else task.wait(0.5) end
 		end
 	end)
-	-- the twinkles, each on its own beat, away from the middle where the word sits
-	for i, star in ipairs(sp.stars) do
-		task.spawn(function()
-			task.wait(i * 0.37)
-			while btn.Parent do
-				if sp.on and gui.Enabled then
-					local w, h = btn.AbsoluteSize.X, btn.AbsoluteSize.Y
-					local x = (math.random() < 0.5) and math.random(6, math.max(7, math.floor(w * 0.24))) or math.random(math.floor(w * 0.76), math.max(math.floor(w * 0.76) + 1, w - 6))
-					star.Position = UDim2.fromOffset(x, math.random(5, math.max(6, h - 5))); star.Rotation = math.random(-20, 20)
-					local size = math.random(8, 13)
-					local up = TweenService:Create(star, TweenInfo.new(0.32, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.fromOffset(size, size), Rotation = star.Rotation + 45}); up:Play(); up.Completed:Wait()
-					local down = TweenService:Create(star, TweenInfo.new(0.38, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Size = UDim2.fromOffset(0, 0), Rotation = star.Rotation + 45}); down:Play(); down.Completed:Wait()
-					task.wait(0.5 + math.random() * 1.4)
-				else
-					if star.Size.X.Offset ~= 0 then star.Size = UDim2.fromOffset(0, 0) end
-					task.wait(0.5)
-				end
-			end
-		end)
-	end
 end
 local function sparkleOn(btn, on)
 	local sp = sparkles[btn]; if not sp then return end
 	sp.on = on; sp.grad.Enabled = on; sp.rim.Enabled = on
-	if on then btn.BackgroundColor3 = C(255, 255, 255) else for _, star in ipairs(sp.stars) do star.Size = UDim2.fromOffset(0, 0) end end
+	if on then btn.BackgroundColor3 = C(255, 255, 255) end
 end
 local rLike = row(1, "Like, star & notifications", "Gift: the Backpack")
 local rComm = row(2, "Join our community", "The 1001 Squirrels community. Gift: " .. num("CommunityAcorns", 150) .. " acorns")
@@ -437,13 +409,19 @@ task.spawn(function()
 	while not player:GetAttribute("SaveLoaded") and os.clock() - t0 < 60 do task.wait(0.5) end
 	task.wait(1.5)   -- (let the saved counts land before taking the baseline)
 	local last, tStart, limit = foundCount(), os.clock(), num("PopupDelay", 180)
+	print(string.format("GiftsClient: popup armed - found %d (SquirrelsFound %s, FoundIds %d chars), fallback %ds", last, tostring(player:GetAttribute("SquirrelsFound")), #tostring(player:GetAttribute("FoundIds") or ""), limit))
+	local why = "the fallback"
 	while os.clock() - tStart < limit do
 		if shownThisSession then return end
 		local n = foundCount()
-		if F:GetAttribute("FirstFind") ~= false and n > last and n - last <= 2 then task.wait(num("FindSettle", 5)) break end   -- (one find, not a save arriving)
+		if F:GetAttribute("FirstFind") ~= false and n > last and n - last <= 2 then   -- (one find, not a save arriving)
+			why = string.format("a find at %.1fs (found %d -> %d; SquirrelsFound %s, FoundIds %d chars)", os.clock() - tStart, last, n, tostring(player:GetAttribute("SquirrelsFound")), #tostring(player:GetAttribute("FoundIds") or ""))
+			task.wait(num("FindSettle", 5)) break
+		end
 		last = math.max(last, n)
 		task.wait(0.5)
 	end
+	print("GiftsClient: popup due after " .. why)
 	local deadline = os.clock() + 300
 	while os.clock() < deadline do
 		if shownThisSession then return end
