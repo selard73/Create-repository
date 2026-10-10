@@ -40,3 +40,9 @@ Thumbs.db
 
 # the one model the runner downloads for Studio (job 23)
 !tools/balloon/model_meshy/balloon_meshy.fbx
+!tools/fountain/model/flowers.fbx
+!tools/fountain/model/frog.fbx
+!tools/fountain/model/petal.png
+!tools/fountain/model/flowers_preview.png
+!tools/fountain/model/frog_preview_front.png
+!tools/fountain/model/frog_preview_side.png

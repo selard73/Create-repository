@@ -105,6 +105,13 @@ local function part(name, size, cf, colour, material, shape)
 end
 local function around(g, r, a, y) return g.centre + Vector3.new(math.cos(a) * r, 0, math.sin(a) * r) + Vector3.new(0, y - g.centre.Y, 0) end
 local function facing(pos, target) return CFrame.lookAt(pos, Vector3.new(target.X, pos.Y, target.Z)) end
+-- sets a model or part down so its underside rests on the frame given (an imported mesh pivots at its middle)
+local function sitOn(m, cf)
+	m:PivotTo(cf)
+	local bb, size
+	if m:IsA("Model") then bb, size = m:GetBoundingBox() else bb, size = m.CFrame, m.Size end
+	m:PivotTo(cf * CFrame.new(0, cf.Position.Y - (bb.Position.Y - size.Y / 2), 0))
+end
 local function sound(id, where, volume, speed)
 	if not id or id <= 0 or not where then return end
 	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://" .. tostring(id); s.Volume = volume or 0.6; s.PlaybackSpeed = speed or 1; s.RollOffMaxDistance = 80; s.Parent = where; s:Play(); Debris:AddItem(s, 8)
@@ -283,17 +290,17 @@ local function frog(cf, scale, accessory)
 		end
 	end
 	pcall(m.ScaleTo, m, scale or 1)
-	m:PivotTo(cf); m.Parent = scene
+	sitOn(m, cf); m.Parent = scene
 	return m
 end
 local function lilyPad(cf, withLotus)
 	local pad = asset("LilyPad")
 	local p
-	if pad then p = pad:Clone(); p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p:PivotTo(cf); p.Parent = scene
+	if pad then p = pad:Clone(); p.Anchored = true; p.CanCollide = false; p.CanQuery = false; sitOn(p, cf); p.Parent = scene
 	else p = part("LilyPad", Vector3.new(0.08, 1.6, 1.6), cf * CFrame.Angles(0, 0, math.rad(90)), Color3.fromRGB(70, 150, 70), Enum.Material.SmoothPlastic, Enum.PartType.Cylinder) end
 	if withLotus then
 		local l = asset("Lotus")
-		if l then local c = l:Clone(); for _, d in ipairs(c:GetDescendants()) do if d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false; d.CanQuery = false end end; c:PivotTo(cf * CFrame.new(0, 0.06, 0)); c.Parent = scene end
+		if l then local c = l:Clone(); for _, d in ipairs(c:GetDescendants()) do if d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false; d.CanQuery = false end end; sitOn(c, cf * CFrame.new(0, 0.1, 0)); c.Parent = scene end
 	end
 	return p
 end
@@ -365,7 +372,7 @@ local function startFrogs(g)
 	for i, spec in ipairs({{a = 0.4, r = 4.3, frog = "Sunglasses", scale = 1.0}, {a = 1.7, r = 4.5, lotus = true}, {a = 2.5, r = 4.0, frog = "", scale = 0.8}, {a = 3.6, r = 4.6, lotus = true}, {a = 4.4, r = 4.2}, {a = 5.3, r = 4.5, frog = "", scale = 1.1}, {a = 6.0, r = 4.0, lotus = true}}) do
 		local pos = around(g, spec.r, spec.a, g.basinY)
 		local pad = lilyPad(CFrame.new(pos) * CFrame.Angles(0, rng:NextNumber(0, 6), 0), spec.lotus)
-		table.insert(pads, {p = pad, cf = pad:GetPivot(), ph = rng:NextNumber(0, 6)})
+		table.insert(pads, {p = pad, cf = pad:GetPivot(), ph = rng:NextNumber(0, 6)})   -- (GetPivot after sitOn: where it rests)
 		if spec.frog then add(frog(facing(pos + Vector3.new(0, 0.1, 0), g.centre) * CFrame.Angles(0, math.pi + rng:NextNumber(-0.6, 0.6), 0), spec.scale, spec.frog), "pad") end
 	end
 	-- in the water, in a swim ring; two on the rim, one in a sun hat
