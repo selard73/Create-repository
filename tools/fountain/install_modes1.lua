@@ -41,7 +41,7 @@ local F = Instance.new("Folder"); F.Name = "FountainModes"
 F:SetAttribute("FountainPath", "PortoNocciola/13 Hillside town/Fontana del Limone")
 F:SetAttribute("Minutes", 2); F:SetAttribute("Reach", 150)   -- two minutes (Shannon: "different from the French one")
 F:SetAttribute("FrogSoundId", 73626983091367); F:SetAttribute("BounceSoundId", 0)
-F:SetAttribute("PetalTexture", ""); F:SetAttribute("PetalSize", 0.55); F:SetAttribute("PetalRate", 0.3); F:SetAttribute("PetalSpeed", 0.4); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalLife", 3.2); F:SetAttribute("CarpetCount", 90)
+F:SetAttribute("PetalsPerSecond", 34); F:SetAttribute("PetalMax", 240); F:SetAttribute("PetalSpread", 38); F:SetAttribute("PetalSpeedMin", 5); F:SetAttribute("PetalSpeedMax", 8.5); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalRest", 2.6); F:SetAttribute("CarpetCount", 90)
 F:SetAttribute("NoodleTexture", ""); F:SetAttribute("NoodleTop", 14); F:SetAttribute("NoodleRim", 20); F:SetAttribute("MeatballEvery", 1.6)
 F:SetAttribute("SignText", "FROG RESORT"); F:SetAttribute("DeckAngle", 0.9)
 F:SetAttribute("RimY", rimY or (c.Y - 2.15 + 1.3)); F:SetAttribute("RimR", rimR); F:SetAttribute("GroundY", groundY)
@@ -145,61 +145,115 @@ local function untintWater(g)
 end
 
 -- ---------- petals ----------
+-- Shannon (Oct 10, twice): the particle petals were "a blurry mess ... not individual petals falling down". So the petals are
+-- real little shapes now: flat ovals that fly out of the jets and over the bowl's rim, tumble and sway as they drift down
+-- against the air, land on the water, the stone or the paving, rest a moment and fade. A carpet of them lies on the water.
 local PETALS = {Color3.fromRGB(255, 110, 150), Color3.fromRGB(228, 52, 78), Color3.fromRGB(255, 242, 236), Color3.fromRGB(250, 190, 70), Color3.fromRGB(242, 140, 190)}
-local function petalTexture() local t = str("PetalTexture", ""); return t ~= "" and t or "rbxasset://textures/particles/smoke_main.dds" end
-local function petalEmitter(src, i)
-	-- a clone of the water's own emitter (so it flies the same arc), made petals
-	local e = src:Clone(); e.Name = "PetalStream"
-	e.Texture = petalTexture()
-	e.Color = ColorSequence.new(PETALS[(i % #PETALS) + 1])
-	e.LightEmission = 0.05; e.LightInfluence = 0.5
-	e.Size = NumberSequence.new(num("PetalSize", 0.55))
-	e.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.85, 0), NumberSequenceKeypoint.new(1, 1)})
-	-- slow and dreamy (Shannon: "the petals are a blur, falling too quickly"): they leave the jets at a fraction of the water's
-	-- speed, fall under a gentle pull against air drag, and drift for seconds, turning slowly
-	local k = num("PetalSpeed", 0.4)
-	e.Speed = NumberRange.new(src.Speed.Min * k, src.Speed.Max * k)
-	e.Acceleration = Vector3.new(0, -num("PetalFall", 5), 0)
-	e.Drag = num("PetalDrag", 1.2)
-	local life = num("PetalLife", 3.2) * (src.Name == "Stream" and 0.6 or 1)   -- about the time to drift down to the water; the rim streams have less far to go
-	e.Lifetime = NumberRange.new(life, life * 1.4)
-	e.Rate = src.Rate * num("PetalRate", 0.3)
-	e.Rotation = NumberRange.new(0, 360); e.RotSpeed = NumberRange.new(-110, 110)
-	e.Orientation = Enum.ParticleOrientation.FacingCamera
-	e.Squash = NumberSequence.new(str("PetalTexture", "") ~= "" and 0 or 0.6)
-	e.Enabled = true
-	e.Parent = src.Parent
-	return e
+local assetsFolder = RS:FindFirstChild("FountainModeAssets")
+local petalMeshes = nil   -- the real petal shapes (Petal_A/B/C, modelled in Blender), once imported
+local function petalPart(size)
+	if petalMeshes == nil then
+		petalMeshes = {}
+		assetsFolder = assetsFolder or RS:FindFirstChild("FountainModeAssets")
+		if assetsFolder then for _, n in ipairs({"Petal_A", "Petal_B", "Petal_C"}) do local m = assetsFolder:FindFirstChild(n, true); if m and m:IsA("BasePart") then table.insert(petalMeshes, m) end end end
+	end
+	local p
+	if #petalMeshes > 0 then
+		p = petalMeshes[rng:NextInteger(1, #petalMeshes)]:Clone()
+		p.Name = "Petal"; p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false; p.CastShadow = false
+		p.Size = p.Size * (size / 0.5)
+	else
+		p = Instance.new("Part"); p.Name = "Petal"; p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false; p.CastShadow = false
+		p.Shape = Enum.PartType.Cylinder; p.Size = Vector3.new(0.04, size, size * 0.68); p.Material = Enum.Material.SmoothPlastic
+	end
+	p.Color = PETALS[rng:NextInteger(1, #PETALS)]
+	p.Parent = scene
+	return p
 end
+-- a flat oval Part has its axis along X and is rolled flat; a petal mesh already lies flat
+local FLAT_PART = CFrame.Angles(0, 0, math.rad(90))
+local function flat(p) return (p:IsA("MeshPart")) and CFrame.identity or FLAT_PART end
 local function carpet(g, n, r0, r1, y, size)
-	-- petals lying on the water (and a few on the paving): thin flat ovals, bobbing a little
 	local list = {}
 	for i = 1, n do
 		local a, r = rng:NextNumber(0, 2 * math.pi), math.sqrt(rng:NextNumber(r0 * r0, r1 * r1))
-		local p = part("Petal", Vector3.new(0.04, size, size * 0.7), CFrame.new(around(g, r, a, y + 0.03)) * CFrame.Angles(0, rng:NextNumber(0, 2 * math.pi), 0), PETALS[rng:NextInteger(1, #PETALS)], Enum.Material.SmoothPlastic, Enum.PartType.Cylinder)
-		p.CFrame = CFrame.new(around(g, r, a, y + 0.03)) * CFrame.Angles(0, rng:NextNumber(0, 2 * math.pi), math.rad(90))
+		local p = petalPart(size)
+		p.CFrame = CFrame.new(around(g, r, a, y + 0.03)) * CFrame.Angles(0, rng:NextNumber(0, 2 * math.pi), 0) * flat(p)
 		list[i] = {p = p, cf = p.CFrame, ph = rng:NextNumber(0, 6)}
 	end
 	return list
 end
+-- where a falling petal comes to rest under a point: the bowl, the basin water, the stone rim, or the paving
+local function restY(g, pos)
+	local r = (Vector3.new(pos.X, 0, pos.Z) - Vector3.new(g.centre.X, 0, g.centre.Z)).Magnitude
+	if r < g.bowlR then return g.bowlY
+	elseif r < g.basinR1 + 0.3 then return g.basinY
+	elseif r < g.rimR + 0.7 then return g.rimY
+	else return g.groundY end
+end
 local function startPetals(g)
 	setWater(g, true)
-	local emitters = {}
-	local i = 0
-	for _, d in ipairs(g.water:GetDescendants()) do
-		if d:IsA("ParticleEmitter") and (d.Name == "Arc" or d.Name == "Stream") then i += 1; table.insert(emitters, petalEmitter(d, i)) end
-	end
 	local floating = carpet(g, num("CarpetCount", 90), g.basinR0, g.basinR1, g.basinY, 0.5)
 	for _, e in ipairs(carpet(g, 22, 0.6, g.bowlR - 0.3, g.bowlY, 0.42)) do table.insert(floating, e) end
 	for _, e in ipairs(carpet(g, 30, g.rimR + 0.6, g.rimR + 3.2, g.groundY, 0.45)) do table.insert(floating, e) end
+	-- the rim stream points: where the water pours over the bowl's edge
+	local rimPts = {}
+	for _, d in ipairs(g.water:GetChildren()) do if d:IsA("Attachment") and d.Name == "RimStream" then table.insert(rimPts, d.WorldPosition) end end
+	if #rimPts == 0 then for i = 1, 12 do table.insert(rimPts, around(g, g.bowlR + 0.1, i / 12 * 2 * math.pi, g.bowlY + 0.1)) end end
+	local live = {}
+	local function launch(fromTop)
+		local p = petalPart(rng:NextNumber(0.42, 0.6))
+		local pos, v
+		if fromTop then
+			local th, ph = math.rad(rng:NextNumber(0, num("PetalSpread", 38))), rng:NextNumber(0, 2 * math.pi)
+			local sp = rng:NextNumber(num("PetalSpeedMin", 5), num("PetalSpeedMax", 8.5))
+			pos = g.spout + Vector3.new(rng:NextNumber(-0.2, 0.2), 0, rng:NextNumber(-0.2, 0.2))
+			v = Vector3.new(math.sin(th) * math.cos(ph), math.cos(th), math.sin(th) * math.sin(ph)) * sp
+		else
+			pos = rimPts[rng:NextInteger(1, #rimPts)]
+			local out = Vector3.new(pos.X - g.centre.X, 0, pos.Z - g.centre.Z); out = out.Magnitude > 0.01 and out.Unit or Vector3.xAxis
+			v = out * rng:NextNumber(1.0, 2.2) + Vector3.new(0, rng:NextNumber(0.2, 0.9), 0)
+		end
+		table.insert(live, {p = p, pos = pos, v = v, t = 0, axis = Vector3.new(rng:NextNumber(-1, 1), rng:NextNumber(-1, 1), rng:NextNumber(-1, 1)).Unit, spin = rng:NextNumber(2, 6), yaw = rng:NextNumber(0, 6), ph = rng:NextNumber(0, 6), sway = rng:NextNumber(0.25, 0.6)})
+	end
 	local my = gen
 	task.spawn(function()
+		local acc = 0
 		while gen == my do
+			local dt = RunService.RenderStepped:Wait()
+			dt = math.min(dt, 0.05)
 			local t = os.clock()
 			for _, e in ipairs(floating) do if e.p.Parent then e.p.CFrame = e.cf + Vector3.new(0, 0.04 * math.sin(t * 1.3 + e.ph), 0) end end
-			RunService.RenderStepped:Wait()
+			-- new petals: a shower from the spout, a trickle over the rim, up to a ceiling
+			acc += dt * num("PetalsPerSecond", 34)
+			while acc >= 1 and #live < num("PetalMax", 240) do acc -= 1; launch(rng:NextNumber() < 0.72) end
+			local pull, drag = num("PetalFall", 5), num("PetalDrag", 1.2)
+			for i = #live, 1, -1 do
+				local e = live[i]
+				if not e.p.Parent then table.remove(live, i)
+				elseif e.rest then
+					e.t += dt
+					if e.t > num("PetalRest", 2.6) then
+						TweenService:Create(e.p, TweenInfo.new(0.8), {Transparency = 1}):Play(); Debris:AddItem(e.p, 0.9); table.remove(live, i)
+					end
+				else
+					e.t += dt
+					e.v = e.v + Vector3.new(0, -pull, 0) * dt - e.v * drag * dt
+					e.pos = e.pos + e.v * dt
+					local sway = Vector3.new(math.sin(e.t * 3 + e.ph), 0, math.cos(e.t * 2.3 + e.ph)) * e.sway * dt * 2
+					e.pos = e.pos + sway
+					local floor = restY(g, e.pos)
+					if e.pos.Y <= floor + 0.03 and e.v.Y < 0 then
+						e.rest = true; e.t = 0
+						e.p.CFrame = CFrame.new(Vector3.new(e.pos.X, floor + 0.03, e.pos.Z)) * CFrame.Angles(0, e.yaw, 0) * flat(e.p)
+					elseif e.t > 7 then
+						e.p:Destroy(); table.remove(live, i)
+					else
+						e.p.CFrame = CFrame.new(e.pos) * CFrame.fromAxisAngle(e.axis, e.spin * e.t) * CFrame.Angles(0, e.yaw, 0) * flat(e.p)
+					end
+				end
+			end
 		end
-		for _, e in ipairs(emitters) do e:Destroy() end
 	end)
 end
 
@@ -530,9 +584,11 @@ local assets = RS:FindFirstChild("FountainModeAssets") or Instance.new("Folder")
 local function tidy(m) for _, d in ipairs(m:GetDescendants()) do if d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false; d.CanQuery = false; d.CanTouch = false end end end
 local got = {}
 for _, m in ipairs(workspace:GetChildren()) do
-	if m:IsA("Model") and (m.Name:lower() == "frog" or m.Name:lower() == "flowers" or m:FindFirstChild("EyeL", true) or m:FindFirstChild("Lotus_Petals", true)) then
+	if m:IsA("Model") and (m.Name:lower() == "frog" or m.Name:lower() == "flowers" or m.Name:lower() == "petals" or m:FindFirstChild("EyeL", true) or m:FindFirstChild("Lotus_Petals", true) or m:FindFirstChild("Petal_A", true)) then
 		if m:FindFirstChild("Body", true) and m:FindFirstChild("EyeL", true) and not assets:FindFirstChild("Frog") then
 			tidy(m); m.Name = "Frog"; m.PrimaryPart = m:FindFirstChild("Body", true); m.Parent = assets; table.insert(got, "Frog")
+		elseif m:FindFirstChild("Petal_A", true) and not assets:FindFirstChild("Petal_A", true) then
+			tidy(m); m.Name = "Petals"; m.Parent = assets; table.insert(got, "Petals")
 		elseif m:FindFirstChild("LilyPad", true) then
 			tidy(m)
 			local pad = m:FindFirstChild("LilyPad", true); if pad and not assets:FindFirstChild("LilyPad") then pad.Parent = assets; table.insert(got, "LilyPad") end
@@ -545,11 +601,11 @@ end
 -- the flowers' flat Blender colours do not survive Import 3D (they come in grey): set by name, every run
 local COLOURS = {LilyPad = Color3.fromRGB(48, 120, 48), Leaf = Color3.fromRGB(66, 153, 56), Lotus_Petals = Color3.fromRGB(250, 148, 189), Lotus_Centre = Color3.fromRGB(255, 204, 38),
 	Flower_A_Petals = Color3.fromRGB(242, 102, 158), Flower_A_Centre = Color3.fromRGB(255, 204, 38), Flower_B_Petals = Color3.fromRGB(224, 41, 66), Flower_B_Centre = Color3.fromRGB(255, 204, 38),
-	Flower_C_Petals = Color3.fromRGB(158, 87, 219), Flower_C_Centre = Color3.fromRGB(255, 204, 38)}
+	Flower_C_Petals = Color3.fromRGB(158, 87, 219), Flower_C_Centre = Color3.fromRGB(255, 204, 38), Petal_A = Color3.fromRGB(255, 110, 150), Petal_B = Color3.fromRGB(255, 110, 150), Petal_C = Color3.fromRGB(255, 110, 150)}
 local coloured = 0
 for _, d in ipairs(assets:GetDescendants()) do if d:IsA("BasePart") and COLOURS[d.Name] and d.TextureID == "" then d.Color = COLOURS[d.Name]; d.Material = Enum.Material.SmoothPlastic; coloured += 1 end end
 local have = {}
-for _, n in ipairs({"Frog", "LilyPad", "Lotus", "Flowers"}) do if assets:FindFirstChild(n) then table.insert(have, n) end end
+for _, n in ipairs({"Frog", "LilyPad", "Lotus", "Flowers", "Petals"}) do if assets:FindFirstChild(n) then table.insert(have, n) end end
 -- the store
 Shop:SetAttribute("Price_fountainmode", Shop:GetAttribute("Price_fountainmode") or 25); Shop:SetAttribute("Sell_fountainmode", true)
 for _, w in ipairs({"spaghetti", "frogs", "petals"}) do Shop:SetAttribute("Price_" .. w, nil); Shop:SetAttribute("Sell_" .. w, nil) end   -- (the first version's three rows)

@@ -576,3 +576,7 @@ version's Price_/Sell_ spaghetti/frogs/petals attributes are removed. Same run r
 slow petals, the spaghetti redo, Minutes 2). Supersedes job 63 if not yet run. Send the `QQ FMODE DONE` line. No publish.
 Result job 63 (13a7229, Shannon asked for it before 64): FountainModeClient 27800, Minutes 2, slow petals; store blurbs say two
 minutes (ShopClient 37163, the job 61 three-row version). Job 64 (one row) restores from the pre_modes1 backups first. Not published.
+Shannon (petals, twice): "a blurry mess ... not individual petals"; "it has to be real looking flower petals falling down".
+The petal fountain is now real shapes: petal parts (meshes Petal_A/B/C once petals.fbx is imported; flat ovals until then)
+that fly out of the jets and over the rim, tumble, drift down against drag, land on water/stone/paving, rest, fade.
+Job 65 (after job 64 and her import of petals.fbx): re-run install_modes1 so the Petals asset is adopted and the client updated.

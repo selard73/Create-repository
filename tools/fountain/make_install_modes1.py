@@ -183,7 +183,7 @@ local F = Instance.new("Folder"); F.Name = "FountainModes"
 F:SetAttribute("FountainPath", "PortoNocciola/13 Hillside town/Fontana del Limone")
 F:SetAttribute("Minutes", 2); F:SetAttribute("Reach", 150)   -- two minutes (Shannon: "different from the French one")
 F:SetAttribute("FrogSoundId", 73626983091367); F:SetAttribute("BounceSoundId", 0)
-F:SetAttribute("PetalTexture", ""); F:SetAttribute("PetalSize", 0.55); F:SetAttribute("PetalRate", 0.3); F:SetAttribute("PetalSpeed", 0.4); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalLife", 3.2); F:SetAttribute("CarpetCount", 90)
+F:SetAttribute("PetalsPerSecond", 34); F:SetAttribute("PetalMax", 240); F:SetAttribute("PetalSpread", 38); F:SetAttribute("PetalSpeedMin", 5); F:SetAttribute("PetalSpeedMax", 8.5); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalRest", 2.6); F:SetAttribute("CarpetCount", 90)
 F:SetAttribute("NoodleTexture", ""); F:SetAttribute("NoodleTop", 14); F:SetAttribute("NoodleRim", 20); F:SetAttribute("MeatballEvery", 1.6)
 F:SetAttribute("SignText", "FROG RESORT"); F:SetAttribute("DeckAngle", 0.9)
 F:SetAttribute("RimY", rimY or (c.Y - 2.15 + 1.3)); F:SetAttribute("RimR", rimR); F:SetAttribute("GroundY", groundY)
@@ -197,9 +197,11 @@ local assets = RS:FindFirstChild("FountainModeAssets") or Instance.new("Folder")
 local function tidy(m) for _, d in ipairs(m:GetDescendants()) do if d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false; d.CanQuery = false; d.CanTouch = false end end end
 local got = {}
 for _, m in ipairs(workspace:GetChildren()) do
-	if m:IsA("Model") and (m.Name:lower() == "frog" or m.Name:lower() == "flowers" or m:FindFirstChild("EyeL", true) or m:FindFirstChild("Lotus_Petals", true)) then
+	if m:IsA("Model") and (m.Name:lower() == "frog" or m.Name:lower() == "flowers" or m.Name:lower() == "petals" or m:FindFirstChild("EyeL", true) or m:FindFirstChild("Lotus_Petals", true) or m:FindFirstChild("Petal_A", true)) then
 		if m:FindFirstChild("Body", true) and m:FindFirstChild("EyeL", true) and not assets:FindFirstChild("Frog") then
 			tidy(m); m.Name = "Frog"; m.PrimaryPart = m:FindFirstChild("Body", true); m.Parent = assets; table.insert(got, "Frog")
+		elseif m:FindFirstChild("Petal_A", true) and not assets:FindFirstChild("Petal_A", true) then
+			tidy(m); m.Name = "Petals"; m.Parent = assets; table.insert(got, "Petals")
 		elseif m:FindFirstChild("LilyPad", true) then
 			tidy(m)
 			local pad = m:FindFirstChild("LilyPad", true); if pad and not assets:FindFirstChild("LilyPad") then pad.Parent = assets; table.insert(got, "LilyPad") end
@@ -212,11 +214,11 @@ end
 -- the flowers' flat Blender colours do not survive Import 3D (they come in grey): set by name, every run
 local COLOURS = {LilyPad = Color3.fromRGB(48, 120, 48), Leaf = Color3.fromRGB(66, 153, 56), Lotus_Petals = Color3.fromRGB(250, 148, 189), Lotus_Centre = Color3.fromRGB(255, 204, 38),
 	Flower_A_Petals = Color3.fromRGB(242, 102, 158), Flower_A_Centre = Color3.fromRGB(255, 204, 38), Flower_B_Petals = Color3.fromRGB(224, 41, 66), Flower_B_Centre = Color3.fromRGB(255, 204, 38),
-	Flower_C_Petals = Color3.fromRGB(158, 87, 219), Flower_C_Centre = Color3.fromRGB(255, 204, 38)}
+	Flower_C_Petals = Color3.fromRGB(158, 87, 219), Flower_C_Centre = Color3.fromRGB(255, 204, 38), Petal_A = Color3.fromRGB(255, 110, 150), Petal_B = Color3.fromRGB(255, 110, 150), Petal_C = Color3.fromRGB(255, 110, 150)}
 local coloured = 0
 for _, d in ipairs(assets:GetDescendants()) do if d:IsA("BasePart") and COLOURS[d.Name] and d.TextureID == "" then d.Color = COLOURS[d.Name]; d.Material = Enum.Material.SmoothPlastic; coloured += 1 end end
 local have = {}
-for _, n in ipairs({"Frog", "LilyPad", "Lotus", "Flowers"}) do if assets:FindFirstChild(n) then table.insert(have, n) end end
+for _, n in ipairs({"Frog", "LilyPad", "Lotus", "Flowers", "Petals"}) do if assets:FindFirstChild(n) then table.insert(have, n) end end
 -- the store
 Shop:SetAttribute("Price_fountainmode", Shop:GetAttribute("Price_fountainmode") or 25); Shop:SetAttribute("Sell_fountainmode", true)
 for _, w in ipairs({"spaghetti", "frogs", "petals"}) do Shop:SetAttribute("Price_" .. w, nil); Shop:SetAttribute("Sell_" .. w, nil) end   -- (the first version's three rows)
