@@ -667,3 +667,7 @@ BinocularsClient 7981 -> 8602 (the same touch test, following the last input use
 QuestionClient 28363 -> 28598 (phone layout by PreferredInput). Send the `QQ PHONE` line. No publish.
 Job 71 layout (runner's phone measurements, 667x375): the HOLD button in the strip between Roblox's hotbar and the jump
 button (AnchorPoint 1,1 at 1,-115,1,-45; 100 px; text 18), the draw bar at -150 and the help note at -170, above it. One install.
+Result job 71 (runner 3, 142634f): SlingClient 18486, BinocularsClient 8602, DailyClient 15020, QuestionClient 28598; backups
+*_pre_phone1; Hoop.HoopRange 150. Phone-preset play test: touch mode with MouseEnabled true (Shannon's case), HOLD at x 452..552
+y 230..330 with no overlaps, a held shot landed within 0.6 studs of the screen-centre point, binoculars toggle on a tap, no
+errors. Not covered: the touch switch at run time, other screen sizes, a prompt's touch button over the note. Not published.
