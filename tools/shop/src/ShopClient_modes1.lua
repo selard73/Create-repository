@@ -37,10 +37,10 @@ local ITEMS = {
 	{id = "backpack",   name = "Backpack",        blurb = "Carry your things, and your favourite squirrel, on your back.", once = true},	{id = "glider",     name = "Hang glider",     blurb = "Yours to keep. Take off from the top of the Sandstone Climb and glide into the Rue.", once = true},
 	-- keepsakes (Oct 9 2026): not for sale here; the row shows once the thing is yours
 	{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},
-	-- the Fontana del Limone's modes (Oct 10 2026): the whole server's fountain for ten minutes, one at a time
-	{id = "spaghetti", name = "Spaghetti fountain", blurb = "Noodles pour where the water does and smiling meatballs bounce out - ten minutes, for everyone here.", mode = "spaghetti"},
-	{id = "frogs",     name = "Frog resort",        blurb = "The frogs move in: lily pads, a parasol, a deck chair, string lights and a lot of croaking - ten minutes, for everyone here.", mode = "frogs"},
-	{id = "petals",    name = "Petal fountain",     blurb = "Every jet a stream of flower petals and a carpet of them on the water - ten minutes, for everyone here.", mode = "petals"},
+	-- the Fontana del Limone's modes (Oct 10 2026): the whole server's fountain for two minutes, one at a time
+	{id = "spaghetti", name = "Spaghetti fountain", blurb = "Noodles pour where the water does and smiling meatballs bounce out - two minutes, for everyone here.", mode = "spaghetti"},
+	{id = "frogs",     name = "Frog resort",        blurb = "The frogs move in: lily pads, a parasol, a deck chair, string lights and a lot of croaking - two minutes, for everyone here.", mode = "frogs"},
+	{id = "petals",    name = "Petal fountain",     blurb = "Every jet a stream of flower petals and a carpet of them on the water - two minutes, for everyone here.", mode = "petals"},
 }
 
 -- WHICH MAP SELLS WHAT (Oct 8 2026, Shannon: split the store by map "like the progress menu"): two tabs like the
