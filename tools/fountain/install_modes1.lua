@@ -352,6 +352,37 @@ local function stringLights(g, from, to, n)
 	end
 	return lights
 end
+-- A SOLID FOOTING on the stone (Shannon, Oct 10: the top-tier frog "floating in mid air", the far rim frog "half suspended on
+-- water"): from the spot asked for, then step by step along its own line out from and in toward the centre, the first place
+-- where the frog's whole footprint rests on something solid at one height (not the water, not our own parts), at that
+-- height. Nothing within reach -> no frog there.
+local footParams = RaycastParams.new(); footParams.FilterType = Enum.RaycastFilterType.Exclude; footParams.IgnoreWater = true
+local function footing(g, pos, scale, maxDrop)
+	local ex = {g.water, g.ring}
+	if scene then table.insert(ex, scene) end
+	if player.Character then table.insert(ex, player.Character) end
+	footParams.FilterDescendantsInstances = ex
+	local flat = Vector3.new(pos.X - g.centre.X, 0, pos.Z - g.centre.Z)
+	local out = flat.Magnitude > 0.05 and flat.Unit or Vector3.new(1, 0, 0)
+	local side = Vector3.new(-out.Z, 0, out.X)
+	local hx, hz = 0.4 * (scale or 1), 0.45 * (scale or 1)        -- the toes may hang over an edge a little
+	local function test(p)
+		local lo, hi
+		for _, o in ipairs({Vector3.zero, out * hz, -out * hz, side * hx, -side * hx}) do
+			local hit = workspace:Raycast(p + o + Vector3.new(0, 1.5, 0), Vector3.new(0, -(1.5 + maxDrop), 0), footParams)
+			if not hit then return nil end
+			lo = math.min(lo or hit.Position.Y, hit.Position.Y); hi = math.max(hi or hit.Position.Y, hit.Position.Y)
+		end
+		if hi - lo > 0.25 then return nil end
+		return hi
+	end
+	for _, d in ipairs({0, 0.15, -0.15, 0.3, -0.3, 0.5, -0.5, 0.7, -0.7, 0.9, -0.9, 1.2, -1.2, 1.5, -1.5}) do
+		local q = pos + out * d
+		local y = test(q)
+		if y then return Vector3.new(q.X, y, q.Z) end
+	end
+	return nil
+end
 local function startFrogs(g)
 	local frogs = {}
 	local function add(m, kind) if m then table.insert(frogs, {m = m, home = m:GetPivot(), kind = kind, ph = rng:NextNumber(0, 6)}) end end
@@ -368,10 +399,13 @@ local function startFrogs(g)
 	end
 	-- in the water, in a swim ring; two on the rim, one in a sun hat
 	add(frog(facing(around(g, 4.4, 3.1, g.basinY - 0.25), g.centre), 1.0, "SwimRing"), "swim")   -- feet under, the ring on the water (review)
-	add(frog(facing(around(g, g.rimR - 0.2, 1.2, g.rimY), g.centre) * CFrame.Angles(0, math.pi, 0), 1.0, "SunHat"), "rim")
-	add(frog(facing(around(g, g.rimR - 0.2, 4.9, g.rimY), g.centre), 0.9, ""), "rim")
-	-- one up top, by the spout
-	add(frog(facing(g.spout + Vector3.new(0.9, 0.05, 0.2), g.centre + Vector3.new(0, 20, 0)), 0.7, ""), "top")
+	local rim1 = footing(g, around(g, g.rimR, 1.2, g.rimY), 1.0, 1.0)
+	if rim1 then add(frog(facing(rim1, g.centre) * CFrame.Angles(0, math.pi, 0), 1.0, "SunHat"), "rim") end
+	local rim2 = footing(g, around(g, g.rimR, 4.9, g.rimY), 0.9, 1.0)
+	if rim2 then add(frog(facing(rim2, g.centre), 0.9, ""), "rim") end
+	-- one up top, by the spout, wherever the top tier gives it a footing
+	local top = footing(g, g.spout + Vector3.new(0.9, 0.05, 0.2), 0.7, 2.5)
+	if top then add(frog(facing(top, g.centre), 0.7, ""), "top") end
 	-- the deck: a parasol, a deck chair with a frog in it and a drink, the sign, a ladder, string lights
 	local deckA = num("DeckAngle", 0.9)
 	local deckPos = around(g, g.rimR + 3.6, deckA, g.groundY)
