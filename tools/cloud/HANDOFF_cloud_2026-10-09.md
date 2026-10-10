@@ -100,3 +100,17 @@ title "Studio runner for 1001 Squirrels"). The lowest unfinished job is always t
 holds the full list and every result so far.
 - Shannon's Desktop is C:\Users\slard\OneDrive\Desktop (the Windows known folder), not %USERPROFILE%\Desktop - files for
   her go there (runner 3, Oct 10).
+
+## State at Oct 10 04:45 UTC (all published unless noted)
+- Live: balloon finale (smooth flight, VR stand-off camera, film tour "Balloon flight" in F8, world notes), Bella's game on
+  phone/desktop/VR, VR speech bubbles beside the head, the piazza race, the Acorn Store's "Fountain magic" row (Club Rana,
+  Petals; 25 acorns, two minutes, one at a time), the Club Rana frog resort and the petal fountain, the opera spotlight
+  (OperaLights; round two with brighter spots, a gentler dim, the Listen prompt hidden while she sings), the phone slingshot
+  and binoculars (PreferredInput; HOLD button at (1,-115,1,-45) 100 px; away from the hoops the acorn goes where you look).
+- Dropped: the spaghetti fountain (Shannon: "too hard to pull off"). Its code is gone from FountainModeClient; the sauce
+  helpers (tintWater/untintWater) remain unused.
+- Runner 3 (session_01VuPQ6z5X4cxTdME7EDPUCf) is idle in Edit mode; it caches installer pieces by checksum.
+- Open: grabbable VR panels (the VR window follows the head; Shannon dislikes it); dresses on her new avatar (no arms);
+  Bella's reveal in VR is "good enough" after job 62; the PromptTouch stack can cover the slingshot's note on a phone.
+- Numbers to tune live as attributes: workspace.FountainModes (Petals*, Minutes, SignText, DeckAngle, FrogSoundId),
+  workspace.OperaLights (Spot*, Dim*, Fade*), workspace.Hoop.HoopRange, workspace.BalloonField (VRCam*, sounds).

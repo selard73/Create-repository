@@ -671,3 +671,4 @@ Result job 71 (runner 3, 142634f): SlingClient 18486, BinocularsClient 8602, Dai
 *_pre_phone1; Hoop.HoopRange 150. Phone-preset play test: touch mode with MouseEnabled true (Shannon's case), HOLD at x 452..552
 y 230..330 with no overlaps, a held shot landed within 0.6 studs of the screen-centre point, binoculars toggle on a tap, no
 errors. Not covered: the touch switch at run time, other screen sizes, a prompt's touch button over the note. Not published.
+Shannon (phone, after publishing at 04:39 UTC): the slingshot and binoculars "appear to be fine at this time". Jobs 69 and 71 live.
