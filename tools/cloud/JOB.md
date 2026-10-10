@@ -803,3 +803,17 @@ Falls' crest beams, other parts parked near the crest by earlier patches, the Ri
 line. Plus pictures (Studio, Edit mode, no change): (a) from the foot of the falls (Porto side) looking up at the whole face,
 (b) a close look at the right-hand side of the face toward the top, (c) the right side of the lip from the river just above the
 fall, (d) the same spots from behind / above where the face is see-through. Send the picture paths and what you see.
+Result job 82 (runner 4, c2388a6): "right" seen from Porto = the WEST pieces (W01 beside the falls, W02 beyond). The dark
+spots are Terrain (Grass): the plateau's vertical side stands 0.6-8 studs behind the west cliff's top slabs and shows through
+openings in the meshes; at (107,36) and (155,37) the terrain stands 0.4-0.8 IN FRONT of the mesh; a dark patch at the top of
+the east cliff by the notch too. The lip: the Body sheet (36 wide) is 2.2 studs wider than FallsB.LipPlate (31.5) on each side;
+LipRockW covers the corner itself; no blue part near the lip (the river is terrain water). Pictures on Shannon's PC
+(C:\Users\slard\Create-repository-shots\cliff-*.jpg).
+
+## Job 83: the cliff's bald spots and the lip's right edge (Studio EDIT; ask Shannon first)
+
+tools/falls/cliff_fix1.lua: (1) SouthCliff_W01/W02/E01 get a backing copy (same mesh and texture, 1.5 studs behind the face,
+no collision) so every opening shows rock behind rock and the recess between the top slabs and the grass is roofed; (2) the
+terrain standing in front of the west cliff's top band (x 100..168, y 26..46) is probed and shaved with thin Air boxes, the
+region backed up first (HudBackup.CliffTop_pre1); (3) FallsB.LipPlate widened to the sheet's width (SizeWas kept). Send the
+`QQ CLIFFFIX` line, then pictures from the same spots as job 82 (b2 and c4 above all). No publish.
