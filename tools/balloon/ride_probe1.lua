@@ -6,7 +6,8 @@
 -- the town, so a name path finds the wrong sibling; a tag travels with its own part), how many are present on THIS client
 -- right now, plus the distance to the funicolare. 288/288 and 12/12 while a thing looks missing = loaded but not drawn;
 -- dropping counts = streamed out. Cheap: GetTagged a few times a tick, no walk of the 67,000-part town (runner's notes).
--- Remove: set Probe false (the sign goes); tools/balloon/ride_probe_remove1.lua deletes the script and the tags.
+-- Only the place's owner sees it (the game is live). Remove: set Probe false (the sign goes);
+-- tools/balloon/ride_probe_remove1.lua deletes the script and the tags.
 local bf = workspace:FindFirstChild("BalloonField")
 if not bf then print("QQ PROBE ABORT: workspace.BalloonField not found") return end
 local SECTIONS = {
@@ -35,6 +36,9 @@ end
 local SRC = [===[
 local RunService = game:GetService("RunService")
 local CS = game:GetService("CollectionService")
+local Players = game:GetService("Players")
+-- the owner only: this is a debug sign, and the game is live (runner's note)
+if game.CreatorType == Enum.CreatorType.User and Players.LocalPlayer.UserId ~= game.CreatorId then return end
 local F = script.Parent
 local cam = workspace.CurrentCamera
 local SENTINELS = {@@SENTINELS@@}
