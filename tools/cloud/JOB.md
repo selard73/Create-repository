@@ -629,3 +629,5 @@ tools/opera/install_lights1.lua: workspace.OperaLights + OperaLightsClient (clie
 colour-correction and Lighting dim over 1.6 s, warm spotlights with visible beams and light pools over the singer and
 Nino, until OperaSong stops / the player walks 45 studs away / respawns; up again over 2.2 s). Attributes to tune on the
 folder. Undo: delete workspace.OperaLights. Send the `QQ OPERA` line. No publish.
+Result job 67 (runner 3, c25ae2e): FountainModeClient 24809 (no spaghetti); store two choices (ShopServer 10901, ShopClient 38666);
+assets unchanged. Not published.
