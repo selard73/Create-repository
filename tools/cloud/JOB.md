@@ -522,3 +522,5 @@ beams, attachments, sounds, scripts and the ground round it. Send every `QQ FTN`
 
 Bought in the Acorn Store like the French fountain colour (the whole server's fountain for ten minutes). Built after jobs
 59 and 60; the frogs are a Blender model Shannon imports (like the balloon).
+Results (runner 3): 57 SeaGlassClient 18853 (backup _pre_seaglass11; Studio's lift line was the 2.4 form); 58 VRTestClient ->
+HudBackup (disabled; the pads were made at run time, none in the workspace). Not published.
