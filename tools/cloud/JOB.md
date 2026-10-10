@@ -919,3 +919,6 @@ Result job 86 (runner 5): v1 installed at Shannon's yes (LipClump_3 at 167.4,-7.
 ColorWas kept); runner 5's rays found the sliver is terrain WATER 0.2-0.5 in front of the plate at x 168.3..169.2, y -6..-7
 (inside the sheet's x range, hidden from job 85's count by its stand-in). v2 (1c2164f): the clump at 168.2,-7.0,-550.3 scale
 0.46, the plate left alone; previewed next, installed on her yes with the plate put back from ColorWas. Not published.
+Result job 86 v2 (runner 5, 1c2164f, Shannon's yes; not published): LipClump_3 at (168.2,-7.0,-550.3) size (5.3,3.3,3.9), the
+plate back to 212,236,240 (ColorWas cleared). Preview: no blue from four viewpoints; water-first rays 142 -> 3, those behind
+the sheet's edge. The lip's right corner is done. Next: job 87 after the review.
