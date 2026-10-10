@@ -592,3 +592,6 @@ Step 2 (runner): re-run tools/fountain/install_modes1.lua at that commit: adopts
 them, rebuilds FountainModes with the client (real petal meshes in the petal fountain; the spaghetti ooze). Store unchanged
 if job 64 is in (the one-row version; it is restored and re-patched identically). `QQ FMODE DONE`. No publish.
 Shannon: the frog mode is "Club Rana" (the sign, the store button and the "in use" text; the item id frogs stays). In job 65.
+Result job 65 (runner 3, 9916430): FountainModeClient 32701; assets Frog, LilyPad, Lotus, Flowers, Petals; ShopServer 10916,
+ShopClient 38793 (one "Fountain magic" row, three choices, the three-row patch undone first); Minutes 2, SignText CLUB RANA.
+Not play-tested; the runner is asking Shannon for a Device Simulator test of the row and the modes before publishing. Not published.
