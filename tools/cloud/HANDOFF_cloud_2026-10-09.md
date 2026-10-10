@@ -141,6 +141,8 @@ asks Shannon. If this runner nears 90% of its memory, say so to the cloud sessio
 
 ## Rewards panel (Shannon, Oct 10 afternoon; to build after the VR fixes are confirmed)
 Roblox community "1001 Squirrels" = id 969906332 (owner SelBell 9611145467; public entry allowed; made Oct 10).
+CORRECTION Oct 10 evening: an experience's favourite CANNOT be checked (AvatarEditorService is assets/bundles only) and
+CanPromptOptInAsync false is ambiguous; the like row is on trust. Built as job 87 (tools/gifts). The earlier plan, for the record:
 Plan: one "Rewards" panel - favourite the game + turn on notifications (AvatarEditorService favourite check after
 PromptAllowInventoryReadAccess; ExperienceNotificationService PromptOptIn, CanPromptOptInAsync false afterwards = opted in,
 players who cannot be prompted pass) -> the store item `backpack` granted as a purchase would be; join the community

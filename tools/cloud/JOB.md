@@ -891,3 +891,27 @@ colour to the sheet's white (ColorWas kept). Send the `QQ SLIVER` line and a pic
 Shannon's verdict from the live game (Oct 10, published 19:26Z), her words: "the balloon ride is fine the cliff's bald spots
 look fixed the blue bulge is mostly fixed but there is still a small section to the left between the 2 clods covering it.
 (the thin blue sliver on the left is still there." -> cliff done (83 + 84); balloon as is; job 86 (the sliver) next, runner 5.
+
+Shannon (Oct 10 evening): "next and as soon as possible, we need popups some place earlier in the game to encourage players
+to like and set notifications, join the community and invite friends to play" ... "a system, like we were talking about
+earlier, like to gift the backpack or double acorns for players with invites in same game".
+Code map (4 readers, Oct 10): items persist only through RS.AwardItems:Fire(player, id, n) -> Item_<id> (saved); acorns are
+the Acorns attribute for the screen PLUS RS.AwardAcorns:Fire(player, n) for the save (two lines everywhere; the Robux packs
+are 150/500/1200); the daily card is the popup precedent (DailyGui, navy/gold/cream, DisplayOrder 15); OpenPanel on PlayerGui;
+HUD buttons can be parented into pg.HudBar.Bar from outside. Roblox APIs: NO way to check a like or an EXPERIENCE favourite
+(AvatarEditorService is assets/bundles only) and CanPromptOptInAsync false is ambiguous -> the like row is on trust;
+GroupService:GetGroupsAsync verifies the community; SocialService:PromptGameInvite + Player:GetJoinData().ReferredByPlayerId
+for invites (sanctioned by Roblox's referral guide).
+
+## Job 87: the Gifts system (Studio EDIT; preview, then ask Shannon)
+
+tools/gifts/install_gifts1.lua (from make_install_gifts1.py; src/GiftsServer.lua, src/GiftsClient.lua): workspace.Gifts +
+RS.GiftsAction / GiftsEvent. The card "Gifts for squirrel friends" pops up once per session 90 s after the save loads
+(while the first two gifts are unclaimed, no panel or daily card up); a Gifts button in the HUD bar opens it any time.
+Row 1: like + favourite + notifications -> the Backpack (Roblox's notifications prompt, then "open the Roblox menu, press
+the thumbs-up and the star", then Claim; on trust). Row 2: join the community -> 150 acorns (GroupService:PromptJoinAsync,
+then the server checks GetGroupsAsync). Row 3: invite a friend (SocialService invite prompt) -> while the friend who came
+on your invite is in the same server, BOTH earn double acorns: every ledger gain under 140 is paid again (Robux packs never),
+an "x2" rides on the purse, a toast says who with. Attributes on workspace.Gifts. Send the `QQ GIFTS` line; play-test: the
+card at 90 s (set PopupDelay 5 for the test), the HUD button, the Join flow with Shannon's account (she owns the community:
+AlreadyMember -> 150 acorns once), the Claim (backpack on the back). No publish.
