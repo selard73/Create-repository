@@ -486,3 +486,22 @@ Next (not built yet; Shannon's bigger VR ask): the pop-ups that are not game thi
 rest of the VR window) grabbable with the controller and left where she puts them, instead of following the head.
 Results (runner, Edit mode, not tested, not published): 53 SeaGlassClient 18492 (backup _pre_seaglass10); 54 BalloonClient
 32028 (backup BalloonClient_pre_f4d950f); 55 SquirrelBubble 8415 (backup SquirrelBubble_pre_vr1).
+Shannon (VR, Oct 10): the balloon ride works; "when it put me back on land the balloon stayed in the air"; Bella's words and
+picker "work really well"; the reveal "spawns halfway in the stairway"; remove the yellow/blue VR test pads.
+
+## Job 56: the balloon lands for everyone (Studio EDIT, client in place; ask Shannon first)
+
+BalloonClient (tools/balloon/install_field1.lua, client only, 32702 chars): a server position more than 40 studs from the
+last one (set down at home) is taken at once instead of glided to, and 0.8 s after "home" the balloon is put on its pad
+if it is not there (whatever order the home position and the event arrived in). `QQ FIELD` line. No publish.
+
+## Job 57: Bella's reveal in VR, front and centre (Studio EDIT; ask Shannon first)
+
+tools/porto/seaglass11.lua (SeaGlassClient after job 53, about 18492 chars, 2 finds; the lift line in either form): in
+a headset the made thing appears 2.8 studs in front of the eyes where she looks at that moment, 1.5x, rising only a
+little. Backup HudBackup.SeaGlassClient_pre_seaglass11. Send the `QQ SG11` line. No publish.
+
+## Job 58: remove the VR test switches (Studio EDIT; ask Shannon first)
+
+tools/film/vrtest_remove1.lua: workspace.FilmMode.VRTestClient -> ServerStorage.HudBackup (disabled); any pad left in the
+workspace with a Shadows / Plain floor prompt or a VRTest* name -> HudBackup.VRTestPads. Send the `QQ VRT` line. No publish.

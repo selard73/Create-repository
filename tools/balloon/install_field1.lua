@@ -551,6 +551,12 @@ end
 local function smoothSample(S, now)
 	local cf = S.basket.CFrame
 	if S.written == nil or not cf:FuzzyEq(S.written, 1e-3) then   -- not what we wrote: a position from the server
+		local last = S.samples[#S.samples]
+		if last and (cf.Position - last[2].Position).Magnitude > 40 then   -- a jump (set down at home): no gliding there, it is there now (Shannon, VR: "the balloon stayed in the air")
+			S.samples = {{now, cf}}
+			smoothWrite(S, cf)
+			return
+		end
 		table.insert(S.samples, {now, cf})
 		if #S.samples > 10 then table.remove(S.samples, 1) end
 	end
@@ -643,6 +649,7 @@ end
 
 -- ---------- phases ----------
 local flying = false
+local restCF = nil   -- where the balloon stood when you boarded (its pad)
 ev.OnClientEvent:Connect(function(what, who, name, secs)
 	if what == "locked" then showToast(string.format("Find all %d squirrels of Porto Nocciola to fly. %d so far.", name, who), 4)
 	elseif what == "busy" then showToast("The balloon is away. It will be back on the field soon.", 3)
@@ -650,7 +657,13 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 		local m = yours
 		local fl = m and m:FindFirstChild("Flame", true)
 		if name == "board" and fl and flames[fl] then flames[fl].flare = 1; task.delay(3, function() if flames[fl] then flames[fl].flare = 0 end end) end
-		if name == "board" then smoothStart() elseif name == "home" then smoothStop() end
+		if name == "board" then smoothStart(); restCF = yours and yours:GetPivot() or nil
+		elseif name == "home" then
+			smoothStop()
+			task.delay(0.8, function()   -- and whatever the order things arrived in, the balloon is on its pad now
+				if restCF and yours and yours.Parent and not smooth and (yours:GetPivot().Position - restCF.Position).Magnitude > 3 then yours:PivotTo(restCF) end
+			end)
+		end
 		if who ~= player then return end
 		if name == "board" then flying = true; vrCamStart() end
 		if name == "rise" then showToast("Up you go, traveler! Look at Porto Nocciola from the sky.", 5); duckMusic(true, secs)
