@@ -116,6 +116,19 @@ holds the full list and every result so far.
 - Shannon's Desktop is C:\Users\slard\OneDrive\Desktop (the Windows known folder), not %USERPROFILE%\Desktop - files for
   her go there (runner 3, Oct 10).
 
+## Runner 4 (Oct 10 ~12:10 UTC; runner 3 retired at 90% of its memory, idle, nothing pending)
+Read this section, then tools/cloud/JOB.md from job 72 down. The cloud session is "Cloud session handoff"
+(session_01Gwhv9KoRg69mUkZf5xktZw): send it "runner 4 ready" as a cross-session message on first contact, then ONE short
+message per job with every QQ line unchanged. The cloud session answers to the bridge:session_... id your messages carry.
+Standing rules: ask Shannon before every Studio edit (surveys are read-only and need no ask); never publish (she does
+Alt+P); never write DataStores; run scripts in Edit mode (execute_luau) fetched from commit-SHA raw GitHub URLs; every
+patched script is backed up first to ServerStorage.HudBackup.*; installers are exact-string patches with length guards
+(report the QQ line, including any ABORT); keep messages short - each install costs about ten calls. Shannon's Desktop is
+C:\Users\slard\OneDrive\Desktop. The repo clone on her PC: pull claude/epic-hawking-188q4l before reading or pushing.
+Open this morning (Shannon, VR): the interact pill for the piazza race and the opera singer is missing in VR; every Club
+Rana frog is tipped onto its face; from the balloon only the funicolare's rails show. Job 72 (read-only survey + an export)
+gathers the facts; fixes follow as jobs 73+.
+
 ## State at Oct 10 04:45 UTC (all published unless noted)
 - Live: balloon finale (smooth flight, VR stand-off camera, film tour "Balloon flight" in F8, world notes), Bella's game on
   phone/desktop/VR, VR speech bubbles beside the head, the piazza race, the Acorn Store's "Fountain magic" row (Club Rana,

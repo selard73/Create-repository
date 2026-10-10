@@ -672,3 +672,13 @@ Result job 71 (runner 3, 142634f): SlingClient 18486, BinocularsClient 8602, Dai
 y 230..330 with no overlaps, a held shot landed within 0.6 studs of the screen-centre point, binoculars toggle on a tap, no
 errors. Not covered: the touch switch at run time, other screen sizes, a prompt's touch button over the note. Not published.
 Shannon (phone, after publishing at 04:39 UTC): the slingshot and binoculars "appear to be fine at this time". Jobs 69 and 71 live.
+
+## Job 72: VR morning survey + PromptClient export (READ-ONLY; no Studio edit; git push)
+
+Shannon in VR (Oct 10 morning): (1) "the interact button for the race and the opera singer in the square is missing
+completely", (2) "all of the frogs in Club Rana are tipped up on their faces with their backsides in the air", (3) "you can
+see the rails only from the funicolare when you are up in the balloon, not the whole funicolare".
+1. Pull the branch. Save workspace.PromptUI.PromptClient.Source (exact bytes) to tools/prompts_src/PromptClient.lua, commit and
+   push to claude/epic-hawking-188q4l (as jobs 59 and 70 did). The cloud session patches the live copy from that file.
+2. Run tools/cloud/survey72.lua (Edit mode; it reads only: prompt settings, the Frog asset's part orientations, the
+   funicolare's models and streaming settings). Send every `QQ S72` line in one message, with the pushed commit's SHA.
