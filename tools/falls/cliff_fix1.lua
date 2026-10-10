@@ -4,7 +4,7 @@
 -- Job 82 found: the dark spots are the grass plateau's shaded side, 0.6-8 studs behind the cliff's top slabs, seen through
 -- openings between the slabs (at two spots the terrain stands 0.4-0.8 studs IN FRONT of the mesh); the water sheet (Body,
 -- 36 wide) is 2.2 studs wider than the LipPlate behind it (31.5) on each side.
--- Does: (1) a BACKING WALL of sandstone blocks behind the top band of the west cliff and of the east cliff by the notch,
+-- Does: (1) a BACKING WALL of sandstone blocks behind the top band of the whole face (west cliff x 42..160, east 208..328),
 -- measured here segment by segment: each block starts half a stud behind the furthest-back face point of its segment,
 -- is as thick as the room to the terrain allows (up to 1.6), and its top stays under whatever covers it from above - the
 -- slabs in front, the grass behind - so nothing shows from above or from the plateau; a segment open to the sky (the
@@ -13,7 +13,7 @@
 -- in front of the face are shaved with a thin Air box (well under the top row); the region is backed up first to
 -- ServerStorage.HudBackup.CliffTop_pre1; (3) FallsB.LipPlate widened to the sheet's width at the crest (SizeWas kept).
 -- Undo: delete SouthGorge.Rock.CliffBacking; LipPlate.Size from its SizeWas attribute; terrain:
--- workspace.Terrain:PasteRegion(ServerStorage.HudBackup.CliffTop_pre1, Vector3int16.new(24, 5, -144), true). No publish.
+-- workspace.Terrain:PasteRegion(ServerStorage.HudBackup.CliffTop_pre1, Vector3int16.new(9, 5, -145), true). No publish.
 local SS = game:GetService("ServerStorage")
 local Terrain = workspace.Terrain
 local SG = workspace:FindFirstChild("SouthGorge"); local Rock = SG and SG:FindFirstChild("Rock")
@@ -23,13 +23,13 @@ local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "
 local GAP, THICK_MAX, THICK_MIN = 0.5, 1.6, 0.3   -- the block starts GAP behind the segment's furthest-back face point
 local Y0, Y1, YTOP = 24, 42, 43.4                 -- probes at y 26..42; blocks from Y0 up, never above YTOP
 local COVER_PAD = 0.25                            -- the block's top stays this far under the lowest cover over its footprint
-local BANDS = {{name = "W", x0 = 100, x1 = 160, prefix = "SouthCliff_W0"}, {name = "E", x0 = 208, x1 = 244, prefix = "SouthCliff_E0"}}
+local BANDS = {{name = "W", x0 = 42, x1 = 160, prefix = "SouthCliff_W0"}, {name = "E", x0 = 208, x1 = 328, prefix = "SouthCliff_E0"}}   -- the whole face (Shannon: "do the whole cliff"), the notch corners left out
 local tparams = RaycastParams.new(); tparams.FilterType = Enum.RaycastFilterType.Include; tparams.FilterDescendantsInstances = {Terrain}
 
 local folder = Rock:FindFirstChild("CliffBacking")
 if folder then folder:Destroy() end                -- (a re-run rebuilds the wall from fresh measurements)
 folder = Instance.new("Folder"); folder.Name = "CliffBacking"; folder.Parent = Rock
-local regionMin, regionMax = Vector3int16.new(24, 5, -144), Vector3int16.new(64, 13, -130)   -- studs x 96..256, y 20..52, z -576..-520
+local regionMin, regionMax = Vector3int16.new(9, 5, -145), Vector3int16.new(84, 13, -130)   -- studs x 36..336, y 20..52, z -580..-520
 if not hb:FindFirstChild("CliffTop_pre1") then
 	local reg = Terrain:CopyRegion(Region3int16.new(regionMin, regionMax)); reg.Name = "CliffTop_pre1"; reg.Parent = hb
 end

@@ -826,3 +826,9 @@ carves reached y 43.1 under a grass top only 0-2 studs higher (the edge would sa
 E 208..244; blocks 0.5 behind the face, thinned to the terrain (0.3..1.6 or skipped), tops 0.25 under the lowest cover over
 nine downward rays (open sky -> no block); no carving except the pokes in front at y <= 40; the terrain's exposed side in the
 band (y 24..44) ReplaceMaterial Grass/LeafyGrass/Ground -> Sandstone instead (shape untouched; the grass top row kept).
+Runner 4 play-test preview of c4e4439 (pictures tools/falls/shots/cliff-preview-*.jpg, ebe59bd): the dark patches by the
+corner are gone (the openings show tan); only 2 of 26 blocks found room (the terrain is within a stud of the face nearly
+everywhere), the material swap does the work; the plateau's top turned sandy in a 10-20 stud rim behind the edge; the pale
+lip plate at 36 covers the teal strip Shannon saw. Shannon on the six before/after pictures: "Good, do the whole cliff" -
+her yes covers the whole-face version if the preview looks the same or better. Round three (commit below): bands W 42..160
+and E 208..328, backup region x 36..336.
