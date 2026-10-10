@@ -63,10 +63,10 @@ S = [
 C = [
     ('\t{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},\n}\n',
      '\t{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},\n'
-     '\t-- the Fontana del Limone\'s modes (Oct 10 2026): the whole server\'s fountain for ten minutes, one at a time\n'
-     '\t{id = "spaghetti", name = "Spaghetti fountain", blurb = "Noodles pour where the water does and smiling meatballs bounce out - ten minutes, for everyone here.", mode = "spaghetti"},\n'
-     '\t{id = "frogs",     name = "Frog resort",        blurb = "The frogs move in: lily pads, a parasol, a deck chair, string lights and a lot of croaking - ten minutes, for everyone here.", mode = "frogs"},\n'
-     '\t{id = "petals",    name = "Petal fountain",     blurb = "Every jet a stream of flower petals and a carpet of them on the water - ten minutes, for everyone here.", mode = "petals"},\n'
+     '\t-- the Fontana del Limone\'s modes (Oct 10 2026): the whole server\'s fountain for two minutes, one at a time\n'
+     '\t{id = "spaghetti", name = "Spaghetti fountain", blurb = "Noodles pour where the water does and smiling meatballs bounce out - two minutes, for everyone here.", mode = "spaghetti"},\n'
+     '\t{id = "frogs",     name = "Frog resort",        blurb = "The frogs move in: lily pads, a parasol, a deck chair, string lights and a lot of croaking - two minutes, for everyone here.", mode = "frogs"},\n'
+     '\t{id = "petals",    name = "Petal fountain",     blurb = "Every jet a stream of flower petals and a carpet of them on the water - two minutes, for everyone here.", mode = "petals"},\n'
      '}\n'),
     ('\tcrabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true},\n}\n',
      '\tcrabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true}, spaghetti = {italy = true}, frogs = {italy = true}, petals = {italy = true},\n}\n'),
@@ -143,7 +143,7 @@ local groundY = gHit and gHit.Position.Y or (c.Y - 4)
 local old = workspace:FindFirstChild("FountainModes"); if old then old:Destroy() end
 local F = Instance.new("Folder"); F.Name = "FountainModes"
 F:SetAttribute("FountainPath", "PortoNocciola/13 Hillside town/Fontana del Limone")
-F:SetAttribute("Minutes", 10); F:SetAttribute("Reach", 150)
+F:SetAttribute("Minutes", 2); F:SetAttribute("Reach", 150)   -- two minutes (Shannon: "different from the French one")
 F:SetAttribute("FrogSoundId", 73626983091367); F:SetAttribute("BounceSoundId", 0)
 F:SetAttribute("PetalTexture", ""); F:SetAttribute("PetalSize", 0.55); F:SetAttribute("PetalRate", 0.6); F:SetAttribute("CarpetCount", 90)
 F:SetAttribute("NoodleTexture", ""); F:SetAttribute("NoodleTop", 14); F:SetAttribute("NoodleRim", 20); F:SetAttribute("MeatballEvery", 1.6)
@@ -183,6 +183,14 @@ for _, n in ipairs({"Frog", "LilyPad", "Lotus", "Flowers"}) do if assets:FindFir
 Shop:SetAttribute("Price_spaghetti", Shop:GetAttribute("Price_spaghetti") or 25); Shop:SetAttribute("Price_frogs", Shop:GetAttribute("Price_frogs") or 25); Shop:SetAttribute("Price_petals", Shop:GetAttribute("Price_petals") or 25)
 Shop:SetAttribute("Sell_spaghetti", true); Shop:SetAttribute("Sell_frogs", true); Shop:SetAttribute("Sell_petals", true)
 local shopNote = "store already patched (kept)"
+if shopDone then
+	local o, n = cl.Source, 0
+	for _, w in ipairs({"spaghetti", "frogs", "petals"}) do
+		local a, b = o:find('- ten minutes, for everyone here.", mode = "' .. w .. '"},', 1, true)
+		if a then o = o:sub(1, a - 1) .. '- two minutes, for everyone here.", mode = "' .. w .. '"},' .. o:sub(b + 1); n += 1 end
+	end
+	if n > 0 then local f = loadstring(o); if f then cl.Source = o; shopNote = string.format("store already patched; %d blurbs now say two minutes (ShopClient %d chars)", n, #cl.Source) end end
+end
 if not shopDone then
 	local function patch(src, pairs_, what)
 		for i, p in ipairs(pairs_) do

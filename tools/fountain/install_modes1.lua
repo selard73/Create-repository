@@ -32,7 +32,7 @@ local groundY = gHit and gHit.Position.Y or (c.Y - 4)
 local old = workspace:FindFirstChild("FountainModes"); if old then old:Destroy() end
 local F = Instance.new("Folder"); F.Name = "FountainModes"
 F:SetAttribute("FountainPath", "PortoNocciola/13 Hillside town/Fontana del Limone")
-F:SetAttribute("Minutes", 10); F:SetAttribute("Reach", 150)
+F:SetAttribute("Minutes", 2); F:SetAttribute("Reach", 150)   -- two minutes (Shannon: "different from the French one")
 F:SetAttribute("FrogSoundId", 73626983091367); F:SetAttribute("BounceSoundId", 0)
 F:SetAttribute("PetalTexture", ""); F:SetAttribute("PetalSize", 0.55); F:SetAttribute("PetalRate", 0.6); F:SetAttribute("CarpetCount", 90)
 F:SetAttribute("NoodleTexture", ""); F:SetAttribute("NoodleTop", 14); F:SetAttribute("NoodleRim", 20); F:SetAttribute("MeatballEvery", 1.6)
@@ -128,12 +128,12 @@ local function setWater(g, on)
 end
 local waterLook = nil
 local function tintWater(g, colour, transparency)
-	if not waterLook then waterLook = {wc = g.water.Color, wt = g.water.Transparency, rc = g.ring.Color, rt = g.ring.Transparency} end
+	if not waterLook then waterLook = {wc = g.water.Color, wt = g.water.Transparency, rc = g.ring.Color, rt = g.ring.Transparency, rm = g.ring.Material} end
 	g.water.Color = colour; g.water.Transparency = transparency; g.ring.Color = colour; g.ring.Transparency = transparency
 end
 local function untintWater(g)
 	if not waterLook then return end
-	g.water.Color = waterLook.wc; g.water.Transparency = waterLook.wt; g.ring.Color = waterLook.rc; g.ring.Transparency = waterLook.rt
+	g.water.Color = waterLook.wc; g.water.Transparency = waterLook.wt; g.ring.Color = waterLook.rc; g.ring.Transparency = waterLook.rt; g.ring.Material = waterLook.rm
 	waterLook = nil
 end
 
@@ -190,73 +190,102 @@ local function startPetals(g)
 end
 
 -- ---------- spaghetti ----------
+-- Shannon (Oct 10, after the first look): "it should be individual pasta pieces coming out and falling down like the water
+-- does" and the pink sauce "looks gruesome". So: the water's own emitters cloned into streams of noodle pieces (long, thin,
+-- along the way they fly), real strands tossed out of the spout that tumble, land and fade, meatballs the same way, and
+-- an opaque tomato-orange sauce in the basin and the bowl.
 local NOODLE = Color3.fromRGB(242, 216, 140)
-local function noodle(g, p0, p1, up0, up1, width)
-	-- a strand: a Beam between two attachments on the Water part, bowing up at the start and drooping at the end
-	-- (parented first, then placed; their X axis points up, which is the axis a Beam's CurveSize bends along - review, Oct 10)
-	local a0 = Instance.new("Attachment"); a0.Name = "NoodleA"; a0.Parent = g.water; a0.WorldCFrame = CFrame.new(p0) * CFrame.Angles(0, 0, math.pi / 2)
-	local a1 = Instance.new("Attachment"); a1.Name = "NoodleB"; a1.Parent = g.water; a1.WorldCFrame = CFrame.new(p1) * CFrame.Angles(0, 0, math.pi / 2)
-	local b = Instance.new("Beam"); b.Name = "Noodle"; b.Attachment0 = a0; b.Attachment1 = a1
-	b.CurveSize0 = up0; b.CurveSize1 = up1; b.Segments = 16; b.FaceCamera = true
-	b.Width0 = width; b.Width1 = width * 1.1; b.LightEmission = 0.12; b.LightInfluence = 0.7
-	local c = NOODLE:Lerp(Color3.fromRGB(255, 235, 170), rng:NextNumber(0, 0.6))
-	b.Color = ColorSequence.new(c); b.Transparency = NumberSequence.new(0)
+local SAUCE = Color3.fromRGB(198, 70, 32)
+local function noodleEmitter(src, i)
+	local e = src:Clone(); e.Name = "NoodleStream"
 	local tex = str("NoodleTexture", "")
-	if tex ~= "" then b.Texture = tex; b.TextureMode = Enum.TextureMode.Wrap; b.TextureLength = 1.2; b.TextureSpeed = 1.2 end
-	b.Parent = a0
-	return a0, a1
+	e.Texture = tex ~= "" and tex or "rbxasset://textures/particles/smoke_main.dds"
+	e.Color = ColorSequence.new(NOODLE:Lerp(Color3.fromRGB(255, 236, 170), (i % 3) * 0.3))
+	e.LightEmission = 0.05; e.LightInfluence = 0.6
+	e.Size = NumberSequence.new(num("NoodleWidth", 0.24))
+	e.Squash = NumberSequence.new(num("NoodleStretch", 5))   -- long and thin along the way it flies: a piece of spaghetti
+	e.Orientation = Enum.ParticleOrientation.VelocityParallel
+	e.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.9, 0), NumberSequenceKeypoint.new(1, 1)})
+	e.Lifetime = NumberRange.new(src.Lifetime.Min * 1.9, src.Lifetime.Max * 2.2)
+	e.Rate = src.Rate * num("NoodleRate", 0.5)
+	e.Rotation = NumberRange.new(0); e.RotSpeed = NumberRange.new(0)
+	e.Enabled = true
+	e.Parent = src.Parent
+	return e
 end
-local function meatball(g)
-	-- a smiling meatball: out of the spout, a bounce in the bowl, a bounce in the basin, out over the rim and away
-	local m = part("Meatball", Vector3.new(0.95, 0.95, 0.95), CFrame.new(g.spout), Color3.fromRGB(118, 68, 40), Enum.Material.SmoothPlastic, Enum.PartType.Ball)
-	local face = Instance.new("Decal"); face.Name = "Smile"; face.Texture = "rbxasset://textures/face.png"; face.Face = Enum.NormalId.Front; face.Parent = m
+-- something tossed out of the spout: a hop into the bowl, one into the basin, one out over the rim, a roll, a rest, a fade
+local function toss(obj, g, spinAxis)
 	local a = rng:NextNumber(0, 2 * math.pi)
 	local hops = {
-		{p = around(g, rng:NextNumber(1.2, g.bowlR - 0.4), a, g.bowlY + 0.48), h = rng:NextNumber(3.5, 5), T = 0.75},
-		{p = around(g, rng:NextNumber(g.basinR0 + 0.2, g.basinR1 - 0.2), a + rng:NextNumber(-0.5, 0.5), g.basinY + 0.48), h = rng:NextNumber(1.6, 2.4), T = 0.6},
-		{p = around(g, rng:NextNumber(g.rimR + 1.2, g.rimR + 3.5), a + rng:NextNumber(-0.7, 0.7), g.groundY + 0.48), h = rng:NextNumber(1.4, 2.2), T = 0.65},
-		{p = nil, h = 0.5, T = 0.4},
+		{p = around(g, rng:NextNumber(1.2, g.bowlR - 0.4), a, g.bowlY + 0.45), h = rng:NextNumber(3.5, 5), T = 0.75},
+		{p = around(g, rng:NextNumber(g.basinR0 + 0.2, g.basinR1 - 0.2), a + rng:NextNumber(-0.5, 0.5), g.basinY + 0.45), h = rng:NextNumber(1.6, 2.4), T = 0.6},
+		{p = around(g, rng:NextNumber(g.rimR + 1.2, g.rimR + 3.5), a + rng:NextNumber(-0.7, 0.7), g.groundY + 0.45), h = rng:NextNumber(1.4, 2.2), T = 0.65},
 	}
-	hops[4].p = hops[3].p + Vector3.new(math.cos(a) * 1.5, 0, math.sin(a) * 1.5)   -- a last little roll outward
+	hops[4] = {p = hops[3].p + Vector3.new(math.cos(a) * 1.5, 0, math.sin(a) * 1.5), h = 0.5, T = 0.4}   -- a last little roll outward
 	local my = gen
 	task.spawn(function()
 		local from = g.spout
-		local spin = CFrame.Angles(rng:NextNumber(-3, 3), rng:NextNumber(-3, 3), 0)
+		local tumble = CFrame.Angles(rng:NextNumber(-3, 3), rng:NextNumber(-3, 3), 0)
 		for _, hop in ipairs(hops) do
 			local t0 = os.clock()
 			while true do
 				local t = (os.clock() - t0) / hop.T
-				if t >= 1 or gen ~= my or not m.Parent then break end
+				if t >= 1 or gen ~= my or not obj.Parent then break end
 				local pos = from:Lerp(hop.p, t) + Vector3.new(0, 4 * hop.h * t * (1 - t), 0)
-				m.CFrame = CFrame.new(pos) * CFrame.Angles(0, a, 0) * CFrame.fromAxisAngle(Vector3.xAxis, -t * 4) * spin
+				obj:PivotTo(CFrame.new(pos) * CFrame.Angles(0, a, 0) * CFrame.fromAxisAngle(spinAxis, -t * 4) * tumble)
 				RunService.RenderStepped:Wait()
 			end
-			if gen ~= my or not m.Parent then break end
-			m.CFrame = CFrame.new(hop.p) * CFrame.Angles(0, a + math.pi, 0)
+			if gen ~= my or not obj.Parent then break end
+			obj:PivotTo(facing(hop.p, g.centre))
 			from = hop.p
-			sound(num("BounceSoundId", 0), m, 0.35)
+			sound(num("BounceSoundId", 0), obj:IsA("Model") and obj.PrimaryPart or obj, 0.35)
 		end
-		if m.Parent then
-			m.CFrame = facing(from, g.centre)   -- sits looking at the fountain (the smile is the Front face)
-			task.wait(3)
-			if m.Parent then TweenService:Create(m, TweenInfo.new(0.7), {Transparency = 1}):Play(); TweenService:Create(face, TweenInfo.new(0.7), {Transparency = 1}):Play() end
-			Debris:AddItem(m, 0.8)
+		if obj.Parent and gen == my then
+			obj:PivotTo(facing(from, g.centre))   -- sits looking at the fountain
+			task.wait(2.5)
+			if obj.Parent then
+				for _, d in ipairs(obj:IsA("Model") and obj:GetDescendants() or {obj}) do
+					if d:IsA("BasePart") then TweenService:Create(d, TweenInfo.new(0.7), {Transparency = 1}):Play() end
+					if d:IsA("Decal") then TweenService:Create(d, TweenInfo.new(0.7), {Transparency = 1}):Play() end
+				end
+				if obj:IsA("BasePart") then for _, d in ipairs(obj:GetChildren()) do if d:IsA("Decal") then TweenService:Create(d, TweenInfo.new(0.7), {Transparency = 1}):Play() end end end
+			end
+			Debris:AddItem(obj, 0.8)
 		end
 	end)
 end
+local function meatball(g)
+	local m = part("Meatball", Vector3.new(0.95, 0.95, 0.95), CFrame.new(g.spout), Color3.fromRGB(118, 68, 40), Enum.Material.SmoothPlastic, Enum.PartType.Ball)
+	local face = Instance.new("Decal"); face.Name = "Smile"; face.Texture = "rbxasset://textures/face.png"; face.Face = Enum.NormalId.Front; face.Parent = m
+	toss(m, g, Vector3.xAxis)
+end
+local function strand(g)
+	-- a real strand: five short lengths in a gentle wave, pale yellow, tossed like the meatballs
+	local m = Instance.new("Model"); m.Name = "Strand"
+	local colour = NOODLE:Lerp(Color3.fromRGB(255, 236, 170), rng:NextNumber(0, 0.6))
+	local segLen, prev = 0.55, nil
+	for i = 1, 5 do
+		local seg = Instance.new("Part"); seg.Name = "Seg"; seg.Anchored = true; seg.CanCollide = false; seg.CanQuery = false; seg.CanTouch = false; seg.CastShadow = false
+		seg.Shape = Enum.PartType.Cylinder; seg.Size = Vector3.new(segLen + 0.08, 0.13, 0.13); seg.Color = colour; seg.Material = Enum.Material.SmoothPlastic
+		local bend = 0.35 * math.sin(i * 1.3)
+		seg.CFrame = CFrame.new((i - 3) * segLen, 0.12 * math.sin(i * 1.3), 0) * CFrame.Angles(0, 0, bend)
+		seg.Parent = m
+		if i == 1 then m.PrimaryPart = seg end
+	end
+	m:PivotTo(CFrame.new(g.spout))
+	m.Parent = scene
+	toss(m, g, Vector3.zAxis)
+end
 local function startSpaghetti(g)
 	setWater(g, true)
-	tintWater(g, Color3.fromRGB(200, 72, 42), 0.12)   -- the sauce
-	-- the top: strands out of the spout, bowing up and landing in the bowl
-	for i = 1, num("NoodleTop", 14) do
-		local a = i / num("NoodleTop", 14) * 2 * math.pi + rng:NextNumber(-0.15, 0.15)
-		local r = rng:NextNumber(1.0, g.bowlR - 0.3)
-		noodle(g, g.spout + Vector3.new(rng:NextNumber(-0.15, 0.15), 0, rng:NextNumber(-0.15, 0.15)), around(g, r, a, g.bowlY + 0.08), rng:NextNumber(2.6, 4.2), -rng:NextNumber(0.8, 1.6), 0.22)   -- (a negative end bend: the strand comes down into the bowl from above)
-	end
-	-- the rim streams: strands over the bowl's edge, drooping into the basin
-	for i = 1, num("NoodleRim", 20) do
-		local a = i / num("NoodleRim", 20) * 2 * math.pi + rng:NextNumber(-0.1, 0.1)
-		noodle(g, around(g, g.bowlR + 0.1, a, g.bowlY + 0.1), around(g, rng:NextNumber(g.basinR0 + 0.3, g.basinR1 - 0.4), a + rng:NextNumber(-0.2, 0.2), g.basinY + 0.1), rng:NextNumber(0.3, 0.7), rng:NextNumber(-1.4, -0.6), 0.2)
+	-- the sauce: opaque tomato orange-red (a tint over the water read as pink - Shannon: "gruesome")
+	tintWater(g, SAUCE, 0)
+	g.ring.Material = Enum.Material.SmoothPlastic
+	-- the pour: the water's own emitters, as noodle pieces
+	local emitters = {}
+	local i = 0
+	for _, d in ipairs(g.water:GetDescendants()) do
+		if d:IsA("ParticleEmitter") and (d.Name == "Arc" or d.Name == "Stream") then i += 1; table.insert(emitters, noodleEmitter(d, i)) end
 	end
 	-- a dusting of parmesan over the spout
 	local jet = g.water:FindFirstChild("Jet")
@@ -264,16 +293,19 @@ local function startSpaghetti(g)
 		local e = Instance.new("ParticleEmitter"); e.Name = "Parmesan"; e.Texture = "rbxasset://textures/particles/smoke_main.dds"; e.Color = ColorSequence.new(Color3.fromRGB(255, 250, 230))
 		e.Size = NumberSequence.new(0.14); e.Lifetime = NumberRange.new(1.2, 1.8); e.Rate = 10; e.Speed = NumberRange.new(2, 4); e.SpreadAngle = Vector2.new(60, 60)
 		e.Acceleration = Vector3.new(0, -6, 0); e.LightEmission = 0.3; e.Parent = jet
-		local my = gen
-		task.spawn(function() while gen == my do task.wait(0.5) end; e:Destroy() end)
+		table.insert(emitters, e)
 	end
 	local my = gen
 	task.spawn(function()
-		task.wait(0.8)
+		task.wait(0.6)
+		local nextBall, nextStrand = os.clock() + 1.2, os.clock()
 		while gen == my do
-			meatball(g)
-			task.wait(num("MeatballEvery", 1.6) + rng:NextNumber(-0.3, 0.5))
+			local t = os.clock()
+			if t >= nextStrand then strand(g); nextStrand = t + num("StrandEvery", 0.45) + rng:NextNumber(0, 0.25) end
+			if t >= nextBall then meatball(g); nextBall = t + num("MeatballEvery", 1.6) + rng:NextNumber(-0.3, 0.5) end
+			task.wait(0.1)
 		end
+		for _, e in ipairs(emitters) do e:Destroy() end
 	end)
 end
 
@@ -452,7 +484,7 @@ local function stop(g)
 	gen += 1
 	if scene then scene:Destroy(); scene = nil end
 	if g then
-		for _, d in ipairs(g.water:GetDescendants()) do if d.Name == "PetalStream" or d.Name == "NoodleA" or d.Name == "NoodleB" or d.Name == "Parmesan" then d:Destroy() end end
+		for _, d in ipairs(g.water:GetDescendants()) do if d.Name == "PetalStream" or d.Name == "NoodleStream" or d.Name == "Parmesan" then d:Destroy() end end
 		setWater(g, false); untintWater(g)
 	end
 	current = nil
@@ -508,6 +540,14 @@ for _, n in ipairs({"Frog", "LilyPad", "Lotus", "Flowers"}) do if assets:FindFir
 Shop:SetAttribute("Price_spaghetti", Shop:GetAttribute("Price_spaghetti") or 25); Shop:SetAttribute("Price_frogs", Shop:GetAttribute("Price_frogs") or 25); Shop:SetAttribute("Price_petals", Shop:GetAttribute("Price_petals") or 25)
 Shop:SetAttribute("Sell_spaghetti", true); Shop:SetAttribute("Sell_frogs", true); Shop:SetAttribute("Sell_petals", true)
 local shopNote = "store already patched (kept)"
+if shopDone then
+	local o, n = cl.Source, 0
+	for _, w in ipairs({"spaghetti", "frogs", "petals"}) do
+		local a, b = o:find('- ten minutes, for everyone here.", mode = "' .. w .. '"},', 1, true)
+		if a then o = o:sub(1, a - 1) .. '- two minutes, for everyone here.", mode = "' .. w .. '"},' .. o:sub(b + 1); n += 1 end
+	end
+	if n > 0 then local f = loadstring(o); if f then cl.Source = o; shopNote = string.format("store already patched; %d blurbs now say two minutes (ShopClient %d chars)", n, #cl.Source) end end
+end
 if not shopDone then
 	local function patch(src, pairs_, what)
 		for i, p in ipairs(pairs_) do
@@ -573,10 +613,10 @@ if not shopDone then
 }
 ]===], [===[
 	{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},
-	-- the Fontana del Limone's modes (Oct 10 2026): the whole server's fountain for ten minutes, one at a time
-	{id = "spaghetti", name = "Spaghetti fountain", blurb = "Noodles pour where the water does and smiling meatballs bounce out - ten minutes, for everyone here.", mode = "spaghetti"},
-	{id = "frogs",     name = "Frog resort",        blurb = "The frogs move in: lily pads, a parasol, a deck chair, string lights and a lot of croaking - ten minutes, for everyone here.", mode = "frogs"},
-	{id = "petals",    name = "Petal fountain",     blurb = "Every jet a stream of flower petals and a carpet of them on the water - ten minutes, for everyone here.", mode = "petals"},
+	-- the Fontana del Limone's modes (Oct 10 2026): the whole server's fountain for two minutes, one at a time
+	{id = "spaghetti", name = "Spaghetti fountain", blurb = "Noodles pour where the water does and smiling meatballs bounce out - two minutes, for everyone here.", mode = "spaghetti"},
+	{id = "frogs",     name = "Frog resort",        blurb = "The frogs move in: lily pads, a parasol, a deck chair, string lights and a lot of croaking - two minutes, for everyone here.", mode = "frogs"},
+	{id = "petals",    name = "Petal fountain",     blurb = "Every jet a stream of flower petals and a carpet of them on the water - two minutes, for everyone here.", mode = "petals"},
 }
 ]===]}, {[===[
 	crabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true},

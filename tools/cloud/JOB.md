@@ -554,3 +554,11 @@ Send the `QQ FMODE DONE` line (it names the assets found and the measured rim). 
 in the store's Porto tab (25 acorns each; the whole server's fountain for ten minutes, one at a time). No publish by the runner.
 Result job 61 (runner 3, d6e3c38): FountainModes + client 26103; assets Frog, LilyPad, Lotus, Flowers (10 parts coloured);
 ShopServer 10669 / ShopClient 37163 (backups *_pre_modes1); RimY -9.99 at r 6.0, GroundY -12.04. Not play-tested, not published.
+
+## Job 63: the spaghetti fountain redone, modes last two minutes (Studio EDIT, re-run; ask Shannon first)
+
+Shannon: the spaghetti "looks very very bad ... the pasta is not moving, it should be individual pasta pieces coming out and
+falling down like the water does; the pink sauce looks gruesome"; and "whatever you do for this fountain should only last
+about 2 minutes". Re-run tools/fountain/install_modes1.lua (it rebuilds FountainModes with the new client - noodle pieces
+pour from the water's own emitters, real strands and meatballs tossed out of the spout, an opaque tomato sauce - sets
+Minutes 2, keeps the assets, and turns the three store blurbs from ten to two minutes). Send the `QQ FMODE DONE` line. No publish.
