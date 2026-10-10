@@ -149,6 +149,7 @@ prompt; Player:GetJoinData().ReferredByPlayerId on the friend's join) -> double 
 never gated on (no API). Not rule-breaking per the devforum staff answers found Oct 10 (JOB.md has the links).
 
 ## Runner 5 (when runner 4 nears 90%; runner 4 = session_013fDV99KM4CFnfC1AZkdfJJ was at 72% at Oct 10 ~20:30 UTC)
+Runner 4 stopped taking jobs at ~80% (Oct 10 ~21:30 UTC) after installing jobs 83, 84 and 85. First job for runner 5: 86 (JOB.md).
 Same rules as "Runner 4" above; read JOB.md from job 82 down. First contact: "runner 5 ready" to the cloud session
 (session_01Gwhv9KoRg69mUkZf5xktZw). Runner 4's habits worth keeping: a read-only dry run of a script's probes before asking
 Shannon, a Studio PLAY-TEST preview (the script's body run on the test server, discarded on stop, Edit mode checked unchanged
