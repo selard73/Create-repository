@@ -574,3 +574,5 @@ afresh: one item fountainmode (Price_fountainmode 25, Sell_fountainmode) with th
 Petals) on the Porto tab, the countdown on that row; ShopServer 9261 -> 10916, ShopClient 35014 -> 38670; the first
 version's Price_/Sell_ spaghetti/frogs/petals attributes are removed. Same run rebuilds FountainModes (client 27800: the
 slow petals, the spaghetti redo, Minutes 2). Supersedes job 63 if not yet run. Send the `QQ FMODE DONE` line. No publish.
+Result job 63 (13a7229, Shannon asked for it before 64): FountainModeClient 27800, Minutes 2, slow petals; store blurbs say two
+minutes (ShopClient 37163, the job 61 three-row version). Job 64 (one row) restores from the pre_modes1 backups first. Not published.
