@@ -539,3 +539,4 @@ Job 61 step 1 (Shannon, by hand): File > Import 3D of tools/fountain/model/frog.
 (defaults); each lands in the workspace as a Model named after the file ("frog": Body, EyeL, EyeR, Sunglasses, SunHat,
 SwimRing on one colour atlas; "flowers": Flower_A/B/C_Petals/_Centre, Leaf, LilyPad, Lotus_Petals, Lotus_Centre, flat
 colours). Step 2 (runner, after the review): install_modes1.lua moves them into ReplicatedStorage.FountainModeAssets.
+Result job 62: SeaGlassClient 18853 -> 18916; backup HudBackup.SeaGlassClient_pre_seaglass12. Not published.
