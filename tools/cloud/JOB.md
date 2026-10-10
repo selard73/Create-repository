@@ -757,7 +757,9 @@ two rim frogs unchanged (r 6.3 on stone). Send the `QQ FMODE DONE` line. No publ
 ## Job 79: a temporary readout for one balloon ride (Studio EDIT; ask Shannon first)
 
 tools/balloon/ride_probe1.lua: workspace.BalloonField.RideProbe (client) + attribute Probe = true: a small sign in front of the
-camera with the parts present on this client for the funicolare, the backdrop and the town (now / most seen) and the distance
-to the funicolare. Shannon reads it on one ride: "Funicolare 288/288" while it looks missing = loaded but not drawn; 0 or
+camera with the funicolare's parts present on this client (now / most seen, 288 when all) and, for each far section of the
+town (12 Country landscape, 13 Hillside town, 14 Lighthouse coast, 16 Mediterranean planting), how many of 12 sentinel parts
+the installer picked across it are present; plus the distance to the funicolare (runner: no PortoBackdrop model exists; the
+town is 67,000 parts, not to be walked every tick). Shannon reads it on one ride: "Funicolare 288/288" while it looks missing = loaded but not drawn; 0 or
 "not here" = streamed out. Afterwards Probe = false hides it; delete the script to remove. Send the `QQ PROBE` line. No publish.
 Ask Shannon once for both edits (78, 79), run them in that order, one message with the two lines.
