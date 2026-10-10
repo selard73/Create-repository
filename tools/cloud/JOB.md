@@ -740,3 +740,6 @@ Runner 4 dry run (read-only, before 76): the rim's flat top is r 6.0..6.8 (a 1.2
 inner edge; the top frog's footing is the upper bowl's stone floor at -5.24 beside the spout (the column top is too narrow). So
 the rim frogs ask at RimR + 0.3, the footprint along the line is 0.6 wide and the levelness allowance 0.12 (the inner slope is
 0.18 lower). Commit below.
+Result jobs 76-77 (runner 4, 1f3136d; one yes; not published): FountainModeClient 28552 (dry run: both rim frogs at r 6.30 on
+stone, the five rays level; the top frog on the upper bowl's floor at -5.24 beside the spout); store byte-equal; "15 Funicolare"
+PersistentPerPlayer, BalloonField.RidePersistent set, BalloonServer 11362 (backup BalloonServer_pre_ride1). Shannon publishes and tests.
