@@ -6,8 +6,9 @@
 -- (Body, 36 wide) is 2.2 studs wider than the LipPlate behind it (31.5) on each side.
 -- Does: (1) a BACKING COPY of SouthCliff_W01, W02 and E01, the same mesh and texture 1.5 studs behind the face, so every
 -- opening shows rock behind rock (and the recess between the top slabs and the grass is roofed); (2) shaves the terrain
--- wherever it stands in front of the west cliff's top band (a thin carve, the region backed up first to
--- ServerStorage.HudBackup.CliffTop_pre1); (3) widens FallsB.LipPlate to the sheet's width (SizeWas kept).
+-- wherever it stands in front of the west cliff's top band or closer behind the face than the backing copy, so the copy is
+-- always the first thing behind an opening (thin carves, the region backed up first to ServerStorage.HudBackup.CliffTop_pre1);
+-- (3) widens FallsB.LipPlate to the sheet's width (SizeWas kept).
 -- Undo: delete the *_Back parts; LipPlate.Size from its SizeWas attribute; terrain: Terrain:PasteRegion(HudBackup.CliffTop_pre1,
 -- the Min corner printed below, true). No publish.
 local SS = game:GetService("ServerStorage")
@@ -49,7 +50,7 @@ local function pokes()
 			local m = workspace:Raycast(origin, Vector3.new(0, 0, 80), params)
 			if m then
 				local t = workspace:Raycast(origin, Vector3.new(0, 0, 80), tparams)
-				if t and t.Position.Z < m.Position.Z - 0.05 and m.Position.Z - t.Position.Z < 3 then
+				if t and t.Position.Z < m.Position.Z + BACK + 0.4 and t.Position.Z > m.Position.Z - 3 then   -- in front, or closer behind than the backing copy
 					table.insert(list, {x = x, y = y, tz = t.Position.Z, mz = m.Position.Z})
 				end
 			end
@@ -68,10 +69,9 @@ if #before > 0 then
 		reg.Name = "CliffTop_pre1"; reg.Parent = hb
 	end
 	for _, p in ipairs(before) do
-		-- a thin box from just in front of the mesh face back to where the terrain begins: Air
-		local depth = p.mz - p.tz + 0.3
-		local centre = Vector3.new(p.x, p.y, p.tz + depth / 2 - 0.3)
-		Terrain:FillBlock(CFrame.new(centre), Vector3.new(2.2, 2.2, depth), Enum.Material.Air)
+		-- a thin box of Air from where the terrain begins back to just behind the backing copy
+		local z0, z1 = math.min(p.tz, p.mz) - 0.3, p.mz + BACK + 0.4
+		Terrain:FillBlock(CFrame.new(Vector3.new(p.x, p.y, (z0 + z1) / 2)), Vector3.new(2.2, 2.2, z1 - z0), Enum.Material.Air)
 		shaved += 1
 	end
 end
