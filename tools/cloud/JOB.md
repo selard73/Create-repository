@@ -611,3 +611,5 @@ heaps (3), Ground material; the water stays water (attribute Sauce false; true g
 Shannon's tap picture + "more petals, a wider radius, to the bottom": the spout pours a straight bundle (26) into the bowl's
 heap (6 coils), curtains from the bowl's edge (40), over the rim (18); petals 60/s, up to 420, spread 55 deg, 6-10 studs/s,
 a fifth of them off the basin's rim down to the paving, the ground carpet to 5.5 studs out. Job 66 commit below.
+Result job 66 (runner 3, 53cca9a): FountainModeClient 37269; store unchanged from job 65 (10916 / 38793); Sauce false; assets
+unchanged. Job 65 was published by Shannon at 03:26 UTC (the one-row store, Club Rana, petal meshes); 66 not yet published.
