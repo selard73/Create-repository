@@ -854,3 +854,9 @@ slab of the same banded rock; the shift keeps the copies' gaps from lining up wi
 the cliff's own texture 2.6 studs behind each 8-stud segment's face, under its cover, for whatever stays open; the hill
 beyond the west outcrop probed for its surface material (reported, not changed). Everything in SouthGorge.Rock.CliffBacking2,
 no collision. Send the `QQ CLIFF2` line and play pictures from the b2, whole-wide, far-right and above spots. No publish.
+Runner 4 play-test preview of job 84 (52773f8; pictures tools/falls/shots/cliff-j84-preview-*.jpg): the corner by the falls
+reads as continuous banded rock, the west cliff's top bands whole, the west end whole; left: a smooth tan lump of sandy
+ground on the top edge at the right of b2 and a rounded brown lump at the top of the east cliff's corner by the notch (the
+sandstone-swapped ground where the bands stop short of the notch); the dark patch on the grass hill beyond the west outcrop
+is further west than the probe (x < 8). 28 strata plates (5 tops 0.1-0.4 above their cover), 8 copies; from above a copy is
+the first hit on 16 of 2572 rays (east side). Shown to Shannon; not installed.
