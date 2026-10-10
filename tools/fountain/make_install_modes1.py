@@ -66,14 +66,14 @@ C = [
     ('\t{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},\n}\n',
      '\t{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},\n'
      '\t-- the Fontana del Limone\'s modes (Oct 10 2026): one row, three choices; the whole server\'s fountain for two minutes, one at a time\n'
-     '\t{id = "fountainmode", name = "Fountain magic", blurb = "Pick one and the fountain in the square does it for two minutes - for everyone here: spaghetti with smiling meatballs, a frog resort, or a shower of petals.",\n'
-     '\t\tmodes = {{id = "spaghetti", name = "Spaghetti"}, {id = "frogs", name = "Frogs"}, {id = "petals", name = "Petals"}}},\n'
+     '\t{id = "fountainmode", name = "Fountain magic", blurb = "Pick one and the fountain in the square does it for two minutes - for everyone here: spaghetti with smiling meatballs, Club Rana for the frogs, or a shower of petals.",\n'
+     '\t\tmodes = {{id = "spaghetti", name = "Spaghetti"}, {id = "frogs", name = "Club Rana"}, {id = "petals", name = "Petals"}}},\n'
      '}\n'),
     ('\tcrabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true},\n}\n',
      '\tcrabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true}, fountainmode = {italy = true},\n}\n'),
     ('local function mmss(s) return string.format("%d:%02d", math.floor(s / 60), s % 60) end\n',
      '-- the Fontana del Limone\'s modes are the server\'s too (workspace.FountainModes): one at a time, with a countdown\n'
-     'local MODE_NAMES = {spaghetti = "spaghetti fountain", frogs = "frog resort", petals = "petal fountain"}\n'
+     'local MODE_NAMES = {spaghetti = "spaghetti fountain", frogs = "Club Rana", petals = "petal fountain"}\n'
      'local function modeNow()\n'
      '\tlocal FM = workspace:FindFirstChild("FountainModes")\n'
      '\tlocal m = FM and FM:GetAttribute("ActiveMode") or ""\n'
@@ -185,7 +185,7 @@ F:SetAttribute("Minutes", 2); F:SetAttribute("Reach", 150)   -- two minutes (Sha
 F:SetAttribute("FrogSoundId", 73626983091367); F:SetAttribute("BounceSoundId", 0)
 F:SetAttribute("PetalsPerSecond", 34); F:SetAttribute("PetalMax", 240); F:SetAttribute("PetalSpread", 38); F:SetAttribute("PetalSpeedMin", 5); F:SetAttribute("PetalSpeedMax", 8.5); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalRest", 2.6); F:SetAttribute("CarpetCount", 90)
 F:SetAttribute("NoodleTop", 10); F:SetAttribute("NoodleRim", 16); F:SetAttribute("NoodleOver", 5); F:SetAttribute("NoodleSpeed", 1.0); F:SetAttribute("SauceBits", 70); F:SetAttribute("SteamRate", 5); F:SetAttribute("MeatballsResting", 5); F:SetAttribute("MeatballEvery", 5); F:SetAttribute("MeatballRest", 7)
-F:SetAttribute("SignText", "FROG RESORT"); F:SetAttribute("DeckAngle", 0.9)
+F:SetAttribute("SignText", "CLUB RANA"); F:SetAttribute("DeckAngle", 0.9)
 F:SetAttribute("RimY", rimY or (c.Y - 2.15 + 1.3)); F:SetAttribute("RimR", rimR); F:SetAttribute("GroundY", groundY)
 F:SetAttribute("ActiveMode", ""); F:SetAttribute("ActiveUntil", 0); F:SetAttribute("ActiveBy", "")
 local cs = Instance.new("Script"); cs.Name = "FountainModeClient"; cs.RunContext = Enum.RunContext.Client; cs.Source = @@CLIENT@@; cs.Parent = F

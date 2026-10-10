@@ -38,8 +38,8 @@ local ITEMS = {
 	-- keepsakes (Oct 9 2026): not for sale here; the row shows once the thing is yours
 	{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},
 	-- the Fontana del Limone's modes (Oct 10 2026): one row, three choices; the whole server's fountain for two minutes, one at a time
-	{id = "fountainmode", name = "Fountain magic", blurb = "Pick one and the fountain in the square does it for two minutes - for everyone here: spaghetti with smiling meatballs, a frog resort, or a shower of petals.",
-		modes = {{id = "spaghetti", name = "Spaghetti"}, {id = "frogs", name = "Frogs"}, {id = "petals", name = "Petals"}}},
+	{id = "fountainmode", name = "Fountain magic", blurb = "Pick one and the fountain in the square does it for two minutes - for everyone here: spaghetti with smiling meatballs, Club Rana for the frogs, or a shower of petals.",
+		modes = {{id = "spaghetti", name = "Spaghetti"}, {id = "frogs", name = "Club Rana"}, {id = "petals", name = "Petals"}}},
 }
 
 -- WHICH MAP SELLS WHAT (Oct 8 2026, Shannon: split the store by map "like the progress menu"): two tabs like the
@@ -154,7 +154,7 @@ local function fountainNow()
 	return 0, 0, nil
 end
 -- the Fontana del Limone's modes are the server's too (workspace.FountainModes): one at a time, with a countdown
-local MODE_NAMES = {spaghetti = "spaghetti fountain", frogs = "frog resort", petals = "petal fountain"}
+local MODE_NAMES = {spaghetti = "spaghetti fountain", frogs = "Club Rana", petals = "petal fountain"}
 local function modeNow()
 	local FM = workspace:FindFirstChild("FountainModes")
 	local m = FM and FM:GetAttribute("ActiveMode") or ""

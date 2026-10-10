@@ -591,3 +591,4 @@ Step 1 (Shannon): File > Import 3D of tools/fountain/model/petals.fbx (commit be
 Step 2 (runner): re-run tools/fountain/install_modes1.lua at that commit: adopts "petals" into the assets (Petals), colours
 them, rebuilds FountainModes with the client (real petal meshes in the petal fountain; the spaghetti ooze). Store unchanged
 if job 64 is in (the one-row version; it is restored and re-patched identically). `QQ FMODE DONE`. No publish.
+Shannon: the frog mode is "Club Rana" (the sign, the store button and the "in use" text; the item id frogs stays). In job 65.

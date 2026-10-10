@@ -43,7 +43,7 @@ F:SetAttribute("Minutes", 2); F:SetAttribute("Reach", 150)   -- two minutes (Sha
 F:SetAttribute("FrogSoundId", 73626983091367); F:SetAttribute("BounceSoundId", 0)
 F:SetAttribute("PetalsPerSecond", 34); F:SetAttribute("PetalMax", 240); F:SetAttribute("PetalSpread", 38); F:SetAttribute("PetalSpeedMin", 5); F:SetAttribute("PetalSpeedMax", 8.5); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalRest", 2.6); F:SetAttribute("CarpetCount", 90)
 F:SetAttribute("NoodleTop", 10); F:SetAttribute("NoodleRim", 16); F:SetAttribute("NoodleOver", 5); F:SetAttribute("NoodleSpeed", 1.0); F:SetAttribute("SauceBits", 70); F:SetAttribute("SteamRate", 5); F:SetAttribute("MeatballsResting", 5); F:SetAttribute("MeatballEvery", 5); F:SetAttribute("MeatballRest", 7)
-F:SetAttribute("SignText", "FROG RESORT"); F:SetAttribute("DeckAngle", 0.9)
+F:SetAttribute("SignText", "CLUB RANA"); F:SetAttribute("DeckAngle", 0.9)
 F:SetAttribute("RimY", rimY or (c.Y - 2.15 + 1.3)); F:SetAttribute("RimR", rimR); F:SetAttribute("GroundY", groundY)
 F:SetAttribute("ActiveMode", ""); F:SetAttribute("ActiveUntil", 0); F:SetAttribute("ActiveBy", "")
 local cs = Instance.new("Script"); cs.Name = "FountainModeClient"; cs.RunContext = Enum.RunContext.Client; cs.Source = [===[
@@ -451,7 +451,7 @@ local function sign(g, pos, facingPos)
 	part("SignPost", Vector3.new(0.18, 3.2, 0.18), CFrame.new(pos + Vector3.new(0, 1.6, 0)), wood, Enum.Material.Wood)
 	local plank = part("SignPlank", Vector3.new(3.0, 1.1, 0.16), facing(pos + Vector3.new(0, 2.9, 0), facingPos) * CFrame.Angles(0, 0, math.rad(-4)), Color3.fromRGB(190, 140, 85), Enum.Material.Wood)
 	local sg = Instance.new("SurfaceGui"); sg.Face = Enum.NormalId.Front; sg.CanvasSize = Vector2.new(600, 220); sg.LightInfluence = 0.4; sg.Parent = plank
-	local l = Instance.new("TextLabel"); l.Size = UDim2.fromScale(1, 1); l.BackgroundTransparency = 1; l.FontFace = FONT; l.TextScaled = true; l.TextColor3 = Color3.fromRGB(255, 246, 220); l.TextStrokeTransparency = 0.6; l.Text = str("SignText", "FROG RESORT"); l.Parent = sg
+	local l = Instance.new("TextLabel"); l.Size = UDim2.fromScale(1, 1); l.BackgroundTransparency = 1; l.FontFace = FONT; l.TextScaled = true; l.TextColor3 = Color3.fromRGB(255, 246, 220); l.TextStrokeTransparency = 0.6; l.Text = str("SignText", "CLUB RANA"); l.Parent = sg
 	local sg2 = sg:Clone(); sg2.Face = Enum.NormalId.Back; sg2.Parent = plank
 end
 local function stringLights(g, from, to, n)
@@ -695,8 +695,8 @@ if not shopDone then
 ]===], [===[
 	{id = "parfum_bottle", name = "Parfum bottle", blurb = "Made with Bella from the purple sea glass. Keep it safe for the parfumerie in France.", once = true, keepsake = true},
 	-- the Fontana del Limone's modes (Oct 10 2026): one row, three choices; the whole server's fountain for two minutes, one at a time
-	{id = "fountainmode", name = "Fountain magic", blurb = "Pick one and the fountain in the square does it for two minutes - for everyone here: spaghetti with smiling meatballs, a frog resort, or a shower of petals.",
-		modes = {{id = "spaghetti", name = "Spaghetti"}, {id = "frogs", name = "Frogs"}, {id = "petals", name = "Petals"}}},
+	{id = "fountainmode", name = "Fountain magic", blurb = "Pick one and the fountain in the square does it for two minutes - for everyone here: spaghetti with smiling meatballs, Club Rana for the frogs, or a shower of petals.",
+		modes = {{id = "spaghetti", name = "Spaghetti"}, {id = "frogs", name = "Club Rana"}, {id = "petals", name = "Petals"}}},
 }
 ]===]}, {[===[
 	crabtrap = {italy = true}, camera = {italy = true}, parfum_bottle = {italy = true},
@@ -708,7 +708,7 @@ if not shopDone then
 local function mmss(s) return string.format("%d:%02d", math.floor(s / 60), s % 60) end
 ]===], [===[
 -- the Fontana del Limone's modes are the server's too (workspace.FountainModes): one at a time, with a countdown
-local MODE_NAMES = {spaghetti = "spaghetti fountain", frogs = "frog resort", petals = "petal fountain"}
+local MODE_NAMES = {spaghetti = "spaghetti fountain", frogs = "Club Rana", petals = "petal fountain"}
 local function modeNow()
 	local FM = workspace:FindFirstChild("FountainModes")
 	local m = FM and FM:GetAttribute("ActiveMode") or ""
