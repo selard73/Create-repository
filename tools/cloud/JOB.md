@@ -743,3 +743,21 @@ the rim frogs ask at RimR + 0.3, the footprint along the line is 0.6 wide and th
 Result jobs 76-77 (runner 4, 1f3136d; one yes; not published): FountainModeClient 28552 (dry run: both rim frogs at r 6.30 on
 stone, the five rays level; the top frog on the upper bowl's floor at -5.24 beside the spout); store byte-equal; "15 Funicolare"
 PersistentPerPlayer, BalloonField.RidePersistent set, BalloonServer 11362 (backup BalloonServer_pre_ride1). Shannon publishes and tests.
+
+Shannon (Oct 10, after publishing 76-77): the top frog "still floating on water with his face stuck in the spout"; "the funicolare
+and scenery at the very rear like the mountains still come in and out" on the ride - "first you see it, then you change
+locations, then you don't, then you see part of it" (she reads it as loading, i.e. streaming).
+
+## Job 78: the top frog on a lily pad in the upper bowl (Studio EDIT, re-run; ask Shannon first)
+
+Re-run tools/fountain/install_modes1.lua at the commit below: client 29110 - the top frog sits on a lily pad afloat on the
+upper bowl's water, 1.1 studs in from the bowl's edge on the deck's side, facing out; the pad bobs and the frog with it. The
+two rim frogs unchanged (r 6.3 on stone). Send the `QQ FMODE DONE` line. No publish.
+
+## Job 79: a temporary readout for one balloon ride (Studio EDIT; ask Shannon first)
+
+tools/balloon/ride_probe1.lua: workspace.BalloonField.RideProbe (client) + attribute Probe = true: a small sign in front of the
+camera with the parts present on this client for the funicolare, the backdrop and the town (now / most seen) and the distance
+to the funicolare. Shannon reads it on one ride: "Funicolare 288/288" while it looks missing = loaded but not drawn; 0 or
+"not here" = streamed out. Afterwards Probe = false hides it; delete the script to remove. Send the `QQ PROBE` line. No publish.
+Ask Shannon once for both edits (78, 79), run them in that order, one message with the two lines.

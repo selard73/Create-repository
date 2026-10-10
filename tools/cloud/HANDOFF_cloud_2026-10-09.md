@@ -88,7 +88,10 @@ The runner: send_message to its session id (bridge:session_01FmVm5n3mKMAfYwLsZWt
   controller (point + grip to drag; stays where put; re-grab to move), so the picker and the rest sit where she wants them.
 
 ## Housekeeping for later (Shannon, Oct 10 ~05:00 UTC, before signing off)
-1. Waterfall cliff: "some blemished places on the cliff front where the waterfall comes down" need fixing. Start from
+1. Waterfall cliff: "some blemished places on the cliff front where the waterfall comes down" need fixing. Shannon, Oct 10
+   afternoon: "several places on the right hand side of the cliff toward the top where there are bald spots or holes with
+   something else showing through; also the right side of where the waterfall starts shows through (you can see the water
+   behind it); earlier we tried to patch this by putting an extra piece over top but it did not fully block it." Start from
    HANDOFF_2026-09-30_FALLS.md (workspace.SouthGorge.Rock, SouthCliff_W01..W04 / E01..E04 / L01 with _Lo halves;
    generators italy/gorge_real/*.py and italy/falls/gen_falls2.py). First job: a Studio survey + screenshots of the
    cliff face either side of the sheet so she can point at the blemishes.

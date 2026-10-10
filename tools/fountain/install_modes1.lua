@@ -402,11 +402,10 @@ local function startFrogs(g)
 	end
 	-- in the water, in a swim ring; two on the rim, one in a sun hat
 	add(frog(facing(around(g, 4.4, 3.1, g.basinY - 0.25), g.centre), 1.0, "SwimRing"), "swim")   -- feet under, the ring on the water (review)
-	-- (the stone may not have streamed in yet when the mode starts 150 studs out: these three keep trying for half a minute)
+	-- (the stone may not have streamed in yet when the mode starts 150 studs out: these two keep trying for half a minute)
 	local footed = {
 		{name = "rim frog (sun hat)", at = around(g, g.rimR + 0.3, 1.2, g.rimY), scale = 1.0, drop = 1.0, inFirst = false, yaw = math.pi, acc = "SunHat", kind = "rim"},   -- (RimR is the flat top's inner edge; its middle is 0.3-0.4 out)
 		{name = "rim frog", at = around(g, g.rimR + 0.3, 4.9, g.rimY), scale = 0.9, drop = 1.0, inFirst = false, yaw = 0, acc = "", kind = "rim"},
-		{name = "top frog", at = g.spout + Vector3.new(0.9, 0.05, 0.2), scale = 0.7, drop = 2.5, inFirst = true, yaw = 0, acc = "", kind = "top"},
 	}
 	local function tryFooted()
 		local left = 0
@@ -418,6 +417,17 @@ local function startFrogs(g)
 			end
 		end
 		return left
+	end
+	-- one up top: on a lily pad afloat in the upper bowl, looking out over the deck (Shannon, Oct 10: on the bowl's floor it
+	-- "floated on water with its face stuck in the spout"; the column top is too narrow for it)
+	do
+		local a = num("DeckAngle", 0.9)
+		local pos = around(g, math.max(1.0, g.bowlR - 1.1), a, g.bowlY)
+		local pad = lilyPad(CFrame.new(pos) * CFrame.Angles(0, rng:NextNumber(0, 6), 0), false)
+		local ph = rng:NextNumber(0, 6)
+		table.insert(pads, {p = pad, cf = pad:GetPivot(), ph = ph})
+		add(frog(facing(pos + Vector3.new(0, 0.1, 0), g.centre) * CFrame.Angles(0, math.pi, 0), 0.7, ""), "pad")
+		if frogs[#frogs] and frogs[#frogs].kind == "pad" then frogs[#frogs].ph = ph end
 	end
 	-- the deck: a parasol, a deck chair with a frog in it and a drink, the sign, a ladder, string lights
 	local deckA = num("DeckAngle", 0.9)
