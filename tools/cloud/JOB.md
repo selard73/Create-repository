@@ -922,3 +922,9 @@ ColorWas kept); runner 5's rays found the sliver is terrain WATER 0.2-0.5 in fro
 Result job 86 v2 (runner 5, 1c2164f, Shannon's yes; not published): LipClump_3 at (168.2,-7.0,-550.3) size (5.3,3.3,3.9), the
 plate back to 212,236,240 (ColorWas cleared). Preview: no blue from four viewpoints; water-first rays 142 -> 3, those behind
 the sheet's edge. The lip's right corner is done. Next: job 87 after the review.
+Job 87 review (2 agents): blocking - the client dropped the server's second return value (every reply nil) and refused to
+open while OpenPanel was "map"/"collection" (the HUD never clears those); should-fix - a double community grant across the
+web-call yield, "state" calls restarting the rate limit, stale state under deferred signals, the footer note over "Later",
+blank buttons before the first state, the installer flipping false attributes back to true; nits - the HUD bar's fixed
+216 px (now 272), phone y 78, shorter row titles, re-link on rejoin, no count while the save is unknown, BoostMaxGain 150.
+All applied (commit below). Known limit kept: a single in-game gain of 150 or more is not doubled (the Robux packs start at 150).

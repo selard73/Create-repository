@@ -24,35 +24,35 @@ local function corner(p, r) local c = Instance.new("UICorner"); c.CornerRadius =
 
 local gui = Instance.new("ScreenGui"); gui.Name = "GiftsGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 15; gui.Enabled = false; gui.Parent = pg
 local shade = Instance.new("TextButton"); shade.Size = UDim2.fromScale(1, 1); shade.BackgroundColor3 = C(20, 12, 6); shade.BackgroundTransparency = 0.5; shade.Text = ""; shade.AutoButtonColor = false; shade.Parent = gui
-local W, ROW = 340, 62
-local card = Instance.new("Frame"); card.Name = "GiftsCard"; card.AnchorPoint = Vector2.new(0.5, 0); card.Position = UDim2.new(0.5, 0, 0, phone and 30 or 62)
-card.Size = UDim2.fromOffset(W, 60 + ROW * 3 + 40); card.BackgroundColor3 = NAVY; card.BorderSizePixel = 0; card.Parent = gui
+local W, ROW, TOP, FOOT = 340, phone and 56 or 62, phone and 52 or 60, phone and 62 or 70
+local card = Instance.new("Frame"); card.Name = "GiftsCard"; card.AnchorPoint = Vector2.new(0.5, 0); card.Position = UDim2.new(0.5, 0, 0, phone and 78 or 62)   -- (78 clears the HUD row on a phone, as the daily card does)
+card.Size = UDim2.fromOffset(W, TOP + ROW * 3 + FOOT); card.BackgroundColor3 = NAVY; card.BorderSizePixel = 0; card.Parent = gui
 corner(card, 16); local cs = Instance.new("UIStroke"); cs.Color = GOLD; cs.Thickness = 2; cs.Parent = card
 local function text(parent, t, size, colour, x, y, w, h, align)
 	local l = Instance.new("TextLabel"); l.Position = UDim2.fromOffset(x, y); l.Size = UDim2.fromOffset(w, h); l.BackgroundTransparency = 1
 	l.Font = FONT; l.TextSize = size; l.TextColor3 = colour; l.Text = t; l.TextWrapped = true; l.TextXAlignment = align or Enum.TextXAlignment.Left; l.Parent = parent
 	return l
 end
-text(card, "Gifts for squirrel friends", 22, CREAM, 15, 10, W - 30, 28, Enum.TextXAlignment.Center)
-text(card, "Three ways to help the squirrels, three thank-yous.", 13, GOLD, 15, 36, W - 30, 18, Enum.TextXAlignment.Center)
+text(card, "Gifts for squirrel friends", phone and 20 or 22, CREAM, 15, 8, W - 30, 26, Enum.TextXAlignment.Center)
+text(card, "Three ways to help the squirrels, three thank-yous.", 12, GOLD, 15, TOP - 20, W - 30, 16, Enum.TextXAlignment.Center)
 local rows = {}
 local function row(i, title, gift)
-	local y = 60 + (i - 1) * ROW
+	local y = TOP + (i - 1) * ROW
 	local line = Instance.new("Frame"); line.Position = UDim2.fromOffset(15, y); line.Size = UDim2.fromOffset(W - 30, 1); line.BackgroundColor3 = GOLD; line.BackgroundTransparency = 0.7; line.BorderSizePixel = 0; line.Parent = card
-	local t = text(card, title, 15, CREAM, 15, y + 6, W - 150, 20)
-	local g = text(card, gift, 12, GOLD, 15, y + 27, W - 150, 30); g.TextTransparency = 0.1
+	local t = text(card, title, 15, CREAM, 15, y + 5, W - 150, 20)
+	local g = text(card, gift, 12, GOLD, 15, y + 25, W - 150, ROW - 28); g.TextTransparency = 0.1
 	local btn = Instance.new("TextButton"); btn.AnchorPoint = Vector2.new(1, 0.5); btn.Position = UDim2.new(1, -15, 0, y + ROW / 2); btn.Size = UDim2.fromOffset(112, 36)
 	btn.BackgroundColor3 = GOLD; btn.BorderSizePixel = 0; btn.Font = FONT; btn.TextSize = 16; btn.TextColor3 = DEEP; btn.Text = ""; btn.AutoButtonColor = false; btn.Parent = card
 	corner(btn, 12)
 	rows[i] = {title = t, gift = g, btn = btn}
 	return rows[i]
 end
-local rLike = row(1, "Like, favourite, notifications", "Gift: the Backpack")
-local rComm = row(2, "Join the 1001 Squirrels community", "Gift: " .. num("CommunityAcorns", 150) .. " acorns")
-local rInv = row(3, "Invite a friend to play", "Double acorns while you play together")
-local later = Instance.new("TextButton"); later.AnchorPoint = Vector2.new(0.5, 1); later.Position = UDim2.new(0.5, 0, 1, -8); later.Size = UDim2.fromOffset(120, 28)
+local rLike = row(1, "Like, star & notifications", "Gift: the Backpack")
+local rComm = row(2, "Join our community", "The 1001 Squirrels community. Gift: " .. num("CommunityAcorns", 150) .. " acorns")
+local rInv = row(3, "Invite a friend", "Double acorns while you play together")
+local later = Instance.new("TextButton"); later.AnchorPoint = Vector2.new(0.5, 1); later.Position = UDim2.new(0.5, 0, 1, -4); later.Size = UDim2.fromOffset(120, 26)
 later.BackgroundTransparency = 1; later.Font = FONT; later.TextSize = 15; later.TextColor3 = DIM; later.Text = "Later"; later.Parent = card
-local note = text(card, "", 12, CREAM, 15, 60 + ROW * 3 + 2, W - 30, 16, Enum.TextXAlignment.Center); note.TextTransparency = 0.1
+local note = text(card, "", 12, CREAM, 15, TOP + ROW * 3 + 2, W - 30, FOOT - 34, Enum.TextXAlignment.Center); note.TextTransparency = 0.1
 local noteAt = 0
 local function say(t, secs) note.Text = t; local my = os.clock(); noteAt = my; task.delay(secs or 6, function() if noteAt == my then note.Text = "" end end) end
 
@@ -81,17 +81,18 @@ local function ask(what)
 end
 local function refresh()
 	local ok, st = ask("state")
-	if ok and type(st) == "table" then S = st; paint() end
-	return ok
+	if ok and type(st) == "table" then S = st; paint(); return true end
+	return false
 end
+paint()
 
 -- ---------- the card ----------
 local shownThisSession = false
+local MODAL = {shop = true, passport = true, book = true, portrait = true, question = true, wardrobe = true, seaglass = true, album = true}
 local function setOpen(on)
 	if on then
-		if pg:GetAttribute("OpenPanel") ~= nil and pg:GetAttribute("OpenPanel") ~= "gifts" then return end
-		refresh()
-		gui.Enabled = true; pg:SetAttribute("OpenPanel", "gifts"); shownThisSession = true
+		if not refresh() then task.spawn(function() for _ = 1, 10 do task.wait(0.5); if not gui.Enabled or refresh() then return end end end) end   -- (the save may still be loading)
+		gui.Enabled = true; pg:SetAttribute("OpenPanel", "gifts"); shownThisSession = true   -- (the map and the squirrel panel never clear OpenPanel; taking over is the convention)
 	else
 		gui.Enabled = false
 		if pg:GetAttribute("OpenPanel") == "gifts" then pg:SetAttribute("OpenPanel", nil) end
@@ -148,6 +149,7 @@ task.spawn(function()
 		local bar = pg:FindFirstChild("HudBar"); bar = bar and bar:FindFirstChild("Bar")
 		if bar then
 			if not bar:FindFirstChild("Gifts") then
+				if bar.Size.X.Offset > 0 and bar.Size.X.Offset < 272 then bar.Size = UDim2.new(bar.Size.X.Scale, 272, bar.Size.Y.Scale, bar.Size.Y.Offset) end   -- (four squares + one)
 				local b = Instance.new("TextButton"); b.Name = "Gifts"; b.Size = UDim2.fromOffset(48, 48); b.BackgroundColor3 = NAVY; b.Text = ""; b.AutoButtonColor = false; b.LayoutOrder = -3; b.Parent = bar
 				corner(b, 14); local s = Instance.new("UIStroke"); s.Color = C(255, 214, 90); s.Thickness = 2; s.Transparency = 0.35; s.Parent = b
 				-- a little gift box: the box, the lid, the ribbon
@@ -197,7 +199,7 @@ task.spawn(function()
 		if refresh() and (S.like and S.community) then return end   -- (both thank-yous given: the HUD button is enough)
 		local daily = pg:FindFirstChild("DailyGui"); local dcard = daily and daily:FindFirstChild("DailyCard")
 		local dailyUp = daily ~= nil and daily.Enabled and dcard ~= nil and dcard.Visible
-		if pg:GetAttribute("OpenPanel") == nil and not dailyUp and player.Character then setOpen(true) return end
+		if not MODAL[pg:GetAttribute("OpenPanel")] and not dailyUp and player.Character then setOpen(true) return end
 		task.wait(10)
 	end
 end)

@@ -36,12 +36,12 @@ if old then
 end
 local F = Instance.new("Folder"); F.Name = "Gifts"
 local defaults = {{GroupId = 969906332, CommunityAcorns = 150, BoostMaxGain = 150, LikeReward = "backpack", BoostOn = true, PopupDelay = 90, AutoPopup = true}}
-for k, v in pairs(defaults) do F:SetAttribute(k, attrs[k] ~= nil and attrs[k] or v) end
+for k, v in pairs(defaults) do if attrs[k] ~= nil then F:SetAttribute(k, attrs[k]) else F:SetAttribute(k, v) end end
 local s = Instance.new("Script"); s.Name = "GiftsServer"; s.Source = SERVER; s.Parent = F
 local c = Instance.new("Script"); c.Name = "GiftsClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
 F.Parent = workspace
-print(string.format("QQ GIFTS DONE: workspace.Gifts (GiftsServer %d, GiftsClient %d chars; GroupId %s, CommunityAcorns %s, BoostMaxGain %s, LikeReward %s, PopupDelay %s)%s",
-	#s.Source, #c.Source, tostring(F:GetAttribute("GroupId")), tostring(F:GetAttribute("CommunityAcorns")), tostring(F:GetAttribute("BoostMaxGain")), tostring(F:GetAttribute("LikeReward")), tostring(F:GetAttribute("PopupDelay")),
+print(string.format("QQ GIFTS DONE: workspace.Gifts (GiftsServer %d, GiftsClient %d chars; GroupId %s, CommunityAcorns %s, BoostMaxGain %s, LikeReward %s, PopupDelay %s, AutoPopup %s, BoostOn %s)%s",
+	#s.Source, #c.Source, tostring(F:GetAttribute("GroupId")), tostring(F:GetAttribute("CommunityAcorns")), tostring(F:GetAttribute("BoostMaxGain")), tostring(F:GetAttribute("LikeReward")), tostring(F:GetAttribute("PopupDelay")), tostring(F:GetAttribute("AutoPopup")), tostring(F:GetAttribute("BoostOn")),
 	old and ("; the old Gifts folder is HudBackup." .. old.Name) or ""))
 '''
 (HERE / "install_gifts1.lua").write_text(INSTALLER, encoding="utf-8", newline="\n")
