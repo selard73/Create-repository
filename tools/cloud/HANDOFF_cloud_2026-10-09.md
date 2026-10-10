@@ -87,6 +87,21 @@ The runner: send_message to its session id (bridge:session_01FmVm5n3mKMAfYwLsZWt
   the squirrel bubbles are world things in VR (jobs 54, 55). To do: make the VR window / panels grabbable with the
   controller (point + grip to drag; stays where put; re-grab to move), so the picker and the rest sit where she wants them.
 
+## Housekeeping for later (Shannon, Oct 10 ~05:00 UTC, before signing off)
+1. Waterfall cliff: "some blemished places on the cliff front where the waterfall comes down" need fixing. Start from
+   HANDOFF_2026-09-30_FALLS.md (workspace.SouthGorge.Rock, SouthCliff_W01..W04 / E01..E04 / L01 with _Lo halves;
+   generators italy/gorge_real/*.py and italy/falls/gen_falls2.py). First job: a Studio survey + screenshots of the
+   cliff face either side of the sheet so she can point at the blemishes.
+2. French clothing: "revisit clothing in the French section; some issues with the way the clothing was built". Code is
+   village/dresses/ (build_dressshop.lua, DressClient/DressServer, WardrobeClient, dress_kit.json, FIT_RELEASE_2026-09-28.md).
+   Ties in with the earlier note below about dresses on her new avatar (no arms). Ask her which issues she saw before building.
+3. Message in a bottle game: not built yet. The Porto cast list in HANDOFF_2026-10-01_CHATGPT_PORTO_NOCCIOLA.md has a
+   "bottle finder" squirrel; nothing else exists. Needs a design chat with her first (where bottles wash up, what is in
+   them, reward).
+4. Italy squirrels should randomly talk more to passers-by. Speech bubbles live in tools/bubble (sayVR for VR, job 55);
+   Porto activities in tools/porto/src/PortoActivities.lua / install_italy.lua. Idea: an ambient-chatter module with a
+   per-squirrel line pool, triggered when a player walks within a few studs, cooldowns so it is not spammy.
+
 ## Runner restart (Oct 10, after the "Remote control" runner thread was archived with its memory nearly full)
 The old runner's last report was jobs 53-55 (applied). Jobs waiting, in this order, each after asking Shannon (no publish):
 - Job 56: https://raw.githubusercontent.com/selard73/Create-repository/8b21dcf/tools/balloon/install_field1.lua — BalloonClient
