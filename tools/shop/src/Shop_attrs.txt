@@ -1,0 +1,32 @@
+workspace.Shop (Folder), exported from Studio Oct 10 2026 UTC (read-only, runner 3, job 59)
+attributes:
+Open = true (boolean)
+Price_backpack = 900 (number)
+Price_bubbles = 15 (number)
+Price_camera = 50 (number)
+Price_cheese = 8 (number)
+Price_crabtrap = 40 (number)
+Price_glider = 1000 (number)
+Price_portrait = 80 (number)
+Price_seed = 15 (number)
+Price_slingshot = 45 (number)
+Price_ziphandle = 60 (number)
+Price_zoomies = 25 (number)
+Sell_backpack = true (boolean)
+Sell_binoculars = true (boolean)
+Sell_bubbles = true (boolean)
+Sell_camera = true (boolean)
+Sell_cheese = true (boolean)
+Sell_crabtrap = true (boolean)
+Sell_glider = true (boolean)
+Sell_portrait = true (boolean)
+Sell_seed = true (boolean)
+Sell_slingshot = true (boolean)
+Sell_ziphandle = true (boolean)
+Sell_zoomies = true (boolean)
+Selling = false (boolean)
+children:
+ShopServer (Script, RunContext Server, Enabled true, 9261 chars)  -> tools/shop/src/ShopServer.lua
+ShopClient (Script, RunContext Client, Enabled true, 35014 chars)  -> tools/shop/src/ShopClient.lua
+StowServer (Script, RunContext Legacy, Enabled true, 3444 chars)  -> tools/shop/src/StowServer.lua
+OpenAt (BindableEvent, 0 descendants)
