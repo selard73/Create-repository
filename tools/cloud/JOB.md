@@ -540,3 +540,6 @@ Job 61 step 1 (Shannon, by hand): File > Import 3D of tools/fountain/model/frog.
 SwimRing on one colour atlas; "flowers": Flower_A/B/C_Petals/_Centre, Leaf, LilyPad, Lotus_Petals, Lotus_Centre, flat
 colours). Step 2 (runner, after the review): install_modes1.lua moves them into ReplicatedStorage.FountainModeAssets.
 Result job 62: SeaGlassClient 18853 -> 18916; backup HudBackup.SeaGlassClient_pre_seaglass12. Not published.
+Job 61 review (28 agents): noodle attachments parented before placing, X axis up, top strands bend down into the bowl;
+carpet petals, the drink and its table flat the right way (a Cylinder's axis is Size.X); ladder rungs across the rails;
+a resting meatball faces the fountain; sound ids formatted as whole numbers. All applied.

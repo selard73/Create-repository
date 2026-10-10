@@ -114,7 +114,7 @@ local function sitOn(m, cf)
 end
 local function sound(id, where, volume, speed)
 	if not id or id <= 0 or not where then return end
-	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://" .. tostring(id); s.Volume = volume or 0.6; s.PlaybackSpeed = speed or 1; s.RollOffMaxDistance = 80; s.Parent = where; s:Play(); Debris:AddItem(s, 8)
+	local s = Instance.new("Sound"); s.SoundId = string.format("rbxassetid://%d", id); s.Volume = volume or 0.6; s.PlaybackSpeed = speed or 1; s.RollOffMaxDistance = 80; s.Parent = where; s:Play(); Debris:AddItem(s, 8)
 end
 -- the water's own emitters, switched off on this client while noodles or petals pour, and back on after
 local waterOff = {}
@@ -162,7 +162,7 @@ local function carpet(g, n, r0, r1, y, size)
 	local list = {}
 	for i = 1, n do
 		local a, r = rng:NextNumber(0, 2 * math.pi), math.sqrt(rng:NextNumber(r0 * r0, r1 * r1))
-		local p = part("Petal", Vector3.new(size, 0.04, size * 0.7), CFrame.new(around(g, r, a, y + 0.03)) * CFrame.Angles(0, rng:NextNumber(0, 2 * math.pi), 0), PETALS[rng:NextInteger(1, #PETALS)], Enum.Material.SmoothPlastic, Enum.PartType.Cylinder)
+		local p = part("Petal", Vector3.new(0.04, size, size * 0.7), CFrame.new(around(g, r, a, y + 0.03)) * CFrame.Angles(0, rng:NextNumber(0, 2 * math.pi), 0), PETALS[rng:NextInteger(1, #PETALS)], Enum.Material.SmoothPlastic, Enum.PartType.Cylinder)
 		p.CFrame = CFrame.new(around(g, r, a, y + 0.03)) * CFrame.Angles(0, rng:NextNumber(0, 2 * math.pi), math.rad(90))
 		list[i] = {p = p, cf = p.CFrame, ph = rng:NextNumber(0, 6)}
 	end
@@ -193,8 +193,9 @@ end
 local NOODLE = Color3.fromRGB(242, 216, 140)
 local function noodle(g, p0, p1, up0, up1, width)
 	-- a strand: a Beam between two attachments on the Water part, bowing up at the start and drooping at the end
-	local a0 = Instance.new("Attachment"); a0.Name = "NoodleA"; a0.WorldPosition = p0; a0.Parent = g.water
-	local a1 = Instance.new("Attachment"); a1.Name = "NoodleB"; a1.WorldPosition = p1; a1.Parent = g.water
+	-- (parented first, then placed; their X axis points up, which is the axis a Beam's CurveSize bends along - review, Oct 10)
+	local a0 = Instance.new("Attachment"); a0.Name = "NoodleA"; a0.Parent = g.water; a0.WorldCFrame = CFrame.new(p0) * CFrame.Angles(0, 0, math.pi / 2)
+	local a1 = Instance.new("Attachment"); a1.Name = "NoodleB"; a1.Parent = g.water; a1.WorldCFrame = CFrame.new(p1) * CFrame.Angles(0, 0, math.pi / 2)
 	local b = Instance.new("Beam"); b.Name = "Noodle"; b.Attachment0 = a0; b.Attachment1 = a1
 	b.CurveSize0 = up0; b.CurveSize1 = up1; b.Segments = 16; b.FaceCamera = true
 	b.Width0 = width; b.Width1 = width * 1.1; b.LightEmission = 0.12; b.LightInfluence = 0.7
@@ -236,7 +237,7 @@ local function meatball(g)
 			sound(num("BounceSoundId", 0), m, 0.35)
 		end
 		if m.Parent then
-			m.CFrame = CFrame.new(from) * facing(from, g.centre):Inverse().Rotation * CFrame.Angles(0, math.pi, 0)   -- sits looking at the fountain
+			m.CFrame = facing(from, g.centre)   -- sits looking at the fountain (the smile is the Front face)
 			task.wait(3)
 			if m.Parent then TweenService:Create(m, TweenInfo.new(0.7), {Transparency = 1}):Play(); TweenService:Create(face, TweenInfo.new(0.7), {Transparency = 1}):Play() end
 			Debris:AddItem(m, 0.8)
@@ -250,7 +251,7 @@ local function startSpaghetti(g)
 	for i = 1, num("NoodleTop", 14) do
 		local a = i / num("NoodleTop", 14) * 2 * math.pi + rng:NextNumber(-0.15, 0.15)
 		local r = rng:NextNumber(1.0, g.bowlR - 0.3)
-		noodle(g, g.spout + Vector3.new(rng:NextNumber(-0.15, 0.15), 0, rng:NextNumber(-0.15, 0.15)), around(g, r, a, g.bowlY + 0.08), rng:NextNumber(2.6, 4.2), rng:NextNumber(0.8, 1.6), 0.22)
+		noodle(g, g.spout + Vector3.new(rng:NextNumber(-0.15, 0.15), 0, rng:NextNumber(-0.15, 0.15)), around(g, r, a, g.bowlY + 0.08), rng:NextNumber(2.6, 4.2), -rng:NextNumber(0.8, 1.6), 0.22)   -- (a negative end bend: the strand comes down into the bowl from above)
 	end
 	-- the rim streams: strands over the bowl's edge, drooping into the basin
 	for i = 1, num("NoodleRim", 20) do
@@ -334,10 +335,10 @@ local function ladder(g, a)
 	for _, s in ipairs({-0.45, 0.45}) do
 		local o = side * s
 		part("LadderRail", Vector3.new(0.12, 2.6, 0.12), CFrame.new(base + o + outward * 0.5 - Vector3.new(0, 1.0, 0)), chrome, Enum.Material.Metal)
-		part("LadderHoop", Vector3.new(0.12, 0.12, 1.2), CFrame.new(base + o + Vector3.new(0, 0.35, 0)), chrome, Enum.Material.Metal)
+		local hp = base + o + Vector3.new(0, 0.35, 0); part("LadderHoop", Vector3.new(0.12, 0.12, 1.2), CFrame.lookAt(hp, hp + outward), chrome, Enum.Material.Metal)
 		part("LadderRail", Vector3.new(0.12, 1.4, 0.12), CFrame.new(base + o - outward * 0.5 - Vector3.new(0, 0.4, 0)), chrome, Enum.Material.Metal)
 	end
-	for i = 0, 2 do part("LadderRung", Vector3.new(1.0, 0.1, 0.1), CFrame.new(base + outward * 0.5 - Vector3.new(0, 0.3 + i * 0.6, 0)) * CFrame.Angles(0, -a, 0), chrome, Enum.Material.Metal) end
+	for i = 0, 2 do local rp = base + outward * 0.5 - Vector3.new(0, 0.3 + i * 0.6, 0); part("LadderRung", Vector3.new(1.0, 0.1, 0.1), CFrame.lookAt(rp, rp + outward), chrome, Enum.Material.Metal) end
 end
 local function sign(g, pos, facingPos)
 	local wood = Color3.fromRGB(150, 105, 60)
@@ -389,9 +390,9 @@ local function startFrogs(g)
 	deckChair(g, chairCF)
 	add(frog(chairCF * CFrame.new(0, 0.62, 0.1) * CFrame.Angles(math.rad(-20), 0, 0), 1.0, "SunHat"), "chair")
 	local glassPos = deckPos + Vector3.new(math.cos(deckA - 1.5) * 1.3, 0, math.sin(deckA - 1.5) * 1.3)
-	part("DrinkTable", Vector3.new(0.9, 0.08, 0.9), CFrame.new(glassPos + Vector3.new(0, 0.9, 0)), Color3.fromRGB(170, 125, 80), Enum.Material.Wood, Enum.PartType.Cylinder)
+	part("DrinkTable", Vector3.new(0.08, 0.9, 0.9), CFrame.new(glassPos + Vector3.new(0, 0.9, 0)) * CFrame.Angles(0, 0, math.rad(90)), Color3.fromRGB(170, 125, 80), Enum.Material.Wood, Enum.PartType.Cylinder)
 	part("DrinkTable", Vector3.new(0.08, 0.9, 0.08), CFrame.new(glassPos + Vector3.new(0, 0.45, 0)), Color3.fromRGB(170, 125, 80), Enum.Material.Wood)
-	local glass = part("Drink", Vector3.new(0.34, 0.5, 0.34), CFrame.new(glassPos + Vector3.new(0, 1.2, 0)), Color3.fromRGB(255, 160, 120), Enum.Material.Glass, Enum.PartType.Cylinder); glass.Transparency = 0.25
+	local glass = part("Drink", Vector3.new(0.5, 0.34, 0.34), CFrame.new(glassPos + Vector3.new(0, 1.2, 0)), Color3.fromRGB(255, 160, 120), Enum.Material.Glass, Enum.PartType.Cylinder); glass.Transparency = 0.25
 	glass.CFrame = glass.CFrame * CFrame.Angles(0, 0, math.rad(90))
 	part("Straw", Vector3.new(0.05, 0.7, 0.05), CFrame.new(glassPos + Vector3.new(0.08, 1.45, 0)) * CFrame.Angles(0, 0, math.rad(12)), Color3.fromRGB(255, 80, 90))
 	sign(g, around(g, g.rimR + 2.4, deckA - 1.1, g.groundY), g.centre + (around(g, g.rimR + 14, deckA - 1.1, g.groundY) - g.centre))
