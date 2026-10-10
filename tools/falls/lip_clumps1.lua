@@ -13,9 +13,12 @@ local Terrain = workspace.Terrain
 for _, c in ipairs(LR:GetChildren()) do if c.Name:sub(1, 8) == "LipClump" then c:Destroy() end end
 -- where to look from (Porto side, the foot and the pool, the far right) and what to look at (the corner box)
 local VIEWS = {Vector3.new(176, -44, -585), Vector3.new(176, -12, -566), Vector3.new(185, -32, -655), Vector3.new(150, -30, -600), Vector3.new(160, -46, -570), Vector3.new(190, -20, -600)}
-local BOX = {x0 = 156, x1 = 180, y0 = -11, y1 = 4, z0 = -553, z1 = -539}
-local params = RaycastParams.new(); params.FilterType = Enum.RaycastFilterType.Exclude
-params.FilterDescendantsInstances = {workspace:FindFirstChild("Camera") or Terrain}   -- (nothing excluded but the camera; clumps answer rays)
+local BOX = {x0 = 156, x1 = 170, y0 = -11, y1 = 4, z0 = -553, z1 = -539}
+local SHEET_X0 = 167.4   -- the Body sheet's west edge at the top (36 wide about x 185.4): water behind the sheet is not the bulge
+-- the water sheet is beams, which stop no rays, and the LipPlate answers none: a stand-in for both while we look (removed after)
+local standin = Instance.new("Part"); standin.Name = "LipSheetStandIn"; standin.Anchored = true; standin.CanCollide = false; standin.Transparency = 1
+standin.Size = Vector3.new(36, 54, 0.6); standin.CFrame = CFrame.new(185.4, -27.5, -549.1); standin.Parent = workspace
+local params = RaycastParams.new(); params.FilterType = Enum.RaycastFilterType.Exclude; params.FilterDescendantsInstances = {}
 local function exposed()
 	local pts = {}
 	for _, v in ipairs(VIEWS) do
@@ -27,7 +30,7 @@ local function exposed()
 					local hit = workspace:Raycast(v, dir.Unit * (dir.Magnitude + 2), params)
 					if hit and hit.Instance == Terrain and hit.Material == Enum.Material.Water then
 						local p = hit.Position
-						if p.X >= BOX.x0 - 2 and p.X <= BOX.x1 + 2 and p.Y >= BOX.y0 - 2 and p.Y <= BOX.y1 + 2 and p.Z >= BOX.z0 - 2 and p.Z <= BOX.z1 + 2 then
+						if p.X >= BOX.x0 - 2 and p.X < SHEET_X0 + 0.2 and p.Y >= BOX.y0 - 2 and p.Y <= BOX.y1 + 2 and p.Z >= BOX.z0 - 2 and p.Z <= BOX.z1 + 2 then
 							table.insert(pts, {p = p, v = v})
 						end
 					end
@@ -68,6 +71,7 @@ while n < 12 do
 	table.insert(placed, string.format("%d %s size %.1f (%d pts)", n, v3(c.Position), c.Size.Magnitude, bestCount))
 end
 local after = exposed()
+standin:Destroy()
 print(string.format("QQ LIPCLUMP DONE: water showing at the right corner from %d viewpoints: %d sightings before, %d after; %d clumps: %s", #VIEWS, #before, #after, n, #placed > 0 and table.concat(placed, "; ") or "none"))
 if #after > 0 then
 	local s = {} for i = 1, math.min(8, #after) do table.insert(s, v3(after[i].p)) end
