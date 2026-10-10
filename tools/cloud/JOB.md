@@ -608,3 +608,6 @@ Shannon's two pictures (a spaghetti fountain: curtains of strands over every tie
 on the rims and heaps, steam; and a dense cascade of strands): strands 36 long / 14 bowl / 18 over, every third sliding and
 wobbling, the rest hanging still; coils on the basin (10) and bowl (4); meatballs on the rim (7), the bowl's edge (3) and the
 heaps (3), Ground material; the water stays water (attribute Sauce false; true gives the glossy simmering sauce). Job 66.
+Shannon's tap picture + "more petals, a wider radius, to the bottom": the spout pours a straight bundle (26) into the bowl's
+heap (6 coils), curtains from the bowl's edge (40), over the rim (18); petals 60/s, up to 420, spread 55 deg, 6-10 studs/s,
+a fifth of them off the basin's rim down to the paving, the ground carpet to 5.5 studs out. Job 66 commit below.

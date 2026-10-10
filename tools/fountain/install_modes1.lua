@@ -41,8 +41,8 @@ local F = Instance.new("Folder"); F.Name = "FountainModes"
 F:SetAttribute("FountainPath", "PortoNocciola/13 Hillside town/Fontana del Limone")
 F:SetAttribute("Minutes", 2); F:SetAttribute("Reach", 150)   -- two minutes (Shannon: "different from the French one")
 F:SetAttribute("FrogSoundId", 73626983091367); F:SetAttribute("BounceSoundId", 0)
-F:SetAttribute("PetalsPerSecond", 34); F:SetAttribute("PetalMax", 240); F:SetAttribute("PetalSpread", 38); F:SetAttribute("PetalSpeedMin", 5); F:SetAttribute("PetalSpeedMax", 8.5); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalRest", 2.6); F:SetAttribute("CarpetCount", 90)
-F:SetAttribute("NoodleLong", 36); F:SetAttribute("NoodleBowl", 14); F:SetAttribute("NoodleOver", 18); F:SetAttribute("CoilsBasin", 10); F:SetAttribute("CoilsBowl", 4); F:SetAttribute("NoodleSpeed", 1.0); F:SetAttribute("Sauce", false); F:SetAttribute("SauceBits", 60); F:SetAttribute("SteamRate", 4); F:SetAttribute("MeatballsRim", 7); F:SetAttribute("MeatballEvery", 5); F:SetAttribute("MeatballRest", 7)
+F:SetAttribute("PetalsPerSecond", 60); F:SetAttribute("PetalMax", 420); F:SetAttribute("PetalSpread", 55); F:SetAttribute("PetalSpeedMin", 6); F:SetAttribute("PetalSpeedMax", 10); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalRest", 2.6); F:SetAttribute("CarpetCount", 90)
+F:SetAttribute("NoodleColumn", 26); F:SetAttribute("NoodleRim", 40); F:SetAttribute("NoodleOver", 18); F:SetAttribute("CoilsBasin", 10); F:SetAttribute("CoilsBowl", 6); F:SetAttribute("NoodleSpeed", 1.0); F:SetAttribute("Sauce", false); F:SetAttribute("SauceBits", 60); F:SetAttribute("SteamRate", 4); F:SetAttribute("MeatballsRim", 7); F:SetAttribute("MeatballEvery", 5); F:SetAttribute("MeatballRest", 7)
 F:SetAttribute("SignText", "CLUB RANA"); F:SetAttribute("DeckAngle", 0.9)
 F:SetAttribute("RimY", rimY or (c.Y - 2.15 + 1.3)); F:SetAttribute("RimR", rimR); F:SetAttribute("GroundY", groundY)
 F:SetAttribute("ActiveMode", ""); F:SetAttribute("ActiveUntil", 0); F:SetAttribute("ActiveBy", "")
@@ -196,7 +196,7 @@ local function startPetals(g)
 	setWater(g, true)
 	local floating = carpet(g, num("CarpetCount", 90), g.basinR0, g.basinR1, g.basinY, 0.5)
 	for _, e in ipairs(carpet(g, 22, 0.6, g.bowlR - 0.3, g.bowlY, 0.42)) do table.insert(floating, e) end
-	for _, e in ipairs(carpet(g, 30, g.rimR + 0.6, g.rimR + 3.2, g.groundY, 0.45)) do table.insert(floating, e) end
+	for _, e in ipairs(carpet(g, 60, g.rimR + 0.6, g.rimR + 5.5, g.groundY, 0.45)) do table.insert(floating, e) end
 	-- the rim stream points: where the water pours over the bowl's edge
 	local rimPts = {}
 	for _, d in ipairs(g.water:GetChildren()) do if d:IsA("Attachment") and d.Name == "RimStream" then table.insert(rimPts, d.WorldPosition) end end
@@ -205,11 +205,15 @@ local function startPetals(g)
 	local function launch(fromTop)
 		local p = petalPart(rng:NextNumber(0.42, 0.6))
 		local pos, v
-		if fromTop then
-			local th, ph = math.rad(rng:NextNumber(0, num("PetalSpread", 38))), rng:NextNumber(0, 2 * math.pi)
-			local sp = rng:NextNumber(num("PetalSpeedMin", 5), num("PetalSpeedMax", 8.5))
+		if fromTop == "top" then
+			local th, ph = math.rad(rng:NextNumber(0, num("PetalSpread", 55))), rng:NextNumber(0, 2 * math.pi)
+			local sp = rng:NextNumber(num("PetalSpeedMin", 6), num("PetalSpeedMax", 10))
 			pos = g.spout + Vector3.new(rng:NextNumber(-0.2, 0.2), 0, rng:NextNumber(-0.2, 0.2))
 			v = Vector3.new(math.sin(th) * math.cos(ph), math.cos(th), math.sin(th) * math.sin(ph)) * sp
+		elseif fromTop == "edge" then   -- off the basin's rim, drifting out and down to the paving (Shannon: "a wider radius ... to the bottom")
+			local a = rng:NextNumber(0, 2 * math.pi)
+			pos = around(g, g.rimR - 0.2, a, g.rimY + 0.6)
+			v = Vector3.new(math.cos(a), 0, math.sin(a)) * rng:NextNumber(1.2, 3.0) + Vector3.new(0, rng:NextNumber(0.3, 1.2), 0)
 		else
 			pos = rimPts[rng:NextInteger(1, #rimPts)]
 			local out = Vector3.new(pos.X - g.centre.X, 0, pos.Z - g.centre.Z); out = out.Magnitude > 0.01 and out.Unit or Vector3.xAxis
@@ -226,8 +230,8 @@ local function startPetals(g)
 			local t = os.clock()
 			for _, e in ipairs(floating) do if e.p.Parent then e.p.CFrame = e.cf + Vector3.new(0, 0.04 * math.sin(t * 1.3 + e.ph), 0) end end
 			-- new petals: a shower from the spout, a trickle over the rim, up to a ceiling
-			acc += dt * num("PetalsPerSecond", 34)
-			while acc >= 1 and #live < num("PetalMax", 240) do acc -= 1; launch(rng:NextNumber() < 0.72) end
+			acc += dt * num("PetalsPerSecond", 60)
+			while acc >= 1 and #live < num("PetalMax", 420) do acc -= 1; local k = rng:NextNumber(); launch(k < 0.6 and "top" or (k < 0.8 and "rim" or "edge")) end
 			local pull, drag = num("PetalFall", 5), num("PetalDrag", 1.2)
 			for i = #live, 1, -1 do
 				local e = live[i]
@@ -271,16 +275,17 @@ local MINCE = Color3.fromRGB(92, 44, 26)
 local MEAT = Color3.fromRGB(112, 62, 36)
 local function curve(p0, p1, p2) return function(u) local x = p0:Lerp(p1, u); local y = p1:Lerp(p2, u); return x:Lerp(y, u) end end
 local function joined(c1, c2, split) return function(u) if u < split then return c1(u / split) else return c2((u - split) / (1 - split)) end end end
--- a strand's way down. "long": spout -> up and over -> the bowl's edge -> drooping into the basin. "over": the basin's rim -> the paving. "bowl": spout -> the bowl.
+-- a strand's way down. "column": the spout pours a thick bundle straight down into the heap in the bowl (Shannon's tap
+-- picture). "rim": from the bowl's edge, drooping down into the basin, a curtain of them. "over": the basin's rim -> the paving.
 local function strandPath(g, kind, a)
-	if kind == "long" then
-		local edge = around(g, g.bowlR + 0.15, a, g.bowlY + 0.05)
-		local c1 = curve(g.spout + Vector3.new(0, 0.1, 0), g.spout + Vector3.new(math.cos(a) * 1.2, 1.6 + rng:NextNumber(0, 1.0), math.sin(a) * 1.2), edge)
-		local c2 = curve(edge, around(g, g.bowlR + 0.9, a, g.bowlY - 0.6), around(g, rng:NextNumber(g.basinR0 + 0.4, g.basinR1 - 0.3), a + rng:NextNumber(-0.25, 0.25), g.basinY + 0.05))
-		return joined(c1, c2, 0.55)
-	elseif kind == "bowl" then
-		local r = rng:NextNumber(1.2, g.bowlR - 0.5)
-		return curve(g.spout + Vector3.new(0, 0.1, 0), g.spout + Vector3.new(math.cos(a) * r * 0.6, 1.4 + rng:NextNumber(0, 0.8), math.sin(a) * r * 0.6), around(g, r, a, g.bowlY + 0.05))
+	if kind == "column" then
+		local r0 = rng:NextNumber(0, 0.45)
+		local top = g.spout + Vector3.new(math.cos(a) * r0, 0.05, math.sin(a) * r0)
+		local foot = around(g, rng:NextNumber(0.2, 1.1), a + rng:NextNumber(-0.6, 0.6), g.bowlY + 0.05)
+		return curve(top, Vector3.new(top.X, top.Y - 1.0, top.Z), foot)
+	elseif kind == "rim" then
+		local edge = around(g, g.bowlR - 0.1, a, g.bowlY + 0.1)
+		return curve(edge, around(g, g.bowlR + 0.8, a, g.bowlY - 0.7), around(g, rng:NextNumber(g.basinR0 + 0.3, g.basinR1 - 0.3), a + rng:NextNumber(-0.2, 0.2), g.basinY + 0.05))
 	else   -- "over"
 		return curve(around(g, g.rimR - 0.8, a, g.rimY + 0.05), around(g, g.rimR + 0.4, a, g.rimY - 0.1), around(g, g.rimR + rng:NextNumber(1.3, 2.4), a + rng:NextNumber(-0.15, 0.15), g.groundY + 0.05))
 	end
@@ -374,15 +379,15 @@ local function startSpaghetti(g)
 			if i % 3 == 1 then table.insert(moving, st) else strandStep(st, 0, 0, rng:NextNumber(0, 6)) end
 		end
 	end
-	family("long", num("NoodleLong", 36), 0.1, 0.06)
-	family("bowl", num("NoodleBowl", 14), 0.09, 0.1)
+	family("column", num("NoodleColumn", 26), 0.1, 3.14)
+	family("rim", num("NoodleRim", 40), 0.1, 0.05)
 	family("over", num("NoodleOver", 18), 0.1, 0.08)
 	-- heaps of it: coils on the basin water and in the bowl
 	for i = 1, num("CoilsBasin", 10) do
 		local a, r = i / num("CoilsBasin", 10) * 2 * math.pi + rng:NextNumber(-0.2, 0.2), rng:NextNumber(g.basinR0 + 0.5, g.basinR1 - 0.6)
 		coil(g, around(g, r, a, g.basinY), rng:NextNumber(0.55, 0.9), rng:NextNumber(1.8, 2.6), 0.1)
 	end
-	for i = 1, num("CoilsBowl", 4) do coil(g, around(g, rng:NextNumber(0.9, g.bowlR - 0.9), i / 4 * 2 * math.pi + rng:NextNumber(-0.3, 0.3), g.bowlY), rng:NextNumber(0.4, 0.7), 2, 0.09) end
+	for i = 1, num("CoilsBowl", 6) do coil(g, around(g, rng:NextNumber(0.5, g.bowlR - 0.8), i / 6 * 2 * math.pi + rng:NextNumber(-0.3, 0.3), g.bowlY), rng:NextNumber(0.45, 0.75), 2, 0.09) end   -- the heap under the column
 	-- meatballs: on the rim, on the bowl's edge and on the heaps, looking out; now and then one rolls slowly down a long strand
 	local balls = {}
 	local function ball(pos, lookOut)
@@ -421,7 +426,7 @@ local function startSpaghetti(g)
 			end
 			if t > nextRoll and #rolling < 3 and #moving > 0 then
 				nextRoll = t + num("MeatballEvery", 5)
-				local st = moving[rng:NextInteger(1, math.min(#moving, math.ceil(num("NoodleLong", 36) / 3)))]
+				local st = moving[rng:NextInteger(1, #moving)]
 				local m, face = meatballPart(g, st.path(0))
 				table.insert(rolling, {m = m, face = face, path = st.path, len = st.len, u = 0, rest = nil})
 			end
