@@ -528,3 +528,5 @@ Shannon: frog croak 73626983091367 ("the same sound several times over so it sou
 answered by one to three others round the pond at varied pitch. Published Oct 10 00:57 UTC: jobs 56-58 live.
 Job 61 build: tools/fountain/src/FountainModeClient.lua (the modes, client-local within Reach), tools/fountain/make_install_modes1.py
 -> install_modes1.lua (FountainModes folder + client, assets from the imports, store rows via exact patches of the job 59 texts).
+Shannon (VR, after publishing 56-58): "the balloon works really well in the vr now"; Bella's reveal "a little too big and in
+your face now, but good enough" (to tone down later: seaglass11's VR block, scale 1.5 and 2.8 studs in front); pads gone.
