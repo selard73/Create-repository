@@ -524,3 +524,7 @@ Bought in the Acorn Store like the French fountain colour (the whole server's fo
 59 and 60; the frogs are a Blender model Shannon imports (like the balloon).
 Results (runner 3): 57 SeaGlassClient 18853 (backup _pre_seaglass11; Studio's lift line was the 2.4 form); 58 VRTestClient ->
 HudBackup (disabled; the pads were made at run time, none in the workspace). Not published.
+Shannon: frog croak 73626983091367 ("the same sound several times over so it sounds like there are more of them") - a croak is
+answered by one to three others round the pond at varied pitch. Published Oct 10 00:57 UTC: jobs 56-58 live.
+Job 61 build: tools/fountain/src/FountainModeClient.lua (the modes, client-local within Reach), tools/fountain/make_install_modes1.py
+-> install_modes1.lua (FountainModes folder + client, assets from the imports, store rows via exact patches of the job 59 texts).
