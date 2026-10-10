@@ -217,12 +217,14 @@ end
 local assets = RS:FindFirstChild("FountainModeAssets")
 local function asset(name) return assets and assets:FindFirstChild(name, true) end
 local function frog(cf, scale, accessory)
-	-- a frog from the imported model: Body, EyeL, EyeR, and one of Sunglasses / SunHat / SwimRing (the others go)
+	-- a frog from the imported model: Body, EyeL, EyeR, and one of Sunglasses / SunHat / SwimRing (the others go).
+	-- Import 3D left a 90-degree PivotOffset on every part of the frog, so PivotTo(level) laid it on its face with its
+	-- backside in the air (Shannon, Oct 10, VR); the pivots are flattened first, so the pivot is the Body itself, upright.
 	local src = asset("Frog"); if not src then return nil end
 	local m = src:Clone()
 	for _, d in ipairs(m:GetDescendants()) do
 		if d:IsA("BasePart") then
-			d.Anchored = true; d.CanCollide = false; d.CanQuery = false; d.CanTouch = false
+			d.Anchored = true; d.CanCollide = false; d.CanQuery = false; d.CanTouch = false; d.PivotOffset = CFrame.identity
 			if (d.Name == "Sunglasses" or d.Name == "SunHat" or d.Name == "SwimRing") and d.Name ~= accessory then d:Destroy() end
 		end
 	end
@@ -233,11 +235,11 @@ end
 local function lilyPad(cf, withLotus)
 	local pad = asset("LilyPad")
 	local p
-	if pad then p = pad:Clone(); p.Anchored = true; p.CanCollide = false; p.CanQuery = false; sitOn(p, cf); p.Parent = scene
+	if pad then p = pad:Clone(); p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.PivotOffset = CFrame.identity; sitOn(p, cf); p.Parent = scene
 	else p = part("LilyPad", Vector3.new(0.08, 1.6, 1.6), cf * CFrame.Angles(0, 0, math.rad(90)), Color3.fromRGB(70, 150, 70), Enum.Material.SmoothPlastic, Enum.PartType.Cylinder) end
 	if withLotus then
 		local l = asset("Lotus")
-		if l then local c = l:Clone(); for _, d in ipairs(c:GetDescendants()) do if d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false; d.CanQuery = false end end; sitOn(c, cf * CFrame.new(0, 0.1, 0)); c.Parent = scene end
+		if l then local c = l:Clone(); for _, d in ipairs(c:GetDescendants()) do if d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false; d.CanQuery = false; d.PivotOffset = CFrame.identity end end; sitOn(c, cf * CFrame.new(0, 0.1, 0)); c.Parent = scene end
 	end
 	return p
 end

@@ -682,3 +682,30 @@ see the rails only from the funicolare when you are up in the balloon, not the w
    push to claude/epic-hawking-188q4l (as jobs 59 and 70 did). The cloud session patches the live copy from that file.
 2. Run tools/cloud/survey72.lua (Edit mode; it reads only: prompt settings, the Frog asset's part orientations, the
    funicolare's models and streaming settings). Send every `QQ S72` line in one message, with the pushed commit's SHA.
+
+Result job 72 (runner 4, 84833b8): PromptClient exported (23746, byte-equal). Facts: 73 prompts, Custom at run time only; the
+race StartPrompt on PortoRace.StartGate.StartPad (Hold 0.3, Pad ButtonX, PhoneSpot sign); OperaPrompt made at run time by
+PortoActivities on the singer. Frog asset: every part Orientation 0 but PivotOffset (90,0,0) -> Model:PivotTo(level) lays it on
+its face (eyes at Body-local (+-0.2,0.3,-0.4): face -Z, up +Y). Streaming on; "15 Funicolare" (Model, Default, 288 anchored
+parts) 240-600 studs from the balloon field; rails/cables are 375-stud parts (they stay in range), the rest small.
+
+## Job 73: the interact pill in VR, beside the thing itself (Studio EDIT; ask Shannon first)
+
+tools/prompts/prompt_vr1.lua: exact-string patch of workspace.PromptUI.PromptClient (23746 -> 29277; backup
+HudBackup.PromptClient_pre_vr1): in VR each shown prompt gets a BillboardGui pill on its own part (0.6-0.8 studs tall, the
+controller button on the badge, the object and action texts, the hold fill), pressed with the pointer (a tap completes a
+hold-pill), hidden while the daily card / a panel is open; flat screens unchanged. Generator tools/prompts/make_prompt_vr1.py.
+Send the `QQ PVR` line. No publish. Undo: PromptClient.Source = HudBackup.PromptClient_pre_vr1.Source.
+
+## Job 74: Club Rana frogs upright (Studio EDIT, re-run; ask Shannon first)
+
+Re-run tools/fountain/install_modes1.lua at the commit below: FountainModes rebuilt with the client (25147 chars) that
+flattens the imported parts' PivotOffset before setting each frog, lily pad and lotus down (the frog's pivot is its Body,
+upright, face -Z). Assets kept; the store restored from its pre_modes1 backups and re-patched identically (10901 / 38666).
+Send the `QQ FMODE DONE` line. No publish.
+
+## Job 75: the funicolare stays loaded from the balloon (Studio EDIT; ask Shannon first)
+
+tools/porto/funicolare_persist1.lua: workspace.PortoNocciola["15 Funicolare"].ModelStreamingMode = Persistent (288 anchored
+parts, like the whale and the backdrop); the old value kept in the attribute StreamingWas. Send the `QQ FUNI` line. No publish.
+Ask Shannon once for all three edits (73, 74, 75), then run them in that order and send one message with the three lines.
