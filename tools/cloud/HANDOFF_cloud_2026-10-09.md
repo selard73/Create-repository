@@ -148,6 +148,16 @@ players who cannot be prompted pass) -> the store item `backpack` granted as a p
 prompt; Player:GetJoinData().ReferredByPlayerId on the friend's join) -> double acorns 24 h for both. A like is asked for,
 never gated on (no API). Not rule-breaking per the devforum staff answers found Oct 10 (JOB.md has the links).
 
+## State at Oct 10 ~17:00 UTC (runner 4 idle)
+- Live scripts = repo copies: PromptClient 30345 = tools/prompts/src/PromptClient_vr1.lua (VR pills in the world); FountainModeClient
+  29110 = tools/fountain/src/FountainModeClient.lua (frogs upright, footed rim frogs, the top frog on a pad in the upper bowl);
+  BalloonServer 11362 = tools/balloon/src/BalloonServer_ride1.lua (ridePersist; "15 Funicolare" PersistentPerPlayer, RidePersistent);
+  BalloonClient 32702 = tools/balloon/src/BalloonClient.lua (job 80's VR haze UNDONE at Shannon's word - "keep it as it").
+- The VR popping of far scenery on the Quest is the headset's renderer (the readout showed everything loaded); Shannon chose to
+  leave it. Options kept: merge the funicolare's small parts; the player's manual graphics quality.
+- Next: the waterfall cliff (job 82 survey), then the Italy squirrel chatter, the message in a bottle, the rewards panel
+  (community 969906332), the French clothing. Event Oct 18.
+
 ## State at Oct 10 04:45 UTC (all published unless noted)
 - Live: balloon finale (smooth flight, VR stand-off camera, film tour "Balloon flight" in F8, world notes), Bella's game on
   phone/desktop/VR, VR speech bubbles beside the head, the piazza race, the Acorn Store's "Fountain magic" row (Club Rana,

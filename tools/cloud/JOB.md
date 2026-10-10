@@ -792,3 +792,14 @@ and its 48 tags gone. The place HAS an Atmosphere (Density 0.30, Haze 0; Lightin
 so the VR haze is by Atmosphere Density/Haze. Runner's desktop preview from the pad + 89 studs: 0.55/2.5 far too thick (the
 town gone); 0.46/2.0 the far hill town hazed, lighthouse faint, waterfront clear; 0.40/1.2 the town clear, far hills and
 horizon soft. Shannon picks the strength; the runner sets VRHazeDensity / VRHazeAtmo on her yes (attributes, no script).
+Shannon on the haze pictures: "I don't like any of these" -> "for right now, please undo any changes where that is concerned,
+we will just keep it as it". Runner 4 undid job 80 (BalloonClient back to 32702 from the backup; the seven VR* attributes
+removed); job 81 stays done; job 77 stays (the funicolare persists for the rider). The balloon ride is as it was live.
+
+## Job 82: survey the waterfall cliff's face (READ-ONLY, EDIT mode)
+
+tools/falls/cliff_survey1.lua: every piece of SouthGorge.Rock (SouthCliff_* and _Lo halves, the wall chunks by the lip), the
+Falls' crest beams, other parts parked near the crest by earlier patches, the River parts behind the lip. Send every `QQ CLIFF`
+line. Plus pictures (Studio, Edit mode, no change): (a) from the foot of the falls (Porto side) looking up at the whole face,
+(b) a close look at the right-hand side of the face toward the top, (c) the right side of the lip from the river just above the
+fall, (d) the same spots from behind / above where the face is see-through. Send the picture paths and what you see.
