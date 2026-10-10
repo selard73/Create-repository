@@ -863,3 +863,15 @@ the first hit on 16 of 2572 rays (east side). Shown to Shannon; not installed.
 Result job 84 (runner 4, 52773f8, installed at Shannon's "install it so I can look in Studio"; not published): 8 back copies +
 28 strata plates in SouthGorge.Rock.CliffBacking2; 254 carves; job 83's blocks, sandstone and LipPlate kept; the terrain
 backup CliffTop_pre1 (before both jobs) still there. Shannon flies the Studio camera along the cliff and gives her verdict.
+
+Shannon (Oct 10 evening): "the thing that needs to be fixed right now is the blue bulge at the right corner of the top of the
+falls; the fix last time was adding clumps on top of it; it worked on the left side but not on the right, you might just need
+some more clumps".
+
+## Job 85: more clumps on the lip's right corner (Studio EDIT; dry run / preview, then ask Shannon)
+
+tools/falls/lip_clumps1.lua: from six viewpoints on the Porto side it finds every spot in the corner box (x 156..180, y -11..4,
+z -553..-539) where the river's terrain Water is the first thing seen, sets a smaller clone of LipRockW (0.45-0.8 of its size,
+turned at random, nudged toward the viewer) on the densest spot, looks again, up to 12 clumps until no water shows. Clumps
+in SouthGorge.LipRocks as LipClump_N, anchored, no collision. Send the `QQ LIPCLUMP` line(s) and pictures from the c3 and c4
+spots. Undo: delete LipClump_*. No publish.
