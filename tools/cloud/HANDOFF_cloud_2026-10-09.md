@@ -168,6 +168,15 @@ rows y 26..38, backup HudBackup.CliffTop_pre1 (paste at voxel 9,5,-148), FallsB.
 the cliff pending (she looks in Studio herself). Open: the dark patch on the grass hill west of the outcrop (x < 8, not probed);
 the tan lumps at the cliff's corners by the notch (sandstone-swapped ground where the bands stop).
 
+## State at Oct 10 ~23:30 UTC (runner 5 on job 87)
+- Installed since the 19:26Z publish, NOT published: job 86 v2 (LipClump_3 at 168.2,-7.0,-550.3; the lip's right corner closed).
+- Job 87 (the Gifts system, tools/gifts): previewed by runner 5 at 7788820 (all flows worked, pictures in tools/gifts/shots);
+  Shannon asked for sparklier buttons and the popup "3 minutes" (runner's reading: after the first squirrel found, 3 min fallback).
+  Rev 2 = 010f19e (sparkle: sheen + rim + twinkles; FirstFind trigger, PopupDelay 180) sent to runner 5 for a re-preview and
+  an install on her yes. Then she publishes (Alt+P). The runner noted: a HUD tap while the gifts card is open only closes the card.
+- Next, in order (event Oct 18): Italy squirrels chatting to passers-by, the message in a bottle, the French clothing rebuild;
+  cosmetic: the dark patch on the grass hill west of the outcrop (x < 8), the tan lumps at the cliff's notch corners.
+
 ## State at Oct 10 ~17:00 UTC (runner 4 idle)
 - Live scripts = repo copies: PromptClient 30345 = tools/prompts/src/PromptClient_vr1.lua (VR pills in the world); FountainModeClient
   29110 = tools/fountain/src/FountainModeClient.lua (frogs upright, footed rim frogs, the top frog on a pad in the upper bowl);
