@@ -875,3 +875,16 @@ z -553..-539) where the river's terrain Water is the first thing seen, sets a sm
 turned at random, nudged toward the viewer) on the densest spot, looks again, up to 12 clumps until no water shows. Clumps
 in SouthGorge.LipRocks as LipClump_N, anchored, no collision. Send the `QQ LIPCLUMP` line(s) and pictures from the c3 and c4
 spots. Undo: delete LipClump_*. No publish.
+Result job 85 (runner 4, 73f0c4a v2, installed at Shannon's "Install, and ask for the sliver too"; not published): 364 water
+sightings before, 0 after; LipClump_1 (166.1,-9.9,-550.2) size (9.3,5.7,6.9), LipClump_2 (163.8,-7.7,-549.0) size (5.7,3.5,4.3),
+no collision. Pictures tools/falls/shots/lip-j85-preview-c3/c4.jpg. Left: a thin blue line between LipRockW's underside and
+LipClump_1's top at x 167-168, y -7 (the pale LipPlate seen through the gap, not water).
+Runner 4 handover (78%+, no new jobs): PlaceVersion loaded 1301; jobs 81, 83, 84, 85 unpublished (Shannon presses Alt+P; the
+runner cannot publish); play-test previews paste the script body as code (no loadstring there); pictures in
+C:\Users\slard\Create-repository-shots and tools/falls/shots/ (git add -f); the dark patch on the hill west of the outcrop
+(x < 8) still open; her API access off.
+
+## Job 86: the sliver at the lip's right corner (Studio EDIT; ask Shannon first) - for runner 5
+
+tools/falls/lip_sliver1.lua: a third small clump (0.38 of LipRockW) in the gap at (167.4,-7.1,-550.4), and the LipPlate's
+colour to the sheet's white (ColorWas kept). Send the `QQ SLIVER` line and a picture from the c4 spot. No publish.
