@@ -42,7 +42,7 @@ F:SetAttribute("FountainPath", "PortoNocciola/13 Hillside town/Fontana del Limon
 F:SetAttribute("Minutes", 2); F:SetAttribute("Reach", 150)   -- two minutes (Shannon: "different from the French one")
 F:SetAttribute("FrogSoundId", 73626983091367); F:SetAttribute("BounceSoundId", 0)
 F:SetAttribute("PetalsPerSecond", 34); F:SetAttribute("PetalMax", 240); F:SetAttribute("PetalSpread", 38); F:SetAttribute("PetalSpeedMin", 5); F:SetAttribute("PetalSpeedMax", 8.5); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalRest", 2.6); F:SetAttribute("CarpetCount", 90)
-F:SetAttribute("NoodleLong", 12); F:SetAttribute("NoodleBowl", 6); F:SetAttribute("NoodleOver", 5); F:SetAttribute("NoodleSpeed", 1.0); F:SetAttribute("SauceBits", 70); F:SetAttribute("SteamRate", 5); F:SetAttribute("MeatballsResting", 5); F:SetAttribute("MeatballEvery", 5); F:SetAttribute("MeatballRest", 7)
+F:SetAttribute("NoodleLong", 36); F:SetAttribute("NoodleBowl", 14); F:SetAttribute("NoodleOver", 18); F:SetAttribute("CoilsBasin", 10); F:SetAttribute("CoilsBowl", 4); F:SetAttribute("NoodleSpeed", 1.0); F:SetAttribute("Sauce", false); F:SetAttribute("SauceBits", 60); F:SetAttribute("SteamRate", 4); F:SetAttribute("MeatballsRim", 7); F:SetAttribute("MeatballEvery", 5); F:SetAttribute("MeatballRest", 7)
 F:SetAttribute("SignText", "CLUB RANA"); F:SetAttribute("DeckAngle", 0.9)
 F:SetAttribute("RimY", rimY or (c.Y - 2.15 + 1.3)); F:SetAttribute("RimR", rimR); F:SetAttribute("GroundY", groundY)
 F:SetAttribute("ActiveMode", ""); F:SetAttribute("ActiveUntil", 0); F:SetAttribute("ActiveBy", "")
@@ -321,44 +321,78 @@ local function meatballPart(g, pos)
 	local face = Instance.new("Decal"); face.Name = "Smile"; face.Texture = "rbxasset://textures/face.png"; face.Face = Enum.NormalId.Front; face.Parent = m
 	return m, face
 end
+-- a coil: spaghetti heaped in a flat spiral on the water (Shannon's picture: piles of it in the basin and the bowl)
+local function coil(g, centre, rMax, turns, radius)
+	local n = math.floor(turns * 22)
+	local colour = NOODLE:Lerp(Color3.fromRGB(255, 236, 170), rng:NextNumber(0, 0.6))
+	local ph = rng:NextNumber(0, 6)
+	local last = nil
+	for i = 0, n do
+		local k = i / n
+		local ang = k * turns * 2 * math.pi + ph
+		local r = 0.15 + (rMax - 0.15) * k
+		local p = centre + Vector3.new(math.cos(ang) * r, 0.1 + 0.06 * math.sin(i * 1.7), math.sin(ang) * r)
+		if last then
+			local seg = Instance.new("Part"); seg.Name = "Coil"; seg.Anchored = true; seg.CanCollide = false; seg.CanQuery = false; seg.CanTouch = false; seg.CastShadow = false
+			seg.Shape = Enum.PartType.Cylinder; seg.Size = Vector3.new((p - last).Magnitude + 0.12, radius * 2, radius * 2); seg.Color = colour; seg.Material = Enum.Material.SmoothPlastic
+			seg.CFrame = CFrame.lookAt((p + last) / 2, p) * SEG; seg.Parent = scene
+		end
+		last = p
+	end
+end
 local function startSpaghetti(g)
 	setWater(g, true)
-	-- the sauce: deep tomato-brown, glossy and a little see-through (thick liquid, not a slab), the bowl the same
-	tintWater(g, SAUCE, 0.1)
-	g.water.Material = Enum.Material.Glass; g.water.Reflectance = 0.06
-	g.ring.Material = Enum.Material.Glass; g.ring.Reflectance = 0.06
-	local function bits(n, r0, r1, y)
-		for i = 1, n do
-			local a, r = rng:NextNumber(0, 2 * math.pi), math.sqrt(rng:NextNumber(r0 * r0, r1 * r1))
-			local kind = rng:NextNumber()
-			local pos = around(g, r, a, y)
-			if kind < 0.55 then part("Mince", Vector3.new(rng:NextNumber(0.2, 0.4), 0.14, rng:NextNumber(0.2, 0.34)), CFrame.new(pos + Vector3.new(0, 0.02, 0)) * CFrame.Angles(rng:NextNumber(-0.3, 0.3), rng:NextNumber(0, 6), rng:NextNumber(-0.3, 0.3)), MINCE:Lerp(Color3.fromRGB(130, 62, 36), rng:NextNumber(0, 1)), Enum.Material.Ground)
-			elseif kind < 0.8 then part("Herb", Vector3.new(0.14, 0.04, 0.1), CFrame.new(pos + Vector3.new(0, 0.05, 0)) * CFrame.Angles(0, rng:NextNumber(0, 6), 0), Color3.fromRGB(72, 112, 40))
-			else part("NoodleBit", Vector3.new(rng:NextNumber(0.8, 1.6), 0.2, 0.2), CFrame.new(pos + Vector3.new(0, 0.04, 0)) * CFrame.Angles(0, rng:NextNumber(0, 6), 0), NOODLE, Enum.Material.SmoothPlastic, Enum.PartType.Cylinder) end
+	local sauce = F:GetAttribute("Sauce") == true   -- off by default: in Shannon's picture the basin is still water, heaped with spaghetti
+	if sauce then
+		tintWater(g, SAUCE, 0.1)
+		g.water.Material = Enum.Material.Glass; g.water.Reflectance = 0.06
+		g.ring.Material = Enum.Material.Glass; g.ring.Reflectance = 0.06
+		local function bits(n, r0, r1, y)
+			for i = 1, n do
+				local a, r = rng:NextNumber(0, 2 * math.pi), math.sqrt(rng:NextNumber(r0 * r0, r1 * r1))
+				local pos = around(g, r, a, y)
+				if rng:NextNumber() < 0.7 then part("Mince", Vector3.new(rng:NextNumber(0.2, 0.4), 0.14, rng:NextNumber(0.2, 0.34)), CFrame.new(pos + Vector3.new(0, 0.02, 0)) * CFrame.Angles(rng:NextNumber(-0.3, 0.3), rng:NextNumber(0, 6), rng:NextNumber(-0.3, 0.3)), MINCE:Lerp(Color3.fromRGB(130, 62, 36), rng:NextNumber(0, 1)), Enum.Material.Ground)
+				else part("Herb", Vector3.new(0.14, 0.04, 0.1), CFrame.new(pos + Vector3.new(0, 0.05, 0)) * CFrame.Angles(0, rng:NextNumber(0, 6), 0), Color3.fromRGB(72, 112, 40)) end
+			end
 		end
+		bits(num("SauceBits", 60), g.basinR0 + 0.2, g.basinR1 - 0.1, g.basinY)
+		bits(12, 0.5, g.bowlR - 0.3, g.bowlY)
 	end
-	bits(num("SauceBits", 70), g.basinR0 + 0.2, g.basinR1 - 0.1, g.basinY)
-	bits(16, 0.5, g.bowlR - 0.3, g.bowlY)
-	-- steam off the sauce
-	local steamPart = part("Steam", Vector3.new(0.2, g.basinR1 * 2, g.basinR1 * 2), CFrame.new(g.centre.X, g.basinY + 0.3, g.centre.Z) * CFrame.Angles(0, 0, math.rad(90)), Color3.new(1, 1, 1), Enum.Material.SmoothPlastic, Enum.PartType.Cylinder)
+	-- steam off the hot pasta
+	local steamPart = part("Steam", Vector3.new(0.2, g.bowlR * 2, g.bowlR * 2), CFrame.new(g.centre.X, g.bowlY + 0.4, g.centre.Z) * CFrame.Angles(0, 0, math.rad(90)), Color3.new(1, 1, 1), Enum.Material.SmoothPlastic, Enum.PartType.Cylinder)
 	steamPart.Transparency = 1
 	local steam = Instance.new("ParticleEmitter"); steam.Name = "Steam"; steam.Texture = "rbxasset://textures/particles/smoke_main.dds"; steam.Color = ColorSequence.new(Color3.fromRGB(255, 250, 245))
-	steam.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 1.2), NumberSequenceKeypoint.new(1, 2.6)}); steam.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.92), NumberSequenceKeypoint.new(0.5, 0.86), NumberSequenceKeypoint.new(1, 1)})
-	steam.Lifetime = NumberRange.new(2.2, 3.2); steam.Rate = num("SteamRate", 5); steam.Speed = NumberRange.new(0.5, 0.9); steam.SpreadAngle = Vector2.new(15, 15); steam.LightEmission = 0.1; steam.Parent = steamPart
-	-- the strands: long ones from the spout over the bowl's edge into the basin, a few into the bowl only, some over the outer rim
-	local strands = {}
-	local nLong, nBowl, nOver = num("NoodleLong", 12), num("NoodleBowl", 6), num("NoodleOver", 5)
-	for i = 1, nLong do table.insert(strands, makeStrand(g, "long", i / nLong * 2 * math.pi + rng:NextNumber(-0.15, 0.15), 0.11)) end
-	for i = 1, nBowl do table.insert(strands, makeStrand(g, "bowl", (i + 0.5) / nBowl * 2 * math.pi + rng:NextNumber(-0.2, 0.2), 0.1)) end
-	for i = 1, nOver do table.insert(strands, makeStrand(g, "over", i / nOver * 2 * math.pi + rng:NextNumber(-0.3, 0.3), 0.1)) end
-	-- meatballs sunk in the sauce, and now and then one rolling slowly down a long strand
-	local SINK = 0.12   -- the ball's middle this far above the surface: mostly under
+	steam.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 1.0), NumberSequenceKeypoint.new(1, 2.4)}); steam.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.9), NumberSequenceKeypoint.new(0.5, 0.85), NumberSequenceKeypoint.new(1, 1)})
+	steam.Lifetime = NumberRange.new(2.2, 3.2); steam.Rate = num("SteamRate", 4); steam.Speed = NumberRange.new(0.5, 0.9); steam.SpreadAngle = Vector2.new(15, 15); steam.LightEmission = 0.1; steam.Parent = steamPart
+	-- the strands, close together like curtains (her picture): long ones from the spout over the bowl's edge into the basin,
+	-- some into the bowl, some over the outer rim onto the paving. Every third one slides and wobbles; the rest hang still.
+	local strands, moving = {}, {}
+	local function family(kind, n, radius, jitter)
+		for i = 1, n do
+			local st = makeStrand(g, kind, i / n * 2 * math.pi + rng:NextNumber(-jitter, jitter), radius)
+			table.insert(strands, st)
+			if i % 3 == 1 then table.insert(moving, st) else strandStep(st, 0, 0, rng:NextNumber(0, 6)) end
+		end
+	end
+	family("long", num("NoodleLong", 36), 0.1, 0.06)
+	family("bowl", num("NoodleBowl", 14), 0.09, 0.1)
+	family("over", num("NoodleOver", 18), 0.1, 0.08)
+	-- heaps of it: coils on the basin water and in the bowl
+	for i = 1, num("CoilsBasin", 10) do
+		local a, r = i / num("CoilsBasin", 10) * 2 * math.pi + rng:NextNumber(-0.2, 0.2), rng:NextNumber(g.basinR0 + 0.5, g.basinR1 - 0.6)
+		coil(g, around(g, r, a, g.basinY), rng:NextNumber(0.55, 0.9), rng:NextNumber(1.8, 2.6), 0.1)
+	end
+	for i = 1, num("CoilsBowl", 4) do coil(g, around(g, rng:NextNumber(0.9, g.bowlR - 0.9), i / 4 * 2 * math.pi + rng:NextNumber(-0.3, 0.3), g.bowlY), rng:NextNumber(0.4, 0.7), 2, 0.09) end
+	-- meatballs: on the rim, on the bowl's edge and on the heaps, looking out; now and then one rolls slowly down a long strand
 	local balls = {}
-	for i = 1, num("MeatballsResting", 5) do
-		local a, r = rng:NextNumber(0, 2 * math.pi), rng:NextNumber(g.basinR0 + 0.4, g.basinR1 - 0.4)
-		local m = meatballPart(g, around(g, r, a, g.basinY + SINK))
+	local function ball(pos, lookOut)
+		local m = meatballPart(g, pos)
+		if lookOut then m.CFrame = facing(pos, g.centre) * CFrame.Angles(0, math.pi, 0) else m.CFrame = facing(pos, g.centre) end
 		table.insert(balls, {m = m, cf = m.CFrame, ph = rng:NextNumber(0, 6)})
 	end
+	for i = 1, num("MeatballsRim", 7) do ball(around(g, g.rimR - 0.3, i / 7 * 2 * math.pi + rng:NextNumber(-0.2, 0.2), g.rimY + 0.47), true) end
+	for i = 1, 3 do ball(around(g, g.bowlR - 0.5, i / 3 * 2 * math.pi + 0.7, g.bowlY + 0.5), true) end
+	for i = 1, 3 do ball(around(g, rng:NextNumber(g.basinR0 + 0.6, g.basinR1 - 0.6), i / 3 * 2 * math.pi + 1.9, g.basinY + (sauce and 0.12 or 0.42)), true) end
 	local rolling = {}
 	local my = gen
 	task.spawn(function()
@@ -368,25 +402,26 @@ local function startSpaghetti(g)
 			local dt = math.min(RunService.RenderStepped:Wait(), 0.05)
 			local t = os.clock()
 			local speed = num("NoodleSpeed", 1.0)
-			for _, st in ipairs(strands) do strandStep(st, dt, speed, t) end
-			for _, bl in ipairs(balls) do if bl.m.Parent then bl.m.CFrame = bl.cf + Vector3.new(0, 0.03 * math.sin(t * 1.2 + bl.ph), 0) end end
-			-- the sauce simmers: a bubble swells up through the surface and pops
-			if t > nextBubble then
-				nextBubble = t + rng:NextNumber(0.3, 0.9)
-				local a, r = rng:NextNumber(0, 2 * math.pi), rng:NextNumber(g.basinR0 + 0.3, g.basinR1 - 0.3)
-				local bub = part("SauceBubble", Vector3.new(0.1, 0.1, 0.1), CFrame.new(around(g, r, a, g.basinY - 0.1)), SAUCE:Lerp(Color3.fromRGB(190, 80, 50), 0.4), Enum.Material.Glass, Enum.PartType.Ball)
-				bub.Transparency = 0.15
-				table.insert(bubbles, {p = bub, t0 = t, size = rng:NextNumber(0.3, 0.55), pos = bub.Position})
+			for _, st in ipairs(moving) do strandStep(st, dt, speed, t) end
+			for _, bl in ipairs(balls) do if bl.m.Parent then bl.m.CFrame = bl.cf + Vector3.new(0, 0.02 * math.sin(t * 1.2 + bl.ph), 0) end end
+			if sauce then   -- the sauce simmers: a bubble swells up through the surface and pops
+				if t > nextBubble then
+					nextBubble = t + rng:NextNumber(0.3, 0.9)
+					local a, r = rng:NextNumber(0, 2 * math.pi), rng:NextNumber(g.basinR0 + 0.3, g.basinR1 - 0.3)
+					local bub = part("SauceBubble", Vector3.new(0.1, 0.1, 0.1), CFrame.new(around(g, r, a, g.basinY - 0.1)), SAUCE:Lerp(Color3.fromRGB(190, 80, 50), 0.4), Enum.Material.Glass, Enum.PartType.Ball)
+					bub.Transparency = 0.15
+					table.insert(bubbles, {p = bub, t0 = t, size = rng:NextNumber(0.3, 0.55), pos = bub.Position})
+				end
+				for i = #bubbles, 1, -1 do
+					local bu = bubbles[i]
+					local k = (t - bu.t0) / 1.1
+					if k >= 1 or not bu.p.Parent then if bu.p.Parent then bu.p:Destroy() end; table.remove(bubbles, i)
+					else local sz = bu.size * math.sin(k * math.pi); bu.p.Size = Vector3.new(sz, sz, sz); bu.p.CFrame = CFrame.new(bu.pos + Vector3.new(0, 0.08 + k * 0.1, 0)) end
+				end
 			end
-			for i = #bubbles, 1, -1 do
-				local bu = bubbles[i]
-				local k = (t - bu.t0) / 1.1
-				if k >= 1 or not bu.p.Parent then if bu.p.Parent then bu.p:Destroy() end; table.remove(bubbles, i)
-				else local sz = bu.size * math.sin(k * math.pi); bu.p.Size = Vector3.new(sz, sz, sz); bu.p.CFrame = CFrame.new(bu.pos + Vector3.new(0, 0.08 + k * 0.1, 0)) end
-			end
-			if t > nextRoll and #rolling < 3 then
+			if t > nextRoll and #rolling < 3 and #moving > 0 then
 				nextRoll = t + num("MeatballEvery", 5)
-				local st = strands[rng:NextInteger(1, nLong)]
+				local st = moving[rng:NextInteger(1, math.min(#moving, math.ceil(num("NoodleLong", 36) / 3)))]
 				local m, face = meatballPart(g, st.path(0))
 				table.insert(rolling, {m = m, face = face, path = st.path, len = st.len, u = 0, rest = nil})
 			end
@@ -400,7 +435,7 @@ local function startSpaghetti(g)
 				else
 					rb.u = rb.u + speed * 0.8 * dt / rb.len
 					if rb.u >= 1 then
-						rb.rest = t; rb.m.CFrame = facing(rb.path(1) + Vector3.new(0, SINK, 0), g.centre) * CFrame.Angles(0, math.pi, 0)   -- settles into the sauce
+						rb.rest = t; rb.m.CFrame = facing(rb.path(1) + Vector3.new(0, sauce and 0.12 or 0.42, 0), g.centre) * CFrame.Angles(0, math.pi, 0)
 					else
 						local p = rb.path(rb.u)
 						rb.m.CFrame = CFrame.new(p + Vector3.new(0, 0.42, 0)) * CFrame.Angles(0, 0, -rb.u * 9) * facing(p, g.centre).Rotation

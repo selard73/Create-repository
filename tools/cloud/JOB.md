@@ -604,3 +604,7 @@ wobble; the sauce Glass, 0.1 see-through, glossy, simmering bubbles; meatballs M
 
 Re-run tools/fountain/install_modes1.lua at the commit below (only FountainModes is rebuilt; the store is restored and
 re-patched identically; assets kept). `QQ FMODE DONE`. No publish.
+Shannon's two pictures (a spaghetti fountain: curtains of strands over every tier, coils heaped in the water, meatballs perched
+on the rims and heaps, steam; and a dense cascade of strands): strands 36 long / 14 bowl / 18 over, every third sliding and
+wobbling, the rest hanging still; coils on the basin (10) and bowl (4); meatballs on the rim (7), the bowl's edge (3) and the
+heaps (3), Ground material; the water stays water (attribute Sauce false; true gives the glossy simmering sauce). Job 66.
