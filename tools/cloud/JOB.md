@@ -928,3 +928,15 @@ web-call yield, "state" calls restarting the rate limit, stale state under defer
 blank buttons before the first state, the installer flipping false attributes back to true; nits - the HUD bar's fixed
 216 px (now 272), phone y 78, shorter row titles, re-link on rejoin, no count while the save is unknown, BoostMaxGain 150.
 All applied (commit below). Known limit kept: a single in-game gain of 150 or more is not doubled (the Robux packs start at 150).
+Preview job 87 (runner 5, 7788820, play test on the phone emulator; NOT installed): the card at 5 s, Join -> 110 to 260
+acorns and Item_gift_community 1, Turn on -> Claim -> Item_gift_like 1, Item_backpack 1, WornBackpack; the invite sheet
+opens; Later / the HUD button / the map hand-over all fine; pictures in tools/gifts/shots/gifts-j87-phone-*.jpg. Shannon,
+watching: "can you make those buttons more sparkly?" and, on the timing (visits run 8-15 min before the Italian map, the
+runner proposed first squirrel found or 3 minutes): "yes, please do 3 minutes".
+Revision 2 (this commit): the three gold buttons sparkle (a pale sheen sweeping across every ~2.7 s via a UIGradient
+Offset tween, a light rim UIStroke breathing, four little four-point twinkles per button popping in and out at the ends
+of the button, away from the word; all of it off once a row turns green). The popup now follows the FIRST SQUIRREL FOUND
+this session (player attributes SquirrelsFound / FoundIds rising by 1-2 after the save's baseline; FindSettle 5 s later),
+with PopupDelay as the fallback, now 180 s; FirstFind false turns the find trigger off. Play test: find one squirrel and
+expect the card about 5 s later; with FirstFind false and PopupDelay 15 expect it at 15 s (then PopupDelay back to 180,
+FirstFind back to true); two pictures a second apart show the sheen moving.

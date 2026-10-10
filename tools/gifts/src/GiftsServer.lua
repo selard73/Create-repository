@@ -8,7 +8,7 @@
 --     packs start at 150 and are never doubled; a single in-game gain of 150 or more is not doubled either).
 -- Claims persist through the AwardItems ledger (Item_gift_like, Item_gift_community, Item_gift_invites on the inviter,
 -- Item_ref_<inviterId> on the invitee so a friend counts once). Attributes on the folder: GroupId, CommunityAcorns,
--- BoostMaxGain, LikeReward ("backpack"), BoostOn, PopupDelay (the client's), AutoPopup (the client's).
+-- BoostMaxGain, LikeReward ("backpack"), BoostOn, PopupDelay / FirstFind / AutoPopup (the client's).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local GroupService = game:GetService("GroupService")

@@ -2,7 +2,8 @@
 """install_gifts1.lua: the Gifts system (Shannon, Oct 10 2026) - workspace.Gifts {GiftsServer, GiftsClient} and the
 remotes ReplicatedStorage.GiftsAction (RemoteFunction) / GiftsEvent (RemoteEvent). Re-runnable: an existing Gifts folder
 is replaced (its scripts kept in ServerStorage.HudBackup.Gifts_pre_<n>). Attributes on the folder (tune live):
-GroupId 969906332, CommunityAcorns 150, BoostMaxGain 150, LikeReward "backpack", BoostOn true, PopupDelay 90, AutoPopup true.
+GroupId 969906332, CommunityAcorns 150, BoostMaxGain 150, LikeReward "backpack", BoostOn true, PopupDelay 180 (the fallback;
+the card normally follows the first squirrel found), FirstFind true, AutoPopup true.
 """
 import pathlib
 HERE = pathlib.Path(__file__).resolve().parent
@@ -35,13 +36,13 @@ if old then
 	for _, s in ipairs(old:GetChildren()) do if s:IsA("BaseScript") then s.Enabled = false end end
 end
 local F = Instance.new("Folder"); F.Name = "Gifts"
-local defaults = {{GroupId = 969906332, CommunityAcorns = 150, BoostMaxGain = 150, LikeReward = "backpack", BoostOn = true, PopupDelay = 90, AutoPopup = true}}
+local defaults = {{GroupId = 969906332, CommunityAcorns = 150, BoostMaxGain = 150, LikeReward = "backpack", BoostOn = true, PopupDelay = 180, FirstFind = true, AutoPopup = true}}
 for k, v in pairs(defaults) do if attrs[k] ~= nil then F:SetAttribute(k, attrs[k]) else F:SetAttribute(k, v) end end
 local s = Instance.new("Script"); s.Name = "GiftsServer"; s.Source = SERVER; s.Parent = F
 local c = Instance.new("Script"); c.Name = "GiftsClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
 F.Parent = workspace
-print(string.format("QQ GIFTS DONE: workspace.Gifts (GiftsServer %d, GiftsClient %d chars; GroupId %s, CommunityAcorns %s, BoostMaxGain %s, LikeReward %s, PopupDelay %s, AutoPopup %s, BoostOn %s)%s",
-	#s.Source, #c.Source, tostring(F:GetAttribute("GroupId")), tostring(F:GetAttribute("CommunityAcorns")), tostring(F:GetAttribute("BoostMaxGain")), tostring(F:GetAttribute("LikeReward")), tostring(F:GetAttribute("PopupDelay")), tostring(F:GetAttribute("AutoPopup")), tostring(F:GetAttribute("BoostOn")),
+print(string.format("QQ GIFTS DONE: workspace.Gifts (GiftsServer %d, GiftsClient %d chars; GroupId %s, CommunityAcorns %s, BoostMaxGain %s, LikeReward %s, PopupDelay %s, FirstFind %s, AutoPopup %s, BoostOn %s)%s",
+	#s.Source, #c.Source, tostring(F:GetAttribute("GroupId")), tostring(F:GetAttribute("CommunityAcorns")), tostring(F:GetAttribute("BoostMaxGain")), tostring(F:GetAttribute("LikeReward")), tostring(F:GetAttribute("PopupDelay")), tostring(F:GetAttribute("FirstFind")), tostring(F:GetAttribute("AutoPopup")), tostring(F:GetAttribute("BoostOn")),
 	old and ("; the old Gifts folder is HudBackup." .. old.Name) or ""))
 '''
 (HERE / "install_gifts1.lua").write_text(INSTALLER, encoding="utf-8", newline="\n")
