@@ -764,3 +764,8 @@ sibling - runner's dry run); tools/balloon/ride_probe_remove1.lua takes it all o
 town is 67,000 parts, not to be walked every tick). Shannon reads it on one ride: "Funicolare 288/288" while it looks missing = loaded but not drawn; 0 or
 "not here" = streamed out. Afterwards Probe = false hides it; delete the script to remove. Send the `QQ PROBE` line. No publish.
 Ask Shannon once for both edits (78, 79), run them in that order, one message with the two lines.
+Result jobs 78-79 (runner 4; 78 at 317e119, 79 at 841cd42; one yes; not published): FountainModeClient 29110; store byte-equal.
+Play test (desktop): the top frog on its pad in the upper bowl, level, facing out, clear of the spout; rim frogs at r 6.28/6.30
+on stone; Shannon on the screenshots: "club rana looks good". RideProbe 2559 chars, Probe true, 12 sentinels tagged per far
+section; on a desktop at spawn everything reads full (288/288, 12/12 x4) - the headset's numbers decide. Remover:
+tools/balloon/ride_probe_remove1.lua. Shannon publishes and takes one ride reading the sign.
