@@ -842,3 +842,15 @@ segments along both cliffs (rim on top 4-20 studs deep), 37 shallow grass pokes 
 LipPlate 36 (SizeWas kept), backup HudBackup.CliffTop_pre1 (paste at voxel 9,5,-148). Pictures tools/falls/shots/cliff-r4-*
 and cliff-installed-*: no dark patch anywhere along the top; the corner by the falls clean; the pale plate beside the sheet.
 Noted: x 155..160 (the W band's last partial segment) not swapped, looks clean. Shannon publishes when she likes.
+Shannon on the installed job 83 (play pictures): "it doesn't look fixed in those pictures, I can still see bald spots" - the
+openings read as patches whatever the colour behind them; also a dark bare patch on the grass hill beyond the west outcrop.
+
+## Job 84: the openings closed with the cliff's own rock (Studio EDIT; preview first, then ask Shannon)
+
+tools/falls/cliff_fix2.lua, on top of job 83: the terrain carved back to 3.2 studs behind the face in rows y 26..38 (soft
+materials only; the top rows and the limestone untouched; job 83's backup covers it); a BACK COPY of each of the eight
+cliff pieces 1.5 studs behind the original, 0.8 lower and 0.3 away from the notch (a gap between slabs looks onto a solid
+slab of the same banded rock; the shift keeps the copies' gaps from lining up with the originals'); a STRATA PLATE wearing
+the cliff's own texture 2.6 studs behind each 8-stud segment's face, under its cover, for whatever stays open; the hill
+beyond the west outcrop probed for its surface material (reported, not changed). Everything in SouthGorge.Rock.CliffBacking2,
+no collision. Send the `QQ CLIFF2` line and play pictures from the b2, whole-wide, far-right and above spots. No publish.
