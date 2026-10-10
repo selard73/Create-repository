@@ -595,3 +595,12 @@ Shannon: the frog mode is "Club Rana" (the sign, the store button and the "in us
 Result job 65 (runner 3, 9916430): FountainModeClient 32701; assets Frog, LilyPad, Lotus, Flowers, Petals; ShopServer 10916,
 ShopClient 38793 (one "Fountain magic" row, three choices, the three-row patch undone first); Minutes 2, SignText CLUB RANA.
 Not play-tested; the runner is asking Shannon for a Device Simulator test of the row and the modes before publishing. Not published.
+Shannon (spaghetti, fourth look): meatballs "textured, sinking into the sauce"; the sauce "a solid plastic slab, should look
+like thick liquid"; "spaghetti is long strands" (not a necklace of short pieces) -> strands are continuous overlapping
+tubes from the spout over the bowl's edge into the basin (NoodleLong 12, NoodleBowl 6, NoodleOver 5) with a travelling
+wobble; the sauce Glass, 0.1 see-through, glossy, simmering bubbles; meatballs Material Ground, sunk to 0.12 above the surface.
+
+## Job 66: the spaghetti round five (Studio EDIT, re-run; ask Shannon first)
+
+Re-run tools/fountain/install_modes1.lua at the commit below (only FountainModes is rebuilt; the store is restored and
+re-patched identically; assets kept). `QQ FMODE DONE`. No publish.
