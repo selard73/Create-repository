@@ -631,3 +631,5 @@ Nino, until OperaSong stops / the player walks 45 studs away / respawns; up agai
 folder. Undo: delete workspace.OperaLights. Send the `QQ OPERA` line. No publish.
 Result job 67 (runner 3, c25ae2e): FountainModeClient 24809 (no spaghetti); store two choices (ShopServer 10901, ShopClient 38666);
 assets unchanged. Not published.
+Result job 68 (runner 3, a5cfc03): workspace.OperaLights + OperaLightsClient 7690; singer and accordion_squirrel_color found.
+Not play-tested; Shannon tests after publishing. The Fountain magic row (two 100 px buttons) still unmeasured on a phone.
