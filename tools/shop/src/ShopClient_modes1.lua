@@ -282,9 +282,9 @@ for i, item in ipairs(ITEMS) do
 		local n = #item.modes
 		for i, mode in ipairs(item.modes) do
 			local cb = Instance.new("TextButton"); cb.Name = "Choice" .. i; cb.Text = mode.name
-			cb.AnchorPoint = Vector2.new(1, 0); cb.Position = UDim2.new(1, -12 - (n - i) * 88, 0, 106)
-			cb.Size = UDim2.fromOffset(82, 36); cb.BackgroundColor3 = GOLD; cb.BorderSizePixel = 0; cb.AutoButtonColor = false; cb.ZIndex = 4
-			cb.FontFace = FONT; cb.TextSize = 15; cb.TextColor3 = BTN_INK; cb.Parent = row
+			cb.AnchorPoint = Vector2.new(1, 0); cb.Position = UDim2.new(1, -12 - (n - i) * 76, 0, 106)   -- three of 72 px: the same span as the colour row's six swatches, which fits a phone
+			cb.Size = UDim2.fromOffset(72, 36); cb.BackgroundColor3 = GOLD; cb.BorderSizePixel = 0; cb.AutoButtonColor = false; cb.ZIndex = 4
+			cb.FontFace = FONT; cb.TextSize = 14; cb.TextColor3 = BTN_INK; cb.TextScaled = false; cb.Parent = row
 			corner(cb, UDim.new(0, 10)); stroke(cb, RGB(150, 98, 36), 2, 0.2)
 			cb.MouseButton1Click:Connect(function()
 				if not onSale(item) then say(rec, "not in the shop yet", false) return end
@@ -295,7 +295,7 @@ for i, item in ipairs(ITEMS) do
 			rec.choices[i] = cb
 		end
 		local pl = Instance.new("TextLabel"); pl.Name = "PriceLabel"; pl.Position = UDim2.new(0, 10, 0, 110)
-		pl.Size = UDim2.fromOffset(120, 26); pl.BackgroundTransparency = 1; pl.FontFace = FONT; pl.TextSize = 14
+		pl.Size = UDim2.fromOffset(110, 26); pl.BackgroundTransparency = 1; pl.FontFace = FONT; pl.TextSize = 14
 		pl.TextColor3 = INK_DIM; pl.TextXAlignment = Enum.TextXAlignment.Left; pl.Text = ""; pl.ZIndex = 4; pl.Parent = row
 		rec.priceLabel = pl
 	else
