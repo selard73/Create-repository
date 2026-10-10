@@ -95,5 +95,6 @@ The old runner's last report was jobs 53-55 (applied). Jobs waiting, in this ord
 - Job 58: https://raw.githubusercontent.com/selard73/Create-repository/8b21dcf/tools/film/vrtest_remove1.lua — report `QQ VRT`.
 Send every report to the cloud session "Cloud session handoff" (session_01Gwhv9KoRg69mUkZf5xktZw) as one short
 cross-session message, starting with "runner 3 ready" on the first contact. The cloud session answers the runner by
-send_message to the bridge:session_... id its messages carry. The lowest unfinished job is always the next one; JOB.md
+send_message to the bridge:session_... id its messages carry (runner 3, Oct 10: session_01VuPQ6z5X4cxTdME7EDPUCf,
+title "Studio runner for 1001 Squirrels"). The lowest unfinished job is always the next one; JOB.md
 holds the full list and every result so far.
