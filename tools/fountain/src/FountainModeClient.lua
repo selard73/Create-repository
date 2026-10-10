@@ -316,7 +316,7 @@ local function footing(g, pos, scale, maxDrop, inFirst)
 	local flat = Vector3.new(pos.X - g.centre.X, 0, pos.Z - g.centre.Z)
 	local out = flat.Magnitude > 0.05 and flat.Unit or Vector3.new(1, 0, 0)
 	local side = Vector3.new(-out.Z, 0, out.X)
-	local hx, hz = 0.4 * (scale or 1), 0.45 * (scale or 1)        -- the toes may hang over an edge a little
+	local hx, hz = 0.4 * (scale or 1), 0.3 * (scale or 1)         -- the toes may hang over an edge (the rim's flat top is 0.6-0.8 wide)
 	local function test(p)
 		local lo, hi
 		for _, o in ipairs({Vector3.zero, out * hz, -out * hz, side * hx, -side * hx}) do
@@ -324,7 +324,7 @@ local function footing(g, pos, scale, maxDrop, inFirst)
 			if not hit or hit.Instance == g.water or hit.Instance == g.ring or not hit.Instance:IsDescendantOf(g.fm) then return nil end
 			lo = math.min(lo or hit.Position.Y, hit.Position.Y); hi = math.max(hi or hit.Position.Y, hit.Position.Y)
 		end
-		if hi - lo > 0.25 then return nil end
+		if hi - lo > 0.12 then return nil end                   -- (the rim's inner slope is 0.18 lower a step in: refused)
 		return hi
 	end
 	local sign = inFirst and -1 or 1
@@ -355,8 +355,8 @@ local function startFrogs(g)
 	add(frog(facing(around(g, 4.4, 3.1, g.basinY - 0.25), g.centre), 1.0, "SwimRing"), "swim")   -- feet under, the ring on the water (review)
 	-- (the stone may not have streamed in yet when the mode starts 150 studs out: these three keep trying for half a minute)
 	local footed = {
-		{name = "rim frog (sun hat)", at = around(g, g.rimR, 1.2, g.rimY), scale = 1.0, drop = 1.0, inFirst = false, yaw = math.pi, acc = "SunHat", kind = "rim"},
-		{name = "rim frog", at = around(g, g.rimR, 4.9, g.rimY), scale = 0.9, drop = 1.0, inFirst = false, yaw = 0, acc = "", kind = "rim"},
+		{name = "rim frog (sun hat)", at = around(g, g.rimR + 0.3, 1.2, g.rimY), scale = 1.0, drop = 1.0, inFirst = false, yaw = math.pi, acc = "SunHat", kind = "rim"},   -- (RimR is the flat top's inner edge; its middle is 0.3-0.4 out)
+		{name = "rim frog", at = around(g, g.rimR + 0.3, 4.9, g.rimY), scale = 0.9, drop = 1.0, inFirst = false, yaw = 0, acc = "", kind = "rim"},
 		{name = "top frog", at = g.spout + Vector3.new(0.9, 0.05, 0.2), scale = 0.7, drop = 2.5, inFirst = true, yaw = 0, acc = "", kind = "top"},
 	}
 	local function tryFooted()

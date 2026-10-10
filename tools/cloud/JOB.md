@@ -723,7 +723,7 @@ the rails cross the headset's streaming range). The VR pills and the other frogs
 
 ## Job 76: frogs with a footing (Studio EDIT, re-run; ask Shannon first)
 
-Re-run tools/fountain/install_modes1.lua at the commit below: the client (28366 chars) now finds each rim frog and the top
+Re-run tools/fountain/install_modes1.lua at the commit below: the client (28552 chars) now finds each rim frog and the top
 frog a solid footing by raycast - from the spot asked for, stepping in and out along its line from the centre, the first
 place where its whole footprint rests on the fountain's own stone at one height (water, the upper bowl, anything else
 refused); the three keep trying for 30 s in case the stone has not streamed in yet; none found -> a warning, no frog there. Assets kept; store restored and re-patched identically (10901 / 38666). Send the `QQ FMODE DONE` line. No publish.
@@ -736,3 +736,7 @@ be added later); BalloonServer 10373 -> 11362 (ridePersist(p, true) at boarding,
 before boarding now re-enables the Board prompt (a pre-existing hole, review); backup
 HudBackup.BalloonServer_pre_ride1). Generator tools/balloon/make_ride_persist1.py. Send the `QQ RIDE` line. No publish.
 Ask Shannon once for both edits (76, 77), run them in that order, one message with the two lines.
+Runner 4 dry run (read-only, before 76): the rim's flat top is r 6.0..6.8 (a 1.2) / 6.0..6.6 (a 4.9), 0.6-0.8 wide; RimR 6.0 is its
+inner edge; the top frog's footing is the upper bowl's stone floor at -5.24 beside the spout (the column top is too narrow). So
+the rim frogs ask at RimR + 0.3, the footprint along the line is 0.6 wide and the levelness allowance 0.12 (the inner slope is
+0.18 lower). Commit below.
