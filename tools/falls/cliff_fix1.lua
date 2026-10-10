@@ -13,7 +13,7 @@
 -- in front of the face are shaved with a thin Air box (well under the top row); the region is backed up first to
 -- ServerStorage.HudBackup.CliffTop_pre1; (3) FallsB.LipPlate widened to the sheet's width at the crest (SizeWas kept).
 -- Undo: delete SouthGorge.Rock.CliffBacking; LipPlate.Size from its SizeWas attribute; terrain:
--- workspace.Terrain:PasteRegion(ServerStorage.HudBackup.CliffTop_pre1, Vector3int16.new(9, 5, -145), true). No publish.
+-- workspace.Terrain:PasteRegion(ServerStorage.HudBackup.CliffTop_pre1, Vector3int16.new(9, 5, -148), true). No publish.
 local SS = game:GetService("ServerStorage")
 local Terrain = workspace.Terrain
 local SG = workspace:FindFirstChild("SouthGorge"); local Rock = SG and SG:FindFirstChild("Rock")
@@ -29,7 +29,7 @@ local tparams = RaycastParams.new(); tparams.FilterType = Enum.RaycastFilterType
 local folder = Rock:FindFirstChild("CliffBacking")
 if folder then folder:Destroy() end                -- (a re-run rebuilds the wall from fresh measurements)
 folder = Instance.new("Folder"); folder.Name = "CliffBacking"; folder.Parent = Rock
-local regionMin, regionMax = Vector3int16.new(9, 5, -145), Vector3int16.new(84, 13, -130)   -- studs x 36..336, y 20..52, z -580..-520
+local regionMin, regionMax = Vector3int16.new(9, 5, -148), Vector3int16.new(84, 13, -130)   -- studs x 36..336, y 20..52, z -592..-520
 if not hb:FindFirstChild("CliffTop_pre1") then
 	local reg = Terrain:CopyRegion(Region3int16.new(regionMin, regionMax)); reg.Name = "CliffTop_pre1"; reg.Parent = hb
 end
@@ -53,7 +53,7 @@ for _, band in ipairs(BANDS) do
 				fz = math.max(fz or m.Position.Z, m.Position.Z)
 				local t = workspace:Raycast(origin, Vector3.new(0, 0, 90), tparams)
 				if t then
-					if t.Position.Z < m.Position.Z - 0.05 then table.insert(pokes, {x = x, y = y, tz = t.Position.Z, mz = m.Position.Z})
+					if t.Position.Z < m.Position.Z - 0.05 then table.insert(pokes, {x = x, y = y, tz = t.Position.Z, mz = m.Position.Z, mat = t.Material})
 					elseif t.Position.Z - m.Position.Z < 12 then tz = math.min(tz or t.Position.Z, t.Position.Z) end
 				end
 			end
@@ -89,21 +89,29 @@ for _, band in ipairs(BANDS) do
 		b.Material = Enum.Material.Sandstone; b.Color = Color3.fromRGB(214, 198, 168); b.Parent = folder
 		built += 1
 	end
-	-- the terrain: sandstone where its side is exposed behind the band (not the grass top row), the pokes in front shaved
-	local zMin, zMax = math.huge, -math.huge
-	for x = band.x0, band.x1, 2 do if faceZ[x] then zMin = math.min(zMin, faceZ[x]); zMax = math.max(zMax, faceZ[x]) end end
-	local region = Region3.new(Vector3.new(band.x0 - 2, Y0, zMin - 2), Vector3.new(band.x1 + 2, Y1 + 2, zMax + 8)):ExpandToGrid(4)
-	for _, mat in ipairs({Enum.Material.Grass, Enum.Material.LeafyGrass, Enum.Material.Ground}) do Terrain:ReplaceMaterial(region, 4, mat, Enum.Material.Sandstone) end
+	-- the terrain: sandstone where its side is exposed behind the band (not the grass top row), segment by segment so the
+	-- sandy rim on top stays 8-10 studs deep however the face winds (runner: one box took the whole band's z range); the
+	-- shallow grass pokes in front shaved (the limestone outcrop at the cliff's west end stands in front on purpose)
+	local regions, segs = {}, 0
+	for x = band.x0, band.x1 - 8, 8 do
+		local zMin, zMax = math.huge, -math.huge
+		for xx = x, x + 8, 2 do if faceZ[xx] then zMin = math.min(zMin, faceZ[xx]); zMax = math.max(zMax, faceZ[xx]) end end
+		if zMin < math.huge then
+			local region = Region3.new(Vector3.new(x - 1, Y0, zMin - 2), Vector3.new(x + 9, Y1 + 2, zMax + 8)):ExpandToGrid(4)
+			for _, mat in ipairs({Enum.Material.Grass, Enum.Material.LeafyGrass, Enum.Material.Ground}) do Terrain:ReplaceMaterial(region, 4, mat, Enum.Material.Sandstone) end
+			segs += 1; table.insert(regions, string.format("%d:%.0f..%.0f", x, zMin - 2, zMax + 8))
+		end
+	end
 	local shaved = 0
 	for _, p in ipairs(pokes) do
-		if p.y <= 40 then
+		if p.y <= 40 and p.mz - p.tz <= 2.0 and p.mat ~= Enum.Material.Limestone and p.mat ~= Enum.Material.Rock then
 			local z0, z1 = p.tz - 0.3, p.mz + 0.4
 			Terrain:FillBlock(CFrame.new(Vector3.new(p.x, p.y, (z0 + z1) / 2)), Vector3.new(2.2, 2.2, z1 - z0), Enum.Material.Air)
 			shaved += 1
 		end
 	end
-	table.insert(report, string.format("%s: %d blocks (skipped %s); terrain pokes in front %d, shaved %d; sandstone region %s..%s",
-		band.name, built, #skipped > 0 and table.concat(skipped, ",") or "none", #pokes, shaved, tostring(region.CFrame.Position - region.Size / 2), tostring(region.CFrame.Position + region.Size / 2)))
+	table.insert(report, string.format("%s: %d blocks (skipped %s); terrain pokes in front %d, shaved %d (grass, <= 2 deep, y <= 40); sandstone in %d segments (x:z %s)",
+		band.name, built, #skipped > 0 and table.concat(skipped, ",") or "none", #pokes, shaved, segs, table.concat(regions, " ")))
 end
 
 -- (3) the lip plate as wide as the sheet at the crest

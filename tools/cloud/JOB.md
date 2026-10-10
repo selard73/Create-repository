@@ -832,3 +832,7 @@ everywhere), the material swap does the work; the plateau's top turned sandy in 
 lip plate at 36 covers the teal strip Shannon saw. Shannon on the six before/after pictures: "Good, do the whole cliff" -
 her yes covers the whole-face version if the preview looks the same or better. Round three (commit below): bands W 42..160
 and E 208..328, backup region x 36..336.
+Runner 4 dry run of 85f17df: one sandstone box per band took the whole band's z range (48-52 deep, the sandy rim would reach
+30-46 studs back under the trees); at the west end x 42..54 a Limestone outcrop stands 4-7 studs in front of the mesh on
+purpose and would have been drilled. Round four (commit below): the sandstone swap per 8-stud segment (face z - 2 .. + 8);
+only Grass pokes no deeper than 2 studs shaved (Limestone/Rock left); backup region z -592..-520.
