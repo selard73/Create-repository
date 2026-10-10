@@ -787,3 +787,8 @@ Generator tools/balloon/make_vr_ride1.py. Send the `QQ VRRIDE` line. No publish.
 
 tools/balloon/ride_probe_remove1.lua: deletes BalloonField.RideProbe, the Probe attribute and the 48 RideProbe_* tags. Send
 the `QQ PROBE GONE` line. No publish. Ask Shannon once for both (80, 81); one message with the two lines.
+Result jobs 80-81 (runner 4, c5d9528; one yes; not published): BalloonClient 34420 (backup BalloonClient_pre_vrride1); the readout
+and its 48 tags gone. The place HAS an Atmosphere (Density 0.30, Haze 0; Lighting's FogStart/End 350/1100 are dead letters),
+so the VR haze is by Atmosphere Density/Haze. Runner's desktop preview from the pad + 89 studs: 0.55/2.5 far too thick (the
+town gone); 0.46/2.0 the far hill town hazed, lighthouse faint, waterfront clear; 0.40/1.2 the town clear, far hills and
+horizon soft. Shannon picks the strength; the runner sets VRHazeDensity / VRHazeAtmo on her yes (attributes, no script).
