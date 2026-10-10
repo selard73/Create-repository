@@ -1,7 +1,7 @@
 -- prompt_vr1.lua (Studio EDIT mode, run once; re-running is a no-op). Job 73.
 -- workspace.PromptUI.PromptClient: in VR the interact pill is drawn in the world beside the thing itself (it rode on the
 -- player's own head, unseen behind a headset's eyes - Shannon: the race's and the singer's buttons "missing completely").
--- Exact-string patch of the live 23746-char source -> 29277 chars; backup ServerStorage.HudBackup.PromptClient_pre_vr1.
+-- Exact-string patch of the live 23746-char source -> 29987 chars; backup ServerStorage.HudBackup.PromptClient_pre_vr1.
 -- Undo: PromptClient.Source = HudBackup.PromptClient_pre_vr1.Source. Nothing else changes; no publish.
 local SS = game:GetService("ServerStorage")
 local pu = workspace:FindFirstChild("PromptUI"); local pc = pu and pu:FindFirstChild("PromptClient")
@@ -245,6 +245,8 @@ player.CharacterAdded:Connect(adorn)
 local shown = 0
 local live = {}
 local pressed                                         -- the one pill being held right now, if any
+local vrHolds = {}            -- [prompt] = {began, finish}: VR pills being pressed right now (job 73)
+local vrPressSeen = false     -- the pointer has delivered a press to a pill (so its click is never a second one)
 local function release()
 	if not pressed then return end
 	local p = pressed; pressed = nil
@@ -269,7 +271,10 @@ end
 game:GetService("RunService").RenderStepped:Connect(syncDailyPromptVisibility)
 syncDailyPromptVisibility()
 UIS.InputEnded:Connect(function(io)                   -- a finger that slides off the pill still ends the hold
-	if io.UserInputType == Enum.UserInputType.Touch or io.UserInputType == Enum.UserInputType.MouseButton1 then release() end
+	if io.UserInputType == Enum.UserInputType.Touch or io.UserInputType == Enum.UserInputType.MouseButton1 then
+		release()
+		for _, h in pairs(vrHolds) do h.finish() end          -- (a VR pill the pointer slid off)
+	end
 end)
 -- IN VR THE PILL SITS IN THE WORLD beside the thing itself (Shannon, Oct 10: the race's and the singer's buttons were
 -- "missing completely" - the pill rode on her own head, out of sight behind the headset's eyes). A BillboardGui on the
@@ -313,8 +318,10 @@ local function showVR(prompt, key)
 	end
 	a.Parent = btn
 	-- the press: the pointer's trigger counts as MouseButton1 (a finger as Touch). The hold begins on the press and ends
-	-- after the release - or after the prompt's HoldDuration if the press was shorter, so a tap works on a hold-pill.
-	local began, seq = 0, 0
+	-- after the release - or after the prompt's HoldDuration if the press was shorter, so a tap works on a hold-pill. A
+	-- release anywhere ends it too (the pointer slid off the pill: vrHolds, below). If this pointer never delivers a
+	-- press, its click (which arrives on the release) does the whole hold instead - once a press has been seen, never.
+	local seq = 0
 	local function endAfter(secs)
 		seq += 1; local my = seq
 		task.delay(secs, function()
@@ -323,20 +330,24 @@ local function showVR(prompt, key)
 			pcall(function() prompt:InputHoldEnd() end)
 		end)
 	end
+	local function finish()                                   -- the release: end the hold once it has lasted long enough
+		local h = vrHolds[prompt]; if not h then return end
+		vrHolds[prompt] = nil
+		endAfter(math.max(0, prompt.HoldDuration - (os.clock() - h.began)) + 0.05)
+	end
 	btn.InputBegan:Connect(function(io)
 		if dailyBlocked then return end
 		if io.UserInputType ~= Enum.UserInputType.MouseButton1 and io.UserInputType ~= Enum.UserInputType.Touch then return end
-		seq += 1; began = os.clock(); s.Color = C(255, 246, 220)
+		vrPressSeen = true
+		seq += 1; vrHolds[prompt] = {began = os.clock(), finish = finish}; s.Color = C(255, 246, 220)
 		pcall(function() prompt:InputHoldBegin() end)
 	end)
 	btn.InputEnded:Connect(function(io)
-		if io.UserInputType ~= Enum.UserInputType.MouseButton1 and io.UserInputType ~= Enum.UserInputType.Touch then return end
-		if began == 0 then return end
-		endAfter(math.max(0, prompt.HoldDuration - (os.clock() - began)) + 0.05)
+		if io.UserInputType == Enum.UserInputType.MouseButton1 or io.UserInputType == Enum.UserInputType.Touch then finish() end
 	end)
-	btn.MouseButton1Click:Connect(function()                   -- a click that arrived without the press above
-		if dailyBlocked or os.clock() - began < 0.6 then return end
-		began = os.clock(); s.Color = C(255, 246, 220)
+	btn.MouseButton1Click:Connect(function()
+		if dailyBlocked or vrPressSeen or vrHolds[prompt] then return end
+		s.Color = C(255, 246, 220)
 		pcall(function() prompt:InputHoldBegin() end)
 		endAfter(math.max(0, prompt.HoldDuration) + 0.1)
 	end)
@@ -444,6 +455,7 @@ PPS.PromptTriggered:Connect(function(prompt)
 end)
 PPS.PromptHidden:Connect(function(prompt)
 	if pressed and pressed.prompt == prompt then pressed = nil end
+	vrHolds[prompt] = nil
 	local rec = live[prompt]
 	if rec then (rec.holder or rec.pill):Destroy(); if rec.hl then rec.hl:Destroy() end; live[prompt] = nil end
 end)
@@ -455,7 +467,7 @@ task.spawn(function()
 	end
 end)
 ]===]
-if #pc.Source == 29277 and pc.Source == NEW then print("QQ PVR DONE (already installed): PromptClient 29277") return end
+if #pc.Source == 29987 and pc.Source == NEW then print("QQ PVR DONE (already installed): PromptClient 29987") return end
 if #pc.Source ~= 23746 then print(string.format("QQ PVR ABORT: PromptClient is %d chars, expected 23746 (not the exported copy; export again)", #pc.Source)) return end
 local f, err = loadstring(NEW); if not f then print("QQ PVR ABORT: the new client does not compile: " .. tostring(err)) return end
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS

@@ -691,21 +691,24 @@ parts) 240-600 studs from the balloon field; rails/cables are 375-stud parts (th
 
 ## Job 73: the interact pill in VR, beside the thing itself (Studio EDIT; ask Shannon first)
 
-tools/prompts/prompt_vr1.lua: exact-string patch of workspace.PromptUI.PromptClient (23746 -> 29277; backup
+tools/prompts/prompt_vr1.lua: exact-string patch of workspace.PromptUI.PromptClient (23746 -> 29987; backup
 HudBackup.PromptClient_pre_vr1): in VR each shown prompt gets a BillboardGui pill on its own part (0.6-0.8 studs tall, the
 controller button on the badge, the object and action texts, the hold fill), pressed with the pointer (a tap completes a
-hold-pill), hidden while the daily card / a panel is open; flat screens unchanged. Generator tools/prompts/make_prompt_vr1.py.
+hold-pill; a release anywhere ends the hold), hidden while the daily card / a panel is open; flat screens unchanged.
+Generator tools/prompts/make_prompt_vr1.py. Review round 1: the click fallback is off once the pointer has delivered a press.
 Send the `QQ PVR` line. No publish. Undo: PromptClient.Source = HudBackup.PromptClient_pre_vr1.Source.
 
 ## Job 74: Club Rana frogs upright (Studio EDIT, re-run; ask Shannon first)
 
-Re-run tools/fountain/install_modes1.lua at the commit below: FountainModes rebuilt with the client (25147 chars) that
+Re-run tools/fountain/install_modes1.lua at the commit below: FountainModes rebuilt with the client (25255 chars) that
 flattens the imported parts' PivotOffset before setting each frog, lily pad and lotus down (the frog's pivot is its Body,
-upright, face -Z). Assets kept; the store restored from its pre_modes1 backups and re-patched identically (10901 / 38666).
+upright, face -Z; review: the deck-chair frog now faces out of the chair, reclined 20 degrees). Assets kept; the store
+restored from its pre_modes1 backups and re-patched identically (10901 / 38666).
 Send the `QQ FMODE DONE` line. No publish.
 
 ## Job 75: the funicolare stays loaded from the balloon (Studio EDIT; ask Shannon first)
 
-tools/porto/funicolare_persist1.lua: workspace.PortoNocciola["15 Funicolare"].ModelStreamingMode = Persistent (288 anchored
-parts, like the whale and the backdrop); the old value kept in the attribute StreamingWas. Send the `QQ FUNI` line. No publish.
+tools/porto/funicolare_persist1.lua: workspace.PortoNocciola["15 Funicolare"].ModelStreamingMode = Atomic (the whole 288-part
+model comes in whenever its long rails are in range, as they are from the balloon; review: not Persistent, which would load it
+and the cars' every-frame moves for every player in every map); the old value kept in the attribute StreamingWas. Send the `QQ FUNI` line. No publish.
 Ask Shannon once for all three edits (73, 74, 75), then run them in that order and send one message with the three lines.

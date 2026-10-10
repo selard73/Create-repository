@@ -26,6 +26,11 @@ NEW = patch(NEW, 'local UIS = game:GetService("UserInputService")\n',
             'local UIS = game:GetService("UserInputService")\n'
             'local VR = game:GetService("VRService").VREnabled\n')
 
+# 1b. the VR hold bookkeeping, before release() (the global InputEnded handler below it uses vrHolds)
+NEW = patch(NEW, 'local function release()\n',
+            'local vrHolds = {}            -- [prompt] = {began, finish}: VR pills being pressed right now (job 73)\n'
+            'local vrPressSeen = false     -- the pointer has delivered a press to a pill (so its click is never a second one)\n'
+            'local function release()\n')
 # 2. showVR before keyName (release/pressed/dailyBlocked are defined above it)
 SHOW_VR = r'''-- IN VR THE PILL SITS IN THE WORLD beside the thing itself (Shannon, Oct 10: the race's and the singer's buttons were
 -- "missing completely" - the pill rode on her own head, out of sight behind the headset's eyes). A BillboardGui on the
@@ -69,8 +74,10 @@ local function showVR(prompt, key)
 	end
 	a.Parent = btn
 	-- the press: the pointer's trigger counts as MouseButton1 (a finger as Touch). The hold begins on the press and ends
-	-- after the release - or after the prompt's HoldDuration if the press was shorter, so a tap works on a hold-pill.
-	local began, seq = 0, 0
+	-- after the release - or after the prompt's HoldDuration if the press was shorter, so a tap works on a hold-pill. A
+	-- release anywhere ends it too (the pointer slid off the pill: vrHolds, below). If this pointer never delivers a
+	-- press, its click (which arrives on the release) does the whole hold instead - once a press has been seen, never.
+	local seq = 0
 	local function endAfter(secs)
 		seq += 1; local my = seq
 		task.delay(secs, function()
@@ -79,20 +86,24 @@ local function showVR(prompt, key)
 			pcall(function() prompt:InputHoldEnd() end)
 		end)
 	end
+	local function finish()                                   -- the release: end the hold once it has lasted long enough
+		local h = vrHolds[prompt]; if not h then return end
+		vrHolds[prompt] = nil
+		endAfter(math.max(0, prompt.HoldDuration - (os.clock() - h.began)) + 0.05)
+	end
 	btn.InputBegan:Connect(function(io)
 		if dailyBlocked then return end
 		if io.UserInputType ~= Enum.UserInputType.MouseButton1 and io.UserInputType ~= Enum.UserInputType.Touch then return end
-		seq += 1; began = os.clock(); s.Color = C(255, 246, 220)
+		vrPressSeen = true
+		seq += 1; vrHolds[prompt] = {began = os.clock(), finish = finish}; s.Color = C(255, 246, 220)
 		pcall(function() prompt:InputHoldBegin() end)
 	end)
 	btn.InputEnded:Connect(function(io)
-		if io.UserInputType ~= Enum.UserInputType.MouseButton1 and io.UserInputType ~= Enum.UserInputType.Touch then return end
-		if began == 0 then return end
-		endAfter(math.max(0, prompt.HoldDuration - (os.clock() - began)) + 0.05)
+		if io.UserInputType == Enum.UserInputType.MouseButton1 or io.UserInputType == Enum.UserInputType.Touch then finish() end
 	end)
-	btn.MouseButton1Click:Connect(function()                   -- a click that arrived without the press above
-		if dailyBlocked or os.clock() - began < 0.6 then return end
-		began = os.clock(); s.Color = C(255, 246, 220)
+	btn.MouseButton1Click:Connect(function()
+		if dailyBlocked or vrPressSeen or vrHolds[prompt] then return end
+		s.Color = C(255, 246, 220)
 		pcall(function() prompt:InputHoldBegin() end)
 		endAfter(math.max(0, prompt.HoldDuration) + 0.1)
 	end)
@@ -112,6 +123,18 @@ NEW = patch(NEW, '\tlocal key = (not touch) and keyName(prompt, inputType) or ni
 # 3b. the daily-card / panel blocker hides VR pills too
 NEW = patch(NEW, ' for _, rec in pairs(live) do if rec.hl then rec.hl.Enabled = not blocked end end\n',
             ' for _, rec in pairs(live) do if rec.hl then rec.hl.Enabled = not blocked end; if rec.vr then rec.holder.Enabled = not blocked end end\n')
+# 3c'. a release anywhere ends open VR holds too
+NEW = patch(NEW, 'UIS.InputEnded:Connect(function(io)                   -- a finger that slides off the pill still ends the hold\n'
+            '\tif io.UserInputType == Enum.UserInputType.Touch or io.UserInputType == Enum.UserInputType.MouseButton1 then release() end\n',
+            'UIS.InputEnded:Connect(function(io)                   -- a finger that slides off the pill still ends the hold\n'
+            '\tif io.UserInputType == Enum.UserInputType.Touch or io.UserInputType == Enum.UserInputType.MouseButton1 then\n'
+            '\t\trelease()\n'
+            '\t\tfor _, h in pairs(vrHolds) do h.finish() end          -- (a VR pill the pointer slid off)\n'
+            '\tend\n')
+# 3c''. a hidden prompt is no longer held
+NEW = patch(NEW, '\tif pressed and pressed.prompt == prompt then pressed = nil end\n',
+            '\tif pressed and pressed.prompt == prompt then pressed = nil end\n'
+            '\tvrHolds[prompt] = nil\n')
 # 3c. the phone's half-second placer skips VR pills
 NEW = patch(NEW, '\t\tfor _, rec in pairs(live) do if rec.holder then placeTouch() break end end\n',
             '\t\tfor _, rec in pairs(live) do if rec.holder and not rec.vr then placeTouch() break end end\n')

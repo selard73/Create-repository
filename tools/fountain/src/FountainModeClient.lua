@@ -326,7 +326,7 @@ local function startFrogs(g)
 	parasol(g, deckPos + Vector3.new(math.cos(deckA + 1.5) * 1.4, 0, math.sin(deckA + 1.5) * 1.4))
 	local chairCF = facing(deckPos, g.centre) * CFrame.Angles(0, math.pi, 0)
 	deckChair(g, chairCF)
-	add(frog(chairCF * CFrame.new(0, 0.62, 0.1) * CFrame.Angles(math.rad(-20), 0, 0), 1.0, "SunHat"), "chair")
+	add(frog(chairCF * CFrame.new(0, 0.62, 0.1) * CFrame.Angles(0, math.pi, 0) * CFrame.Angles(math.rad(20), 0, 0), 1.0, "SunHat"), "chair")   -- facing out of the chair (the frog's face is its -Z), reclined 20 degrees
 	local glassPos = deckPos + Vector3.new(math.cos(deckA - 1.5) * 1.3, 0, math.sin(deckA - 1.5) * 1.3)
 	part("DrinkTable", Vector3.new(0.08, 0.9, 0.9), CFrame.new(glassPos + Vector3.new(0, 0.9, 0)) * CFrame.Angles(0, 0, math.rad(90)), Color3.fromRGB(170, 125, 80), Enum.Material.Wood, Enum.PartType.Cylinder)
 	part("DrinkTable", Vector3.new(0.08, 0.9, 0.08), CFrame.new(glassPos + Vector3.new(0, 0.45, 0)), Color3.fromRGB(170, 125, 80), Enum.Material.Wood)
