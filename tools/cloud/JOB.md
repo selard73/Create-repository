@@ -915,3 +915,7 @@ on your invite is in the same server, BOTH earn double acorns: every ledger gain
 an "x2" rides on the purse, a toast says who with. Attributes on workspace.Gifts. Send the `QQ GIFTS` line; play-test: the
 card at 90 s (set PopupDelay 5 for the test), the HUD button, the Join flow with Shannon's account (she owns the community:
 AlreadyMember -> 150 acorns once), the Claim (backpack on the back). No publish.
+Result job 86 (runner 5): v1 installed at Shannon's yes (LipClump_3 at 167.4,-7.1,-550.4 scale 0.38; LipPlate whitened,
+ColorWas kept); runner 5's rays found the sliver is terrain WATER 0.2-0.5 in front of the plate at x 168.3..169.2, y -6..-7
+(inside the sheet's x range, hidden from job 85's count by its stand-in). v2 (1c2164f): the clump at 168.2,-7.0,-550.3 scale
+0.46, the plate left alone; previewed next, installed on her yes with the plate put back from ColorWas. Not published.
