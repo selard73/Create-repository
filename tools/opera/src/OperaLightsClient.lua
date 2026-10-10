@@ -20,6 +20,7 @@ local WARM = Color3.fromRGB(255, 232, 190)
 local on, gen = false, 0
 local saved = nil
 local rig = nil
+local hiddenPrompt = nil   -- the Listen prompt, hidden on this client while the aria plays (it glowed on through the song - Shannon)
 
 local function findModel(name)
 	local m = workspace:FindFirstChild(name)
@@ -36,6 +37,9 @@ local function spotOver(m, height)
 	local lamp = Instance.new("Part"); lamp.Name = "OperaLamp"; lamp.Anchored = true; lamp.CanCollide = false; lamp.CanQuery = false; lamp.CanTouch = false; lamp.Transparency = 1; lamp.Size = Vector3.new(0.4, 0.4, 0.4)
 	lamp.CFrame = CFrame.new(top)
 	local light = Instance.new("SpotLight"); light.Face = Enum.NormalId.Bottom; light.Angle = num("SpotAngle", 55); light.Range = height + size.Y + 6; light.Brightness = 0; light.Color = WARM; light.Shadows = true; light.Parent = lamp
+	local fillPart = Instance.new("Part"); fillPart.Name = "OperaFill"; fillPart.Anchored = true; fillPart.CanCollide = false; fillPart.CanQuery = false; fillPart.CanTouch = false; fillPart.Transparency = 1; fillPart.Size = Vector3.new(0.2, 0.2, 0.2)
+	fillPart.CFrame = CFrame.new(cf.Position + Vector3.new(0, size.Y * 0.6 + 0.5, 0)); fillPart.Parent = lamp
+	local fill = Instance.new("PointLight"); fill.Range = 7; fill.Brightness = 0; fill.Color = WARM; fill.Shadows = false; fill.Parent = fillPart   -- a warm glow on the performer themselves
 	local a0 = Instance.new("Attachment"); a0.Parent = lamp; a0.WorldPosition = top     -- (parented first, then placed)
 	local a1 = Instance.new("Attachment"); a1.Parent = lamp; a1.WorldPosition = foot
 	local beam = Instance.new("Beam"); beam.Attachment0 = a0; beam.Attachment1 = a1; beam.Width0 = 0.5; beam.Width1 = math.max(size.X, size.Z) * 1.6 + 2
@@ -45,13 +49,14 @@ local function spotOver(m, height)
 	pool.Shape = Enum.PartType.Cylinder; pool.Size = Vector3.new(0.05, beam.Width1, beam.Width1); pool.CFrame = CFrame.new(foot + Vector3.new(0, 0.03, 0)) * CFrame.Angles(0, 0, math.rad(90))
 	pool.Material = Enum.Material.Neon; pool.Color = WARM; pool.Transparency = 1; pool.Parent = lamp
 	lamp.Parent = workspace.CurrentCamera
-	return {lamp = lamp, light = light, beam = beam, pool = pool}
+	return {lamp = lamp, light = light, beam = beam, pool = pool, fill = fill}
 end
 local function setBeam(spot, k)   -- k 0..1: how much light
-	spot.light.Brightness = num("SpotBrightness", 9) * k
-	local bt = 1 - num("BeamStrength", 0.14) * k
+	spot.light.Brightness = num("SpotBrightness", 18) * k
+	spot.fill.Brightness = num("FillBrightness", 2.5) * k
+	local bt = 1 - num("BeamStrength", 0.26) * k
 	spot.beam.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, bt), NumberSequenceKeypoint.new(1, math.min(1, bt + 0.08))})
-	spot.pool.Transparency = 1 - 0.35 * k
+	spot.pool.Transparency = 1 - num("PoolStrength", 0.5) * k
 end
 local function lightsDown(singer, nino)
 	if on then return end
@@ -60,8 +65,9 @@ local function lightsDown(singer, nino)
 	saved = saved or {Brightness = Lighting.Brightness, OutdoorAmbient = Lighting.OutdoorAmbient, Ambient = Lighting.Ambient, Exposure = Lighting.ExposureCompensation}
 	local secs = num("FadeDown", 1.6)
 	cc.Brightness = 0; cc.Contrast = 0; cc.Saturation = 0; cc.TintColor = Color3.new(1, 1, 1); cc.Enabled = true
-	TweenService:Create(cc, TweenInfo.new(secs, Enum.EasingStyle.Sine), {Brightness = -num("DimBrightness", 0.28), Saturation = -0.25, TintColor = Color3.fromRGB(205, 210, 240)}):Play()
-	TweenService:Create(Lighting, TweenInfo.new(secs, Enum.EasingStyle.Sine), {Brightness = math.min(Lighting.Brightness, 0.4), OutdoorAmbient = Color3.fromRGB(38, 40, 55), Ambient = Color3.fromRGB(30, 30, 42), ExposureCompensation = saved.Exposure - num("DimExposure", 0.7)}):Play()
+	local k = num("DimAmbient", 0.5)   -- how far the ambient light goes towards dark (Shannon: "a little less dark")
+	TweenService:Create(cc, TweenInfo.new(secs, Enum.EasingStyle.Sine), {Brightness = -num("DimBrightness", 0.16), Saturation = -0.2, TintColor = Color3.fromRGB(215, 218, 240)}):Play()
+	TweenService:Create(Lighting, TweenInfo.new(secs, Enum.EasingStyle.Sine), {Brightness = math.min(saved.Brightness, num("DimSun", 1.0)), OutdoorAmbient = saved.OutdoorAmbient:Lerp(Color3.fromRGB(38, 40, 55), k), Ambient = saved.Ambient:Lerp(Color3.fromRGB(30, 30, 42), k), ExposureCompensation = saved.Exposure - num("DimExposure", 0.35)}):Play()
 	rig = {spots = {}}
 	for _, m in ipairs({singer, nino}) do if m then table.insert(rig.spots, spotOver(m, num("SpotHeight", 9))) end end
 	local my = gen
@@ -78,6 +84,7 @@ end
 local function lightsUp()
 	if not on then return end
 	on = false; gen += 1
+	if hiddenPrompt then hiddenPrompt.Enabled = true; hiddenPrompt = nil end
 	local secs = num("FadeUp", 2.2)
 	TweenService:Create(cc, TweenInfo.new(secs, Enum.EasingStyle.Sine), {Brightness = 0, Saturation = 0, TintColor = Color3.new(1, 1, 1)}):Play()
 	if saved then TweenService:Create(Lighting, TweenInfo.new(secs, Enum.EasingStyle.Sine), {Brightness = saved.Brightness, OutdoorAmbient = saved.OutdoorAmbient, Ambient = saved.Ambient, ExposureCompensation = saved.Exposure}):Play() end
@@ -103,6 +110,7 @@ PPS.PromptTriggered:Connect(function(prompt, who)
 	local sound = prompt.Parent and prompt.Parent:FindFirstChild(str("SoundName", "OperaSong"))
 	if not (singer and sound) then return end
 	lightsDown(singer, nino)
+	prompt.Enabled = false; hiddenPrompt = prompt
 	local my = gen
 	task.spawn(function()
 		task.wait(0.5)   -- give the song a moment to start

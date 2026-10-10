@@ -633,3 +633,10 @@ Result job 67 (runner 3, c25ae2e): FountainModeClient 24809 (no spaghetti); stor
 assets unchanged. Not published.
 Result job 68 (runner 3, a5cfc03): workspace.OperaLights + OperaLightsClient 7690; singer and accordion_squirrel_color found.
 Not play-tested; Shannon tests after publishing. The Fountain magic row (two 100 px buttons) still unmeasured on a phone.
+
+## Job 69: opera lights round two (Studio EDIT, re-run; ask Shannon first)
+
+Shannon: "the spotlights should be brighter, the darkness of the world a little less dark; the listen button should go away
+after you press it, it is very glowy and still there". Re-run tools/opera/install_lights1.lua: SpotBrightness 18 (+ a warm
+fill light on each performer), BeamStrength 0.26, PoolStrength 0.5; DimBrightness 0.16, DimExposure 0.35, ambient blended
+halfway (DimAmbient 0.5), the sun left at 1.0; the Listen prompt hidden on this client while the aria plays. `QQ OPERA`. No publish.

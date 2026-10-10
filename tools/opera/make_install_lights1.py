@@ -22,8 +22,8 @@ local old = workspace:FindFirstChild("OperaLights"); if old then old:Destroy() e
 local F = Instance.new("Folder"); F.Name = "OperaLights"
 F:SetAttribute("Singer", "operasinger_squirrel_color"); F:SetAttribute("Accordion", nino and nino.Name or "accordion_squirrel_color")
 F:SetAttribute("PromptName", "OperaPrompt"); F:SetAttribute("SoundName", "OperaSong")
-F:SetAttribute("SpotHeight", 9); F:SetAttribute("SpotAngle", 55); F:SetAttribute("SpotBrightness", 9); F:SetAttribute("BeamStrength", 0.14)
-F:SetAttribute("DimBrightness", 0.28); F:SetAttribute("DimExposure", 0.7); F:SetAttribute("FadeDown", 1.6); F:SetAttribute("FadeUp", 2.2); F:SetAttribute("Reach", 45)
+F:SetAttribute("SpotHeight", 9); F:SetAttribute("SpotAngle", 55); F:SetAttribute("SpotBrightness", 18); F:SetAttribute("FillBrightness", 2.5); F:SetAttribute("BeamStrength", 0.26); F:SetAttribute("PoolStrength", 0.5)
+F:SetAttribute("DimBrightness", 0.16); F:SetAttribute("DimExposure", 0.35); F:SetAttribute("DimAmbient", 0.5); F:SetAttribute("DimSun", 1.0); F:SetAttribute("FadeDown", 1.6); F:SetAttribute("FadeUp", 2.2); F:SetAttribute("Reach", 45)
 local c = Instance.new("Script"); c.Name = "OperaLightsClient"; c.RunContext = Enum.RunContext.Client; c.Source = @@CLIENT@@; c.Parent = F
 local f, err = loadstring(c.Source); if not f then warn("QQ OPERA ABORT - OperaLightsClient does not compile: " .. tostring(err)); F:Destroy(); return end
 F.Parent = workspace
