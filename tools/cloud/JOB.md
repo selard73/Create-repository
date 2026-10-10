@@ -820,3 +820,9 @@ shows sandstone, the recess under the top slabs is filled (review: a shifted cop
 backed up first: HudBackup.CliffTop_pre1); (3) FallsB.LipPlate widened to the Body sheet's crest width (SizeWas kept). Send
 the `QQ CLIFFFIX` line, then pictures from the same spots as job 82 (b2, d and c4 above all). No publish. Also: identify the
 three small pale grey blocks floating in the sky above the notch in every picture (what and where they are).
+Runner 4 dry run of 35353a3 (job 83 round one): no block in front of the collision face, but 22 of 26 blocks topped above
+their cover (the slabs' tops run 41.9-43.6, the grass behind 40-45) and two stood in the open at the notch; the 279 thin Air
+carves reached y 43.1 under a grass top only 0-2 studs higher (the edge would sag). Round two (c4e4439): bands W 100..160 and
+E 208..244; blocks 0.5 behind the face, thinned to the terrain (0.3..1.6 or skipped), tops 0.25 under the lowest cover over
+nine downward rays (open sky -> no block); no carving except the pokes in front at y <= 40; the terrain's exposed side in the
+band (y 24..44) ReplaceMaterial Grass/LeafyGrass/Ground -> Sandstone instead (shape untouched; the grass top row kept).
