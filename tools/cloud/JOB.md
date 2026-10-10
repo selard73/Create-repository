@@ -506,3 +506,19 @@ little. Backup HudBackup.SeaGlassClient_pre_seaglass11. Send the `QQ SG11` line.
 tools/film/vrtest_remove1.lua: workspace.FilmMode.VRTestClient -> ServerStorage.HudBackup (disabled); any pad left in the
 workspace with a Shadows / Plain floor prompt or a VRTest* name -> HudBackup.VRTestPads. Send the `QQ VRT` line. No publish.
 Result job 56 (runner 3): BalloonClient 32028 -> 32702 (= 8b21dcf), server unchanged; backup HudBackup.BalloonClient_pre_8b21dcf. Not published.
+
+## Job 59: export the Acorn Store scripts (READ-ONLY + git push; no Studio edit)
+
+For the Italian fountain modes (job 61) the store's current text is needed. Save workspace.Shop.ShopServer.Source and
+workspace.Shop.ShopClient.Source (and any other LuaSourceContainer under workspace.Shop, plus the Shop folder's attributes
+and child list in Shop_attrs.txt) to tools/shop/src/, commit and push to claude/epic-hawking-188q4l (pull first).
+
+## Job 60: survey the piazza fountain (READ-ONLY, EDIT mode)
+
+tools/fountain/fountain_survey1.lua: finds the fountain in the square (about 464,-7,-794) and prints its parts, emitters,
+beams, attachments, sounds, scripts and the ground round it. Send every `QQ FTN` line (there may be 30-60).
+
+## Job 61 (to come): the fountain's modes - spaghetti + smiling meatballs, a frog resort, flower petals (Shannon, Oct 10)
+
+Bought in the Acorn Store like the French fountain colour (the whole server's fountain for ten minutes). Built after jobs
+59 and 60; the frogs are a Blender model Shannon imports (like the balloon).
