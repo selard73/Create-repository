@@ -665,3 +665,5 @@ bottom middle, 130 px; away from every hoop (HoopRange 150, new attribute on wor
 look - a point shot at the spot in the middle of the screen within 120 studs, else a lob that way - and the note says so);
 BinocularsClient 7981 -> 8602 (the same touch test, following the last input used); DailyClient 14785 -> 15020 and
 QuestionClient 28363 -> 28598 (phone layout by PreferredInput). Send the `QQ PHONE` line. No publish.
+Job 71 layout (runner's phone measurements, 667x375): the HOLD button in the strip between Roblox's hotbar and the jump
+button (AnchorPoint 1,1 at 1,-115,1,-45; 100 px; text 18), the draw bar at -150 and the help note at -170, above it. One install.

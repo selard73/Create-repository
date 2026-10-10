@@ -23,16 +23,16 @@ gui.Parent = player:WaitForChild("PlayerGui")
 local cross = Instance.new("Frame"); cross.AnchorPoint = Vector2.new(0.5, 0.5); cross.Position = UDim2.fromScale(0.5, 0.5)
 cross.Size = UDim2.fromOffset(26, 26); cross.BackgroundTransparency = 1; cross.Visible = false; cross.Parent = gui
 -- the phone's trigger: a big round button, bottom right, that you hold to draw and let go of to shoot
-local hold = Instance.new("TextButton"); hold.Name = "Shoot"; hold.AnchorPoint = Vector2.new(0.5, 1); hold.Position = UDim2.new(0.5, 0, 1, -34)   -- bottom middle: clear of Roblox's capture bar, the jump button and the thumbstick (Oct 10)
-hold.Size = UDim2.fromOffset(130, 130); hold.BackgroundColor3 = C(255, 202, 62); hold.BackgroundTransparency = 0.08; hold.BorderSizePixel = 0
-hold.Text = "HOLD\nTO SHOOT"; hold.Font = Enum.Font.FredokaOne; hold.TextSize = 24; hold.TextColor3 = C(84, 48, 18); hold.AutoButtonColor = false
+local hold = Instance.new("TextButton"); hold.Name = "Shoot"; hold.AnchorPoint = Vector2.new(1, 1); hold.Position = UDim2.new(1, -115, 1, -45)   -- the strip between Roblox's hotbar and the jump button, under its capture bar (measured on a phone, Oct 10)
+hold.Size = UDim2.fromOffset(100, 100); hold.BackgroundColor3 = C(255, 202, 62); hold.BackgroundTransparency = 0.08; hold.BorderSizePixel = 0
+hold.Text = "HOLD\nTO SHOOT"; hold.Font = Enum.Font.FredokaOne; hold.TextSize = 18; hold.TextColor3 = C(84, 48, 18); hold.AutoButtonColor = false
 hold.Visible = touchAim; hold.Parent = gui
 local hc = Instance.new("UICorner"); hc.CornerRadius = UDim.new(1, 0); hc.Parent = hold
 local hs = Instance.new("UIStroke"); hs.Color = C(150, 98, 36); hs.Thickness = 3; hs.Parent = hold
 local cs = Instance.new("UIStroke"); cs.Color = C(255, 246, 220); cs.Thickness = 2; cs.Parent = cross
 local cc = Instance.new("UICorner"); cc.CornerRadius = UDim.new(1, 0); cc.Parent = cross
 -- the draw: a bar that fills while you hold
-local barBack = Instance.new("Frame"); barBack.AnchorPoint = Vector2.new(0.5, 1); barBack.Position = UDim2.new(0.5, 0, 1, -110)
+local barBack = Instance.new("Frame"); barBack.AnchorPoint = Vector2.new(0.5, 1); barBack.Position = UDim2.new(0.5, 0, 1, -150)   -- (above the HOLD button on a phone, Oct 10)
 barBack.Size = UDim2.fromOffset(220, 14); barBack.BackgroundColor3 = C(38, 30, 52); barBack.BackgroundTransparency = 0.25
 barBack.BorderSizePixel = 0; barBack.Visible = false; barBack.Parent = gui
 local bb = Instance.new("UICorner"); bb.CornerRadius = UDim.new(0, 7); bb.Parent = barBack
@@ -43,7 +43,7 @@ local bc = Instance.new("UICorner"); bc.CornerRadius = UDim.new(0, 7); bc.Parent
 -- crisp BuilderSans, with the gold line round the box rather than round the letters. The first one was a fixed 420 wide
 -- in FredokaOne with its UIStroke on the text, and the help line ran out of both ends of it in fuzzy gold (Shannon:
 -- "this will not do"). On a phone it stays clear of the big round button.
-local note = Instance.new("TextLabel"); note.AnchorPoint = Vector2.new(0.5, 1); note.Position = UDim2.new(0.5, 0, 1, -132)
+local note = Instance.new("TextLabel"); note.AnchorPoint = Vector2.new(0.5, 1); note.Position = UDim2.new(0.5, 0, 1, -170)   -- (above the draw bar and the HOLD button, Oct 10)
 note.Size = UDim2.fromOffset(0, 0); note.AutomaticSize = Enum.AutomaticSize.XY; note.TextWrapped = true
 note.BackgroundColor3 = C(38, 30, 52); note.BackgroundTransparency = 1; note.BorderSizePixel = 0
 note.FontFace = Font.new("rbxasset://fonts/families/BuilderSans.json", Enum.FontWeight.Bold)

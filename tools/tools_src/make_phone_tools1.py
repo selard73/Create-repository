@@ -29,8 +29,15 @@ SLING = [
      'if touchAim then tool.ManualActivationOnly = true end          -- so a tap on the screen (or a camera drag) is not a shot\n'),
     ('local hold = Instance.new("TextButton"); hold.Name = "Shoot"; hold.AnchorPoint = Vector2.new(1, 1); hold.Position = UDim2.new(1, -26, 1, -150)\n'
      'hold.Size = UDim2.fromOffset(150, 150); hold.BackgroundColor3 = C(255, 202, 62); hold.BackgroundTransparency = 0.08; hold.BorderSizePixel = 0\n',
-     'local hold = Instance.new("TextButton"); hold.Name = "Shoot"; hold.AnchorPoint = Vector2.new(0.5, 1); hold.Position = UDim2.new(0.5, 0, 1, -34)   -- bottom middle: clear of Roblox\'s capture bar, the jump button and the thumbstick (Oct 10)\n'
-     'hold.Size = UDim2.fromOffset(130, 130); hold.BackgroundColor3 = C(255, 202, 62); hold.BackgroundTransparency = 0.08; hold.BorderSizePixel = 0\n'),
+     'local hold = Instance.new("TextButton"); hold.Name = "Shoot"; hold.AnchorPoint = Vector2.new(1, 1); hold.Position = UDim2.new(1, -115, 1, -45)   -- the strip between Roblox\'s hotbar and the jump button, under its capture bar (measured on a phone, Oct 10)\n'
+     'hold.Size = UDim2.fromOffset(100, 100); hold.BackgroundColor3 = C(255, 202, 62); hold.BackgroundTransparency = 0.08; hold.BorderSizePixel = 0\n'),
+    ('hold.Text = "HOLD\\nTO SHOOT"; hold.Font = Enum.Font.FredokaOne; hold.TextSize = 24; hold.TextColor3 = C(84, 48, 18); hold.AutoButtonColor = false\n',
+     'hold.Text = "HOLD\\nTO SHOOT"; hold.Font = Enum.Font.FredokaOne; hold.TextSize = 18; hold.TextColor3 = C(84, 48, 18); hold.AutoButtonColor = false\n'),
+    # the draw bar and the help note sit above the button, not across it
+    ('local barBack = Instance.new("Frame"); barBack.AnchorPoint = Vector2.new(0.5, 1); barBack.Position = UDim2.new(0.5, 0, 1, -110)\n',
+     'local barBack = Instance.new("Frame"); barBack.AnchorPoint = Vector2.new(0.5, 1); barBack.Position = UDim2.new(0.5, 0, 1, -150)   -- (above the HOLD button on a phone, Oct 10)\n'),
+    ('local note = Instance.new("TextLabel"); note.AnchorPoint = Vector2.new(0.5, 1); note.Position = UDim2.new(0.5, 0, 1, -132)\n',
+     'local note = Instance.new("TextLabel"); note.AnchorPoint = Vector2.new(0.5, 1); note.Position = UDim2.new(0.5, 0, 1, -170)   -- (above the draw bar and the HOLD button, Oct 10)\n'),
     ('\t\tsay(touchAim and "Hold the big button to draw - longer goes further - let go to shoot. It flies at the nearest hoop."\n'
      '\t\t\tor "Put the cursor on the hoop. Hold to draw - longer goes further - let go to shoot.", false, 4.5)\n'
      '\tend\nend\n',
