@@ -56,7 +56,8 @@ end
 local function lightsDown(singer, nino)
 	if on then return end
 	on = true; gen += 1
-	saved = {Brightness = Lighting.Brightness, OutdoorAmbient = Lighting.OutdoorAmbient, Ambient = Lighting.Ambient, Exposure = Lighting.ExposureCompensation}
+	-- the baseline is taken once and kept until a fade-up has finished: Listen pressed again mid fade-up must not capture half-dimmed values (runner's check, Oct 10)
+	saved = saved or {Brightness = Lighting.Brightness, OutdoorAmbient = Lighting.OutdoorAmbient, Ambient = Lighting.Ambient, Exposure = Lighting.ExposureCompensation}
 	local secs = num("FadeDown", 1.6)
 	cc.Brightness = 0; cc.Contrast = 0; cc.Saturation = 0; cc.TintColor = Color3.new(1, 1, 1); cc.Enabled = true
 	TweenService:Create(cc, TweenInfo.new(secs, Enum.EasingStyle.Sine), {Brightness = -num("DimBrightness", 0.28), Saturation = -0.25, TintColor = Color3.fromRGB(205, 210, 240)}):Play()
@@ -81,7 +82,7 @@ local function lightsUp()
 	TweenService:Create(cc, TweenInfo.new(secs, Enum.EasingStyle.Sine), {Brightness = 0, Saturation = 0, TintColor = Color3.new(1, 1, 1)}):Play()
 	if saved then TweenService:Create(Lighting, TweenInfo.new(secs, Enum.EasingStyle.Sine), {Brightness = saved.Brightness, OutdoorAmbient = saved.OutdoorAmbient, Ambient = saved.Ambient, ExposureCompensation = saved.Exposure}):Play() end
 	local r = rig; rig = nil
-	task.delay(secs + 0.1, function() if not on then cc.Enabled = false end end)
+	task.delay(secs + 0.1, function() if not on then cc.Enabled = false; saved = nil end end)   -- the baseline is let go only once the house is fully up again
 	if r then
 		task.spawn(function()
 			local t0 = os.clock()
