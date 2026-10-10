@@ -148,6 +148,19 @@ players who cannot be prompted pass) -> the store item `backpack` granted as a p
 prompt; Player:GetJoinData().ReferredByPlayerId on the friend's join) -> double acorns 24 h for both. A like is asked for,
 never gated on (no API). Not rule-breaking per the devforum staff answers found Oct 10 (JOB.md has the links).
 
+## Runner 5 (when runner 4 nears 90%; runner 4 = session_013fDV99KM4CFnfC1AZkdfJJ was at 72% at Oct 10 ~20:30 UTC)
+Same rules as "Runner 4" above; read JOB.md from job 82 down. First contact: "runner 5 ready" to the cloud session
+(session_01Gwhv9KoRg69mUkZf5xktZw). Runner 4's habits worth keeping: a read-only dry run of a script's probes before asking
+Shannon, a Studio PLAY-TEST preview (the script's body run on the test server, discarded on stop, Edit mode checked unchanged
+afterwards) with pictures pushed to tools/falls/shots/ (force-add, *.jpg is gitignored), checksums of every script against the
+git blob before running, one message per job with the QQ lines unchanged.
+Studio state at that point: jobs 73-79, 81, 83, 84 installed; job 80 undone; published through job 75 plus whatever Shannon
+published since. The waterfall cliff: SouthGorge.Rock.CliffBacking (job 83: 8 sandstone blocks) and CliffBacking2 (job 84: 8
+back copies of the SouthCliff pieces, 28 strata plates), terrain sandstone behind the top band + carved 3.2 behind the face in
+rows y 26..38, backup HudBackup.CliffTop_pre1 (paste at voxel 9,5,-148), FallsB.LipPlate 36 (SizeWas). Shannon's verdict on
+the cliff pending (she looks in Studio herself). Open: the dark patch on the grass hill west of the outcrop (x < 8, not probed);
+the tan lumps at the cliff's corners by the notch (sandstone-swapped ground where the bands stop).
+
 ## State at Oct 10 ~17:00 UTC (runner 4 idle)
 - Live scripts = repo copies: PromptClient 30345 = tools/prompts/src/PromptClient_vr1.lua (VR pills in the world); FountainModeClient
   29110 = tools/fountain/src/FountainModeClient.lua (frogs upright, footed rim frogs, the top frog on a pad in the upper bowl);

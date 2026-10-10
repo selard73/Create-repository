@@ -860,3 +860,6 @@ ground on the top edge at the right of b2 and a rounded brown lump at the top of
 sandstone-swapped ground where the bands stop short of the notch); the dark patch on the grass hill beyond the west outcrop
 is further west than the probe (x < 8). 28 strata plates (5 tops 0.1-0.4 above their cover), 8 copies; from above a copy is
 the first hit on 16 of 2572 rays (east side). Shown to Shannon; not installed.
+Result job 84 (runner 4, 52773f8, installed at Shannon's "install it so I can look in Studio"; not published): 8 back copies +
+28 strata plates in SouthGorge.Rock.CliffBacking2; 254 carves; job 83's blocks, sandstone and LipPlate kept; the terrain
+backup CliffTop_pre1 (before both jobs) still there. Shannon flies the Studio camera along the cliff and gives her verdict.
