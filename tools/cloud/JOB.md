@@ -700,9 +700,10 @@ Send the `QQ PVR` line. No publish. Undo: PromptClient.Source = HudBackup.Prompt
 
 ## Job 74: Club Rana frogs upright (Studio EDIT, re-run; ask Shannon first)
 
-Re-run tools/fountain/install_modes1.lua at the commit below: FountainModes rebuilt with the client (25255 chars) that
+Re-run tools/fountain/install_modes1.lua at the commit below: FountainModes rebuilt with the client (25442 chars) that
 flattens the imported parts' PivotOffset before setting each frog, lily pad and lotus down (the frog's pivot is its Body,
-upright, face -Z; review: the deck-chair frog now faces out of the chair, reclined 20 degrees). Assets kept; the store
+upright, face -Z; review: the deck-chair frog faces out of the chair, reclined 20 degrees; the swimmer sits in the water,
+not above it; a pad frog bobs with its own pad). Assets kept; the store
 restored from its pre_modes1 backups and re-patched identically (10901 / 38666).
 Send the `QQ FMODE DONE` line. No publish.
 

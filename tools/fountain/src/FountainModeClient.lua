@@ -312,10 +312,13 @@ local function startFrogs(g)
 		local pos = around(g, spec.r, spec.a, g.basinY)
 		local pad = lilyPad(CFrame.new(pos) * CFrame.Angles(0, rng:NextNumber(0, 6), 0), spec.lotus)
 		table.insert(pads, {p = pad, cf = pad:GetPivot(), ph = rng:NextNumber(0, 6)})   -- (GetPivot after sitOn: where it rests)
-		if spec.frog then add(frog(facing(pos + Vector3.new(0, 0.1, 0), g.centre) * CFrame.Angles(0, math.pi + rng:NextNumber(-0.6, 0.6), 0), spec.scale, spec.frog), "pad") end
+		if spec.frog then
+			add(frog(facing(pos + Vector3.new(0, 0.1, 0), g.centre) * CFrame.Angles(0, math.pi + rng:NextNumber(-0.6, 0.6), 0), spec.scale, spec.frog), "pad")
+			if frogs[#frogs] and frogs[#frogs].kind == "pad" then frogs[#frogs].ph = pads[#pads].ph end   -- it bobs with its own pad (review)
+		end
 	end
 	-- in the water, in a swim ring; two on the rim, one in a sun hat
-	add(frog(facing(around(g, 4.4, 3.1, g.basinY + 0.15), g.centre), 1.0, "SwimRing"), "swim")
+	add(frog(facing(around(g, 4.4, 3.1, g.basinY - 0.25), g.centre), 1.0, "SwimRing"), "swim")   -- feet under, the ring on the water (review)
 	add(frog(facing(around(g, g.rimR - 0.2, 1.2, g.rimY), g.centre) * CFrame.Angles(0, math.pi, 0), 1.0, "SunHat"), "rim")
 	add(frog(facing(around(g, g.rimR - 0.2, 4.9, g.rimY), g.centre), 0.9, ""), "rim")
 	-- one up top, by the spout
