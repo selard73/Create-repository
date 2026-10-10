@@ -888,3 +888,6 @@ C:\Users\slard\Create-repository-shots and tools/falls/shots/ (git add -f); the 
 
 tools/falls/lip_sliver1.lua: a third small clump (0.38 of LipRockW) in the gap at (167.4,-7.1,-550.4), and the LipPlate's
 colour to the sheet's white (ColorWas kept). Send the `QQ SLIVER` line and a picture from the c4 spot. No publish.
+Shannon's verdict from the live game (Oct 10, published 19:26Z), her words: "the balloon ride is fine the cliff's bald spots
+look fixed the blue bulge is mostly fixed but there is still a small section to the left between the 2 clods covering it.
+(the thin blue sliver on the left is still there." -> cliff done (83 + 84); balloon as is; job 86 (the sliver) next, runner 5.
