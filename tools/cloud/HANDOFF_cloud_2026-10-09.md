@@ -98,3 +98,5 @@ cross-session message, starting with "runner 3 ready" on the first contact. The 
 send_message to the bridge:session_... id its messages carry (runner 3, Oct 10: session_01VuPQ6z5X4cxTdME7EDPUCf,
 title "Studio runner for 1001 Squirrels"). The lowest unfinished job is always the next one; JOB.md
 holds the full list and every result so far.
+- Shannon's Desktop is C:\Users\slard\OneDrive\Desktop (the Windows known folder), not %USERPROFILE%\Desktop - files for
+  her go there (runner 3, Oct 10).

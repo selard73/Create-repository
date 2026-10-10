@@ -543,3 +543,12 @@ Result job 62: SeaGlassClient 18853 -> 18916; backup HudBackup.SeaGlassClient_pr
 Job 61 review (28 agents): noodle attachments parented before placing, X axis up, top strands bend down into the bowl;
 carpet petals, the drink and its table flat the right way (a Cylinder's axis is Size.X); ladder rungs across the rails;
 a resting meatball faces the fountain; sound ids formatted as whole numbers. All applied.
+
+## Job 61 step 2: install the fountain modes (Studio EDIT; ask Shannon first; after her two imports)
+
+tools/fountain/install_modes1.lua at commit 54ac93e (reviewed): workspace.FountainModes + FountainModeClient (26103 chars),
+the imported "frog" / "flowers" Models -> ReplicatedStorage.FountainModeAssets (Frog, LilyPad, Lotus, Flowers), the Acorn
+Store rows (ShopServer 9261 -> 10669, ShopClient 35014 -> 37163; backups HudBackup.ShopServer_pre_modes1 / ShopClient_pre_modes1;
+Price_spaghetti/frogs/petals 25, Sell_* true). Re-runnable (the store patch is skipped once applied; assets are kept).
+Send the `QQ FMODE DONE` line (it names the assets found and the measured rim). Then Shannon publishes and buys each mode
+in the store's Porto tab (25 acorns each; the whole server's fountain for ten minutes, one at a time). No publish by the runner.
