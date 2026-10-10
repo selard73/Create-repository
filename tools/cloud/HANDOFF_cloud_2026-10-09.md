@@ -86,3 +86,14 @@ The runner: send_message to its session id (bridge:session_01FmVm5n3mKMAfYwLsZWt
 - VR UI (Shannon, Oct 9 night): the head-following VR window "is not a good technique". Done so far: the balloon's notes and
   the squirrel bubbles are world things in VR (jobs 54, 55). To do: make the VR window / panels grabbable with the
   controller (point + grip to drag; stays where put; re-grab to move), so the picker and the rest sit where she wants them.
+
+## Runner restart (Oct 10, after the "Remote control" runner thread was archived with its memory nearly full)
+The old runner's last report was jobs 53-55 (applied). Jobs waiting, in this order, each after asking Shannon (no publish):
+- Job 56: https://raw.githubusercontent.com/selard73/Create-repository/8b21dcf/tools/balloon/install_field1.lua — BalloonClient
+  only, in place (32702 chars; server unchanged; back up the old client to HudBackup first). Report the `QQ FIELD` line.
+- Job 57: https://raw.githubusercontent.com/selard73/Create-repository/8b21dcf/tools/porto/seaglass11.lua — report `QQ SG11`.
+- Job 58: https://raw.githubusercontent.com/selard73/Create-repository/8b21dcf/tools/film/vrtest_remove1.lua — report `QQ VRT`.
+Send every report to the cloud session "Cloud session handoff" (session_01Gwhv9KoRg69mUkZf5xktZw) as one short
+cross-session message, starting with "runner 3 ready" on the first contact. The cloud session answers the runner by
+send_message to the bridge:session_... id its messages carry. The lowest unfinished job is always the next one; JOB.md
+holds the full list and every result so far.
