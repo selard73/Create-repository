@@ -535,3 +535,7 @@ your face now, but good enough" (to tone down later: seaglass11's VR block, scal
 
 Shannon: "maybe slightly smaller please". tools/porto/seaglass12.lua (SeaGlassClient after job 57, about 18853 chars, 2
 finds): 1.15x instead of 1.5x, 3.3 studs off instead of 2.8. Backup HudBackup.SeaGlassClient_pre_seaglass12. `QQ SG12`. No publish.
+Job 61 step 1 (Shannon, by hand): File > Import 3D of tools/fountain/model/frog.fbx and flowers.fbx at commit 93f25f4
+(defaults); each lands in the workspace as a Model named after the file ("frog": Body, EyeL, EyeR, Sunglasses, SunHat,
+SwimRing on one colour atlas; "flowers": Flower_A/B/C_Petals/_Centre, Leaf, LilyPad, Lotus_Petals, Lotus_Centre, flat
+colours). Step 2 (runner, after the review): install_modes1.lua moves them into ReplicatedStorage.FountainModeAssets.
