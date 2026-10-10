@@ -293,15 +293,16 @@ end
 -- IN VR THE FAR VIEW IS HAZED AND THE RIDE RUNS LIGHTER (Shannon, Oct 10: on the headset the funicolare and the far hills
 -- "come in and out" with everything loaded - the Quest's renderer at a low quality step, and the step bounces). A haze
 -- hides the popping; no shadows, fewer streaks and bolts keep the frame rate up so the step holds. Attributes on the
--- folder: VRHazeStart 350, VRHazeEnd 900 (0 = no haze; with an Atmosphere present its Haze goes to VRHazeAtmo 2.5
--- instead), VRShadowsOff true, VRWindRate 36, VRBoltShare 0.5. The storm takes over later; stormOff puts it all back.
+-- folder: VRHazeStart 350, VRHazeEnd 900 (0 = no haze; with an Atmosphere present, which makes the Lighting fog a dead letter,
+-- its Density goes to at least VRHazeDensity 0.55 and its Haze to VRHazeAtmo 2.5 instead), VRShadowsOff true, VRWindRate 36,
+-- VRBoltShare 0.5. The storm takes over later; stormOff (at home, and on a respawn) puts it all back.
 local function hazeOn()
 	if not VR then return end
 	snapshot()
-	if F:GetAttribute("VRShadowsOff") ~= false then saved.shadows = Lighting.GlobalShadows; Lighting.GlobalShadows = false end
+	if F:GetAttribute("VRShadowsOff") ~= false then if saved.shadows == nil then saved.shadows = Lighting.GlobalShadows end; Lighting.GlobalShadows = false end
 	local hEnd = num("VRHazeEnd", 900)
 	if hEnd <= 0 then return end
-	if atmo then TweenService:Create(atmo, TweenInfo.new(3, Enum.EasingStyle.Sine), {Haze = num("VRHazeAtmo", 2.5)}):Play()
+	if atmo then TweenService:Create(atmo, TweenInfo.new(3, Enum.EasingStyle.Sine), {Haze = num("VRHazeAtmo", 2.5), Density = math.max(atmo.Density, num("VRHazeDensity", 0.55))}):Play()
 	else TweenService:Create(Lighting, TweenInfo.new(3, Enum.EasingStyle.Sine), {FogStart = math.min(num("VRHazeStart", 350), hEnd - 50), FogEnd = hEnd}):Play() end
 end
 
@@ -473,5 +474,5 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 		end
 	end
 end)
-player.CharacterAdded:Connect(function() flying = false; if storming then stormOff() end; duckMusic(false, 1); vrCamStop(); black.BackgroundTransparency = 1; cc.Brightness = 0; bb.Enabled = false; sign.Visible = false end)
+player.CharacterAdded:Connect(function() flying = false; if storming or saved then stormOff() end; duckMusic(false, 1); vrCamStop(); black.BackgroundTransparency = 1; cc.Brightness = 0; bb.Enabled = false; sign.Visible = false end)
 print("BalloonClient: ready" .. (VR and " (VR)" or ""))

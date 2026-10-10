@@ -1,7 +1,7 @@
 -- vr_ride1.lua (Studio EDIT mode; re-running is a no-op). Job 80.
 -- In VR the balloon ride hazes the far view and runs lighter (Shannon, Oct 10: the funicolare and the far hills "come in and
 -- out" on the headset with everything loaded - the Quest's renderer, not streaming). workspace.BalloonField.BalloonClient
--- 32702 -> 34193 chars (exact-string patch; backup HudBackup.BalloonClient_pre_vrride1). Attributes to tune on
+-- 32702 -> 34420 chars (exact-string patch; backup HudBackup.BalloonClient_pre_vrride1). Attributes to tune on
 -- BalloonField: VRHazeStart 350, VRHazeEnd 900 (0 = no haze), VRShadowsOff true, VRWindRate 36, VRBoltShare 0.5.
 -- Undo: BalloonClient.Source = HudBackup.BalloonClient_pre_vrride1.Source. No publish.
 local SS = game:GetService("ServerStorage")
@@ -303,15 +303,16 @@ end
 -- IN VR THE FAR VIEW IS HAZED AND THE RIDE RUNS LIGHTER (Shannon, Oct 10: on the headset the funicolare and the far hills
 -- "come in and out" with everything loaded - the Quest's renderer at a low quality step, and the step bounces). A haze
 -- hides the popping; no shadows, fewer streaks and bolts keep the frame rate up so the step holds. Attributes on the
--- folder: VRHazeStart 350, VRHazeEnd 900 (0 = no haze; with an Atmosphere present its Haze goes to VRHazeAtmo 2.5
--- instead), VRShadowsOff true, VRWindRate 36, VRBoltShare 0.5. The storm takes over later; stormOff puts it all back.
+-- folder: VRHazeStart 350, VRHazeEnd 900 (0 = no haze; with an Atmosphere present, which makes the Lighting fog a dead letter,
+-- its Density goes to at least VRHazeDensity 0.55 and its Haze to VRHazeAtmo 2.5 instead), VRShadowsOff true, VRWindRate 36,
+-- VRBoltShare 0.5. The storm takes over later; stormOff (at home, and on a respawn) puts it all back.
 local function hazeOn()
 	if not VR then return end
 	snapshot()
-	if F:GetAttribute("VRShadowsOff") ~= false then saved.shadows = Lighting.GlobalShadows; Lighting.GlobalShadows = false end
+	if F:GetAttribute("VRShadowsOff") ~= false then if saved.shadows == nil then saved.shadows = Lighting.GlobalShadows end; Lighting.GlobalShadows = false end
 	local hEnd = num("VRHazeEnd", 900)
 	if hEnd <= 0 then return end
-	if atmo then TweenService:Create(atmo, TweenInfo.new(3, Enum.EasingStyle.Sine), {Haze = num("VRHazeAtmo", 2.5)}):Play()
+	if atmo then TweenService:Create(atmo, TweenInfo.new(3, Enum.EasingStyle.Sine), {Haze = num("VRHazeAtmo", 2.5), Density = math.max(atmo.Density, num("VRHazeDensity", 0.55))}):Play()
 	else TweenService:Create(Lighting, TweenInfo.new(3, Enum.EasingStyle.Sine), {FogStart = math.min(num("VRHazeStart", 350), hEnd - 50), FogEnd = hEnd}):Play() end
 end
 
@@ -483,16 +484,16 @@ ev.OnClientEvent:Connect(function(what, who, name, secs)
 		end
 	end
 end)
-player.CharacterAdded:Connect(function() flying = false; if storming then stormOff() end; duckMusic(false, 1); vrCamStop(); black.BackgroundTransparency = 1; cc.Brightness = 0; bb.Enabled = false; sign.Visible = false end)
+player.CharacterAdded:Connect(function() flying = false; if storming or saved then stormOff() end; duckMusic(false, 1); vrCamStop(); black.BackgroundTransparency = 1; cc.Brightness = 0; bb.Enabled = false; sign.Visible = false end)
 print("BalloonClient: ready" .. (VR and " (VR)" or ""))
 ]===]
-if #bc.Source == 34193 and bc.Source == NEW then print("QQ VRRIDE DONE (already installed): BalloonClient 34193") return end
+if #bc.Source == 34420 and bc.Source == NEW then print("QQ VRRIDE DONE (already installed): BalloonClient 34420") return end
 if #bc.Source ~= 32702 then print(string.format("QQ VRRIDE ABORT: BalloonClient is %d chars, expected 32702 (not the job 56 text; export it first); nothing changed", #bc.Source)) return end
 local f, err = loadstring(NEW); if not f then print("QQ VRRIDE ABORT: the new client does not compile: " .. tostring(err)) return end
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 if not hb:FindFirstChild("BalloonClient_pre_vrride1") then local b = Instance.new("ModuleScript"); b.Name = "BalloonClient_pre_vrride1"; b.Source = bc.Source; b.Parent = hb end
 bc.Source = NEW
-for k, v in pairs({VRHazeStart = 350, VRHazeEnd = 900, VRHazeAtmo = 2.5, VRWindRate = 36, VRBoltShare = 0.5}) do if bf:GetAttribute(k) == nil then bf:SetAttribute(k, v) end end
+for k, v in pairs({VRHazeStart = 350, VRHazeEnd = 900, VRHazeAtmo = 2.5, VRHazeDensity = 0.55, VRWindRate = 36, VRBoltShare = 0.5}) do if bf:GetAttribute(k) == nil then bf:SetAttribute(k, v) end end
 if bf:GetAttribute("VRShadowsOff") == nil then bf:SetAttribute("VRShadowsOff", true) end
 local atmo = game:GetService("Lighting"):FindFirstChildOfClass("Atmosphere")
 print(string.format("QQ VRRIDE DONE: BalloonClient %d -> %d chars (backup HudBackup.BalloonClient_pre_vrride1); haze %s; Lighting has %s", 32702, #bc.Source,

@@ -57,7 +57,7 @@ NEW = patch(NEW, '\tsaved = nil\nend\n\n-- ---------- smooth flight ----------\n
             'end\n'
             '\n-- ---------- smooth flight ----------\n')
 NEW = patch(NEW, 'player.CharacterAdded:Connect(function() flying = false; if storming then stormOff() end;',
-            'player.CharacterAdded:Connect(function() flying = false; if storming or saved then stormOff() end;')   -- (the VR haze too - review)
+            'player.CharacterAdded:Connect(function() flying = false; if storming or saved then stormOff() end;')   # (the VR haze too - review)
 NEW = patch(NEW, '\t\tif name == "board" then flying = true; vrCamStart() end\n',
             '\t\tif name == "board" then flying = true; vrCamStart(); hazeOn() end\n')
 assert ']===]' not in NEW
