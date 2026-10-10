@@ -184,7 +184,7 @@ F:SetAttribute("FountainPath", "PortoNocciola/13 Hillside town/Fontana del Limon
 F:SetAttribute("Minutes", 2); F:SetAttribute("Reach", 150)   -- two minutes (Shannon: "different from the French one")
 F:SetAttribute("FrogSoundId", 73626983091367); F:SetAttribute("BounceSoundId", 0)
 F:SetAttribute("PetalsPerSecond", 34); F:SetAttribute("PetalMax", 240); F:SetAttribute("PetalSpread", 38); F:SetAttribute("PetalSpeedMin", 5); F:SetAttribute("PetalSpeedMax", 8.5); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalRest", 2.6); F:SetAttribute("CarpetCount", 90)
-F:SetAttribute("NoodleTexture", ""); F:SetAttribute("NoodleTop", 14); F:SetAttribute("NoodleRim", 20); F:SetAttribute("MeatballEvery", 1.6)
+F:SetAttribute("NoodleTop", 10); F:SetAttribute("NoodleRim", 16); F:SetAttribute("NoodleOver", 5); F:SetAttribute("NoodleSpeed", 1.0); F:SetAttribute("SauceBits", 70); F:SetAttribute("SteamRate", 5); F:SetAttribute("MeatballsResting", 5); F:SetAttribute("MeatballEvery", 5); F:SetAttribute("MeatballRest", 7)
 F:SetAttribute("SignText", "FROG RESORT"); F:SetAttribute("DeckAngle", 0.9)
 F:SetAttribute("RimY", rimY or (c.Y - 2.15 + 1.3)); F:SetAttribute("RimR", rimR); F:SetAttribute("GroundY", groundY)
 F:SetAttribute("ActiveMode", ""); F:SetAttribute("ActiveUntil", 0); F:SetAttribute("ActiveBy", "")

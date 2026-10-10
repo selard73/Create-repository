@@ -209,122 +209,128 @@ local function startPetals(g)
 end
 
 -- ---------- spaghetti ----------
--- Shannon (Oct 10, after the first look): "it should be individual pasta pieces coming out and falling down like the water
--- does" and the pink sauce "looks gruesome". So: the water's own emitters cloned into streams of noodle pieces (long, thin,
--- along the way they fly), real strands tossed out of the spout that tumble, land and fade, meatballs the same way, and
--- an opaque tomato-orange sauce in the basin and the bowl.
+-- Shannon (Oct 10, third look): "a slow ooze down of strands of spaghetti, no projectiles", and the sauce should look like
+-- meat sauce. So: every strand is a chain of short noodle pieces creeping along a fixed path - out of the spout and down
+-- into the bowl, over the bowl's edge into the basin, over the outer rim onto the paving - at a stud a second, wobbling a
+-- little. Meatballs sit in the sauce and now and then one rolls slowly down a strand. The sauce is a deep tomato-brown with
+-- mince, flecks of herb, a few noodles lying in it, and steam.
 local NOODLE = Color3.fromRGB(242, 216, 140)
-local SAUCE = Color3.fromRGB(198, 70, 32)
-local function noodleEmitter(src, i)
-	local e = src:Clone(); e.Name = "NoodleStream"
-	local tex = str("NoodleTexture", "")
-	e.Texture = tex ~= "" and tex or "rbxasset://textures/particles/smoke_main.dds"
-	e.Color = ColorSequence.new(NOODLE:Lerp(Color3.fromRGB(255, 236, 170), (i % 3) * 0.3))
-	e.LightEmission = 0.05; e.LightInfluence = 0.6
-	e.Size = NumberSequence.new(num("NoodleWidth", 0.24))
-	e.Squash = NumberSequence.new(num("NoodleStretch", 5))   -- long and thin along the way it flies: a piece of spaghetti
-	e.Orientation = Enum.ParticleOrientation.VelocityParallel
-	e.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.9, 0), NumberSequenceKeypoint.new(1, 1)})
-	e.Lifetime = NumberRange.new(src.Lifetime.Min * 1.9, src.Lifetime.Max * 2.2)
-	e.Rate = src.Rate * num("NoodleRate", 0.5)
-	e.Rotation = NumberRange.new(0); e.RotSpeed = NumberRange.new(0)
-	e.Enabled = true
-	e.Parent = src.Parent
-	return e
-end
--- something tossed out of the spout: a hop into the bowl, one into the basin, one out over the rim, a roll, a rest, a fade
-local function toss(obj, g, spinAxis)
-	local a = rng:NextNumber(0, 2 * math.pi)
-	local hops = {
-		{p = around(g, rng:NextNumber(1.2, g.bowlR - 0.4), a, g.bowlY + 0.45), h = rng:NextNumber(3.5, 5), T = 0.75},
-		{p = around(g, rng:NextNumber(g.basinR0 + 0.2, g.basinR1 - 0.2), a + rng:NextNumber(-0.5, 0.5), g.basinY + 0.45), h = rng:NextNumber(1.6, 2.4), T = 0.6},
-		{p = around(g, rng:NextNumber(g.rimR + 1.2, g.rimR + 3.5), a + rng:NextNumber(-0.7, 0.7), g.groundY + 0.45), h = rng:NextNumber(1.4, 2.2), T = 0.65},
-	}
-	hops[4] = {p = hops[3].p + Vector3.new(math.cos(a) * 1.5, 0, math.sin(a) * 1.5), h = 0.5, T = 0.4}   -- a last little roll outward
-	local my = gen
-	task.spawn(function()
-		local from = g.spout
-		local tumble = CFrame.Angles(rng:NextNumber(-3, 3), rng:NextNumber(-3, 3), 0)
-		for _, hop in ipairs(hops) do
-			local t0 = os.clock()
-			while true do
-				local t = (os.clock() - t0) / hop.T
-				if t >= 1 or gen ~= my or not obj.Parent then break end
-				local pos = from:Lerp(hop.p, t) + Vector3.new(0, 4 * hop.h * t * (1 - t), 0)
-				obj:PivotTo(CFrame.new(pos) * CFrame.Angles(0, a, 0) * CFrame.fromAxisAngle(spinAxis, -t * 4) * tumble)
-				RunService.RenderStepped:Wait()
-			end
-			if gen ~= my or not obj.Parent then break end
-			obj:PivotTo(facing(hop.p, g.centre))
-			from = hop.p
-			sound(num("BounceSoundId", 0), obj:IsA("Model") and obj.PrimaryPart or obj, 0.35)
-		end
-		if obj.Parent and gen == my then
-			obj:PivotTo(facing(from, g.centre))   -- sits looking at the fountain
-			task.wait(2.5)
-			if obj.Parent then
-				for _, d in ipairs(obj:IsA("Model") and obj:GetDescendants() or {obj}) do
-					if d:IsA("BasePart") then TweenService:Create(d, TweenInfo.new(0.7), {Transparency = 1}):Play() end
-					if d:IsA("Decal") then TweenService:Create(d, TweenInfo.new(0.7), {Transparency = 1}):Play() end
-				end
-				if obj:IsA("BasePart") then for _, d in ipairs(obj:GetChildren()) do if d:IsA("Decal") then TweenService:Create(d, TweenInfo.new(0.7), {Transparency = 1}):Play() end end end
-			end
-			Debris:AddItem(obj, 0.8)
-		end
-	end)
-end
-local function meatball(g)
-	local m = part("Meatball", Vector3.new(0.95, 0.95, 0.95), CFrame.new(g.spout), Color3.fromRGB(118, 68, 40), Enum.Material.SmoothPlastic, Enum.PartType.Ball)
-	local face = Instance.new("Decal"); face.Name = "Smile"; face.Texture = "rbxasset://textures/face.png"; face.Face = Enum.NormalId.Front; face.Parent = m
-	toss(m, g, Vector3.xAxis)
-end
-local function strand(g)
-	-- a real strand: five short lengths in a gentle wave, pale yellow, tossed like the meatballs
-	local m = Instance.new("Model"); m.Name = "Strand"
-	local colour = NOODLE:Lerp(Color3.fromRGB(255, 236, 170), rng:NextNumber(0, 0.6))
-	local segLen, prev = 0.55, nil
-	for i = 1, 5 do
-		local seg = Instance.new("Part"); seg.Name = "Seg"; seg.Anchored = true; seg.CanCollide = false; seg.CanQuery = false; seg.CanTouch = false; seg.CastShadow = false
-		seg.Shape = Enum.PartType.Cylinder; seg.Size = Vector3.new(segLen + 0.08, 0.13, 0.13); seg.Color = colour; seg.Material = Enum.Material.SmoothPlastic
-		local bend = 0.35 * math.sin(i * 1.3)
-		seg.CFrame = CFrame.new((i - 3) * segLen, 0.12 * math.sin(i * 1.3), 0) * CFrame.Angles(0, 0, bend)
-		seg.Parent = m
-		if i == 1 then m.PrimaryPart = seg end
+local SAUCE = Color3.fromRGB(150, 48, 26)
+local MINCE = Color3.fromRGB(92, 44, 26)
+local function curve(p0, p1, p2) return function(u) local x = p0:Lerp(p1, u); local y = p1:Lerp(p2, u); return x:Lerp(y, u) end end
+local function strandPath(g, kind, a)
+	if kind == "top" then
+		local r = rng:NextNumber(1.4, g.bowlR - 0.3)
+		return curve(g.spout + Vector3.new(0, 0.1, 0), g.spout + Vector3.new(math.cos(a) * r * 0.6, 1.6 + rng:NextNumber(0, 1.0), math.sin(a) * r * 0.6), around(g, r, a, g.bowlY + 0.1))
+	elseif kind == "rim" then
+		local r1 = rng:NextNumber(g.basinR0 + 0.3, g.basinR1 - 0.3)
+		return curve(around(g, g.bowlR - 0.4, a, g.bowlY + 0.1), around(g, g.bowlR + 0.5, a, g.bowlY - 0.3), around(g, r1, a + rng:NextNumber(-0.2, 0.2), g.basinY + 0.1))
+	else   -- "over": over the basin's outer rim and down onto the paving
+		return curve(around(g, g.rimR - 0.7, a, g.rimY + 0.1), around(g, g.rimR + 0.4, a, g.rimY - 0.1), around(g, g.rimR + rng:NextNumber(1.3, 2.3), a + rng:NextNumber(-0.15, 0.15), g.groundY + 0.1))
 	end
-	m:PivotTo(CFrame.new(g.spout))
-	m.Parent = scene
-	toss(m, g, Vector3.zAxis)
+end
+local SEG = CFrame.Angles(0, math.rad(90), 0)   -- a Cylinder's axis is X; turned to lie along the way (-Z of a lookAt)
+local function makeStrand(g, kind, a, n, radius)
+	local path = strandPath(g, kind, a)
+	-- the path's length, roughly, so the pieces creep at a real speed
+	local len, last = 0, path(0)
+	for i = 1, 20 do local q = path(i / 20); len += (q - last).Magnitude; last = q end
+	local colour = NOODLE:Lerp(Color3.fromRGB(255, 236, 170), rng:NextNumber(0, 0.6))
+	local st = {path = path, len = math.max(len, 1), segs = {}, phase = rng:NextNumber(0, 1), wob = rng:NextNumber(0, 6), amp = rng:NextNumber(0.03, 0.08)}
+	for i = 1, n do
+		local seg = Instance.new("Part"); seg.Name = "Noodle"; seg.Anchored = true; seg.CanCollide = false; seg.CanQuery = false; seg.CanTouch = false; seg.CastShadow = false
+		seg.Shape = Enum.PartType.Cylinder; seg.Size = Vector3.new(0.5, radius * 2, radius * 2); seg.Color = colour; seg.Material = Enum.Material.SmoothPlastic; seg.Parent = scene
+		st.segs[i] = {p = seg, u = (i - 1) / n}
+	end
+	return st
+end
+local function strandStep(st, dt, speed)
+	local path = st.path
+	for _, e in ipairs(st.segs) do
+		e.u = (e.u + speed * dt / st.len) % 1
+		local p, q = path(e.u), path(math.min(e.u + 0.02, 1))
+		if (q - p).Magnitude < 0.001 then q = p + Vector3.new(0, -0.1, 0) end
+		local side = (q - p):Cross(Vector3.yAxis); side = side.Magnitude > 0.001 and side.Unit or Vector3.xAxis
+		local wob = side * st.amp * math.sin(e.u * 14 + st.wob)
+		e.p.CFrame = CFrame.lookAt(p + wob, q + wob) * SEG
+		e.p.Transparency = (e.u > 0.94) and (e.u - 0.94) / 0.06 or 0   -- melts into the sauce at the end
+	end
+end
+local function meatballPart(g, pos)
+	local m = part("Meatball", Vector3.new(0.95, 0.95, 0.95), facing(pos, g.centre) * CFrame.Angles(0, math.pi, 0), Color3.fromRGB(118, 68, 40), Enum.Material.SmoothPlastic, Enum.PartType.Ball)
+	local face = Instance.new("Decal"); face.Name = "Smile"; face.Texture = "rbxasset://textures/face.png"; face.Face = Enum.NormalId.Front; face.Parent = m
+	return m, face
 end
 local function startSpaghetti(g)
 	setWater(g, true)
-	-- the sauce: opaque tomato orange-red (a tint over the water read as pink - Shannon: "gruesome")
+	-- the sauce: opaque, deep tomato-brown, with mince, herb and a few noodles lying in it; the bowl the same
 	tintWater(g, SAUCE, 0)
 	g.ring.Material = Enum.Material.SmoothPlastic
-	-- the pour: the water's own emitters, as noodle pieces
-	local emitters = {}
-	local i = 0
-	for _, d in ipairs(g.water:GetDescendants()) do
-		if d:IsA("ParticleEmitter") and (d.Name == "Arc" or d.Name == "Stream") then i += 1; table.insert(emitters, noodleEmitter(d, i)) end
+	local function bits(n, r0, r1, y)
+		for i = 1, n do
+			local a, r = rng:NextNumber(0, 2 * math.pi), math.sqrt(rng:NextNumber(r0 * r0, r1 * r1))
+			local kind = rng:NextNumber()
+			local pos = around(g, r, a, y)
+			if kind < 0.55 then part("Mince", Vector3.new(rng:NextNumber(0.2, 0.4), 0.14, rng:NextNumber(0.2, 0.34)), CFrame.new(pos + Vector3.new(0, 0.05, 0)) * CFrame.Angles(rng:NextNumber(-0.3, 0.3), rng:NextNumber(0, 6), rng:NextNumber(-0.3, 0.3)), MINCE:Lerp(Color3.fromRGB(130, 62, 36), rng:NextNumber(0, 1)))
+			elseif kind < 0.8 then part("Herb", Vector3.new(0.14, 0.04, 0.1), CFrame.new(pos + Vector3.new(0, 0.07, 0)) * CFrame.Angles(0, rng:NextNumber(0, 6), 0), Color3.fromRGB(72, 112, 40))
+			else part("NoodleBit", Vector3.new(rng:NextNumber(0.8, 1.6), 0.2, 0.2), CFrame.new(pos + Vector3.new(0, 0.08, 0)) * CFrame.Angles(0, rng:NextNumber(0, 6), 0), NOODLE, Enum.Material.SmoothPlastic, Enum.PartType.Cylinder) end
+		end
 	end
-	-- a dusting of parmesan over the spout
-	local jet = g.water:FindFirstChild("Jet")
-	if jet then
-		local e = Instance.new("ParticleEmitter"); e.Name = "Parmesan"; e.Texture = "rbxasset://textures/particles/smoke_main.dds"; e.Color = ColorSequence.new(Color3.fromRGB(255, 250, 230))
-		e.Size = NumberSequence.new(0.14); e.Lifetime = NumberRange.new(1.2, 1.8); e.Rate = 10; e.Speed = NumberRange.new(2, 4); e.SpreadAngle = Vector2.new(60, 60)
-		e.Acceleration = Vector3.new(0, -6, 0); e.LightEmission = 0.3; e.Parent = jet
-		table.insert(emitters, e)
+	bits(num("SauceBits", 70), g.basinR0 + 0.2, g.basinR1 - 0.1, g.basinY)
+	bits(16, 0.5, g.bowlR - 0.3, g.bowlY)
+	-- steam off the sauce
+	local steamPart = part("Steam", Vector3.new(0.2, g.basinR1 * 2, g.basinR1 * 2), CFrame.new(g.centre.X, g.basinY + 0.3, g.centre.Z) * CFrame.Angles(0, 0, math.rad(90)), Color3.new(1, 1, 1), Enum.Material.SmoothPlastic, Enum.PartType.Cylinder)
+	steamPart.Transparency = 1
+	local steam = Instance.new("ParticleEmitter"); steam.Name = "Steam"; steam.Texture = "rbxasset://textures/particles/smoke_main.dds"; steam.Color = ColorSequence.new(Color3.fromRGB(255, 250, 245))
+	steam.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 1.2), NumberSequenceKeypoint.new(1, 2.6)}); steam.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.92), NumberSequenceKeypoint.new(0.5, 0.86), NumberSequenceKeypoint.new(1, 1)})
+	steam.Lifetime = NumberRange.new(2.2, 3.2); steam.Rate = num("SteamRate", 5); steam.Speed = NumberRange.new(0.5, 0.9); steam.SpreadAngle = Vector2.new(15, 15); steam.LightEmission = 0.1; steam.Parent = steamPart
+	-- the strands: out of the spout and down into the bowl, over the bowl's edge into the basin, over the outer rim onto the paving
+	local strands = {}
+	local nTop, nRim, nOver = num("NoodleTop", 10), num("NoodleRim", 16), num("NoodleOver", 5)
+	for i = 1, nTop do table.insert(strands, makeStrand(g, "top", i / nTop * 2 * math.pi + rng:NextNumber(-0.2, 0.2), 12, 0.11)) end
+	for i = 1, nRim do table.insert(strands, makeStrand(g, "rim", i / nRim * 2 * math.pi + rng:NextNumber(-0.1, 0.1), 12, 0.1)) end
+	for i = 1, nOver do table.insert(strands, makeStrand(g, "over", i / nOver * 2 * math.pi + rng:NextNumber(-0.3, 0.3), 10, 0.1)) end
+	-- meatballs: a few sitting in the sauce, and now and then one rolling slowly down a rim strand
+	local balls = {}
+	for i = 1, num("MeatballsResting", 5) do
+		local a, r = rng:NextNumber(0, 2 * math.pi), rng:NextNumber(g.basinR0 + 0.4, g.basinR1 - 0.4)
+		local m = meatballPart(g, around(g, r, a, g.basinY + 0.42))
+		table.insert(balls, {m = m, cf = m.CFrame, ph = rng:NextNumber(0, 6)})
 	end
+	local rolling = {}
 	local my = gen
 	task.spawn(function()
-		task.wait(0.6)
-		local nextBall, nextStrand = os.clock() + 1.2, os.clock()
+		local nextRoll = os.clock() + 2
 		while gen == my do
+			local dt = math.min(RunService.RenderStepped:Wait(), 0.05)
 			local t = os.clock()
-			if t >= nextStrand then strand(g); nextStrand = t + num("StrandEvery", 0.45) + rng:NextNumber(0, 0.25) end
-			if t >= nextBall then meatball(g); nextBall = t + num("MeatballEvery", 1.6) + rng:NextNumber(-0.3, 0.5) end
-			task.wait(0.1)
+			local speed = num("NoodleSpeed", 1.0)
+			for _, st in ipairs(strands) do strandStep(st, dt, speed) end
+			for _, bl in ipairs(balls) do if bl.m.Parent then bl.m.CFrame = bl.cf + Vector3.new(0, 0.04 * math.sin(t * 1.2 + bl.ph), 0) end end
+			if t > nextRoll and #rolling < 3 then
+				nextRoll = t + num("MeatballEvery", 5)
+				local st = strands[nTop + rng:NextInteger(1, nRim)]
+				local m, face = meatballPart(g, st.path(0))
+				table.insert(rolling, {m = m, face = face, path = st.path, len = st.len, u = 0, rest = nil})
+			end
+			for i = #rolling, 1, -1 do
+				local rb = rolling[i]
+				if not rb.m.Parent then table.remove(rolling, i)
+				elseif rb.rest then
+					if t - rb.rest > num("MeatballRest", 7) then
+						TweenService:Create(rb.m, TweenInfo.new(0.8), {Transparency = 1}):Play(); TweenService:Create(rb.face, TweenInfo.new(0.8), {Transparency = 1}):Play(); Debris:AddItem(rb.m, 0.9); table.remove(rolling, i)
+					end
+				else
+					rb.u = rb.u + speed * 0.8 * dt / rb.len
+					if rb.u >= 1 then
+						rb.rest = t; rb.m.CFrame = facing(rb.path(1) + Vector3.new(0, 0.38, 0), g.centre) * CFrame.Angles(0, math.pi, 0)
+					else
+						local p = rb.path(rb.u)
+						rb.m.CFrame = CFrame.new(p + Vector3.new(0, 0.45, 0)) * CFrame.Angles(0, 0, -rb.u * 9) * facing(p, g.centre).Rotation
+					end
+				end
+			end
 		end
-		for _, e in ipairs(emitters) do e:Destroy() end
 	end)
 end
 

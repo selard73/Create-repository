@@ -580,3 +580,14 @@ Shannon (petals, twice): "a blurry mess ... not individual petals"; "it has to b
 The petal fountain is now real shapes: petal parts (meshes Petal_A/B/C once petals.fbx is imported; flat ovals until then)
 that fly out of the jets and over the rim, tumble, drift down against drag, land on water/stone/paving, rest, fade.
 Job 65 (after job 64 and her import of petals.fbx): re-run install_modes1 so the Petals asset is adopted and the client updated.
+Shannon (spaghetti, third look): "flying up and everywhere, it should be a slow ooze down of strands, no projectiles";
+the sauce "still does not look like meat sauce" -> strands are chains of noodle pieces creeping along fixed paths (spout ->
+bowl, bowl edge -> basin, outer rim -> paving) at a stud a second; meatballs sit in the sauce, one rolls slowly down a
+strand now and then; the sauce is deep tomato-brown with mince, herb, noodles lying in it and steam.
+
+## Job 65: petals.fbx imported, then the re-run (Studio EDIT; ask Shannon first)
+
+Step 1 (Shannon): File > Import 3D of tools/fountain/model/petals.fbx (commit below) - a Model "petals" with Petal_A/B/C.
+Step 2 (runner): re-run tools/fountain/install_modes1.lua at that commit: adopts "petals" into the assets (Petals), colours
+them, rebuilds FountainModes with the client (real petal meshes in the petal fountain; the spaghetti ooze). Store unchanged
+if job 64 is in (the one-row version; it is restored and re-patched identically). `QQ FMODE DONE`. No publish.
