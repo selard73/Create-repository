@@ -562,3 +562,6 @@ falling down like the water does; the pink sauce looks gruesome"; and "whatever 
 about 2 minutes". Re-run tools/fountain/install_modes1.lua (it rebuilds FountainModes with the new client - noodle pieces
 pour from the water's own emitters, real strands and meatballs tossed out of the spout, an opaque tomato sauce - sets
 Minutes 2, keeps the assets, and turns the three store blurbs from ten to two minutes). Send the `QQ FMODE DONE` line. No publish.
+Shannon: "the frogs look cute"; the petals "are a blur, falling too quickly, they should be falling in slow dreamy motion" ->
+petal emitters at 0.4x the water's speed, pull 5, drag 1.2, life 4.5-6.3 s, rate 0.3x, slow spin (attributes PetalSpeed/
+PetalFall/PetalDrag/PetalLife). Folded into the job 63 re-run (commit below).

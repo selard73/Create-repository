@@ -34,7 +34,7 @@ local F = Instance.new("Folder"); F.Name = "FountainModes"
 F:SetAttribute("FountainPath", "PortoNocciola/13 Hillside town/Fontana del Limone")
 F:SetAttribute("Minutes", 2); F:SetAttribute("Reach", 150)   -- two minutes (Shannon: "different from the French one")
 F:SetAttribute("FrogSoundId", 73626983091367); F:SetAttribute("BounceSoundId", 0)
-F:SetAttribute("PetalTexture", ""); F:SetAttribute("PetalSize", 0.55); F:SetAttribute("PetalRate", 0.6); F:SetAttribute("CarpetCount", 90)
+F:SetAttribute("PetalTexture", ""); F:SetAttribute("PetalSize", 0.55); F:SetAttribute("PetalRate", 0.3); F:SetAttribute("PetalSpeed", 0.4); F:SetAttribute("PetalFall", 5); F:SetAttribute("PetalDrag", 1.2); F:SetAttribute("PetalLife", 4.5); F:SetAttribute("CarpetCount", 90)
 F:SetAttribute("NoodleTexture", ""); F:SetAttribute("NoodleTop", 14); F:SetAttribute("NoodleRim", 20); F:SetAttribute("MeatballEvery", 1.6)
 F:SetAttribute("SignText", "FROG RESORT"); F:SetAttribute("DeckAngle", 0.9)
 F:SetAttribute("RimY", rimY or (c.Y - 2.15 + 1.3)); F:SetAttribute("RimR", rimR); F:SetAttribute("GroundY", groundY)
@@ -148,9 +148,15 @@ local function petalEmitter(src, i)
 	e.LightEmission = 0.05; e.LightInfluence = 0.5
 	e.Size = NumberSequence.new(num("PetalSize", 0.55))
 	e.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.85, 0), NumberSequenceKeypoint.new(1, 1)})
-	e.Lifetime = NumberRange.new(src.Lifetime.Min * 2.0, src.Lifetime.Max * 2.4)
-	e.Rate = src.Rate * num("PetalRate", 0.6)
-	e.Rotation = NumberRange.new(0, 360); e.RotSpeed = NumberRange.new(-240, 240)
+	-- slow and dreamy (Shannon: "the petals are a blur, falling too quickly"): they leave the jets at a fraction of the water's
+	-- speed, fall under a gentle pull against air drag, and drift for seconds, turning slowly
+	local k = num("PetalSpeed", 0.4)
+	e.Speed = NumberRange.new(src.Speed.Min * k, src.Speed.Max * k)
+	e.Acceleration = Vector3.new(0, -num("PetalFall", 5), 0)
+	e.Drag = num("PetalDrag", 1.2)
+	e.Lifetime = NumberRange.new(num("PetalLife", 4.5), num("PetalLife", 4.5) * 1.4)
+	e.Rate = src.Rate * num("PetalRate", 0.3)
+	e.Rotation = NumberRange.new(0, 360); e.RotSpeed = NumberRange.new(-110, 110)
 	e.Orientation = Enum.ParticleOrientation.FacingCamera
 	e.Squash = NumberSequence.new(str("PetalTexture", "") ~= "" and 0 or 0.6)
 	e.Enabled = true

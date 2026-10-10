@@ -106,9 +106,15 @@ local function petalEmitter(src, i)
 	e.LightEmission = 0.05; e.LightInfluence = 0.5
 	e.Size = NumberSequence.new(num("PetalSize", 0.55))
 	e.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.85, 0), NumberSequenceKeypoint.new(1, 1)})
-	e.Lifetime = NumberRange.new(src.Lifetime.Min * 2.0, src.Lifetime.Max * 2.4)
-	e.Rate = src.Rate * num("PetalRate", 0.6)
-	e.Rotation = NumberRange.new(0, 360); e.RotSpeed = NumberRange.new(-240, 240)
+	-- slow and dreamy (Shannon: "the petals are a blur, falling too quickly"): they leave the jets at a fraction of the water's
+	-- speed, fall under a gentle pull against air drag, and drift for seconds, turning slowly
+	local k = num("PetalSpeed", 0.4)
+	e.Speed = NumberRange.new(src.Speed.Min * k, src.Speed.Max * k)
+	e.Acceleration = Vector3.new(0, -num("PetalFall", 5), 0)
+	e.Drag = num("PetalDrag", 1.2)
+	e.Lifetime = NumberRange.new(num("PetalLife", 4.5), num("PetalLife", 4.5) * 1.4)
+	e.Rate = src.Rate * num("PetalRate", 0.3)
+	e.Rotation = NumberRange.new(0, 360); e.RotSpeed = NumberRange.new(-110, 110)
 	e.Orientation = Enum.ParticleOrientation.FacingCamera
 	e.Squash = NumberSequence.new(str("PetalTexture", "") ~= "" and 0 or 0.6)
 	e.Enabled = true
