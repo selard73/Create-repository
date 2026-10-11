@@ -22,12 +22,12 @@ end
 refreshFound()
 player:GetAttributeChangedSignal("FoundIds"):Connect(refreshFound)
 
--- the squirrel as it stands for you: the colour model once found, else the gray one (both stand on the same spot)
+-- the squirrel's model: <id>_color (at run time the gray look is a texture swap on it; SquirrelSetup removes the _gray
+-- twin, which is only tried in case that ever changes - both stand on the same spot)
+local SUFFIXES = {"_color", "_gray"}
 local function modelOf(id)
-	local first, second = id .. "_gray", id .. "_color"
-	if found[id] then first, second = second, first end
-	for _, name in ipairs({first, second}) do
-		local m = workspace:FindFirstChild(name)
+	for _, suf in ipairs(SUFFIXES) do
+		local m = workspace:FindFirstChild(id .. suf)
 		local part = m and (m:FindFirstChild("Squirrel") or m.PrimaryPart or m:FindFirstChildWhichIsA("BasePart", true))
 		if part then return m, part end
 	end
@@ -37,19 +37,24 @@ end
 -- BillboardGui "SquirrelBubbleVR" under its speaker's part, so the speakers' models are looked through: every one with
 -- lines, both the colour and the gray, plus the ones other scripts make talk (Tonio, Polpo the octopus).
 local VR = game:GetService("VRService").VREnabled
-local OTHER_TALKERS = {"conductor_squirrel_color", "conductor_squirrel_gray", "Polpo"}
+local OTHER_TALKERS = {"conductor_squirrel_color", "conductor_squirrel_gray", "Grotta.PolpoBrontolone"}   -- (a dot = a path under workspace)
+local function byPath(path)
+	local node = workspace
+	for name in path:gmatch("[^.]+") do node = node:FindFirstChild(name); if not node then return nil end end
+	return node
+end
 local function someoneTalking()
 	local g = pg:FindFirstChild("SquirrelBubbleGui")
 	if g and #g:GetChildren() > 0 then return true end
 	if VR then
 		for id in pairs(Lines) do
-			for _, suf in ipairs({"_color", "_gray"}) do
+			for _, suf in ipairs(SUFFIXES) do
 				local m = workspace:FindFirstChild(id .. suf)
 				if m and m:FindFirstChild("SquirrelBubbleVR", true) then return true end
 			end
 		end
 		for _, name in ipairs(OTHER_TALKERS) do
-			local m = workspace:FindFirstChild(name)
+			local m = byPath(name)
 			if m and m:FindFirstChild("SquirrelBubbleVR", true) then return true end
 		end
 	end
@@ -118,6 +123,7 @@ while true do
 		local delay = 0.2 + math.random() * 1.0
 		quietUntil = now + delay + 0.6
 		st.restUntil = now + 20   -- (if the line is dropped below, this short rest stands; a said line replaces it)
+		newLinger(now)            -- (a dropped linger pick must not bring the next one on the very next tick)
 		task.delay(delay, function()
 			local c = player.Character; local root = c and c:FindFirstChild("HumanoidRootPart")
 			if not (root and pick.part.Parent and (pick.part.Position - root.Position).Magnitude < pick.r * 1.6) then return end   -- (walked on already)
