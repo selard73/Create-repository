@@ -1149,3 +1149,9 @@ BoatInvite (server 4533, client 5777); RS.BoatTake; BoatServer 40801 -> 41494; B
 restart (the frozen call's switch-back never saved) and put back to false. Rev 6 of BoatInvite (this commit): the boat card's
 DisplayOrder 20 -> 100, so no interact pill (30) can sit on it; a re-run of the installer changes only the BoatInvite folder
 (BoatServer, BoatClient and the Catalogue report "already").
+Verification job 89 + Gifts rev 11 (runner 6, play test after the Edit install, phone emulator): ALL PASS. Gift box 541..589, 0
+overlaps; the Sky Diving Squirrel says "All 44! Now THAT is a high score.", no pack; the jetty sign without its last line; the card
+6 s after the 44th find (the Talk pill at DisplayOrder 30 lay over its corner: 9a1fcbe fixes it, to install on her yes); [Take the
+boat] one click: in the BoatSeat at once, HasChute + ChutePack, no warnings, over the falls the parachute opened, landed in Porto,
+Item_porto 1 (the Gifts card's 180 s fallback came up on landing); the jetty prompt "Bateau" / "Take the boat"; the pill fix puts a
+long pill LEFT of the head (5..305); the Passport outings reworded. Pictures tools/boatinvite/shots/boatinv-j89v-phone-*.jpg.
