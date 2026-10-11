@@ -1186,3 +1186,8 @@ a live server): the plaque reads GUARDIAN OF THE HARBOUR / OF PORTO NOCCIOLA / D
 Porto Nocciola, on October 11, 2026", key resting, no figure; only "PortoKeeper: ready" in the log, no "MakeStatue failed" - so the
 Invoke gave nil without erroring (makeFigure refused in the start-up burst) or mk was nil; the retry covers both. Pre-install
 play test: KeeperDebug built the Porto statue with the key in the raised hand, 3 rounds, even alongside the French statue.
+Job 90 retry test PASSED (runner 6, fresh play test): KeeperDebug crowned at 11.2 s, Figure destroyed at 11.2 s, the retry rebuilt it
+at 31.6 s ("no statue yet for SelBell; building it again" -> "the statue of SelBell stands by the lighthouse"); KeeperDebug:Invoke(nil)
+cleared it. Note: the retry ticks at 20/40/60 s only. She may publish; the next live server should raise Darkknight's statue.
+Next report (Shannon): "the portraits in the French section have the characters in them continuously blinking in and out on mobile
+and vr (but not on desktop)" - runner 6 surveying read-only (theory: the sitter models streaming in and out on low-memory clients).
