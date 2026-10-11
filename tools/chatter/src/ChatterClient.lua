@@ -3,14 +3,17 @@
 -- that has a line pool, ONE nearby squirrel may speak, by Chance, after a short random pause; then nobody speaks for Gap
 -- seconds, and that squirrel rests for about Cooldown seconds. Standing among them, one of them pipes up every Linger
 -- seconds or so. A squirrel talks once you have found it (the mice too); TalkUnfound true lets the hidden ones talk.
--- Nothing is said while a panel is open, while the speaker's own interact pill is up, or (on a screen) where the bubble
--- would run off the edge.
+-- Nothing is said while a panel is open, while an interact pill is up (on a phone any pill, drawn by the player's head; else
+-- one within PillRange of the speaker), or (on a screen) while the speaker is not well inside the view; a picked line waits up
+-- to PendingSecs for its moment, then is let go.
 -- Lines come from the ChatterLines module beside this script; the bubble is the game's SquirrelBubble (VR included), whose
 -- Bubble.talking() says whether any bubble is up and which lets the newest bubble replace an older one (never two at once).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local PPS = game:GetService("ProximityPromptService")
+local UIS = game:GetService("UserInputService")
 local player = Players.LocalPlayer
+local touch = (function() local ok, pi = pcall(function() return UIS.PreferredInput end); if ok and pi ~= nil then return pi == Enum.PreferredInput.Touch end; return UIS.TouchEnabled and not UIS.MouseEnabled end)()
 local pg = player:WaitForChild("PlayerGui")
 local F = script.Parent
 local Lines = require(F:WaitForChild("ChatterLines"))
@@ -20,6 +23,7 @@ local function num(name, d) local v = F:GetAttribute(name) return type(v) == "nu
 
 local found = {}
 local state = {}      -- [id] = {near = bool, restUntil = clock}
+local pending = nil   -- a picked line waiting for its moment (the speaker in view, no pill, no panel, nobody talking)
 local function refreshFound()
 	local was = found
 	found = {}
@@ -95,6 +99,7 @@ local shownPrompts = {}
 PPS.PromptShown:Connect(function(prompt) shownPrompts[prompt] = true end)
 PPS.PromptHidden:Connect(function(prompt) shownPrompts[prompt] = nil end)
 local function pillNear(part)
+	if touch and next(shownPrompts) ~= nil then return true end   -- (a phone draws every pill by the player's own head, anywhere on the screen)
 	for prompt in pairs(shownPrompts) do
 		local holder = prompt.Parent
 		if not (holder and prompt.Enabled) then shownPrompts[prompt] = nil
@@ -159,24 +164,33 @@ while true do
 		-- the rests are charged only for a line actually said; until then just hold everyone quiet through the pause
 		local st = state[pick.id]
 		local delay = 0.2 + math.random() * 1.0
-		quietUntil = now + delay + 0.6
-		st.restUntil = now + 20   -- (if the line is dropped below, this short rest stands; a said line replaces it)
+		local wait = num("PendingSecs", 6)
+		quietUntil = now + delay + wait + 0.6
+		st.restUntil = now + 20   -- (if the line is never said, this short rest stands; a said line replaces it)
 		newLinger(now)            -- (a dropped linger pick must not bring the next one on the very next tick)
-		task.delay(delay, function()
-			local c = player.Character; local root = c and c:FindFirstChild("HumanoidRootPart")
-			if not (root and pick.part.Parent and (pick.part.Position - root.Position).Magnitude < pick.r * 1.6) then return end   -- (walked on already)
-			if someoneTalking() or panelOpen() or pillNear(pick.part) then return end
-			if not VR then   -- (on a flat screen the bubble hangs up and to the right of the speaker: it must have room there)
-				local cam = workspace.CurrentCamera
-				local v, on = cam:WorldToViewportPoint(pick.part.Position)
-				local W, H = cam.ViewportSize.X, cam.ViewportSize.Y
-				if not (on and v.X > 0.08 * W and v.X < 0.68 * W and v.Y > 0.3 * H and v.Y < 0.95 * H) then return end
-			end
-			local t = os.clock()
-			st.restUntil = t + num("Cooldown", 120) * (0.7 + math.random() * 0.6)
-			quietUntil = t + num("Gap", 9) * (0.8 + math.random() * 0.6)
-			newLinger(t)
-			speak(pick.id, pick.entry, pick.m, pick.part)
-		end)
+		pending = {pick = pick, from = now + delay, until_ = now + delay + wait}
+	end
+	-- the pending line: said the first tick its moment comes (within PendingSecs), else let go
+	if pending and now >= pending.from then
+		local pk = pending.pick
+		local c = player.Character; local root = c and c:FindFirstChild("HumanoidRootPart")
+		local near = root and pk.part.Parent and (pk.part.Position - root.Position).Magnitude < pk.r * 1.6
+		local inView = true
+		if not VR then   -- (on a flat screen the bubble hangs beside the speaker: the speaker must be well inside the view)
+			local cam = workspace.CurrentCamera
+			local v, on = cam:WorldToViewportPoint(pk.part.Position)
+			local W, H = cam.ViewportSize.X, cam.ViewportSize.Y
+			inView = on and v.X > 0.08 * W and v.X < 0.92 * W and v.Y > 0.3 * H and v.Y < 0.95 * H
+		end
+		if not near or now > pending.until_ then
+			pending = nil; quietUntil = math.min(quietUntil, now + 1)
+		elseif inView and not (someoneTalking() or panelOpen() or pillNear(pk.part)) then
+			pending = nil
+			local st = state[pk.id]
+			st.restUntil = now + num("Cooldown", 120) * (0.7 + math.random() * 0.6)
+			quietUntil = now + num("Gap", 9) * (0.8 + math.random() * 0.6)
+			newLinger(now)
+			speak(pk.id, pk.entry, pk.m, pk.part)
+		end
 	end
 end

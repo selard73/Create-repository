@@ -1022,3 +1022,16 @@ over her bubble's top half; the church mouse's bubble half off the left edge whi
 Rev 3 (this commit): no line while the speaker's own interact pill is up (ProximityPromptService PromptShown/Hidden, a shown
 prompt within PillRange 8 studs of the speaker), while any panel is open (PlayerGui OpenPanel, the daily card), or on a flat
 screen unless the speaker sits where the bubble has room (x 8..68 % of the viewport, y 30..95 %).
+Preview rev 3 (runner 5, 0c9e6d4, test server, quick-look Chance 1 / Cooldown 10 / Gap 3 / Linger 8): the SquirrelBubble
+swap ran (8415 -> 8854, Bubble.talking a function on the client); pill rule PASS (opera singer silent with her Listen pill
+up; her prompt reaches 17 studs, so with the pill rule she chats only from beyond it); Gifts card up -> silent, closed ->
+the old couple's line within 2 s PASS; never two bubbles; but Rocco spoke under a "Cowrie shell / Pick up" pill (phones draw
+every pill by the player's head, anywhere on the screen), and a line dropped at arrival cost a long wait. SHANNON, watching:
+"those voice boxes are spaced wrong, that is over top of the speaker, not to his side"; "the speech bubble locations are all
+jacked up. They should be placed to the side of the squirrels, so you know they are saying it but it does not cover them in
+any way" (the module centred the bubble just above the head: old couple at 333,199 -> bubble x 247..476, y 41..211; part of
+what she saw was the runner's camera rig behind her avatar). Rev 4 (this commit): SquirrelBubble vr2 is now 10015 chars and
+draws the screen bubble with its tail tip at the head's upper right (AnchorPoint 0,1), mirrored to the upper left at the
+screen's right edge, clamped inside the screen under the HUD row (TOP_GUARD 24 inset px); the installer swaps the whole Source
+when it equals vr1 exactly (else aborts). Chatter: on a touch device ANY shown pill blocks a line; a picked line waits up to
+PendingSecs 6 for its moment (speaker in view x 8..92 %, no pill, no panel, nobody talking) instead of resting the squirrel.

@@ -168,6 +168,33 @@ rows y 26..38, backup HudBackup.CliffTop_pre1 (paste at voxel 9,5,-148), FallsB.
 the cliff pending (she looks in Studio herself). Open: the dark patch on the grass hill west of the outcrop (x < 8, not probed);
 the tan lumps at the cliff's corners by the notch (sandstone-swapped ground where the bands stop).
 
+## Runner 6 (when runner 5 nears 80%; runner 5 = session_01UUMqoPtq2ZgzZTctBWshd3 said so at Oct 11 ~01:40 UTC)
+Runner 5 keeps to short jobs until it stops (the Gifts rev 7 install on Shannon's yes). First jobs for runner 6: whatever
+runner 5 did not finish of 87 rev 7 / 88 (JOB.md, "Result" lines say what is installed), then the next job in JOB.md.
+Read this section, the "Runner 4" rules above, then tools/cloud/JOB.md from job 87 down. The cloud session is "Cloud session
+handoff" (session_01Gwhv9KoRg69mUkZf5xktZw): send it "runner 6 ready" as a cross-session message on first contact, then ONE
+short message per job with every QQ line unchanged. The cloud session answers to the bridge:session_... id your messages carry.
+Standing rules (same as before): ask Shannon before every Studio edit (surveys and play-test previews are read-only and need
+no ask); never publish (she does Alt+P); never write DataStores; installers are fetched from commit-SHA raw GitHub URLs,
+checksummed against the git blob, run in Edit mode (HttpEnabled on for the one fetch and straight back off in the same call);
+every patched script is backed up first to ServerStorage.HudBackup.*; report the QQ line, including any ABORT; keep messages
+short. Shannon's Desktop is C:\Users\slard\OneDrive\Desktop. The repo clone on her PC: pull claude/epic-hawking-188q4l
+before reading or pushing; pictures go to tools/<job>/shots (git add -f, *.jpg is gitignored).
+Runner 5's habits worth keeping: a play-test PREVIEW of an installer's body on the test server (discarded on stop; Edit mode
+checked unchanged afterwards) with pictures on the phone emulator (iPhone 7, 667x375) AND the real screen for anything near
+Roblox's own UI (the capture tool leaves CoreGui out: the tool hotbar at y 305..375, the capture bar on the right edge);
+measured rects in inset space (add 58 for screen y on the phone); one install per round where possible; a client-side log
+line quoted verbatim when a behaviour is in doubt.
+Where things stand (Oct 11 ~01:45 UTC): PUBLISHED 00:51:58Z = jobs 86 v2 and 87 rev 5 (the Gifts card). Not installed yet:
+Gifts rev 7 (= rev 6's DisplayOrder 100 + the phone HUD column: Passport/Purse/Squirrels/Map down the right edge, the gift
+box top-left of the Passport, the squirrel panel and the map shifted 56 px left) and job 88 (squirrel chatter; its installer
+also swaps RS.SquirrelBubble vr1 8415 -> vr2: Bubble.talking(), newest-wins, and the bubble drawn BESIDE the speaker's head,
+never over it - Shannon: "the speech bubble locations are all jacked up ... to the side of the squirrels ... does not cover
+them in any way"). Both need a play-test preview shown to Shannon, then her yes, then she publishes.
+Then, in order (event Oct 18): the message in a bottle game (design chat with her first), the French clothing rebuild (ask
+which issues she saw), the cliff cosmetics (the dark patch on the grass hill west of the outcrop, x < 8; the tan lumps at the
+notch corners).
+
 ## State at Oct 11 ~00:55 UTC (published; runner 5 idle, job 88 next)
 - PUBLISHED by Shannon at 00:51:58Z Oct 11: job 86 v2 (the lip's third clump) and job 87 rev 5 (the Gifts system: the card after
   the first squirrel found or at 180 s, gold outline on the buttons, phone card clear of the tool hotbar). Nothing unpublished.

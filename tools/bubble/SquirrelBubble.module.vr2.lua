@@ -1,6 +1,6 @@
 -- SquirrelBubble (ReplicatedStorage, client): the one way every squirrel speaks to a player (Shannon, Oct 1 2026: "all the
 -- bubbles should look the same"). A drawn comic bubble (italy/bubble/bubble_blob.png) in BuilderSans Medium, drawn flat in a
--- ScreenGui pinned to the speaker every frame (world-space GUIs get tone-mapped and looked cream), a faint shadow, a
+-- ScreenGui pinned beside the speaker every frame (world-space GUIs get tone-mapped and looked cream), a faint shadow, a
 -- scale-in and a fade-out, and one of her squirrel sounds from workspace.Lagoon's SpeechSounds (SpeechMax cuts it short).
 --   Bubble.say(speaker, text, opts) -> the bubble frame
 --   speaker = a Model or a BasePart; opts.secs (3.5), opts.sound (true), opts.sounds (an id list string), opts.volume (0.9)
@@ -14,6 +14,7 @@ local SHADOW, INK = Color3.fromRGB(30, 20, 30), Color3.fromRGB(55, 45, 42)
 local FONT = Font.new("rbxasset://fonts/families/BuilderSans.json", Enum.FontWeight.Medium)
 local MAX_DIST = 80
 local current = setmetatable({}, {__mode = "k"})                               -- speaker part -> its bubble (a new line replaces the old)
+local TOP_GUARD = 24                                                           -- inset-space px kept clear under the HUD row
 function Bubble.talking()                                                      -- is any bubble up, on a screen or in VR?
 	for _, b in pairs(current) do if b.Parent then return true end end
 	return false
@@ -98,7 +99,7 @@ function Bubble.say(speaker, text, opts)
 	if #text > 30 then W, H = 194, 145 end
 	if #text > 55 then W, H = 229, 172 end
 	if #text > 90 then W, H = 264, 198 end
-	local root = Instance.new("Frame"); root.Name = "SquirrelBubble"; root.AnchorPoint = Vector2.new(0.5, 0.5)
+	local root = Instance.new("Frame"); root.Name = "SquirrelBubble"; root.AnchorPoint = Vector2.new(0, 1)   -- (the tail's tip, bottom left, sits at the speaker's upper right: the bubble hangs beside the head, not over it)
 	root.Size = UDim2.fromOffset(W, H); root.BackgroundTransparency = 1; root.Visible = false
 	local scale = Instance.new("UIScale"); scale.Scale = 0.86; scale.Parent = root
 	local function pic(name, pos, colour, z, transparency)
@@ -112,18 +113,31 @@ function Bubble.say(speaker, text, opts)
 	l.BackgroundTransparency = 1; l.FontFace = FONT; l.TextSize = 15; l.TextWrapped = true; l.TextColor3 = INK; l.Text = text; l.ZIndex = 3; l.Parent = root
 	root.Parent = g
 	current[anchor] = root
-	-- pinned to the speaker: up and to the right in camera space, like a BillboardGui with an ExtentsOffset, but drawn flat
-	local conn
+	-- pinned beside the speaker: up and to the right of the head in camera space (up and to the left, mirrored, at the
+	-- screen's right edge), like a BillboardGui with an ExtentsOffset, but drawn flat
+	local conn, flipped = nil, false
 	conn = RunService.RenderStepped:Connect(function()
 		if not (root.Parent and anchor.Parent) then if conn then conn:Disconnect() end; return end
 		local cam = workspace.CurrentCamera
 		if not cam then return end
 		local ext = anchor.Size
-		local world = anchor.Position + Vector3.new(0, 1.5, 0) + cam.CFrame.RightVector * (0.9 * ext.X / 2) + cam.CFrame.UpVector * (1.0 * ext.Y / 2)
-		local p = cam:WorldToScreenPoint(world)
-		local dist = (world - cam.CFrame.Position).Magnitude
+		local up, right = cam.CFrame.UpVector * (0.55 * ext.Y), cam.CFrame.RightVector * (0.55 * ext.X)
+		local p = cam:WorldToScreenPoint(anchor.Position + up + right)                -- the head's upper right
+		local dist = (anchor.Position - cam.CFrame.Position).Magnitude
 		root.Visible = p.Z > 0 and dist <= MAX_DIST
-		root.Position = UDim2.fromOffset(p.X, p.Y)
+		local gs, w, h = g.AbsoluteSize, root.AbsoluteSize.X, root.AbsoluteSize.Y   -- the whole bubble stays on the screen, under the HUD row
+		local x, flip = p.X + 6, false
+		if x + w > gs.X - 4 then                                                     -- no room on the right: hang it off the head's upper LEFT, mirrored
+			local pl = cam:WorldToScreenPoint(anchor.Position + up - right)
+			x, flip = pl.X - 6 - w, true
+		end
+		x = math.clamp(x, 4, math.max(4, gs.X - w - 4))
+		local y = math.clamp(p.Y - 2, TOP_GUARD + h, math.max(TOP_GUARD + h, gs.Y - 4))
+		root.Position = UDim2.fromOffset(x, y)
+		if flip ~= flipped then
+			flipped = flip
+			for _, i in ipairs({shadow, paper}) do i.ImageRectOffset = flip and Vector2.new(440, 0) or Vector2.new(0, 0); i.ImageRectSize = flip and Vector2.new(-440, 330) or Vector2.new(0, 0) end
+		end
 	end)
 	TweenService:Create(scale, TweenInfo.new(0.18, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Scale = 1}):Play()
 	if opts.sound ~= false then playSound(anchor, opts) end

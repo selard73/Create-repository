@@ -1,38 +1,316 @@
 -- install_chatter1.lua (Studio EDIT mode; re-runnable). Job 88. Squirrel chatter: the Porto squirrels and both church mice
 -- talk to passers-by (scattered: one at a time, by chance, with rests). workspace.SquirrelChatter with ChatterLines
--- (15444 chars) and ChatterClient (9117 chars). Undo: delete workspace.SquirrelChatter. No publish.
+-- (15444 chars) and ChatterClient (10129 chars). Undo: delete workspace.SquirrelChatter. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
 local bub = RS:FindFirstChild("SquirrelBubble")
 if not (bub and bub:IsA("ModuleScript")) then print("QQ CHATTER ABORT: ReplicatedStorage.SquirrelBubble not found") return end
--- the SquirrelBubble patch first: Bubble.talking() (is any bubble up) and newest-wins (a new bubble replaces any other); 8415 -> 8854 chars
-local bubNote
-if #bub.Source == 8854 and bub.Source:find("function Bubble.talking()", 1, true) then
-	bubNote = "; SquirrelBubble already patched (8854)"
-elseif #bub.Source == 8415 then
-	local A1, A2 = [==[local current = setmetatable({}, {__mode = "k"})                               -- speaker part -> its bubble (a new line replaces the old)
-]==], [==[	if not (anchor and g and type(text) == "string" and text ~= "") then return nil end
+-- the SquirrelBubble swap first: Bubble.talking() (is any bubble up), newest-wins (a new bubble replaces any other), and the
+-- bubble drawn beside the speaker's head instead of over it; 8415 -> 10015 chars, the whole Source, only when it is exactly vr1
+local V1 = [==[
+-- SquirrelBubble (ReplicatedStorage, client): the one way every squirrel speaks to a player (Shannon, Oct 1 2026: "all the
+-- bubbles should look the same"). A drawn comic bubble (italy/bubble/bubble_blob.png) in BuilderSans Medium, drawn flat in a
+-- ScreenGui pinned to the speaker every frame (world-space GUIs get tone-mapped and looked cream), a faint shadow, a
+-- scale-in and a fade-out, and one of her squirrel sounds from workspace.Lagoon's SpeechSounds (SpeechMax cuts it short).
+--   Bubble.say(speaker, text, opts) -> the bubble frame
+--   speaker = a Model or a BasePart; opts.secs (3.5), opts.sound (true), opts.sounds (an id list string), opts.volume (0.9)
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local Debris = game:GetService("Debris")
+local Bubble = {}
+local IMAGE = "rbxassetid://98516368118872"
+local SHADOW, INK = Color3.fromRGB(30, 20, 30), Color3.fromRGB(55, 45, 42)
+local FONT = Font.new("rbxasset://fonts/families/BuilderSans.json", Enum.FontWeight.Medium)
+local MAX_DIST = 80
+local current = setmetatable({}, {__mode = "k"})                               -- speaker part -> its bubble (a new line replaces the old)
+local function gui()
+	local player = Players.LocalPlayer
+	local pg = player and player:FindFirstChildOfClass("PlayerGui")
+	if not pg then return nil end
+	local g = pg:FindFirstChild("SquirrelBubbleGui")
+	if not g then
+		g = Instance.new("ScreenGui"); g.Name = "SquirrelBubbleGui"; g.ResetOnSpawn = false; g.IgnoreGuiInset = false
+		g.DisplayOrder = 5; g.ZIndexBehavior = Enum.ZIndexBehavior.Sibling; g.Parent = pg
+	end
+	return g
+end
+local function anchorOf(speaker)
+	if typeof(speaker) ~= "Instance" then return nil end
+	if speaker:IsA("BasePart") then return speaker end
+	if speaker:IsA("Model") then return speaker.PrimaryPart or speaker:FindFirstChildWhichIsA("BasePart", true) end
+	return speaker:FindFirstChildWhichIsA("BasePart", true)
+end
+local function playSound(anchor, opts)
+	local lag = workspace:FindFirstChild("Lagoon")
+	local list = opts.sounds or (lag and lag:GetAttribute("SpeechSounds")) or "73324775979494, 90860503936571, 9119556839"
+	local ids = {}
+	for d in tostring(list):gmatch("%d+") do table.insert(ids, d) end
+	if #ids == 0 then return end
+	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://" .. ids[math.random(#ids)]; s.Volume = opts.volume or 0.9
+	s.RollOffMode = Enum.RollOffMode.InverseTapered; s.RollOffMinDistance = 10; s.RollOffMaxDistance = 80; s.Parent = anchor
+	s:Play(); Debris:AddItem(s, 8)
+	task.delay((lag and lag:GetAttribute("SpeechMax")) or 4, function()
+		if s.Parent and s.IsPlaying then TweenService:Create(s, TweenInfo.new(0.5), {Volume = 0}):Play() end
+	end)
+end
+-- VR (Shannon, Oct 9: the flat bubble on the head-following window "does not work well ... better just have those come up
+-- beside the speaker's head in the game"): the same paper bubble as a BillboardGui beside the speaker's head, in the world
+local VR = game:GetService("VRService").VREnabled
+local function sayVR(anchor, text, opts)
+	local old = current[anchor]; if old and old.Parent then old:Destroy() end
+	local secs = opts.secs or 3.5
+	local W, H = 158, 119
+	if #text > 30 then W, H = 194, 145 end
+	if #text > 55 then W, H = 229, 172 end
+	if #text > 90 then W, H = 264, 198 end
+	local ext = anchor.Size
+	local bg = Instance.new("BillboardGui"); bg.Name = "SquirrelBubbleVR"; bg.Size = UDim2.fromScale(W / 40, H / 40); bg.AlwaysOnTop = true; bg.LightInfluence = 0; bg.MaxDistance = MAX_DIST
+	bg.StudsOffset = Vector3.new(0.45 * ext.X + W / 80, 0.5 * ext.Y + H / 80 + 0.4, 0)   -- up and to the right of the head, as on a screen
+	bg.Adornee = anchor
+	local root = Instance.new("Frame"); root.Size = UDim2.fromScale(1, 1); root.BackgroundTransparency = 1; root.Parent = bg
+	local scale = Instance.new("UIScale"); scale.Scale = 0.86; scale.Parent = root
+	local function pic(name, pos, colour, z, transparency)
+		local i = Instance.new("ImageLabel"); i.Name = name; i.Size = UDim2.fromScale(1, 1); i.Position = pos; i.BackgroundTransparency = 1
+		i.Image = IMAGE; i.ImageColor3 = colour; i.ImageTransparency = transparency or 0; i.ScaleType = Enum.ScaleType.Stretch; i.ZIndex = z; i.Parent = root
+		return i
+	end
+	local shadow = pic("Shadow", UDim2.fromScale(0.012, 0.025), SHADOW, 1, 0.9)
+	local paper = pic("Paper", UDim2.fromScale(0, 0), Color3.new(1, 1, 1), 2)
+	local l = Instance.new("TextLabel"); l.AnchorPoint = Vector2.new(0.5, 0.5); l.Position = UDim2.fromScale(0.5, 0.455); l.Size = UDim2.new(0.66, 0, 0.58, 0)
+	l.BackgroundTransparency = 1; l.FontFace = FONT; l.TextScaled = true; l.TextWrapped = true; l.TextColor3 = INK; l.Text = text; l.ZIndex = 3; l.Parent = root
+	bg.Parent = anchor
+	current[anchor] = bg
+	TweenService:Create(scale, TweenInfo.new(0.18, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Scale = 1}):Play()
+	if opts.sound ~= false then playSound(anchor, opts) end
+	task.delay(secs - 0.3, function()
+		if not bg.Parent then return end
+		local ti = TweenInfo.new(0.3)
+		TweenService:Create(shadow, ti, {ImageTransparency = 1}):Play(); TweenService:Create(paper, ti, {ImageTransparency = 1}):Play(); TweenService:Create(l, ti, {TextTransparency = 1}):Play()
+	end)
+	task.delay(secs, function() if bg.Parent then bg:Destroy() end end)
+	return bg
+end
+function Bubble.say(speaker, text, opts)
+	opts = opts or {}
+	local anchor = anchorOf(speaker)
+	local g = gui()
+	if not (anchor and g and type(text) == "string" and text ~= "") then return nil end
+	if VR then return sayVR(anchor, text, opts) end
+	local old = current[anchor]; if old and old.Parent then old:Destroy() end
+	local secs = opts.secs or 3.5
+	local W, H = 158, 119                                                      -- the image is 440 x 330; the text wraps into short lines
+	if #text > 30 then W, H = 194, 145 end
+	if #text > 55 then W, H = 229, 172 end
+	if #text > 90 then W, H = 264, 198 end
+	local root = Instance.new("Frame"); root.Name = "SquirrelBubble"; root.AnchorPoint = Vector2.new(0.5, 0.5)
+	root.Size = UDim2.fromOffset(W, H); root.BackgroundTransparency = 1; root.Visible = false
+	local scale = Instance.new("UIScale"); scale.Scale = 0.86; scale.Parent = root
+	local function pic(name, pos, colour, z, transparency)
+		local i = Instance.new("ImageLabel"); i.Name = name; i.Size = UDim2.fromScale(1, 1); i.Position = pos; i.BackgroundTransparency = 1
+		i.Image = IMAGE; i.ImageColor3 = colour; i.ImageTransparency = transparency or 0; i.ScaleType = Enum.ScaleType.Stretch; i.ZIndex = z; i.Parent = root
+		return i
+	end
+	local shadow = pic("Shadow", UDim2.fromOffset(2, 3), SHADOW, 1, 0.9)
+	local paper = pic("Paper", UDim2.fromOffset(0, 0), Color3.new(1, 1, 1), 2)
+	local l = Instance.new("TextLabel"); l.AnchorPoint = Vector2.new(0.5, 0.5); l.Position = UDim2.fromScale(0.5, 0.455); l.Size = UDim2.new(0.66, 0, 0.58, 0)
+	l.BackgroundTransparency = 1; l.FontFace = FONT; l.TextSize = 15; l.TextWrapped = true; l.TextColor3 = INK; l.Text = text; l.ZIndex = 3; l.Parent = root
+	root.Parent = g
+	current[anchor] = root
+	-- pinned to the speaker: up and to the right in camera space, like a BillboardGui with an ExtentsOffset, but drawn flat
+	local conn
+	conn = RunService.RenderStepped:Connect(function()
+		if not (root.Parent and anchor.Parent) then if conn then conn:Disconnect() end; return end
+		local cam = workspace.CurrentCamera
+		if not cam then return end
+		local ext = anchor.Size
+		local world = anchor.Position + Vector3.new(0, 1.5, 0) + cam.CFrame.RightVector * (0.9 * ext.X / 2) + cam.CFrame.UpVector * (1.0 * ext.Y / 2)
+		local p = cam:WorldToScreenPoint(world)
+		local dist = (world - cam.CFrame.Position).Magnitude
+		root.Visible = p.Z > 0 and dist <= MAX_DIST
+		root.Position = UDim2.fromOffset(p.X, p.Y)
+	end)
+	TweenService:Create(scale, TweenInfo.new(0.18, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Scale = 1}):Play()
+	if opts.sound ~= false then playSound(anchor, opts) end
+	task.delay(secs - 0.3, function()
+		if not root.Parent then return end
+		local ti = TweenInfo.new(0.3)
+		TweenService:Create(shadow, ti, {ImageTransparency = 1}):Play()
+		TweenService:Create(paper, ti, {ImageTransparency = 1}):Play()
+		TweenService:Create(l, ti, {TextTransparency = 1}):Play()
+	end)
+	task.delay(secs, function() if conn then conn:Disconnect() end; if root.Parent then root:Destroy() end end)
+	return root
+end
+return Bubble
 ]==]
-	local I1, I2 = [==[function Bubble.talking()                                                      -- is any bubble up, on a screen or in VR?
+local V2 = [==[
+-- SquirrelBubble (ReplicatedStorage, client): the one way every squirrel speaks to a player (Shannon, Oct 1 2026: "all the
+-- bubbles should look the same"). A drawn comic bubble (italy/bubble/bubble_blob.png) in BuilderSans Medium, drawn flat in a
+-- ScreenGui pinned beside the speaker every frame (world-space GUIs get tone-mapped and looked cream), a faint shadow, a
+-- scale-in and a fade-out, and one of her squirrel sounds from workspace.Lagoon's SpeechSounds (SpeechMax cuts it short).
+--   Bubble.say(speaker, text, opts) -> the bubble frame
+--   speaker = a Model or a BasePart; opts.secs (3.5), opts.sound (true), opts.sounds (an id list string), opts.volume (0.9)
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local Debris = game:GetService("Debris")
+local Bubble = {}
+local IMAGE = "rbxassetid://98516368118872"
+local SHADOW, INK = Color3.fromRGB(30, 20, 30), Color3.fromRGB(55, 45, 42)
+local FONT = Font.new("rbxasset://fonts/families/BuilderSans.json", Enum.FontWeight.Medium)
+local MAX_DIST = 80
+local current = setmetatable({}, {__mode = "k"})                               -- speaker part -> its bubble (a new line replaces the old)
+local TOP_GUARD = 24                                                           -- inset-space px kept clear under the HUD row
+function Bubble.talking()                                                      -- is any bubble up, on a screen or in VR?
 	for _, b in pairs(current) do if b.Parent then return true end end
 	return false
 end
-]==], [==[	for a, b in pairs(current) do if a ~= anchor and b.Parent then b:Destroy() end end   -- (newest wins: one bubble at a time; the ambient chatter never starts over another, so this only cuts a chatter line short for a scripted one)
+local function gui()
+	local player = Players.LocalPlayer
+	local pg = player and player:FindFirstChildOfClass("PlayerGui")
+	if not pg then return nil end
+	local g = pg:FindFirstChild("SquirrelBubbleGui")
+	if not g then
+		g = Instance.new("ScreenGui"); g.Name = "SquirrelBubbleGui"; g.ResetOnSpawn = false; g.IgnoreGuiInset = false
+		g.DisplayOrder = 5; g.ZIndexBehavior = Enum.ZIndexBehavior.Sibling; g.Parent = pg
+	end
+	return g
+end
+local function anchorOf(speaker)
+	if typeof(speaker) ~= "Instance" then return nil end
+	if speaker:IsA("BasePart") then return speaker end
+	if speaker:IsA("Model") then return speaker.PrimaryPart or speaker:FindFirstChildWhichIsA("BasePart", true) end
+	return speaker:FindFirstChildWhichIsA("BasePart", true)
+end
+local function playSound(anchor, opts)
+	local lag = workspace:FindFirstChild("Lagoon")
+	local list = opts.sounds or (lag and lag:GetAttribute("SpeechSounds")) or "73324775979494, 90860503936571, 9119556839"
+	local ids = {}
+	for d in tostring(list):gmatch("%d+") do table.insert(ids, d) end
+	if #ids == 0 then return end
+	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://" .. ids[math.random(#ids)]; s.Volume = opts.volume or 0.9
+	s.RollOffMode = Enum.RollOffMode.InverseTapered; s.RollOffMinDistance = 10; s.RollOffMaxDistance = 80; s.Parent = anchor
+	s:Play(); Debris:AddItem(s, 8)
+	task.delay((lag and lag:GetAttribute("SpeechMax")) or 4, function()
+		if s.Parent and s.IsPlaying then TweenService:Create(s, TweenInfo.new(0.5), {Volume = 0}):Play() end
+	end)
+end
+-- VR (Shannon, Oct 9: the flat bubble on the head-following window "does not work well ... better just have those come up
+-- beside the speaker's head in the game"): the same paper bubble as a BillboardGui beside the speaker's head, in the world
+local VR = game:GetService("VRService").VREnabled
+local function sayVR(anchor, text, opts)
+	local old = current[anchor]; if old and old.Parent then old:Destroy() end
+	local secs = opts.secs or 3.5
+	local W, H = 158, 119
+	if #text > 30 then W, H = 194, 145 end
+	if #text > 55 then W, H = 229, 172 end
+	if #text > 90 then W, H = 264, 198 end
+	local ext = anchor.Size
+	local bg = Instance.new("BillboardGui"); bg.Name = "SquirrelBubbleVR"; bg.Size = UDim2.fromScale(W / 40, H / 40); bg.AlwaysOnTop = true; bg.LightInfluence = 0; bg.MaxDistance = MAX_DIST
+	bg.StudsOffset = Vector3.new(0.45 * ext.X + W / 80, 0.5 * ext.Y + H / 80 + 0.4, 0)   -- up and to the right of the head, as on a screen
+	bg.Adornee = anchor
+	local root = Instance.new("Frame"); root.Size = UDim2.fromScale(1, 1); root.BackgroundTransparency = 1; root.Parent = bg
+	local scale = Instance.new("UIScale"); scale.Scale = 0.86; scale.Parent = root
+	local function pic(name, pos, colour, z, transparency)
+		local i = Instance.new("ImageLabel"); i.Name = name; i.Size = UDim2.fromScale(1, 1); i.Position = pos; i.BackgroundTransparency = 1
+		i.Image = IMAGE; i.ImageColor3 = colour; i.ImageTransparency = transparency or 0; i.ScaleType = Enum.ScaleType.Stretch; i.ZIndex = z; i.Parent = root
+		return i
+	end
+	local shadow = pic("Shadow", UDim2.fromScale(0.012, 0.025), SHADOW, 1, 0.9)
+	local paper = pic("Paper", UDim2.fromScale(0, 0), Color3.new(1, 1, 1), 2)
+	local l = Instance.new("TextLabel"); l.AnchorPoint = Vector2.new(0.5, 0.5); l.Position = UDim2.fromScale(0.5, 0.455); l.Size = UDim2.new(0.66, 0, 0.58, 0)
+	l.BackgroundTransparency = 1; l.FontFace = FONT; l.TextScaled = true; l.TextWrapped = true; l.TextColor3 = INK; l.Text = text; l.ZIndex = 3; l.Parent = root
+	bg.Parent = anchor
+	current[anchor] = bg
+	TweenService:Create(scale, TweenInfo.new(0.18, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Scale = 1}):Play()
+	if opts.sound ~= false then playSound(anchor, opts) end
+	task.delay(secs - 0.3, function()
+		if not bg.Parent then return end
+		local ti = TweenInfo.new(0.3)
+		TweenService:Create(shadow, ti, {ImageTransparency = 1}):Play(); TweenService:Create(paper, ti, {ImageTransparency = 1}):Play(); TweenService:Create(l, ti, {TextTransparency = 1}):Play()
+	end)
+	task.delay(secs, function() if bg.Parent then bg:Destroy() end end)
+	return bg
+end
+function Bubble.say(speaker, text, opts)
+	opts = opts or {}
+	local anchor = anchorOf(speaker)
+	local g = gui()
+	if not (anchor and g and type(text) == "string" and text ~= "") then return nil end
+	for a, b in pairs(current) do if a ~= anchor and b.Parent then b:Destroy() end end   -- (newest wins: one bubble at a time; the ambient chatter never starts over another, so this only cuts a chatter line short for a scripted one)
+	if VR then return sayVR(anchor, text, opts) end
+	local old = current[anchor]; if old and old.Parent then old:Destroy() end
+	local secs = opts.secs or 3.5
+	local W, H = 158, 119                                                      -- the image is 440 x 330; the text wraps into short lines
+	if #text > 30 then W, H = 194, 145 end
+	if #text > 55 then W, H = 229, 172 end
+	if #text > 90 then W, H = 264, 198 end
+	local root = Instance.new("Frame"); root.Name = "SquirrelBubble"; root.AnchorPoint = Vector2.new(0, 1)   -- (the tail's tip, bottom left, sits at the speaker's upper right: the bubble hangs beside the head, not over it)
+	root.Size = UDim2.fromOffset(W, H); root.BackgroundTransparency = 1; root.Visible = false
+	local scale = Instance.new("UIScale"); scale.Scale = 0.86; scale.Parent = root
+	local function pic(name, pos, colour, z, transparency)
+		local i = Instance.new("ImageLabel"); i.Name = name; i.Size = UDim2.fromScale(1, 1); i.Position = pos; i.BackgroundTransparency = 1
+		i.Image = IMAGE; i.ImageColor3 = colour; i.ImageTransparency = transparency or 0; i.ScaleType = Enum.ScaleType.Stretch; i.ZIndex = z; i.Parent = root
+		return i
+	end
+	local shadow = pic("Shadow", UDim2.fromOffset(2, 3), SHADOW, 1, 0.9)
+	local paper = pic("Paper", UDim2.fromOffset(0, 0), Color3.new(1, 1, 1), 2)
+	local l = Instance.new("TextLabel"); l.AnchorPoint = Vector2.new(0.5, 0.5); l.Position = UDim2.fromScale(0.5, 0.455); l.Size = UDim2.new(0.66, 0, 0.58, 0)
+	l.BackgroundTransparency = 1; l.FontFace = FONT; l.TextSize = 15; l.TextWrapped = true; l.TextColor3 = INK; l.Text = text; l.ZIndex = 3; l.Parent = root
+	root.Parent = g
+	current[anchor] = root
+	-- pinned beside the speaker: up and to the right of the head in camera space (up and to the left, mirrored, at the
+	-- screen's right edge), like a BillboardGui with an ExtentsOffset, but drawn flat
+	local conn, flipped = nil, false
+	conn = RunService.RenderStepped:Connect(function()
+		if not (root.Parent and anchor.Parent) then if conn then conn:Disconnect() end; return end
+		local cam = workspace.CurrentCamera
+		if not cam then return end
+		local ext = anchor.Size
+		local up, right = cam.CFrame.UpVector * (0.55 * ext.Y), cam.CFrame.RightVector * (0.55 * ext.X)
+		local p = cam:WorldToScreenPoint(anchor.Position + up + right)                -- the head's upper right
+		local dist = (anchor.Position - cam.CFrame.Position).Magnitude
+		root.Visible = p.Z > 0 and dist <= MAX_DIST
+		local gs, w, h = g.AbsoluteSize, root.AbsoluteSize.X, root.AbsoluteSize.Y   -- the whole bubble stays on the screen, under the HUD row
+		local x, flip = p.X + 6, false
+		if x + w > gs.X - 4 then                                                     -- no room on the right: hang it off the head's upper LEFT, mirrored
+			local pl = cam:WorldToScreenPoint(anchor.Position + up - right)
+			x, flip = pl.X - 6 - w, true
+		end
+		x = math.clamp(x, 4, math.max(4, gs.X - w - 4))
+		local y = math.clamp(p.Y - 2, TOP_GUARD + h, math.max(TOP_GUARD + h, gs.Y - 4))
+		root.Position = UDim2.fromOffset(x, y)
+		if flip ~= flipped then
+			flipped = flip
+			for _, i in ipairs({shadow, paper}) do i.ImageRectOffset = flip and Vector2.new(440, 0) or Vector2.new(0, 0); i.ImageRectSize = flip and Vector2.new(-440, 330) or Vector2.new(0, 0) end
+		end
+	end)
+	TweenService:Create(scale, TweenInfo.new(0.18, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Scale = 1}):Play()
+	if opts.sound ~= false then playSound(anchor, opts) end
+	task.delay(secs - 0.3, function()
+		if not root.Parent then return end
+		local ti = TweenInfo.new(0.3)
+		TweenService:Create(shadow, ti, {ImageTransparency = 1}):Play()
+		TweenService:Create(paper, ti, {ImageTransparency = 1}):Play()
+		TweenService:Create(l, ti, {TextTransparency = 1}):Play()
+	end)
+	task.delay(secs, function() if conn then conn:Disconnect() end; if root.Parent then root:Destroy() end end)
+	return root
+end
+return Bubble
 ]==]
-	local src = bub.Source
-	local a1, b1 = src:find(A1, 1, true); local a2, b2 = src:find(A2, 1, true)
-	if not (a1 and a2 and not src:find(A1, b1 + 1, true) and not src:find(A2, b2 + 1, true)) then print("QQ CHATTER ABORT: SquirrelBubble is 8415 chars but its anchors are not where expected; nothing changed") return end
+local bubNote
+if bub.Source == V2 then
+	bubNote = "; SquirrelBubble already vr2 (10015)"
+elseif bub.Source == V1 then
+	local f, err = loadstring(V2); if not f then print("QQ CHATTER ABORT: the vr2 SquirrelBubble does not compile: " .. tostring(err)) return end
 	local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 	if not hb:FindFirstChild("SquirrelBubble_pre_vr2") then local bk = bub:Clone(); bk.Name = "SquirrelBubble_pre_vr2"; bk.Parent = hb end
-	local out = src:sub(1, b1) .. I1 .. src:sub(b1 + 1)
-	a2, b2 = out:find(A2, 1, true)
-	out = out:sub(1, b2) .. I2 .. out:sub(b2 + 1)
-	if #out ~= 8854 then print(string.format("QQ CHATTER ABORT: the patched SquirrelBubble would be %d chars, expected 8854; nothing changed", #out)) return end
-	local f, err = loadstring(out); if not f then print("QQ CHATTER ABORT: the patched SquirrelBubble does not compile: " .. tostring(err)) return end
-	bub.Source = out
+	bub.Source = V2
 	bubNote = "; SquirrelBubble 8415 -> " .. #bub.Source .. " (backup HudBackup.SquirrelBubble_pre_vr2)"
 else
-	print(string.format("QQ CHATTER ABORT: SquirrelBubble is %d chars, expected 8415 (the vr1 module) or 8854 (already patched); nothing changed", #bub.Source)) return
+	print(string.format("QQ CHATTER ABORT: SquirrelBubble is %d chars and not the vr1 module (expected 8415) nor vr2 (10015); nothing changed", #bub.Source)) return
 end
 local LINES = [===[
 -- ChatterLines (ModuleScript in workspace.SquirrelChatter): what the squirrels of Porto Nocciola, and the two church mice,
@@ -342,14 +620,17 @@ local CLIENT = [===[
 -- that has a line pool, ONE nearby squirrel may speak, by Chance, after a short random pause; then nobody speaks for Gap
 -- seconds, and that squirrel rests for about Cooldown seconds. Standing among them, one of them pipes up every Linger
 -- seconds or so. A squirrel talks once you have found it (the mice too); TalkUnfound true lets the hidden ones talk.
--- Nothing is said while a panel is open, while the speaker's own interact pill is up, or (on a screen) where the bubble
--- would run off the edge.
+-- Nothing is said while a panel is open, while an interact pill is up (on a phone any pill, drawn by the player's head; else
+-- one within PillRange of the speaker), or (on a screen) while the speaker is not well inside the view; a picked line waits up
+-- to PendingSecs for its moment, then is let go.
 -- Lines come from the ChatterLines module beside this script; the bubble is the game's SquirrelBubble (VR included), whose
 -- Bubble.talking() says whether any bubble is up and which lets the newest bubble replace an older one (never two at once).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local PPS = game:GetService("ProximityPromptService")
+local UIS = game:GetService("UserInputService")
 local player = Players.LocalPlayer
+local touch = (function() local ok, pi = pcall(function() return UIS.PreferredInput end); if ok and pi ~= nil then return pi == Enum.PreferredInput.Touch end; return UIS.TouchEnabled and not UIS.MouseEnabled end)()
 local pg = player:WaitForChild("PlayerGui")
 local F = script.Parent
 local Lines = require(F:WaitForChild("ChatterLines"))
@@ -359,6 +640,7 @@ local function num(name, d) local v = F:GetAttribute(name) return type(v) == "nu
 
 local found = {}
 local state = {}      -- [id] = {near = bool, restUntil = clock}
+local pending = nil   -- a picked line waiting for its moment (the speaker in view, no pill, no panel, nobody talking)
 local function refreshFound()
 	local was = found
 	found = {}
@@ -434,6 +716,7 @@ local shownPrompts = {}
 PPS.PromptShown:Connect(function(prompt) shownPrompts[prompt] = true end)
 PPS.PromptHidden:Connect(function(prompt) shownPrompts[prompt] = nil end)
 local function pillNear(part)
+	if touch and next(shownPrompts) ~= nil then return true end   -- (a phone draws every pill by the player's own head, anywhere on the screen)
 	for prompt in pairs(shownPrompts) do
 		local holder = prompt.Parent
 		if not (holder and prompt.Enabled) then shownPrompts[prompt] = nil
@@ -498,25 +781,34 @@ while true do
 		-- the rests are charged only for a line actually said; until then just hold everyone quiet through the pause
 		local st = state[pick.id]
 		local delay = 0.2 + math.random() * 1.0
-		quietUntil = now + delay + 0.6
-		st.restUntil = now + 20   -- (if the line is dropped below, this short rest stands; a said line replaces it)
+		local wait = num("PendingSecs", 6)
+		quietUntil = now + delay + wait + 0.6
+		st.restUntil = now + 20   -- (if the line is never said, this short rest stands; a said line replaces it)
 		newLinger(now)            -- (a dropped linger pick must not bring the next one on the very next tick)
-		task.delay(delay, function()
-			local c = player.Character; local root = c and c:FindFirstChild("HumanoidRootPart")
-			if not (root and pick.part.Parent and (pick.part.Position - root.Position).Magnitude < pick.r * 1.6) then return end   -- (walked on already)
-			if someoneTalking() or panelOpen() or pillNear(pick.part) then return end
-			if not VR then   -- (on a flat screen the bubble hangs up and to the right of the speaker: it must have room there)
-				local cam = workspace.CurrentCamera
-				local v, on = cam:WorldToViewportPoint(pick.part.Position)
-				local W, H = cam.ViewportSize.X, cam.ViewportSize.Y
-				if not (on and v.X > 0.08 * W and v.X < 0.68 * W and v.Y > 0.3 * H and v.Y < 0.95 * H) then return end
-			end
-			local t = os.clock()
-			st.restUntil = t + num("Cooldown", 120) * (0.7 + math.random() * 0.6)
-			quietUntil = t + num("Gap", 9) * (0.8 + math.random() * 0.6)
-			newLinger(t)
-			speak(pick.id, pick.entry, pick.m, pick.part)
-		end)
+		pending = {pick = pick, from = now + delay, until_ = now + delay + wait}
+	end
+	-- the pending line: said the first tick its moment comes (within PendingSecs), else let go
+	if pending and now >= pending.from then
+		local pk = pending.pick
+		local c = player.Character; local root = c and c:FindFirstChild("HumanoidRootPart")
+		local near = root and pk.part.Parent and (pk.part.Position - root.Position).Magnitude < pk.r * 1.6
+		local inView = true
+		if not VR then   -- (on a flat screen the bubble hangs beside the speaker: the speaker must be well inside the view)
+			local cam = workspace.CurrentCamera
+			local v, on = cam:WorldToViewportPoint(pk.part.Position)
+			local W, H = cam.ViewportSize.X, cam.ViewportSize.Y
+			inView = on and v.X > 0.08 * W and v.X < 0.92 * W and v.Y > 0.3 * H and v.Y < 0.95 * H
+		end
+		if not near or now > pending.until_ then
+			pending = nil; quietUntil = math.min(quietUntil, now + 1)
+		elseif inView and not (someoneTalking() or panelOpen() or pillNear(pk.part)) then
+			pending = nil
+			local st = state[pk.id]
+			st.restUntil = now + num("Cooldown", 120) * (0.7 + math.random() * 0.6)
+			quietUntil = now + num("Gap", 9) * (0.8 + math.random() * 0.6)
+			newLinger(now)
+			speak(pk.id, pk.entry, pk.m, pk.part)
+		end
 	end
 end
 ]===]
@@ -540,7 +832,7 @@ if old then
 	for _, s in ipairs(old:GetChildren()) do if s:IsA("BaseScript") then s.Enabled = false end end
 end
 local F = Instance.new("Folder"); F.Name = "SquirrelChatter"
-local defaults = {Range = 10, Chance = 0.55, Cooldown = 120, Gap = 9, Linger = 45, Secs = 4.2, PillRange = 8, TalkUnfound = false, Enabled = true}
+local defaults = {Range = 10, Chance = 0.55, Cooldown = 120, Gap = 9, Linger = 45, Secs = 4.2, PillRange = 8, PendingSecs = 6, TalkUnfound = false, Enabled = true}
 for k, v in pairs(defaults) do if attrs[k] ~= nil then F:SetAttribute(k, attrs[k]) else F:SetAttribute(k, v) end end
 local m = Instance.new("ModuleScript"); m.Name = "ChatterLines"; m.Source = LINES; m.Parent = F
 local c = Instance.new("Script"); c.Name = "ChatterClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
