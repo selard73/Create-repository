@@ -997,6 +997,9 @@ GiftsClient 23760 ...; the old Gifts folder is HudBackup.Gifts_pre_1. Preview, 0
 screen): column 609..657, gift box 553..601; squirrel list 124..549 y 64..241 (scale 0.7644; portraits 47 px, a tap opens the
 card); map 254..549 y 64..283 with +/-/Me at 517..541; panel switching clean; HudBarClient-style refits re-capped at once; the
 card at DisplayOrder 100. Pictures tools/gifts/shots/gifts-j87r9-phone-*. Unpublished in Studio: job 87 rev 9.
+Shannon after the install: "maybe move the gift icon a little over to the left so there is a little room between it and the
+passport icon". Rev 10 (this commit): the gift box's right edge 20 px left of the Passport instead of 8 (phone x 541..589;
+COLUMN_X -78). Nothing else changed.
 
 ## Job 88: squirrel chatter - the Porto squirrels and both church mice talk to passers-by (Studio EDIT; preview, then ask Shannon)
 

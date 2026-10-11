@@ -1,6 +1,6 @@
 -- install_gifts1.lua (Studio EDIT mode; re-runnable). Job 87. The Gifts system: like + favourite + notifications -> the
 -- Backpack (on trust), join the community -> acorns (checked), invite a friend -> double acorns while you play together
--- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (23760 chars);
+-- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (23826 chars);
 -- ReplicatedStorage.GiftsAction / GiftsEvent. Undo: delete workspace.Gifts and the two remotes. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
@@ -374,7 +374,7 @@ end)
 -- right edge (Passport, Purse, Squirrels, Map), the gift box sits on the top row to the left of the Passport, and the two
 -- panels HudBarClient opens top-right get their right edge moved left of the column and of Roblox's capture bar at its
 -- default spot (x 557..601 on the 667-wide phone), with their UIScale capped so they end right of the Hint button.
-local COLUMN_X = -(10 + 48 + 8)                 -- the gift box's right edge (the bar sits at -10)
+local COLUMN_X = -(10 + 48 + 20)                -- the gift box's right edge: 20 px left of the Passport (Shannon: "a little room between it and the passport icon")
 local PANEL_RIGHT = -(10 + 48 + 8 + 44 + 8)     -- the panels' right edge: left of the column and of the capture bar (44 wide)
 local HINT_RIGHT = 124                          -- the Hint button ends at x 116
 local function placePanel(panel)
