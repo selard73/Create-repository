@@ -1,6 +1,6 @@
 -- install_gifts1.lua (Studio EDIT mode; re-runnable). Job 87. The Gifts system: like + favourite + notifications -> the
 -- Backpack (on trust), join the community -> acorns (checked), invite a friend -> double acorns while you play together
--- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (22086 chars);
+-- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (23423 chars);
 -- ReplicatedStorage.GiftsAction / GiftsEvent. Undo: delete workspace.Gifts and the two remotes. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
@@ -369,19 +369,42 @@ end)
 -- Desktop: the gift box joins the row, left of the others (the bar widened to 272). Phone (Shannon, Oct 11: "that row on
 -- mobile is suddenly very crowded up there, could we stack those icons down the right side instead and keep the gift icon
 -- top to the left of the passport"): the bar's four squares become a column down the right edge (Passport, Purse,
--- Squirrels, Map) and the gift box sits on the top row to the left of the Passport. The squirrel panel and the map, which
--- open top-right under the icons, move 56 px left so the column never crosses them.
-local COLUMN_X = -(10 + 48 + 8)   -- the gift box's right edge, and the panels' right edge, left of the column (bar at -10)
-local function leftOfColumn(panel)
-	if panel and panel:IsA("GuiObject") and panel.Position.X.Scale == 1 and panel.Position.X.Offset > COLUMN_X then
-		panel.Position = UDim2.new(1, COLUMN_X, panel.Position.Y.Scale, panel.Position.Y.Offset)
+-- Squirrels, Map) and the gift box sits on the top row to the left of the Passport. The squirrel panel and the map open
+-- top-right under the icons, where the column would cross them (and moving them left put the squirrel panel over the Hint
+-- button and the map's buttons under Roblox's capture bar), so while one of them is open the column folds away: only that
+-- panel's own toggle stays, on the top row left of the gift box, and the column comes back when it closes.
+local COLUMN_X = -(10 + 48 + 8)          -- the gift box's right edge (the bar sits at -10)
+local TOGGLE_X = COLUMN_X - 48 - 8        -- an open panel's toggle, left of the gift box
+local function tipOf(btn) local t = btn:FindFirstChild("Tip"); return t and t:IsA("TextLabel") and t.Text or "" end
+local function foldColumn(hud, bar, panelName)   -- panelName "Squirrels" / "Map" while that panel is open, nil when both are closed
+	for _, btn in ipairs(bar:GetChildren()) do
+		if btn:IsA("GuiButton") then
+			if panelName and tipOf(btn) == panelName then
+				btn.AnchorPoint = Vector2.new(1, 0); btn.Position = UDim2.new(1, TOGGLE_X, 0, bar.Position.Y.Offset); btn.Parent = hud
+			else btn.Visible = panelName == nil or tipOf(btn) == "Passport" end   -- (the Passport, top of the column, sits above the panels anyway)
+		end
+	end
+	for _, btn in ipairs(hud:GetChildren()) do   -- a toggle parked on the top row goes back into the column
+		if btn:IsA("GuiButton") and btn.Name ~= "Gifts" and (not panelName or tipOf(btn) ~= panelName) then btn.Parent = bar; btn.Visible = true end
 	end
 end
-local function hookSquirrelHud(g)
-	local panel = g:WaitForChild("Panel", 30)
-	if not panel then return end
-	leftOfColumn(panel)
-	panel:GetPropertyChangedSignal("Position"):Connect(function() leftOfColumn(panel) end)   -- (HudBarClient puts it back at -10 when it hooks a rebuilt HUD)
+local function watchPanels(hud, bar)
+	local map = hud:FindFirstChild("MapPanel")
+	local function refold()
+		local sh = pg:FindFirstChild("SquirrelHUD"); local sp = sh and sh:FindFirstChild("Panel")
+		local m = hud:FindFirstChild("MapPanel")
+		if sp and sp.Visible then foldColumn(hud, bar, "Squirrels")
+		elseif m and m.Visible then foldColumn(hud, bar, "Map")
+		else foldColumn(hud, bar, nil) end
+	end
+	if map then map:GetPropertyChangedSignal("Visible"):Connect(refold) end
+	local function hookSquirrelHud(g)
+		local panel = g:WaitForChild("Panel", 30)
+		if panel then panel:GetPropertyChangedSignal("Visible"):Connect(refold); refold() end
+	end
+	local sh = pg:FindFirstChild("SquirrelHUD"); if sh then task.spawn(hookSquirrelHud, sh) end
+	pg.ChildAdded:Connect(function(c) if c.Name == "SquirrelHUD" then task.defer(hookSquirrelHud, c) end end)
+	refold()
 end
 task.spawn(function()
 	for _ = 1, 120 do
@@ -392,9 +415,7 @@ task.spawn(function()
 					local lay = bar:FindFirstChildOfClass("UIListLayout")
 					if lay then lay.FillDirection = Enum.FillDirection.Vertical; lay.HorizontalAlignment = Enum.HorizontalAlignment.Right; lay.VerticalAlignment = Enum.VerticalAlignment.Top end
 					bar.Size = UDim2.new(bar.Size.X.Scale, 48, 0, 216)   -- (four squares and three gaps, down the right edge)
-					leftOfColumn(hud:FindFirstChild("MapPanel"))
-					local sh = pg:FindFirstChild("SquirrelHUD"); if sh then task.spawn(hookSquirrelHud, sh) end
-					pg.ChildAdded:Connect(function(c) if c.Name == "SquirrelHUD" then task.defer(hookSquirrelHud, c) end end)
+					task.defer(watchPanels, hud, bar)
 				elseif bar.Size.X.Offset > 0 and bar.Size.X.Offset < 272 then
 					bar.Size = UDim2.new(bar.Size.X.Scale, 272, bar.Size.Y.Scale, bar.Size.Y.Offset)   -- (four squares + one)
 				end

@@ -975,6 +975,15 @@ maybe stack those icons down the right side instead and maybe keep the gift icon
 edge at x 609..657, y 8..224 on the 667x375 phone), the gift box sits on the top row at x 553..601 (left of the Passport),
 the squirrel Panel and the MapPanel (anchored top-right at y 114, placed once by HudBarClient) move 56 px left so their right
 edge is at 601, re-applied if HudBarClient puts a rebuilt Panel back; the x2 badge sits left of the purse. Desktop unchanged.
+Preview rev 7 (runner 5, 8e5e653, NOT installed): the column itself is clean (Bar x 609..657, y 8..224; gift box 553..601;
+no overlap with the title pill 216..451, Hint, jump, hotbar, or Roblox's capture bar at x 557..601, y 125..249 - 8 px clear),
+but the panels moved 56 px left made two new overlaps: SquirrelHUD.Panel (x 76..601) over the Hint button by 40 px, and the
+MapPanel's +/- buttons under the capture bar. Pictures tools/gifts/shots/gifts-j87r7-phone-*. Runner 5 stopped there (memory).
+Rev 8 (this commit): the panels stay where HudBarClient puts them (right edge 657, y 114); while the squirrel panel or the map
+is open the column FOLDS AWAY - only that panel's own toggle stays, parked on the top row at x 497..545 (left of the gift box;
+found by its "Tip" label text), the Passport stays at the top of the column, Purse and the other toggle hide - and the column
+returns when the panel closes (Visible watched on SquirrelHUD.Panel and HudBar.MapPanel, re-hooked on a rebuilt SquirrelHUD).
+Desktop unchanged. Runner 6 (session_01TQwZKeCYsD9TwPfGwTDoud, "runner 6 ready" at 7fc8f73) previews this one.
 
 ## Job 88: squirrel chatter - the Porto squirrels and both church mice talk to passers-by (Studio EDIT; preview, then ask Shannon)
 
