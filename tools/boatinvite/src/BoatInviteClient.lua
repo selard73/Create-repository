@@ -29,7 +29,7 @@ local function text(t, size, colour, y, h)
 	return l
 end
 text("All 44 found!", 22, CREAM, 10, 28)
-text("The boat to Italy is waiting at the river dock. Your parachute is packed for the waterfall!", 14, GOLD, 40, 52)
+text("The boat to Italy is waiting at the river dock.", 15, GOLD, 44, 44)
 local go = Instance.new("TextButton"); go.AnchorPoint = Vector2.new(0.5, 0); go.Position = UDim2.new(0.5, 0, 0, 98); go.Size = UDim2.fromOffset(170, 38)
 go.BackgroundColor3 = GOLD; go.BorderSizePixel = 0; go.Font = FONT; go.TextSize = 18; go.TextColor3 = DEEP; go.Text = "Take the boat"; go.AutoButtonColor = true; go.Parent = card; corner(go, 12)
 local later = Instance.new("TextButton"); later.AnchorPoint = Vector2.new(0.5, 1); later.Position = UDim2.new(0.5, 0, 1, -4); later.Size = UDim2.fromOffset(120, 24)

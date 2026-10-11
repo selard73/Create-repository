@@ -1114,3 +1114,5 @@ opens over the falls; once also with a parachute already borrowed; the jetty sig
 PUBLISHED v1317 at 01:59:55Z Oct 11 (runner 6, from the Studio log): Gifts rev 9 is live (the phone HUD column); job 88 was
 never in Edit. Job 89 preview waits for Studio to be opened. Preview plan changed: the test server gets only BoatInvite and a
 stand-in RS.BoatTake (prints); the real BoatServer patch is checked after the Edit install in a new play test (undo: the backup).
+Job 89 rev 3 (Shannon: "don't say parachute packed for the waterfall"): the card reads only "All 44 found!" / "The boat to Italy is
+waiting at the river dock." [Take the boat] [Later]. Rev 2 (76f6758) also: the grant first in take(), the sign's last line dropped.
