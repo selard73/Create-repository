@@ -169,6 +169,7 @@ the cliff pending (she looks in Studio herself). Open: the dark patch on the gra
 the tan lumps at the cliff's corners by the notch (sandstone-swapped ground where the bands stop).
 
 ## State at Oct 11 ~03:00 UTC (runner 6)
+- PAUSED until Wednesday (Shannon: weekly token budget). Pick up with Gifts rev 10 (c991424) preview + her yes, then her publish.
 - Installed in Edit, NOT published: job 87 rev 9 (the phone HUD column; the squirrel list and map left of it). Rev 10 (the gift
   box 20 px left of the Passport) waits for her yes. Then she publishes.
 - Job 88 (squirrel chatter, church mice) CANCELLED at her word: no new speech bubbles; the bubble module stays as it was (vr1).
