@@ -1158,3 +1158,9 @@ long pill LEFT of the head (5..305); the Passport outings reworded. Pictures too
 Job 89 re-run at 9a1fcbe INSTALLED in Edit on her yes: BoatInvite client 5901 with DisplayOrder 100 (old folder
 HudBackup.BoatInvite_pre_1); BoatServer 41494, BoatClient 21020, Catalogue 11390 unchanged. Studio holds, unpublished: Gifts rev 11
 + PromptClient pill2 + job 89. She publishes next.
+PUBLISHED v1322 at 12:52:07Z Oct 11 (Studio log, runner 6): Gifts rev 11 + PromptClient pill2 + job 89 (card at DisplayOrder 100,
+to be confirmed as BoatInviteClient 5901 in Edit when Studio is next open).
+Open question (Shannon): the Italy Guardian plinth (workspace.PortoKeeper, a clone of the French Champion plinth) shows "Darkknight"
+with no statue. Runner 6's read-only survey is blocked until Studio is open; the logs show no PortoKeeper/Champion errors. Two
+readings: the clone kept the French plaque's text and PortoKeeperServer never rewrote it, or Darkknight holds the Porto record and
+the statue build failed. Plaque texts (Edit) + both servers' plaque code decide it.
