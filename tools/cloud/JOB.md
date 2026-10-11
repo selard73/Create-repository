@@ -1180,3 +1180,9 @@ figure is built as name = "Figure". Test plan: a play test with KeeperDebug:Invo
 install, to see that the statue builds by the lighthouse; on her yes install in Edit; a NEW play test: KeeperDebug, then delete
 PortoKeeper.Figure inside the first minute and watch the retry rebuild it within 20 s. She publishes; the next live server builds
 Darkknight's statue.
+Result job 90 (runner 6, c8c4e91, Shannon's "figure out what went wrong and fix it"; INSTALLED in Edit, NOT published): counts 1/1/1/1/1;
+QQ STATUE DONE: PortoKeeperServer 11263 -> 11893; the MakeStatue lookup now waits; the retry appended. Live facts (Shannon, F9 on
+a live server): the plaque reads GUARDIAN OF THE HARBOUR / OF PORTO NOCCIOLA / Darkknight / "First to find all 44 squirrels of
+Porto Nocciola, on October 11, 2026", key resting, no figure; only "PortoKeeper: ready" in the log, no "MakeStatue failed" - so the
+Invoke gave nil without erroring (makeFigure refused in the start-up burst) or mk was nil; the retry covers both. Pre-install
+play test: KeeperDebug built the Porto statue with the key in the raised hand, 3 rounds, even alongside the French statue.
