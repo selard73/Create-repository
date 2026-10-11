@@ -956,6 +956,13 @@ the LETTERS, never the button. Also seen on the real phone screen (the capture t
 (y 305..375 on the 667x375 phone) lay over the card's bottom and "Later". Rev 5 (this commit): ApplyStrokeMode Border (the
 glinting gold ring is on the button's edge); the phone card is 216 tall (rows 44, footer 32 = "Later" only, ending at y 294,
 above the hotbar) with one-line gift texts, and a note takes the subtitle's line for a few seconds instead of a footer.
+Result job 87 (runner 5, rev 5 at 598bb2a, Shannon's yes; INSTALLED in Edit, not published): workspace.Gifts (GiftsServer
+8379, GiftsClient 19711; GroupId 969906332, CommunityAcorns 150, BoostMaxGain 150, LikeReward backpack, PopupDelay 180,
+FirstFind true, AutoPopup true, BoostOn true), RS.GiftsAction / GiftsEvent, HttpEnabled back off, PlaceVersion 1301. Preview
+measured: rims Border on all three, the ring on the edges; phone card y 20..236 inset, "Later" 206..232, hotbar from 247
+(11 px clear, real screen checked); notes one line each; Turn on -> Claim -> Item_gift_like 1 + Item_backpack 1; Join ->
+160 -> 260 acorns, Item_gift_community 1, "Thank you" green. Not checked: desktop layout, the acorn ding, x2 with a second
+player. Pictures tools/gifts/shots/gifts-j87r5-phone-*.jpg. Unpublished in Studio: job 86 v2 and job 87.
 
 ## Job 88: squirrel chatter - the Porto squirrels and both church mice talk to passers-by (Studio EDIT; preview, then ask Shannon)
 
