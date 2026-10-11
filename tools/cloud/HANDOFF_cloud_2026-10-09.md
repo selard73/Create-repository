@@ -168,6 +168,13 @@ rows y 26..38, backup HudBackup.CliffTop_pre1 (paste at voxel 9,5,-148), FallsB.
 the cliff pending (she looks in Studio herself). Open: the dark patch on the grass hill west of the outcrop (x < 8, not probed);
 the tan lumps at the cliff's corners by the notch (sandstone-swapped ground where the bands stop).
 
+## State at Oct 11 ~00:55 UTC (published; runner 5 idle, job 88 next)
+- PUBLISHED by Shannon at 00:51:58Z Oct 11: job 86 v2 (the lip's third clump) and job 87 rev 5 (the Gifts system: the card after
+  the first squirrel found or at 180 s, gold outline on the buttons, phone card clear of the tool hotbar). Nothing unpublished.
+- Job 88 (squirrel chatter, tools/chatter, 196 lines for 44 speakers, found-only, the mice included) reviewed and fixed; a
+  second verification pass runs; then the runner previews it in a play test and installs on her yes.
+- Then: the message in a bottle game (design chat first), the French clothing rebuild (ask which issues), the cliff cosmetics.
+
 ## State at Oct 10 ~23:30 UTC (runner 5 on job 87)
 - Installed since the 19:26Z publish, NOT published: job 86 v2 (LipClump_3 at 168.2,-7.0,-550.3; the lip's right corner closed).
 - Job 87 (the Gifts system, tools/gifts): previewed by runner 5 at 7788820 (all flows worked, pictures in tools/gifts/shots);

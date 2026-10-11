@@ -963,6 +963,8 @@ measured: rims Border on all three, the ring on the edges; phone card y 20..236 
 (11 px clear, real screen checked); notes one line each; Turn on -> Claim -> Item_gift_like 1 + Item_backpack 1; Join ->
 160 -> 260 acorns, Item_gift_community 1, "Thank you" green. Not checked: desktop layout, the acorn ding, x2 with a second
 player. Pictures tools/gifts/shots/gifts-j87r5-phone-*.jpg. Unpublished in Studio: job 86 v2 and job 87.
+PUBLISHED by Shannon at 00:51:58Z Oct 11 (games API "updated"; "I have published the updates"): the live game carries job 86 v2
+and job 87 rev 5. Nothing unpublished in Studio.
 
 ## Job 88: squirrel chatter - the Porto squirrels and both church mice talk to passers-by (Studio EDIT; preview, then ask Shannon)
 
