@@ -1088,3 +1088,26 @@ job 88 is to be installed: no workspace.SquirrelChatter, RS.SquirrelBubble stays
 and confirm Edit is clean (undo on her yes if anything got in). tools/chatter and tools/bubble/*vr2* stay in the repo, unused.
 Confirmed by runner 6: Edit is clean (no SquirrelChatter, RS.SquirrelBubble = vr1 8415, no job 88 backups); nothing from job 88
 was ever installed. Studio holds Gifts rev 9, unpublished; rev 10 (c991424) not previewed. Runner 6 idle until Wednesday.
+
+## Job 89: one click to the boat after the last French squirrel (Studio EDIT; preview, then ask Shannon)
+
+Shannon, Oct 11: "when the player finds the last squirrel on the France map, we need a way to get their character to the dock
+where the boat is in a non awkward way (incase they miss that the boat is there)"; her pick of three: "card, then fade"; and "I do
+want to remove the flow if they don't have the backpack also, they should be able to take the boat with one click" (read as the
+parachute pack: the jetty sign sent players back to the forest to borrow it from the Sky Diving Squirrel first).
+tools/boatinvite/install_boatinvite1.lua (make_install_boatinvite1.py; src/BoatInviteServer.lua, src/BoatInviteClient.lua):
+- workspace.BoatInvite + RS.BoatTake (BindableEvent). The card (DisplayOrder 20, daily-card look, phone y 78..246): "All 44
+  found! The boat to Italy is waiting at the river dock. Your parachute is packed for the waterfall!" [Take the boat] [Later].
+  Shown 6 s after the 44th French find (Found_forest + Found_village + Found_domaine) at a clear moment (no OpenPanel, the
+  squirrel's reveal card closed, no daily card, not seated, in France), and once per visit 25 s after joining while Item_porto
+  is 0. [Take the boat] = one click: the luggage cart's fade ("The River Dock", workspace.Travel.TravelEvent), the player on the
+  jetty deck beside the moored boat, then RS.BoatTake -> BoatServer's own take(): aboard and off down the river.
+- workspace.Boat.BoatServer, exact-string patches (abort with nothing changed unless both anchors are found once; backup
+  HudBackup.BoatServer_pre_invite1): in take(), everyone with all 44 gets HasChute (the parachute packed) on boarding, by the
+  card or by the jetty prompt; after the prompt hookup, RS.BoatTake calls take(); the jetty sign's "Ask him first!" text
+  becomes "Every squirrel who has found all 44 gets a parachute packed for the drop. Hold on tight!" (source and live sign;
+  the old text is printed for undo). The Sky Diving Squirrel still lends his chute to anyone who talks to him.
+- Gifts rev 10 also gains "boat" in its MODAL list, so the gifts popup waits for the boat card.
+Preview plan: on the test server set Item_porto 0 (her save has 88/88) and rejoin-style wait 25 s: the card; Later closes it;
+then Found_domaine -1 and +1 to see the post-find card after 6 s; [Take the boat]: fade, aboard, the boat leaves, the parachute
+opens over the falls; once also with a parachute already borrowed; the jetty sign's new text. Phone emulator + real screen.

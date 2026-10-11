@@ -139,7 +139,7 @@ paint()
 
 -- ---------- the card ----------
 local shownThisSession = false
-local MODAL = {shop = true, passport = true, book = true, portrait = true, question = true, wardrobe = true, seaglass = true, album = true}
+local MODAL = {shop = true, passport = true, book = true, portrait = true, question = true, wardrobe = true, seaglass = true, album = true, boat = true}
 local function setOpen(on)
 	if on then
 		if not refresh() then task.spawn(function() for _ = 1, 10 do task.wait(0.5); if not gui.Enabled or refresh() then return end end end) end   -- (the save may still be loading)

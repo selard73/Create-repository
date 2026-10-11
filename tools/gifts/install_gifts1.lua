@@ -1,6 +1,6 @@
 -- install_gifts1.lua (Studio EDIT mode; re-runnable). Job 87. The Gifts system: like + favourite + notifications -> the
 -- Backpack (on trust), join the community -> acorns (checked), invite a friend -> double acorns while you play together
--- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (23826 chars);
+-- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (23839 chars);
 -- ReplicatedStorage.GiftsAction / GiftsEvent. Undo: delete workspace.Gifts and the two remotes. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
@@ -310,7 +310,7 @@ paint()
 
 -- ---------- the card ----------
 local shownThisSession = false
-local MODAL = {shop = true, passport = true, book = true, portrait = true, question = true, wardrobe = true, seaglass = true, album = true}
+local MODAL = {shop = true, passport = true, book = true, portrait = true, question = true, wardrobe = true, seaglass = true, album = true, boat = true}
 local function setOpen(on)
 	if on then
 		if not refresh() then task.spawn(function() for _ = 1, 10 do task.wait(0.5); if not gui.Enabled or refresh() then return end end end) end   -- (the save may still be loading)
