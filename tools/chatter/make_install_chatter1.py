@@ -5,7 +5,8 @@ SquirrelBubble. Also patches ReplicatedStorage.SquirrelBubble (vr1 8415 -> vr2: 
 bubbles never show together; backup HudBackup.SquirrelBubble_pre_vr2). Re-runnable: an existing folder goes to
 ServerStorage.HudBackup.SquirrelChatter_pre_<n> (attributes kept); an already patched module is left alone.
 Attributes on the folder (tune live): Range 10 (studs), Chance 0.55, Cooldown 120 (s, per squirrel, +-30%), Gap 9 (s between
-any two lines), Linger 45 (s standing among them), Secs 4.2 (bubble), TalkUnfound false, Enabled true.
+any two lines), Linger 45 (s standing among them), Secs 4.2 (bubble), PillRange 8 (no line while an interact pill shows
+within that many studs of the speaker), TalkUnfound false, Enabled true.
 """
 import pathlib
 HERE = pathlib.Path(__file__).resolve().parent
@@ -74,7 +75,7 @@ if old then
 	for _, s in ipairs(old:GetChildren()) do if s:IsA("BaseScript") then s.Enabled = false end end
 end
 local F = Instance.new("Folder"); F.Name = "SquirrelChatter"
-local defaults = {{Range = 10, Chance = 0.55, Cooldown = 120, Gap = 9, Linger = 45, Secs = 4.2, TalkUnfound = false, Enabled = true}}
+local defaults = {{Range = 10, Chance = 0.55, Cooldown = 120, Gap = 9, Linger = 45, Secs = 4.2, PillRange = 8, TalkUnfound = false, Enabled = true}}
 for k, v in pairs(defaults) do if attrs[k] ~= nil then F:SetAttribute(k, attrs[k]) else F:SetAttribute(k, v) end end
 local m = Instance.new("ModuleScript"); m.Name = "ChatterLines"; m.Source = LINES; m.Parent = F
 local c = Instance.new("Script"); c.Name = "ChatterClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F

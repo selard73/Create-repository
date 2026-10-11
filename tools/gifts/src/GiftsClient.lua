@@ -2,7 +2,8 @@
 -- rows: like + favourite + notifications (the Backpack), join the community (acorns), invite a friend (double acorns
 -- while you play together). It pops up once per session, a few seconds after the first squirrel found (or PopupDelay
 -- seconds after the save has loaded if no squirrel turns up), while the first two gifts are unclaimed and no other panel
--- or the daily card is up; a Gifts button in the HUD bar opens it any time. The gold buttons have a glinting gold outline.
+-- or the daily card is up; a Gifts button in the HUD bar opens it any time, and while it is open it sits above everything
+-- else on the screen. The gold buttons have a glinting gold outline.
 -- A small "x2" rides on the purse while the doubling is on. Same look as the daily card (navy, gold, cream).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
@@ -23,7 +24,7 @@ local FONT = Enum.Font.FredokaOne
 local phone = (function() local ok, pi = pcall(function() return UIS.PreferredInput end); if ok and pi ~= nil then return pi == Enum.PreferredInput.Touch end; return UIS.TouchEnabled and not UIS.MouseEnabled end)()
 local function corner(p, r) local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0, r); c.Parent = p; return c end
 
-local gui = Instance.new("ScreenGui"); gui.Name = "GiftsGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 15; gui.Enabled = false; gui.Parent = pg
+local gui = Instance.new("ScreenGui"); gui.Name = "GiftsGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 100; gui.Enabled = false; gui.Parent = pg   -- (100: above every other ScreenGui, the interact pills at 30 and the film menu at 60 included - Shannon: "on top of anything else on the screen until it is closed")
 local shade = Instance.new("TextButton"); shade.Size = UDim2.fromScale(1, 1); shade.BackgroundColor3 = C(20, 12, 6); shade.BackgroundTransparency = 0.5; shade.Text = ""; shade.AutoButtonColor = false; shade.Parent = gui
 local W, ROW, TOP, FOOT = 340, phone and 44 or 62, phone and 52 or 60, phone and 32 or 70   -- (phone: 52 + 132 + 32 = 216 tall from y 78, ending at 294, above Roblox's tool hotbar at 305)
 local card = Instance.new("Frame"); card.Name = "GiftsCard"; card.AnchorPoint = Vector2.new(0.5, 0); card.Position = UDim2.new(0.5, 0, 0, phone and 78 or 62)   -- (78 clears the HUD row on a phone, as the daily card does; the card must end above y 305 there, where the tool hotbar starts)

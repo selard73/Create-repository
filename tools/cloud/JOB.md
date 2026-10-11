@@ -965,6 +965,10 @@ measured: rims Border on all three, the ring on the edges; phone card y 20..236 
 player. Pictures tools/gifts/shots/gifts-j87r5-phone-*.jpg. Unpublished in Studio: job 86 v2 and job 87.
 PUBLISHED by Shannon at 00:51:58Z Oct 11 (games API "updated"; "I have published the updates"): the live game carries job 86 v2
 and job 87 rev 5. Nothing unpublished in Studio.
+Live finding (Shannon, during the job 88 play test): "the interact button is sitting above the gift modal"; "the gift modal
+should always be on top of anything else on the screen until it is closed" (PromptTouch DisplayOrder 30 over GiftsGui 15;
+picture tools/gifts/shots/gifts-live-pill-over-card.jpg). Rev 6 (this commit): GiftsGui DisplayOrder 100 (above every other
+ScreenGui, FilmMenu 60 included); its full-screen shade then also takes the taps the pill would have had.
 
 ## Job 88: squirrel chatter - the Porto squirrels and both church mice talk to passers-by (Studio EDIT; preview, then ask Shannon)
 
@@ -1005,3 +1009,10 @@ when present; a squirrel found while standing at it now gets its arrival roll 2 
 bubble the chatter holds the floor Gap/2; on a flat screen a line is dropped unless the speaker is in the viewport (the clock
 keeper 28 studs up would otherwise speak off-screen). In a play test the module patch only takes effect for scripts that
 require the module after it (the chatter itself); the old scripts keep the old copy until a play test starts after the Edit install.
+Preview rev 1 (runner 5, 34790c0, test server): QQ CHATTER DONE ... 44 speakers, 196 lines ... every speaker has a model.
+Old couple at 7 studs for 9 s: silent (the roll); the opera singer spoke; 120 s standing between the opera singer and the
+accordion: one line (the accordion's) at 83 s; never two bubbles. Problems: the opera singer's Listen pill (PromptTouch 30)
+over her bubble's top half; the church mouse's bubble half off the left edge while the Gifts card's shade was over it.
+Rev 3 (this commit): no line while the speaker's own interact pill is up (ProximityPromptService PromptShown/Hidden, a shown
+prompt within PillRange 8 studs of the speaker), while any panel is open (PlayerGui OpenPanel, the daily card), or on a flat
+screen unless the speaker sits where the bubble has room (x 8..68 % of the viewport, y 30..95 %).

@@ -1,6 +1,6 @@
 -- install_chatter1.lua (Studio EDIT mode; re-runnable). Job 88. Squirrel chatter: the Porto squirrels and both church mice
 -- talk to passers-by (scattered: one at a time, by chance, with rests). workspace.SquirrelChatter with ChatterLines
--- (15444 chars) and ChatterClient (7470 chars). Undo: delete workspace.SquirrelChatter. No publish.
+-- (15444 chars) and ChatterClient (9117 chars). Undo: delete workspace.SquirrelChatter. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
 local bub = RS:FindFirstChild("SquirrelBubble")
@@ -342,10 +342,13 @@ local CLIENT = [===[
 -- that has a line pool, ONE nearby squirrel may speak, by Chance, after a short random pause; then nobody speaks for Gap
 -- seconds, and that squirrel rests for about Cooldown seconds. Standing among them, one of them pipes up every Linger
 -- seconds or so. A squirrel talks once you have found it (the mice too); TalkUnfound true lets the hidden ones talk.
+-- Nothing is said while a panel is open, while the speaker's own interact pill is up, or (on a screen) where the bubble
+-- would run off the edge.
 -- Lines come from the ChatterLines module beside this script; the bubble is the game's SquirrelBubble (VR included), whose
 -- Bubble.talking() says whether any bubble is up and which lets the newest bubble replace an older one (never two at once).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
+local PPS = game:GetService("ProximityPromptService")
 local player = Players.LocalPlayer
 local pg = player:WaitForChild("PlayerGui")
 local F = script.Parent
@@ -425,6 +428,31 @@ local function eligible(id, entry)
 	return found[id] or F:GetAttribute("TalkUnfound") == true
 end
 
+-- when not to speak at all: a panel is open (the card's shade or the map would cover the bubble), or the speaker's own
+-- interact pill is showing (the pills draw above the bubbles and would hide the words)
+local shownPrompts = {}
+PPS.PromptShown:Connect(function(prompt) shownPrompts[prompt] = true end)
+PPS.PromptHidden:Connect(function(prompt) shownPrompts[prompt] = nil end)
+local function pillNear(part)
+	for prompt in pairs(shownPrompts) do
+		local holder = prompt.Parent
+		if not (holder and prompt.Enabled) then shownPrompts[prompt] = nil
+		else
+			local pos
+			if holder:IsA("BasePart") then pos = holder.Position
+			elseif holder:IsA("Attachment") then pos = holder.WorldPosition
+			elseif holder:IsA("Model") then pos = holder:GetPivot().Position end
+			if pos and (pos - part.Position).Magnitude < num("PillRange", 8) then return true end
+		end
+	end
+	return false
+end
+local function panelOpen()
+	if pg:GetAttribute("OpenPanel") ~= nil then return true end
+	local daily = pg:FindFirstChild("DailyGui"); local dcard = daily and daily:FindFirstChild("DailyCard")
+	return daily ~= nil and daily.Enabled and dcard ~= nil and dcard.Visible
+end
+
 task.wait(2)
 while true do
 	task.wait(0.5)
@@ -454,14 +482,16 @@ while true do
 	if lingerAt == 0 then newLinger(now) end
 	if #around == 0 then newLinger(now) end   -- (nobody near: the linger clock starts over when you arrive)
 	local pick
-	if now >= quietUntil then
+	if now >= quietUntil and not panelOpen() then
 		if someoneTalking() then
 			quietUntil = math.max(quietUntil, now + num("Gap", 9) * 0.5)   -- (someone else's bubble: hold the floor a while after it too)
 		elseif #arrivals > 0 then
 			local c = arrivals[math.random(#arrivals)]
-			if math.random() < num("Chance", 0.55) then pick = c else state[c.id].restUntil = now + 20 end
+			if pillNear(c.part) then state[c.id].restUntil = now + 20   -- (its pill is up: not now)
+			elseif math.random() < num("Chance", 0.55) then pick = c else state[c.id].restUntil = now + 20 end
 		elseif #around > 0 and now >= lingerAt then
-			pick = around[math.random(#around)]
+			local c = around[math.random(#around)]
+			if pillNear(c.part) then state[c.id].restUntil = now + 20; newLinger(now) else pick = c end
 		end
 	end
 	if pick then
@@ -474,11 +504,12 @@ while true do
 		task.delay(delay, function()
 			local c = player.Character; local root = c and c:FindFirstChild("HumanoidRootPart")
 			if not (root and pick.part.Parent and (pick.part.Position - root.Position).Magnitude < pick.r * 1.6) then return end   -- (walked on already)
-			if someoneTalking() then return end
-			if not VR then   -- (on a flat screen the bubble is pinned to the speaker: say nothing to a squirrel the camera cannot see)
+			if someoneTalking() or panelOpen() or pillNear(pick.part) then return end
+			if not VR then   -- (on a flat screen the bubble hangs up and to the right of the speaker: it must have room there)
 				local cam = workspace.CurrentCamera
 				local v, on = cam:WorldToViewportPoint(pick.part.Position)
-				if not (on and v.X > 0 and v.Y > 0 and v.X < cam.ViewportSize.X and v.Y < cam.ViewportSize.Y) then return end
+				local W, H = cam.ViewportSize.X, cam.ViewportSize.Y
+				if not (on and v.X > 0.08 * W and v.X < 0.68 * W and v.Y > 0.3 * H and v.Y < 0.95 * H) then return end
 			end
 			local t = os.clock()
 			st.restUntil = t + num("Cooldown", 120) * (0.7 + math.random() * 0.6)
@@ -509,7 +540,7 @@ if old then
 	for _, s in ipairs(old:GetChildren()) do if s:IsA("BaseScript") then s.Enabled = false end end
 end
 local F = Instance.new("Folder"); F.Name = "SquirrelChatter"
-local defaults = {Range = 10, Chance = 0.55, Cooldown = 120, Gap = 9, Linger = 45, Secs = 4.2, TalkUnfound = false, Enabled = true}
+local defaults = {Range = 10, Chance = 0.55, Cooldown = 120, Gap = 9, Linger = 45, Secs = 4.2, PillRange = 8, TalkUnfound = false, Enabled = true}
 for k, v in pairs(defaults) do if attrs[k] ~= nil then F:SetAttribute(k, attrs[k]) else F:SetAttribute(k, v) end end
 local m = Instance.new("ModuleScript"); m.Name = "ChatterLines"; m.Source = LINES; m.Parent = F
 local c = Instance.new("Script"); c.Name = "ChatterClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
