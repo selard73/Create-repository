@@ -1210,3 +1210,7 @@ streamed-out Canvas (its SurfaceGui, background included, would vanish too). If 
 lead is PortraitServer's receipt-retry loop (deliver(): hang -> prepareModel -> UpdateAsync -> show() every 10 s doubling to
 120 s while a paid receipt will not settle; "paid receipt awaiting retry" would repeat in the live SERVER log) - but that would
 show on desktop too, so a device-only cause (ViewportFrame re-render on low memory, or the bust rbxthumb reloading) is also open.
+Job 91 play test PASSED (runner 6): 9 slots Persistent, 9 mounted copies with a sitter at once, 0 added / 0 removed over 8 s, and
+the slots stayed on the client from Porto (579 studs away). Edit holds job 91 (nine ModelStreamingMode changes + StreamingWas).
+Shannon publishes and checks on her phone / Quest. Runner 6 idle after. (The Italian Hall of Fame: workspace.HallOfFame's
+HallServer builds each French entry with Champion.MakeStatue - the model for Wednesday's monument.)
