@@ -3,17 +3,15 @@
 -- that has a line pool, ONE nearby squirrel may speak, by Chance, after a short random pause; then nobody speaks for Gap
 -- seconds, and that squirrel rests for about Cooldown seconds. Standing among them, one of them pipes up every Linger
 -- seconds or so. A squirrel talks once you have found it (the mice too); TalkUnfound true lets the hidden ones talk.
--- Nothing is said while a panel is open, while an interact pill is up (on a phone any pill, drawn by the player's head; else
--- one within PillRange of the speaker), or (on a screen) while the speaker is not well inside the view; a picked line waits up
--- to PendingSecs for its moment, then is let go.
+-- Nothing is said while a panel is open, while an interact pill is up (on a screen any pill, drawn by the player's head; in
+-- VR one within PillRange of the speaker), or (on a screen) while the speaker is not well inside the view; a picked line waits
+-- up to PendingSecs for its moment, then is let go.
 -- Lines come from the ChatterLines module beside this script; the bubble is the game's SquirrelBubble (VR included), whose
 -- Bubble.talking() says whether any bubble is up and which lets the newest bubble replace an older one (never two at once).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local PPS = game:GetService("ProximityPromptService")
-local UIS = game:GetService("UserInputService")
 local player = Players.LocalPlayer
-local touch = (function() local ok, pi = pcall(function() return UIS.PreferredInput end); if ok and pi ~= nil then return pi == Enum.PreferredInput.Touch end; return UIS.TouchEnabled and not UIS.MouseEnabled end)()
 local pg = player:WaitForChild("PlayerGui")
 local F = script.Parent
 local Lines = require(F:WaitForChild("ChatterLines"))
@@ -99,17 +97,26 @@ local shownPrompts = {}
 PPS.PromptShown:Connect(function(prompt) shownPrompts[prompt] = true end)
 PPS.PromptHidden:Connect(function(prompt) shownPrompts[prompt] = nil end)
 local function pillNear(part)
-	if touch and next(shownPrompts) ~= nil then return true end   -- (a phone draws every pill by the player's own head, anywhere on the screen)
+	-- stale entries first (a prompt destroyed or moved away while shown, its PromptHidden missed): a shown prompt is always
+	-- inside its own reach of the player
+	local root = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
 	for prompt in pairs(shownPrompts) do
 		local holder = prompt.Parent
-		if not (holder and prompt.Enabled) then shownPrompts[prompt] = nil
-		else
-			local pos
-			if holder:IsA("BasePart") then pos = holder.Position
-			elseif holder:IsA("Attachment") then pos = holder.WorldPosition
-			elseif holder:IsA("Model") then pos = holder:GetPivot().Position end
-			if pos and (pos - part.Position).Magnitude < num("PillRange", 8) then return true end
+		local pos
+		if holder and holder:IsA("BasePart") then pos = holder.Position
+		elseif holder and holder:IsA("Attachment") then pos = holder.WorldPosition
+		elseif holder and holder:IsA("Model") then pos = holder:GetPivot().Position end
+		if not (prompt.Enabled and prompt:IsDescendantOf(workspace) and pos and (not root or (pos - root.Position).Magnitude <= prompt.MaxActivationDistance + 4)) then
+			shownPrompts[prompt] = nil
 		end
+	end
+	-- on a screen (phone or desktop) every pill is drawn by the player's own head and can land anywhere: any pill blocks;
+	-- in VR the pill stands by its object, so only one near the speaker does
+	if not VR then return next(shownPrompts) ~= nil end
+	for prompt in pairs(shownPrompts) do
+		local holder = prompt.Parent
+		local pos = holder:IsA("BasePart") and holder.Position or holder:IsA("Attachment") and holder.WorldPosition or holder:GetPivot().Position
+		if (pos - part.Position).Magnitude < num("PillRange", 8) then return true end
 	end
 	return false
 end
@@ -184,7 +191,9 @@ while true do
 		end
 		if not near or now > pending.until_ then
 			pending = nil; quietUntil = math.min(quietUntil, now + 1)
-		elseif inView and not (someoneTalking() or panelOpen() or pillNear(pk.part)) then
+		elseif someoneTalking() then   -- (someone else is talking: the line waits a little after them too, if it still fits)
+			pending.from = math.max(pending.from, now + num("Gap", 9) * 0.5)
+		elseif inView and not (panelOpen() or pillNear(pk.part)) then
 			pending = nil
 			local st = state[pk.id]
 			st.restUntil = now + num("Cooldown", 120) * (0.7 + math.random() * 0.6)

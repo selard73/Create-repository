@@ -13,8 +13,11 @@ local IMAGE = "rbxassetid://98516368118872"
 local SHADOW, INK = Color3.fromRGB(30, 20, 30), Color3.fromRGB(55, 45, 42)
 local FONT = Font.new("rbxasset://fonts/families/BuilderSans.json", Enum.FontWeight.Medium)
 local MAX_DIST = 80
-local current = setmetatable({}, {__mode = "k"})                               -- speaker part -> its bubble (a new line replaces the old)
+local current = {}                                                             -- speaker part -> its bubble (a new line replaces the old; cleared when it goes)
 local TOP_GUARD = 24                                                           -- inset-space px kept clear under the HUD row
+local UIS = game:GetService("UserInputService")
+local PHONE = (function() local ok, pi = pcall(function() return UIS.PreferredInput end); if ok and pi ~= nil then return pi == Enum.PreferredInput.Touch end; return UIS.TouchEnabled and not UIS.MouseEnabled end)()
+local COLUMN_GUARD, COLUMN_BOTTOM = PHONE and 62 or 0, 170                    -- phones: the HUD column at the right edge (x -58..-10, inset y to 166)
 function Bubble.talking()                                                      -- is any bubble up, on a screen or in VR?
 	for _, b in pairs(current) do if b.Parent then return true end end
 	return false
@@ -83,7 +86,7 @@ local function sayVR(anchor, text, opts)
 		local ti = TweenInfo.new(0.3)
 		TweenService:Create(shadow, ti, {ImageTransparency = 1}):Play(); TweenService:Create(paper, ti, {ImageTransparency = 1}):Play(); TweenService:Create(l, ti, {TextTransparency = 1}):Play()
 	end)
-	task.delay(secs, function() if bg.Parent then bg:Destroy() end end)
+	task.delay(secs, function() if bg.Parent then bg:Destroy() end; if current[anchor] == bg then current[anchor] = nil end end)
 	return bg
 end
 function Bubble.say(speaker, text, opts)
@@ -91,7 +94,7 @@ function Bubble.say(speaker, text, opts)
 	local anchor = anchorOf(speaker)
 	local g = gui()
 	if not (anchor and g and type(text) == "string" and text ~= "") then return nil end
-	for a, b in pairs(current) do if a ~= anchor and b.Parent then b:Destroy() end end   -- (newest wins: one bubble at a time; the ambient chatter never starts over another, so this only cuts a chatter line short for a scripted one)
+	for a, b in pairs(current) do if a ~= anchor then if b.Parent then b:Destroy() end; current[a] = nil end end   -- (newest wins: one bubble at a time; the ambient chatter never starts over another, so this only cuts a chatter line short for a scripted one)
 	if VR then return sayVR(anchor, text, opts) end
 	local old = current[anchor]; if old and old.Parent then old:Destroy() end
 	local secs = opts.secs or 3.5
@@ -99,7 +102,7 @@ function Bubble.say(speaker, text, opts)
 	if #text > 30 then W, H = 194, 145 end
 	if #text > 55 then W, H = 229, 172 end
 	if #text > 90 then W, H = 264, 198 end
-	local root = Instance.new("Frame"); root.Name = "SquirrelBubble"; root.AnchorPoint = Vector2.new(0, 1)   -- (the tail's tip, bottom left, sits at the speaker's upper right: the bubble hangs beside the head, not over it)
+	local root = Instance.new("Frame"); root.Name = "SquirrelBubble"; root.AnchorPoint = Vector2.new(0, 1)   -- (hung by its bottom-left corner, placed beside the speaker every frame)
 	root.Size = UDim2.fromOffset(W, H); root.BackgroundTransparency = 1; root.Visible = false
 	local scale = Instance.new("UIScale"); scale.Scale = 0.86; scale.Parent = root
 	local function pic(name, pos, colour, z, transparency)
@@ -113,27 +116,38 @@ function Bubble.say(speaker, text, opts)
 	l.BackgroundTransparency = 1; l.FontFace = FONT; l.TextSize = 15; l.TextWrapped = true; l.TextColor3 = INK; l.Text = text; l.ZIndex = 3; l.Parent = root
 	root.Parent = g
 	current[anchor] = root
-	-- pinned beside the speaker: up and to the right of the head in camera space (up and to the left, mirrored, at the
-	-- screen's right edge), like a BillboardGui with an ExtentsOffset, but drawn flat
-	local conn, flipped = nil, false
+	-- beside the speaker: the speaker part's box is projected to the screen each frame and the bubble hangs off its right
+	-- side (or its left side, mirrored, when the right has no room), its bottom at the box's top when that fits under the
+	-- HUD row, else alongside at body level. The side is picked once per bubble and only changes when it stops fitting and
+	-- the other side would. The tail sits a third of the way in from the speaker's side, so when the bubble is wholly above
+	-- the box it leans over the head by that much; alongside, it keeps fully clear. Never clamped into the speaker: with no
+	-- room on either side it overhangs the screen's edge instead.
+	local conn, side, flipped = nil, nil, false
 	conn = RunService.RenderStepped:Connect(function()
 		if not (root.Parent and anchor.Parent) then if conn then conn:Disconnect() end; return end
 		local cam = workspace.CurrentCamera
 		if not cam then return end
-		local ext = anchor.Size
-		local up, right = cam.CFrame.UpVector * (0.55 * ext.Y), cam.CFrame.RightVector * (0.55 * ext.X)
-		local p = cam:WorldToScreenPoint(anchor.Position + up + right)                -- the head's upper right
-		local dist = (anchor.Position - cam.CFrame.Position).Magnitude
-		root.Visible = p.Z > 0 and dist <= MAX_DIST
-		local gs, w, h = g.AbsoluteSize, root.AbsoluteSize.X, root.AbsoluteSize.Y   -- the whole bubble stays on the screen, under the HUD row
-		local x, flip = p.X + 6, false
-		if x + w > gs.X - 4 then                                                     -- no room on the right: hang it off the head's upper LEFT, mirrored
-			local pl = cam:WorldToScreenPoint(anchor.Position + up - right)
-			x, flip = pl.X - 6 - w, true
+		local cf, hs = anchor.CFrame, anchor.Size / 2
+		local x0, x1, y0, n = math.huge, -math.huge, math.huge, 0
+		for i = 0, 7 do
+			local c = cf * Vector3.new(i % 2 == 0 and -hs.X or hs.X, math.floor(i / 2) % 2 == 0 and -hs.Y or hs.Y, i < 4 and -hs.Z or hs.Z)
+			local q = cam:WorldToScreenPoint(c)
+			if q.Z > 0 then x0, x1, y0, n = math.min(x0, q.X), math.max(x1, q.X), math.min(y0, q.Y), n + 1 end
 		end
-		x = math.clamp(x, 4, math.max(4, gs.X - w - 4))
-		local y = math.clamp(p.Y - 2, TOP_GUARD + h, math.max(TOP_GUARD + h, gs.Y - 4))
-		root.Position = UDim2.fromOffset(x, y)
+		local dist = (anchor.Position - cam.CFrame.Position).Magnitude
+		root.Visible = n > 0 and dist <= MAX_DIST
+		if n == 0 then return end
+		local gs, w, h = g.AbsoluteSize, root.AbsoluteSize.X, root.AbsoluteSize.Y
+		local y = math.clamp(y0 - 2, TOP_GUARD + h, math.max(TOP_GUARD + h, gs.Y - 4))
+		local lean = 0.33 * w * math.clamp(1 - (y - (y0 - 2)) / math.max(1, 0.25 * h), 0, 1)   -- (full lean when wholly above the box, none once pushed down alongside it)
+		local rightEdge = gs.X - 4 - ((COLUMN_GUARD > 0 and y - h < COLUMN_BOTTOM) and COLUMN_GUARD or 0)
+		local xr, xl = x1 + 6 - lean, x0 - 6 + lean - w                     -- the left edge on the right side / on the left side
+		local roomR, roomL = rightEdge - xr - w, xl - 4
+		if side == nil or (side == 1 and roomR < 0 and roomL >= 0) or (side == -1 and roomL < 0 and roomR >= 0) then
+			side = (roomR >= 0 or roomR >= roomL) and 1 or -1
+		end
+		root.Position = UDim2.fromOffset(side == 1 and xr or xl, y)
+		local flip = side == -1
 		if flip ~= flipped then
 			flipped = flip
 			for _, i in ipairs({shadow, paper}) do i.ImageRectOffset = flip and Vector2.new(440, 0) or Vector2.new(0, 0); i.ImageRectSize = flip and Vector2.new(-440, 330) or Vector2.new(0, 0) end
@@ -148,7 +162,7 @@ function Bubble.say(speaker, text, opts)
 		TweenService:Create(paper, ti, {ImageTransparency = 1}):Play()
 		TweenService:Create(l, ti, {TextTransparency = 1}):Play()
 	end)
-	task.delay(secs, function() if conn then conn:Disconnect() end; if root.Parent then root:Destroy() end end)
+	task.delay(secs, function() if conn then conn:Disconnect() end; if root.Parent then root:Destroy() end; if current[anchor] == root then current[anchor] = nil end end)
 	return root
 end
 return Bubble

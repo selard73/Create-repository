@@ -992,6 +992,11 @@ moves to -118 from the screen's right (x 549 on the phone: left of the column at
 default spot 557..601), and their UIScale is capped to the room between the Hint button (ends 116) and that edge: on the
 phone the squirrel list becomes 425 x 177 (scale 0.764, was 524 x 219), the map stays 295 x 219 at x 254..549. Position,
 Size, Scale and ViewportSize changes are followed, so HudBarClient's own refits are re-capped. Desktop unchanged.
+Result job 87 rev 9 (runner 6, 89d4fbe, Shannon's "Install as shown"; INSTALLED in Edit, NOT published): QQ GIFTS DONE ...
+GiftsClient 23760 ...; the old Gifts folder is HudBackup.Gifts_pre_1. Preview, 0 overlaps in every state (phone + real
+screen): column 609..657, gift box 553..601; squirrel list 124..549 y 64..241 (scale 0.7644; portraits 47 px, a tap opens the
+card); map 254..549 y 64..283 with +/-/Me at 517..541; panel switching clean; HudBarClient-style refits re-capped at once; the
+card at DisplayOrder 100. Pictures tools/gifts/shots/gifts-j87r9-phone-*. Unpublished in Studio: job 87 rev 9.
 
 ## Job 88: squirrel chatter - the Porto squirrels and both church mice talk to passers-by (Studio EDIT; preview, then ask Shannon)
 
@@ -1052,3 +1057,19 @@ draws the screen bubble with its tail tip at the head's upper right (AnchorPoint
 screen's right edge, clamped inside the screen under the HUD row (TOP_GUARD 24 inset px); the installer swaps the whole Source
 when it equals vr1 exactly (else aborts). Chatter: on a touch device ANY shown pill blocks a line; a picked line waits up to
 PendingSecs 6 for its moment (speaker in view x 8..92 %, no pill, no panel, nobody talking) instead of resting the squirrel.
+Rev 4 verification (3 verifiers): the placement used the part's centre plus 0.55*Size.X along the camera's right, so
+side-on the long squirrels (Nonno Reti 2.3 x 3.4 x 4.25, Giulia, Beppe) were 19-49 px inside it and on a phone (Y clamp
+engaged) the paper lay over them; the right-edge clamp could push a phone bubble under the HUD column; with no room either
+side the clamp pushed the bubble back over the speaker; the weak-keyed `current` could lose a live VR billboard; on desktop
+pills are also drawn by the player's head (PromptUI on the Head), so the per-speaker pill test missed them; the touch early
+return skipped the stale-prompt sweep; a pending line followed another script's bubble with no gap. The installer's V1/V2
+equality was proven byte for byte. Rev 5 (this commit): vr2 regenerated from vr1 by tools/bubble/make_vr2.py (11491 chars):
+the bubble placed off the speaker part's PROJECTED BOX (8 corners each frame), right of it or left of it mirrored, the side
+kept for the bubble's life unless it stops fitting, never clamped into the speaker (overhangs the screen edge instead), the
+bottom at the box's top when that fits under the HUD row (then leaning a third over so the tail meets the head) else alongside
+at body level, clear of the phone HUD column (62 px) where it runs beside it; `current` a plain table cleared explicitly.
+Simulated (23040 cases: 4 squirrel boxes x 5 distances x 4 pitches x 12 yaws x 3 view positions x 4 bubble sizes x phone and
+desktop, the real bubble mask): 0 touch the squirrel's silhouette; 239 overhang a screen edge (no room either side; the
+chatter never starts a line there). Chatter: any shown pill blocks on any screen (VR: within PillRange), stale prompts are
+swept first (gone, disabled, or farther than their reach + 4 from the player), a pending line waits Gap/2 after someone else's
+bubble; every compile check now runs before the bubble swap.

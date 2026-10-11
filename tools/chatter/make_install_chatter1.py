@@ -6,8 +6,8 @@ bubbles never show together; the bubble beside the speaker's head instead of ove
 backup HudBackup.SquirrelBubble_pre_vr2). Re-runnable: an existing folder goes to ServerStorage.HudBackup.SquirrelChatter_pre_<n>
 (attributes kept); a module already at vr2 is left alone; any other module aborts the whole install.
 Attributes on the folder (tune live): Range 10 (studs), Chance 0.55, Cooldown 120 (s, per squirrel, +-30%), Gap 9 (s between
-any two lines), Linger 45 (s standing among them), Secs 4.2 (bubble), PillRange 8 (no line while an interact pill shows
-within that many studs of the speaker; on a phone any pill), PendingSecs 6 (a picked line waits that long for its moment),
+any two lines), Linger 45 (s standing among them), Secs 4.2 (bubble), PillRange 8 (VR: no line while an interact pill shows
+within that many studs of the speaker; on a screen any pill blocks), PendingSecs 6 (a picked line waits that long for its moment),
 TalkUnfound false, Enabled true.
 """
 import pathlib
@@ -26,6 +26,15 @@ local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
 local bub = RS:FindFirstChild("SquirrelBubble")
 if not (bub and bub:IsA("ModuleScript")) then print("QQ CHATTER ABORT: ReplicatedStorage.SquirrelBubble not found") return end
+-- every compile check before the first change, so an ABORT always means nothing changed
+local LINES = [===[
+{LINES}]===]
+local CLIENT = [===[
+{CLIENT}]===]
+for _, pair in ipairs({{{{"lines", LINES}}, {{"client", CLIENT}}}}) do
+	local f, err = loadstring(pair[2]); if not f then print("QQ CHATTER ABORT: the " .. pair[1] .. " module does not compile: " .. tostring(err)) return end
+end
+local okL, tbl = pcall(loadstring(LINES)); if not (okL and type(tbl) == "table") then print("QQ CHATTER ABORT: the lines module does not return a table: " .. tostring(tbl)) return end
 -- the SquirrelBubble swap first: Bubble.talking() (is any bubble up), newest-wins (a new bubble replaces any other), and the
 -- bubble drawn beside the speaker's head instead of over it; {len(V1)} -> {len(V2)} chars, the whole Source, only when it is exactly vr1
 local V1 = [==[
@@ -44,14 +53,6 @@ elseif bub.Source == V1 then
 else
 	print(string.format("QQ CHATTER ABORT: SquirrelBubble is %d chars and not the vr1 module (expected {len(V1)}) nor vr2 ({len(V2)}); nothing changed", #bub.Source)) return
 end
-local LINES = [===[
-{LINES}]===]
-local CLIENT = [===[
-{CLIENT}]===]
-for _, pair in ipairs({{{{"lines", LINES}}, {{"client", CLIENT}}}}) do
-	local f, err = loadstring(pair[2]); if not f then print("QQ CHATTER ABORT: the " .. pair[1] .. " module does not compile: " .. tostring(err)) return end
-end
-local okL, tbl = pcall(loadstring(LINES)); if not (okL and type(tbl) == "table") then print("QQ CHATTER ABORT: the lines module does not return a table: " .. tostring(tbl)) return end
 local ids, lines, missing = 0, 0, {{}}
 for id, e in pairs(tbl) do
 	ids += 1; lines += (type(e.lines) == "table" and #e.lines or 0)
