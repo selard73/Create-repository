@@ -175,6 +175,11 @@ the tan lumps at the cliff's corners by the notch (sandstone-swapped ground wher
   LogOnboardingFunnelStepEvent from the scripts that already see each step: spawned / save loaded, first squirrel found, fifth
   squirrel, map opened, second area reached (Found_* / FoundIds, SaveLoaded, HudBarClient map toggle); first-session players
   only; the report shows in the Creator Dashboard. Also look at the retention split by device (phone vs PC).
+- ADDED (Shannon, Oct 11, playing the LIVE game on her phone): "the camera mechanic is not working again". The live game is the
+  00:51:58Z publish (Gifts rev 5; the HUD column rev 9 is only in Edit, so it is not the cause). Earlier fix: Oct 9, "where did
+  the camera go on my mobile game???" - tools/shop/src/ShopClient.lua (~line 175, hotbarSlots(): a phone's Roblox hotbar shows
+  only 3 tools, the bar is trimmed). First ask her what she saw (no camera in the hotbar, or it is there but does not take or
+  show a photo); then a read-only phone-emulator play test with her tools.
 - Installed in Edit, NOT published: job 87 rev 9 (the phone HUD column; the squirrel list and map left of it). Rev 10 (the gift
   box 20 px left of the Passport) waits for her yes. Then she publishes.
 - Job 88 (squirrel chatter, church mice) CANCELLED at her word: no new speech bubbles; the bubble module stays as it was (vr1).
