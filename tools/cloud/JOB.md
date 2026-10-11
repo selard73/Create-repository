@@ -1116,3 +1116,14 @@ never in Edit. Job 89 preview waits for Studio to be opened. Preview plan change
 stand-in RS.BoatTake (prints); the real BoatServer patch is checked after the Edit install in a new play test (undo: the backup).
 Job 89 rev 3 (Shannon: "don't say parachute packed for the waterfall"): the card reads only "All 44 found!" / "The boat to Italy is
 waiting at the river dock." [Take the boat] [Later]. Rev 2 (76f6758) also: the grant first in take(), the sign's last line dropped.
+Job 89 rev 4 (runner 6's read-only search: the jetty prompt in BoatClient read "Take the boat (no parachute!)" / "Bateau - see
+the Sky Diving Squirrel first"; Shannon: "the waterfall should be a surprise"; "if you don't now get the parachute from the
+skydiving squirrel, that dialogue does not make sense"): the installer also patches BoatClient's prompt text to "Take the boat" /
+"Bateau" (backup HudBackup.BoatClient_pre_invite1), and BoatServer's Sky Diving Squirrel: no lending (his SetAttribute and
+attachPack lines commented out) and new lines - at 44: "All 44! Now THAT is a high score." / "I once jumped out of a plane and
+landed in a pie shop. Best day of my life." / "Seen the boat at the river dock? Take it. Trust me."; under 44: "Find all %d
+squirrels (%d so far) and I will tell you my best skydiving story!"; again: "Still here? The boat at the river dock is waiting
+for you!". Every anchor checked before any change. Still mentioning the waterfall/parachute, NOT changed (ask her): the
+Passport's boat outings (Catalogue 24-27: "...the Sky Diving Squirrel in the forest has something you will want before you
+leave", "Ride the river all the way to the waterfall", "Float down to Porto Nocciola under the Sky Diving Squirrel's
+parachute" + "talk to the Sky Diving Squirrel ... he lends you his spare parachute"). The journal lines after the ride are fine.
