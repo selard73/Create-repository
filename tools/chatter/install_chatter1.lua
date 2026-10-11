@@ -1,9 +1,39 @@
 -- install_chatter1.lua (Studio EDIT mode; re-runnable). Job 88. Squirrel chatter: the Porto squirrels and both church mice
 -- talk to passers-by (scattered: one at a time, by chance, with rests). workspace.SquirrelChatter with ChatterLines
--- (15444 chars) and ChatterClient (6452 chars). Undo: delete workspace.SquirrelChatter. No publish.
+-- (15444 chars) and ChatterClient (7470 chars). Undo: delete workspace.SquirrelChatter. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
-if not RS:FindFirstChild("SquirrelBubble") then print("QQ CHATTER ABORT: ReplicatedStorage.SquirrelBubble not found") return end
+local bub = RS:FindFirstChild("SquirrelBubble")
+if not (bub and bub:IsA("ModuleScript")) then print("QQ CHATTER ABORT: ReplicatedStorage.SquirrelBubble not found") return end
+-- the SquirrelBubble patch first: Bubble.talking() (is any bubble up) and newest-wins (a new bubble replaces any other); 8415 -> 8854 chars
+local bubNote
+if #bub.Source == 8854 and bub.Source:find("function Bubble.talking()", 1, true) then
+	bubNote = "; SquirrelBubble already patched (8854)"
+elseif #bub.Source == 8415 then
+	local A1, A2 = [==[local current = setmetatable({}, {__mode = "k"})                               -- speaker part -> its bubble (a new line replaces the old)
+]==], [==[	if not (anchor and g and type(text) == "string" and text ~= "") then return nil end
+]==]
+	local I1, I2 = [==[function Bubble.talking()                                                      -- is any bubble up, on a screen or in VR?
+	for _, b in pairs(current) do if b.Parent then return true end end
+	return false
+end
+]==], [==[	for a, b in pairs(current) do if a ~= anchor and b.Parent then b:Destroy() end end   -- (newest wins: one bubble at a time; the ambient chatter never starts over another, so this only cuts a chatter line short for a scripted one)
+]==]
+	local src = bub.Source
+	local a1, b1 = src:find(A1, 1, true); local a2, b2 = src:find(A2, 1, true)
+	if not (a1 and a2 and not src:find(A1, b1 + 1, true) and not src:find(A2, b2 + 1, true)) then print("QQ CHATTER ABORT: SquirrelBubble is 8415 chars but its anchors are not where expected; nothing changed") return end
+	local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
+	if not hb:FindFirstChild("SquirrelBubble_pre_vr2") then local bk = bub:Clone(); bk.Name = "SquirrelBubble_pre_vr2"; bk.Parent = hb end
+	local out = src:sub(1, b1) .. I1 .. src:sub(b1 + 1)
+	a2, b2 = out:find(A2, 1, true)
+	out = out:sub(1, b2) .. I2 .. out:sub(b2 + 1)
+	if #out ~= 8854 then print(string.format("QQ CHATTER ABORT: the patched SquirrelBubble would be %d chars, expected 8854; nothing changed", #out)) return end
+	local f, err = loadstring(out); if not f then print("QQ CHATTER ABORT: the patched SquirrelBubble does not compile: " .. tostring(err)) return end
+	bub.Source = out
+	bubNote = "; SquirrelBubble 8415 -> " .. #bub.Source .. " (backup HudBackup.SquirrelBubble_pre_vr2)"
+else
+	print(string.format("QQ CHATTER ABORT: SquirrelBubble is %d chars, expected 8415 (the vr1 module) or 8854 (already patched); nothing changed", #bub.Source)) return
+end
 local LINES = [===[
 -- ChatterLines (ModuleScript in workspace.SquirrelChatter): what the squirrels of Porto Nocciola, and the two church mice,
 -- say to a passer-by (Shannon, Oct 11 2026: "squirrels in the Italy map randomly talk more to passers by"; "church mice at
@@ -312,7 +342,8 @@ local CLIENT = [===[
 -- that has a line pool, ONE nearby squirrel may speak, by Chance, after a short random pause; then nobody speaks for Gap
 -- seconds, and that squirrel rests for about Cooldown seconds. Standing among them, one of them pipes up every Linger
 -- seconds or so. A squirrel talks once you have found it (the mice too); TalkUnfound true lets the hidden ones talk.
--- Lines come from the ChatterLines module beside this script; the bubble is the game's SquirrelBubble (VR included).
+-- Lines come from the ChatterLines module beside this script; the bubble is the game's SquirrelBubble (VR included), whose
+-- Bubble.talking() says whether any bubble is up and which lets the newest bubble replace an older one (never two at once).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local player = Players.LocalPlayer
@@ -324,9 +355,14 @@ if not (okB and type(Bubble) == "table" and Bubble.say) then warn("ChatterClient
 local function num(name, d) local v = F:GetAttribute(name) return type(v) == "number" and v or d end
 
 local found = {}
+local state = {}      -- [id] = {near = bool, restUntil = clock}
 local function refreshFound()
+	local was = found
 	found = {}
-	for id in tostring(player:GetAttribute("FoundIds") or ""):gmatch("[^,]+") do found[id] = true end
+	for id in tostring(player:GetAttribute("FoundIds") or ""):gmatch("[^,]+") do
+		found[id] = true
+		if not was[id] and state[id] then task.delay(2, function() if state[id] then state[id].near = false end end) end   -- (just found while standing at it: count as a fresh arrival after the reveal)
+	end
 end
 refreshFound()
 player:GetAttributeChangedSignal("FoundIds"):Connect(refreshFound)
@@ -353,6 +389,7 @@ local function byPath(path)
 	return node
 end
 local function someoneTalking()
+	if type(Bubble.talking) == "function" then return Bubble.talking() == true end   -- (the module knows every bubble, screen or VR; the rest is the fallback for an unpatched module)
 	local g = pg:FindFirstChild("SquirrelBubbleGui")
 	if g and #g:GetChildren() > 0 then return true end
 	if VR then
@@ -370,7 +407,6 @@ local function someoneTalking()
 	return false
 end
 
-local state = {}      -- [id] = {near = bool, restUntil = clock}
 local lastSaid = {}   -- [id] = the last line's index
 local quietUntil = 0  -- nobody speaks before this
 local lingerAt = 0    -- the next "someone pipes up while you stand here"
@@ -418,8 +454,10 @@ while true do
 	if lingerAt == 0 then newLinger(now) end
 	if #around == 0 then newLinger(now) end   -- (nobody near: the linger clock starts over when you arrive)
 	local pick
-	if now >= quietUntil and not someoneTalking() then
-		if #arrivals > 0 then
+	if now >= quietUntil then
+		if someoneTalking() then
+			quietUntil = math.max(quietUntil, now + num("Gap", 9) * 0.5)   -- (someone else's bubble: hold the floor a while after it too)
+		elseif #arrivals > 0 then
 			local c = arrivals[math.random(#arrivals)]
 			if math.random() < num("Chance", 0.55) then pick = c else state[c.id].restUntil = now + 20 end
 		elseif #around > 0 and now >= lingerAt then
@@ -437,6 +475,11 @@ while true do
 			local c = player.Character; local root = c and c:FindFirstChild("HumanoidRootPart")
 			if not (root and pick.part.Parent and (pick.part.Position - root.Position).Magnitude < pick.r * 1.6) then return end   -- (walked on already)
 			if someoneTalking() then return end
+			if not VR then   -- (on a flat screen the bubble is pinned to the speaker: say nothing to a squirrel the camera cannot see)
+				local cam = workspace.CurrentCamera
+				local v, on = cam:WorldToViewportPoint(pick.part.Position)
+				if not (on and v.X > 0 and v.Y > 0 and v.X < cam.ViewportSize.X and v.Y < cam.ViewportSize.Y) then return end
+			end
 			local t = os.clock()
 			st.restUntil = t + num("Cooldown", 120) * (0.7 + math.random() * 0.6)
 			quietUntil = t + num("Gap", 9) * (0.8 + math.random() * 0.6)
@@ -474,4 +517,4 @@ F.Parent = workspace
 print(string.format("QQ CHATTER DONE: workspace.SquirrelChatter (ChatterLines %d, ChatterClient %d chars; %d speakers, %d lines; Range %s, Chance %s, Cooldown %s, Gap %s, Linger %s, Secs %s, TalkUnfound %s, Enabled %s)%s%s",
 	#m.Source, #c.Source, ids, lines, tostring(F:GetAttribute("Range")), tostring(F:GetAttribute("Chance")), tostring(F:GetAttribute("Cooldown")), tostring(F:GetAttribute("Gap")), tostring(F:GetAttribute("Linger")), tostring(F:GetAttribute("Secs")), tostring(F:GetAttribute("TalkUnfound")), tostring(F:GetAttribute("Enabled")),
 	#missing > 0 and ("; NO MODEL in workspace for: " .. table.concat(missing, ", ")) or "; every speaker has a model",
-	old and ("; the old folder is HudBackup." .. old.Name) or ""))
+	(old and ("; the old folder is HudBackup." .. old.Name) or "") .. bubNote))

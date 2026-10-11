@@ -3,7 +3,8 @@
 -- that has a line pool, ONE nearby squirrel may speak, by Chance, after a short random pause; then nobody speaks for Gap
 -- seconds, and that squirrel rests for about Cooldown seconds. Standing among them, one of them pipes up every Linger
 -- seconds or so. A squirrel talks once you have found it (the mice too); TalkUnfound true lets the hidden ones talk.
--- Lines come from the ChatterLines module beside this script; the bubble is the game's SquirrelBubble (VR included).
+-- Lines come from the ChatterLines module beside this script; the bubble is the game's SquirrelBubble (VR included), whose
+-- Bubble.talking() says whether any bubble is up and which lets the newest bubble replace an older one (never two at once).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local player = Players.LocalPlayer
@@ -15,9 +16,14 @@ if not (okB and type(Bubble) == "table" and Bubble.say) then warn("ChatterClient
 local function num(name, d) local v = F:GetAttribute(name) return type(v) == "number" and v or d end
 
 local found = {}
+local state = {}      -- [id] = {near = bool, restUntil = clock}
 local function refreshFound()
+	local was = found
 	found = {}
-	for id in tostring(player:GetAttribute("FoundIds") or ""):gmatch("[^,]+") do found[id] = true end
+	for id in tostring(player:GetAttribute("FoundIds") or ""):gmatch("[^,]+") do
+		found[id] = true
+		if not was[id] and state[id] then task.delay(2, function() if state[id] then state[id].near = false end end) end   -- (just found while standing at it: count as a fresh arrival after the reveal)
+	end
 end
 refreshFound()
 player:GetAttributeChangedSignal("FoundIds"):Connect(refreshFound)
@@ -44,6 +50,7 @@ local function byPath(path)
 	return node
 end
 local function someoneTalking()
+	if type(Bubble.talking) == "function" then return Bubble.talking() == true end   -- (the module knows every bubble, screen or VR; the rest is the fallback for an unpatched module)
 	local g = pg:FindFirstChild("SquirrelBubbleGui")
 	if g and #g:GetChildren() > 0 then return true end
 	if VR then
@@ -61,7 +68,6 @@ local function someoneTalking()
 	return false
 end
 
-local state = {}      -- [id] = {near = bool, restUntil = clock}
 local lastSaid = {}   -- [id] = the last line's index
 local quietUntil = 0  -- nobody speaks before this
 local lingerAt = 0    -- the next "someone pipes up while you stand here"
@@ -109,8 +115,10 @@ while true do
 	if lingerAt == 0 then newLinger(now) end
 	if #around == 0 then newLinger(now) end   -- (nobody near: the linger clock starts over when you arrive)
 	local pick
-	if now >= quietUntil and not someoneTalking() then
-		if #arrivals > 0 then
+	if now >= quietUntil then
+		if someoneTalking() then
+			quietUntil = math.max(quietUntil, now + num("Gap", 9) * 0.5)   -- (someone else's bubble: hold the floor a while after it too)
+		elseif #arrivals > 0 then
 			local c = arrivals[math.random(#arrivals)]
 			if math.random() < num("Chance", 0.55) then pick = c else state[c.id].restUntil = now + 20 end
 		elseif #around > 0 and now >= lingerAt then
@@ -128,6 +136,11 @@ while true do
 			local c = player.Character; local root = c and c:FindFirstChild("HumanoidRootPart")
 			if not (root and pick.part.Parent and (pick.part.Position - root.Position).Magnitude < pick.r * 1.6) then return end   -- (walked on already)
 			if someoneTalking() then return end
+			if not VR then   -- (on a flat screen the bubble is pinned to the speaker: say nothing to a squirrel the camera cannot see)
+				local cam = workspace.CurrentCamera
+				local v, on = cam:WorldToViewportPoint(pick.part.Position)
+				if not (on and v.X > 0 and v.Y > 0 and v.X < cam.ViewportSize.X and v.Y < cam.ViewportSize.Y) then return end
+			end
 			local t = os.clock()
 			st.restUntil = t + num("Cooldown", 120) * (0.7 + math.random() * 0.6)
 			quietUntil = t + num("Gap", 9) * (0.8 + math.random() * 0.6)

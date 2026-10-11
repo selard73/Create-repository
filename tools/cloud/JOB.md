@@ -996,3 +996,12 @@ Lines: Beppe's "Got crabs?" double meaning -> "Caught any crabs?"; the French mo
 word -> his own sermon gag; Officer Acorn's "looking up", the postcard "keeps the family away", three earnest sea-glass
 lines, the Good Neighbor without her lasagna, the old couple's "sixty years" against the registry's fifty-four -> rewritten.
 Refuted: the treasure hunter's "pirate buried his heart" (fine for a child in context). 196 lines, longest 90.
+Second pass (3 verifiers): Polpo is workspace.Grotta.PolpoBrontolone (fixed by path); a dropped linger pick brought the
+next one at once (the linger clock now restarts on every pick); OTHER scripts' bubbles (Enzo's tip, Tonio's walk-up, Beppe's
+sale, Polpo, the postcard) are drawn with no check and could land ON a chatter bubble -> the installer now also patches
+RS.SquirrelBubble (vr1 8415 -> vr2 8854, tools/bubble/SquirrelBubble.module.vr2.lua; backup HudBackup.SquirrelBubble_pre_vr2):
+Bubble.talking() (any bubble up, screen or VR) and newest-wins (a new bubble destroys any other), the client uses talking()
+when present; a squirrel found while standing at it now gets its arrival roll 2 s after the reveal; after someone else's
+bubble the chatter holds the floor Gap/2; on a flat screen a line is dropped unless the speaker is in the viewport (the clock
+keeper 28 studs up would otherwise speak off-screen). In a play test the module patch only takes effect for scripts that
+require the module after it (the chatter itself); the old scripts keep the old copy until a play test starts after the Edit install.
