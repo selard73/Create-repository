@@ -1,6 +1,6 @@
 -- install_chatter1.lua (Studio EDIT mode; re-runnable). Job 88. Squirrel chatter: the Porto squirrels and both church mice
 -- talk to passers-by (scattered: one at a time, by chance, with rests). workspace.SquirrelChatter with ChatterLines
--- (15084 chars) and ChatterClient (5014 chars). Undo: delete workspace.SquirrelChatter. No publish.
+-- (15444 chars) and ChatterClient (6126 chars). Undo: delete workspace.SquirrelChatter. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
 if not RS:FindFirstChild("SquirrelBubble") then print("QQ CHATTER ABORT: ReplicatedStorage.SquirrelBubble not found") return end
@@ -10,6 +10,7 @@ local LINES = [===[
 -- both churches tell players that Jesus loves them as they walk by, with an Italian and French flair"). One pool per
 -- registry id; the client picks a line at random, never the same one twice running. Keep a line under about 90 letters
 -- so the bubble stays small. Everyone, the mice included, speaks only once you have found them (Shannon, Oct 11).
+-- range = N: this one is heard from N studs instead of the folder's Range (for the ones standing high up).
 return {
 	-- ---------- the church mice ----------
 	church_mouse_cousin = {lines = {
@@ -27,9 +28,9 @@ return {
 		"Psst... Jesus t'aime. Jesus loves you. Pass it on!",
 		"Bienvenue! The bells say it every hour: Jesus loves you.",
 		"Ooh la la, what a lovely day! Jesus loves you, you know.",
-		"I may be small, but this is big news: Jesus loves you!",
+		"Slow down near the door and you get a sermon. The short one: Jesus loves you.",
 		"Que Dieu te benisse. God bless you, friend - Jesus loves you.",
-		"Quiet as a church mouse... except about this: Jesus loves you!",
+		"Three hundred and sixty-five sermons, one ending: Jesus loves you.",
 		"Merci for stopping by! Remember: Jesus loves you.",
 	}},
 
@@ -42,7 +43,7 @@ return {
 	}},
 	fishmonger_squirrel = {lines = {
 		"Pesce fresco! Fresh fish! Fresher than the seagulls deserve.",
-		"Got crabs? Bring them to Beppe, I pay in acorns! The golden ones pay best.",
+		"Caught any crabs? Bring them to Beppe, I pay in acorns! Golden ones pay best.",
 		"Enzo catches the crabs, I sell the crabs. The crabs have not agreed to any of this.",
 		"A crab trap and a little patience, and you are in business. The crab is not.",
 		"Those seagulls owe me three sardines and an apology.",
@@ -84,7 +85,7 @@ return {
 		"Say cheese! Oh, wait, how do you say cheese in Italian? Ciao?",
 		"I have taken four hundred pictures of the same boat. It keeps moving.",
 	}},
-	tightrope_squirrel = {lines = {
+	tightrope_squirrel = {range = 20, lines = {   -- (on the washing line, ~14 studs up)
 		"Do not look down. I say that to myself, mostly.",
 		"Signora Rosa says get off her washing line. Almost there!",
 		"A little wobble is part of the act. The big wobble is not.",
@@ -158,24 +159,24 @@ return {
 	officer_acorn_police_squirrel = {lines = {
 		"Move along, nothing to see here. Except the view. Look at the view.",
 		"Acorn Police! Have you seen any suspicious nuts?",
-		"Jaywalking is a crime. Jay-bouncing, I am still looking up.",
+		"Jaywalking is a crime. Jay-bouncing? I am still checking the rulebook.",
 		"I keep the peace. The pizza keeps me.",
 	}},
 	goldenyears_squirrel = {lines = {
-		"Sixty years together. He still holds my paw crossing the piazza. Even when there are no carts.",
+		"Fifty-four years. He still holds my paw crossing the piazza. Even when there are no carts.",
 		"The secret? Say sorry first, laugh second, and share the last cannoli.",
 		"We met right here, on this bench. It was a different bench. Same us.",
 		"She still laughs at my jokes. I still tell the same ones. It works.",
-		"We danced at every festa since 1966. Slower now, but still every one.",
+		"We danced at every festa since 1972. Slower now, but still every one.",
 		"Grow old with someone who makes you laugh. Then keep laughing. That is all.",
-		"He forgets the bread. I forget to be cross. Sixty years of that.",
+		"He forgets the bread. I forget to be cross. Fifty-four years of that.",
 		"Come, sit a moment. The bench has room, and so do our hearts.",
 	}},
 	goodneighbor_squirrel = {lines = {
 		"Need sugar? Need a ladder? Need a chat? I have all three.",
 		"Your laundry is dry, your plants are watered, and I fed your cat.",
-		"A good neighbour knocks. A great neighbour brings cake.",
-		"If you need anything, I am right here. Always right here.",
+		"A good neighbour knocks. A great neighbour brings lasagna. Guess which one I am.",
+		"Smell that? Lasagna. Two streets over, they are already running.",
 	}},
 	operasinger_squirrel = {lines = {
 		"Laaaa! Pardon me, the high note just comes out sometimes.",
@@ -201,7 +202,7 @@ return {
 		"The oven is hot, the dough is ready, and the ceiling is a little bit pizza.",
 		"Pineapple? In Porto Nocciola? We do not speak of this.",
 	}},
-	clockmaker_squirrel = {lines = {
+	clockmaker_squirrel = {range = 34, lines = {   -- (on the clock tower's balcony, ~28 studs above the piazza)
 		"The clock is right twice a day. I am working on a third.",
 		"Tick, tock, tick... tock... there it goes again.",
 		"Time flies. My clocks, sadly, do not.",
@@ -209,7 +210,7 @@ return {
 	}},
 	postcard_squirrel = {lines = {
 		"Wish you were here! You are here. Buy a postcard anyway.",
-		"A postcard a day keeps the family away. Happily, I mean.",
+		"A postcard a day keeps the family happy. Two a day and they frame them.",
 		"This one has the sea, this one has the sea, this one has the sea at night.",
 		"Stamps are extra. Smiles are included.",
 	}},
@@ -287,9 +288,9 @@ return {
 	}},
 	seaglass_squirrel = {lines = {
 		"Green, brown, white, blue. Still looking for the purple one.",
-		"The sea makes the glass smooth. Patience makes the collector.",
-		"Every piece was a bottle once. Every bottle was a story.",
-		"Look down when you walk the beach. The best things are small.",
+		"Thirty years of waves to make one smooth piece. The sea is slow. I am slower.",
+		"Every piece was a bottle once. Some of them were lemonade. I can tell.",
+		"Look down when you walk the beach. Also so you do not step on me.",
 	}},
 	guitarist_squirrel = {lines = {
 		"I know one song. Would you like to hear it again?",
@@ -341,10 +342,26 @@ local function modelOf(id)
 	end
 	return nil
 end
-local function someoneTalking(part)
+-- is any speech bubble up? On a screen every bubble is a child of PlayerGui.SquirrelBubbleGui. In VR each one is a
+-- BillboardGui "SquirrelBubbleVR" under its speaker's part, so the speakers' models are looked through: every one with
+-- lines, both the colour and the gray, plus the ones other scripts make talk (Tonio, Polpo the octopus).
+local VR = game:GetService("VRService").VREnabled
+local OTHER_TALKERS = {"conductor_squirrel_color", "conductor_squirrel_gray", "Polpo"}
+local function someoneTalking()
 	local g = pg:FindFirstChild("SquirrelBubbleGui")
 	if g and #g:GetChildren() > 0 then return true end
-	if part and (part:FindFirstChild("SquirrelBubbleVR") or (part.Parent and part.Parent:FindFirstChild("SquirrelBubbleVR", true))) then return true end
+	if VR then
+		for id in pairs(Lines) do
+			for _, suf in ipairs({"_color", "_gray"}) do
+				local m = workspace:FindFirstChild(id .. suf)
+				if m and m:FindFirstChild("SquirrelBubbleVR", true) then return true end
+			end
+		end
+		for _, name in ipairs(OTHER_TALKERS) do
+			local m = workspace:FindFirstChild(name)
+			if m and m:FindFirstChild("SquirrelBubbleVR", true) then return true end
+		end
+	end
 	return false
 end
 
@@ -381,9 +398,10 @@ while true do
 		local st = state[id]; if not st then st = {near = false, restUntil = 0}; state[id] = st end
 		local m, part = modelOf(id)
 		if part then
-			local close = (part.Position - hrp.Position).Magnitude < range
+			local r = tonumber(entry.range) or range   -- (the clock keeper and Tito stand high up: their own reach)
+			local close = (part.Position - hrp.Position).Magnitude < r
 			if close and eligible(id, entry) and now >= st.restUntil then
-				local cand = {id = id, entry = entry, m = m, part = part}
+				local cand = {id = id, entry = entry, m = m, part = part, r = r}
 				if not st.near then table.insert(arrivals, cand) end
 				table.insert(around, cand)
 			end
@@ -395,7 +413,7 @@ while true do
 	if lingerAt == 0 then newLinger(now) end
 	if #around == 0 then newLinger(now) end   -- (nobody near: the linger clock starts over when you arrive)
 	local pick
-	if now >= quietUntil and not someoneTalking(nil) then
+	if now >= quietUntil and not someoneTalking() then
 		if #arrivals > 0 then
 			local c = arrivals[math.random(#arrivals)]
 			if math.random() < num("Chance", 0.55) then pick = c else state[c.id].restUntil = now + 20 end
@@ -404,15 +422,19 @@ while true do
 		end
 	end
 	if pick then
+		-- the rests are charged only for a line actually said; until then just hold everyone quiet through the pause
 		local st = state[pick.id]
-		st.restUntil = now + num("Cooldown", 120) * (0.7 + math.random() * 0.6)
-		quietUntil = now + num("Gap", 9) * (0.8 + math.random() * 0.6)
-		newLinger(now)
-		local delay = 0.4 + math.random() * 2.2
+		local delay = 0.2 + math.random() * 1.0
+		quietUntil = now + delay + 0.6
+		st.restUntil = now + 20   -- (if the line is dropped below, this short rest stands; a said line replaces it)
 		task.delay(delay, function()
-			local c = player.Character; local r = c and c:FindFirstChild("HumanoidRootPart")
-			if not (r and pick.part.Parent and (pick.part.Position - r.Position).Magnitude < range * 1.6) then return end   -- (walked on already)
-			if someoneTalking(pick.part) then return end
+			local c = player.Character; local root = c and c:FindFirstChild("HumanoidRootPart")
+			if not (root and pick.part.Parent and (pick.part.Position - root.Position).Magnitude < pick.r * 1.6) then return end   -- (walked on already)
+			if someoneTalking() then return end
+			local t = os.clock()
+			st.restUntil = t + num("Cooldown", 120) * (0.7 + math.random() * 0.6)
+			quietUntil = t + num("Gap", 9) * (0.8 + math.random() * 0.6)
+			newLinger(t)
 			speak(pick.id, pick.entry, pick.m, pick.part)
 		end)
 	end

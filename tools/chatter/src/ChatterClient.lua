@@ -33,10 +33,26 @@ local function modelOf(id)
 	end
 	return nil
 end
-local function someoneTalking(part)
+-- is any speech bubble up? On a screen every bubble is a child of PlayerGui.SquirrelBubbleGui. In VR each one is a
+-- BillboardGui "SquirrelBubbleVR" under its speaker's part, so the speakers' models are looked through: every one with
+-- lines, both the colour and the gray, plus the ones other scripts make talk (Tonio, Polpo the octopus).
+local VR = game:GetService("VRService").VREnabled
+local OTHER_TALKERS = {"conductor_squirrel_color", "conductor_squirrel_gray", "Polpo"}
+local function someoneTalking()
 	local g = pg:FindFirstChild("SquirrelBubbleGui")
 	if g and #g:GetChildren() > 0 then return true end
-	if part and (part:FindFirstChild("SquirrelBubbleVR") or (part.Parent and part.Parent:FindFirstChild("SquirrelBubbleVR", true))) then return true end
+	if VR then
+		for id in pairs(Lines) do
+			for _, suf in ipairs({"_color", "_gray"}) do
+				local m = workspace:FindFirstChild(id .. suf)
+				if m and m:FindFirstChild("SquirrelBubbleVR", true) then return true end
+			end
+		end
+		for _, name in ipairs(OTHER_TALKERS) do
+			local m = workspace:FindFirstChild(name)
+			if m and m:FindFirstChild("SquirrelBubbleVR", true) then return true end
+		end
+	end
 	return false
 end
 
@@ -73,9 +89,10 @@ while true do
 		local st = state[id]; if not st then st = {near = false, restUntil = 0}; state[id] = st end
 		local m, part = modelOf(id)
 		if part then
-			local close = (part.Position - hrp.Position).Magnitude < range
+			local r = tonumber(entry.range) or range   -- (the clock keeper and Tito stand high up: their own reach)
+			local close = (part.Position - hrp.Position).Magnitude < r
 			if close and eligible(id, entry) and now >= st.restUntil then
-				local cand = {id = id, entry = entry, m = m, part = part}
+				local cand = {id = id, entry = entry, m = m, part = part, r = r}
 				if not st.near then table.insert(arrivals, cand) end
 				table.insert(around, cand)
 			end
@@ -87,7 +104,7 @@ while true do
 	if lingerAt == 0 then newLinger(now) end
 	if #around == 0 then newLinger(now) end   -- (nobody near: the linger clock starts over when you arrive)
 	local pick
-	if now >= quietUntil and not someoneTalking(nil) then
+	if now >= quietUntil and not someoneTalking() then
 		if #arrivals > 0 then
 			local c = arrivals[math.random(#arrivals)]
 			if math.random() < num("Chance", 0.55) then pick = c else state[c.id].restUntil = now + 20 end
@@ -96,15 +113,19 @@ while true do
 		end
 	end
 	if pick then
+		-- the rests are charged only for a line actually said; until then just hold everyone quiet through the pause
 		local st = state[pick.id]
-		st.restUntil = now + num("Cooldown", 120) * (0.7 + math.random() * 0.6)
-		quietUntil = now + num("Gap", 9) * (0.8 + math.random() * 0.6)
-		newLinger(now)
-		local delay = 0.4 + math.random() * 2.2
+		local delay = 0.2 + math.random() * 1.0
+		quietUntil = now + delay + 0.6
+		st.restUntil = now + 20   -- (if the line is dropped below, this short rest stands; a said line replaces it)
 		task.delay(delay, function()
-			local c = player.Character; local r = c and c:FindFirstChild("HumanoidRootPart")
-			if not (r and pick.part.Parent and (pick.part.Position - r.Position).Magnitude < range * 1.6) then return end   -- (walked on already)
-			if someoneTalking(pick.part) then return end
+			local c = player.Character; local root = c and c:FindFirstChild("HumanoidRootPart")
+			if not (root and pick.part.Parent and (pick.part.Position - root.Position).Magnitude < pick.r * 1.6) then return end   -- (walked on already)
+			if someoneTalking() then return end
+			local t = os.clock()
+			st.restUntil = t + num("Cooldown", 120) * (0.7 + math.random() * 0.6)
+			quietUntil = t + num("Gap", 9) * (0.8 + math.random() * 0.6)
+			newLinger(t)
 			speak(pick.id, pick.entry, pick.m, pick.part)
 		end)
 	end

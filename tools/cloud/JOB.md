@@ -977,3 +977,13 @@ the folder: Range, Chance, Cooldown, Gap, Linger, Secs 4.2, TalkUnfound, Enabled
 no model in workspace. Play test: walk the piazza (the old couple, the mouse by the Chiesa di Santa Marina), the quay
 (Beppe, Rocco), the Groves (treasure hunter); expect one bubble at a time, not every squirrel, not on every pass; in the
 French village the church mouse by the church. No publish.
+Job 88 review (3 readers + 11 refuters; 11 confirmed, 1 refuted): VR - the "someone talking" test only saw the picked
+squirrel's own billboard (two bubbles at once with Beppe/Enzo/Tonio/Bella in VR) -> it now looks through every speaker's
+colour and gray models plus Tonio and Polpo; a line dropped at speak time (player walked on, or a bubble came up) still
+charged the full Cooldown/Gap, and with a 0.4-2.6 s pause about half of a walk-through's picks were dropped -> the pause is
+0.2-1.2 s, the rests are charged only when the line is said (a drop leaves the 20 s rest); the clock keeper (balcony, ~28
+studs up) and Tito (washing line, ~14 up) could never come within Range 10 -> per-speaker `range` in ChatterLines (34, 20).
+Lines: Beppe's "Got crabs?" double meaning -> "Caught any crabs?"; the French mouse had two of the cousin's lines word for
+word -> his own sermon gag; Officer Acorn's "looking up", the postcard "keeps the family away", three earnest sea-glass
+lines, the Good Neighbor without her lasagna, the old couple's "sixty years" against the registry's fifty-four -> rewritten.
+Refuted: the treasure hunter's "pirate buried his heart" (fine for a child in context). 196 lines, longest 90.
