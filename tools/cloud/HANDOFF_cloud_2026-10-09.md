@@ -186,6 +186,12 @@ the tan lumps at the cliff's corners by the notch (sandstone-swapped ground wher
   Italy counterpart of the French Hall of Fame (domaine/build_halloffame.lua; Champion.MakeStatue builds figures), for every past
   Guardian of the Harbour (PortoKeeper_v1). Ask her where it stands and how it should look before building.
 - Job 90 DONE: Darkknight's Guardian statue now stands by the lighthouse (Shannon: "that statue is there now").
+- ON HOLD (Shannon, Oct 11): gifting 1000 acorns to one account. Plan when wanted: a small gift list in Studio (username, amount)
+  paid through RS.AwardAcorns the next time the player joins, with a note and a paid flag; or an on-the-spot award while the
+  player is online. Never write the DataStore directly.
+- Portraits (job 91): Shannon: "its DEFINITELY ONLY the character, not the easel or setting" - so the slots-Persistent change is not
+  the fix (harmless; undo = StreamingWas). Next: a client diagnostic logging each rebuild of the sitter image/viewport on her phone
+  (F9), then the fix (likely the ViewportFrame / bust image reloading on low-memory devices).
 - Installed in Edit, NOT published: job 87 rev 9 (the phone HUD column; the squirrel list and map left of it). Rev 10 (the gift
   box 20 px left of the Passport) waits for her yes. Then she publishes.
 - Job 88 (squirrel chatter, church mice) CANCELLED at her word: no new speech bubbles; the bubble module stays as it was (vr1).
