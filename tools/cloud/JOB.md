@@ -1142,3 +1142,10 @@ HeadStack) fell back over the Purse/Squirrels squares (x ~365..662). Fixes (this
 return 0 for an empty needle; Gifts rev 11 = rev 10 + a guarded exact-string patch of workspace.PromptUI.PromptClient (30345 ->
 30763, tools/prompts/src/PromptClient_pill2.lua, backup HudBackup.PromptClient_pre_pill2): when no spot right of the head fits,
 the pill tries the head's left side and falls back there instead of over the column.
+Result job 89 + Gifts rev 11 (runner 6, 4969902, Shannon's "Install both, then test"; INSTALLED in Edit, NOT published): QQ GIFTS
+DONE ... GiftsClient 23839 ...; PromptClient 30345 -> 30763 (backup HudBackup.PromptClient_pre_pill2); QQ BOATINV DONE:
+BoatInvite (server 4533, client 5777); RS.BoatTake; BoatServer 40801 -> 41494; BoatClient 21191 -> 21020; Passport.Catalogue
+11607 -> 11390; the sign's last line dropped. All 16 anchors counted once each beforehand. HttpEnabled was found TRUE after the
+restart (the frozen call's switch-back never saved) and put back to false. Rev 6 of BoatInvite (this commit): the boat card's
+DisplayOrder 20 -> 100, so no interact pill (30) can sit on it; a re-run of the installer changes only the BoatInvite folder
+(BoatServer, BoatClient and the Catalogue report "already").

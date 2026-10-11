@@ -18,7 +18,7 @@ local FONT = Enum.Font.FredokaOne
 local phone = (function() local ok, pi = pcall(function() return UIS.PreferredInput end); if ok and pi ~= nil then return pi == Enum.PreferredInput.Touch end; return UIS.TouchEnabled and not UIS.MouseEnabled end)()
 local function corner(o, r) local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0, r); c.Parent = o end
 
-local gui = Instance.new("ScreenGui"); gui.Name = "BoatInviteGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 20; gui.Enabled = false; gui.Parent = pg
+local gui = Instance.new("ScreenGui"); gui.Name = "BoatInviteGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 100; gui.Enabled = false; gui.Parent = pg   -- (100: on top of everything until it is closed, the interact pills at 30 included - Shannon's rule for the gifts card)
 local W, H = 320, 168
 local card = Instance.new("Frame"); card.AnchorPoint = Vector2.new(0.5, 0); card.Position = UDim2.new(0.5, 0, 0, phone and 78 or 110)   -- (phone: under the HUD row, ending at 246, above the tool hotbar)
 card.Size = UDim2.fromOffset(W, H); card.BackgroundColor3 = NAVY; card.BorderSizePixel = 0; card.Parent = gui; corner(card, 16)
