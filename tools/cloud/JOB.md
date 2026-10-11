@@ -960,12 +960,13 @@ the fish seller "something about crabbing"; the lifeguard "not going swimming ri
 should be a little funny". Housekeeping note 4 (Oct 10).
 tools/chatter/install_chatter1.lua (from make_install_chatter1.py; src/ChatterLines.lua, src/ChatterClient.lua): a folder
 workspace.SquirrelChatter with ChatterLines (44 speakers: the 43 Porto squirrels less Tonio, who has TonioTalk, plus the
-French church_mouse; ~200 lines) and ChatterClient (RunContext Client). Every 0.5 s: for each speaker with a model in
+French church_mouse; 200 lines) and ChatterClient (RunContext Client). Every 0.5 s: for each speaker with a model in
 workspace (<id>_color once found, else <id>_gray), within Range 10 studs of the player -> an "arrival" the first tick, and
 ONE arrival may speak by Chance 0.55 after 0.4-2.6 s; then Gap ~9 s of silence for everyone and Cooldown ~120 s (+-30%) for that
 speaker; a failed roll rests the speaker 20 s; standing among them, one pipes up every Linger ~45 s. Nobody speaks while any
 SquirrelBubble is showing (screen: PlayerGui.SquirrelBubbleGui children; VR: the SquirrelBubbleVR billboard on the part).
-A speaker talks once you have found it (FoundIds); the mice always; TalkUnfound true lets hidden ones talk. Attributes on
+A speaker talks once you have found it (FoundIds), the mice too (Shannon: "the church mice should only say it after
+they are found"); TalkUnfound true lets hidden ones talk. Attributes on
 the folder: Range, Chance, Cooldown, Gap, Linger, Secs 4.2, TalkUnfound, Enabled. QQ CHATTER line names any speaker id with
 no model in workspace. Play test: walk the piazza (the old couple, the mouse by the Chiesa di Santa Marina), the quay
 (Beppe, Rocco), the Groves (treasure hunter); expect one bubble at a time, not every squirrel, not on every pass; in the

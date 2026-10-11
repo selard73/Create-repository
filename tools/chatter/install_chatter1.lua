@@ -1,6 +1,6 @@
 -- install_chatter1.lua (Studio EDIT mode; re-runnable). Job 88. Squirrel chatter: the Porto squirrels and both church mice
 -- talk to passers-by (scattered: one at a time, by chance, with rests). workspace.SquirrelChatter with ChatterLines
--- (15105 chars) and ChatterClient (5041 chars). Undo: delete workspace.SquirrelChatter. No publish.
+-- (15084 chars) and ChatterClient (5014 chars). Undo: delete workspace.SquirrelChatter. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
 if not RS:FindFirstChild("SquirrelBubble") then print("QQ CHATTER ABORT: ReplicatedStorage.SquirrelBubble not found") return end
@@ -9,10 +9,10 @@ local LINES = [===[
 -- say to a passer-by (Shannon, Oct 11 2026: "squirrels in the Italy map randomly talk more to passers by"; "church mice at
 -- both churches tell players that Jesus loves them as they walk by, with an Italian and French flair"). One pool per
 -- registry id; the client picks a line at random, never the same one twice running. Keep a line under about 90 letters
--- so the bubble stays small. always = true: this one speaks whether or not you have found it (the mice).
+-- so the bubble stays small. Everyone, the mice included, speaks only once you have found them (Shannon, Oct 11).
 return {
 	-- ---------- the church mice ----------
-	church_mouse_cousin = {always = true, lines = {
+	church_mouse_cousin = {lines = {
 		"Buongiorno, amico! Jesus loves you - and so does this little mouse.",
 		"Psst... Gesu ti ama. Jesus loves you. Pass it on!",
 		"Ciao! The bells say it every hour: Jesus loves you.",
@@ -22,7 +22,7 @@ return {
 		"Dio ti benedica. God bless you, friend - Jesus loves you.",
 		"Quiet as a church mouse... except about this: Jesus loves you!",
 	}},
-	church_mouse = {always = true, lines = {
+	church_mouse = {lines = {
 		"Bonjour, mon ami! Jesus loves you - and that is the best news in all of France.",
 		"Psst... Jesus t'aime. Jesus loves you. Pass it on!",
 		"Bienvenue! The bells say it every hour: Jesus loves you.",
@@ -310,7 +310,7 @@ local CLIENT = [===[
 -- talk to you as you walk by (Shannon, Oct 11 2026). Scattered on purpose: when you come within Range studs of a squirrel
 -- that has a line pool, ONE nearby squirrel may speak, by Chance, after a short random pause; then nobody speaks for Gap
 -- seconds, and that squirrel rests for about Cooldown seconds. Standing among them, one of them pipes up every Linger
--- seconds or so. A squirrel talks once you have found it (the mice always); TalkUnfound true lets the hidden ones talk.
+-- seconds or so. A squirrel talks once you have found it (the mice too); TalkUnfound true lets the hidden ones talk.
 -- Lines come from the ChatterLines module beside this script; the bubble is the game's SquirrelBubble (VR included).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
@@ -364,7 +364,7 @@ local function speak(id, entry, m, part)
 end
 
 local function eligible(id, entry)
-	return entry.always == true or found[id] or F:GetAttribute("TalkUnfound") == true
+	return found[id] or F:GetAttribute("TalkUnfound") == true
 end
 
 task.wait(2)

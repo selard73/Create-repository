@@ -2,7 +2,7 @@
 -- talk to you as you walk by (Shannon, Oct 11 2026). Scattered on purpose: when you come within Range studs of a squirrel
 -- that has a line pool, ONE nearby squirrel may speak, by Chance, after a short random pause; then nobody speaks for Gap
 -- seconds, and that squirrel rests for about Cooldown seconds. Standing among them, one of them pipes up every Linger
--- seconds or so. A squirrel talks once you have found it (the mice always); TalkUnfound true lets the hidden ones talk.
+-- seconds or so. A squirrel talks once you have found it (the mice too); TalkUnfound true lets the hidden ones talk.
 -- Lines come from the ChatterLines module beside this script; the bubble is the game's SquirrelBubble (VR included).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
@@ -56,7 +56,7 @@ local function speak(id, entry, m, part)
 end
 
 local function eligible(id, entry)
-	return entry.always == true or found[id] or F:GetAttribute("TalkUnfound") == true
+	return found[id] or F:GetAttribute("TalkUnfound") == true
 end
 
 task.wait(2)

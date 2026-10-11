@@ -2,10 +2,10 @@
 -- say to a passer-by (Shannon, Oct 11 2026: "squirrels in the Italy map randomly talk more to passers by"; "church mice at
 -- both churches tell players that Jesus loves them as they walk by, with an Italian and French flair"). One pool per
 -- registry id; the client picks a line at random, never the same one twice running. Keep a line under about 90 letters
--- so the bubble stays small. always = true: this one speaks whether or not you have found it (the mice).
+-- so the bubble stays small. Everyone, the mice included, speaks only once you have found them (Shannon, Oct 11).
 return {
 	-- ---------- the church mice ----------
-	church_mouse_cousin = {always = true, lines = {
+	church_mouse_cousin = {lines = {
 		"Buongiorno, amico! Jesus loves you - and so does this little mouse.",
 		"Psst... Gesu ti ama. Jesus loves you. Pass it on!",
 		"Ciao! The bells say it every hour: Jesus loves you.",
@@ -15,7 +15,7 @@ return {
 		"Dio ti benedica. God bless you, friend - Jesus loves you.",
 		"Quiet as a church mouse... except about this: Jesus loves you!",
 	}},
-	church_mouse = {always = true, lines = {
+	church_mouse = {lines = {
 		"Bonjour, mon ami! Jesus loves you - and that is the best news in all of France.",
 		"Psst... Jesus t'aime. Jesus loves you. Pass it on!",
 		"Bienvenue! The bells say it every hour: Jesus loves you.",
