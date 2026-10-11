@@ -22,14 +22,18 @@ local function jettySpot()
 	local preview = River and River:FindFirstChild("BoatPreview")
 	local visual = preview and preview:FindFirstChildWhichIsA("MeshPart", true)
 	if not visual then return nil end
-	local x, z = 162.2, math.clamp(visual.Position.Z, -166, -148)
+	local x, z = 162.2, math.clamp(visual.Position.Z + 3, -164, -148)   -- (a little up the deck from the boat: clear of the BATEAUX sign at -166..-168.5)
 	local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude; rp.RespectCanCollide = true
 	local skip = {preview}
 	for _, pl in ipairs(Players:GetPlayers()) do if pl.Character then table.insert(skip, pl.Character) end end
 	local boat = workspace:FindFirstChild("Boat"); if boat then table.insert(skip, boat) end
 	rp.FilterDescendantsInstances = skip
-	local hit = workspace:Raycast(Vector3.new(x, visual.Position.Y + 10, z), Vector3.new(0, -25, 0), rp)   -- (from low: no tree or bridge above counts)
-	local top = hit and hit.Position.Y or visual.Position.Y + 2
+	local top                                                    -- the highest of three rays (one may fall between two planks onto a stringer)
+	for _, dz in ipairs({0, 0.45, -0.45}) do
+		local hit = workspace:Raycast(Vector3.new(x, visual.Position.Y + 10, z + dz), Vector3.new(0, -25, 0), rp)   -- (from low: no tree or bridge above counts)
+		if hit and (not top or hit.Position.Y > top) then top = hit.Position.Y end
+	end
+	top = top or visual.Position.Y + 2
 	if top > visual.Position.Y + 8 or top < visual.Position.Y - 4 then top = visual.Position.Y + 2 end
 	local pos = Vector3.new(x, top + 3.2, z)
 	return CFrame.lookAt(pos, Vector3.new(visual.Position.X, pos.Y, visual.Position.Z))

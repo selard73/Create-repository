@@ -3,9 +3,10 @@
 1. workspace.BoatInvite {BoatInviteEvent (RemoteEvent), BoatInviteServer, BoatInviteClient (RunContext Client)} and
    ReplicatedStorage.BoatTake (BindableEvent). Attributes: Need 44, RevealDelay 6, JoinDelay 25, Place "The River Dock", Enabled.
 2. workspace.Boat.BoatServer, three exact-string patches (backup ServerStorage.HudBackup.BoatServer_pre_invite1):
-   a. take(): everyone who has found all 44 gets the parachute packed when they board (no detour to the Sky Diving Squirrel);
+   a. take(), first line: everyone who has found all 44 gets the parachute packed when they board, so the live script's
+      three "talk to Sky Diving Squirrel first" warnings never stop them (no detour);
    b. after the prompt hookup: RS.BoatTake boards a player exactly as the jetty prompt does;
-   c. the jetty sign's text in the source (no longer "Ask him first!"); the live sign (River.Jetty.ChuteNote) the same.
+   c. the jetty sign (built by BoatServer at run time, her words): its last line "See Sky Diving Squirrel first." is dropped.
 Re-runnable: an existing BoatInvite folder goes to HudBackup (attributes kept); an already patched BoatServer is left alone.
 """
 import pathlib
@@ -13,8 +14,8 @@ HERE = pathlib.Path(__file__).resolve().parent
 SERVER = (HERE / "src" / "BoatInviteServer.lua").read_text(encoding="utf-8")
 CLIENT = (HERE / "src" / "BoatInviteClient.lua").read_text(encoding="utf-8")
 assert "]===]" not in SERVER and "]===]" not in CLIENT
-A1 = '\tif hasChute(p) then attachPack(char) end\n\tev:FireClient(p, "go")\n'
-I1 = '\tif not hasChute(p) and found(p) >= NEED then p:SetAttribute("HasChute", true) end   -- (Oct 11, Shannon: one click; all 44 found = the parachute is packed)\n'
+A1 = 'local function take(p)\n'
+I1 = '\tif not hasChute(p) and found(p) >= NEED then p:SetAttribute("HasChute", true) end   -- (Oct 11, Shannon: one click; all 44 found = the parachute is packed, before any "see Sky Diving Squirrel" warning)\n'
 A2 = 'if prompt then prompt.Triggered:Connect(take) else warn("BoatServer: no BoatPrompt on River.BoatPreview") end\n'
 I2 = '''-- one click from the "to the boat" card (Oct 11, Shannon): workspace.BoatInvite puts the player on the jetty, then fires this
 do
@@ -23,8 +24,8 @@ do
 	be.Event:Connect(function(p) if typeof(p) == "Instance" and p:IsA("Player") and p.Parent == game:GetService("Players") then take(p) end end)
 end
 '''
-A3 = 'Squirrels who have found all 44 can borrow a parachute from the Sky Diving Squirrel in the forest. Ask him first!'
-R3 = 'Every squirrel who has found all 44 gets a parachute packed for the drop. Hold on tight!'
+A3 = '\\nSee Sky Diving Squirrel first.'   # (her sign's last line, as written in the source: a backslash-n escape inside the string)
+R3 = ''
 MARK = 'all 44 found = the parachute is packed'
 for s in (A1, I1, A2, I2, A3, R3): assert "]==]" not in s
 INSTALLER = f'''-- install_boatinvite1.lua (Studio EDIT mode; re-runnable). Job 89. The one-click trip to the boat after the last French
@@ -55,26 +56,17 @@ if src:find([==[{MARK}]==], 1, true) then
 else
 	if count(src, A1) ~= 1 or count(src, A2) ~= 1 then print(string.format("QQ BOATINV ABORT: BoatServer (%d chars) anchors found take=%d prompt=%d (need 1 and 1); nothing changed", oldLen, count(src, A1), count(src, A2))) return end
 	local out = src
-	local a, b = out:find(A1, 1, true); out = out:sub(1, a - 1) .. I1 .. out:sub(a)
+	local a, b = out:find(A1, 1, true); out = out:sub(1, b) .. I1 .. out:sub(b + 1)
 	a, b = out:find(A2, 1, true); out = out:sub(1, b) .. I2 .. out:sub(b + 1)
 	local signSrc = count(out, A3) == 1
-	if signSrc then a, b = out:find(A3, 1, true); out = out:sub(1, a - 1) .. R3 .. out:sub(b + 1) end
+	if signSrc then a, b = out:find(A3, 1, true); print("QQ BOATINV sign: dropping the line 'See Sky Diving Squirrel first.'"); out = out:sub(1, a - 1) .. R3 .. out:sub(b + 1) end
 	local f, err = loadstring(out); if not f then print("QQ BOATINV ABORT: the patched BoatServer does not compile: " .. tostring(err) .. "; nothing changed") return end
 	local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 	if not hb:FindFirstChild("BoatServer_pre_invite1") then local bk = bs:Clone(); bk.Name = "BoatServer_pre_invite1"; bk.Enabled = false; bk.Parent = hb end
 	bs.Source = out
-	bsNote = string.format("BoatServer %d -> %d (backup HudBackup.BoatServer_pre_invite1; sign text in source %s)", oldLen, #bs.Source, signSrc and "changed" or "NOT FOUND, left")
+	bsNote = string.format("BoatServer %d -> %d (backup HudBackup.BoatServer_pre_invite1; the sign's last line %s)", oldLen, #bs.Source, signSrc and "dropped" or "NOT FOUND, left")
 end
--- the live jetty sign
-local signNote = "jetty sign not found"
-local River = workspace:FindFirstChild("River"); local jetty = River and River:FindFirstChild("Jetty"); local board = jetty and jetty:FindFirstChild("ChuteNote")
-local label = board and board:FindFirstChildWhichIsA("TextLabel", true)
-if label then
-	local a, b = label.Text:find(A3, 1, true)
-	if a then print("QQ BOATINV old sign text: " .. label.Text); label.Text = label.Text:sub(1, a - 1) .. R3 .. label.Text:sub(b + 1); signNote = "jetty sign changed"
-	elseif label.Text:find(R3, 1, true) then signNote = "jetty sign already changed"
-	else signNote = "jetty sign text not as expected, left: " .. label.Text end
-end
+local signNote = "the jetty sign is built by BoatServer at run time"
 -- RS.BoatTake and the BoatInvite folder
 local take = RS:FindFirstChild("BoatTake"); if not (take and take:IsA("BindableEvent")) then take = Instance.new("BindableEvent"); take.Name = "BoatTake"; take.Parent = RS end
 local old = workspace:FindFirstChild("BoatInvite")

@@ -1,5 +1,5 @@
 -- install_boatinvite1.lua (Studio EDIT mode; re-runnable). Job 89. The one-click trip to the boat after the last French
--- squirrel: workspace.BoatInvite (server 4198, client 5821 chars) + RS.BoatTake, and three exact-string
+-- squirrel: workspace.BoatInvite (server 4533, client 5821 chars) + RS.BoatTake, and three exact-string
 -- patches to workspace.Boat.BoatServer (backup HudBackup.BoatServer_pre_invite1). Undo: delete workspace.BoatInvite and
 -- RS.BoatTake, put the backup's Source back, and the jetty sign's old text (printed below). No publish.
 local RS = game:GetService("ReplicatedStorage")
@@ -29,14 +29,18 @@ local function jettySpot()
 	local preview = River and River:FindFirstChild("BoatPreview")
 	local visual = preview and preview:FindFirstChildWhichIsA("MeshPart", true)
 	if not visual then return nil end
-	local x, z = 162.2, math.clamp(visual.Position.Z, -166, -148)
+	local x, z = 162.2, math.clamp(visual.Position.Z + 3, -164, -148)   -- (a little up the deck from the boat: clear of the BATEAUX sign at -166..-168.5)
 	local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude; rp.RespectCanCollide = true
 	local skip = {preview}
 	for _, pl in ipairs(Players:GetPlayers()) do if pl.Character then table.insert(skip, pl.Character) end end
 	local boat = workspace:FindFirstChild("Boat"); if boat then table.insert(skip, boat) end
 	rp.FilterDescendantsInstances = skip
-	local hit = workspace:Raycast(Vector3.new(x, visual.Position.Y + 10, z), Vector3.new(0, -25, 0), rp)   -- (from low: no tree or bridge above counts)
-	local top = hit and hit.Position.Y or visual.Position.Y + 2
+	local top                                                    -- the highest of three rays (one may fall between two planks onto a stringer)
+	for _, dz in ipairs({0, 0.45, -0.45}) do
+		local hit = workspace:Raycast(Vector3.new(x, visual.Position.Y + 10, z + dz), Vector3.new(0, -25, 0), rp)   -- (from low: no tree or bridge above counts)
+		if hit and (not top or hit.Position.Y > top) then top = hit.Position.Y end
+	end
+	top = top or visual.Position.Y + 2
 	if top > visual.Position.Y + 8 or top < visual.Position.Y - 4 then top = visual.Position.Y + 2 end
 	local pos = Vector3.new(x, top + 3.2, z)
 	return CFrame.lookAt(pos, Vector3.new(visual.Position.X, pos.Y, visual.Position.Z))
@@ -166,9 +170,8 @@ local boatF = workspace:FindFirstChild("Boat"); local bs = boatF and boatF:FindF
 if not (bs and bs:IsA("Script")) then print("QQ BOATINV ABORT: workspace.Boat.BoatServer not found; nothing changed") return end
 if not workspace:FindFirstChild("Travel") then print("QQ BOATINV ABORT: workspace.Travel (the luggage cart fade) not found; nothing changed") return end
 -- the BoatServer patches, all checked before anything changes
-local A1, I1 = [==[	if hasChute(p) then attachPack(char) end
-	ev:FireClient(p, "go")
-]==], [==[	if not hasChute(p) and found(p) >= NEED then p:SetAttribute("HasChute", true) end   -- (Oct 11, Shannon: one click; all 44 found = the parachute is packed)
+local A1, I1 = [==[local function take(p)
+]==], [==[	if not hasChute(p) and found(p) >= NEED then p:SetAttribute("HasChute", true) end   -- (Oct 11, Shannon: one click; all 44 found = the parachute is packed, before any "see Sky Diving Squirrel" warning)
 ]==]
 local A2, I2 = [==[if prompt then prompt.Triggered:Connect(take) else warn("BoatServer: no BoatPrompt on River.BoatPreview") end
 ]==], [==[-- one click from the "to the boat" card (Oct 11, Shannon): workspace.BoatInvite puts the player on the jetty, then fires this
@@ -178,7 +181,7 @@ do
 	be.Event:Connect(function(p) if typeof(p) == "Instance" and p:IsA("Player") and p.Parent == game:GetService("Players") then take(p) end end)
 end
 ]==]
-local A3, R3 = [==[Squirrels who have found all 44 can borrow a parachute from the Sky Diving Squirrel in the forest. Ask him first!]==], [==[Every squirrel who has found all 44 gets a parachute packed for the drop. Hold on tight!]==]
+local A3, R3 = [==[\nSee Sky Diving Squirrel first.]==], [==[]==]
 local function count(s, sub) local n, i = 0, 1; while true do local a, b = s:find(sub, i, true); if not a then return n end; n += 1; i = b + 1 end end
 local src, bsNote = bs.Source, nil
 local oldLen = #src
@@ -187,26 +190,17 @@ if src:find([==[all 44 found = the parachute is packed]==], 1, true) then
 else
 	if count(src, A1) ~= 1 or count(src, A2) ~= 1 then print(string.format("QQ BOATINV ABORT: BoatServer (%d chars) anchors found take=%d prompt=%d (need 1 and 1); nothing changed", oldLen, count(src, A1), count(src, A2))) return end
 	local out = src
-	local a, b = out:find(A1, 1, true); out = out:sub(1, a - 1) .. I1 .. out:sub(a)
+	local a, b = out:find(A1, 1, true); out = out:sub(1, b) .. I1 .. out:sub(b + 1)
 	a, b = out:find(A2, 1, true); out = out:sub(1, b) .. I2 .. out:sub(b + 1)
 	local signSrc = count(out, A3) == 1
-	if signSrc then a, b = out:find(A3, 1, true); out = out:sub(1, a - 1) .. R3 .. out:sub(b + 1) end
+	if signSrc then a, b = out:find(A3, 1, true); print("QQ BOATINV sign: dropping the line 'See Sky Diving Squirrel first.'"); out = out:sub(1, a - 1) .. R3 .. out:sub(b + 1) end
 	local f, err = loadstring(out); if not f then print("QQ BOATINV ABORT: the patched BoatServer does not compile: " .. tostring(err) .. "; nothing changed") return end
 	local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 	if not hb:FindFirstChild("BoatServer_pre_invite1") then local bk = bs:Clone(); bk.Name = "BoatServer_pre_invite1"; bk.Enabled = false; bk.Parent = hb end
 	bs.Source = out
-	bsNote = string.format("BoatServer %d -> %d (backup HudBackup.BoatServer_pre_invite1; sign text in source %s)", oldLen, #bs.Source, signSrc and "changed" or "NOT FOUND, left")
+	bsNote = string.format("BoatServer %d -> %d (backup HudBackup.BoatServer_pre_invite1; the sign's last line %s)", oldLen, #bs.Source, signSrc and "dropped" or "NOT FOUND, left")
 end
--- the live jetty sign
-local signNote = "jetty sign not found"
-local River = workspace:FindFirstChild("River"); local jetty = River and River:FindFirstChild("Jetty"); local board = jetty and jetty:FindFirstChild("ChuteNote")
-local label = board and board:FindFirstChildWhichIsA("TextLabel", true)
-if label then
-	local a, b = label.Text:find(A3, 1, true)
-	if a then print("QQ BOATINV old sign text: " .. label.Text); label.Text = label.Text:sub(1, a - 1) .. R3 .. label.Text:sub(b + 1); signNote = "jetty sign changed"
-	elseif label.Text:find(R3, 1, true) then signNote = "jetty sign already changed"
-	else signNote = "jetty sign text not as expected, left: " .. label.Text end
-end
+local signNote = "the jetty sign is built by BoatServer at run time"
 -- RS.BoatTake and the BoatInvite folder
 local take = RS:FindFirstChild("BoatTake"); if not (take and take:IsA("BindableEvent")) then take = Instance.new("BindableEvent"); take.Name = "BoatTake"; take.Parent = RS end
 local old = workspace:FindFirstChild("BoatInvite")
