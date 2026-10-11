@@ -969,6 +969,12 @@ Live finding (Shannon, during the job 88 play test): "the interact button is sit
 should always be on top of anything else on the screen until it is closed" (PromptTouch DisplayOrder 30 over GiftsGui 15;
 picture tools/gifts/shots/gifts-live-pill-over-card.jpg). Rev 6 (this commit): GiftsGui DisplayOrder 100 (above every other
 ScreenGui, FilmMenu 60 included); its full-screen shade then also takes the taps the pill would have had.
+Shannon (phone emulator): "with that gift icon at the top that row on mobile is suddenly very crowded up there, could we
+maybe stack those icons down the right side instead and maybe keep the gift icon top to the left of the passport?" Rev 7
+(this commit, GiftsClient, phones only): the bar's UIListLayout turns Vertical (Passport, Purse, Squirrels, Map down the right
+edge at x 609..657, y 8..224 on the 667x375 phone), the gift box sits on the top row at x 553..601 (left of the Passport),
+the squirrel Panel and the MapPanel (anchored top-right at y 114, placed once by HudBarClient) move 56 px left so their right
+edge is at 601, re-applied if HudBarClient puts a rebuilt Panel back; the x2 badge sits left of the purse. Desktop unchanged.
 
 ## Job 88: squirrel chatter - the Porto squirrels and both church mice talk to passers-by (Studio EDIT; preview, then ask Shannon)
 

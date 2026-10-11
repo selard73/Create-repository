@@ -1,6 +1,6 @@
 -- install_gifts1.lua (Studio EDIT mode; re-runnable). Job 87. The Gifts system: like + favourite + notifications -> the
 -- Backpack (on trust), join the community -> acorns (checked), invite a friend -> double acorns while you play together
--- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (19950 chars);
+-- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (22086 chars);
 -- ReplicatedStorage.GiftsAction / GiftsEvent. Undo: delete workspace.Gifts and the two remotes. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
@@ -365,14 +365,41 @@ rInv.btn.Activated:Connect(function()
 	say("When your friend joins from the invite, you both earn double acorns while you are here together.", 8, "Friend joins = double acorns for you both.")
 end)
 
--- ---------- the HUD button (left of the others) and the x2 on the purse ----------
+-- ---------- the HUD button and the x2 on the purse ----------
+-- Desktop: the gift box joins the row, left of the others (the bar widened to 272). Phone (Shannon, Oct 11: "that row on
+-- mobile is suddenly very crowded up there, could we stack those icons down the right side instead and keep the gift icon
+-- top to the left of the passport"): the bar's four squares become a column down the right edge (Passport, Purse,
+-- Squirrels, Map) and the gift box sits on the top row to the left of the Passport. The squirrel panel and the map, which
+-- open top-right under the icons, move 56 px left so the column never crosses them.
+local COLUMN_X = -(10 + 48 + 8)   -- the gift box's right edge, and the panels' right edge, left of the column (bar at -10)
+local function leftOfColumn(panel)
+	if panel and panel:IsA("GuiObject") and panel.Position.X.Scale == 1 and panel.Position.X.Offset > COLUMN_X then
+		panel.Position = UDim2.new(1, COLUMN_X, panel.Position.Y.Scale, panel.Position.Y.Offset)
+	end
+end
+local function hookSquirrelHud(g)
+	local panel = g:WaitForChild("Panel", 30)
+	if not panel then return end
+	leftOfColumn(panel)
+	panel:GetPropertyChangedSignal("Position"):Connect(function() leftOfColumn(panel) end)   -- (HudBarClient puts it back at -10 when it hooks a rebuilt HUD)
+end
 task.spawn(function()
 	for _ = 1, 120 do
-		local bar = pg:FindFirstChild("HudBar"); bar = bar and bar:FindFirstChild("Bar")
+		local hud = pg:FindFirstChild("HudBar"); local bar = hud and hud:FindFirstChild("Bar")
 		if bar then
-			if not bar:FindFirstChild("Gifts") then
-				if bar.Size.X.Offset > 0 and bar.Size.X.Offset < 272 then bar.Size = UDim2.new(bar.Size.X.Scale, 272, bar.Size.Y.Scale, bar.Size.Y.Offset) end   -- (four squares + one)
-				local b = Instance.new("TextButton"); b.Name = "Gifts"; b.Size = UDim2.fromOffset(48, 48); b.BackgroundColor3 = NAVY; b.Text = ""; b.AutoButtonColor = false; b.LayoutOrder = -3; b.Parent = bar
+			if not bar:FindFirstChild("Gifts") and not hud:FindFirstChild("Gifts") then
+				if phone then
+					local lay = bar:FindFirstChildOfClass("UIListLayout")
+					if lay then lay.FillDirection = Enum.FillDirection.Vertical; lay.HorizontalAlignment = Enum.HorizontalAlignment.Right; lay.VerticalAlignment = Enum.VerticalAlignment.Top end
+					bar.Size = UDim2.new(bar.Size.X.Scale, 48, 0, 216)   -- (four squares and three gaps, down the right edge)
+					leftOfColumn(hud:FindFirstChild("MapPanel"))
+					local sh = pg:FindFirstChild("SquirrelHUD"); if sh then task.spawn(hookSquirrelHud, sh) end
+					pg.ChildAdded:Connect(function(c) if c.Name == "SquirrelHUD" then task.defer(hookSquirrelHud, c) end end)
+				elseif bar.Size.X.Offset > 0 and bar.Size.X.Offset < 272 then
+					bar.Size = UDim2.new(bar.Size.X.Scale, 272, bar.Size.Y.Scale, bar.Size.Y.Offset)   -- (four squares + one)
+				end
+				local b = Instance.new("TextButton"); b.Name = "Gifts"; b.Size = UDim2.fromOffset(48, 48); b.BackgroundColor3 = NAVY; b.Text = ""; b.AutoButtonColor = false; b.LayoutOrder = -3
+				if phone then b.AnchorPoint = Vector2.new(1, 0); b.Position = UDim2.new(1, COLUMN_X, 0, bar.Position.Y.Offset); b.Parent = hud else b.Parent = bar end
 				corner(b, 14); local s = Instance.new("UIStroke"); s.Color = C(255, 214, 90); s.Thickness = 2; s.Transparency = 0.35; s.Parent = b
 				-- a little gift box: the box, the lid, the ribbon
 				local box = Instance.new("Frame"); box.AnchorPoint = Vector2.new(0.5, 1); box.Position = UDim2.new(0.5, 0, 1, -9); box.Size = UDim2.fromOffset(22, 16); box.BackgroundColor3 = C(220, 90, 90); box.BorderSizePixel = 0; box.Parent = b; corner(box, 3)
@@ -384,7 +411,7 @@ task.spawn(function()
 			end
 			local purse = bar:FindFirstChild("Purse")
 			if purse and not purse:FindFirstChild("Boost") then
-				local x2 = Instance.new("TextLabel"); x2.Name = "Boost"; x2.AnchorPoint = Vector2.new(1, 0); x2.Position = UDim2.new(1, 4, 0, -6); x2.Size = UDim2.fromOffset(26, 16)
+				local x2 = Instance.new("TextLabel"); x2.Name = "Boost"; x2.AnchorPoint = Vector2.new(1, 0); x2.Position = phone and UDim2.new(0, -4, 0.5, -8) or UDim2.new(1, 4, 0, -6); x2.Size = UDim2.fromOffset(26, 16)   -- (phone: beside the purse, left; the column has no room above it)
 				x2.BackgroundColor3 = GREEN; x2.Font = FONT; x2.TextSize = 12; x2.TextColor3 = DEEP; x2.Text = "x2"; x2.Visible = player:GetAttribute("AcornBoost") == 2; x2.Parent = purse; corner(x2, 8)
 				player:GetAttributeChangedSignal("AcornBoost"):Connect(function() x2.Visible = player:GetAttribute("AcornBoost") == 2 end)
 			end
