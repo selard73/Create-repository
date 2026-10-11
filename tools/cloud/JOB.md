@@ -950,6 +950,12 @@ tools/gifts/shots/gifts-j87r3-phone-*.jpg (and j87r2 sparkle a/b). Waiting for h
 Rev 3 verdict (Shannon): "I want a sparkle gold outline around the buttons, they are quite plain". Rev 4 (this commit): a
 3 px gold outline on each gold button with a bright glint travelling round it (a UIGradient on the UIStroke, Rotation 0 -> 360
 every 2.4 s), the face sheen kept and widened a little; green (done) buttons plain. No twinkle shapes.
+Rev 4 verdict (Shannon, live): "no, those buttons are UGLY", "The glow should be on the outline of the buttons not the text".
+Runner 5 measured why: a UIStroke on a TextButton defaults to ApplyStrokeMode Contextual, so rev 3's and rev 4's rims stroked
+the LETTERS, never the button. Also seen on the real phone screen (the capture tool leaves CoreGui out): Roblox's tool hotbar
+(y 305..375 on the 667x375 phone) lay over the card's bottom and "Later". Rev 5 (this commit): ApplyStrokeMode Border (the
+glinting gold ring is on the button's edge); the phone card is 216 tall (rows 44, footer 32 = "Later" only, ending at y 294,
+above the hotbar) with one-line gift texts, and a note takes the subtitle's line for a few seconds instead of a footer.
 
 ## Job 88: squirrel chatter - the Porto squirrels and both church mice talk to passers-by (Studio EDIT; preview, then ask Shannon)
 

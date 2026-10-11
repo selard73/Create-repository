@@ -25,8 +25,8 @@ local function corner(p, r) local c = Instance.new("UICorner"); c.CornerRadius =
 
 local gui = Instance.new("ScreenGui"); gui.Name = "GiftsGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 15; gui.Enabled = false; gui.Parent = pg
 local shade = Instance.new("TextButton"); shade.Size = UDim2.fromScale(1, 1); shade.BackgroundColor3 = C(20, 12, 6); shade.BackgroundTransparency = 0.5; shade.Text = ""; shade.AutoButtonColor = false; shade.Parent = gui
-local W, ROW, TOP, FOOT = 340, phone and 56 or 62, phone and 52 or 60, phone and 62 or 70
-local card = Instance.new("Frame"); card.Name = "GiftsCard"; card.AnchorPoint = Vector2.new(0.5, 0); card.Position = UDim2.new(0.5, 0, 0, phone and 78 or 62)   -- (78 clears the HUD row on a phone, as the daily card does)
+local W, ROW, TOP, FOOT = 340, phone and 44 or 62, phone and 52 or 60, phone and 32 or 70   -- (phone: 52 + 132 + 32 = 216 tall from y 78, ending at 294, above Roblox's tool hotbar at 305)
+local card = Instance.new("Frame"); card.Name = "GiftsCard"; card.AnchorPoint = Vector2.new(0.5, 0); card.Position = UDim2.new(0.5, 0, 0, phone and 78 or 62)   -- (78 clears the HUD row on a phone, as the daily card does; the card must end above y 305 there, where the tool hotbar starts)
 card.Size = UDim2.fromOffset(W, TOP + ROW * 3 + FOOT); card.BackgroundColor3 = NAVY; card.BorderSizePixel = 0; card.Parent = gui
 corner(card, 16); local cs = Instance.new("UIStroke"); cs.Color = GOLD; cs.Thickness = 2; cs.Parent = card
 local function text(parent, t, size, colour, x, y, w, h, align)
@@ -35,13 +35,14 @@ local function text(parent, t, size, colour, x, y, w, h, align)
 	return l
 end
 text(card, "Gifts for squirrel friends", phone and 20 or 22, CREAM, 15, 8, W - 30, 26, Enum.TextXAlignment.Center)
-text(card, "Three ways to help the squirrels, three thank-yous.", 12, GOLD, 15, TOP - 20, W - 30, 16, Enum.TextXAlignment.Center)
+local SUBTITLE = "Three ways to help the squirrels, three thank-yous."
+local sub = text(card, SUBTITLE, 12, GOLD, 15, TOP - 20, W - 30, 16, Enum.TextXAlignment.Center)
 local rows = {}
 local function row(i, title, gift)
 	local y = TOP + (i - 1) * ROW
 	local line = Instance.new("Frame"); line.Position = UDim2.fromOffset(15, y); line.Size = UDim2.fromOffset(W - 30, 1); line.BackgroundColor3 = GOLD; line.BackgroundTransparency = 0.7; line.BorderSizePixel = 0; line.Parent = card
-	local t = text(card, title, 15, CREAM, 15, y + 5, W - 150, 20)
-	local g = text(card, gift, 12, GOLD, 15, y + 25, W - 150, ROW - 28); g.TextTransparency = 0.1
+	local t = text(card, title, 15, CREAM, 15, y + (phone and 4 or 5), W - 150, 20)
+	local g = text(card, gift, 12, GOLD, 15, y + (phone and 22 or 25), W - 150, phone and 18 or ROW - 28); g.TextTransparency = 0.1
 	local btn = Instance.new("TextButton"); btn.AnchorPoint = Vector2.new(1, 0.5); btn.Position = UDim2.new(1, -15, 0, y + ROW / 2); btn.Size = UDim2.fromOffset(112, 36)
 	btn.BackgroundColor3 = GOLD; btn.BorderSizePixel = 0; btn.Font = FONT; btn.TextSize = 16; btn.TextColor3 = DEEP; btn.Text = ""; btn.AutoButtonColor = false; btn.Parent = card
 	corner(btn, 12)
@@ -57,7 +58,7 @@ local function sparkle(btn)
 	local grad = Instance.new("UIGradient"); grad.Name = "Sheen"; grad.Rotation = 18; grad.Offset = Vector2.new(-0.8, 0)
 	grad.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, GOLD), ColorSequenceKeypoint.new(0.4, GOLD), ColorSequenceKeypoint.new(0.5, C(255, 250, 220)), ColorSequenceKeypoint.new(0.6, GOLD), ColorSequenceKeypoint.new(1, GOLD)})
 	grad.Parent = btn
-	local rim = Instance.new("UIStroke"); rim.Name = "Rim"; rim.Color = C(255, 255, 255); rim.Thickness = 3; rim.Transparency = 0; rim.LineJoinMode = Enum.LineJoinMode.Round; rim.Parent = btn
+	local rim = Instance.new("UIStroke"); rim.Name = "Rim"; rim.ApplyStrokeMode = Enum.ApplyStrokeMode.Border; rim.Color = C(255, 255, 255); rim.Thickness = 3; rim.Transparency = 0; rim.LineJoinMode = Enum.LineJoinMode.Round; rim.Parent = btn   -- (Border: the button's edge, not the letters, which is what a UIStroke on a TextButton strokes by default)
 	local glint = Instance.new("UIGradient"); glint.Name = "Glint"; glint.Rotation = 0
 	glint.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, C(255, 252, 232)), ColorSequenceKeypoint.new(0.2, C(255, 222, 110)), ColorSequenceKeypoint.new(0.55, C(206, 156, 46)), ColorSequenceKeypoint.new(1, C(188, 138, 36))})
 	glint.Parent = rim
@@ -89,14 +90,20 @@ local function sparkleOn(btn, on)
 	if on then btn.BackgroundColor3 = C(255, 255, 255) end
 end
 local rLike = row(1, "Like, star & notifications", "Gift: the Backpack")
-local rComm = row(2, "Join our community", "The 1001 Squirrels community. Gift: " .. num("CommunityAcorns", 150) .. " acorns")
-local rInv = row(3, "Invite a friend", "Double acorns while you play together")
+local rComm = row(2, "Join our community", (phone and "Gift: " or "The 1001 Squirrels community. Gift: ") .. num("CommunityAcorns", 150) .. " acorns")
+local INVITE = phone and "Double acorns together" or "Double acorns while you play together"   -- (one line on a phone)
+local rInv = row(3, "Invite a friend", INVITE)
 for _, r in ipairs(rows) do sparkle(r.btn) end
 local later = Instance.new("TextButton"); later.AnchorPoint = Vector2.new(0.5, 1); later.Position = UDim2.new(0.5, 0, 1, -4); later.Size = UDim2.fromOffset(120, 26)
 later.BackgroundTransparency = 1; later.Font = FONT; later.TextSize = 15; later.TextColor3 = DIM; later.Text = "Later"; later.Parent = card
-local note = text(card, "", 12, CREAM, 15, TOP + ROW * 3 + 2, W - 30, FOOT - 34, Enum.TextXAlignment.Center); note.TextTransparency = 0.1
+local note = text(card, "", 12, CREAM, 15, TOP + ROW * 3 + 2, W - 30, math.max(FOOT - 34, 0), Enum.TextXAlignment.Center); note.TextTransparency = 0.1
+if phone then note.Visible = false end   -- (no room under the rows on a phone: a note takes the subtitle's line instead)
 local noteAt = 0
-local function say(t, secs) note.Text = t; local my = os.clock(); noteAt = my; task.delay(secs or 6, function() if noteAt == my then note.Text = "" end end) end
+local function say(t, secs, short)   -- (short: the one-line version for the phone's subtitle slot, 16 px tall)
+	local my = os.clock(); noteAt = my
+	if phone then sub.Text = short or t; sub.TextColor3 = CREAM else note.Text = t end
+	task.delay(secs or 6, function() if noteAt == my then if phone then sub.Text = SUBTITLE; sub.TextColor3 = GOLD else note.Text = "" end end end)
+end
 
 -- ---------- state ----------
 local S = {}
@@ -113,8 +120,8 @@ local function paint()
 	else set(rLike.btn, "Turn on", false) end
 	if S.community then set(rComm.btn, "Thank you", true) else set(rComm.btn, "Join", false) end
 	if S.boosted then rInv.gift.Text = "x2 acorns on, with " .. tostring(S.boostWith)
-	elseif (S.invites or 0) > 0 then rInv.gift.Text = string.format("%d friend%s brought. Double acorns while you play together", S.invites, S.invites == 1 and "" or "s")
-	else rInv.gift.Text = "Double acorns while you play together" end
+	elseif (S.invites or 0) > 0 then rInv.gift.Text = string.format(phone and "%d friend%s brought. Double acorns together" or "%d friend%s brought. Double acorns while you play together", S.invites, S.invites == 1 and "" or "s")
+	else rInv.gift.Text = INVITE end
 	set(rInv.btn, "Invite", false)
 end
 local function ask(what)
@@ -157,12 +164,12 @@ rLike.btn.Activated:Connect(function()
 			pcall(function() ENS:PromptOptIn() end)
 			task.delay(45, function() if conn then conn:Disconnect() end end)
 		end
-		say("Now open the Roblox menu, press the thumbs-up and the star, then Claim.", 12)
+		say("Now open the Roblox menu, press the thumbs-up and the star, then Claim.", 12, "Menu > thumbs-up and star, then Claim.")
 		paint()
 		return
 	end
 	local ok, res = ask("claimLike")
-	if ok and type(res) == "table" then S = res; paint(); say("The Backpack is yours - it is on your back now, and in the Acorn Store's row to take off.", 8)
+	if ok and type(res) == "table" then S = res; paint(); say("The Backpack is yours - it is on your back now, and in the Acorn Store's row to take off.", 8, "The Backpack is yours - it is on your back now.")
 	else say(tostring(res or "later"), 4) end
 end)
 -- row 2: Roblox's own join prompt, then the server checks
@@ -171,19 +178,19 @@ rComm.btn.Activated:Connect(function()
 	local gid = num("GroupId", 0)
 	local status
 	if gid > 0 then local ok, r = pcall(function() return GroupService:PromptJoinAsync(gid) end); if ok then status = r end end
-	if status == Enum.GroupMembershipStatus.JoinRequestPending then say("Your request is in - press Join again once it is accepted.", 6) return end
+	if status == Enum.GroupMembershipStatus.JoinRequestPending then say("Your request is in - press Join again once it is accepted.", 6, "Request sent - press Join again once accepted.") return end
 	local ok, res = ask("checkCommunity")
-	if ok and type(res) == "table" then S = res; paint(); say(string.format("Welcome to the community! %d acorns are in your purse.", num("CommunityAcorns", 150)), 8)
-	else say(res == "not yet" and "Not a member yet - join from the prompt or the community page, then press Join again." or tostring(res or "later"), 7) end
+	if ok and type(res) == "table" then S = res; paint(); say(string.format("Welcome to the community! %d acorns are in your purse.", num("CommunityAcorns", 150)), 8, string.format("Welcome! %d acorns are in your purse.", num("CommunityAcorns", 150)))
+	else say(res == "not yet" and "Not a member yet - join from the prompt or the community page, then press Join again." or tostring(res or "later"), 7, res == "not yet" and "Not a member yet - join, then press Join again." or nil) end
 end)
 -- row 3: Roblox's invite prompt; the server sees the friend arrive
 rInv.btn.Activated:Connect(function()
 	local ok, can = pcall(function() return SocialService:CanSendGameInviteAsync(player) end)
-	if not (ok and can) then say("Invites are not available on this device or account.", 5) return end
+	if not (ok and can) then say("Invites are not available on this device or account.", 5, "Invites are not available here.") return end
 	local opts = Instance.new("ExperienceInviteOptions")
 	opts.PromptMessage = "Come find squirrels with me - we both get double acorns while we play!"
 	pcall(function() SocialService:PromptGameInvite(player, opts) end)
-	say("When your friend joins from the invite, you both earn double acorns while you are here together.", 8)
+	say("When your friend joins from the invite, you both earn double acorns while you are here together.", 8, "Friend joins = double acorns for you both.")
 end)
 
 -- ---------- the HUD button (left of the others) and the x2 on the purse ----------
