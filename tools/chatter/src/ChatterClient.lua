@@ -4,10 +4,10 @@
 -- seconds, and that squirrel rests for about Cooldown seconds. Standing among them, one of them pipes up every Linger
 -- seconds or so. A squirrel talks once you have found it (the mice too); TalkUnfound true lets the hidden ones talk.
 -- Nothing is said while a panel is open, while an interact pill is up (on a screen any pill, drawn by the player's head; in
--- VR one within PillRange of the speaker), or (on a screen) while the speaker is not well inside the view; a picked line waits
--- up to PendingSecs for its moment, then is let go.
--- Lines come from the ChatterLines module beside this script; the bubble is the game's SquirrelBubble (VR included), whose
--- Bubble.talking() says whether any bubble is up and which lets the newest bubble replace an older one (never two at once).
+-- VR one within PillRange of the speaker), or (on a screen) unless the speaker stands where its bubble has room; a picked
+-- line waits up to PendingSecs for its moment, then is let go.
+-- Lines come from the ChatterLines module beside this script; the bubble is the game's own SquirrelBubble, unchanged (VR
+-- included). Before speaking it checks that no bubble is up (the bubble ScreenGui on a screen, the billboards in VR).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local PPS = game:GetService("ProximityPromptService")
@@ -183,11 +183,11 @@ while true do
 		local c = player.Character; local root = c and c:FindFirstChild("HumanoidRootPart")
 		local near = root and pk.part.Parent and (pk.part.Position - root.Position).Magnitude < pk.r * 1.6
 		local inView = true
-		if not VR then   -- (on a flat screen the bubble hangs beside the speaker: the speaker must be well inside the view)
+		if not VR then   -- (on a flat screen the bubble sits up and to the right of the speaker: it must have room there, under the top row)
 			local cam = workspace.CurrentCamera
 			local v, on = cam:WorldToViewportPoint(pk.part.Position)
 			local W, H = cam.ViewportSize.X, cam.ViewportSize.Y
-			inView = on and v.X > 0.08 * W and v.X < 0.92 * W and v.Y > 0.3 * H and v.Y < 0.95 * H
+			inView = on and v.X > 0.08 * W and v.X < 0.68 * W and v.Y > 0.4 * H and v.Y < 0.95 * H
 		end
 		if not near or now > pending.until_ then
 			pending = nil; quietUntil = math.min(quietUntil, now + 1)

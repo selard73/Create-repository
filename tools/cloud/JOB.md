@@ -1076,3 +1076,9 @@ desktop, the real bubble mask): 0 touch the squirrel's silhouette; 239 overhang 
 chatter never starts a line there). Chatter: any shown pill blocks on any screen (VR: within PillRange), stale prompts are
 swept first (gone, disabled, or farther than their reach + 4 from the player), a pending line waits Gap/2 after someone else's
 bubble; every compile check now runs before the bubble swap.
+Shannon, on the rev 5 preview: "you are making the speech bubbles TERRIBLE; why is it so hard? you have the original speech
+bubbles before correct". Rev 6 (this commit): the installer no longer touches RS.SquirrelBubble at all (the live vr1, 8415, is
+what she calls correct; vr2 and make_vr2.py stay in the repo unused). Her rev 3 complaint was mostly the runner's test camera
+behind her avatar, not the module. The chatter uses its own checks (the bubble ScreenGui's children on a screen, the speakers'
+billboards in VR) and on a screen speaks only when the speaker stands at x 8..68 %, y 40..95 % of the view, so the original
+up-and-right bubble has room and stays under the top row.
