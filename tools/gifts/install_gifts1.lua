@@ -1,6 +1,6 @@
 -- install_gifts1.lua (Studio EDIT mode; re-runnable). Job 87. The Gifts system: like + favourite + notifications -> the
 -- Backpack (on trust), join the community -> acorns (checked), invite a friend -> double acorns while you play together
--- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (17882 chars);
+-- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (18414 chars);
 -- ReplicatedStorage.GiftsAction / GiftsEvent. Undo: delete workspace.Gifts and the two remotes. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
@@ -173,7 +173,7 @@ local CLIENT = [===[
 -- rows: like + favourite + notifications (the Backpack), join the community (acorns), invite a friend (double acorns
 -- while you play together). It pops up once per session, a few seconds after the first squirrel found (or PopupDelay
 -- seconds after the save has loaded if no squirrel turns up), while the first two gifts are unclaimed and no other panel
--- or the daily card is up; a Gifts button in the HUD bar opens it any time. The gold buttons carry a moving sheen.
+-- or the daily card is up; a Gifts button in the HUD bar opens it any time. The gold buttons have a glinting gold outline.
 -- A small "x2" rides on the purse while the doubling is on. Same look as the daily card (navy, gold, cream).
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
@@ -219,18 +219,22 @@ local function row(i, title, gift)
 	rows[i] = {title = t, gift = g, btn = btn}
 	return rows[i]
 end
--- the sparkle on a gold button: a pale sheen that sweeps across, and a light rim that breathes (Shannon: the moving glow
--- is ok, no twinkles). A UIGradient multiplies the button's own colour, so a sparkling button is white underneath and the
--- gradient carries the gold.
+-- the sparkle on a gold button (Shannon: no twinkle shapes; "a sparkle gold outline around the buttons"): a gold outline
+-- with a bright glint that travels round it (a UIGradient on the stroke, its Rotation turning), and a pale sheen sweeping
+-- across the face. A UIGradient multiplies the colour under it, so the face and the stroke are white underneath and the
+-- gradients carry the gold.
 local sparkles = {}
 local function sparkle(btn)
 	local grad = Instance.new("UIGradient"); grad.Name = "Sheen"; grad.Rotation = 18; grad.Offset = Vector2.new(-0.8, 0)
-	grad.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, GOLD), ColorSequenceKeypoint.new(0.42, GOLD), ColorSequenceKeypoint.new(0.5, C(255, 248, 212)), ColorSequenceKeypoint.new(0.58, GOLD), ColorSequenceKeypoint.new(1, GOLD)})
+	grad.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, GOLD), ColorSequenceKeypoint.new(0.4, GOLD), ColorSequenceKeypoint.new(0.5, C(255, 250, 220)), ColorSequenceKeypoint.new(0.6, GOLD), ColorSequenceKeypoint.new(1, GOLD)})
 	grad.Parent = btn
-	local rim = Instance.new("UIStroke"); rim.Name = "Rim"; rim.Color = C(255, 242, 196); rim.Thickness = 1.5; rim.Transparency = 0.3; rim.Parent = btn
-	local sp = {btn = btn, grad = grad, rim = rim, on = true}
+	local rim = Instance.new("UIStroke"); rim.Name = "Rim"; rim.Color = C(255, 255, 255); rim.Thickness = 3; rim.Transparency = 0; rim.LineJoinMode = Enum.LineJoinMode.Round; rim.Parent = btn
+	local glint = Instance.new("UIGradient"); glint.Name = "Glint"; glint.Rotation = 0
+	glint.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, C(255, 252, 232)), ColorSequenceKeypoint.new(0.2, C(255, 222, 110)), ColorSequenceKeypoint.new(0.55, C(206, 156, 46)), ColorSequenceKeypoint.new(1, C(188, 138, 36))})
+	glint.Parent = rim
+	local sp = {btn = btn, grad = grad, rim = rim, glint = glint, on = true}
 	sparkles[btn] = sp
-	-- the sheen sweep
+	-- the sheen sweep across the face
 	task.spawn(function()
 		while btn.Parent do
 			if sp.on and gui.Enabled then
@@ -240,11 +244,12 @@ local function sparkle(btn)
 			else task.wait(0.5) end
 		end
 	end)
-	-- the rim breathing
+	-- the glint going round the outline
 	task.spawn(function()
 		while btn.Parent do
 			if sp.on and gui.Enabled then
-				local tw = TweenService:Create(rim, TweenInfo.new(1.3, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, 0, true), {Transparency = 0.75}); tw:Play(); tw.Completed:Wait()
+				glint.Rotation = 0
+				local tw = TweenService:Create(glint, TweenInfo.new(2.4, Enum.EasingStyle.Linear), {Rotation = 360}); tw:Play(); tw.Completed:Wait()
 			else task.wait(0.5) end
 		end
 	end)

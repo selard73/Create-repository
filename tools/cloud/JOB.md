@@ -940,3 +940,33 @@ this session (player attributes SquirrelsFound / FoundIds rising by 1-2 after th
 with PopupDelay as the fallback, now 180 s; FirstFind false turns the find trigger off. Play test: find one squirrel and
 expect the card about 5 s later; with FirstFind false and PopupDelay 15 expect it at 15 s (then PopupDelay back to 180,
 FirstFind back to true); two pictures a second apart show the sheen moving.
+Result job 87 rev 2/3 (runner 5, play-test previews, NOT installed yet): rev 2 (010f19e) - Shannon: "I don't like the
+graphics you did, the moving glow is ok but those little flower things that are wannabe sparkles look really dumb"; the early
+card in that run was her tap on the screen ("I tapped the screen"). Rev 3 (cd54d02): twinkles gone, the sheen and the rim stay;
+the trigger prints what armed it and what fired it. Logged runs: FoundIds + SquirrelsFound 0 -> 1 on the test server -> "popup
+due after a find at 20.9s (found 0 -> 1 ...)" and the card 5.3 s later; FirstFind false + PopupDelay 15 -> "the fallback", card
+at 15.4 s (an 88 -> 89 step did not bring it early). After Join: the row green, no sheen, 150 acorns. Pictures
+tools/gifts/shots/gifts-j87r3-phone-*.jpg (and j87r2 sparkle a/b). Waiting for her install yes.
+Rev 3 verdict (Shannon): "I want a sparkle gold outline around the buttons, they are quite plain". Rev 4 (this commit): a
+3 px gold outline on each gold button with a bright glint travelling round it (a UIGradient on the UIStroke, Rotation 0 -> 360
+every 2.4 s), the face sheen kept and widened a little; green (done) buttons plain. No twinkle shapes.
+
+## Job 88: squirrel chatter - the Porto squirrels and both church mice talk to passers-by (Studio EDIT; preview, then ask Shannon)
+
+Shannon, Oct 11: "church mice at both churches tell players that Jesus loves them as they walk by, with an Italian and French
+flair"; the treasure hunter "quirky and cryptic and cute about finding treasure"; the old couple "sweet about staying together
+for so many years"; "they should not talk to the player all at once, it should not be predictable, it should be scattered";
+the fish seller "something about crabbing"; the lifeguard "not going swimming right after pizza"; "the things everyone says
+should be a little funny". Housekeeping note 4 (Oct 10).
+tools/chatter/install_chatter1.lua (from make_install_chatter1.py; src/ChatterLines.lua, src/ChatterClient.lua): a folder
+workspace.SquirrelChatter with ChatterLines (44 speakers: the 43 Porto squirrels less Tonio, who has TonioTalk, plus the
+French church_mouse; ~200 lines) and ChatterClient (RunContext Client). Every 0.5 s: for each speaker with a model in
+workspace (<id>_color once found, else <id>_gray), within Range 10 studs of the player -> an "arrival" the first tick, and
+ONE arrival may speak by Chance 0.55 after 0.4-2.6 s; then Gap ~9 s of silence for everyone and Cooldown ~120 s (+-30%) for that
+speaker; a failed roll rests the speaker 20 s; standing among them, one pipes up every Linger ~45 s. Nobody speaks while any
+SquirrelBubble is showing (screen: PlayerGui.SquirrelBubbleGui children; VR: the SquirrelBubbleVR billboard on the part).
+A speaker talks once you have found it (FoundIds); the mice always; TalkUnfound true lets hidden ones talk. Attributes on
+the folder: Range, Chance, Cooldown, Gap, Linger, Secs 4.2, TalkUnfound, Enabled. QQ CHATTER line names any speaker id with
+no model in workspace. Play test: walk the piazza (the old couple, the mouse by the Chiesa di Santa Marina), the quay
+(Beppe, Rocco), the Groves (treasure hunter); expect one bubble at a time, not every squirrel, not on every pass; in the
+French village the church mouse by the church. No publish.
