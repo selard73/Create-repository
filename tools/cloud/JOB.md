@@ -1127,3 +1127,10 @@ for you!". Every anchor checked before any change. Still mentioning the waterfal
 Passport's boat outings (Catalogue 24-27: "...the Sky Diving Squirrel in the forest has something you will want before you
 leave", "Ride the river all the way to the waterfall", "Float down to Porto Nocciola under the Sky Diving Squirrel's
 parachute" + "talk to the Sky Diving Squirrel ... he lends you his spare parachute"). The journal lines after the ride are fine.
+Job 89 rev 5 (Shannon: "yes please reword the hint, no mention of waterfall or parachute"): the installer also rewords the
+Passport's boat outings in workspace.Passport.Catalogue (6 exact substrings, backup HudBackup.Catalogue_pre_invite1; ids, names,
+icons and stamping unchanged): boat "... see where it goes. Hold on to your hat!"; falls hint "Ride the river all the way to the
+end." + detail "The river leaves French Squirrel Country through a gorge. Keep going all the way to the very end, boat and all,
+and see where it takes you."; chute hint "Arrive at Porto Nocciola with dry feet." + detail "Once you have found all 44
+squirrels, take the boat all the way down the river. How you reach the shore is a surprise!"; porto "Porto Nocciola lies where
+the river ends." (checked against passport/src/Catalogue.lua: each anchor once, the result compiles).

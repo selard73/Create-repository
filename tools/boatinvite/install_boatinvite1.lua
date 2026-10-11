@@ -185,6 +185,21 @@ else
 	a, b = bcOut:find(C2, 1, true); bcOut = bcOut:sub(1, a - 1) .. D2 .. bcOut:sub(b + 1)
 	local f, err = loadstring(bcOut); if not f then print("QQ BOATINV ABORT: the patched BoatClient does not compile: " .. tostring(err) .. "; nothing changed") return end
 end
+-- the Passport's boat outings, checked before anything changes
+local pf = workspace:FindFirstChild("Passport"); local cat = pf and pf:FindFirstChild("Catalogue")
+if not (cat and cat:IsA("ModuleScript")) then print("QQ BOATINV ABORT: workspace.Passport.Catalogue not found; nothing changed") return end
+local CAT = {{[==[ Steer down the river and see where it goes. The Sky Diving Squirrel in the forest has something you will want before you leave.]==], [==[ Steer down the river and see where it goes. Hold on to your hat!]==]}, {[==[hint="Ride the river all the way to the waterfall."]==], [==[hint="Ride the river all the way to the end."]==]}, {[==[detail="The river leaves French Squirrel Country through a gorge and ends in a great waterfall. Keep going past the brink and over you go, boat and all. Wet or dry, you arrive at Porto Nocciola."]==], [==[detail="The river leaves French Squirrel Country through a gorge. Keep going all the way to the very end, boat and all, and see where it takes you."]==]}, {[==[hint="Float down to Porto Nocciola under the Sky Diving Squirrel's parachute."]==], [==[hint="Arrive at Porto Nocciola with dry feet."]==]}, {[==[detail="After you have found all 44 squirrels, talk to the Sky Diving Squirrel in the forest and he lends you his spare parachute. Wear it over the falls and steer your way down to the shore."]==], [==[detail="Once you have found all 44 squirrels, take the boat all the way down the river. How you reach the shore is a surprise!"]==]}, {[==[Porto Nocciola lies at the foot of the falls.]==], [==[Porto Nocciola lies where the river ends.]==]}}
+local catOut, catNote = cat.Source, nil
+if catOut:find(CAT[2][2], 1, true) and not catOut:find(CAT[2][1], 1, true) then
+	catNote = "Passport outings already reworded"; catOut = nil
+else
+	for i, pair in ipairs(CAT) do
+		local n = count0(catOut, pair[1])
+		if n ~= 1 then print(string.format("QQ BOATINV ABORT: Passport.Catalogue anchor %d found %d times (need 1); nothing changed", i, n)) return end
+		local a, b = catOut:find(pair[1], 1, true); catOut = catOut:sub(1, a - 1) .. pair[2] .. catOut:sub(b + 1)
+	end
+	local f, err = loadstring(catOut); if not f then print("QQ BOATINV ABORT: the reworded Catalogue does not compile: " .. tostring(err) .. "; nothing changed") return end
+end
 -- the BoatServer patches, all checked before anything changes
 local A1, I1 = [==[local function take(p)
 ]==], [==[	if not hasChute(p) and found(p) >= NEED then p:SetAttribute("HasChute", true) end   -- (Oct 11, Shannon: one click; all 44 found = the parachute is packed, before any "see Sky Diving Squirrel" warning)
@@ -230,6 +245,12 @@ if bcOut then
 	local was = #bc.Source; bc.Source = bcOut
 	bcNote = string.format("BoatClient %d -> %d, the jetty prompt reads 'Take the boat' / 'Bateau' (backup HudBackup.BoatClient_pre_invite1)", was, #bc.Source)
 end
+if catOut then
+	local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
+	if not hb:FindFirstChild("Catalogue_pre_invite1") then local bk = cat:Clone(); bk.Name = "Catalogue_pre_invite1"; bk.Parent = hb end
+	local was = #cat.Source; cat.Source = catOut
+	catNote = string.format("Passport.Catalogue %d -> %d, 6 boat-outing texts reworded (backup HudBackup.Catalogue_pre_invite1)", was, #cat.Source)
+end
 local signNote = "the jetty sign is built by BoatServer at run time"
 -- RS.BoatTake and the BoatInvite folder
 local take = RS:FindFirstChild("BoatTake"); if not (take and take:IsA("BindableEvent")) then take = Instance.new("BindableEvent"); take.Name = "BoatTake"; take.Parent = RS end
@@ -249,6 +270,6 @@ local e = Instance.new("RemoteEvent"); e.Name = "BoatInviteEvent"; e.Parent = F
 local s = Instance.new("Script"); s.Name = "BoatInviteServer"; s.Source = SERVER; s.Parent = F
 local c = Instance.new("Script"); c.Name = "BoatInviteClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
 F.Parent = workspace
-print(string.format("QQ BOATINV DONE: workspace.BoatInvite (server %d, client %d chars; Need %s, RevealDelay %s, JoinDelay %s, Enabled %s); RS.BoatTake; %s; %s; %s%s",
+print(string.format("QQ BOATINV DONE: workspace.BoatInvite (server %d, client %d chars; Need %s, RevealDelay %s, JoinDelay %s, Enabled %s); RS.BoatTake; %s; %s; %s; %s%s",
 	#s.Source, #c.Source, tostring(F:GetAttribute("Need")), tostring(F:GetAttribute("RevealDelay")), tostring(F:GetAttribute("JoinDelay")), tostring(F:GetAttribute("Enabled")),
-	bsNote, bcNote, signNote, old and ("; the old folder is HudBackup." .. old.Name) or ""))
+	bsNote, bcNote, catNote, signNote, old and ("; the old folder is HudBackup." .. old.Name) or ""))
