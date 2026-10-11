@@ -87,7 +87,7 @@ local bc = boatF:FindFirstChild("BoatClient")
 if not (bc and bc:IsA("BaseScript")) then print("QQ BOATINV ABORT: workspace.Boat.BoatClient not found; nothing changed") return end
 local C1, D1 = [==[{C1}]==], [==[{D1}]==]
 local C2, D2 = [==[{C2}]==], [==[{D2}]==]
-local function count0(s, sub) local n, i = 0, 1; while true do local a, b = s:find(sub, i, true); if not a then return n end; n += 1; i = b + 1 end end
+local function count0(s, sub) if sub == "" then return 0 end; local n, i = 0, 1; while true do local a, b = s:find(sub, i, true); if not a then return n end; n += 1; i = b + 1 end end
 local bcSrc, bcOut, bcNote = bc.Source, nil, nil
 if count0(bcSrc, C1) == 0 and count0(bcSrc, C2) == 0 and bcSrc:find("Bateau - see the Sky Diving", 1, true) == nil and bcSrc:find("(no parachute!)", 1, true) == nil then
 	bcNote = "BoatClient already plain (" .. #bcSrc .. ")"
@@ -117,7 +117,7 @@ end
 local A1, I1 = [==[{A1}]==], [==[{I1}]==]
 local A2, I2 = [==[{A2}]==], [==[{I2}]==]
 local A3, R3 = [==[{A3}]==], [==[{R3}]==]
-local function count(s, sub) local n, i = 0, 1; while true do local a, b = s:find(sub, i, true); if not a then return n end; n += 1; i = b + 1 end end
+local function count(s, sub) if sub == "" then return 0 end; local n, i = 0, 1; while true do local a, b = s:find(sub, i, true); if not a then return n end; n += 1; i = b + 1 end end
 local src, bsNote = bs.Source, nil
 local oldLen = #src
 if src:find([==[{MARK}]==], 1, true) then

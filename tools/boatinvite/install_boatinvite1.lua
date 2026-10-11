@@ -174,7 +174,7 @@ local bc = boatF:FindFirstChild("BoatClient")
 if not (bc and bc:IsA("BaseScript")) then print("QQ BOATINV ABORT: workspace.Boat.BoatClient not found; nothing changed") return end
 local C1, D1 = [==[(may and not player:GetAttribute("HasChute")) and "Take the boat (no parachute!)" or "Take the boat"]==], [==["Take the boat"]==]
 local C2, D2 = [==[(player:GetAttribute("HasChute") and "Bateau" or "Bateau - see the Sky Diving Squirrel first")]==], [==["Bateau"]==]
-local function count0(s, sub) local n, i = 0, 1; while true do local a, b = s:find(sub, i, true); if not a then return n end; n += 1; i = b + 1 end end
+local function count0(s, sub) if sub == "" then return 0 end; local n, i = 0, 1; while true do local a, b = s:find(sub, i, true); if not a then return n end; n += 1; i = b + 1 end end
 local bcSrc, bcOut, bcNote = bc.Source, nil, nil
 if count0(bcSrc, C1) == 0 and count0(bcSrc, C2) == 0 and bcSrc:find("Bateau - see the Sky Diving", 1, true) == nil and bcSrc:find("(no parachute!)", 1, true) == nil then
 	bcNote = "BoatClient already plain (" .. #bcSrc .. ")"
@@ -213,7 +213,7 @@ do
 end
 ]==]
 local A3, R3 = [==[\nSee Sky Diving Squirrel first.]==], [==[]==]
-local function count(s, sub) local n, i = 0, 1; while true do local a, b = s:find(sub, i, true); if not a then return n end; n += 1; i = b + 1 end end
+local function count(s, sub) if sub == "" then return 0 end; local n, i = 0, 1; while true do local a, b = s:find(sub, i, true); if not a then return n end; n += 1; i = b + 1 end end
 local src, bsNote = bs.Source, nil
 local oldLen = #src
 if src:find([==[all 44 found = the parachute is packed]==], 1, true) then

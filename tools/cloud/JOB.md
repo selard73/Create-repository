@@ -1134,3 +1134,11 @@ end." + detail "The river leaves French Squirrel Country through a gorge. Keep g
 and see where it takes you."; chute hint "Arrive at Porto Nocciola with dry feet." + detail "Once you have found all 44
 squirrels, take the boat all the way down the river. How you reach the shore is a surprise!"; porto "Porto Nocciola lies where
 the river ends." (checked against passport/src/Catalogue.lua: each anchor once, the result compiles).
+Runner 6 (Oct 11): its own read-only anchor count hung Studio (an empty needle in find(); nothing written; Edit = v1317); step-1
+preview done before that: the card 6 s after the 44th find, x 174..494 y 78..246, 0 overlaps; Later closes; [Take the boat] =
+fade, BoatTake fired, she stood on the jetty facing the boat. CONFIRMED the jetty prompt read "Bateau - see the Sky Diving Squirrel
+first" / "(no parachute!)" (rev 4 covers it). NEW live since Gifts rev 9: on the phone the interact pill beside the head (PromptTouch
+HeadStack) fell back over the Purse/Squirrels squares (x ~365..662). Fixes (this commit): the boat installer's count helpers
+return 0 for an empty needle; Gifts rev 11 = rev 10 + a guarded exact-string patch of workspace.PromptUI.PromptClient (30345 ->
+30763, tools/prompts/src/PromptClient_pill2.lua, backup HudBackup.PromptClient_pre_pill2): when no spot right of the head fits,
+the pill tries the head's left side and falls back there instead of over the column.
