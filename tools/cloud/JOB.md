@@ -984,6 +984,14 @@ is open the column FOLDS AWAY - only that panel's own toggle stays, parked on th
 found by its "Tip" label text), the Passport stays at the top of the column, Purse and the other toggle hide - and the column
 returns when the panel closes (Visible watched on SquirrelHUD.Panel and HudBar.MapPanel, re-hooked on a rebuilt SquirrelHUD).
 Desktop unchanged. Runner 6 (session_01TQwZKeCYsD9TwPfGwTDoud, "runner 6 ready" at 7fc8f73) previews this one.
+Preview rev 8 (runner 6, eec1019, NOT installed): the column, the fold and the card all measured as written (pictures
+tools/gifts/shots/gifts-j87r8-phone-*). Shannon: "when you click the icon boxes, the modal should open to the right and under
+them, not on top of them"; of three sketches she chose "squares stay, list beside them". Rev 9 (this commit): no fold; the
+squares never move; SquirrelHUD.Panel and HudBar.MapPanel keep HudBarClient's y (64, under the top row) but their right edge
+moves to -118 from the screen's right (x 549 on the phone: left of the column at 609 and of Roblox's capture bar at its
+default spot 557..601), and their UIScale is capped to the room between the Hint button (ends 116) and that edge: on the
+phone the squirrel list becomes 425 x 177 (scale 0.764, was 524 x 219), the map stays 295 x 219 at x 254..549. Position,
+Size, Scale and ViewportSize changes are followed, so HudBarClient's own refits are re-capped. Desktop unchanged.
 
 ## Job 88: squirrel chatter - the Porto squirrels and both church mice talk to passers-by (Studio EDIT; preview, then ask Shannon)
 

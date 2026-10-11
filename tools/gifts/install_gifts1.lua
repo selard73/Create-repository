@@ -1,6 +1,6 @@
 -- install_gifts1.lua (Studio EDIT mode; re-runnable). Job 87. The Gifts system: like + favourite + notifications -> the
 -- Backpack (on trust), join the community -> acorns (checked), invite a friend -> double acorns while you play together
--- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (23423 chars);
+-- (checked by the friend's join data). workspace.Gifts with GiftsServer (8379 chars) and GiftsClient (23760 chars);
 -- ReplicatedStorage.GiftsAction / GiftsEvent. Undo: delete workspace.Gifts and the two remotes. No publish.
 local RS = game:GetService("ReplicatedStorage")
 local SS = game:GetService("ServerStorage")
@@ -368,43 +368,38 @@ end)
 -- ---------- the HUD button and the x2 on the purse ----------
 -- Desktop: the gift box joins the row, left of the others (the bar widened to 272). Phone (Shannon, Oct 11: "that row on
 -- mobile is suddenly very crowded up there, could we stack those icons down the right side instead and keep the gift icon
--- top to the left of the passport"): the bar's four squares become a column down the right edge (Passport, Purse,
--- Squirrels, Map) and the gift box sits on the top row to the left of the Passport. The squirrel panel and the map open
--- top-right under the icons, where the column would cross them (and moving them left put the squirrel panel over the Hint
--- button and the map's buttons under Roblox's capture bar), so while one of them is open the column folds away: only that
--- panel's own toggle stays, on the top row left of the gift box, and the column comes back when it closes.
-local COLUMN_X = -(10 + 48 + 8)          -- the gift box's right edge (the bar sits at -10)
-local TOGGLE_X = COLUMN_X - 48 - 8        -- an open panel's toggle, left of the gift box
-local function tipOf(btn) local t = btn:FindFirstChild("Tip"); return t and t:IsA("TextLabel") and t.Text or "" end
-local function foldColumn(hud, bar, panelName)   -- panelName "Squirrels" / "Map" while that panel is open, nil when both are closed
-	for _, btn in ipairs(bar:GetChildren()) do
-		if btn:IsA("GuiButton") then
-			if panelName and tipOf(btn) == panelName then
-				btn.AnchorPoint = Vector2.new(1, 0); btn.Position = UDim2.new(1, TOGGLE_X, 0, bar.Position.Y.Offset); btn.Parent = hud
-			else btn.Visible = panelName == nil or tipOf(btn) == "Passport" end   -- (the Passport, top of the column, sits above the panels anyway)
-		end
-	end
-	for _, btn in ipairs(hud:GetChildren()) do   -- a toggle parked on the top row goes back into the column
-		if btn:IsA("GuiButton") and btn.Name ~= "Gifts" and (not panelName or tipOf(btn) ~= panelName) then btn.Parent = bar; btn.Visible = true end
+-- top to the left of the passport", then "when you click the icon boxes, the modal should open to the right and under
+-- them, not on top of them" - her pick: the squares never move; the squirrel list and the map open under the top row and
+-- to the LEFT of the column, a little narrower, clear of the Hint button): the bar's four squares become a column down the
+-- right edge (Passport, Purse, Squirrels, Map), the gift box sits on the top row to the left of the Passport, and the two
+-- panels HudBarClient opens top-right get their right edge moved left of the column and of Roblox's capture bar at its
+-- default spot (x 557..601 on the 667-wide phone), with their UIScale capped so they end right of the Hint button.
+local COLUMN_X = -(10 + 48 + 8)                 -- the gift box's right edge (the bar sits at -10)
+local PANEL_RIGHT = -(10 + 48 + 8 + 44 + 8)     -- the panels' right edge: left of the column and of the capture bar (44 wide)
+local HINT_RIGHT = 124                          -- the Hint button ends at x 116
+local function placePanel(panel)
+	if not (panel and panel:IsA("GuiObject")) then return end
+	if panel.Position.X.Scale == 1 and panel.Position.X.Offset ~= PANEL_RIGHT then panel.Position = UDim2.new(1, PANEL_RIGHT, panel.Position.Y.Scale, panel.Position.Y.Offset) end
+	local sc, cam, w = panel:FindFirstChildOfClass("UIScale"), workspace.CurrentCamera, panel.Size.X.Offset
+	if sc and cam and w > 0 then
+		local cap = (cam.ViewportSize.X + PANEL_RIGHT - HINT_RIGHT) / w   -- (the room between the Hint and the panels' right edge)
+		if sc.Scale > cap then sc.Scale = math.max(0.45, cap) end
 	end
 end
-local function watchPanels(hud, bar)
-	local map = hud:FindFirstChild("MapPanel")
-	local function refold()
-		local sh = pg:FindFirstChild("SquirrelHUD"); local sp = sh and sh:FindFirstChild("Panel")
-		local m = hud:FindFirstChild("MapPanel")
-		if sp and sp.Visible then foldColumn(hud, bar, "Squirrels")
-		elseif m and m.Visible then foldColumn(hud, bar, "Map")
-		else foldColumn(hud, bar, nil) end
-	end
-	if map then map:GetPropertyChangedSignal("Visible"):Connect(refold) end
-	local function hookSquirrelHud(g)
-		local panel = g:WaitForChild("Panel", 30)
-		if panel then panel:GetPropertyChangedSignal("Visible"):Connect(refold); refold() end
-	end
+local function watchPanel(panel)   -- HudBarClient puts the panel back at -10 and refits its scale on hook, size and viewport changes: follow every one
+	placePanel(panel)
+	panel:GetPropertyChangedSignal("Position"):Connect(function() placePanel(panel) end)
+	panel:GetPropertyChangedSignal("Size"):Connect(function() task.defer(placePanel, panel) end)
+	local function hookScale(sc) sc:GetPropertyChangedSignal("Scale"):Connect(function() placePanel(panel) end) end
+	local sc = panel:FindFirstChildOfClass("UIScale"); if sc then hookScale(sc) end
+	panel.ChildAdded:Connect(function(c) if c:IsA("UIScale") then hookScale(c); task.defer(placePanel, panel) end end)
+	if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function() task.defer(placePanel, panel) end) end
+end
+local function watchPanels(hud)
+	local map = hud:FindFirstChild("MapPanel"); if map then watchPanel(map) end
+	local function hookSquirrelHud(g) local panel = g:WaitForChild("Panel", 30); if panel then watchPanel(panel) end end
 	local sh = pg:FindFirstChild("SquirrelHUD"); if sh then task.spawn(hookSquirrelHud, sh) end
 	pg.ChildAdded:Connect(function(c) if c.Name == "SquirrelHUD" then task.defer(hookSquirrelHud, c) end end)
-	refold()
 end
 task.spawn(function()
 	for _ = 1, 120 do
@@ -415,7 +410,7 @@ task.spawn(function()
 					local lay = bar:FindFirstChildOfClass("UIListLayout")
 					if lay then lay.FillDirection = Enum.FillDirection.Vertical; lay.HorizontalAlignment = Enum.HorizontalAlignment.Right; lay.VerticalAlignment = Enum.VerticalAlignment.Top end
 					bar.Size = UDim2.new(bar.Size.X.Scale, 48, 0, 216)   -- (four squares and three gaps, down the right edge)
-					task.defer(watchPanels, hud, bar)
+					task.defer(watchPanels, hud)
 				elseif bar.Size.X.Offset > 0 and bar.Size.X.Offset < 272 then
 					bar.Size = UDim2.new(bar.Size.X.Scale, 272, bar.Size.Y.Scale, bar.Size.Y.Offset)   -- (four squares + one)
 				end
