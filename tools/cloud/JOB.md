@@ -1191,3 +1191,14 @@ at 31.6 s ("no statue yet for SelBell; building it again" -> "the statue of SelB
 cleared it. Note: the retry ticks at 20/40/60 s only. She may publish; the next live server should raise Darkknight's statue.
 Next report (Shannon): "the portraits in the French section have the characters in them continuously blinking in and out on mobile
 and vr (but not on desktop)" - runner 6 surveying read-only (theory: the sitter models streaming in and out on low-memory clients).
+Job 90 CONFIRMED live (Shannon): "that statue is there now".
+
+## Job 91: the French gallery portraits blink on phones and VR (read-only survey first)
+
+Shannon: "the portraits in the French section have the characters in them continuously blinking in and out on mobile and vr (but
+not on desktop)". Runner 6's survey + village/build_portraits.lua's CLIENT: hookCanvas mounts a CLONE of each canvas's SurfaceGui
+into PlayerGui and connects Canvas.AncestryChanged -> cleanup() (the mounted copy destroyed); slots.DescendantAdded -> hookCanvas
+(mounted again). The slot models are ModelStreamingMode Default, so on low-memory clients (phones, Quest) the canvases stream out
+and back in, and each cycle removes and re-adds the whole portrait. The Oct 9 VR fix (bust image instead of the viewport) did not
+stop the blinking in VR, which points at the mount, not the rendering. Proposed fix (no script change): ModelStreamingMode
+Persistent on each slot Model under workspace.PortraitGallery.Slots.

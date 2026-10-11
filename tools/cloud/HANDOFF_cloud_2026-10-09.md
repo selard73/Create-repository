@@ -182,6 +182,10 @@ the tan lumps at the cliff's corners by the notch (sandstone-swapped ground wher
   the camera go on my mobile game???" - tools/shop/src/ShopClient.lua (~line 175, hotbarSlots(): a phone's Roblox hotbar shows
   only 3 tools, the bar is trimmed). First ask her what she saw (no camera in the hotbar, or it is there but does not take or
   show a photo); then a read-only phone-emulator play test with her tools.
+- ADDED (Shannon, Oct 11): "on wednesday, we need to build the monument (of all past guardians) in the italian section" - the
+  Italy counterpart of the French Hall of Fame (domaine/build_halloffame.lua; Champion.MakeStatue builds figures), for every past
+  Guardian of the Harbour (PortoKeeper_v1). Ask her where it stands and how it should look before building.
+- Job 90 DONE: Darkknight's Guardian statue now stands by the lighthouse (Shannon: "that statue is there now").
 - Installed in Edit, NOT published: job 87 rev 9 (the phone HUD column; the squirrel list and map left of it). Rev 10 (the gift
   box 20 px left of the Passport) waits for her yes. Then she publishes.
 - Job 88 (squirrel chatter, church mice) CANCELLED at her word: no new speech bubbles; the bubble module stays as it was (vr1).
