@@ -1086,3 +1086,5 @@ JOB 88 CANCELLED (Shannon, Oct 11): "the original speech bubbles were right, all
 "remove ANY new speech bubbles completely, we are just going to keep the ones we had originally before tonight". Nothing from
 job 88 is to be installed: no workspace.SquirrelChatter, RS.SquirrelBubble stays vr1 (8415). Runner 6 asked to stop the preview
 and confirm Edit is clean (undo on her yes if anything got in). tools/chatter and tools/bubble/*vr2* stay in the repo, unused.
+Confirmed by runner 6: Edit is clean (no SquirrelChatter, RS.SquirrelBubble = vr1 8415, no job 88 backups); nothing from job 88
+was ever installed. Studio holds Gifts rev 9, unpublished; rev 10 (c991424) not previewed. Runner 6 idle until Wednesday.
