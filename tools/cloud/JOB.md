@@ -1082,3 +1082,7 @@ what she calls correct; vr2 and make_vr2.py stay in the repo unused). Her rev 3 
 behind her avatar, not the module. The chatter uses its own checks (the bubble ScreenGui's children on a screen, the speakers'
 billboards in VR) and on a screen speaks only when the speaker stands at x 8..68 %, y 40..95 % of the view, so the original
 up-and-right bubble has room and stays under the top row.
+JOB 88 CANCELLED (Shannon, Oct 11): "the original speech bubbles were right, all of these new ones are very very wrong";
+"remove ANY new speech bubbles completely, we are just going to keep the ones we had originally before tonight". Nothing from
+job 88 is to be installed: no workspace.SquirrelChatter, RS.SquirrelBubble stays vr1 (8415). Runner 6 asked to stop the preview
+and confirm Edit is clean (undo on her yes if anything got in). tools/chatter and tools/bubble/*vr2* stay in the repo, unused.

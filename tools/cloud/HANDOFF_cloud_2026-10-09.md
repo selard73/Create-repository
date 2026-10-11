@@ -101,7 +101,7 @@ The runner: send_message to its session id (bridge:session_01FmVm5n3mKMAfYwLsZWt
 3. Message in a bottle game: not built yet. The Porto cast list in HANDOFF_2026-10-01_CHATGPT_PORTO_NOCCIOLA.md has a
    "bottle finder" squirrel; nothing else exists. Needs a design chat with her first (where bottles wash up, what is in
    them, reward).
-4. Italy squirrels should randomly talk more to passers-by. Speech bubbles live in tools/bubble (sayVR for VR, job 55);
+4. CANCELLED Oct 11 (Shannon: keep only the speech bubbles from before; job 88 not installed). Was: Italy squirrels should randomly talk more to passers-by. Speech bubbles live in tools/bubble (sayVR for VR, job 55);
    Porto activities in tools/porto/src/PortoActivities.lua / install_italy.lua. Idea: an ambient-chatter module with a
    per-squirrel line pool, triggered when a player walks within a few studs, cooldowns so it is not spammy.
 
@@ -167,6 +167,13 @@ back copies of the SouthCliff pieces, 28 strata plates), terrain sandstone behin
 rows y 26..38, backup HudBackup.CliffTop_pre1 (paste at voxel 9,5,-148), FallsB.LipPlate 36 (SizeWas). Shannon's verdict on
 the cliff pending (she looks in Studio herself). Open: the dark patch on the grass hill west of the outcrop (x < 8, not probed);
 the tan lumps at the cliff's corners by the notch (sandstone-swapped ground where the bands stop).
+
+## State at Oct 11 ~03:00 UTC (runner 6)
+- Installed in Edit, NOT published: job 87 rev 9 (the phone HUD column; the squirrel list and map left of it). Rev 10 (the gift
+  box 20 px left of the Passport) waits for her yes. Then she publishes.
+- Job 88 (squirrel chatter, church mice) CANCELLED at her word: no new speech bubbles; the bubble module stays as it was (vr1).
+- Next (event Oct 18): the message in a bottle game (design chat first), the French clothing rebuild (ask which issues), the
+  cliff cosmetics.
 
 ## Runner 6 (when runner 5 nears 80%; runner 5 = session_01UUMqoPtq2ZgzZTctBWshd3 said so at Oct 11 ~01:40 UTC)
 Runner 5 keeps to short jobs until it stops (the Gifts rev 7 install on Shannon's yes). First jobs for runner 6: whatever
