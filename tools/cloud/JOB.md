@@ -1155,3 +1155,6 @@ overlaps; the Sky Diving Squirrel says "All 44! Now THAT is a high score.", no p
 boat] one click: in the BoatSeat at once, HasChute + ChutePack, no warnings, over the falls the parachute opened, landed in Porto,
 Item_porto 1 (the Gifts card's 180 s fallback came up on landing); the jetty prompt "Bateau" / "Take the boat"; the pill fix puts a
 long pill LEFT of the head (5..305); the Passport outings reworded. Pictures tools/boatinvite/shots/boatinv-j89v-phone-*.jpg.
+Job 89 re-run at 9a1fcbe INSTALLED in Edit on her yes: BoatInvite client 5901 with DisplayOrder 100 (old folder
+HudBackup.BoatInvite_pre_1); BoatServer 41494, BoatClient 21020, Catalogue 11390 unchanged. Studio holds, unpublished: Gifts rev 11
++ PromptClient pill2 + job 89. She publishes next.

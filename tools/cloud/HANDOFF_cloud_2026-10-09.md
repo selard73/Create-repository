@@ -169,7 +169,9 @@ the cliff pending (she looks in Studio herself). Open: the dark patch on the gra
 the tan lumps at the cliff's corners by the notch (sandstone-swapped ground where the bands stop).
 
 ## State at Oct 11 ~03:00 UTC (runner 6)
-- PAUSED until Wednesday (Shannon: weekly token budget). Pick up with Gifts rev 10 (c991424) preview + her yes, then her publish.
+- PAUSED until Wednesday (Shannon: weekly token budget). Since then INSTALLED (Oct 11 ~05:00 UTC, her yes; publish pending): Gifts rev 11
+  (gift box 20 px from the Passport; the phone pill tries the head's left side) and job 89 (one click to the boat after the last
+  French squirrel; no parachute or waterfall spoilers). Check the publish (games API 'updated') before anything else on Wednesday.
 - ADDED to the list (Shannon, Oct 11): an onboarding FUNNEL report so she can see where new players drop off without watching
   them (stats: 33% still playing at 5 min, 20% at 10 min; she cannot watch new players herself). Roblox AnalyticsService
   LogOnboardingFunnelStepEvent from the scripts that already see each step: spawned / save loaded, first squirrel found, fifth
