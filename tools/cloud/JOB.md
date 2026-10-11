@@ -1202,3 +1202,11 @@ into PlayerGui and connects Canvas.AncestryChanged -> cleanup() (the mounted cop
 and back in, and each cycle removes and re-adds the whole portrait. The Oct 9 VR fix (bust image instead of the viewport) did not
 stop the blinking in VR, which points at the mount, not the rendering. Proposed fix (no script change): ModelStreamingMode
 Persistent on each slot Model under workspace.PortraitGallery.Slots.
+Result job 91 (runner 6, Shannon's yes "Try the streaming change now"; INSTALLED in Edit, NOT published): Slots has 9 Models
+(Slot1..9, 7 BaseParts / 181 descendants each, canvas MeshPart 2.3x2.0x0.1, from 189,2,-14 to 217,2,-4); all Default ->
+Persistent (QQ PORTRAITS DONE; attribute StreamingWas keeps the old mode = the undo). Scenes untouched. CAUTION (runner 6): her
+answers "slow, every few seconds" and "only the character; the painted frame, easel and background stay" do not fully fit a
+streamed-out Canvas (its SurfaceGui, background included, would vanish too). If the blink survives on her phone/Quest, the next
+lead is PortraitServer's receipt-retry loop (deliver(): hang -> prepareModel -> UpdateAsync -> show() every 10 s doubling to
+120 s while a paid receipt will not settle; "paid receipt awaiting retry" would repeat in the live SERVER log) - but that would
+show on desktop too, so a device-only cause (ViewportFrame re-render on low memory, or the bust rbxthumb reloading) is also open.
