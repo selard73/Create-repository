@@ -170,6 +170,11 @@ the tan lumps at the cliff's corners by the notch (sandstone-swapped ground wher
 
 ## State at Oct 11 ~03:00 UTC (runner 6)
 - PAUSED until Wednesday (Shannon: weekly token budget). Pick up with Gifts rev 10 (c991424) preview + her yes, then her publish.
+- ADDED to the list (Shannon, Oct 11): an onboarding FUNNEL report so she can see where new players drop off without watching
+  them (stats: 33% still playing at 5 min, 20% at 10 min; she cannot watch new players herself). Roblox AnalyticsService
+  LogOnboardingFunnelStepEvent from the scripts that already see each step: spawned / save loaded, first squirrel found, fifth
+  squirrel, map opened, second area reached (Found_* / FoundIds, SaveLoaded, HudBarClient map toggle); first-session players
+  only; the report shows in the Creator Dashboard. Also look at the retention split by device (phone vs PC).
 - Installed in Edit, NOT published: job 87 rev 9 (the phone HUD column; the squirrel list and map left of it). Rev 10 (the gift
   box 20 px left of the Passport) waits for her yes. Then she publishes.
 - Job 88 (squirrel chatter, church mice) CANCELLED at her word: no new speech bubbles; the bubble module stays as it was (vr1).
