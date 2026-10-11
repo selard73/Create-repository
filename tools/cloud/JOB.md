@@ -1164,3 +1164,19 @@ Open question (Shannon): the Italy Guardian plinth (workspace.PortoKeeper, a clo
 with no statue. Runner 6's read-only survey is blocked until Studio is open; the logs show no PortoKeeper/Champion errors. Two
 readings: the clone kept the French plaque's text and PortoKeeperServer never rewrote it, or Darkknight holds the Porto record and
 the statue build failed. Plaque texts (Edit) + both servers' plaque code decide it.
+
+## Job 90: the Guardian of the Harbour statue (Studio EDIT; test, then ask Shannon)
+
+Shannon: "Darkknight was the first to complete the french map ... has a statue there, but in the Italy section, there is still no
+statue but it has a plaque that also says Darkknight." Runner 6's read-only survey: the two monuments write only their own
+plaques; both read "This could be you" in Edit, so the name is written at run time: Darkknight holds PortoKeeper_v1 "first" too.
+PortoKeeperServer.buildStatue writes the plaque FIRST, then asks workspace.Champion.MakeStatue with a plain FindFirstChild at
+server start; if ChampionServer has not made it yet (or the call fails) nothing is built and the key rests on the plinth, silently.
+Shannon: "yes" to the fix. tools/porto_keeper/statue_retry1.lua (guarded, backup HudBackup.PortoKeeperServer_pre_statue1):
+(a) that lookup waits (WaitForChild 30 s each) when the exact expression is found once, else left with a note; (b) appended: for
+the first minute of a server, every 20 s, if a Guardian is recorded and no Figure stands, buildStatue(first) again (pcall).
+Aborts with nothing changed unless "local function buildStatue(", "local first", "local F = script.Parent" each occur once and the
+figure is built as name = "Figure". Test plan: a play test with KeeperDebug:Invoke(player) (the same MakeStatue path) BEFORE the
+install, to see that the statue builds by the lighthouse; on her yes install in Edit; a NEW play test: KeeperDebug, then delete
+PortoKeeper.Figure inside the first minute and watch the retry rebuild it within 20 s. She publishes; the next live server builds
+Darkknight's statue.
