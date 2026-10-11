@@ -1111,3 +1111,6 @@ tools/boatinvite/install_boatinvite1.lua (make_install_boatinvite1.py; src/BoatI
 Preview plan: on the test server set Item_porto 0 (her save has 88/88) and rejoin-style wait 25 s: the card; Later closes it;
 then Found_domaine -1 and +1 to see the post-find card after 6 s; [Take the boat]: fade, aboard, the boat leaves, the parachute
 opens over the falls; once also with a parachute already borrowed; the jetty sign's new text. Phone emulator + real screen.
+PUBLISHED v1317 at 01:59:55Z Oct 11 (runner 6, from the Studio log): Gifts rev 9 is live (the phone HUD column); job 88 was
+never in Edit. Job 89 preview waits for Studio to be opened. Preview plan changed: the test server gets only BoatInvite and a
+stand-in RS.BoatTake (prints); the real BoatServer patch is checked after the Edit install in a new play test (undo: the backup).
