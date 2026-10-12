@@ -189,6 +189,13 @@ the tan lumps at the cliff's corners by the notch (sandstone-swapped ground wher
 - ON HOLD (Shannon, Oct 11): gifting 1000 acorns to one account. Plan when wanted: a small gift list in Studio (username, amount)
   paid through RS.AwardAcorns the next time the player joins, with a note and a paid flag; or an on-the-spot award while the
   player is online. Never write the DataStore directly.
+- LOOK PASS (Shannon, Oct 12; she showed another game's dock and grass: "they have a better sky and better grass"): my read -
+  their edge is a painted cloud skybox with a warm horizon band, light haze at the distance, a low warm sun with crisp shadows,
+  Terrain grass decoration (long blades, deeper green), lantern bloom, ambient motes, reflective water, faceted trees with
+  colour variation. Plan, settings only, previewed on desktop + phone, one-line undo each: (1) sky/time/atmosphere; (2) shadows,
+  saturation/contrast, bloom; (3) Terrain grass decoration (only if the forest floor is Terrain); (4) water reflectance. Props
+  (tree variation, bevels, motes, birds) later. Runner 6 has a read-only Lighting/Terrain/ground survey queued for when Studio
+  is open; the haze she rejected on Oct 10 was Density 0.55 / Haze 2.5 - keep well under that.
 - Portraits (job 91): Shannon: "its DEFINITELY ONLY the character, not the easel or setting" - so the slots-Persistent change is not
   the fix (harmless; undo = StreamingWas). Next: a client diagnostic logging each rebuild of the sitter image/viewport on her phone
   (F9), then the fix (likely the ViewportFrame / bust image reloading on low-memory devices).
