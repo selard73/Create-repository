@@ -1226,3 +1226,5 @@ username is paid through RS.AwardAcorns + the Acorns attribute (the game's own l
 Item_thanks_<Id> = 1 via RS.AwardItems, so it never repeats; the client shows a card (DisplayOrder 100, waits for a clear
 moment): "A thank-you from the mayor" / note / "1000 acorns are in your purse." [Thank you!]. Shannon can add future gifts in
 Studio with no code (a StringValue under Gifts). Cap MaxGift 5000. Test: the owner's own username in Gifts on the test server.
+Job 92 names (checked on Roblox's user API): mentallyunstable_xo (display dakota, id 4161205246), blizzy_1718 (7902108387),
+bdawg_012 (8009538846); 1000 acorns each, Id note1.
