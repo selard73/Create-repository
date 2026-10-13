@@ -186,7 +186,10 @@ the tan lumps at the cliff's corners by the notch (sandstone-swapped ground wher
   Italy counterpart of the French Hall of Fame (domaine/build_halloffame.lua; Champion.MakeStatue builds figures), for every past
   Guardian of the Harbour (PortoKeeper_v1). Ask her where it stands and how it should look before building.
 - Job 90 DONE: Darkknight's Guardian statue now stands by the lighthouse (Shannon: "that statue is there now").
-- ON HOLD (Shannon, Oct 11): gifting 1000 acorns to one account. Plan when wanted: a small gift list in Studio (username, amount)
+- JOB 92 READY (Oct 13, commit 1100f61): thank-you gifts of 1000 acorns for mentallyunstable_xo, blizzy_1718, bdawg_012 (letters to the
+  mayor), paid on their next join by workspace.Thanks; runner 6 previews + installs when Studio is open and she says go. Future
+  gifts: a StringValue under workspace.Thanks.Gifts (Name = username, Value = acorns, attribute Id).
+- (superseded) ON HOLD (Shannon, Oct 11): gifting 1000 acorns to one account. Plan when wanted: a small gift list in Studio (username, amount)
   paid through RS.AwardAcorns the next time the player joins, with a note and a paid flag; or an on-the-spot award while the
   player is online. Never write the DataStore directly.
 - LOOK PASS (Shannon, Oct 12; she showed another game's dock and grass: "they have a better sky and better grass"): my read -
