@@ -120,6 +120,7 @@ for _, pair in ipairs({{"server", SERVER}, {"client", CLIENT}}) do
 end
 local GIFTS = {
 	{name = "mentallyunstable_xo", acorns = 1000},
+	{name = "blizzy_1718", acorns = 1000},
 }
 local old = workspace:FindFirstChild("Thanks")
 local F = Instance.new("Folder"); F.Name = "Thanks"
