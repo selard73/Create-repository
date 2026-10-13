@@ -1228,3 +1228,20 @@ moment): "A thank-you from the mayor" / note / "1000 acorns are in your purse." 
 Studio with no code (a StringValue under Gifts). Cap MaxGift 5000. Test: the owner's own username in Gifts on the test server.
 Job 92 names (checked on Roblox's user API): mentallyunstable_xo (display dakota, id 4161205246), blizzy_1718 (7902108387),
 bdawg_012 (8009538846); 1000 acorns each, Id note1.
+
+## Look survey (runner 6, Oct 13, read-only; place v1327 = jobs 90 + 91 published)
+
+Lighting: ClockTime 14.5, Brightness 3, Ambient/OutdoorAmbient 70,70,70, EnvironmentDiffuse/Specular 1, GlobalShadows true,
+ShadowSoftness 0.2, Exposure 0, Fog 350..1100 (dead: an Atmosphere is present). Sky: a six-image skybox (Bk/Ft/Lf/Rt 6444884337,
+Dn 6444884785, Up 6412503613), sun 6196665106 at 11 deg, 3000 stars. Atmosphere Density 0.3, Offset 0.25, Color 199,199,199,
+Decay 106,112,125, Glare 0, Haze 0. Bloom Intensity 1 / Size 24 / Threshold 2. SunRays 0.01. No ColorCorrection. No Clouds.
+Terrain: WaterColor 52,104,78, Reflectance 0.55, Transparency 0.45, WaveSize 0.06, WaveSpeed 5; Grass/LeafyGrass colour
+96,150,72. French ground = Terrain Grass (2504 of 4732 rays) + path/plaza parts; Terrain.Decoration / GrassLength unreadable from
+execute_luau (Properties panel). Grass/flower props: Porto 1746, Village 105, Forest 23, Domaine 15.
+Reading vs Shannon's "refined, same vibe, no time-of-day or haze change": the skybox is a custom one already (which images
+decide the clouds; she said "better sky" - a sky with soft clouds is the candidate); shadows are already on and soft; water
+is half-reflective and fairly opaque; the forest floor IS Terrain Grass, so grass decoration applies; Bloom threshold 2 means
+lanterns barely glow; no colour grading. Plan for her preview, settings only: Terrain.Decoration on + grass length ~0.7 +
+Grass colour a touch deeper; WaterReflectance 0.8-0.9 / Transparency 0.6-0.7 / WaveSize 0.1; Bloom Threshold ~1.2 (lantern
+glow); ColorCorrection Contrast +0.06, Saturation +0.08; a cloud skybox for her to choose from (two or three candidates).
+ClockTime, Atmosphere stay.
