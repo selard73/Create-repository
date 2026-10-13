@@ -1214,3 +1214,15 @@ Job 91 play test PASSED (runner 6): 9 slots Persistent, 9 mounted copies with a 
 the slots stayed on the client from Porto (579 studs away). Edit holds job 91 (nine ModelStreamingMode changes + StreamingWas).
 Shannon publishes and checks on her phone / Quest. Runner 6 idle after. (The Italian Hall of Fame: workspace.HallOfFame's
 HallServer builds each French entry with Champion.MakeStatue - the model for Wednesday's monument.)
+
+## Job 92: acorn thank-you gifts, paid the next time a named player joins (Studio EDIT; ask Shannon first)
+
+Shannon, Oct 13: three players wrote to the mayor (La Poste); "went to gift them 1000 acorns as a thank you for writing; how can
+we best do that for next time they log in?" - "I have their user names". tools/thanks: ThanksServer.lua, ThanksClient.lua,
+make_install_thanks1.py -> install_thanks1.lua (usernames read from tools/thanks/names.txt, one per line, before generating).
+workspace.Thanks.Gifts holds one StringValue per gift: Name = USERNAME, Value = acorns, attribute Id ("note1"; a later gift to
+the same person = a new Id), optional Note. ThanksServer: on join, after SaveLoaded + Delay 8 s, every unpaid gift for that
+username is paid through RS.AwardAcorns + the Acorns attribute (the game's own ledger, no DataStore) and flagged on the save as
+Item_thanks_<Id> = 1 via RS.AwardItems, so it never repeats; the client shows a card (DisplayOrder 100, waits for a clear
+moment): "A thank-you from the mayor" / note / "1000 acorns are in your purse." [Thank you!]. Shannon can add future gifts in
+Studio with no code (a StringValue under Gifts). Cap MaxGift 5000. Test: the owner's own username in Gifts on the test server.
