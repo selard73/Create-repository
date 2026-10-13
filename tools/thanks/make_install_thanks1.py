@@ -14,7 +14,7 @@ ACORNS = 1000
 GIFT_ID = "note1"
 NOTE = "Thank you for writing to the mayor! Your letter made our day."
 for n in NAMES: assert all(ch.isalnum() or ch == "_" for ch in n), n
-lines = "\n".join('\t{{name = "%s", acorns = %d}},' % (n, ACORNS) for n in NAMES)
+lines = "\n".join('\t{name = "%s", acorns = %d},' % (n, ACORNS) for n in NAMES)   # (a value in the f-string: single braces)
 INSTALLER = f'''-- install_thanks1.lua (Studio EDIT mode; re-runnable). Job 92: acorn thank-you gifts paid the next time a named player joins.
 -- workspace.Thanks: Gifts (StringValues: Name = username, Value = acorns; attributes Id, Note), ThanksServer ({len(SERVER)} chars),
 -- ThanksClient ({len(CLIENT)} chars), ThanksEvent. To add a gift later: a StringValue under workspace.Thanks.Gifts, no code. Undo:

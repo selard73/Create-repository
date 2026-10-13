@@ -119,7 +119,7 @@ for _, pair in ipairs({{"server", SERVER}, {"client", CLIENT}}) do
 	local f, err = loadstring(pair[2]); if not f then print("QQ THANKS ABORT: the " .. pair[1] .. " does not compile: " .. tostring(err)) return end
 end
 local GIFTS = {
-
+	{name = "mentallyunstable_xo", acorns = 1000},
 }
 local old = workspace:FindFirstChild("Thanks")
 local F = Instance.new("Folder"); F.Name = "Thanks"
