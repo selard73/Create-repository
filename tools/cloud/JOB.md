@@ -1245,3 +1245,9 @@ lanterns barely glow; no colour grading. Plan for her preview, settings only: Te
 Grass colour a touch deeper; WaterReflectance 0.8-0.9 / Transparency 0.6-0.7 / WaveSize 0.1; Bloom Threshold ~1.2 (lantern
 glow); ColorCorrection Contrast +0.06, Saturation +0.08; a cloud skybox for her to choose from (two or three candidates).
 ClockTime, Atmosphere stay.
+Result job 92 (runner 6, 1100f61, Shannon's "Yes, install"; INSTALLED in Edit, NOT published): QQ THANKS DONE ... gifts:
+mentallyunstable_xo=1000, blizzy_1718=1000, bdawg_012=1000. Pre-checks: the names appear nowhere else; AwardItems accepts
+thanks_note1; AwardAcorns only records to the ledger, so the server's attribute add is the single credit (no double pay).
+Preview with a 50-acorn test line in her own name: paid 9.2 s after the folder went in (110 -> 160, Item_thanks_note1 = 1), the
+card at x 173..493 y 78..246 with 0 overlaps, a rejoin paid nothing again. Her "it says 50 but it should be 1000, right?" = the
+test line only; the three real lines are 1000. Pictures tools/thanks/shots. She publishes next.
