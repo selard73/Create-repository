@@ -6,10 +6,14 @@
 -- start and again whenever the list changes. The first Guardian keeps the centre; the next ones take the slots right and left
 -- of it in turn; the next empty slot gets an inviting pedestal with the resting key. Statues come from Champion.MakeStatue
 -- (the same marble figure as every other statue in the game); the acorn it hands over is swapped for the harbour key (the
--- PortoKeeper's own key shape). Nothing here writes a DataStore: the list is read from the PortoKeeper folder's attribute.
+-- PortoKeeper's own key shape). The list is READ from the Guardian's own store (PortoKeeper_v1: the historical "first" record
+-- and Codex's daily ledger "daily_v2", Oct 13-14 2026); nothing here ever writes a DataStore, and Codex's PortoKeeperServer is
+-- left exactly as it is: this script polls the store once a minute and again whenever the lighthouse plaque names a new winner.
 local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
+local DSS = game:GetService("DataStoreService")
 local F = script.Parent
+local STUDIO = RunService:IsStudio()
 local CH = workspace:WaitForChild("Champion", 60)
 local makeStatue = CH and CH:WaitForChild("MakeStatue", 60)
 local K = workspace:WaitForChild("PortoKeeper", 60)
@@ -22,31 +26,59 @@ local FLOOR = num("FloorTop", 0.6)                                  -- the terra
 local C = Color3.fromRGB
 local MARBLE, GOLD, GOLD_D, GOLD_DD, MAJOLICA, CREAM = C(236, 232, 224), C(255, 206, 64), C(214, 160, 44), C(190, 136, 40), C(52, 110, 150), C(250, 244, 228)
 
--- ---- the Guardian list ----
--- LIST SOURCE: the PortoKeeper folder's attribute HallJson, the list PortoKeeperServer publishes (as the French Champion's
--- HallJson): [{no, uid, name, user, t, total}, ...] in the order they were crowned. (Settled with the job 93 export.)
-local function list()
-	local out = {}
-	if not K then return out end
-	local ok, t = pcall(function() return HttpService:JSONDecode(K:GetAttribute("HallJson") or "[]") end)
-	if ok and type(t) == "table" then
-		if type(t.list) == "table" then t = t.list end
-		for _, e in ipairs(t) do
-			if type(e) == "table" and e.uid then table.insert(out, e) end
+-- ---- the Guardian list, read from the Guardian's own store ----
+-- PortoKeeper_v1 "first" = the historical first Guardian (Darkknight, Oct 11 2026; read-only for everyone, Codex's rule too);
+-- PortoKeeper_v1 "daily_v2" = Codex's ledger {version = 2, days = {[dayIndex] = rec}, winners = {[uid] = rec}, ...} with
+-- rec = {uid, name, t, day, claimId, epoch, total, durable}; one Guardian per 09:00 UTC day. The hall's order: the first
+-- Guardian is No. 1, then every day's Guardian in day order. Reads only; never a write.
+local store
+if not STUDIO then pcall(function() store = DSS:GetDataStore("PortoKeeper_v1") end) end
+local getOptions = Instance.new("DataStoreGetOptions"); getOptions.UseCache = false
+local current = {}                                                     -- the last list read (kept while the store is unreachable)
+local function compose(first, daily)
+	local out, seen = {}, {}
+	if type(first) == "table" and tonumber(first.uid) then
+		table.insert(out, {no = 1, uid = tonumber(first.uid), name = first.name, user = first.user, t = tonumber(first.t), total = first.total, legacy = true})
+		seen[tostring(first.uid)] = true
+	end
+	if type(daily) == "table" and type(daily.days) == "table" then
+		local days = {}
+		for k, rec in pairs(daily.days) do
+			if type(rec) == "table" and tonumber(rec.uid) and tonumber(k) then table.insert(days, {d = tonumber(k), rec = rec}) end
+		end
+		table.sort(days, function(a, b) return a.d < b.d end)
+		for _, e in ipairs(days) do
+			local rec = e.rec
+			if not seen[tostring(rec.uid)] then
+				seen[tostring(rec.uid)] = true
+				table.insert(out, {no = #out + 1, uid = tonumber(rec.uid), name = rec.name, user = rec.user, t = tonumber(rec.t), day = e.d, total = rec.total})
+			end
 		end
 	end
-	-- a play-test PREVIEW in Studio (no list yet): the folder's PreviewJson stands in, so the belvedere can be seen with statues
-	if #out == 0 and RunService:IsStudio() then
+	return out
+end
+local function readStore()                                             -- true when the list was read (and `current` is fresh)
+	if not store then return false end
+	local ok, first, daily = pcall(function() return store:GetAsync("first", getOptions), store:GetAsync("daily_v2", getOptions) end)
+	if not ok then warn("HallOfGuardians: cannot read the Guardian store: " .. tostring(first)); return false end
+	current = compose(first, daily)
+	return true
+end
+local function list()
+	local out = {}
+	for _, e in ipairs(current) do table.insert(out, e) end
+	-- a play-test PREVIEW in Studio (no store there): the folder's PreviewJson stands in, so the belvedere can be seen with statues
+	if #out == 0 and STUDIO then
 		local okP, pv = pcall(function() return HttpService:JSONDecode(F:GetAttribute("PreviewJson") or "[]") end)
 		if okP and type(pv) == "table" then for _, e in ipairs(pv) do if type(e) == "table" and e.uid then table.insert(out, e) end end end
 	end
-	table.sort(out, function(a, b)
-		local an, bn = tonumber(a.no) or 0, tonumber(b.no) or 0
-		if an ~= bn then return an < bn end
-		return (tonumber(a.t) or 0) < (tonumber(b.t) or 0)
-	end)
 	for i, e in ipairs(out) do if not tonumber(e.no) then e.no = i end end
 	return out
+end
+local function signature()
+	local parts = {}
+	for _, e in ipairs(list()) do table.insert(parts, tostring(e.no) .. "=" .. tostring(e.uid)) end
+	return table.concat(parts, ",")
 end
 local function ordinal(n)
 	n = math.floor(tonumber(n) or 0)
@@ -56,9 +88,8 @@ local function ordinal(n)
 	end
 	return tostring(n) .. s
 end
-local function dateOf(e)
-	local t = tonumber(e.t)
-	if not t and tonumber(e.day) then t = tonumber(e.day) * 86400 + 12 * 3600 end
+local function dateOf(e)                                               -- the lighthouse plaque's own rule: the day's noon, else the moment
+	local t = tonumber(e.day) and (tonumber(e.day) * 86400 + 43200) or tonumber(e.t)
 	return t and os.date("!%b %d, %Y", t) or ""
 end
 
@@ -267,7 +298,30 @@ task.spawn(function()
 		end
 	end
 end)
-if K then K:GetAttributeChangedSignal("HallJson"):Connect(function() task.defer(build) end) end
 F:GetAttributeChangedSignal("Rebuild"):Connect(function() wipe = true; task.defer(build) end)
-build()
-print(string.format("HallOfGuardians: ready - %d Guardians on the belvedere (%d slots)", #list(), SLOTS))
+-- the store: read at start (a few tries), then once a minute, and 3 s after the lighthouse plaque names a new Guardian
+local lastSig
+local function refresh()
+	readStore()
+	local sig = signature()
+	if sig ~= lastSig then lastSig = sig; build() end
+end
+task.spawn(function()
+	for attempt = 1, 5 do
+		if readStore() or not store then break end
+		task.wait(2 * attempt)
+	end
+	refresh()
+	print(string.format("HallOfGuardians: ready - %d Guardians on the belvedere (%d slots)", #list(), SLOTS))
+	while true do
+		task.wait(num("PollSecs", 60))
+		refresh()
+	end
+end)
+task.spawn(function()
+	local plinth = K and K:WaitForChild("Plinth", 30)
+	local plaque = plinth and plinth:WaitForChild("Plaque", 30)
+	local words = plaque and plaque:WaitForChild("Words", 30)
+	local who = words and words:WaitForChild("Who", 30)
+	if who then who:GetPropertyChangedSignal("Text"):Connect(function() task.delay(3, refresh) end) end
+end)
