@@ -1687,3 +1687,13 @@ SHANNON (Oct 14, after the job 96 run): "there has been no further issue with th
 so job 96 is CLOSED and job 97 (the no-gap fix) is NOT needed unless it comes back. For the record: village/build_portraits.lua line 489
 opens the PortraitWall store only outside Studio, so a Studio play test has no entries, 0 models and empty mounts - the blink can only
 ever be judged live. Next per the handoff: the phone camera (she still owes what she saw), then the look pass.
+SHANNON (Oct 14, to runner 7), NEXT: "we need a tool that will count and give info for on how far each player gets and what they
+interact with." Runner 7's reading: (a) "how far each player gets" = progress, which job 95's funnel now reports in aggregate on the
+Creator Dashboard once events arrive (joined / first squirrel / fifth / second area / all 44 / Italy, by device and cohort); (b) "what
+they interact with" = the activities and things players actually use - the shop, the boat, the balloon, the games (crab, sea glass,
+piazza race, octopus), the prompts/tools, La Poste, the belvedere buttons, travel - which the game does not log today. Proposal to
+design: AnalyticsService custom events (LogCustomEvent) fired from the existing server scripts on each interaction, with the Device and
+Cohort fields the funnel already builds (tools/funnel/src/FunnelServer.lua), so the Creator Dashboard's Custom Events page shows counts
+per interaction; plus, if she wants it in-game, an owner-only panel listing the players on the server with their progress and recent
+interactions (no DataStore). Runner 7 is asking her where she wants to read it (dashboard vs in-game) and whether per-player history
+across visits matters (that would need save fields through the game's own ledger).
