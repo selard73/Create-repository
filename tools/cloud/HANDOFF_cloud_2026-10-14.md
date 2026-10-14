@@ -82,3 +82,15 @@ later") - after Oct 18, when she says.
   PortoKeeperServer: one record, key "first"), where the hall stands (sites A-E, pictures to come), how it looks (a twin of
   the French pavilion in Porto's own colours proposed: ochre and terracotta, the harbour Key in the pediment, the Guardian's
   statue holding the Key, one at a time with the older/newer buttons). Nothing built yet.
+
+## State at Oct 14 ~17:10 UTC
+- Codex (Oct 13-14, published 02:31:27Z Oct 14) made the Guardian of the Harbour DAILY (first fresh 44th Porto find per 09:00 UTC
+  day, once per player; PortoKeeper_v1 key daily_v2; Darkknight's "first" record read-only). Runner 7's export + note:
+  tools/porto_keeper/daily (NOTE_runner7_2026-10-14.md, studio_2026-10-14/ verified byte for byte). JOB.md's older PortoKeeper
+  sizes are stale; anchor against those files.
+- Shannon: the hall at site E (Prato dei Fiori), "distinctively different from the one in France" -> the Belvedere dei
+  Guardiani (tools/hall_italy, job 94): all Guardians together in a crescent above the sea, No. 1 in the centre. The runner's
+  note has her multiple-choice answers (the Groves, French look) - her free words to the cloud thread stand unless she says otherwise.
+- Cross-session messages from the cloud thread reach runner 7 only sometimes: the BRANCH is the channel (job text + test plans in
+  JOB.md; the runner pulls claude/youthful-curie-8azx86, the cloud thread merges epic-hawking). Shannon relays when needed.
+- Job 93 (trimmed to site E) and job 94 (preview) wait for runner 7.

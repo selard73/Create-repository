@@ -1254,20 +1254,42 @@ test line only; the three real lines are 1000. Pictures tools/thanks/shots. She 
 
 (Oct 14: the week's handoff is tools/cloud/HANDOFF_cloud_2026-10-14.md; the Roblox cache cleanup on her PC was done by hand: 13.2 -> 15.3 GB free, rbx-storage 3.7 GB still to delete with Studio closed.)
 
-## Job 93: READ-ONLY survey + pictures for the Italian Hall of Fame (Studio EDIT mode; nothing changed) - runner 7
+## Job 93: READ-ONLY survey + pictures of site E for the Italian Hall of Fame (Studio EDIT mode; nothing changed) - runner 7
 
-tools/hall_italy/survey93.lua: (1) the live PortoKeeper (attributes, plaque words, which patches PortoKeeperServer carries),
-Champion's MakeStatue / MakeSquirrel, the ChampionAcorn template, the French HallOfFame's pieces and their sizes; (2) what a
-ray from the sky meets at thirteen spots (paving part or terrain, colour, material); (3) five candidate sites measured for a
-26 x 18 stud footprint (the French pavilion's steps are 22 x 14) at 2-stud steps - the flattest CLEAR windows (ground under
-every cell, no water, nothing standing higher than 0.8 above the terrain) with what stands within 6 studs: A the lighthouse
-terrace beside the Guardian's statue, B Piazza del Limone, C the harbour front, D the church square, E Prato dei Fiori.
-Send every `QQ HALL` line unchanged. Then pictures (Studio, Edit mode, no change): tools/hall_italy/view93_A1.lua .. E2.lua
-each move ONLY the editor camera (1 = standing at eye height the way a player walks up, 2 = a high three-quarter view); one
-picture each as tools/hall_italy/shots/hall-site-<id>.jpg (git add -f); where a site's best window lies more than 15 studs
-from the view's target, one more picture looking at that window. Also export the live PortoKeeperServer and
-PortoKeeperClient Source as they are now (after jobs 28 + 90) to tools/porto_keeper/src/PortoKeeperServer_live.lua and
-PortoKeeperClient_live.lua (the way job 72 exported PromptClient), and push. No edit, no publish, no DataStore.
-Why: the Guardian of the Harbour is a once-ever title in PortoKeeperServer (DataStore PortoKeeper_v1, key "first", one record),
-so "all past Guardians" needs a rule from Shannon before any store of them exists; the site and the look are hers to pick
-from pictures (the lesson of job 88: show her the game's own view first).
+Shannon (Oct 14, to the cloud thread): "make this hall of fame look distinctively different from the one in France. I think that
+the best place for it is E; so, yes" (E = Prato dei Fiori, the coastal meadow between the church and the lighthouse). The export of
+Codex's daily Guardian is done (tools/porto_keeper/daily, runner 7) - skip that part. THE CLOUD THREAD'S BRANCH IS
+claude/youthful-curie-8azx86 (it contains epic-hawking); pull it for every job; keep pushing pictures to epic-hawking.
+1. Run tools/hall_italy/survey93.lua in Edit (read-only; ~15k raycasts, give it a few seconds). Send every `QQ HALL` line
+   unchanged (the site E lines matter most: the flattest clear 26 x 18 windows, their centre, ground height, what stands near).
+2. Pictures (Edit mode, no change): tools/hall_italy/view93_E1.lua and view93_E2.lua move ONLY the editor camera (E1 standing
+   at eye height, E2 a high three-quarter view); one picture each as tools/hall_italy/shots/hall-site-E1.jpg / -E2.jpg
+   (git add -f, push to epic-hawking). Sites A-D are not needed any more.
+Raw URL base for this commit: https://raw.githubusercontent.com/selard73/Create-repository/<SHA>/tools/hall_italy/ (the SHA is
+this commit's; the runner may also just read the files from the pulled branch and checksum them against the git blob).
+
+## Job 94: the Belvedere dei Guardiani - play-test PREVIEW first (nothing installed; pictures for Shannon's yes) - runner 7
+
+tools/hall_italy/install_hall1.lua (from make_install_hall1.py: install_hall1.template.lua + src/HallServer.lua; reviewed by two
+readers, 17 findings fixed). What it builds: workspace.HallOfGuardians - a round mosaic terrace (R 17) on the meadow's edge, a low
+parapet with a sea-blue majolica band on the sea side, a column with the gold harbour key, two lanterns, a lectern at the entrance
+with the roll of the Guardians, Porto's own cypresses / lemon trees / harbour benches copied in; HallServer (17497 chars) builds a
+pedestal + marble statue (Champion.MakeStatue, the acorn swapped for the harbour key) for every Guardian: No. 1 (Darkknight, the
+historical "first" record) in the centre, each day's Guardian (Codex's daily_v2 ledger, one per 09:00 UTC day) right and left
+of him in turn, the next empty pedestal with the resting key and "THIS COULD BE YOU". The list is READ from PortoKeeper_v1
+(first + daily_v2) once a minute and 3 s after the lighthouse plaque names a new winner; never a write; Codex's PortoKeeperServer
+is not touched. Provisional site (500, -1080), the front facing east (+x), the crescent toward the sea (west) - the survey's
+site E window may move it; the installer measures the ground itself, aborts if the rise across the terrace is over 3 studs or
+there is water/nothing under the rim, and reports anything standing within 19-21 studs (QQ BELV NOTE).
+PREVIEW (a play test on the test server; discarded on stop; Edit checked unchanged afterwards; no ask needed):
+1. Start a play test. Run the installer's body on the SERVER (execute_luau, server context). In a play test it sets PreviewJson
+   (three sample Guardians: SelBell, dakota, blizzy_1718) so the crescent shows statues. Expect `QQ BELV DONE ...` then, within
+   ~30 s, "HallOfGuardians: ready - 3 Guardians on the belvedere (7 slots)" and three "Key" models in Slot_1..3. On
+   `QQ BELV ABORT ...` send the line and stop.
+2. Pictures with the GAME's own camera (walk the avatar there; no camera rig behind her): (a) from the front step looking at
+   the crescent, (b) from the terrace's centre, (c) a high three-quarter view from the land side, (d) from the parapet looking
+   back at the statues, (e) one close look at a pedestal tile and the lectern words. tools/hall_italy/shots/belv-j94-*.jpg.
+3. Report: every QQ BELV line, the "HallOfGuardians:" log lines, whether each statue holds the key in the raised hand, whether
+   the benches face the sea (their facing is a guess), the copies found (cypress / lemon / bench counts), whether the terrace's
+   edge floats or buries on the slope, the tile and lectern texts legible, anything standing through the terrace.
+4. Stop the play test; confirm Edit has no workspace.HallOfGuardians. Nothing is installed until Shannon says yes to the pictures.
