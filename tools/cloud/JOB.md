@@ -1571,3 +1571,9 @@ seven marble figures with raised keys is too much (the five placeholder avatars 
 but the reaction is to the row itself). Runner 7 is asking her which way to go: fewer pedestals (3 or 5) with more air; smaller figures
 (Scale 1.35 -> ~1.1) on lower pedestals; or only the newest Guardian in marble (one statue, centre) and the past ones as named plaques
 along the parapet, no figures. Hold the publish of round 5 until she decides; the live game still shows round 4 (first seven, cream).
+SHANNON (Oct 14, right after): "too many statues; why did we do it this way rather than the carousel like in france?" - answer given
+to her: the all-together crescent came from her "distinctively different from the one in France" (France = one Keeper at a time in a
+frame with Newer/Older buttons). HER DIRECTION NOW (runner 7's reading, relayed; she may still amend): a CAROUSEL - one pedestal in the
+centre of the crescent, one Guardian at a time, the newest first, Older/Newer buttons like workspace.HallOfFame's Newer/Older models,
+everyone on the lectern roll; the terrace, lectern, lanterns, cypresses and lemon trees stay. Round 6 please; round 5 stays unpublished
+(live = round 4).
