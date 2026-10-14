@@ -1267,6 +1267,19 @@ claude/youthful-curie-8azx86 (it contains epic-hawking); pull it for every job; 
    (git add -f, push to epic-hawking). Sites A-D are not needed any more.
 Raw URL base for this commit: https://raw.githubusercontent.com/selard73/Create-repository/<SHA>/tools/hall_italy/ (the SHA is
 this commit's; the runner may also just read the files from the pulled branch and checksum them against the git blob).
+Result job 93 (runner 7, 1457043; Studio Edit v1352, Oct 14 ~16:50Z; read-only, the editor camera put back afterwards): all 55
+QQ HALL lines + the two QQ VIEW93 lines are in tools/hall_italy/survey93_result_2026-10-14.txt (unchanged). Site E: 4800 cells,
+ground under all, water 68, blocked by things 1622, Grass 92%; 485 clear windows; the flattest three, all DEAD FLAT at y 2.0 (rise
+0.0), 18 wide x 26 deep: centre (538, -1073); (544, -1089) and (544, -1101) with butterfly_squirrel_color within 6 studs. Ground at E
+meadow middle (520,-1080) Terrain Grass y 2.0; E meadow west (470,-1050) y 1.8. The provisional (500, -1080) is not among the three
+picked (the picker drops windows within 12 studs of a better one) but the meadow is flat there too (both spot rays 1.8..2.0). Sites A,
+B, C: NO clear window; D: one at (378, -924), rise 8.8. Notes for the installer: in Edit, Champion.MakeStatue and MakeSquirrel are
+MISSING (ChampionServer makes them at run time, so statues show only in a play test); PortoKeeper attrs print Facing null (JSONEncode
+drops Vector3s; the value is a vector); PortoKeeperServer 14386 carries neither the job 28 nor the job 90 strings (Codex's rewrite).
+Pictures: tools/hall_italy/shots/hall-site-E1.jpg (eye height from the church side: the meadow, the promenade wall and path, the
+lighthouse and cottage beyond) and hall-site-E2.jpg (high three-quarter from the lighthouse side: the meadow with the fort, the town
+and the church behind, the sea on the right, the Guardian plinth and a bench bottom right). Studio is shared with Codex today (it goes
+in and out of play test on another part of the map), so job 94's play-test preview waits for a quiet window from Shannon.
 
 ## Job 94: the Belvedere dei Guardiani - play-test PREVIEW first (nothing installed; pictures for Shannon's yes) - runner 7
 

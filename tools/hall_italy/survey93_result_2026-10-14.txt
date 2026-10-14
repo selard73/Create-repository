@@ -1,0 +1,59 @@
+# Job 93 survey output, runner 7, Oct 14 2026 ~16:50Z, Studio Edit (PlaceVersion 1352), scripts from commit 1457043 (checksummed against the git blobs)
+QQ HALL PortoKeeper (Folder) attrs {"Badge_key":0,"PlinthZ":-1158,"Scale":1.5,"Need":44,"FigureX":488,"NoKeeperUserIds":"","Title":"Guardian of the Harbour","Facing":null,"TopY":6.399999618530273,"PlinthX":488,"RestKeyHeight":3.4,"KeyShare":0.42}
+QQ HALL PortoKeeper children: PortoKeeperServer:Script, PortoKeeperClient:Script, DailyKeeperCore:ModuleScript, DailyKeeperStore:ModuleScript, KeeperCelebration:ModuleScript, Key:Model, Plinth:Model
+QQ HALL PortoKeeperServer 14386 chars; job 28 patch (portoFound) false; job 90 patch (statue retry) false
+QQ HALL PortoKeeperClient 12323 chars
+QQ HALL Plinth (Model): 5 parts, x 480.2..495.8 y 2.0..6.4 z -1166.3..-1149.7
+QQ HALL Plaque: Part at (490.9,4.3,-1155.9) size (5.4,2.2,0.2) colour 150,108,58 SmoothPlastic; facing (0.8,-0.0,0.6)
+QQ HALL plaque words: Title="GUARDIAN OF THE HARBOUR" | Day="OF PORTO NOCCIOLA" | Who="This could be you" | Note="Be the first to find all 44 squirrels of Porto Nocciola and your statue will stand here, holding the harbour key."
+QQ HALL PortoKeeper.Key: Model 7 parts, x 487.3..488.7 y 6.4..9.7 z -1158.7..-1157.3
+QQ HALL PortoKeeper.Figure: absent
+QQ HALL PortoKeeper.GiantAcorn: absent
+QQ HALL PortoKeeper.KeeperDebug: absent
+QQ HALL RS.PortoKeeperEvent: present
+QQ HALL Champion children: ChampionServer:Script, ChampionClient:Script, Plinth:Model
+QQ HALL Champion attrs {"FreeBend":15,"ChestTilt":-8,"Scale":1.5,"HoldArm":null,"NoKeeperUserIds":"","HoldHand":"Left","FireworkSeconds":25,"PlinthX":260,"SaluteSquirrel":"ranger_squirrel","TopY":4.4,"FireworkLaunch":"","TailTilt":30,"SquirrelY":4.4,"SquirrelZ":-54,"SquirrelX":256.6,"SquirrelScale":1.45,"FigureX":262.2,"FireworkPop":"","Badge_champion":2765102309602723,"PlinthZ":-54,"LaunchDay":20721,"FireworkShow":"rbxassetid://9114447178","FireworkVolume":0.6,"FreeArm":null,"HeadTilt":-18}
+QQ HALL ChampionServer 34338 chars; MakeStatue MISSING; MakeSquirrel MISSING
+QQ HALL ServerStorage.ChampionAcorn (the gilded acorn template): 4 parts, x -0.3..0.3 y -0.3..0.6 z -0.3..0.3
+QQ HALL French HallOfFame children: HallServer:Script, HallClient:Script, HallStatue:RemoteFunction, Pavilion:Model, Setting:Model, HallSign:Model, Frame:Model, Newer:Model, PlaqueStand:Model, Older:Model
+QQ HALL French HallOfFame attrs {"MaxHeight":9.150000000000003,"SquirrelSpot":null,"Scale":1.25,"FigureSpot":null,"SquirrelScale":1.2,"Look":null}
+QQ HALL HallOfFame.Pavilion: 26 parts, x 390.0..416.8 y 2.4..23.1 z -44.0..-20.2
+QQ HALL HallOfFame.Frame: 15 parts, x 396.0..408.6 y 4.2..18.3 z -34.3..-25.0
+QQ HALL HallOfFame.PlaqueStand: 2 parts, x 400.9..408.4 y 3.4..7.3 z -36.8..-31.2
+QQ HALL HallOfFame.Setting: 11 parts, x 387.8..452.5 y 2.4..18.7 z -60.5..-19.7
+QQ HALL HallOfFame.HallSign: 5 parts, x 270.5..279.4 y 0.0..5.9 z -68.1..-61.5
+QQ HALL HallOfFame.Squirrel: absent
+QQ HALL HallServer 5874 chars, HallClient 4155 chars; RS.HallStatues absent
+QQ HALL workspace models named like 'officer': officer_acorn_police_squirrel_color at (465.1,-10.8,-962.8)
+QQ HALL workspace models named like 'lifeguard': lifeguard_squirrel_color at (258.4,-42.3,-714.1)
+QQ HALL ground A plinth's west (476,-1158): Terrain Grass at y 2.0
+QQ HALL ground A cottage path (515,-1132): Terrain Grass at y 0.4
+QQ HALL ground A terrace north (490,-1125): Terrain Grass at y 0.7
+QQ HALL ground B piazza west (440,-790): Terracotta roof plane (Part, Slate, colour 178,92,62, size (25.6,0.4,11.2)) of PortoNocciola at y 23.0
+QQ HALL ground B piazza east (490,-775): Terracotta roof plane (Part, Slate, colour 178,92,62, size (24.6,0.4,11.2)) of PortoNocciola at y 14.5
+QQ HALL ground B piazza south (465,-820): Piazza del Limone paving (UnionOperation, Cobblestone, colour 225,209,177, size (73.0,0.5,67.0)) of PortoNocciola at y -12.0
+QQ HALL ground C harbour piazza (285,-655): Piazza paving (UnionOperation, Cobblestone, colour 202,185,153, size (36.2,0.2,43.1)) of PortoNocciola at y -46.8
+QQ HALL ground C by the benches (250,-690): Quay fitted around gangway (WedgePart, Cobblestone, colour 202,185,153, size (0.3,8.2,17.2)) of PortoNocciola at y -46.7
+QQ HALL ground C lemon trees (320,-630): Wall coping (Part, Limestone, colour 237,219,183, size (2.2,0.2,30.3)) of PortoNocciola at y -45.2
+QQ HALL ground D church front (410,-960): Church slate roof slope (Part, Slate, colour 115,128,122, size (15.8,0.6,40.0)) of PortoNocciola at y 20.9
+QQ HALL ground D by the olive (430,-990): Supported limestone stair (Part, Cobblestone, colour 222,207,175, size (12.0,3.5,0.7)) of PortoNocciola at y -9.9
+QQ HALL ground E meadow middle (520,-1080): Terrain Grass at y 2.0
+QQ HALL ground E meadow west (470,-1050): Terrain Grass at y 1.8
+QQ HALL standing parts near the five sites: 24613 (anything topping 0.8 above the terrain under it)
+QQ HALL site A (the lighthouse terrace, beside the Guardian's statue): x 450..550 z -1180..-1100, 2091 cells at 2 studs; ground under 2091, water 0, blocked by things 945; terrain Grass 95%, Rock 4%, Sand 1%
+QQ HALL site A: NO clear 26 x 18 window (every window meets water, a drop, or something standing)
+QQ HALL site B (Piazza del Limone): x 420..510 z -840..-750, 2116 cells at 2 studs; ground under 2116, water 0, blocked by things 1514; terrain Grass 59%, Rock 41%
+QQ HALL site B: NO clear 26 x 18 window (every window meets water, a drop, or something standing)
+QQ HALL site C (the harbour front (benches, lemon trees, the piers)): x 225..350 z -730..-590, 4473 cells at 2 studs; ground under 4473, water 422, blocked by things 2730; terrain Grass 68%, Sand 21%, Water 9%, Rock 1%
+QQ HALL site C: NO clear 26 x 18 window (every window meets water, a drop, or something standing)
+QQ HALL site D (the church square (Santa Marina, the sailing club)): x 365..465 z -1015..-910, 2703 cells at 2 studs; ground under 2703, water 0, blocked by things 2022; terrain Grass 90%, Rock 10%
+QQ HALL site D window 1: centre (378, -924), 18 wide x 26 deep, ground mean y -28.8 (-33.7..-24.9, rise 8.8), Grass underfoot; standing within 6 studs: PortoNocciola
+QQ HALL site D: 4 clear windows in all
+QQ HALL site E (Prato dei Fiori, the coastal meadow): x 441..599 z -1140..-1021, 4800 cells at 2 studs; ground under 4800, water 68, blocked by things 1622; terrain Grass 92%, Rock 5%, Sand 2%, Water 1%
+QQ HALL site E window 1: centre (538, -1073), 18 wide x 26 deep, ground mean y 2.0 (2.0..2.0, rise 0.0), Grass underfoot; standing within 6 studs: PortoNocciola
+QQ HALL site E window 2: centre (544, -1089), 18 wide x 26 deep, ground mean y 2.0 (2.0..2.0, rise 0.0), Grass underfoot; standing within 6 studs: PortoNocciola, butterfly_squirrel_color
+QQ HALL site E window 3: centre (544, -1101), 18 wide x 26 deep, ground mean y 2.0 (2.0..2.0, rise 0.0), Grass underfoot; standing within 6 studs: PortoNocciola, butterfly_squirrel_color
+QQ HALL site E: 485 clear windows in all
+QQ HALL END (55 lines)
+QQ VIEW93 E1: camera at (468, 7.5, -1042) looking at (520, 6.0, -1080)
+QQ VIEW93 E2: camera at (566, 20.3, -1132) looking at (520, 4.0, -1080)
