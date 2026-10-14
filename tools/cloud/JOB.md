@@ -1611,3 +1611,8 @@ an existing HallView_local would cost one line; (b) PAGING was not exercised: th
 ClickDetectors (two inset-corrected tries); the detectors are present and Hooked on Cap/Post/Button of both posts; Shannon was asked to
 tap Older in the running test. Pictures tools/hall_italy/shots/belv-j94r6-{step,pedestal-buttons,tile}.jpg; lines in
 tools/hall_italy/preview94r6_result_2026-10-14.txt. Her verdict + yes to install pending.
+SHANNON on the round-6 preview pictures (Oct 14): "because there is now only one statue at a time, that circle area is too big and the
+columns with the arrows on the side are too big." ROUND 7 please: the terrace scaled down to suit ONE statue (R 17 -> about 10-11; the
+parapet, skirt, rim, mosaic rings and the step with it; the lectern nearer the pedestal; the cypresses and lemon trees re-placed to the
+new rim), and the Older/Newer posts much smaller (lower, slimmer, smaller discs and chevrons - buttons, not columns). Everything else
+as round 6. Preview again before any install; round 5 is still what Edit holds, round 4 is live.
