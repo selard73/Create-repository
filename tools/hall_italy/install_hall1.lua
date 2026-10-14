@@ -10,7 +10,7 @@ local SS = game:GetService("ServerStorage")
 local CS = game:GetService("CollectionService")
 local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
-local CX, CZ, YAW = 500, -1080, math.rad(-90)              -- the terrace's centre; yaw 0 = the front faces north (-z)
+local CX, CZ, YAW = 526, -1053, math.rad(90)              -- the terrace's centre; yaw 0 = the front faces north (-z)
 local SERVER = [===[
 -- HallServer (workspace.HallOfGuardians): the Belvedere dei Guardiani on the Prato dei Fiori - every Guardian of the Harbour
 -- of Porto Nocciola in marble, holding the harbour key, standing in a crescent above the sea (Shannon, Oct 14 2026: "make this

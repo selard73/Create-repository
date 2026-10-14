@@ -8,7 +8,7 @@ Run from the repo root: python3 tools/hall_italy/make_install_hall1.py
 import pathlib
 HERE = pathlib.Path(__file__).resolve().parent
 # THE SITE (job 93 survey, site E window; provisional until the runner's numbers are in)
-CX, CZ, YAW = 500, -1080, -90
+CX, CZ, YAW = 526, -1053, 90
 SERVER = (HERE / "src/HallServer.lua").read_text(encoding="utf-8")
 TEMPLATE = (HERE / "install_hall1.template.lua").read_text(encoding="utf-8")
 assert "]===]" not in SERVER, "the server source must not close the long string"

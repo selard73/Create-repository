@@ -1325,3 +1325,7 @@ NOTE for the installer's big-thing check: every centre also lists Grotta.CameraS
 floor as BIG - those are the sea cave's camera stops and floor 18-63 studs BELOW the terrain (tops -18.4 .. -62.5), not obstacles on
 the meadow; a check keyed on box size alone would abort on them, so key it on the top being above the ground. The drone is a squirrel's
 prop (the Drone Flyer), 3.7 high: moving it would need Shannon's yes. Camera not moved; nothing changed.
+Site fixed from the probe (cloud thread): centre (526, -1053), the FRONT facing west (yaw 90: toward the Sentiero del Faro and
+the town stair, the way players come), the crescent bulging east against the hill. Clearances: the pine groves (z < -1085) 34
+studs, the Drone Flyer's drone (526,-1086) 32, the olive and umbrella pine (x > 554) 28-29, the town stair's landing ~27. The
+installer re-checks all of it at run time (abort on anything big inside r 20.5). install_hall1.lua regenerated for this site.
