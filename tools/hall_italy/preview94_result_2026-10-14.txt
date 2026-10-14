@@ -1,0 +1,18 @@
+# Job 94 PREVIEW, runner 7, Oct 14 2026 ~17:50Z, play test on the test server (Studio v1369), installer install_hall1.lua at f8e0765
+# fetched on the server from the raw commit URL (len 37282, adler32 1296612856 = the git blob), run as a Script with ONE patched line
+# (line 343, the loadstring compile check -> "local RT = 17": loadstring is not available in a play-test Script, and the committed
+# file uses RT at line 429 before declaring it at line 462, which would error "attempt to perform arithmetic on nil").
+QQ BELV ABORT: standing inside the terrace's footprint at (526, -1053): Upper town to meadow (x 495..548 z -1053..-1000); pick another centre; nothing built
+# HallOfGuardians: NOT in workspace (nothing built); HttpEnabled back to false; play test stopped; Edit checked afterwards.
+# The parts of "Upper town to meadow" that matter (full list of 111 in the Result paragraph's source: the QQ UTM lines below)
+QQ UTM model PortoNocciola.12 Country landscape.Connected streets and coastal routes.Upper town to meadow
+QQ UTM 111 parts
+QQ UTM nearest to (526,-1053): Junction fitted rail post x 515 z -1044 top 4.6 over terrain 14.2 studs; rail post (518,-1040) 14.9; handrail x 515..522 z -1044..-1036 14.9; rail post (522,-1036) 17.1; rail post (522,-1037) 17.2; Solid turning landing x 505..517 z -1046..-1034 19.8; Level stair exit (UnionOperation) x 507..518 z -1044..-1033 19.9; rail post (525,-1033) 20.2; Level stair exit (Part) x 511..522 z -1039..-1028 21.4; Continuous fitted paving x 504..514 z -1048..-1035 20.7; stair treads from (513..523, -1037..-1027) 22.5 northward up to (548, -1001); the long handrails x 522..548 z -1036..-1007 (32.5 by centre, but reach = magnitude/2 ~20 makes the installer count it) and x 514..540 z -1029..-1000.
+QQ UTM others above ground within r 24 (top model / parent): PortoNocciola / Prato dei Fiori coastal meadow x193; PortoNocciola / Upper town to meadow x34
+QQ EDITCHECK PlaceVersion 1369
+QQ EDITCHECK workspace.HallOfGuardians: false
+QQ EDITCHECK Runner7 scripts in ServerScriptService: 0
+QQ EDITCHECK workspace attr Runner7Belv: nil
+QQ EDITCHECK HttpEnabled: false
+QQ EDITCHECK HudBackup.HallOfGuardians*: 0
+QQ EDITCHECK PortoKeeperServer len 14386

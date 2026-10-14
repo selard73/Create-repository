@@ -1329,3 +1329,29 @@ Site fixed from the probe (cloud thread): centre (526, -1053), the FRONT facing 
 the town stair, the way players come), the crescent bulging east against the hill. Clearances: the pine groves (z < -1085) 34
 studs, the Drone Flyer's drone (526,-1086) 32, the olive and umbrella pine (x > 554) 28-29, the town stair's landing ~27. The
 installer re-checks all of it at run time (abort on anything big inside r 20.5). install_hall1.lua regenerated for this site.
+Result job 94 PREVIEW (runner 7, f8e0765; play test on the test server, Studio v1369, Oct 14 ~17:50Z; NOTHING built, nothing
+installed): QQ BELV ABORT: standing inside the terrace's footprint at (526, -1053): Upper town to meadow (x 495..548 z -1053..-1000);
+pick another centre; nothing built. Details in tools/hall_italy/preview94_result_2026-10-14.txt. How it was run: the MCP sandbox has
+no loadstring, so the installer (fetched on the server from the raw URL, len 37282 adler 1296612856 = the blob) ran as a Script with
+ONE patched line: line 343 (the loadstring compile check) became `local RT = 17`. TWO DEFECTS in the committed file: (1) RT is used at
+line 429 (`<= RT + 3.5`, the footprint scan) but declared only at line 462 - run as committed it errors "attempt to perform
+arithmetic (add) on nil and number" before building anything; (2) the loadstring compile check cannot run in a Script
+(LoadStringEnabled is off and not settable from the MCP) - keep it for the Edit install only if the Edit command context has
+loadstring (the MCP's execute_luau does not: "loadstring() is not available" in Play and in Edit alike; test before relying on it).
+WHY IT ABORTED, from a read-only part list of "Upper town to meadow" (111 parts: the stair down from the upper town, its treads,
+nosings, rail posts, handrails, and the paved path along the meadow's north edge): the path's foot lands inside the terrace -
+rail posts at (515,-1044) 14.2 studs and (518,-1040) 14.9 from the centre, a handrail x 515..522 z -1044..-1036 at 14.9, posts at
+(522,-1036/-1037) 17.1, the Solid turning landing x 505..517 z -1046..-1034 at 19.8, the Level stair exit x 507..518 z -1044..-1033
+at 19.9, paving x 504..514 z -1048..-1035 at 20.7. The abort box x 495..548 z -1053..-1000 is wide because the installer's reach test
+(distance - Size.Magnitude/2) also catches the two long diagonal handrails (x 522..548 z -1036..-1007 and x 514..540 z -1029..-1000,
+32-39 studs away by centre, magnitude ~40): consider testing against a part's real box instead of its magnitude. The probe's earlier
+box for this model (x 462..522 z -1075..-1033) was only the parts within 22 studs of the five probed centres; the model really spans
+x 462..559 z -1075..-961. Terrain under the rim was fine (centre y 2.0). Geometry of the meadow for the next centre (all from probe94
++ this list): the open middle is bounded by the path foot/rail posts (north-west, x<=525 z>=-1046), the pine groves (south-west: x
+495..515 z -1103..-1085 and x 511..529 z -1109..-1099), the umbrella pine + silver olive (east, x>=554 z -1072..-1054), the Drone
+Flyer's drone (526,-1086, a squirrel's prop, 3.7 tall) in the middle, and the Guardian's terrace to the south (z<=-1125). A clear
+circle of r 20.5 does not fit anywhere there without moving the drone (Shannon's call) or shrinking the footprint check / the terrace;
+(538,-1073) has the umbrella pine at 15.8, the drone at 16.5, the olive at 18.1; (524,-1078) has the drone at 7.2, the pine grove at
+12.9. Edit after the stop: no workspace.HallOfGuardians, no Runner7 script, HttpEnabled false (checked in the next line).
+Edit check after the preview (runner 7): PlaceVersion 1369; workspace.HallOfGuardians absent; no Runner7 script in
+ServerScriptService; HttpEnabled false; HudBackup.HallOfGuardians* 0; PortoKeeperServer 14386. Edit is unchanged.
