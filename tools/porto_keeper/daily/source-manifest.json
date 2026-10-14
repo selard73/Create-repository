@@ -1,0 +1,32 @@
+{
+  "PortoKeeperServer": {
+    "sha256": "d0564737bbcfc9c14a8662a489693b45142bc92dbd740b02c479dd4732ec67ca",
+    "characters": 13679,
+    "existing": true
+  },
+  "SquirrelSetup": {
+    "sha256": "6d49c16acfa5b6b70b40ae45e3efe9b920c61d03875fce9599a2743119cd862a",
+    "characters": 32872,
+    "existing": true
+  },
+  "PortoKeeperClient": {
+    "sha256": "09f74fdced71eb644f65b85054eeb157e5b5ffc00c87818226ac7ea614e03295",
+    "characters": 4327,
+    "existing": true
+  },
+  "DailyKeeperCore": {
+    "sha256": "3404f944d4cde539aaed57358271d4cdf0797018d968b4d1a6029ece336a3d96",
+    "characters": 5889,
+    "existing": false
+  },
+  "DailyKeeperStore": {
+    "sha256": "eca4d51321fe1a9906342ecc0368fa20f7a61cd2403d10d5b763421ec2243b2e",
+    "characters": 2080,
+    "existing": false
+  },
+  "FindsEpoch": {
+    "sha256": "ab1420c24d19e8fd8c8be6c62938b3ef4cd30ef3cfdb95581da9d068d9ac8f81",
+    "characters": 2913,
+    "existing": false
+  }
+}

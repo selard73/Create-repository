@@ -1,0 +1,22 @@
+{
+  "SquirrelSetup": {
+    "path": "Workspace.SquirrelScripts.SquirrelSetup",
+    "before": "6d49c16acfa5b6b70b40ae45e3efe9b920c61d03875fce9599a2743119cd862a",
+    "after": "c9d994434e7d15f287c73f0c400a48542ecb7413b11666344ff153b024cccfe0"
+  },
+  "PortoKeeperServer": {
+    "path": "Workspace.PortoKeeper.PortoKeeperServer",
+    "before": "d0564737bbcfc9c14a8662a489693b45142bc92dbd740b02c479dd4732ec67ca",
+    "after": "77a6d055e1a28c26860285233006e3bd4e6f9b4f92cb466504c074c5a29ed753"
+  },
+  "PortoKeeperClient": {
+    "path": "Workspace.PortoKeeper.PortoKeeperClient",
+    "before": "09f74fdced71eb644f65b85054eeb157e5b5ffc00c87818226ac7ea614e03295",
+    "after": "6562a698c7a9885fcfddd6bdfbcf7166e407d2aa0747de4fdd1a84fa8cc8c720"
+  },
+  "KeeperCelebration": {
+    "path": "Workspace.PortoKeeper.KeeperCelebration",
+    "after": "71027127ff803a28e00523d523f44ed14761201a1e3945d0e759a33ab90171af",
+    "newModule": true
+  }
+}

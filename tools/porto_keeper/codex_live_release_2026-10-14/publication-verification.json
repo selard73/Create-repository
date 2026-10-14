@@ -1,0 +1,214 @@
+{
+  "checkedUtc": "2026-10-14T02:35:09.452948+00:00",
+  "sources": {
+    "PortoKeeperServer": {
+      "sha256": "77a6d055e1a28c26860285233006e3bd4e6f9b4f92cb466504c074c5a29ed753",
+      "matchesFinalValidation": true
+    },
+    "PortoKeeperClient": {
+      "sha256": "6562a698c7a9885fcfddd6bdfbcf7166e407d2aa0747de4fdd1a84fa8cc8c720",
+      "matchesFinalValidation": true
+    },
+    "SquirrelSetup": {
+      "sha256": "c9d994434e7d15f287c73f0c400a48542ecb7413b11666344ff153b024cccfe0",
+      "matchesFinalValidation": true
+    },
+    "KeeperCelebration": {
+      "sha256": "71027127ff803a28e00523d523f44ed14761201a1e3945d0e759a33ab90171af",
+      "matchesFinalValidation": true
+    },
+    "DailyKeeperCore": {
+      "sha256": "3404f944d4cde539aaed57358271d4cdf0797018d968b4d1a6029ece336a3d96",
+      "matchesFinalValidation": true
+    },
+    "DailyKeeperStore": {
+      "sha256": "eca4d51321fe1a9906342ecc0368fa20f7a61cd2403d10d5b763421ec2243b2e",
+      "matchesFinalValidation": true
+    },
+    "FindsEpoch": {
+      "sha256": "ab1420c24d19e8fd8c8be6c62938b3ef4cd30ef3cfdb95581da9d068d9ac8f81",
+      "matchesFinalValidation": true
+    },
+    "ChampionClient": {
+      "sha256": "3a7600ce26579c0d65025604a1d19c3d8a442fd020cab8df27bc6c56ad12fbd8",
+      "matchesFinalValidation": true
+    },
+    "TravelServer": {
+      "sha256": "fdf7d015506d64cd6a9af4fa54e5e36cd52244f03992498feab2436d453bc036",
+      "matchesFinalValidation": true
+    },
+    "TravelClient": {
+      "sha256": "8c358a5bc2027639e005660c26b6881769c13f0c7f89a77e48782a88ea30f288",
+      "matchesFinalValidation": true
+    },
+    "SquirrelRegistry": {
+      "sha256": "da3a9758c0a4f77b27c43062fecb843fad2a7652f5a8c03ba1c3733912f16a57",
+      "matchesFinalValidation": true
+    },
+    "GiftsClient": {
+      "sha256": "ebceb26067e01fbc802dfed7fa4109c2340abbd8507537880449bc893df78ca6",
+      "matchesFinalValidation": true
+    },
+    "ReceiptRouter": {
+      "sha256": "0c63a30105144b6e571127cd453431e08dbb2786393fa47304c98ab407bc4ee9",
+      "matchesFinalValidation": true
+    }
+  },
+  "publicationEvidence": [
+    {
+      "file": "C:\\Users\\slard\\AppData\\Local\\Roblox\\logs\\0.742.0.7421053_20261014T022204Z_Studio_F1C2B_last.log",
+      "line": 2663,
+      "text": "2026-10-14T02:31:27.680Z,563.680298,3efc,6,Info [FLog::StudioPublishStatusLabel] Publish succeeded for placeId 117372258657114; marking as published (refreshing menu label to \"Publish latest version\")"
+    },
+    {
+      "file": "C:\\Users\\slard\\AppData\\Local\\Roblox\\logs\\0.742.0.7421053_20261014T022204Z_Studio_F1C2B_last.log",
+      "line": 2671,
+      "text": "2026-10-14T02:31:27.703Z,563.703186,45fc,6,Info [FLog::CreatorOutput] \u2192 Add publish notes to v1336"
+    },
+    {
+      "file": "C:\\Users\\slard\\AppData\\Local\\Roblox\\logs\\0.742.0.7421053_20261014T022204Z_Studio_F1C2B_last.log",
+      "line": 2677,
+      "text": "2026-10-14T02:31:27.740Z,563.740112,45fc,6,Info [FLog::CreatorOutput] Published new changes in \"1001 Squirrels\" to Roblox."
+    }
+  ],
+  "studioId": "8259f095-ef9d-484c-9a92-d1259368369b",
+  "identity": {
+    "placeVersion": 1334,
+    "universeId": 10766369535,
+    "name": "Place1",
+    "isRunning": false,
+    "placeId": 117372258657114
+  },
+  "scene": {
+    "testMarkersInSources": [],
+    "privateTestArtifacts": [],
+    "keeperAttributes": {
+      "Badge_key": 0,
+      "PlinthZ": -1158,
+      "Scale": 1.5,
+      "Need": 44,
+      "FigureX": 488,
+      "NoKeeperUserIds": "",
+      "Title": "Guardian of the Harbour",
+      "Facing": null,
+      "TopY": 6.399999618530273,
+      "PlinthX": 488,
+      "RestKeyHeight": 3.4,
+      "KeyShare": 0.42
+    },
+    "giftsEnabled": true,
+    "workspaceAttributes": [],
+    "settings": [
+      {
+        "value": 2980609362202333,
+        "path": "Workspace.Honours",
+        "key": "Badge_forest"
+      },
+      {
+        "value": 3066275971523339,
+        "path": "Workspace.Honours",
+        "key": "Badge_village"
+      },
+      {
+        "value": 4327774231356693,
+        "path": "Workspace.Honours",
+        "key": "Badge_genius"
+      },
+      {
+        "value": 1472887764139377,
+        "path": "Workspace.Honours",
+        "key": "Badge_porto"
+      },
+      {
+        "value": 1304762848867330,
+        "path": "Workspace.Honours",
+        "key": "Badge_domaine"
+      },
+      {
+        "value": 511740616906295,
+        "path": "Workspace.Honours",
+        "key": "Badge_luminary"
+      },
+      {
+        "value": 1991720687,
+        "path": "Workspace.Binoculars",
+        "key": "BinocularsPassId"
+      },
+      {
+        "value": 3714570753,
+        "path": "Workspace.AcornPacks",
+        "key": "Product_basket"
+      },
+      {
+        "value": 3714570864,
+        "path": "Workspace.AcornPacks",
+        "key": "Product_barrow"
+      },
+      {
+        "value": 3714570389,
+        "path": "Workspace.AcornPacks",
+        "key": "Product_handful"
+      },
+      {
+        "value": 3713471302,
+        "path": "Workspace.HintShop",
+        "key": "HintProductId"
+      },
+      {
+        "value": 4354922527612323,
+        "path": "Workspace.DailyQuestion",
+        "key": "Badge_wise"
+      },
+      {
+        "value": 2765102309602723,
+        "path": "Workspace.Champion",
+        "key": "Badge_champion"
+      },
+      {
+        "value": 0,
+        "path": "Workspace.PortoKeeper",
+        "key": "Badge_key"
+      }
+    ],
+    "dailyAttributes": {
+      "StepReward": 5,
+      "AutoCollect": 15,
+      "DayOffsetHours": 9,
+      "MaxReward": 40,
+      "BaseReward": 10,
+      "GoldReward": 30
+    },
+    "receiptsEnabled": true,
+    "backups": [
+      {
+        "name": "PortoEnvironmentBackup_20261001",
+        "children": 80
+      },
+      {
+        "name": "PortoDailyBackup_20261013",
+        "children": 3
+      },
+      {
+        "name": "PortoDailyRecoveryBackup_20261013",
+        "children": 5
+      },
+      {
+        "name": "PortoCelebrationBackup_20261014",
+        "children": 3
+      }
+    ]
+  },
+  "publicationVerified": true,
+  "publishNotesVersion": 1336,
+  "publicationUtc": "2026-10-14T02:31:27.680Z",
+  "freshStudioSession": true,
+  "all13SourcesMatch": true,
+  "noLaterSourceDifferences": true,
+  "allProductionSettingsPreserved": true,
+  "noTestArtifacts": true,
+  "noPlay": true,
+  "noSavedDataAccess": true,
+  "noPublicationByAgent": true,
+  "noServerRestart": true,
+  "completedUtc": "2026-10-14T02:35:13.894946+00:00"
+}
