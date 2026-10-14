@@ -1687,3 +1687,7 @@ SHANNON (Oct 14, after the job 96 run): "there has been no further issue with th
 so job 96 is CLOSED and job 97 (the no-gap fix) is NOT needed unless it comes back. For the record: village/build_portraits.lua line 489
 opens the PortraitWall store only outside Studio, so a Studio play test has no entries, 0 models and empty mounts - the blink can only
 ever be judged live. Next per the handoff: the phone camera (she still owes what she saw), then the look pass.
+Job 96 CLOSED (Shannon, Oct 14: "there has been no further issue with the art work"); Studio cannot show sitters (the PortraitWall store
+opens only outside Studio, build_portraits.lua ~489), so the probe saw 9 empty mounts and 0 remounts. Job 97 (the no-gap fix,
+tools/portraits/blink1.lua from make_blink1.py: a swap only when something shown changed; the new picture up before the old goes)
+is written, self-tested against the repo CLIENT + vr1 and compiled - NOT installed, kept for the day the blink returns.
