@@ -1405,3 +1405,20 @@ them back and delete workspace.HallOfGuardians). Then a play test: set workspace
 (SelBell centre, dakota right, blizzy left) and the invitation at slot 4; the lectern roll "1. SelBell   2. dakota   3. blizzy_1718".
 Stop the play test (the attributes do not persist). On live servers the same reading runs against the real store once a minute.
 She publishes when she likes; the first live server shows Darkknight (No. 1) and every daily Guardian since.
+Result job 94 INSTALL (runner 7, 3fcd4d5, Shannon's "install"; INSTALLED in Edit v1369, Oct 14 ~18:45Z, NOT published): run
+UNPATCHED from the MCP context (fetched in Edit, len 38826 adler 1059105496 = the blob; HttpEnabled on for the fetch and back
+off; executed through a temporary ModuleScript "return function() <file> end" + require, destroyed after - the MCP's execute_luau
+has no usable loadstring). QQ BELV DONE: workspace.HallOfGuardians at (530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 1.7..2.0);
+terrace R 17, parapet 16 segments, 7 slots; copies: Italian cypress 2, Lemon tree 2, Harbour bench 2; 115 small props set aside
+(HudBackup.HallOfGuardians_props_*); HallServer 17897 chars. Edit now holds workspace.HallOfGuardians (149 parts: Belvedere, Lectern,
+HallServer 17897 RunContext Server) and ServerStorage.HudBackup.HallOfGuardians_props_1 (115 windflower things, places kept = the
+undo together with deleting the folder). Benches left facing the statues (her choice). TestLedger play test PASSED: with the plan's
+JSON and Rebuild 1, after 42 s three figures (SelBell centre at (543,-1064), dakota at (541,-1070), blizzy_1718 at (541,-1059)) with
+keys, then Slot_4 "THIS COULD BE YOU / Guardian No. 4" and the roll "1. SelBell   2. dakota   3. blizzy_1718" (the roll shows "No
+Guardian yet ..." until the rebuild finishes); server start logged "HallOfGuardians: ready - 0 Guardians on the belvedere (7
+slots)". Lines in tools/hall_italy/install94_result_2026-10-14.txt. She publishes (Alt+P) when she likes; the first live server then
+shows Darkknight (No. 1) and every daily Guardian since.
+Edit check after the install + test (runner 7): PlaceVersion 1369; HallOfGuardians 149 parts, 0 Slot_ models (as it must be in
+Edit), HallServer 17897 RunContext Server Enabled; attrs TestLedger nil, Rebuild 0, PreviewJson "", Slots 7; backup
+HudBackup.HallOfGuardians_props_1 115 things; no Runner7 leftovers; HttpEnabled false; PortoKeeperServer 14386. Unpublished in
+Studio: job 94 (the Belvedere dei Guardiani). Shannon publishes.

@@ -1,0 +1,19 @@
+# Job 94 INSTALL, runner 7, Oct 14 2026 ~18:45Z, Shannon's "install" (and "that looks good" to the cloud thread); Studio EDIT (v1369)
+# install_hall1.lua at 3fcd4d5 (len 38826, adler32 1059105496 = the git blob), fetched in Edit from the raw commit URL with HttpEnabled on and
+# straight back off, run UNPATCHED through a temporary ModuleScript (Source = "return function() <file> end", require, destroyed after;
+# the MCP context has no usable loadstring). Benches left facing the statues (her choice).
+QQ BELV DONE: workspace.HallOfGuardians at (530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 1.7..2.0); terrace R 17, parapet 16 segments, 7 slots; copies: Italian cypress 2, Lemon tree 2, Harbour bench 2; 115 small props set aside (HudBackup.HallOfGuardians_props_*); HallServer 17897 chars
+EDIT after the run: HallOfGuardians present, 149 parts; HallServer 17897 chars (RunContext Server); children Belvedere, Lectern, HallServer
+BACKUP ServerStorage.HudBackup.HallOfGuardians_props_1: 115 things (the meadow's flowers under the terrace, places kept); HttpEnabled false; no leftover module
+# TestLedger play test (test server; attributes do not persist): TestLedger = the plan's JSON (326 chars), Rebuild = 1
+console at server start: "HallOfGuardians: ready - 0 Guardians on the belvedere (7 slots)" (no store in Studio)
+after 42 s: Figures 3, Key models 4, slots Slot_1,Slot_2,Slot_3; Who: SelBell | dakota | blizzy_1718; where: Slot_1=SelBell at (543,-1064); Slot_2=dakota at (541,-1070); Slot_3=blizzy_1718 at (541,-1059)
+8 s later: slots Slot_1,Slot_2,Slot_3,Slot_4; Title=1ST GUARDIAN Who=SelBell | 2ND GUARDIAN dakota | 3RD GUARDIAN blizzy_1718 | THIS COULD BE YOU / Guardian No. 4; Roll="1. SelBell   2. dakota   3. blizzy_1718"
+(the roll read "No Guardian yet. Be the first ..." while the statues were still being built - it fills in with slot 4 at the end)
+QQ EDITCHECK PlaceVersion 1369
+QQ EDITCHECK HallOfGuardians: 149 parts, Slot_ models 0 (must be 0 in Edit), HallServer 17897 chars RunContext Enum.RunContext.Server Enabled true
+QQ EDITCHECK attrs TestLedger=nil Rebuild=0 PreviewJson= Slots=7
+QQ EDITCHECK backup HallOfGuardians_props_1: 115 things
+QQ EDITCHECK Runner7 leftovers: 0; workspace attr Runner7Belv: nil
+QQ EDITCHECK HttpEnabled: false
+QQ EDITCHECK PortoKeeperServer len 14386
