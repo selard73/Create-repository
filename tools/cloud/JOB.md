@@ -1356,3 +1356,10 @@ circle of r 20.5 does not fit anywhere there without moving the drone (Shannon's
 Edit check after the preview (runner 7): PlaceVersion 1369; workspace.HallOfGuardians absent; no Runner7 script in
 ServerScriptService; HttpEnabled false; HudBackup.HallOfGuardians* 0; PortoKeeperServer 14386. Edit is unchanged.
 Shannon (Oct 14, to runner 7): YES, the Drone Flyer's drone (526,-1086) may be shifted a few studs if the belvedere needs it.
+Round 2 (cloud thread, after the first preview's ABORT): (1) RT is declared at the top of the installer (it was used before its
+declaration); (2) the loadstring compile check runs only where loadstring exists (the Studio MCP has none; the sources are
+compiled with the luau CLI before every push); (3) the footprint test measures the distance to each part's OWN box (rotation
+respected) instead of "distance minus half the diagonal", which had caught handrails forty studs away; small props are parked
+only when they stand under the terrace or the step. New centre (530, -1064), front facing west: the town stair's foot (517,-1046)
+22 studs, its paving 22.6, the Drone Flyer's drone (526,-1086) 22.4, pine grove A 25.8, the olive 24, the umbrella pine 25 - the
+drone does NOT need to move (Shannon's yes to shifting it is noted, unused). Same preview plan; Studio idle, Codex out.

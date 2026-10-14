@@ -13,13 +13,14 @@ local HttpService = game:GetService("HttpService")
 local CX, CZ, YAW = @@CX@@, @@CZ@@, math.rad(@@YAW@@)              -- the terrace's centre; yaw 0 = the front faces north (-z)
 local SERVER = [===[
 @@SERVER@@]===]
-do local f, err = loadstring(SERVER); if not f then print("QQ BELV ABORT: HallServer does not compile: " .. tostring(err)) return end end
+if type(loadstring) == "function" then local f, err = loadstring(SERVER); if not f then print("QQ BELV ABORT: HallServer does not compile: " .. tostring(err)) return end end   -- (no loadstring in the Studio MCP: the sources are compiled with the luau CLI before they are pushed)
 local CH = workspace:FindFirstChild("Champion")
 if not (CH and CH:FindFirstChild("ChampionServer")) then print("QQ BELV ABORT: workspace.Champion.ChampionServer not found (it makes the statues)") return end
 if not workspace:FindFirstChild("PortoKeeper") then print("QQ BELV ABORT: workspace.PortoKeeper not found (it keeps the Guardian list)") return end
 local C = Color3.fromRGB
 local STONE, TRIM, MAJOLICA, TERRA, GOLD, GOLD_D, GOLD_DD, CREAM, IRON = C(232, 226, 210), C(240, 236, 226), C(52, 110, 150), C(178, 92, 62), C(255, 206, 64), C(214, 160, 44), C(190, 136, 40), C(250, 244, 228), C(52, 50, 48)
 local MOSAIC, SEA = C(222, 212, 190), C(78, 150, 186)
+local RT = 17                                                          -- the terrace's radius
 
 -- ---------------------------------------------------------------- the ground ----
 local F = Instance.new("Folder"); F.Name = "HallOfGuardians"
@@ -63,9 +64,21 @@ for _, r in ipairs({19, 21}) do
 		end
 	end
 end
+local g = math.max(centreY, highest - 0.5) - 0.1                      -- the floor's base: its top never below the highest edge; the skirt covers the downhill side
+local BASE = CFrame.new(CX, g, CZ) * CFrame.Angles(0, YAW, 0)
+local function at(x, y, z) return BASE * CFrame.new(x, y, z) end
 -- what stands INSIDE the footprint (r up to RT + 3.5, the step and the entrance trees included): a BIG thing (a tree, a wall,
 -- a path slab, a bench: a box over 4 studs across or 3 tall) means this is the wrong spot - abort with its name; small props
--- (flowers, grass) are set aside into ServerStorage.HudBackup.HallOfGuardians_props_n with their places kept (undo: move them back)
+-- (flowers, grass) under the terrace or the step are set aside into ServerStorage.HudBackup.HallOfGuardians_props_n with
+-- their places kept (undo: move them back). Distances are measured to each part's OWN box (its rotation respected), so a long
+-- handrail forty studs away does not count.
+local function distXZ(d)
+	local lp = d.CFrame:PointToObjectSpace(Vector3.new(CX, d.Position.Y, CZ))
+	local h = d.Size / 2
+	local cp = d.CFrame:PointToWorldSpace(Vector3.new(math.clamp(lp.X, -h.X, h.X), math.clamp(lp.Y, -h.Y, h.Y), math.clamp(lp.Z, -h.Z, h.Z)))
+	local dx, dz = cp.X - CX, cp.Z - CZ
+	return math.sqrt(dx * dx + dz * dz)
+end
 local countCache = {}
 local function partCount(m)
 	local n = countCache[m]
@@ -98,8 +111,7 @@ local inside = {}
 for _, d in ipairs(workspace:GetDescendants()) do
 	if d:IsA("BasePart") and d ~= workspace.Terrain and d.Transparency < 1 and not d:IsDescendantOf(F) and not (old and d:IsDescendantOf(old)) then
 		local p = d.Position
-		local dx, dz = p.X - CX, p.Z - CZ
-		if math.sqrt(dx * dx + dz * dz) - d.Size.Magnitude / 2 <= RT + 3.5 then
+		if distXZ(d) <= RT + 3.5 then
 			local t = workspace:Raycast(Vector3.new(p.X, 300, p.Z), Vector3.new(0, -600, 0), rpTerr)
 			if p.Y + d.Size.Y / 2 > (t and t.Position.Y or -1e9) + 0.5 then
 				local th = thingOf(d)
@@ -112,12 +124,21 @@ end
 local bigs, props = {}, {}
 for th, parts in pairs(inside) do
 	local lo, hi = boxOf(parts)
-	if hi.X - lo.X > 4 or hi.Z - lo.Z > 4 or hi.Y - lo.Y > 3 then table.insert(bigs, th.Name .. string.format(" (x %.0f..%.0f z %.0f..%.0f)", lo.X, hi.X, lo.Z, hi.Z)) else table.insert(props, th) end
+	if hi.X - lo.X > 4 or hi.Z - lo.Z > 4 or hi.Y - lo.Y > 3 then
+		local nearest = math.huge
+		for _, d in ipairs(parts) do nearest = math.min(nearest, distXZ(d)) end
+		table.insert(bigs, th.Name .. string.format(" (x %.0f..%.0f z %.0f..%.0f, %.1f studs from the centre)", lo.X, hi.X, lo.Z, hi.Z, nearest))
+	else
+		-- parked only when it stands under the terrace itself or under the step
+		local under = false
+		for _, d in ipairs(parts) do
+			local l = BASE:PointToObjectSpace(d.Position)
+			if distXZ(d) <= RT + 0.6 or (math.abs(l.X) <= 6.3 and l.Z <= -(RT + 0.5) and l.Z >= -(RT + 3.6)) then under = true break end
+		end
+		if under then table.insert(props, th) end
+	end
 end
 if #bigs > 0 then table.sort(bigs); print("QQ BELV ABORT: standing inside the terrace's footprint at (" .. CX .. ", " .. CZ .. "): " .. table.concat(bigs, "; ") .. "; pick another centre; nothing built") return end
-local g = math.max(centreY, highest - 0.5) - 0.1                      -- the floor's base: its top never below the highest edge; the skirt covers the downhill side
-local BASE = CFrame.new(CX, g, CZ) * CFrame.Angles(0, YAW, 0)
-local function at(x, y, z) return BASE * CFrame.new(x, y, z) end
 local function part(name, size, cf, colour, material, parent, shape, collide)
 	local p = Instance.new("Part"); p.Name = name; p.Size = size; p.CFrame = cf; p.Color = colour
 	p.Material = material or Enum.Material.SmoothPlastic; p.Anchored = true; p.CanCollide = (collide ~= false)
@@ -132,7 +153,7 @@ end
 local belv = Instance.new("Model"); belv.Name = "Belvedere"; belv.Parent = F
 
 -- ---------------------------------------------------------------- the terrace ----
-local RT = 17                                                          -- the terrace's radius
+-- (RT, the terrace's radius, is set at the top)
 disc("Skirt", RT + 0.2, 3.0, -1.5, STONE, Enum.Material.Limestone, belv)
 disc("Rim", RT + 0.5, 0.3, 0.15, TERRA, Enum.Material.Slate, belv)
 disc("Floor", RT, 0.6, 0.3, MOSAIC, Enum.Material.Marble, belv)
