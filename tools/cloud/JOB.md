@@ -1644,3 +1644,6 @@ Oct 12, 2026 · 3 of 3", Older lit / Newer dimmed. One note: the Studio client s
 statue, second empty, none on the server): HallClient starts twice in a Studio play test and the reuse guard loses the race - harmless,
 a one-line fix some day. Paging not exercised by the runner. Lines in tools/hall_italy/install94r7_result_2026-10-14.txt. Unpublished in
 Studio: job 94 round 7 + job 95. She publishes.
+Edit check after the round-7 test (runner 7): v1369; HallOfGuardians 121 parts (Belvedere, Lectern, Pedestal, Older, Newer, HallStatue,
+HallServer, HallClient); TestLedger nil, Rebuild 0, HallJson nil; no HallView_local or RS.HallStatues in Edit; no leftovers; Funnel
+ForceNew false; HttpEnabled false. Unpublished in Studio: job 94 round 7 (the belvedere, one Guardian at a time) + job 95 (the funnel).
