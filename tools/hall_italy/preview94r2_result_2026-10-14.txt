@@ -1,0 +1,40 @@
+# Job 94 PREVIEW round 2, runner 7, Oct 14 2026 ~18:10-18:25Z, play test on the test server (Studio v1369), installer at 8ab3bf3
+# (len 38369, adler32 1791564979 = the git blob, fetched on the server from the raw commit URL). Nothing installed; Edit unchanged.
+# HOW IT RAN (the MCP sandbox has no loadstring, so the file runs as a Script on the server; a Script has three limits):
+#  attempt 1, as committed: died at line 343 - "loadstring() is not available" (type(loadstring) == "function" is TRUE in a Script,
+#    the call THROWS; the guard does not protect it);
+#  attempt 2, line 343 wrapped in pcall: died at line 645 - "The current thread cannot write 'RunContext' (lacking capability Plugin)";
+#  attempt 3 (clean play test), two patches: line 343 = pcall(loadstring, SERVER) [abort only if it compiles badly]; the HallServer
+#    creation line hands SERVER over in a ServerStorage StringValue and the runner creates HallServer (Source, RunContext Server)
+#    from its own MCP context, where Source/RunContext writes are allowed. That is the preview only; the Edit install runs from the
+#    MCP context, where Source/RunContext are writable - but loadstring throws there too, so the line-343 guard must be a pcall.
+QQ BELV DONE: workspace.HallOfGuardians at (530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 1.7..2.0); terrace R 17, parapet 16 segments, 7 slots; copies: Italian cypress 2, Lemon tree 2, Harbour bench 2; 115 small props set aside (HudBackup.HallOfGuardians_props_*); HallServer 17497 chars
+(no QQ BELV NOTE line: nothing standing within 19-21 studs)
+HallOfGuardians: ready - 3 Guardians on the belvedere (7 slots)      [console, ~5 s after HallServer went in; 149 parts before the statues]
+SLOT 1: box x 540.8..544.4 y 2.5..15.7 z -1066.2..-1061.8; figure Figure y 5.1..13.5 (h 8.4), hand LeftHand at (542.3,12.0,-1062.4); key y 12.3..15.7 at (542.3,14.0,-1062.4), 2.0 studs from the hand; texts: Title="1ST GUARDIAN" | Who="SelBell" | When="All 44 squirrels, Oct 11, 2026"
+SLOT 2: box x 539.0..543.9 y 2.5..13.9 z -1071.8..-1066.9; figure Figure y 5.1..11.6 (h 6.5), hand LeftHand at (541.4,11.1,-1068.0); key y 11.3..13.9 at (541.4,12.6,-1068.0), 1.6 studs from the hand; texts: Title="2ND GUARDIAN" | Who="dakota" | When="All 44 squirrels, Oct 12, 2026"
+SLOT 3: box x 539.0..543.9 y 2.5..16.0 z -1061.1..-1056.2; figure Figure y 5.1..13.2 (h 8.1), hand LeftHand at (540.6,12.5,-1057.5); key y 12.7..16.0 at (540.6,14.4,-1057.5), 1.8 studs from the hand; texts: Title="3RD GUARDIAN" | Who="blizzy_1718" | When="All 44 squirrels, Oct 13, 2026"
+SLOT 4: box x 535.5..540.7 y 2.5..7.6 z -1076.3..-1071.0; no figure; texts: Title="THIS COULD BE YOU" | Who="Guardian No. 4" | When="Find all 44 squirrels of Porto Nocciola"
+LECTERN at x 515.3..517.9 z -1067.8..-1060.2: Title="BELVEDERE DEI GUARDIANI" | Sub="THE GUARDIANS OF THE HARBOUR OF PORTO NOCCIOLA" | Roll="1. SelBell   2. dakota   3. blizzy_1718" | Foot="Each of them found every squirrel of Porto Nocciola."
+COPY Belv_Italian_cypress at (541.1,10.2,-1049.8) (y 1.9..18.4) look (-0.00,-1.00)
+COPY Belv_Lemon_tree at (510.2,4.3,-1055.9) (y -0.4..9.1) look (-0.68,-0.50)
+COPY Belv_Harbour_bench at (529.0,4.3,-1057.5) (y 2.5..6.0) look (1.00,-0.00)
+COPY Belv_Italian_cypress at (541.1,10.2,-1078.2) (y 1.9..18.4) look (-0.00,-1.00)
+COPY Belv_Lemon_tree at (510.2,4.6,-1072.9) (y -0.1..9.3) look (-0.68,-0.50)
+COPY Belv_Harbour_bench at (529.0,4.3,-1070.5) (y 2.5..6.0) look (1.00,-0.00)
+FLOOR top y 2.50, SKIRT bottom y -1.10 (centre terrain 2.00)
+FLOOR top over terrain at 12 rim points (r 17.3): 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.6, 0.8 (skirt bottom at -1.1)
+THROUGH the terrace (not the hall's own): PortoNocciola/Windflower stem x11 - all 11 are 0.04-thick rods with tops 2.34..2.49 (0.34..0.49 over the terrain), under the parking threshold (top > terrain + 0.5), now INSIDE the floor slab (y 1.9..2.5), not visible
+PARKED HallOfGuardians_props_1: 115 things
+Key models in the hall: 4 (three raised, one resting on Slot 4) + the column's
+Pictures (the capture tool's temporary camera at a player's eye spot; the avatar moved beside the step by the server): tools/hall_italy/shots/belv-j94-a-frontstep.jpg, -b-centre.jpg, -c-high.jpg, -d-parapet.jpg, -e-lectern.jpg, -f-tiles.jpg
+Notes: the Gifts card (180 s fallback) and the daily card came up during the shots and were hidden on the TEST client only. The benches look along +x (east) = at the crescent and the statues, with the hill behind them; the sea is west/south-west of the meadow, so "facing the sea" is not what they do at this siting.
+QQ EDITCHECK PlaceVersion 1369
+QQ EDITCHECK workspace.HallOfGuardians: false
+QQ EDITCHECK Runner7 scripts in ServerScriptService: 0
+QQ EDITCHECK ServerStorage.Runner7_HallServerSrc: false
+QQ EDITCHECK workspace attr Runner7Belv: nil
+QQ EDITCHECK HttpEnabled: false
+QQ EDITCHECK HudBackup.HallOfGuardians*: 0
+QQ EDITCHECK Prato dei Fiori coastal meadow parts: 1470
+QQ EDITCHECK PortoKeeperServer len 14386

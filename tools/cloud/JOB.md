@@ -1363,3 +1363,29 @@ respected) instead of "distance minus half the diagonal", which had caught handr
 only when they stand under the terrace or the step. New centre (530, -1064), front facing west: the town stair's foot (517,-1046)
 22 studs, its paving 22.6, the Drone Flyer's drone (526,-1086) 22.4, pine grove A 25.8, the olive 24, the umbrella pine 25 - the
 drone does NOT need to move (Shannon's yes to shifting it is noted, unused). Same preview plan; Studio idle, Codex out.
+Result job 94 PREVIEW round 2 (runner 7, 8ab3bf3; play test on the test server, Studio v1369, Oct 14 ~18:10-18:25Z; NOTHING
+installed): QQ BELV DONE: workspace.HallOfGuardians at (530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 1.7..2.0); terrace R 17,
+parapet 16 segments, 7 slots; copies: Italian cypress 2, Lemon tree 2, Harbour bench 2; 115 small props set aside
+(HudBackup.HallOfGuardians_props_*); HallServer 17497 chars. No QQ BELV NOTE. Then "HallOfGuardians: ready - 3 Guardians on the
+belvedere (7 slots)" ~5 s after HallServer went in. Every check line, the slot/lectern texts and the copies are in
+tools/hall_italy/preview94r2_result_2026-10-14.txt; pictures tools/hall_italy/shots/belv-j94-{a-frontstep,b-centre,c-high,
+d-parapet,e-lectern,f-tiles}.jpg. Findings: each statue holds the key in the raised LEFT hand (key 1.6-2.0 studs above the hand
+centre, bottoms 0.2-0.3 above it); Slot 4 is the inviting pedestal "THIS COULD BE YOU / Guardian No. 4 / Find all 44 squirrels of
+Porto Nocciola" with the resting key; tiles "1ST GUARDIAN / SelBell / All 44 squirrels, Oct 11, 2026" etc. and the lectern roll
+"1. SelBell   2. dakota   3. blizzy_1718" are legible in the pictures; the floor top sits 0.5 over the grass at 10 rim points and
+0.6/0.8 on the west edge (ground 1.7): nothing floats or buries, the skirt bottom is 3 studs under; the two benches look along +x
+(EAST, at the crescent and statues) - the sea is west/south-west of this meadow, so they do not face the sea at this siting (fine as
+seats for looking at the Guardians; say if they should turn); 11 Windflower stems (0.04-thick rods, tops 0.34-0.49 over the terrain,
+under the 0.5 parking threshold) are now inside the floor slab, invisible - harmless, a 0.3 threshold would take them; the lemon
+tree copies' boxes reach y -0.4/-0.1 (the grass is ~1.8-2.0) but look planted at ground level in picture (a).
+HOW IT HAD TO RUN (three attempts; the two preview-only patches are NOT in the file): a Script on the test server cannot (1) call
+loadstring - `type(loadstring) == "function"` is TRUE there and the call THROWS "loadstring() is not available", so the round-2 guard
+does not protect line 343 (attempt 1 died there); (2) write RunContext (attempt 2 died at line 645: "cannot write 'RunContext'
+(lacking capability Plugin)"); (3) write Source ("lacking capability PluginOrOpenCloud"). Attempt 3: line 343 as
+`pcall(loadstring, SERVER)` (abort only when it compiles badly) and the HallServer creation handed SERVER over in a StringValue, the
+runner creating HallServer (Source + RunContext Server) from the MCP context. For the EDIT install (MCP context: Source and
+RunContext writable, loadstring throws the same way) the file needs the pcall at line 343; then it can run as committed.
+Shannon's verdict on the pictures pending; her yes = the Edit install.
+Edit check after the round-2 preview (runner 7): PlaceVersion 1369; workspace.HallOfGuardians absent; no Runner7 script or
+StringValue; HttpEnabled false; HudBackup.HallOfGuardians* 0; Prato dei Fiori coastal meadow 1470 parts (nothing parked);
+PortoKeeperServer 14386. Edit is unchanged.
