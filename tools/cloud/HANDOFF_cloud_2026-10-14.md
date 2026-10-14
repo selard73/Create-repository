@@ -106,3 +106,9 @@ later") - after Oct 18, when she says.
   pcall; installers run from the MCP context, the runner wraps them in a temporary ModuleScript); messages cloud -> runner are
   unreliable, the branch is the channel (JOB.md carries every job text, plan and result).
 - Next in her order: 2 the onboarding funnel report (AnalyticsService), 3 the phone camera, 4 the portraits blink, 5 the look pass.
+
+## State at Oct 14 ~19:50 UTC
+- PUBLISHED by Shannon at 18:38:04Z Oct 14: job 94 round 4, the Belvedere dei Guardiani (no benches, terracotta signs). Item 1 DONE.
+  HudBackup holds HallOfGuardians_pre_1 (round 3) and HallOfGuardians_props_1 (115 flowers; undo path in JOB.md).
+- Job 95 (item 2, the onboarding funnel, tools/funnel) reviewed and READY for the runner on her yes. Then items 3 (phone camera:
+  ask her what she saw), 4 (portraits blink: client diagnostic first), 5 (look pass).

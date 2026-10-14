@@ -25,7 +25,13 @@ local function device()
 	return "Desktop"
 end
 task.spawn(function()
-	task.wait(1.5)                                                      -- the camera's viewport is settled by then
+	local t0 = os.clock()                                               -- the viewport is tiny before the first frame: wait for a real size (5 s at most)
+	while os.clock() - t0 < 5 do
+		local cam = workspace.CurrentCamera
+		local v = cam and cam.ViewportSize
+		if v and math.min(v.X, v.Y) > 1 then break end
+		task.wait(0.1)
+	end
 	ev:FireServer("device", device())
 end)
 local sent = false

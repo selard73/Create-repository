@@ -1,8 +1,8 @@
 -- install_funnel1.lua (Studio EDIT mode; re-runnable). Job 95: the onboarding funnel for the Creator Dashboard (Shannon, Oct 11
 -- 2026: "33 % still playing at 5 min, 20 % at 10 min"; she cannot watch new players herself). workspace.Funnel: FunnelEvent,
--- FunnelServer (6642 chars: six steps from the player attributes the game already keeps - Joined, First squirrel, Five squirrels,
+-- FunnelServer (7232 chars: six steps from the player attributes the game already keeps - Joined, First squirrel, Five squirrels,
 -- Second area, All 44 in France, Reached Italy - for first-session players, with Device and Cohort breakdowns; MapOpened as a
--- custom event), FunnelClient (1698 chars: the device kind and the first map open). Events leave only a published place; in
+-- custom event), FunnelClient (1913 chars: the device kind and the first map open). Events leave only a published place; in
 -- Studio the server prints what it would send ("Funnel: step ..."). Undo: delete workspace.Funnel (Item_funnel = 1 stays on the
 -- saves of players it marked as new; harmless). No DataStore, no publish. Output lines start with "QQ FUNNEL".
 local RS = game:GetService("ReplicatedStorage")
@@ -63,11 +63,17 @@ local function check(p)
 	for _, m in ipairs(FRENCH) do french += num(p, "Found_" .. m) end
 	local area = p:GetAttribute("Area")
 	if s.firstArea == nil and type(area) == "string" and area ~= "" then s.firstArea = area end
-	if found >= 1 then logStep(p, s, STEPS[2]) end
-	if found >= 5 then logStep(p, s, STEPS[3]) end
-	if s.firstArea and type(area) == "string" and area ~= "" and area ~= s.firstArea then logStep(p, s, STEPS[4]) end
-	if french >= 44 then logStep(p, s, STEPS[5]) end
-	if num(p, "Item_porto") >= 1 then logStep(p, s, STEPS[6]) end
+	-- only the highest step reached is sent (Roblox completes the earlier ones itself; fewer calls)
+	local top = 1
+	if found >= 1 then top = 2 end
+	if found >= 5 then top = 3 end
+	if s.firstArea and type(area) == "string" and area ~= "" and area ~= s.firstArea then top = math.max(top, 4) end
+	if french >= 44 then top = 5 end
+	if num(p, "Item_porto") >= 1 then top = 6 end
+	if top > (s.top or 0) then
+		s.top = top
+		logStep(p, s, STEPS[top])
+	end
 end
 local function cohortOf(p)
 	if STUDIO and F:GetAttribute("ForceNew") == true then return "New" end
@@ -78,6 +84,20 @@ local function cohortOf(p)
 	end
 	return "Returning"
 end
+local function onEvent(p, kind, value)
+	local s = state[p]
+	if not s then return end
+	if kind == "device" and type(value) == "string" and DEVICES[value] and not s.device then
+		s.device = value
+	elseif kind == "map" and not s.map and not s.ready then
+		s.mapPending = true                                             -- opened in the first seconds: logged once the player is ready
+	elseif kind == "map" and not s.map and s.ready and on() then
+		s.map = true
+		local found = num(p, "SquirrelsFound")
+		local ok, err = pcall(function() AnalyticsService:LogCustomEvent(p, "MapOpened", found, fields(s)) end)
+		say("MapOpened for %s with %d squirrels (%s, %s)%s", p.Name, found, s.device or "Unknown", s.cohort or "Unknown", ok and "" or (" - not sent: " .. tostring(err)))
+	end
+end
 local function watch(p)
 	local s = {logged = {}, map = false, ready = false}
 	state[p] = s
@@ -85,36 +105,29 @@ local function watch(p)
 		local t0 = os.clock()
 		while p.Parent and not p:GetAttribute("SaveLoaded") and os.clock() - t0 < 120 do task.wait(0.5) end
 		if not (p.Parent and p:GetAttribute("SaveLoaded")) then return end
-		task.wait(1)                                                    -- the counts and the area land just after SaveLoaded
-		local t1 = os.clock()
-		while p.Parent and not s.device and os.clock() - t1 < 5 do task.wait(0.25) end   -- the client's device report, if it comes
-		if not p.Parent then return end
-		s.cohort = cohortOf(p)
+		s.cohort = cohortOf(p)                                          -- decided the moment the save is in (the counts land in the same breath)
 		local area = p:GetAttribute("Area")
 		if type(area) == "string" and area ~= "" then s.firstArea = area end
+		local t1 = os.clock()
+		while p.Parent and not s.device and os.clock() - t1 < 30 do task.wait(0.25) end   -- the client's device report (slow phones take a while)
+		if not p.Parent then return end
 		s.ready = true
 		if s.cohort == "New" and on() then logStep(p, s, STEPS[1]) end
 		check(p)
+		if s.mapPending then s.mapPending = nil; onEvent(p, "map") end
 		for _, name in ipairs({"SquirrelsFound", "Area", "Item_porto", "Found_forest", "Found_village", "Found_domaine"}) do
 			p:GetAttributeChangedSignal(name):Connect(function() task.defer(check, p) end)
 		end
 	end)
 end
-ev.OnServerEvent:Connect(function(p, kind, value)
-	local s = state[p]
-	if not s then return end
-	if kind == "device" and type(value) == "string" and DEVICES[value] and not s.device then
-		s.device = value
-	elseif kind == "map" and not s.map and s.ready and on() then
-		s.map = true
-		local found = num(p, "SquirrelsFound")
-		local ok, err = pcall(function() AnalyticsService:LogCustomEvent(p, "MapOpened", found, fields(s)) end)
-		say("MapOpened for %s with %d squirrels (%s, %s)%s", p.Name, found, s.device or "Unknown", s.cohort or "Unknown", ok and "" or (" - not sent: " .. tostring(err)))
-	end
-end)
+ev.OnServerEvent:Connect(onEvent)
 Players.PlayerAdded:Connect(watch)
 for _, p in ipairs(Players:GetPlayers()) do watch(p) end
-Players.PlayerRemoving:Connect(function(p) state[p] = nil end)
+Players.PlayerRemoving:Connect(function(p)
+	local s = state[p]
+	if s and s.cohort == "New" and not s.ready and on() then s.ready = true; logStep(p, s, STEPS[1]) end   -- left before the device report: a quick leaver, counted
+	state[p] = nil
+end)
 print("Funnel: ready (6 steps; events leave only a published place)")
 ]===]
 local CLIENT = [===[
@@ -145,7 +158,13 @@ local function device()
 	return "Desktop"
 end
 task.spawn(function()
-	task.wait(1.5)                                                      -- the camera's viewport is settled by then
+	local t0 = os.clock()                                               -- the viewport is tiny before the first frame: wait for a real size (5 s at most)
+	while os.clock() - t0 < 5 do
+		local cam = workspace.CurrentCamera
+		local v = cam and cam.ViewportSize
+		if v and math.min(v.X, v.Y) > 1 then break end
+		task.wait(0.1)
+	end
 	ev:FireServer("device", device())
 end)
 local sent = false
