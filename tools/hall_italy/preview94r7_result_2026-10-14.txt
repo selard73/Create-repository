@@ -1,0 +1,9 @@
+# Job 94 round 7 PREVIEW (terrace sized for one statue, knee-high buttons), runner 7, Oct 14 2026 ~20:50Z, play test on the test server,
+# NOTHING installed. install_hall1.lua at c7323ce (len 45585, adler32 3907716040 = the git blob), fetched on the server from the raw commit
+# URL; run as a Script with the two script-creation lines handed over; HallServer + HallClient then created from the runner's MCP context.
+QQ BELV DONE: workspace.HallOfGuardians at (530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 2.0..2.0); terrace R 10, parapet 12 segments, one pedestal + Older/Newer; copies: Italian cypress 2, Lemon tree 2; 0 small props set aside (HudBackup.HallOfGuardians_props_*); HallServer 15329, HallClient 4864 chars; the old folder is HudBackup.HallOfGuardians_pre_3
+server, 1 s after the scripts: "HallOfGuardians: ready - 3 Guardians on the roll, one at a time on the belvedere"; HallStatues No_3; Roll="1. SelBell   2. dakota   3. blizzy_1718"
+boxes: Pedestal (535.8,3.8,-1064.0) 3.7x2.6x3.7; Older (532.2,3.8,-1067.0) 1.1x2.5x0.9; Newer (532.2,3.8,-1061.0) 1.1x2.5x0.9; Lectern (522.7,3.9,-1064.0) 5.7x3.0x2.3
+client, 1 s: ONE HallView_local folder (the reuse guard works), No_3 shown; tile "3RD GUARDIAN / blizzy_1718 / All 44 squirrels, Oct 13, 2026 · 3 of 3"; Older.Button tr 0.00 (lit) 0.25x1.1x1.1, Newer 0.55 (dimmed)
+paging not exercised (automation mouse cannot reach ClickDetectors); the mechanism is France's, live there.
+# Pictures: tools/hall_italy/shots/belv-j94r7-step.jpg, belv-j94r7-pedestal-buttons.jpg, belv-j94r7-high.jpg

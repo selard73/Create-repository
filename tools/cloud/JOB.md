@@ -1623,3 +1623,12 @@ and the columns with the arrows on the side are too big"): the terrace sized for
 posts knee-high (0.7 x 1.3 post, a 1.1 disc at 2 studs, x +-3.0, 2.2 in front of the pedestal). HallClient reuses one HallView_local
 folder. PREVIEW again (same plan as round 6: play test, PreviewJson, pictures from the step and of the buttons/tile); nothing installed;
 Edit = round 5, live = round 4.
+Result job 94 round 7 PREVIEW (runner 7, c7323ce; test server, NOTHING installed, Oct 14 ~20:50Z): QQ BELV DONE: workspace.HallOfGuardians
+at (530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 2.0..2.0); terrace R 10, parapet 12 segments, one pedestal + Older/Newer; copies:
+Italian cypress 2, Lemon tree 2; 0 small props set aside (HudBackup.HallOfGuardians_props_*); HallServer 15329, HallClient 4864 chars;
+the old folder is HudBackup.HallOfGuardians_pre_3. "HallOfGuardians: ready - 3 Guardians on the roll, one at a time on the belvedere"
+in 1 s; No_3 shown at once in ONE HallView_local (the reuse guard works); tile "3RD GUARDIAN / blizzy_1718 / ... · 3 of 3"; Older lit /
+Newer dimmed; boxes: Pedestal (535.8,3.8,-1064) 3.7x2.6x3.7, Older/Newer (532.2,3.8,-1067/-1061) 1.1x2.5x0.9, Lectern (522.7,3.9,-1064)
+5.7x3.0x2.3. Paging not exercised (automation mouse). Pictures tools/hall_italy/shots/belv-j94r7-{step,pedestal-buttons,high}.jpg;
+lines in tools/hall_italy/preview94r7_result_2026-10-14.txt. Shannon's verdict pending; her yes = the Edit install (pre_3), then the
+three-entry TestLedger test, Edit check, her publish.
