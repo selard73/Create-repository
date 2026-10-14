@@ -1452,3 +1452,6 @@ terrace R 17, parapet 16 segments, 7 slots; copies: Italian cypress 2, Lemon tre
 text 250,244,228; HallServer carries the terracotta 178,92,62 for the tiles; HudBackup.HallOfGuardians_props_1 still 115 (nothing new
 parked, no second folder); HudBackup.HallOfGuardians_pre_1 = the round-3 folder, its HallServer Enabled false; HttpEnabled false; no
 leftovers. Unpublished in Studio: job 94 round 4. Shannon's verdict on the terracotta signs pending; she publishes.
+PUBLISHED by Shannon at 18:38:04Z Oct 14 (games API "updated"; the round-4 re-run and its pictures were ~18:30-18:36Z, not 19:30Z as
+written above): the live game carries job 94 round 4 - the Belvedere dei Guardiani (no benches, terracotta signs). Nothing
+unpublished in Studio. She is checking it live; the first live server should raise Darkknight (No. 1) and every daily Guardian.
