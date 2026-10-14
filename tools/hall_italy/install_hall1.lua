@@ -3,7 +3,7 @@
 -- Nocciola in marble with the harbour key, standing together in a crescent above the sea (Shannon, Oct 14 2026: "make this
 -- hall of fame look distinctively different from the one in France"; site E). workspace.HallOfGuardians: Belvedere (a round
 -- mosaic terrace, a low parapet with a majolica band, the centre column with the gold key, two lanterns, the lectern with the
--- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (18818 chars: pedestals and statues from
+-- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (18987 chars: pedestals and statues from
 -- the Guardian list at run time). Undo: delete workspace.HallOfGuardians (an older one is HudBackup.HallOfGuardians_pre_n).
 -- No DataStore, no publish. Output lines start with "QQ BELV".
 local SS = game:GetService("ServerStorage")
@@ -196,9 +196,9 @@ local function pedestal(k, facing)
 	local sg = Instance.new("SurfaceGui"); sg.Name = "Words"; sg.Face = Enum.NormalId.Front; sg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
 	sg.PixelsPerStud = 80; sg.LightInfluence = 0.3; sg.Parent = t
 	-- (2.6 x 1.6 studs = 208 x 128 px)
-	label(sg, "Title", 6, 26, 22, Enum.Font.Antique, CREAM)
-	label(sg, "Who", 32, 44, 40, Enum.Font.FredokaOne, CREAM)
-	label(sg, "When", 78, 44, 15, Enum.Font.Merriweather, CREAM)
+	label(sg, "Title", 6, 26, 20, Enum.Font.GothamBold, CREAM)          -- (GothamBold in cream: Shannon's pick, Oct 14)
+	label(sg, "Who", 32, 44, 36, Enum.Font.GothamBold, CREAM)
+	label(sg, "When", 78, 44, 15, Enum.Font.GothamBold, CREAM)
 	m.WorldPivot = cf
 	m:SetAttribute("Slot", k)
 	m.Parent = F
@@ -251,7 +251,8 @@ local building, dirty, wipe = false, false, false
 local pending = {}                                                     -- slot k -> the entry still without a statue
 -- who stands on the pedestals (the lectern's roll always names everyone). Shannon, Oct 14: "latest 7 please" - the newest Guardian
 -- always gets a statue, the oldest steps down to the roll. Mode "latest" (hers) or "first" (the first Slots keep theirs for good);
--- PinFirst true = No. 1 keeps the centre for good and the newest stand beside him, newest nearest; false = the newest in the centre.
+-- PinFirst true = No. 1 keeps the centre for good and the newest stand beside him, newest nearest; false (hers: "rotate please") =
+-- the newest in the centre, the older ones right and left of it in turn, the oldest of the seven at the horns.
 local function shown_list(l)
 	local n, out = #l, {}
 	if (F:GetAttribute("Mode") or "latest") ~= "latest" then
@@ -595,10 +596,11 @@ do
 		return l
 	end
 	-- (7.2 x 2.8 studs = 504 x 196 px at 70 per stud)
-	line("Title", 6, 42, 38, Enum.Font.Antique, CREAM, "BELVEDERE DEI GUARDIANI")
-	line("Sub", 48, 24, 19, Enum.Font.Antique, CREAM, "THE GUARDIANS OF THE HARBOUR OF PORTO NOCCIOLA")
-	line("Roll", 76, 76, 26, Enum.Font.FredokaOne, CREAM, "")
-	line("Foot", 156, 30, 16, Enum.Font.Merriweather, CREAM, "Each of them found every squirrel of Porto Nocciola.")
+	-- (GothamBold in cream on the terracotta, no gold, no gradient: Shannon's pick from a 14-font sampler, Oct 14)
+	line("Title", 6, 42, 36, Enum.Font.GothamBold, CREAM, "BELVEDERE DEI GUARDIANI")
+	line("Sub", 48, 24, 18, Enum.Font.GothamBold, CREAM, "THE GUARDIANS OF THE HARBOUR OF PORTO NOCCIOLA")
+	line("Roll", 76, 76, 26, Enum.Font.GothamBold, CREAM, "")
+	line("Foot", 156, 30, 16, Enum.Font.GothamBold, CREAM, "Each of them found every squirrel of Porto Nocciola.")
 end
 
 -- ---------------------------------------------------------------- Porto's own trees and benches ----
@@ -641,7 +643,7 @@ end
 
 -- ---------------------------------------------------------------- the folder, its settings, the script ----
 F:SetAttribute("Base", BASE)
-F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Mode", "latest"); F:SetAttribute("PinFirst", true); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
+F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Mode", "latest"); F:SetAttribute("PinFirst", false); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
 F:SetAttribute("Scale", 1.35); F:SetAttribute("KeyShare", 0.42); F:SetAttribute("RestKeyHeight", 2.6); F:SetAttribute("Total", 44)
 F:SetAttribute("Rebuild", 0)
 -- a play-test preview (no Guardian list on the test server): three sample Guardians so the crescent can be seen with statues

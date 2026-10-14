@@ -245,10 +245,11 @@ do
 		return l
 	end
 	-- (7.2 x 2.8 studs = 504 x 196 px at 70 per stud)
-	line("Title", 6, 42, 38, Enum.Font.Antique, CREAM, "BELVEDERE DEI GUARDIANI")
-	line("Sub", 48, 24, 19, Enum.Font.Antique, CREAM, "THE GUARDIANS OF THE HARBOUR OF PORTO NOCCIOLA")
-	line("Roll", 76, 76, 26, Enum.Font.FredokaOne, CREAM, "")
-	line("Foot", 156, 30, 16, Enum.Font.Merriweather, CREAM, "Each of them found every squirrel of Porto Nocciola.")
+	-- (GothamBold in cream on the terracotta, no gold, no gradient: Shannon's pick from a 14-font sampler, Oct 14)
+	line("Title", 6, 42, 36, Enum.Font.GothamBold, CREAM, "BELVEDERE DEI GUARDIANI")
+	line("Sub", 48, 24, 18, Enum.Font.GothamBold, CREAM, "THE GUARDIANS OF THE HARBOUR OF PORTO NOCCIOLA")
+	line("Roll", 76, 76, 26, Enum.Font.GothamBold, CREAM, "")
+	line("Foot", 156, 30, 16, Enum.Font.GothamBold, CREAM, "Each of them found every squirrel of Porto Nocciola.")
 end
 
 -- ---------------------------------------------------------------- Porto's own trees and benches ----
@@ -291,7 +292,7 @@ end
 
 -- ---------------------------------------------------------------- the folder, its settings, the script ----
 F:SetAttribute("Base", BASE)
-F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Mode", "latest"); F:SetAttribute("PinFirst", true); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
+F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Mode", "latest"); F:SetAttribute("PinFirst", false); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
 F:SetAttribute("Scale", 1.35); F:SetAttribute("KeyShare", 0.42); F:SetAttribute("RestKeyHeight", 2.6); F:SetAttribute("Total", 44)
 F:SetAttribute("Rebuild", 0)
 -- a play-test preview (no Guardian list on the test server): three sample Guardians so the crescent can be seen with statues

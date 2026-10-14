@@ -1513,8 +1513,43 @@ Shannon (Oct 14, to runner 7) on the belvedere's capacity: "latest 7 please" - t
 (the newest always gets a statue, the oldest steps down to the lectern roll), not the first seven forever. Open: whether
 Darkknight (No. 1) stays pinned in the centre regardless (runner 7 is asking). Her lettering pick (A/B/C/D) and the lantern level
 are still pending.
+<<<<<<< HEAD
 Round 5, part 1 (cloud thread): Shannon "latest 7 please" -> HallServer Mode "latest": the newest Guardian always gets a statue, the
 oldest steps down to the lectern roll (everyone stays on the roll); PinFirst true (default) = Darkknight (No. 1) keeps the centre and
 the six newest stand beside him, newest nearest the centre; PinFirst false = the seven newest, the newest in the centre - one attribute
 on workspace.HallOfGuardians, no re-run needed to flip it (set Rebuild 1 after). Lanterns dimmed to mock E. Her lettering pick (tiles
 A/B/C, lectern D) still to come; then the re-run carries all three.
+=======
+Shannon (Oct 14, to runner 7): Darkknight: "rotate please" - No. 1 is NOT pinned; the latest seven, plain. On the lettering: she
+leans to B (gold letters with a dark edge) "but I don't like the font and it is too just yellow". Runner 7 mocked (test server,
+discarded) an OLD-GOLD finish - TextColor3 white + UIGradient rotation 90 with 255,226,150 -> 232,190,90 (0.45) -> 176,124,40, plus a
+UIStroke 1.1 px 110,50,30 at transparency 0.1 - in three fonts, one per tile: Slot_2 (dakota, left) Garamond, Slot_1 (SelBell, centre)
+Bodoni, Slot_3 (blizzy, right) Antique; picture tools/hall_italy/shots/belv-mock-fonts-gold.jpg. Her font pick pending; the small
+"When" line in a serif at 15 px is thin - consider a size up or Merriweather for that line.
+Shannon on the old-gold font mock-ups (Garamond / Bodoni / Antique): "I don't like any of those, they all look terrible". Runner 7
+put up a FONT SAMPLER on the test server (14 fonts, cream on terracotta, the name + the date line in each: Antique, Garamond, Bodoni,
+Merriweather, Fondamento, JosefinSans, Michroma, Oswald, GothamBold, Nunito, Sarpanch, Fantasy, PatrickHand, FredokaOne); picture
+tools/hall_italy/shots/belv-font-sampler.jpg. Her pick pending; the gold finish is dropped unless she says otherwise.
+Shannon's pick from the font sampler (Oct 14): the left column, fifth from the top = GothamBold (no. 9). Lettering for the tiles
+AND the lectern: GothamBold, cream 250,244,228 on the terracotta; the gold finish is dropped. Lanterns: no further word from her, so
+the mocked dim level stands unless she objects: Lamp Material Glass, colour 255,196,120, transparency 0.15, PointLight 0.35 /
+range 12 (installed: Neon 255,214,140, 1.0 / 16). ROUND 5 brief: latest seven (Darkknight rotates like everyone), GothamBold cream
+lettering, dimmer lanterns. The TestLedger play test is worth repeating once (the rotation: 8+ entries).
+>>>>>>> origin/claude/epic-hawking-188q4l
+ROUND 5 (cloud thread, Shannon's three decisions): (1) Mode "latest", PinFirst FALSE ("rotate please"): the crescent shows the newest
+seven, the newest in the CENTRE, the older ones right and left of it in turn, the oldest of the seven at the horns; everyone stays on
+the lectern roll (the newest six names, "N more, then"). (2) Lettering GothamBold, cream 250,244,228 on the terracotta, tiles (Title/
+Who/When) and lectern (Title/Sub/Roll/Foot); no gold, no gradient. (3) Lanterns: Glass 255,196,120 transparency 0.15, PointLight 0.35 /
+range 12. RE-RUN PLAN (on her yes; Edit, MCP context): run install_hall1.lua from this commit; the old folder goes to
+HudBackup.HallOfGuardians_pre_2; the props stay in props_1 (expect "0 small props set aside"). TestLedger PLAY TEST with eight entries,
+then Rebuild 1: set workspace.HallOfGuardians attribute TestLedger to
+{"first":{"uid":9611145467,"name":"SelBell","user":"SelBell","t":1791676800,"total":44},"daily":{"version":2,"revision":7,"days":{
+"20737":{"uid":4161205246,"name":"dakota","t":1791763200,"day":20737,"total":44},"20738":{"uid":7902108387,"name":"blizzy_1718",
+"t":1791849600,"day":20738,"total":44},"20739":{"uid":1,"name":"Roblox","t":1791936000,"day":20739,"total":44},"20740":{"uid":2,
+"name":"John","t":1792022400,"day":20740,"total":44},"20741":{"uid":3,"name":"Jane","t":1792108800,"day":20741,"total":44},"20742":
+{"uid":4,"name":"Four","t":1792195200,"day":20742,"total":44},"20743":{"uid":5,"name":"Five","t":1792281600,"day":20743,"total":44}},
+"winners":{},"attempts":{}}}
+Expected: seven statues (the low uids give default figures), slot 1 (centre) = No. 8 "Five", slot 2 (right) = No. 7 "Four", slot 3
+(left) = No. 6, slot 4 = No. 5, slot 5 = No. 4 "Roblox", slot 6 = No. 3 blizzy, slot 7 = No. 2 dakota; NO invitation pedestal; SelBell
+(No. 1) only on the roll: "2 more, then 3. blizzy_1718   4. Roblox   5. John   6. Jane   7. Four   8. Five". Then clear TestLedger,
+Rebuild 1 again: all slots empty but the slot 1 invitation. Stop (nothing persists). Edit check. She publishes.

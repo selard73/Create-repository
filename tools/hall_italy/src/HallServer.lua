@@ -182,9 +182,9 @@ local function pedestal(k, facing)
 	local sg = Instance.new("SurfaceGui"); sg.Name = "Words"; sg.Face = Enum.NormalId.Front; sg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
 	sg.PixelsPerStud = 80; sg.LightInfluence = 0.3; sg.Parent = t
 	-- (2.6 x 1.6 studs = 208 x 128 px)
-	label(sg, "Title", 6, 26, 22, Enum.Font.Antique, CREAM)
-	label(sg, "Who", 32, 44, 40, Enum.Font.FredokaOne, CREAM)
-	label(sg, "When", 78, 44, 15, Enum.Font.Merriweather, CREAM)
+	label(sg, "Title", 6, 26, 20, Enum.Font.GothamBold, CREAM)          -- (GothamBold in cream: Shannon's pick, Oct 14)
+	label(sg, "Who", 32, 44, 36, Enum.Font.GothamBold, CREAM)
+	label(sg, "When", 78, 44, 15, Enum.Font.GothamBold, CREAM)
 	m.WorldPivot = cf
 	m:SetAttribute("Slot", k)
 	m.Parent = F
@@ -237,7 +237,8 @@ local building, dirty, wipe = false, false, false
 local pending = {}                                                     -- slot k -> the entry still without a statue
 -- who stands on the pedestals (the lectern's roll always names everyone). Shannon, Oct 14: "latest 7 please" - the newest Guardian
 -- always gets a statue, the oldest steps down to the roll. Mode "latest" (hers) or "first" (the first Slots keep theirs for good);
--- PinFirst true = No. 1 keeps the centre for good and the newest stand beside him, newest nearest; false = the newest in the centre.
+-- PinFirst true = No. 1 keeps the centre for good and the newest stand beside him, newest nearest; false (hers: "rotate please") =
+-- the newest in the centre, the older ones right and left of it in turn, the oldest of the seven at the horns.
 local function shown_list(l)
 	local n, out = #l, {}
 	if (F:GetAttribute("Mode") or "latest") ~= "latest" then
