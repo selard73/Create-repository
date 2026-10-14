@@ -1743,3 +1743,8 @@ PREVIEW: a play test, the script's body on the server; pictures with the game's 
 the phone emulator: the French village lake or river with the sky (water), a lantern at the harbour or the piazza (bloom), the forest
 floor (grass), the Porto piazza (grading). Send the QQ LOOK lines and the picture pairs; she picks what stays. Then EDIT on her yes (the
 same script); the undo is look_undo1.lua. No publish.
+Job 98 review (1 reader, 7 findings; 6 applied): names lose a trailing _<number> (the per-ride Boat_<uid> would have burnt Roblox's
+8,000-combination cap) and never name a player's character; the game's own awards (Item_funnel, thanks_*, porto) are not counted as
+items; nothing is counted after a failed save load; the throttle is ten-second buckets (Budget / 6), the Repeat stamp set only when an
+event is sent, and the truncation reported as one Interact_Dropped event per bucket; the spawn area is not a move; Studio prints say
+"(Studio, not sent)". The InteractServer length in the install line changes with this commit (read the QQ line as printed).

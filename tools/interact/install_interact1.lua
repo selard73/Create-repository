@@ -1,6 +1,6 @@
 -- install_interact1.lua (Studio EDIT mode; re-runnable). Job 98: what players interact with, counted for the Creator Dashboard
 -- (Shannon, Oct 14 2026: "a tool that will count and give info on how far each player gets and what they interact with"; "how far"
--- is the funnel, job 95). workspace.Interact: InteractServer (7522 chars) listens to what the game already fires - every prompt
+-- is the funnel, job 95). workspace.Interact: InteractServer (8554 chars) listens to what the game already fires - every prompt
 -- triggered, click, seat, tool equipped or used, area entered, item gained - and sends AnalyticsService custom events
 -- Interact_<kind> with Device / Cohort (from the funnel) / Name fields, once per player per thing per minute, at most Budget per
 -- server per minute. Nothing else is patched. Events leave only a published place; in Studio the server prints what it would send.
@@ -33,14 +33,22 @@ local function on() return F:GetAttribute("Enabled") ~= false end
 local function num(name, default) local v = tonumber(F:GetAttribute(name)); return v or default end
 local function prints() local v = F:GetAttribute("LogPrints"); if v == nil then return STUDIO end; return v == true end
 local function clean(s, max)
-	s = tostring(s or ""):gsub("[%c|]", " "):gsub("^%s+", ""):gsub("%s+$", "")
+	s = tostring(s or ""):gsub("[%c|]", " "):gsub("^%s+", ""):gsub("%s+$", ""):gsub("_%d+$", "")   -- (Boat_<uid> -> Boat: one name per thing, never per rider)
 	if s == "" then s = "unnamed" end
-	return #s > (max or 40) and s:sub(1, max or 40) or s
+	max = max or 40
+	if #s > max then
+		s = s:sub(1, max)
+		while #s > 0 and not utf8.len(s) do s = s:sub(1, -2) end          -- (never a split character)
+	end
+	return s
 end
-local function modelName(o)                                            -- the nearest Model above o, else o's own name
+local function modelName(o)                                            -- the nearest Model above o (never a player's character), else o's own name
 	local m = o
 	while m and m ~= workspace do
-		if m:IsA("Model") then return m.Name end
+		if m:IsA("Model") then
+			if Players:GetPlayerFromCharacter(m) then return "a player" end
+			return m.Name
+		end
 		m = m.Parent
 	end
 	return o.Name
@@ -48,7 +56,7 @@ end
 
 -- ---- the send, with its throttles ----
 local last = {}                                                        -- [player] = {[kind:name] = clock}
-local sentThisMinute, droppedThisMinute, minuteStart = 0, 0, os.clock()
+local sentThisBucket, dropped, bucketStart = 0, 0, os.clock()           -- ten-second buckets: Budget / 6 each
 local function fieldsFor(p, name)
 	return {[K1] = "Device - " .. tostring(p:GetAttribute("FunnelDevice") or "Unknown"), [K2] = "Cohort - " .. tostring(p:GetAttribute("FunnelCohort") or "Unknown"), [K3] = name}
 end
@@ -59,15 +67,19 @@ local function log(p, kind, rawName)
 	local t = os.clock()
 	local mine = last[p]; if not mine then mine = {}; last[p] = mine end
 	if mine[key] and t - mine[key] < num("Repeat", 60) then return end
-	mine[key] = t
-	if t - minuteStart >= 60 then
-		if droppedThisMinute > 0 and prints() then print(string.format("Interact: %d events over the budget were not sent in the last minute", droppedThisMinute)) end
-		sentThisMinute, droppedThisMinute, minuteStart = 0, 0, t
+	if t - bucketStart >= 10 then
+		if dropped > 0 then                                             -- the truncation itself is reported, once per bucket
+			local d = dropped
+			pcall(function() AnalyticsService:LogCustomEvent(p, "Interact_Dropped", d) end)
+			if prints() then print(string.format("Interact: %d events over the budget were not sent in the last ten seconds", d)) end
+		end
+		sentThisBucket, dropped, bucketStart = 0, 0, t
 	end
-	if sentThisMinute >= num("Budget", 90) then droppedThisMinute += 1; return end
-	sentThisMinute += 1
+	if sentThisBucket >= math.max(1, math.floor(num("Budget", 90) / 6)) then dropped += 1; return end
+	mine[key] = t
+	sentThisBucket += 1
 	local ok, err = pcall(function() AnalyticsService:LogCustomEvent(p, "Interact_" .. kind, 1, fieldsFor(p, name)) end)
-	if prints() then print(string.format("Interact: %s %s \"%s\" by %s%s", kind, "", name, p.Name, ok and "" or (" - not sent: " .. tostring(err)))) end
+	if prints() then print(string.format("Interact: %s \"%s\" by %s%s", kind, name, p.Name, (not ok) and (" - not sent: " .. tostring(err)) or (STUDIO and " (Studio, not sent)" or ""))) end
 end
 
 -- ---- prompts ----
@@ -118,20 +130,27 @@ local function watch(p)
 	local lastArea = p:GetAttribute("Area")
 	p:GetAttributeChangedSignal("Area"):Connect(function()
 		local a = p:GetAttribute("Area")
-		if type(a) == "string" and a ~= "" and a ~= lastArea then lastArea = a; log(p, "Area", a) end
+		if not (type(a) == "string" and a ~= "") or a == lastArea then return end
+		local first = (lastArea == nil)                                 -- the spawn area is where they arrived, not a move
+		lastArea = a
+		if not first then log(p, "Area", a) end
 	end)
 	-- items: a rise in any Item_<id> once the save is in (the load itself is not a purchase)
 	local baseline = {}
 	local function snapshot() for k, v in pairs(p:GetAttributes()) do if type(k) == "string" and k:sub(1, 5) == "Item_" then baseline[k] = tonumber(v) or 0 end end end
+	local SKIP = {funnel = true, porto = true}                            -- the game's own marks (the funnel's, the Italy arrival) and gifts are not purchases
 	task.spawn(function()
 		local t0 = os.clock()
 		while p.Parent and not p:GetAttribute("SaveLoaded") and os.clock() - t0 < 120 do task.wait(0.5) end
+		if not (p.Parent and p:GetAttribute("SaveLoaded")) then return end
 		task.wait(2)
 		snapshot()
 		p.AttributeChanged:Connect(function(k)
 			if type(k) ~= "string" or k:sub(1, 5) ~= "Item_" then return end
+			local id = k:sub(6)
+			if SKIP[id] or id:sub(1, 7) == "thanks_" then return end
 			local v = tonumber(p:GetAttribute(k)) or 0
-			if v > (baseline[k] or 0) then baseline[k] = v; log(p, "Item", k:sub(6)) end
+			if v > (baseline[k] or 0) then baseline[k] = v; log(p, "Item", id) end
 		end)
 	end)
 end
