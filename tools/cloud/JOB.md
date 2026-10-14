@@ -1647,3 +1647,8 @@ Studio: job 94 round 7 + job 95. She publishes.
 Edit check after the round-7 test (runner 7): v1369; HallOfGuardians 121 parts (Belvedere, Lectern, Pedestal, Older, Newer, HallStatue,
 HallServer, HallClient); TestLedger nil, Rebuild 0, HallJson nil; no HallView_local or RS.HallStatues in Edit; no leftovers; Funnel
 ForceNew false; HttpEnabled false. Unpublished in Studio: job 94 round 7 (the belvedere, one Guardian at a time) + job 95 (the funnel).
+PUBLISHED by Shannon at 19:41:36Z Oct 14 (games API "updated"; "I have published the update"): the live game now carries job 94 round 7
+(the Belvedere dei Guardiani: one Guardian at a time, newest first, Older/Newer buttons, terrace R 10.5, GothamBold cream on
+terracotta, dim lanterns, everyone on the lectern roll) AND job 95 (the onboarding funnel; events start on the next live servers; the
+Funnel page appears in the Creator Dashboard about a day after the first events). Nothing unpublished in Studio. (Time correction:
+runner 7's "~Z" estimates in the round 5-7 paragraphs above ran about 90 minutes fast; the real clock: round 7 install ~19:30Z.)
