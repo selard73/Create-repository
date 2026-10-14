@@ -1,0 +1,12 @@
+# Job 94 round 6 PREVIEW (the French display concept in the Italian style), runner 7, Oct 14 2026 ~20:30Z, play test on the test server,
+# NOTHING installed. install_hall1.lua at 3f8a44b (len 45130, adler32 4223697089 = the git blob), fetched on the server from the raw commit
+# URL; run as a Script with the two script-creation lines handed over (a Script cannot write Source/RunContext): HallServer (RunContext
+# Server) and HallClient (RunContext Client) were then created from the runner's MCP context with the installer's exact texts.
+QQ BELV DONE: workspace.HallOfGuardians at (530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 1.7..2.0); terrace R 17, parapet 16 segments, one pedestal + Older/Newer; copies: Italian cypress 2, Lemon tree 2; 0 small props set aside (HudBackup.HallOfGuardians_props_*); HallServer 15329, HallClient 4703 chars; the old folder is HudBackup.HallOfGuardians_pre_3
+hall children: Belvedere, Lectern, Pedestal, Older, Newer, HallStatue (RemoteFunction) [+ HallServer, HallClient]
+server, 1 s after the scripts went in: "HallOfGuardians: ready - 3 Guardians on the roll, one at a time on the belvedere"; ReplicatedStorage.HallStatues = No_3; HallJson 211 chars; Roll="1. SelBell   2. dakota   3. blizzy_1718"
+client: Pedestal tile Title="3RD GUARDIAN" Who="blizzy_1718" When="All 44 squirrels, Oct 13, 2026  ·  3 of 3"; Older.Button transparency 0.00 (lit), Newer.Button 0.55 (dimmed); ClickDetectors on Cap/Post/Button of both posts, MaxActivationDistance 40, Hooked true
+client: the shown statue No_3 (28 parts) stands at (542.6,10.5,-1064.0) in workspace.HallView_local - but there were TWO HallView_local folders on the client (the first empty): HallClient ran twice in this preview (created from the server context after the player was in); on a real install the script is in the place before any client joins. Worth a guard: reuse an existing HallView_local instead of making a new folder.
+client: HallStatue:InvokeServer(3) -> "No_3" in 0.2 s
+PAGING NOT EXERCISED by the automation mouse (it drives GUI objects, not 3D ClickDetectors; two tries, inset-corrected). Shannon asked to tap Older herself in the running test.
+# Pictures: tools/hall_italy/shots/belv-j94r6-step.jpg (from the step: lectern, the one pedestal and statue, the two posts), belv-j94r6-pedestal-buttons.jpg (the posts with < > chevrons, Older lit / Newer dimmed), belv-j94r6-tile.jpg (the tile, GothamBold cream).

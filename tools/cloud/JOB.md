@@ -1598,3 +1598,16 @@ sample Guardians; expect "HallOfGuardians: ready - 3 Guardians on the roll, one 
 Newer back; the lectern roll "1. SelBell   2. dakota   3. blizzy_1718". Pictures with the game's camera: the pedestal from the step,
 the buttons, the tile. Then on her yes the Edit install (old folder -> HudBackup.HallOfGuardians_pre_3; props stay), the TestLedger
 play test (three entries), Edit check; she publishes.
+Result job 94 round 6 PREVIEW (runner 7, 3f8a44b; play test on the test server, NOTHING installed, Oct 14 ~20:30Z): QQ BELV DONE:
+workspace.HallOfGuardians at (530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 1.7..2.0); terrace R 17, parapet 16 segments, one
+pedestal + Older/Newer; copies: Italian cypress 2, Lemon tree 2; 0 small props set aside (HudBackup.HallOfGuardians_props_*);
+HallServer 15329, HallClient 4703 chars; the old folder is HudBackup.HallOfGuardians_pre_3. Server: "HallOfGuardians: ready - 3
+Guardians on the roll, one at a time on the belvedere" 1 s after the scripts went in; HallStatues = No_3; HallJson 211 chars; Roll
+"1. SelBell   2. dakota   3. blizzy_1718". Client: tile "3RD GUARDIAN / blizzy_1718 / All 44 squirrels, Oct 13, 2026 · 3 of 3";
+Older lit (0.00) / Newer dimmed (0.55); No_3 shown on the pedestal at (542.6,10.5,-1064); HallStatue:InvokeServer(3) -> "No_3" in
+0.2 s. Two notes: (a) the client had TWO HallView_local folders (the first empty) because HallClient ran twice in this preview (the
+script was created from the server context after the player was in; a real install has it in the place first) - a guard that reuses
+an existing HallView_local would cost one line; (b) PAGING was not exercised: the Studio automation mouse does not reach 3D
+ClickDetectors (two inset-corrected tries); the detectors are present and Hooked on Cap/Post/Button of both posts; Shannon was asked to
+tap Older in the running test. Pictures tools/hall_italy/shots/belv-j94r6-{step,pedestal-buttons,tile}.jpg; lines in
+tools/hall_italy/preview94r6_result_2026-10-14.txt. Her verdict + yes to install pending.
