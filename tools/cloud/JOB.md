@@ -1697,3 +1697,9 @@ Cohort fields the funnel already builds (tools/funnel/src/FunnelServer.lua), so 
 per interaction; plus, if she wants it in-game, an owner-only panel listing the players on the server with their progress and recent
 interactions (no DataStore). Runner 7 is asking her where she wants to read it (dashboard vs in-game) and whether per-player history
 across visits matters (that would need save fields through the game's own ledger).
+Shannon's answers (Oct 14): read it on the CREATOR DASHBOARD (counts per step and per interaction, by device and cohort; no in-game
+panel); counts and live views are enough - NO per-player history, nothing new on player saves. She put this NEXT ("What's next is we
+need a tool ..."), ahead of the look pass. So the job = interaction analytics: AnalyticsService custom events (one event per
+interaction kind, value = a count or the squirrels found, with the funnel's Device/Cohort fields) fired from the existing server scripts
+- shop purchases, boat taken, balloon ride, each game played (crab, sea glass, piazza race, octopus), prompts/tools used, La Poste
+letters, belvedere paging, travel/funicolare - exact-string patches or a small listener folder where the scripts already fire remotes.
