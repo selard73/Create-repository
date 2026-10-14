@@ -18,6 +18,7 @@ if typeof(BASE) ~= "CFrame" then BASE = CFrame.new() end                -- centr
 local function at(x, y, z) return BASE * CFrame.new(x, y, z) end
 local function num(name, default) local v = tonumber(F:GetAttribute(name)); return v or default end
 local SLOTS = math.max(1, math.floor(num("Slots", 7)))
+local FLOOR = num("FloorTop", 0.6)                                  -- the terrace floor's top, above the frame's origin
 local C = Color3.fromRGB
 local MARBLE, GOLD, GOLD_D, GOLD_DD, MAJOLICA, CREAM = C(236, 232, 224), C(255, 206, 64), C(214, 160, 44), C(190, 136, 40), C(52, 110, 150), C(250, 244, 228)
 
@@ -58,7 +59,7 @@ end
 local function dateOf(e)
 	local t = tonumber(e.t)
 	if not t and tonumber(e.day) then t = tonumber(e.day) * 86400 + 12 * 3600 end
-	return t and os.date("!%B %d, %Y", t) or ""
+	return t and os.date("!%b %d, %Y", t) or ""
 end
 
 -- ---- the slots: where each pedestal stands on the crescent ----
@@ -132,7 +133,7 @@ end
 local function pedestal(k, facing)
 	local m = Instance.new("Model"); m.Name = "Slot_" .. k
 	local lx, lz = slotSpot(k)
-	local cf = at(lx, 0, lz) * CFrame.Angles(0, -slotAngle(k), 0)      -- the tile faces the terrace's centre
+	local cf = at(lx, FLOOR, lz) * CFrame.Angles(0, slotAngle(k), 0)    -- on the floor's top; the tile faces the terrace's centre
 	local p = Instance.new("Part"); p.Name = "Pedestal"; p.Size = Vector3.new(PED_W, PED_H, PED_W); p.CFrame = cf * CFrame.new(0, PED_H / 2, 0)
 	p.Color = MARBLE; p.Material = Enum.Material.Marble; p.Anchored = true; p.CanCollide = true; p.TopSurface = Enum.SurfaceType.Smooth; p.Parent = m
 	local b = Instance.new("Part"); b.Name = "Band"; b.Size = Vector3.new(PED_W + 0.16, 0.18, PED_W + 0.16); b.CFrame = cf * CFrame.new(0, PED_H - 0.3, 0)
@@ -181,6 +182,7 @@ local function statueFor(m, cf, e)
 	if acorn then acorn:Destroy() end
 	if not (ok and fig) then
 		warn("HallOfGuardians: no statue for " .. tostring(e.name) .. ": " .. tostring(fig))
+		local half = m:FindFirstChild("Figure"); if half then half:Destroy() end
 		return false
 	end
 	-- the harbour key in the raised hand, sized to the figure as the PortoKeeper does it
@@ -195,24 +197,25 @@ local function statueFor(m, cf, e)
 	end
 	return true
 end
-local building, dirty = false, false
+local building, dirty, wipe = false, false, false
 local pending = {}                                                     -- slot k -> the entry still without a statue
 local function buildOnce()
+	if wipe then wipe = false; for k = 1, SLOTS do clearSlot(k) end end
 	local l = list()
-	local total = tonumber(F:GetAttribute("Total")) or 44
+	local total = (K and tonumber(K:GetAttribute("Need"))) or tonumber(F:GetAttribute("Total")) or 44
 	for k = 1, SLOTS do
 		local e = l[k]
 		if e then
-			if shown[k] ~= e.uid then
+			if shown[k] ~= e.uid or not F:FindFirstChild("Slot_" .. k) then
 				clearSlot(k)
 				local m, cf = pedestal(k)
-				tileWords(m, ordinal(e.no):upper() .. " GUARDIAN", tostring(e.name or "?"), "All " .. tostring(e.total or total) .. " squirrels of Porto Nocciola, " .. dateOf(e))
+				tileWords(m, ordinal(e.no):upper() .. " GUARDIAN", tostring(e.name or "?"), "All " .. tostring(e.total or total) .. " squirrels, " .. dateOf(e))
 				shown[k] = e.uid
 				if statueFor(m, cf, e) then pending[k] = nil else pending[k] = e end
 				task.wait(1.5)                                        -- (the statue maker fetches each avatar from the web)
 			end
 		elseif k == #l + 1 then
-			if shown[k] ~= "invite" then
+			if shown[k] ~= "invite" or not F:FindFirstChild("Slot_" .. k) then
 				clearSlot(k)
 				local m, cf = pedestal(k)
 				tileWords(m, "THIS COULD BE YOU", "Guardian No. " .. tostring(k), "Find all " .. tostring(total) .. " squirrels of Porto Nocciola")
@@ -230,9 +233,9 @@ local function buildOnce()
 		if #l == 0 then
 			words.Roll.Text = "No Guardian yet. Be the first to find all " .. tostring(total) .. " squirrels of Porto Nocciola and your statue will stand here, holding the harbour key."
 		else
-			local names = {}
-			for _, e in ipairs(l) do table.insert(names, tostring(e.no) .. ". " .. tostring(e.name or "?")) end
-			words.Roll.Text = table.concat(names, "   ")
+			local names, from = {}, math.max(1, #l - 5)
+			for i = from, #l do table.insert(names, tostring(l[i].no) .. ". " .. tostring(l[i].name or "?")) end
+			words.Roll.Text = ((from > 1) and (tostring(from - 1) .. " more, then ") or "") .. table.concat(names, "   ")
 		end
 	end
 end
@@ -246,13 +249,15 @@ local function build()                                                 -- a chan
 	until not dirty
 	building = false
 end
--- a statue the maker could not give (the start-up burst, a web hiccup): tried again every 20 s for a few minutes
+-- a statue the maker could not give (the start-up burst, a web hiccup): asked for again every 20 s, for the server's life
 task.spawn(function()
-	for _ = 1, 9 do
+	while true do
 		task.wait(20)
-		for k, e in pairs(pending) do
-			local m = F:FindFirstChild("Slot_" .. k)
-			if m and not m:FindFirstChild("Figure") then
+		local keys = {}
+		for k in pairs(pending) do table.insert(keys, k) end
+		for _, k in ipairs(keys) do
+			local e, m = pending[k], F:FindFirstChild("Slot_" .. k)
+			if e and m and shown[k] == e.uid then
 				print("HallOfGuardians: no statue yet for " .. tostring(e.name) .. "; asking again")
 				if statueFor(m, m.WorldPivot, e) then pending[k] = nil end
 				task.wait(1.5)
@@ -263,6 +268,6 @@ task.spawn(function()
 	end
 end)
 if K then K:GetAttributeChangedSignal("HallJson"):Connect(function() task.defer(build) end) end
-F:GetAttributeChangedSignal("Rebuild"):Connect(function() for k = 1, SLOTS do clearSlot(k) end; task.defer(build) end)
+F:GetAttributeChangedSignal("Rebuild"):Connect(function() wipe = true; task.defer(build) end)
 build()
 print(string.format("HallOfGuardians: ready - %d Guardians on the belvedere (%d slots)", #list(), SLOTS))
