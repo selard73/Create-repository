@@ -1430,3 +1430,16 @@ from workspace.HallOfGuardians.Belvedere in Edit at her word (QQ BENCH removed 2
 150,108,58 with 255,226,150 titles. Needed from the cloud thread (round 4): no benches in install_hall1.template.lua; the lectern plaque
 and HallServer's pedestal tiles in terracotta with cream text (keep the gold frame/trim or not, your call); a re-run of the installer
 (it moves the old folder to HudBackup.HallOfGuardians_pre_1 and parks props again - say whether a re-run re-parks or reuses props_1).
+Result job 94 (runner 7, 77ba17e, Shannon's "install"; INSTALLED in Edit, NOT published): QQ BELV DONE at (530, 1.9, -1064); TestLedger
+play test passed (3 statues, slot 4 invitation, the roll); Edit check clean; 115 props in HudBackup.HallOfGuardians_props_1.
+Shannon, looking at it in Studio: "I don't like the position of the benches, I don't think we need benches there and I don't like the
+colors of the signs"; her pick: terracotta with cream letters. Runner 7 removed the two bench copies at her word (QQ BENCH removed 2).
+ROUND 4 (this commit): no benches in the installer; the lectern plaque terracotta (178,92,62) with cream letters and a cream marble
+frame; HallServer's pedestal tiles terracotta with cream letters (the blue stays on the parapet band and the floor mosaic); parked
+props now carry a ParkedFrom attribute (their old parent's full name) for the undo. RE-RUN PLAN (on her yes; Edit, MCP context):
+run install_hall1.lua from this commit; the old folder goes to HudBackup.HallOfGuardians_pre_1 (its HallServer disabled); the props
+already parked stay in HallOfGuardians_props_1 (they are no longer under the terrace, so the re-run parks nothing new and makes no
+second folder); expect `QQ BELV DONE ... 0 small props set aside`. The undo of everything: delete workspace.HallOfGuardians and move
+the 115 things in HudBackup.HallOfGuardians_props_1 back under workspace.PortoNocciola["14 Lighthouse coast"]["Prato dei Fiori coastal
+meadow"] (round-3 parking kept their CFrames but not their parent; later parkings carry ParkedFrom). Then a quick look in Edit
+(terracotta signs; no benches) and the TestLedger play test is not needed again.

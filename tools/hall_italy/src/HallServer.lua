@@ -24,7 +24,7 @@ local function num(name, default) local v = tonumber(F:GetAttribute(name)); retu
 local SLOTS = math.max(1, math.floor(num("Slots", 7)))
 local FLOOR = num("FloorTop", 0.6)                                  -- the terrace floor's top, above the frame's origin
 local C = Color3.fromRGB
-local MARBLE, GOLD, GOLD_D, GOLD_DD, MAJOLICA, CREAM = C(236, 232, 224), C(255, 206, 64), C(214, 160, 44), C(190, 136, 40), C(52, 110, 150), C(250, 244, 228)
+local MARBLE, GOLD, GOLD_D, GOLD_DD, TERRA, CREAM = C(236, 232, 224), C(255, 206, 64), C(214, 160, 44), C(190, 136, 40), C(178, 92, 62), C(250, 244, 228)
 
 -- ---- the Guardian list, read from the Guardian's own store ----
 -- PortoKeeper_v1 "first" = the historical first Guardian (Darkknight, Oct 11 2026; read-only for everyone, Codex's rule too);
@@ -176,13 +176,13 @@ local function pedestal(k, facing)
 	b.Color = GOLD; b.Material = Enum.Material.SmoothPlastic; b.Reflectance = 0.15; b.Anchored = true; b.CanCollide = false; b.Parent = m
 	local f = Instance.new("Part"); f.Name = "Foot"; f.Size = Vector3.new(PED_W + 0.5, 0.3, PED_W + 0.5); f.CFrame = cf * CFrame.new(0, 0.15, 0)
 	f.Color = MARBLE; f.Material = Enum.Material.Marble; f.Anchored = true; f.CanCollide = true; f.Parent = m
-	-- the tile on the front: sea-blue majolica, cream letters
+	-- the tile on the front: terracotta, cream letters (Shannon's pick, Oct 14)
 	local t = Instance.new("Part"); t.Name = "Tile"; t.Size = Vector3.new(2.6, 1.6, 0.12); t.CFrame = cf * CFrame.new(0, 1.35, -(PED_W / 2 + 0.05))
-	t.Color = MAJOLICA; t.Material = Enum.Material.SmoothPlastic; t.Anchored = true; t.CanCollide = false; t.Parent = m
+	t.Color = TERRA; t.Material = Enum.Material.SmoothPlastic; t.Anchored = true; t.CanCollide = false; t.Parent = m
 	local sg = Instance.new("SurfaceGui"); sg.Name = "Words"; sg.Face = Enum.NormalId.Front; sg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
 	sg.PixelsPerStud = 80; sg.LightInfluence = 0.3; sg.Parent = t
 	-- (2.6 x 1.6 studs = 208 x 128 px)
-	label(sg, "Title", 6, 26, 22, Enum.Font.Antique, GOLD)
+	label(sg, "Title", 6, 26, 22, Enum.Font.Antique, CREAM)
 	label(sg, "Who", 32, 44, 40, Enum.Font.FredokaOne, CREAM)
 	label(sg, "When", 78, 44, 15, Enum.Font.Merriweather, CREAM)
 	m.WorldPivot = cf

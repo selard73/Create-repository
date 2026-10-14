@@ -94,3 +94,15 @@ later") - after Oct 18, when she says.
 - Cross-session messages from the cloud thread reach runner 7 only sometimes: the BRANCH is the channel (job text + test plans in
   JOB.md; the runner pulls claude/youthful-curie-8azx86, the cloud thread merges epic-hawking). Shannon relays when needed.
 - Job 93 (trimmed to site E) and job 94 (preview) wait for runner 7.
+
+## State at Oct 14 ~18:40 UTC
+- JOB 94 INSTALLED in Edit (runner 7, 77ba17e, Shannon's "install"; NOT published): workspace.HallOfGuardians = the Belvedere dei
+  Guardiani on the Prato dei Fiori at (530, 1.9, -1064), front facing west; HallServer 17897 (reads PortoKeeper_v1 "first" +
+  Codex's daily_v2 once a minute, read-only; statues via Champion.MakeStatue with the harbour key); 115 windflower stems parked in
+  ServerStorage.HudBackup.HallOfGuardians_props_1 (undo = move them back + delete the folder). TestLedger play test passed.
+  Pictures tools/hall_italy/shots/belv-j94-*.jpg. She publishes (Alt+P); the first live server shows Darkknight (No. 1) and every
+  daily Guardian since. Item 1 of the week is done pending her publish.
+- Lessons: the Studio MCP's execute_luau has no usable loadstring and a Script cannot write Source/RunContext (compile checks in a
+  pcall; installers run from the MCP context, the runner wraps them in a temporary ModuleScript); messages cloud -> runner are
+  unreliable, the branch is the channel (JOB.md carries every job text, plan and result).
+- Next in her order: 2 the onboarding funnel report (AnalyticsService), 3 the phone camera, 4 the portraits blink, 5 the look pass.

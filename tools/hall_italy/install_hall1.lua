@@ -3,7 +3,7 @@
 -- Nocciola in marble with the harbour key, standing together in a crescent above the sea (Shannon, Oct 14 2026: "make this
 -- hall of fame look distinctively different from the one in France"; site E). workspace.HallOfGuardians: Belvedere (a round
 -- mosaic terrace, a low parapet with a majolica band, the centre column with the gold key, two lanterns, the lectern with the
--- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (17897 chars: pedestals and statues from
+-- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (17909 chars: pedestals and statues from
 -- the Guardian list at run time). Undo: delete workspace.HallOfGuardians (an older one is HudBackup.HallOfGuardians_pre_n).
 -- No DataStore, no publish. Output lines start with "QQ BELV".
 local SS = game:GetService("ServerStorage")
@@ -38,7 +38,7 @@ local function num(name, default) local v = tonumber(F:GetAttribute(name)); retu
 local SLOTS = math.max(1, math.floor(num("Slots", 7)))
 local FLOOR = num("FloorTop", 0.6)                                  -- the terrace floor's top, above the frame's origin
 local C = Color3.fromRGB
-local MARBLE, GOLD, GOLD_D, GOLD_DD, MAJOLICA, CREAM = C(236, 232, 224), C(255, 206, 64), C(214, 160, 44), C(190, 136, 40), C(52, 110, 150), C(250, 244, 228)
+local MARBLE, GOLD, GOLD_D, GOLD_DD, TERRA, CREAM = C(236, 232, 224), C(255, 206, 64), C(214, 160, 44), C(190, 136, 40), C(178, 92, 62), C(250, 244, 228)
 
 -- ---- the Guardian list, read from the Guardian's own store ----
 -- PortoKeeper_v1 "first" = the historical first Guardian (Darkknight, Oct 11 2026; read-only for everyone, Codex's rule too);
@@ -190,13 +190,13 @@ local function pedestal(k, facing)
 	b.Color = GOLD; b.Material = Enum.Material.SmoothPlastic; b.Reflectance = 0.15; b.Anchored = true; b.CanCollide = false; b.Parent = m
 	local f = Instance.new("Part"); f.Name = "Foot"; f.Size = Vector3.new(PED_W + 0.5, 0.3, PED_W + 0.5); f.CFrame = cf * CFrame.new(0, 0.15, 0)
 	f.Color = MARBLE; f.Material = Enum.Material.Marble; f.Anchored = true; f.CanCollide = true; f.Parent = m
-	-- the tile on the front: sea-blue majolica, cream letters
+	-- the tile on the front: terracotta, cream letters (Shannon's pick, Oct 14)
 	local t = Instance.new("Part"); t.Name = "Tile"; t.Size = Vector3.new(2.6, 1.6, 0.12); t.CFrame = cf * CFrame.new(0, 1.35, -(PED_W / 2 + 0.05))
-	t.Color = MAJOLICA; t.Material = Enum.Material.SmoothPlastic; t.Anchored = true; t.CanCollide = false; t.Parent = m
+	t.Color = TERRA; t.Material = Enum.Material.SmoothPlastic; t.Anchored = true; t.CanCollide = false; t.Parent = m
 	local sg = Instance.new("SurfaceGui"); sg.Name = "Words"; sg.Face = Enum.NormalId.Front; sg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
 	sg.PixelsPerStud = 80; sg.LightInfluence = 0.3; sg.Parent = t
 	-- (2.6 x 1.6 studs = 208 x 128 px)
-	label(sg, "Title", 6, 26, 22, Enum.Font.Antique, GOLD)
+	label(sg, "Title", 6, 26, 22, Enum.Font.Antique, CREAM)
 	label(sg, "Who", 32, 44, 40, Enum.Font.FredokaOne, CREAM)
 	label(sg, "When", 78, 44, 15, Enum.Font.Merriweather, CREAM)
 	m.WorldPivot = cf
@@ -565,8 +565,8 @@ do
 	local lect = Instance.new("Model"); lect.Name = "Lectern"; lect.Parent = F
 	local LZ = -(RT - 3.6)
 	part("Post", Vector3.new(1.6, 2.4, 1.1), at(0, Y0 + 1.2, LZ), STONE, Enum.Material.Limestone, lect)
-	part("Frame", Vector3.new(7.6, 3.2, 0.14), at(0, Y0 + 2.9, LZ + 0.02) * CFrame.Angles(math.rad(52), 0, 0), GOLD_D, Enum.Material.SmoothPlastic, lect, nil, false)
-	local plaque = part("Plaque", Vector3.new(7.2, 2.8, 0.2), at(0, Y0 + 2.9, LZ) * CFrame.Angles(math.rad(52), 0, 0), MAJOLICA, Enum.Material.SmoothPlastic, lect, nil, false)
+	part("Frame", Vector3.new(7.6, 3.2, 0.14), at(0, Y0 + 2.9, LZ + 0.02) * CFrame.Angles(math.rad(52), 0, 0), TRIM, Enum.Material.Marble, lect, nil, false)
+	local plaque = part("Plaque", Vector3.new(7.2, 2.8, 0.2), at(0, Y0 + 2.9, LZ) * CFrame.Angles(math.rad(52), 0, 0), TERRA, Enum.Material.SmoothPlastic, lect, nil, false)   -- (terracotta with cream letters: Shannon's pick, Oct 14)
 	local psg = Instance.new("SurfaceGui"); psg.Name = "Words"; psg.Face = Enum.NormalId.Front; psg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
 	psg.PixelsPerStud = 70; psg.LightInfluence = 0.3; psg.Parent = plaque
 	local function line(name, y, h, size, font, colour, text)
@@ -576,7 +576,7 @@ do
 		return l
 	end
 	-- (7.2 x 2.8 studs = 504 x 196 px at 70 per stud)
-	line("Title", 6, 42, 38, Enum.Font.Antique, GOLD, "BELVEDERE DEI GUARDIANI")
+	line("Title", 6, 42, 38, Enum.Font.Antique, CREAM, "BELVEDERE DEI GUARDIANI")
 	line("Sub", 48, 24, 19, Enum.Font.Antique, CREAM, "THE GUARDIANS OF THE HARBOUR OF PORTO NOCCIOLA")
 	line("Roll", 76, 76, 26, Enum.Font.FredokaOne, CREAM, "")
 	line("Foot", 156, 30, 16, Enum.Font.Merriweather, CREAM, "Each of them found every squirrel of Porto Nocciola.")
@@ -586,7 +586,7 @@ end
 -- (copies of the town's models, their tags and scripts removed so a copy joins nothing the original is part of)
 local found, sources = {}, {}
 do
-	local want = {["Italian cypress"] = true, ["Lemon tree"] = true, ["Harbour bench"] = true}
+	local want = {["Italian cypress"] = true, ["Lemon tree"] = true}                                    -- (no benches: Shannon, Oct 14, "I don't think we need benches there")
 	for _, d in ipairs(workspace:GetDescendants()) do
 		if want[d.Name] and d:IsA("Model") and not sources[d.Name] and not d:IsDescendantOf(F) and not (old and d:IsDescendantOf(old)) then sources[d.Name] = d end
 	end
@@ -618,7 +618,6 @@ end
 for _, s in ipairs({-1, 1}) do
 	copyOf("Italian cypress", 1.0, s * 18 * math.sin(math.rad(52)), 18 * math.cos(math.rad(52)))       -- behind the parapet's shoulders
 	copyOf("Lemon tree", 0.9, s * 8.5, -(RT + 2.6))                                                    -- either side of the step
-	copyOf("Harbour bench", 1.0, s * 6.5, -1.0, true)                                                   -- facing the sea, inside the crescent, clear of the end pedestals
 end
 
 -- ---------------------------------------------------------------- the folder, its settings, the script ----
@@ -648,12 +647,12 @@ if #props > 0 then
 	local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 	local n = 1; while hb:FindFirstChild("HallOfGuardians_props_" .. n) do n += 1 end
 	local pf = Instance.new("Folder"); pf.Name = "HallOfGuardians_props_" .. n; pf.Parent = hb
-	for _, th in ipairs(props) do th.Parent = pf; parked += 1 end
+	for _, th in ipairs(props) do th:SetAttribute("ParkedFrom", th.Parent and th.Parent:GetFullName() or ""); th.Parent = pf; parked += 1 end   -- (the undo: back to ParkedFrom)
 end
 local s = Instance.new("Script"); s.Name = "HallServer"; s.RunContext = Enum.RunContext.Server; s.Source = SERVER; s.Parent = F
 F.Parent = workspace
 local names, near = {}, {}
-for _, n in ipairs({"Italian cypress", "Lemon tree", "Harbour bench"}) do table.insert(names, n .. " " .. tostring(found[n] or 0)) end
+for _, n in ipairs({"Italian cypress", "Lemon tree"}) do table.insert(names, n .. " " .. tostring(found[n] or 0)) end
 for n, k in pairs(standing) do table.insert(near, n .. " x" .. k) end
 print(string.format("QQ BELV DONE: workspace.HallOfGuardians at (%.0f, %.1f, %.0f) yaw %.0f (ground centre %.1f, edges %.1f..%.1f); terrace R %d, parapet %d segments, 7 slots; copies: %s; %d small props set aside (HudBackup.HallOfGuardians_props_*); HallServer %d chars%s", CX, g, CZ, math.deg(YAW), centreY, lowest, highest, RT, NSEG, table.concat(names, ", "), parked, #s.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))
 if #near > 0 then print("QQ BELV NOTE: standing within 19-21 studs of the centre (more than a stud above the terrain): " .. table.concat(near, ", ")) end
