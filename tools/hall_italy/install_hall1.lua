@@ -5,7 +5,7 @@
 -- (name, date, count); everyone on the lectern roll. workspace.HallOfGuardians: Belvedere (a round mosaic terrace, a low parapet
 -- with a majolica band, the centre column with the gold key, two dim lanterns, cypresses and lemon trees cloned from Porto's own),
 -- Pedestal (terracotta tile, GothamBold cream), Older / Newer, the Lectern with the roll, HallStatue (RemoteFunction), HallServer
--- (14556 chars: the statues, made once each from the Guardian list), HallClient (4524 chars: each player's own view).
+-- (15329 chars: the statues, made once each from the Guardian list), HallClient (4703 chars: each player's own view).
 -- Undo: delete workspace.HallOfGuardians (an older one is HudBackup.HallOfGuardians_pre_n). No DataStore, no publish. "QQ BELV".
 local SS = game:GetService("ServerStorage")
 local CS = game:GetService("CollectionService")
@@ -50,6 +50,7 @@ local store
 if not STUDIO then pcall(function() store = DSS:GetDataStore("PortoKeeper_v1") end) end
 local getOptions = Instance.new("DataStoreGetOptions"); getOptions.UseCache = false
 local current = {}                                                     -- the last list read (kept while the store is unreachable)
+local everRead = false                                                 -- live: nothing is shown or published until the store was read once
 local function compose(first, daily)
 	local out, seen = {}, {}
 	if type(first) == "table" and tonumber(first.uid) then
@@ -82,6 +83,7 @@ local function readStore()                                             -- true w
 	local ok, first, daily = pcall(function() return store:GetAsync("first", getOptions), store:GetAsync("daily_v2", getOptions) end)
 	if not ok then warn("HallOfGuardians: cannot read the Guardian store: " .. tostring(first)); return false end
 	current = compose(first, daily)
+	everRead = true
 	return true
 end
 local function list()
@@ -170,36 +172,42 @@ local cache, used, busy, building = {}, {}, {}, false
 local function build(no)
 	if cache[no] and cache[no].Parent then used[no] = os.clock(); return cache[no] end
 	while busy[no] do task.wait(0.2) end
-	if cache[no] and cache[no].Parent then return cache[no] end
+	if cache[no] and cache[no].Parent then used[no] = os.clock(); return cache[no] end
 	local e = entry(no)
 	if not e or not makeStatue then return nil end
 	busy[no] = true
 	while building do task.wait(0.2) end
 	building = true
-	local stage = F:FindFirstChild("Staging")
-	if not stage then stage = Instance.new("Folder"); stage.Name = "Staging"; stage.Parent = F end
-	local low = Vector3.new(SPOT.X, SPOT.Y - DROP, SPOT.Z)
-	local ok, fig, acorn = pcall(function()
-		return makeStatue:Invoke({uid = e.uid, name = e.name, no = e.no, day = e.day}, {x = low.X, top = low.Y, z = low.Z, parent = stage, name = "Figure", scale = num("Scale", 1.35), look = LOOK})
-	end)
-	if acorn then acorn:Destroy() end
 	local m
-	if ok and fig then
-		m = Instance.new("Model"); m.Name = "No_" .. tostring(no)
-		fig.Parent = m
+	local okAll, errAll = pcall(function()                              -- (whatever throws, the locks are released below)
+		local stage = F:FindFirstChild("Staging")
+		if not stage then stage = Instance.new("Folder"); stage.Name = "Staging"; stage.Parent = F end
+		local low = Vector3.new(SPOT.X, SPOT.Y - DROP, SPOT.Z)
+		local ok, fig, acorn = pcall(function()
+			return makeStatue:Invoke({uid = e.uid, name = e.name, no = e.no, day = e.day}, {x = low.X, top = low.Y, z = low.Z, parent = stage, name = "Figure", scale = num("Scale", 1.35), look = LOOK})
+		end)
+		if acorn then acorn:Destroy() end
+		for _, n in ipairs({"GiantAcorn"}) do local stray = stage:FindFirstChild(n); if stray then stray:Destroy() end end
+		if not (ok and fig) then
+			warn("HallOfGuardians: no statue for No. " .. tostring(no) .. ": " .. tostring(fig))
+			local half = stage:FindFirstChild("Figure"); if half then half:Destroy() end
+			return
+		end
+		local built = Instance.new("Model"); built.Name = "No_" .. tostring(no)
+		fig.Parent = built
 		-- the harbour key in the raised hand, sized to the figure as the PortoKeeper does it
 		local holdSide = (CH:GetAttribute("HoldHand") == "Right") and "Right" or "Left"
 		local hand = fig:FindFirstChild(holdSide .. "Hand")
 		local lo, hi = extents(fig)
 		local h = math.clamp((hi.Y - lo.Y) * num("KeyShare", 0.42), 1.5, 6)
-		if hand then makeKey(h, hand.Position.X, hand.Position.Y + hand.Size.Y / 2 - 0.15, hand.Position.Z, KEY_YAW, m)
-		else makeKey(h, low.X, hi.Y, low.Z, KEY_YAW, m) end
-		m.WorldPivot = (m:GetBoundingBox())
-		-- on its feet in the middle of the pedestal, then up out of the ground
-		local cf = m:GetBoundingBox()
-		m:PivotTo(m:GetPivot() + Vector3.new(low.X - cf.X, low.Y - feetLow(m), low.Z - cf.Z) + Vector3.new(0, DROP, 0))
-		m.Parent = storeFolder
-		cache[no] = m; used[no] = os.clock()
+		if hand then makeKey(h, hand.Position.X, hand.Position.Y + hand.Size.Y / 2 - 0.15, hand.Position.Z, KEY_YAW, built)
+		else makeKey(h, low.X, hi.Y, low.Z, KEY_YAW, built) end
+		built.WorldPivot = (built:GetBoundingBox())
+		-- on its feet in the middle of the pedestal (centred by its own body, not the raised key), then up out of the ground
+		local mid = (lo + hi) / 2
+		built:PivotTo(built:GetPivot() + Vector3.new(low.X - mid.X, low.Y - feetLow(built), low.Z - mid.Z) + Vector3.new(0, DROP, 0))
+		built.Parent = storeFolder
+		cache[no] = built; used[no] = os.clock()
 		local n = 0
 		for _ in pairs(cache) do n += 1 end
 		if n > 40 then                                                  -- the forty seen most recently are kept
@@ -207,10 +215,9 @@ local function build(no)
 			for k, t in pairs(used) do if cache[k] and (not ot or t < ot) then oldest, ot = k, t end end
 			if oldest and oldest ~= no then cache[oldest]:Destroy(); cache[oldest] = nil; used[oldest] = nil end
 		end
-	else
-		warn("HallOfGuardians: no statue for No. " .. tostring(no) .. ": " .. tostring(fig))
-		local half = stage:FindFirstChild("Figure"); if half then half:Destroy() end
-	end
+		m = built
+	end)
+	if not okAll then warn("HallOfGuardians: the statue build failed: " .. tostring(errAll)) end
 	building = false
 	busy[no] = nil
 	return m
@@ -253,6 +260,7 @@ local function signature()
 end
 local function refresh()
 	readStore()
+	if not STUDIO and not everRead then return end                     -- (an outage at start: keep trying, show nothing wrong)
 	local sig = signature()
 	if sig ~= lastSig then lastSig = sig; publish(); refreshView() end
 end
@@ -289,7 +297,7 @@ local CLIENT = [===[
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local HttpService = game:GetService("HttpService")
-local player = Players.LocalPlayer
+local _player = Players.LocalPlayer
 local F = script.Parent
 local fn = F:WaitForChild("HallStatue")
 local store = RS:WaitForChild("HallStatues")
@@ -388,6 +396,7 @@ local function reload()
 end
 task.spawn(hookButtons)
 F:GetAttributeChangedSignal("HallJson"):Connect(reload)
+F:GetAttributeChangedSignal("Rebuild"):Connect(function() shownNo = nil; view:ClearAllChildren(); task.delay(1, show) end)   -- (a rebuild on the server: fetch the statue again)
 F.DescendantAdded:Connect(function(d) if d.Name == "Words" then task.defer(setPlaque) elseif d.Name == "Button" then task.defer(setButtons) end end)
 reload()
 ]===]

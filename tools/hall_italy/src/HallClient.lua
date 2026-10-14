@@ -4,7 +4,7 @@
 local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local HttpService = game:GetService("HttpService")
-local player = Players.LocalPlayer
+local _player = Players.LocalPlayer
 local F = script.Parent
 local fn = F:WaitForChild("HallStatue")
 local store = RS:WaitForChild("HallStatues")
@@ -103,5 +103,6 @@ local function reload()
 end
 task.spawn(hookButtons)
 F:GetAttributeChangedSignal("HallJson"):Connect(reload)
+F:GetAttributeChangedSignal("Rebuild"):Connect(function() shownNo = nil; view:ClearAllChildren(); task.delay(1, show) end)   -- (a rebuild on the server: fetch the statue again)
 F.DescendantAdded:Connect(function(d) if d.Name == "Words" then task.defer(setPlaque) elseif d.Name == "Button" then task.defer(setButtons) end end)
 reload()
