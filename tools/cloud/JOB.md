@@ -1422,3 +1422,11 @@ Edit check after the install + test (runner 7): PlaceVersion 1369; HallOfGuardia
 Edit), HallServer 17897 RunContext Server Enabled; attrs TestLedger nil, Rebuild 0, PreviewJson "", Slots 7; backup
 HudBackup.HallOfGuardians_props_1 115 things; no Runner7 leftovers; HttpEnabled false; PortoKeeperServer 14386. Unpublished in
 Studio: job 94 (the Belvedere dei Guardiani). Shannon publishes.
+Shannon on the installed hall (Oct 14, to runner 7): "I don't like the position of the benches, I don't think we need benches there
+and I don't like the colors of the signs." Her pick for the signs (lectern plaque + pedestal tiles), from four options: TERRACOTTA
+WITH CREAM LETTERS (the terrace rim's terracotta 178,92,62; cream 250,244,228). Runner 7 REMOVED the two Belv_Harbour_bench copies
+from workspace.HallOfGuardians.Belvedere in Edit at her word (QQ BENCH removed 2). Current sign colours for reference: lectern plaque
+52,110,150 SmoothPlastic, frame 214,160,44, Title 255,206,64 / Sub, Roll, Foot 250,244,228; the lighthouse and French plaques are
+150,108,58 with 255,226,150 titles. Needed from the cloud thread (round 4): no benches in install_hall1.template.lua; the lectern plaque
+and HallServer's pedestal tiles in terracotta with cream text (keep the gold frame/trim or not, your call); a re-run of the installer
+(it moves the old folder to HudBackup.HallOfGuardians_pre_1 and parks props again - say whether a re-run re-parks or reuses props_1).
