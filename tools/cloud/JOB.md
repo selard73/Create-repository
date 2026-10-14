@@ -1435,3 +1435,29 @@ second folder); expect `QQ BELV DONE ... 0 small props set aside`. The undo of e
 the 115 things in HudBackup.HallOfGuardians_props_1 back under workspace.PortoNocciola["14 Lighthouse coast"]["Prato dei Fiori coastal
 meadow"] (round-3 parking kept their CFrames but not their parent; later parkings carry ParkedFrom). Then a quick look in Edit
 (terracotta signs; no benches) and the TestLedger play test is not needed again.
+
+## Job 95: the onboarding funnel for the Creator Dashboard (Studio EDIT; ask Shannon first) - AFTER the belvedere's round 4
+
+Shannon (Oct 11): a funnel so she can see where new players drop off (33 % still playing at 5 min, 20 % at 10 min; she cannot watch
+new players herself): spawned / first squirrel / fifth squirrel / map opened / second area / all 44 / reached Italy, first-session
+players; also retention by device. tools/funnel/install_funnel1.lua (make_install_funnel1.py; src/FunnelServer.lua, src/FunnelClient.lua):
+workspace.Funnel = FunnelEvent + FunnelServer + FunnelClient. Six funnel steps, each from attributes the game already keeps on every
+player (SquirrelSetup, SpawnReturn, TravelServer): 1 Joined (SaveLoaded), 2 First squirrel (SquirrelsFound 1), 3 Five squirrels,
+4 Second area (the Area attribute changes from the first area seen this visit), 5 All 44 in France (Found_forest + village +
+domaine), 6 Reached Italy (Item_porto). Roblox's rules (docs): server-only, published place only (Studio sends nothing), a later
+step completes the earlier ones, only a player's first time at a step counts. Two custom fields on every event for the dashboard's
+breakdowns: Device (Phone / Tablet / Desktop / Console / VR, reported once by the client) and Cohort. The funnel counts FIRST-SESSION
+players only: New = no squirrel found and Italy not reached when the funnel first sees the player; the save remembers it
+(Item_funnel = 1 through RS.AwardItems, the game's own ledger, as the thank-you gifts do) so later visits keep counting; everyone
+else is Returning and gets no funnel steps. "Map opened" is a custom event MapOpened (value = squirrels found at that moment, once
+per visit, both cohorts), so the funnel stays a line of progress. Retention by device needs no code: Creator Dashboard > Analytics
+> Engagement > Retention has a platform breakdown. Folder attributes: Enabled, ForceNew (Studio only: everyone New, for the play
+test), LogPrints (one Output line per event). No DataStore write, no publish.
+PLAY TEST (after the Edit install): with ForceNew true on workspace.Funnel, join: Output "Funnel: step 1 Joined for SelBell (Desktop,
+New)" about 2 s after SaveLoaded (Desktop; on the phone emulator "Phone"); the owner's save already has squirrels and Italy, so
+steps 2, 3, 5, 6 print at once ("step 2 First squirrel ...", "step 3 ...", "step 5 All 44 in France ...", "step 6 Reached Italy ...");
+walk from the spawn area into another area (or travel): "step 4 Second area ..."; open the map: "MapOpened for SelBell with 88
+squirrels (Desktop, New)"; open it again: nothing. Then ForceNew back to false (the Edit value) and a rejoin prints "Funnel: ready"
+only (Returning, no steps). Every line says "- not sent" in Studio? No: in Studio the pcall succeeds silently (Roblox drops the
+event); only a live server delivers. The dashboard's Funnel page unlocks once events arrive (Creator Dashboard > Analytics >
+Funnel); allow a day.
