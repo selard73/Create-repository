@@ -80,10 +80,16 @@ Every Studio change has a backup under ServerStorage.HudBackup.*_pre_<job>. Gene
 The runner: send_message to its session id (bridge:session_01FmVm5n3mKMAfYwLsZWtahf as of Oct 9), commit-SHA raw URLs.
 
 ## Saved for later (Shannon, Oct 9 evening)
-- IDEA (Shannon, Oct 13): "I want to make a game like this but better and more user friendly with the last chance ranch dogs" -
-  a second game on the 1001 Squirrels pattern (find-them-all across maps, honours, shops, passport) with the Last Chance Ranch
-  dogs as the cast. Not started; a design chat first (which dogs, the world, what "more user friendly" means to her from this
-  game's lessons: the first five minutes, phone layout, one-click flows, no overlaps, no spoilers).
+- IDEA (Shannon, Oct 13-14): a SECOND GAME, "Last Chance Ranch" dog rescue - a cute, funny, more user-friendly take on
+  "Interrogation [AI]" (J BOIS, Roblox, universe 10764239797: one player, you type questions, an AI suspect answers live, 10
+  questions to catch contradictions and get a confession; 6 handmade cases + a daily case + player cases + XP ranks; 520k visits
+  in six weeks, 16.9k favourites). Premise: the ranch's dogs are there because they committed crimes, and the dogs are the
+  suspects you interrogate: Princess (bank heist), Frodo (broke into a mattress store), Isaiah (the contractor who took
+  everyone's money and built what he wanted instead). Not started; design chat first. Needs: an AI text service for the live
+  answers (Roblox's own TextGenerationService if her account has access, else an external API via HttpService with a key in a
+  secret), Roblox's chat filter on every line, a cases format (evidence, the truth, the dog's personality and tells, what a
+  confession looks like), a kid-safe tone. "More user friendly" = big buttons, suggested questions as well as typed ones, phone
+  first, no overlaps, short cases.
 - Dresses from the French map on her new avatar: "that avatar had no arms when I put on the dress". Revisit the dress
   shop's wear code (village/dresses/build_dressshop.lua: what it hides or replaces on the character) against other body
   types / bundles; make sure nothing looks weird on any avatar. Not started; she said "save that idea for later".
