@@ -1,0 +1,18 @@
+# Job 96, blink_probe1.lua (commit ffecfea; LF 6000 bytes adler32 3364410063, pasted verbatim), runner 7, Oct 14 2026 ~19:55Z, PLAY TEST,
+# client context, Studio DESKTOP viewport 1494x401 (NOT the phone emulator: StudioDeviceEmulatorService is not reachable from the MCP's
+# execute_luau, so the runner cannot switch devices; Shannon would have to pick iPhone 7 in Studio's Test tab herself). Avatar placed in
+# the French gallery at (189.1,-1.6,-1.1) facing the row (canvases x 190..217 z -15..-4 y 3.0, face (-0.84,0.55)). Nothing installed.
+QQ BLINK t=  0.00 START: 9 canvases, 0 models, 9 mounts, memory 4229 MB, device mouse
+QQ BLINK t= 10.01 heartbeat 1: 9 mounts in PlayerGui, 0 remounts so far, memory 4249 MB
+QQ BLINK t= 20.02 heartbeat 2: 9 mounts in PlayerGui, 0 remounts so far, memory 4275 MB
+QQ BLINK t= 30.04 heartbeat 3: 9 mounts in PlayerGui, 0 remounts so far, memory 4226 MB
+QQ BLINK t= 40.04 heartbeat 4: 9 mounts in PlayerGui, 0 remounts so far, memory 4224 MB
+QQ BLINK t= 50.05 heartbeat 5: 9 mounts in PlayerGui, 0 remounts so far, memory 4237 MB
+QQ BLINK t= 60.07 heartbeat 6: 9 mounts in PlayerGui, 0 remounts so far, memory 4213 MB
+QQ BLINK t= 70.08 heartbeat 7: 9 mounts in PlayerGui, 0 remounts so far, memory 4222 MB
+QQ BLINK t= 80.09 heartbeat 8: 9 mounts in PlayerGui, 0 remounts so far, memory 4234 MB
+QQ BLINK t= 90.11 heartbeat 9: 9 mounts in PlayerGui, 0 remounts so far, memory 4242 MB
+QQ BLINK END (10 lines, 0 remounts in 90 s)
+# mounts after the run: Slot1..Slot9 each (Portrait3D Visible false, World 0 descendants, Adornee Canvas) - no sitter anywhere; the
+# easels on screen are blank white canvases (picture). In Studio the portrait store (PortraitServer: saved appearances) is unreachable,
+# so there are no sitters and no triggers: the Studio test CANNOT reproduce the blink. The visible blink is a LIVE-only observation.

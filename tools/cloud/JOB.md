@@ -1673,3 +1673,13 @@ Then the fix (job 97, after the lines): expected - refresh() skips the swap when
 image, visible flags), and when it must swap it parents the new mount before destroying the old one and destroys the old only after
 the new viewport has rendered (two frames), so no gap is ever visible; an exact-string patch of workspace.PortraitGallery.PortraitClient
 (the vr1-patched text; anchors counted first; backup HudBackup.PortraitClient_pre_blink1).
+Result job 96 (runner 7, ffecfea; play test, client context, NOTHING installed, Oct 14 ~19:55Z): the probe ran 90 s but found nothing
+to catch: "START: 9 canvases, 0 models, 9 mounts, memory 4229 MB, device mouse" ... "QQ BLINK END (10 lines, 0 remounts in 90 s)"
+(all lines in tools/portraits/blink_probe1_result_2026-10-14.txt). Every mount is empty (Portrait3D Visible false, World 0
+descendants) and the easels are blank on screen: in Studio the portrait store is unreachable, so there are no sitters, no models and
+no triggers. Two limits: (1) the Device Emulator cannot be switched from the MCP (StudioDeviceEmulatorService is not reachable; the
+run was the desktop viewport, "device mouse") - Shannon would have to pick iPhone 7 in Studio's Test tab herself; (2) without sitters
+the probe cannot name the trigger. Options: a Studio-only sample sitter (a PreviewJson-style hook in PortraitServer that fills one slot
+with the owner's avatar when the store is off) so the probe has something to watch; or install job 97's fix on the reading alone (skip
+no-op swaps; parent the new mount before destroying the old; destroy after two rendered frames) - it is safe either way - and let
+Shannon judge on her phone. No blink seen in the emulator-less run (nothing to blink).
