@@ -223,8 +223,9 @@ for _, s in ipairs({-1, 1}) do
 	local m = Instance.new("Model"); m.Name = "Lantern"; m.Parent = belv
 	part("Foot", Vector3.new(0.9, 0.3, 0.9), at(x, Y0 + 2.5 + 0.15, z), IRON, Enum.Material.Metal, m)
 	part("Post", Vector3.new(0.4, 3.8, 0.4), at(x, Y0 + 2.8 + 1.9, z), IRON, Enum.Material.Metal, m, nil, false)
-	local lamp = part("Lamp", Vector3.new(0.9, 0.9, 0.9), at(x, Y0 + 6.6 + 0.45, z), C(255, 214, 140), Enum.Material.Neon, m, Enum.PartType.Ball, false)
-	local lt = Instance.new("PointLight"); lt.Range = 16; lt.Brightness = 1.0; lt.Color = C(255, 214, 150); lt.Shadows = false; lt.Parent = lamp
+	local lamp = part("Lamp", Vector3.new(0.9, 0.9, 0.9), at(x, Y0 + 6.6 + 0.45, z), C(255, 196, 120), Enum.Material.Glass, m, Enum.PartType.Ball, false)
+	lamp.Transparency = 0.15                                              -- (Shannon, Oct 14, live: "the lamps on the end are too bright" - her pick of the runner's mock E)
+	local lt = Instance.new("PointLight"); lt.Range = 12; lt.Brightness = 0.35; lt.Color = C(255, 214, 150); lt.Shadows = false; lt.Parent = lamp
 	part("Hood", Vector3.new(1.2, 0.2, 1.2), at(x, Y0 + 7.5 + 0.1, z), IRON, Enum.Material.Metal, m, nil, false)
 end
 
@@ -290,7 +291,7 @@ end
 
 -- ---------------------------------------------------------------- the folder, its settings, the script ----
 F:SetAttribute("Base", BASE)
-F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
+F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Mode", "first"); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
 F:SetAttribute("Scale", 1.35); F:SetAttribute("KeyShare", 0.42); F:SetAttribute("RestKeyHeight", 2.6); F:SetAttribute("Total", 44)
 F:SetAttribute("Rebuild", 0)
 -- a play-test preview (no Guardian list on the test server): three sample Guardians so the crescent can be seen with statues

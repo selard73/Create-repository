@@ -3,7 +3,7 @@
 -- Nocciola in marble with the harbour key, standing together in a crescent above the sea (Shannon, Oct 14 2026: "make this
 -- hall of fame look distinctively different from the one in France"; site E). workspace.HallOfGuardians: Belvedere (a round
 -- mosaic terrace, a low parapet with a majolica band, the centre column with the gold key, two lanterns, the lectern with the
--- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (17909 chars: pedestals and statues from
+-- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (18410 chars: pedestals and statues from
 -- the Guardian list at run time). Undo: delete workspace.HallOfGuardians (an older one is HudBackup.HallOfGuardians_pre_n).
 -- No DataStore, no publish. Output lines start with "QQ BELV".
 local SS = game:GetService("ServerStorage")
@@ -249,12 +249,19 @@ local function statueFor(m, cf, e)
 end
 local building, dirty, wipe = false, false, false
 local pending = {}                                                     -- slot k -> the entry still without a statue
+local function shown_list(l)                                            -- who stands on the pedestals (the lectern's roll always has everyone)
+	if (F:GetAttribute("Mode") or "first") ~= "latest" or #l <= SLOTS then return l end
+	local out = {l[1]}                                                 -- No. 1 keeps the centre for good; the newest take the other pedestals
+	for i = #l - (SLOTS - 2), #l do table.insert(out, l[i]) end
+	return out
+end
 local function buildOnce()
 	if wipe then wipe = false; for k = 1, SLOTS do clearSlot(k) end end
 	local l = list()
+	local onPedestals = shown_list(l)
 	local total = (K and tonumber(K:GetAttribute("Need"))) or tonumber(F:GetAttribute("Total")) or 44
 	for k = 1, SLOTS do
-		local e = l[k]
+		local e = onPedestals[k]
 		if e then
 			if shown[k] ~= e.uid or not F:FindFirstChild("Slot_" .. k) then
 				clearSlot(k)
@@ -264,7 +271,7 @@ local function buildOnce()
 				if statueFor(m, cf, e) then pending[k] = nil else pending[k] = e end
 				task.wait(1.5)                                        -- (the statue maker fetches each avatar from the web)
 			end
-		elseif k == #l + 1 then
+		elseif k == #onPedestals + 1 then
 			if shown[k] ~= "invite" or not F:FindFirstChild("Slot_" .. k) then
 				clearSlot(k)
 				local m, cf = pedestal(k)
@@ -555,8 +562,9 @@ for _, s in ipairs({-1, 1}) do
 	local m = Instance.new("Model"); m.Name = "Lantern"; m.Parent = belv
 	part("Foot", Vector3.new(0.9, 0.3, 0.9), at(x, Y0 + 2.5 + 0.15, z), IRON, Enum.Material.Metal, m)
 	part("Post", Vector3.new(0.4, 3.8, 0.4), at(x, Y0 + 2.8 + 1.9, z), IRON, Enum.Material.Metal, m, nil, false)
-	local lamp = part("Lamp", Vector3.new(0.9, 0.9, 0.9), at(x, Y0 + 6.6 + 0.45, z), C(255, 214, 140), Enum.Material.Neon, m, Enum.PartType.Ball, false)
-	local lt = Instance.new("PointLight"); lt.Range = 16; lt.Brightness = 1.0; lt.Color = C(255, 214, 150); lt.Shadows = false; lt.Parent = lamp
+	local lamp = part("Lamp", Vector3.new(0.9, 0.9, 0.9), at(x, Y0 + 6.6 + 0.45, z), C(255, 196, 120), Enum.Material.Glass, m, Enum.PartType.Ball, false)
+	lamp.Transparency = 0.15                                              -- (Shannon, Oct 14, live: "the lamps on the end are too bright" - her pick of the runner's mock E)
+	local lt = Instance.new("PointLight"); lt.Range = 12; lt.Brightness = 0.35; lt.Color = C(255, 214, 150); lt.Shadows = false; lt.Parent = lamp
 	part("Hood", Vector3.new(1.2, 0.2, 1.2), at(x, Y0 + 7.5 + 0.1, z), IRON, Enum.Material.Metal, m, nil, false)
 end
 
@@ -622,7 +630,7 @@ end
 
 -- ---------------------------------------------------------------- the folder, its settings, the script ----
 F:SetAttribute("Base", BASE)
-F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
+F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Mode", "first"); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
 F:SetAttribute("Scale", 1.35); F:SetAttribute("KeyShare", 0.42); F:SetAttribute("RestKeyHeight", 2.6); F:SetAttribute("Total", 44)
 F:SetAttribute("Rebuild", 0)
 -- a play-test preview (no Guardian list on the test server): three sample Guardians so the crescent can be seen with statues

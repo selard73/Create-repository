@@ -235,12 +235,19 @@ local function statueFor(m, cf, e)
 end
 local building, dirty, wipe = false, false, false
 local pending = {}                                                     -- slot k -> the entry still without a statue
+local function shown_list(l)                                            -- who stands on the pedestals (the lectern's roll always has everyone)
+	if (F:GetAttribute("Mode") or "first") ~= "latest" or #l <= SLOTS then return l end
+	local out = {l[1]}                                                 -- No. 1 keeps the centre for good; the newest take the other pedestals
+	for i = #l - (SLOTS - 2), #l do table.insert(out, l[i]) end
+	return out
+end
 local function buildOnce()
 	if wipe then wipe = false; for k = 1, SLOTS do clearSlot(k) end end
 	local l = list()
+	local onPedestals = shown_list(l)
 	local total = (K and tonumber(K:GetAttribute("Need"))) or tonumber(F:GetAttribute("Total")) or 44
 	for k = 1, SLOTS do
-		local e = l[k]
+		local e = onPedestals[k]
 		if e then
 			if shown[k] ~= e.uid or not F:FindFirstChild("Slot_" .. k) then
 				clearSlot(k)
@@ -250,7 +257,7 @@ local function buildOnce()
 				if statueFor(m, cf, e) then pending[k] = nil else pending[k] = e end
 				task.wait(1.5)                                        -- (the statue maker fetches each avatar from the web)
 			end
-		elseif k == #l + 1 then
+		elseif k == #onPedestals + 1 then
 			if shown[k] ~= "invite" or not F:FindFirstChild("Slot_" .. k) then
 				clearSlot(k)
 				local m, cf = pedestal(k)
