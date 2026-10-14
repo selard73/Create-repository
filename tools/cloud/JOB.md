@@ -1513,3 +1513,9 @@ Shannon (Oct 14, to runner 7) on the belvedere's capacity: "latest 7 please" - t
 (the newest always gets a statue, the oldest steps down to the lectern roll), not the first seven forever. Open: whether
 Darkknight (No. 1) stays pinned in the centre regardless (runner 7 is asking). Her lettering pick (A/B/C/D) and the lantern level
 are still pending.
+Shannon (Oct 14, to runner 7): Darkknight: "rotate please" - No. 1 is NOT pinned; the latest seven, plain. On the lettering: she
+leans to B (gold letters with a dark edge) "but I don't like the font and it is too just yellow". Runner 7 mocked (test server,
+discarded) an OLD-GOLD finish - TextColor3 white + UIGradient rotation 90 with 255,226,150 -> 232,190,90 (0.45) -> 176,124,40, plus a
+UIStroke 1.1 px 110,50,30 at transparency 0.1 - in three fonts, one per tile: Slot_2 (dakota, left) Garamond, Slot_1 (SelBell, centre)
+Bodoni, Slot_3 (blizzy, right) Antique; picture tools/hall_italy/shots/belv-mock-fonts-gold.jpg. Her font pick pending; the small
+"When" line in a serif at 15 px is thin - consider a size up or Merriweather for that line.
