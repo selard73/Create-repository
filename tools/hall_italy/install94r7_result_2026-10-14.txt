@@ -1,0 +1,11 @@
+# Job 94 INSTALL round 7 (one Guardian at a time, terrace R 10.5), runner 7, Oct 14 2026 ~21:05Z, Shannon: "that looks much better" + "install";
+# Studio EDIT (v1369); install_hall1.lua at c7323ce (len 45585, adler32 3907716040 = the git blob), fetched in Edit from the raw commit URL
+# (HttpEnabled on, back off), run UNPATCHED via a temporary ModuleScript (require; destroyed after).
+QQ BELV DONE: workspace.HallOfGuardians at (530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 2.0..2.0); terrace R 10, parapet 12 segments, one pedestal + Older/Newer; copies: Italian cypress 2, Lemon tree 2; 0 small props set aside (HudBackup.HallOfGuardians_props_*); HallServer 15329, HallClient 4864 chars; the old folder is HudBackup.HallOfGuardians_pre_3
+EDIT after the run: HallOfGuardians 121 parts: Belvedere, Lectern, Pedestal, Older, Newer, HallStatue (RemoteFunction), HallServer 15329 (RunContext Server), HallClient 4864 (RunContext Client); attrs Total 44 (Mode/PinFirst/Slots gone, as designed)
+BACKUPS: HallOfGuardians_props_1 115; HallOfGuardians_pre_1 (round 3), _pre_2 (round 4), _pre_3 (round 5), HallServer disabled in each
+# TestLedger play test (three entries + a new Rebuild value; test server, nothing persists):
+server start: "HallOfGuardians: ready - 0 Guardians on the roll, one at a time on the belvedere" (no store in Studio); after the ledger: HallStatues No_3; HallJson 235 chars; Roll="1. SelBell   2. dakota   3. blizzy_1718"
+client, 1 s: shown No_3 on the pedestal; tile "3RD GUARDIAN / blizzy_1718 / All 44 squirrels, Oct 12, 2026  ·  3 of 3"; Older.Button 0.00 (lit), Newer 0.55 (dimmed)
+client: TWO HallView_local folders (the first holds No_3, the second empty; none on the server) - HallClient starts twice in a Studio play test (a known Studio quirk with RunContext Client scripts) and the reuse guard does not catch the race; harmless (an empty folder), worth a one-line fix (e.g. a single named folder created once and looked up, or a guard attribute).
+paging not exercised by the runner (automation mouse cannot reach ClickDetectors); the mechanism is France's, live there.

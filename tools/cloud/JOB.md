@@ -1632,3 +1632,15 @@ Newer dimmed; boxes: Pedestal (535.8,3.8,-1064) 3.7x2.6x3.7, Older/Newer (532.2,
 5.7x3.0x2.3. Paging not exercised (automation mouse). Pictures tools/hall_italy/shots/belv-j94r7-{step,pedestal-buttons,high}.jpg;
 lines in tools/hall_italy/preview94r7_result_2026-10-14.txt. Shannon's verdict pending; her yes = the Edit install (pre_3), then the
 three-entry TestLedger test, Edit check, her publish.
+Result job 94 INSTALL round 7 (runner 7, c7323ce, Shannon's "that looks much better" + "install"; INSTALLED in Edit v1369, Oct 14
+~21:05Z, NOT published): run unpatched from the MCP context (len 45585 adler 3907716040 = the blob; HttpEnabled on/off; ModuleScript
+route). QQ BELV DONE: workspace.HallOfGuardians at (530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 2.0..2.0); terrace R 10, parapet
+12 segments, one pedestal + Older/Newer; copies: Italian cypress 2, Lemon tree 2; 0 small props set aside
+(HudBackup.HallOfGuardians_props_*); HallServer 15329, HallClient 4864 chars; the old folder is HudBackup.HallOfGuardians_pre_3. Edit:
+121 parts (Belvedere, Lectern, Pedestal, Older, Newer, HallStatue, HallServer Server, HallClient Client), attr Total 44; backups
+props_1 115, pre_1/2/3 with HallServer disabled. TestLedger (three entries) PASSED: "ready - 0 Guardians" at start, then HallStatues
+No_3, Roll "1. SelBell   2. dakota   3. blizzy_1718", the client shows No_3 in 1 s, tile "3RD GUARDIAN / blizzy_1718 / All 44 squirrels,
+Oct 12, 2026 · 3 of 3", Older lit / Newer dimmed. One note: the Studio client still makes TWO HallView_local folders (first with the
+statue, second empty, none on the server): HallClient starts twice in a Studio play test and the reuse guard loses the race - harmless,
+a one-line fix some day. Paging not exercised by the runner. Lines in tools/hall_italy/install94r7_result_2026-10-14.txt. Unpublished in
+Studio: job 94 round 7 + job 95. She publishes.
