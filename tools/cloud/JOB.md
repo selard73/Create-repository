@@ -1294,6 +1294,12 @@ of him in turn, the next empty pedestal with the resting key and "THIS COULD BE 
 is not touched. Provisional site (500, -1080), the front facing east (+x), the crescent toward the sea (west) - the survey's
 site E window may move it; the installer measures the ground itself, aborts if the rise across the terrace is over 3 studs or
 there is water/nothing under the rim, and reports anything standing within 19-21 studs (QQ BELV NOTE).
+The installer also refuses to bury anything big (a tree, a wall, a path slab, a bench inside r 20.5: `QQ BELV ABORT: standing
+inside the terrace's footprint ...`) and sets small props (flowers, grass) aside into HudBackup.HallOfGuardians_props_n.
+STEP 0 (Edit, read-only, in the next Edit gap - BEFORE the preview): run tools/hall_italy/probe94.lua and send every `QQ PROBE94`
+line: for five candidate centres it lists what stands within 22 studs (BIG things by name and box; small props counted) and the
+terrain under the rim. The cloud thread then fixes the centre in make_install_hall1.py and regenerates install_hall1.lua (a new
+commit on claude/youthful-curie-8azx86); pull before the preview.
 PREVIEW (a play test on the test server; discarded on stop; Edit checked unchanged afterwards; no ask needed):
 1. Start a play test. Run the installer's body on the SERVER (execute_luau, server context). In a play test it sets PreviewJson
    (three sample Guardians: SelBell, dakota, blizzy_1718) so the crescent shows statues. Expect `QQ BELV DONE ...` then, within

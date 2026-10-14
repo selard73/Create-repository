@@ -63,6 +63,58 @@ for _, r in ipairs({19, 21}) do
 		end
 	end
 end
+-- what stands INSIDE the footprint (r up to RT + 3.5, the step and the entrance trees included): a BIG thing (a tree, a wall,
+-- a path slab, a bench: a box over 4 studs across or 3 tall) means this is the wrong spot - abort with its name; small props
+-- (flowers, grass) are set aside into ServerStorage.HudBackup.HallOfGuardians_props_n with their places kept (undo: move them back)
+local countCache = {}
+local function partCount(m)
+	local n = countCache[m]
+	if n == nil then
+		n = 0
+		for _, d in ipairs(m:GetDescendants()) do if d:IsA("BasePart") then n += 1; if n > 150 then break end end end
+		countCache[m] = n
+	end
+	return n
+end
+local function thingOf(p)
+	local m = p.Parent
+	while m and m ~= workspace do
+		if m:IsA("Model") and partCount(m) <= 150 then return m end
+		m = m.Parent
+	end
+	return p
+end
+local function boxOf(parts)
+	local lo, hi = Vector3.new(1e9, 1e9, 1e9), Vector3.new(-1e9, -1e9, -1e9)
+	for _, p in ipairs(parts) do
+		local h = p.Size / 2
+		for _, sx in ipairs({-1, 1}) do for _, sy in ipairs({-1, 1}) do for _, sz in ipairs({-1, 1}) do
+			local c = p.CFrame * Vector3.new(h.X * sx, h.Y * sy, h.Z * sz); lo = lo:Min(c); hi = hi:Max(c)
+		end end end
+	end
+	return lo, hi
+end
+local inside = {}
+for _, d in ipairs(workspace:GetDescendants()) do
+	if d:IsA("BasePart") and d ~= workspace.Terrain and d.Transparency < 1 and not d:IsDescendantOf(F) and not (old and d:IsDescendantOf(old)) then
+		local p = d.Position
+		local dx, dz = p.X - CX, p.Z - CZ
+		if math.sqrt(dx * dx + dz * dz) - d.Size.Magnitude / 2 <= RT + 3.5 then
+			local t = workspace:Raycast(Vector3.new(p.X, 300, p.Z), Vector3.new(0, -600, 0), rpTerr)
+			if p.Y + d.Size.Y / 2 > (t and t.Position.Y or -1e9) + 0.5 then
+				local th = thingOf(d)
+				inside[th] = inside[th] or {}
+				table.insert(inside[th], d)
+			end
+		end
+	end
+end
+local bigs, props = {}, {}
+for th, parts in pairs(inside) do
+	local lo, hi = boxOf(parts)
+	if hi.X - lo.X > 4 or hi.Z - lo.Z > 4 or hi.Y - lo.Y > 3 then table.insert(bigs, th.Name .. string.format(" (x %.0f..%.0f z %.0f..%.0f)", lo.X, hi.X, lo.Z, hi.Z)) else table.insert(props, th) end
+end
+if #bigs > 0 then table.sort(bigs); print("QQ BELV ABORT: standing inside the terrace's footprint at (" .. CX .. ", " .. CZ .. "): " .. table.concat(bigs, "; ") .. "; pick another centre; nothing built") return end
 local g = math.max(centreY, highest - 0.5) - 0.1                      -- the floor's base: its top never below the highest edge; the skirt covers the downhill side
 local BASE = CFrame.new(CX, g, CZ) * CFrame.Angles(0, YAW, 0)
 local function at(x, y, z) return BASE * CFrame.new(x, y, z) end
@@ -234,10 +286,18 @@ if old then
 	old.Name = "HallOfGuardians_pre_" .. n; old.Parent = hb
 	for _, s in ipairs(old:GetDescendants()) do if s:IsA("BaseScript") then s.Enabled = false end end
 end
+-- the small props under the terrace, set aside with their places kept
+local parked = 0
+if #props > 0 then
+	local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
+	local n = 1; while hb:FindFirstChild("HallOfGuardians_props_" .. n) do n += 1 end
+	local pf = Instance.new("Folder"); pf.Name = "HallOfGuardians_props_" .. n; pf.Parent = hb
+	for _, th in ipairs(props) do th.Parent = pf; parked += 1 end
+end
 local s = Instance.new("Script"); s.Name = "HallServer"; s.RunContext = Enum.RunContext.Server; s.Source = SERVER; s.Parent = F
 F.Parent = workspace
 local names, near = {}, {}
 for _, n in ipairs({"Italian cypress", "Lemon tree", "Harbour bench"}) do table.insert(names, n .. " " .. tostring(found[n] or 0)) end
 for n, k in pairs(standing) do table.insert(near, n .. " x" .. k) end
-print(string.format("QQ BELV DONE: workspace.HallOfGuardians at (%.0f, %.1f, %.0f) yaw %.0f (ground centre %.1f, edges %.1f..%.1f); terrace R %d, parapet %d segments, 7 slots; copies: %s; HallServer %d chars%s", CX, g, CZ, math.deg(YAW), centreY, lowest, highest, RT, NSEG, table.concat(names, ", "), #s.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))
+print(string.format("QQ BELV DONE: workspace.HallOfGuardians at (%.0f, %.1f, %.0f) yaw %.0f (ground centre %.1f, edges %.1f..%.1f); terrace R %d, parapet %d segments, 7 slots; copies: %s; %d small props set aside (HudBackup.HallOfGuardians_props_*); HallServer %d chars%s", CX, g, CZ, math.deg(YAW), centreY, lowest, highest, RT, NSEG, table.concat(names, ", "), parked, #s.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))
 if #near > 0 then print("QQ BELV NOTE: standing within 19-21 studs of the centre (more than a stud above the terrain): " .. table.concat(near, ", ")) end
