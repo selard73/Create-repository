@@ -1519,3 +1519,7 @@ discarded) an OLD-GOLD finish - TextColor3 white + UIGradient rotation 90 with 2
 UIStroke 1.1 px 110,50,30 at transparency 0.1 - in three fonts, one per tile: Slot_2 (dakota, left) Garamond, Slot_1 (SelBell, centre)
 Bodoni, Slot_3 (blizzy, right) Antique; picture tools/hall_italy/shots/belv-mock-fonts-gold.jpg. Her font pick pending; the small
 "When" line in a serif at 15 px is thin - consider a size up or Merriweather for that line.
+Shannon on the old-gold font mock-ups (Garamond / Bodoni / Antique): "I don't like any of those, they all look terrible". Runner 7
+put up a FONT SAMPLER on the test server (14 fonts, cream on terracotta, the name + the date line in each: Antique, Garamond, Bodoni,
+Merriweather, Fondamento, JosefinSans, Michroma, Oswald, GothamBold, Nunito, Sarpanch, Fantasy, PatrickHand, FredokaOne); picture
+tools/hall_italy/shots/belv-font-sampler.jpg. Her pick pending; the gold finish is dropped unless she says otherwise.
