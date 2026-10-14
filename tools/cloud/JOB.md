@@ -1523,3 +1523,8 @@ Shannon on the old-gold font mock-ups (Garamond / Bodoni / Antique): "I don't li
 put up a FONT SAMPLER on the test server (14 fonts, cream on terracotta, the name + the date line in each: Antique, Garamond, Bodoni,
 Merriweather, Fondamento, JosefinSans, Michroma, Oswald, GothamBold, Nunito, Sarpanch, Fantasy, PatrickHand, FredokaOne); picture
 tools/hall_italy/shots/belv-font-sampler.jpg. Her pick pending; the gold finish is dropped unless she says otherwise.
+Shannon's pick from the font sampler (Oct 14): the left column, fifth from the top = GothamBold (no. 9). Lettering for the tiles
+AND the lectern: GothamBold, cream 250,244,228 on the terracotta; the gold finish is dropped. Lanterns: no further word from her, so
+the mocked dim level stands unless she objects: Lamp Material Glass, colour 255,196,120, transparency 0.15, PointLight 0.35 /
+range 12 (installed: Neon 255,214,140, 1.0 / 16). ROUND 5 brief: latest seven (Darkknight rotates like everyone), GothamBold cream
+lettering, dimmer lanterns. The TestLedger play test is worth repeating once (the rotation: 8+ entries).
