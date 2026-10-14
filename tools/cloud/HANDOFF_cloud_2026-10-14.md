@@ -124,3 +124,5 @@ later") - after Oct 18, when she says.
 - Known small things: a Studio play test starts HallClient twice (two HallView_local folders, harmless); paging never exercised by the
   runner's automation (ClickDetectors), Shannon to try Older/Newer live.
 - Next: item 3 the phone camera (ask her what she saw), item 4 the portraits blink (client diagnostic first), item 5 the look pass.
+- PUBLISHED by Shannon at 19:41:36Z Oct 14: job 94 round 7 (the belvedere, one Guardian at a time) + job 95 (the funnel). Items 1 and 2
+  DONE. Nothing unpublished. Next: item 3 (the phone camera; her answer on what she saw pending), item 4 (portraits blink diagnostic).
