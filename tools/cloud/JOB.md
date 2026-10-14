@@ -1687,7 +1687,46 @@ SHANNON (Oct 14, after the job 96 run): "there has been no further issue with th
 so job 96 is CLOSED and job 97 (the no-gap fix) is NOT needed unless it comes back. For the record: village/build_portraits.lua line 489
 opens the PortraitWall store only outside Studio, so a Studio play test has no entries, 0 models and empty mounts - the blink can only
 ever be judged live. Next per the handoff: the phone camera (she still owes what she saw), then the look pass.
+SHANNON (Oct 14, to runner 7), NEXT: "we need a tool that will count and give info for on how far each player gets and what they
+interact with." Runner 7's reading: (a) "how far each player gets" = progress, which job 95's funnel now reports in aggregate on the
+Creator Dashboard once events arrive (joined / first squirrel / fifth / second area / all 44 / Italy, by device and cohort); (b) "what
+they interact with" = the activities and things players actually use - the shop, the boat, the balloon, the games (crab, sea glass,
+piazza race, octopus), the prompts/tools, La Poste, the belvedere buttons, travel - which the game does not log today. Proposal to
+design: AnalyticsService custom events (LogCustomEvent) fired from the existing server scripts on each interaction, with the Device and
+Cohort fields the funnel already builds (tools/funnel/src/FunnelServer.lua), so the Creator Dashboard's Custom Events page shows counts
+per interaction; plus, if she wants it in-game, an owner-only panel listing the players on the server with their progress and recent
+interactions (no DataStore). Runner 7 is asking her where she wants to read it (dashboard vs in-game) and whether per-player history
+across visits matters (that would need save fields through the game's own ledger).
+Shannon's answers (Oct 14): read it on the CREATOR DASHBOARD (counts per step and per interaction, by device and cohort; no in-game
+panel); counts and live views are enough - NO per-player history, nothing new on player saves. She put this NEXT ("What's next is we
+need a tool ..."), ahead of the look pass. So the job = interaction analytics: AnalyticsService custom events (one event per
+interaction kind, value = a count or the squirrels found, with the funnel's Device/Cohort fields) fired from the existing server scripts
+- shop purchases, boat taken, balloon ride, each game played (crab, sea glass, piazza race, octopus), prompts/tools used, La Poste
+letters, belvedere paging, travel/funicolare - exact-string patches or a small listener folder where the scripts already fire remotes.
 Job 96 CLOSED (Shannon, Oct 14: "there has been no further issue with the art work"); Studio cannot show sitters (the PortraitWall store
 opens only outside Studio, build_portraits.lua ~489), so the probe saw 9 empty mounts and 0 remounts. Job 97 (the no-gap fix,
 tools/portraits/blink1.lua from make_blink1.py: a swap only when something shown changed; the new picture up before the old goes)
 is written, self-tested against the repo CLIENT + vr1 and compiled - NOT installed, kept for the day the blink returns.
+
+## Job 98: what players interact with, counted for the Creator Dashboard (Studio EDIT; ask Shannon first) - before the look pass
+
+Shannon (Oct 14): "we need a tool that will count and give info on how far each player gets and what they interact with"; her
+answers to runner 7: read it on the CREATOR DASHBOARD, counts are enough, no per-player history, nothing new on saves. "How far" is
+the funnel (job 95, live). tools/interact/install_interact1.lua (make_install_interact1.py; src/InteractServer.lua): workspace.Interact
++ InteractServer. Nothing in the game is patched: the script listens to what the game already fires and sends one AnalyticsService
+custom event per interaction - Interact_Prompt (every ProximityPrompt triggered: the boat, the balloon, the games, La Poste, the
+opera, pick-ups ...), Interact_Click (every ClickDetector: the belvedere's Older/Newer, the French hall's buttons, the race gate),
+Interact_Seat (the boat, the balloon basket, the funicolare, benches), Interact_Tool / Interact_ToolUse (camera, slingshot,
+binoculars ...), Interact_Area (forest / village / domaine / porto entered: travel, the funicolare, the boat), Interact_Item (an item
+or keepsake gained after the save loaded: a shop buy, the backpack, the chute ...). Fields: Device and Cohort (the funnel's, now
+published by FunnelServer as player attributes FunnelDevice / FunnelCohort - install_funnel1.lua regenerated, a re-run refreshes
+the live Funnel folder) and Name (the prompt's text or the thing's model name). Throttles: once per player per thing per Repeat
+(60 s), at most Budget (90) events per server per minute; the rest counted, never sent. The dashboard's Custom Events page then
+shows, per kind, how many players use each thing, split by device or cohort. Events leave only a published place; in Studio the
+server prints what it would send. No DataStore, no publish.
+INSTALL (on her yes; Edit, MCP context): 1. re-run tools/funnel/install_funnel1.lua (the old Funnel folder -> HudBackup.Funnel_pre_1;
+expect QQ FUNNEL DONE with FunnelServer 7394); 2. run install_interact1.lua (expect "QQ INTERACT DONE: workspace.Interact
+(InteractServer 7522 chars; Enabled true, Repeat 60, Budget 90)"). PLAY TEST: "Interact: ready ..." in Output; walk to a prompt and
+use it -> "Interact: Prompt "<text>" by <name>"; click the belvedere's Older post -> "Interact: Click "Older" ..."; equip the camera
+-> "Interact: Tool "Camera" ..." and a photo -> ToolUse; sit in the boat -> Seat; travel -> Area; use it again within a minute ->
+nothing (Repeat). Edit check; she publishes.
