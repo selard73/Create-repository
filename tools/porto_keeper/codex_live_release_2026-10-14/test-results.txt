@@ -1,0 +1,86 @@
+COMMAND: C:\Users\slard\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\make_fixtures.py
+Extracted actual production functions into mocked setup_fixture.luau
+Extracted actual keeper runtime queue and client receipt handlers.
+Generated fixtures from the exact patch sources and retained all 53 regression cases.
+
+COMMAND: C:\Users\slard\AppData\Local\Temp\codex-luau-0.742\luau.exe C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\test_celebration.luau
+PASS 09:00 UTC boundary
+PASS Owner and listed IDs excluded without partial ID matches
+PASS Italy IDs deduplicated and normalized; France excluded
+PASS Legacy winner preserved and excluded without touching first
+PASS Concurrent callback retry selects one global winner
+PASS Late completer must increment reset generation on another day
+PASS Winning again is blocked even after reset and rollover
+PASS Successful write with lost response recovers same award
+PASS Read and write outages fail closed
+PASS Missing store cannot fabricate a winner
+PASS Unreadable legacy and unsupported ledger never overwritten
+PASS Rollover clears today's selection and old retries stay on their day
+PASS Expired completion cannot claim on a future day
+PASS Slow refresh cannot replace newer committed cache
+PASS Polling observes another server's winner
+PASS Renderer recovers exception and missing avatar
+PASS A slow old render is followed by latest requested winner
+PASS Joining with 44 never emits a fresh completion
+PASS Actual 44th find is saved before emitting award candidate
+PASS Pending currency and items received before load are not erased
+PASS Failed completion save cannot trigger an award
+PASS Loaded completion reset to zero then recollected qualifies
+PASS Explicit existing reset clears finds only and preserves valuables/history
+PASS Failed reset leaves local finds and saved France/Italy untouched
+PASS Lost reset response increments generation only once
+PASS Reset blocks collection while persistence is in flight
+PASS Reset waits for autosave; pending currency and items are retained
+PASS Collection during autosave remains dirty and final find gets persisted
+PASS Newer cross-server reset prevents an older save merging finds
+PASS Old server schema replacing a reset generation fails closed
+PASS Fresh rejoin replaces in-memory finds instead of merging an old session
+PASS No load access means no competition and no reset writes
+PASS Crash after player commit replays the exact durable intent on rejoin
+PASS Crash before player commit cannot produce a recovery candidate
+PASS Lost player-save reply defers dispatch but recovers the committed ID
+PASS Extended outage recovery settles only the original day
+PASS Recovered earlier intent cannot displace a committed original-day winner
+PASS Crash after ledger commit and before ack remains exactly one win
+PASS Lost ack is replayable while saved ack removes only settled intent
+PASS Reset preserves a durable original-day intent without retagging
+PASS Reset discards an uncommitted attempt when its finds were never saved
+PASS A loser must reset and recollect before producing a later-day intent
+PASS Concurrent autosave never commits the final find without its intent
+PASS First persisted generation ID wins over a competing session ID
+PASS Recovery emits valid generations in ascending order and ignores malformed records
+PASS Actual runtime retries outage, keeps generation order, and releases its lock
+PASS Historical queue recovery leaves today's displayed winner unchanged
+PASS Historical queue recovery leaves today available to its eligible winner
+PASS Runtime legacy44 makes no claim and stale reset generation cannot create an intent
+PASS Lost ledger response and lost ack repeat a coherent dated loss receipt
+PASS Queue recovers unexpected delivery exception without consuming the outbox
+PASS Future-dated durable intent waits without being acknowledged or lost
+PASS Client deduplicates dated recovered/loss receipts without a current-statue banner
+PASS Fresh signal occurs only on a newly collected 44th Italy squirrel
+PASS Actual fresh win broadcasts stamped crown only after ledger commit
+PASS Lost write response and repeated unacked win celebrate once
+PASS Current-day outbox recovery gets its award with no celebration
+PASS Rejoin replay of a committed winner does not celebrate again
+PASS Leaving before a delayed claim clears cosmetic eligibility only
+PASS Historical completion never turns into current-day fireworks
+PASS Cosmetic token does not mutate original award record
+PASS Remote live win must match persisted claim and is consumed once
+PASS Startup suppresses broadcasts older than this server or client
+PASS Legacy messages and stale or future timestamps cannot celebrate
+PASS Rollover rejects a previously current-day celebration
+PASS Client actual crown handler shows one banner, chat and 25-second show
+PASS Other clients see the winner's name in the same broadcast
+PASS Recovery, losing and already-won receipts have no VFX or crown banner
+PASS Actual banner queue waits behind the honours banner
+PASS Actual banner queue waits behind daily card and has a bounded fallback
+PASS Actual chat uses modern channel and escapes display text
+PASS Missing chat channel cannot crash the celebration handler
+PASS Firework setup failure does not suppress banner or chat
+PASS Actual fireworks scheduler runs 25 seconds at surveyed Italy sites even if audio fails
+ALL 74 TESTS PASSED
+
+COMMAND: C:\Users\slard\AppData\Local\Temp\codex-luau-0.742\luau-compile.exe --null C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\SquirrelSetup.lua C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\PortoKeeperServer.lua C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\PortoKeeperClient.lua C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\KeeperCelebration.lua C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\DailyKeeperCore.lua C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\DailyKeeperStore.lua C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\FindsEpoch.lua C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\SquirrelRegistry.lua
+Compiled 1 KLOC into 88 KB bytecode (read 0.01s, parse 0.00s, compile 0.00s)
+
+COMMAND: C:\Users\slard\AppData\Local\Temp\codex-luau-0.742\luau-analyze.exe C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\KeeperCelebration.lua C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\DailyKeeperCore.lua C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\DailyKeeperStore.lua C:\Users\slard\Documents\Codex\2026-10-13\task\live-italy-release\readback\FindsEpoch.lua

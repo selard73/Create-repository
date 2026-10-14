@@ -1,0 +1,72 @@
+{
+  "startedUtc": "2026-10-13T19:44:55.108058+00:00",
+  "installResult": "Installed 6 source files in Edit only. Originals: ServerStorage.PortoDailyBackup_20261013. Not published.",
+  "sources": {
+    "PortoKeeperServer": {
+      "sha256": "9a6fc0986b3bcec925d1b5eecf4e9834e2cff43bdbedaa12ddf1e23a79c9c454",
+      "characters": 12585,
+      "exactMatch": true,
+      "class": "Script"
+    },
+    "PortoKeeperClient": {
+      "sha256": "0e722d3b2b4de67de805b19d6dc148a2687f5d3a78e843c35b57731320371d3d",
+      "characters": 3678,
+      "exactMatch": true,
+      "class": "Script"
+    },
+    "DailyKeeperCore": {
+      "sha256": "ebf8a373b6bb448fa172bb5dbbd8f71d595ba943811373b0ade77bcb2c6df098",
+      "characters": 5510,
+      "exactMatch": true,
+      "class": "ModuleScript"
+    },
+    "DailyKeeperStore": {
+      "sha256": "eca4d51321fe1a9906342ecc0368fa20f7a61cd2403d10d5b763421ec2243b2e",
+      "characters": 2080,
+      "exactMatch": true,
+      "class": "ModuleScript"
+    },
+    "SquirrelSetup": {
+      "sha256": "223fbde8a9e33b157570264d18161b9f2f2edc33f02f1a7566b774114a5d7330",
+      "characters": 29908,
+      "exactMatch": true,
+      "class": "Script"
+    },
+    "FindsEpoch": {
+      "sha256": "ebfff6c2827cbd3a9af1d0a7188424a4f64cd33dd6f3811c329bcfb5783ace2a",
+      "characters": 1088,
+      "exactMatch": true,
+      "class": "ModuleScript"
+    }
+  },
+  "backups": [
+    {
+      "name": "PortoKeeperServer",
+      "disabled": true,
+      "baselineMatch": true
+    },
+    {
+      "name": "PortoKeeperClient",
+      "disabled": true,
+      "baselineMatch": true
+    },
+    {
+      "name": "SquirrelSetup",
+      "disabled": true,
+      "baselineMatch": true
+    }
+  ],
+  "placeVersion": 1330,
+  "repeatInstallResult": "Italy daily award sources already match; nothing changed.",
+  "studioState": "- Current Studio Mode: Edit\n- Available DataModels: Edit\n- Focused DataModel in the viewport: Edit",
+  "endedUtc": "2026-10-13T19:44:58.878630+00:00",
+  "functionalTestsPassed": 32,
+  "testsRunAgainst": "exact Studio source read-back copies",
+  "pureModuleStaticAnalysis": "passed (3 modules)",
+  "runtimeCompilation": "passed (6 source files)",
+  "luauVersion": "0.742",
+  "noProductionDataAccess": true,
+  "noPlaySession": true,
+  "notPublished": true,
+  "verifiedUtc": "2026-10-13T19:46:24.886251+00:00"
+}

@@ -1,0 +1,33 @@
+PASS 09:00 UTC boundary
+PASS Owner and listed IDs excluded without partial ID matches
+PASS Italy IDs deduplicated and normalized; France excluded
+PASS Legacy winner preserved and excluded without touching first
+PASS Concurrent callback retry selects one global winner
+PASS Late completer must increment reset generation on another day
+PASS Winning again is blocked even after reset and rollover
+PASS Successful write with lost response recovers same award
+PASS Read and write outages fail closed
+PASS Missing store cannot fabricate a winner
+PASS Unreadable legacy and unsupported ledger never overwritten
+PASS Rollover clears today's selection and old retries stay on their day
+PASS Expired completion cannot claim on a future day
+PASS Slow refresh cannot replace newer committed cache
+PASS Polling observes another server's winner
+PASS Renderer recovers exception and missing avatar
+PASS A slow old render is followed by latest requested winner
+PASS Joining with 44 never emits a fresh completion
+PASS Actual 44th find is saved before emitting award candidate
+PASS Pending currency and items received before load are not erased
+PASS Failed completion save cannot trigger an award
+PASS Loaded completion reset to zero then recollected qualifies
+PASS Explicit existing reset clears finds only and preserves valuables/history
+PASS Failed reset leaves local finds and saved France/Italy untouched
+PASS Lost reset response increments generation only once
+PASS Reset blocks collection while persistence is in flight
+PASS Reset waits for autosave; pending currency and items are retained
+PASS Collection during autosave remains dirty and final find gets persisted
+PASS Newer cross-server reset prevents an older save merging finds
+PASS Old server schema replacing a reset generation fails closed
+PASS Fresh rejoin replaces in-memory finds instead of merging an old session
+PASS No load access means no competition and no reset writes
+ALL 32 TESTS PASSED
