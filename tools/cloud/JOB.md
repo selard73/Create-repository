@@ -1581,3 +1581,20 @@ SHANNON (Oct 14), clarifying the original brief: "when I said make it different,
 model or style." So the Italian hall = the FRENCH DISPLAY CONCEPT (one Keeper/Guardian shown at a time, Newer/Older paging, the plaque
 with name/date/count) in an Italian model and style (the terrace, terracotta, lectern, lanterns, cypresses, lemon trees, the harbour
 key). Round 6 = that; not seven statues, not a crescent of pedestals.
+ROUND 6 (cloud thread; Shannon: "too many statues; why did we do it this way rather than the carousel like in France?" and "when I
+said make it different, I meant the same display concept, just a different model or style"): the French DISPLAY CONCEPT in the
+Italian style. ONE pedestal in the centre of the crescent (where slot 1 stood; terracotta tile, GothamBold cream), one Guardian at a
+time, the newest first; Older / Newer = two posts with cream marble discs and terracotta chevrons in front of the pedestal (click
+or tap, ClickDetectors, 40 studs), the French buttons' construction; the plaque reads "3RD GUARDIAN / name / All 44 squirrels, Oct 12,
+2026 · 3 of 8"; everyone on the lectern roll. Mechanism = France's: HallServer makes each statue once (Champion.MakeStatue + the
+harbour key), 300 studs below the terrace, keeps it in ReplicatedStorage.HallStatues (the forty seen most recently) and hands its name
+over HallStatue (RemoteFunction); HallClient (new, RunContext Client) clones the one it shows into workspace.HallView_local on that
+screen only. The list is still read from PortoKeeper_v1 (first + daily_v2) and now published as the folder's HallJson attribute.
+Dropped: the six other pedestals, Mode/PinFirst/Slots. Kept: terrace, parapet, column, dim lanterns, lectern (roll), cypresses, lemon
+trees, terracotta signs. A WaitingKey rests on the pedestal while there is no Guardian; the tile then reads "THIS COULD BE YOU".
+PREVIEW first (play test on the test server, nothing installed): run the installer's body on the server; PreviewJson gives three
+sample Guardians; expect "HallOfGuardians: ready - 3 Guardians on the roll, one at a time on the belvedere", the newest (blizzy_1718,
+3 of 3) on the pedestal within ~10 s, the Older button lit and Newer dimmed; click Older twice -> dakota (2 of 3), SelBell (1 of 3),
+Newer back; the lectern roll "1. SelBell   2. dakota   3. blizzy_1718". Pictures with the game's camera: the pedestal from the step,
+the buttons, the tile. Then on her yes the Edit install (old folder -> HudBackup.HallOfGuardians_pre_3; props stay), the TestLedger
+play test (three entries), Edit check; she publishes.

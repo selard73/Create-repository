@@ -10,12 +10,14 @@ HERE = pathlib.Path(__file__).resolve().parent
 # THE SITE (job 93 survey, site E window; provisional until the runner's numbers are in)
 CX, CZ, YAW = 530, -1064, 90
 SERVER = (HERE / "src/HallServer.lua").read_text(encoding="utf-8")
+CLIENT = (HERE / "src/HallClient.lua").read_text(encoding="utf-8")
+assert "]===]" not in CLIENT
 TEMPLATE = (HERE / "install_hall1.template.lua").read_text(encoding="utf-8")
 assert "]===]" not in SERVER, "the server source must not close the long string"
 out = TEMPLATE
-for key, val in {"@@CX@@": str(CX), "@@CZ@@": str(CZ), "@@YAW@@": str(YAW), "@@SERVER_LEN@@": str(len(SERVER)), "@@SERVER@@": SERVER}.items():
+for key, val in {"@@CX@@": str(CX), "@@CZ@@": str(CZ), "@@YAW@@": str(YAW), "@@SERVER_LEN@@": str(len(SERVER)), "@@SERVER@@": SERVER, "@@CLIENT_LEN@@": str(len(CLIENT)), "@@CLIENT@@": CLIENT}.items():
     assert out.count(key) == 1, key
     out = out.replace(key, val)
 assert "@@" not in out
 (HERE / "install_hall1.lua").write_text(out, encoding="utf-8")
-print(f"install_hall1.lua {len(out.encode())} bytes; HallServer {len(SERVER)} chars; site ({CX}, {CZ}) yaw {YAW}")
+print(f"install_hall1.lua {len(out.encode())} bytes; HallServer {len(SERVER)}, HallClient {len(CLIENT)} chars; site ({CX}, {CZ}) yaw {YAW}")

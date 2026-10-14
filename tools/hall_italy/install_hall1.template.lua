@@ -1,11 +1,12 @@
--- install_hall1.lua (Studio EDIT mode; re-runnable; its body also runs as a play-test PREVIEW on the test server). Job 94:
--- the Belvedere dei Guardiani - the Italian Hall of Fame on the Prato dei Fiori, every Guardian of the Harbour of Porto
--- Nocciola in marble with the harbour key, standing together in a crescent above the sea (Shannon, Oct 14 2026: "make this
--- hall of fame look distinctively different from the one in France"; site E). workspace.HallOfGuardians: Belvedere (a round
--- mosaic terrace, a low parapet with a majolica band, the centre column with the gold key, two lanterns, the lectern with the
--- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (@@SERVER_LEN@@ chars: pedestals and statues from
--- the Guardian list at run time). Undo: delete workspace.HallOfGuardians (an older one is HudBackup.HallOfGuardians_pre_n).
--- No DataStore, no publish. Output lines start with "QQ BELV".
+-- install_hall1.lua (Studio EDIT mode; re-runnable; its body also runs as a play-test PREVIEW on the test server). Job 94,
+-- round 6: the Belvedere dei Guardiani - the Italian Hall of Fame on the Prato dei Fiori (site E): the French display concept
+-- in the Italian style (Shannon, Oct 14 2026: "the same display concept, just a different model or style"). ONE pedestal in the
+-- centre of the crescent shows one Guardian of the Harbour at a time, the newest first, with Older / Newer buttons and a plaque
+-- (name, date, count); everyone on the lectern roll. workspace.HallOfGuardians: Belvedere (a round mosaic terrace, a low parapet
+-- with a majolica band, the centre column with the gold key, two dim lanterns, cypresses and lemon trees cloned from Porto's own),
+-- Pedestal (terracotta tile, GothamBold cream), Older / Newer, the Lectern with the roll, HallStatue (RemoteFunction), HallServer
+-- (@@SERVER_LEN@@ chars: the statues, made once each from the Guardian list), HallClient (@@CLIENT_LEN@@ chars: each player's own view).
+-- Undo: delete workspace.HallOfGuardians (an older one is HudBackup.HallOfGuardians_pre_n). No DataStore, no publish. "QQ BELV".
 local SS = game:GetService("ServerStorage")
 local CS = game:GetService("CollectionService")
 local RunService = game:GetService("RunService")
@@ -13,9 +14,13 @@ local HttpService = game:GetService("HttpService")
 local CX, CZ, YAW = @@CX@@, @@CZ@@, math.rad(@@YAW@@)              -- the terrace's centre; yaw 0 = the front faces north (-z)
 local SERVER = [===[
 @@SERVER@@]===]
+local CLIENT = [===[
+@@CLIENT@@]===]
 do   -- the compile check, where loadstring can run (a Script has none and the call itself throws): the sources are compiled with the luau CLI before every push
-	local ok, f, err = pcall(function() return loadstring(SERVER) end)
-	if ok and not f then print("QQ BELV ABORT: HallServer does not compile: " .. tostring(err)) return end
+	for _, pair in ipairs({{"HallServer", SERVER}, {"HallClient", CLIENT}}) do
+		local ok, f, err = pcall(function() return loadstring(pair[2]) end)
+		if ok and not f then print("QQ BELV ABORT: " .. pair[1] .. " does not compile: " .. tostring(err)) return end
+	end
 end
 local CH = workspace:FindFirstChild("Champion")
 if not (CH and CH:FindFirstChild("ChampionServer")) then print("QQ BELV ABORT: workspace.Champion.ChampionServer not found (it makes the statues)") return end
@@ -252,7 +257,44 @@ do
 	line("Foot", 156, 30, 16, Enum.Font.GothamBold, CREAM, "Each of them found every squirrel of Porto Nocciola.")
 end
 
--- ---------------------------------------------------------------- Porto's own trees and benches ----
+-- ---------------------------------------------------------------- the pedestal, in the centre of the crescent ----
+local PR, PED_W, PED_H = 12.6, 3.2, 2.6                                -- where the crescent's centre pedestal stood; its size
+do
+	local ped = Instance.new("Model"); ped.Name = "Pedestal"; ped.Parent = F
+	local cf = at(0, Y0, PR)                                            -- the tile faces the front (-z)
+	part("Foot", Vector3.new(PED_W + 0.5, 0.3, PED_W + 0.5), cf * CFrame.new(0, 0.15, 0), STONE, Enum.Material.Marble, ped)
+	part("Block", Vector3.new(PED_W, PED_H, PED_W), cf * CFrame.new(0, PED_H / 2, 0), STONE, Enum.Material.Marble, ped)
+	part("Band", Vector3.new(PED_W + 0.16, 0.18, PED_W + 0.16), cf * CFrame.new(0, PED_H - 0.3, 0), GOLD, Enum.Material.SmoothPlastic, ped, nil, false).Reflectance = 0.15
+	local tile = part("Tile", Vector3.new(2.6, 1.6, 0.12), cf * CFrame.new(0, 1.35, -(PED_W / 2 + 0.05)), TERRA, Enum.Material.SmoothPlastic, ped, nil, false)
+	local sg = Instance.new("SurfaceGui"); sg.Name = "Words"; sg.Face = Enum.NormalId.Front; sg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
+	sg.PixelsPerStud = 80; sg.LightInfluence = 0.3; sg.Parent = tile
+	local function label(name, y, h, size)                             -- (2.6 x 1.6 studs = 208 x 128 px; GothamBold in cream: her pick)
+		local l = Instance.new("TextLabel"); l.Name = name; l.BackgroundTransparency = 1; l.Position = UDim2.new(0, 8, 0, y); l.Size = UDim2.new(1, -16, 0, h)
+		l.Font = Enum.Font.GothamBold; l.TextScaled = true; l.TextColor3 = CREAM; l.TextWrapped = true; l.Text = ""; l.Parent = sg
+		local cap = Instance.new("UITextSizeConstraint"); cap.MaxTextSize = size; cap.Parent = l
+	end
+	label("Title", 6, 26, 20); label("Who", 32, 44, 36); label("When", 78, 44, 15)
+	ped.WorldPivot = cf
+	F:SetAttribute("Spot", cf.Position + Vector3.new(0, PED_H, 0))        -- the pedestal's top centre: where the statue's feet go
+	F:SetAttribute("Look", BASE.LookVector)                              -- the way the statue faces: out to the front
+end
+-- the buttons, Older and Newer (France's: a post, a cap, a disc you click or tap; facing the pedestal, local +x is on your LEFT)
+for _, b in ipairs({{name = "Older", s = 1, glyph = "<"}, {name = "Newer", s = -1, glyph = ">"}}) do
+	local m = Instance.new("Model"); m.Name = b.name; m.Parent = F
+	local x, z = b.s * 5.2, PR - 4.6
+	part("Post", Vector3.new(1.2, 3.0, 1.2), at(x, Y0 + 1.5, z), STONE, Enum.Material.Limestone, m)
+	part("Cap", Vector3.new(1.5, 0.3, 1.5), at(x, Y0 + 3.15, z), TERRA, Enum.Material.Slate, m)
+	local disc = part("Button", Vector3.new(0.35, 2.0, 2.0), at(x, Y0 + 4.3, z) * CFrame.Angles(0, math.pi / 2, 0), TRIM, Enum.Material.Marble, m, Enum.PartType.Cylinder)
+	local dsg = Instance.new("SurfaceGui"); dsg.Face = Enum.NormalId.Right; dsg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud; dsg.PixelsPerStud = 60
+	dsg.LightInfluence = 0.3; dsg.Parent = disc
+	local gl = Instance.new("TextLabel"); gl.BackgroundTransparency = 1; gl.Size = UDim2.fromScale(1, 1); gl.Font = Enum.Font.GothamBold
+	gl.Text = b.glyph; gl.TextScaled = true; gl.TextColor3 = TERRA; gl.Parent = dsg
+	for _, p in ipairs({disc, m:FindFirstChild("Post"), m:FindFirstChild("Cap")}) do
+		local cd = Instance.new("ClickDetector"); cd.MaxActivationDistance = 40; cd.Parent = p
+	end
+end
+
+-- ---------------------------------------------------------------- Porto's own trees ----
 -- (copies of the town's models, their tags and scripts removed so a copy joins nothing the original is part of)
 local found, sources = {}, {}
 do
@@ -292,7 +334,7 @@ end
 
 -- ---------------------------------------------------------------- the folder, its settings, the script ----
 F:SetAttribute("Base", BASE)
-F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Mode", "latest"); F:SetAttribute("PinFirst", false); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
+F:SetAttribute("FloorTop", Y0)
 F:SetAttribute("Scale", 1.35); F:SetAttribute("KeyShare", 0.42); F:SetAttribute("RestKeyHeight", 2.6); F:SetAttribute("Total", 44)
 F:SetAttribute("Rebuild", 0)
 -- a play-test preview (no Guardian list on the test server): three sample Guardians so the crescent can be seen with statues
@@ -319,10 +361,12 @@ if #props > 0 then
 	local pf = Instance.new("Folder"); pf.Name = "HallOfGuardians_props_" .. n; pf.Parent = hb
 	for _, th in ipairs(props) do th:SetAttribute("ParkedFrom", th.Parent and th.Parent:GetFullName() or ""); th.Parent = pf; parked += 1 end   -- (the undo: back to ParkedFrom)
 end
+local rf = Instance.new("RemoteFunction"); rf.Name = "HallStatue"; rf.Parent = F
 local s = Instance.new("Script"); s.Name = "HallServer"; s.RunContext = Enum.RunContext.Server; s.Source = SERVER; s.Parent = F
+local c = Instance.new("Script"); c.Name = "HallClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
 F.Parent = workspace
 local names, near = {}, {}
 for _, n in ipairs({"Italian cypress", "Lemon tree"}) do table.insert(names, n .. " " .. tostring(found[n] or 0)) end
 for n, k in pairs(standing) do table.insert(near, n .. " x" .. k) end
-print(string.format("QQ BELV DONE: workspace.HallOfGuardians at (%.0f, %.1f, %.0f) yaw %.0f (ground centre %.1f, edges %.1f..%.1f); terrace R %d, parapet %d segments, 7 slots; copies: %s; %d small props set aside (HudBackup.HallOfGuardians_props_*); HallServer %d chars%s", CX, g, CZ, math.deg(YAW), centreY, lowest, highest, RT, NSEG, table.concat(names, ", "), parked, #s.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))
+print(string.format("QQ BELV DONE: workspace.HallOfGuardians at (%.0f, %.1f, %.0f) yaw %.0f (ground centre %.1f, edges %.1f..%.1f); terrace R %d, parapet %d segments, one pedestal + Older/Newer; copies: %s; %d small props set aside (HudBackup.HallOfGuardians_props_*); HallServer %d, HallClient %d chars%s", CX, g, CZ, math.deg(YAW), centreY, lowest, highest, RT, NSEG, table.concat(names, ", "), parked, #s.Source, #c.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))
 if #near > 0 then print("QQ BELV NOTE: standing within 19-21 studs of the centre (more than a stud above the terrain): " .. table.concat(near, ", ")) end

@@ -1,30 +1,30 @@
--- HallServer (workspace.HallOfGuardians): the Belvedere dei Guardiani on the Prato dei Fiori - every Guardian of the Harbour
--- of Porto Nocciola in marble, holding the harbour key, standing in a crescent above the sea (Shannon, Oct 14 2026: "make this
--- hall of fame look distinctively different from the one in France"; the French hall shows one Keeper at a time in a frame -
--- here they all stand together in the open). The architecture (terrace, parapet, column, lanterns, the lectern) is built by
--- the installer; THIS script builds what changes: a pedestal and a statue for each Guardian from the Guardian list, at server
--- start and again whenever the list changes. The first Guardian keeps the centre; the next ones take the slots right and left
--- of it in turn; the next empty slot gets an inviting pedestal with the resting key. Statues come from Champion.MakeStatue
--- (the same marble figure as every other statue in the game); the acorn it hands over is swapped for the harbour key (the
--- PortoKeeper's own key shape). The list is READ from the Guardian's own store (PortoKeeper_v1: the historical "first" record
--- and Codex's daily ledger "daily_v2", Oct 13-14 2026); nothing here ever writes a DataStore, and Codex's PortoKeeperServer is
--- left exactly as it is: this script polls the store once a minute and again whenever the lighthouse plaque names a new winner.
+-- HallServer (workspace.HallOfGuardians): the Belvedere dei Guardiani on the Prato dei Fiori, round 6 - the French display
+-- concept in the Italian style (Shannon, Oct 14: "when I said make it different, I meant the same display concept, just a
+-- different model or style"): ONE pedestal in the centre of the crescent, one Guardian of the Harbour at a time, the newest
+-- first, Older / Newer buttons, a plaque with name, date and count, everyone on the lectern roll. France's mechanism
+-- (workspace.HallOfFame): this server makes each statue once (Champion.MakeStatue, the same marble figure as every other statue
+-- in the game, the acorn swapped for the harbour key), out of sight below the terrace, keeps it in ReplicatedStorage.HallStatues
+-- and hands its name to whoever asks (HallStatue); HallClient clones the one it shows into a folder of its own, so every player
+-- scrolls their own view. The Guardian list is READ from the Guardian's own store (PortoKeeper_v1: the historical "first" record
+-- and Codex's daily ledger "daily_v2"), once a minute and again whenever the lighthouse plaque names a new winner, and published
+-- to the clients as the folder's HallJson attribute. Nothing here ever writes a DataStore; Codex's PortoKeeperServer is untouched.
 local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
 local DSS = game:GetService("DataStoreService")
+local RS = game:GetService("ReplicatedStorage")
 local F = script.Parent
 local STUDIO = RunService:IsStudio()
 local CH = workspace:WaitForChild("Champion", 60)
 local makeStatue = CH and CH:WaitForChild("MakeStatue", 60)
 local K = workspace:WaitForChild("PortoKeeper", 60)
-local BASE = F:GetAttribute("Base")                                    -- the belvedere's own frame: origin at the terrace's
-if typeof(BASE) ~= "CFrame" then BASE = CFrame.new() end                -- centre on the floor, -z toward the land (the visitors)
-local function at(x, y, z) return BASE * CFrame.new(x, y, z) end
+local fn = F:WaitForChild("HallStatue")
 local function num(name, default) local v = tonumber(F:GetAttribute(name)); return v or default end
-local SLOTS = math.max(1, math.floor(num("Slots", 7)))
-local FLOOR = num("FloorTop", 0.6)                                  -- the terrace floor's top, above the frame's origin
+local SPOT, LOOK = F:GetAttribute("Spot"), F:GetAttribute("Look")       -- the pedestal's top centre; the way the statue faces
+if typeof(SPOT) ~= "Vector3" then SPOT = Vector3.new() end
+if typeof(LOOK) ~= "Vector3" then LOOK = Vector3.new(0, 0, -1) end
+local DROP = 300                                                       -- statues are made this far below the terrace, out of sight
 local C = Color3.fromRGB
-local MARBLE, GOLD, GOLD_D, GOLD_DD, TERRA, CREAM = C(236, 232, 224), C(255, 206, 64), C(214, 160, 44), C(190, 136, 40), C(178, 92, 62), C(250, 244, 228)
+local GOLD, GOLD_D, GOLD_DD = C(255, 206, 64), C(214, 160, 44), C(190, 136, 40)
 
 -- ---- the Guardian list, read from the Guardian's own store ----
 -- PortoKeeper_v1 "first" = the historical first Guardian (Darkknight, Oct 11 2026; read-only for everyone, Codex's rule too);
@@ -80,36 +80,12 @@ local function list()
 	for i, e in ipairs(out) do if not tonumber(e.no) then e.no = i end end
 	return out
 end
-local function signature()
-	local parts = {}
-	for _, e in ipairs(list()) do table.insert(parts, tostring(e.no) .. "=" .. tostring(e.uid)) end
-	return table.concat(parts, ",")
-end
-local function ordinal(n)
-	n = math.floor(tonumber(n) or 0)
-	local m100, m10, s = n % 100, n % 10, "th"
-	if m100 < 11 or m100 > 13 then
-		if m10 == 1 then s = "st" elseif m10 == 2 then s = "nd" elseif m10 == 3 then s = "rd" end
-	end
-	return tostring(n) .. s
-end
-local function dateOf(e)                                               -- the lighthouse plaque's own rule: the day's noon, else the moment
-	local t = tonumber(e.day) and (tonumber(e.day) * 86400 + 43200) or tonumber(e.t)
-	return t and os.date("!%b %d, %Y", t) or ""
-end
-
--- ---- the slots: where each pedestal stands on the crescent ----
--- slot 1 is the centre (straight back, the sea behind it); 2 is right of it, 3 left, 4 right again ... so the row stays
--- balanced however many there are. The pedestals stand on a circle of Radius round the terrace's centre, ArcDeg wide.
-local function slotAngle(k)
-	local step = (SLOTS > 1) and math.rad(num("ArcDeg", 150)) / (SLOTS - 1) or 0
-	local half = math.floor(k / 2)
-	local side = (k % 2 == 0) and 1 or -1
-	return side * half * step
-end
-local function slotSpot(k)
-	local r, th = num("Radius", 13), slotAngle(k)
-	return r * math.sin(th), r * math.cos(th)                           -- local x, z
+local function entry(no) for _, e in ipairs(list()) do if tonumber(e.no) == no then return e end end return nil end
+local function publish()                                               -- the list for every client, in order
+	local out = {}
+	for _, e in ipairs(list()) do table.insert(out, {no = e.no, uid = e.uid, name = e.name, day = e.day, t = e.t, total = e.total}) end
+	local ok, s = pcall(function() return HttpService:JSONEncode(out) end)
+	if ok then F:SetAttribute("HallJson", s) end
 end
 
 -- ---- the key (the PortoKeeper's own shape) ----
@@ -144,8 +120,7 @@ local function extents(m)
 	end
 	return lo, hi
 end
--- a key `height` tall standing with its bottom at (x, bottomY, z), its face turned by yaw
-local function makeKey(height, x, bottomY, z, yaw, parent)
+local function makeKey(height, x, bottomY, z, yaw, parent)            -- a key `height` tall standing with its bottom at (x, bottomY, z)
 	local s = height / KEY_H
 	local k = Instance.new("Model"); k.Name = "Key"
 	local pose = keyPose(s)
@@ -157,131 +132,91 @@ local function makeKey(height, x, bottomY, z, yaw, parent)
 	k.Parent = parent
 	return k
 end
+local KEY_YAW = math.atan2(LOOK.X, LOOK.Z) + math.pi
 
--- ---- a pedestal with its tile ----
-local PED_W, PED_H = 3.2, num("PedestalHeight", 2.6)
-local function label(parent, name, y, h, size, font, colour)
-	local l = Instance.new("TextLabel"); l.Name = name; l.BackgroundTransparency = 1; l.Position = UDim2.new(0, 8, 0, y); l.Size = UDim2.new(1, -16, 0, h)
-	l.Font = font; l.TextScaled = true; l.TextColor3 = colour; l.TextWrapped = true; l.Text = ""; l.Parent = parent
-	local cap = Instance.new("UITextSizeConstraint"); cap.MaxTextSize = size; cap.Parent = l
-	return l
-end
-local function pedestal(k, facing)
-	local m = Instance.new("Model"); m.Name = "Slot_" .. k
-	local lx, lz = slotSpot(k)
-	local cf = at(lx, FLOOR, lz) * CFrame.Angles(0, slotAngle(k), 0)    -- on the floor's top; the tile faces the terrace's centre
-	local p = Instance.new("Part"); p.Name = "Pedestal"; p.Size = Vector3.new(PED_W, PED_H, PED_W); p.CFrame = cf * CFrame.new(0, PED_H / 2, 0)
-	p.Color = MARBLE; p.Material = Enum.Material.Marble; p.Anchored = true; p.CanCollide = true; p.TopSurface = Enum.SurfaceType.Smooth; p.Parent = m
-	local b = Instance.new("Part"); b.Name = "Band"; b.Size = Vector3.new(PED_W + 0.16, 0.18, PED_W + 0.16); b.CFrame = cf * CFrame.new(0, PED_H - 0.3, 0)
-	b.Color = GOLD; b.Material = Enum.Material.SmoothPlastic; b.Reflectance = 0.15; b.Anchored = true; b.CanCollide = false; b.Parent = m
-	local f = Instance.new("Part"); f.Name = "Foot"; f.Size = Vector3.new(PED_W + 0.5, 0.3, PED_W + 0.5); f.CFrame = cf * CFrame.new(0, 0.15, 0)
-	f.Color = MARBLE; f.Material = Enum.Material.Marble; f.Anchored = true; f.CanCollide = true; f.Parent = m
-	-- the tile on the front: terracotta, cream letters (Shannon's pick, Oct 14)
-	local t = Instance.new("Part"); t.Name = "Tile"; t.Size = Vector3.new(2.6, 1.6, 0.12); t.CFrame = cf * CFrame.new(0, 1.35, -(PED_W / 2 + 0.05))
-	t.Color = TERRA; t.Material = Enum.Material.SmoothPlastic; t.Anchored = true; t.CanCollide = false; t.Parent = m
-	local sg = Instance.new("SurfaceGui"); sg.Name = "Words"; sg.Face = Enum.NormalId.Front; sg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
-	sg.PixelsPerStud = 80; sg.LightInfluence = 0.3; sg.Parent = t
-	-- (2.6 x 1.6 studs = 208 x 128 px)
-	label(sg, "Title", 6, 26, 20, Enum.Font.GothamBold, CREAM)          -- (GothamBold in cream: Shannon's pick, Oct 14)
-	label(sg, "Who", 32, 44, 36, Enum.Font.GothamBold, CREAM)
-	label(sg, "When", 78, 44, 15, Enum.Font.GothamBold, CREAM)
-	m.WorldPivot = cf
-	m:SetAttribute("Slot", k)
-	m.Parent = F
-	return m, cf
-end
-local function tileWords(m, title, who, when)
-	local w = m:FindFirstChild("Tile") and m.Tile:FindFirstChild("Words")
-	if not w then return end
-	w.Title.Text = title; w.Who.Text = who; w.When.Text = when
-end
-local function lookFrom(cf)                                            -- from a pedestal toward the terrace's front
-	local to = at(0, 0, -6).Position - cf.Position
-	to = Vector3.new(to.X, 0, to.Z)
-	return (to.Magnitude > 0.01) and to.Unit or -BASE.LookVector
-end
-local function keyYaw(look) return math.atan2(look.X, look.Z) + math.pi end
-
--- ---- the statues ----
-local shown = {}                                                       -- slot k -> the uid standing there (or "invite")
-local function clearSlot(k)
-	local m = F:FindFirstChild("Slot_" .. k)
-	if m then m:Destroy() end
-	shown[k] = nil
-end
-local function statueFor(m, cf, e)
-	if not makeStatue then return false end
-	local look = lookFrom(cf)
-	local ok, fig, acorn = pcall(function()
-		return makeStatue:Invoke({uid = e.uid, name = e.name, no = e.no, day = e.day}, {x = cf.Position.X, top = cf.Position.Y + PED_H, z = cf.Position.Z, parent = m, name = "Figure", scale = num("Scale", 1.35), look = look})
-	end)
-	if acorn then acorn:Destroy() end
-	if not (ok and fig) then
-		warn("HallOfGuardians: no statue for " .. tostring(e.name) .. ": " .. tostring(fig))
-		local half = m:FindFirstChild("Figure"); if half then half:Destroy() end
-		return false
-	end
-	-- the harbour key in the raised hand, sized to the figure as the PortoKeeper does it
-	local holdSide = (CH:GetAttribute("HoldHand") == "Right") and "Right" or "Left"
-	local hand = fig:FindFirstChild(holdSide .. "Hand")
-	local lo, hi = extents(fig)
-	local h = math.clamp((hi.Y - lo.Y) * num("KeyShare", 0.42), 1.5, 6)
-	if hand then
-		makeKey(h, hand.Position.X, hand.Position.Y + hand.Size.Y / 2 - 0.15, hand.Position.Z, keyYaw(look), m)
-	else
-		makeKey(h, cf.Position.X, hi.Y, cf.Position.Z, keyYaw(look), m)
-	end
-	return true
-end
-local building, dirty, wipe = false, false, false
-local pending = {}                                                     -- slot k -> the entry still without a statue
--- who stands on the pedestals (the lectern's roll always names everyone). Shannon, Oct 14: "latest 7 please" - the newest Guardian
--- always gets a statue, the oldest steps down to the roll. Mode "latest" (hers) or "first" (the first Slots keep theirs for good);
--- PinFirst true = No. 1 keeps the centre for good and the newest stand beside him, newest nearest; false (hers: "rotate please") =
--- the newest in the centre, the older ones right and left of it in turn, the oldest of the seven at the horns.
-local function shown_list(l)
-	local n, out = #l, {}
-	if (F:GetAttribute("Mode") or "latest") ~= "latest" then
-		for i = 1, math.min(n, SLOTS) do out[i] = l[i] end
-		return out
-	end
-	if F:GetAttribute("PinFirst") ~= false and n >= 1 then
-		table.insert(out, l[1])
-		for i = n, 2, -1 do if #out >= SLOTS then break end; table.insert(out, l[i]) end
-	else
-		for i = n, 1, -1 do if #out >= SLOTS then break end; table.insert(out, l[i]) end
-	end
-	return out
-end
-local function buildOnce()
-	if wipe then wipe = false; for k = 1, SLOTS do clearSlot(k) end end
-	local l = list()
-	local onPedestals = shown_list(l)
-	local total = (K and tonumber(K:GetAttribute("Need"))) or tonumber(F:GetAttribute("Total")) or 44
-	for k = 1, SLOTS do
-		local e = onPedestals[k]
-		if e then
-			if shown[k] ~= e.uid or not F:FindFirstChild("Slot_" .. k) then
-				clearSlot(k)
-				local m, cf = pedestal(k)
-				tileWords(m, ordinal(e.no):upper() .. " GUARDIAN", tostring(e.name or "?"), "All " .. tostring(e.total or total) .. " squirrels, " .. dateOf(e))
-				shown[k] = e.uid
-				if statueFor(m, cf, e) then pending[k] = nil else pending[k] = e end
-				task.wait(1.5)                                        -- (the statue maker fetches each avatar from the web)
-			end
-		elseif k == #onPedestals + 1 then
-			if shown[k] ~= "invite" or not F:FindFirstChild("Slot_" .. k) then
-				clearSlot(k)
-				local m, cf = pedestal(k)
-				tileWords(m, "THIS COULD BE YOU", "Guardian No. " .. tostring(k), "Find all " .. tostring(total) .. " squirrels of Porto Nocciola")
-				makeKey(num("RestKeyHeight", 2.6), cf.Position.X, cf.Position.Y + PED_H, cf.Position.Z, keyYaw(lookFrom(cf)), m)
-				shown[k] = "invite"
-			end
-		else
-			if shown[k] then clearSlot(k) end
+-- ---- the statues: made once each, kept in ReplicatedStorage.HallStatues, handed over by name ----
+local storeFolder = RS:FindFirstChild("HallStatues")
+if not storeFolder then storeFolder = Instance.new("Folder"); storeFolder.Name = "HallStatues"; storeFolder.Parent = RS end
+for _, o in ipairs(storeFolder:GetChildren()) do o:Destroy() end
+local function feetLow(m)                                              -- the lowest corner of the visible feet (never the invisible root)
+	local low = math.huge
+	for _, d in ipairs(m:GetDescendants()) do
+		if d:IsA("BasePart") and (d.Name == "LeftFoot" or d.Name == "RightFoot") and d.Transparency < 0.95 then
+			local h = d.Size / 2
+			for _, sx in ipairs({-1, 1}) do for _, sy in ipairs({-1, 1}) do for _, sz in ipairs({-1, 1}) do
+				low = math.min(low, (d.CFrame * Vector3.new(h.X * sx, h.Y * sy, h.Z * sz)).Y)
+			end end end
 		end
 	end
-	-- the roll on the lectern: every Guardian by name, in order (the ones beyond the crescent's slots too)
+	if low == math.huge then local cf, s = m:GetBoundingBox(); low = cf.Y - s.Y / 2 end
+	return low
+end
+local cache, used, busy, building = {}, {}, {}, false
+local function build(no)
+	if cache[no] and cache[no].Parent then used[no] = os.clock(); return cache[no] end
+	while busy[no] do task.wait(0.2) end
+	if cache[no] and cache[no].Parent then return cache[no] end
+	local e = entry(no)
+	if not e or not makeStatue then return nil end
+	busy[no] = true
+	while building do task.wait(0.2) end
+	building = true
+	local stage = F:FindFirstChild("Staging")
+	if not stage then stage = Instance.new("Folder"); stage.Name = "Staging"; stage.Parent = F end
+	local low = Vector3.new(SPOT.X, SPOT.Y - DROP, SPOT.Z)
+	local ok, fig, acorn = pcall(function()
+		return makeStatue:Invoke({uid = e.uid, name = e.name, no = e.no, day = e.day}, {x = low.X, top = low.Y, z = low.Z, parent = stage, name = "Figure", scale = num("Scale", 1.35), look = LOOK})
+	end)
+	if acorn then acorn:Destroy() end
+	local m
+	if ok and fig then
+		m = Instance.new("Model"); m.Name = "No_" .. tostring(no)
+		fig.Parent = m
+		-- the harbour key in the raised hand, sized to the figure as the PortoKeeper does it
+		local holdSide = (CH:GetAttribute("HoldHand") == "Right") and "Right" or "Left"
+		local hand = fig:FindFirstChild(holdSide .. "Hand")
+		local lo, hi = extents(fig)
+		local h = math.clamp((hi.Y - lo.Y) * num("KeyShare", 0.42), 1.5, 6)
+		if hand then makeKey(h, hand.Position.X, hand.Position.Y + hand.Size.Y / 2 - 0.15, hand.Position.Z, KEY_YAW, m)
+		else makeKey(h, low.X, hi.Y, low.Z, KEY_YAW, m) end
+		m.WorldPivot = (m:GetBoundingBox())
+		-- on its feet in the middle of the pedestal, then up out of the ground
+		local cf = m:GetBoundingBox()
+		m:PivotTo(m:GetPivot() + Vector3.new(low.X - cf.X, low.Y - feetLow(m), low.Z - cf.Z) + Vector3.new(0, DROP, 0))
+		m.Parent = storeFolder
+		cache[no] = m; used[no] = os.clock()
+		local n = 0
+		for _ in pairs(cache) do n += 1 end
+		if n > 40 then                                                  -- the forty seen most recently are kept
+			local oldest, ot
+			for k, t in pairs(used) do if cache[k] and (not ot or t < ot) then oldest, ot = k, t end end
+			if oldest and oldest ~= no then cache[oldest]:Destroy(); cache[oldest] = nil; used[oldest] = nil end
+		end
+	else
+		warn("HallOfGuardians: no statue for No. " .. tostring(no) .. ": " .. tostring(fig))
+		local half = stage:FindFirstChild("Figure"); if half then half:Destroy() end
+	end
+	building = false
+	busy[no] = nil
+	return m
+end
+fn.OnServerInvoke = function(player, no)
+	no = tonumber(no)
+	if not no then return nil end
+	local m = build(math.floor(no))
+	return m and m.Name or nil
+end
+
+-- ---- the waiting key, the roll, the refresh ----
+local function refreshView()
+	local l = list()
+	local waiting = F:FindFirstChild("WaitingKey")
+	if #l == 0 and not waiting then
+		local k = makeKey(num("RestKeyHeight", 2.6), SPOT.X, SPOT.Y, SPOT.Z, KEY_YAW, F); k.Name = "WaitingKey"
+	elseif #l > 0 and waiting then
+		waiting:Destroy()
+	end
+	local total = (K and tonumber(K:GetAttribute("Need"))) or tonumber(F:GetAttribute("Total")) or 44
 	local lect = F:FindFirstChild("Lectern")
 	local words = lect and lect:FindFirstChild("Plaque") and lect.Plaque:FindFirstChild("Words")
 	if words then
@@ -293,56 +228,38 @@ local function buildOnce()
 			words.Roll.Text = ((from > 1) and (tostring(from - 1) .. " more, then ") or "") .. table.concat(names, "   ")
 		end
 	end
+	if #l > 0 then task.spawn(build, l[#l].no) end                        -- the newest made ahead of anyone asking
 end
-local function build()                                                 -- a change during a build runs it once more after
-	if building then dirty = true return end
-	building = true
-	repeat
-		dirty = false
-		local ok, err = pcall(buildOnce)
-		if not ok then warn("HallOfGuardians: build failed: " .. tostring(err)) end
-	until not dirty
-	building = false
-end
--- a statue the maker could not give (the start-up burst, a web hiccup): asked for again every 20 s, for the server's life
-task.spawn(function()
-	while true do
-		task.wait(20)
-		local keys = {}
-		for k in pairs(pending) do table.insert(keys, k) end
-		for _, k in ipairs(keys) do
-			local e, m = pending[k], F:FindFirstChild("Slot_" .. k)
-			if e and m and shown[k] == e.uid then
-				print("HallOfGuardians: no statue yet for " .. tostring(e.name) .. "; asking again")
-				if statueFor(m, m.WorldPivot, e) then pending[k] = nil end
-				task.wait(1.5)
-			else
-				pending[k] = nil
-			end
-		end
-	end
-end)
-F:GetAttributeChangedSignal("Rebuild"):Connect(function() wipe = true; task.defer(build) end)
--- the store: read at start (a few tries), then once a minute, and 3 s after the lighthouse plaque names a new Guardian
 local lastSig
+local function signature()
+	local parts = {}
+	for _, e in ipairs(list()) do table.insert(parts, tostring(e.no) .. "=" .. tostring(e.uid)) end
+	return table.concat(parts, ",")
+end
 local function refresh()
 	readStore()
 	local sig = signature()
-	if sig ~= lastSig then lastSig = sig; build() end
+	if sig ~= lastSig then lastSig = sig; publish(); refreshView() end
 end
+F:GetAttributeChangedSignal("Rebuild"):Connect(function()             -- a forced redo: the made statues are dropped and the list read again
+	for _, m in pairs(cache) do if m then m:Destroy() end end
+	cache, used = {}, {}
+	lastSig = nil
+	task.defer(refresh)
+end)
 task.spawn(function()
 	for attempt = 1, 5 do
 		if readStore() or not store then break end
 		task.wait(2 * attempt)
 	end
 	refresh()
-	print(string.format("HallOfGuardians: ready - %d Guardians on the belvedere (%d slots)", #list(), SLOTS))
+	print(string.format("HallOfGuardians: ready - %d Guardians on the roll, one at a time on the belvedere", #list()))
 	while true do
 		task.wait(num("PollSecs", 60))
 		refresh()
 	end
 end)
-task.spawn(function()
+task.spawn(function()                                                  -- 3 s after the lighthouse plaque names a new winner: read again
 	local plinth = K and K:WaitForChild("Plinth", 30)
 	local plaque = plinth and plinth:WaitForChild("Plaque", 30)
 	local words = plaque and plaque:WaitForChild("Words", 30)
