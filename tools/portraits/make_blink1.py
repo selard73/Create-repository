@@ -75,9 +75,10 @@ local G = workspace:FindFirstChild("PortraitGallery")
 local s = G and G:FindFirstChild("PortraitClient")
 if not (s and s:IsA("LuaSourceContainer")) then print("QQ BLINK1 ABORT - missing workspace.PortraitGallery.PortraitClient") return end
 local o = s.Source
-print(string.format("QQ BLINK1 PortraitClient is %d chars; vr1 text %s", #o, o:find(@@VR@@, 1, true) and "present" or "ABSENT"))
+local VRM = @@VR@@
+print(string.format("QQ BLINK1 PortraitClient is %d chars; vr1 text %s", #o, o:find(VRM, 1, true) and "present" or "ABSENT"))
 if o:find("sig==lastSig", 1, true) then print("QQ BLINK1 DONE (already patched): PortraitClient " .. #o) return end
-if not o:find(@@VR@@, 1, true) then print("QQ BLINK1 ABORT - this is not the job 27 (vr1) text; nothing changed") return end
+if not o:find(VRM, 1, true) then print("QQ BLINK1 ABORT - this is not the job 27 (vr1) text; nothing changed") return end
 local P = {{@@F1@@, @@R1@@}, {@@F2@@, @@R2@@}, {@@F3@@, @@R3@@}}
 for i, p in ipairs(P) do
 	local a, b = o:find(p[1], 1, true)
