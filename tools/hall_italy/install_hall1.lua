@@ -3,7 +3,7 @@
 -- Nocciola in marble with the harbour key, standing together in a crescent above the sea (Shannon, Oct 14 2026: "make this
 -- hall of fame look distinctively different from the one in France"; site E). workspace.HallOfGuardians: Belvedere (a round
 -- mosaic terrace, a low parapet with a majolica band, the centre column with the gold key, two lanterns, the lectern with the
--- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (18410 chars: pedestals and statues from
+-- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (18818 chars: pedestals and statues from
 -- the Guardian list at run time). Undo: delete workspace.HallOfGuardians (an older one is HudBackup.HallOfGuardians_pre_n).
 -- No DataStore, no publish. Output lines start with "QQ BELV".
 local SS = game:GetService("ServerStorage")
@@ -249,10 +249,21 @@ local function statueFor(m, cf, e)
 end
 local building, dirty, wipe = false, false, false
 local pending = {}                                                     -- slot k -> the entry still without a statue
-local function shown_list(l)                                            -- who stands on the pedestals (the lectern's roll always has everyone)
-	if (F:GetAttribute("Mode") or "first") ~= "latest" or #l <= SLOTS then return l end
-	local out = {l[1]}                                                 -- No. 1 keeps the centre for good; the newest take the other pedestals
-	for i = #l - (SLOTS - 2), #l do table.insert(out, l[i]) end
+-- who stands on the pedestals (the lectern's roll always names everyone). Shannon, Oct 14: "latest 7 please" - the newest Guardian
+-- always gets a statue, the oldest steps down to the roll. Mode "latest" (hers) or "first" (the first Slots keep theirs for good);
+-- PinFirst true = No. 1 keeps the centre for good and the newest stand beside him, newest nearest; false = the newest in the centre.
+local function shown_list(l)
+	local n, out = #l, {}
+	if (F:GetAttribute("Mode") or "latest") ~= "latest" then
+		for i = 1, math.min(n, SLOTS) do out[i] = l[i] end
+		return out
+	end
+	if F:GetAttribute("PinFirst") ~= false and n >= 1 then
+		table.insert(out, l[1])
+		for i = n, 2, -1 do if #out >= SLOTS then break end; table.insert(out, l[i]) end
+	else
+		for i = n, 1, -1 do if #out >= SLOTS then break end; table.insert(out, l[i]) end
+	end
 	return out
 end
 local function buildOnce()
@@ -630,7 +641,7 @@ end
 
 -- ---------------------------------------------------------------- the folder, its settings, the script ----
 F:SetAttribute("Base", BASE)
-F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Mode", "first"); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
+F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Mode", "latest"); F:SetAttribute("PinFirst", true); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
 F:SetAttribute("Scale", 1.35); F:SetAttribute("KeyShare", 0.42); F:SetAttribute("RestKeyHeight", 2.6); F:SetAttribute("Total", 44)
 F:SetAttribute("Rebuild", 0)
 -- a play-test preview (no Guardian list on the test server): three sample Guardians so the crescent can be seen with statues

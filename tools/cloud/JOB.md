@@ -1513,3 +1513,8 @@ Shannon (Oct 14, to runner 7) on the belvedere's capacity: "latest 7 please" - t
 (the newest always gets a statue, the oldest steps down to the lectern roll), not the first seven forever. Open: whether
 Darkknight (No. 1) stays pinned in the centre regardless (runner 7 is asking). Her lettering pick (A/B/C/D) and the lantern level
 are still pending.
+Round 5, part 1 (cloud thread): Shannon "latest 7 please" -> HallServer Mode "latest": the newest Guardian always gets a statue, the
+oldest steps down to the lectern roll (everyone stays on the roll); PinFirst true (default) = Darkknight (No. 1) keeps the centre and
+the six newest stand beside him, newest nearest the centre; PinFirst false = the seven newest, the newest in the centre - one attribute
+on workspace.HallOfGuardians, no re-run needed to flip it (set Rebuild 1 after). Lanterns dimmed to mock E. Her lettering pick (tiles
+A/B/C, lectern D) still to come; then the re-run carries all three.

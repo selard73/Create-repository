@@ -235,10 +235,21 @@ local function statueFor(m, cf, e)
 end
 local building, dirty, wipe = false, false, false
 local pending = {}                                                     -- slot k -> the entry still without a statue
-local function shown_list(l)                                            -- who stands on the pedestals (the lectern's roll always has everyone)
-	if (F:GetAttribute("Mode") or "first") ~= "latest" or #l <= SLOTS then return l end
-	local out = {l[1]}                                                 -- No. 1 keeps the centre for good; the newest take the other pedestals
-	for i = #l - (SLOTS - 2), #l do table.insert(out, l[i]) end
+-- who stands on the pedestals (the lectern's roll always names everyone). Shannon, Oct 14: "latest 7 please" - the newest Guardian
+-- always gets a statue, the oldest steps down to the roll. Mode "latest" (hers) or "first" (the first Slots keep theirs for good);
+-- PinFirst true = No. 1 keeps the centre for good and the newest stand beside him, newest nearest; false = the newest in the centre.
+local function shown_list(l)
+	local n, out = #l, {}
+	if (F:GetAttribute("Mode") or "latest") ~= "latest" then
+		for i = 1, math.min(n, SLOTS) do out[i] = l[i] end
+		return out
+	end
+	if F:GetAttribute("PinFirst") ~= false and n >= 1 then
+		table.insert(out, l[1])
+		for i = n, 2, -1 do if #out >= SLOTS then break end; table.insert(out, l[i]) end
+	else
+		for i = n, 1, -1 do if #out >= SLOTS then break end; table.insert(out, l[i]) end
+	end
 	return out
 end
 local function buildOnce()

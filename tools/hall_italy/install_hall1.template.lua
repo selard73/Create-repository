@@ -291,7 +291,7 @@ end
 
 -- ---------------------------------------------------------------- the folder, its settings, the script ----
 F:SetAttribute("Base", BASE)
-F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Mode", "first"); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
+F:SetAttribute("FloorTop", Y0); F:SetAttribute("Slots", 7); F:SetAttribute("Mode", "latest"); F:SetAttribute("PinFirst", true); F:SetAttribute("Radius", 12.6); F:SetAttribute("ArcDeg", 150)
 F:SetAttribute("Scale", 1.35); F:SetAttribute("KeyShare", 0.42); F:SetAttribute("RestKeyHeight", 2.6); F:SetAttribute("Total", 44)
 F:SetAttribute("Rebuild", 0)
 -- a play-test preview (no Guardian list on the test server): three sample Guardians so the crescent can be seen with statues
