@@ -1251,3 +1251,5 @@ thanks_note1; AwardAcorns only records to the ledger, so the server's attribute 
 Preview with a 50-acorn test line in her own name: paid 9.2 s after the folder went in (110 -> 160, Item_thanks_note1 = 1), the
 card at x 173..493 y 78..246 with 0 overlaps, a rejoin paid nothing again. Her "it says 50 but it should be 1000, right?" = the
 test line only; the three real lines are 1000. Pictures tools/thanks/shots. She publishes next.
+
+(Oct 14: the week's handoff is tools/cloud/HANDOFF_cloud_2026-10-14.md; the Roblox cache cleanup on her PC was done by hand: 13.2 -> 15.3 GB free, rbx-storage 3.7 GB still to delete with Studio closed.)
