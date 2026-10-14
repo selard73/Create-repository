@@ -1564,3 +1564,10 @@ slot 1 invitation "Guardian No. 1" and the "No Guardian yet" roll in 20 s. Two n
 the lectern roll wraps "5. John" across lines (a non-breaking space between number and name would keep each pair together). Pictures
 tools/hall_italy/shots/belv-j94r5-crescent-eight.jpg, belv-j94r5-lectern.jpg; lines in tools/hall_italy/install94r5_result_2026-10-14.txt.
 Unpublished in Studio: job 94 round 5 + job 95. She publishes.
+Edit check after the round-5 test (runner 7): v1369; HallOfGuardians 123 parts, 0 Slot_ models, HallServer 18987 enabled, Mode latest,
+PinFirst false, TestLedger nil, Rebuild 0, PreviewJson "", lanterns Glass; Funnel present, ForceNew false; no leftovers; HttpEnabled false.
+SHANNON on the round-5 picture of seven statues (Oct 14): "that actually looks a little overbearing and creepy". So the full crescent of
+seven marble figures with raised keys is too much (the five placeholder avatars of the test ids make it worse than real players would,
+but the reaction is to the row itself). Runner 7 is asking her which way to go: fewer pedestals (3 or 5) with more air; smaller figures
+(Scale 1.35 -> ~1.1) on lower pedestals; or only the newest Guardian in marble (one statue, centre) and the past ones as named plaques
+along the parapet, no figures. Hold the publish of round 5 until she decides; the live game still shows round 4 (first seven, cream).
