@@ -1730,3 +1730,16 @@ expect QQ FUNNEL DONE with FunnelServer 7394); 2. run install_interact1.lua (exp
 use it -> "Interact: Prompt "<text>" by <name>"; click the belvedere's Older post -> "Interact: Click "Older" ..."; equip the camera
 -> "Interact: Tool "Camera" ..." and a photo -> ToolUse; sit in the boat -> Seat; travel -> Area; use it again within a minute ->
 nothing (Repeat). Edit check; she publishes.
+
+## Job 99: the look pass, settings only (play-test PREVIEW first, then Studio EDIT on her yes) - after job 98
+
+Shannon (Oct 12, another game's dock and grass: "they have a better sky and better grass"; "just refined", same vibe, no time-of-day
+or haze change). tools/look/look_pass1.lua: water Reflectance 0.55 -> 0.85, Transparency 0.45 -> 0.65, WaveSize 0.06 -> 0.10; Bloom
+Threshold 2 -> 1.2 (the lanterns glow); a ColorCorrectionEffect "LookGrade" Contrast 0.06 / Saturation 0.08; Terrain Grass + LeafyGrass
+colour 96,150,72 -> 86,140,62. Every old value is kept as a LookWas_* attribute on Lighting / Terrain; tools/look/look_undo1.lua puts
+everything back in one run. NOT scriptable (hers, in the Properties panel): Terrain.Decoration on + GrassLength ~0.7; the cloud skybox
+from the Toolbox (two or three candidates she picks). ClockTime, Atmosphere, Fog, the sun untouched.
+PREVIEW: a play test, the script's body on the server; pictures with the game's camera BEFORE (the same spots) and AFTER on desktop and
+the phone emulator: the French village lake or river with the sky (water), a lantern at the harbour or the piazza (bloom), the forest
+floor (grass), the Porto piazza (grading). Send the QQ LOOK lines and the picture pairs; she picks what stays. Then EDIT on her yes (the
+same script); the undo is look_undo1.lua. No publish.
