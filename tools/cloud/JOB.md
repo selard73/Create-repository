@@ -1452,7 +1452,9 @@ terrace R 17, parapet 16 segments, 7 slots; copies: Italian cypress 2, Lemon tre
 text 250,244,228; HallServer carries the terracotta 178,92,62 for the tiles; HudBackup.HallOfGuardians_props_1 still 115 (nothing new
 parked, no second folder); HudBackup.HallOfGuardians_pre_1 = the round-3 folder, its HallServer Enabled false; HttpEnabled false; no
 leftovers. Unpublished in Studio: job 94 round 4. Shannon's verdict on the terracotta signs pending; she publishes.
-<<<<<<< HEAD
+PUBLISHED by Shannon at 18:38:04Z Oct 14 (games API "updated"; the round-4 re-run and its pictures were ~18:30-18:36Z, not 19:30Z as
+written above): the live game carries job 94 round 4 - the Belvedere dei Guardiani (no benches, terracotta signs). Nothing
+unpublished in Studio. She is checking it live; the first live server should raise Darkknight (No. 1) and every daily Guardian.
 
 ## Job 95: the onboarding funnel for the Creator Dashboard (Studio EDIT; ask Shannon first) - AFTER the belvedere's round 4
 
@@ -1479,11 +1481,6 @@ squirrels (Desktop, New)"; open it again: nothing. Then ForceNew back to false (
 only (Returning, no steps). Every line says "- not sent" in Studio? No: in Studio the pcall succeeds silently (Roblox drops the
 event); only a live server delivers. The dashboard's Funnel page unlocks once events arrive (Creator Dashboard > Analytics >
 Funnel); allow a day.
-=======
-PUBLISHED by Shannon at 18:38:04Z Oct 14 (games API "updated"; the round-4 re-run and its pictures were ~18:30-18:36Z, not 19:30Z as
-written above): the live game carries job 94 round 4 - the Belvedere dei Guardiani (no benches, terracotta signs). Nothing
-unpublished in Studio. She is checking it live; the first live server should raise Darkknight (No. 1) and every daily Guardian.
->>>>>>> origin/claude/epic-hawking-188q4l
 Job 95 review (1 reader, 7 findings; 5 applied): the cohort is decided the moment the save is in (a squirrel found in the first second
 no longer marks a new player Returning); the device report is waited for up to 30 s, and a player who leaves before it is still counted
 as Joined (device Unknown); a map opened before the player is ready is kept and logged once ready; only the highest step reached is
