@@ -1253,3 +1253,21 @@ card at x 173..493 y 78..246 with 0 overlaps, a rejoin paid nothing again. Her "
 test line only; the three real lines are 1000. Pictures tools/thanks/shots. She publishes next.
 
 (Oct 14: the week's handoff is tools/cloud/HANDOFF_cloud_2026-10-14.md; the Roblox cache cleanup on her PC was done by hand: 13.2 -> 15.3 GB free, rbx-storage 3.7 GB still to delete with Studio closed.)
+
+## Job 93: READ-ONLY survey + pictures for the Italian Hall of Fame (Studio EDIT mode; nothing changed) - runner 7
+
+tools/hall_italy/survey93.lua: (1) the live PortoKeeper (attributes, plaque words, which patches PortoKeeperServer carries),
+Champion's MakeStatue / MakeSquirrel, the ChampionAcorn template, the French HallOfFame's pieces and their sizes; (2) what a
+ray from the sky meets at thirteen spots (paving part or terrain, colour, material); (3) five candidate sites measured for a
+26 x 18 stud footprint (the French pavilion's steps are 22 x 14) at 2-stud steps - the flattest CLEAR windows (ground under
+every cell, no water, nothing standing higher than 0.8 above the terrain) with what stands within 6 studs: A the lighthouse
+terrace beside the Guardian's statue, B Piazza del Limone, C the harbour front, D the church square, E Prato dei Fiori.
+Send every `QQ HALL` line unchanged. Then pictures (Studio, Edit mode, no change): tools/hall_italy/view93_A1.lua .. E2.lua
+each move ONLY the editor camera (1 = standing at eye height the way a player walks up, 2 = a high three-quarter view); one
+picture each as tools/hall_italy/shots/hall-site-<id>.jpg (git add -f); where a site's best window lies more than 15 studs
+from the view's target, one more picture looking at that window. Also export the live PortoKeeperServer and
+PortoKeeperClient Source as they are now (after jobs 28 + 90) to tools/porto_keeper/src/PortoKeeperServer_live.lua and
+PortoKeeperClient_live.lua (the way job 72 exported PromptClient), and push. No edit, no publish, no DataStore.
+Why: the Guardian of the Harbour is a once-ever title in PortoKeeperServer (DataStore PortoKeeper_v1, key "first", one record),
+so "all past Guardians" needs a rule from Shannon before any store of them exists; the site and the look are hers to pick
+from pictures (the lesson of job 88: show her the game's own view first).

@@ -73,3 +73,12 @@ later") - after Oct 18, when she says.
 - The cloud thread: write the installer (Python generator -> .lua in tools/<job>/), compile-check with the luau CLI, review
   adversarially (Workflow) before any install, commit + push, send the commit-SHA raw URL and a test plan. Log every result
   in JOB.md and keep a "State at" line in this file.
+
+## State at Oct 14 ~15:15 UTC (cloud thread = session_01MKXFUzLgdDUZA4QuK93pku; runner 7 = bridge:session_01JuVhpFbJPyyCZ9K5dZyPhB)
+- The cloud thread commits on claude/youthful-curie-8azx86 (started from epic-hawking at f7e67b7; the runner's pushes to
+  epic-hawking are merged in). Shannon asked whether the cloud thread may push to epic-hawking directly instead.
+- Job 93 (read-only survey + pictures of five candidate sites for the Italian Hall of Fame; export of the live PortoKeeper
+  scripts) sent to runner 7. Design questions put to Shannon: what makes a PAST Guardian (the title is once-ever in
+  PortoKeeperServer: one record, key "first"), where the hall stands (sites A-E, pictures to come), how it looks (a twin of
+  the French pavilion in Porto's own colours proposed: ochre and terracotta, the harbour Key in the pediment, the Guardian's
+  statue holding the Key, one at a time with the older/newer buttons). Nothing built yet.
