@@ -1,0 +1,59 @@
+# Job 94 step 0, probe94.lua output, runner 7, Oct 14 2026 ~17:15Z, Studio Edit (PlaceVersion 1352), script from commit 44484a9 (4740 bytes, adler32 2575085141)
+QQ PROBE94 centre (500, -1080): terrain Grass at y 2.0; rim r 17.5: y 0.4..2.0, 0 of 12 points water/none
+QQ PROBE94 centre (500, -1080): 15 BIG things and 130 small props within 22 studs
+QQ PROBE94   BIG Grotta.CameraStops.Back (Part, 1 parts): x 515..523 z -1142..-1082, top -20.0 over the terrain, nearest 0.0 studs
+QQ PROBE94   BIG Grotta.CameraStops.North (Part, 1 parts): x 449..523 z -1094..-1086, top -18.4 over the terrain, nearest 0.0 studs
+QQ PROBE94   BIG Grotta.CameraStops.Roof (Part, 1 parts): x 449..523 z -1138..-1086, top -19.4 over the terrain, nearest 0.0 studs
+QQ PROBE94   BIG PortoNocciola.16 Mediterranean planting.Coastal stone pine grove (Model, 11 parts): x 495..515 z -1103..-1085, top 19.7 over the terrain, nearest 3.0 studs
+QQ PROBE94   BIG Grotta.CameraStops.South (Part, 1 parts): x 449..523 z -1138..-1130, top -20.0 over the terrain, nearest 11.5 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving (Part, 1 parts): x 473..486 z -1098..-1088, top 1.6 over the terrain, nearest 17.7 studs
+QQ PROBE94   BIG Grotta.Glow.Blue glow floor (Part, 1 parts): x 453..493 z -1125..-1099, top -62.5 over the terrain, nearest 18.0 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving (UnionOperation, 1 parts): x 476..488 z -1102..-1092, top 1.6 over the terrain, nearest 18.1 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving (UnionOperation, 1 parts): x 470..483 z -1094..-1083, top 1.6 over the terrain, nearest 18.2 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving (Part, 1 parts): x 478..491 z -1106..-1096, top 1.6 over the terrain, nearest 19.5 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving (Part, 1 parts): x 468..481 z -1090..-1079, top 1.6 over the terrain, nearest 19.6 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Upper town to meadow (Model, 15 parts): x 462..522 z -1075..-1033, top 4.7 over the terrain, nearest 20.9 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving (UnionOperation, 1 parts): x 481..494 z -1111..-1100, top 1.6 over the terrain, nearest 21.7 studs
+QQ PROBE94   BIG PortoNocciola.16 Mediterranean planting.Coastal stone pine grove (Model, 3 parts): x 511..529 z -1109..-1099, top 21.1 over the terrain, nearest 21.8 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving (UnionOperation, 1 parts): x 465..478 z -1086..-1075, top 1.6 over the terrain, nearest 21.8 studs
+QQ PROBE94 centre (512, -1066): terrain Grass at y 2.0; rim r 17.5: y 0.4..2.0, 0 of 12 points water/none
+QQ PROBE94 centre (512, -1066): 5 BIG things and 181 small props within 22 studs
+QQ PROBE94   BIG Grotta.CameraStops.North (Part, 1 parts): x 449..523 z -1094..-1086, top -18.4 over the terrain, nearest 0.0 studs
+QQ PROBE94   BIG Grotta.CameraStops.Roof (Part, 1 parts): x 449..523 z -1138..-1086, top -19.4 over the terrain, nearest 7.5 studs
+QQ PROBE94   BIG Grotta.CameraStops.Back (Part, 1 parts): x 515..523 z -1142..-1082, top -20.0 over the terrain, nearest 7.9 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Upper town to meadow (Model, 15 parts): x 462..522 z -1075..-1033, top 4.7 over the terrain, nearest 15.7 studs
+QQ PROBE94   BIG PortoNocciola.16 Mediterranean planting.Coastal stone pine grove (Model, 11 parts): x 495..515 z -1103..-1085, top 19.7 over the terrain, nearest 17.1 studs
+QQ PROBE94   small PortoNocciola.14 Lighthouse coast.Prato dei Fiori coastal meadow.Windflower stem (Part, 1 parts): x 517..517 z -1066..-1066, top 1.0 over the terrain, nearest 4.8 studs
+QQ PROBE94 centre (524, -1078): terrain Grass at y 2.0; rim r 17.5: y 2.0..2.0, 0 of 12 points water/none
+QQ PROBE94 centre (524, -1078): 6 BIG things and 165 small props within 22 studs
+QQ PROBE94   BIG Grotta.CameraStops.North (Part, 1 parts): x 449..523 z -1094..-1086, top -18.4 over the terrain, nearest 0.0 studs
+QQ PROBE94   BIG Grotta.CameraStops.Back (Part, 1 parts): x 515..523 z -1142..-1082, top -20.0 over the terrain, nearest 0.0 studs
+QQ PROBE94   BIG Grotta.CameraStops.Roof (Part, 1 parts): x 449..523 z -1138..-1086, top -19.4 over the terrain, nearest 5.7 studs
+QQ PROBE94   BIG PortoNocciola.Drone Flyer's drone (Model, 1 parts): x 525..527 z -1087..-1085, top 3.7 over the terrain, nearest 7.2 studs
+QQ PROBE94   BIG PortoNocciola.16 Mediterranean planting.Coastal stone pine grove (Model, 11 parts): x 495..515 z -1103..-1085, top 19.7 over the terrain, nearest 12.9 studs
+QQ PROBE94   BIG PortoNocciola.16 Mediterranean planting.Coastal stone pine grove (Model, 3 parts): x 511..529 z -1109..-1099, top 21.1 over the terrain, nearest 18.5 studs
+QQ PROBE94 centre (538, -1073): terrain Grass at y 2.0; rim r 17.5: y 2.0..2.0, 0 of 12 points water/none
+QQ PROBE94 centre (538, -1073): 6 BIG things and 170 small props within 22 studs
+QQ PROBE94   BIG Grotta.CameraStops.Back (Part, 1 parts): x 515..523 z -1142..-1082, top -20.0 over the terrain, nearest 4.8 studs
+QQ PROBE94   BIG Grotta.CameraStops.North (Part, 1 parts): x 449..523 z -1094..-1086, top -18.4 over the terrain, nearest 10.4 studs
+QQ PROBE94   BIG PortoNocciola.16 Mediterranean planting.Mediterranean umbrella pine (Model, 5 parts): x 555..572 z -1072..-1054, top 22.1 over the terrain, nearest 15.8 studs
+QQ PROBE94   BIG PortoNocciola.Drone Flyer's drone (Model, 1 parts): x 525..527 z -1087..-1085, top 3.7 over the terrain, nearest 16.5 studs
+QQ PROBE94   BIG PortoNocciola.16 Mediterranean planting.Silver olive tree (Model, 6 parts): x 554..565 z -1066..-1056, top 12.1 over the terrain, nearest 18.1 studs
+QQ PROBE94   BIG Grotta.CameraStops.Roof (Part, 1 parts): x 449..523 z -1138..-1086, top -19.4 over the terrain, nearest 19.7 studs
+QQ PROBE94 centre (486, -1060): terrain Grass at y 0.4; rim r 17.5: y 0.4..2.0, 0 of 12 points water/none
+QQ PROBE94 centre (486, -1060): 14 BIG things and 71 small props within 22 studs
+QQ PROBE94   BIG Grotta.CameraStops.North (Part, 1 parts): x 449..523 z -1094..-1086, top -18.4 over the terrain, nearest 0.0 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Upper town to meadow (Model, 15 parts): x 462..522 z -1075..-1033, top 4.7 over the terrain, nearest 0.0 studs
+QQ PROBE94   BIG Grotta.CameraStops.Roof (Part, 1 parts): x 449..523 z -1138..-1086, top -19.4 over the terrain, nearest 6.7 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Solid turning landing (UnionOperation, 1 parts): x 459..471 z -1076..-1064, top 1.6 over the terrain, nearest 14.6 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving (UnionOperation, 1 parts): x 460..472 z -1077..-1067, top 1.6 over the terrain, nearest 16.7 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving (UnionOperation, 1 parts): x 463..475 z -1082..-1071, top 1.6 over the terrain, nearest 16.9 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Level stair exit (UnionOperation, 1 parts): x 458..469 z -1074..-1063, top 1.6 over the terrain, nearest 17.5 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving (UnionOperation, 1 parts): x 465..478 z -1086..-1075, top 1.6 over the terrain, nearest 18.4 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Level stair exit (UnionOperation, 1 parts): x 456..467 z -1072..-1061, top 1.6 over the terrain, nearest 19.1 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Junction fitted rail post (Part, 1 parts): x 465..465 z -1062..-1062, top 4.6 over the terrain, nearest 19.5 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Junction fitted handrail (Part, 1 parts): x 462..465 z -1062..-1059, top 4.7 over the terrain, nearest 20.2 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Continuous fitted paving (Part, 1 parts): x 468..481 z -1090..-1079, top 1.6 over the terrain, nearest 20.6 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Level stair exit (Part, 1 parts): x 453..464 z -1070..-1059, top 1.6 over the terrain, nearest 21.0 studs
+QQ PROBE94   BIG PortoNocciola.12 Country landscape.Connected streets and coastal routes.Sentiero del Faro.Junction fitted handrail (Part, 1 parts): x 420..462 z -1059..-1019, top 5.4 over the terrain, nearest 21.1 studs
+QQ PROBE94 END (57 lines)

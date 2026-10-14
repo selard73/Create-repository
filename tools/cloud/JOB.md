@@ -1312,3 +1312,16 @@ PREVIEW (a play test on the test server; discarded on stop; Edit checked unchang
    the benches face the sea (their facing is a guess), the copies found (cypress / lemon / bench counts), whether the terrace's
    edge floats or buries on the slope, the tile and lectern texts legible, anything standing through the terrace.
 4. Stop the play test; confirm Edit has no workspace.HallOfGuardians. Nothing is installed until Shannon says yes to the pictures.
+Result job 94 step 0 (runner 7, 44484a9; Studio Edit v1352, Oct 14 ~17:15Z; read-only): probe94.lua run as committed (4740 bytes,
+adler32 2575085141); all 57 QQ PROBE94 lines unchanged in tools/hall_italy/probe94_result_2026-10-14.txt. The rim at r 17.5 has
+ground under all 12 points at every centre; terrain y 2.0 at (500,-1080), (512,-1066), (524,-1078), (538,-1073) [the last two dead
+flat 2.0..2.0], y 0.4 at (486,-1060) [rim 0.4..2.0]. Above-ground BIG things, nearest first: (500,-1080): the Coastal stone pine grove
+(11 parts, x 495..515 z -1103..-1085) at 3.0 studs - inside the terrace; the Sentiero del Faro paving from 17.7; Upper town to meadow
+(the stair, 15 parts, x 462..522 z -1075..-1033) at 20.9. (512,-1066): the stair at 15.7, the pine grove at 17.1, 181 small props (the
+most flowers). (524,-1078): the Drone Flyer's drone (x 525..527 z -1087..-1085, top 3.7) at 7.2 studs, the pine grove at 12.9.
+(538,-1073): the Mediterranean umbrella pine (x 555..572 z -1072..-1054) at 15.8, the drone at 16.5, the Silver olive tree at 18.1,
+170 small props. (486,-1060): the stair at 0.0 (on it), Sentiero del Faro landings and paving from 14.6, handrails from 19.5.
+NOTE for the installer's big-thing check: every centre also lists Grotta.CameraStops.Back/North/Roof/South and Grotta.Glow.Blue glow
+floor as BIG - those are the sea cave's camera stops and floor 18-63 studs BELOW the terrain (tops -18.4 .. -62.5), not obstacles on
+the meadow; a check keyed on box size alone would abort on them, so key it on the top being above the ground. The drone is a squirrel's
+prop (the Drone Flyer), 3.7 high: moving it would need Shannon's yes. Camera not moved; nothing changed.
