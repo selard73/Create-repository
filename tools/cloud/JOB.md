@@ -1422,6 +1422,14 @@ Edit check after the install + test (runner 7): PlaceVersion 1369; HallOfGuardia
 Edit), HallServer 17897 RunContext Server Enabled; attrs TestLedger nil, Rebuild 0, PreviewJson "", Slots 7; backup
 HudBackup.HallOfGuardians_props_1 115 things; no Runner7 leftovers; HttpEnabled false; PortoKeeperServer 14386. Unpublished in
 Studio: job 94 (the Belvedere dei Guardiani). Shannon publishes.
+Shannon on the installed hall (Oct 14, to runner 7): "I don't like the position of the benches, I don't think we need benches there
+and I don't like the colors of the signs." Her pick for the signs (lectern plaque + pedestal tiles), from four options: TERRACOTTA
+WITH CREAM LETTERS (the terrace rim's terracotta 178,92,62; cream 250,244,228). Runner 7 REMOVED the two Belv_Harbour_bench copies
+from workspace.HallOfGuardians.Belvedere in Edit at her word (QQ BENCH removed 2). Current sign colours for reference: lectern plaque
+52,110,150 SmoothPlastic, frame 214,160,44, Title 255,206,64 / Sub, Roll, Foot 250,244,228; the lighthouse and French plaques are
+150,108,58 with 255,226,150 titles. Needed from the cloud thread (round 4): no benches in install_hall1.template.lua; the lectern plaque
+and HallServer's pedestal tiles in terracotta with cream text (keep the gold frame/trim or not, your call); a re-run of the installer
+(it moves the old folder to HudBackup.HallOfGuardians_pre_1 and parks props again - say whether a re-run re-parks or reuses props_1).
 Result job 94 (runner 7, 77ba17e, Shannon's "install"; INSTALLED in Edit, NOT published): QQ BELV DONE at (530, 1.9, -1064); TestLedger
 play test passed (3 statues, slot 4 invitation, the roll); Edit check clean; 115 props in HudBackup.HallOfGuardians_props_1.
 Shannon, looking at it in Studio: "I don't like the position of the benches, I don't think we need benches there and I don't like the
@@ -1435,6 +1443,15 @@ second folder); expect `QQ BELV DONE ... 0 small props set aside`. The undo of e
 the 115 things in HudBackup.HallOfGuardians_props_1 back under workspace.PortoNocciola["14 Lighthouse coast"]["Prato dei Fiori coastal
 meadow"] (round-3 parking kept their CFrames but not their parent; later parkings carry ParkedFrom). Then a quick look in Edit
 (terracotta signs; no benches) and the TestLedger play test is not needed again.
+Result job 94 RE-RUN round 4 (runner 7, 7666d06, Shannon's yes; Studio Edit v1369, Oct 14 ~19:30Z; NOT published): run unpatched
+from the MCP context (fetched in Edit, len 38896 adler 1270728139 = the blob; HttpEnabled on for the fetch and back off; the
+ModuleScript route). QQ BELV DONE: workspace.HallOfGuardians at (530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 1.7..2.0);
+terrace R 17, parapet 16 segments, 7 slots; copies: Italian cypress 2, Lemon tree 2; 0 small props set aside
+(HudBackup.HallOfGuardians_props_*); HallServer 17909 chars; the old folder is HudBackup.HallOfGuardians_pre_1. Edit after: the hall
+123 parts, 0 benches, HallServer 17909 RunContext Server; lectern plaque 178,92,62 SmoothPlastic, frame 240,236,226, Title/Sub/Roll/Foot
+text 250,244,228; HallServer carries the terracotta 178,92,62 for the tiles; HudBackup.HallOfGuardians_props_1 still 115 (nothing new
+parked, no second folder); HudBackup.HallOfGuardians_pre_1 = the round-3 folder, its HallServer Enabled false; HttpEnabled false; no
+leftovers. Unpublished in Studio: job 94 round 4. Shannon's verdict on the terracotta signs pending; she publishes.
 
 ## Job 95: the onboarding funnel for the Creator Dashboard (Studio EDIT; ask Shannon first) - AFTER the belvedere's round 4
 
