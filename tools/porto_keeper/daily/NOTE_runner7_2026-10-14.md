@@ -15,7 +15,8 @@ still describe the pre-Codex PortoKeeper (PortoKeeperServer 11893 = job 90); tha
   write this store (standing rule).
 - The plinth by the lighthouse shows TODAY's Guardian ("Awaiting today's Guardian" when none); historical winners keep the
   title (player attribute PortoKeeperTitle) and the badge. Fireworks + banner + chat line on a fresh win (PortoKeeperClient).
-- New RS remotes: PortoKeeperEvent, SquirrelCollectedServer, GetItalyAttempts, AckItalyAttempt, ItalyCelebrationFresh.
+- RS objects the server waits for: PortoKeeperEvent (a RemoteEvent, present in Edit); SquirrelCollectedServer, GetItalyAttempts,
+  AckItalyAttempt, ItalyCelebrationFresh are NOT in Edit - created at run time (see the grep in the commit message / SquirrelSetup).
 - SquirrelSetup (workspace.SquirrelScripts) was patched too: a versioned `italyAttempts` outbox saved atomically with the 44th
   find, reset generations (FindsEpoch module), save/reset protocol changes. Old servers had to be retired at rollout.
 
@@ -26,8 +27,8 @@ still describe the pre-Codex PortoKeeper (PortoKeeperServer 11893 = job 90); tha
 - `./studio_2026-10-14/` = the read-back of the PUBLISHED place, LF-normalized by runner 7 (Codex's copies are CRLF).
   `CHECKSUMS.md` has length + adler32 + sha256 per file. Verified against Studio (Edit, PlaceVersion 1352) on Oct 14:
   PortoKeeperServer 14386, PortoKeeperClient 12323, DailyKeeperCore 5889, DailyKeeperStore 2080, KeeperCelebration 2056
-  match byte for byte (length + adler32); SquirrelSetup 33348 matches by length (adler check pending - Studio went into
-  Play while I was reading); the sha256 of all 13 files equals Codex's publication-verification record.
+  match byte for byte (length + adler32), and so do SquirrelSetup 33348, SquirrelRegistry 21360 and FindsEpoch 2913 (all three
+  under Workspace.SquirrelScripts; FindsEpoch is a ModuleScript there); the sha256 of all 13 files equals Codex's publication-verification record.
   **Count every installer anchor against these files, not against JOB.md's older sizes.**
 - `../codex_live_release_2026-10-14/` = Codex's release folder verbatim (before/after/readback sources, `production.patch`,
   `install-production.lua`, preflight + publication verification JSON, python helpers).
