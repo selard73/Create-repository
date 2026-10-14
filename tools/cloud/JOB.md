@@ -1683,3 +1683,7 @@ the probe cannot name the trigger. Options: a Studio-only sample sitter (a Previ
 with the owner's avatar when the store is off) so the probe has something to watch; or install job 97's fix on the reading alone (skip
 no-op swaps; parent the new mount before destroying the old; destroy after two rendered frames) - it is safe either way - and let
 Shannon judge on her phone. No blink seen in the emulator-less run (nothing to blink).
+SHANNON (Oct 14, after the job 96 run): "there has been no further issue with the art work." - the portraits no longer blink for her,
+so job 96 is CLOSED and job 97 (the no-gap fix) is NOT needed unless it comes back. For the record: village/build_portraits.lua line 489
+opens the PortraitWall store only outside Studio, so a Studio play test has no entries, 0 models and empty mounts - the blink can only
+ever be judged live. Next per the handoff: the phone camera (she still owes what she saw), then the look pass.
