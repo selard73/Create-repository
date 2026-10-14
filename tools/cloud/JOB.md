@@ -1513,13 +1513,6 @@ Shannon (Oct 14, to runner 7) on the belvedere's capacity: "latest 7 please" - t
 (the newest always gets a statue, the oldest steps down to the lectern roll), not the first seven forever. Open: whether
 Darkknight (No. 1) stays pinned in the centre regardless (runner 7 is asking). Her lettering pick (A/B/C/D) and the lantern level
 are still pending.
-<<<<<<< HEAD
-Round 5, part 1 (cloud thread): Shannon "latest 7 please" -> HallServer Mode "latest": the newest Guardian always gets a statue, the
-oldest steps down to the lectern roll (everyone stays on the roll); PinFirst true (default) = Darkknight (No. 1) keeps the centre and
-the six newest stand beside him, newest nearest the centre; PinFirst false = the seven newest, the newest in the centre - one attribute
-on workspace.HallOfGuardians, no re-run needed to flip it (set Rebuild 1 after). Lanterns dimmed to mock E. Her lettering pick (tiles
-A/B/C, lectern D) still to come; then the re-run carries all three.
-=======
 Shannon (Oct 14, to runner 7): Darkknight: "rotate please" - No. 1 is NOT pinned; the latest seven, plain. On the lettering: she
 leans to B (gold letters with a dark edge) "but I don't like the font and it is too just yellow". Runner 7 mocked (test server,
 discarded) an OLD-GOLD finish - TextColor3 white + UIGradient rotation 90 with 255,226,150 -> 232,190,90 (0.45) -> 176,124,40, plus a
@@ -1535,7 +1528,11 @@ AND the lectern: GothamBold, cream 250,244,228 on the terracotta; the gold finis
 the mocked dim level stands unless she objects: Lamp Material Glass, colour 255,196,120, transparency 0.15, PointLight 0.35 /
 range 12 (installed: Neon 255,214,140, 1.0 / 16). ROUND 5 brief: latest seven (Darkknight rotates like everyone), GothamBold cream
 lettering, dimmer lanterns. The TestLedger play test is worth repeating once (the rotation: 8+ entries).
->>>>>>> origin/claude/epic-hawking-188q4l
+Round 5, part 1 (cloud thread): Shannon "latest 7 please" -> HallServer Mode "latest": the newest Guardian always gets a statue, the
+oldest steps down to the lectern roll (everyone stays on the roll); PinFirst true (default) = Darkknight (No. 1) keeps the centre and
+the six newest stand beside him, newest nearest the centre; PinFirst false = the seven newest, the newest in the centre - one attribute
+on workspace.HallOfGuardians, no re-run needed to flip it (set Rebuild 1 after). Lanterns dimmed to mock E. Her lettering pick (tiles
+A/B/C, lectern D) still to come; then the re-run carries all three.
 ROUND 5 (cloud thread, Shannon's three decisions): (1) Mode "latest", PinFirst FALSE ("rotate please"): the crescent shows the newest
 seven, the newest in the CENTRE, the older ones right and left of it in turn, the oldest of the seven at the horns; everyone stays on
 the lectern roll (the newest six names, "N more, then"). (2) Lettering GothamBold, cream 250,244,228 on the terracotta, tiles (Title/
