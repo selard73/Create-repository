@@ -1509,3 +1509,7 @@ cream hairline border inset 8 px; E the south lantern dimmed: Lamp Material Glas
 Edit check after the job 95 play test (runner 7): v1369; Funnel = FunnelEvent, FunnelServer 7232, FunnelClient 1913, Enabled true,
 ForceNew FALSE again, LogPrints true; HallOfGuardians 123 parts, 0 Slot_ models, 0 mock-up instances, both lanterns Neon 255,214,140
 light 1.0/16 as installed, TestLedger nil, Rebuild 0; no Runner7 leftovers; HttpEnabled false. Unpublished in Studio: job 95.
+Shannon (Oct 14, to runner 7) on the belvedere's capacity: "latest 7 please" - the crescent shows the LATEST seven Guardians
+(the newest always gets a statue, the oldest steps down to the lectern roll), not the first seven forever. Open: whether
+Darkknight (No. 1) stays pinned in the centre regardless (runner 7 is asking). Her lettering pick (A/B/C/D) and the lantern level
+are still pending.
