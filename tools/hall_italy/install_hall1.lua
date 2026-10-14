@@ -3,7 +3,7 @@
 -- Nocciola in marble with the harbour key, standing together in a crescent above the sea (Shannon, Oct 14 2026: "make this
 -- hall of fame look distinctively different from the one in France"; site E). workspace.HallOfGuardians: Belvedere (a round
 -- mosaic terrace, a low parapet with a majolica band, the centre column with the gold key, two lanterns, the lectern with the
--- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (17497 chars: pedestals and statues from
+-- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (17897 chars: pedestals and statues from
 -- the Guardian list at run time). Undo: delete workspace.HallOfGuardians (an older one is HudBackup.HallOfGuardians_pre_n).
 -- No DataStore, no publish. Output lines start with "QQ BELV".
 local SS = game:GetService("ServerStorage")
@@ -72,6 +72,11 @@ local function compose(first, daily)
 	return out
 end
 local function readStore()                                             -- true when the list was read (and `current` is fresh)
+	if STUDIO then                                                     -- a Studio test of the ledger reading: the folder's TestLedger = JSON {first = rec, daily = the daily_v2 state}
+		local okT, tl = pcall(function() return HttpService:JSONDecode(F:GetAttribute("TestLedger") or "") end)
+		if okT and type(tl) == "table" then current = compose(tl.first, tl.daily); return true end
+		return false
+	end
 	if not store then return false end
 	local ok, first, daily = pcall(function() return store:GetAsync("first", getOptions), store:GetAsync("daily_v2", getOptions) end)
 	if not ok then warn("HallOfGuardians: cannot read the Guardian store: " .. tostring(first)); return false end
@@ -340,7 +345,10 @@ task.spawn(function()
 	if who then who:GetPropertyChangedSignal("Text"):Connect(function() task.delay(3, refresh) end) end
 end)
 ]===]
-if type(loadstring) == "function" then local f, err = loadstring(SERVER); if not f then print("QQ BELV ABORT: HallServer does not compile: " .. tostring(err)) return end end   -- (no loadstring in the Studio MCP: the sources are compiled with the luau CLI before they are pushed)
+do   -- the compile check, where loadstring can run (a Script has none and the call itself throws): the sources are compiled with the luau CLI before every push
+	local ok, f, err = pcall(function() return loadstring(SERVER) end)
+	if ok and not f then print("QQ BELV ABORT: HallServer does not compile: " .. tostring(err)) return end
+end
 local CH = workspace:FindFirstChild("Champion")
 if not (CH and CH:FindFirstChild("ChampionServer")) then print("QQ BELV ABORT: workspace.Champion.ChampionServer not found (it makes the statues)") return end
 if not workspace:FindFirstChild("PortoKeeper") then print("QQ BELV ABORT: workspace.PortoKeeper not found (it keeps the Guardian list)") return end

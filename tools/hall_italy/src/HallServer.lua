@@ -58,6 +58,11 @@ local function compose(first, daily)
 	return out
 end
 local function readStore()                                             -- true when the list was read (and `current` is fresh)
+	if STUDIO then                                                     -- a Studio test of the ledger reading: the folder's TestLedger = JSON {first = rec, daily = the daily_v2 state}
+		local okT, tl = pcall(function() return HttpService:JSONDecode(F:GetAttribute("TestLedger") or "") end)
+		if okT and type(tl) == "table" then current = compose(tl.first, tl.daily); return true end
+		return false
+	end
 	if not store then return false end
 	local ok, first, daily = pcall(function() return store:GetAsync("first", getOptions), store:GetAsync("daily_v2", getOptions) end)
 	if not ok then warn("HallOfGuardians: cannot read the Guardian store: " .. tostring(first)); return false end

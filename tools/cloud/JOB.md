@@ -1389,3 +1389,19 @@ Shannon's verdict on the pictures pending; her yes = the Edit install.
 Edit check after the round-2 preview (runner 7): PlaceVersion 1369; workspace.HallOfGuardians absent; no Runner7 script or
 StringValue; HttpEnabled false; HudBackup.HallOfGuardians* 0; Prato dei Fiori coastal meadow 1470 parts (nothing parked);
 PortoKeeperServer 14386. Edit is unchanged.
+
+Preview round 2 PASSED (runner 7, ef33a6c): QQ BELV DONE at (530, 1.9, -1064); three statues with the key in the raised left hand,
+the invitation pedestal at slot 4, the lectern roll, 115 flower stems parked, nothing floating or buried; six pictures
+tools/hall_italy/shots/belv-j94-*.jpg. Round 3 (this commit, for the EDIT install): the compile check is a pcall round loadstring
+(a Script's loadstring call throws even though the global exists); HallServer gains a Studio-only TestLedger attribute (JSON
+{first = rec, daily = daily_v2 state}) so the ledger reading can be tested in a play test. Shannon's verdict on the pictures pending.
+INSTALL PLAN (on her yes; Studio EDIT, the MCP context, HttpEnabled on for the fetch and straight back off): run install_hall1.lua
+from this commit; expect `QQ BELV DONE ... 115 small props set aside (HudBackup.HallOfGuardians_props_1)` (the count may differ a
+little); nothing else changes (the 115 windflower stems are in that backup folder with their places kept - the undo is to move
+them back and delete workspace.HallOfGuardians). Then a play test: set workspace.HallOfGuardians attribute TestLedger to
+{"first":{"uid":9611145467,"name":"SelBell","user":"SelBell","t":1791676800,"total":44},"daily":{"version":2,"revision":2,"days":
+{"20737":{"uid":4161205246,"name":"dakota","t":1791763200,"day":20737,"total":44},"20738":{"uid":7902108387,"name":"blizzy_1718",
+"t":1791849600,"day":20738,"total":44}},"winners":{},"attempts":{}}} and set Rebuild to 1: within a few seconds the three statues
+(SelBell centre, dakota right, blizzy left) and the invitation at slot 4; the lectern roll "1. SelBell   2. dakota   3. blizzy_1718".
+Stop the play test (the attributes do not persist). On live servers the same reading runs against the real store once a minute.
+She publishes when she likes; the first live server shows Darkknight (No. 1) and every daily Guardian since.

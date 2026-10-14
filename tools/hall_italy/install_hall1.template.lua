@@ -13,7 +13,10 @@ local HttpService = game:GetService("HttpService")
 local CX, CZ, YAW = @@CX@@, @@CZ@@, math.rad(@@YAW@@)              -- the terrace's centre; yaw 0 = the front faces north (-z)
 local SERVER = [===[
 @@SERVER@@]===]
-if type(loadstring) == "function" then local f, err = loadstring(SERVER); if not f then print("QQ BELV ABORT: HallServer does not compile: " .. tostring(err)) return end end   -- (no loadstring in the Studio MCP: the sources are compiled with the luau CLI before they are pushed)
+do   -- the compile check, where loadstring can run (a Script has none and the call itself throws): the sources are compiled with the luau CLI before every push
+	local ok, f, err = pcall(function() return loadstring(SERVER) end)
+	if ok and not f then print("QQ BELV ABORT: HallServer does not compile: " .. tostring(err)) return end
+end
 local CH = workspace:FindFirstChild("Champion")
 if not (CH and CH:FindFirstChild("ChampionServer")) then print("QQ BELV ABORT: workspace.Champion.ChampionServer not found (it makes the statues)") return end
 if not workspace:FindFirstChild("PortoKeeper") then print("QQ BELV ABORT: workspace.PortoKeeper not found (it keeps the Guardian list)") return end
