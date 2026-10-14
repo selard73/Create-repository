@@ -1550,3 +1550,17 @@ Expected: seven statues (the low uids give default figures), slot 1 (centre) = N
 (left) = No. 6, slot 4 = No. 5, slot 5 = No. 4 "Roblox", slot 6 = No. 3 blizzy, slot 7 = No. 2 dakota; NO invitation pedestal; SelBell
 (No. 1) only on the roll: "2 more, then 3. blizzy_1718   4. Roblox   5. John   6. Jane   7. Four   8. Five". Then clear TestLedger,
 Rebuild 1 again: all slots empty but the slot 1 invitation. Stop (nothing persists). Edit check. She publishes.
+Result job 94 RE-RUN round 5 (runner 7, 80b6bb1, Shannon's yes; INSTALLED in Edit v1369, Oct 14 ~19:45Z, NOT published): run
+unpatched (len 40333 adler 2954596965 = the blob; HttpEnabled on/off; ModuleScript route). QQ BELV DONE: workspace.HallOfGuardians at
+(530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 1.7..2.0); terrace R 17, parapet 16 segments, 7 slots; copies: Italian cypress 2,
+Lemon tree 2; 0 small props set aside (HudBackup.HallOfGuardians_props_*); HallServer 18987 chars; the old folder is
+HudBackup.HallOfGuardians_pre_2. Edit: 123 parts, 0 benches, Mode latest, PinFirst false, Slots 7; lectern GothamBold cream on
+178,92,62; HallServer carries GothamBold; both lanterns Glass 255,196,120 transp 0.15, light 0.35/12; backups props_1 115, pre_1, pre_2.
+TestLedger test, eight entries: PASS exactly as expected - slot 1 (centre) 8TH GUARDIAN Five, 2 Four, 3 Jane, 4 John, 5 Roblox, 6
+blizzy_1718, 7 dakota; no invitation; Roll "2 more, then 3. blizzy_1718   4. Roblox   5. John   6. Jane   7. Four   8. Five". The
+"clear" step as written (TestLedger "" + Rebuild) changes nothing - by design, an unreadable ledger keeps the last list (`current`); a
+VALID empty ledger {"daily":{"version":2,"revision":8,"days":{},"winners":{},"attempts":{}}} + a NEW Rebuild value gave the expected
+slot 1 invitation "Guardian No. 1" and the "No Guardian yet" roll in 20 s. Two notes: Rebuild set to its current value fires nothing;
+the lectern roll wraps "5. John" across lines (a non-breaking space between number and name would keep each pair together). Pictures
+tools/hall_italy/shots/belv-j94r5-crescent-eight.jpg, belv-j94r5-lectern.jpg; lines in tools/hall_italy/install94r5_result_2026-10-14.txt.
+Unpublished in Studio: job 94 round 5 + job 95. She publishes.

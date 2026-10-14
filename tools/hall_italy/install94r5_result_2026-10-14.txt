@@ -1,0 +1,24 @@
+# Job 94 RE-RUN round 5, runner 7, Oct 14 2026 ~19:45Z, Shannon's yes; Studio EDIT (v1369); install_hall1.lua at 80b6bb1 (len 40333,
+# adler32 2954596965 = the git blob), fetched in Edit from the raw commit URL (HttpEnabled on, back off), run UNPATCHED via a temporary
+# ModuleScript (require; destroyed after).
+QQ BELV DONE: workspace.HallOfGuardians at (530, 1.9, -1064) yaw 90 (ground centre 2.0, edges 1.7..2.0); terrace R 17, parapet 16 segments, 7 slots; copies: Italian cypress 2, Lemon tree 2; 0 small props set aside (HudBackup.HallOfGuardians_props_*); HallServer 18987 chars; the old folder is HudBackup.HallOfGuardians_pre_2
+EDIT after the run: HallOfGuardians 123 parts; benches 0; HallServer 18987 RunContext Server; attrs Mode latest, PinFirst false, Slots 7
+LECTERN plaque 178,92,62; Title/Sub/Roll/Foot GothamBold 250,244,228; HallServer carries Enum.Font.GothamBold for the tiles
+LANTERNS: Glass 255,196,120 transp 0.15 light 0.35/12 | Glass 255,196,120 transp 0.15 light 0.35/12
+BACKUPS: HallOfGuardians_props_1 115; HallOfGuardians_pre_1 (round 3) and _pre_2 (round 4), HallServer disabled in both
+# TestLedger play test, eight entries + Rebuild 1 (test server; nothing persists):
+after 54 s: 7 figures; invitation pedestal false
+slot 1 = 8TH GUARDIAN / Five
+slot 2 = 7TH GUARDIAN / Four
+slot 3 = 6TH GUARDIAN / Jane
+slot 4 = 5TH GUARDIAN / John
+slot 5 = 4TH GUARDIAN / Roblox
+slot 6 = 3RD GUARDIAN / blizzy_1718
+slot 7 = 2ND GUARDIAN / dakota
+Roll="2 more, then 3. blizzy_1718   4. Roblox   5. John   6. Jane   7. Four   8. Five"
+# Clearing: TestLedger "" + Rebuild (even with a NEW value) changed nothing - by design: an unreadable ledger = "store unreachable", the
+# last list is kept (HallServer `current`). A VALID empty ledger {"daily":{"version":2,"revision":8,"days":{},"winners":{},"attempts":{}}}
+# + Rebuild 3 -> after 20 s: 0 figures, 1 Slot_ model: slot 1 = THIS COULD BE YOU / Guardian No. 1; Roll = "No Guardian yet. Be the first ..."
+# Note: setting Rebuild to the value it already has fires nothing (attribute unchanged); use a new number.
+# Pictures: tools/hall_italy/shots/belv-j94r5-crescent-eight.jpg (seven on the crescent, lanterns dimmer), belv-j94r5-lectern.jpg
+# (GothamBold cream; the roll wraps "5. John" across two lines - a non-breaking space between number and name would keep pairs together).
