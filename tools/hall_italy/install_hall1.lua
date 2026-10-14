@@ -298,20 +298,45 @@ local MOSAIC, SEA = C(222, 212, 190), C(78, 150, 186)
 local F = Instance.new("Folder"); F.Name = "HallOfGuardians"
 local old = workspace:FindFirstChild("HallOfGuardians")
 local rpT = RaycastParams.new(); rpT.FilterType = Enum.RaycastFilterType.Exclude; rpT.FilterDescendantsInstances = {F, old}
-local function groundAt(x, z)
-	local h = workspace:Raycast(Vector3.new(x, 300, z), Vector3.new(0, -600, 0), rpT)
-	if h and not (h.Instance == workspace.Terrain and h.Material == Enum.Material.Water) then return h.Position.Y end
+local function groundAt(x, z)                                        -- the first visible thing under the sky (invisible volumes skipped), never water
+	local from = Vector3.new(x, 300, z)
+	for _ = 1, 6 do
+		local h = workspace:Raycast(from, Vector3.new(0, -600, 0), rpT)
+		if not h then return nil end
+		if h.Instance == workspace.Terrain then
+			if h.Material == Enum.Material.Water then return nil end
+			return h.Position.Y, h.Instance
+		end
+		if h.Instance.Transparency < 1 then return h.Position.Y, h.Instance end
+		from = h.Position - Vector3.new(0, 0.05, 0)
+	end
 	return nil
 end
+local rpTerr = RaycastParams.new(); rpTerr.FilterType = Enum.RaycastFilterType.Include; rpTerr.FilterDescendantsInstances = {workspace.Terrain}
 local samples, lowest, highest = {}, math.huge, -math.huge
 local centreY = groundAt(CX, CZ)
-for i = 0, 7 do
-	local a = i * math.pi / 4
-	local y = groundAt(CX + 15 * math.sin(a), CZ + 15 * math.cos(a))
+for i = 0, 11 do
+	local a = i * math.pi / 6
+	local y = groundAt(CX + 17.5 * math.sin(a), CZ + 17.5 * math.cos(a))
 	if y then table.insert(samples, y); lowest = math.min(lowest, y); highest = math.max(highest, y) end
 end
-if not centreY or #samples < 6 then print("QQ BELV ABORT: no ground under the terrace (water or nothing at the centre or round it); nothing built") return end
-local g = math.min(centreY, lowest + 1.0) - 0.1                       -- the floor's base: near the centre's height, never more than a stud over the lowest edge
+if not centreY or #samples < 10 then print("QQ BELV ABORT: no ground under the terrace's rim (water or nothing at the centre or round it); nothing built") return end
+if highest - lowest > 3 then print(string.format("QQ BELV ABORT: the ground rises %.1f studs across the terrace (edges %.1f..%.1f); too steep for one floor; nothing built", highest - lowest, lowest, highest)) return end
+-- what stands round the terrace (r 19 and 21): anything more than a stud above the terrain there is reported
+local standing = {}
+for _, r in ipairs({19, 21}) do
+	for i = 0, 23 do
+		local a = i * math.pi / 12
+		local x, z = CX + r * math.sin(a), CZ + r * math.cos(a)
+		local y, inst = groundAt(x, z)
+		local t = workspace:Raycast(Vector3.new(x, 300, z), Vector3.new(0, -600, 0), rpTerr)
+		if y and inst and inst ~= workspace.Terrain and t and y > t.Position.Y + 1 then
+			local top = inst; while top.Parent and top.Parent ~= workspace do top = top.Parent end
+			standing[top.Name] = (standing[top.Name] or 0) + 1
+		end
+	end
+end
+local g = math.max(centreY, highest - 0.5) - 0.1                      -- the floor's base: its top never below the highest edge; the skirt covers the downhill side
 local BASE = CFrame.new(CX, g, CZ) * CFrame.Angles(0, YAW, 0)
 local function at(x, y, z) return BASE * CFrame.new(x, y, z) end
 local function part(name, size, cf, colour, material, parent, shape, collide)
@@ -335,7 +360,7 @@ disc("Floor", RT, 0.6, 0.3, MOSAIC, Enum.Material.Marble, belv)
 disc("MosaicRing", 6.2, 0.06, 0.63, GOLD, Enum.Material.SmoothPlastic, belv, false).Reflectance = 0.1
 disc("MosaicSea", 5.5, 0.08, 0.66, SEA, Enum.Material.Slate, belv, false)
 disc("MosaicHeart", 1.6, 0.06, 0.72, GOLD, Enum.Material.SmoothPlastic, belv, false).Reflectance = 0.1
-part("Step", Vector3.new(12, 0.3, 2.4), at(0, 0.15, -(RT + 0.9)), STONE, Enum.Material.Limestone, belv)
+part("Step", Vector3.new(12, 0.32, 2.4), at(0, 0.16, -(RT + 0.9)), STONE, Enum.Material.Limestone, belv)
 local Y0 = 0.6                                                         -- the floor's top
 
 -- ---------------------------------------------------------------- the parapet, the sea side ----
@@ -382,15 +407,15 @@ end
 do
 	local col = Instance.new("Model"); col.Name = "Column"; col.Parent = belv
 	part("Base", Vector3.new(2.4, 0.5, 2.4), at(0, Y0 + 2.5 + 0.25, RW), TRIM, Enum.Material.Marble, col)
-	part("Shaft", Vector3.new(6.6, 1.5, 1.5), at(0, Y0 + 3.0 + 3.3, RW) * CFrame.Angles(0, 0, math.pi / 2), STONE, Enum.Material.Limestone, col, Enum.PartType.Cylinder)
-	part("Capital", Vector3.new(2.2, 0.4, 2.2), at(0, Y0 + 9.6 + 0.2, RW), TRIM, Enum.Material.Marble, col)
-	part("Plinth", Vector3.new(1.4, 0.3, 1.4), at(0, Y0 + 10.0 + 0.15, RW), GOLD_D, Enum.Material.SmoothPlastic, col)
-	makeKey(3.4, at(0, Y0 + 10.3, RW), col)
+	part("Shaft", Vector3.new(8.6, 1.5, 1.5), at(0, Y0 + 3.0 + 4.3, RW) * CFrame.Angles(0, 0, math.pi / 2), STONE, Enum.Material.Limestone, col, Enum.PartType.Cylinder)
+	part("Capital", Vector3.new(2.2, 0.4, 2.2), at(0, Y0 + 11.6 + 0.2, RW), TRIM, Enum.Material.Marble, col)
+	part("Plinth", Vector3.new(1.4, 0.3, 1.4), at(0, Y0 + 12.0 + 0.15, RW), GOLD_D, Enum.Material.SmoothPlastic, col)
+	makeKey(3.4, at(0, Y0 + 12.3, RW), col)
 end
 
 -- ---------------------------------------------------------------- the lanterns at the horns ----
 for _, s in ipairs({-1, 1}) do
-	local th = s * ARC / 2
+	local th = s * (ARC / 2 - math.rad(2))
 	local x, z = RW * math.sin(th), RW * math.cos(th)
 	local m = Instance.new("Model"); m.Name = "Lantern"; m.Parent = belv
 	part("Foot", Vector3.new(0.9, 0.3, 0.9), at(x, Y0 + 2.5 + 0.15, z), IRON, Enum.Material.Metal, m)
@@ -424,12 +449,15 @@ end
 
 -- ---------------------------------------------------------------- Porto's own trees and benches ----
 -- (copies of the town's models, their tags and scripts removed so a copy joins nothing the original is part of)
-local found = {}
-local function copyOf(name, scale, lx, lz, faceZ)
-	local src
+local found, sources = {}, {}
+do
+	local want = {["Italian cypress"] = true, ["Lemon tree"] = true, ["Harbour bench"] = true}
 	for _, d in ipairs(workspace:GetDescendants()) do
-		if d:IsA("Model") and d.Name == name and not d:IsDescendantOf(F) and not (old and d:IsDescendantOf(old)) then src = d break end
+		if want[d.Name] and d:IsA("Model") and not sources[d.Name] and not d:IsDescendantOf(F) and not (old and d:IsDescendantOf(old)) then sources[d.Name] = d end
 	end
+end
+local function copyOf(name, scale, lx, lz, faceZ)
+	local src = sources[name]
 	if not src then found[name] = (found[name] or 0); return end
 	local c = src:Clone(); c.Name = "Belv_" .. name:gsub("%s+", "_")
 	for _, d in ipairs(c:GetDescendants()) do
@@ -439,7 +467,8 @@ local function copyOf(name, scale, lx, lz, faceZ)
 	for _, d in ipairs(c:GetDescendants()) do if d:IsA("BasePart") then d.Anchored = true end end
 	pcall(function() c:ScaleTo(c:GetScale() * scale) end)
 	local want = at(lx, 0, lz).Position
-	local gy = groundAt(want.X, want.Z)
+	local gy
+	if lx * lx + lz * lz < RT * RT then gy = at(0, Y0, 0).Position.Y + 0.1 else gy = groundAt(want.X, want.Z) end   -- inside: on the floor's top
 	if not gy then c:Destroy(); found[name] = (found[name] or 0); return end
 	local cf, size = c:GetBoundingBox()
 	local pivot = c:GetPivot()
@@ -454,7 +483,7 @@ end
 for _, s in ipairs({-1, 1}) do
 	copyOf("Italian cypress", 1.0, s * 18 * math.sin(math.rad(52)), 18 * math.cos(math.rad(52)))       -- behind the parapet's shoulders
 	copyOf("Lemon tree", 0.9, s * 8.5, -(RT + 2.6))                                                    -- either side of the step
-	copyOf("Harbour bench", 1.0, s * 9.5, 1.5, true)                                                    -- facing the sea, inside the crescent
+	copyOf("Harbour bench", 1.0, s * 6.5, -1.0, true)                                                   -- facing the sea, inside the crescent, clear of the end pedestals
 end
 
 -- ---------------------------------------------------------------- the folder, its settings, the script ----
@@ -480,6 +509,8 @@ if old then
 end
 local s = Instance.new("Script"); s.Name = "HallServer"; s.RunContext = Enum.RunContext.Server; s.Source = SERVER; s.Parent = F
 F.Parent = workspace
-local names = {}
+local names, near = {}, {}
 for _, n in ipairs({"Italian cypress", "Lemon tree", "Harbour bench"}) do table.insert(names, n .. " " .. tostring(found[n] or 0)) end
+for n, k in pairs(standing) do table.insert(near, n .. " x" .. k) end
 print(string.format("QQ BELV DONE: workspace.HallOfGuardians at (%.0f, %.1f, %.0f) yaw %.0f (ground centre %.1f, edges %.1f..%.1f); terrace R %d, parapet %d segments, 7 slots; copies: %s; HallServer %d chars%s", CX, g, CZ, math.deg(YAW), centreY, lowest, highest, RT, NSEG, table.concat(names, ", "), #s.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))
+if #near > 0 then print("QQ BELV NOTE: standing within 19-21 studs of the centre (more than a stud above the terrain): " .. table.concat(near, ", ")) end
