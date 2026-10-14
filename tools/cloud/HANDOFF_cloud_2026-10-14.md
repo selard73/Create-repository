@@ -112,3 +112,15 @@ later") - after Oct 18, when she says.
   HudBackup holds HallOfGuardians_pre_1 (round 3) and HallOfGuardians_props_1 (115 flowers; undo path in JOB.md).
 - Job 95 (item 2, the onboarding funnel, tools/funnel) reviewed and READY for the runner on her yes. Then items 3 (phone camera:
   ask her what she saw), 4 (portraits blink: client diagnostic first), 5 (look pass).
+
+## State at Oct 14 ~21:30 UTC
+- Job 94 ROUND 7 INSTALLED in Edit (runner 7, Shannon: "that looks much better" + "install"; NOT published): the belvedere as the French
+  display concept in the Italian style - one pedestal, one Guardian at a time (newest first), knee-high Older/Newer posts, terrace R 10.5,
+  terracotta signs in GothamBold cream, dim lanterns, the lectern roll; HallServer 15329 + HallClient 4864; the list read from
+  PortoKeeper_v1 (first + daily_v2), published as HallJson. Live = round 4 (the seven-pedestal crescent) until she publishes.
+  Her words along the way: round 5's seven statues "overbearing and creepy"; "when I said make it different, I meant the same display
+  concept, just a different model or style"; round 6 "that circle area is too big and the columns with the arrows on the side are too big".
+- Job 95 (the onboarding funnel) INSTALLED in Edit, unpublished. Both go live with her next Alt+P.
+- Known small things: a Studio play test starts HallClient twice (two HallView_local folders, harmless); paging never exercised by the
+  runner's automation (ClickDetectors), Shannon to try Older/Newer live.
+- Next: item 3 the phone camera (ask her what she saw), item 4 the portraits blink (client diagnostic first), item 5 the look pass.
