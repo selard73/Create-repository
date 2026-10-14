@@ -25,7 +25,9 @@ local function list()
 	return (ok and type(t) == "table") and t or {}
 end
 local function total() local K = workspace:FindFirstChild("PortoKeeper"); return (K and tonumber(K:GetAttribute("Need"))) or tonumber(F:GetAttribute("Total")) or 44 end
-local view = Instance.new("Folder"); view.Name = "HallView_local"; view.Parent = workspace
+local view = workspace:FindFirstChild("HallView_local")                 -- (one folder, reused if this script ran before)
+if not view then view = Instance.new("Folder"); view.Name = "HallView_local"; view.Parent = workspace end
+view:ClearAllChildren()
 local keepers, idx, shownNo = {}, 0, nil
 local want = 0                                                         -- the newest request (older ones are dropped)
 local function words()

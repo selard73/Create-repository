@@ -1616,3 +1616,10 @@ columns with the arrows on the side are too big." ROUND 7 please: the terrace sc
 parapet, skirt, rim, mosaic rings and the step with it; the lectern nearer the pedestal; the cypresses and lemon trees re-placed to the
 new rim), and the Older/Newer posts much smaller (lower, slimmer, smaller discs and chevrons - buttons, not columns). Everything else
 as round 6. Preview again before any install; round 5 is still what Edit holds, round 4 is live.
+ROUND 7 (cloud thread; Shannon on the round-6 preview: "because there is now only one statue at a time, that circle area is too big
+and the columns with the arrows on the side are too big"): the terrace sized for one statue - R 17 -> 10.5 (skirt, rim, mosaic rings
+3.8/3.3/1.0, step 8 wide, parapet R 9.1 in 12 segments, column 6 tall with a 2.8 key, lanterns 3-stud posts, lectern three quarters
+(5.4 x 2.1 plaque, same layout), pedestal 5.8 back of centre, cypresses at R 12 scale 0.85, lemon trees scale 0.7); the Older/Newer
+posts knee-high (0.7 x 1.3 post, a 1.1 disc at 2 studs, x +-3.0, 2.2 in front of the pedestal). HallClient reuses one HallView_local
+folder. PREVIEW again (same plan as round 6: play test, PreviewJson, pictures from the step and of the buttons/tile); nothing installed;
+Edit = round 5, live = round 4.

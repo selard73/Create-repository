@@ -5,7 +5,7 @@
 -- (name, date, count); everyone on the lectern roll. workspace.HallOfGuardians: Belvedere (a round mosaic terrace, a low parapet
 -- with a majolica band, the centre column with the gold key, two dim lanterns, cypresses and lemon trees cloned from Porto's own),
 -- Pedestal (terracotta tile, GothamBold cream), Older / Newer, the Lectern with the roll, HallStatue (RemoteFunction), HallServer
--- (15329 chars: the statues, made once each from the Guardian list), HallClient (4703 chars: each player's own view).
+-- (15329 chars: the statues, made once each from the Guardian list), HallClient (4864 chars: each player's own view).
 -- Undo: delete workspace.HallOfGuardians (an older one is HudBackup.HallOfGuardians_pre_n). No DataStore, no publish. "QQ BELV".
 local SS = game:GetService("ServerStorage")
 local CS = game:GetService("CollectionService")
@@ -318,7 +318,9 @@ local function list()
 	return (ok and type(t) == "table") and t or {}
 end
 local function total() local K = workspace:FindFirstChild("PortoKeeper"); return (K and tonumber(K:GetAttribute("Need"))) or tonumber(F:GetAttribute("Total")) or 44 end
-local view = Instance.new("Folder"); view.Name = "HallView_local"; view.Parent = workspace
+local view = workspace:FindFirstChild("HallView_local")                 -- (one folder, reused if this script ran before)
+if not view then view = Instance.new("Folder"); view.Name = "HallView_local"; view.Parent = workspace end
+view:ClearAllChildren()
 local keepers, idx, shownNo = {}, 0, nil
 local want = 0                                                         -- the newest request (older ones are dropped)
 local function words()
@@ -412,7 +414,7 @@ if not workspace:FindFirstChild("PortoKeeper") then print("QQ BELV ABORT: worksp
 local C = Color3.fromRGB
 local STONE, TRIM, MAJOLICA, TERRA, GOLD, GOLD_D, GOLD_DD, CREAM, IRON = C(232, 226, 210), C(240, 236, 226), C(52, 110, 150), C(178, 92, 62), C(255, 206, 64), C(214, 160, 44), C(190, 136, 40), C(250, 244, 228), C(52, 50, 48)
 local MOSAIC, SEA = C(222, 212, 190), C(78, 150, 186)
-local RT = 17                                                          -- the terrace's radius
+local RT = 10.5                                                        -- the terrace's radius (round 7: sized for one statue; Shannon: "that circle area is too big")
 
 -- ---------------------------------------------------------------- the ground ----
 local F = Instance.new("Folder"); F.Name = "HallOfGuardians"
@@ -437,14 +439,14 @@ local samples, lowest, highest = {}, math.huge, -math.huge
 local centreY = groundAt(CX, CZ)
 for i = 0, 11 do
 	local a = i * math.pi / 6
-	local y = groundAt(CX + 17.5 * math.sin(a), CZ + 17.5 * math.cos(a))
+	local y = groundAt(CX + (RT + 0.5) * math.sin(a), CZ + (RT + 0.5) * math.cos(a))
 	if y then table.insert(samples, y); lowest = math.min(lowest, y); highest = math.max(highest, y) end
 end
 if not centreY or #samples < 10 then print("QQ BELV ABORT: no ground under the terrace's rim (water or nothing at the centre or round it); nothing built") return end
 if highest - lowest > 3 then print(string.format("QQ BELV ABORT: the ground rises %.1f studs across the terrace (edges %.1f..%.1f); too steep for one floor; nothing built", highest - lowest, lowest, highest)) return end
 -- what stands round the terrace (r 19 and 21): anything more than a stud above the terrain there is reported
 local standing = {}
-for _, r in ipairs({19, 21}) do
+for _, r in ipairs({RT + 2, RT + 4}) do
 	for i = 0, 23 do
 		local a = i * math.pi / 12
 		local x, z = CX + r * math.sin(a), CZ + r * math.cos(a)
@@ -549,14 +551,14 @@ local belv = Instance.new("Model"); belv.Name = "Belvedere"; belv.Parent = F
 disc("Skirt", RT + 0.2, 3.0, -1.5, STONE, Enum.Material.Limestone, belv)
 disc("Rim", RT + 0.5, 0.3, 0.15, TERRA, Enum.Material.Slate, belv)
 disc("Floor", RT, 0.6, 0.3, MOSAIC, Enum.Material.Marble, belv)
-disc("MosaicRing", 6.2, 0.06, 0.63, GOLD, Enum.Material.SmoothPlastic, belv, false).Reflectance = 0.1
-disc("MosaicSea", 5.5, 0.08, 0.66, SEA, Enum.Material.Slate, belv, false)
-disc("MosaicHeart", 1.6, 0.06, 0.72, GOLD, Enum.Material.SmoothPlastic, belv, false).Reflectance = 0.1
-part("Step", Vector3.new(12, 0.32, 2.4), at(0, 0.16, -(RT + 0.9)), STONE, Enum.Material.Limestone, belv)
+disc("MosaicRing", 3.8, 0.06, 0.63, GOLD, Enum.Material.SmoothPlastic, belv, false).Reflectance = 0.1
+disc("MosaicSea", 3.3, 0.08, 0.66, SEA, Enum.Material.Slate, belv, false)
+disc("MosaicHeart", 1.0, 0.06, 0.72, GOLD, Enum.Material.SmoothPlastic, belv, false).Reflectance = 0.1
+part("Step", Vector3.new(8, 0.32, 2.4), at(0, 0.16, -(RT + 0.9)), STONE, Enum.Material.Limestone, belv)
 local Y0 = 0.6                                                         -- the floor's top
 
 -- ---------------------------------------------------------------- the parapet, the sea side ----
-local RW, NSEG, ARC = 15.6, 16, math.rad(170)                          -- the wall's radius, its segments, how far round it goes
+local RW, NSEG, ARC = RT - 1.4, 12, math.rad(170)                          -- the wall's radius, its segments, how far round it goes
 local segL = 2 * RW * math.sin(ARC / NSEG / 2) + 0.2
 for i = 1, NSEG do
 	local th = -ARC / 2 + (i - 0.5) * ARC / NSEG
@@ -598,11 +600,11 @@ local function makeKey(height, cfBottom, parent)                      -- a key s
 end
 do
 	local col = Instance.new("Model"); col.Name = "Column"; col.Parent = belv
-	part("Base", Vector3.new(2.4, 0.5, 2.4), at(0, Y0 + 2.5 + 0.25, RW), TRIM, Enum.Material.Marble, col)
-	part("Shaft", Vector3.new(8.6, 1.5, 1.5), at(0, Y0 + 3.0 + 4.3, RW) * CFrame.Angles(0, 0, math.pi / 2), STONE, Enum.Material.Limestone, col, Enum.PartType.Cylinder)
-	part("Capital", Vector3.new(2.2, 0.4, 2.2), at(0, Y0 + 11.6 + 0.2, RW), TRIM, Enum.Material.Marble, col)
-	part("Plinth", Vector3.new(1.4, 0.3, 1.4), at(0, Y0 + 12.0 + 0.15, RW), GOLD_D, Enum.Material.SmoothPlastic, col)
-	makeKey(3.4, at(0, Y0 + 12.3, RW), col)
+	part("Base", Vector3.new(2.2, 0.5, 2.2), at(0, Y0 + 2.5 + 0.25, RW), TRIM, Enum.Material.Marble, col)
+	part("Shaft", Vector3.new(6.0, 1.3, 1.3), at(0, Y0 + 3.0 + 3.0, RW) * CFrame.Angles(0, 0, math.pi / 2), STONE, Enum.Material.Limestone, col, Enum.PartType.Cylinder)
+	part("Capital", Vector3.new(2.0, 0.4, 2.0), at(0, Y0 + 9.0 + 0.2, RW), TRIM, Enum.Material.Marble, col)
+	part("Plinth", Vector3.new(1.3, 0.3, 1.3), at(0, Y0 + 9.4 + 0.15, RW), GOLD_D, Enum.Material.SmoothPlastic, col)
+	makeKey(2.8, at(0, Y0 + 9.7, RW), col)
 end
 
 -- ---------------------------------------------------------------- the lanterns at the horns ----
@@ -611,22 +613,22 @@ for _, s in ipairs({-1, 1}) do
 	local x, z = RW * math.sin(th), RW * math.cos(th)
 	local m = Instance.new("Model"); m.Name = "Lantern"; m.Parent = belv
 	part("Foot", Vector3.new(0.9, 0.3, 0.9), at(x, Y0 + 2.5 + 0.15, z), IRON, Enum.Material.Metal, m)
-	part("Post", Vector3.new(0.4, 3.8, 0.4), at(x, Y0 + 2.8 + 1.9, z), IRON, Enum.Material.Metal, m, nil, false)
-	local lamp = part("Lamp", Vector3.new(0.9, 0.9, 0.9), at(x, Y0 + 6.6 + 0.45, z), C(255, 196, 120), Enum.Material.Glass, m, Enum.PartType.Ball, false)
+	part("Post", Vector3.new(0.4, 3.0, 0.4), at(x, Y0 + 2.8 + 1.5, z), IRON, Enum.Material.Metal, m, nil, false)
+	local lamp = part("Lamp", Vector3.new(0.9, 0.9, 0.9), at(x, Y0 + 5.8 + 0.45, z), C(255, 196, 120), Enum.Material.Glass, m, Enum.PartType.Ball, false)
 	lamp.Transparency = 0.15                                              -- (Shannon, Oct 14, live: "the lamps on the end are too bright" - her pick of the runner's mock E)
 	local lt = Instance.new("PointLight"); lt.Range = 12; lt.Brightness = 0.35; lt.Color = C(255, 214, 150); lt.Shadows = false; lt.Parent = lamp
-	part("Hood", Vector3.new(1.2, 0.2, 1.2), at(x, Y0 + 7.5 + 0.1, z), IRON, Enum.Material.Metal, m, nil, false)
+	part("Hood", Vector3.new(1.2, 0.2, 1.2), at(x, Y0 + 6.7 + 0.1, z), IRON, Enum.Material.Metal, m, nil, false)
 end
 
 -- ---------------------------------------------------------------- the lectern with the roll of the Guardians ----
 do
 	local lect = Instance.new("Model"); lect.Name = "Lectern"; lect.Parent = F
-	local LZ = -(RT - 3.6)
-	part("Post", Vector3.new(1.6, 2.4, 1.1), at(0, Y0 + 1.2, LZ), STONE, Enum.Material.Limestone, lect)
-	part("Frame", Vector3.new(7.6, 3.2, 0.14), at(0, Y0 + 2.9, LZ + 0.02) * CFrame.Angles(math.rad(52), 0, 0), TRIM, Enum.Material.Marble, lect, nil, false)
-	local plaque = part("Plaque", Vector3.new(7.2, 2.8, 0.2), at(0, Y0 + 2.9, LZ) * CFrame.Angles(math.rad(52), 0, 0), TERRA, Enum.Material.SmoothPlastic, lect, nil, false)   -- (terracotta with cream letters: Shannon's pick, Oct 14)
+	local LZ = -(RT - 2.8)
+	part("Post", Vector3.new(1.3, 2.0, 0.9), at(0, Y0 + 1.0, LZ), STONE, Enum.Material.Limestone, lect)
+	part("Frame", Vector3.new(5.7, 2.4, 0.14), at(0, Y0 + 2.4, LZ + 0.02) * CFrame.Angles(math.rad(52), 0, 0), TRIM, Enum.Material.Marble, lect, nil, false)
+	local plaque = part("Plaque", Vector3.new(5.4, 2.1, 0.2), at(0, Y0 + 2.4, LZ) * CFrame.Angles(math.rad(52), 0, 0), TERRA, Enum.Material.SmoothPlastic, lect, nil, false)   -- (terracotta with cream letters: Shannon's pick, Oct 14)
 	local psg = Instance.new("SurfaceGui"); psg.Name = "Words"; psg.Face = Enum.NormalId.Front; psg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
-	psg.PixelsPerStud = 70; psg.LightInfluence = 0.3; psg.Parent = plaque
+	psg.PixelsPerStud = 93.3; psg.LightInfluence = 0.3; psg.Parent = plaque   -- (5.4 x 2.1 studs = the same 504 x 196 px layout as before)
 	local function line(name, y, h, size, font, colour, text)
 		local l = Instance.new("TextLabel"); l.Name = name; l.BackgroundTransparency = 1; l.Position = UDim2.new(0, 12, 0, y); l.Size = UDim2.new(1, -24, 0, h)
 		l.Font = font; l.TextScaled = true; l.TextColor3 = colour; l.TextWrapped = true; l.Text = text; l.Parent = psg
@@ -642,7 +644,7 @@ do
 end
 
 -- ---------------------------------------------------------------- the pedestal, in the centre of the crescent ----
-local PR, PED_W, PED_H = 12.6, 3.2, 2.6                                -- where the crescent's centre pedestal stood; its size
+local PR, PED_W, PED_H = 5.8, 3.2, 2.6                                 -- the pedestal, back of centre; its size
 do
 	local ped = Instance.new("Model"); ped.Name = "Pedestal"; ped.Parent = F
 	local cf = at(0, Y0, PR)                                            -- the tile faces the front (-z)
@@ -665,10 +667,10 @@ end
 -- the buttons, Older and Newer (France's: a post, a cap, a disc you click or tap; facing the pedestal, local +x is on your LEFT)
 for _, b in ipairs({{name = "Older", s = 1, glyph = "<"}, {name = "Newer", s = -1, glyph = ">"}}) do
 	local m = Instance.new("Model"); m.Name = b.name; m.Parent = F
-	local x, z = b.s * 5.2, PR - 4.6
-	part("Post", Vector3.new(1.2, 3.0, 1.2), at(x, Y0 + 1.5, z), STONE, Enum.Material.Limestone, m)
-	part("Cap", Vector3.new(1.5, 0.3, 1.5), at(x, Y0 + 3.15, z), TERRA, Enum.Material.Slate, m)
-	local disc = part("Button", Vector3.new(0.35, 2.0, 2.0), at(x, Y0 + 4.3, z) * CFrame.Angles(0, math.pi / 2, 0), TRIM, Enum.Material.Marble, m, Enum.PartType.Cylinder)
+	local x, z = b.s * 3.0, PR - 3.6                                    -- (round 7: knee-high posts, "buttons, not columns")
+	part("Post", Vector3.new(0.7, 1.3, 0.7), at(x, Y0 + 0.65, z), STONE, Enum.Material.Limestone, m)
+	part("Cap", Vector3.new(0.9, 0.15, 0.9), at(x, Y0 + 1.375, z), TERRA, Enum.Material.Slate, m)
+	local disc = part("Button", Vector3.new(0.25, 1.1, 1.1), at(x, Y0 + 2.0, z) * CFrame.Angles(0, math.pi / 2, 0), TRIM, Enum.Material.Marble, m, Enum.PartType.Cylinder)
 	local dsg = Instance.new("SurfaceGui"); dsg.Face = Enum.NormalId.Right; dsg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud; dsg.PixelsPerStud = 60
 	dsg.LightInfluence = 0.3; dsg.Parent = disc
 	local gl = Instance.new("TextLabel"); gl.BackgroundTransparency = 1; gl.Size = UDim2.fromScale(1, 1); gl.Font = Enum.Font.GothamBold
@@ -712,8 +714,8 @@ local function copyOf(name, scale, lx, lz, faceZ)
 	found[name] = (found[name] or 0) + 1
 end
 for _, s in ipairs({-1, 1}) do
-	copyOf("Italian cypress", 1.0, s * 18 * math.sin(math.rad(52)), 18 * math.cos(math.rad(52)))       -- behind the parapet's shoulders
-	copyOf("Lemon tree", 0.9, s * 8.5, -(RT + 2.6))                                                    -- either side of the step
+	copyOf("Italian cypress", 0.85, s * (RT + 1.5) * math.sin(math.rad(52)), (RT + 1.5) * math.cos(math.rad(52)))   -- behind the parapet's shoulders
+	copyOf("Lemon tree", 0.7, s * 5.5, -(RT + 2.6))                                                                  -- either side of the step
 end
 
 -- ---------------------------------------------------------------- the folder, its settings, the script ----
@@ -753,4 +755,4 @@ local names, near = {}, {}
 for _, n in ipairs({"Italian cypress", "Lemon tree"}) do table.insert(names, n .. " " .. tostring(found[n] or 0)) end
 for n, k in pairs(standing) do table.insert(near, n .. " x" .. k) end
 print(string.format("QQ BELV DONE: workspace.HallOfGuardians at (%.0f, %.1f, %.0f) yaw %.0f (ground centre %.1f, edges %.1f..%.1f); terrace R %d, parapet %d segments, one pedestal + Older/Newer; copies: %s; %d small props set aside (HudBackup.HallOfGuardians_props_*); HallServer %d, HallClient %d chars%s", CX, g, CZ, math.deg(YAW), centreY, lowest, highest, RT, NSEG, table.concat(names, ", "), parked, #s.Source, #c.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))
-if #near > 0 then print("QQ BELV NOTE: standing within 19-21 studs of the centre (more than a stud above the terrain): " .. table.concat(near, ", ")) end
+if #near > 0 then print(string.format("QQ BELV NOTE: standing within %d-%d studs of the centre (more than a stud above the terrain): %s", RT + 2, RT + 4, table.concat(near, ", "))) end
