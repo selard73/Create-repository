@@ -1355,3 +1355,4 @@ circle of r 20.5 does not fit anywhere there without moving the drone (Shannon's
 12.9. Edit after the stop: no workspace.HallOfGuardians, no Runner7 script, HttpEnabled false (checked in the next line).
 Edit check after the preview (runner 7): PlaceVersion 1369; workspace.HallOfGuardians absent; no Runner7 script in
 ServerScriptService; HttpEnabled false; HudBackup.HallOfGuardians* 0; PortoKeeperServer 14386. Edit is unchanged.
+Shannon (Oct 14, to runner 7): YES, the Drone Flyer's drone (526,-1086) may be shifted a few studs if the belvedere needs it.
