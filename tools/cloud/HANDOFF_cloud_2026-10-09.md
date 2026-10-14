@@ -80,6 +80,10 @@ Every Studio change has a backup under ServerStorage.HudBackup.*_pre_<job>. Gene
 The runner: send_message to its session id (bridge:session_01FmVm5n3mKMAfYwLsZWtahf as of Oct 9), commit-SHA raw URLs.
 
 ## Saved for later (Shannon, Oct 9 evening)
+- IDEA (Shannon, Oct 13): "I want to make a game like this but better and more user friendly with the last chance ranch dogs" -
+  a second game on the 1001 Squirrels pattern (find-them-all across maps, honours, shops, passport) with the Last Chance Ranch
+  dogs as the cast. Not started; a design chat first (which dogs, the world, what "more user friendly" means to her from this
+  game's lessons: the first five minutes, phone layout, one-click flows, no overlaps, no spoilers).
 - Dresses from the French map on her new avatar: "that avatar had no arms when I put on the dress". Revisit the dress
   shop's wear code (village/dresses/build_dressshop.lua: what it hides or replaces on the character) against other body
   types / bundles; make sure nothing looks weird on any avatar. Not started; she said "save that idea for later".
