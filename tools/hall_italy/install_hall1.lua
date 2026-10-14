@@ -3,7 +3,7 @@
 -- Nocciola in marble with the harbour key, standing together in a crescent above the sea (Shannon, Oct 14 2026: "make this
 -- hall of fame look distinctively different from the one in France"; site E). workspace.HallOfGuardians: Belvedere (a round
 -- mosaic terrace, a low parapet with a majolica band, the centre column with the gold key, two lanterns, the lectern with the
--- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (18987 chars: pedestals and statues from
+-- roll of the Guardians, the trees and benches cloned from Porto's own), HallServer (19075 chars: pedestals and statues from
 -- the Guardian list at run time). Undo: delete workspace.HallOfGuardians (an older one is HudBackup.HallOfGuardians_pre_n).
 -- No DataStore, no publish. Output lines start with "QQ BELV".
 local SS = game:GetService("ServerStorage")
@@ -173,7 +173,7 @@ local function makeKey(height, x, bottomY, z, yaw, parent)
 end
 
 -- ---- a pedestal with its tile ----
-local PED_W, PED_H = 3.2, 2.6
+local PED_W, PED_H = 3.2, num("PedestalHeight", 2.6)
 local function label(parent, name, y, h, size, font, colour)
 	local l = Instance.new("TextLabel"); l.Name = name; l.BackgroundTransparency = 1; l.Position = UDim2.new(0, 8, 0, y); l.Size = UDim2.new(1, -16, 0, h)
 	l.Font = font; l.TextScaled = true; l.TextColor3 = colour; l.TextWrapped = true; l.Text = ""; l.Parent = parent
@@ -303,7 +303,7 @@ local function buildOnce()
 			words.Roll.Text = "No Guardian yet. Be the first to find all " .. tostring(total) .. " squirrels of Porto Nocciola and your statue will stand here, holding the harbour key."
 		else
 			local names, from = {}, math.max(1, #l - 5)
-			for i = from, #l do table.insert(names, tostring(l[i].no) .. ". " .. tostring(l[i].name or "?")) end
+			for i = from, #l do table.insert(names, tostring(l[i].no) .. ".\u{A0}" .. tostring(l[i].name or "?")) end   -- (a non-breaking space: the number stays with the name)
 			words.Roll.Text = ((from > 1) and (tostring(from - 1) .. " more, then ") or "") .. table.concat(names, "   ")
 		end
 	end
