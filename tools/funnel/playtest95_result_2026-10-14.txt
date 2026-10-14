@@ -1,0 +1,22 @@
+# Job 95 INSTALL + PLAY TEST, runner 7, Oct 14 2026 ~19:00Z, Studio v1369 (+ the belvedere published at 18:38Z)
+# install_funnel1.lua at c23152a (len 12024, adler32 2739429316 = the git blob), fetched in Edit from the raw commit URL (HttpEnabled on,
+# then back off), run UNPATCHED through a temporary ModuleScript (require; destroyed after). Shannon: "good enough" = install.
+QQ FUNNEL DONE: workspace.Funnel (FunnelServer 7232, FunnelClient 1913 chars; Enabled true, ForceNew false, LogPrints true)
+EDIT after the install: workspace.Funnel = FunnelEvent (RemoteEvent), FunnelServer (Script, RunContext Server, 7232), FunnelClient (Script, RunContext Client, 1913); attrs Enabled true, ForceNew false, LogPrints true; HttpEnabled false; no leftover module
+# PLAY TEST with ForceNew true (set in Edit before the test, back to false after): Output lines (LogService history, server):
+Funnel: ready (6 steps; events leave only a published place)
+AnalyticsService: LogOnboardingFunnelStepEvent event fired.
+Funnel: step 1 Joined for CozyGameMode (Desktop, New)
+AnalyticsService: LogOnboardingFunnelStepEvent event fired.
+Funnel: step 6 Reached Italy for CozyGameMode (Desktop, New)
+AnalyticsService: LogCustomEvent event fired.
+Funnel: MapOpened for CozyGameMode with 88 squirrels (Desktop, New)
+# Notes: steps 2, 3, 5 are not printed separately - the review's "only the highest step reached is sent" (Roblox completes the earlier
+# ones); likewise step 4 (Area porto -> village by a teleport to Rue de Noisette) printed nothing because step 6 was already the highest.
+# The map: PlayerGui attribute OpenPanel = "map" (the HUD's convention) set twice on the test client -> one MapOpened line (once per visit).
+# Setting HudBar.MapPanel.Visible directly logs nothing (not the HUD's path) - fine. Item_funnel: the attribute was nil during the test
+# (the ledger mark lands through AwardItems; not checked further). The teleport landed on the daily golden squirrel's spot (test only).
+QQ EDITCHECK PlaceVersion 1369
+QQ EDITCHECK Funnel: FunnelEvent, FunnelServer 7232, FunnelClient 1913; Enabled true ForceNew false LogPrints true
+QQ EDITCHECK HallOfGuardians: 123 parts, 0 Slot_ models, 0 mock-up instances (must be 0), lanterns: Neon 255,214,140 light 1.00/16 | Neon 255,214,140 light 1.00/16; TestLedger nil Rebuild 0
+QQ EDITCHECK Runner7 leftovers 0; workspace attr Runner7Out nil; HttpEnabled false

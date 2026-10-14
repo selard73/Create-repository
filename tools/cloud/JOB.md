@@ -1489,3 +1489,23 @@ from tablet. Not applied: a failed save load (SquirrelSetup sets no attribute fo
 READY on claude/youthful-curie-8azx86 (this commit): install_funnel1.lua on Shannon's yes (Edit, MCP context, HttpEnabled on for the
 fetch and back off), then the PLAY TEST above. She publishes; events start on the next live servers; the Funnel page appears in the
 Creator Dashboard (Analytics > Funnel) once events arrive, allow a day.
+Result job 95 (runner 7, c23152a, Shannon's "good enough"; INSTALLED in Edit, Oct 14 ~19:00Z, NOT published): run unpatched from
+the MCP context (fetched in Edit, len 12024 adler 2739429316 = the blob; HttpEnabled on/off; ModuleScript route). QQ FUNNEL DONE:
+workspace.Funnel (FunnelServer 7232, FunnelClient 1913 chars; Enabled true, ForceNew false, LogPrints true). PLAY TEST (ForceNew true
+in Edit for the test, back to false after): "Funnel: ready (6 steps; events leave only a published place)"; "Funnel: step 1 Joined for
+CozyGameMode (Desktop, New)"; "Funnel: step 6 Reached Italy for CozyGameMode (Desktop, New)" (steps 2/3/5 not printed separately -
+the highest step only, as reviewed; step 4 likewise silent after a porto -> village move because 6 was already reached); "Funnel:
+MapOpened for CozyGameMode with 88 squirrels (Desktop, New)" once for two openings via PlayerGui OpenPanel = "map"; every one with
+"AnalyticsService: ... event fired." before it. Lines in tools/funnel/playtest95_result_2026-10-14.txt. She publishes when she likes.
+SHANNON on the LIVE belvedere (Oct 14, after the publish): "I think the lamps on the end are too bright; also, the text looks very
+plain against the background, how can we make it look more special without making it gaudy?" Runner 7 mocked four treatments on
+the test server (discarded on stop; pictures tools/hall_italy/shots/belv-mock-tiles-ABC.jpg, belv-mock-lectern-D.jpg,
+belv-mock-lanterns-E.jpg): A (Slot_1) "engraved" = UIStroke 1.6 px dark terracotta 120,55,35 at transparency 0.15 round each letter
++ a cream hairline frame (UIStroke 1.5 px on a Frame inset 7 px); B (Slot_2) gold letters 255,206,64 with a 1 px dark edge;
+C (Slot_3) an inset cream 250,244,228 panel (inset 10 px, gold 214,160,44 1.5 px stroke) with terracotta 178,92,62 letters;
+D (lectern) cream letters with a soft dark edge (1.2 px, transparency 0.35), a gold rule 2 px under the title (y 47, 60 % wide) and a
+cream hairline border inset 8 px; E the south lantern dimmed: Lamp Material Glass, colour 255,196,120, transparency 0.15, PointLight
+0.35 / range 12 (installed: Neon 255,214,140, light 1.0 / 16). Her pick pending; then one line each in the template + HallServer.
+Edit check after the job 95 play test (runner 7): v1369; Funnel = FunnelEvent, FunnelServer 7232, FunnelClient 1913, Enabled true,
+ForceNew FALSE again, LogPrints true; HallOfGuardians 123 parts, 0 Slot_ models, 0 mock-up instances, both lanterns Neon 255,214,140
+light 1.0/16 as installed, TestLedger nil, Rebuild 0; no Runner7 leftovers; HttpEnabled false. Unpublished in Studio: job 95.
