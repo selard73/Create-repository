@@ -1652,3 +1652,24 @@ PUBLISHED by Shannon at 19:41:36Z Oct 14 (games API "updated"; "I have published
 terracotta, dim lanterns, everyone on the lectern roll) AND job 95 (the onboarding funnel; events start on the next live servers; the
 Funnel page appears in the Creator Dashboard about a day after the first events). Nothing unpublished in Studio. (Time correction:
 runner 7's "~Z" estimates in the round 5-7 paragraphs above ran about 90 minutes fast; the real clock: round 7 install ~19:30Z.)
+
+## Job 96: the portraits blink on phones and VR - the client diagnostic (PLAY TEST, client context; nothing installed) - runner 7
+
+Shannon: "the portraits in the French section have the characters in them continuously blinking in and out on mobile and VR (but
+not on desktop)"; "slow, every few seconds"; "its DEFINITELY ONLY the character, not the easel or setting". Job 91's streaming change
+was not the fix. The cloud thread's reading of PortraitClient (village/build_portraits.lua lines 1179-1270): each slot's server
+Picture (SurfaceGui + ViewportFrame Portrait3D + the sitter in its World) is a template; the client clones the WHOLE Picture into
+PlayerGui.PortraitGalleryPictures (a mount) and swaps the mount for a fresh clone whenever refresh() runs - on a RenderToken or
+GalleryModelKey attribute change, on any GuiObject's Visible/Image/Size/Position change in the template, on anything added to or
+removed from ReplicatedStorage.PortraitGalleryModels, on template descendants added/removed. The frame and background are plain
+images (drawn at once); the sitter is a ViewportFrame that needs a frame or more to render, so on a slow device every swap shows as
+the character blinking out and in - desktop swaps within a frame and shows nothing. The probe names the trigger that fires every
+few seconds. tools/portraits/blink_probe1.lua: run on the CLIENT (execute_luau, client context) in a play test on the phone
+emulator (iPhone 7), standing in the French gallery looking at the portraits (workspace.PortraitGallery.Slots, x 189..217, z -14..-4),
+for 90 s. It prints QQ BLINK lines: every REMOUNT (slot, viewport visible, sitter parts, image), every candidate trigger with the
+slot and what changed, models-folder changes, canvas streaming, a heartbeat every 10 s (mounts, remounts so far, memory), then
+"QQ BLINK END (n lines, m remounts in 90 s)". Send every line unchanged, and say whether the emulator itself showed any blink.
+Then the fix (job 97, after the lines): expected - refresh() skips the swap when nothing the picture shows has changed (key, token,
+image, visible flags), and when it must swap it parents the new mount before destroying the old one and destroys the old only after
+the new viewport has rendered (two frames), so no gap is ever visible; an exact-string patch of workspace.PortraitGallery.PortraitClient
+(the vr1-patched text; anchors counted first; backup HudBackup.PortraitClient_pre_blink1).
