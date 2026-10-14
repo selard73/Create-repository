@@ -1577,3 +1577,7 @@ frame with Newer/Older buttons). HER DIRECTION NOW (runner 7's reading, relayed;
 centre of the crescent, one Guardian at a time, the newest first, Older/Newer buttons like workspace.HallOfFame's Newer/Older models,
 everyone on the lectern roll; the terrace, lectern, lanterns, cypresses and lemon trees stay. Round 6 please; round 5 stays unpublished
 (live = round 4).
+SHANNON (Oct 14), clarifying the original brief: "when I said make it different, I meant the same display concept, just a different
+model or style." So the Italian hall = the FRENCH DISPLAY CONCEPT (one Keeper/Guardian shown at a time, Newer/Older paging, the plaque
+with name/date/count) in an Italian model and style (the terrace, terracotta, lectern, lanterns, cypresses, lemon trees, the harbour
+key). Round 6 = that; not seven statues, not a crescent of pedestals.
