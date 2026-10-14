@@ -1,6 +1,6 @@
 -- install_funnel1.lua (Studio EDIT mode; re-runnable). Job 95: the onboarding funnel for the Creator Dashboard (Shannon, Oct 11
 -- 2026: "33 % still playing at 5 min, 20 % at 10 min"; she cannot watch new players herself). workspace.Funnel: FunnelEvent,
--- FunnelServer (7232 chars: six steps from the player attributes the game already keeps - Joined, First squirrel, Five squirrels,
+-- FunnelServer (7394 chars: six steps from the player attributes the game already keeps - Joined, First squirrel, Five squirrels,
 -- Second area, All 44 in France, Reached Italy - for first-session players, with Device and Cohort breakdowns; MapOpened as a
 -- custom event), FunnelClient (1913 chars: the device kind and the first map open). Events leave only a published place; in
 -- Studio the server prints what it would send ("Funnel: step ..."). Undo: delete workspace.Funnel (Item_funnel = 1 stays on the
@@ -89,6 +89,7 @@ local function onEvent(p, kind, value)
 	if not s then return end
 	if kind == "device" and type(value) == "string" and DEVICES[value] and not s.device then
 		s.device = value
+		p:SetAttribute("FunnelDevice", value)
 	elseif kind == "map" and not s.map and not s.ready then
 		s.mapPending = true                                             -- opened in the first seconds: logged once the player is ready
 	elseif kind == "map" and not s.map and s.ready and on() then
@@ -106,6 +107,7 @@ local function watch(p)
 		while p.Parent and not p:GetAttribute("SaveLoaded") and os.clock() - t0 < 120 do task.wait(0.5) end
 		if not (p.Parent and p:GetAttribute("SaveLoaded")) then return end
 		s.cohort = cohortOf(p)                                          -- decided the moment the save is in (the counts land in the same breath)
+		p:SetAttribute("FunnelCohort", s.cohort)                        -- (for other scripts: the interaction counter, job 98)
 		local area = p:GetAttribute("Area")
 		if type(area) == "string" and area ~= "" then s.firstArea = area end
 		local t1 = os.clock()

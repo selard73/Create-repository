@@ -78,6 +78,7 @@ local function onEvent(p, kind, value)
 	if not s then return end
 	if kind == "device" and type(value) == "string" and DEVICES[value] and not s.device then
 		s.device = value
+		p:SetAttribute("FunnelDevice", value)
 	elseif kind == "map" and not s.map and not s.ready then
 		s.mapPending = true                                             -- opened in the first seconds: logged once the player is ready
 	elseif kind == "map" and not s.map and s.ready and on() then
@@ -95,6 +96,7 @@ local function watch(p)
 		while p.Parent and not p:GetAttribute("SaveLoaded") and os.clock() - t0 < 120 do task.wait(0.5) end
 		if not (p.Parent and p:GetAttribute("SaveLoaded")) then return end
 		s.cohort = cohortOf(p)                                          -- decided the moment the save is in (the counts land in the same breath)
+		p:SetAttribute("FunnelCohort", s.cohort)                        -- (for other scripts: the interaction counter, job 98)
 		local area = p:GetAttribute("Area")
 		if type(area) == "string" and area ~= "" then s.firstArea = area end
 		local t1 = os.clock()
