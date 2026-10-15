@@ -1,6 +1,6 @@
 -- patch_treehouse3_r3.lua (job 121; Studio EDIT; re-runnable; also a play-test preview). The Homebase client: a piece's own sound,
 -- the first look held 4.5 s, and the finale (the finished house, fireworks, "Welcome home, <name>!"). Replaces workspace.Treehouse's
--- TreehouseClient (34887 chars); the old one -> HudBackup.TreehouseClient_pre_r3_n. Output "QQ TREE121".
+-- TreehouseClient (34953 chars); the old one -> HudBackup.TreehouseClient_pre_r3_n. Output "QQ TREE121".
 if game:GetService("RunService"):IsRunning() then print("QQ TREE121 (play test: preview only)") end
 local SS = game:GetService("ServerStorage")
 local F = workspace:FindFirstChild("Treehouse")
@@ -158,7 +158,7 @@ local function seatAt(p)
 		local root = char and char:FindFirstChild("HumanoidRootPart")
 		if not (hum and root and hum.Health > 0) then return end
 		standUp()
-		root.CFrame = p.CFrame * CFrame.new(0, p.Size.Y / 2 + hum.HipHeight * 0.5 + 0.9, 0)
+		root.CFrame = p.CFrame * CFrame.new(0, p.Size.Y / 2 + hum.HipHeight * 0.5 - 0.1, 0)   -- (r3b: runner 7 measured the hips 1.0 above the seat at +0.9)
 		hum.Sit = true
 		local w = Instance.new("WeldConstraint"); w.Part0 = p; w.Part1 = root; w.Parent = p
 		sitting = {weld = w, seat = p}

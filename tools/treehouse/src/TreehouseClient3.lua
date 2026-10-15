@@ -150,7 +150,7 @@ local function seatAt(p)
 		local root = char and char:FindFirstChild("HumanoidRootPart")
 		if not (hum and root and hum.Health > 0) then return end
 		standUp()
-		root.CFrame = p.CFrame * CFrame.new(0, p.Size.Y / 2 + hum.HipHeight * 0.5 + 0.9, 0)
+		root.CFrame = p.CFrame * CFrame.new(0, p.Size.Y / 2 + hum.HipHeight * 0.5 - 0.1, 0)   -- (r3b: runner 7 measured the hips 1.0 above the seat at +0.9)
 		hum.Sit = true
 		local w = Instance.new("WeldConstraint"); w.Part0 = p; w.Part1 = root; w.Parent = p
 		sitting = {weld = w, seat = p}

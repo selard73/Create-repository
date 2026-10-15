@@ -3284,3 +3284,7 @@ found. Not installed.
 Treehouse RESET round 2 (runner 7, Shannon in this session: "please reset my treehouse to not made yet again so I can see the effects
 once its built" / "set me to zero pieces please", Studio EDIT, unpublished): workspace.Treehouse ResetRound 1 -> 2 (ResetUserIds
 '9611145467', TreehouseReset enabled). Runs once on her next live join after the publish.
+Job 121 r3b (cloud thread, from runner 7's preview at ecd7c06: walls 9, door 5 wide, the lowest thing over the doorway 8.0 above the
+deck - a 6.30-tall avatar clears; stool and armchair seat, a jump frees; the LowerTorso 1.02 above the seat top): the seated root
+offset is HipHeight * 0.5 - 0.1 (was + 0.9). Same file, patch_treehouse3_r3.lua. Also logged by runner 7: Shannon asked "set me to
+zero pieces please" - workspace.Treehouse ResetRound = 2 in Edit (unpublished), so her pieces go once more on her next live join.
