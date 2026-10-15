@@ -3364,3 +3364,6 @@ HudBackup.TreehouseClient_pre_r6_1; PieceSound rbxassetid://16480570986 at 1.5x"
 the script runs; the live question is still open with her.)
 Treehouse RESET round 3 (runner 7, Shannon: "Yes, restart me again", Studio EDIT, unpublished): ResetRound 2 -> 3 (ResetUserIds
 '9611145467', TreehouseReset enabled). Runs once on her next live join after the publish (with r6b + her PieceClips).
+
+PUBLISHED (Shannon: "published; testing now"): treehouse r6b (sign "Homebase Treehouse / Welcome home, <name>!", walk-in seats, her 10
+build-sound slices) + ResetRound 3. Nothing left unpublished in Edit.
