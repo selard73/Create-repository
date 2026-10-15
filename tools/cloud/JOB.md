@@ -2955,3 +2955,8 @@ horizon is done and she can publish.
 Result JAPAN GEO4B (runner 7, Shannon "Yes", Studio EDIT, unpublished): japan_geo4b.lua at 9b9e5c4 (1352, adler32 3481514143): "QQ GEO4B
 DONE: Workspace.JapanMap.Horizon sea - Shade 1.20, Reflectance 0.10 on the model and its 34 planes". Readback Shade 1.2, Reflectance 0.1.
 Asked her to save and publish.
+Result JAPAN GEO4B (runner 7, 9b9e5c4, done in Edit on Shannon's "Yes", unpublished; logged at d94e8aa): "QQ GEO4B DONE:
+Workspace.JapanMap.Horizon sea - Shade 1.20, Reflectance 0.10 on the model and its 34 planes"; readback matches. JOB 106 CLOSED:
+Japan's ground/water visual fixes = geo1 (sea, wall, props, slabs) + geo2 (bed, more sea, weir, stair shadow) + geo3/4/4b (the horizon
+as a persistent model under JapanMap, the live water colour x 1.2, reflectance 0.1, tiles edge to edge). Left for later, from the
+FINDINGS doc: the bright sheet of shallow canal water behind the weir, the door, the floating backdrop. She saves and publishes.
