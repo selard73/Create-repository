@@ -69,10 +69,11 @@ local SX, SZ = SITE.x, SITE.z
 -- ---------- 1-4: the terrain ----------
 -- the back rim (the ridge fell to nothing past z ~75): grass up to y 9 from z 62 to 84, so the hollow has a bank behind it
 T:FillBlock(CFrame.new((SX - 34 + SX + 34) / 2, (9 - 14) / 2, 73), Vector3.new(68, 23, 22), Enum.Material.Grass)
+for _, ex in ipairs({SX - 34, SX + 34}) do T:FillBall(Vector3.new(ex, -2.5, 73), 11, Enum.Material.Grass) end   -- rounded ends, seen from the tower top
 -- the floor: grass up to the forest's level under the whole hollow (the ridge's foot dips below it near the edge)
 T:FillCylinder(CFrame.new(SX, (FLOOR - 8) / 2, SZ), 8 + FLOOR, 29, Enum.Material.Grass)
--- the bowl: air above the floor, narrowing with height (the crest is y 10-14; 17 clears it)
-for _, step in ipairs({{0, 4, 27}, {4, 8, 25.5}, {8, 12, 24}, {12, 17, 22.5}}) do
+-- the bowl: air above the floor, WIDENING with height like an amphitheatre (the crest is y 10-14; 17 clears it)
+for _, step in ipairs({{0, 4, 22.5}, {4, 8, 24}, {8, 12, 25.5}, {12, 17, 27}}) do
 	local y1, y2, r = FLOOR + step[1], FLOOR + step[2], step[3]
 	T:FillCylinder(CFrame.new(SX, (y1 + y2) / 2, SZ), y2 - y1, r, Enum.Material.Air)
 end
@@ -80,12 +81,15 @@ end
 T:FillCylinder(CFrame.new(SX, FLOOR - 1, SZ), 2.2, 15, Enum.Material.Ground)
 print(string.format("QQ TREE terrain: rim to y 9 behind z 62..84, floor at %.1f, a bowl of radius 27 cut to y 17, dirt radius 15, centred (%d, %d)", FLOOR, SX, SZ))
 -- ---------- 5: the edge ----------
-local edge
+local edges = {}
 for _, p in ipairs(workspace:GetDescendants()) do
-	if p:IsA("BasePart") and p.Name == "Wall" and p.Size.X > 200 and math.abs(p.Position.Z - 25) < 1.5 and p.Size.Y > 40 then edge = p break end
+	if p:IsA("BasePart") and p.Name == "Wall" and p.Size.X > 60 and math.abs(p.Position.Z - 25) < 1.5 and p.Size.Y > 40 then table.insert(edges, p) end
 end
-if not edge then print("QQ TREE edge: the north wall (Wall, ~233 x 1 at z 25) was NOT found - the hollow is open to the bank; tell the cloud thread") end
-local MOUTH_L, MOUTH_R, BACK = SX - 30, SX + 30, SZ + 23                 -- the mouth's x range along the old edge, the U's back z
+local MOUTH_L, MOUTH_R, BACK = SX - 30, SX + 30, SZ + 26                 -- the mouth's x range along the old edge, the U's back z (a stud inside the floor's face)
+local edge
+for _, e in ipairs(edges) do if e.Position.X - e.Size.X / 2 < MOUTH_L and e.Position.X + e.Size.X / 2 > MOUTH_R then edge = e end end   -- the one spanning the mouth
+if #edges == 0 then print("QQ TREE edge: the north wall (Wall, ~233 x 1 at z 25) was NOT found - the hollow is open to the bank; tell the cloud thread")
+elseif #edges > 1 and edge then print("QQ TREE edge: " .. #edges .. " wall parts at z 25; the one spanning the mouth is split") end
 if edge and not edge.Parent:FindFirstChild("HollowWallBack") then
 	local wf = edge.Parent
 	local y, h = edge.Position.Y, edge.Size.Y
@@ -95,13 +99,14 @@ if edge and not edge.Parent:FindFirstChild("HollowWallBack") then
 		return w
 	end
 	log.edge = {name = edge.Name, size = tostring(edge.Size), cframe = tostring(edge.CFrame)}
-	wall("HollowWallBack", (MOUTH_L + MOUTH_R) / 2, BACK, MOUTH_R - MOUTH_L + 2, edge.Size.Z)
+	wall("HollowWallBack", (MOUTH_L + MOUTH_R) / 2, BACK, MOUTH_R - MOUTH_L + 2 * edge.Size.Z, edge.Size.Z)
 	wall("HollowWallLeft", MOUTH_L, (edge.Position.Z + BACK) / 2, edge.Size.Z, BACK - edge.Position.Z)
 	wall("HollowWallRight", MOUTH_R, (edge.Position.Z + BACK) / 2, edge.Size.Z, BACK - edge.Position.Z)
 	wall("Wall", (x1 + MOUTH_L) / 2, edge.Position.Z, MOUTH_L - x1, edge.Size.Z)          -- the old wall's west part
 	edge.Size = Vector3.new(x2 - MOUTH_R, h, edge.Size.Z); edge.CFrame = CFrame.new((MOUTH_R + x2) / 2, y, edge.Position.Z)   -- the old part keeps the east
 	print(string.format("QQ TREE edge: the north wall opens between x %d and %d; a U of wall round the hollow to z %d", MOUTH_L, MOUTH_R, BACK))
-elseif edge then print("QQ TREE edge: already opened (HollowWallBack exists)") end
+elseif edge then print("QQ TREE edge: already opened (HollowWallBack exists)")
+elseif #edges > 0 then print("QQ TREE edge: already opened (no wall spans the mouth)") end
 -- ---------- 6: the dressing on the site ----------
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 local cleared = 0
@@ -211,7 +216,8 @@ local Stones = Instance.new("Model"); Stones.Name = "Stones"; Stones.Parent = F
 local STONE = Color3.fromRGB(150, 146, 138)
 for i = 0, 9 do
 	local a = math.rad(i * 36 + 18)
-	if math.abs(i * 36 + 18 - 0) > 30 then
+	local dgap = (i * 36 + 18 + 180) % 360 - 180
+	if math.abs(dgap) > 30 then                                           -- the gap at the mouth (local +z), for the path in
 		local s = mk(B, Vector3.new(2.4 + (i % 3) * 0.5, 1.6 + (i % 2) * 0.4, 2.2 + (i % 3) * 0.4), STONE, base * CFrame.new(15.2 * math.sin(a), 0.4, 15.2 * math.cos(a)) * CFrame.Angles(0, a, math.rad(10)), Enum.Material.Slate, true, Stones)
 		s.Name = "Stone"
 	end

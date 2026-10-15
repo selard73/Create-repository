@@ -2625,3 +2625,9 @@ spawn with its railing, the ladder landing on it, an awning over the door), the 
 ~6 s with her line, then back), and TWELVE pieces all in the forest: p1 in sight of the spawn, p2..p12 beside eleven forest
 squirrels. Pieces already collected stay on the saves. Preview in a play test (terrain and all; discarded on stop): pictures of
 the hollow from the spawn, from the tower top, the sign, the reveal, the house at 3 / 7 / 12, the balcony; then install on her word.
+Job 111 HOMEBASE REVIEWED (cloud thread; the adversarial review's fixes applied): the flag moved to the balcony's front corner post
+(it stood inside a leaf ball), the bowl cut as an amphitheatre (widening with height, not an overhang), the rim's ends rounded, the
+U's back wall a stud inside the floor's face (no invisible wall in open air), the deck's side rails continuous at the railing
+stage, the stilts' feet on the ground, the stone ring's gap at the mouth, the edge search re-run safe, the reveal toast tall enough
+for her line. Preview per the "Job 111 BUILD" paragraph from THIS commit; the runner will see four 4-stud terraces in the bowl's
+walls and the rim's slab from the tower top - say if they look wrong by eye.

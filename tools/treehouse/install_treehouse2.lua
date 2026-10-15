@@ -2,7 +2,7 @@
 -- Job 111: the HOMEBASE TREEHOUSE in a hollow cut into the bank behind the zip line tower's left (Shannon, Oct 15 2026: "put it in a
 -- corner to the left of the zip line tower ... clear a space ... an open area clearly designated for the treehouse"; "Move the edge out").
 -- Terrain: a back rim, a floor, a stepped bowl, a dirt disk; the invisible north edge split round the hollow with a U of wall; the
--- dressing pines on the site to HudBackup; the oak, ten stones, the sign; TreehouseServer (4806) + TreehouseClient2 (22609);
+-- dressing pines on the site to HudBackup; the oak, ten stones, the sign; TreehouseServer (4806) + TreehouseClient2 (22722);
 -- twelve pieces all in the forest (p1 in sight of the spawn, the rest beside squirrels). Everything logged for undo in
 -- HudBackup.Treehouse2_log. No DataStore, no publish. Output "QQ TREE".
 local SS = game:GetService("ServerStorage")
@@ -240,7 +240,7 @@ local function buildHouse(n)
 		local b2 = part(Vector3.new(16, 0.5, 8), WOOD, L(0, 10.25, 12), houseF, Enum.Material.WoodPlanks, true); b2.Name = "Balcony"; b2.CanQuery = true
 		for _, z in ipairs({-6, 0, 6, 12}) do part(Vector3.new(16.4, 0.5, 0.8), WOOD_DARK, L(0, 9.75, z), houseF) end
 		for _, x in ipairs({-6, 6}) do part(Vector3.new(0.8, 0.5, 24.4), WOOD_DARK, L(x, 9.75, 4), houseF) end
-		for _, x in ipairs({-7, 7}) do part(Vector3.new(0.8, 9.5, 0.8), WOOD_DARK, L(x, 5.25, 15), houseF, nil, true) end   -- two stilts under the balcony's front
+		for _, x in ipairs({-7, 7}) do part(Vector3.new(0.8, 10, 0.8), WOOD_DARK, L(x, 5, 15), houseF, nil, true) end   -- two stilts under the balcony's front, feet on the ground
 	end
 	if n >= STAGES.railing then                                             -- the balcony's railing (always), the deck's until the walls come
 		local function post(x, z) part(Vector3.new(0.4, 1.3, 0.4), WOOD_DARK, L(x, 11.15, z), houseF, nil, true) end
@@ -249,7 +249,7 @@ local function buildHouse(n)
 		rail(-4.7, 15.8, 6.2, 0.25); rail(4.7, 15.8, 6.2, 0.25)                -- the gap is the top of the ladder
 		for _, x in ipairs({-7.8, 7.8}) do post(x, 8.5); rail(x, 12.1, 0.25, 7.6) end
 		if n < STAGES.walls then
-			for _, x in ipairs({-7.8, 7.8}) do for _, z in ipairs({-7.8, 1}) do post(x, z) end; rail(x, -3.4, 0.25, 9) end
+			for _, x in ipairs({-7.8, 7.8}) do post(x, -7.8); rail(x, 0.2, 0.25, 16.2) end
 			rail(0, -7.8, 16, 0.25)
 		end
 	end
@@ -279,9 +279,9 @@ local function buildHouse(n)
 		local l = Instance.new("PointLight"); l.Color = C(255, 200, 120); l.Range = 14; l.Brightness = 0.9; l.Shadows = false; l.Parent = lamp
 	end
 	if n >= STAGES.flag then
-		part(Vector3.new(0.2, 4.4, 0.2), C(70, 60, 50), L(5.8, 22.7, 0), houseF, Enum.Material.Metal)
-		part(Vector3.new(0.06, 1.3, 2.3), C(196, 56, 48), L(5.8, 24.2, 1.25), houseF, Enum.Material.Fabric)
-		part(Vector3.new(0.08, 0.42, 2.3), CREAM, L(5.8, 24.2, 1.25), houseF, Enum.Material.Fabric)
+		part(Vector3.new(0.2, 4.4, 0.2), C(70, 60, 50), L(7.8, 12.9, 15.8), houseF, Enum.Material.Metal)        -- on the balcony's front corner post, clear of the leaves
+		part(Vector3.new(0.06, 1.3, 2.3), C(196, 56, 48), L(7.8, 14.4, 14.55), houseF, Enum.Material.Fabric)
+		part(Vector3.new(0.08, 0.42, 2.3), CREAM, L(7.8, 14.4, 14.55), houseF, Enum.Material.Fabric)
 	end
 end
 local function signText(n)
@@ -309,7 +309,7 @@ toast.BackgroundColor3 = NAVY; toast.BackgroundTransparency = 0.1; toast.Font = 
 corner(toast, 12)
 local toastAt = 0
 local function say(t, secs)
-	toast.Text = t; toast.Visible = true
+	toast.Text = t; toast.Size = UDim2.fromOffset(400, #t > 60 and 66 or 40); toast.Visible = true
 	local mine = os.clock(); toastAt = mine
 	task.delay(secs or 3.5, function() if toastAt == mine then toast.Visible = false end end)
 end
@@ -425,10 +425,11 @@ local SX, SZ = SITE.x, SITE.z
 -- ---------- 1-4: the terrain ----------
 -- the back rim (the ridge fell to nothing past z ~75): grass up to y 9 from z 62 to 84, so the hollow has a bank behind it
 T:FillBlock(CFrame.new((SX - 34 + SX + 34) / 2, (9 - 14) / 2, 73), Vector3.new(68, 23, 22), Enum.Material.Grass)
+for _, ex in ipairs({SX - 34, SX + 34}) do T:FillBall(Vector3.new(ex, -2.5, 73), 11, Enum.Material.Grass) end   -- rounded ends, seen from the tower top
 -- the floor: grass up to the forest's level under the whole hollow (the ridge's foot dips below it near the edge)
 T:FillCylinder(CFrame.new(SX, (FLOOR - 8) / 2, SZ), 8 + FLOOR, 29, Enum.Material.Grass)
--- the bowl: air above the floor, narrowing with height (the crest is y 10-14; 17 clears it)
-for _, step in ipairs({{0, 4, 27}, {4, 8, 25.5}, {8, 12, 24}, {12, 17, 22.5}}) do
+-- the bowl: air above the floor, WIDENING with height like an amphitheatre (the crest is y 10-14; 17 clears it)
+for _, step in ipairs({{0, 4, 22.5}, {4, 8, 24}, {8, 12, 25.5}, {12, 17, 27}}) do
 	local y1, y2, r = FLOOR + step[1], FLOOR + step[2], step[3]
 	T:FillCylinder(CFrame.new(SX, (y1 + y2) / 2, SZ), y2 - y1, r, Enum.Material.Air)
 end
@@ -436,12 +437,15 @@ end
 T:FillCylinder(CFrame.new(SX, FLOOR - 1, SZ), 2.2, 15, Enum.Material.Ground)
 print(string.format("QQ TREE terrain: rim to y 9 behind z 62..84, floor at %.1f, a bowl of radius 27 cut to y 17, dirt radius 15, centred (%d, %d)", FLOOR, SX, SZ))
 -- ---------- 5: the edge ----------
-local edge
+local edges = {}
 for _, p in ipairs(workspace:GetDescendants()) do
-	if p:IsA("BasePart") and p.Name == "Wall" and p.Size.X > 200 and math.abs(p.Position.Z - 25) < 1.5 and p.Size.Y > 40 then edge = p break end
+	if p:IsA("BasePart") and p.Name == "Wall" and p.Size.X > 60 and math.abs(p.Position.Z - 25) < 1.5 and p.Size.Y > 40 then table.insert(edges, p) end
 end
-if not edge then print("QQ TREE edge: the north wall (Wall, ~233 x 1 at z 25) was NOT found - the hollow is open to the bank; tell the cloud thread") end
-local MOUTH_L, MOUTH_R, BACK = SX - 30, SX + 30, SZ + 23                 -- the mouth's x range along the old edge, the U's back z
+local MOUTH_L, MOUTH_R, BACK = SX - 30, SX + 30, SZ + 26                 -- the mouth's x range along the old edge, the U's back z (a stud inside the floor's face)
+local edge
+for _, e in ipairs(edges) do if e.Position.X - e.Size.X / 2 < MOUTH_L and e.Position.X + e.Size.X / 2 > MOUTH_R then edge = e end end   -- the one spanning the mouth
+if #edges == 0 then print("QQ TREE edge: the north wall (Wall, ~233 x 1 at z 25) was NOT found - the hollow is open to the bank; tell the cloud thread")
+elseif #edges > 1 and edge then print("QQ TREE edge: " .. #edges .. " wall parts at z 25; the one spanning the mouth is split") end
 if edge and not edge.Parent:FindFirstChild("HollowWallBack") then
 	local wf = edge.Parent
 	local y, h = edge.Position.Y, edge.Size.Y
@@ -451,13 +455,14 @@ if edge and not edge.Parent:FindFirstChild("HollowWallBack") then
 		return w
 	end
 	log.edge = {name = edge.Name, size = tostring(edge.Size), cframe = tostring(edge.CFrame)}
-	wall("HollowWallBack", (MOUTH_L + MOUTH_R) / 2, BACK, MOUTH_R - MOUTH_L + 2, edge.Size.Z)
+	wall("HollowWallBack", (MOUTH_L + MOUTH_R) / 2, BACK, MOUTH_R - MOUTH_L + 2 * edge.Size.Z, edge.Size.Z)
 	wall("HollowWallLeft", MOUTH_L, (edge.Position.Z + BACK) / 2, edge.Size.Z, BACK - edge.Position.Z)
 	wall("HollowWallRight", MOUTH_R, (edge.Position.Z + BACK) / 2, edge.Size.Z, BACK - edge.Position.Z)
 	wall("Wall", (x1 + MOUTH_L) / 2, edge.Position.Z, MOUTH_L - x1, edge.Size.Z)          -- the old wall's west part
 	edge.Size = Vector3.new(x2 - MOUTH_R, h, edge.Size.Z); edge.CFrame = CFrame.new((MOUTH_R + x2) / 2, y, edge.Position.Z)   -- the old part keeps the east
 	print(string.format("QQ TREE edge: the north wall opens between x %d and %d; a U of wall round the hollow to z %d", MOUTH_L, MOUTH_R, BACK))
-elseif edge then print("QQ TREE edge: already opened (HollowWallBack exists)") end
+elseif edge then print("QQ TREE edge: already opened (HollowWallBack exists)")
+elseif #edges > 0 then print("QQ TREE edge: already opened (no wall spans the mouth)") end
 -- ---------- 6: the dressing on the site ----------
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 local cleared = 0
@@ -567,7 +572,8 @@ local Stones = Instance.new("Model"); Stones.Name = "Stones"; Stones.Parent = F
 local STONE = Color3.fromRGB(150, 146, 138)
 for i = 0, 9 do
 	local a = math.rad(i * 36 + 18)
-	if math.abs(i * 36 + 18 - 0) > 30 then
+	local dgap = (i * 36 + 18 + 180) % 360 - 180
+	if math.abs(dgap) > 30 then                                           -- the gap at the mouth (local +z), for the path in
 		local s = mk(B, Vector3.new(2.4 + (i % 3) * 0.5, 1.6 + (i % 2) * 0.4, 2.2 + (i % 3) * 0.4), STONE, base * CFrame.new(15.2 * math.sin(a), 0.4, 15.2 * math.cos(a)) * CFrame.Angles(0, a, math.rad(10)), Enum.Material.Slate, true, Stones)
 		s.Name = "Stone"
 	end
