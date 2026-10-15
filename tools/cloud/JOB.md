@@ -3065,3 +3065,8 @@ Studio Edit", unpublished): japan_guest1.lua at 7fbcdc9 (7527, adler32 549230530
 guests included, the ordinary ride)", "QQ JGUEST DONE: JapanPreviewAccess ok | BalloonClient ok | JapanPreviewVisibility ok |
 JapanAtmosphere ok | JapanWaterAppearance ok | MusicClient ok | AutomaticFoodSeatContact#1 ok | AutomaticFoodSeatContact#2 ok |
 AutomaticFoodSeatContact#3 ok". Readback: marker in JapanPreviewAccess, its GuestUserIds attribute ''. Play check not run yet.
+Result job 116 (runner 7, 7fbcdc9, INSTALLED in Edit on Shannon's word, unpublished; logged at 3183be4): every script ok -
+JapanPreviewAccess 966 -> 1441, BalloonClient 37493 -> 37807, JapanPreviewVisibility 2412 -> 2639, JapanAtmosphere 2577 -> 2658,
+JapanWaterAppearance 1110 -> 1204, MusicClient 11980 -> 12084, AutomaticFoodSeatContact x3 2245 -> 2329 (backups _pre_japanguest1,
+_2, _3); BalloonField.JapanPreview = true; the marker in JapanPreviewAccess, GuestUserIds attribute ''. Play check pending
+(the owner's ride to Japan; an ordinary test player still hidden and returned). Then save + publish; Shademade sees it on his next join.
