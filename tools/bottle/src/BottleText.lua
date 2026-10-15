@@ -12,32 +12,46 @@ T.TO = {
 	{label = "whoever finds this", sign = "Someone who found your bottle"},
 	{label = "a squirrel far, far away", sign = "Hana, a squirrel very far to the east"},
 }
--- the message cards: text with two blanks, the choices for each, and the reply's first line that answers them
+-- the message cards: text with two blanks, the choices for each, and the reply's first line that answers them.
+-- (round 3, Shannon: "the fill in the blank is nonsensical" - every option in a blank is the same kind of word, and EVERY pairing of
+-- blank 1 with blank 2 reads as a sensible (silly) sentence; the echo lines work for every pairing and every recipient)
 T.CARDS = {
-	{text = "Ahoy! I hope you have enough {A}. I'm sending you {B}.",
-	 A = {"snacks", "sunscreen", "friends", "socks", "adventure", "acorns"},
-	 B = {"a hug", "a joke", "a map", "good luck", "a sandwich", "a tiny boat"},
-	 echo = {"You sent me {B}? Nobody has ever sent me {B} before!", "Enough {A}? I never have enough {A}. How did you know?"}},
-	{text = "Today I found {A} in Porto. It was very {B}.",
-	 A = {"a squirrel", "a crab", "gelato", "a seashell", "a whale", "a lemon"},
-	 B = {"sticky", "shiny", "loud", "suspicious", "delicious", "wonderful"},
-	 echo = {"You found {A} and it was {B}? That is the best news I've had all week.", "I once found {A} too. Mine was not {B}. Yours sounds better."}},
-	{text = "Do you like {A}? I like {B} the most.",
-	 A = {"gelato", "boats", "the beach", "mysteries", "napping", "pizza"},
-	 B = {"lemons", "sunsets", "waves", "acorns", "spaghetti", "singing"},
-	 echo = {"{B}? Me too! Well, {A} a little bit. But mostly {B}.", "We should start a club for everyone who likes {B}."}},
+	{text = "Ahoy! Do you have enough {A} out there? I'm sending you {B}.",
+	 A = {"snacks", "sunscreen", "socks", "friends", "books", "games"},
+	 B = {"a sandwich", "a joke", "a map", "a tiny umbrella", "a lucky acorn", "a drawing of a squirrel"},
+	 echo = {"Thank you for {B}! I definitely do not have enough {A}.", "Nobody has ever sent me {B} before. Now I just need more {A}."}},
+	{text = "Today in Porto I ate {A}. It was {B}!",
+	 A = {"a giant gelato", "a slice of pizza", "a lemon", "a bowl of spaghetti", "a fish sandwich", "a whole watermelon"},
+	 B = {"delicious", "too big", "very sticky", "the best ever", "a little sour", "gone in one bite"},
+	 echo = {"You ate {A} and it was {B}? Now I'm hungry.", "I've never tried {A}. Was it really {B}?"}},
 	{text = "Help! A {A} stole my {B}!",
-	 A = {"seagull", "crab", "squirrel", "pelican", "wave", "cat"},
-	 B = {"hat", "gelato", "sandwich", "shoe", "map", "acorns"},
-	 echo = {"Oh no, a {A} took your {B}? I will keep an eye out for a {A} with a {B}.", "I saw a {A} go past this morning with a {B}. It looked very pleased with itself."}},
+	 A = {"seagull", "crab", "pelican", "sneaky squirrel", "big wave", "cat"},
+	 B = {"hat", "gelato", "sandwich", "flip-flop", "sunglasses", "towel"},
+	 echo = {"Oh no! I'll keep an eye out for a {A} with a {B}.", "I saw a {A} go past this morning with a {B}. It looked very pleased with itself."}},
 	{text = "If you come to Porto, bring {A} and we can {B}.",
-	 A = {"a kite", "a pizza", "your friends", "a boat", "an umbrella", "a song"},
-	 B = {"go swimming", "eat gelato", "find squirrels", "race scooters", "watch the whale", "build a sandcastle"},
-	 echo = {"Bring {A}? Done. I've wanted to {B} for ages.", "I'm packing {A} right now. Save me a spot and we can {B}."}},
-	{text = "Greetings from the beach! The weather is {A} and I feel {B}.",
-	 A = {"sunny", "windy", "splashy", "perfect", "too hot", "mysterious"},
+	 A = {"a kite", "a picnic", "a beach ball", "a boat", "a swimsuit", "a camera"},
+	 B = {"go swimming", "eat gelato", "look for squirrels", "watch the whale", "build a sandcastle", "ride the funicular"},
+	 echo = {"I'll bring {A}! I've always wanted to {B}.", "Packing {A} right now. Save me a spot so we can {B}."}},
+	{text = "Greetings from the beach! It's {A} today and I'm feeling {B}.",
+	 A = {"sunny", "windy", "rainy", "very hot", "cloudy", "perfect"},
 	 B = {"happy", "sleepy", "brave", "hungry", "silly", "fancy"},
-	 echo = {"{A} and feeling {B}? That sounds like a perfect beach day.", "It's {A} here too! Well, it's wet. I'm feeling a bit {B} as well."}},
+	 echo = {"It's {A} here too! I'm feeling a bit {B} as well.", "{A} and {B}? That sounds like a great beach day."}},
+	{text = "My best friend is a {A} who loves {B}.",
+	 A = {"squirrel", "crab", "seagull", "dolphin", "lighthouse keeper", "pirate"},
+	 B = {"dancing", "singing", "napping", "telling jokes", "collecting shells", "eating acorns"},
+	 echo = {"A {A} who loves {B}? Please introduce me!", "Tell your {A} I love {B} too."}},
+}
+-- (round 3, Shannon: "we should be able to personalize it more, otherwise, no sense in the anticipation of coming back the next day")
+-- a question to ask - and each recipient answers it in their own voice (same order as T.TO)
+T.QUESTIONS = {"What's your favourite food?", "What do you do all day?", "Do you have any pets?", "What's the best thing about the sea?", "Can you keep a secret?", "What should I do in Porto?"}
+T.ANSWER = {
+	{"Coconuts. Only coconuts. It's coconuts or nothing on this island.", "I count waves. Yesterday there were 4,000. Or 12. I lost count.", "A crab named Gerald. He doesn't know he's my pet.", "The best thing about the sea is that it brought me your bottle.", "Arr, I can! I've kept one for years. I just can't remember what it is.", "Eat a gelato for me. Two, if they're small."},
+	{"Toast with lemon jam, by the light of the big lamp.", "I polish the lamp, wave at the boats, and tell the seagulls off.", "A cat called Faro. She sleeps right next to the light.", "The sunsets. From up here, every one is the best I've ever seen.", "Of course. A lighthouse shines on the sea, never on secrets.", "Climb up to the lighthouse and wave. I'll wave back!"},
+	{"Krill. Millions of them. Is that greedy? It feels greedy.", "I swim, I sing, and I splash the fishing boats by accident.", "A little fish follows me everywhere. I think he thinks I'm a rock.", "It's very big, like me. We get along.", "I'm a whale. Everything I say is very, very loud. But I'll try.", "Look out to sea from the beach. A big splash is me saying hi."},
+	{"Seaweed. Crunchy seaweed. Click click.", "I walk sideways. Then I walk sideways back.", "A pebble. His name is Pebble. He is a very good pebble.", "The rocks. Also the sea. Mostly the rocks.", "Yes. Crabs never tell. We just pinch.", "Try the crab game. But please don't catch me."},
+	{"Spaghetti. Don't laugh. All eight of my arms like spaghetti.", "Mostly I sulk in my cave. It's a very good cave for sulking.", "No. Pets are for happy squids. ...A starfish, maybe. Just one.", "Nobody bothers me down here. Well, nobody until your bottle.", "I keep everyone's secrets. Then I forget them. Squid brain.", "Don't come into my cave. Unless you bring spaghetti."},
+	{"Pizza, today. Tomorrow? Also pizza.", "I walk on the beach and pick up bottles. Mostly yours, it turns out.", "A goldfish called Captain. He's very brave for a goldfish.", "Finding bottles like yours. It's like getting mail from the waves.", "I can! My lips are sealed. Like a bottle.", "Find all the squirrels. I'm still looking for one in a tiny hat."},
+	{"Mochi! Soft, sweet and a little bit chewy.", "I sweep the temple steps and watch the cherry blossoms fall.", "A koi fish named Sunny. He lives in the garden pond.", "It carries bottles all the way to me. Like yours!", "Yes. Here we fold secrets into paper cranes.", "Ride the funicular to the top, then look east. That's where I am!"},
 }
 -- the second line of a reply, in each sender's own voice (same order as T.TO)
 T.VOICE = {
@@ -69,18 +83,38 @@ T.BEACH = {
 	{"Free hugs. Some assembly required.", "An octopus who is NOT the squid"},
 }
 local function fill(s, a, b) return (s:gsub("{A}", a):gsub("{B}", b)) end
-function T.valid(to, card, a, b)
+function T.valid(to, card, a, b, q)
 	local c = T.CARDS[card]
-	return T.TO[to] ~= nil and c ~= nil and c.A[a] ~= nil and c.B[b] ~= nil
+	return T.TO[to] ~= nil and c ~= nil and c.A[a] ~= nil and c.B[b] ~= nil and (q == nil or q == 0 or T.QUESTIONS[q] ~= nil)
 end
-function T.message(to, card, a, b)                        -- what the player sent
+function T.message(to, card, a, b, q, from)                -- what the player sent
 	local c = T.CARDS[card]
-	return "To " .. T.TO[to].label .. ":\n" .. fill(c.text, c.A[a], c.B[b])
+	local m = "To " .. T.TO[to].label .. ":\n" .. fill(c.text, c.A[a], c.B[b])
+	if q and T.QUESTIONS[q] then m ..= " " .. T.QUESTIONS[q] end
+	if from then m ..= "\nFrom " .. from end
+	return m
 end
-function T.reply(to, card, a, b, seed)                    -- the answer: an echo of what they picked + the sender's voice + the signature
-	local c = T.CARDS[card]
+-- how the sender is getting on, from what the server sent with the reply (info: found, total, treeDone, hintName, hintWhere)
+local function progressLine(info, seed)
+	if type(info) ~= "table" then return nil end
+	local found, total = tonumber(info.found) or 0, tonumber(info.total) or 0
+	if total > 0 and found >= total then return "Word on the waves is you've found every single squirrel. Wow!" end
+	if info.treeDone and seed % 2 == 0 then return "Is that your treehouse I can see from out here? Very fancy." end
+	if total > 0 then return string.format("Word on the waves is you've found %d squirrels. Only %d to go!", found, total - found) end
+	return nil
+end
+function T.reply(to, card, a, b, seed, q, info, name)    -- the answer: Dear <name>, an echo of their picks, the answer to their
+	local c = T.CARDS[card]                                  -- question (or a line in the sender's voice), how they're getting on, a P.S.
 	local e = c.echo[(seed % #c.echo) + 1]
-	local v = T.VOICE[to][(math.floor(seed / 7) % #T.VOICE[to]) + 1]
-	return fill(e, c.A[a], c.B[b]) .. " " .. v, T.TO[to].sign
+	local line = fill(e, c.A[a], c.B[b])
+	line = line:sub(1, 1):upper() .. line:sub(2)                          -- (an echo may open with a blank: "Sunny and happy? ...")
+	local parts = {line}
+	if q and T.ANSWER[to] and T.ANSWER[to][q] then table.insert(parts, T.ANSWER[to][q])
+	else table.insert(parts, T.VOICE[to][(math.floor(seed / 7) % #T.VOICE[to]) + 1]) end
+	local pl = progressLine(info, seed); if pl then table.insert(parts, pl) end
+	local body = table.concat(parts, " ")
+	if name then body = "Dear " .. name .. ",\n" .. body end
+	if type(info) == "table" and info.hintName then body ..= "\nP.S. I spotted " .. info.hintName .. (info.hintWhere and (" in " .. info.hintWhere) or "") .. ". Have you met them yet?" end
+	return body, T.TO[to].sign
 end
 return T

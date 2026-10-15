@@ -45,8 +45,40 @@ local function pay(p, n)
 	p:SetAttribute("Acorns", (tonumber(p:GetAttribute("Acorns")) or 0) + n)
 end
 local function ready(p) return p:GetAttribute("SaveLoaded") == true end
+-- Item_bottle_card: round 3 = to*1e8 + q*1e6 + card*1e4 + a*100 + b (the question); round 1-2 bottles still at sea = to*1e6 + ...
 local function decode(code)
-	return math.floor(code / 1e6) % 100, math.floor(code / 1e4) % 100, math.floor(code / 100) % 100, code % 100
+	if code >= 1e8 then return math.floor(code / 1e8) % 100, math.floor(code / 1e4) % 100, math.floor(code / 100) % 100, code % 100, math.floor(code / 1e6) % 100 end
+	return math.floor(code / 1e6) % 100, math.floor(code / 1e4) % 100, math.floor(code / 100) % 100, code % 100, 0
+end
+-- how the sender is getting on, for the reply (round 3): squirrels found, the treehouse, and one squirrel they have not met yet
+local Registry
+pcall(function() local ss = workspace:FindFirstChild("SquirrelScripts"); local m = ss and ss:FindFirstChild("SquirrelRegistry"); if m then Registry = require(m) end end)
+local function progress(p, seed)
+	local info = {treeDone = (tonumber(p:GetAttribute("Item_tree_done")) or 0) >= 1}
+	if type(Registry) ~= "table" or type(Registry.squirrels) ~= "table" then return info end
+	local found = {}
+	for id in tostring(p:GetAttribute("FoundIds") or ""):gmatch("[^,]+") do found[id] = true end
+	local mapName, areaName = {}, {}
+	for _, m in ipairs(Registry.maps or {}) do
+		mapName[m.id] = m.name
+		for _, a in ipairs(m.areas or {}) do areaName[a.id] = a.name end
+	end
+	local n, total, porto, other = 0, 0, {}, {}
+	for _, e in ipairs(Registry.squirrels) do
+		if mapName[e.map] then
+			total += 1
+			if found[e.id] then n += 1
+			else table.insert(e.map == "porto" and porto or other, e) end
+		end
+	end
+	info.found, info.total = n, total
+	local pool = #porto > 0 and porto or other                               -- (the sea knows Porto best)
+	if #pool > 0 then
+		local e = pool[(seed % #pool) + 1]
+		info.hintName = e.name
+		info.hintWhere = (e.area and areaName[e.area]) or mapName[e.map]
+	end
+	return info
 end
 -- what this player's stand should say, and whether a reply is waiting
 local function state(p)
@@ -55,21 +87,21 @@ local function state(p)
 	if out > 0 then
 		s.sentDay = out - 1
 		s.replyReady = day > out - 1
-		local to, card, a, b = decode(get(p, "bottle_card"))
-		if Text.valid(to, card, a, b) then s.sent = {to, card, a, b} end
+		local to, card, a, b, q = decode(get(p, "bottle_card"))
+		if Text.valid(to, card, a, b, q) then s.sent = {to, card, a, b, q} end
 	end
 	return s
 end
 local function push(p) ev:FireClient(p, "state", state(p)) end
 local last = {}
 local function throttle(p) local t = os.clock(); if last[p] and t - last[p] < 1 then return false end; last[p] = t; return true end
-ev.OnServerEvent:Connect(function(p, what, a1, a2, a3, a4)
+ev.OnServerEvent:Connect(function(p, what, a1, a2, a3, a4, a5)
 	if what == "state" then push(p) return end
 	if not throttle(p) then return end
 	if not ready(p) then ev:FireClient(p, "msg", "Your save is still loading - try again in a moment") return end
 	if what == "send" then
-		local to, card, a, b = tonumber(a1), tonumber(a2), tonumber(a3), tonumber(a4)
-		if not (to and card and a and b and Text.valid(to, card, a, b)) then return end
+		local to, card, a, b, q = tonumber(a1), tonumber(a2), tonumber(a3), tonumber(a4), tonumber(a5) or 0
+		if not (to and card and a and b and Text.valid(to, card, a, b, q)) then return end
 		local s = state(p)
 		if s.sentDay then
 			ev:FireClient(p, "msg", s.replyReady and "Your reply has washed up by the stand - read it first!" or "Your bottle is already out at sea. Check the beach tomorrow!")
@@ -79,19 +111,19 @@ ev.OnServerEvent:Connect(function(p, what, a1, a2, a3, a4)
 		local have = tonumber(p:GetAttribute("Acorns")) or 0
 		if have < cost then ev:FireClient(p, "msg", string.format("A bottle costs %d acorns - you have %d", cost, have)) return end
 		pay(p, -cost)
-		put(p, "bottle_card", to * 1e6 + card * 1e4 + a * 100 + b)
+		put(p, "bottle_card", to * 1e8 + q * 1e6 + card * 1e4 + a * 100 + b)
 		put(p, "bottle_out", realDay() + 1)
-		ev:FireClient(p, "sent", to, card, a, b)
+		ev:FireClient(p, "sent", to, card, a, b, q)
 		push(p)
 	elseif what == "reply" then
 		local out = get(p, "bottle_out")
 		if out <= 0 or today() <= out - 1 then push(p) return end
-		local to, card, a, b = decode(get(p, "bottle_card"))
+		local to, card, a, b, q = decode(get(p, "bottle_card"))
 		put(p, "bottle_out", 0); put(p, "bottle_card", 0)
 		put(p, "bottle_replies", get(p, "bottle_replies") + 1)
-		if Text.valid(to, card, a, b) then
-			local seed = (out * 31 + card * 7 + a * 3 + b) % 997
-			ev:FireClient(p, "reply", to, card, a, b, seed)
+		if Text.valid(to, card, a, b, q) then
+			local seed = (out * 31 + card * 7 + a * 3 + b + q * 11) % 997
+			ev:FireClient(p, "reply", to, card, a, b, seed, q, progress(p, seed))
 		end
 		push(p)
 	end

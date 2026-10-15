@@ -16,6 +16,10 @@ Its body runs as a play-test PREVIEW too (discarded on stop). Run from the repo 
 import pathlib
 HERE = pathlib.Path(__file__).resolve().parent
 SRC = {n: (HERE / "src" / (n + ".lua")).read_text(encoding="utf-8") for n in ("BottleText", "BottleServer", "BottleClient")}
+# round 3: Shannon's spot for the kiosk ("on the landing behind the police officer next to the boat club"), read by runner 7 from her
+# character in Studio Play: x, z, and yaw = the way she faced (the kiosk's front - counter, sign, prompt - faces that way). None = the
+# round-2 automatic choice on the beach.
+STAND = None
 for s in SRC.values(): assert "]===]" not in s
 lua = r'''-- install_bottle1.lua (Studio EDIT; re-runnable; its body also runs as a play-test PREVIEW - discarded on stop). Job 118: the MESSAGE IN
 -- A BOTTLE game on the main Porto beach. Scans the beach for open sand and the waterline, puts the stand 10..18 studs from the water
@@ -80,7 +84,18 @@ local function clear(s, r)
 end
 -- ---------- 2: the stand ----------
 local SPAWN = Vector3.new(232, -47, -580)
-local site, siteWater
+local site, siteWater, standCF
+local FIXED = @@STAND@@
+if FIXED then
+	local h = workspace:Raycast(Vector3.new(FIXED.x, 120, FIXED.z), Vector3.new(0, -260, 0), rp)
+	if not h then print("QQ BOTTLE ABORT: nothing under the chosen kiosk spot - tell the cloud thread") return end
+	site = h.Position
+	local d, wp = nearestWater(site); siteWater = wp
+	standCF = CFrame.new(site) * CFrame.Angles(0, math.rad(FIXED.yaw), 0)          -- its front (LookVector) faces the way she faced
+	local ok, by = clear(site, 4)
+	print(string.format("QQ BOTTLE stand (her spot): (%.1f, %.1f, %.1f) on %s, facing yaw %.0f; %s; nearest water %.0f studs", site.X, site.Y, site.Z,
+		h.Instance == T and ("terrain " .. h.Material.Name) or h.Instance:GetFullName(), FIXED.yaw, ok and "4 studs clear" or ("NOT clear: " .. by:GetFullName()), d))
+end
 local cands = {}
 for _, s in ipairs(sand) do
 	local d, wp = nearestWater(s)
@@ -88,16 +103,18 @@ for _, s in ipairs(sand) do
 end
 table.sort(cands, function(a, b) return a.k < b.k end)
 local blocked = 0
-for _, c in ipairs(cands) do
+for _, c in ipairs(FIXED and {} or cands) do
 	local ok = clear(c.s, 7)
 	if ok then site, siteWater = c.s, c.w break end
 	blocked += 1
 end
-if not site then print(string.format("QQ BOTTLE ABORT: no open level sand 10..18 studs from the water with 7 clear studs (%d candidates, %d blocked) - tell the cloud thread", #cands, blocked)) return end
+if not site and not FIXED then print(string.format("QQ BOTTLE ABORT: no open level sand 10..18 studs from the water with 7 clear studs (%d candidates, %d blocked) - tell the cloud thread", #cands, blocked)) return end
+if not FIXED then
 local seaward = Vector3.new(siteWater.X - site.X, 0, siteWater.Z - site.Z).Unit
-local standCF = CFrame.lookAt(site, site - seaward)                      -- its front (LookVector) faces inland, its back the sea
+standCF = CFrame.lookAt(site, site - seaward)                            -- its front (LookVector) faces inland, its back the sea
 print(string.format("QQ BOTTLE stand: (%.1f, %.1f, %.1f), %.0f studs from the water, back to the sea toward (%.2f, %.2f); %d candidates, %d blocked before it",
 	site.X, site.Y, site.Z, (Vector3.new(siteWater.X, 0, siteWater.Z) - Vector3.new(site.X, 0, site.Z)).Magnitude, seaward.X, seaward.Z, #cands, blocked))
+end
 -- ---------- 3: the wash spots ----------
 local spots = {}
 local shore = {}
@@ -113,7 +130,15 @@ if #spots == 0 then print("QQ BOTTLE ABORT: no wash-up spots at the waterline - 
 local list = {}
 for i, s in ipairs(spots) do table.insert(list, string.format("%d (%.0f, %.1f, %.0f)", i, s[1], s[2], s[3])) end
 if #spots < 2 then print("QQ BOTTLE ABORT: only one waterline spot - tell the cloud thread") return end
-local replySpot = table.remove(spots, 1)                                   -- (round 2: the reply spot is never a wash spot - no beach bottle inside the reply bottle)
+local replySpot
+if (Vector3.new(spots[1][1], 0, spots[1][3]) - Vector3.new(site.X, 0, site.Z)).Magnitude <= 30 then
+	replySpot = table.remove(spots, 1)                                     -- (round 2: the reply spot is never a wash spot - no beach bottle inside the reply bottle)
+else                                                                       -- (round 3: the kiosk is up on the landing - the reply lies at its foot)
+	local f = (standCF * CFrame.new(2.5, 0, -4.5)).Position
+	local h = workspace:Raycast(f + Vector3.new(0, 20, 0), Vector3.new(0, -60, 0), rp)
+	replySpot = {math.floor(f.X * 10 + 0.5) / 10, math.floor(((h and h.Position.Y) or site.Y) * 100 + 0.5) / 100, math.floor(f.Z * 10 + 0.5) / 10}
+	print(string.format("QQ BOTTLE the reply spot: in front of the kiosk at (%.0f, %.1f, %.0f) - the waterline is more than 30 studs away", replySpot[1], replySpot[2], replySpot[3]))
+end
 print("QQ BOTTLE spots: " .. table.concat(list, " | ") .. "; no. 1, nearest the stand, is the REPLY spot, the other " .. #spots .. " are wash spots")
 -- every check passed: now the old install goes
 if old then local n = 1; while hb:FindFirstChild("Bottles_pre_" .. n) do n += 1 end; old.Name = "Bottles_pre_" .. n; old.Parent = hb; for _, s in ipairs(old:GetDescendants()) do if s:IsA("BaseScript") then s.Enabled = false end end end
@@ -141,7 +166,7 @@ local sp = Instance.new("Sparkles"); sp.SparkleColor = C(255, 240, 180); sp.Time
 tpl.Parent = RS
 -- ---------- 5: the folder, the stand, the scripts ----------
 local Fd = Instance.new("Folder"); Fd.Name = "Bottles"
-for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 3, RespawnSeconds = 75, TestDayOffset = 0}) do Fd:SetAttribute(k, v) end
+for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 1, RespawnSeconds = 90, TestDayOffset = 0}) do Fd:SetAttribute(k, v) end   -- (round 3: ONE silly bottle at a time)
 Fd:SetAttribute("WashSpots", HttpService:JSONEncode(spots))
 Fd:SetAttribute("ReplySpot", HttpService:JSONEncode(replySpot))
 local evt = Instance.new("RemoteEvent"); evt.Name = "BottleEvent"; evt.Parent = Fd
@@ -204,6 +229,9 @@ print(string.format("QQ BOTTLE DONE: workspace.Bottles (BottleServer %d, BottleC
 for n, s in SRC.items():
     assert lua.count("@@" + n + "@@") == 1
     lua = lua.replace("@@" + n + "@@", s)
+st = "nil" if STAND is None else "{x = %s, z = %s, yaw = %s}" % (STAND["x"], STAND["z"], STAND["yaw"])
+assert lua.count("@@STAND@@") == 1
+lua = lua.replace("@@STAND@@", st)
 lua = lua.replace("@@L1@@", str(len(SRC["BottleText"]))).replace("@@L2@@", str(len(SRC["BottleServer"]))).replace("@@L3@@", str(len(SRC["BottleClient"])))
 assert "@@" not in lua
 (HERE / "install_bottle1.lua").write_text(lua, encoding="utf-8")

@@ -53,15 +53,17 @@ local function say(text, secs)
 	end)
 end
 -- ---------- the note card (every bottle opened) ----------
-local NW, NH = 420, 330                                                    -- (round 2: room for the signature and the "You wrote" line)
+local NW, NH = 440, 420                                                    -- (round 3: a personal reply - Dear <name>, the answer, how you're doing, a P.S.)
 local note = Instance.new("Frame"); note.AnchorPoint = Vector2.new(0.5, 0.5); note.Position = UDim2.new(0.5, 0, 0.5, 24); note.Size = UDim2.fromOffset(NW, NH)
 note.BackgroundColor3 = PAPER; note.BorderSizePixel = 0; note.Visible = false; note.ZIndex = 3; note.Parent = gui
 corner(note, 18); stroke(note, RIM, 3); fit(note, NW, NH)
 local nHead = label(note, "", 20, 14, NW - 40, 30, 22, SEA, Enum.TextXAlignment.Center)
-local nBody = label(note, "", 26, 50, NW - 52, 120, 19, INK, Enum.TextXAlignment.Center); nBody.TextYAlignment = Enum.TextYAlignment.Center
-local nSign = label(note, "", 26, 172, NW - 52, 22, 15, INK_DIM, Enum.TextXAlignment.Right)
-local nPrize = label(note, "", 26, 200, NW - 52, 64, 15, RGB(150, 104, 20), Enum.TextXAlignment.Center); nPrize.TextYAlignment = Enum.TextYAlignment.Top
-local nClose = button(note, "Lovely!", (NW - 130) / 2, 274, 130, 40)
+local nBody = label(note, "", 26, 50, NW - 52, 210, 18, INK, Enum.TextXAlignment.Left); nBody.TextYAlignment = Enum.TextYAlignment.Center
+nBody.TextScaled = true; do local c = Instance.new("UITextSizeConstraint"); c.MaxTextSize = 18; c.MinTextSize = 11; c.Parent = nBody end
+local nSign = label(note, "", 26, 264, NW - 52, 22, 15, INK_DIM, Enum.TextXAlignment.Right)
+local nPrize = label(note, "", 26, 292, NW - 52, 64, 14, RGB(150, 104, 20), Enum.TextXAlignment.Center); nPrize.TextYAlignment = Enum.TextYAlignment.Top
+nPrize.TextScaled = true; do local c = Instance.new("UITextSizeConstraint"); c.MaxTextSize = 15; c.MinTextSize = 10; c.Parent = nPrize end
+local nClose = button(note, "Lovely!", (NW - 130) / 2, 364, 130, 40)
 local function chime()
 	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://9116394876"; s.Volume = 0.3; s.PlaybackSpeed = 1.1; s.Parent = gui; s:Play(); Debris:AddItem(s, 4)
 end
@@ -71,7 +73,7 @@ local function showNote(head, body, sign, prize)
 end
 nClose.Activated:Connect(function() note.Visible = false; if pg:GetAttribute("OpenPanel") == "bottle" then pg:SetAttribute("OpenPanel", nil) end end)
 -- ---------- the writing panel ----------
-local W, H = 640, 310                                                      -- (round 2: wide and short, two columns - a landscape phone keeps ~0.9 scale)
+local W, H = 640, 330                                                      -- (round 2: wide and short, two columns - a landscape phone keeps ~0.9 scale)
 local shade = Instance.new("TextButton"); shade.Size = UDim2.fromScale(1, 1); shade.BackgroundColor3 = RGB(20, 12, 6); shade.BackgroundTransparency = 0.5
 shade.Text = ""; shade.AutoButtonColor = false; shade.BorderSizePixel = 0; shade.Visible = false; shade.ZIndex = 1; shade.Parent = gui
 local panel = Instance.new("Frame"); panel.AnchorPoint = Vector2.new(0.5, 0.5); panel.Position = UDim2.new(0.5, 0, 0.5, 24); panel.Size = UDim2.fromOffset(W, H)
@@ -80,7 +82,7 @@ corner(panel, 18); stroke(panel, RIM, 3); fit(panel, W, H)
 label(panel, "Messaggi in Bottiglia", 20, 12, 420, 30, 24, INK)
 local close = button(panel, "X", W - 52, 12, 38, 38, SLOT, 20)
 local status = label(panel, "", 20, 46, W - 80, 22, 15, SEA)
-local choice = {to = 1, card = 1, a = 1, b = 1}
+local choice = {to = 1, card = 1, a = 1, b = 1, q = 1}
 local rows = {}
 local function cycler(y, title, get, count, set)
 	label(panel, title, 20, y + 10, 70, 24, 15, INK_DIM)
@@ -104,18 +106,20 @@ local function refresh()
 	rows[2].mid.Text = "Note " .. choice.card .. " of " .. #Text.CARDS        -- (round 2: the whole sentence is in the preview)
 	rows[3].mid.Text = card().A[choice.a]
 	rows[4].mid.Text = card().B[choice.b]
-	preview.Text = Text.message(choice.to, choice.card, choice.a, choice.b)
+	rows[5].mid.Text = Text.QUESTIONS[choice.q]
+	preview.Text = Text.message(choice.to, choice.card, choice.a, choice.b, choice.q, player.DisplayName)
 end
-cycler(80, "To:", function() return choice.to end, function() return #Text.TO end, function(v) choice.to = v; refresh() end)
-cycler(134, "Note:", function() return choice.card end, function() return #Text.CARDS end, function(v) choice.card = v; choice.a = 1; choice.b = 1; refresh() end)
-cycler(188, "Blank 1:", function() return choice.a end, function() return #card().A end, function(v) choice.a = v; refresh() end)
-cycler(242, "Blank 2:", function() return choice.b end, function() return #card().B end, function(v) choice.b = v; refresh() end)
-local paper = Instance.new("Frame"); paper.Position = UDim2.fromOffset(372, 80); paper.Size = UDim2.fromOffset(W - 392, 150); paper.BackgroundColor3 = PAPER
+cycler(76, "To:", function() return choice.to end, function() return #Text.TO end, function(v) choice.to = v; refresh() end)
+cycler(124, "Note:", function() return choice.card end, function() return #Text.CARDS end, function(v) choice.card = v; choice.a = 1; choice.b = 1; refresh() end)
+cycler(172, "Blank 1:", function() return choice.a end, function() return #card().A end, function(v) choice.a = v; refresh() end)
+cycler(220, "Blank 2:", function() return choice.b end, function() return #card().B end, function(v) choice.b = v; refresh() end)
+cycler(268, "Ask:", function() return choice.q end, function() return #Text.QUESTIONS end, function(v) choice.q = v; refresh() end)   -- (round 3: they answer it tomorrow)
+local paper = Instance.new("Frame"); paper.Position = UDim2.fromOffset(372, 76); paper.Size = UDim2.fromOffset(W - 392, 180); paper.BackgroundColor3 = PAPER
 paper.BorderSizePixel = 0; paper.ZIndex = 3; paper.Parent = panel
 corner(paper, 10); stroke(paper, RGB(196, 170, 120), 1.5)
-preview = label(paper, "", 12, 10, W - 416, 130, 18, INK, Enum.TextXAlignment.Center); preview.TextYAlignment = Enum.TextYAlignment.Center
+preview = label(paper, "", 12, 10, W - 416, 160, 18, INK, Enum.TextXAlignment.Center); preview.TextYAlignment = Enum.TextYAlignment.Center
 preview.TextScaled = true; local pc = Instance.new("UITextSizeConstraint"); pc.MaxTextSize = 19; pc.MinTextSize = 11; pc.Parent = preview
-send = button(panel, "Cork it & toss it!", 372, 242, W - 392, 44)
+send = button(panel, "Cork it & toss it!", 372, 268, W - 392, 44)
 send.TextScaled = true; local sc2 = Instance.new("UITextSizeConstraint"); sc2.MaxTextSize = 18; sc2.MinTextSize = 11; sc2.Parent = send
 local sp2 = Instance.new("UIPadding"); sp2.PaddingLeft = UDim.new(0, 8); sp2.PaddingRight = UDim.new(0, 8); sp2.Parent = send
 local st = {}
@@ -131,7 +135,7 @@ local function open()
 end
 local function closePanel() shade.Visible = false; panel.Visible = false; if pg:GetAttribute("OpenPanel") == "bottle" then pg:SetAttribute("OpenPanel", nil) end end
 close.Activated:Connect(closePanel); shade.Activated:Connect(closePanel)
-send.Activated:Connect(function() ev:FireServer("send", choice.to, choice.card, choice.a, choice.b) end)
+send.Activated:Connect(function() ev:FireServer("send", choice.to, choice.card, choice.a, choice.b, choice.q) end)
 -- ---------- the bottle in the world (the toss, the reply) ----------
 local stand = F:WaitForChild("Stand", 60)
 local template = RS:WaitForChild("BottleTemplate", 60)
@@ -169,7 +173,7 @@ local function placeReply(want)
 	replyBottle = b
 end
 local told = false
-ev.OnClientEvent:Connect(function(what, a, b, c, d, e)
+ev.OnClientEvent:Connect(function(what, a, b, c, d, e, f, g)
 	if what == "state" then
 		st = type(a) == "table" and a or {}
 		setStatus(); placeReply(st.replyReady == true)
@@ -179,8 +183,11 @@ ev.OnClientEvent:Connect(function(what, a, b, c, d, e)
 		task.delay(1.7, function() say("Off it goes! Check the beach tomorrow for a reply.", 4) end)
 	elseif what == "reply" then
 		if replyBottle then replyBottle:Destroy(); replyBottle = nil end
-		local body, sign = Text.reply(a, b, c, d, e or 0)
-		showNote("A reply washed up!", body, sign, "You wrote: " .. Text.CARDS[b].text:gsub("{A}", Text.CARDS[b].A[c]):gsub("{B}", Text.CARDS[b].B[d]))
+		local q, info = f, g
+		local body, sign = Text.reply(a, b, c, d, e or 0, q, info, player.DisplayName)
+		local wrote = Text.CARDS[b].text:gsub("{A}", Text.CARDS[b].A[c]):gsub("{B}", Text.CARDS[b].B[d])
+		if q and Text.QUESTIONS[q] then wrote ..= " " .. Text.QUESTIONS[q] end
+		showNote("A reply washed up!", body, sign, "You wrote: " .. wrote)
 	elseif what == "beach" then
 		local n = Text.BEACH[a]
 		if n then showNote("A message in a bottle!", n[1], n[2], (b or 0) > 0 and ("+" .. b .. " acorns") or "You've found all the paid bottles for today - this one's just for fun") end
