@@ -3303,3 +3303,11 @@ Shannon (Oct 15, in the live game): "why does the sign say Treehouse est. today.
 Selbell's Homebase Treehouse?", then "Welcome home". The finished sign now reads "<DisplayName>'s / Homebase Treehouse / Welcome home!"
 (was "Homebase Treehouse / est. today. / Welcome home."). tools/treehouse/patch_treehouse3_r4.lua (make_patch_treehouse3_r4.py,
 compiles; replaces the client, old -> HudBackup.TreehouseClient_pre_r4_n; "QQ TREE122"). Nothing else changed from job 121 r3b.
+## Job 123: the Homebase seats sit you on touch (Studio EDIT; her request = her go) - runner 7
+Shannon (Oct 15): "the chair in the treehouse and the 2 stools by the table should have an automatic sit mechanic, not an interact
+button." tools/treehouse/patch_treehouse3_r5.lua (make_patch_treehouse3_r5.py, 37512 bytes, compiles; "QQ TREE123"; replaces the client,
+old -> HudBackup.TreehouseClient_pre_r5_n; INCLUDES job 122's sign, so it supersedes patch_treehouse3_r4.lua): the three seats lose
+their "Sit" prompt; walking into one (BasePart.Touched by the local character - the house is drawn on this client, its physics is
+the character's own) places you on it and welds you on, like a Roblox Seat; not while jumping or climbing; a jump stands you up and
+for 2 s no seat takes you, so you can walk off. Check in play: walk into each stool and the armchair (you sit), jump (you stand and
+can walk away without sitting again), the hips on the seat; walking along the table's side should not grab you from the far side.

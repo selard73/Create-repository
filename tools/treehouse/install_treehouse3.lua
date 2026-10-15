@@ -2,7 +2,7 @@
 -- Job 112: the HOMEBASE TREEHOUSE MOVES to Shannon's spot (-107, 4), a bigger room, no trunk inside. The old hollow is put back
 -- (folder to HudBackup, pines back, the wall re-joined, the dirt re-grassed; the dell's terrain stays). At the new site the forest props
 -- within 26 studs go to HudBackup.TreehouseCleared_n; a disk of Ground round the oak; the oak BEHIND the house; ten stones;
--- TreehouseServer (4806) + TreehouseClient3 (35053); twelve pieces unchanged. Log HudBackup.Treehouse3_log. No DataStore, no publish. Output "QQ TREE".
+-- TreehouseServer (4806) + TreehouseClient3 (35357); twelve pieces unchanged. Log HudBackup.Treehouse3_log. No DataStore, no publish. Output "QQ TREE".
 local SS = game:GetService("ServerStorage")
 local HttpService = game:GetService("HttpService")
 local T = workspace.Terrain
@@ -221,36 +221,42 @@ local function wedge(size, color, cf, parent)
 	w.TopSurface = Enum.SurfaceType.Smooth; w.BottomSurface = Enum.SurfaceType.Smooth; w.CFrame = cf; w.Parent = parent
 	return w
 end
--- (r3) sitting: the house is drawn on this screen only, so its seats are too - a "Sit" prompt; Seat:Sit when Roblox lets the client
--- do it, else the character is welded on (the character is this client's own, so the weld holds); a jump stands up
+-- (r3) sitting: the house is drawn on this screen only, so its seats are too. (r5, Shannon: "should have an automatic sit mechanic, not
+-- an interact button") - walk into a seat and you sit, as with a Roblox Seat: the character is placed on it and welded on (it is this
+-- client's own character, so the weld holds); a jump stands up, and for 2 s after that no seat takes you, so you can walk away
 local sitting
+local freeAt = 0
 local function standUp()
 	if not sitting then return end
 	local s = sitting; sitting = nil
+	freeAt = os.clock() + 2
 	if s.weld then s.weld:Destroy() end
 	local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
 	if hum then hum.Sit = false end
 end
+local function sitOn(p)
+	local char = player.Character
+	local hum = char and char:FindFirstChildOfClass("Humanoid")
+	local root = char and char:FindFirstChild("HumanoidRootPart")
+	if not (hum and root and hum.Health > 0) or sitting or os.clock() < freeAt or hum.SeatPart then return end
+	if hum:GetState() == Enum.HumanoidStateType.Jumping or hum:GetState() == Enum.HumanoidStateType.Climbing then return end
+	root.CFrame = p.CFrame * CFrame.new(0, p.Size.Y / 2 + hum.HipHeight * 0.5 - 0.1, 0)   -- (r3b: runner 7 measured the hips on the seat)
+	root.AssemblyLinearVelocity = Vector3.zero
+	hum.Sit = true
+	local w = Instance.new("WeldConstraint"); w.Part0 = p; w.Part1 = root; w.Parent = p
+	sitting = {weld = w, seat = p}
+	local c; c = hum:GetPropertyChangedSignal("Jump"):Connect(function() if hum.Jump then c:Disconnect(); standUp() end end)
+	task.spawn(function()                                                    -- (the house redraws: the seat goes, so does the weld)
+		while sitting and sitting.seat == p and p.Parent do task.wait(0.5) end
+		if sitting and sitting.seat == p then standUp() end
+		if c.Connected then c:Disconnect() end
+	end)
+end
 local function seatAt(p)
-	local pr = Instance.new("ProximityPrompt"); pr.ActionText = "Sit"; pr.ObjectText = ""; pr.HoldDuration = 0; pr.MaxActivationDistance = 7
-	pr.RequiresLineOfSight = false; pr.Parent = p
-	p.CanQuery = true
-	pr.Triggered:Connect(function()
+	p.CanTouch = true
+	p.Touched:Connect(function(hit)
 		local char = player.Character
-		local hum = char and char:FindFirstChildOfClass("Humanoid")
-		local root = char and char:FindFirstChild("HumanoidRootPart")
-		if not (hum and root and hum.Health > 0) then return end
-		standUp()
-		root.CFrame = p.CFrame * CFrame.new(0, p.Size.Y / 2 + hum.HipHeight * 0.5 - 0.1, 0)   -- (r3b: runner 7 measured the hips 1.0 above the seat at +0.9)
-		hum.Sit = true
-		local w = Instance.new("WeldConstraint"); w.Part0 = p; w.Part1 = root; w.Parent = p
-		sitting = {weld = w, seat = p}
-		local c; c = hum:GetPropertyChangedSignal("Jump"):Connect(function() if hum.Jump then c:Disconnect(); standUp() end end)
-		task.spawn(function()                                                -- (the house redraws: the seat goes, so does the weld)
-			while sitting and sitting.seat == p and p.Parent do task.wait(0.5) end
-			if sitting and sitting.seat == p then standUp() end
-			if c.Connected then c:Disconnect() end
-		end)
+		if char and hit:IsDescendantOf(char) then sitOn(p) end
 	end)
 	return p
 end
