@@ -1,29 +1,38 @@
 -- install_birds1.lua (Studio EDIT mode; re-runnable; its body also runs as a play-test PREVIEW). Job 100: ambient birds (Shannon,
 -- Oct 15 2026: "and some birds?"): gulls circling the harbour and the lighthouse, swallows darting over the French village in
 -- figure-eights; purely visual, client-side (nothing replicates, nothing to touch), flocks asleep while the camera is far.
--- workspace.Birds: BirdsClient (5714 chars) + attributes Enabled, Sites (JSON: name, kind, x, y, z, r, n, band, range - edit
+-- workspace.Birds: BirdsClient (9986 chars) + attributes Enabled, Sites (JSON: name, kind, x, y, z, r, n, band, range - edit
 -- the attribute in Studio to move a flock, no code). Undo: delete workspace.Birds. No DataStore, no publish. "QQ BIRDS".
 local SS = game:GetService("ServerStorage")
 local CLIENT = [===[
--- BirdsClient (workspace.Birds, RunContext Client): ambient birds (Shannon, Oct 15 2026: "and some birds?"). Gulls circle the
--- harbour and the lighthouse, swallows dart over the French village in figure-eights; no gameplay, nothing to touch. Every bird is
--- three parts (a body and two wings) made and moved on THIS client only - the server never sees them and nothing replicates - so
--- a flock costs a few CFrame writes a frame. A site is skipped while the camera is farther than its Range (the birds park out of
--- sight), so phones only move the flock they can see. The sites come from the folder's attribute Sites (JSON; the installer
--- writes them): [{name, kind = "gull" | "swallow", x, y, z, r, n, band, range}] - x/z the centre, y the flight height (world),
--- r the circle's radius, n the number of birds, band the vertical spread, range the camera distance that wakes the site.
+-- BirdsClient (workspace.Birds, RunContext Client): ambient birds (Shannon, Oct 15 2026: "and some birds?"; then "on the italy
+-- map we should have some mesh seaguls and maybe a pelican"). Gulls circle the harbour and the lighthouse, gliding between bouts
+-- of flapping; one pelican glides low and slow over the harbour water; swallows dart over the French village in figure-eights.
+-- No gameplay, nothing to touch. Every bird is made and moved on THIS client only - the server never sees them and nothing
+-- replicates - so a flock costs a few CFrame writes a frame. A site sleeps while the camera is farther than its Range (the birds
+-- park out of sight), so phones only move the flock they can see.
+-- THE LOOK: a kind's bird is either a copy of a MESH template (workspace.Birds.Templates.<Kind>, e.g. Templates.Gull or
+-- Templates.Pelican: a Model or MeshPart she imports or the Studio tool makes, facing -Z, any size - the script scales it to the
+-- kind's wingspan; parts named LeftWing / RightWing, if any, flap about their inner edge) or, when there is no template, a
+-- part-built bird: a body, two wings with dark tips (gull), a long bill (pelican), a forked little dart (swallow).
+-- Sites come from the folder's attribute Sites (JSON; the installer writes them): [{name, kind = "gull" | "pelican" | "swallow",
+-- x, y, z, r, n, band, range}] - x/z the centre, y the flight height (world), r the circle's radius, n the number of birds,
+-- band the vertical spread, range the camera distance that wakes the site.
 local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
 local F = script.Parent
 local C = Color3.fromRGB
 local KIND = {
-	gull = {body = Vector3.new(0.5, 0.36, 1.3), wing = Vector3.new(1.6, 0.06, 0.55), bodyColor = C(245, 245, 240), wingColor = C(205, 208, 212), speed = 0.22, flap = 1.5, glide = true, bank = 14},
-	swallow = {body = Vector3.new(0.3, 0.22, 0.8), wing = Vector3.new(0.95, 0.04, 0.32), bodyColor = C(34, 38, 56), wingColor = C(28, 30, 46), speed = 0.85, flap = 6.0, glide = false, bank = 32},
+	gull = {span = 3.0, body = Vector3.new(0.6, 0.42, 1.6), bodyColor = C(246, 246, 242), wingColor = C(214, 216, 220), tipColor = C(70, 72, 78), speed = 0.2, flap = 1.4, glide = true, bank = 14},
+	pelican = {span = 5.0, body = Vector3.new(0.9, 0.7, 2.6), bodyColor = C(238, 232, 220), wingColor = C(200, 196, 188), tipColor = C(60, 58, 56), speed = 0.1, flap = 0.9, glide = true, bank = 8, bill = true},
+	swallow = {span = 1.9, body = Vector3.new(0.3, 0.22, 0.8), bodyColor = C(34, 38, 56), wingColor = C(28, 30, 46), tipColor = nil, speed = 0.85, flap = 6.0, glide = false, bank = 32},
 }
-local function part(size, color, parent)
+local function part(size, color, parent, shape)
 	local p = Instance.new("Part"); p.Size = size; p.Color = color; p.Material = Enum.Material.SmoothPlastic
 	p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false; p.CastShadow = false
-	p.TopSurface = Enum.SurfaceType.Smooth; p.BottomSurface = Enum.SurfaceType.Smooth; p.Parent = parent
+	p.TopSurface = Enum.SurfaceType.Smooth; p.BottomSurface = Enum.SurfaceType.Smooth
+	if shape then p.Shape = shape end
+	p.Parent = parent
 	return p
 end
 local folder = workspace:FindFirstChild("Birds_local") or Instance.new("Folder")
@@ -32,28 +41,94 @@ local function sites()
 	local ok, t = pcall(function() return HttpService:JSONDecode(F:GetAttribute("Sites") or "[]") end)
 	return (ok and type(t) == "table") and t or {}
 end
+local function templateFor(kind)
+	local T = F:FindFirstChild("Templates")
+	local t = T and T:FindFirstChild(kind:sub(1, 1):upper() .. kind:sub(2))
+	if t and (t:IsA("Model") or t:IsA("BasePart")) then return t end
+	return nil
+end
+-- a bird: {root = the part the body follows, wings = {{part, side, hinge offset}}, offset = root's pose relative to the flight CFrame}
+local function makePartBird(k, parent)
+	local root = part(k.body, k.bodyColor, parent)
+	local wings = {}
+	local half = k.span / 2
+	local wingW = half - k.body.X / 2
+	for _, side in ipairs({-1, 1}) do
+		local w = part(Vector3.new(wingW, 0.06, k.body.Z * 0.42), k.wingColor, parent)
+		w:SetAttribute("Side", side)
+		table.insert(wings, {part = w, side = side, len = wingW, z = 0})
+		if k.tipColor then
+			local tip = part(Vector3.new(wingW * 0.3, 0.07, k.body.Z * 0.3), k.tipColor, parent)
+			table.insert(wings, {part = tip, side = side, len = wingW, z = 0, tip = true})
+		end
+	end
+	local extra = {}
+	if k.bill then
+		table.insert(extra, {part = part(Vector3.new(0.22, 0.2, 1.1), C(236, 190, 110), parent), cf = CFrame.new(0, -0.05, -(k.body.Z / 2 + 0.5))})
+		table.insert(extra, {part = part(Vector3.new(0.26, 0.26, 0.5), C(60, 58, 56), parent), cf = CFrame.new(0, 0.05, -(k.body.Z / 2 + 0.1))})   -- the dark head
+	end
+	return {root = root, wings = wings, extra = extra, template = false}
+end
+local function makeTemplateBird(k, tpl, parent)
+	local c = tpl:Clone(); c.Name = "Bird"; c.Parent = parent
+	local parts, wings = {}, {}
+	for _, d in ipairs(c:IsA("BasePart") and {c} or c:GetDescendants()) do
+		if d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false; d.CanQuery = false; d.CanTouch = false; table.insert(parts, d) end
+	end
+	if c:IsA("Model") then
+		local _, size = c:GetBoundingBox()
+		if size.X > 0.01 then pcall(function() c:ScaleTo(c:GetScale() * k.span / size.X) end) end
+	end
+	local root = c:IsA("BasePart") and c or (c.PrimaryPart or parts[1])
+	if not root then c:Destroy(); return makePartBird(k, parent) end
+	local base = root.CFrame
+	local rel = {}
+	for _, d in ipairs(parts) do
+		if d ~= root then
+			local hinge = (d.Name == "LeftWing" or d.Name == "RightWing") and ((d.Name == "LeftWing") and -1 or 1) or nil
+			table.insert(rel, {part = d, cf = base:ToObjectSpace(d.CFrame), side = hinge})
+		end
+	end
+	return {root = root, rel = rel, template = true, model = c}
+end
 local flocks = {}
 local function makeFlock(site)
 	local k = KIND[site.kind] or KIND.gull
 	local m = Instance.new("Model"); m.Name = site.name or site.kind; m.Parent = folder
+	local tpl = templateFor(site.kind or "gull")
 	local birds = {}
 	for i = 1, tonumber(site.n) or 5 do
-		local body = part(k.body, k.bodyColor, m)
-		local lw, rw = part(k.wing, k.wingColor, m), part(k.wing, k.wingColor, m)
-		table.insert(birds, {body = body, lw = lw, rw = rw,
-			phase = math.random() * 2 * math.pi, flapPhase = math.random() * 2 * math.pi, glidePhase = math.random() * 2 * math.pi,
-			r = (tonumber(site.r) or 30) * (0.75 + math.random() * 0.5), dy = (math.random() - 0.5) * (tonumber(site.band) or 10),
-			speed = k.speed * (0.85 + math.random() * 0.3), dir = (i % 2 == 0) and 1 or -1})
+		local holder = Instance.new("Model"); holder.Name = "Bird" .. i; holder.Parent = m
+		local b = tpl and makeTemplateBird(k, tpl, holder) or makePartBird(k, holder)
+		b.phase = math.random() * 2 * math.pi; b.flapPhase = math.random() * 2 * math.pi; b.glidePhase = math.random() * 2 * math.pi
+		b.r = (tonumber(site.r) or 30) * (0.75 + math.random() * 0.5); b.dy = (math.random() - 0.5) * (tonumber(site.band) or 10)
+		b.speed = k.speed * (0.85 + math.random() * 0.3); b.dir = (i % 2 == 0) and 1 or -1
+		table.insert(birds, b)
 	end
-	table.insert(flocks, {site = site, kind = k, model = m, birds = birds, awake = true, t = math.random() * 100})
+	table.insert(flocks, {site = site, kind = k, model = m, birds = birds, awake = true, t = math.random() * 100, mesh = tpl ~= nil})
 end
 for _, s in ipairs(sites()) do makeFlock(s) end
 local PARK = CFrame.new(0, -1000, 0)
+local function park(b)
+	b.root.CFrame = PARK
+	if b.template then for _, r in ipairs(b.rel) do r.part.CFrame = PARK end
+	else for _, w in ipairs(b.wings) do w.part.CFrame = PARK end; for _, e in ipairs(b.extra) do e.part.CFrame = PARK end end
+end
 local function place(b, k, cf, flap)
-	b.body.CFrame = cf
-	local hw = k.wing.X / 2
-	b.lw.CFrame = cf * CFrame.new(-k.body.X / 2, 0, 0) * CFrame.Angles(0, 0, flap) * CFrame.new(-hw, 0, 0)
-	b.rw.CFrame = cf * CFrame.new(k.body.X / 2, 0, 0) * CFrame.Angles(0, 0, -flap) * CFrame.new(hw, 0, 0)
+	b.root.CFrame = cf
+	if b.template then
+		for _, r in ipairs(b.rel) do
+			if r.side then r.part.CFrame = cf * CFrame.Angles(0, 0, -r.side * flap) * r.cf   -- (a named wing flaps about the body's side)
+			else r.part.CFrame = cf * r.cf end
+		end
+		return
+	end
+	for _, w in ipairs(b.wings) do
+		local hinge = cf * CFrame.new(w.side * k.body.X / 2, 0, 0) * CFrame.Angles(0, 0, -w.side * flap)
+		if w.tip then w.part.CFrame = hinge * CFrame.new(w.side * (w.len - w.len * 0.15), 0.005, 0)
+		else w.part.CFrame = hinge * CFrame.new(w.side * w.len / 2, 0, 0) end
+	end
+	for _, e in ipairs(b.extra) do e.part.CFrame = cf * e.cf end
 end
 RunService.RenderStepped:Connect(function(dt)
 	local cam = workspace.CurrentCamera
@@ -64,7 +139,7 @@ RunService.RenderStepped:Connect(function(dt)
 		local centre = Vector3.new(tonumber(s.x) or 0, tonumber(s.y) or 50, tonumber(s.z) or 0)
 		local near = (camPos - centre).Magnitude <= (tonumber(s.range) or 450)
 		if not near then
-			if fl.awake then fl.awake = false; for _, b in ipairs(fl.birds) do b.body.CFrame = PARK; b.lw.CFrame = PARK; b.rw.CFrame = PARK end end
+			if fl.awake then fl.awake = false; for _, b in ipairs(fl.birds) do park(b) end end
 			continue
 		end
 		fl.awake = true
@@ -85,7 +160,7 @@ RunService.RenderStepped:Connect(function(dt)
 			local look = CFrame.lookAt(pos, pos + vel)
 			local bank = math.rad(k.bank) * b.dir * (s.kind == "swallow" and math.cos(2 * th) or 1)
 			local cf = look * CFrame.Angles(0, 0, -bank)
-			-- the wings: gulls glide between bouts of flapping, swallows beat all the time
+			-- the wings: gulls and the pelican glide between bouts of flapping, swallows beat all the time
 			local amp = math.rad(38)
 			if k.glide then
 				local bout = math.sin(0.35 * fl.t + b.glidePhase)
@@ -96,12 +171,16 @@ RunService.RenderStepped:Connect(function(dt)
 		end
 	end
 end)
-F:GetAttributeChangedSignal("Sites"):Connect(function()                -- a new site list: rebuilt on the spot
+local function rebuild()
 	for _, fl in ipairs(flocks) do fl.model:Destroy() end
 	flocks = {}
 	for _, s in ipairs(sites()) do makeFlock(s) end
-end)
-print(string.format("Birds: %d flocks on this screen", #flocks))
+end
+F:GetAttributeChangedSignal("Sites"):Connect(rebuild)                  -- a new site list: rebuilt on the spot
+F.ChildAdded:Connect(function(c) if c.Name == "Templates" then task.delay(1, rebuild) end end)   -- a mesh template dropped in later
+local meshKinds = {}
+for _, fl in ipairs(flocks) do if fl.mesh then table.insert(meshKinds, fl.site.kind) end end
+print(string.format("Birds: %d flocks on this screen%s", #flocks, #meshKinds > 0 and (" (mesh: " .. table.concat(meshKinds, ", ") .. ")") or " (part-built)"))
 ]===]
 do   -- the compile check, where loadstring can run: the source is compiled with the luau CLI before every push
 	local ok, f, err = pcall(function() return loadstring(CLIENT) end)
@@ -110,7 +189,9 @@ end
 local old = workspace:FindFirstChild("Birds")
 local F = Instance.new("Folder"); F.Name = "Birds"
 F:SetAttribute("Enabled", true)
-F:SetAttribute("Sites", [==[[{"name":"Harbour gulls","kind":"gull","x":225,"y":0,"z":-670,"r":36,"n":6,"band":12,"range":500},{"name":"Lighthouse gulls","kind":"gull","x":520,"y":88,"z":-1178,"r":28,"n":5,"band":14,"range":500},{"name":"Village swallows","kind":"swallow","x":262,"y":30,"z":-58,"r":34,"n":8,"band":8,"range":400}]]==])
+F:SetAttribute("Sites", [==[[{"name":"Harbour gulls","kind":"gull","x":225,"y":-12,"z":-670,"r":30,"n":6,"band":10,"range":500},{"name":"Harbour pelican","kind":"pelican","x":215,"y":-36,"z":-690,"r":34,"n":1,"band":2,"range":500},{"name":"Lighthouse gulls","kind":"gull","x":520,"y":86,"z":-1178,"r":26,"n":5,"band":12,"range":500},{"name":"Village swallows","kind":"swallow","x":262,"y":30,"z":-58,"r":34,"n":8,"band":8,"range":400}]]==])
+local T = Instance.new("Folder"); T.Name = "Templates"; T.Parent = F   -- (a mesh Gull / Pelican / Swallow dropped in here replaces the part-built bird of that kind)
+if old then local ot = old:FindFirstChild("Templates"); if ot then for _, m in ipairs(ot:GetChildren()) do m:Clone().Parent = T end end end
 if old then
 	local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 	local n = 1; while hb:FindFirstChild("Birds_pre_" .. n) do n += 1 end
@@ -119,4 +200,4 @@ if old then
 end
 local c = Instance.new("Script"); c.Name = "BirdsClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
 F.Parent = workspace
-print(string.format("QQ BIRDS DONE: workspace.Birds (BirdsClient %d chars; 3 sites: harbour gulls, lighthouse gulls, village swallows)%s", #c.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))
+print(string.format("QQ BIRDS DONE: workspace.Birds (BirdsClient %d chars; 4 sites: harbour gulls, a harbour pelican, lighthouse gulls, village swallows; mesh templates under workspace.Birds.Templates when she adds them)%s", #c.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))

@@ -1853,3 +1853,31 @@ the boat/balloon?). Find the client that draws them (Daily / DailyQuestion clien
 SHANNON (Oct 15): "also, the icon box with the gift in it, should have the word 'gift' under it so it matches the other boxes in
 design" - a GiftsClient tweak (tools/gifts/src/GiftsClient.lua, the HUD gift box): a caption "Gift" under the icon in the same style
 as Passport / Map (font, size, colour); desktop and the phone column alike. Small job; can ride with the announcements fix.
+Job 100 round 2 (cloud thread; Shannon: "on the italy map we should have some mesh seaguls and maybe a pelican"; runner 7: the part
+gulls read small and white-on-white): BirdsClient v2 - gulls bigger (3-stud span) with DARK wingtips, the harbour flock lower (y -12,
+35 over the quay) and tighter; ONE pelican (5-stud span, long bill, dark head) in a slow low glide over the harbour water (y -36, 14
+over the sea); the French swallows as before. MESH birds: a template dropped into workspace.Birds.Templates named Gull / Pelican /
+Swallow (a Model or MeshPart facing -Z, any size: the script scales it to the kind's span; parts named LeftWing / RightWing flap)
+replaces the part-built bird of that kind on the spot - her import (Meshy FBX, as the squirrels), a Creator Store mesh, or the
+Studio MCP's generate_mesh; the part-built birds stand in until then. The installer keeps an old Templates folder on a re-run.
+PREVIEW again (same plan; the harbour from the quay this time, the pelican low over the water).
+
+## Job 101: the golden squirrel announcements only on the French map (Studio EDIT; ask Shannon first)
+
+Shannon (Oct 15): "that announcement about the daily questions and the golden squirrel in the french section carries over into the
+italy map, those things should only show if you are on the french map". tools/daily/golden_gate1.lua (make_golden_gate1.py;
+self-tested against boundary/build_daily.lua's CLIENT): four exact-string patches of workspace.Daily.DailyClient + an appended
+watcher - the pill under the purse and the daily card's golden line need the player's Area to be forest / village / domaine, and
+the pill follows every Area change (hidden in Porto, back in France). The daily acorns card itself still shows everywhere. The
+Question of the Day's reminders carry their own French gate already (QuestionClient FRENCH_QUESTION_REMINDERS_20261002_V1); the
+installer prints whether the live QuestionClient has it - if ABSENT, say so and the cloud thread patches that too. Backup
+HudBackup.DailyClient_pre_golden1; "QQ GOLD" lines. PLAY TEST: on a desktop view, spawn in France: the pill shows; travel to Porto:
+the pill goes; back: it returns; the daily card in Porto has no golden line. No publish.
+
+## Job 102: "Gift" under the HUD gift box (Studio EDIT; ask Shannon first)
+
+Shannon (Oct 15): "the icon box with the gift in it, should have the word 'gift' under it so it matches the other boxes in design".
+tools/gifts/src/GiftsClient.lua: a Caption TextLabel under the gift drawing in the HUD squares' own style (FredokaOne 10, gold, 46 x 14
+at the bottom, as hudCaption draws "Passport" and "Map"); the box, lid, ribbon and bow move up 8 px to make room. install_gifts1.lua
+regenerated (a re-run: the old Gifts folder -> HudBackup.Gifts_pre_n, attributes carried; the PromptClient patch reports "already").
+PLAY TEST: desktop and the phone emulator: "Gift" under the box, nothing overlapping (phone column: the box at x 541..589 as before).

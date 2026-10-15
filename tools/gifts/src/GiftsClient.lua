@@ -247,10 +247,13 @@ task.spawn(function()
 				if phone then b.AnchorPoint = Vector2.new(1, 0); b.Position = UDim2.new(1, COLUMN_X, 0, bar.Position.Y.Offset); b.Parent = hud else b.Parent = bar end
 				corner(b, 14); local s = Instance.new("UIStroke"); s.Color = C(255, 214, 90); s.Thickness = 2; s.Transparency = 0.35; s.Parent = b
 				-- a little gift box: the box, the lid, the ribbon
-				local box = Instance.new("Frame"); box.AnchorPoint = Vector2.new(0.5, 1); box.Position = UDim2.new(0.5, 0, 1, -9); box.Size = UDim2.fromOffset(22, 16); box.BackgroundColor3 = C(220, 90, 90); box.BorderSizePixel = 0; box.Parent = b; corner(box, 3)
-				local lid = Instance.new("Frame"); lid.AnchorPoint = Vector2.new(0.5, 1); lid.Position = UDim2.new(0.5, 0, 1, -24); lid.Size = UDim2.fromOffset(26, 6); lid.BackgroundColor3 = C(240, 110, 110); lid.BorderSizePixel = 0; lid.Parent = b; corner(lid, 2)
-				local rib = Instance.new("Frame"); rib.AnchorPoint = Vector2.new(0.5, 1); rib.Position = UDim2.new(0.5, 0, 1, -9); rib.Size = UDim2.fromOffset(4, 22); rib.BackgroundColor3 = GOLD; rib.BorderSizePixel = 0; rib.Parent = b
-				local bow = Instance.new("TextLabel"); bow.AnchorPoint = Vector2.new(0.5, 1); bow.Position = UDim2.new(0.5, 0, 1, -29); bow.Size = UDim2.fromOffset(20, 10); bow.BackgroundTransparency = 1; bow.Font = FONT; bow.TextSize = 12; bow.TextColor3 = GOLD; bow.Text = "~"; bow.Parent = b
+				local box = Instance.new("Frame"); box.AnchorPoint = Vector2.new(0.5, 1); box.Position = UDim2.new(0.5, 0, 1, -17); box.Size = UDim2.fromOffset(22, 16); box.BackgroundColor3 = C(220, 90, 90); box.BorderSizePixel = 0; box.Parent = b; corner(box, 3)
+				local lid = Instance.new("Frame"); lid.AnchorPoint = Vector2.new(0.5, 1); lid.Position = UDim2.new(0.5, 0, 1, -32); lid.Size = UDim2.fromOffset(26, 6); lid.BackgroundColor3 = C(240, 110, 110); lid.BorderSizePixel = 0; lid.Parent = b; corner(lid, 2)
+				local rib = Instance.new("Frame"); rib.AnchorPoint = Vector2.new(0.5, 1); rib.Position = UDim2.new(0.5, 0, 1, -17); rib.Size = UDim2.fromOffset(4, 22); rib.BackgroundColor3 = GOLD; rib.BorderSizePixel = 0; rib.Parent = b
+				local bow = Instance.new("TextLabel"); bow.AnchorPoint = Vector2.new(0.5, 1); bow.Position = UDim2.new(0.5, 0, 1, -37); bow.Size = UDim2.fromOffset(20, 10); bow.BackgroundTransparency = 1; bow.Font = FONT; bow.TextSize = 12; bow.TextColor3 = GOLD; bow.Text = "~"; bow.Parent = b
+				-- the caption, as the Passport and Map squares have (Shannon, Oct 15: "the word 'gift' under it so it matches the other boxes in design")
+				local cap = Instance.new("TextLabel"); cap.Name = "Caption"; cap.AnchorPoint = Vector2.new(0.5, 1); cap.Position = UDim2.new(0.5, 0, 1, -2); cap.Size = UDim2.fromOffset(46, 14)
+				cap.BackgroundTransparency = 1; cap.Font = FONT; cap.TextSize = 10; cap.TextColor3 = GOLD; cap.Text = "Gift"; cap.Parent = b
 				b.MouseEnter:Connect(function() s.Transparency = 0 end); b.MouseLeave:Connect(function() s.Transparency = 0.35 end)
 				b.Activated:Connect(function() if gui.Enabled then setOpen(false) else setOpen(true) end end)
 			end
