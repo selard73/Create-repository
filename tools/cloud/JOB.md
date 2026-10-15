@@ -2913,3 +2913,15 @@ BUILD: tools/treehouse/install_treehouse3.lua (make_install_treehouse3.py, 46305
 (local +z = east, toward the spawn): the deck x -118..-88 z -7..15, the balcony and ladder (-87, 3) on the east, the sign (-85, 15),
 the trunk (-120.5, 4.4) on the west (radius 3.6, 6 from the west wall), the crown to x -137 (past the wall, among the dressing).
 Preview in play from this commit, then install on her word.
+
+Result job 112 (runner 7): Shannon's spot read in her Play session: CozyGameMode root (-107.38, 3.29, 4.40), terrain Grass 0.06, flat
+(0.06 at r12; -0.05..-0.32 west/north-west at r24); north wall z 25 (20 studs), west wall x -130 (22 studs). PREVIEW of 723a34a in her
+own live Play session ("I JUST WANT IT WHERE A AM CURRENTLY STANDING"): built; clearing by pivot missed pine_squat_s20 (inside the
+deck, through the roof corner), round_tree_s21, mushrooms_s11/s12/s25. INSTALLED in Edit from fc531ed (46863, adler32 278897978) after
+she stopped Play: "QQ TREE old hollow: 5 dressing models back from HudBackup.TreehouseCleared_1", "QQ TREE old hollow: the U of wall
+removed (3 parts); the north edge re-joined x -130..102", "QQ TREE old hollow: the dirt re-grassed round (-18, 47)", "QQ TREE cleared
+from the site: 9 (HudBackup.TreehouseCleared_2, each with a ClearedFrom attribute)" = pine_mid_s10, mushrooms_s11, bush_big_s9,
+mushrooms_s25, pine_mid_s16, pine_squat_s17, round_tree_s21, pine_squat_s20, mushrooms_s12; "left standing": 8 Boundary.Dressing
+trees, 5 DomaineKit templates (stored ~100 under ground, 0 visible parts - harmless), Baseplate; p1..p12; "QQ TREE DONE: Homebase
+Treehouse at (-107, 0.1, 4) yaw 91.6, the trunk behind the house; 12 pieces placed; TreehouseServer 4806, TreehouseClient 25951
+chars; the old folder is HudBackup.Treehouse_pre_3". Treehouse Tree attr {x -107, z 4, y 0.06, yaw 91.6}. Unpublished; asked her to save.
