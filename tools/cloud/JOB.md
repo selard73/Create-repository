@@ -2784,3 +2784,13 @@ readback lines as before, "QQ TREE3 client: TreehouseClient replaced, 25778 char
 on the table; at 12 the window wall is four parts round the hole, the glass (T 0.3) and frame - the window SHOWS from inside with the
 view out, the potted plant on the sill shelf, the gold cushion and the red rug (r3b_window_from_inside, r3b_room_at_7_table,
 r3b_room_at_12_table). Asking her whether to install (optional).
+Result job 111 round 3b PREVIEW (runner 7, 608aca5, play test, nothing kept; logged at ce3c466 on claude/epic-hawking-188q4l, pictures
+r3b_*): the floor pass changed 0 of 202 cells; the client replaced (25778 chars, the round-3 one saved as
+HudBackup.TreehouseClient_pre_r3_2 in the preview); the table top 2.75 above the floor, the seats 1.75, the cream mug with its handle;
+at 12 pieces the window shows from inside with the view out, the plant on the sill. Shannon has the pictures; install waits on her word.
+
+Result job 111 ROUND 3b INSTALLED (runner 7, Shannon: "Install the update" after the r3b pictures, Studio EDIT, unpublished):
+patch_treehouse2_r3.lua at 608aca5 (30455, adler32 1153411002) - the same QQ TREE3 lines as the 3b preview ("... over 0 of 202 cells",
+"QQ TREE3 client: TreehouseClient replaced, 25778 chars; the round-2 copy is HudBackup.TreehouseClient_pre_r3_2", "QQ TREE3 DONE").
+Readback: one TreehouseClient, 25778 chars; HudBackup.TreehouseClient_pre_r3_2 there. Next: japan_geo2 on her yes + a save; then she
+publishes.
