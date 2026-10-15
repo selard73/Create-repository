@@ -1,6 +1,6 @@
 -- patch_treehouse2_r3.lua (Studio EDIT; re-runnable; also a play-test PREVIEW - discarded on stop). Homebase round 3 as a PATCH over the
 -- installed round 2: (1) the hollow's top voxel row to the forest's occupancy 0.52 (surface y ~0.1, the roots show); (2) TreehouseClient
--- replaced by TreehouseClient2 round 3 (24562 chars: the sign's post behind the board, furniture in the room), the old one disabled and
+-- replaced by TreehouseClient2 round 3 (25778 chars: the sign's post behind the board, furniture in the room), the old one disabled and
 -- kept as HudBackup.TreehouseClient_pre_r3_n. Needs workspace.Treehouse from install_treehouse2.lua. No DataStore, no publish. Output "QQ TREE3".
 local SS = game:GetService("ServerStorage")
 local HttpService = game:GetService("HttpService")
@@ -170,17 +170,27 @@ local function buildHouse(n)
 	end
 	if n >= STAGES.walls then                                               -- a 13 x 13 room, the door onto the balcony
 		part(Vector3.new(13, 6.5, 0.4), WOOD, L(0, 13.75, -6.5), houseF, Enum.Material.WoodPlanks, true)
-		for _, x in ipairs({-6.5, 6.5}) do part(Vector3.new(0.4, 6.5, 13), WOOD, L(x, 13.75, 0), houseF, Enum.Material.WoodPlanks, true) end
+		part(Vector3.new(0.4, 6.5, 13), WOOD, L(6.5, 13.75, 0), houseF, Enum.Material.WoodPlanks, true)
+		if n >= STAGES.window then                                           -- (round 3b) the window wall is four parts round a 2.8 x 2.8 hole (y 12.7..15.5), so the window shows from inside too
+			part(Vector3.new(0.4, 2.2, 13), WOOD, L(-6.5, 11.6, 0), houseF, Enum.Material.WoodPlanks, true)
+			part(Vector3.new(0.4, 1.5, 13), WOOD, L(-6.5, 16.25, 0), houseF, Enum.Material.WoodPlanks, true)
+			for _, z in ipairs({-3.95, 3.95}) do part(Vector3.new(0.4, 2.8, 5.1), WOOD, L(-6.5, 14.1, z), houseF, Enum.Material.WoodPlanks, true) end
+		else
+			part(Vector3.new(0.4, 6.5, 13), WOOD, L(-6.5, 13.75, 0), houseF, Enum.Material.WoodPlanks, true)
+		end
 		for _, x in ipairs({-4.3, 4.3}) do part(Vector3.new(4.4, 6.5, 0.4), WOOD, L(x, 13.75, 6.5), houseF, Enum.Material.WoodPlanks, true) end   -- the door is the 4.2-stud gap
 		part(Vector3.new(4.4, 1.2, 0.4), WOOD_DARK, L(0, 16.4, 6.5), houseF, Enum.Material.WoodPlanks)   -- the lintel, looks only
-		-- (round 3) a table and two stools in the right back corner, clear of the trunk (radius 2.4 at z -4), a mug on the table; the floor is the deck's top, y 10.5
-		part(Vector3.new(3.2, 0.2, 2.0), WOOD, L(4.0, 11.7, -3.8), houseF, Enum.Material.WoodPlanks)
-		for _, d in ipairs({{-1.3, -0.7}, {1.3, -0.7}, {-1.3, 0.7}, {1.3, 0.7}}) do part(Vector3.new(0.3, 1.1, 0.3), WOOD_DARK, L(4.0 + d[1], 11.05, -3.8 + d[2]), houseF) end
-		for _, x in ipairs({2.6, 5.4}) do
-			part(Vector3.new(1.0, 0.16, 1.0), WOOD, L(x, 11.28, -1.9), houseF, Enum.Material.WoodPlanks)
-			part(Vector3.new(0.24, 0.7, 0.24), WOOD_DARK, L(x, 10.85, -1.9), houseF)
+		-- (round 3b) a table and two stools in the right back corner at avatar scale (the top 2.6 above the floor, the seats 1.6), half a stud
+		-- clear of the trunk (radius 2.4 at z -4); the floor is the deck's top, y 10.5
+		part(Vector3.new(3.2, 0.2, 2.2), WOOD, L(4.5, 13.1, -3.6), houseF, Enum.Material.WoodPlanks)
+		for _, d in ipairs({{-1.35, -0.85}, {1.35, -0.85}, {-1.35, 0.85}, {1.35, 0.85}}) do part(Vector3.new(0.3, 2.5, 0.3), WOOD_DARK, L(4.5 + d[1], 11.75, -3.6 + d[2]), houseF) end
+		for _, x in ipairs({3.2, 5.6}) do
+			part(Vector3.new(1.2, 0.2, 1.2), WOOD, L(x, 12.1, -1.5), houseF, Enum.Material.WoodPlanks)
+			part(Vector3.new(0.3, 1.5, 0.3), WOOD_DARK, L(x, 11.25, -1.5), houseF)
 		end
-		part(Vector3.new(0.5, 0.5, 0.5), C(224, 92, 72), L(4.6, 12.05, -3.6), houseF, Enum.Material.SmoothPlastic)      -- the mug
+		local mug = part(Vector3.new(0.9, 0.7, 0.7), CREAM, L(5.0, 13.65, -3.4, 0, 0, 90), houseF, Enum.Material.SmoothPlastic); mug.Shape = Enum.PartType.Cylinder   -- a mug: a cylinder on end, a handle
+		part(Vector3.new(0.14, 0.5, 0.14), CREAM, L(5.0, 13.65, -2.92), houseF, Enum.Material.SmoothPlastic)
+		part(Vector3.new(0.14, 0.14, 0.4), CREAM, L(5.0, 13.9, -2.8), houseF, Enum.Material.SmoothPlastic); part(Vector3.new(0.14, 0.14, 0.4), CREAM, L(5.0, 13.4, -2.8), houseF, Enum.Material.SmoothPlastic)
 	end
 	if n >= STAGES.roof then
 		wedge(Vector3.new(14.4, 3.6, 7.2), ROOF, L(0, 18.8, -3.6), houseF)
@@ -189,15 +199,15 @@ local function buildHouse(n)
 		part(Vector3.new(16, 0.3, 4), ROOF, L(0, 17.1, 9), houseF, Enum.Material.WoodPlanks)   -- a little awning over the door onto the balcony
 	end
 	if n >= STAGES.window then
-		local x = -6.72
-		part(Vector3.new(0.25, 0.3, 3.2), WOOD_DARK, L(x, 15.6, 0), houseF); part(Vector3.new(0.25, 0.3, 3.2), WOOD_DARK, L(x, 12.6, 0), houseF)
-		for _, z in ipairs({-1.5, 1.5}) do part(Vector3.new(0.25, 3.3, 0.3), WOOD_DARK, L(x, 14.1, z), houseF) end
+		local x = -6.5                                                       -- (round 3b) in the wall's hole, the frame 0.5 thick so it shows inside and out
+		part(Vector3.new(0.5, 0.3, 3.2), WOOD_DARK, L(x, 15.6, 0), houseF); part(Vector3.new(0.5, 0.3, 3.2), WOOD_DARK, L(x, 12.6, 0), houseF)
+		for _, z in ipairs({-1.5, 1.5}) do part(Vector3.new(0.5, 3.3, 0.3), WOOD_DARK, L(x, 14.1, z), houseF) end
 		local pane = part(Vector3.new(0.08, 2.8, 2.8), C(170, 210, 235), L(x, 14.1, 0), houseF, Enum.Material.Glass); pane.Transparency = 0.35; pane.Reflectance = 0.15
 		part(Vector3.new(0.08, 2.8, 0.12), WOOD_DARK, L(x - 0.02, 14.1, 0), houseF); part(Vector3.new(0.08, 0.12, 2.8), WOOD_DARK, L(x - 0.02, 14.1, 0), houseF)
-		-- (round 3) a shelf under the window on the inside, a potted plant on it (the wall's inner face is at x -6.3)
-		part(Vector3.new(1.0, 0.14, 3.4), WOOD, L(-5.8, 12.38, 0), houseF, Enum.Material.WoodPlanks)
-		part(Vector3.new(0.6, 0.5, 0.6), C(178, 96, 62), L(-5.8, 12.7, 0.9), houseF, Enum.Material.SmoothPlastic)
-		part(Vector3.new(0.8, 0.7, 0.8), C(92, 150, 70), L(-5.8, 13.3, 0.9), houseF, Enum.Material.Grass)
+		-- (round 3) a shelf under the window on the inside (its top at the hole's sill, y 12.57), a potted plant on it (the wall's inner face is at x -6.3)
+		part(Vector3.new(1.0, 0.14, 3.4), WOOD, L(-5.8, 12.5, 0), houseF, Enum.Material.WoodPlanks)
+		part(Vector3.new(0.7, 0.6, 0.7), C(178, 96, 62), L(-5.8, 12.87, 0.9), houseF, Enum.Material.SmoothPlastic)
+		part(Vector3.new(1.0, 0.9, 1.0), C(92, 150, 70), L(-5.8, 13.6, 0.9), houseF, Enum.Material.Grass)
 	end
 	if n >= STAGES.lantern then                                             -- beside the door, under the awning
 		part(Vector3.new(0.08, 1.2, 0.08), C(60, 56, 52), L(3.4, 16.4, 7.4), houseF, Enum.Material.Metal)
@@ -210,8 +220,8 @@ local function buildHouse(n)
 		part(Vector3.new(0.06, 1.3, 2.3), C(196, 56, 48), L(7.8, 14.4, 14.55), houseF, Enum.Material.Fabric)
 		part(Vector3.new(0.08, 0.42, 2.3), CREAM, L(7.8, 14.4, 14.55), houseF, Enum.Material.Fabric)
 		-- (round 3) a round rug in the middle of the room and a cushion by the window
-		local rug = part(Vector3.new(0.1, 5.0, 5.0), C(188, 74, 64), L(-0.5, 10.55, 1.0, 0, 0, 90), houseF, Enum.Material.Fabric); rug.Shape = Enum.PartType.Cylinder   -- (a cylinder's length is its X; stood on end it is a disc)
-		part(Vector3.new(1.4, 0.4, 1.4), GOLD, L(-4.6, 10.7, 3.2), houseF, Enum.Material.Fabric)
+		local rug = part(Vector3.new(0.1, 6.0, 6.0), C(188, 74, 64), L(-0.5, 10.55, 1.0, 0, 0, 90), houseF, Enum.Material.Fabric); rug.Shape = Enum.PartType.Cylinder   -- (a cylinder's length is its X; stood on end it is a disc)
+		part(Vector3.new(1.8, 0.5, 1.8), GOLD, L(-4.6, 10.75, 3.2), houseF, Enum.Material.Fabric)
 	end
 end
 local function signText(n)
