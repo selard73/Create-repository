@@ -2746,3 +2746,7 @@ re-run over round 3: the round-3 client goes to HudBackup.TreehouseClient_pre_r3
 sides, the pane in the hole; the table top 2.6 above the floor (an R15 avatar is ~5), the stools' seats 1.6, half a stud clear of the
 trunk; the mug a cream cylinder with a handle; the shelf's top at the sill; the rug 6 wide, the cushion 1.8. Optional - Shannon took
 the furniture as it was; preview and offer.
+Result job 111 round 3b PREVIEW (runner 7, 608aca5, play test, nothing kept; logged at ce3c466 on claude/epic-hawking-188q4l, pictures
+r3b_*): the floor pass changed 0 of 202 cells; the client replaced (25778 chars, the round-3 one saved as
+HudBackup.TreehouseClient_pre_r3_2 in the preview); the table top 2.75 above the floor, the seats 1.75, the cream mug with its handle;
+at 12 pieces the window shows from inside with the view out, the plant on the sill. Shannon has the pictures; install waits on her word.
