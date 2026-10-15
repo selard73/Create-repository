@@ -2360,3 +2360,21 @@ Jacket is gone; log "Champion: the statue of nana3365308 (No. nil) stands by the
 Picture tools/statues/shots/nana_statue_after_armfix1.jpg: one raised arm, one relaxed arm, no hanging sleeve. Job 109 read: the
 live ShopClient is 38666 chars (adler32 1446548555); Price_ziphandle 60, Price_glider 1000. STAR: Shannon says the missing statue is in
 the FRENCH HALL OF FAME; asking her for the exact name to rebuild it with StatueDebug.
+
+Job 109 REVIEWED (cloud thread; round 2 from the review): the Robux button hides, and refuses a click, until the save has loaded
+(the store can open before it, and a player who already bought the item with acorns could have been sold the pass); the acorn
+button's text scales to its half-width; workspace.Passes is waited for; a re-run never overrides a deliberate 0 in Pass_glider;
+PassServer re-checks ownership when Roblox refuses a sale ("already own") so the item still arrives. Four ShopClient patches now.
+Design note for Shannon: the Robux path does not wait for "find 10 in the Rue first" the way the acorn purchase does - usual for
+passes; say if the gate should apply to Robux too. ACORN PRICES: her "yes to both" (Oct 15) = Price_ziphandle 600, Price_glider
+2500 - set them on workspace.Shop when installing. Run install_passes1.lua from this commit.
+
+## Job 110: "Buy here" cards at the zipline's launch and the hang glider's ramp (play-test PREVIEW, then install on her word) - runner 7
+
+Shannon: "put a button or icon at the top of the tower where you zipline and the top of the cliff where you handglide to let them
+buy it right from that spot; I noticed a lot of games do that". tools/buyhere/install_buyhere1.lua (BuyHereClient, RunContext
+Client, 5141 chars; compiles): a floating card (this player's only) over Zipline.Launch and over HangGlider.Ramp for a player
+without the item: the name, "600 acorns   or   R$ 79" (acorns from the store's Price_<id>, Robux from the pass), and a green "Buy
+here" button that opens the Acorn Store at that row (both buttons there); hides the moment the item is theirs; shows within 45-50
+studs. Spots are the folder's Spots attribute (JSON) - move a card with it. PREVIEW: a play test with a fresh test player (no items):
+pictures of the card at the tower top and at the ramp, then a tap -> the store opens at the row; then install on her word.

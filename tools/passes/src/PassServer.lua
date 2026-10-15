@@ -35,8 +35,15 @@ local function check(p)
 	end
 end
 MPS.PromptGamePassPurchaseFinished:Connect(function(p, passId, purchased)
-	if not purchased then return end
-	for id, x in pairs(passes()) do if x == passId then grant(p, id, "bought the pass") end end
+	for id, x in pairs(passes()) do
+		if x == passId then
+			if purchased then grant(p, id, "bought the pass")
+			else   -- (Roblox refuses to sell a pass you already own: a player whose arrival check failed still gets the item here)
+				local ok, owns = pcall(function() return MPS:UserOwnsGamePassAsync(p.UserId, passId) end)
+				if ok and owns then grant(p, id, "owns the pass (checked again)") end
+			end
+		end
+	end
 end)
 Players.PlayerAdded:Connect(function(p) task.spawn(check, p) end)
 for _, p in ipairs(Players:GetPlayers()) do task.spawn(check, p) end

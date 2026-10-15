@@ -5,7 +5,7 @@ local player = Players.LocalPlayer
 local pg = player:WaitForChild("PlayerGui")
 local F = script.Parent
 local buy = RS:WaitForChild("ShopBuy")
-local PASSES = workspace:FindFirstChild("Passes")   -- PASS1 (Oct 15 2026): Game Pass ids per item, attributes Pass_<id> on workspace.Passes
+local PASSES = workspace:WaitForChild("Passes", 5)   -- PASS1 (Oct 15 2026): Game Pass ids per item, attributes Pass_<id> on workspace.Passes
 local MarketplaceService = game:GetService("MarketplaceService")
 local RunService = game:GetService("RunService")
 local ROBUX = utf8.char(0xE002)                 -- the official Robux symbol, in Roblox's own fonts
@@ -283,11 +283,13 @@ for i, item in ipairs(ITEMS) do
 		b3.AutoButtonColor = false; b3.ZIndex = 4; b3.Visible = false; b3.Parent = row
 		corner(b3, UDim.new(0, 10)); stroke(b3, RGB(40, 110, 70), 2, 0.2)
 		rec.btn3 = b3
+		btn.TextScaled = true; local tc = Instance.new("UITextSizeConstraint"); tc.MaxTextSize = 18; tc.MinTextSize = 9; tc.Parent = btn   -- ("1000 acorns" fits the half-width button)
 		task.spawn(function()
 			local ok, info = pcall(function() return game:GetService("MarketplaceService"):GetProductInfo(passId, Enum.InfoType.GamePass) end)
 			if ok and type(info) == "table" and info.PriceInRobux then b3.Text = ROBUX .. " " .. tostring(info.PriceInRobux) end
 		end)
 		b3.MouseButton1Click:Connect(function()
+			if player:GetAttribute("SaveLoaded") ~= true then say(rec, "still loading your save", false) return end   -- (never sell the pass before we know what is already theirs)
 			if (player:GetAttribute("Item_" .. item.id) or 0) > 0 then say(rec, "already yours", true) return end
 			game:GetService("MarketplaceService"):PromptGamePassPurchase(player, passId)
 		end)
@@ -547,7 +549,7 @@ local function refresh()
 				end
 			end
 			if rec.btn3 then   -- PASS1: acorns on the left, Robux on the right, until it is yours
-				if owned then
+				if owned or player:GetAttribute("SaveLoaded") ~= true then   -- (hidden until the save says what is theirs)
 					rec.btn3.Visible = false
 					if not rec.btn2 then rec.btn.Size = UDim2.fromOffset(142, 36); rec.btn.Position = UDim2.new(1, -12, 0, 106); rec.btn.TextSize = 18 end
 				else
@@ -569,6 +571,7 @@ if hotbarSlots() <= 3 then                           -- a phone: trim the bar to
 	task.delay(4, function() local e = RS:FindFirstChild("HotbarStow"); if e then e:FireServer("fit", false, hotbarSlots()) end end)
 end
 player:GetAttributeChangedSignal("Acorns"):Connect(refresh)
+player:GetAttributeChangedSignal("SaveLoaded"):Connect(refresh)   -- PASS1: the Robux buttons appear once the save has loaded
 player:GetAttributeChangedSignal("Item_bagoff"):Connect(refresh)
 for id in pairs(HOTBAR) do player:GetAttributeChangedSignal("Item_stow_" .. id):Connect(refresh) end
 do                                                     -- the fountain is the server's: its colour and clock, and the countdown

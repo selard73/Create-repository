@@ -1,6 +1,6 @@
 -- install_passes1.lua (job 109): Studio EDIT mode. Game Passes beside the Acorn Store's once-items (Shannon, Oct 15 2026). (1)
 -- workspace.Passes {PassServer} with attributes Pass_ziphandle = 2036372649 and Pass_glider = 2037656625 (existing values kept). (2)
--- Three exact-string patches of workspace.Shop.ShopClient (a green Robux button on the row of any item with a pass id; Roblox's own
+-- Four exact-string patches of workspace.Shop.ShopClient (a green Robux button on the row of any item with a pass id; Roblox's own
 -- prompt sells it; PassServer grants the item). Anchors counted first; compiled where loadstring runs; backup
 -- HudBackup.ShopClient_pre_pass1. Acorn prices untouched (Price_<id> attributes on workspace.Shop; her call). Output "QQ PASS".
 if game:GetService("RunService"):IsRunning() then print("QQ PASS ABORT - Play mode") return end
@@ -43,8 +43,15 @@ local function check(p)
 	end
 end
 MPS.PromptGamePassPurchaseFinished:Connect(function(p, passId, purchased)
-	if not purchased then return end
-	for id, x in pairs(passes()) do if x == passId then grant(p, id, "bought the pass") end end
+	for id, x in pairs(passes()) do
+		if x == passId then
+			if purchased then grant(p, id, "bought the pass")
+			else   -- (Roblox refuses to sell a pass you already own: a player whose arrival check failed still gets the item here)
+				local ok, owns = pcall(function() return MPS:UserOwnsGamePassAsync(p.UserId, passId) end)
+				if ok and owns then grant(p, id, "owns the pass (checked again)") end
+			end
+		end
+	end
 end)
 Players.PlayerAdded:Connect(function(p) task.spawn(check, p) end)
 for _, p in ipairs(Players:GetPlayers()) do task.spawn(check, p) end
@@ -61,7 +68,7 @@ local P = {{[===[
 local buy = RS:WaitForChild("ShopBuy")
 ]===], [===[
 local buy = RS:WaitForChild("ShopBuy")
-local PASSES = workspace:FindFirstChild("Passes")   -- PASS1 (Oct 15 2026): Game Pass ids per item, attributes Pass_<id> on workspace.Passes
+local PASSES = workspace:WaitForChild("Passes", 5)   -- PASS1 (Oct 15 2026): Game Pass ids per item, attributes Pass_<id> on workspace.Passes
 ]===]}, {[===[
 	rec.btn = btn
 	if HOTBAR[item.id] then
@@ -78,11 +85,13 @@ local PASSES = workspace:FindFirstChild("Passes")   -- PASS1 (Oct 15 2026): Game
 		b3.AutoButtonColor = false; b3.ZIndex = 4; b3.Visible = false; b3.Parent = row
 		corner(b3, UDim.new(0, 10)); stroke(b3, RGB(40, 110, 70), 2, 0.2)
 		rec.btn3 = b3
+		btn.TextScaled = true; local tc = Instance.new("UITextSizeConstraint"); tc.MaxTextSize = 18; tc.MinTextSize = 9; tc.Parent = btn   -- ("1000 acorns" fits the half-width button)
 		task.spawn(function()
 			local ok, info = pcall(function() return game:GetService("MarketplaceService"):GetProductInfo(passId, Enum.InfoType.GamePass) end)
 			if ok and type(info) == "table" and info.PriceInRobux then b3.Text = ROBUX .. " " .. tostring(info.PriceInRobux) end
 		end)
 		b3.MouseButton1Click:Connect(function()
+			if player:GetAttribute("SaveLoaded") ~= true then say(rec, "still loading your save", false) return end   -- (never sell the pass before we know what is already theirs)
 			if (player:GetAttribute("Item_" .. item.id) or 0) > 0 then say(rec, "already yours", true) return end
 			game:GetService("MarketplaceService"):PromptGamePassPurchase(player, passId)
 		end)
@@ -101,7 +110,7 @@ local PASSES = workspace:FindFirstChild("Passes")   -- PASS1 (Oct 15 2026): Game
 				end
 			end
 			if rec.btn3 then   -- PASS1: acorns on the left, Robux on the right, until it is yours
-				if owned then
+				if owned or player:GetAttribute("SaveLoaded") ~= true then   -- (hidden until the save says what is theirs)
 					rec.btn3.Visible = false
 					if not rec.btn2 then rec.btn.Size = UDim2.fromOffset(142, 36); rec.btn.Position = UDim2.new(1, -12, 0, 106); rec.btn.TextSize = 18 end
 				else
@@ -109,6 +118,11 @@ local PASSES = workspace:FindFirstChild("Passes")   -- PASS1 (Oct 15 2026): Game
 					rec.btn.Size = UDim2.fromOffset(70, 36); rec.btn.Position = UDim2.new(1, -86, 0, 106); rec.btn.TextSize = 12
 				end
 			end
+]===]}, {[===[
+player:GetAttributeChangedSignal("Acorns"):Connect(refresh)
+]===], [===[
+player:GetAttributeChangedSignal("Acorns"):Connect(refresh)
+player:GetAttributeChangedSignal("SaveLoaded"):Connect(refresh)   -- PASS1: the Robux buttons appear once the save has loaded
 ]===]}}
 local n = o
 if o:find("PASS1", 1, true) then print("QQ PASS ShopClient already patched")
@@ -130,7 +144,7 @@ end
 local F = workspace:FindFirstChild("Passes")
 if not F then F = Instance.new("Folder"); F.Name = "Passes"; F.Parent = workspace end
 if F:GetAttribute("Pass_ziphandle") == nil then F:SetAttribute("Pass_ziphandle", 2036372649) end
-if (F:GetAttribute("Pass_glider") or 0) == 0 then F:SetAttribute("Pass_glider", 2037656625) end
+if F:GetAttribute("Pass_glider") == nil then F:SetAttribute("Pass_glider", 2037656625) end
 local old = F:FindFirstChild("PassServer")
 if old then local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS; local k = 1; while hb:FindFirstChild("PassServer_pre_" .. k) do k += 1 end; old.Name = "PassServer_pre_" .. k; old.Enabled = false; old.Parent = hb end
 local sv = Instance.new("Script"); sv.Name = "PassServer"; sv.RunContext = Enum.RunContext.Server; sv.Source = SERVER; sv.Parent = F
