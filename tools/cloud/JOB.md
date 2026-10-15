@@ -2595,3 +2595,33 @@ stands on the platform. UNCHANGED: the canal's north end (6101,-215) - the slab 
 hard bright wall ("0 air cells became water": the box had no air to fill - the wall is the terrain water's own end face, not a gap);
 the lake stair (6728,224) - the dark band under the stair is still there (likely the stair's shadow on the bed, not the support).
 Undo in this Studio session: Ctrl+Z to the "before JapanGeo1" waypoint; the moves are logged in HudBackup.JapanGeo1_log.
+
+Job 106 GEO ROUND 2 (after runner 7's run of japan_geo1 on the saved place, unpublished): the sea, the wall, 8 props and 130 slab
+moves are in; the readback "liquid 1" was the full cell under the surface (the probe point is y -12..-8; the surface cell above it is
+the 0.5 one) - a pass. Three faults to fix: (1) the sea's far end is a straight step at the horizon (the box ends at z 900 / x 7400)
+and a paler rectangle in the near water (a depth change: Codex's basin floor vs our sand bed at -60); (2) the five basins had no air
+to fill (their water already fills the manifest boxes), so the canal still ends in a bright vertical face at its north end where
+the dry channel continues; (3) the lake stair's dark band is the stair's shadow on the bed, not the support. STEP 1 (read-only, no
+ask): tools/japan/probe106b.lua - the bed depth over the sea on a 60-stud grid, the canal channel's bed beyond the water's end, the
+lake stair's parts, anything standing at the horizon, the water colour. Send the "QQ GEO2" lines. STEP 2 (cloud thread): round 2 -
+a horizon sea (flat water-coloured parts beyond the terrain to 3000 studs out, under the fog), the sand bed raised to the basin
+floor's depth, the canal's water carried on along its channel or ended at a stone weir, CastShadow off on the stair.
+
+Birds v7 (Shannon, live: "too many flying in the air ... the one flying low needs to go ... only keep the ones much higher up";
+"the pelican and seagulls on the ground are all lined up in a row"): the harbour flock is three gulls at y 22 (70 over the quay,
+was six at -12), the low pelican flight is gone, the lighthouse flock three at y 92; perched birds take per-bird OFFSETS (dx along
+the rail, dy up, dz across, yaw) instead of a row - the rail's three gulls are now spread 7.5 and 5.5 studs apart, turned different
+ways; the pelican keeps its own post. First guesses - tune the offsets in the Sites attribute in Studio until they sit on real rail /
+bollards, then report the numbers. Re-run install_birds1.lua (re-runnable), picture, publish with the next batch.
+
+Job 111 BUILD (cloud thread): tools/treehouse/install_treehouse2.lua (make_install_treehouse2.py; src/TreehouseClient2.lua; compiles;
+an adversarial review is running - wait for the commit that says "homebase reviewed"): the hollow cut into the bank behind the
+tower's left at (-18, 47) (a back rim built to y 9 where the ridge fell to nothing, a grass floor at 0.1, a stepped bowl of radius 27
+cut to y 17, a dirt disk of radius 15), the north edge opened between x -48 and 12 with a U of the same invisible wall round the
+hollow to z 70, the dressing pines on the site to HudBackup.TreehouseCleared_n, the oak taller (its trunk rises through the roof),
+ten stones at the dirt's edge, the sign at the mouth ("Future home of Homebase Treehouse. Please excuse the dirt." until the deck;
+then the count; then "est. today. Welcome home."), the house roomier (16 x 16 deck, a 13 x 13 room, a 16 x 8 BALCONY toward the
+spawn with its railing, the ladder landing on it, an awning over the door), the first-piece reveal (the camera to the hollow for
+~6 s with her line, then back), and TWELVE pieces all in the forest: p1 in sight of the spawn, p2..p12 beside eleven forest
+squirrels. Pieces already collected stay on the saves. Preview in a play test (terrain and all; discarded on stop): pictures of
+the hollow from the spawn, from the tower top, the sign, the reveal, the house at 3 / 7 / 12, the balcony; then install on her word.

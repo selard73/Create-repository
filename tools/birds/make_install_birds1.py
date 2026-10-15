@@ -9,13 +9,13 @@ HERE = pathlib.Path(__file__).resolve().parent
 CLIENT = (HERE / "src/BirdsClient.lua").read_text(encoding="utf-8")
 assert "]===]" not in CLIENT
 SITES = [
-    {"name": "Harbour gulls", "kind": "gull", "x": 225, "y": -12, "z": -670, "r": 30, "n": 6, "band": 10, "range": 500},
-    {"name": "Harbour pelican", "kind": "pelican", "x": 215, "y": -36, "z": -690, "r": 34, "n": 1, "band": 2, "range": 500},
-    {"name": "Lighthouse gulls", "kind": "gull", "x": 520, "y": 86, "z": -1178, "r": 26, "n": 5, "band": 12, "range": 500},
+    {"name": "Harbour gulls", "kind": "gull", "x": 225, "y": 22, "z": -670, "r": 34, "n": 3, "band": 8, "range": 500},   # (v7: three, high up - Shannon: fewer in the air, only the high ones)
+    {"name": "Lighthouse gulls", "kind": "gull", "x": 520, "y": 92, "z": -1178, "r": 28, "n": 3, "band": 10, "range": 500},
     {"name": "Village swallows", "kind": "swallow", "x": 262, "y": 30, "z": -58, "r": 30, "n": 3, "band": 6, "range": 400},   # (v6: three, not eight)
     # perched (round 3: Shannon's rigged Meshy pelican and gull; round 4: the spots runner 7 settled in the preview)
     {"name": "Pelican on the quay", "kind": "pelican", "perch": True, "x": 232.5, "y": -46.56, "z": -667.6, "yaw": 280, "n": 1, "height": 4.2, "range": 220},
-    {"name": "Gulls on the harbour rail", "kind": "gull", "perch": True, "x": 231.6, "y": -46.56, "z": -673.4, "yaw": 102, "n": 3, "gap": 2.6, "height": 1.9, "range": 220},
+    {"name": "Gulls on the harbour rail", "kind": "gull", "perch": True, "x": 231.6, "y": -46.56, "z": -673.4, "yaw": 102, "n": 3, "height": 1.9, "range": 220,
+     "offsets": [[0, 0, 0, 0], [7.5, 0, 0.6, 50], [-5.5, 0, 0.9, -70]]},   # (v7: not in a row - one here, one well along the rail turned to the sea, one back the other way; dx along the rail, dy up, dz across, yaw; tune in Studio)
     {"name": "Gulls at the lighthouse", "kind": "gull", "perch": True, "x": 526, "y": 3.5, "z": -1170, "yaw": 300, "n": 2, "gap": 2.4, "height": 1.9, "range": 260},
 ]
 sites_json = json.dumps(SITES, separators=(",", ":"))
@@ -47,7 +47,7 @@ if old then
 end
 local c = Instance.new("Script"); c.Name = "BirdsClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
 F.Parent = workspace
-print(string.format("QQ BIRDS DONE: workspace.Birds (BirdsClient %d chars; 7 sites: 4 flocks + 3 perches; mesh templates: Templates.Gull / Templates.Pelican for the perches, Templates.GullFlying / PelicanFlying for the flocks)%s", #c.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))
+print(string.format("QQ BIRDS DONE: workspace.Birds (BirdsClient %d chars; 6 sites: 3 flocks + 3 perches; mesh templates: Templates.Gull / Templates.Pelican for the perches, Templates.GullFlying / PelicanFlying for the flocks)%s", #c.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))
 '''
 out = TEMPLATE
 for key, val in {"@@CLEN@@": str(len(CLIENT)), "@@CLIENT@@": CLIENT, "@@SITES@@": sites_json}.items():

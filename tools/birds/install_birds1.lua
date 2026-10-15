@@ -1,7 +1,7 @@
 -- install_birds1.lua (Studio EDIT mode; re-runnable; its body also runs as a play-test PREVIEW). Job 100: ambient birds (Shannon,
 -- Oct 15 2026: "and some birds?"): gulls circling the harbour and the lighthouse, swallows darting over the French village in
 -- figure-eights; purely visual, client-side (nothing replicates, nothing to touch), flocks asleep while the camera is far.
--- workspace.Birds: BirdsClient (18582 chars) + attributes Enabled, Sites (JSON: name, kind, x, y, z, r, n, band, range - edit
+-- workspace.Birds: BirdsClient (18905 chars) + attributes Enabled, Sites (JSON: name, kind, x, y, z, r, n, band, range - edit
 -- the attribute in Studio to move a flock, no code). Undo: delete workspace.Birds. No DataStore, no publish. "QQ BIRDS".
 local SS = game:GetService("ServerStorage")
 local CLIENT = [===[
@@ -159,9 +159,12 @@ local function makePerch(site, k, m)
 	local n = tonumber(site.n) or 1
 	local gap = tonumber(site.gap) or 3
 	local birds = {}
+	local offsets = type(site.offsets) == "table" and site.offsets or nil     -- v7: per-bird {dx along the site's facing-right, dy up, dz across, yaw} instead of a row
+	if offsets then n = #offsets end
 	for i = 1, n do
 		local holder = Instance.new("Model"); holder.Name = "Bird" .. i; holder.Parent = m
-		local spot = CFrame.new(tonumber(site.x) or 0, tonumber(site.y) or 0, tonumber(site.z) or 0) * CFrame.Angles(0, yaw, 0) * CFrame.new((i - 1) * gap, 0, 0) * CFrame.Angles(0, math.rad((i - 1) * 23 - (n - 1) * 11), 0)
+		local o = offsets and offsets[i] or {(i - 1) * gap, 0, 0, (i - 1) * 23 - (n - 1) * 11}
+		local spot = CFrame.new(tonumber(site.x) or 0, tonumber(site.y) or 0, tonumber(site.z) or 0) * CFrame.Angles(0, yaw, 0) * CFrame.new(tonumber(o[1]) or 0, tonumber(o[2]) or 0, tonumber(o[3]) or 0) * CFrame.Angles(0, math.rad(tonumber(o[4]) or 0), 0)
 		local b = makePerchBird(k, tpl, site, spot, holder)
 		b.spot = spot; b.act = "idle"; b.until_ = math.random() * 3; b.t = 0; b.dir = 1
 		table.insert(birds, b)
@@ -332,7 +335,7 @@ end
 local old = workspace:FindFirstChild("Birds")
 local F = Instance.new("Folder"); F.Name = "Birds"
 F:SetAttribute("Enabled", true)
-F:SetAttribute("Sites", [==[[{"name":"Harbour gulls","kind":"gull","x":225,"y":-12,"z":-670,"r":30,"n":6,"band":10,"range":500},{"name":"Harbour pelican","kind":"pelican","x":215,"y":-36,"z":-690,"r":34,"n":1,"band":2,"range":500},{"name":"Lighthouse gulls","kind":"gull","x":520,"y":86,"z":-1178,"r":26,"n":5,"band":12,"range":500},{"name":"Village swallows","kind":"swallow","x":262,"y":30,"z":-58,"r":30,"n":3,"band":6,"range":400},{"name":"Pelican on the quay","kind":"pelican","perch":true,"x":232.5,"y":-46.56,"z":-667.6,"yaw":280,"n":1,"height":4.2,"range":220},{"name":"Gulls on the harbour rail","kind":"gull","perch":true,"x":231.6,"y":-46.56,"z":-673.4,"yaw":102,"n":3,"gap":2.6,"height":1.9,"range":220},{"name":"Gulls at the lighthouse","kind":"gull","perch":true,"x":526,"y":3.5,"z":-1170,"yaw":300,"n":2,"gap":2.4,"height":1.9,"range":260}]]==])
+F:SetAttribute("Sites", [==[[{"name":"Harbour gulls","kind":"gull","x":225,"y":22,"z":-670,"r":34,"n":3,"band":8,"range":500},{"name":"Lighthouse gulls","kind":"gull","x":520,"y":92,"z":-1178,"r":28,"n":3,"band":10,"range":500},{"name":"Village swallows","kind":"swallow","x":262,"y":30,"z":-58,"r":30,"n":3,"band":6,"range":400},{"name":"Pelican on the quay","kind":"pelican","perch":true,"x":232.5,"y":-46.56,"z":-667.6,"yaw":280,"n":1,"height":4.2,"range":220},{"name":"Gulls on the harbour rail","kind":"gull","perch":true,"x":231.6,"y":-46.56,"z":-673.4,"yaw":102,"n":3,"height":1.9,"range":220,"offsets":[[0,0,0,0],[7.5,0,0.6,50],[-5.5,0,0.9,-70]]},{"name":"Gulls at the lighthouse","kind":"gull","perch":true,"x":526,"y":3.5,"z":-1170,"yaw":300,"n":2,"gap":2.4,"height":1.9,"range":260}]]==])
 local T = Instance.new("Folder"); T.Name = "Templates"; T.Parent = F   -- (Templates.Gull / Pelican = the rigged standing meshes for the perches; Templates.GullFlying / PelicanFlying = wings-spread meshes for the flocks)
 if old then local ot = old:FindFirstChild("Templates"); if ot then for _, m in ipairs(ot:GetChildren()) do m:Clone().Parent = T end end end
 for _, m in ipairs(T:GetChildren()) do if m:IsA("Model") then m.ModelStreamingMode = Enum.ModelStreamingMode.Persistent end end   -- (v4: a template must reach every client whole - her imports sit far away, and a streamed-out template is an empty Model)
@@ -344,4 +347,4 @@ if old then
 end
 local c = Instance.new("Script"); c.Name = "BirdsClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
 F.Parent = workspace
-print(string.format("QQ BIRDS DONE: workspace.Birds (BirdsClient %d chars; 7 sites: 4 flocks + 3 perches; mesh templates: Templates.Gull / Templates.Pelican for the perches, Templates.GullFlying / PelicanFlying for the flocks)%s", #c.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))
+print(string.format("QQ BIRDS DONE: workspace.Birds (BirdsClient %d chars; 6 sites: 3 flocks + 3 perches; mesh templates: Templates.Gull / Templates.Pelican for the perches, Templates.GullFlying / PelicanFlying for the flocks)%s", #c.Source, old and ("; the old folder is HudBackup." .. old.Name) or ""))
