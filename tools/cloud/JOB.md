@@ -1929,3 +1929,69 @@ round_tree (6,26) 4.4 wide, Forest.round_tree_s82 (38,10) 3.4, Forest.round_tree
 14, domaine 15. Boundary.Gates NOT found under that name. Rings: r 12 grass 0.1 (dais parts aside); r 24 grass except "Wall" y 220 at
 (3,25) and "Roof" y 80 at (-21,1) overhead; r 40 grass. No path-like parts within 60 studs. No fat trunk near the spawn: the treehouse
 likely needs its own built tree or a platform across two or three pines.
+
+## Job 101 round 2: the Wise Squirrel draw announcement only in France (Studio EDIT; ask Shannon first) - runner 7
+
+Round 1 aborted (the live DailyClient already carries the Oct 2 gate: the golden pill and the card's golden line hide outside
+France). Reading the LIVE QuestionClient (tools/tools_src/QuestionClient_phone1.lua, 28598 bytes, the one in Studio): the reminders,
+the arrow and the board announce are gated (frenchQuestionReminderAllowed) but the "drawn" event is NOT - when the day's draw is
+made, EVERY player gets the banner "Today's Wise Squirrel: <name>! The answers were: ..." sliding in at the top of the screen plus
+the chat line "<name> is today's Wise Squirrel!" (or "Nobody got a Question of the Day right today. New ones are up!") - in Porto
+Nocciola too. That is the "announcement about the daily questions" she saw carrying over. tools/daily/golden_gate2.lua (from
+make_golden_gate2.py; self-tested on the live copy, compiles): ONE exact-string patch of workspace.DailyQuestion.QuestionClient - the
+drawn block runs only when frenchQuestionReminderAllowed(); the personal "You're the Wise Squirrel!" prize banner stays everywhere
+(it explains the acorns that just arrived). Backup HudBackup.QuestionClient_pre_golden2; marker FRENCH_DRAWN_ANNOUNCE_20261015_V1.
+The GOLDEN squirrel part of her report: nothing ungated found in DailyClient; still to learn from her what she saw and how she got
+to Italy (the Area attribute along the boat / balloon / funicolare / travel board is the suspect; a runner probe can log it).
+PLAN: ask her; run golden_gate2.lua in Edit; expect "QQ GOLD DONE: QuestionClient 28598 -> n chars".
+
+## Job 103 BUILD: the forest treehouse - play-test PREVIEW with pictures (NOT installed; she decides in the morning) - runner 7
+
+(Adversarial reviews of the treehouse code and of survey104.lua are running on the cloud thread; the commit that says
+"reviewed" in its message is the one to run - survey104 is read-only and safe either way.)
+
+From the survey: no kit tree can carry a house (two-part models, trunks 1.3-4.4 wide), so the treehouse gets its own tree: a big OAK
+32 studs south of the forest spawn at (-4, -30) (flat terrain grass, nothing within 18 studs; the nearest pines are at (15,-22) and
+(-18,-18)), a 6-stud trunk, roots, four branches, a canopy of leaf balls; its +z faces the spawn. tools/treehouse/install_treehouse1.lua
+(from make_install_treehouse1.py; src/TreehouseServer.lua 4473, src/TreehouseClient.lua 18320; all three compile):
+- workspace.Treehouse {Oak (shared), TreehouseServer (RunContext Server), TreehouseClient (RunContext Client)}; attributes Enabled,
+  Tree (JSON x/y/z/yaw), Pieces (JSON [{id, x, y, z, kind, yaw, far}] - move a spot in Studio by editing the attribute, no code);
+  ReplicatedStorage.TreehousePick (RemoteEvent). Re-runnable: the old folder -> HudBackup.Treehouse_pre_n.
+- TWELVE pieces (bundles of planks, a coil of rope, a stack of shingles, a lantern in its crate; a "Treehouse piece" tag within 42
+  studs; a "Treehouse piece / Pick up" prompt, Style Custom so PromptClient draws it): p1 (14,-8) and p2 (-12,-12) in sight of the
+  spawn, p3 (22,-30), p4 (-20,-40) by the surfing squirrel, p5 (30,-60), p6 (-12,-85) by Baking Betty, p7 (60,-105) by the scientist,
+  p8 (70,-140) by the rainy-day squirrel; beyond the gate: p9 (210,-70) and p10 (300,-90) in Rue de Noisette, p11 (455,-75) and p12
+  (560,-110) at the chateau. The installer rays every spot (terrain, or a slab no higher than 2.5 over the terrain; a roof or a tree
+  is refused), nudges a refused spot up to 12 studs round, skips one with no open ground and says so; aborts under 10 placed.
+- PER PLAYER: the pieces this player has not found and the house are drawn on their own screen (workspace.Treehouse_local), like the
+  belvedere; the SERVER is the authority: a pick-up is a request (RS.TreehousePick "pick"), honoured once per piece when the save is
+  loaded and the character stands within 20 studs of the spot; kept on the save as Item_tree_<id> through RS.AwardItems (no new
+  store); the player attribute TreePieces carries the count (the dashboard can read it). The house grows by count: 1 ladder (a
+  climbable truss), 3 deck, 5 railing, 7 walls with a door, 9 roof, 10 window, 11 lantern, 12 flag; at 12 "Treehouse built!" card and
+  100 acorns once (RS.AwardAcorns + the Acorns attribute, flag Item_tree_done - the thank-you gifts' pattern).
+- THE COUNT: the sign at the oak's foot ("The Treehouse / 3 of 12 pieces found. / 9 more to find. / 4 of them lie beyond the forest
+  gate."), a toast at every pick-up ("Treehouse piece 3 of 12! 9 more to find", bottom centre where the question toast sits), and on
+  DESKTOP a pill under the golden pill (top right, y 100: "Treehouse: 3 of 12 pieces"; hidden in Italy, while a panel is open, and at
+  12). Phones get no pill (the HUD column has no room; the sign and the toasts carry the count) - say if she wants one anyway.
+PREVIEW (play test, desktop first, then the iPhone 7 emulator if she can switch it): run the installer's body on the test server;
+expect "QQ TREE oak at (-4, 0.1, -30) ...", twelve "QQ TREE piece ..." lines (none SKIPPED - report any), "QQ TREE DONE". Pictures:
+(1) the oak from the spawn pad with the sign; (2) p1 and p2 from the spawn; (3) a pick-up (the prompt, then the toast); (4) the
+house at 1, 3, 7 and 12 pieces - in a play test the save is Studio's, so pick the pieces up (walk p1..p8, then the gate - or, for the
+picture only, set the test player's attributes Item_tree_p1..p12 = 1 from the command bar; they are not saved); (5) climb the ladder
+and stand on the deck; (6) the "Treehouse built!" card; (7) p9..p12 where they lie. Report every QQ TREE line.
+
+## Job 104 survey script: tools/japan/survey104.lua (READ-ONLY, Edit; no ask) + the script export - runner 7
+
+tools/japan/survey104.lua (compiles) looks for what is wrong: JapanMap's shape and the parts of it lying west of x 4500 (in France /
+Porto); every script named Japan* or whose Source mentions Japan outside the backups (= what Codex patched: BalloonServer,
+SpawnReturnServer, Travel ...; with sizes and adler32); the preview gate's module; the backups' weight in ServerStorage and Studio
+memory; unanchored / huge / invisible-solid parts; floating and buried models (<= 400 parts); a 50-stud ground grid for holes;
+seats, prompts (Style - PromptClient draws only Custom), click detectors, NPCs, spawns; the texts on signs; effects, lights, sounds
+(a Sound not on a part plays everywhere, France included); Lighting and the water; Travel / SpawnPads / Boundary and the Area
+attribute's reach; squirrel-like models. ~120 "QQ JAPAN" lines; send them all unchanged to tools/japan/survey104_result_<date>.txt.
+THEN EXPORT (Source to files, tools/japan/studio_2026-10-15/<Name>.lua, LF): every SCRIPT line the survey prints that is not a backup
+- at least JapanMap.JapanEnvironment, the three AutomaticFoodSeatContact, ServerScriptService.JapanPreviewAccess + JapanPreviewGuard,
+StarterPlayerScripts JapanAtmosphere / JapanWaterAppearance / JapanTrainInteriorCamera / JapanPreviewVisibility, the live
+BalloonServer, BalloonClient, SpawnReturnServer, TravelServer, HidePortoFromFrance / HideFranceFromPorto, and the backups' copies in
+ServerStorage.JapanBeforePrivatePreview (BalloonServer, BalloonClient, JapanEnvironment, JapanAtmosphere, SpawnReturnServer) so the
+cloud thread can diff what Codex changed in the live scripts. Nothing changed in Studio.

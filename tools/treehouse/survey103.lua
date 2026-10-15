@@ -88,7 +88,7 @@ if okR and type(R) == "table" and type(R.squirrels) == "table" then
 		local lines = {}
 		for _, q in ipairs(byMap[mapId]) do
 			local m = workspace:FindFirstChild(q.id .. "_color", true) or workspace:FindFirstChild(q.id, true)
-			local lo, hi = m and extents(m)
+			local lo, hi; if m then lo, hi = extents(m) end   -- (runner 7's fix: `m and extents(m)` kept only the first return)
 			table.insert(lines, string.format("%s %s", q.id, lo and string.format("(%.0f,%.0f,%.0f)", (lo.X + hi.X) / 2, lo.Y, (lo.Z + hi.Z) / 2) or "(no model)"))
 		end
 		say("%s squirrels (%d): %s", mapId, #byMap[mapId], table.concat(lines, "; "))
