@@ -241,17 +241,14 @@ local function flight(p)
 		phase("previewLanded",3)
 		-- Leave the basket down long enough to see the arrival before returning it for the next rider.
 		task.wait(2)
-		setHome()
-		ev:FireAllClients("phase",p,"reset",0)
+		if busy==p then setHome(); ev:FireAllClients("phase",p,"reset",0) end   -- (JAPANFIX1: not if the safety net already handed the balloon on)
 	else
-		setHome()
-		ev:FireAllClients("phase",p,"home",2)
+		if busy==p then setHome(); ev:FireAllClients("phase",p,"home",2) end
 		p:SetAttribute("JapanBalloonPhase","home")
 	end
 	end)
-	if not tailOk then warn("BalloonServer tail: "..tostring(tailErr)); pcall(setHome) end
-	prompt.Enabled=true
-	busy=nil
+	if not tailOk then warn("BalloonServer tail: "..tostring(tailErr)); p:SetAttribute("JapanPreviewInFlight",nil); if busy==p then pcall(setHome); pcall(function() ev:FireAllClients("phase",p,"home",2) end) end end
+	if busy==p then prompt.Enabled=true; busy=nil end   -- (JAPANFIX1: only this rider's balloon - the safety net may have handed it on during a long preview yield)
 	if not ok then warn("BalloonServer: "..tostring(flightError))
 	elseif awardItems and p.Parent==Players and (not preview or landed) then awardItems:Fire(p,"balloon_flights",1) end   -- (JAPANFIX1: a landed preview is a flight too)
 end

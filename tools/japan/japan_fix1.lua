@@ -56,11 +56,24 @@ end
 	elseif not preview and awardItems and p.Parent==Players then awardItems:Fire(p,"balloon_flights",1) end
 ]====], [====[
 	end)
-	if not tailOk then warn("BalloonServer tail: "..tostring(tailErr)); pcall(setHome) end
-	prompt.Enabled=true
-	busy=nil
+	if not tailOk then warn("BalloonServer tail: "..tostring(tailErr)); p:SetAttribute("JapanPreviewInFlight",nil); if busy==p then pcall(setHome); pcall(function() ev:FireAllClients("phase",p,"home",2) end) end end
+	if busy==p then prompt.Enabled=true; busy=nil end   -- (JAPANFIX1: only this rider's balloon - the safety net may have handed it on during a long preview yield)
 	if not ok then warn("BalloonServer: "..tostring(flightError))
 	elseif awardItems and p.Parent==Players and (not preview or landed) then awardItems:Fire(p,"balloon_flights",1) end   -- (JAPANFIX1: a landed preview is a flight too)
+]====]}, {[====[
+		task.wait(2)
+		setHome()
+		ev:FireAllClients("phase",p,"reset",0)
+]====], [====[
+		task.wait(2)
+		if busy==p then setHome(); ev:FireAllClients("phase",p,"reset",0) end   -- (JAPANFIX1: not if the safety net already handed the balloon on)
+]====]}, {[====[
+	else
+		setHome()
+		ev:FireAllClients("phase",p,"home",2)
+]====], [====[
+	else
+		if busy==p then setHome(); ev:FireAllClients("phase",p,"home",2) end
 ]====]}, {[====[
 -- The active flight owns cleanup; a disconnect cannot reset another rider's balloon.
 ]====], [====[
@@ -251,7 +264,7 @@ local SS = game:GetService("ServerStorage")
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 for _, w in ipairs(work) do
 	local bname = w.sc.name .. "_pre_japanfix1"
-	if not hb:FindFirstChild(bname) then local c = w.s:Clone(); c.Name = bname; if c:IsA("BaseScript") then c.Enabled = false end; c.Parent = hb end
+	if not hb:FindFirstChild(bname) then local c = w.s:Clone(); if c then c.Name = bname; if c:IsA("BaseScript") then c.Enabled = false end; c.Parent = hb end end
 end
 for _, w in ipairs(work) do
 	w.s.Source = w.n

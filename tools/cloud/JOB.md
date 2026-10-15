@@ -2179,3 +2179,8 @@ mime, the nudge rings widen to 6/12/18/24 studs, and the house's stage threshold
 (12: 1/3/5/7/9/10/11/12; 11: 1/3/5/6/8/9/10/11), so a skipped spot can never hide the flag. Both ready for her morning yes: the
 runner re-runs the treehouse preview body once to confirm p10 lands (expect twelve "QQ TREE piece" lines, none SKIPPED), then installs
 on her word; the birds install needs workspace.Birds.Templates.Pelican / Gull in Edit first (clone her imports there, as in the preview).
+Job 105 REVIEWED (cloud thread; adversarial review of all nine patches: no change for ordinary players; the installer's find/replace
+proven byte-for-byte in standalone Luau). Round 2 fixes from it: the balloon's tail now frees, homes and resets the balloon only while
+it is still this rider's (busy == p) - during the owner's long preview yields the safety net may already have handed it to the next
+rider; a tail fault also clears JapanPreviewInFlight and sends "home"; the backup clone is nil-guarded. BalloonServer now 7 patches.
+Ready for Shannon's yes: run tools/japan/japan_fix1.lua in Edit; expect nine "QQ JFIX" lines and "QQ JFIX DONE: 9 scripts patched".

@@ -44,9 +44,14 @@ SCRIPTS = [
     '\tlocal tailOk, tailErr = pcall(function()   -- (JAPANFIX1: whatever happens in the tail, the balloon is freed below)\n'
     '\tif connection and connection.Connected then connection:Disconnect() end\n\tlocal weld=seat:FindFirstChild("SeatWeld");if weld then weld:Destroy() end\n'),
    ('\tprompt.Enabled=true\n\tbusy=nil\n\tif not ok then warn("BalloonServer: "..tostring(flightError))\n\telseif not preview and awardItems and p.Parent==Players then awardItems:Fire(p,"balloon_flights",1) end\n',
-    '\tend)\n\tif not tailOk then warn("BalloonServer tail: "..tostring(tailErr)); pcall(setHome) end\n'
-    '\tprompt.Enabled=true\n\tbusy=nil\n\tif not ok then warn("BalloonServer: "..tostring(flightError))\n'
+    '\tend)\n\tif not tailOk then warn("BalloonServer tail: "..tostring(tailErr)); p:SetAttribute("JapanPreviewInFlight",nil); if busy==p then pcall(setHome); pcall(function() ev:FireAllClients("phase",p,"home",2) end) end end\n'
+    '\tif busy==p then prompt.Enabled=true; busy=nil end   -- (JAPANFIX1: only this rider\'s balloon - the safety net may have handed it on during a long preview yield)\n'
+    '\tif not ok then warn("BalloonServer: "..tostring(flightError))\n'
     '\telseif awardItems and p.Parent==Players and (not preview or landed) then awardItems:Fire(p,"balloon_flights",1) end   -- (JAPANFIX1: a landed preview is a flight too)\n'),
+   ('\t\ttask.wait(2)\n\t\tsetHome()\n\t\tev:FireAllClients("phase",p,"reset",0)\n',
+    '\t\ttask.wait(2)\n\t\tif busy==p then setHome(); ev:FireAllClients("phase",p,"reset",0) end   -- (JAPANFIX1: not if the safety net already handed the balloon on)\n'),
+   ('\telse\n\t\tsetHome()\n\t\tev:FireAllClients("phase",p,"home",2)\n',
+    '\telse\n\t\tif busy==p then setHome(); ev:FireAllClients("phase",p,"home",2) end\n'),
    ("-- The active flight owns cleanup; a disconnect cannot reset another rider's balloon.\n",
     "-- The active flight owns cleanup; a disconnect cannot reset another rider's balloon.\n"
     "Players.PlayerRemoving:Connect(function(p)   -- (JAPANFIX1: the safety net back - a rider who vanishes frees the balloon a second later)\n"
@@ -207,7 +212,7 @@ local SS = game:GetService("ServerStorage")
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 for _, w in ipairs(work) do
 	local bname = w.sc.name .. "_pre_japanfix1"
-	if not hb:FindFirstChild(bname) then local c = w.s:Clone(); c.Name = bname; if c:IsA("BaseScript") then c.Enabled = false end; c.Parent = hb end
+	if not hb:FindFirstChild(bname) then local c = w.s:Clone(); if c then c.Name = bname; if c:IsA("BaseScript") then c.Enabled = false end; c.Parent = hb end end
 end
 for _, w in ipairs(work) do
 	w.s.Source = w.n
