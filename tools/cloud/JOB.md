@@ -1788,3 +1788,5 @@ piazza lamp post, the fountain square). What shows: the water brighter and more 
 contrast and saturation everywhere; BUT at Bloom.Threshold 1.2 the pale piazza cobbles bloom noticeably brighter in daylight (the lamps
 are unlit at ClockTime 14.5, so the lantern glow itself cannot be judged by day). Lines in tools/look/preview99_result_2026-10-15.txt.
 Shannon picks what stays; the Edit run is the same script (undo look_undo1.lua).
+Edit check after the job 99 preview (runner 7): v1369; water refl 0.55 / transp 0.45 / wave 0.06; Bloom threshold 2; no LookGrade;
+0 LookWas_ attributes; grass 96,150,72; HttpEnabled false. Edit untouched by the preview. Her picks pending.
