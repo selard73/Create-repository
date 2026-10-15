@@ -129,7 +129,11 @@ local function watch(p)
 	-- items: a rise in any Item_<id> once the save is in (the load itself is not a purchase)
 	local baseline = {}
 	local function snapshot() for k, v in pairs(p:GetAttributes()) do if type(k) == "string" and k:sub(1, 5) == "Item_" then baseline[k] = tonumber(v) or 0 end end end
-	local SKIP = {funnel = true, porto = true}                            -- the game's own marks (the funnel's, the Italy arrival) and gifts are not purchases
+	-- the save's own bookkeeping is not an interaction: the funnel's mark, the Italy arrival, the daily card and streak, the
+	-- French rank, the Keeper's day, passport stamps, the thank-you gifts. What stays: shop buys and keepsakes, the backpack, the
+	-- chute, the gifts card's rows (a community join, a like) - things a player chose.
+	local SKIP = {funnel = true, porto = true, frenchrank = true}
+	local SKIP_PREFIX = {"daily_", "passport_", "champion", "thanks_"}
 	task.spawn(function()
 		local t0 = os.clock()
 		while p.Parent and not p:GetAttribute("SaveLoaded") and os.clock() - t0 < 120 do task.wait(0.5) end
@@ -139,7 +143,8 @@ local function watch(p)
 		p.AttributeChanged:Connect(function(k)
 			if type(k) ~= "string" or k:sub(1, 5) ~= "Item_" then return end
 			local id = k:sub(6)
-			if SKIP[id] or id:sub(1, 7) == "thanks_" then return end
+			if SKIP[id] then return end
+			for _, pre in ipairs(SKIP_PREFIX) do if id:sub(1, #pre) == pre then return end end
 			local v = tonumber(p:GetAttribute(k)) or 0
 			if v > (baseline[k] or 0) then baseline[k] = v; log(p, "Item", id) end
 		end)

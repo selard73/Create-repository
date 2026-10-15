@@ -1761,3 +1761,7 @@ backpack, chute, passport stamps?). Lines in tools/interact/playtest98_result_20
 Edit check after the job 98 play test (runner 7): v1369; Funnel (FunnelServer 7394, ForceNew false); Interact (InteractServer 8554,
 Enabled true, Repeat 60, Budget 90); backup Funnel_pre_1; HallOfGuardians round 7 present; no leftovers; HttpEnabled false.
 Unpublished in Studio: job 98. She publishes; then job 99's preview.
+Job 98 round 2 (cloud thread, after the play test): the save's bookkeeping is not counted as an Item - daily_* (the card, the streak),
+passport_* (stamps), frenchrank, champion*, thanks_*, funnel, porto; what stays: shop buys and keepsakes, the backpack, the chute, the
+gifts card's rows. A re-run of install_interact1.lua (the old folder -> HudBackup.Interact_pre_1) before her publish; expect
+"QQ INTERACT DONE: workspace.Interact (InteractServer <new length> chars; ...)".
