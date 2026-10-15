@@ -2753,3 +2753,7 @@ at 12 pieces the window shows from inside with the view out, the plant on the si
 Result job 111 round 3b (runner 7, 608aca5, INSTALLED in Edit on Shannon's "Install the update", unpublished; logged at 8dd6298):
 QQ lines as in the preview; one TreehouseClient (25778 chars); HudBackup.TreehouseClient_pre_r3_2 kept. Homebase Treehouse is done
 through round 3b. Next: japan_geo2.lua (323dd1f) on her yes and a save; then publish.
+Job 106 geo2 FIX (cloud thread, from runner 7's read before running): raiseBed's region top was y BED = -30, off the 4-stud grid -
+ReadVoxelChannels would have thrown on the first chunk, right after the "before JapanGeo2" waypoint, before any change. Now
+math.floor(BED / 4) * 4 = -32: a full row up to -32 draws its surface at -30, which is BED, and the sand band fillAir writes for the
+new areas (level BED) draw at -30 too. Nothing else changed.
