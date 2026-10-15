@@ -2625,3 +2625,6 @@ spawn with its railing, the ladder landing on it, an awning over the door), the 
 ~6 s with her line, then back), and TWELVE pieces all in the forest: p1 in sight of the spawn, p2..p12 beside eleven forest
 squirrels. Pieces already collected stay on the saves. Preview in a play test (terrain and all; discarded on stop): pictures of
 the hollow from the spawn, from the tower top, the sign, the reveal, the house at 3 / 7 / 12, the balcony; then install on her word.
+
+Shannon on the job 106 result (pictures sent): "changes are fine please proceed" - japan_geo1 KEPT in Edit (not undone), to go out with
+her next publish. Round 2 items (sea far-edge step, canal north end, lake band) still welcome from the cloud thread.
