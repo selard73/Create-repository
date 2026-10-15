@@ -1881,3 +1881,24 @@ tools/gifts/src/GiftsClient.lua: a Caption TextLabel under the gift drawing in t
 at the bottom, as hudCaption draws "Passport" and "Map"); the box, lid, ribbon and bow move up 8 px to make room. install_gifts1.lua
 regenerated (a re-run: the old Gifts folder -> HudBackup.Gifts_pre_n, attributes carried; the PromptClient patch reports "already").
 PLAY TEST: desktop and the phone emulator: "Gift" under the box, nothing overlapping (phone column: the box at x 541..589 as before).
+
+## Job 103: the forest treehouse - READ-ONLY survey first (Studio EDIT; no ask), then the build - runner 7
+
+Shannon (Oct 15, her yes: "yes to the treehouse build, lets start with that"): "a lot of people are coming staying a minute and leaving
+... seems like a lot are finding the first 15 squirrels and then don't go on; ... finding parts and building a treehouse in the forest
+... strew the pieces throughout the french map, and have a count somewhere to show how many more they need, and they can piece it
+together as they collect the pieces". The design (cloud thread): a half-built platform in a big tree in sight of the forest spawn with a
+sign and the count; twelve pieces, the first two or three close to the spawn (a win in the first minute), the rest along the forest,
+three or four beyond the gate in Rue de Noisette and the chateau ("4 pieces lie beyond the forest gate" on the count); the treehouse
+grows per piece (ladder, platform, railing, walls, roof, window, lantern, flag), finished = a lookout worth climbing; per player, kept
+on the save through RS.AwardItems (Item_tree_<piece>), no new store; the pieces are props with a pick-up prompt; the count on the sign
+and a small HUD pill. SURVEY (tools/treehouse/survey103.lua, read-only, Edit): the forest spawn and its ground, every tree-like model
+within 90 studs of the spawn (foot, top, trunk width, distance), the French squirrels' positions by map, the gates, the ground round the
+spawn, path parts. Send every `QQ TREE` line unchanged; the cloud thread then picks the tree and the piece spots and writes the installer
+for a play-test PREVIEW with pictures (nothing installed; she decides in the morning).
+
+## Job 104 (after 103's preview): an adversarial survey of Codex's Japan map (READ-ONLY) - her ask of Oct 15
+
+Shannon: "codex made a 3rd map for Japan and I wanted you to do an adversarial survey of it to find things wrong so we can fix them".
+The cloud thread writes the survey (what is there, scripts, squirrels, spawn, gates, prompts, floating or sunken parts, unanchored
+parts, overlaps) and the runner exports Codex's Japan scripts for review; findings listed for the morning, nothing changed.
