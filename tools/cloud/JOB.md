@@ -2490,3 +2490,20 @@ show things are interactable, to make them stand out more"): every piece this pl
 gold Highlight (outline solid, a soft fill that breathes), occluded by walls like the pill outlines. At most 12 highlights per
 player, under Roblox's 31. Re-run install_treehouse1.lua in Edit (re-runnable: the old folder -> HudBackup; the per-player saves
 are untouched - the pieces are on the save, not in the folder), a play-test picture of a glowing piece, publish with the next batch.
+
+## Job 111: the treehouse moves to a clearing left of the zip line tower + the first-piece reveal (Shannon, Oct 15) - runner 7
+
+Shannon: "the treehouse is too close to everything else and it's too crowded; put it in a corner to the left of the zip line tower;
+clear a space of trees and rocks and mushrooms; an open area clearly designated for the treehouse. When they collect their first
+glowy piece, a quick zoom screenshot of the spot where the treehouse will be (the sign before it is made should say 'Future Location
+of ...'), hold about 8 seconds, then the camera goes back". Cloud thread: yes; six seconds suggested; the name proposed "Acorn
+Heights" (or Hazel Heights / The Nutty Lookout / The Oak Hideout - hers to pick); the pick-up chime already plays (soft).
+STEP 1 (read-only, no ask): tools/treehouse/survey111.lua - finds ForestTower, "left of it" as seen from the forest spawn, and for
+four candidate centres (45 / 60 studs left, 15 behind, 15 nearer) reports the ground over a 24-stud radius, what a clearing would
+remove (kit trees / rocks / mushrooms / bushes: the Scatter attribute or kit names) and what it must keep (squirrels, walls, the
+tower, paths, anything unsure). Send every "QQ SITE" line + one picture from the spawn looking at the tower with the left side in view.
+STEP 2 (cloud thread, after the lines): install_treehouse2 - clears the chosen circle (the removed props go to
+HudBackup.TreehouseCleared_n, never squirrels or walls), builds the oak there with a stone-ring "site" and the sign "Future home of
+<name>" until the first piece, moves p1/p2 so the first two pieces lie between the spawn and the site, and the client's first-piece
+reveal: camera to the site for ~6 s with "That's where <name> will stand", then back. Pieces already found are kept (they are on the
+save); the house simply stands at the new site.
