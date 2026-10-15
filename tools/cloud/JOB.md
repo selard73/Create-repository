@@ -1916,3 +1916,16 @@ for a play-test PREVIEW with pictures (nothing installed; she decides in the mor
 Shannon: "codex made a 3rd map for Japan and I wanted you to do an adversarial survey of it to find things wrong so we can fix them".
 The cloud thread writes the survey (what is there, scripts, squirrels, spawn, gates, prompts, floating or sunken parts, unanchored
 parts, overlaps) and the runner exports Codex's Japan scripts for review; findings listed for the morning, nothing changed.
+Result job 103 SURVEY (runner 7, 02f309b; Edit v1369, read-only, Oct 15 ~04:30Z): 57 QQ TREE lines in
+tools/treehouse/survey103_result_2026-10-15.txt. The script needed ONE fix to run: section (3) "local lo, hi = m and extents(m)" keeps
+only the first value (the and-expression truncates the list) and crashed on hi.X; runner 7 ran it with "local lo, hi; if m then lo, hi =
+extents(m) end" - everything else verbatim; please fix the file. Headlines: forest spawn (3,1) ground 2.0 on Spawn_forest, terrain
+0.1; 57 tree-like models within 90 studs - all 2-part kit models (Trunk + Foliage; trunks 1.3-4.4 studs wide, 4-9 tall; tops y 8-19);
+nearest: Boundary.Dressing.pine_squat (-2,24) 24 studs, pine_mid (-12,20) 24, round_tree (6,26) 25 (trunk 4.4 wide, 9.1 tall, top
+14.5), Forest.pine_mid_s73 (15,-22) 26, pine_tall (14,25) 26, Forest.pine_tall_s79 (30,2) 27 (top 15.4). Biggest trunks near the spawn:
+round_tree (6,26) 4.4 wide, Forest.round_tree_s82 (38,10) 3.4, Forest.round_tree_s52 (-37,-41) 3.4; tallest: pine_tall (-3,-51) top
+19.2, (54,24) 19.2, (38,27) 18.5. The three "ForestKit" hits at y 100 are templates in the air. Squirrels with positions: forest 15
+(nearest the spawn: surfing (-16,-47), fairy (18,-52), parachute (60,7,-18), baking_betty (-18,-93); ranger (0,-200) farthest), village
+14, domaine 15. Boundary.Gates NOT found under that name. Rings: r 12 grass 0.1 (dais parts aside); r 24 grass except "Wall" y 220 at
+(3,25) and "Roof" y 80 at (-21,1) overhead; r 40 grass. No path-like parts within 60 studs. No fat trunk near the spawn: the treehouse
+likely needs its own built tree or a platform across two or three pines.

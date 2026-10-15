@@ -1,0 +1,65 @@
+# Job 103 survey103.lua, runner 7, Oct 15 ~04:30Z, Studio Edit v1369, READ-ONLY. Script from 02f309b (LF 7487, adler32 2021265496) with
+# ONE runner fix in section (3): "local lo, hi = m and extents(m)" kept only the first value (an and-expression truncates) and crashed on
+# hi.X; replaced by "local lo, hi; if m then lo, hi = extents(m) end". Everything else verbatim.
+QQ TREE SpawnLocation Spawn_porto at (232.0,-46.9,-580.0)
+QQ TREE SpawnLocation Spawn_forest at (3.0,1.5,1.0)
+QQ TREE SpawnLocation Spawn_village at (196.0,1.5,-36.0)
+QQ TREE SpawnLocation Spawn_domaine at (438.0,4.4,-36.0)
+QQ TREE forest spawn (3, 1): ground 2.0 (Spawn_forest), terrain 0.1
+QQ TREE tree-like models within 90 studs of the spawn: 57
+QQ TREE   Boundary.Dressing.pine_squat (2 parts): centre (-2, 24) 24 studs from the spawn, foot y -0.0, top y 9.6, box 12 x 12; trunk Foliage at (-2.0,6.0,24.2), 8.5 wide, 6.9 tall
+QQ TREE   Boundary.Dressing.pine_mid (2 parts): centre (-12, 20) 24 studs from the spawn, foot y -0.4, top y 14.7, box 8 x 9; trunk Trunk at (-11.8,1.7,20.3), 1.3 wide, 4.2 tall
+QQ TREE   Boundary.Dressing.round_tree (2 parts): centre (6, 26) 25 studs from the spawn, foot y -0.0, top y 14.5, box 15 x 14; trunk Trunk at (6.2,4.6,25.1), 4.4 wide, 9.1 tall
+QQ TREE   Forest.pine_mid_s73 (2 parts): centre (15, -22) 26 studs from the spawn, foot y -0.1, top y 11.5, box 8 x 8; trunk Foliage at (14.9,7.0,-22.0), 6.6 wide, 8.9 tall
+QQ TREE   Boundary.Dressing.pine_tall (2 parts): centre (14, 25) 26 studs from the spawn, foot y -0.0, top y 14.8, box 9 x 9; trunk Foliage at (14.0,8.7,24.9), 6.7 wide, 11.9 tall
+QQ TREE   Forest.pine_tall_s79 (2 parts): centre (30, 2) 27 studs from the spawn, foot y -0.1, top y 15.4, box 10 x 9; trunk Foliage at (30.3,9.1,1.8), 7.0 wide, 12.6 tall
+QQ TREE   Forest.pine_mid_s64 (2 parts): centre (-18, -18) 28 studs from the spawn, foot y -0.1, top y 11.5, box 9 x 9; trunk Foliage at (-18.1,7.0,-17.9), 6.6 wide, 8.9 tall
+QQ TREE   Boundary.Dressing.pine_tall (2 parts): centre (22, 24) 30 studs from the spawn, foot y -0.0, top y 17.2, box 10 x 10; trunk Foliage at (22.0,10.1,24.1), 7.7 wide, 13.8 tall
+QQ TREE   Boundary.Dressing.pine_tall (2 parts): centre (-18, 26) 33 studs from the spawn, foot y -0.0, top y 14.7, box 9 x 9; trunk Foliage at (-18.0,8.7,25.9), 6.6 wide, 11.9 tall
+QQ TREE   Forest.pine_mid_s78 (2 parts): centre (30, -21) 34 studs from the spawn, foot y -0.1, top y 11.5, box 9 x 9; trunk Foliage at (29.7,7.0,-20.5), 6.6 wide, 8.9 tall
+QQ TREE   Forest.round_tree_s82 (2 parts): centre (38, 10) 36 studs from the spawn, foot y -0.1, top y 11.0, box 9 x 10; trunk Trunk at (37.3,3.5,10.1), 3.4 wide, 7.0 tall
+QQ TREE   Boundary.Dressing.pine_mid (2 parts): centre (-26, 24) 37 studs from the spawn, foot y -0.0, top y 15.6, box 12 x 12; trunk Trunk at (-26.4,2.1,23.7), 1.3 wide, 4.3 tall
+QQ TREE   Boundary.Dressing.pine_mid (2 parts): centre (30, 27) 38 studs from the spawn, foot y -0.0, top y 13.8, box 8 x 8; trunk Foliage at (30.1,8.3,27.3), 7.8 wide, 10.6 tall
+QQ TREE   Boundary.Dressing.pine_tall (2 parts): centre (38, 27) 43 studs from the spawn, foot y -0.0, top y 18.5, box 12 x 12; trunk Trunk at (38.2,2.1,27.1), 1.6 wide, 4.2 tall
+QQ TREE   Boundary.Dressing.pine_mid (2 parts): centre (-34, 24) 44 studs from the spawn, foot y -0.0, top y 12.6, box 8 x 8; trunk Foliage at (-34.0,7.6,24.0), 7.1 wide, 9.6 tall
+QQ TREE   Forest.pine_mid_s87 (2 parts): centre (51, 0) 48 studs from the spawn, foot y -0.1, top y 11.5, box 9 x 9; trunk Foliage at (51.3,7.0,0.1), 6.6 wide, 8.9 tall
+QQ TREE   Boundary.Dressing.pine_mid (2 parts): centre (46, 24) 49 studs from the spawn, foot y -0.0, top y 11.0, box 9 x 9; trunk Foliage at (46.0,6.7,24.2), 6.2 wide, 8.4 tall
+QQ TREE   Boundary.Dressing.pine_tall (2 parts): centre (-42, 24) 51 studs from the spawn, foot y -0.0, top y 13.8, box 6 x 6; trunk Foliage at (-42.0,8.1,24.2), 6.2 wide, 11.1 tall
+QQ TREE   ForestKit.round_tree (2 parts): centre (30, -42) 51 studs from the spawn, foot y 100.3, top y 111.4, box 9 x 8; trunk Trunk at (30.9,103.8,-42.7), 3.4 wide, 7.0 tall
+QQ TREE   Forest.pine_tall_s48 (2 parts): centre (-42, -24) 52 studs from the spawn, foot y -0.1, top y 15.4, box 8 x 8; trunk Foliage at (-42.2,9.1,-24.5), 7.0 wide, 12.6 tall
+QQ TREE   Forest.pine_tall (2 parts): centre (-3, -51) 52 studs from the spawn, foot y -0.1, top y 19.2, box 12 x 13; trunk Trunk at (-3.0,2.1,-50.7), 1.7 wide, 4.3 tall
+QQ TREE   Forest.pine_tall (2 parts): centre (-17, -48) 53 studs from the spawn, foot y -0.1, top y 18.8, box 9 x 10; trunk Trunk at (-17.0,2.1,-48.4), 1.6 wide, 4.2 tall
+QQ TREE   Forest.pine_tall (2 parts): centre (25, -48) 54 studs from the spawn, foot y -0.1, top y 15.1, box 9 x 9; trunk Foliage at (24.8,8.8,-48.5), 6.7 wide, 12.1 tall
+QQ TREE   Forest.pine_squat (2 parts): centre (39, -41) 56 studs from the spawn, foot y -0.1, top y 9.9, box 12 x 12; trunk Foliage at (39.3,6.1,-41.1), 8.8 wide, 7.1 tall
+QQ TREE   Boundary.Dressing.pine_tall (2 parts): centre (54, 24) 56 studs from the spawn, foot y -0.0, top y 19.2, box 10 x 10; trunk Trunk at (53.7,2.2,23.9), 1.7 wide, 4.3 tall
+QQ TREE   Boundary.Dressing.pine_mid (2 parts): centre (-50, 24) 58 studs from the spawn, foot y -0.0, top y 15.7, box 9 x 9; trunk Trunk at (-50.4,2.2,23.6), 1.3 wide, 4.3 tall
+QQ TREE   Forest.round_tree_s52 (2 parts): centre (-37, -41) 58 studs from the spawn, foot y -0.1, top y 11.0, box 12 x 11; trunk Trunk at (-37.4,3.5,-41.5), 3.4 wide, 7.0 tall
+QQ TREE   ForestKit.pine_squat (2 parts): centre (42, -43) 59 studs from the spawn, foot y 100.3, top y 108.6, box 7 x 7; trunk Foliage at (42.4,105.5,-42.6), 7.5 wide, 6.0 tall
+QQ TREE   Boundary.Dressing.pine_tall (2 parts): centre (62, 23) 63 studs from the spawn, foot y -0.0, top y 16.8, box 11 x 11; trunk Foliage at (62.0,9.9,22.9), 7.6 wide, 13.5 tall
+QQ TREE   Forest.pine_tall_s92 (2 parts): centre (66, 6) 63 studs from the spawn, foot y -0.1, top y 15.4, box 9 x 9; trunk Foliage at (65.7,9.1,6.2), 7.0 wide, 12.6 tall
+QQ TREE   Forest.pine_tall_s41 (2 parts): centre (-55, -28) 65 studs from the spawn, foot y -0.1, top y 15.4, box 7 x 7; trunk Foliage at (-54.9,9.1,-28.1), 7.0 wide, 12.6 tall
+QQ TREE   Boundary.Dressing.round_tree (2 parts): centre (-58, 25) 65 studs from the spawn, foot y -0.0, top y 10.9, box 11 x 12; trunk Trunk at (-58.6,3.4,24.5), 3.3 wide, 6.8 tall
+QQ TREE   ForestKit.pine_mid (2 parts): centre (53, -43) 67 studs from the spawn, foot y 100.3, top y 111.8, box 7 x 6; trunk Foliage at (53.2,107.4,-42.6), 6.6 wide, 8.9 tall
+QQ TREE   Forest.pine_tall (2 parts): centre (47, -52) 69 studs from the spawn, foot y -0.1, top y 18.0, box 11 x 11; trunk Trunk at (46.6,2.0,-51.8), 1.6 wide, 4.1 tall
+QQ TREE   Forest.pine_squat (2 parts): centre (19, -68) 70 studs from the spawn, foot y -0.1, top y 9.8, box 12 x 12; trunk Foliage at (18.6,6.2,-67.7), 8.9 wide, 7.2 tall
+QQ TREE   Forest.pine_mid_s97 (2 parts): centre (74, 0) 71 studs from the spawn, foot y -0.1, top y 11.5, box 8 x 8; trunk Foliage at (74.3,7.0,0.2), 6.6 wide, 8.9 tall
+QQ TREE   Forest.round_tree (2 parts): centre (-50, -47) 71 studs from the spawn, foot y -0.1, top y 10.5, box 11 x 11; trunk Trunk at (-49.7,3.2,-46.9), 3.1 wide, 6.5 tall
+QQ TREE   Boundary.Dressing.pine_mid (2 parts): centre (70, 27) 72 studs from the spawn, foot y -0.0, top y 11.9, box 8 x 8; trunk Foliage at (70.0,7.2,26.9), 6.8 wide, 9.2 tall
+QQ TREE   Boundary.Dressing.pine_mid (2 parts): centre (-66, 26) 73 studs from the spawn, foot y -0.0, top y 11.9, box 7 x 7; trunk Foliage at (-66.0,7.2,26.0), 6.7 wide, 9.1 tall
+QQ TREE   Forest.pine_squat_s32 (2 parts): centre (-67, -24) 75 studs from the spawn, foot y -0.1, top y 8.2, box 9 x 8; trunk Foliage at (-67.2,5.2,-24.2), 7.5 wide, 6.0 tall
+QQ TREE   ... and 17 more
+QQ TREE forest squirrels (15): detective_squirrel (31,1,-186); rainy_day_squirrel (68,-0,-153); squirrel_buccaneer (-42,2,-143); squirrel_scientist (54,2,-113); surfing_squirrel (-16,-0,-47); super_squirrel (91,0,-40); gordo_squirrel (-3,0,-149); fairy_squirrel (18,0,-52); ski_squirrel (80,3,-123); ballerina_squirrel (32,2,-136); baking_betty_squirrel (-18,0,-93); kite_squirrel (-105,0,-97); parachute_squirrel (60,7,-18); birdwatch_squirrel (110,-0,-84); ranger_squirrel (0,0,-200)
+QQ TREE village squirrels (14): mailman_squirrel (186,1,-139); philosopher_squirrel (331,1,-136); waiter_squirrel (217,1,-106); mime_squirrel (244,1,-78); cyclist_squirrel (328,0,-122); glam_squirrel (296,1,-106); bird_feeder_squirrel (265,1,-97); firefighter_squirrel (200,23,-144); tourist_squirrel (178,0,-105); painter_squirrel (187,0,-20); florist_squirrel (334,1,-103); spy_squirrel (167,0,-114); fashion_squirrel (314,0,-71); fishing_squirrel (166,0,-55)
+QQ TREE domaine squirrels (15): gardener_squirrel (374,1,-120); church_mouse (646,14,-156); sleepy_sylvain (548,10,-65); vintner_squirrel (580,13,-183); lavender_lucie (465,1,-171); beekeeper_squirrel (504,4,-180); farmer_fernand (452,3,-62); scarecrow_squirrel (424,3,-102); tractor_toto (507,5,-55); sunflower_squirrel (441,3,-92); grape_stomper_gigi (598,10,-119); shepherd_squirrel (521,5,-78); chevre_squirrel (478,4,-74); truffle_hunter (540,6,-98); picnic_pierre (582,33,-62)
+QQ TREE Boundary.Gates not found
+QQ TREE village spawn (196, -36): ground 2.0 (Spawn_village)
+QQ TREE domaine spawn (438, -36): ground 4.9 (Spawn_domaine)
+QQ TREE ring r 12: (3,13) 0.1 Terrain Grass | (11,9) 0.1 Terrain Grass | (15,1) 0.1 Line | (11,-7) 0.1 Terrain Grass | (3,-11) 0.1 Terrain Grass | (-5,-7) 3.6 Face | (-9,1) 0.1 Terrain Grass | (-5,9) 0.1 Terrain Grass
+QQ TREE ring r 24: (3,25) 220.0 Wall | (20,18) 0.1 Terrain Grass | (27,1) 0.1 Terrain Grass | (20,-16) 0.1 Terrain Grass | (3,-23) 0.1 Terrain Grass | (-14,-16) 0.1 Terrain Grass | (-21,1) 79.9 Roof | (-14,18) 5.9 Foliage
+QQ TREE ring r 40: (3,41) 10.1 Terrain Grass | (31,29) 6.0 Foliage | (43,1) 0.1 Terrain Grass | (31,-27) 0.1 Terrain Grass | (3,-39) 0.1 Terrain Grass | (-25,-27) 1.6 Cap2 | (-37,1) 0.1 Terrain Grass | (-25,29) 0.7 Terrain Grass
+QQ TREE path-like parts within 60 studs of the spawn: 0
+QQ TREE END (57 lines)
+# Runner notes: every tree is a 2-part kit model (Trunk + Foliage, trunks 1.3-4.4 wide, 4-9 tall; tops 8-19); the three "ForestKit" entries
+# at y 100 are the kit templates up in the air, not trees in the forest. Boundary.Gates does not exist under that name (the gate section
+# found nothing; Boundary has 721 descendants, the bridge and garden gates live elsewhere). The ring hits "Wall" at (3,25) y 220 and "Roof"
+# at (-21,1) y 80 = the spawn shelter / boundary walls overhead; "Line", "Face", "Cap2" are spawn-dais parts.
