@@ -2,7 +2,7 @@
 -- Job 112: the HOMEBASE TREEHOUSE MOVES to Shannon's spot (-107, 4), a bigger room, no trunk inside. The old hollow is put back
 -- (folder to HudBackup, pines back, the wall re-joined, the dirt re-grassed; the dell's terrain stays). At the new site the forest props
 -- within 26 studs go to HudBackup.TreehouseCleared_n; a disk of Ground round the oak; the oak BEHIND the house; ten stones;
--- TreehouseServer (4806) + TreehouseClient3 (35357); twelve pieces unchanged. Log HudBackup.Treehouse3_log. No DataStore, no publish. Output "QQ TREE".
+-- TreehouseServer (4806) + TreehouseClient3 (38149); twelve pieces unchanged. Log HudBackup.Treehouse3_log. No DataStore, no publish. Output "QQ TREE".
 local SS = game:GetService("ServerStorage")
 local HttpService = game:GetService("HttpService")
 local T = workspace.Terrain
@@ -395,11 +395,58 @@ local function sound(id, vol)
 	s.Ended:Connect(function() s:Destroy() end); s:Play()
 	task.delay(6, function() if s.Parent then s:Destroy() end end)
 end
-local function pieceSound()                                                -- (r2, Shannon: "the toast when you find a piece should be a different sound than ... a squirrel")
+-- (r6, Shannon: "take different short clips of this for the sound of picking up a piece? to make it sound like its a build?") - each
+-- piece plays the NEXT slice of one construction recording (folder PieceClipSound, default rbxassetid://6186807867 "Construction_Sounds"),
+-- so twelve pieces sound like the house going up; the last piece a longer slice. PieceClips = "start-end, start-end, ..." in seconds
+-- picks the slices by hand; empty = evenly spaced slices of PieceClipLength (1.0 s). If the recording cannot load, the bell (PieceSound).
+local clipBase, clipList, clipLen
+local function buildClips()
+	if not clipBase or not clipBase.IsLoaded or clipBase.TimeLength <= 0 then return end
+	clipLen = clipBase.TimeLength
+	clipList = {}
+	local manual = tostring(F:GetAttribute("PieceClips") or "")
+	for a, b in manual:gmatch("([%d%.]+)%s*%-%s*([%d%.]+)") do
+		local x, y = tonumber(a), tonumber(b)
+		if x and y and y > x and x < clipLen then table.insert(clipList, {x, math.min(y, clipLen)}) end
+	end
+	if #clipList == 0 then
+		local len = math.clamp(tonumber(F:GetAttribute("PieceClipLength")) or 1.0, 0.3, 4)
+		local span = math.max(0, clipLen - 0.2 - len)
+		for i = 0, TOTAL - 1 do
+			local x = 0.1 + (TOTAL > 1 and span * i / (TOTAL - 1) or 0)
+			table.insert(clipList, {x, math.min(clipLen, x + len)})
+		end
+	end
+	local t = {}
+	for i, c in ipairs(clipList) do table.insert(t, string.format("%d %.1f-%.1f", i, c[1], c[2])) end
+	print(string.format("Treehouse: build sound %s loaded, %.1f s long; slices %s", clipBase.SoundId, clipLen, table.concat(t, ", ")))
+end
+task.spawn(function()
+	local id = tostring(F:GetAttribute("PieceClipSound") or "rbxassetid://6186807867")
+	if id == "" then return end
+	clipBase = Instance.new("Sound"); clipBase.Name = "BuildClipBase"; clipBase.SoundId = id; clipBase.Volume = 0; clipBase.Parent = gui
+	pcall(function() game:GetService("ContentProvider"):PreloadAsync({clipBase}) end)
+	local t0 = os.clock()
+	while not clipBase.IsLoaded and os.clock() - t0 < 15 do task.wait(0.25) end
+	if clipBase.IsLoaded then buildClips() else print("Treehouse: build sound " .. id .. " did not load - pieces use the bell") end
+end)
+F:GetAttributeChangedSignal("PieceClips"):Connect(buildClips)
+F:GetAttributeChangedSignal("PieceClipLength"):Connect(buildClips)
+local function bell()
 	local s = Instance.new("Sound"); s.SoundId = tostring(F:GetAttribute("PieceSound") or "rbxassetid://16480570986")
 	s.Volume = tonumber(F:GetAttribute("PieceSoundVolume")) or 0.55; s.PlaybackSpeed = tonumber(F:GetAttribute("PieceSoundSpeed")) or 1.5; s.Parent = gui
 	s.Ended:Connect(function() s:Destroy() end); s:Play()
 	task.delay(6, function() if s.Parent then s:Destroy() end end)
+end
+local function pieceSound(n)
+	if not (clipList and #clipList > 0 and clipBase and clipBase.IsLoaded) then bell() return end
+	local c = clipList[((math.max(1, n or 1) - 1) % #clipList) + 1]
+	local x, y = c[1], c[2]
+	if (n or 0) >= TOTAL then y = math.min(clipLen, x + math.max(y - x, 2.5)) end   -- the last piece: a longer slice into the finale
+	local s = clipBase:Clone(); s.Name = "BuildClip"; s.Volume = tonumber(F:GetAttribute("PieceClipVolume")) or 0.6
+	s.PlaybackRegionsEnabled = true; s.PlaybackRegion = NumberRange.new(x, y); s.Parent = gui
+	s.TimePosition = x; s:Play()
+	task.delay((y - x) + 0.5, function() if s.Parent then s:Destroy() end end)
 end
 local function doneCard(prize)
 	local cg = Instance.new("ScreenGui"); cg.Name = "TreehouseDone"; cg.ResetOnSpawn = false; cg.IgnoreGuiInset = true; cg.DisplayOrder = 100; cg.Parent = pg
@@ -544,7 +591,7 @@ ev.OnClientEvent:Connect(function(what, a, b)
 			pieceModels[a] = nil
 		end
 		local n = tonumber(b) or count()
-		pieceSound()
+		pieceSound(n)
 		later()
 		if n == 1 and not revealed then task.delay(0.6, reveal)
 		elseif n >= TOTAL then say("That was the last piece!", 3)

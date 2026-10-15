@@ -3311,3 +3311,17 @@ their "Sit" prompt; walking into one (BasePart.Touched by the local character - 
 the character's own) places you on it and welds you on, like a Roblox Seat; not while jumping or climbing; a jump stands you up and
 for 2 s no seat takes you, so you can walk off. Check in play: walk into each stool and the armchair (you sit), jump (you stand and
 can walk away without sitting again), the hips on the seat; walking along the table's side should not grab you from the far side.
+## Job 124: a build's sounds for the Homebase pieces (play-test PREVIEW, her listening pass, then Edit) - runner 7
+Shannon (Oct 15): "how difficult would it be to take different short clips of this for the sound of picking up a piece? to make it
+sound like its a build? 6186807867" -> "go". rbxassetid://6186807867 = "Construction_Sounds" (audio, Blu_Lucario, IsPublicDomain true
+on the economy API - whether it PLAYS in her place is the first thing to check). tools/treehouse/patch_treehouse3_r6.lua
+(make_patch_treehouse3_r6.py, 40411 bytes, compiles; "QQ TREE124"; replaces the client, old -> HudBackup.TreehouseClient_pre_r6_n;
+INCLUDES jobs 122 (the sign) and 123 (sit on touch) - install r6 instead of r5 if r5 is not in yet):
+ - the client preloads the recording; once loaded it prints "Treehouse: build sound ... loaded, N s long; slices 1 a-b, 2 ..." and
+   each piece plays the NEXT slice (piece n -> slice n) through Sound.PlaybackRegion; the last piece a slice of at least 2.5 s.
+ - folder attributes (set if absent): PieceClipSound "rbxassetid://6186807867", PieceClips "" (empty = TOTAL evenly spaced slices of
+   PieceClipLength), PieceClipLength 1.0, PieceClipVolume 0.6. PieceClips "0.4-1.3, 2.0-2.8, ..." picks slices by hand (live: the
+   client rebuilds the list when the attribute changes). If the recording does not load in 15 s: "did not load - pieces use the bell".
+PREVIEW: the load line (does it load? how long is it?); then her LISTENING PASS: in a play test, a command-bar loop that plays each
+slice in turn with its number (e.g. for i, c in slices: play, print i, wait) so she can say "3 and 7 are silence / a clang" - then set
+PieceClips by hand to the good parts. Then install in Edit with that PieceClips value, and she publishes.
