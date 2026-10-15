@@ -2302,3 +2302,25 @@ page, "Passes": name required ("Hand glider", "Zip line handle"), description op
 the game works), price in Robux - send both ids. Code: TreehouseServer gets a "finder" request (acorns deducted through the Acorns
 attribute + RS.AwardAcorns with a negative amount if the ledger allows it - to check - or MarketplaceService:PromptProductPurchase
 for Robux with ProcessReceipt in a small ReceiptServer), TreehouseClient draws the trail and the pill.
+
+Result job 101 r2 + birds v5 INSTALLED (runner 7, Shannon's "yes" in this session, Studio EDIT, unpublished): golden_gate2.lua at
+c637682 (5360, adler32 2575032067): "QQ GOLD QuestionClient is 28598 chars", "QQ GOLD DONE: QuestionClient 28598 -> 28803 chars;
+backup ServerStorage.HudBackup.QuestionClient_pre_golden2", "QQ GOLD DONE: DailyClient 15020 -> 15211 chars; backup
+ServerStorage.HudBackup.DailyClient_pre_golden2". Birds v5 install_birds1.lua at 70594b5 (21872, adler32 4190865495): "QQ BIRDS DONE:
+workspace.Birds (BirdsClient 18479 chars; 7 sites: 4 flocks + 3 perches ...); the old folder is HudBackup.Birds_pre_2"; Templates
+carried over, Persistent. Fresh play test: Pelican on the quay 1 meshpart / 18 bones, Gulls on the harbour rail 3 / 48, Gulls at the
+lighthouse 2 / 32 - the meshes are there from the start now.
+
+Result job 107 REPRODUCED (runner 7, play test, nothing kept): Shannon named cryb4bi (uid 635352862, "might be a sleeve") and
+nana3365308 (uid 4416624022, the 8th Grand Keeper) and sent pictures. StatueDebug(4416624022) at the fountain: her avatar wears
+"Accessory (T2_Ballet_Sleeves_(Nm)) [Jacket, LAYERED] attach BodyFrontAttachment" (+ Summer hair, layered sneakers, a face
+accessory). Front picture: next to the raised acorn arm (the statue's LEFT = the viewer's right) a thin second arm hangs from the
+shoulder to the hip. Destroying only that Jacket accessory on the test figure removes the hanging arm - before/after picture
+tools/statues/shots/nana_with_vs_without_layered_jacket.jpg. CAUSE = a layered (WrapLayer) upper-body accessory: its sleeve stays in
+the avatar's original pose when aim() moves the arm. So armfix round 2 as you proposed: drop WrapLayer Jacket / Sweater / Shirt /
+TShirt / DressSkirt (any layered upper-body type) before stoneify. cryb4bi's CURRENT avatar (StatueDebug 635352862) has only
+LongStraightHair + a layered eyebrow, no sleeve - her statue's sleeve must come from what she wore then, or from her boutique look.
+BOUTIQUE ruled out: one MakeStatue figure per style (rue, cafe, chateau, riviera, jardin, soiree, adventurer, skycaptain, royalpage,
+woodlandbard, moonmagician, harborsailor, variant 1) - every Sleeve / PuffSleeve / Cuff sits on its arm after the pose, none left
+hanging. NEW from Shannon: "it looks like the statue in the monument for star is completely gone" - asking her which monument and
+the exact name; then StatueDebug with that uid shows whether makeFigure fails for that avatar.
