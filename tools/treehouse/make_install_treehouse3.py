@@ -21,9 +21,9 @@ CLIENT = (HERE / "src/TreehouseClient3.lua").read_text(encoding="utf-8")
 for s in (SERVER, CLIENT): assert "]===]" not in s
 SPAWN = (3, 1)
 # ---- the site: FILL IN from runner 7's reading ----
-SITE = None                                                 # e.g. {"x": 40, "z": -60, "floor": 0.1}
-CLEAR_R = 28                                                # studs round the house centre cleared of forest props
-CLEAR_PARENTS = ["Forest", "Foliage", "Dressing", "Rocks", "Trees", "Nature", "Props", "Mushrooms", "Bushes"]
+SITE = {"x": -107, "z": 4, "floor": 0.06}                  # runner 7, Oct 15: her character at (-107.38, 3.29, 4.40), terrain Grass y 0.06, flat (dips 0.3 at 24 studs west); the north edge wall at z 25, the west at x -130
+CLEAR_R = 26                                                # studs round the house centre cleared of forest props (pine_mid_s19 at 27 and pine_tall_s14 at 27.4 stay)
+CLEAR_PARENTS = ["Forest", "Foliage", "Rocks", "Trees", "Nature", "Props", "Mushrooms", "Bushes"]   # not Boundary.Dressing: the edge trees along z 25 / x -130 are the forest's backdrop and stay
 CLEAR_NAMES = ["tree", "pine", "oak", "birch", "rock", "stone", "boulder", "mushroom", "bush", "stump", "log", "fern", "shrub", "flower", "grass", "foliage", "canopy", "trunk"]
 KEEP_NAMES = ["squirrel", "tower", "spawn", "zip", "station", "glider", "ramp", "treehouse", "piece", "sign", "shop", "bench", "path", "road", "bridge", "gate", "wall", "fence"]
 if SITE is None:

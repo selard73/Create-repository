@@ -2904,3 +2904,12 @@ the trunk ends UNDER the deck (no trunk in the room), branches out from below th
 deck ~22 x 22, balcony 22 x 8, room ~19 inside, door/window/lantern/flag/furniture out with the walls, the middle open floor; the
 sign and the reveal follow the site (TREE attribute). The old hollow: the dressing pines back from HudBackup.TreehouseCleared_n, the
 wall U removed (HollowWallBack etc.) and the north edge wall restored, the dell left grassy (not refilled unless she asks). Pieces stay.
+Job 112 SITE (runner 7, read-only in Play, Oct 15): her character at (-107.38, 3.29, 4.40), Area forest, facing ~ -X; terrain Grass
+y 0.06, flat (0.06 at radius 12; dips to -0.32 at 24 toward the west); the forest's north-west corner: the north edge wall at z 25
+(x -130..-47), the west at x -130. Within 26: pine_squat_s17, pine_mid_s16, mushrooms_s11/s12/s25, pine_squat_s20, pine_mid_s10,
+round_tree_s21, bush_big_s9 (all Forest) - cleared; Boundary.Dressing trees along z 23-25 / x -130 - kept (backdrop);
+Workspace.Acorns.Acorn at (-95.6, 8.1) - kept (lands under the balcony's inner edge, still reachable); no squirrels within 60.
+BUILD: tools/treehouse/install_treehouse3.lua (make_install_treehouse3.py, 46305 bytes, compiles): SITE (-107, 4) floor 0.06, yaw 91.6
+(local +z = east, toward the spawn): the deck x -118..-88 z -7..15, the balcony and ladder (-87, 3) on the east, the sign (-85, 15),
+the trunk (-120.5, 4.4) on the west (radius 3.6, 6 from the west wall), the crown to x -137 (past the wall, among the dressing).
+Preview in play from this commit, then install on her word.
