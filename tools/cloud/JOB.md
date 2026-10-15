@@ -2982,3 +2982,21 @@ La Poste dev desk: Carhartt0520 (@Carhartt0520, Roblox id 4348272918, checked on
 the reply herself from the dev desk (text in the cloud thread's answer). The acorns: tools/thanks/gift_carhartt0520.lua (compiles)
 adds workspace.Thanks.Gifts.Carhartt0520 = 1000, Id carhartt0520_1, Note = the mayor's note; job 92's ThanksServer pays it once on
 their next join (Item_thanks_carhartt0520_1) with the card "A thank-you from the mayor". Re-runnable. "QQ THANKS DONE".
+
+Result job 113 INSTALLED (runner 7, Shannon "Yes", Studio EDIT, unpublished): croc_portrait1.lua at f6c8bdc (5551, adler32 3907133302):
+"QQ CROCP CrocClient: 36718 -> 37322 chars; backup HudBackup.CrocClient_pre_crocportrait1", "QQ CROCP PortraitServer: 25128 -> 25282
+chars; backup HudBackup.PortraitServer_pre_crocportrait1", "QQ CROCP PortraitClient: 26669 -> 26939 chars; backup
+HudBackup.PortraitClient_pre_crocportrait1", "QQ CROCP DONE: CrocClient true, PortraitServer true, PortraitClient true". Play check
+(CrocEvent:FireAllClients("allfree", names) from the test server - exactly what CrocServer sends after the third cage; the cages
+were not opened by hand): {me} -> the card with the third line "Heroes should have a portrait done! The painter is waiting by the
+river." (wraps to 2 lines, fits the 138 card); {SomeoneElse} afterwards -> no card (onlooker once a session works); {Ethan, me} ->
+the card again, "merci, Ethan & SelBell!" + the third line. PortraitDone "hungall" ("Carhartt0520", uid 1) -> "Carhartt0520's new
+portrait is hanging in the painter's gallery by the river." OVERLAP (phone rule): the croc card (y 62, DisplayOrder 19) sits on top
+of (1) the DailyCard (DailyGui, order 15) when both show at join - picture crocp_card_rescuer_over_daily_card - and (2) the
+PortraitNote (y 70) when a portrait is hung during the card. Pre-existing slot clash (the card was always at y 62), now 34 taller;
+suggest the card waits while DailyCard / PortraitNote is up, or sits below them. Pictures tools/croc/shots/.
+
+Result job 114 INSTALLED (runner 7, Shannon "Yes" in this session, Studio EDIT, unpublished): gift_carhartt0520.lua at fa0874d (1880,
+adler32 3910230008): "QQ THANKS DONE: workspace.Thanks.Gifts.Carhartt0520 = 1000 acorns, Id carhartt0520_1, with its note (4 gifts
+listed; paid on their next join, once)". Readback Value 1000, Id carhartt0520_1, Note "You wrote to the mayor. The mayor wrote back.
+Everybody wins. Especially you." (ThanksServer matches the USERNAME, case-insensitive.)
