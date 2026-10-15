@@ -3253,3 +3253,19 @@ Result job 120 INSTALLED (runner 7, her "Yes, both", Studio EDIT, unpublished): 
 1733580574): "QQ THANKS DONE: workspace.Thanks.Gifts.Aspej000 = 1000 acorns, Id aspej000_1, with its note (5 gifts listed; paid on
 their next join, once)". Readback Note "Thanks for writing to the mayor! Here are 1000 acorns. Spend them on something jazzy."
 Also in Edit, unpublished: job 118 (bottle game) and job 117 (treehouse reset) - all go out with her next publish.
+Result jobs 119 r2b + 120 (runner 7, INSTALLED in Edit on Shannon's "Yes, both", unpublished; logged at ff187cf): QQ TREE119 DONE
+(TreehouseClient 31949; old -> HudBackup.TreehouseClient_pre_r2_2; r2b's fireworks not re-previewed); QQ THANKS DONE Aspej000 1000.
+## Job 121: the Homebase room roomier, the yellow square, the seats (play-test PREVIEW, then Edit on her word) - runner 7
+Shannon (Oct 15): "the door entry and ceiling are too low, for a tall character it will be hard to fit ... the doorway entrance is
+definitely too low"; "inside there is a yellow square on the ground and I am not sure what that is"; "the chairs in there should have
+the sit mechanic". tools/treehouse/patch_treehouse3_r3.lua (make_patch_treehouse3_r3.py, 37042 bytes, compiles; replaces the client,
+old -> HudBackup.TreehouseClient_pre_r3_n; "QQ TREE121"):
+ - walls 9 tall (floor 10.5 .. 19.5; were 6.5): the door 5 wide, the opening ~7.6 high under a lintel trim, a dark door frame, a wall
+   piece over it; the window holes as before (y 12.7..15.5), the wall above them 4 tall; the roof, ridge, awning and lantern up 2.5.
+ - the yellow square was the gold floor cushion: replaced by a red ARMCHAIR (base, seat cushion, back, two arms) by the left window,
+   facing the middle of the room.
+ - the two stools and the armchair's cushion get a "Sit" prompt (7 studs): the house is drawn on each screen, so the sit is local -
+   the root placed on the seat (HipHeight-based), Humanoid.Sit, a WeldConstraint to the seat; a jump stands up; a redraw frees you.
+ Everything from job 119 (the bell, the 4.5 s holds, the finale) stays.
+PREVIEW: walk in through the door with the default avatar (and, if you can, a tall one - head clearance), the ceiling from inside, sit
+on a stool and the armchair (do they sit at the right height, facing the table / the room? does a jump stand up?), pictures inside.

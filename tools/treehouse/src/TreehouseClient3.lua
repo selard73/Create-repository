@@ -130,6 +130,39 @@ local function wedge(size, color, cf, parent)
 	w.TopSurface = Enum.SurfaceType.Smooth; w.BottomSurface = Enum.SurfaceType.Smooth; w.CFrame = cf; w.Parent = parent
 	return w
 end
+-- (r3) sitting: the house is drawn on this screen only, so its seats are too - a "Sit" prompt; Seat:Sit when Roblox lets the client
+-- do it, else the character is welded on (the character is this client's own, so the weld holds); a jump stands up
+local sitting
+local function standUp()
+	if not sitting then return end
+	local s = sitting; sitting = nil
+	if s.weld then s.weld:Destroy() end
+	local hum = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+	if hum then hum.Sit = false end
+end
+local function seatAt(p)
+	local pr = Instance.new("ProximityPrompt"); pr.ActionText = "Sit"; pr.ObjectText = ""; pr.HoldDuration = 0; pr.MaxActivationDistance = 7
+	pr.RequiresLineOfSight = false; pr.Parent = p
+	p.CanQuery = true
+	pr.Triggered:Connect(function()
+		local char = player.Character
+		local hum = char and char:FindFirstChildOfClass("Humanoid")
+		local root = char and char:FindFirstChild("HumanoidRootPart")
+		if not (hum and root and hum.Health > 0) then return end
+		standUp()
+		root.CFrame = p.CFrame * CFrame.new(0, p.Size.Y / 2 + hum.HipHeight * 0.5 + 0.9, 0)
+		hum.Sit = true
+		local w = Instance.new("WeldConstraint"); w.Part0 = p; w.Part1 = root; w.Parent = p
+		sitting = {weld = w, seat = p}
+		local c; c = hum:GetPropertyChangedSignal("Jump"):Connect(function() if hum.Jump then c:Disconnect(); standUp() end end)
+		task.spawn(function()                                                -- (the house redraws: the seat goes, so does the weld)
+			while sitting and sitting.seat == p and p.Parent do task.wait(0.5) end
+			if sitting and sitting.seat == p then standUp() end
+			if c.Connected then c:Disconnect() end
+		end)
+	end)
+	return p
+end
 local signLabel
 -- the house (job 112): a 22 x 22 deck on stilts with a 22 x 8 balcony toward the spawn, a 19 x 19 room (18.6 inside), the door onto the
 -- balcony, a window in each side wall, the floor the deck's top at y 10.5; the trunk is behind the back wall, nothing stands in the room
@@ -164,24 +197,28 @@ local function buildHouse(n)
 			rail(0, -10.8, 22, 0.25)
 		end
 	end
+	-- (r3, Shannon: "the door entry and ceiling are too low ... for a tall character it will be hard to fit"): the walls 9 tall
+	-- (floor 10.5 .. 19.5), the door 5 wide and 8 high; everything above the old wall top moved up 2.5 with it
 	if n >= STAGES.walls then                                               -- a 19 x 19 room, the door onto the balcony
-		part(Vector3.new(19, 6.5, 0.4), WOOD, L(0, 13.75, -9.5), houseF, Enum.Material.WoodPlanks, true)
+		part(Vector3.new(19, 9, 0.4), WOOD, L(0, 15, -9.5), houseF, Enum.Material.WoodPlanks, true)
 		for _, x in ipairs({-9.5, 9.5}) do
 			if n >= STAGES.window then                                       -- each side wall is four parts round a 2.8 x 2.8 hole (y 12.7..15.5) once the windows come
 				part(Vector3.new(0.4, 2.2, 19), WOOD, L(x, 11.6, 0), houseF, Enum.Material.WoodPlanks, true)
-				part(Vector3.new(0.4, 1.5, 19), WOOD, L(x, 16.25, 0), houseF, Enum.Material.WoodPlanks, true)
+				part(Vector3.new(0.4, 4.0, 19), WOOD, L(x, 17.5, 0), houseF, Enum.Material.WoodPlanks, true)
 				for _, z in ipairs({-5.45, 5.45}) do part(Vector3.new(0.4, 2.8, 8.1), WOOD, L(x, 14.1, z), houseF, Enum.Material.WoodPlanks, true) end
 			else
-				part(Vector3.new(0.4, 6.5, 19), WOOD, L(x, 13.75, 0), houseF, Enum.Material.WoodPlanks, true)
+				part(Vector3.new(0.4, 9, 19), WOOD, L(x, 15, 0), houseF, Enum.Material.WoodPlanks, true)
 			end
 		end
-		for _, x in ipairs({-5.8, 5.8}) do part(Vector3.new(7.4, 6.5, 0.4), WOOD, L(x, 13.75, 9.5), houseF, Enum.Material.WoodPlanks, true) end   -- the door is the 4.2-stud gap
-		part(Vector3.new(4.4, 1.2, 0.4), WOOD_DARK, L(0, 16.4, 9.5), houseF, Enum.Material.WoodPlanks)   -- the lintel, looks only
+		for _, x in ipairs({-6.0, 6.0}) do part(Vector3.new(7.0, 9, 0.4), WOOD, L(x, 15, 9.5), houseF, Enum.Material.WoodPlanks, true) end   -- the door is the 5-stud gap
+		part(Vector3.new(5.0, 1.0, 0.4), WOOD, L(0, 19.0, 9.5), houseF, Enum.Material.WoodPlanks, true)          -- the wall over the door (the opening is 8 high)
+		part(Vector3.new(5.4, 0.5, 0.5), WOOD_DARK, L(0, 18.35, 9.55), houseF, Enum.Material.WoodPlanks)        -- the lintel trim, looks only
+		for _, x in ipairs({-2.6, 2.6}) do part(Vector3.new(0.3, 8, 0.5), WOOD_DARK, L(x, 14.5, 9.55), houseF, Enum.Material.WoodPlanks) end   -- the door frame's sides
 		-- a table and two stools in the right back corner at avatar scale (the top 2.6 above the floor, the seats 1.6), a mug; the middle stays open
 		part(Vector3.new(3.4, 0.2, 2.4), WOOD, L(6.4, 13.1, -6.4), houseF, Enum.Material.WoodPlanks)
 		for _, d in ipairs({{-1.45, -0.95}, {1.45, -0.95}, {-1.45, 0.95}, {1.45, 0.95}}) do part(Vector3.new(0.3, 2.5, 0.3), WOOD_DARK, L(6.4 + d[1], 11.75, -6.4 + d[2]), houseF) end
 		for _, x in ipairs({5.0, 7.8}) do
-			part(Vector3.new(1.2, 0.2, 1.2), WOOD, L(x, 12.1, -4.0), houseF, Enum.Material.WoodPlanks)
+			seatAt(part(Vector3.new(1.2, 0.2, 1.2), WOOD, L(x, 12.1, -4.0), houseF, Enum.Material.WoodPlanks, true))   -- (r3: you can sit on them; facing the table)
 			part(Vector3.new(0.3, 1.5, 0.3), WOOD_DARK, L(x, 11.25, -4.0), houseF)
 		end
 		local mug = part(Vector3.new(0.9, 0.7, 0.7), CREAM, L(6.9, 13.65, -6.2, 0, 0, 90), houseF, Enum.Material.SmoothPlastic); mug.Shape = Enum.PartType.Cylinder
@@ -189,10 +226,10 @@ local function buildHouse(n)
 		part(Vector3.new(0.14, 0.14, 0.4), CREAM, L(6.9, 13.9, -5.6), houseF, Enum.Material.SmoothPlastic); part(Vector3.new(0.14, 0.14, 0.4), CREAM, L(6.9, 13.4, -5.6), houseF, Enum.Material.SmoothPlastic)
 	end
 	if n >= STAGES.roof then
-		wedge(Vector3.new(20.4, 4.5, 10.2), ROOF, L(0, 19.25, -5.1), houseF)
-		wedge(Vector3.new(20.4, 4.5, 10.2), ROOF, L(0, 19.25, 5.1, 0, 180, 0), houseF)
-		part(Vector3.new(20.8, 0.35, 0.35), WOOD_DARK, L(0, 21.65, 0), houseF)
-		part(Vector3.new(22, 0.3, 4), ROOF, L(0, 17.1, 12), houseF, Enum.Material.WoodPlanks)   -- a little awning over the door onto the balcony
+		wedge(Vector3.new(20.4, 4.5, 10.2), ROOF, L(0, 21.75, -5.1), houseF)
+		wedge(Vector3.new(20.4, 4.5, 10.2), ROOF, L(0, 21.75, 5.1, 0, 180, 0), houseF)
+		part(Vector3.new(20.8, 0.35, 0.35), WOOD_DARK, L(0, 24.15, 0), houseF)
+		part(Vector3.new(22, 0.3, 4), ROOF, L(0, 19.8, 12), houseF, Enum.Material.WoodPlanks)   -- a little awning over the door onto the balcony
 	end
 	if n >= STAGES.window then                                              -- a window in each side wall, in its hole, the frame 0.5 thick so it shows inside and out
 		for _, x in ipairs({-9.5, 9.5}) do
@@ -207,18 +244,24 @@ local function buildHouse(n)
 		part(Vector3.new(1.0, 0.9, 1.0), C(92, 150, 70), L(-8.8, 13.6, 0.9), houseF, Enum.Material.Grass)
 	end
 	if n >= STAGES.lantern then                                             -- beside the door, under the awning
-		part(Vector3.new(0.08, 1.2, 0.08), C(60, 56, 52), L(3.4, 16.4, 10.4), houseF, Enum.Material.Metal)
-		part(Vector3.new(0.9, 0.18, 0.9), C(60, 56, 52), L(3.4, 15.7, 10.4), houseF, Enum.Material.Metal)
-		local lamp = part(Vector3.new(0.7, 0.9, 0.7), C(255, 196, 110), L(3.4, 15.2, 10.4), houseF, Enum.Material.Neon)
+		part(Vector3.new(0.08, 1.2, 0.08), C(60, 56, 52), L(3.6, 18.9, 10.4), houseF, Enum.Material.Metal)
+		part(Vector3.new(0.9, 0.18, 0.9), C(60, 56, 52), L(3.6, 18.2, 10.4), houseF, Enum.Material.Metal)
+		local lamp = part(Vector3.new(0.7, 0.9, 0.7), C(255, 196, 110), L(3.6, 17.7, 10.4), houseF, Enum.Material.Neon)
 		local l = Instance.new("PointLight"); l.Color = C(255, 200, 120); l.Range = 16; l.Brightness = 0.9; l.Shadows = false; l.Parent = lamp
 	end
 	if n >= STAGES.flag then
 		part(Vector3.new(0.2, 4.4, 0.2), C(70, 60, 50), L(10.8, 12.9, 18.8), houseF, Enum.Material.Metal)        -- on the balcony's front corner post
 		part(Vector3.new(0.06, 1.3, 2.3), C(196, 56, 48), L(10.8, 14.4, 17.55), houseF, Enum.Material.Fabric)
 		part(Vector3.new(0.08, 0.42, 2.3), CREAM, L(10.8, 14.4, 17.55), houseF, Enum.Material.Fabric)
-		-- a round rug in the middle of the room and a cushion by the left window
+		-- a round rug in the middle of the room and, by the left window, a red armchair you can sit in (r3: it was a gold cushion, read as "a yellow square")
 		local rug = part(Vector3.new(0.1, 7.0, 7.0), C(188, 74, 64), L(0, 10.55, 0.5, 0, 0, 90), houseF, Enum.Material.Fabric); rug.Shape = Enum.PartType.Cylinder   -- (a cylinder's length is its X; stood on end it is a disc)
-		part(Vector3.new(1.8, 0.5, 1.8), GOLD, L(-7.4, 10.75, 4.0), houseF, Enum.Material.Fabric)
+		local RED, RED_D = C(176, 58, 52), C(132, 40, 36)
+		local ac = L(-7.2, 0, 3.6, 0, -90, 0)                                -- facing the middle of the room (+x)
+		local function arm(x, y, z, sx, sy, sz, col) return part(Vector3.new(sx, sy, sz), col, ac * CFrame.new(x, y, z), houseF, Enum.Material.Fabric, true) end
+		arm(0, 11.0, 0, 2.6, 1.0, 2.4, RED_D)                                -- the base
+		seatAt(arm(0, 11.75, -0.1, 2.2, 0.5, 2.0, RED))                      -- the seat cushion
+		arm(0, 12.9, 1.05, 2.6, 2.8, 0.5, RED)                               -- the back
+		for _, x in ipairs({-1.2, 1.2}) do arm(x, 12.2, 0, 0.45, 1.4, 2.4, RED_D) end   -- the arms
 	end
 end
 local function signText(n)
