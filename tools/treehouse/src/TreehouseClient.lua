@@ -31,7 +31,10 @@ local TOTAL = #PIECES
 if TOTAL == 0 then return end
 local FAR = 0
 for _, p in ipairs(PIECES) do if p.far then FAR += 1 end end
-local STAGES = {ladder = 1, deck = 3, railing = 5, walls = 7, roof = 9, window = 10, lantern = 11, flag = 12}   -- pieces needed for each
+-- pieces needed for each stage, scaled to the pieces that were actually placed (12: 1/3/5/7/9/10/11/12; 11: 1/3/5/6/8/9/10/11) so a
+-- skipped spot can never hide the flag
+local STAGES = {ladder = 1, deck = math.max(2, math.round(TOTAL * 0.25)), railing = math.max(3, math.round(TOTAL * 0.42)), walls = math.max(4, math.round(TOTAL * 0.58)),
+	roof = math.max(5, math.round(TOTAL * 0.75)), window = math.max(6, TOTAL - 2), lantern = math.max(7, TOTAL - 1), flag = math.max(8, TOTAL)}
 local isPhone = UIS.TouchEnabled and not UIS.KeyboardEnabled
 local base = CFrame.new(TREE.x, TREE.y, TREE.z) * CFrame.Angles(0, math.rad(tonumber(TREE.yaw) or 0), 0)   -- +z faces the spawn
 local folder = workspace:FindFirstChild("Treehouse_local") or Instance.new("Folder")

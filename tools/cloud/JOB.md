@@ -2170,3 +2170,12 @@ deck, then walked onto it through the door); the DECK HOLDS (stood at 13.8). The
 "got,p12,11 | done,100,11", Acorns 110 -> 210 once, Item_tree_done 1; the card "Treehouse built! 100 acorns for the builder. Climb
 the ladder and look out over the forest. [Hooray!]" (in its own ScreenGui TreehouseDone). Pictures: tools/treehouse/shots/t1..t6.
 Nothing installed; both wait for her yes.
+
+Round 4 birds / round 3 treehouse (cloud thread, after runner 7's previews, 2c71acd): BIRDS - the three perches moved to the spots
+runner 7 settled (pelican (232.5,-46.56,-667.6) yaw 280; 3 gulls (231.6,-46.56,-673.4) yaw 102 gap 2.6; lighthouse gulls y 3.5) and
+the installer sets ModelStreamingMode Persistent on every Templates model (her imports sit far away; a streamed-out template is an
+empty Model and the perches came up empty). TREEHOUSE - p10 moves from (300,-90) (under a Rue de Noisette roof) to (240,-70) by the
+mime, the nudge rings widen to 6/12/18/24 studs, and the house's stage thresholds now follow the number of pieces actually placed
+(12: 1/3/5/7/9/10/11/12; 11: 1/3/5/6/8/9/10/11), so a skipped spot can never hide the flag. Both ready for her morning yes: the
+runner re-runs the treehouse preview body once to confirm p10 lands (expect twelve "QQ TREE piece" lines, none SKIPPED), then installs
+on her word; the birds install needs workspace.Birds.Templates.Pelican / Gull in Edit first (clone her imports there, as in the preview).

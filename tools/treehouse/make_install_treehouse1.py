@@ -25,7 +25,7 @@ PIECES = [
     {"id": "p7",  "x": 60,  "z": -105, "kind": "shingles", "yaw": 0},     # by the scientist
     {"id": "p8",  "x": 70,  "z": -140, "kind": "planks",   "yaw": 55},    # by the rainy-day squirrel, deep in the forest
     {"id": "p9",  "x": 210, "z": -70,  "kind": "lantern",  "yaw": 20, "far": True},   # Rue de Noisette, near its spawn
-    {"id": "p10", "x": 300, "z": -90,  "kind": "planks",   "yaw": 80, "far": True},   # Rue de Noisette, by the bird feeder
+    {"id": "p10", "x": 240, "z": -70,  "kind": "planks",   "yaw": 80, "far": True},   # Rue de Noisette, by the mime (the first spot, (300,-90), was under a roof - runner 7's preview)
     {"id": "p11", "x": 455, "z": -75,  "kind": "shingles", "yaw": 10, "far": True},   # the chateau, by Farmer Fernand
     {"id": "p12", "x": 560, "z": -110, "kind": "lantern",  "yaw": 60, "far": True},   # the chateau, past the truffle hunter
 ]
@@ -97,7 +97,7 @@ for _, pc in ipairs(PIECES) do
 	local y, what = open(pc.x, pc.z)
 	local dx, dz = 0, 0
 	if not y then
-		for _, r in ipairs({6, 12}) do
+		for _, r in ipairs({6, 12, 18, 24}) do
 			for i = 0, 7 do
 				local a = i * math.pi / 4
 				local tx, tz = pc.x + r * math.sin(a), pc.z + r * math.cos(a)
@@ -113,7 +113,7 @@ for _, pc in ipairs(PIECES) do
 		print(string.format("QQ TREE piece %s (%s%s) at (%.0f, %.1f, %.0f) on %s%s", pc.id, pc.kind, pc.far and ", beyond the gate" or "", pc.x, pc.y, pc.z, what, (dx ~= 0 or dz ~= 0) and string.format(" (nudged %.0f, %.0f)", dx, dz) or ""))
 	else
 		table.insert(skipped, pc.id .. " (" .. tostring(what) .. ")")
-		print(string.format("QQ TREE piece %s SKIPPED - no open ground within 12 studs of (%.0f, %.0f): %s", pc.id, pc.x, pc.z, tostring(what)))
+		print(string.format("QQ TREE piece %s SKIPPED - no open ground within 24 studs of (%.0f, %.0f): %s", pc.id, pc.x, pc.z, tostring(what)))
 	end
 end
 if #placed < 10 then print("QQ TREE ABORT - only " .. #placed .. " pieces could be placed; nothing changed") return end

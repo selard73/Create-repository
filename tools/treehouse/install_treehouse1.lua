@@ -1,7 +1,7 @@
 -- install_treehouse1.lua (Studio EDIT mode; re-runnable; its body also runs as a play-test PREVIEW). Job 103: the forest treehouse
 -- (Shannon, Oct 15 2026: pieces strewn through the French map, a count, the house built piece by piece - "that will keep people longer
 -- at the start"). Builds workspace.Treehouse: the Oak (shared; a fat trunk, roots, four branches, a canopy of leaf balls) at (-4, -30), 32 studs south of the forest spawn,
--- TreehouseServer (4806 chars) + TreehouseClient (19277 chars), attributes Tree / Pieces (JSON; edit a spot in Studio, no code) and
+-- TreehouseServer (4806 chars) + TreehouseClient (19623 chars), attributes Tree / Pieces (JSON; edit a spot in Studio, no code) and
 -- ReplicatedStorage.TreehousePick. The house, the sign, the pieces and the prompts are per player (the client). Twelve pieces; every
 -- spot's ground is rayed here and a spot on a roof or in a tree is nudged, a spot with no open ground near it is skipped and reported.
 -- Undo: delete workspace.Treehouse (the old one is in ServerStorage.HudBackup). No DataStore, no publish. Output "QQ TREE".
@@ -124,7 +124,10 @@ local TOTAL = #PIECES
 if TOTAL == 0 then return end
 local FAR = 0
 for _, p in ipairs(PIECES) do if p.far then FAR += 1 end end
-local STAGES = {ladder = 1, deck = 3, railing = 5, walls = 7, roof = 9, window = 10, lantern = 11, flag = 12}   -- pieces needed for each
+-- pieces needed for each stage, scaled to the pieces that were actually placed (12: 1/3/5/7/9/10/11/12; 11: 1/3/5/6/8/9/10/11) so a
+-- skipped spot can never hide the flag
+local STAGES = {ladder = 1, deck = math.max(2, math.round(TOTAL * 0.25)), railing = math.max(3, math.round(TOTAL * 0.42)), walls = math.max(4, math.round(TOTAL * 0.58)),
+	roof = math.max(5, math.round(TOTAL * 0.75)), window = math.max(6, TOTAL - 2), lantern = math.max(7, TOTAL - 1), flag = math.max(8, TOTAL)}
 local isPhone = UIS.TouchEnabled and not UIS.KeyboardEnabled
 local base = CFrame.new(TREE.x, TREE.y, TREE.z) * CFrame.Angles(0, math.rad(tonumber(TREE.yaw) or 0), 0)   -- +z faces the spawn
 local folder = workspace:FindFirstChild("Treehouse_local") or Instance.new("Folder")
@@ -371,7 +374,7 @@ do   -- the compile check, where loadstring can run (both sources are compiled w
 	end
 end
 local TREE = HttpService:JSONDecode([==[{"x":-4,"z":-30,"yaw":12.7}]==])
-local PIECES = HttpService:JSONDecode([==[[{"id":"p1","x":14,"z":-8,"kind":"planks","yaw":30},{"id":"p2","x":-12,"z":-12,"kind":"rope","yaw":0},{"id":"p3","x":22,"z":-30,"kind":"planks","yaw":70},{"id":"p4","x":-20,"z":-40,"kind":"shingles","yaw":15},{"id":"p5","x":30,"z":-60,"kind":"planks","yaw":100},{"id":"p6","x":-12,"z":-85,"kind":"rope","yaw":40},{"id":"p7","x":60,"z":-105,"kind":"shingles","yaw":0},{"id":"p8","x":70,"z":-140,"kind":"planks","yaw":55},{"id":"p9","x":210,"z":-70,"kind":"lantern","yaw":20,"far":true},{"id":"p10","x":300,"z":-90,"kind":"planks","yaw":80,"far":true},{"id":"p11","x":455,"z":-75,"kind":"shingles","yaw":10,"far":true},{"id":"p12","x":560,"z":-110,"kind":"lantern","yaw":60,"far":true}]]==])
+local PIECES = HttpService:JSONDecode([==[[{"id":"p1","x":14,"z":-8,"kind":"planks","yaw":30},{"id":"p2","x":-12,"z":-12,"kind":"rope","yaw":0},{"id":"p3","x":22,"z":-30,"kind":"planks","yaw":70},{"id":"p4","x":-20,"z":-40,"kind":"shingles","yaw":15},{"id":"p5","x":30,"z":-60,"kind":"planks","yaw":100},{"id":"p6","x":-12,"z":-85,"kind":"rope","yaw":40},{"id":"p7","x":60,"z":-105,"kind":"shingles","yaw":0},{"id":"p8","x":70,"z":-140,"kind":"planks","yaw":55},{"id":"p9","x":210,"z":-70,"kind":"lantern","yaw":20,"far":true},{"id":"p10","x":240,"z":-70,"kind":"planks","yaw":80,"far":true},{"id":"p11","x":455,"z":-75,"kind":"shingles","yaw":10,"far":true},{"id":"p12","x":560,"z":-110,"kind":"lantern","yaw":60,"far":true}]]==])
 local T = workspace.Terrain
 local rpT = RaycastParams.new(); rpT.FilterType = Enum.RaycastFilterType.Include; rpT.FilterDescendantsInstances = {T}
 local rpA = RaycastParams.new(); rpA.FilterType = Enum.RaycastFilterType.Exclude
@@ -414,7 +417,7 @@ for _, pc in ipairs(PIECES) do
 	local y, what = open(pc.x, pc.z)
 	local dx, dz = 0, 0
 	if not y then
-		for _, r in ipairs({6, 12}) do
+		for _, r in ipairs({6, 12, 18, 24}) do
 			for i = 0, 7 do
 				local a = i * math.pi / 4
 				local tx, tz = pc.x + r * math.sin(a), pc.z + r * math.cos(a)
@@ -430,7 +433,7 @@ for _, pc in ipairs(PIECES) do
 		print(string.format("QQ TREE piece %s (%s%s) at (%.0f, %.1f, %.0f) on %s%s", pc.id, pc.kind, pc.far and ", beyond the gate" or "", pc.x, pc.y, pc.z, what, (dx ~= 0 or dz ~= 0) and string.format(" (nudged %.0f, %.0f)", dx, dz) or ""))
 	else
 		table.insert(skipped, pc.id .. " (" .. tostring(what) .. ")")
-		print(string.format("QQ TREE piece %s SKIPPED - no open ground within 12 studs of (%.0f, %.0f): %s", pc.id, pc.x, pc.z, tostring(what)))
+		print(string.format("QQ TREE piece %s SKIPPED - no open ground within 24 studs of (%.0f, %.0f): %s", pc.id, pc.x, pc.z, tostring(what)))
 	end
 end
 if #placed < 10 then print("QQ TREE ABORT - only " .. #placed .. " pieces could be placed; nothing changed") return end

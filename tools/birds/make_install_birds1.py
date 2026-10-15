@@ -13,10 +13,10 @@ SITES = [
     {"name": "Harbour pelican", "kind": "pelican", "x": 215, "y": -36, "z": -690, "r": 34, "n": 1, "band": 2, "range": 500},
     {"name": "Lighthouse gulls", "kind": "gull", "x": 520, "y": 86, "z": -1178, "r": 26, "n": 5, "band": 12, "range": 500},
     {"name": "Village swallows", "kind": "swallow", "x": 262, "y": 30, "z": -58, "r": 34, "n": 8, "band": 8, "range": 400},
-    # perched (round 3: Shannon's rigged Meshy pelican and gull; the spots are first guesses - move them by editing the Sites attribute)
-    {"name": "Pelican on the quay", "kind": "pelican", "perch": True, "x": 222, "y": -46.5, "z": -662, "yaw": 160, "n": 1, "height": 4.2, "range": 220},
-    {"name": "Gulls on the harbour rail", "kind": "gull", "perch": True, "x": 236, "y": -46.5, "z": -680, "yaw": 80, "n": 3, "gap": 2.6, "height": 1.9, "range": 220},
-    {"name": "Gulls at the lighthouse", "kind": "gull", "perch": True, "x": 526, "y": 2.4, "z": -1170, "yaw": 300, "n": 2, "gap": 2.4, "height": 1.9, "range": 260},
+    # perched (round 3: Shannon's rigged Meshy pelican and gull; round 4: the spots runner 7 settled in the preview)
+    {"name": "Pelican on the quay", "kind": "pelican", "perch": True, "x": 232.5, "y": -46.56, "z": -667.6, "yaw": 280, "n": 1, "height": 4.2, "range": 220},
+    {"name": "Gulls on the harbour rail", "kind": "gull", "perch": True, "x": 231.6, "y": -46.56, "z": -673.4, "yaw": 102, "n": 3, "gap": 2.6, "height": 1.9, "range": 220},
+    {"name": "Gulls at the lighthouse", "kind": "gull", "perch": True, "x": 526, "y": 3.5, "z": -1170, "yaw": 300, "n": 2, "gap": 2.4, "height": 1.9, "range": 260},
 ]
 sites_json = json.dumps(SITES, separators=(",", ":"))
 assert "]==]" not in sites_json
@@ -38,6 +38,7 @@ F:SetAttribute("Enabled", true)
 F:SetAttribute("Sites", [==[@@SITES@@]==])
 local T = Instance.new("Folder"); T.Name = "Templates"; T.Parent = F   -- (Templates.Gull / Pelican = the rigged standing meshes for the perches; Templates.GullFlying / PelicanFlying = wings-spread meshes for the flocks)
 if old then local ot = old:FindFirstChild("Templates"); if ot then for _, m in ipairs(ot:GetChildren()) do m:Clone().Parent = T end end end
+for _, m in ipairs(T:GetChildren()) do if m:IsA("Model") then m.ModelStreamingMode = Enum.ModelStreamingMode.Persistent end end   -- (v4: a template must reach every client whole - her imports sit far away, and a streamed-out template is an empty Model)
 if old then
 	local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 	local n = 1; while hb:FindFirstChild("Birds_pre_" .. n) do n += 1 end
