@@ -62,24 +62,30 @@ do
 end
 local SITE = HttpService:JSONDecode([==[@@SITE@@]==])
 local PIECES = HttpService:JSONDecode([==[@@PIECES@@]==])
-local FLOOR = 0.1
+local FLOOR = 0                                                        -- (round 2: on the 4-stud voxel grid - a part-filled row rendered the floor 2 studs high)
 local log = {}
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("before Treehouse2") end)
 local SX, SZ = SITE.x, SITE.z
 -- ---------- 1-4: the terrain ----------
--- the back rim (the ridge fell to nothing past z ~75): grass up to y 9 from z 62 to 84, so the hollow has a bank behind it
-T:FillBlock(CFrame.new((SX - 34 + SX + 34) / 2, (9 - 14) / 2, 73), Vector3.new(68, 23, 22), Enum.Material.Grass)
-for _, ex in ipairs({SX - 34, SX + 34}) do T:FillBall(Vector3.new(ex, -2.5, 73), 11, Enum.Material.Grass) end   -- rounded ends, seen from the tower top
--- the floor: grass up to the forest's level under the whole hollow (the ridge's foot dips below it near the edge)
-T:FillCylinder(CFrame.new(SX, (FLOOR - 8) / 2, SZ), 8 + FLOOR, 29, Enum.Material.Grass)
--- the bowl: air above the floor, WIDENING with height like an amphitheatre (the crest is y 10-14; 17 clears it)
-for _, step in ipairs({{0, 4, 22.5}, {4, 8, 24}, {8, 12, 25.5}, {12, 17, 27}}) do
+-- the back rim (the ridge fell to nothing past z ~75): a bank of overlapping mounds from x -52 to 16 along z 74 (round 2: the block
+-- read as a flat slab with square corners from the tower top), a plug below it against the void
+T:FillBlock(CFrame.new(SX, -8, 74), Vector3.new(72, 16, 24), Enum.Material.Grass)                 -- y -16..0, the plug
+for i = 0, 7 do
+	local x = SX - 35 + i * 10
+	T:FillBall(Vector3.new(x, 1 + (i % 3) * 0.8, 74 + (i % 2) * 2), 9.5 + (i % 2) * 1.5, Enum.Material.Grass)   -- tops y ~10-12, lumpy
+end
+-- the floor: grass up to y 0 exactly (a whole voxel row) under the whole hollow
+T:FillCylinder(CFrame.new(SX, -4, SZ), 8, 30, Enum.Material.Grass)
+-- the bowl: air from y 0 up, widening with height like an amphitheatre (the crest is y 10-14; 16 clears it)
+for _, step in ipairs({{0, 4, 27}, {4, 8, 29}, {8, 12, 31}, {12, 16, 33}}) do
 	local y1, y2, r = FLOOR + step[1], FLOOR + step[2], step[3]
 	T:FillCylinder(CFrame.new(SX, (y1 + y2) / 2, SZ), y2 - y1, r, Enum.Material.Air)
 end
--- the dirt round the oak
-T:FillCylinder(CFrame.new(SX, FLOOR - 1, SZ), 2.2, 15, Enum.Material.Ground)
-print(string.format("QQ TREE terrain: rim to y 9 behind z 62..84, floor at %.1f, a bowl of radius 27 cut to y 17, dirt radius 15, centred (%d, %d)", FLOOR, SX, SZ))
+-- the mouth: a flat cut through the ridge's lip between the forest and the floor (round 2: a hump at z 20..25 hid the sign)
+T:FillBlock(CFrame.new(SX, 6, 24), Vector3.new(52, 12, 16), Enum.Material.Air)                     -- x SX-26..SX+26, y 0..12, z 16..32
+-- the dirt round the oak: the top voxel row, whole
+T:FillCylinder(CFrame.new(SX, -2, SZ), 4, 15, Enum.Material.Ground)
+print(string.format("QQ TREE terrain: a mound bank along z 74, floor at y %d (whole voxel rows), a bowl of radius 27..33 cut to y 16, the mouth cut flat z 16..32, dirt radius 15, centred (%d, %d)", FLOOR, SX, SZ))
 -- ---------- 5: the edge ----------
 local edges = {}
 for _, p in ipairs(workspace:GetDescendants()) do

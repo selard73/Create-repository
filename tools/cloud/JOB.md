@@ -2673,3 +2673,9 @@ HudBackup.Treehouse_pre_2". Pictures tools/treehouse/shots/hb1..hb10. What I saw
     the middle of the room about 6 studs in from the door, so from outside the doorway is filled by the trunk (hb8) and inside it
     blocks the view; the room is empty otherwise.
 Waits for the cloud's round 2 (the floor, the mouth lip, the terraces / rim) and her word to install.
+Job 111 ROUND 2 (cloud thread, from runner 7's preview hb1..hb10): the floor and the dirt are filled on whole 4-stud voxel rows
+(floor y 0; a part-filled row had rendered 2 studs high and buried the roots); the mouth is cut flat (air x -44..8, y 0..12, z
+16..32: the lip that hid the sign is gone); the back rim is a bank of eight overlapping mounds along z 74 on a plug below (no more
+slab with square corners); the bowl's steps start at radius 27 and widen; the HOUSE sits 4 studs forward of the trunk (the trunk at
+the back of the room, the doorway clear - the sign, ladder and balcony move with it; the stone ring's gap still clears the balcony).
+Preview again from this commit (same pictures, plus one through the doorway from the balcony); then install on her word.

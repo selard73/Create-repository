@@ -122,7 +122,8 @@ local function placePieces()
 end
 
 -- ---------- the house on the oak (local coordinates: y 0 = the oak's foot, +z towards the spawn) ----------
-local function L(x, y, z, rx, ry, rz) return base * CFrame.new(x, y, z) * CFrame.Angles(math.rad(rx or 0), math.rad(ry or 0), math.rad(rz or 0)) end
+local HOUSE_DZ = 4                                                       -- (round 2: the house sits 4 studs forward of the trunk, so the trunk stands at the back of the room, not in the doorway)
+local function L(x, y, z, rx, ry, rz) return base * CFrame.new(x, y, z + HOUSE_DZ) * CFrame.Angles(math.rad(rx or 0), math.rad(ry or 0), math.rad(rz or 0)) end
 local function wedge(size, color, cf, parent)
 	local w = Instance.new("WedgePart"); w.Size = size; w.Color = color; w.Material = Enum.Material.WoodPlanks; w.Anchored = true; w.CanCollide = true; w.CanQuery = false; w.CanTouch = false
 	w.TopSurface = Enum.SurfaceType.Smooth; w.BottomSurface = Enum.SurfaceType.Smooth; w.CFrame = cf; w.Parent = parent
