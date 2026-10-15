@@ -148,8 +148,16 @@ for _, inst in ipairs(workspace:GetDescendants()) do
 		while top.Parent and top.Parent ~= workspace and not (top.Parent:IsA("Folder")) do top = top.Parent end   -- the model under its folder
 		if not seen[top] then
 			seen[top] = true
-			local ok, cf = pcall(function() return top:GetPivot() end)
-			if ok and cf and math.sqrt((cf.X - SX) ^ 2 + (cf.Z - SZ) ^ 2) <= CLEAR_R then
+			-- by BOUNDING BOX, not pivot (some Forest models' pivots sit far from their geometry): the box centre within CLEAR_R, or
+			-- the box's nearest point within 18 of the site (the house's footprint reaches 15.6 to the deck corners, 22 to the balcony)
+			local ok, cf, size = pcall(function() if top:IsA("Model") then return top:GetBoundingBox() end; return top.CFrame, top.Size end)
+			local near = false
+			if ok and cf and size then
+				local dxc, dzc = math.abs(cf.X - SX) - size.X / 2, math.abs(cf.Z - SZ) - size.Z / 2
+				local edge = math.sqrt(math.max(dxc, 0) ^ 2 + math.max(dzc, 0) ^ 2)
+				near = math.sqrt((cf.X - SX) ^ 2 + (cf.Z - SZ) ^ 2) <= CLEAR_R or edge <= 18
+			end
+			if near then
 				local keepIt = matches(top.Name, KEEP_NAMES) or top:FindFirstChildOfClass("Humanoid") or hasScript(top) or game:GetService("Players"):GetPlayerFromCharacter(top)
 				if not keepIt and parentOk(top) and matches(top.Name, CLEAR_NAMES) then
 					if not clearedF then local n = 1; while hb:FindFirstChild("TreehouseCleared_" .. n) do n += 1 end; clearedF = Instance.new("Folder"); clearedF.Name = "TreehouseCleared_" .. n; clearedF.Parent = hb end
