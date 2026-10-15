@@ -2460,3 +2460,15 @@ spots: Zipline/StationPost found, HangGlider/Ramp found)". JOB 106 japan_geo1.lu
 NOT RUN YET: she started "Save to Roblox" at 13:07:10Z just as her PC lost DNS to every roblox.com host (the log shows no save
 result); a local AutoRecovery copy (16 MB) was written at 13:07:09Z with the three installs in it. Waiting for her to confirm the
 Roblox save before the terrain run. Not yet re-verified in play: STAR's frame with the retry + the acorn in the palm.
+
+Result REOPEN CHECK (runner 7, Oct 15 ~13:45Z): the Team Create session had dropped at 13:06:55Z during her DNS outage ("TeamCreateManager
+Disconnected due to Lost connection to the game server, please reconnect (277)"); save 13:07 failed, publishes 13:22 / 13:27 / 13:36 each
+"server publish request timed out" after 240 s. Before she closed the place I fingerprinted every script (370, path/length/adler32) and
+the day's settings into the Studio log (FP1). She reopened from the start page: "team create connect (connection accepted)" at
+13:41:01Z. Fingerprint FP2 on the reopened place: 366 scripts - identical except the last three installs, which never reached the
+Team Create server (made at ~13:05-13:06Z): HallServer/HallClient back at 5874/4155, ChampionServer at 35767, no workspace.BuyHere.
+All settings identical (Price_ziphandle 600, Price_glider 2500, JapanPreview true, water 0.85/0.65/0.10, grass, Clouds 0.60/0.40,
+LookGrade, Birds Templates 2, Treehouse 12 pieces, Passes). RE-RUN (her earlier yes): hallretry1 "HallServer 5874 -> 6204", "HallClient
+4155 -> 4377", "QQ HALL DONE: 2 patched"; acornhand1 "ChampionServer 35767 -> 36212"; buyhere1 "QQ BUYHERE DONE ... Zipline/StationPost
+found, HangGlider/Ramp found". All four sources now equal the FP1 values exactly. ALL PRESENT - she can publish. japan_geo1 still
+unrun (after a successful publish + save).
