@@ -1,0 +1,18 @@
+# Job 100 birds PREVIEW, runner 7, Oct 15 ~03:45Z, play test on the test server (discarded on stop), install_birds1.lua at cd206d4 (7874
+# bytes, adler32 4217479050 = the git blob), fetched on the server and run UNPATCHED via a temporary ModuleScript + require (the MCP
+# context on the server datamodel can write Source/RunContext). Desktop viewport.
+QQ BIRDS DONE: workspace.Birds (BirdsClient 5714 chars; 3 sites: harbour gulls, lighthouse gulls, village swallows)
+client log: "Birds: 3 flocks on this screen"; client folder workspace.Birds_local with the three flocks
+HARBOUR (avatar on the harbour piazza): Harbour gulls 18 parts, x 183..265 y -4..5 z -705..-650 (circling at y ~0, 45-50 studs over the
+  quay at -47); the other two flocks parked at y -1000 (asleep beyond range) - correct. Pictures birds-harbour-1.jpg / -2.jpg (camera
+  under the circle at (225,-44,-672) looking up): one gull clear overhead, a different pose in the second frame (flapping); the rest of
+  the circle out of frame; from the quay or the piazza at 40-75 studs the gulls are a dozen pixels and vanish against the clouds.
+LIGHTHOUSE (avatar at (520,4,-1120)): Lighthouse gulls 15 parts, x 495..546 y 84..93 z -1203..-1184 (10-19 studs over the lantern at
+  74; the harbour flock went to sleep). Pictures birds-lighthouse-1/-2.jpg (camera (520,30,-1132) -> (520,85,-1178)): the lantern and
+  the clouds, the gulls NOT readable (white on white, small, and on the far side of the circle at that moment).
+VILLAGE (avatar at (262,3,-30)): Village swallows 24 parts, x 229..293 y 25..33 z -78..-43. Pictures birds-village-1/-2.jpg (camera
+  (262,5,-20) -> (262,30,-60)): six to eight dark swallows darting over the rooftops, clearly visible, different spots in the second
+  frame - the best of the three.
+# Nothing installed; Edit checked after the stop. The Gifts card (180 s fallback) hidden on the test client for the pictures.
+# SHANNON, during the preview: "actually, on the italy map we should have some mesh seaguls and maybe a pelican" - so the Italian
+# flocks (harbour, lighthouse) should be MESH gulls (and a pelican), not three-part birds; the French swallows can stay as they are.

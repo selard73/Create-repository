@@ -1832,3 +1832,21 @@ touch, no gameplay); a flock sleeps while the camera is beyond its Range (400-50
 attribute in Studio, no code. PREVIEW: a play test, the installer's body on the server (the client script then runs on the test
 client); pictures with the game's camera: the harbour from the piazza looking up, the lighthouse from the meadow, the French village
 from the fountain; a few seconds apart to show the motion. Her verdict, then the Edit install on her yes; undo = delete workspace.Birds.
+Result job 100 PREVIEW (runner 7, cd206d4; play test, nothing installed, Oct 15 ~03:45Z): QQ BIRDS DONE: workspace.Birds (BirdsClient
+5714 chars; 3 sites: harbour gulls, lighthouse gulls, village swallows); client "Birds: 3 flocks on this screen". Positions on the
+client: harbour gulls x 183..265 y -4..5 z -705..-650 (as designed; the other flocks asleep at y -1000 until the camera comes near);
+lighthouse gulls x 495..546 y 84..93 z -1203..-1184 (10-19 over the lantern); village swallows x 229..293 y 25..33 z -78..-43.
+Pictures tools/birds/shots/birds-{harbour,lighthouse,village}-{1,2}.jpg: the VILLAGE swallows read best (dark, several in frame,
+moving between frames); one HARBOUR gull reads from under the circle, the rest are a dozen pixels at 40-75 studs and vanish against
+the (new) clouds; the LIGHTHOUSE gulls are not readable at all (white on white clouds, small, far side of the circle). Lines in
+tools/birds/preview100_result_2026-10-15.txt.
+SHANNON, during the preview (Oct 15): "actually, on the italy map we should have some mesh seaguls and maybe a pelican." - DIRECTION
+for round 2: the Italian flocks (harbour + lighthouse) become MESH gulls (a real gull model: Toolbox/Creator Store mesh, or a mesh she
+imports as with the balloon and petals, or the Studio MCP's generate_mesh), bigger than 1.6 studs so they read at 50 studs, with grey
+wingtips for contrast against the clouds, plus ONE pelican (perched on a harbour post / mooring pile, or a slow low glide over the
+water). The French swallows can stay as they are. Say what you need from her (a mesh pick) or from me (generate_mesh / upload).
+SHANNON (Oct 15, right after): "Also, that announcement about the daily questions and the golden squirrel in the french section
+carries over into the italy map, those things should only show if you are on the french map." - NEW JOB (101?): the Daily system's
+HUD announcements (the top-right banner "Golden Squirrel: <name> is hiding in Rue de Noisette ..." seen in the Porto pictures, and the
+DailyQuestion card/notice) must show only while the player's Area is a French one (forest / village / domaine), hidden in porto (and on
+the boat/balloon?). Find the client that draws them (Daily / DailyQuestion clients) and gate on the player's Area attribute.
