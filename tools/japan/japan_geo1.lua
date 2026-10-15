@@ -10,7 +10,7 @@
 -- (2) SLABS: 134 pairs of flat ground pieces whose top faces sit within 0.15 studs and overlap (the dashed seams on the paving) - the
 --     higher one of each pair rises until the faces are 0.16 apart; repeated until no pair fights (at most 6 passes, moves of a few
 --     hundredths to 0.16 studs).
--- (3) WATER: the lake stair's "Continuous underwater stair support" (a dark slab seen through the water) takes the bed's sand look; each
+-- (3) WATER (round 2: voxel writes with the exact level, not ReplaceMaterial on a grid-snapped region): the lake stair's "Continuous underwater stair support" (a dark slab seen through the water) takes the bed's sand look; each
 --     rectangular basin in Codex's JapanWaterBasins manifest is refilled - air inside the basin box up to its level becomes water (the
 --     canal no longer stops in a vertical wall short of its north end); a REAL SEA: air below y -6 (the level of the sea basin east of
 --     the island) across x 4900..7400, z -1500..900 becomes water, with a sand bed at y -64..-60 so nothing falls through, and an
@@ -21,6 +21,7 @@ if game:GetService("RunService"):IsRunning() then print("QQ GEO1 ABORT - Play mo
 local J = workspace:FindFirstChild("JapanMap")
 if not J then print("QQ GEO1 ABORT - no workspace.JapanMap") return end
 local T = workspace.Terrain
+pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("before JapanGeo1") end)   -- (Ctrl+Z works back to here; save the place first)
 local log = {moves = {}, slabs = {}, parts = {}, water = {}}
 local function say(fmt, ...) print("QQ GEO1 " .. string.format(fmt, ...)) end
 local function path(o) return (o:GetFullName():gsub("^Workspace%.JapanMap%.", "")) end
@@ -89,19 +90,24 @@ local moved, lines = 0, {}
 for _, m in ipairs(models) do
 	if not skipped(m) then
 		local e = measure(m)
-		if e and e.l.X > 4500 and e.w < 80 and e.d < 80 then
+		if e and e.l.X > 4500 and e.w < 80 and e.d < 80 and (e.h.Y - e.l.Y) < 120 then
 			local name = m.Name
 			local gC, bC = e.gaps[1], e.burys[1]
-			local minG, maxG = 99, -99
-			for i = 1, 5 do minG = math.min(minG, e.gaps[i]); maxG = math.max(maxG, e.gaps[i]) end
+			local minG, maxG, minB = 99, -99, 99
+			for i = 1, 5 do minG = math.min(minG, e.gaps[i]); maxG = math.max(maxG, e.gaps[i]); minB = math.min(minB, e.burys[i]) end
 			local line
+			local lower = name:lower()
+			local hung = lower:find("lantern") or lower:find("sign") or lower:find("banner") or lower:find("flag") or lower:find("plume") or lower:find("smoke")
+			-- (a ray that starts inside the terrain passes through it: a clump planted into the slope reads a "gap" down to the foundation
+			-- under the hill. So a clump moves only when it hovers EVENLY (all five points within 2 studs) and by its SMALLEST gap, or
+			-- when all five points are buried, by the smallest burial.)
 			if name == "Bamboo clump" then
-				if minG > 0.3 and gC < 25 then line = shift(m, -(gC - 0.15), "bamboo onto the slope under its centre")
-				elseif bC > 0.6 and bC < 6 and e.burys[1] == e.burys[1] then line = shift(m, bC - 0.1, "bamboo up out of the ground") end
+				if minG > 0.3 and maxG - minG < 2 and gC < 3 then line = shift(m, -(minG - 0.15), "bamboo down onto the ground")
+				elseif minB > 0.6 and minB < 6 then line = shift(m, minB - 0.1, "bamboo up out of the ground") end
 			elseif name == "Blue vending machine" then
 				if bC > 0.3 and bC < 3 then line = shift(m, bC, "vending machine up onto the platform") end
 			elseif name == "Raked gravel garden" or name == "Fishing bank" then
-				if minG > 0.3 and gC < 4 then line = shift(m, -(gC - 0.05), "down onto the ground") end
+				if minG > 0.3 and minG < 4 then line = shift(m, -(minG - 0.05), "down onto the ground") end
 			elseif name == "Fuji photography lookout" then
 				local low = math.huge
 				for i = 1, 5 do if e.groundY[i] then low = math.min(low, e.groundY[i]) end end
@@ -115,8 +121,8 @@ for _, m in ipairs(models) do
 					table.insert(log.parts, "Lookout plinth")
 					line = string.format("%s: a stone plinth %.0f x %.1f x %.0f down to the hillside", path(m), p.Size.X, hgt, p.Size.Z)
 				end
-			elseif minG > 0.3 and maxG - minG < 0.6 and gC < 3 then
-				line = shift(m, -(gC - 0.05), "a hovering prop down onto its ground")
+			elseif not hung and minG > 0.3 and maxG - minG < 0.6 and minG < 3 then
+				line = shift(m, -(minG - 0.05), "a hovering prop down onto its ground")
 			end
 			if line then moved += 1; if #lines < 60 then table.insert(lines, line) end end
 		end
@@ -136,6 +142,8 @@ local function slabList()
 	return s
 end
 local slabMoves, passes = 0, 0
+local risen = {}                                                      -- per part: how far it has risen in all (capped at 0.2)
+local function mayRise(sl) return sl.p.Size.X <= 200 and sl.p.Size.Z <= 200 and not sl.p:GetFullName():find("Natural garden details", 1, true) and (risen[sl.p] or 0) < 0.2 end
 for pass = 1, 6 do
 	passes = pass
 	local s = slabList()
@@ -150,9 +158,13 @@ for pass = 1, 6 do
 			if ox > 2 and oz > 2 and a.p.Parent ~= b.p.Parent then
 				-- the higher one rises (the smaller one when level) until the faces are 0.16 apart
 				local up = (b.top > a.top) and b or ((b.area < a.area) and b or a)
-				local dy = 0.16 - math.abs(b.top - a.top)
-				up.p.CFrame = up.p.CFrame + Vector3.new(0, dy, 0); up.top += dy
-				table.insert(log.slabs, {path = path(up.p), dy = dy}); fixed += 1; slabMoves += 1
+				if not mayRise(up) then up = (up == a) and b or a end
+				if mayRise(up) then
+					local dy = 0.16 - math.abs(b.top - a.top)
+					up.p.CFrame = up.p.CFrame + Vector3.new(0, dy, 0); up.top += dy
+					risen[up.p] = (risen[up.p] or 0) + dy
+					table.insert(log.slabs, {path = path(up.p), dy = dy}); fixed += 1; slabMoves += 1
+				end
 			end
 		end
 	end
@@ -167,18 +179,40 @@ for _, p in ipairs(J:GetDescendants()) do
 	end
 end
 say("underwater stair supports given the bed's sand look: %d", sup)
-local function fillAir(x1, y1, z1, x2, y2, z2, mat, label)
-	local chunks = 0
-	local step = 400
-	for cx = x1, x2 - 0.01, step do
-		for cz = z1, z2 - 0.01, step do
-			local r = Region3.new(Vector3.new(cx, y1, cz), Vector3.new(math.min(cx + step, x2), y2, math.min(cz + step, z2))):ExpandToGrid(4)
-			T:ReplaceMaterial(r, 4, Enum.Material.Air, mat)
+-- air -> the material, up to an exact LEVEL: ReadVoxels / WriteVoxels, the top cell's occupancy set to the share under the level
+-- (ReplaceMaterial would keep the air cells' zero occupancy, and a Region3 snapped to the 4-stud grid would round every level up)
+local function fillAir(x1, y1, z1, x2, y2, z2, mat, label, level)
+	local chunks, cells = 0, 0
+	local step = 256
+	local gy1 = math.floor(y1 / 4) * 4
+	local gy2 = math.ceil(y2 / 4) * 4
+	for cx = math.floor(x1 / 4) * 4, x2 - 0.01, step do
+		for cz = math.floor(z1 / 4) * 4, z2 - 0.01, step do
+			local ax, az = cx, cz
+			local bx, bz = math.min(cx + step, math.ceil(x2 / 4) * 4), math.min(cz + step, math.ceil(z2 / 4) * 4)
+			local r = Region3.new(Vector3.new(ax, gy1, az), Vector3.new(bx, gy2, bz))
+			local mats, occ = T:ReadVoxels(r, 4)
+			local sz = mats.Size
+			local changed = false
+			for ix = 1, sz.X do
+				for iy = 1, sz.Y do
+					local bottom = gy1 + (iy - 1) * 4
+					local share = math.clamp((level - bottom) / 4, 0, 1)
+					if share > 0.05 then
+						for iz = 1, sz.Z do
+							if mats[ix][iy][iz] == Enum.Material.Air then
+								mats[ix][iy][iz] = mat; occ[ix][iy][iz] = share; changed = true; cells += 1
+							end
+						end
+					end
+				end
+			end
+			if changed then T:WriteVoxels(r, 4, mats, occ) end
 			chunks += 1
 		end
 	end
-	table.insert(log.water, {label = label, x1 = x1, y1 = y1, z1 = z1, x2 = x2, y2 = y2, z2 = z2, mat = mat.Name})
-	return chunks
+	table.insert(log.water, {label = label, x1 = x1, y1 = y1, z1 = z1, x2 = x2, y2 = y2, z2 = z2, mat = mat.Name, level = level, cells = cells})
+	return chunks, cells
 end
 local origin = J:GetAttribute("Origin") or Vector3.new(6000, 0, 0)
 local wb = J:FindFirstChild("JapanWaterBasins")
@@ -189,9 +223,9 @@ if wb and wb:IsA("StringValue") then
 		for _, b in ipairs(list) do
 			if type(b) == "table" and not b.round and b.rx and b.rz and b.level and b.depth then
 				local x, z = origin.X + b.x, origin.Z + b.z
-				fillAir(x - b.rx, b.level - b.depth, z - b.rz, x + b.rx, b.level, z + b.rz, Enum.Material.Water, "basin " .. tostring(b.name))
+				local _, cells = fillAir(x - b.rx, b.level - b.depth, z - b.rz, x + b.rx, b.level, z + b.rz, Enum.Material.Water, "basin " .. tostring(b.name), b.level)
 				basins += 1
-				say("  basin %s refilled: x %.0f..%.0f, z %.0f..%.0f, up to y %.1f", tostring(b.name), x - b.rx, x + b.rx, z - b.rz, z + b.rz, b.level)
+				say("  basin %s refilled: x %.0f..%.0f, z %.0f..%.0f, up to y %.2f (%d air cells became water)", tostring(b.name), x - b.rx, x + b.rx, z - b.rz, z + b.rz, b.level, cells)
 			end
 		end
 	end
@@ -199,13 +233,15 @@ end
 say("rectangular basins refilled from JapanWaterBasins: %d", basins)
 local SEA = -6
 local X1, X2, Z1, Z2 = 4900, 7400, -1500, 900
-local bedChunks = fillAir(X1, -64, Z1, X2, -60, Z2, Enum.Material.Sand, "sea bed")
-local seaChunks = fillAir(X1, -60, Z1, X2, SEA, Z2, Enum.Material.Water, "sea")
-say("the sea: air below y %d across x %d..%d, z %d..%d is water now (%d chunks), on a sand bed (%d chunks)", SEA, X1, X2, Z1, Z2, seaChunks, bedChunks)
--- the wall, 150 studs out from the map's box
 local lo, hi = extents(parts)
-local WX1, WX2, WZ1, WZ2 = lo.X - 150, hi.X + 150, lo.Z - 150, hi.Z + 150
-if WX1 < 4700 then WX1 = 4700 end   -- (never west of x 4700: France and Porto are far west of it anyway)
+local WX1, WX2, WZ1, WZ2 = math.max(lo.X - 150, X1), hi.X + 150, lo.Z - 150, hi.Z + 150   -- (lo.X is the chateau taxi sign at 442: the wall's west side is the sea's)
+local bedChunks, bedCells = fillAir(X1, -64, Z1, X2, -60, Z2, Enum.Material.Sand, "sea bed", -60)
+local seaChunks, seaCells = fillAir(X1, -60, Z1, X2, SEA, Z2, Enum.Material.Water, "sea", SEA)
+do   -- a readback (voxels, not a raycast - raycasts are stale right after a terrain edit): the sea must be there
+	local mm = T:ReadVoxels(Region3.new(Vector3.new(5000, -12, -1200), Vector3.new(5004, -8, -1196)), 4)
+	say("the sea: air below y %d across x %d..%d, z %d..%d is water now (%d cells in %d chunks), on a sand bed (%d cells); readback at (5000,-10,-1200): %s", SEA, X1, X2, Z1, Z2, seaCells, seaChunks, bedCells, mm[1][1][1].Name)
+end
+-- the wall, 150 studs out from the map's box (and never short of the sea's edge)
 local wallF = J:FindFirstChild("Sea wall") or Instance.new("Folder"); wallF.Name = "Sea wall"; wallF.Parent = J
 wallF:ClearAllChildren()
 local function wall(cx, cz, sx, sz)
@@ -226,4 +262,5 @@ say("the wall: invisible, x %.0f and %.0f, z %.0f and %.0f, y -70..100 (%d parts
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 local lv = hb:FindFirstChild("JapanGeo1_log") or Instance.new("StringValue"); lv.Name = "JapanGeo1_log"; lv.Parent = hb
 lv.Value = HttpService:JSONEncode(log)
+pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after JapanGeo1") end)
 say("DONE: %d props moved, %d slab moves, %d supports recoloured, %d basins refilled, the sea and the wall; log HudBackup.JapanGeo1_log (%d chars)", moved, slabMoves, sup, basins, #lv.Value)
