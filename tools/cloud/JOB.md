@@ -2449,3 +2449,14 @@ Job 107c (cloud thread, from runner 7's measurements of STAR's statue: LeftHand 
 head above the visible hand): tools/statues/acornhand1.lua - the acorn rests in the PALM (the hand's grip attachment) for every
 statue from now on; the old spot is the fallback. Statues already standing keep their acorn until rebuilt. Run on her word after
 hallretry1 (same Studio window); expect "QQ ACORN DONE: ChampionServer 35767 -> n".
+
+Result jobs 107b + 107c + 110 INSTALLED (runner 7, Shannon's yes to all four, Studio EDIT, unpublished; checked first: HallServer
+5874 / 1535594508 and HallClient 4155 / 2260345047 unchanged, ChampionServer 35767): hallretry1.lua at be0d835 (3882, adler32
+4263034157): "QQ HALL HallServer 5874 -> 6204 chars (backup HudBackup.HallServer_pre_hallretry1)", "QQ HALL HallClient 4155 -> 4377
+chars (backup HudBackup.HallClient_pre_hallretry1)", "QQ HALL DONE: 2 patched". acornhand1.lua at 4bdb61f (2627, adler32
+3823132582): "QQ ACORN DONE: ChampionServer 35767 -> 36212 chars; backup HudBackup.ChampionServer_pre_acornhand1".
+install_buyhere1.lua at 4bdb61f (7216, adler32 1476539830): "QQ BUYHERE DONE: workspace.BuyHere (BuyHereClient 5141 chars; 2
+spots: Zipline/StationPost found, HangGlider/Ramp found)". JOB 106 japan_geo1.lua (4bdb61f = e44dfe0, 17195, adler32 3765546536)
+NOT RUN YET: she started "Save to Roblox" at 13:07:10Z just as her PC lost DNS to every roblox.com host (the log shows no save
+result); a local AutoRecovery copy (16 MB) was written at 13:07:09Z with the three installs in it. Waiting for her to confirm the
+Roblox save before the terrain run. Not yet re-verified in play: STAR's frame with the retry + the acorn in the palm.
