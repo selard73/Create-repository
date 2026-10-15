@@ -3018,3 +3018,7 @@ Result job 113 ROUND 2 INSTALLED (runner 7, Shannon "Yes", Studio EDIT, unpublis
 Play check: (1) DailyCard down (offset 62) when allfree fired -> the daily card went up at 2.58 s and the croc card appeared at 2.68 s
 (daily offset -290 by then) - no overlap. (2) hungall 0.8 s after a croc card -> the croc card left at 4.8 s, the portrait note showed
 at 4.9 s with no croc card present. Both cards take turns.
+Result job 113 round 2 (runner 7, 8861a31, INSTALLED in Edit on Shannon's "Yes", unpublished; logged at f6ca994): CrocClient 37322 ->
+37937, PortraitClient 26939 -> 27117, "QQ CROCP2 DONE: CrocClient true, PortraitClient true". Play check: allfree with the DailyCard
+down - the daily card up at 2.58 s, the croc card at 2.68 s; hungall during a croc card - the card left at 4.8 s, the note at 4.9 s.
+No overlap. JOB 113 CLOSED, JOB 114 CLOSED. She saves and publishes.
