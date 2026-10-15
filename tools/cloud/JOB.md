@@ -3088,3 +3088,18 @@ into Japan, returned to Spawn_forest in 0.49 s. Guest by attribute: GuestUserIds
 thrown out. Shademade's table entry [3121141] = true. Not testable solo: an ordinary client's hide / prompt text (the test player
 always has the owner id) - that logic is unchanged for a non-guest id (attribute false -> hidden). JOB 116 CLOSED. The Oct 17
 dashboard read is still scheduled (14:00Z).
+## Job 117: SelBell's treehouse starts over (Studio EDIT; ask Shannon first) - runner 7
+Shannon (Oct 15): "reset selbell's treehouse build so that she can start the game from scratch and experience it from the beginning";
+"maybe if you click that reset squirrels it can reset everything?" - no: SquirrelSetup's reset clears the FINDS only and keeps acorns
+and items on purpose ("keep any acorns/items earned"); the treehouse pieces are items (Item_tree_<id>), so they would stay. So she
+presses Reset progress for the squirrels herself, and the treehouse gets its own reset:
+tools/treehouse/install_treehouse_reset1.lua (compiles; src/TreehouseReset.lua) adds workspace.Treehouse.TreehouseReset (server
+Script) + the folder attributes ResetUserIds "9611145467" and ResetRound 1. On a listed player's join (SaveLoaded + 2 s) every
+Item_tree_* they hold is taken back through RS.AwardItems with a NEGATIVE count (the ledger's own "consumed" path - no DataStore
+here), the pieces first, Item_tree_done a second later (so TreehouseServer's join check never sees twelve pieces without the flag),
+then Item_treereset_r1 = 1 marks the round and TreePieces = 0. Once per round; bump ResetRound to repeat; delete the script to undo.
+Squirrels, acorns, other items untouched; the 100-acorn builder's prize can be won again. Live only after the publish, on her next
+join. Play check in Studio (her save): Output "TreehouseReset: CozyGameMode - 12 pieces taken back and the done flag (round 1)";
+the twelve glowing pieces back, the sign "Future home of Homebase Treehouse. Please excuse the dirt. 0 of 12"; pick p1 -> the reveal.
+NOTE: a Studio play test writes her real save too (Studio saves are on), so the check itself resets her - fine, that is the point;
+after it she will not see it again live unless ResetRound is bumped. If she wants the first time LIVE, skip the Studio play test.
