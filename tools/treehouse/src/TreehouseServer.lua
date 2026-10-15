@@ -10,7 +10,7 @@ local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local HttpService = game:GetService("HttpService")
 local F = script.Parent
-local REACH = 20                                    -- studs from the piece a pick-up is honoured within (the prompt shows at 10)
+local REACH = 14                                    -- studs from the piece a pick-up is honoured within (the prompt shows at 10; the root sits ~3 up)
 local PRIZE = 100
 local ev = RS:WaitForChild("TreehousePick", 60)
 local awardItems = RS:WaitForChild("AwardItems", 60)
@@ -52,11 +52,11 @@ ev.OnServerEvent:Connect(function(p, what, id)
 	if p:GetAttribute("SaveLoaded") ~= true then ev:FireClient(p, "wait") return end
 	if has(p, id) then ev:FireClient(p, "got", id, refresh(p)) return end        -- (already theirs: the client just tidies up)
 	local now = os.clock()
-	if last[p] and now - last[p] < 0.25 then return end
+	if last[p] and now - last[p] < 1.5 then return end                           -- (the nearest two pieces are 23 studs apart: no honest player picks two within 1.5 s)
 	local char = p.Character
 	local root = char and char:FindFirstChild("HumanoidRootPart")
 	if not root then return end
-	local d = (root.Position - Vector3.new(pc.x, pc.y, pc.z)).Magnitude
+	local d = (root.Position - Vector3.new(tonumber(pc.x) or 0, tonumber(pc.y) or 0, tonumber(pc.z) or 0)).Magnitude
 	if d > REACH then return end                                                -- (not there: a stale prompt or a hacked client; nothing happens)
 	last[p] = now
 	got[p] = got[p] or {}; got[p][id] = true
@@ -69,7 +69,9 @@ local function join(p)
 	task.spawn(function()
 		local t0 = os.clock()
 		while p.Parent and p:GetAttribute("SaveLoaded") ~= true and os.clock() - t0 < 120 do task.wait(0.5) end
-		if p.Parent then refresh(p) end
+		if not p.Parent then return end
+		local n = refresh(p)
+		if n >= TOTAL and pay(p) then ev:FireClient(p, "done", PRIZE, n) end        -- (all twelve on the save but never paid: paid now)
 	end)
 end
 Players.PlayerAdded:Connect(join)

@@ -1947,13 +1947,20 @@ PLAN: ask her; run golden_gate2.lua in Edit; expect "QQ GOLD DONE: QuestionClien
 
 ## Job 103 BUILD: the forest treehouse - play-test PREVIEW with pictures (NOT installed; she decides in the morning) - runner 7
 
-(Adversarial reviews of the treehouse code and of survey104.lua are running on the cloud thread; the commit that says
-"reviewed" in its message is the one to run - survey104 is read-only and safe either way.)
+REVIEWED (cloud thread, round 2 = the commit saying "reviewed"): the adversarial review found and round 2 fixed - the rope coil
+stood on end (a Cylinder's axis is X), the door lintel sat 4.8 over the deck and collided (tall avatars could not enter: now looks
+only, 6 studs clear) and the room was a 2-stud ring round the trunk (walls now 11 x 11, 3 studs of floor all round; the railing
+stands until the walls replace it; the roof 12.4 deep; the lantern hangs beside the door under the eave; the canopy balls and the
+branches raised to clear the ceiling), a player holding all twelve Item_tree_* but no Item_tree_done was never paid (paid on join
+now), Enabled off-then-on left no house, a re-run left a second TreehouseGui, the sign said "4 of them lie beyond the gate" after
+far pieces were found, a pick's "Got it!" could be skipped when the attribute beat the reply, a missing Tree attribute built the
+house at the origin, water and a tester's own character counted as ground in the installer; REACH 14 studs and 1.5 s between
+honoured picks. Verify in the play test: the truss ladder climbs (CanQuery true on the ladder and the deck now).
 
 From the survey: no kit tree can carry a house (two-part models, trunks 1.3-4.4 wide), so the treehouse gets its own tree: a big OAK
 32 studs south of the forest spawn at (-4, -30) (flat terrain grass, nothing within 18 studs; the nearest pines are at (15,-22) and
 (-18,-18)), a 6-stud trunk, roots, four branches, a canopy of leaf balls; its +z faces the spawn. tools/treehouse/install_treehouse1.lua
-(from make_install_treehouse1.py; src/TreehouseServer.lua 4473, src/TreehouseClient.lua 18320; all three compile):
+(from make_install_treehouse1.py; src/TreehouseServer.lua 4806, src/TreehouseClient.lua 19277; all three compile):
 - workspace.Treehouse {Oak (shared), TreehouseServer (RunContext Server), TreehouseClient (RunContext Client)}; attributes Enabled,
   Tree (JSON x/y/z/yaw), Pieces (JSON [{id, x, y, z, kind, yaw, far}] - move a spot in Studio by editing the attribute, no code);
   ReplicatedStorage.TreehousePick (RemoteEvent). Re-runnable: the old folder -> HudBackup.Treehouse_pre_n.
@@ -1982,13 +1989,17 @@ and stand on the deck; (6) the "Treehouse built!" card; (7) p9..p12 where they l
 
 ## Job 104 survey script: tools/japan/survey104.lua (READ-ONLY, Edit; no ask) + the script export - runner 7
 
-tools/japan/survey104.lua (compiles) looks for what is wrong: JapanMap's shape and the parts of it lying west of x 4500 (in France /
+tools/japan/survey104.lua ROUND 2 (the first cut, in 3bf662d, threw on its first line - three NotScriptable Workspace
+properties - and would have lost every line; if it was run, run round 2) looks for what is wrong: JapanMap's shape and the parts of it lying west of x 4500 (in France /
 Porto); every script named Japan* or whose Source mentions Japan outside the backups (= what Codex patched: BalloonServer,
 SpawnReturnServer, Travel ...; with sizes and adler32); the preview gate's module; the backups' weight in ServerStorage and Studio
 memory; unanchored / huge / invisible-solid parts; floating and buried models (<= 400 parts); a 50-stud ground grid for holes;
 seats, prompts (Style - PromptClient draws only Custom), click detectors, NPCs, spawns; the texts on signs; effects, lights, sounds
 (a Sound not on a part plays everywhere, France included); Lighting and the water; Travel / SpawnPads / Boundary and the Area
-attribute's reach; squirrel-like models. ~120 "QQ JAPAN" lines; send them all unchanged to tools/japan/survey104_result_<date>.txt.
+attribute's reach; squirrel-like models. Round 2 after the review: no require() of the preview module (its shape is read from its
+Source), the model pass walks each part once (the Studio script timeout would have killed the first cut on a deep model tree), the
+body runs under pcall and prints what it gathered on a fault, and the script RETURNS its lines too. ~150-190 "QQ JAPAN" lines; send
+them all unchanged to tools/japan/survey104_result_<date>.txt.
 THEN EXPORT (Source to files, tools/japan/studio_2026-10-15/<Name>.lua, LF): every SCRIPT line the survey prints that is not a backup
 - at least JapanMap.JapanEnvironment, the three AutomaticFoodSeatContact, ServerScriptService.JapanPreviewAccess + JapanPreviewGuard,
 StarterPlayerScripts JapanAtmosphere / JapanWaterAppearance / JapanTrainInteriorCamera / JapanPreviewVisibility, the live

@@ -1,7 +1,7 @@
 -- install_treehouse1.lua (Studio EDIT mode; re-runnable; its body also runs as a play-test PREVIEW). Job 103: the forest treehouse
 -- (Shannon, Oct 15 2026: pieces strewn through the French map, a count, the house built piece by piece - "that will keep people longer
 -- at the start"). Builds workspace.Treehouse: the Oak (shared; a fat trunk, roots, four branches, a canopy of leaf balls) at (-4, -30), 32 studs south of the forest spawn,
--- TreehouseServer (4473 chars) + TreehouseClient (18320 chars), attributes Tree / Pieces (JSON; edit a spot in Studio, no code) and
+-- TreehouseServer (4806 chars) + TreehouseClient (19277 chars), attributes Tree / Pieces (JSON; edit a spot in Studio, no code) and
 -- ReplicatedStorage.TreehousePick. The house, the sign, the pieces and the prompts are per player (the client). Twelve pieces; every
 -- spot's ground is rayed here and a spot on a roof or in a tree is nudged, a spot with no open ground near it is skipped and reported.
 -- Undo: delete workspace.Treehouse (the old one is in ServerStorage.HudBackup). No DataStore, no publish. Output "QQ TREE".
@@ -21,7 +21,7 @@ local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local HttpService = game:GetService("HttpService")
 local F = script.Parent
-local REACH = 20                                    -- studs from the piece a pick-up is honoured within (the prompt shows at 10)
+local REACH = 14                                    -- studs from the piece a pick-up is honoured within (the prompt shows at 10; the root sits ~3 up)
 local PRIZE = 100
 local ev = RS:WaitForChild("TreehousePick", 60)
 local awardItems = RS:WaitForChild("AwardItems", 60)
@@ -63,11 +63,11 @@ ev.OnServerEvent:Connect(function(p, what, id)
 	if p:GetAttribute("SaveLoaded") ~= true then ev:FireClient(p, "wait") return end
 	if has(p, id) then ev:FireClient(p, "got", id, refresh(p)) return end        -- (already theirs: the client just tidies up)
 	local now = os.clock()
-	if last[p] and now - last[p] < 0.25 then return end
+	if last[p] and now - last[p] < 1.5 then return end                           -- (the nearest two pieces are 23 studs apart: no honest player picks two within 1.5 s)
 	local char = p.Character
 	local root = char and char:FindFirstChild("HumanoidRootPart")
 	if not root then return end
-	local d = (root.Position - Vector3.new(pc.x, pc.y, pc.z)).Magnitude
+	local d = (root.Position - Vector3.new(tonumber(pc.x) or 0, tonumber(pc.y) or 0, tonumber(pc.z) or 0)).Magnitude
 	if d > REACH then return end                                                -- (not there: a stale prompt or a hacked client; nothing happens)
 	last[p] = now
 	got[p] = got[p] or {}; got[p][id] = true
@@ -80,7 +80,9 @@ local function join(p)
 	task.spawn(function()
 		local t0 = os.clock()
 		while p.Parent and p:GetAttribute("SaveLoaded") ~= true and os.clock() - t0 < 120 do task.wait(0.5) end
-		if p.Parent then refresh(p) end
+		if not p.Parent then return end
+		local n = refresh(p)
+		if n >= TOTAL and pay(p) then ev:FireClient(p, "done", PRIZE, n) end        -- (all twelve on the save but never paid: paid now)
 	end)
 end
 Players.PlayerAdded:Connect(join)
@@ -115,7 +117,8 @@ local function J(name, default)
 	local ok, t = pcall(function() return HttpService:JSONDecode(F:GetAttribute(name) or "") end)
 	return (ok and type(t) == "table") and t or default
 end
-local TREE = J("Tree", {x = 0, y = 0, z = 0, yaw = 0})
+local TREE = J("Tree", nil)
+if not (TREE and tonumber(TREE.x) and tonumber(TREE.y) and tonumber(TREE.z)) then return end   -- (no oak written: nothing to draw)
 local PIECES = J("Pieces", {})
 local TOTAL = #PIECES
 if TOTAL == 0 then return end
@@ -151,8 +154,8 @@ local function bundle(kind, cf, parent)
 	-- a little heap a player can spot: planks tied with rope, or a coil of rope, a stack of shingles, a lantern in its crate
 	local main
 	if kind == "rope" then
-		main = part(Vector3.new(1.8, 0.5, 1.8), ROPE, cf * CFrame.new(0, 0.25, 0), parent, Enum.Material.Fabric); main.Shape = Enum.PartType.Cylinder; main.CFrame = cf * CFrame.new(0, 0.25, 0) * CFrame.Angles(0, 0, math.rad(90))
-		local top = part(Vector3.new(1.3, 0.4, 1.3), C(190, 160, 104), cf * CFrame.new(0.1, 0.65, 0.1) * CFrame.Angles(0, 0, math.rad(90)), parent, Enum.Material.Fabric); top.Shape = Enum.PartType.Cylinder
+		main = part(Vector3.new(0.5, 1.8, 1.8), ROPE, cf * CFrame.new(0, 0.25, 0) * CFrame.Angles(0, 0, math.rad(90)), parent, Enum.Material.Fabric); main.Shape = Enum.PartType.Cylinder   -- (a Cylinder's axis is X; turned upright its 0.5 is the height)
+		local top = part(Vector3.new(0.4, 1.3, 1.3), C(190, 160, 104), cf * CFrame.new(0.1, 0.7, 0.1) * CFrame.Angles(0, 0, math.rad(90)), parent, Enum.Material.Fabric); top.Shape = Enum.PartType.Cylinder
 	elseif kind == "shingles" then
 		main = part(Vector3.new(2.0, 0.22, 1.4), ROOF, cf * CFrame.new(0, 0.11, 0), parent)
 		for i = 1, 3 do part(Vector3.new(2.0, 0.22, 1.4), (i % 2 == 0) and WOOD_DARK or ROOF, cf * CFrame.new((i % 2 == 0) and 0.15 or -0.1, 0.11 + i * 0.22, (i == 3) and 0.1 or 0) * CFrame.Angles(0, math.rad(i * 7), 0), parent) end
@@ -193,7 +196,7 @@ local function placePieces()
 	for _, pc in ipairs(PIECES) do
 		local m = pieceModels[pc.id]
 		if has(pc.id) then
-			if m then m:Destroy(); pieceModels[pc.id] = nil end
+			if m and not (pending[pc.id] and os.clock() - pending[pc.id] < 2) then m:Destroy(); pieceModels[pc.id] = nil end   -- (a pick in flight: the "got" reply takes it down with its "Got it!")
 		elseif not m then makePiece(pc) end
 	end
 end
@@ -217,58 +220,61 @@ local function buildHouse(n)
 	local ss = Instance.new("UIStroke"); ss.Color = C(40, 24, 12); ss.Thickness = 1.5; ss.Parent = signLabel
 	if n >= STAGES.ladder then
 		local t = Instance.new("TrussPart"); t.Size = Vector3.new(2, 10, 2); t.Style = Enum.Style.AlternatingSupports; t.Color = WOOD_DARK; t.Material = Enum.Material.Wood
-		t.Anchored = true; t.CanCollide = true; t.CanQuery = false; t.CanTouch = false; t.CFrame = L(0, 5, 7); t.Name = "Ladder"; t.Parent = houseF
+		t.Anchored = true; t.CanCollide = true; t.CanQuery = true; t.CanTouch = false; t.CFrame = L(0, 5, 7); t.Name = "Ladder"; t.Parent = houseF
 	end
 	if n >= STAGES.deck then
-		part(Vector3.new(12, 0.5, 12), WOOD, L(0, 10.25, 0), houseF, Enum.Material.WoodPlanks, true).Name = "Deck"
+		local d = part(Vector3.new(12, 0.5, 12), WOOD, L(0, 10.25, 0), houseF, Enum.Material.WoodPlanks, true); d.Name = "Deck"; d.CanQuery = true
 		for _, z in ipairs({-4, 4}) do part(Vector3.new(12.4, 0.5, 0.8), WOOD_DARK, L(0, 9.75, z), houseF) end
 		for _, x in ipairs({-4, 4}) do part(Vector3.new(0.8, 0.5, 12.4), WOOD_DARK, L(x, 9.75, 0), houseF) end
 	end
-	if n >= STAGES.railing then
+	if n >= STAGES.railing and n < STAGES.walls then                       -- the railing stands until the walls take its place
 		for _, x in ipairs({-5.8, 5.8}) do for _, z in ipairs({-5.8, 5.8}) do part(Vector3.new(0.4, 1.3, 0.4), WOOD_DARK, L(x, 11.15, z), houseF, nil, true) end end
 		for _, x in ipairs({-1.6, 1.6}) do part(Vector3.new(0.4, 1.3, 0.4), WOOD_DARK, L(x, 11.15, 5.8), houseF, nil, true) end
 		part(Vector3.new(12, 0.25, 0.25), WOOD, L(0, 11.7, -5.8), houseF, nil, true)
 		for _, x in ipairs({-5.8, 5.8}) do part(Vector3.new(0.25, 0.25, 12), WOOD, L(x, 11.7, 0), houseF, nil, true) end
 		for _, x in ipairs({-3.7, 3.7}) do part(Vector3.new(4.2, 0.25, 0.25), WOOD, L(x, 11.7, 5.8), houseF, nil, true) end   -- the gap is the top of the ladder
 	end
-	if n >= STAGES.walls then
-		part(Vector3.new(9, 6, 0.4), WOOD, L(0, 13.5, -4.5), houseF, Enum.Material.WoodPlanks, true)
-		for _, x in ipairs({-4.5, 4.5}) do part(Vector3.new(0.4, 6, 9), WOOD, L(x, 13.5, 0), houseF, Enum.Material.WoodPlanks, true) end
-		for _, x in ipairs({-3, 3}) do part(Vector3.new(3, 6, 0.4), WOOD, L(x, 13.5, 4.5), houseF, Enum.Material.WoodPlanks, true) end   -- the door is the 3-stud gap
-		part(Vector3.new(3.2, 1.2, 0.4), WOOD_DARK, L(0, 15.9, 4.5), houseF, Enum.Material.WoodPlanks, true)
+	if n >= STAGES.walls then                                               -- an 11 x 11 room round the trunk (3 studs of floor all round it)
+		part(Vector3.new(11, 6, 0.4), WOOD, L(0, 13.5, -5.5), houseF, Enum.Material.WoodPlanks, true)
+		for _, x in ipairs({-5.5, 5.5}) do part(Vector3.new(0.4, 6, 11), WOOD, L(x, 13.5, 0), houseF, Enum.Material.WoodPlanks, true) end
+		for _, x in ipairs({-3.5, 3.5}) do part(Vector3.new(4, 6, 0.4), WOOD, L(x, 13.5, 5.5), houseF, Enum.Material.WoodPlanks, true) end   -- the door is the 3-stud gap
+		part(Vector3.new(3.2, 1.2, 0.4), WOOD_DARK, L(0, 15.9, 5.5), houseF, Enum.Material.WoodPlanks)   -- the lintel: looks only, tall avatars walk under it
 	end
 	if n >= STAGES.roof then
-		wedge(Vector3.new(10.4, 3, 5.2), ROOF, L(0, 18, -2.6), houseF)             -- its vertical face at the ridge, the slope falling to -z
-		wedge(Vector3.new(10.4, 3, 5.2), ROOF, L(0, 18, 2.6, 0, 180, 0), houseF)   -- mirrored: the slope falling to +z
-		part(Vector3.new(10.8, 0.35, 0.35), WOOD_DARK, L(0, 19.6, 0), houseF)
+		wedge(Vector3.new(12.4, 3.4, 6.2), ROOF, L(0, 18.2, -3.1), houseF)             -- its vertical face at the ridge, the slope falling to -z
+		wedge(Vector3.new(12.4, 3.4, 6.2), ROOF, L(0, 18.2, 3.1, 0, 180, 0), houseF)   -- mirrored: the slope falling to +z
+		part(Vector3.new(12.8, 0.35, 0.35), WOOD_DARK, L(0, 19.95, 0), houseF)
 	end
 	if n >= STAGES.window then
-		local x = -4.72
+		local x = -5.72
 		part(Vector3.new(0.25, 0.3, 2.8), WOOD_DARK, L(x, 15.0, 0), houseF); part(Vector3.new(0.25, 0.3, 2.8), WOOD_DARK, L(x, 12.4, 0), houseF)
 		for _, z in ipairs({-1.3, 1.3}) do part(Vector3.new(0.25, 2.9, 0.3), WOOD_DARK, L(x, 13.7, z), houseF) end
 		local pane = part(Vector3.new(0.08, 2.4, 2.4), C(170, 210, 235), L(x, 13.7, 0), houseF, Enum.Material.Glass); pane.Transparency = 0.35; pane.Reflectance = 0.15
 		part(Vector3.new(0.08, 2.4, 0.12), WOOD_DARK, L(x - 0.02, 13.7, 0), houseF); part(Vector3.new(0.08, 0.12, 2.4), WOOD_DARK, L(x - 0.02, 13.7, 0), houseF)
 	end
-	if n >= STAGES.lantern then
-		part(Vector3.new(0.08, 0.9, 0.08), C(60, 56, 52), L(0, 15.0, 5.1), houseF, Enum.Material.Metal)
-		local lamp = part(Vector3.new(0.7, 0.9, 0.7), C(255, 196, 110), L(0, 14.2, 5.1), houseF, Enum.Material.Neon)
-		part(Vector3.new(0.9, 0.18, 0.9), C(60, 56, 52), L(0, 14.7, 5.1), houseF, Enum.Material.Metal)
+	if n >= STAGES.lantern then                                             -- beside the door, hung from the eave
+		part(Vector3.new(0.08, 1.4, 0.08), C(60, 56, 52), L(2.8, 15.8, 6.0), houseF, Enum.Material.Metal)
+		part(Vector3.new(0.9, 0.18, 0.9), C(60, 56, 52), L(2.8, 15.0, 6.0), houseF, Enum.Material.Metal)
+		local lamp = part(Vector3.new(0.7, 0.9, 0.7), C(255, 196, 110), L(2.8, 14.5, 6.0), houseF, Enum.Material.Neon)
 		local l = Instance.new("PointLight"); l.Color = C(255, 200, 120); l.Range = 13; l.Brightness = 0.9; l.Shadows = false; l.Parent = lamp
 	end
 	if n >= STAGES.flag then
-		part(Vector3.new(0.2, 4.4, 0.2), C(70, 60, 50), L(4.8, 21.6, 0), houseF, Enum.Material.Metal)
-		part(Vector3.new(0.06, 1.3, 2.3), C(196, 56, 48), L(4.8, 23.1, 1.25), houseF, Enum.Material.Fabric)
-		part(Vector3.new(0.08, 0.42, 2.3), CREAM, L(4.8, 23.1, 1.25), houseF, Enum.Material.Fabric)
+		part(Vector3.new(0.2, 4.4, 0.2), C(70, 60, 50), L(4.8, 21.9, 0), houseF, Enum.Material.Metal)
+		part(Vector3.new(0.06, 1.3, 2.3), C(196, 56, 48), L(4.8, 23.4, 1.25), houseF, Enum.Material.Fabric)
+		part(Vector3.new(0.08, 0.42, 2.3), CREAM, L(4.8, 23.4, 1.25), houseF, Enum.Material.Fabric)
 	end
 end
 local function signText(n)
 	if n >= TOTAL then return "The Treehouse\nAll " .. TOTAL .. " pieces found.\nClimb up and look out!" end
 	local left = TOTAL - n
-	local far = FAR > 0 and string.format("\n%d of them lie beyond the forest gate.", math.min(FAR, left)) or ""
+	local farLeft = 0
+	for _, p in ipairs(PIECES) do if p.far and not has(p.id) then farLeft += 1 end end
+	local far = farLeft > 0 and string.format("\n%d of them lie beyond the forest gate.", farLeft) or ""
 	return string.format("The Treehouse\n%d of %d pieces found.\n%d more to find.%s", n, TOTAL, left, far)
 end
 
 -- ---------- the pill, the toast, the card ----------
+for _, n in ipairs({"TreehouseGui", "TreehouseDone"}) do local g = pg:FindFirstChild(n); if g then g:Destroy() end end   -- (an earlier TreehouseClient's, after a re-install)
 local gui = Instance.new("ScreenGui"); gui.Name = "TreehouseGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 15; gui.Parent = pg
 local function corner(p, r) local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0, r); c.Parent = p; return c end
 local pill = Instance.new("TextLabel"); pill.Name = "TreePill"; pill.AnchorPoint = Vector2.new(1, 0); pill.Position = UDim2.new(1, -12, 0, 100)
@@ -314,7 +320,7 @@ end
 
 -- ---------- keeping it all current ----------
 local function refresh()
-	if F:GetAttribute("Enabled") == false then piecesF:ClearAllChildren(); houseF:ClearAllChildren(); pieceModels = {}; pill.Visible = false return end
+	if F:GetAttribute("Enabled") == false then piecesF:ClearAllChildren(); houseF:ClearAllChildren(); pieceModels = {}; lastN = -1; signLabel = nil; pill.Visible = false return end
 	local n = count()
 	placePieces()
 	if n ~= lastN then lastN = n; buildHouse(n) end
@@ -372,6 +378,7 @@ local rpA = RaycastParams.new(); rpA.FilterType = Enum.RaycastFilterType.Exclude
 local old = workspace:FindFirstChild("Treehouse")
 local skip = {}
 for _, n in ipairs({"Treehouse", "Treehouse_local"}) do local f = workspace:FindFirstChild(n); if f then table.insert(skip, f) end end
+for _, pl in ipairs(game:GetService("Players"):GetPlayers()) do if pl.Character then table.insert(skip, pl.Character) end end   -- (a tester standing on a spot, in a preview)
 rpA.FilterDescendantsInstances = skip
 local function ground(x, z)
 	local h = workspace:Raycast(Vector3.new(x, 300, z), Vector3.new(0, -600, 0), rpA)
@@ -379,13 +386,13 @@ local function ground(x, z)
 	local ty = t and t.Position.Y or nil
 	if not h then return nil, "nothing", ty end
 	local what = (h.Instance == T) and ("terrain " .. h.Material.Name) or h.Instance.Name
-	return h.Position.Y, what, ty, h.Instance
+	return h.Position.Y, what, ty, h.Instance, h
 end
 -- open ground = terrain, or a part no higher than 2.5 studs above the terrain under it (a path, a dais, a slab); not a tree, not a roof
 local function open(x, z)
-	local y, what, ty, inst = ground(x, z)
+	local y, what, ty, inst, h = ground(x, z)
 	if not y then return nil, what end
-	if inst == T then return y, what end
+	if inst == T then if h and h.Material == Enum.Material.Water then return nil, what end; return y, what end
 	local n = inst.Name:lower()
 	if n:find("trunk") or n:find("foliage") or n:find("leaf") or n:find("roof") then return nil, what .. " at y " .. string.format("%.1f", y) end
 	if ty and y > ty + 2.5 then return nil, what .. string.format(" at y %.1f (terrain %.1f)", y, ty) end
@@ -423,7 +430,7 @@ for _, pc in ipairs(PIECES) do
 		print(string.format("QQ TREE piece %s (%s%s) at (%.0f, %.1f, %.0f) on %s%s", pc.id, pc.kind, pc.far and ", beyond the gate" or "", pc.x, pc.y, pc.z, what, (dx ~= 0 or dz ~= 0) and string.format(" (nudged %.0f, %.0f)", dx, dz) or ""))
 	else
 		table.insert(skipped, pc.id .. " (" .. tostring(what) .. ")")
-		print(string.format("QQ TREE piece %s SKIPPED - no open ground within 12 studs of (%d, %d): %s", pc.id, pc.x, pc.z, tostring(what)))
+		print(string.format("QQ TREE piece %s SKIPPED - no open ground within 12 studs of (%.0f, %.0f): %s", pc.id, pc.x, pc.z, tostring(what)))
 	end
 end
 if #placed < 10 then print("QQ TREE ABORT - only " .. #placed .. " pieces could be placed; nothing changed") return end
@@ -460,15 +467,15 @@ for i = 1, 5 do
 end
 for i = 1, 4 do
 	local a = math.rad(i * 90 + 45)
-	mk(V, Vector3.new(9.5, 1.5, 1.5), BARK2, base * CFrame.Angles(0, a, 0) * CFrame.new(4.2, 15.3, 0) * CFrame.Angles(0, 0, math.rad(34)), Enum.Material.Wood, false).Name = "Branch"
+	mk(V, Vector3.new(9.5, 1.5, 1.5), BARK2, base * CFrame.Angles(0, a, 0) * CFrame.new(4.2, 18.0, 0) * CFrame.Angles(0, 0, math.rad(34)), Enum.Material.Wood, false).Name = "Branch"   -- (leaves the trunk above the house's ceiling)
 end
 for i = 1, 6 do
 	local a = math.rad(i * 60)
-	mk(Enum.PartType.Ball, Vector3.new(11, 11, 11), (i % 2 == 0) and LEAF or LEAF2, base * CFrame.new(6.6 * math.sin(a), 20.8, 6.6 * math.cos(a)), Enum.Material.Grass, false).Name = "Leaves"
+	mk(Enum.PartType.Ball, Vector3.new(11, 11, 11), (i % 2 == 0) and LEAF or LEAF2, base * CFrame.new(6.6 * math.sin(a), 22.2, 6.6 * math.cos(a)), Enum.Material.Grass, false).Name = "Leaves"
 end
-mk(Enum.PartType.Ball, Vector3.new(10, 10, 10), LEAF, base * CFrame.new(0, 24.8, 0), Enum.Material.Grass, false).Name = "Leaves"
-mk(Enum.PartType.Ball, Vector3.new(8, 8, 8), LEAF2, base * CFrame.new(9 * math.sin(math.rad(30)), 18.4, 9 * math.cos(math.rad(30))), Enum.Material.Grass, false).Name = "Leaves"
-mk(Enum.PartType.Ball, Vector3.new(8, 8, 8), LEAF, base * CFrame.new(9 * math.sin(math.rad(210)), 18.0, 9 * math.cos(math.rad(210))), Enum.Material.Grass, false).Name = "Leaves"
+mk(Enum.PartType.Ball, Vector3.new(10, 10, 10), LEAF, base * CFrame.new(0, 26.2, 0), Enum.Material.Grass, false).Name = "Leaves"
+mk(Enum.PartType.Ball, Vector3.new(8, 8, 8), LEAF2, base * CFrame.new(10.5 * math.sin(math.rad(30)), 19.6, 10.5 * math.cos(math.rad(30))), Enum.Material.Grass, false).Name = "Leaves"
+mk(Enum.PartType.Ball, Vector3.new(8, 8, 8), LEAF, base * CFrame.new(10.5 * math.sin(math.rad(210)), 19.4, 10.5 * math.cos(math.rad(210))), Enum.Material.Grass, false).Name = "Leaves"
 local s = Instance.new("Script"); s.Name = "TreehouseServer"; s.RunContext = Enum.RunContext.Server; s.Source = SERVER; s.Parent = F
 local c = Instance.new("Script"); c.Name = "TreehouseClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
 F.Parent = workspace

@@ -61,6 +61,7 @@ local rpA = RaycastParams.new(); rpA.FilterType = Enum.RaycastFilterType.Exclude
 local old = workspace:FindFirstChild("Treehouse")
 local skip = {}
 for _, n in ipairs({"Treehouse", "Treehouse_local"}) do local f = workspace:FindFirstChild(n); if f then table.insert(skip, f) end end
+for _, pl in ipairs(game:GetService("Players"):GetPlayers()) do if pl.Character then table.insert(skip, pl.Character) end end   -- (a tester standing on a spot, in a preview)
 rpA.FilterDescendantsInstances = skip
 local function ground(x, z)
 	local h = workspace:Raycast(Vector3.new(x, 300, z), Vector3.new(0, -600, 0), rpA)
@@ -68,13 +69,13 @@ local function ground(x, z)
 	local ty = t and t.Position.Y or nil
 	if not h then return nil, "nothing", ty end
 	local what = (h.Instance == T) and ("terrain " .. h.Material.Name) or h.Instance.Name
-	return h.Position.Y, what, ty, h.Instance
+	return h.Position.Y, what, ty, h.Instance, h
 end
 -- open ground = terrain, or a part no higher than 2.5 studs above the terrain under it (a path, a dais, a slab); not a tree, not a roof
 local function open(x, z)
-	local y, what, ty, inst = ground(x, z)
+	local y, what, ty, inst, h = ground(x, z)
 	if not y then return nil, what end
-	if inst == T then return y, what end
+	if inst == T then if h and h.Material == Enum.Material.Water then return nil, what end; return y, what end
 	local n = inst.Name:lower()
 	if n:find("trunk") or n:find("foliage") or n:find("leaf") or n:find("roof") then return nil, what .. " at y " .. string.format("%.1f", y) end
 	if ty and y > ty + 2.5 then return nil, what .. string.format(" at y %.1f (terrain %.1f)", y, ty) end
@@ -112,7 +113,7 @@ for _, pc in ipairs(PIECES) do
 		print(string.format("QQ TREE piece %s (%s%s) at (%.0f, %.1f, %.0f) on %s%s", pc.id, pc.kind, pc.far and ", beyond the gate" or "", pc.x, pc.y, pc.z, what, (dx ~= 0 or dz ~= 0) and string.format(" (nudged %.0f, %.0f)", dx, dz) or ""))
 	else
 		table.insert(skipped, pc.id .. " (" .. tostring(what) .. ")")
-		print(string.format("QQ TREE piece %s SKIPPED - no open ground within 12 studs of (%d, %d): %s", pc.id, pc.x, pc.z, tostring(what)))
+		print(string.format("QQ TREE piece %s SKIPPED - no open ground within 12 studs of (%.0f, %.0f): %s", pc.id, pc.x, pc.z, tostring(what)))
 	end
 end
 if #placed < 10 then print("QQ TREE ABORT - only " .. #placed .. " pieces could be placed; nothing changed") return end
@@ -149,15 +150,15 @@ for i = 1, 5 do
 end
 for i = 1, 4 do
 	local a = math.rad(i * 90 + 45)
-	mk(V, Vector3.new(9.5, 1.5, 1.5), BARK2, base * CFrame.Angles(0, a, 0) * CFrame.new(4.2, 15.3, 0) * CFrame.Angles(0, 0, math.rad(34)), Enum.Material.Wood, false).Name = "Branch"
+	mk(V, Vector3.new(9.5, 1.5, 1.5), BARK2, base * CFrame.Angles(0, a, 0) * CFrame.new(4.2, 18.0, 0) * CFrame.Angles(0, 0, math.rad(34)), Enum.Material.Wood, false).Name = "Branch"   -- (leaves the trunk above the house's ceiling)
 end
 for i = 1, 6 do
 	local a = math.rad(i * 60)
-	mk(Enum.PartType.Ball, Vector3.new(11, 11, 11), (i % 2 == 0) and LEAF or LEAF2, base * CFrame.new(6.6 * math.sin(a), 20.8, 6.6 * math.cos(a)), Enum.Material.Grass, false).Name = "Leaves"
+	mk(Enum.PartType.Ball, Vector3.new(11, 11, 11), (i % 2 == 0) and LEAF or LEAF2, base * CFrame.new(6.6 * math.sin(a), 22.2, 6.6 * math.cos(a)), Enum.Material.Grass, false).Name = "Leaves"
 end
-mk(Enum.PartType.Ball, Vector3.new(10, 10, 10), LEAF, base * CFrame.new(0, 24.8, 0), Enum.Material.Grass, false).Name = "Leaves"
-mk(Enum.PartType.Ball, Vector3.new(8, 8, 8), LEAF2, base * CFrame.new(9 * math.sin(math.rad(30)), 18.4, 9 * math.cos(math.rad(30))), Enum.Material.Grass, false).Name = "Leaves"
-mk(Enum.PartType.Ball, Vector3.new(8, 8, 8), LEAF, base * CFrame.new(9 * math.sin(math.rad(210)), 18.0, 9 * math.cos(math.rad(210))), Enum.Material.Grass, false).Name = "Leaves"
+mk(Enum.PartType.Ball, Vector3.new(10, 10, 10), LEAF, base * CFrame.new(0, 26.2, 0), Enum.Material.Grass, false).Name = "Leaves"
+mk(Enum.PartType.Ball, Vector3.new(8, 8, 8), LEAF2, base * CFrame.new(10.5 * math.sin(math.rad(30)), 19.6, 10.5 * math.cos(math.rad(30))), Enum.Material.Grass, false).Name = "Leaves"
+mk(Enum.PartType.Ball, Vector3.new(8, 8, 8), LEAF, base * CFrame.new(10.5 * math.sin(math.rad(210)), 19.4, 10.5 * math.cos(math.rad(210))), Enum.Material.Grass, false).Name = "Leaves"
 local s = Instance.new("Script"); s.Name = "TreehouseServer"; s.RunContext = Enum.RunContext.Server; s.Source = SERVER; s.Parent = F
 local c = Instance.new("Script"); c.Name = "TreehouseClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
 F.Parent = workspace

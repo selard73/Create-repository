@@ -24,7 +24,8 @@ local function J(name, default)
 	local ok, t = pcall(function() return HttpService:JSONDecode(F:GetAttribute(name) or "") end)
 	return (ok and type(t) == "table") and t or default
 end
-local TREE = J("Tree", {x = 0, y = 0, z = 0, yaw = 0})
+local TREE = J("Tree", nil)
+if not (TREE and tonumber(TREE.x) and tonumber(TREE.y) and tonumber(TREE.z)) then return end   -- (no oak written: nothing to draw)
 local PIECES = J("Pieces", {})
 local TOTAL = #PIECES
 if TOTAL == 0 then return end
@@ -60,8 +61,8 @@ local function bundle(kind, cf, parent)
 	-- a little heap a player can spot: planks tied with rope, or a coil of rope, a stack of shingles, a lantern in its crate
 	local main
 	if kind == "rope" then
-		main = part(Vector3.new(1.8, 0.5, 1.8), ROPE, cf * CFrame.new(0, 0.25, 0), parent, Enum.Material.Fabric); main.Shape = Enum.PartType.Cylinder; main.CFrame = cf * CFrame.new(0, 0.25, 0) * CFrame.Angles(0, 0, math.rad(90))
-		local top = part(Vector3.new(1.3, 0.4, 1.3), C(190, 160, 104), cf * CFrame.new(0.1, 0.65, 0.1) * CFrame.Angles(0, 0, math.rad(90)), parent, Enum.Material.Fabric); top.Shape = Enum.PartType.Cylinder
+		main = part(Vector3.new(0.5, 1.8, 1.8), ROPE, cf * CFrame.new(0, 0.25, 0) * CFrame.Angles(0, 0, math.rad(90)), parent, Enum.Material.Fabric); main.Shape = Enum.PartType.Cylinder   -- (a Cylinder's axis is X; turned upright its 0.5 is the height)
+		local top = part(Vector3.new(0.4, 1.3, 1.3), C(190, 160, 104), cf * CFrame.new(0.1, 0.7, 0.1) * CFrame.Angles(0, 0, math.rad(90)), parent, Enum.Material.Fabric); top.Shape = Enum.PartType.Cylinder
 	elseif kind == "shingles" then
 		main = part(Vector3.new(2.0, 0.22, 1.4), ROOF, cf * CFrame.new(0, 0.11, 0), parent)
 		for i = 1, 3 do part(Vector3.new(2.0, 0.22, 1.4), (i % 2 == 0) and WOOD_DARK or ROOF, cf * CFrame.new((i % 2 == 0) and 0.15 or -0.1, 0.11 + i * 0.22, (i == 3) and 0.1 or 0) * CFrame.Angles(0, math.rad(i * 7), 0), parent) end
@@ -102,7 +103,7 @@ local function placePieces()
 	for _, pc in ipairs(PIECES) do
 		local m = pieceModels[pc.id]
 		if has(pc.id) then
-			if m then m:Destroy(); pieceModels[pc.id] = nil end
+			if m and not (pending[pc.id] and os.clock() - pending[pc.id] < 2) then m:Destroy(); pieceModels[pc.id] = nil end   -- (a pick in flight: the "got" reply takes it down with its "Got it!")
 		elseif not m then makePiece(pc) end
 	end
 end
@@ -126,58 +127,61 @@ local function buildHouse(n)
 	local ss = Instance.new("UIStroke"); ss.Color = C(40, 24, 12); ss.Thickness = 1.5; ss.Parent = signLabel
 	if n >= STAGES.ladder then
 		local t = Instance.new("TrussPart"); t.Size = Vector3.new(2, 10, 2); t.Style = Enum.Style.AlternatingSupports; t.Color = WOOD_DARK; t.Material = Enum.Material.Wood
-		t.Anchored = true; t.CanCollide = true; t.CanQuery = false; t.CanTouch = false; t.CFrame = L(0, 5, 7); t.Name = "Ladder"; t.Parent = houseF
+		t.Anchored = true; t.CanCollide = true; t.CanQuery = true; t.CanTouch = false; t.CFrame = L(0, 5, 7); t.Name = "Ladder"; t.Parent = houseF
 	end
 	if n >= STAGES.deck then
-		part(Vector3.new(12, 0.5, 12), WOOD, L(0, 10.25, 0), houseF, Enum.Material.WoodPlanks, true).Name = "Deck"
+		local d = part(Vector3.new(12, 0.5, 12), WOOD, L(0, 10.25, 0), houseF, Enum.Material.WoodPlanks, true); d.Name = "Deck"; d.CanQuery = true
 		for _, z in ipairs({-4, 4}) do part(Vector3.new(12.4, 0.5, 0.8), WOOD_DARK, L(0, 9.75, z), houseF) end
 		for _, x in ipairs({-4, 4}) do part(Vector3.new(0.8, 0.5, 12.4), WOOD_DARK, L(x, 9.75, 0), houseF) end
 	end
-	if n >= STAGES.railing then
+	if n >= STAGES.railing and n < STAGES.walls then                       -- the railing stands until the walls take its place
 		for _, x in ipairs({-5.8, 5.8}) do for _, z in ipairs({-5.8, 5.8}) do part(Vector3.new(0.4, 1.3, 0.4), WOOD_DARK, L(x, 11.15, z), houseF, nil, true) end end
 		for _, x in ipairs({-1.6, 1.6}) do part(Vector3.new(0.4, 1.3, 0.4), WOOD_DARK, L(x, 11.15, 5.8), houseF, nil, true) end
 		part(Vector3.new(12, 0.25, 0.25), WOOD, L(0, 11.7, -5.8), houseF, nil, true)
 		for _, x in ipairs({-5.8, 5.8}) do part(Vector3.new(0.25, 0.25, 12), WOOD, L(x, 11.7, 0), houseF, nil, true) end
 		for _, x in ipairs({-3.7, 3.7}) do part(Vector3.new(4.2, 0.25, 0.25), WOOD, L(x, 11.7, 5.8), houseF, nil, true) end   -- the gap is the top of the ladder
 	end
-	if n >= STAGES.walls then
-		part(Vector3.new(9, 6, 0.4), WOOD, L(0, 13.5, -4.5), houseF, Enum.Material.WoodPlanks, true)
-		for _, x in ipairs({-4.5, 4.5}) do part(Vector3.new(0.4, 6, 9), WOOD, L(x, 13.5, 0), houseF, Enum.Material.WoodPlanks, true) end
-		for _, x in ipairs({-3, 3}) do part(Vector3.new(3, 6, 0.4), WOOD, L(x, 13.5, 4.5), houseF, Enum.Material.WoodPlanks, true) end   -- the door is the 3-stud gap
-		part(Vector3.new(3.2, 1.2, 0.4), WOOD_DARK, L(0, 15.9, 4.5), houseF, Enum.Material.WoodPlanks, true)
+	if n >= STAGES.walls then                                               -- an 11 x 11 room round the trunk (3 studs of floor all round it)
+		part(Vector3.new(11, 6, 0.4), WOOD, L(0, 13.5, -5.5), houseF, Enum.Material.WoodPlanks, true)
+		for _, x in ipairs({-5.5, 5.5}) do part(Vector3.new(0.4, 6, 11), WOOD, L(x, 13.5, 0), houseF, Enum.Material.WoodPlanks, true) end
+		for _, x in ipairs({-3.5, 3.5}) do part(Vector3.new(4, 6, 0.4), WOOD, L(x, 13.5, 5.5), houseF, Enum.Material.WoodPlanks, true) end   -- the door is the 3-stud gap
+		part(Vector3.new(3.2, 1.2, 0.4), WOOD_DARK, L(0, 15.9, 5.5), houseF, Enum.Material.WoodPlanks)   -- the lintel: looks only, tall avatars walk under it
 	end
 	if n >= STAGES.roof then
-		wedge(Vector3.new(10.4, 3, 5.2), ROOF, L(0, 18, -2.6), houseF)             -- its vertical face at the ridge, the slope falling to -z
-		wedge(Vector3.new(10.4, 3, 5.2), ROOF, L(0, 18, 2.6, 0, 180, 0), houseF)   -- mirrored: the slope falling to +z
-		part(Vector3.new(10.8, 0.35, 0.35), WOOD_DARK, L(0, 19.6, 0), houseF)
+		wedge(Vector3.new(12.4, 3.4, 6.2), ROOF, L(0, 18.2, -3.1), houseF)             -- its vertical face at the ridge, the slope falling to -z
+		wedge(Vector3.new(12.4, 3.4, 6.2), ROOF, L(0, 18.2, 3.1, 0, 180, 0), houseF)   -- mirrored: the slope falling to +z
+		part(Vector3.new(12.8, 0.35, 0.35), WOOD_DARK, L(0, 19.95, 0), houseF)
 	end
 	if n >= STAGES.window then
-		local x = -4.72
+		local x = -5.72
 		part(Vector3.new(0.25, 0.3, 2.8), WOOD_DARK, L(x, 15.0, 0), houseF); part(Vector3.new(0.25, 0.3, 2.8), WOOD_DARK, L(x, 12.4, 0), houseF)
 		for _, z in ipairs({-1.3, 1.3}) do part(Vector3.new(0.25, 2.9, 0.3), WOOD_DARK, L(x, 13.7, z), houseF) end
 		local pane = part(Vector3.new(0.08, 2.4, 2.4), C(170, 210, 235), L(x, 13.7, 0), houseF, Enum.Material.Glass); pane.Transparency = 0.35; pane.Reflectance = 0.15
 		part(Vector3.new(0.08, 2.4, 0.12), WOOD_DARK, L(x - 0.02, 13.7, 0), houseF); part(Vector3.new(0.08, 0.12, 2.4), WOOD_DARK, L(x - 0.02, 13.7, 0), houseF)
 	end
-	if n >= STAGES.lantern then
-		part(Vector3.new(0.08, 0.9, 0.08), C(60, 56, 52), L(0, 15.0, 5.1), houseF, Enum.Material.Metal)
-		local lamp = part(Vector3.new(0.7, 0.9, 0.7), C(255, 196, 110), L(0, 14.2, 5.1), houseF, Enum.Material.Neon)
-		part(Vector3.new(0.9, 0.18, 0.9), C(60, 56, 52), L(0, 14.7, 5.1), houseF, Enum.Material.Metal)
+	if n >= STAGES.lantern then                                             -- beside the door, hung from the eave
+		part(Vector3.new(0.08, 1.4, 0.08), C(60, 56, 52), L(2.8, 15.8, 6.0), houseF, Enum.Material.Metal)
+		part(Vector3.new(0.9, 0.18, 0.9), C(60, 56, 52), L(2.8, 15.0, 6.0), houseF, Enum.Material.Metal)
+		local lamp = part(Vector3.new(0.7, 0.9, 0.7), C(255, 196, 110), L(2.8, 14.5, 6.0), houseF, Enum.Material.Neon)
 		local l = Instance.new("PointLight"); l.Color = C(255, 200, 120); l.Range = 13; l.Brightness = 0.9; l.Shadows = false; l.Parent = lamp
 	end
 	if n >= STAGES.flag then
-		part(Vector3.new(0.2, 4.4, 0.2), C(70, 60, 50), L(4.8, 21.6, 0), houseF, Enum.Material.Metal)
-		part(Vector3.new(0.06, 1.3, 2.3), C(196, 56, 48), L(4.8, 23.1, 1.25), houseF, Enum.Material.Fabric)
-		part(Vector3.new(0.08, 0.42, 2.3), CREAM, L(4.8, 23.1, 1.25), houseF, Enum.Material.Fabric)
+		part(Vector3.new(0.2, 4.4, 0.2), C(70, 60, 50), L(4.8, 21.9, 0), houseF, Enum.Material.Metal)
+		part(Vector3.new(0.06, 1.3, 2.3), C(196, 56, 48), L(4.8, 23.4, 1.25), houseF, Enum.Material.Fabric)
+		part(Vector3.new(0.08, 0.42, 2.3), CREAM, L(4.8, 23.4, 1.25), houseF, Enum.Material.Fabric)
 	end
 end
 local function signText(n)
 	if n >= TOTAL then return "The Treehouse\nAll " .. TOTAL .. " pieces found.\nClimb up and look out!" end
 	local left = TOTAL - n
-	local far = FAR > 0 and string.format("\n%d of them lie beyond the forest gate.", math.min(FAR, left)) or ""
+	local farLeft = 0
+	for _, p in ipairs(PIECES) do if p.far and not has(p.id) then farLeft += 1 end end
+	local far = farLeft > 0 and string.format("\n%d of them lie beyond the forest gate.", farLeft) or ""
 	return string.format("The Treehouse\n%d of %d pieces found.\n%d more to find.%s", n, TOTAL, left, far)
 end
 
 -- ---------- the pill, the toast, the card ----------
+for _, n in ipairs({"TreehouseGui", "TreehouseDone"}) do local g = pg:FindFirstChild(n); if g then g:Destroy() end end   -- (an earlier TreehouseClient's, after a re-install)
 local gui = Instance.new("ScreenGui"); gui.Name = "TreehouseGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 15; gui.Parent = pg
 local function corner(p, r) local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0, r); c.Parent = p; return c end
 local pill = Instance.new("TextLabel"); pill.Name = "TreePill"; pill.AnchorPoint = Vector2.new(1, 0); pill.Position = UDim2.new(1, -12, 0, 100)
@@ -223,7 +227,7 @@ end
 
 -- ---------- keeping it all current ----------
 local function refresh()
-	if F:GetAttribute("Enabled") == false then piecesF:ClearAllChildren(); houseF:ClearAllChildren(); pieceModels = {}; pill.Visible = false return end
+	if F:GetAttribute("Enabled") == false then piecesF:ClearAllChildren(); houseF:ClearAllChildren(); pieceModels = {}; lastN = -1; signLabel = nil; pill.Visible = false return end
 	local n = count()
 	placePieces()
 	if n ~= lastN then lastN = n; buildHouse(n) end
