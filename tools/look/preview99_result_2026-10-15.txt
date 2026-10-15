@@ -1,0 +1,20 @@
+# Job 99 look-pass PREVIEW, runner 7, Oct 15 ~02:55-03:05Z, play test on the test server (discarded on stop), look_pass1.lua at abbc23c
+# (LF 3058 bytes, adler32 1179706054) pasted verbatim into the server context with a print shadow. DESKTOP viewport only (1210x401; the
+# Device Emulator is not switchable from the MCP). The capture tool's camera at fixed spots, the avatar moved nearby first so each
+# area streamed in. Pictures tools/look/shots/look-before-*.jpg / look-after-*.jpg (same camera each pair).
+QQ LOOK PREVIEW (play test, discarded on stop)
+QQ LOOK Terrain.WaterReflectance 0.550000011920929 -> 0.85
+QQ LOOK Terrain.WaterTransparency 0.44999998807907104 -> 0.65
+QQ LOOK Terrain.WaterWaveSize 0.05999999865889549 -> 0.1
+QQ LOOK Bloom.Threshold 2 -> 1.2
+QQ LOOK LookGrade added
+QQ LOOK Terrain Grass colour 96,150,72 -> 86,140,62
+QQ LOOK Terrain LeafyGrass colour 96,150,72 -> 86,140,62
+QQ LOOK DONE (7 lines). Still hers in the Properties panel: Terrain.Decoration on, GrassLength ~0.7; a cloud skybox from the Toolbox.
+# Pairs: W harbour (camera (288,-38,-688) -> (238,-52,-758): the quay, the sea, the beach, the sky) - the water reads brighter and more
+# mirror-like, a touch more saturated; A meadow (548,10,-1058) -> (470,-4,-1098): the belvedere, church, lighthouse, grass - grass a
+# shade deeper, slightly more contrast; C forest (22,6,18) -> (-14,1.5,-24): the Forest Race gate, pines, grass - subtle, deeper green;
+# B lantern (474,-5.5,-804) -> (483,-10.5,-819): the piazza lamp post + the old couple on a bench - the pale cobbles bloom noticeably
+# brighter in daylight (Threshold 1.2 catches the white paving, not only lamps); D piazza (466,-1,-760) -> (466,-11,-800): the fountain
+# square - brighter paving, slightly punchier colours. Runner 7's note: the bloom threshold is the one to watch (daylight paving glare);
+# the lamps are not lit at ClockTime 14.5, so the "lantern glow" cannot be judged by day.
