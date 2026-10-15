@@ -3070,3 +3070,14 @@ JapanPreviewAccess 966 -> 1441, BalloonClient 37493 -> 37807, JapanPreviewVisibi
 JapanWaterAppearance 1110 -> 1204, MusicClient 11980 -> 12084, AutomaticFoodSeatContact x3 2245 -> 2329 (backups _pre_japanguest1,
 _2, _3); BalloonField.JapanPreview = true; the marker in JapanPreviewAccess, GuestUserIds attribute ''. Play check pending
 (the owner's ride to Japan; an ordinary test player still hidden and returned). Then save + publish; Shademade sees it on his next join.
+
+Result job 116 PLAY CHECK (runner 7, play test, nothing kept; Shannon had already published - "it is published, thank you"):
+(1) OWNER: IsAllowed true, JapanPreviewAllowed true; the client's balloon prompt reads "Your balloon Â· private Japan preview / Fly to
+Japan" (the ride path itself is unchanged since job 105's flight check; not flown again). (2) ORDINARY PLAYER, simulated in Play Solo:
+a temporary server Script in the play-test server set JapanPreviewAccess.OwnerUserId = 0 (a require from the MCP's own context gets
+a SEPARATE module copy - the first try changed nothing; the game's scripts share one copy). Then: JapanPreviewAllowed -> false;
+pivoted into Japan (6100,4,270) -> JapanPreviewGuard put the player at Spawn_forest (3,6,1) after 0.49 s. GUEST via the attribute:
+GuestUserIds "123, 9611145467" -> allowed true, pivoted into Japan and left there 1 s; attribute cleared -> false, thrown out to
+(3,5,1). Owner restored -> true. Shademade's table entry Access.GuestUserIds[3121141] = true. NOT testable in Play Solo: the
+ordinary player's CLIENT side (JapanPreviewVisibility hiding, the ordinary balloon prompt text) - the client scripts compare the
+UserId with 9611145467 themselves, and the Studio test player is always that id; only a Local Server with a second player shows it.
