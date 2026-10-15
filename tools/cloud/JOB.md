@@ -1805,3 +1805,9 @@ SHANNON, right after (Oct 15): "I thought you were going to add fluffy clouds in
 previewing Roblox's volumetric Clouds (Instance "Clouds" under Terrain: Cover ~0.6, Density ~0.4, white) in a play test now; if she
 likes them they are one more switch in look_pass1.lua (+ undo). BIRDS: a new job for the cloud thread - ambient birds (gulls circling
 over the harbour and the lighthouse, swallows over the village), simple looping flight paths, light, no gameplay; design it.
+CLOUDS preview (runner 7, Oct 15 ~03:25Z, play test, nothing installed): Roblox volumetric Clouds under Terrain, Cover 0.6, Density 0.4,
+white - fluffy cumulus over the meadow with the sun and the belvedere (tools/look/shots/clouds-preview-meadow.jpg). Note: Cover/Density
+set on the SERVER after parenting did not reach the client copy (it showed 0/0); set on the client for the picture. In Edit the
+instance is saved with its values, so a real install has no such issue; set the values before parenting anyway. Studio render quality
+Automatic was enough. Her verdict pending; if yes: a CLOUDS switch in look_pass1.lua (create Terrain.Clouds with the values, undo =
+destroy it).
