@@ -2128,3 +2128,45 @@ the Explorer) and no French pill / reminder shows; (3) the train rides and the p
 player (a second client, or a Studio test server with the owner check failing): the balloon ride ends home as before, with
 balloon_flights awarded; (5) set BalloonField.JapanPreview = false in a test: her prompt says "All aboard" and the ordinary ride
 runs. Report every QQ JFIX line.
+
+Result job 100 round 3 PREVIEW (runner 7, b276363, play test Oct 15 ~13:30Z, nothing installed, Edit verified clean after): Shannon
+imported pelican_rigged.fbx + gull_rigged.fbx with Import 3D (they landed in JAPAN at (5919, 9..12, 74): Models gull_rigged /
+pelican_rigged, MeshPart Gull / Pelican with all 16 / 18 Bones under it, InitialPoses + AnimationController, UNANCHORED and
+CanCollide true, MeshPart facing -Z up +Y, PivotOffset rotated 90 deg about X with position (0,-2.25,0) / (0,-1.5,0) = the feet).
+On the test server: workspace.Birds.Templates {Pelican, Gull} = clones, anchored, PivotOffset rotation cleared (position kept), then
+install_birds1.lua's body (20446, adler32 1373547079): "QQ BIRDS DONE ... 7 sites: 4 flocks + 3 perches ...". Client log "Birds: 7
+sites on this screen (3 perched) (mesh: pelican, gull, gull)". THREE FINDINGS for v4: (1) STREAMING: the templates sat in Japan, so
+the client had the Models but not their MeshParts - the perches came up EMPTY (0 meshparts) until I set ModelStreamingMode
+Persistent on both templates (then a Sites nudge rebuilt them with mesh + bones). The installer must make Templates' models
+Persistent (and anchored, no collide) - and move her imports out of Japan into Templates. (2) PERCH SPOTS: (222,-46.5,-662) is over
+the WATER (nothing under it to the terrain at -52.9); the lighthouse spot y 2.4 buried the gulls' feet 1.1 in the rock (top 3.5).
+Settled numbers that look right in the pictures: pelican on the quay coping (232.5, -46.56, -667.6) yaw 280 (faces the promenade);
+three gulls on the coping stones (231.6, -46.56, -673.4) yaw 102 gap 2.6 (along the edge, facing the water); lighthouse gulls
+(526, 3.5, -1170) yaw 300 (on the rock beside the lighthouse keeper). (3) BONES: every axis turns the right way - measured at its
+largest: Wing.L 55 deg about bird-frame (0,0,-1), Wing.R 55 about (0,0,+1) = up and out on both sides; Head yaw -35..+35; Thighs
+swing fore/aft; Body roll; the pelican's Jaw tips the bill down. Pictures with poses held: tools/birds/shots/r3_*.jpg. No bone needs
+flipping; the whole bird faces -Z at rest (no facing attribute needed). Also: BirdsClient animates on RenderStepped.
+
+Result job 103 PREVIEW (runner 7, 3740085, same play test): install_treehouse1.lua body (33952, adler32 3227345674) on the test server:
+QQ TREE oak at (-4, 0.1, -30) on terrain Grass, yaw 12.7 (its +z faces the spawn)
+QQ TREE piece p1 (planks) at (14, 0.1, -8) on terrain Grass
+QQ TREE piece p2 (rope) at (-12, 0.1, -12) on terrain Grass
+QQ TREE piece p3 (planks) at (22, 0.1, -24) on terrain Grass (nudged 0, 6)
+QQ TREE piece p4 (shingles) at (-20, 0.1, -40) on terrain Grass
+QQ TREE piece p5 (planks) at (30, 0.1, -60) on terrain Grass
+QQ TREE piece p6 (rope) at (-12, 0.1, -85) on terrain Grass
+QQ TREE piece p7 (shingles) at (60, 0.1, -105) on terrain Grass
+QQ TREE piece p8 (planks) at (70, 0.1, -140) on terrain Grass
+QQ TREE piece p9 (lantern, beyond the gate) at (210, 0.6, -70) on PlotN
+QQ TREE piece p10 SKIPPED - no open ground within 12 studs of (300, -90): Roof at y 25.7
+QQ TREE piece p11 (shingles, beyond the gate) at (455, 3.2, -75) on terrain Sand
+QQ TREE piece p12 (lantern, beyond the gate) at (560, 6.8, -110) on terrain Ground
+QQ TREE DONE: workspace.Treehouse (oak at (-4, 0.1, -30); 11 pieces placed, skipped p10 (Roof at y 25.7); TreehouseServer 4806, TreehouseClient 19277 chars; RS.TreehousePick)
+Client: "Treehouse: 0 of 11 pieces on this screen". P10 NEEDS A NEW SPOT (Rue de Noisette under a roof); with 11 pieces the FLAG
+stage (12) never shows and the sign/pill say "of 11". Checked: a real pick-up of p1 ("got,p1,1"; pill "Treehouse: 1 of 11 pieces";
+toast "Treehouse piece 1 of 11! 10 more to find"; the LADDER appears); house at 3 (deck), 7 (walls + door), 11 (roof, window, lit
+lantern; sign "All 11 pieces found ..."); the LADDER CLIMBS (W held: Running > Climbing > Running, 3.3 -> 13.8 = standing on the
+deck, then walked onto it through the door); the DECK HOLDS (stood at 13.8). The last piece p12 picked for real at the chateau: server
+"got,p12,11 | done,100,11", Acorns 110 -> 210 once, Item_tree_done 1; the card "Treehouse built! 100 acorns for the builder. Climb
+the ladder and look out over the forest. [Hooray!]" (in its own ScreenGui TreehouseDone). Pictures: tools/treehouse/shots/t1..t6.
+Nothing installed; both wait for her yes.
