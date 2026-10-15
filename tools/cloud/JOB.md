@@ -2718,7 +2718,6 @@ old folder is HudBackup.Treehouse_pre_2". Pictures tools/treehouse/shots/r2_hb*.
     THE DOORWAY from the balcony (r2_hb11): the room's floor and the trunk standing against the back wall, door clear. INSIDE
     (r2_hb10): the trunk at the back, 8 studs of open floor in front of it; the room is empty (no furniture).
 Waits for her word to install (the floor occupancy and the sign post are the two things left).
-<<<<<<< HEAD
 
 Result job 111 ROUND 2 INSTALLED (runner 7, Shannon: "install now, and make fixes when cloud fixed them", Studio EDIT, unpublished):
 install_treehouse2.lua at 7a9aa6e (42201, adler32 438641579) - the same QQ lines as the round 2 preview, word for word ("QQ TREE DONE:
@@ -2726,7 +2725,6 @@ Homebase Treehouse at (-18, 0.0, 47) yaw 155.5 in its hollow; 12 pieces placed; 
 old folder is HudBackup.Treehouse_pre_2"; dressing in HudBackup.TreehouseCleared_1). Readback: ground at (-24,47) y 2.00 Ground,
 (-18,24) 1.92 Grass, (-18,12) 0.06 Grass. NEXT: she wants the floor (occupancy ~0.52 in the -4..0 row) and the sign post fixed as a
 PATCH on top of this installed version - please make it re-runnable against the installed Homebase, not a fresh install.
-=======
 Job 111 ROUND 3 (cloud thread; CORRECTION of the cd56cb2 note, which claimed client edits a failed anchor had left out). Runner 7
 installed round 2 (7a9aa6e) in Edit on Shannon's word ("install now, and make fixes when cloud fixed them"), floor still y 2.0, and
 asked for round 3 as a PATCH over it, not a fresh install. tools/treehouse/patch_treehouse2_r3.lua (make_patch_treehouse2_r3.py):
@@ -2743,7 +2741,6 @@ asked for round 3 as a PATCH over it, not a fresh install. tools/treehouse/patch
  install_treehouse2.lua is regenerated from the same client (44986 bytes) for a future fresh install only.
 Preview in play from this commit (the floor y at the oak ~0.1 and the readback lines, the sign's bottom line, the room furnished),
 then install in Edit on her word; geo2 (323dd1f) after that; then she publishes.
->>>>>>> a9c044846308f29f9392de6350cbb72895d4999a
 
 Result job 111 ROUND 3 PATCH PREVIEW (runner 7, play test over the installed round 2, nothing kept): patch_treehouse2_r3.lua at a9c0448
 (29239, adler32 1316508335): "QQ TREE3 floor: the top voxel row set to 0.52 over 175 of 202 cells in the hollow (surface y ~0.1)",
