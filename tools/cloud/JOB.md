@@ -2028,3 +2028,23 @@ BalloonServer 11362 + BalloonClient 32702 (= tools/balloon/src BalloonServer_rid
 JapanAtmosphere 1724, SpawnReturnServer 4997 (JapanBeforePrivatePreview), HidePortoFromFrance 3789 + HideFranceFromPorto 3221
 (JapanIntegrationBackup). Nothing changed in Studio. Note for the thread: this runner's shell wrapper rejects heredocs holding some
 quote patterns (a quote followed by a space, e.g. gsub(' station','')); such files were written with the Write tool and checksummed.
+
+Result job 104 REVIEW (cloud thread, two adversarial code reviews + the survey): tools/japan/FINDINGS_japan_2026-10-15.md - the
+write-up for Shannon's morning. Headlines: Japan is a PRIVATE PREVIEW locked to her user id (hidden client-side for everyone else,
+a server guard throws others out); touching every player NOW: three live scripts (SpawnReturnServer, BalloonServer, JapanEnvironment)
+require the JapanPreviewAccess module with a timeout-less WaitForChild - remove or rename the module and nobody is returned to their
+dais, Area is never set and CharacterAutoLoads stays true (random spawns, Porto included), and the balloon is gone; the hidden taxi
+sign + post ten studs from the Spawn_domaine pad may be solid (check CanCollide by eye); the balloon's PlayerRemoving safety net was
+removed; HER session after a balloon preview keeps fog off, atmosphere .08 and the CLOUDS at cover .08 (the look pass set 0.6/0.4) -
+nothing restores them; her Area freezes in Japan ("domaine" or "porto") so the French HUD / question reminders / golden pill show in
+Japan; she can never take the ordinary balloon ride again. The map: NO SEA (532 of 1365 ground rays void - walk off a cliff and fall
+forever), 855 invisible floors in and around the lake, the volcano backdrop floating at y 133, a lookout and two bamboo clumps
+floating, 180 sculpted mesh parts up to 1,317 studs (collision to be walked), yen menus / Garamond signs, no squirrels / spawn pad /
+Area id / Travel entry. Recommendation: move Japan to its own place file until it is ready (or, if she keeps previewing live, six
+small patches: the module fallback, the two solid parts, the lighting+clouds restore, the balloon safety net, the ride opt-in, Area
+"japan"). RUNNER NEXT (read-only, no ask): (1) run tools/japan/probe_serverstorage.lua (what fills ServerStorage's 318,798 - the
+Japan share is 7%); (2) export Workspace.MapMusic.MusicClient (11980) to tools/japan/studio_2026-10-15/; (3) in Edit, read CanCollide
+on JapanMap."Airport connection".("Provence taxi stop post" and "Sign · JAPAN / Airport taxi") and the Destination attributes of the
+two JapanAirportPrompt prompts, and whether JapanMap has an Origin attribute and each Railway BoardingPoint a StationIndex; (4) when
+Shannon previews Japan herself: the lake's edge (walk in: walk on water, wade or swim?), the island's west edge (what is below?),
+the Fuji lookout, the volcano backdrop from the island, and whether her fog/clouds look different after a balloon trip.

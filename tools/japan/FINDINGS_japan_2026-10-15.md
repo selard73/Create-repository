@@ -20,7 +20,42 @@ no Area id, no music of its own in the live scripts - it is scenery with a train
 
 ## A. What touches every player now (fix before the next publish, whatever happens to Japan)
 
-@@A1@@
+A1. ONE MODULE CAN STOP EVERYONE SPAWNING PROPERLY. Codex made three live scripts begin with
+`require(ServerScriptService:WaitForChild("JapanPreviewAccess"))` with no timeout: SpawnReturnServer, BalloonServer, JapanEnvironment.
+Today the module exists, so nothing is wrong yet. The day Japan is cleaned out of the place (or the module is renamed) and those two
+patched scripts are left as they are: SpawnReturnServer waits forever on its first line - nobody is returned to their dais, the Area
+attribute is never set (the French HUD, the daily pill, the question reminders, the shop's country, the funnel and the interaction
+counter all go dead) and, worst, its last line `Players.CharacterAutoLoads = false` never runs, so Roblox spawns every new player at a
+random spawn pad - Porto included. The balloon is gone for everyone at the same time. The pre-Japan copies had no such dependency.
+Fix (one line each): look the module up with FindFirstChild and fall back to a stub that allows nobody.
+A1b. INVISIBLE BUT SOLID IN THE CHATEAU GROUNDS: the hidden taxi sign (5 x 4) and its post stand ten studs from the chateau's
+arrival pad; the visibility script hides them for everyone else but does not switch off their collision, so if those two parts are
+CanCollide (the survey counts 855 invisible solid parts in the map; whether these two are among them needs one look in Studio) every
+player bumps into an invisible wall right by the Spawn_domaine pad. Fix: CanCollide/CanQuery/CanTouch false on the two parts.
+A1c. HARMLESS BUT REAL: the water script (JapanWaterAppearance) runs on every client and is gated by position only, not by owner - it
+can flip the terrain's water for a player who gets into Japan's box for the 0.2 s before the guard throws them out; the hide script
+misses Smoke / Fire / Sparkles / Highlight (the volcano's plume is a Smoke); three LocalScripts run small Heartbeat loops on every
+phone (microseconds each - no measurable cost); the owner id is copied in five scripts. The cost of hiding Japan on an ordinary
+client is small today only BECAUSE StreamingEnabled keeps the 20,373 parts 4,500 studs away: a client holds ~1-2k empty
+Models/Folders of it and zero parts. If streaming were ever turned off, or JapanMap made Persistent, every phone would walk 23k
+instances twice at join and hold ~21k property connections (~10 MB).
+
+A1d. FOR YOU IN JAPAN (owner-only, but it is what you see when you preview):
+- Your Area attribute FREEZES while you are in Japan (the spawn loop skips you there) instead of becoming "japan". Arrive by the
+  chateau taxi and Area stays "domaine": the French daily HUD, the golden pill, the question reminders, the treehouse pill and the
+  shop's France mode all show in Japan. Arrive by balloon and Area stays "porto": the shop in Italy mode, and the character's NoMusic
+  flag from Porto stays on so Japan is silent. Fix: set Area to "japan" in that branch - every gate already treats "japan" as "not
+  France", and nothing else needs it.
+- The train script can brick itself on the first ride: it disables all its prompts and sets busy BEFORE it reads JapanMap's Origin
+  attribute outside its error guard - a missing Origin (or a station without StationIndex, or a door without its offsets) leaves the
+  train dead until the server restarts. Fix: validate the attributes at start-up and read them before `busy`.
+- The chateau taxi teleports you 5,700 studs with no RequestStreamAroundAsync (the balloon path has one): you stand frozen until the
+  district loads, or fall through unloaded ground if streaming's pause is off. Fix: the TravelServer pattern (stream, then pivot).
+- Crossing z -260 and z -560 inside Japan trips the France/Porto hide scripts' lines (they walk all 70k of Porto's instances on your
+  client each time): a hitch when you walk from Tea Hills to the Fuji lookout or the volcano. Fix: ignore x > 4500 in both.
+- JapanAtmosphere waits for TeaHills.Waterwheel with no timeout before it starts: arriving at Lantern Street by balloon you may get no
+  Japan lighting until Tea Hills has streamed in.
+
 
 A2. THE BALLOON (Codex patched the live BalloonServer and BalloonClient; the ordinary ride was checked on both exit paths - completed
 and cut short - and still ends exactly as before: home, jump restored, "home" broadcast, prompt back, balloon_flights awarded; no
@@ -119,4 +154,16 @@ what to archive to a separate place. Studio itself sat at 1,860 MB with the plac
 
 ## E. Recommendation
 
-@@E@@
+Japan is a good-looking preview (nothing default-named, nothing unanchored, districts that read as places) sitting inside the live
+place as 23k hidden instances plus 22k of backups and five patched live scripts. Two choices:
+1. KEEP THE PREVIEW IN THE LIVE PLACE: then fix A1 (the module fallback), A1b (the two solid parts by the chateau pad), A2's first
+   three (the lighting/clouds restore, the balloon's safety net, the opt-in so your normal ride comes back) and the Area "japan"
+   line now - six small patches, one job - and leave the map work (B, D) for its own time. This is the quiet option if you are
+   actively previewing in the live game.
+2. MOVE JAPAN TO ITS OWN PLACE FILE until it is ready (JapanMap, the four LocalScripts, the two ServerScriptService scripts, the 22
+   backups, and the three patch lines backed out to their before/ copies - all of which we have): the live place loses 45k
+   instances and every Japan code path, and nothing above can bite a player. Then build the sea, the door, the squirrels and the
+   Area/Travel/HUD wiring in that file and bring it back whole. This is the cleaner option, and it is what I would do; the balloon
+   preview can come back the day Japan opens for everyone.
+Either way the five fixes in A1/A2 are cheap, and the sea (B1) and the door (B6) are the big design questions for you.
+
