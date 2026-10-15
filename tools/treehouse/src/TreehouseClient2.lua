@@ -147,7 +147,7 @@ local function buildHouse(n)
 		local b2 = part(Vector3.new(16, 0.5, 8), WOOD, L(0, 10.25, 12), houseF, Enum.Material.WoodPlanks, true); b2.Name = "Balcony"; b2.CanQuery = true
 		for _, z in ipairs({-6, 0, 6, 12}) do part(Vector3.new(16.4, 0.5, 0.8), WOOD_DARK, L(0, 9.75, z), houseF) end
 		for _, x in ipairs({-6, 6}) do part(Vector3.new(0.8, 0.5, 24.4), WOOD_DARK, L(x, 9.75, 4), houseF) end
-		for _, x in ipairs({-7, 7}) do part(Vector3.new(0.8, 9.5, 0.8), WOOD_DARK, L(x, 5.25, 15), houseF, nil, true) end   -- two stilts under the balcony's front
+		for _, x in ipairs({-7, 7}) do part(Vector3.new(0.8, 10, 0.8), WOOD_DARK, L(x, 5, 15), houseF, nil, true) end   -- two stilts under the balcony's front, feet on the ground
 	end
 	if n >= STAGES.railing then                                             -- the balcony's railing (always), the deck's until the walls come
 		local function post(x, z) part(Vector3.new(0.4, 1.3, 0.4), WOOD_DARK, L(x, 11.15, z), houseF, nil, true) end
@@ -156,7 +156,7 @@ local function buildHouse(n)
 		rail(-4.7, 15.8, 6.2, 0.25); rail(4.7, 15.8, 6.2, 0.25)                -- the gap is the top of the ladder
 		for _, x in ipairs({-7.8, 7.8}) do post(x, 8.5); rail(x, 12.1, 0.25, 7.6) end
 		if n < STAGES.walls then
-			for _, x in ipairs({-7.8, 7.8}) do for _, z in ipairs({-7.8, 1}) do post(x, z) end; rail(x, -3.4, 0.25, 9) end
+			for _, x in ipairs({-7.8, 7.8}) do post(x, -7.8); rail(x, 0.2, 0.25, 16.2) end
 			rail(0, -7.8, 16, 0.25)
 		end
 	end
@@ -186,9 +186,9 @@ local function buildHouse(n)
 		local l = Instance.new("PointLight"); l.Color = C(255, 200, 120); l.Range = 14; l.Brightness = 0.9; l.Shadows = false; l.Parent = lamp
 	end
 	if n >= STAGES.flag then
-		part(Vector3.new(0.2, 4.4, 0.2), C(70, 60, 50), L(5.8, 22.7, 0), houseF, Enum.Material.Metal)
-		part(Vector3.new(0.06, 1.3, 2.3), C(196, 56, 48), L(5.8, 24.2, 1.25), houseF, Enum.Material.Fabric)
-		part(Vector3.new(0.08, 0.42, 2.3), CREAM, L(5.8, 24.2, 1.25), houseF, Enum.Material.Fabric)
+		part(Vector3.new(0.2, 4.4, 0.2), C(70, 60, 50), L(7.8, 12.9, 15.8), houseF, Enum.Material.Metal)        -- on the balcony's front corner post, clear of the leaves
+		part(Vector3.new(0.06, 1.3, 2.3), C(196, 56, 48), L(7.8, 14.4, 14.55), houseF, Enum.Material.Fabric)
+		part(Vector3.new(0.08, 0.42, 2.3), CREAM, L(7.8, 14.4, 14.55), houseF, Enum.Material.Fabric)
 	end
 end
 local function signText(n)
@@ -216,7 +216,7 @@ toast.BackgroundColor3 = NAVY; toast.BackgroundTransparency = 0.1; toast.Font = 
 corner(toast, 12)
 local toastAt = 0
 local function say(t, secs)
-	toast.Text = t; toast.Visible = true
+	toast.Text = t; toast.Size = UDim2.fromOffset(400, #t > 60 and 66 or 40); toast.Visible = true
 	local mine = os.clock(); toastAt = mine
 	task.delay(secs or 3.5, function() if toastAt == mine then toast.Visible = false end end)
 end
