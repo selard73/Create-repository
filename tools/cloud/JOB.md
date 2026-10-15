@@ -3288,3 +3288,9 @@ Job 121 r3b (cloud thread, from runner 7's preview at ecd7c06: walls 9, door 5 w
 deck - a 6.30-tall avatar clears; stool and armchair seat, a jump frees; the LowerTorso 1.02 above the seat top): the seated root
 offset is HipHeight * 0.5 - 0.1 (was + 0.9). Same file, patch_treehouse3_r3.lua. Also logged by runner 7: Shannon asked "set me to
 zero pieces please" - workspace.Treehouse ResetRound = 2 in Edit (unpublished), so her pieces go once more on her next live join.
+
+Result job 121 r3b PREVIEW + INSTALLED (runner 7): patch_treehouse3_r3.lua at 8574619 (37108, adler32 2455483522). Play test: all three
+seats (stool 1, stool 2, armchair) -> Sit true, LowerTorso bottom 0.02 above the seat top (was 1.02) - t121b_armchair_sitting. Then
+INSTALLED in Edit on Shannon's "Yes, install it", unpublished: "QQ TREE121 DONE: TreehouseClient 34953 chars; the old one is
+HudBackup.TreehouseClient_pre_r3_3; PieceSound rbxassetid://16480570986 at 1.5x". Readback: one TreehouseClient 34953 chars; ResetRound
+2; TreehouseReset present. Unpublished in Edit now: jobs 117 (+ round 2), 118, 119 r2b, 120, 121.
