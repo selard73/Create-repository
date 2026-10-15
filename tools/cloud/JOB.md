@@ -2933,3 +2933,13 @@ x -130..102, the dirt re-grassed at (-18, 47); cleared from the site 9 (HudBacku
 s12/s25, bush_big_s9, pine_mid_s16, pine_squat_s17, round_tree_s21, pine_squat_s20); left standing: 8 Boundary.Dressing edge trees
 and 5 DomaineKit templates (stored ~100 below ground, 0 visible parts - harmless); 12 pieces; DONE at (-107, 0.1, 4) yaw 91.6; old
 folder HudBackup.Treehouse_pre_3. Homebase Treehouse now stands in the forest's north-west corner. Next: geo4.
+
+Result JAPAN GEO4 INSTALLED + PLAY CHECK (runner 7, Shannon "Yes, run it", Studio EDIT, unpublished): japan_geo4.lua at 026423a (5974,
+adler32 1343372298): "QQ GEO4 the horizon: 35 old parts removed; JapanMap['Horizon sea'] (Model, Persistent, Shade 0.80, Reflectance
+0.00) with 34 planes edge to edge at y -6.9 / -6.95 round the island's box x 5150..7150 z -1300..500, out to x 4000..13000 z
+-6000..6000; HorizonSeaClient 875 chars", "QQ GEO4 DONE: ...". Readback: Model under JapanMap, Persistent, 35 children, none left in
+workspace. Play: arriving FROM PORTO 34 of 34 planes on the client, 0 hidden; arriving FROM FRANCE (village -> Japan) 34 of 34, 0
+hidden. Shade tuned on the test client only (attributes): 0.80 = a dark navy band beyond the terrain edge; 1.45 = too bright cyan;
+1.10 = close, a little dark; 1.20 with Reflectance 0.10 = BEST - the step from 90 up nearly gone (geo4_90_up_shade120_refl010_BEST).
+PLEASE BAKE Shade 1.2, Reflectance 0.1 (I did not set them in Edit). West from (5250,20,-400) at 1.2: the hard dark line at x 4750
+is gone, a faint seam only. Eye level on the north shore: one sea to the horizon. No diagonal seam seen. Pictures tools/japan/shots_geo4/.
