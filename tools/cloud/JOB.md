@@ -2829,3 +2829,18 @@ tools/japan/shots_geo2/:
     at -228 and grass. A small sliver of blue shows at the weir's west foot.
  LAKE STAIR: no dark band - the water under the treads is clean blue; the treads above water are dark wood (geo2_lake_stair).
 Asked her to save; publish is hers.
+## Job 106 round 3: the Japan horizon, for real (Studio EDIT; ask Shannon first) - runner 7
+tools/japan/japan_geo3.lua (6169 bytes, compiles; needs geo2 in). From runner 7's geo2 play check: the horizon parts were Edit's green
+(52,104,78) against the client's Japan blue (24,112,151), only 2 of 7 streamed, and Japan's client fog is 99999..100000, so from 90
+up the streamed terrain sea ended in a stepped silhouette on the sky.
+ 1. HORIZON: the old "Horizon sea" folder (under JapanMap or workspace) goes; a MODEL "Horizon sea" directly under workspace with
+    ModelStreamingMode Persistent (all its parts on every client, always), planes 1 stud thick at y -6.9 from the ISLAND'S box
+    (x 5150..7150, z -1300..500) outward to x 4000..13000, z -6000..6000 (tiled under 2048: ~30 parts; the west edge 4000 keeps them
+    3000+ studs from Porto under France's fog), under the terrain sea where it is streamed and carrying on where it is not. Painted
+    (24,112,151), and HorizonSeaClient (RunContext Client, in the model) repaints them the terrain's live WaterColor on start and on
+    change - Japan's blue in Japan, France's green anywhere else. Locked, no collide/query/touch, no shadows.
+ 2. WEIR: "Weir" and "Weir lip" widened to 34 (x 6084..6118), into the canal's walls, over the blue sliver at the west foot.
+ Log HudBackup.JapanGeo3_log; waypoints before/after; "QQ GEO3" lines, "QQ GEO3 DONE".
+Play check after: from the north shore at eye height and from 90 up (the old stepped silhouette spot) - one blue sea to the sky, no
+step, no green band; the west view from the island's west shore; the weir's west foot; and from France - the Porto lighthouse top or
+the harbour looking east - that nothing new shows on the horizon (the model is on every client). Pictures; send the QQ GEO3 lines.
