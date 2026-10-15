@@ -2757,3 +2757,10 @@ floor's top row at 0.52 round (-18, 47); the sign's post behind the board; the r
     for a full-size avatar (the table reaches the knee); the mug is a plain red cube. The WINDOW is only on the outside: the right
     wall is one solid 13 x 6.5 part with the glass on its outer face, so inside there is no window above the shelf (same in round 2).
 Not installed: the furniture is new (her "make fixes when cloud fixed them" covered the floor and the sign) - asking her first.
+
+Result job 111 ROUND 3 PATCH INSTALLED (runner 7, Shannon chose "Install it all" after the preview pictures - furniture as it is;
+Studio EDIT, unpublished): patch_treehouse2_r3.lua at a9c0448 (29239, adler32 1316508335) - the same QQ TREE3 lines as the preview, word
+for word, through "QQ TREE3 DONE: the floor's top row at 0.52 round (-18, 47); the sign's post behind the board; the room furnished".
+Readback: one TreehouseClient (Script, RunContext Client, enabled, 24562 chars), HudBackup.TreehouseClient_pre_r3_1 there; ground
+(-24,47) 0.06 Ground, (-12,47) 0.06 Ground, (-18,24) 0.06 Grass, (-30,40) 0.06 Grass. Open by-eye notes (small furniture, cube mug,
+outside-only window) stay for a later round if she asks.
