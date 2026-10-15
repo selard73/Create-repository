@@ -7,7 +7,7 @@ local F = workspace:FindFirstChild("Thanks")
 local gifts = F and F:FindFirstChild("Gifts")
 if not gifts then print("QQ THANKS ABORT - workspace.Thanks.Gifts is not here (job 92's install_thanks1.lua)") return end
 local NAME, ACORNS, ID = "Carhartt0520", 1000, "carhartt0520_1"
-local NOTE = "Bonjour, Carhartt0520! The mayor is very well, thank you for asking - and even better now that a letter came. Hardly anyone writes to the mayor, so here are 1000 acorns for being lovely. Say hello to the squirrels for me."
+local NOTE = "You wrote to the mayor. The mayor wrote back. Everybody wins. Especially you."
 for _, v in ipairs(gifts:GetChildren()) do
 	if v:IsA("StringValue") and v.Name:lower() == NAME:lower() and (v:GetAttribute("Id") or "") == ID then
 		v.Value = tostring(ACORNS); v:SetAttribute("Note", NOTE)
