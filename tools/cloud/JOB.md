@@ -3294,3 +3294,7 @@ seats (stool 1, stool 2, armchair) -> Sit true, LowerTorso bottom 0.02 above the
 INSTALLED in Edit on Shannon's "Yes, install it", unpublished: "QQ TREE121 DONE: TreehouseClient 34953 chars; the old one is
 HudBackup.TreehouseClient_pre_r3_3; PieceSound rbxassetid://16480570986 at 1.5x". Readback: one TreehouseClient 34953 chars; ResetRound
 2; TreehouseReset present. Unpublished in Edit now: jobs 117 (+ round 2), 118, 119 r2b, 120, 121.
+
+PUBLISHED (Shannon: "published; testing it now.", Oct 16 2026): out with it - job 117 + ResetRound 2 (her treehouse starts over on her
+next live join), job 118 (Message in a Bottle stand on the Porto beach), job 119 r2b (bell per piece, 4.5 s holds, the finale with
+fireworks), job 120 (Aspej000's 1000 acorns), job 121 r3b (taller door/ceiling, armchair, sittable seats). Nothing left unpublished.
