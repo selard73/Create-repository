@@ -3298,3 +3298,8 @@ HudBackup.TreehouseClient_pre_r3_3; PieceSound rbxassetid://16480570986 at 1.5x"
 PUBLISHED (Shannon: "published; testing it now.", Oct 16 2026): out with it - job 117 + ResetRound 2 (her treehouse starts over on her
 next live join), job 118 (Message in a Bottle stand on the Porto beach), job 119 r2b (bell per piece, 4.5 s holds, the finale with
 fireworks), job 120 (Aspej000's 1000 acorns), job 121 r3b (taller door/ceiling, armchair, sittable seats). Nothing left unpublished.
+## Job 122: the finished Homebase's sign (Studio EDIT; her request = her go) - runner 7
+Shannon (Oct 15, in the live game): "why does the sign say Treehouse est. today.? welcome home? Maybe once its done it should
+Selbell's Homebase Treehouse?", then "Welcome home". The finished sign now reads "<DisplayName>'s / Homebase Treehouse / Welcome home!"
+(was "Homebase Treehouse / est. today. / Welcome home."). tools/treehouse/patch_treehouse3_r4.lua (make_patch_treehouse3_r4.py,
+compiles; replaces the client, old -> HudBackup.TreehouseClient_pre_r4_n; "QQ TREE122"). Nothing else changed from job 121 r3b.

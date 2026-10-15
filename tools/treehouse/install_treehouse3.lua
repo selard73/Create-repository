@@ -2,7 +2,7 @@
 -- Job 112: the HOMEBASE TREEHOUSE MOVES to Shannon's spot (-107, 4), a bigger room, no trunk inside. The old hollow is put back
 -- (folder to HudBackup, pines back, the wall re-joined, the dirt re-grassed; the dell's terrain stays). At the new site the forest props
 -- within 26 studs go to HudBackup.TreehouseCleared_n; a disk of Ground round the oak; the oak BEHIND the house; ten stones;
--- TreehouseServer (4806) + TreehouseClient3 (34953); twelve pieces unchanged. Log HudBackup.Treehouse3_log. No DataStore, no publish. Output "QQ TREE".
+-- TreehouseServer (4806) + TreehouseClient3 (35053); twelve pieces unchanged. Log HudBackup.Treehouse3_log. No DataStore, no publish. Output "QQ TREE".
 local SS = game:GetService("ServerStorage")
 local HttpService = game:GetService("HttpService")
 local T = workspace.Terrain
@@ -356,7 +356,7 @@ local function buildHouse(n)
 	end
 end
 local function signText(n)
-	if n >= TOTAL then return NAME .. "\nest. today.\nWelcome home." end
+	if n >= TOTAL then return player.DisplayName .. "'s\n" .. NAME .. "\nWelcome home!" end   -- (r4, Shannon: "once its done it should [say] Selbell's Homebase Treehouse")
 	if n < STAGES.deck then return string.format("Future home of\n%s.\nPlease excuse the dirt.\n%d of %d pieces found.", NAME, n, TOTAL) end
 	return string.format("%s\n%d of %d pieces found.\n%d to go.", NAME, n, TOTAL, TOTAL - n)
 end

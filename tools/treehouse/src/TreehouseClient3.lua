@@ -265,7 +265,7 @@ local function buildHouse(n)
 	end
 end
 local function signText(n)
-	if n >= TOTAL then return NAME .. "\nest. today.\nWelcome home." end
+	if n >= TOTAL then return player.DisplayName .. "'s\n" .. NAME .. "\nWelcome home!" end   -- (r4, Shannon: "once its done it should [say] Selbell's Homebase Treehouse")
 	if n < STAGES.deck then return string.format("Future home of\n%s.\nPlease excuse the dirt.\n%d of %d pieces found.", NAME, n, TOTAL) end
 	return string.format("%s\n%d of %d pieces found.\n%d to go.", NAME, n, TOTAL, TOTAL - n)
 end
