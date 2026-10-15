@@ -15,6 +15,15 @@ for _, m in ipairs({Enum.Material.Grass, Enum.Material.LeafyGrass}) do
 	local was = Terrain:GetAttribute(key)
 	if typeof(was) == "Color3" then Terrain:SetMaterialColor(m, was); Terrain:SetAttribute(key, nil); n += 1; print("QQ LOOK Terrain " .. m.Name .. " colour back") end
 end
+local cl = Terrain:FindFirstChildOfClass("Clouds")
+if cl then
+	if Terrain:GetAttribute("LookWas_Clouds") == "none" then cl:Destroy(); Terrain:SetAttribute("LookWas_Clouds", nil); n += 1; print("QQ LOOK Clouds removed (there were none before)")
+	elseif cl:GetAttribute("LookWas_Cover") ~= nil then
+		cl.Cover = cl:GetAttribute("LookWas_Cover"); cl.Density = cl:GetAttribute("LookWas_Density"); cl.Enabled = cl:GetAttribute("LookWas_Enabled") ~= false
+		for _, k in ipairs({"LookWas_Cover", "LookWas_Density", "LookWas_Enabled"}) do cl:SetAttribute(k, nil) end
+		n += 1; print("QQ LOOK Clouds back to how they were")
+	end
+end
 local cc = Lighting:FindFirstChild("LookGrade")
 if cc then cc:Destroy(); n += 1; print("QQ LOOK LookGrade removed") end
 print("QQ LOOK UNDO DONE (" .. n .. " put back)")

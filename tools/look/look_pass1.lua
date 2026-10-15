@@ -11,6 +11,7 @@
 -- Shannon's picks: each of the four changes is a switch here (false = left as it is)
 local WATER, BLOOM, GRADE, GRASS = true, false, true, true   -- (Shannon, Oct 15: water, grass, grading stay; bloom not)
 local BLOOM_THRESHOLD = 1.55
+local CLOUDS, CLOUD_COVER, CLOUD_DENSITY = true, 0.6, 0.4             -- (Shannon, Oct 15: "fluffy clouds in the sky?" - Roblox's volumetric Clouds under Terrain)
 local Lighting = game:GetService("Lighting")
 local Terrain = workspace.Terrain
 local mode = game:GetService("RunService"):IsRunning() and "PREVIEW (play test, discarded on stop)" or "EDIT (the real change; undo = look_undo1.lua)"
@@ -43,6 +44,21 @@ for _, m in ipairs(GRASS and {Enum.Material.Grass, Enum.Material.LeafyGrass} or 
 	if Terrain:GetAttribute(key) == nil then Terrain:SetAttribute(key, was) end
 	Terrain:SetMaterialColor(m, Color3.fromRGB(86, 140, 62))
 	table.insert(changed, string.format("Terrain %s colour %d,%d,%d -> 86,140,62", m.Name, math.floor(was.R * 255 + 0.5), math.floor(was.G * 255 + 0.5), math.floor(was.B * 255 + 0.5)))
+end
+-- clouds
+if CLOUDS then
+	local cl = Terrain:FindFirstChildOfClass("Clouds")
+	if not cl then                                                      -- (values set BEFORE parenting: set after, they did not replicate to a test client)
+		cl = Instance.new("Clouds"); cl.Name = "Clouds"
+		cl.Cover = CLOUD_COVER; cl.Density = CLOUD_DENSITY; cl.Color = Color3.fromRGB(255, 255, 255); cl.Enabled = true
+		cl.Parent = Terrain
+		if Terrain:GetAttribute("LookWas_Clouds") == nil then Terrain:SetAttribute("LookWas_Clouds", "none") end   -- (none before: the undo destroys it)
+		table.insert(changed, string.format("Clouds added: Cover %.2f, Density %.2f, white", CLOUD_COVER, CLOUD_DENSITY))
+	else
+		if cl:GetAttribute("LookWas_Cover") == nil and Terrain:GetAttribute("LookWas_Clouds") ~= "none" then cl:SetAttribute("LookWas_Cover", cl.Cover); cl:SetAttribute("LookWas_Density", cl.Density); cl:SetAttribute("LookWas_Enabled", cl.Enabled) end
+		table.insert(changed, string.format("Clouds %s: Cover %.2f -> %.2f, Density %.2f -> %.2f", cl.Name, cl.Cover, CLOUD_COVER, cl.Density, CLOUD_DENSITY))
+		cl.Cover = CLOUD_COVER; cl.Density = CLOUD_DENSITY; cl.Color = Color3.fromRGB(255, 255, 255); cl.Enabled = true
+	end
 end
 print("QQ LOOK " .. mode)
 for _, l in ipairs(changed) do print("QQ LOOK " .. l) end

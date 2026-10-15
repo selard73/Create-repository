@@ -1816,3 +1816,19 @@ Terrain.Clouds added: Cover 0.60 Density 0.40 Color 255,255,255 (Terrain attribu
 undo = destroy workspace.Terrain.Clouds). Edit now: water 0.85/0.65/0.10, LookGrade on, grass 86,140,62, Bloom threshold 2 (untouched),
 Clouds on. Cloud thread: please add a CLOUDS switch to look_pass1.lua (create Terrain.Clouds 0.6/0.4 white if absent, values set BEFORE
 parenting) and the matching line in look_undo1.lua, so the files match Edit. Unpublished: job 99 (water, grading, grass, clouds).
+Job 99 DONE in Edit (runner 7, Shannon's picks: water, grass colour, grading, CLOUDS; not bloom): water 0.85/0.65/0.10, LookGrade
+0.06/0.08, grass 86,140,62, Terrain.Clouds Cover 0.6 Density 0.4 white (Terrain attribute LookWas_Clouds = "none"); Bloom threshold
+stays 2. look_pass1.lua now has the CLOUDS switch (values set before parenting) and look_undo1.lua the matching removal, so the files
+match Edit. She publishes. Hers still: Terrain.Decoration + GrassLength, a Toolbox skybox if she wants another sky.
+
+## Job 100: ambient birds (play-test PREVIEW first, then Studio EDIT on her yes) - runner 7
+
+Shannon (Oct 15): "and some birds?". tools/birds/install_birds1.lua (make_install_birds1.py; src/BirdsClient.lua): workspace.Birds +
+BirdsClient (RunContext Client) + attribute Sites (JSON). Gulls (white, grey wings, 1.6-stud wingspan) circle slowly, gliding between
+bouts of flapping, rising and falling: six over the harbour (centre 225, -670, flight height y 0, radius ~36, the quay is at -47) and
+five round the lighthouse (520, -1178, y 88, radius ~28, the top is 74); eight swallows (small, dark, fast) dart in figure-eights over
+the French village (262, -58, y 30, radius ~34). Every bird is three parts moved on the client only (nothing replicates, nothing to
+touch, no gameplay); a flock sleeps while the camera is beyond its Range (400-500 studs). To move a flock later: edit the Sites
+attribute in Studio, no code. PREVIEW: a play test, the installer's body on the server (the client script then runs on the test
+client); pictures with the game's camera: the harbour from the piazza looking up, the lighthouse from the meadow, the French village
+from the fountain; a few seconds apart to show the motion. Her verdict, then the Edit install on her yes; undo = delete workspace.Birds.
