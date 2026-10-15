@@ -1775,3 +1775,5 @@ old folder is HudBackup.Interact_pre_1 (InteractServer 8554, disabled). Play tes
 join-time items, only "Interact: Seat "Harbour bench" by CozyGameMode (Studio, not sent)" - 0 bookkeeping Item lines (round 1 printed
 daily_day, daily_streak, frenchrank): the filter works. Lines in tools/interact/playtest98_result_2026-10-14.txt. She publishes; then
 job 99's preview.
+Edit check after the round-2 test (runner 7): v1369; Interact (InteractServer 8921, Enabled true, Repeat 60, Budget 90); Funnel
+(FunnelServer 7394, ForceNew false); backups Funnel_pre_1, Interact_pre_1; no leftovers; HttpEnabled false. Unpublished: job 98 round 2.
