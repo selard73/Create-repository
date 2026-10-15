@@ -3238,3 +3238,8 @@ Job 119 r2b (cloud thread, from runner 7's preview at 9b3f011: the bell only, th
 all right; the fireworks a faint sparkle trail in daylight, bursting in the banner's band): the bursts alternate either side of the
 house (local x +-11..19) at 15..25 above the oak's foot - beside the house, below the banner - 130 sparks of size 1.8 (Brightness 5
 where the property exists) with a brighter, wider flash. Same file, patch_treehouse3_r2.lua, re-run over the preview state or Edit.
+## Job 120: a 1000-acorn thank-you for Aspej000 (Studio EDIT; her request = her go) - runner 7
+Shannon (Oct 15): "please send 1000 acorns and a thank you to aspej000 @Aspej000" (wrote "Do you like Jazz?" at La Poste; Roblox id
+8974266168, users API). tools/thanks/gift_aspej000.lua (job 114's script, compiles): workspace.Thanks.Gifts.Aspej000 = 1000, Id
+aspej000_1, Note "Thanks for writing to the mayor! Here are 1000 acorns. Spend them on something jazzy."; paid once on their next
+join after the publish. "QQ THANKS DONE".
