@@ -1,0 +1,24 @@
+# Job 98 INSTALL + PLAY TEST, runner 7, Oct 14 2026 ~20:40Z, Shannon: "clear, install"; Studio EDIT (v1369); both installers at 8a45f57
+# fetched in Edit from the raw commit URLs (HttpEnabled on, back off), run UNPATCHED via a temporary ModuleScript each (require; destroyed).
+# step 1: install_funnel1.lua (len 12186, adler32 2271121862 = the git blob)
+QQ FUNNEL DONE: workspace.Funnel (FunnelServer 7394, FunnelClient 1913 chars; Enabled true, ForceNew false, LogPrints true); the old folder is HudBackup.Funnel_pre_1
+# step 2: install_interact1.lua (len 10858, adler32 461758808 = the git blob)
+QQ INTERACT DONE: workspace.Interact (InteractServer 8554 chars; Enabled true, Repeat 60, Budget 90)
+EDIT after: workspace.Interact = InteractServer 8554 (RunContext Server); attrs Enabled true, Repeat 60, Budget 90 (no LogPrints attribute); HttpEnabled false; no leftovers
+# PLAY TEST (test server; the runner drove the avatar from the server, the prompt and the tool from the client):
+Interact: ready (prompts, clicks, seats, tools, areas, items; events leave only a published place)
+Interact: Item "daily_day" by CozyGameMode (Studio, not sent)
+Interact: Item "daily_streak" by CozyGameMode (Studio, not sent)
+Interact: Seat "Harbour bench" by CozyGameMode (Studio, not sent)          <- Seat:Sit on the Bench Seat at (230,-45,-615)
+Interact: Area "village" by CozyGameMode (Studio, not sent)                <- teleport to (203,3,-40)
+Interact: Item "frenchrank" by CozyGameMode (Studio, not sent)
+Interact: Area "porto" by CozyGameMode (Studio, not sent)                  <- teleport back to (430,-8,-770)
+Interact: Tool "Binoculars" by CozyGameMode (Studio, not sent)             <- Humanoid:EquipTool (the test account has no Camera tool; tools: Binoculars, Slingshot)
+Interact: ToolUse "Binoculars" by CozyGameMode (Studio, not sent)          <- Tool:Activate() on the client
+Interact: Prompt "Harbour bell" by CozyGameMode (Studio, not sent)         <- the "Ring" prompt of the Brass harbour bell at (251,-41,-597), InputHoldBegin/End on the client at 4.7 studs
+Interact: Item "passport_porto_bell" by CozyGameMode (Studio, not sent)
+# Repeat: a second Seat:Sit on the same Harbour bench ~40 s after the first printed NOTHING (correct).
+# Not exercised: Click (ClickDetector) - the Studio automation mouse cannot reach 3D click detectors (same limit as the belvedere paging).
+# Note for the cloud thread: Item events fired for daily_day, daily_streak, frenchrank, passport_porto_bell - save bookkeeping (the daily
+# card's day/streak, the French rank, a passport stamp) counts as "items gained"; say if those should be filtered so the dashboard shows
+# only shop buys / keepsakes / the backpack / the chute.

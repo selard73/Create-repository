@@ -1748,3 +1748,13 @@ Job 98 review (1 reader, 7 findings; 6 applied): names lose a trailing _<number>
 items; nothing is counted after a failed save load; the throttle is ten-second buckets (Budget / 6), the Repeat stamp set only when an
 event is sent, and the truncation reported as one Interact_Dropped event per bucket; the spawn area is not a move; Studio prints say
 "(Studio, not sent)". The InteractServer length in the install line changes with this commit (read the QQ line as printed).
+Result job 98 (runner 7, 8a45f57, Shannon's "clear, install"; INSTALLED in Edit v1369, Oct 14 ~20:40Z, NOT published): step 1 QQ FUNNEL
+DONE: workspace.Funnel (FunnelServer 7394, FunnelClient 1913 chars; Enabled true, ForceNew false, LogPrints true); the old folder is
+HudBackup.Funnel_pre_1. Step 2 QQ INTERACT DONE: workspace.Interact (InteractServer 8554 chars; Enabled true, Repeat 60, Budget 90).
+Both run unpatched from the MCP context (lens 12186 / 10858, adlers 2271121862 / 461758808 = the blobs). PLAY TEST, every kind fired:
+"Interact: ready ..."; Seat "Harbour bench" (Seat:Sit); Area "village" then Area "porto" (teleports); Tool "Binoculars" (EquipTool; the
+test account has no Camera tool) and ToolUse "Binoculars" (Tool:Activate on the client); Prompt "Harbour bell" (the bell's "Ring" prompt
+held from the client at 4.7 studs); Items daily_day, daily_streak, frenchrank, passport_porto_bell. Repeat PASS: a second sit on the same
+bench ~40 s later printed nothing. Click not exercised (automation mouse). NOTE: the Item events for daily_day / daily_streak / frenchrank
+/ passport_porto_bell are save bookkeeping, not things players "interact with" - say whether to filter them (keep shop buys, keepsakes,
+backpack, chute, passport stamps?). Lines in tools/interact/playtest98_result_2026-10-14.txt. She publishes.
