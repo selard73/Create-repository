@@ -1765,3 +1765,7 @@ Job 98 round 2 (cloud thread, after the play test): the save's bookkeeping is no
 passport_* (stamps), frenchrank, champion*, thanks_*, funnel, porto; what stays: shop buys and keepsakes, the backpack, the chute, the
 gifts card's rows. A re-run of install_interact1.lua (the old folder -> HudBackup.Interact_pre_1) before her publish; expect
 "QQ INTERACT DONE: workspace.Interact (InteractServer <new length> chars; ...)".
+PUBLISHED by Shannon at 02:43:10Z Oct 15 (games API "updated", seen by runner 7 at 02:46Z): job 98 round 1 (the interaction counter
++ the funnel refresh) is LIVE, Items unfiltered. Round 2 (9d5b80e: Item events skip daily_*, passport_*, frenchrank, champion*,
+thanks_*, funnel, porto) is verified on the branch (install_interact1.lua 11225 bytes, adler32 465068626 = raw); runner 7 is asking
+her yes for the re-run (old folder -> HudBackup.Interact_pre_1), then a quick play test, then her publish, then job 99's preview.
