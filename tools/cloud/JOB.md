@@ -2484,3 +2484,9 @@ Birds v6 (Shannon, after the publish: "those birds flying in the france map are 
 The Birds"): the village swallows are THREE (were eight), on a wider lazy figure-eight at less than half the speed (0.38, was 0.85),
 flapping in bouts between glides (3.2 beats/s, was 6), banking less. Harbour and lighthouse gulls unchanged. Re-run
 install_birds1.lua in Edit (re-runnable; the Templates carry over), then a play test over the Rue (a picture), then publish on her word.
+
+Treehouse round 4 (Shannon, hunting the pieces live: "put a yellow glowy outline around the treehouse pieces, the way you do to
+show things are interactable, to make them stand out more"): every piece this player has not found carries the interact pills'
+gold Highlight (outline solid, a soft fill that breathes), occluded by walls like the pill outlines. At most 12 highlights per
+player, under Roblox's 31. Re-run install_treehouse1.lua in Edit (re-runnable: the old folder -> HudBackup; the per-player saves
+are untouched - the pieces are on the save, not in the folder), a play-test picture of a glowing piece, publish with the next batch.

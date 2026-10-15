@@ -90,6 +90,10 @@ local function makePiece(pc)
 	local bb = Instance.new("BillboardGui"); bb.Name = "Tag"; bb.Size = UDim2.fromOffset(120, 22); bb.StudsOffset = Vector3.new(0, 2.4, 0); bb.MaxDistance = 42; bb.AlwaysOnTop = false; bb.Parent = main
 	local t = Instance.new("TextLabel"); t.Size = UDim2.fromScale(1, 1); t.BackgroundColor3 = NAVY; t.BackgroundTransparency = 0.25; t.Font = FONT; t.TextSize = 13; t.TextColor3 = GOLD; t.Text = "Treehouse piece"; t.Parent = bb
 	local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0, 8); c.Parent = t
+	-- the gold glow the interact pills use (PromptClient's outline colour), on every piece within sight so it stands out from the grass
+	-- (Shannon, Oct 15: "a yellow glowy outline around the treehouse pieces, the way you do to show things are interactable")
+	local hl = Instance.new("Highlight"); hl.Name = "Glow"; hl.Adornee = m; hl.FillColor = C(255, 214, 90); hl.FillTransparency = 0.8
+	hl.OutlineColor = C(255, 214, 90); hl.OutlineTransparency = 0; hl.DepthMode = Enum.HighlightDepthMode.Occluded; hl.Parent = m
 	local pr = Instance.new("ProximityPrompt"); pr.Name = "PickUp"; pr.Style = Enum.ProximityPromptStyle.Custom
 	pr.ObjectText = "Treehouse piece"; pr.ActionText = "Pick up"; pr.MaxActivationDistance = 10; pr.HoldDuration = 0; pr.RequiresLineOfSight = false
 	pr.Parent = main
@@ -102,6 +106,10 @@ local function makePiece(pc)
 	m.Parent = piecesF
 	pieceModels[pc.id] = m
 end
+game:GetService("RunService").Heartbeat:Connect(function()
+	local f = 0.72 + 0.16 * math.sin(os.clock() * 2.2)
+	for _, m in pairs(pieceModels) do local g = m:FindFirstChild("Glow"); if g then g.FillTransparency = f end end
+end)
 local function placePieces()
 	for _, pc in ipairs(PIECES) do
 		local m = pieceModels[pc.id]
