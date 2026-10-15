@@ -2718,3 +2718,10 @@ old folder is HudBackup.Treehouse_pre_2". Pictures tools/treehouse/shots/r2_hb*.
     THE DOORWAY from the balcony (r2_hb11): the room's floor and the trunk standing against the back wall, door clear. INSIDE
     (r2_hb10): the trunk at the back, 8 studs of open floor in front of it; the room is empty (no furniture).
 Waits for her word to install (the floor occupancy and the sign post are the two things left).
+
+Result job 111 ROUND 2 INSTALLED (runner 7, Shannon: "install now, and make fixes when cloud fixed them", Studio EDIT, unpublished):
+install_treehouse2.lua at 7a9aa6e (42201, adler32 438641579) - the same QQ lines as the round 2 preview, word for word ("QQ TREE DONE:
+Homebase Treehouse at (-18, 0.0, 47) yaw 155.5 in its hollow; 12 pieces placed; TreehouseServer 4806, TreehouseClient 22929 chars; the
+old folder is HudBackup.Treehouse_pre_2"; dressing in HudBackup.TreehouseCleared_1). Readback: ground at (-24,47) y 2.00 Ground,
+(-18,24) 1.92 Grass, (-18,12) 0.06 Grass. NEXT: she wants the floor (occupancy ~0.52 in the -4..0 row) and the sign post fixed as a
+PATCH on top of this installed version - please make it re-runnable against the installed Homebase, not a fresh install.
