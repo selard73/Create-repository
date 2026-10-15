@@ -3032,3 +3032,10 @@ to geo4b), birds v7 with the bench gull, croc jobs 113 + 113r2, gift job 114. No
 Open: the World Pass timing and the under-13 check; the treehouse add-ons and decorations; the piece-finder product id (108);
 Star's statue log lines; later the multi-place split, the PortoEnvironmentBackup archive, Japan FINDINGS (the canal's bright
 sheet behind the weir, the door, the floating backdrop).
+## Job 115: what brings players back (read-only, Oct 17) - runner 7
+Shannon (Oct 15): new players have suddenly started coming back for a second play; "yes please do" to reading what they head for.
+Her choice: "You read it in my Chrome". Runner 7's one-time run Oct 17 10:00 -04:00 (14:00Z) reads her Creator Dashboard read-only:
+Custom Events Interact_Prompt / Area / Item / Seat / Tool by Cohort and Name (top 15), day-1 retention by platform (7 days), the
+Funnel steps; it messages the cloud thread "Runner 7: Creator Dashboard read for what brings players back (Oct 17)" (screenshots
+from her if Chrome is not connected). The cloud thread's own check-in fires Oct 17 17:16Z as a fallback. Then: Returning vs New, what
+to build more of.
