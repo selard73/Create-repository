@@ -2893,3 +2893,14 @@ Reflectance (0) are applied by HorizonSeaClient on start and on any change of th
 them live in play (Explorer: JapanMap > Horizon sea > Attributes) until the far planes match the terrain water at the streamed edge,
 then set the found values on the model in Edit (they replicate). "QQ GEO4" lines. Check: from Porto's side AND the balloon side
 nothing hidden (34 of 34 with LocalTransparencyModifier 0); the colour step from 90 up and the west line at x 4750 softened; no seam.
+## Job 112 (queued, waiting on her position): MOVE the Homebase Treehouse + a bigger room with no trunk inside
+Shannon (Oct 15, after round 3b): "I still do not like the location of the treehouse. I want it where my player is standing now in
+the live game. you will have to remove some trees to put it there." and "the inside area needs to be bigger and maybe remove the
+tree trunk going through the middle on the inside, it just takes up too much room."
+Plan: she opens Studio, presses Play, walks to the spot, says "I'm there"; runner 7 reads HumanoidRootPart position + ground + every
+model/part within 30 studs + a picture from above. Then make_install_treehouse3.py: SITE = her spot; clear trees/rocks/mushrooms in
+a ~24 radius to HudBackup.TreehouseCleared_n; level a disk of ground at the forest's row (occupancy 0.52); the oak as a great stump:
+the trunk ends UNDER the deck (no trunk in the room), branches out from below the deck, the leaf crown round and above the roof;
+deck ~22 x 22, balcony 22 x 8, room ~19 inside, door/window/lantern/flag/furniture out with the walls, the middle open floor; the
+sign and the reveal follow the site (TREE attribute). The old hollow: the dressing pines back from HudBackup.TreehouseCleared_n, the
+wall U removed (HollowWallBack etc.) and the north edge wall restored, the dell left grassy (not refilled unless she asks). Pieces stay.
