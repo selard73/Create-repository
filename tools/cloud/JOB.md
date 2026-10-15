@@ -1796,3 +1796,12 @@ is a night check - ClockTime 14.5 keeps the lamps unlit by day); each of the fou
 SHANNON's picks from the ten look-pass pictures (Oct 15): WATER, GRASS COLOUR and COLOUR GRADING stay; BLOOM does not (the daylight
 paving glare). Runner 7 set BLOOM = false in tools/look/look_pass1.lua (line 12) on epic-hawking and runs it in Edit with that switch;
 undo = tools/look/look_undo1.lua.
+Result job 99 EDIT run (runner 7, f547f6d = 55f6931 with BLOOM = false; Shannon's picks; INSTALLED in Edit, Oct 15 ~03:15Z, NOT
+published): QQ LOOK EDIT (the real change; undo = look_undo1.lua) / Terrain.WaterReflectance 0.55 -> 0.85 / WaterTransparency 0.45 ->
+0.65 / WaterWaveSize 0.06 -> 0.1 / LookGrade added / Terrain Grass colour 96,150,72 -> 86,140,62 / LeafyGrass the same / QQ LOOK DONE
+(6 lines). Edit now: water 0.85 / 0.65 / 0.10; Bloom threshold 2 (untouched); LookGrade contrast 0.06 sat 0.08; grass 86,140,62;
+LookWas_ attributes on Terrain: GrassColor, LeafyGrassColor, WaterReflectance, WaterTransparency, WaterWaveSize (the undo's record).
+SHANNON, right after (Oct 15): "I thought you were going to add fluffy clouds in the sky?" and "and some birds?" - CLOUDS: runner 7 is
+previewing Roblox's volumetric Clouds (Instance "Clouds" under Terrain: Cover ~0.6, Density ~0.4, white) in a play test now; if she
+likes them they are one more switch in look_pass1.lua (+ undo). BIRDS: a new job for the cloud thread - ambient birds (gulls circling
+over the harbour and the lighthouse, swallows over the village), simple looping flight paths, light, no gameplay; design it.
