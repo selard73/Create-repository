@@ -2718,9 +2718,19 @@ old folder is HudBackup.Treehouse_pre_2". Pictures tools/treehouse/shots/r2_hb*.
     THE DOORWAY from the balcony (r2_hb11): the room's floor and the trunk standing against the back wall, door clear. INSIDE
     (r2_hb10): the trunk at the back, 8 studs of open floor in front of it; the room is empty (no furniture).
 Waits for her word to install (the floor occupancy and the sign post are the two things left).
-Job 111 ROUND 3 (cloud thread, from runner 7's round-2 preview and its voxel reading): the hollow's top voxel row is set to the
-forest's occupancy 0.52 after the terrain work (a full row draws 2 studs high; the forest's draws at 0.1), so the floor and the roots
-sit level with the forest; the sign's post moved behind the board (it hid the bottom line); furniture: a round table, two stools and
-a mug with the walls, a shelf of books and an acorn jar with the window, a rug by the door and a cushion in the corner when done.
-The terraces stay invisible from the tower (the terrain smooths them) - fine. Preview once more from this commit: the floor y at the
-oak (expect ~0.1), the sign, the room; then install on her word.
+Job 111 ROUND 3 (cloud thread; CORRECTION of the cd56cb2 note, which claimed client edits a failed anchor had left out). Runner 7
+installed round 2 (7a9aa6e) in Edit on Shannon's word ("install now, and make fixes when cloud fixed them"), floor still y 2.0, and
+asked for round 3 as a PATCH over it, not a fresh install. tools/treehouse/patch_treehouse2_r3.lua (make_patch_treehouse2_r3.py):
+ 1. FLOOR: the hollow's top voxel row (y -4..0, bowl radius 31 + the mouth x +-26 z 16..32) set to the forest's occupancy 0.52 wherever
+    it is fuller (ReadVoxelChannels / WriteVoxelChannels SolidOccupancy) -> surface y ~0.1, the roots show. Readback lines at the oak,
+    the mouth, left and right: "QQ TREE3 readback <where>: occupancy 0.52 Grass -> surface y ~0.1".
+ 2. CLIENT (TreehouseClient2.lua round 3): the sign's post at L(-9, 1.5, 17.6), behind the board (its back is at 17.85), so it never
+    crosses the bottom text line; furniture - with the walls a table (x 2.4..5.6, z -4.8..-2.8, clear of the trunk's 2.4 radius at
+    z -4), two stools and a mug; with the window a shelf under it (x -6.3..-5.3) with a potted plant; with the flag a round rug
+    (a cylinder stood on end, 5 wide) mid-room and a gold cushion by the window. All looks-only (no collide, no query).
+    The installed TreehouseClient is disabled, cloned to HudBackup.TreehouseClient_pre_r3_n, destroyed, and a fresh Script (RunContext
+    Client) carries the new source; the new client clears the old Treehouse_local and TreehouseGui itself, so in play it restarts clean.
+ Needs workspace.Treehouse (aborts otherwise); re-runnable (a second run finds the client already round 3). Waypoints before/after.
+ install_treehouse2.lua is regenerated from the same client (44986 bytes) for a future fresh install only.
+Preview in play from this commit (the floor y at the oak ~0.1 and the readback lines, the sign's bottom line, the room furnished),
+then install in Edit on her word; geo2 (323dd1f) after that; then she publishes.
