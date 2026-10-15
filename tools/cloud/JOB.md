@@ -2925,3 +2925,11 @@ mushrooms_s25, pine_mid_s16, pine_squat_s17, round_tree_s21, pine_squat_s20, mus
 trees, 5 DomaineKit templates (stored ~100 under ground, 0 visible parts - harmless), Baseplate; p1..p12; "QQ TREE DONE: Homebase
 Treehouse at (-107, 0.1, 4) yaw 91.6, the trunk behind the house; 12 pieces placed; TreehouseServer 4806, TreehouseClient 25951
 chars; the old folder is HudBackup.Treehouse_pre_3". Treehouse Tree attr {x -107, z 4, y 0.06, yaw 91.6}. Unpublished; asked her to save.
+Result job 112 (runner 7, fc531ed, INSTALLED in Edit, unpublished; logged at 537d4e4). Preview 723a34a in her own Play session first
+(she saw it live; "I JUST WANT IT WHERE A AM CURRENTLY STANDING"): a pine stood inside the deck and poked through the roof - the
+clearing went by pivot, and some Forest models' pivots sit far from their geometry -> fc531ed clears by bounding box (centre within
+26 or nearest point within 18). Install: old hollow - 5 pines back from TreehouseCleared_1, the U removed (3), the north edge re-joined
+x -130..102, the dirt re-grassed at (-18, 47); cleared from the site 9 (HudBackup.TreehouseCleared_2: pine_mid_s10, mushrooms_s11/
+s12/s25, bush_big_s9, pine_mid_s16, pine_squat_s17, round_tree_s21, pine_squat_s20); left standing: 8 Boundary.Dressing edge trees
+and 5 DomaineKit templates (stored ~100 below ground, 0 visible parts - harmless); 12 pieces; DONE at (-107, 0.1, 4) yaw 91.6; old
+folder HudBackup.Treehouse_pre_3. Homebase Treehouse now stands in the forest's north-west corner. Next: geo4.
