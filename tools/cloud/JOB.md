@@ -3325,3 +3325,6 @@ INCLUDES jobs 122 (the sign) and 123 (sit on touch) - install r6 instead of r5 i
 PREVIEW: the load line (does it load? how long is it?); then her LISTENING PASS: in a play test, a command-bar loop that plays each
 slice in turn with its number (e.g. for i, c in slices: play, print i, wait) so she can say "3 and 7 are silence / a clang" - then set
 PieceClips by hand to the good parts. Then install in Edit with that PieceClips value, and she publishes.
+Job 124 r6b (cloud thread): Shannon saw the 122 sign in a preview and did not like the layout ("Maybe do Homebase Treehouse Welcome home
+SelBell?"): the finished sign reads "Homebase Treehouse / Welcome home, <DisplayName>!". Same file, patch_treehouse3_r6.lua. Nothing of
+122 / 123 / 124 is installed yet (runner 7).
