@@ -2406,3 +2406,31 @@ anchor is confirmed, then run on her word; expect "QQ HALL HallServer 5874 -> n"
 Separately noted: STAR's body is short (BodyTypeScale 0.4) so the statue is small in the frame and its acorn floats beside the
 hand - a picture and the hand / acorn positions (GetBoundingBox of the GiantAcorn vs the LeftHand) would let me size the acorn to
 the hand rather than the body.
+
+Result job 109 INSTALLED (runner 7, Shannon's "Yes, 600 / 2500 acorns", Studio EDIT, unpublished): install_passes1.lua at 19ceb34
+(9597, adler32 349118418): "QQ PASS ShopClient is 38666 chars", "QQ PASS DONE: workspace.Passes (PassServer 2815 chars;
+Pass_ziphandle 2036372649, Pass_glider 2037656625); ShopClient 38666 -> 41226 chars; Price_ziphandle 60, Price_glider 1000 acorns";
+then workspace.Shop Price_ziphandle 60 -> 600, Price_glider 1000 -> 2500 (her prices). Play test (Item_ziphandle / Item_glider set 0
+on the test server, since the owner has both): the France tab's rows read "600 acorns" + a green Robux button " 45" (zipline handle)
+and "2500 acorns" + " 72" (hang glider); both buttons 70 x 36 at x 884 / 958 inside the 408-wide row, no overlap. Pictures
+tools/passes/shots/store_*_row.jpg. Not tested: the actual purchase prompt (Studio test purchase) and a phone-size view.
+
+Result job 110 PREVIEW (runner 7, 19ceb34, same play test, nothing installed): install_buyhere1.lua (7201, adler32 1001074480): "QQ
+BUYHERE DONE: workspace.BuyHere (BuyHereClient 5141 chars; 2 spots: Zipline/Launch NOT FOUND, HangGlider/Ramp found)". The zipline
+has NO child "Launch" - its launch is only the attributes LaunchX/Y/Z = (-17.15, 78.8, 5); the tower-top parts are
+Zipline.StationPost (-19,72,3) and Zipline.StationSign (-19,74,3) (the deck itself is ForestTower.Deck5, top y 70.3). In the preview
+I set the zipline spot's anchor to "Zipline/StationPost" with dy 4: the card shows over the post at the tower top ("Zip line handle /
+600 acorns or 45 / Buy here"). The glider card over HangGlider.Ramp.Rail: "Hang glider / 2500 acorns or 72 / Buy here", clean.
+workspace.Shop.OpenAt:Fire("glider") opens the store with the Hang glider row at the top of the list. Pictures
+tools/buyhere/shots/buyhere_*.jpg. FIX FOR THE INSTALL: the zipline spot's anchor -> "Zipline/StationPost" (or a point from the
+Launch attributes).
+
+Result STAR follow-up (runner 7): HallClient exported (tools/statues/studio_2026-10-15/HallClient_France.lua, 4155, adler32
+2260345047, verified) for hallretry1's anchor. STAR's statue (StatueDebug 3129625152 at the fountain): LeftHand pos
+(261.40,8.19,-53.98) SIZE (0.77,2.85,0.97) (her own avatar's LeftHand is 0.82 x 0.89 x 0.80); GiantAcorn box centre
+(261.40,10.21,-53.98) size (1.27,1.59,1.27), bottom 9.42 (the hand box top is 9.62); Head (262.81,7.66,-53.72) size 1.72. Upper
+arms 0.52 x 0.62, lower arms 0.37 x 0.36 - a body package whose HAND part carries most of the arm length (a 2.85-tall hand box). So
+the acorn is placed on the top of a hand BOX that reaches far above the visible hand: in the picture
+(tools/statues/shots/star_fountain_acorn.jpg) the acorn floats about a head's height above the statue and no raised arm reads.
+Suggest: rest the acorn on the hand's lowest-third point along the arm direction (or on the LeftLowerArm end + a fixed offset), and
+size it from the head, not the body height, when the hand box is taller than ~1.5 x its width.
