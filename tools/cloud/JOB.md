@@ -2844,3 +2844,35 @@ up the streamed terrain sea ended in a stepped silhouette on the sky.
 Play check after: from the north shore at eye height and from 90 up (the old stepped silhouette spot) - one blue sea to the sky, no
 step, no green band; the west view from the island's west shore; the weir's west foot; and from France - the Porto lighthouse top or
 the harbour looking east - that nothing new shows on the horizon (the model is on every client). Pictures; send the QQ GEO3 lines.
+
+Result JAPAN GEO3 INSTALLED + PLAY CHECK (runner 7, Shannon "Yes, run it" in this session, Studio EDIT, unpublished): japan_geo3.lua at
+b770974 (6169, adler32 3875565686): "QQ GEO3 the horizon: 7 old parts removed; workspace['Horizon sea'] (Model, Persistent) with 34
+planes at y -6.9 round the island's box x 5150..7150 z -1300..500, out to x 4000..13000 z -6000..6000, colour (24,112,151) +
+HorizonSeaClient (573 chars) painting the live WaterColor", "QQ GEO3 the weir: 2 parts widened to 34 (x 6084..6118), into the canal's
+walls, over the sliver at the west foot", "QQ GEO3 DONE: ...". Readback: Model, Persistent, 35 children, no old folder in JapanMap.
+Pictures tools/japan/shots_geo3/ (force-added). Also: Oct 15's pictures had never pushed - .gitignore has *.jpg; all force-added in
+2c4916c (shots_geo2 included).
+ STREAMING + COLOUR: fixed - all 34 planes on the client, painted (24,112,151) = the client's water in Japan.
+ BUT HIDDEN: 19 of the 34 had LocalTransparencyModifier 1 on the client - every plane with z > -1300 (the north row and the west/east
+    strips); the 15 south planes showed. CAUSE: HideFranceFromPorto (hides z > -540 while you are in Porto) and HidePortoFromFrance
+    (hides z < -560 while in France) both skip ONLY JapanMap descendants, and with JAPANFIX1 their state freezes when x > 4500 - so in
+    Japan you keep whichever side you came from hidden. The test player spawned in Porto, so the north planes were hidden. geo2's
+    folder was inside JapanMap -> skipped -> shown; geo3 moved the model to workspace -> hidden. Arriving from France (the balloon)
+    hides the SOUTH planes instead. FIX: parent the Model under workspace.JapanMap (a Persistent Model may sit inside it; it also falls
+    under JapanPreviewVisibility like the rest of Japan), or add workspace["Horizon sea"] to both scripts' skip roots.
+ From 90 up over the north shore with the north planes hidden: the same stepped silhouette as geo2 (geo3_sea_from_90_up_planes_hidden).
+    The stepped edge is the streamed TERRAIN water ending ~400-500 studs out (measured from the picture's angles). Atmosphere test on
+    the client (density 0.3, haze 1.5): the edge stays crisp, the sky turns grey (geo3_test_haze_*) - haze is not the answer.
+ With ALL planes forced shown on the test client (LTM 0): the sea carries on far past the old step, to a soft far edge about 1100
+    studs out (seems to be the draw distance at Studio's Automatic quality), BUT the old stepped terrain edge still shows as a COLOUR
+    step - the textured terrain water is a deeper blue than the flat planes 0.9 under it (geo3_test_all_planes_shown_90_up); a thin
+    dark diagonal line also crosses the far planes (a tile seam?). Looking WEST from the west ridge (5250, 20, -400): a hard straight
+    dark line where the terrain water stops (x 4750) and the paler, untextured planes begin (geo3_west_shore_looking_west).
+    Suggest: planes a touch darker / deeper so they match the terrain water's look, and/or the terrain sea carried farther so the
+    junction sits near the draw distance.
+ From the shore at eye height (planes hidden as above): one blue sea with a thin straight horizon line (geo3_shore_eye_height).
+ WEIR: x 6084..6118 into the stone bank; no blue sliver at the west foot (geo3_weir_west_foot). From the north-west the canal's last
+    few studs of terrain water behind the weir read as a flat bright sheet (shallow water over sand -0.2..-1.5, surface 1.3).
+ PORTO (harbour, then the lighthouse looking east; client fog 350..1100, Atmosphere density 0.30): an ordinary sea to the horizon,
+    nothing new (geo3_porto_looking_east).
+Waiting: the cloud's next round (the Model into JapanMap first); geo3 stays in Edit unless Shannon wants it undone.
