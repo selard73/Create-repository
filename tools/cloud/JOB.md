@@ -3348,3 +3348,17 @@ squirrel". Same file, tools/bottle/install_bottle1.lua (a full re-run: the old f
 PREVIEW in play: the QQ BOTTLE lines ("stand (her spot)", the reply spot line); pictures of the kiosk on the landing from where
 players arrive; the panel with the Ask row; send one; TestDayOffset 1 -> the reply bottle at the kiosk's foot and its one-liner.
 Then install on her word; she publishes.
+
+Result jobs 122-124 (runner 7): 122 previewed ("SelBell's / Homebase Treehouse / Welcome home!", fits) - Shannon disliked the layout,
+asked for "Homebase Treehouse Welcome home SelBell" -> r6b. 124 at 822346d previewed: "Treehouse: build sound rbxassetid://6186807867
+loaded, 12.6 s long; slices 1 0.1-1.1 ... 12 11.5-12.5". Listening pass: her audio was off at first (the game played every slice,
+PlaybackLoudness 41..248); she asked for longer slices -> 1.5 s each (PieceClipLength 1.5 in play), heard them twice: good = 2, 3, 4, 5,
+6, 7, 8, 9, 10, 12 (1 and 11 duds); "Use the 10 good ones", 8 and 9 repeated. PieceClips = "1.09-2.59, 2.08-3.58, 3.07-4.57, 4.06-5.56,
+5.05-6.55, 6.05-7.55, 7.04-8.54, 8.03-9.53, 9.02-10.52, 11.0-12.5, 7.04-8.54, 8.03-9.53". PREVIEW of r6b ee9c2b7 (40401, adler32 1431826533)
+with that PieceClips: the client read it ("slices 1 1.1-2.6 ... 10 11.0-12.5, 11 7.0-8.5, 12 8.0-9.5"); sign at 12 = "Homebase Treehouse /
+Welcome home, SelBell!" TextFits true, 4 lines (t124b_sign_homebase_welcome_home_selbell); no Sit prompts; walking into the armchair and
+both stools seated in 0.4-0.6 s, LowerTorso 0.01-0.02 above each seat, armchair facing -Z, stools -X; a jump + walking off -> not
+re-grabbed. INSTALLED in Edit on her "Yes, install it all": "QQ TREE124 DONE: TreehouseClient 38139 chars; the old one is
+HudBackup.TreehouseClient_pre_r6_1; PieceSound rbxassetid://16480570986 at 1.5x" + PieceClips set as above (PieceClipLength 1, Volume
+0.6, ResetRound 2). Unpublished. (In every Studio play test TreehouseReset printed "CozyGameMode - 0 pieces taken back (round 2)" -
+the script runs; the live question is still open with her.)
