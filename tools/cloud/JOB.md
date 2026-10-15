@@ -2333,3 +2333,21 @@ accessories of type Jacket / Shirt / TShirt / Sweater / DressSkirt) comes off th
 keep. Backup HudBackup.ChampionServer_pre_armfix1. On her word: run it in Edit ("QQ ARM DONE: ChampionServer 34338 -> n"), then a
 StatueDebug build of nana3365308 (one right arm), and the fountain / Hall / Guardian statues rebuild themselves at their next refresh
 (or rebuild them now). "The statue in the monument for star is completely gone" (Shannon): waiting for which monument and the name.
+
+## Job 109: Game Passes beside the Acorn Store - the zip line handle (pass 2036372649) and the hand glider (pass 2037656625) - runner 7
+
+Shannon's ids (Oct 15) and her ask: "purchase with a LOT of acorns OR purchase for robux". tools/passes/install_passes1.lua (from
+make_install_passes1.py; self-tested on both repo copies of the ShopClient, 35014 and 38666 - confirm which is live by size, the
+anchors are the same in both; compiles): (1) workspace.Passes {PassServer (RunContext Server, src/PassServer.lua)} with attributes
+Pass_ziphandle / Pass_glider - whoever OWNS a pass gets the item on arrival (UserOwnsGamePassAsync after the save loads) and whoever
+BUYS one gets it the moment Roblox confirms (PromptGamePassPurchaseFinished), through RS.AwardItems so it is kept on the save exactly
+like an acorn purchase (Item_<id>; the tower and the ramp already check that). (2) Three exact-string patches of ShopClient (marker
+PASS1; backup HudBackup.ShopClient_pre_pass1): on the row of any item with a pass id a GREEN Robux button (its price fetched from
+Roblox) sits right of the acorn button (acorns on the left, 70 px each) until the item is yours; a click opens Roblox's own
+purchase prompt. Nothing else in the store changes. ACORN PRICES are hers (attributes on workspace.Shop): today Price_ziphandle 60,
+Price_glider 1000; the "a LOT of acorns" side suggested: ziphandle 600, glider 2500 - set them in Studio, no code.
+EDIT on her word; expect "QQ PASS DONE: workspace.Passes (PassServer n chars; Pass_ziphandle 2036372649, Pass_glider 2037656625);
+ShopClient 38666 -> 40654 chars; Price_...". PLAY TEST: the store's France tab: the Zipline handle and Hang glider rows show "600
+acorns" (or whatever she set) and a green Robux button with the pass price; the Robux button opens Roblox's prompt (in Studio the
+purchase can be tested with the test-purchase dialog: buy -> the row flips to "owned" and the ride accepts you); a player who
+already owns the pass gets the item on join; phones: the two 70-px buttons fit the row (picture).
