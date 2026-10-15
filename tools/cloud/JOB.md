@@ -2687,3 +2687,34 @@ is 850 studs out, in the fog - FogEnd 1100) and three flat water-coloured parts 
 (3) the canal's bright end face: a stone WEIR across the canal at z -221..-224 (the water ends against stone; the dry foundation
 beyond stays dry); (4) CastShadow off on the lake stair's treads and supports. SAVE first, run, then pictures: north from the shore,
 the canal's north end from the bridge, the lake stair. Expect "QQ GEO2 DONE".
+
+Result BIRDS bench gull (runner 7, Shannon: "the gull on the rescue boat is wrong; put it perched on the back of the bench facing away
+from the water instead", Studio EDIT, unpublished): in workspace.Birds Sites the "Gull on the rescue boat" became "Gull on the bench":
+x 247.85, y -44.85 (the top of the Harbour bench's back slat, PortoNocciola."06 Piazza details and planting"."Harbour bench"), z -711,
+yaw -90 (faces +X: the bench seat and the water are to -X), height 1.4, range 220. Old Sites string in
+ServerStorage.HudBackup.BirdsSites_pre_bench. Play test: built, feet at -44.85, look (1,0,0); picture tools/birds/shots/
+v7_gull_on_bench.jpg (on the back rail, the water behind it).
+
+Result job 111 ROUND 2 PREVIEW (runner 7, play test, nothing kept): install_treehouse2.lua at 7a9aa6e (42201, adler32 438641579):
+"QQ TREE terrain: a mound bank along z 74, floor at y 0 (whole voxel rows), a bowl of radius 27..33 cut to y 16, the mouth cut flat z
+16..32, dirt radius 15, centred (-18, 47)", "QQ TREE edge: the north wall opens between x -48 and 12; a U of wall round the hollow to z
+73", "QQ TREE dressing cleared from the site: 5 (HudBackup.TreehouseCleared_1)", p1..p12 piece lines (none skipped), "QQ TREE DONE:
+Homebase Treehouse at (-18, 0.0, 47) yaw 155.5 in its hollow; 12 pieces placed; TreehouseServer 4806, TreehouseClient 22929 chars; the
+old folder is HudBackup.Treehouse_pre_2". Pictures tools/treehouse/shots/r2_hb*.jpg.
+ FLOOR AT THE OAK: y 2.0 still (raycast at (-24,47) (-12,47) (-18,41) (-18,53) all 2.00; the whole floor x -32..-4, z 32..64 is 2.0).
+    WHY: ReadVoxels in the hollow = row -8..-4 full, row -4..0 FULL (occupancy 1.00), row 0..4 air - and Roblox draws a full row's
+    surface 2 studs above the row's top: a full -4..0 row = a surface at y 2.0. The forest next door is the same row at occupancy 0.52 ->
+    surface 0.1 (-2 + 4 x occupancy). So for a floor level with the forest write the -4..0 row at occupancy ~0.52 (WriteVoxels), not a
+    full row. The roots (top 1.45) are still under it.
+ MOUTH: fixed - no lip; the ground ramps 0.1 (z 16) -> 2.0 (z 28) into the floor. From the spawn the oak, the dirt and the sign show
+    (r2_hb1, r2_hb3). The sign's own POST pokes up in front of the bottom line: "0 of 12 pi_es found" - the post hides the "ec" (r2_hb3,
+    and again in r2_hb4).
+ TOWER TOP (r2_hb2): the back rim now reads as soft rounded mounds - good, no slab. The bowl's terraces still do not show as steps
+    from up there (a smooth dent round the oak).
+ REVEAL (r2_hb4): caught this time (screen_capture with no camera, 1 s after the pick): the camera looks down into the hollow - oak,
+    dirt, the ladder, the sign - with her line in the toast. A pine stands at the right edge of that view and a leaf crown at the
+    left, both in the foreground; the hollow itself is clear.
+ HOUSE: 3 / 7 / 12 clean (r2_hb6..8), the trunk now at the back edge of the deck; the flag on the balcony corner (r2_hb9). THROUGH
+    THE DOORWAY from the balcony (r2_hb11): the room's floor and the trunk standing against the back wall, door clear. INSIDE
+    (r2_hb10): the trunk at the back, 8 studs of open floor in front of it; the room is empty (no furniture).
+Waits for her word to install (the floor occupancy and the sign post are the two things left).
