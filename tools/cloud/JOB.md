@@ -3103,3 +3103,24 @@ join. Play check in Studio (her save): Output "TreehouseReset: CozyGameMode - 12
 the twelve glowing pieces back, the sign "Future home of Homebase Treehouse. Please excuse the dirt. 0 of 12"; pick p1 -> the reveal.
 NOTE: a Studio play test writes her real save too (Studio saves are on), so the check itself resets her - fine, that is the point;
 after it she will not see it again live unless ResetRound is bumped. If she wants the first time LIVE, skip the Studio play test.
+## Job 118: the MESSAGE IN A BOTTLE game on the Porto beach (play-test PREVIEW first; install on her word) - runner 7
+Shannon: Oct 6 (HANDOFF_2026-10-07_PORTO_PART7.md: fill-in-the-blank notes sent TO someone at sea, not from a stranded player; the next
+day a reply that answers what you picked; random silly bottles wash up too) + Oct 15 ("preset better with the choose fill in the
+blank"; finds pay acorns, "I thought we were charging acorns to send"; "build it as soon as we can" - for the Oct 18 event).
+tools/bottle/install_bottle1.lua (make_install_bottle1.py; src/BottleText.lua, BottleServer.lua, BottleClient.lua; compiles):
+ - scans the main Porto beach (x 215..340, z -800..-690, step 4) for open sand and water; the STAND on level open sand 10..18 studs
+   from the water with 7 clear studs, the candidate nearest Spawn_porto, its back to the sea; up to 10 WASH SPOTS at the waterline
+   (open sand within 5 of the water, 12 apart); the reply spot = the one nearest the stand. Prints all of it.
+ - workspace.Bottles {BottleEvent, BottleText (module: 7 recipients, 6 cards x 6 x 6 choices, 2 echo lines per card, 4 voice lines
+   per recipient, 16 beach notes), BottleServer, BottleClient (Client), Stand (Persistent: counter, posts, striped awning, crate of
+   bottles, sign MESSAGGI IN BOTTIGLIA / Messages in a Bottle, WritePrompt)} + ReplicatedStorage.BottleTemplate.
+ - SEND at the stand: To / Note / Blank 1 / Blank 2 cyclers, a preview, "Cork it & toss it! (15 acorns)"; one a day; the bottle
+   flies out to sea. After the Daily reset (workspace.Daily DayOffsetHours, 9 h) a glowing reply bottle lies at the reply spot for
+   the sender only; "Read it" -> the reply (the echo of their picks + the recipient's voice + signature) and what they wrote.
+ - BEACH: 3 silly bottles at a time (respawn 75 s), anyone may uncork: a note + 10 acorns, 5 paid a day.
+ - Save, via RS.AwardItems deltas only: Item_bottle_out (day + 1), Item_bottle_card (to*1e6 + card*1e4 + a*100 + b),
+   Item_bottle_paid (day*10 + n), Item_bottles_found, Item_bottle_replies. Folder attributes SendCost 15, FindPrize 10, FindCap 5,
+   MaxBeach 3, RespawnSeconds 75, TestDayOffset (Studio only: set 1 to see tomorrow's reply).
+PREVIEW (play test, the installer's body on the server): the QQ BOTTLE lines (scan counts, the stand, the wash spots); pictures of
+the stand from the beach and the promenade, the panel (desktop + phone emulator), a toss, a beach bottle uncorked (the note card),
+then TestDayOffset 1 -> the reply bottle by the stand and its note. Show her; she can move the stand. Install in Edit on her word.
