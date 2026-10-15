@@ -2392,3 +2392,17 @@ tools/statues/studio_2026-10-15/HallServer_France.lua, 5874 chars, adler32 15355
 (RemoteFunction from the client), and on a makeStatue failure it warns "HallServer: no statue for No. <n>: <err>" and returns nil
 (nothing cached, so a LATER request would try again). Check HallClient: does it ever ask again after a nil? Her live F9 SERVER log
 would show the warn line if this is it. STAR's statue is also small for the frame (BodyTypeScale 0.4) and its acorn misses the hand.
+
+## Job 107b: the French Hall of Fame's empty frame ("the statue in the monument for star is completely gone") - runner 7
+
+Runner 7: STAR = Captin_crunch65 (uid 3129625152, No. 2); the avatar and the figure build without a warning in a play test, so the
+LIVE build failed once (a hiccup fetching the avatar). Reading the exported HallServer_France and the client: a failed MakeStatue is
+neither cached nor asked for again - the client clears the frame and shows NOTHING until someone pages away and back; a server
+hiccup leaves the frame empty for the whole session. tools/statues/hallretry1.lua (make_hallretry1.py; compiles; server patch
+self-tested on the live export): workspace.HallOfFame.HallServer's build() tries MakeStatue twice (2 s apart); HallClient asks up
+to three times (4 s apart) while that statue is still the one wanted. Backups HudBackup.HallServer_pre_hallretry1 /
+HallClient_pre_hallretry1. Please export the live HallClient first (tools/statues/studio_2026-10-15/HallClient_France.lua) so the
+anchor is confirmed, then run on her word; expect "QQ HALL HallServer 5874 -> n", "QQ HALL HallClient a -> b", "QQ HALL DONE: 2".
+Separately noted: STAR's body is short (BodyTypeScale 0.4) so the statue is small in the frame and its acorn floats beside the
+hand - a picture and the hand / acorn positions (GetBoundingBox of the GiantAcorn vs the LeftHand) would let me size the acorn to
+the hand rather than the body.
