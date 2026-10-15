@@ -126,3 +126,14 @@ later") - after Oct 18, when she says.
 - Next: item 3 the phone camera (ask her what she saw), item 4 the portraits blink (client diagnostic first), item 5 the look pass.
 - PUBLISHED by Shannon at 19:41:36Z Oct 14: job 94 round 7 (the belvedere, one Guardian at a time) + job 95 (the funnel). Items 1 and 2
   DONE. Nothing unpublished. Next: item 3 (the phone camera; her answer on what she saw pending), item 4 (portraits blink diagnostic).
+
+## State at Oct 15 ~03:00 UTC
+- LIVE: job 94 round 7 (the belvedere, one Guardian at a time), job 95 (the funnel), job 98 round 1 (the interaction counter; published
+  02:43:10Z Oct 15). In Edit, unpublished: job 98 round 2 (the bookkeeping items filtered; she publishes). Shannon's new ask of Oct 14 -
+  "a tool that will count and give info on how far each player gets and what they interact with" - is jobs 95 + 98: the Creator
+  Dashboard's Funnel page (progress) and Custom Events page (Interact_Prompt/Click/Seat/Tool/ToolUse/Area/Item, split by Device and
+  Cohort). She wanted the dashboard only, no per-player history, nothing on saves.
+- Job 96 closed (the blink stopped, her word); job 97 (tools/portraits/blink1.lua) written and self-tested, NOT installed.
+- Job 99 (the look pass, tools/look, settings only, one-run undo) waits for the runner's play-test preview; the Device Emulator is not
+  switchable from the MCP, so phone pictures need Shannon to pick iPhone 7 in the Test tab, else desktop pictures only.
+- Item 3 (the phone camera) still waits for her account of what she saw.
