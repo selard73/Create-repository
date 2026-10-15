@@ -7,7 +7,7 @@ workspace.Treehouse.TreehouseClient (old -> HudBackup.TreehouseClient_pre_r6_n).
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
 CLIENT = (HERE / "src/TreehouseClient3.lua").read_text(encoding="utf-8")
-assert "]===]" not in CLIENT and "local function finale" in CLIENT and "local function seatAt" in CLIENT and "p.Touched:Connect" in CLIENT and "PlaybackRegion" in CLIENT and "'s\\n\" .. NAME" in CLIENT
+assert "]===]" not in CLIENT and "local function finale" in CLIENT and "local function seatAt" in CLIENT and "p.Touched:Connect" in CLIENT and "PlaybackRegion" in CLIENT and 'Welcome home, " .. player.DisplayName' in CLIENT
 lua = '''-- patch_treehouse3_r6.lua (job 124; Studio EDIT; re-runnable; also a play-test preview). The Homebase client: a piece's own sound,
 -- the first look held 4.5 s, and the finale (the finished house, fireworks, "Welcome home, <name>!"). Replaces workspace.Treehouse's
 -- TreehouseClient (%d chars); the old one -> HudBackup.TreehouseClient_pre_r6_n. Output "QQ TREE124".

@@ -1,6 +1,6 @@
 -- patch_treehouse3_r6.lua (job 124; Studio EDIT; re-runnable; also a play-test preview). The Homebase client: a piece's own sound,
 -- the first look held 4.5 s, and the finale (the finished house, fireworks, "Welcome home, <name>!"). Replaces workspace.Treehouse's
--- TreehouseClient (38149 chars); the old one -> HudBackup.TreehouseClient_pre_r6_n. Output "QQ TREE124".
+-- TreehouseClient (38139 chars); the old one -> HudBackup.TreehouseClient_pre_r6_n. Output "QQ TREE124".
 if game:GetService("RunService"):IsRunning() then print("QQ TREE124 (play test: preview only)") end
 local SS = game:GetService("ServerStorage")
 local F = workspace:FindFirstChild("Treehouse")
@@ -279,7 +279,7 @@ local function buildHouse(n)
 	end
 end
 local function signText(n)
-	if n >= TOTAL then return player.DisplayName .. "'s\n" .. NAME .. "\nWelcome home!" end   -- (r4, Shannon: "once its done it should [say] Selbell's Homebase Treehouse")
+	if n >= TOTAL then return NAME .. "\nWelcome home, " .. player.DisplayName .. "!" end   -- (r6b, Shannon: "Maybe do Homebase Treehouse Welcome home SelBell?")
 	if n < STAGES.deck then return string.format("Future home of\n%s.\nPlease excuse the dirt.\n%d of %d pieces found.", NAME, n, TOTAL) end
 	return string.format("%s\n%d of %d pieces found.\n%d to go.", NAME, n, TOTAL, TOTAL - n)
 end
