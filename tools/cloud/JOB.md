@@ -2220,3 +2220,53 @@ STEP 2 (ask her): tools/statues/armfix1.lua - two exact-string patches of Champi
 Backup HudBackup.ChampionServer_pre_armfix1; expect "QQ ARM DONE: ChampionServer a -> b chars". Then: delete the doubled figures
 standing now (the probe names them) or let the next daily / Hall rebuild replace them, and a play test of the fountain statue, the
 Hall carousel and the harbour Guardian - one right arm each.
+
+Result INSTALLS (runner 7, Oct 15 ~14:30Z, Shannon's yes to all three, Studio EDIT, unpublished): BIRDS 1c1ff14 - her imports moved
+into workspace.Birds.Templates (Pelican / Gull; anchored, no collide/query/touch, PivotOffset rotation cleared, parked at
+(-50,-200,-50) / (-44,-200,-50)), then "QQ BIRDS DONE: workspace.Birds (BirdsClient 17318 chars; 7 sites: 4 flocks + 3 perches ...);
+the old folder is HudBackup.Birds_pre_1", Templates Persistent. TREEHOUSE c043d9b - 12 "QQ TREE piece" lines, none skipped (p10 at
+(240, 0.1, -60) on terrain Grass), "QQ TREE DONE: ... 12 pieces placed; TreehouseServer 4806, TreehouseClient 19623 chars". JAPAN
+FIX fcc8139 - "QQ JFIX SpawnReturnServer 5219 -> 5901 chars (2 patches ...)", "BalloonServer 14415 -> 15866 (7)", "BalloonClient
+35840 -> 37493 (8)", "JapanEnvironment 6327 -> 7092 (3)", "JapanAtmosphere 1807 -> 2577 (3)", "HidePortoFromFrance 3902 -> 4035
+(1)", "HideFranceFromPorto 3334 -> 3462 (1)", "JapanWaterAppearance 1039 -> 1110 (1)", "JapanPreviewVisibility 2184 -> 2412 (2)",
+each "backup HudBackup.<Name>_pre_japanfix1"; "QQ JFIX BalloonField.JapanPreview = true (set it false for the ordinary ride)";
+"QQ JFIX DONE: 9 scripts patched, 0 already patched".
+
+Result job 105 PLAY CHECKS (runner 7, play test as her, nothing kept): (1) balloon to Japan (rise 0, hover 16, gust 24, storm 42,
+sign 55, previewCloud 61, previewReveal 65, descent 71, touchdown 86, landed 89 s; Japan fog 100000, atmo 0.08/0, clouds 0.08/0.10),
+train, then the taxi back to the chateau (438,7,-36): fog 350..1100, clock 14.5, atmosphere 0.30/0.00/0.00, clouds 0.60/0.40 -
+IDENTICAL to the start of the session. (2) Area "japan" on landing ("domaine" back at the chateau); no golden / question / daily
+notice visible in Japan. (3) Lantern Street -> Palace Grounds ride: seated, carried 6000 -> 6379, off at the platform, StationIndex
+3, all three station prompts enabled again with new texts. (4) not testable here (a Studio test player is always the owner). (5)
+JapanPreview = false on the test server: the ORDINARY ride ran (rise, hover, gust, storm, sign, fade, home), back on the field,
+Item_balloon_flights 1 -> 2 (the landed preview had counted as 1). The prompt text did NOT follow the attribute at once (still
+"private Japan preview / Fly to Japan" 2 s after the change; "Your balloon / All aboard" only after the ride) - updatePrompt is not
+wired to JapanPreview's change signal. BIRDS v4 BUG (sent earlier): "Birds: 7 sites ... (part-built)" - built before the
+Persistent templates streamed in; v5 at 70594b5 not yet run (needs her word).
+
+Result job 106 (runner 7, 70594b5, Edit, read-only): survey106.lua (11356, adler32 196694321) - 148 "QQ GEO" lines unchanged in
+tools/japan/survey106_result_2026-10-15.txt (31 FLOATING, 35 SUNK, 9 SLOPE, 134 FIGHT pairs, 26 WATER-LAP, water over NOTHING 0 -
+so no WATER-VOID picture). Pictures in tools/japan/shots106/ named by their line: FLOAT MountainBackdrop (5440,-580) = the volcano's
+crater top, reads as part of the volcano; FLOAT Fuji photography lookout (5684,-304) = a deck with a red railing jutting off the
+hill edge, no posts under its outer end; FLOAT Bamboo clump (6464,-365) = bamboo poles on the steep south bank, bases in the air
+downhill; SUNK Bamboo grove maze (5478,-245) = poles in grass where the ground rises, reads fine (just shorter); SUNK Northern bridge
+approach steps (6101,-215) = at the canal's north end a grey slab cuts across the water and the water shows a hard bright wall
+(one of her "exposed water" spots); SUNK Blue vending machine (6027,82) = base 1 stud in the ground, reads as a plain box; FIGHT
+palace apron (6386,-24) and FIGHT walkway/Lantern Street paving (6000,-40) = patchwork / faint seams in a still, the flicker shows
+in motion; WATER-LAP canal (6092,-100) = water fills the stone channel, fine; WATER-LAP lake (6728,224) = a stair runs into the lake
+and its underwater support shows through as a hard-edged dark slab (another "weird water" spot).
+
+Result job 107 STEP 1 (runner 7, 116c970): ChampionServer exported: tools/statues/studio_2026-10-15/ChampionServer.lua (34338,
+adler32 1570845504, via base64 through the Studio log, verified). probe107 (3585, adler32 284781702) in Edit: "QQ ARM models with a
+RightHand (players excluded): 0" (statues are built at run time). In a play test with ChampionServer's Studio switches
+(StatueDebug(9611145467, "SelBell") -> "feet 4.40 | plinth top 4.40 | box bottom 4.40 | height 9.3"; HallDebug two keepers uid 1 +
+156): "QQ ARM models with a RightHand (players excluded): 2", "QQ ARM ReplicatedStorage.HallStatues.No_2.Figure: 17 parts;
+RightHand x1, RightUpperArm x1, LeftHand x1, Head x1; right hand down; anchored; at (403,11,-28) box 5x7x2", "QQ ARM
+Workspace.Champion.Figure: 18 parts; RightHand x1, RightUpperArm x1, LeftHand x1, Head x1; right hand down; anchored; at
+(262,9,-54) box 5x9x3". NO "SHARES ITS SPOT" pair, no doubled hand - not reproduced with these avatars. HoldHand = Left, so the
+raised acorn arm is the statue's LEFT = the VIEWER'S RIGHT (her "two arms on the right hand side"). LEAD: layered clothing. Her
+own statue carries "Accessory (g) [Pants, LAYERED]" (WrapLayer order 6; the body has 15 WrapTargets); aim() moves the arm parts and
+destroys the Humanoid, but a WrapLayer top (jacket / sweater / shirt accessory) is wrapped to the body cage - its sleeve may stay
+in the arm's original hanging pose = "the original arm the avatar has". The two test avatars have no layered TOP, so it could not
+show. Needed: whose statue showed it (fountain / Hall / harbour Guardian, and the player's name) - then StatueDebug with that uid
+reproduces it. Pictures: tools/statues/shots/fountain_statue_SelBell_*.jpg.
