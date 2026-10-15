@@ -3103,3 +3103,9 @@ join. Play check in Studio (her save): Output "TreehouseReset: CozyGameMode - 12
 the twelve glowing pieces back, the sign "Future home of Homebase Treehouse. Please excuse the dirt. 0 of 12"; pick p1 -> the reveal.
 NOTE: a Studio play test writes her real save too (Studio saves are on), so the check itself resets her - fine, that is the point;
 after it she will not see it again live unless ResetRound is bumped. If she wants the first time LIVE, skip the Studio play test.
+
+Result job 117 INSTALLED (runner 7, Shannon "Yes, add it", Studio EDIT, unpublished, NOT play-tested): install_treehouse_reset1.lua
+at 66cf63c (4277, adler32 1723564345): "QQ TRESET DONE: workspace.Treehouse.TreehouseReset (2733 chars); ResetUserIds "9611145467",
+ResetRound 1". Readback: Script, RunContext Server, Enabled, 2733 chars; folder attributes ResetUserIds '9611145467', ResetRound 1.
+(Note: in a Studio play test SquirrelSetup never reads or saves the owner's store - studioFullFindsPreview - so a test could not
+spend the live reset either; it would only find no tree items. Not run anyway.)
