@@ -2960,3 +2960,19 @@ Workspace.JapanMap.Horizon sea - Shade 1.20, Reflectance 0.10 on the model and i
 Japan's ground/water visual fixes = geo1 (sea, wall, props, slabs) + geo2 (bed, more sea, weir, stair shadow) + geo3/4/4b (the horizon
 as a persistent model under JapanMap, the live water colour x 1.2, reflectance 0.1, tiles edge to edge). Left for later, from the
 FINDINGS doc: the bright sheet of shallow canal water behind the weir, the door, the floating backdrop. She saves and publishes.
+## Job 113: the croc shout capped, the heroes pointed at the painter, a hung portrait announced (Studio EDIT; ask Shannon first) - runner 7
+Shannon (Oct 15): the croc game's game-wide announcement "not sure that's the best thing"; "no one is getting their portrait painted".
+Her picks: cap the shout (my suggestion), options 1 + 3, wording "Heroes should have a portrait done! the painter is waiting...".
+tools/croc/croc_portrait1.lua (make_croc_portrait1.py, 5551 bytes; anchors found once in forest/build_croc.lua and
+village/build_portraits.lua; all four embedded sources compile patched). Three exact-string patches, each independent (anchor counted,
+result compiled, original to HudBackup.<Name>_pre_crocportrait1, marker CROCPORTRAIT1_20261015):
+ 1. workspace.Lagoon.CrocClient celebrate(names): onlookers see the all-free card (confetti, fanfare, island burst) ONCE a session;
+    the rescuers always see it, and their card is 138 tall with a third line "Heroes should have a portrait done! The painter is
+    waiting by the river."
+ 2. workspace.PortraitGallery.PortraitServer hang(): after the sitter's "hung", done:FireAllClients("hungall", DisplayName, UserId).
+ 3. workspace.PortraitGallery.PortraitClient note handler: "hungall" (not the sitter) shows "<name>'s new portrait is hanging in the
+    painter's gallery by the river." for five seconds (the sitter's own note is unchanged). The viewer handler ignores "hungall".
+"QQ CROCP" lines; "QQ CROCP DONE: CrocClient true, PortraitServer true, PortraitClient true" when all three went in. The live
+CrocClient may differ from the repo's builder (snore patches etc.) - an anchor miss skips that script and says so; tell the cloud thread.
+Check in play: free all three squirrels - the card with the third line; the painter (80 acorns) - the gallery note for a second player
+or the same client would need two players, so a read of the patched text is enough.
