@@ -14,9 +14,9 @@ SITES = [
     {"name": "Village swallows", "kind": "swallow", "x": 262, "y": 30, "z": -58, "r": 30, "n": 3, "band": 6, "range": 400},   # (v6: three, not eight)
     # perched (round 3: Shannon's rigged Meshy pelican and gull; round 4: the spots runner 7 settled in the preview)
     {"name": "Pelican on the quay", "kind": "pelican", "perch": True, "x": 232.5, "y": -46.56, "z": -667.6, "yaw": 280, "n": 1, "height": 2.6, "range": 220},   # (v7: Shannon, live: "that pelican is huge compared to the squirrel and boat" - 2.6 tall, was 4.2; tune by eye)
-    {"name": "Gulls on the harbour rail", "kind": "gull", "perch": True, "x": 231.6, "y": -46.56, "z": -673.4, "yaw": 102, "n": 3, "height": 1.9, "range": 220,
+    {"name": "Gulls on the harbour rail", "kind": "gull", "perch": True, "x": 231.6, "y": -46.56, "z": -673.4, "yaw": 102, "n": 3, "height": 1.4, "range": 220,
      "offsets": [[0, 0, 0, 0], [7.5, 0, 0.6, 50], [-5.5, 0, 0.9, -70]]},   # (v7: not in a row - one here, one well along the rail turned to the sea, one back the other way; dx along the rail, dy up, dz across, yaw; tune in Studio)
-    {"name": "Gulls at the lighthouse", "kind": "gull", "perch": True, "x": 526, "y": 3.5, "z": -1170, "yaw": 300, "n": 2, "gap": 2.4, "height": 1.9, "range": 260},
+    {"name": "Gulls at the lighthouse", "kind": "gull", "perch": True, "x": 526, "y": 3.5, "z": -1170, "yaw": 300, "n": 2, "gap": 2.4, "height": 1.4, "range": 260},
 ]
 sites_json = json.dumps(SITES, separators=(",", ":"))
 assert "]==]" not in sites_json
