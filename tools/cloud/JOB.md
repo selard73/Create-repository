@@ -2562,3 +2562,36 @@ studs deep cresting at y 10-14 around z 45-55, falling away to nothing by z 75-8
 / round_tree. The north edge is Boundary.Walls.Wall at (-14.1, 25.0), 233 x 1.2 (x -130..102); the west/south edge wall at (-130,
 -95) 241 x 1.2. NOTE: workspace has TWO children named "Boundary" (a Folder with only PatchModule, and a Folder with 5 children
 holding Walls + Dressing) - workspace.Boundary.Walls fails by name; find the walls by searching.
+
+PUBLISHED v1428 (Shannon, "I have saved and I have published"): Studio log 14:19:25Z "Published new changes ... Add publish notes to
+v1428" (birds v6 + treehouse r4 glow are live). Team Create connected since 13:41:01Z, no disconnect since.
+
+Result job 106 INSTALLED (runner 7, her earlier yes "Japan map fixes" + her save/publish first; Studio EDIT, unpublished):
+japan_geo1.lua at 4bdb61f (17195, adler32 3765546536), 6.5 s:
+QQ GEO1 props moved: 8
+QQ GEO1   MOVE Landscape.Bamboo clump down 0.19 (bamboo down onto the ground)
+QQ GEO1   MOVE LanternStreet.Blue vending machine up 0.96 (vending machine up onto the platform)
+QQ GEO1   MOVE TeaHills.Fishing bank down 0.55 (down onto the ground)
+QQ GEO1   MOVE TeaHills.Fuji photography lookout: a stone plinth 25 x 24.5 x 18 down to the hillside
+QQ GEO1   MOVE Landscape.Bamboo clump up 0.97 (bamboo up out of the ground)
+QQ GEO1   MOVE Landscape.Bamboo clump down 1.07 (bamboo down onto the ground)
+QQ GEO1   MOVE Landscape.Bamboo clump down 0.20 (bamboo down onto the ground)
+QQ GEO1   MOVE PalaceGrounds.Raked gravel garden down 1.75 (down onto the ground)
+QQ GEO1 slabs raised to stop z-fighting: 130 moves in 3 passes
+QQ GEO1 underwater stair supports given the bed's sand look: 1
+QQ GEO1   basin Canal refilled: x 6089..6113, z -221..101, up to y 1.30 (0 air cells became water)
+QQ GEO1   basin Mountain stream refilled: x 5756..5774, z -305..85, up to y 1.10 (0 air cells became water)
+QQ GEO1   basin Rice west refilled: x 5471..5521, z 62..104, up to y 2.25 (0 air cells became water)
+QQ GEO1   basin Rice middle refilled: x 5531..5581, z 62..104, up to y 2.25 (0 air cells became water)
+QQ GEO1   basin Rice east refilled: x 5591..5641, z 62..104, up to y 2.25 (0 air cells became water)
+QQ GEO1 rectangular basins refilled from JapanWaterBasins: 5
+QQ GEO1 the sea: air below y -6 across x 4750..7400, z -1500..900 is water now (5344805 cells in 110 chunks), on a sand bed (397200 cells); readback at (5000,-10,-1200): liquid 1
+QQ GEO1 the wall: invisible, x 4900 and 7250, z -1350 and 621, y -70..100 (6 parts in JapanMap.Sea wall)
+QQ GEO1 DONE: 8 props moved, 130 slab moves, 1 supports recoloured, 5 basins refilled, the sea and the wall; log HudBackup.JapanGeo1_log (16378 chars)
+Readback "liquid 1" (full water, not 0). AFTER pictures (tools/japan/shots106/after_*.jpg): the north edge now looks out on open sea,
+BUT the sea's far end shows as a straight line with a step at the horizon (the sea box ends at z 900 / x 7400 with void beyond), and a
+paler rectangle shows in the near water north of the island; the Fuji lookout stands on a pale stone plinth; the vending machine
+stands on the platform. UNCHANGED: the canal's north end (6101,-215) - the slab still crosses the water and the water shows the same
+hard bright wall ("0 air cells became water": the box had no air to fill - the wall is the terrain water's own end face, not a gap);
+the lake stair (6728,224) - the dark band under the stair is still there (likely the stair's shadow on the bed, not the support).
+Undo in this Studio session: Ctrl+Z to the "before JapanGeo1" waypoint; the moves are logged in HudBackup.JapanGeo1_log.
