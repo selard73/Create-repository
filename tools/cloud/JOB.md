@@ -2097,3 +2097,34 @@ train fragility is latent, not a fault); ServerStorage's 318,798 instances are 9
 (291,576: eighty "Before..." copies of Porto's buildings from Oct 1-3) - four times the live Porto map; the first thing to archive
 to a separate place file, Japan or no Japan. MusicClient exported (tools/japan/studio_2026-10-15/MusicClient.lua). The findings
 document is corrected (tools/japan/FINDINGS_japan_2026-10-15.md).
+
+## Job 105: the Japan fixes - Studio EDIT (ask Shannon before the edit, as always; her words: "please make any fixes for issues you found on the Japan map") - runner 7
+
+tools/japan/japan_fix1.lua (from make_japan_fix1.py; every patch self-tested on the Oct 15 exports and compiled): exact-string patches
+of NINE live scripts, all anchors counted first (one missing = nothing changed), originals -> HudBackup.<Name>_pre_japanfix1, each
+patched source compiled before the write, a script already carrying JAPANFIX1 skipped. Expect nine "QQ JFIX <Name> a -> b chars" lines,
+"QQ JFIX BalloonField.JapanPreview = true", "QQ JFIX DONE: 9 scripts patched, 0 already patched". What it fixes (FINDINGS A1 / A1d / A2):
+- SpawnReturnServer, BalloonServer, JapanEnvironment: the JapanPreviewAccess module is optional (FindFirstChild + a stub that allows
+  nobody) - removing Japan can no longer stop the dais return, the Area attribute, CharacterAutoLoads or the balloon.
+- SpawnReturnServer: her Area becomes "japan" in Japan instead of freezing at "domaine" / "porto" (the French HUD, the daily pill,
+  the question reminders, the shop's country all treat "japan" as not-France).
+- BalloonServer: the end-of-flight tail runs under pcall (the balloon is freed whatever happens), the PlayerRemoving safety net is
+  back (a vanished rider frees the balloon a second later), a landed preview counts as a balloon flight, and the new BalloonField
+  attribute JapanPreview = false gives her the ORDINARY ride again (the client's prompt text follows it).
+- BalloonClient: the reveal remembers fog / atmosphere / clouds and puts them back on an aborted flight or a respawn (a landing hands
+  over to JapanAtmosphere); no lightning behind the cloud cover; after a respawn the camera follows the new character; the toast
+  uses her display name.
+- JapanAtmosphere: the game's baseline (fog, atmosphere, ClockTime AND the Clouds) is taken once at load and restored when she
+  leaves Japan - the end of the "no fog, thin clouds after a balloon trip" problem; it no longer waits for the waterwheel to stream
+  in before it works.
+- JapanEnvironment: Origin is read before the train is marked busy; the chateau taxi streams the ground in before the hop.
+- HidePortoFromFrance / HideFranceFromPorto: Japan counts as neither side (no 70k-instance sweep when she crosses z -260 / -560 there).
+- JapanWaterAppearance owner-only; JapanPreviewVisibility also hides Smoke / Fire / Sparkles / Highlight.
+NOT in this job (design / terrain, her call): the missing sea round the island, the floating backdrop / lookout / bamboo, the
+invisible water floors, the sculpted meshes' collision, the taxi door in the chateau grounds, the Porto backup folder (291k).
+PLAY TEST after the edit (as her, the owner): (1) balloon to Japan, then the taxi back to the chateau: the fog, the clouds and the
+atmosphere look as before the trip (compare with a fresh join); (2) in Japan her Area attribute reads "japan" (Players.<her>.Area in
+the Explorer) and no French pill / reminder shows; (3) the train rides and the prompts come back after it; (4) as an ordinary test
+player (a second client, or a Studio test server with the owner check failing): the balloon ride ends home as before, with
+balloon_flights awarded; (5) set BalloonField.JapanPreview = false in a test: her prompt says "All aboard" and the ordinary ride
+runs. Report every QQ JFIX line.
