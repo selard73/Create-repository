@@ -3243,3 +3243,13 @@ Shannon (Oct 15): "please send 1000 acorns and a thank you to aspej000 @Aspej000
 8974266168, users API). tools/thanks/gift_aspej000.lua (job 114's script, compiles): workspace.Thanks.Gifts.Aspej000 = 1000, Id
 aspej000_1, Note "Thanks for writing to the mayor! Here are 1000 acorns. Spend them on something jazzy."; paid once on their next
 join after the publish. "QQ THANKS DONE".
+
+Result job 119 INSTALLED (runner 7, Studio EDIT, unpublished): first 8676938 on Shannon's "Install as it is" ("QQ TREE119 DONE:
+TreehouseClient 31668 chars; the old one is HudBackup.TreehouseClient_pre_r2_1; PieceSound rbxassetid://16480570986 at 1.5x"), then
+r2b 9344c6f (34104, adler32 630858847) on her "Yes, both" in this session: "QQ TREE119 DONE: TreehouseClient 31949 chars; the old one
+is HudBackup.TreehouseClient_pre_r2_2; PieceSound rbxassetid://16480570986 at 1.5x". The r2b fireworks were NOT re-previewed (her
+choice). Readback: one TreehouseClient, 31949 chars; TreehouseReset still there; PieceSound 1.5x / 0.55.
+Result job 120 INSTALLED (runner 7, her "Yes, both", Studio EDIT, unpublished): gift_aspej000.lua at 60058f4 (1860, adler32
+1733580574): "QQ THANKS DONE: workspace.Thanks.Gifts.Aspej000 = 1000 acorns, Id aspej000_1, with its note (5 gifts listed; paid on
+their next join, once)". Readback Note "Thanks for writing to the mayor! Here are 1000 acorns. Spend them on something jazzy."
+Also in Edit, unpublished: job 118 (bottle game) and job 117 (treehouse reset) - all go out with her next publish.
