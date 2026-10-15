@@ -2472,3 +2472,10 @@ LookGrade, Birds Templates 2, Treehouse 12 pieces, Passes). RE-RUN (her earlier 
 4155 -> 4377", "QQ HALL DONE: 2 patched"; acornhand1 "ChampionServer 35767 -> 36212"; buyhere1 "QQ BUYHERE DONE ... Zipline/StationPost
 found, HangGlider/Ramp found". All four sources now equal the FP1 values exactly. ALL PRESENT - she can publish. japan_geo1 still
 unrun (after a successful publish + save).
+
+PUBLISHED (Shannon, Oct 15 2026): Studio log "Sent message to server to publish" 13:43:10Z -> "Published new changes in "1001 Squirrels"
+to Roblox" / "Place published" 13:43:15Z (place version before it 1426); games API updated 2026-10-15T13:43:15.7Z. LIVE now = everything
+installed in Edit through today: look pass (water, grading, grass) + Clouds, Gift caption (102), interaction counter r2 (98), treehouse
+(c043d9b, 12 pieces), birds v5 (perched pelican + gulls, Templates Persistent), Japan fixes (job 105, 9 scripts), golden gate r2 (101),
+armfix r2 (107), Game Passes + 600/2500 prices (109), Buy here cards (110), hall retry (107b), acorn in the palm (107c). She is to Shut
+Down All Servers so players get it. NOT in it: japan_geo1 (job 106) - next, after a fresh Save to Roblox.
