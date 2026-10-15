@@ -3000,3 +3000,14 @@ Result job 114 INSTALLED (runner 7, Shannon "Yes" in this session, Studio EDIT, 
 adler32 3910230008): "QQ THANKS DONE: workspace.Thanks.Gifts.Carhartt0520 = 1000 acorns, Id carhartt0520_1, with its note (4 gifts
 listed; paid on their next join, once)". Readback Value 1000, Id carhartt0520_1, Note "You wrote to the mayor. The mayor wrote back.
 Everybody wins. Especially you." (ThanksServer matches the USERNAME, case-insensitive.)
+Result jobs 113 + 114 (runner 7, INSTALLED in Edit on Shannon's "Yes", unpublished; logged at 852f449, pictures tools/croc/shots/):
+113 - CrocClient 36718 -> 37322, PortraitServer 25128 -> 25282, PortraitClient 26669 -> 26939, "QQ CROCP DONE: ... true, true, true".
+Play check (CrocEvent "allfree" fired from the test server): {me} the card with the hero line (fits); {SomeoneElse} after - no card
+(once a session works); {Ethan, me} - the card again with the hero line; "hungall" shows "Carhartt0520's new portrait is hanging in
+the painter's gallery by the river.". OVERLAP (phone): the croc card (y 62, order 19, 34 taller now) covers the DailyCard at join and
+the PortraitNote (y 70) when a portrait is hung during the card. 114 - "QQ THANKS DONE: workspace.Thanks.Gifts.Carhartt0520 = 1000
+acorns, Id carhartt0520_1, with its note (4 gifts listed)"; the Note reads back right.
+Job 113 round 2: tools/croc/croc_portrait2.lua (make_croc_portrait2.py, 3633 bytes, compiles; self-tested over round 1's patched
+sources): CrocClient celebrate() waits up to 8 s while the DailyCard is down (Position.Y.Offset > -100) or the PortraitNote shows
+(TextTransparency < 0.9); PortraitClient's note waits up to 7 s while PlayerGui.CrocToast is up. No deadlock (the card waits only
+before it exists). "QQ CROCP2 DONE: CrocClient true, PortraitClient true". Ask Shannon, run, save.
