@@ -3234,3 +3234,7 @@ each) show only as a faint sparkle trail in daylight on my capture - the banner 
 lower / to the sides, or the banner lower, so the two do not share the sky. The built card after the replays opened on top of the
 camera's house view once (t119_built_card_over_house) - only because I fired done twice; in one real run it comes after the camera
 returns. Waits for her word to install.
+Job 119 r2b (cloud thread, from runner 7's preview at 9b3f011: the bell only, the 4.5 s hold, the finale and "Welcome home, SelBell!"
+all right; the fireworks a faint sparkle trail in daylight, bursting in the banner's band): the bursts alternate either side of the
+house (local x +-11..19) at 15..25 above the oak's foot - beside the house, below the banner - 130 sparks of size 1.8 (Brightness 5
+where the property exists) with a brighter, wider flash. Same file, patch_treehouse3_r2.lua, re-run over the preview state or Edit.

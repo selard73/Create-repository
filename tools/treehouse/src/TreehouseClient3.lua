@@ -315,16 +315,18 @@ local function fireworks(centre, secs)
 		while os.clock() - t0 < secs do
 			k += 1
 			local col = COLS[(k % #COLS) + 1]
-			local at = centre + Vector3.new(math.random(-16, 16), math.random(18, 30), math.random(-12, 12))
+			local side = (k % 2 == 0) and 1 or -1                               -- (r2b: either side of the house and below the banner - runner 7's preview)
+			local at = L(side * math.random(11, 19), math.random(15, 25), math.random(-6, 6)).Position
 			local p = Instance.new("Part"); p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false; p.Transparency = 1
 			p.Size = Vector3.new(1, 1, 1); p.CFrame = CFrame.new(at); p.Parent = folder
-			local e = Instance.new("ParticleEmitter"); e.Rate = 0; e.Speed = NumberRange.new(18, 30); e.SpreadAngle = Vector2.new(180, 180)
+			local e = Instance.new("ParticleEmitter"); e.Rate = 0; e.Speed = NumberRange.new(14, 24); e.SpreadAngle = Vector2.new(180, 180)
 			e.Lifetime = NumberRange.new(0.9, 1.6); e.Acceleration = Vector3.new(0, -14, 0); e.Drag = 2.2; e.LightEmission = 1; e.LightInfluence = 0
-			e.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.7), NumberSequenceKeypoint.new(1, 0)})
+			e.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 1.8), NumberSequenceKeypoint.new(0.6, 1.2), NumberSequenceKeypoint.new(1, 0)})   -- (r2b: bigger - they read as a faint trail in daylight)
+			pcall(function() e.Brightness = 5 end)
 			e.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.7, 0.2), NumberSequenceKeypoint.new(1, 1)})
 			e.Color = ColorSequence.new(col, COLS[((k + 2) % #COLS) + 1]); e.Parent = p
-			local l = Instance.new("PointLight"); l.Color = col; l.Range = 22; l.Brightness = 2.5; l.Shadows = false; l.Parent = p
-			e:Emit(80)
+			local l = Instance.new("PointLight"); l.Color = col; l.Range = 28; l.Brightness = 4; l.Shadows = false; l.Parent = p
+			e:Emit(130)
 			TweenService:Create(l, TweenInfo.new(1.1), {Brightness = 0}):Play()
 			Debris:AddItem(p, 2.5)
 			task.wait(0.45 + math.random() * 0.25)
