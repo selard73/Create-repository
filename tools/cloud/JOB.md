@@ -2507,3 +2507,7 @@ HudBackup.TreehouseCleared_n, never squirrels or walls), builds the oak there wi
 <name>" until the first piece, moves p1/p2 so the first two pieces lie between the spawn and the site, and the client's first-piece
 reveal: camera to the site for ~6 s with "That's where <name> will stand", then back. Pieces already found are kept (they are on the
 save); the house simply stands at the new site.
+Job 111 WORDS (Shannon, Oct 15): the name is "Homebase Treehouse" ("the forest is where we start and the player is traveling around
+the world; they always have the homebase treehouse to come back to as theirs"); roomier inside, a balcony; decorations to buy later.
+The sign before the build: "Future home of Homebase Treehouse. Please excuse the dirt." The first-piece reveal line: "A squirrel was
+going to live here, but you got the first piece, so it's yours now. The squirrel won't mind." (camera on the site ~6 s, then back).
