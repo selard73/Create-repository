@@ -1777,3 +1777,5 @@ daily_day, daily_streak, frenchrank): the filter works. Lines in tools/interact/
 job 99's preview.
 Edit check after the round-2 test (runner 7): v1369; Interact (InteractServer 8921, Enabled true, Repeat 60, Budget 90); Funnel
 (FunnelServer 7394, ForceNew false); backups Funnel_pre_1, Interact_pre_1; no leftovers; HttpEnabled false. Unpublished: job 98 round 2.
+PUBLISHED by Shannon at 2026-10-15T02:50:28.832Z (games API "updated"; "published"): job 98 round 2 (the item filter) is LIVE. Nothing unpublished in Studio.
+Next: job 99's look-pass PREVIEW (play test, before/after pictures, desktop viewport).
