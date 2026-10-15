@@ -3362,3 +3362,5 @@ re-grabbed. INSTALLED in Edit on her "Yes, install it all": "QQ TREE124 DONE: Tr
 HudBackup.TreehouseClient_pre_r6_1; PieceSound rbxassetid://16480570986 at 1.5x" + PieceClips set as above (PieceClipLength 1, Volume
 0.6, ResetRound 2). Unpublished. (In every Studio play test TreehouseReset printed "CozyGameMode - 0 pieces taken back (round 2)" -
 the script runs; the live question is still open with her.)
+Treehouse RESET round 3 (runner 7, Shannon: "Yes, restart me again", Studio EDIT, unpublished): ResetRound 2 -> 3 (ResetUserIds
+'9611145467', TreehouseReset enabled). Runs once on her next live join after the publish (with r6b + her PieceClips).
