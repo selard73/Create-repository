@@ -2479,3 +2479,8 @@ installed in Edit through today: look pass (water, grading, grass) + Clouds, Gif
 (c043d9b, 12 pieces), birds v5 (perched pelican + gulls, Templates Persistent), Japan fixes (job 105, 9 scripts), golden gate r2 (101),
 armfix r2 (107), Game Passes + 600/2500 prices (109), Buy here cards (110), hall retry (107b), acorn in the palm (107c). She is to Shut
 Down All Servers so players get it. NOT in it: japan_geo1 (job 106) - next, after a fresh Save to Roblox.
+
+Birds v6 (Shannon, after the publish: "those birds flying in the france map are too many and too quickly; it looks like that movie
+The Birds"): the village swallows are THREE (were eight), on a wider lazy figure-eight at less than half the speed (0.38, was 0.85),
+flapping in bouts between glides (3.2 beats/s, was 6), banking less. Harbour and lighthouse gulls unchanged. Re-run
+install_birds1.lua in Edit (re-runnable; the Templates carry over), then a play test over the Rue (a picture), then publish on her word.

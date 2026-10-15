@@ -24,7 +24,7 @@ local C = Color3.fromRGB
 local KIND = {
 	gull = {stand = 1.9, span = 3.0, body = Vector3.new(0.6, 0.42, 1.6), bodyColor = C(246, 246, 242), wingColor = C(214, 216, 220), tipColor = C(70, 72, 78), speed = 0.2, flap = 1.4, glide = true, bank = 14},
 	pelican = {stand = 4.2, span = 5.0, body = Vector3.new(0.9, 0.7, 2.6), bodyColor = C(238, 232, 220), wingColor = C(200, 196, 188), tipColor = C(60, 58, 56), speed = 0.1, flap = 0.9, glide = true, bank = 8, bill = true},
-	swallow = {stand = 0.9, span = 1.9, body = Vector3.new(0.3, 0.22, 0.8), bodyColor = C(34, 38, 56), wingColor = C(28, 30, 46), tipColor = nil, speed = 0.85, flap = 6.0, glide = false, bank = 32},
+	swallow = {stand = 0.9, span = 1.9, body = Vector3.new(0.3, 0.22, 0.8), bodyColor = C(34, 38, 56), wingColor = C(28, 30, 46), tipColor = nil, speed = 0.38, flap = 3.2, glide = true, bank = 18},   -- (v6, Shannon: "too many and too quickly ... The Birds" - a lazy glide now, with bouts of flapping)
 }
 local function part(size, color, parent, shape)
 	local p = Instance.new("Part"); p.Size = size; p.Color = color; p.Material = Enum.Material.SmoothPlastic

@@ -12,7 +12,7 @@ SITES = [
     {"name": "Harbour gulls", "kind": "gull", "x": 225, "y": -12, "z": -670, "r": 30, "n": 6, "band": 10, "range": 500},
     {"name": "Harbour pelican", "kind": "pelican", "x": 215, "y": -36, "z": -690, "r": 34, "n": 1, "band": 2, "range": 500},
     {"name": "Lighthouse gulls", "kind": "gull", "x": 520, "y": 86, "z": -1178, "r": 26, "n": 5, "band": 12, "range": 500},
-    {"name": "Village swallows", "kind": "swallow", "x": 262, "y": 30, "z": -58, "r": 34, "n": 8, "band": 8, "range": 400},
+    {"name": "Village swallows", "kind": "swallow", "x": 262, "y": 30, "z": -58, "r": 30, "n": 3, "band": 6, "range": 400},   # (v6: three, not eight)
     # perched (round 3: Shannon's rigged Meshy pelican and gull; round 4: the spots runner 7 settled in the preview)
     {"name": "Pelican on the quay", "kind": "pelican", "perch": True, "x": 232.5, "y": -46.56, "z": -667.6, "yaw": 280, "n": 1, "height": 4.2, "range": 220},
     {"name": "Gulls on the harbour rail", "kind": "gull", "perch": True, "x": 231.6, "y": -46.56, "z": -673.4, "yaw": 102, "n": 3, "gap": 2.6, "height": 1.9, "range": 220},
