@@ -55,7 +55,7 @@ local BED = -30
 local function raiseBed(x1, z1, x2, z2)
 	local cells = 0
 	local step = 256
-	local gy1, gy2 = -64, BED
+	local gy1, gy2 = -64, math.floor(BED / 4) * 4           -- on the 4-stud grid (-32; a full row up to -32 draws its surface at -30 = BED) - a region off the grid throws (runner 7's catch)
 	for cx = math.floor(x1 / 4) * 4, x2 - 0.01, step do
 		for cz = math.floor(z1 / 4) * 4, z2 - 0.01, step do
 			local r = Region3.new(Vector3.new(cx, gy1, cz), Vector3.new(math.min(cx + step, math.ceil(x2 / 4) * 4), gy2, math.min(cz + step, math.ceil(z2 / 4) * 4)))

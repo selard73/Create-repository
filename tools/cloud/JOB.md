@@ -2794,3 +2794,38 @@ patch_treehouse2_r3.lua at 608aca5 (30455, adler32 1153411002) - the same QQ TRE
 "QQ TREE3 client: TreehouseClient replaced, 25778 chars; the round-2 copy is HudBackup.TreehouseClient_pre_r3_2", "QQ TREE3 DONE").
 Readback: one TreehouseClient, 25778 chars; HudBackup.TreehouseClient_pre_r3_2 there. Next: japan_geo2 on her yes + a save; then she
 publishes.
+Result job 111 round 3b (runner 7, 608aca5, INSTALLED in Edit on Shannon's "Install the update", unpublished; logged at 8dd6298):
+QQ lines as in the preview; one TreehouseClient (25778 chars); HudBackup.TreehouseClient_pre_r3_2 kept. Homebase Treehouse is done
+through round 3b. Next: japan_geo2.lua (323dd1f) on her yes and a save; then publish.
+Job 106 geo2 FIX (cloud thread, from runner 7's read before running): raiseBed's region top was y BED = -30, off the 4-stud grid -
+ReadVoxelChannels would have thrown on the first chunk, right after the "before JapanGeo2" waypoint, before any change. Now
+math.floor(BED / 4) * 4 = -32: a full row up to -32 draws its surface at -30, which is BED, and the sand band fillAir writes for the
+new areas (level BED) draw at -30 too. Nothing else changed.
+
+Result JAPAN GEO2 INSTALLED (runner 7, Studio EDIT, unpublished; Shannon confirmed in this session "Published and saved, go" after her
+publish of Homebase r3b + birds v7): japan_geo2.lua at bee201f (8615, adler32 2093036727; the only change from 323dd1f is raiseBed's gy2
+= -32). My "off the grid throws" call was WRONG: a read-only ReadVoxelChannels probe with top -30 did NOT error (it returned 9 rows, the
+region widened to -28); the -32 still matters - with -30 the -32..-28 row would have turned to sand too (bed drawn at -26, not -30).
+Output, 7.6 s: "QQ GEO2 the bed: 2749626 deep water cells below y -30 became sand (one depth with Codex's basin, bed -26..-35)", "QQ GEO2
+more sea: north band z 900..1300 and east band x 7400..7800 - 272600 sand cells, 817800 water cells", "QQ GEO2 the horizon: three flat
+sea parts (colour 0.203922, 0.407843, 0.305882) to x 9400 and z -2800..2800, 0.4 under the water's surface", "QQ GEO2 the canal's north
+end: a stone weir across x 6086..6116 at z -221..-224 (top y 2.0, the water at 1.3 ends against it)", "QQ GEO2 lake stair: CastShadow
+off on 54 parts" (32 "Lake swim exit tread" + 22 "Promenade approach tread" + 1 support - not three), "QQ GEO2 DONE: ...".
+Play test (avatar teleported to the north shore (6100, 0, 465): Area "japan", the client's water (24,112,151) blue, client FOG
+99999..100000 = NO FOG in Japan, atmosphere 0.08 / haze 0; server fog 350..1100 but the client's is what shows). Pictures
+tools/japan/shots_geo2/:
+ HORIZON - NOT FIXED: (a) the parts are painted Edit's WaterColor (52,104,78) green, but in Japan JapanWaterAppearance paints the
+    terrain water (24,112,151) - from 60 up a duller grey-green band sits on the horizon above the blue (geo2_horizon_from_60_up);
+    (b) STREAMING: only 2 of the 7 horizon parts were on the client (the two north ones, (5512/7038, -6.9, 2040)); from 90 up over
+    the shore the sea ends in a stepped silhouette against the sky - the streamed terrain water's edge, with the north parts making
+    a raised middle step (geo2_sea_edge_from_90_up). From the shore at eye height it reads as a thin line (geo2_shore_out_to_sea);
+    east from x 7200 the horizon is clean (geo2_east_from_x7200). And there is no fog to hide anything (FogEnd 100000 on the client).
+    Suggest: the horizon parts in a Model with ModelStreamingMode Persistent, coloured (24,112,151) (or set by the client to the
+    terrain's WaterColor while in Japan), and a ring that starts nearer the island so the streamed terrain edge never shows.
+ BED: the near water reads one even blue from above, no paler rectangle (geo2_sea_edge_from_90_up, foreground).
+ CANAL WEIR: from the north the canal ends against a grey stone weir with its row of capstones, grass beyond - reads like a canal's
+    end (geo2_canal_weir_from_north); from the south it sits under the bridge (geo2_canal_weir_under_bridge). Raycast: water 1.30 to
+    z -210, the bridge deck at -218, weir lip 2.60 at -221, weir 2.00 at -224, then "Continuous shallow river exit" (Plastic) y 0.30
+    at -228 and grass. A small sliver of blue shows at the weir's west foot.
+ LAKE STAIR: no dark band - the water under the treads is clean blue; the treads above water are dark wood (geo2_lake_stair).
+Asked her to save; publish is hers.
