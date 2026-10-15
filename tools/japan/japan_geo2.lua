@@ -84,10 +84,16 @@ say("more sea: north band z %d..%d and east band x %d..%d - %d sand cells, %d wa
 local HF = J:FindFirstChild("Horizon sea") or Instance.new("Folder"); HF.Name = "Horizon sea"; HF.Parent = J
 HF:ClearAllChildren()
 local wc = T.WaterColor
-local function plane(cx, cz, sx, sz)
-	local p = Instance.new("Part"); p.Name = "HorizonSea"; p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false
-	p.Size = Vector3.new(sx, 1, sz); p.CFrame = CFrame.new(cx, SEA - 0.9, cz); p.Material = Enum.Material.SmoothPlastic
-	p.Color = wc; p.Reflectance = 0.35; p.Transparency = 0.05; p.CastShadow = false; p.Parent = HF
+local function plane(cx, cz, sx, sz)                                   -- tiled: a part is at most 2048 studs a side
+	local nx, nz = math.ceil(sx / 2000), math.ceil(sz / 2000)
+	local tx, tz = sx / nx, sz / nz
+	for i = 0, nx - 1 do
+		for j = 0, nz - 1 do
+			local p = Instance.new("Part"); p.Name = "HorizonSea"; p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false
+			p.Size = Vector3.new(tx + 0.5, 1, tz + 0.5); p.CFrame = CFrame.new(cx - sx / 2 + tx * (i + 0.5), SEA - 0.9, cz - sz / 2 + tz * (j + 0.5))
+			p.Material = Enum.Material.SmoothPlastic; p.Color = wc; p.Reflectance = 0.35; p.Transparency = 0.05; p.CastShadow = false; p.Parent = HF
+		end
+	end
 end
 local FAR_X, FAR_Z1, FAR_Z2 = 9400, -2800, 2800
 plane((X1 + NX2) / 2, (NZ2 - 20 + FAR_Z2) / 2, NX2 - X1, FAR_Z2 - (NZ2 - 20))            -- north
