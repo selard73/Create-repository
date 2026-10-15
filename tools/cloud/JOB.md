@@ -1758,3 +1758,6 @@ held from the client at 4.7 studs); Items daily_day, daily_streak, frenchrank, p
 bench ~40 s later printed nothing. Click not exercised (automation mouse). NOTE: the Item events for daily_day / daily_streak / frenchrank
 / passport_porto_bell are save bookkeeping, not things players "interact with" - say whether to filter them (keep shop buys, keepsakes,
 backpack, chute, passport stamps?). Lines in tools/interact/playtest98_result_2026-10-14.txt. She publishes.
+Edit check after the job 98 play test (runner 7): v1369; Funnel (FunnelServer 7394, ForceNew false); Interact (InteractServer 8554,
+Enabled true, Repeat 60, Budget 90); backup Funnel_pre_1; HallOfGuardians round 7 present; no leftovers; HttpEnabled false.
+Unpublished in Studio: job 98. She publishes; then job 99's preview.
