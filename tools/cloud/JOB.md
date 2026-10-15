@@ -2734,3 +2734,15 @@ asked for round 3 as a PATCH over it, not a fresh install. tools/treehouse/patch
  install_treehouse2.lua is regenerated from the same client (44986 bytes) for a future fresh install only.
 Preview in play from this commit (the floor y at the oak ~0.1 and the readback lines, the sign's bottom line, the room furnished),
 then install in Edit on her word; geo2 (323dd1f) after that; then she publishes.
+Result job 111 round 3 (runner 7, a9c0448, preview then INSTALLED in Edit on Shannon's "Install it all", unpublished; logged at
+c88cabe / e0f70f0 on claude/epic-hawking-188q4l, pictures r3_*): all QQ TREE3 lines as expected; the floor 0.1 across the hollow and
+the mouth (readback 0.06), the roots show; the sign line "0 of 12 pieces found." whole; one TreehouseClient (24562 chars), one
+Treehouse_local, one TreehouseGui; HudBackup.TreehouseClient_pre_r3_1 kept. By eye: the furniture knee-high for an avatar (table top
+1.35 above the floor), the mug a plain red cube, the table top almost touching the trunk, and the window only on the outside - the
+window wall one solid part (round 2 carried that).
+Job 111 ROUND 3b (cloud thread): the SAME patch_treehouse2_r3.lua, client only (its floor pass finds nothing fuller than 0.52 now),
+re-run over round 3: the round-3 client goes to HudBackup.TreehouseClient_pre_r3_2. The client: the window wall is four parts round a
+2.8 x 2.8 hole (y 12.7..15.5) once the window stage comes (solid before), the frame 0.5 thick at the wall's centre so it shows both
+sides, the pane in the hole; the table top 2.6 above the floor (an R15 avatar is ~5), the stools' seats 1.6, half a stud clear of the
+trunk; the mug a cream cylinder with a handle; the shelf's top at the sill; the rug 6 wide, the cushion 1.8. Optional - Shannon took
+the furniture as it was; preview and offer.

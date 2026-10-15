@@ -14,7 +14,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 CLIENT = (HERE / "src/TreehouseClient2.lua").read_text(encoding="utf-8")
 assert "]===]" not in CLIENT
-assert "L(-9, 1.5, 17.6)" in CLIENT and "the mug" in CLIENT and "a round rug" in CLIENT
+assert "L(-9, 1.5, 17.6)" in CLIENT and "a mug" in CLIENT and "a round rug" in CLIENT and "round 3b" in CLIENT
 TEMPLATE = '''-- patch_treehouse2_r3.lua (Studio EDIT; re-runnable; also a play-test PREVIEW - discarded on stop). Homebase round 3 as a PATCH over the
 -- installed round 2: (1) the hollow's top voxel row to the forest's occupancy 0.52 (surface y ~0.1, the roots show); (2) TreehouseClient
 -- replaced by TreehouseClient2 round 3 (@@CLEN@@ chars: the sign's post behind the board, furniture in the room), the old one disabled and
