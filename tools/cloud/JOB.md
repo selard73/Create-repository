@@ -2270,3 +2270,35 @@ destroys the Humanoid, but a WrapLayer top (jacket / sweater / shirt accessory) 
 in the arm's original hanging pose = "the original arm the avatar has". The two test avatars have no layered TOP, so it could not
 show. Needed: whose statue showed it (fountain / Hall / harbour Guardian, and the player's name) - then StatueDebug with that uid
 reproduces it. Pictures: tools/statues/shots/fountain_statue_SelBell_*.jpg.
+
+Job 106 FIXER (cloud thread, from survey106's 148 lines and the ten pictures; Shannon's call for the edge: "real sea with a wall farther
+out"): tools/japan/japan_geo1.lua (compiles; an adversarial review is running - wait for the commit that says "reviewed"). Edit mode;
+everything re-measured; every move logged in ServerStorage.HudBackup.JapanGeo1_log (JSON) for an undo. What it does: (1) PROPS - the
+Landscape bamboo clumps floating on the south ridge's slope come down onto the ground under their centre; the Blue vending machine
+comes up out of the market platform (it stood 1 stud sunk); the Raked gravel garden (1.8 up) and the Fishing bank come down; the Fuji
+photography lookout gets a stone plinth down to the hillside; any other small prop hovering evenly up to 3 studs comes down. Left
+alone: bridges, the canal boat, the waterwheel, the castle's inner staircase, the market stalls (their foundations are meant to sit in
+the ground - the survey's "floating" market stalls were that), the bamboo grove maze (the picture shows it fine), the volcano crater.
+(2) SLABS - the 134 fighting pairs (the dashed seams on the paving): the higher of each pair rises until the faces are 0.16 apart,
+repeated until none fight. (3) WATER - the lake stair's dark underwater support takes the bed's sand look; each rectangular basin in
+Codex's JapanWaterBasins manifest is refilled (air inside the basin box up to its level becomes water: the canal no longer ends in a
+vertical wall short of its north end - the "hard water wall" picture); a REAL SEA at y -6 (the level of the sea basin east of the
+island) across x 4900..7400, z -1500..900 - only air becomes water, land is untouched - on a sand bed at y -64..-60, and an invisible
+wall 150 studs out from the map's box (JapanMap."Sea wall"). PLAY TEST after: the slope bamboo stands on the ground; the vending
+machine on the platform; the paving seams gone (Lantern Street, the market lane, the palace apron); the canal's north end; the lake
+stair; walk off the north edge and the west edge - into water, swim to the wall; the volcano and Fuji from the sea.
+
+## Job 108 (her idea, Oct 15): paid cheats for the harder treehouse pieces - DESIGN, waits for her Developer Product id
+
+Shannon: "lets make some paid cheats to find some more difficult treehouse pieces". Design (cloud thread): a "Piece finder" bought
+for 150 acorns OR a Developer Product (Robux; consumable, so a product not a pass): for 90 s a glowing trail of acorn-gold sparkles
+leads from the player to the NEAREST piece they have not found yet (within the map they are in; beyond-the-gate pieces only once the
+gate is open), with a pointer pill "Treehouse piece: 62 studs" that counts down; the piece gets a beacon. Sold from the treehouse sign
+(a second prompt "Need a hint?") and from the HUD pill. The acorn price keeps it fair for free players; the Robux price is hers.
+WHAT SHE CREATES: Creator Dashboard > the experience > Monetization > Developer Products > Create: name "Treehouse piece finder",
+description "Shows the way to your nearest missing treehouse piece for 90 seconds", a 512 x 512 image (optional; an acorn on a
+map), price in Robux (suggest 25-49). Send the product id. The game passes for the hand glider and the zip line handle are the same
+page, "Passes": name required ("Hand glider", "Zip line handle"), description optional, image optional (a screenshot of the item in
+the game works), price in Robux - send both ids. Code: TreehouseServer gets a "finder" request (acorns deducted through the Acorns
+attribute + RS.AwardAcorns with a negative amount if the ledger allows it - to check - or MarketplaceService:PromptProductPurchase
+for Robux with ProcessReceipt in a small ReceiptServer), TreehouseClient draws the trail and the pill.
