@@ -2634,3 +2634,42 @@ U's back wall a stud inside the floor's face (no invisible wall in open air), th
 stage, the stilts' feet on the ground, the stone ring's gap at the mouth, the edge search re-run safe, the reveal toast tall enough
 for her line. Preview per the "Job 111 BUILD" paragraph from THIS commit; the runner will see four 4-stud terraces in the bowl's
 walls and the rim's slab from the tower top - say if they look wrong by eye.
+
+Result PUBLISH v1429 (Shannon, Alt+P, ~14:27:53Z Oct 15): out with it - treehouse r4 glow (the old oak (-4,-30), 12 pieces),
+japan_geo1, ChampionServer 36212 (armfix1 + acornhand1), HallServer 6204 / HallClient 4377 (hallretry1), BuyHere, Passes (600 /
+2500 acorns), golden_gate2, japan_fix1. NOT in it: birds v7 and the four perches (below), Homebase (preview only).
+
+Result BIRDS v7 INSTALLED + PERCHES (runner 7, Shannon's "Yes, install", Studio EDIT, unpublished): install_birds1.lua at c5bdc28
+(22237, adler32 1722286785), BirdsClient 18905 chars, the old folder HudBackup.Birds_pre_4. Then her own spots ("the pelican should be
+perched in the edge of one of the boats, and the 3 gull should be more spread out. one maybe perched on the rescue boat on the beach,
+one down by the tide pools where the crabs are and one at the current location") set in workspace.Birds Sites, one site per bird:
+  Pelican on Rosina        x 211.04  y -51.26  z -628.0   yaw -90   height 2.6  range 220
+  Gull on the quay         x 231.6   y -46.56  z -673.4   yaw 102   height 1.4  range 220
+  Gull on the rescue boat  x 253.27  y -46.28  z -710.97  yaw -148  height 1.4  range 220
+  Gull at the tide pools   x 300.0   y -51.76  z -800.0   yaw -45   height 1.4  range 220
+(lighthouse pair unchanged, height 1.4; flocks as v7). Play test: the four built (pelican box 1.4 x 2.6 x 2.8, each gull 0.9 x 1.4 x
+1.9). By eye: the pelican sits on Rosina's bow beside the fisher squirrel, about two thirds of his height, on the boat's edge; the gull
+on the red rescue boat's bow rim next to the lifeguard chair; the tide-pool gull on the sand between the two pools beside the crab
+squirrel. Pictures tools/birds/shots/v7_*.jpg. Waits for her publish.
+
+Result job 111 PREVIEW (runner 7, play test, nothing kept): install_treehouse2.lua at 1bade88 (41445, adler32 1124487011) on the
+test server: "QQ TREE terrain: rim to y 9 behind z 62..84, floor at 0.1, a bowl of radius 27 cut to y 17, dirt radius 15, centred
+(-18, 47)", "QQ TREE edge: the north wall opens between x -48 and 12; a U of wall round the hollow to z 73", "QQ TREE dressing
+cleared from the site: 5 (HudBackup.TreehouseCleared_1)", p1..p12 piece lines (none skipped), "QQ TREE DONE: Homebase Treehouse at
+(-18, 0.1, 47) yaw 155.5 in its hollow; 12 pieces placed; TreehouseServer 4806, TreehouseClient 22722 chars; the old folder is
+HudBackup.Treehouse_pre_2". Pictures tools/treehouse/shots/hb1..hb10. What I saw:
+ 1. FLOOR is y 2.0, not 0.1 (terrain read over x -30..-10, z 30..60). The oak's roots (y 0.7, 1.8 thick, top 1.6) are under it -
+    no roots show.
+ 2. THE MOUTH: a grass lip y 4.4 - 5.3 across z 20..25 (it was 0.1 at z 20 before). From the forest the hollow does not read as an
+    opening - you see a hump with the trunk behind it - and the sign (board y 2.4..5.2 at (-2.3, 34.4)) is hidden behind the lip, only
+    its top edge shows (hb3). The mouth needs cutting down to the floor's height.
+ 3. FROM THE TOWER TOP (hb2): the four terraces do not show at all - the bowl reads as a smooth dent round the oak; the back rim reads
+    as a flat-topped slab with straight edges and square corners behind the tree (looks built, not natural).
+ 4. THE REVEAL: both messages show and fit ("A squirrel was going to live here, but you got the first piece, so it's yours now. The
+    squirrel won't mind." then "Homebase piece 1 of 12! 11 more to find", hb4/hb5); the camera move itself cannot be pictured
+    (screen_capture sets its own camera) and plays once per session.
+ 5. THE HOUSE: 3 pieces = deck, stilts, ladder (hb6); 7 = room walls and railings (hb7); 12 = roof with awning, lit lantern, window,
+    flag on the balcony corner (hb8, hb9) - all clean, nothing floating. INSIDE (hb10): the trunk (TrunkHigh 4.8 across) stands in
+    the middle of the room about 6 studs in from the door, so from outside the doorway is filled by the trunk (hb8) and inside it
+    blocks the view; the room is empty otherwise.
+Waits for the cloud's round 2 (the floor, the mouth lip, the terraces / rim) and her word to install.
