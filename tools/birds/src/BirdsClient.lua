@@ -4,21 +4,27 @@
 -- No gameplay, nothing to touch. Every bird is made and moved on THIS client only - the server never sees them and nothing
 -- replicates - so a flock costs a few CFrame writes a frame. A site sleeps while the camera is farther than its Range (the birds
 -- park out of sight), so phones only move the flock they can see.
--- THE LOOK: a kind's bird is either a copy of a MESH template (workspace.Birds.Templates.<Kind>, e.g. Templates.Gull or
--- Templates.Pelican: a Model or MeshPart she imports or the Studio tool makes, facing -Z, any size - the script scales it to the
--- kind's wingspan; parts named LeftWing / RightWing, if any, flap about their inner edge) or, when there is no template, a
--- part-built bird: a body, two wings with dark tips (gull), a long bill (pelican), a forked little dart (swallow).
+-- THE LOOK (v3, Oct 15: Shannon's Meshy pelican and gull, rigged by runner 7 - see tools/birds/RIG_NOTES_2026-10-15.md): two kinds of
+-- site. FLYING flocks (circles, figure-eights) use a part-built bird - a body, two wings with dark tips (gull), a long bill (pelican),
+-- a forked dart (swallow) - unless a wings-spread mesh named Templates.<Kind>Flying exists (facing -Z; parts named LeftWing /
+-- RightWing flap). PERCHED birds (site.perch = true: a pelican on the quay, gulls on a railing) use the mesh template
+-- Templates.<Kind> (Gull, Pelican: a standing bird with folded wings, facing -Z; its BONES are driven here: Wing.L/.R and
+-- WingTip.L/.R flap to 55 degrees about the model's +Z, Head turns about +Y and nods about +X, Jaw opens about +X (pelican's
+-- gulp), Thigh.L/.R swing about +X and Body rolls about +Z for the waddle - the ranges runner 7 tested) or, without a template, a
+-- part-built bird standing with folded wings. Perched birds idle: look about, preen-flap, waddle on the spot, gulp.
 -- Sites come from the folder's attribute Sites (JSON; the installer writes them): [{name, kind = "gull" | "pelican" | "swallow",
--- x, y, z, r, n, band, range}] - x/z the centre, y the flight height (world), r the circle's radius, n the number of birds,
--- band the vertical spread, range the camera distance that wakes the site.
+-- x, y, z, r, n, band, range}] for a flock (x/z the centre, y the flight height, r the radius, n the birds, band the vertical
+-- spread, range the camera distance that wakes the site) and [{name, kind, perch = true, x, y, z, yaw, n, gap, height, range}]
+-- for perched birds (x/y/z the first bird's feet, yaw its facing in degrees, n birds spaced gap studs to its right, height the
+-- bird's standing height in studs). Edit the attribute in Studio to move a bird; no code.
 local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
 local F = script.Parent
 local C = Color3.fromRGB
 local KIND = {
-	gull = {span = 3.0, body = Vector3.new(0.6, 0.42, 1.6), bodyColor = C(246, 246, 242), wingColor = C(214, 216, 220), tipColor = C(70, 72, 78), speed = 0.2, flap = 1.4, glide = true, bank = 14},
-	pelican = {span = 5.0, body = Vector3.new(0.9, 0.7, 2.6), bodyColor = C(238, 232, 220), wingColor = C(200, 196, 188), tipColor = C(60, 58, 56), speed = 0.1, flap = 0.9, glide = true, bank = 8, bill = true},
-	swallow = {span = 1.9, body = Vector3.new(0.3, 0.22, 0.8), bodyColor = C(34, 38, 56), wingColor = C(28, 30, 46), tipColor = nil, speed = 0.85, flap = 6.0, glide = false, bank = 32},
+	gull = {stand = 1.9, span = 3.0, body = Vector3.new(0.6, 0.42, 1.6), bodyColor = C(246, 246, 242), wingColor = C(214, 216, 220), tipColor = C(70, 72, 78), speed = 0.2, flap = 1.4, glide = true, bank = 14},
+	pelican = {stand = 4.2, span = 5.0, body = Vector3.new(0.9, 0.7, 2.6), bodyColor = C(238, 232, 220), wingColor = C(200, 196, 188), tipColor = C(60, 58, 56), speed = 0.1, flap = 0.9, glide = true, bank = 8, bill = true},
+	swallow = {stand = 0.9, span = 1.9, body = Vector3.new(0.3, 0.22, 0.8), bodyColor = C(34, 38, 56), wingColor = C(28, 30, 46), tipColor = nil, speed = 0.85, flap = 6.0, glide = false, bank = 32},
 }
 local function part(size, color, parent, shape)
 	local p = Instance.new("Part"); p.Size = size; p.Color = color; p.Material = Enum.Material.SmoothPlastic
@@ -34,9 +40,9 @@ local function sites()
 	local ok, t = pcall(function() return HttpService:JSONDecode(F:GetAttribute("Sites") or "[]") end)
 	return (ok and type(t) == "table") and t or {}
 end
-local function templateFor(kind)
+local function templateFor(kind, suffix)
 	local T = F:FindFirstChild("Templates")
-	local t = T and T:FindFirstChild(kind:sub(1, 1):upper() .. kind:sub(2))
+	local t = T and T:FindFirstChild(kind:sub(1, 1):upper() .. kind:sub(2) .. (suffix or ""))
 	if t and (t:IsA("Model") or t:IsA("BasePart")) then return t end
 	return nil
 end
@@ -85,10 +91,123 @@ local function makeTemplateBird(k, tpl, parent)
 	return {root = root, rel = rel, template = true, model = c}
 end
 local flocks = {}
+-- ---------- perched birds ----------
+local BONES = {"Wing.L", "Wing.R", "WingTip.L", "WingTip.R", "Head", "Neck", "Neck1", "Jaw", "Thigh.L", "Thigh.R", "Body"}
+local function makePerchBird(k, tpl, site, cf, parent)
+	-- cf: the bird's feet on the perch, facing -Z. Returns {model, bones = {name -> {bone, axes = {X, Y, Z}}}, boned}
+	local b = {bones = {}, boned = false}
+	local height = tonumber(site.height) or k.stand
+	if tpl then
+		local c = tpl:Clone(); c.Name = "Bird"
+		for _, d in ipairs(c:IsA("BasePart") and {c} or c:GetDescendants()) do
+			if d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false; d.CanQuery = false; d.CanTouch = false end
+		end
+		c.Parent = parent
+		if c:IsA("Model") then
+			local _, size = c:GetBoundingBox()
+			if size.Y > 0.01 then pcall(function() c:ScaleTo(c:GetScale() * height / size.Y) end) end
+			c:PivotTo(cf)                                                   -- feet first, then lift the box onto the perch
+			local box, bsize = c:GetBoundingBox()
+			c:PivotTo(cf * CFrame.new(0, cf.Position.Y - (box.Position.Y - bsize.Y / 2), 0))
+			b.model = c
+			local pv = c:GetPivot()
+			for _, d in ipairs(c:GetDescendants()) do
+				if d:IsA("Bone") and table.find(BONES, d.Name) then
+					d.Transform = CFrame.identity
+					b.bones[d.Name] = {bone = d, axes = {
+						X = d.WorldCFrame:VectorToObjectSpace(pv:VectorToWorldSpace(Vector3.xAxis)),
+						Y = d.WorldCFrame:VectorToObjectSpace(pv:VectorToWorldSpace(Vector3.yAxis)),
+						Z = d.WorldCFrame:VectorToObjectSpace(pv:VectorToWorldSpace(Vector3.zAxis))}}
+					b.boned = true
+				end
+			end
+		else
+			c.CFrame = cf * CFrame.new(0, c.Size.Y / 2, 0); b.model = c
+		end
+		return b
+	end
+	-- no template: a part-built bird standing with folded wings
+	local body = part(k.body, k.bodyColor, parent); body.CFrame = cf * CFrame.new(0, k.body.Y / 2 + 0.3, 0) * CFrame.Angles(math.rad(-8), 0, 0)
+	local legL = part(Vector3.new(0.08, 0.5, 0.08), C(230, 170, 90), parent); legL.CFrame = cf * CFrame.new(-0.12, 0.25, 0.1)
+	local legR = part(Vector3.new(0.08, 0.5, 0.08), C(230, 170, 90), parent); legR.CFrame = cf * CFrame.new(0.12, 0.25, 0.1)
+	b.wings = {}
+	for _, side in ipairs({-1, 1}) do
+		local w = part(Vector3.new(0.06, k.body.Y * 0.8, k.body.Z * 0.75), k.wingColor, parent)
+		table.insert(b.wings, {part = w, side = side})
+	end
+	if k.bill then
+		local bill = part(Vector3.new(0.22, 0.2, 1.1), C(236, 190, 110), parent); bill.CFrame = body.CFrame * CFrame.new(0, 0.1, -(k.body.Z / 2 + 0.5))
+		local head = part(Vector3.new(0.26, 0.26, 0.5), C(60, 58, 56), parent); head.CFrame = body.CFrame * CFrame.new(0, 0.2, -(k.body.Z / 2 + 0.1))
+	end
+	b.body = body
+	return b
+end
+local function setBone(b, name, axis, deg)
+	local e = b.bones[name]
+	if e then e.bone.Transform = CFrame.fromAxisAngle(e.axes[axis], math.rad(deg)) end
+end
+local function makePerch(site, k, m)
+	local tpl = templateFor(site.kind or "gull")
+	local yaw = math.rad(tonumber(site.yaw) or 0)
+	local n = tonumber(site.n) or 1
+	local gap = tonumber(site.gap) or 3
+	local birds = {}
+	for i = 1, n do
+		local holder = Instance.new("Model"); holder.Name = "Bird" .. i; holder.Parent = m
+		local spot = CFrame.new(tonumber(site.x) or 0, tonumber(site.y) or 0, tonumber(site.z) or 0) * CFrame.Angles(0, yaw, 0) * CFrame.new((i - 1) * gap, 0, 0) * CFrame.Angles(0, math.rad((i - 1) * 23 - (n - 1) * 11), 0)
+		local b = makePerchBird(k, tpl, site, spot, holder)
+		b.spot = spot; b.act = "idle"; b.until_ = math.random() * 3; b.t = 0; b.dir = 1
+		table.insert(birds, b)
+	end
+	table.insert(flocks, {site = site, kind = k, model = m, birds = birds, awake = true, t = 0, perch = true, mesh = tpl ~= nil})
+end
+local ACTS = {{"look", 2.2, 3}, {"flap", 1.3, 2}, {"waddle", 1.6, 2}, {"gulp", 0.8, 1}, {"idle", 2.5, 4}}
+local function pickAct(b, k)
+	local total = 0
+	for _, a in ipairs(ACTS) do if a[1] ~= "gulp" or k.bill then total += a[3] end end
+	local r = math.random() * total
+	for _, a in ipairs(ACTS) do
+		if a[1] ~= "gulp" or k.bill then
+			r -= a[3]
+			if r <= 0 then b.act = a[1]; b.until_ = a[2] * (0.8 + math.random() * 0.5); b.t = 0; b.dir = (math.random() < 0.5) and -1 or 1 return end
+		end
+	end
+	b.act = "idle"; b.until_ = 2; b.t = 0
+end
+local function stepPerch(fl, dt)
+	local k = fl.kind
+	for _, b in ipairs(fl.birds) do
+		b.t += dt
+		if b.t >= b.until_ then pickAct(b, k) end
+		local t, a = b.t, b.act
+		local ease = math.min(1, t / 0.4)                                 -- a soft start to every move
+		local wing, tip, headY, headX, jaw, thighL, thighR, roll = 0, 0, 0, 0, 0, 0, 0, 0
+		if a == "look" then headY = 35 * b.dir * ease * (t < b.until_ - 0.4 and 1 or math.max(0, (b.until_ - t) / 0.4))
+		elseif a == "flap" then local f = math.sin(t * 2 * math.pi * 3.2); wing = (30 + 25 * f) * ease; tip = 12 * f * ease; headX = -6 * ease
+		elseif a == "waddle" then local f = math.sin(t * 2 * math.pi * 2); roll = 7 * f * ease; thighL = 25 * f * ease; thighR = -25 * f * ease
+		elseif a == "gulp" then local u = math.sin(math.min(1, t / b.until_) * math.pi); jaw = -20 * u; headX = 8 * u
+		else roll = 1.2 * math.sin(fl.t * 1.1 + b.t); headX = -2 + 2 * math.sin(fl.t * 0.7) end
+		if b.boned then
+			setBone(b, "Wing.L", "Z", -wing); setBone(b, "Wing.R", "Z", wing)
+			setBone(b, "WingTip.L", "Z", -tip); setBone(b, "WingTip.R", "Z", tip)
+			local e = b.bones.Head
+			if e then e.bone.Transform = CFrame.fromAxisAngle(e.axes.Y, math.rad(headY)) * CFrame.fromAxisAngle(e.axes.X, math.rad(headX)) end
+			setBone(b, "Jaw", "X", jaw); setBone(b, "Thigh.L", "X", thighL); setBone(b, "Thigh.R", "X", thighR); setBone(b, "Body", "Z", roll)
+		elseif b.wings then
+			for _, w in ipairs(b.wings) do
+				w.part.CFrame = b.body.CFrame * CFrame.new(w.side * (k.body.X / 2 + 0.03), 0.05, 0.05) * CFrame.Angles(0, 0, -w.side * math.rad(wing * 0.6))
+			end
+			b.body.CFrame = b.spot * CFrame.new(0, k.body.Y / 2 + 0.3, 0) * CFrame.Angles(math.rad(-8 + headX * 0.3), math.rad(headY * 0.5), math.rad(roll))
+		elseif b.model and b.model:IsA("Model") and (roll ~= 0 or headY ~= 0) then
+			b.model:PivotTo(b.spot * CFrame.Angles(0, math.rad(headY * 0.3), math.rad(roll)))   -- (a mesh without bones: it turns and sways a little)
+		end
+	end
+end
 local function makeFlock(site)
 	local k = KIND[site.kind] or KIND.gull
 	local m = Instance.new("Model"); m.Name = site.name or site.kind; m.Parent = folder
-	local tpl = templateFor(site.kind or "gull")
+	if site.perch then return makePerch(site, k, m) end
+	local tpl = templateFor(site.kind or "gull", "Flying")
 	local birds = {}
 	for i = 1, tonumber(site.n) or 5 do
 		local holder = Instance.new("Model"); holder.Name = "Bird" .. i; holder.Parent = m
@@ -132,11 +251,12 @@ RunService.RenderStepped:Connect(function(dt)
 		local centre = Vector3.new(tonumber(s.x) or 0, tonumber(s.y) or 50, tonumber(s.z) or 0)
 		local near = (camPos - centre).Magnitude <= (tonumber(s.range) or 450)
 		if not near then
-			if fl.awake then fl.awake = false; for _, b in ipairs(fl.birds) do park(b) end end
+			if fl.awake then fl.awake = false; if not fl.perch then for _, b in ipairs(fl.birds) do park(b) end end end   -- (perched birds stay on their perch, still)
 			continue
 		end
 		fl.awake = true
 		fl.t += dt
+		if fl.perch then stepPerch(fl, dt) continue end
 		for _, b in ipairs(fl.birds) do
 			b.phase += b.speed * b.dir * dt
 			local th = b.phase
@@ -173,4 +293,6 @@ F:GetAttributeChangedSignal("Sites"):Connect(rebuild)                  -- a new 
 F.ChildAdded:Connect(function(c) if c.Name == "Templates" then task.delay(1, rebuild) end end)   -- a mesh template dropped in later
 local meshKinds = {}
 for _, fl in ipairs(flocks) do if fl.mesh then table.insert(meshKinds, fl.site.kind) end end
-print(string.format("Birds: %d flocks on this screen%s", #flocks, #meshKinds > 0 and (" (mesh: " .. table.concat(meshKinds, ", ") .. ")") or " (part-built)"))
+local perches = 0
+for _, fl in ipairs(flocks) do if fl.perch then perches += 1 end end
+print(string.format("Birds: %d sites on this screen (%d perched)%s", #flocks, perches, #meshKinds > 0 and (" (mesh: " .. table.concat(meshKinds, ", ") .. ")") or " (part-built)"))

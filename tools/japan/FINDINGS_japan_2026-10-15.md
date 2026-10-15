@@ -28,10 +28,9 @@ attribute is never set (the French HUD, the daily pill, the question reminders, 
 counter all go dead) and, worst, its last line `Players.CharacterAutoLoads = false` never runs, so Roblox spawns every new player at a
 random spawn pad - Porto included. The balloon is gone for everyone at the same time. The pre-Japan copies had no such dependency.
 Fix (one line each): look the module up with FindFirstChild and fall back to a stub that allows nobody.
-A1b. INVISIBLE BUT SOLID IN THE CHATEAU GROUNDS: the hidden taxi sign (5 x 4) and its post stand ten studs from the chateau's
-arrival pad; the visibility script hides them for everyone else but does not switch off their collision, so if those two parts are
-CanCollide (the survey counts 855 invisible solid parts in the map; whether these two are among them needs one look in Studio) every
-player bumps into an invisible wall right by the Spawn_domaine pad. Fix: CanCollide/CanQuery/CanTouch false on the two parts.
+A1b. CHECKED, NOT A PROBLEM: the hidden taxi sign (5 x 4) and its post ten studs from the chateau's arrival pad are CanCollide /
+CanQuery / CanTouch false (runner 7 read them in Studio) - nobody bumps into them. The prompt's destinations are the Japan arrivals
+board (6145, 0.6, 222) and the Spawn_domaine pad (438, 4.4, -36).
 A1c. HARMLESS BUT REAL: the water script (JapanWaterAppearance) runs on every client and is gated by position only, not by owner - it
 can flip the terrain's water for a player who gets into Japan's box for the 0.2 s before the guard throws them out; the hide script
 misses Smoke / Fire / Sparkles / Highlight (the volcano's plume is a Smoke); three LocalScripts run small Heartbeat loops on every
@@ -46,9 +45,10 @@ A1d. FOR YOU IN JAPAN (owner-only, but it is what you see when you preview):
   shop's France mode all show in Japan. Arrive by balloon and Area stays "porto": the shop in Italy mode, and the character's NoMusic
   flag from Porto stays on so Japan is silent. Fix: set Area to "japan" in that branch - every gate already treats "japan" as "not
   France", and nothing else needs it.
-- The train script can brick itself on the first ride: it disables all its prompts and sets busy BEFORE it reads JapanMap's Origin
-  attribute outside its error guard - a missing Origin (or a station without StationIndex, or a door without its offsets) leaves the
-  train dead until the server restarts. Fix: validate the attributes at start-up and read them before `busy`.
+- The train script could brick itself: it disables all its prompts and sets busy BEFORE it reads JapanMap's Origin attribute
+  outside its error guard, so a missing attribute would leave the train dead until the server restarts. Today the attributes are all
+  there (Origin (6000, 0, 0); stations 1 / 2 / 3; runner 7 checked), so this is a fragility, not a fault - reading them before
+  `busy` costs one line.
 - The chateau taxi teleports you 5,700 studs with no RequestStreamAroundAsync (the balloon path has one): you stand frozen until the
   district loads, or fall through unloaded ground if streaming's pause is off. Fix: the TravelServer pattern (stream, then pivot).
 - Crossing z -260 and z -560 inside Japan trips the France/Porto hide scripts' lines (they walk all 70k of Porto's instances on your
@@ -130,11 +130,13 @@ regression for other riders). What is wrong:
 
 ## C. The place file and the backups (not Japan's fault alone)
 
-ServerStorage holds 318,798 instances. Codex's 22 "JapanBefore*" revision backups are 17,794 of them (120 scripts among them, four
-MusicClient variants) and six other Japan* folders 4,469 (the mountain's authoring facets 2,304, interiors and old facades 2,023) -
-7% of the whole. The other 93% is older: every install's HudBackup copies and whatever else accumulated. All of it is in the place
-file and in every server's memory at start. tools/japan/probe_serverstorage.lua (read-only) lists the 40 biggest folders so we can see
-what to archive to a separate place. Studio itself sat at 1,860 MB with the place open.
+ServerStorage holds 318,798 instances, and 91% of them are ONE folder: PortoEnvironmentBackup_20261001 (291,576 instances in 80
+"Before..." copies of Porto's buildings from Oct 1-3: BeforeOrganicHillside 56k, BeforeUniformStoreyHeights 51k,
+BeforeConsistentLargeOpenings 51k, BeforeIndividualBlocks 41k, BeforePlacementStructures 27k ...). Codex's 22 "JapanBefore*" revision
+backups are 17,794 (120 scripts among them, four MusicClient variants) and six other Japan* folders 4,469; our own HudBackup is 665.
+All of it is in the place file and in every server's memory at start. The Porto backup folder alone is four times the whole live
+Porto map (70,630) - the first thing to move to an archive place file, Japan or no Japan. (tools/japan/probe_serverstorage.lua lists
+them; Studio itself sat at 1,860 MB with the place open.)
 
 ## D. Before Japan can open to players - the work list
 

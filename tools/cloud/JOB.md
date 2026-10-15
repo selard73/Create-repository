@@ -2068,3 +2068,32 @@ to the body: they flap to about 55 degrees, turn their heads, waddle, and the pe
 wings for flight. So they suit perched birds (pelican on a post or the quay, gulls on railings and roofs); BirdsClient's circling
 flock would keep the part-built birds or need flying-pose models. A template with BONES (not LeftWing/RightWing parts) needs a
 BirdsClient change. The FBX/blend files stay on her PC (roblox-props/meshy/pelican, /gull); she imports them with Import 3D.
+
+## Job 100 round 3: the birds - her rigged Meshy pelican and gull PERCHED, bone-driven (play-test PREVIEW; install on her yes) - runner 7
+
+Runner 7 rigged Shannon's Meshy "Pippin the Pelican" and gull in Blender (tools/birds/RIG_NOTES_2026-10-15.md: standing cartoon
+birds with folded wings; bones Wing.L/.R, WingTip.L/.R, Head, Neck(1), Jaw, Thigh.L/.R, Body; tested ranges - flap to 55 about the
+model's +Z, head turn 35 about +Y, jaw -20 about +X, thigh 25 about +X, body roll 7 about +Z; they suit PERCHED birds, not flight).
+BirdsClient v3 (tools/birds/src/BirdsClient.lua 17318; install_birds1.lua regenerated, both compile): a site with perch = true stands
+its birds on a spot (x/y/z the first bird's feet, yaw its facing, n birds gap studs apart, height in studs) and drives the mesh's
+bones through a little life - look left/right, a preen-flap, a waddle on the spot (body roll + legs), the pelican's gulp - between
+idle sways; a site without a template gets a part-built standing bird. The FLYING flocks stay part-built unless a wings-spread
+mesh named Templates.GullFlying / Templates.PelicanFlying exists (so her standing meshes are never flown). Three perches as first
+guesses (move them by editing the Sites attribute, no code): the pelican on the quay (222, -46.5, -662) facing 160; three gulls on
+the harbour rail (236, -46.5, -680) facing 80; two gulls at the lighthouse terrace (526, 2.4, -1170) facing 300.
+WHAT THE RUNNER NEEDS FIRST: her rigged FBX files imported into Studio (Avatar/3D importer, the same settings as the whale) as
+workspace.Birds.Templates.Pelican and workspace.Birds.Templates.Gull - a Model whose MeshPart carries the Bone instances; facing -Z
+after import (the RIG_NOTES say the importer's InitialPoses + AnimationController are harmless; a rotated PivotOffset on the
+MeshPart should be set to identity as the octopus needed). Without the templates the perches show part-built standing birds.
+PREVIEW: run install_birds1.lua's body in a play test (the Templates folder carries over from the old Birds folder), expect
+"Birds: 7 sites on this screen (3 perched) (mesh: pelican, gull)" in the client log; pictures: the pelican on the quay (close),
+the gulls on the rail mid-flap, the lighthouse gulls; say if a bone turns the wrong way (the axis maths follows the RIG_NOTES
+table: a bone turns about the model's axis mapped into the bone's own space at rest), and move the perches onto real posts /
+rails with the attribute, then report the numbers you settled on.
+
+Result job 104 CORRECTIONS (runner 7's Studio readings, 3981d7b): the two Airport-connection parts by the chateau pad are
+CanCollide/CanQuery/CanTouch false (not a hazard); JapanMap has Origin (6000,0,0) and the three stations their StationIndex (the
+train fragility is latent, not a fault); ServerStorage's 318,798 instances are 91% ONE folder, PortoEnvironmentBackup_20261001
+(291,576: eighty "Before..." copies of Porto's buildings from Oct 1-3) - four times the live Porto map; the first thing to archive
+to a separate place file, Japan or no Japan. MusicClient exported (tools/japan/studio_2026-10-15/MusicClient.lua). The findings
+document is corrected (tools/japan/FINDINGS_japan_2026-10-15.md).
