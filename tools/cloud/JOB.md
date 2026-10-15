@@ -1881,3 +1881,17 @@ tools/gifts/src/GiftsClient.lua: a Caption TextLabel under the gift drawing in t
 at the bottom, as hudCaption draws "Passport" and "Map"); the box, lid, ribbon and bow move up 8 px to make room. install_gifts1.lua
 regenerated (a re-run: the old Gifts folder -> HudBackup.Gifts_pre_n, attributes carried; the PromptClient patch reports "already").
 PLAY TEST: desktop and the phone emulator: "Gift" under the box, nothing overlapping (phone column: the box at x 541..589 as before).
+Result job 102 (runner 7, 07ab577, Shannon's "install both"; INSTALLED in Edit, Oct 15 ~04:05Z, NOT published): QQ GIFTS DONE:
+workspace.Gifts (GiftsServer 8379, GiftsClient 24294 chars; GroupId 969906332, CommunityAcorns 150, BoostMaxGain 150, LikeReward
+backpack, PopupDelay 180, FirstFind true, AutoPopup true, BoostOn true); the old Gifts folder is HudBackup.Gifts_pre_3; PromptClient
+already patched (30763). Play test of the caption follows.
+Result job 101 (runner 7, 07ab577): QQ GOLD QuestionClient 28598 chars, French gate present / QQ GOLD DailyClient is 15020 chars /
+QQ GOLD ABORT - anchor 3 not found; nothing changed. CAUSE: the LIVE workspace.Daily.DailyClient (15020 chars, adler32 1705313267)
+already begins with "-- FRENCH_ONLY_HUD_20261002_V1": frenchMapHudAllowed() (Area forest/village/domaine), updateFrenchDailyHud() on
+every Area change hides the GoldPill and the card's GoldenSquirrelLine outside France and disables a GoldenReveal, setPill() keys the
+pill on attributes FrenchHudPillEligible / FrenchHudPanelBlocked, goldReveal() returns outside France. The patch was written against
+an older DailyClient. So the leak Shannon sees in Italy is NOT a missing gate: suspects - (a) the Area attribute not switching to
+"porto" on some arrival path (boat, balloon, funicolare, the one-click boat card) so the pill stays; (b) the pill text set before
+Area changes and nothing re-evaluating ... (the Area signal does); (c) the QuestionClient reminder (it has FRENCH_QUESTION_REMINDERS).
+Runner 7 is asking her exactly what she saw in Italy (the top-right pill, the daily card's golden line, the question reminder) and how
+she got there. A runner probe can log the Area attribute along a boat ride / balloon flight / travel board next.
