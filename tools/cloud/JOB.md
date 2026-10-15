@@ -2679,3 +2679,11 @@ Job 111 ROUND 2 (cloud thread, from runner 7's preview hb1..hb10): the floor and
 slab with square corners); the bowl's steps start at radius 27 and widen; the HOUSE sits 4 studs forward of the trunk (the trunk at
 the back of the room, the doorway clear - the sign, ladder and balcony move with it; the stone ring's gap still clears the balcony).
 Preview again from this commit (same pictures, plus one through the doorway from the balcony); then install on her word.
+
+Job 106 GEO ROUND 2 installer (cloud thread, from probe106b): tools/japan/japan_geo2.lua (compiles; Edit; after geo1; Ctrl+Z to
+"before JapanGeo2"): (1) the paler rectangle was a DEPTH step - Codex's basin bed is -26..-35, ours -58: every deep water cell below
+y -30 in the fill box becomes sand, one bed; (2) the sea carried on to z 1300 and x 7800 (the north shore is at z ~450, so the edge
+is 850 studs out, in the fog - FogEnd 1100) and three flat water-coloured parts beyond it to 3000 studs, so no edge shows;
+(3) the canal's bright end face: a stone WEIR across the canal at z -221..-224 (the water ends against stone; the dry foundation
+beyond stays dry); (4) CastShadow off on the lake stair's treads and supports. SAVE first, run, then pictures: north from the shore,
+the canal's north end from the bridge, the lake stair. Expect "QQ GEO2 DONE".
