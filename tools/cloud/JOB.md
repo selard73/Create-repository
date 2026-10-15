@@ -2048,3 +2048,23 @@ on JapanMap."Airport connection".("Provence taxi stop post" and "Sign · JAPAN /
 two JapanAirportPrompt prompts, and whether JapanMap has an Origin attribute and each Railway BoardingPoint a StationIndex; (4) when
 Shannon previews Japan herself: the lake's edge (walk in: walk on water, wade or swim?), the island's west edge (what is below?),
 the Fuji lookout, the volcano backdrop from the island, and whether her fog/clouds look different after a balloon trip.
+
+Result RUNNER NEXT (runner 7, on bd7709d, Oct 15 ~06:00Z, Studio EDIT, read-only): (1) probe_serverstorage.lua run verbatim - 84
+children, 318,798 descendants; PortoEnvironmentBackup_20261001 alone holds 291,576 (91%: BeforeOrganicHillside20261002 56,473,
+BeforeUniformStoreyHeights20261003 50,645, BeforeConsistentLargeOpenings20261003 50,549, BeforeIndividualBlocks20261002 40,625,
+BeforePlacementStructures20261003 26,957 ...), then JapanBeforeBlender 9,361 and the other Japan folders; every line in
+tools/japan/runner_next_result_2026-10-15.txt. (2) MusicClient exported: tools/japan/studio_2026-10-15/MusicClient.lua (11980,
+adler32 2355573903, verified). (3) "Provence taxi stop post" and "Sign · JAPAN / Airport taxi" at (445,6..7,-44): CanCollide false,
+CanQuery false, CanTouch false, anchored. The two JapanAirportPrompt: on the Japan side (6145,0.6,222) Destination (438,4.4,-36)
+"Return to Provence"; on the Provence sign Destination (6145,0.6,222) "Travel to Japan"; both MaxActivationDistance 14. JapanMap
+Origin (6000,0,0) (+ 50 other attributes, listed: Finished=true, PrivatePreviewUserId 9611145467, NaturalRevisionNeedsSave=true,
+ShinkansenRevisionNeedsSave=true ...). BoardingPoints: Tea Hills (5630) StationIndex 1, Lantern Street (6000) 2, Palace Grounds
+(6379) 3; the train StationIndex 2 at (6000,0,181). Nothing changed.
+
+Result BIRD RIGS (runner 7, Oct 15 ~06:00Z; Shannon in this session: "this is the meshy model for the pelican; I need you to create
+it and rig it in blender", then the gull): both rigged in Blender, see tools/birds/RIG_NOTES_2026-10-15.md (bones, Roblox axes for
+each motion, tested ranges, pictures in tools/birds/shots/). Both Meshy models are STANDING cartoon birds with FOLDED wings fused
+to the body: they flap to about 55 degrees, turn their heads, waddle, and the pelican opens its pouch, but they cannot spread their
+wings for flight. So they suit perched birds (pelican on a post or the quay, gulls on railings and roofs); BirdsClient's circling
+flock would keep the part-built birds or need flying-pose models. A template with BONES (not LeftWing/RightWing parts) needs a
+BirdsClient change. The FBX/blend files stay on her PC (roblox-props/meshy/pelican, /gull); she imports them with Import 3D.

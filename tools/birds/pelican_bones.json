@@ -1,0 +1,437 @@
+{
+ "note": "Blender: faces -Y, left +X, z up. Roblox model space after import (before any ScaleTo): X = -x, Y = z, Z = y; faces -Z, left -X. Units: studs at the exported size.",
+ "bones": {
+  "Root": {
+   "head": [
+    0,
+    0.2,
+    0.0
+   ],
+   "tail": [
+    0,
+    0.2,
+    0.5
+   ],
+   "parent": null,
+   "deform": false,
+   "roblox_head": [
+    0,
+    0.0,
+    0.2
+   ],
+   "roblox_tail": [
+    0,
+    0.5,
+    0.2
+   ]
+  },
+  "Body": {
+   "head": [
+    0,
+    0.55,
+    0.95
+   ],
+   "tail": [
+    0,
+    0.05,
+    1.75
+   ],
+   "parent": "Root",
+   "deform": true,
+   "roblox_head": [
+    0,
+    0.95,
+    0.55
+   ],
+   "roblox_tail": [
+    0,
+    1.75,
+    0.05
+   ]
+  },
+  "Chest": {
+   "head": [
+    0,
+    0.05,
+    1.75
+   ],
+   "tail": [
+    0,
+    -0.35,
+    2.35
+   ],
+   "parent": "Body",
+   "deform": true,
+   "roblox_head": [
+    0,
+    1.75,
+    0.05
+   ],
+   "roblox_tail": [
+    0,
+    2.35,
+    -0.35
+   ]
+  },
+  "Neck1": {
+   "head": [
+    0,
+    -0.35,
+    2.35
+   ],
+   "tail": [
+    0,
+    -0.25,
+    3.0
+   ],
+   "parent": "Chest",
+   "deform": true,
+   "roblox_head": [
+    0,
+    2.35,
+    -0.35
+   ],
+   "roblox_tail": [
+    0,
+    3.0,
+    -0.25
+   ]
+  },
+  "Neck2": {
+   "head": [
+    0,
+    -0.25,
+    3.0
+   ],
+   "tail": [
+    0,
+    -0.02,
+    3.55
+   ],
+   "parent": "Neck1",
+   "deform": true,
+   "roblox_head": [
+    0,
+    3.0,
+    -0.25
+   ],
+   "roblox_tail": [
+    0,
+    3.55,
+    -0.02
+   ]
+  },
+  "Head": {
+   "head": [
+    0,
+    -0.02,
+    3.55
+   ],
+   "tail": [
+    0,
+    0.1,
+    4.4
+   ],
+   "parent": "Neck2",
+   "deform": true,
+   "roblox_head": [
+    0,
+    3.55,
+    -0.02
+   ],
+   "roblox_tail": [
+    0,
+    4.4,
+    0.1
+   ]
+  },
+  "Jaw": {
+   "head": [
+    0,
+    -0.5,
+    3.55
+   ],
+   "tail": [
+    0,
+    -2.12,
+    2.67
+   ],
+   "parent": "Head",
+   "deform": true,
+   "roblox_head": [
+    0,
+    3.55,
+    -0.5
+   ],
+   "roblox_tail": [
+    0,
+    2.67,
+    -2.12
+   ]
+  },
+  "Tail": {
+   "head": [
+    0,
+    1.35,
+    1.6
+   ],
+   "tail": [
+    0,
+    2.3,
+    1.95
+   ],
+   "parent": "Body",
+   "deform": true,
+   "roblox_head": [
+    0,
+    1.6,
+    1.35
+   ],
+   "roblox_tail": [
+    0,
+    1.95,
+    2.3
+   ]
+  },
+  "Wing.L": {
+   "head": [
+    0.65,
+    -0.3,
+    2.2
+   ],
+   "tail": [
+    1.0,
+    0.4,
+    1.75
+   ],
+   "parent": "Chest",
+   "deform": true,
+   "roblox_head": [
+    -0.65,
+    2.2,
+    -0.3
+   ],
+   "roblox_tail": [
+    -1.0,
+    1.75,
+    0.4
+   ]
+  },
+  "Wing.R": {
+   "head": [
+    -0.65,
+    -0.3,
+    2.2
+   ],
+   "tail": [
+    -1.0,
+    0.4,
+    1.75
+   ],
+   "parent": "Chest",
+   "deform": true,
+   "roblox_head": [
+    0.65,
+    2.2,
+    -0.3
+   ],
+   "roblox_tail": [
+    1.0,
+    1.75,
+    0.4
+   ]
+  },
+  "WingTip.L": {
+   "head": [
+    1.0,
+    0.4,
+    1.75
+   ],
+   "tail": [
+    1.05,
+    1.12,
+    1.4
+   ],
+   "parent": "Wing.L",
+   "deform": true,
+   "roblox_head": [
+    -1.0,
+    1.75,
+    0.4
+   ],
+   "roblox_tail": [
+    -1.05,
+    1.4,
+    1.12
+   ]
+  },
+  "WingTip.R": {
+   "head": [
+    -1.0,
+    0.4,
+    1.75
+   ],
+   "tail": [
+    -1.05,
+    1.12,
+    1.4
+   ],
+   "parent": "Wing.R",
+   "deform": true,
+   "roblox_head": [
+    1.0,
+    1.75,
+    0.4
+   ],
+   "roblox_tail": [
+    1.05,
+    1.4,
+    1.12
+   ]
+  },
+  "Thigh.L": {
+   "head": [
+    0.3,
+    0.4,
+    1.0
+   ],
+   "tail": [
+    0.3,
+    0.45,
+    0.5
+   ],
+   "parent": "Body",
+   "deform": true,
+   "roblox_head": [
+    -0.3,
+    1.0,
+    0.4
+   ],
+   "roblox_tail": [
+    -0.3,
+    0.5,
+    0.45
+   ]
+  },
+  "Thigh.R": {
+   "head": [
+    -0.3,
+    0.4,
+    1.0
+   ],
+   "tail": [
+    -0.3,
+    0.45,
+    0.5
+   ],
+   "parent": "Body",
+   "deform": true,
+   "roblox_head": [
+    0.3,
+    1.0,
+    0.4
+   ],
+   "roblox_tail": [
+    0.3,
+    0.5,
+    0.45
+   ]
+  },
+  "Shin.L": {
+   "head": [
+    0.3,
+    0.45,
+    0.5
+   ],
+   "tail": [
+    0.32,
+    0.47,
+    0.1
+   ],
+   "parent": "Thigh.L",
+   "deform": true,
+   "roblox_head": [
+    -0.3,
+    0.5,
+    0.45
+   ],
+   "roblox_tail": [
+    -0.32,
+    0.1,
+    0.47
+   ]
+  },
+  "Shin.R": {
+   "head": [
+    -0.3,
+    0.45,
+    0.5
+   ],
+   "tail": [
+    -0.32,
+    0.47,
+    0.1
+   ],
+   "parent": "Thigh.R",
+   "deform": true,
+   "roblox_head": [
+    0.3,
+    0.5,
+    0.45
+   ],
+   "roblox_tail": [
+    0.32,
+    0.1,
+    0.47
+   ]
+  },
+  "Foot.L": {
+   "head": [
+    0.32,
+    0.47,
+    0.1
+   ],
+   "tail": [
+    0.65,
+    -0.25,
+    0.04
+   ],
+   "parent": "Shin.L",
+   "deform": true,
+   "roblox_head": [
+    -0.32,
+    0.1,
+    0.47
+   ],
+   "roblox_tail": [
+    -0.65,
+    0.04,
+    -0.25
+   ]
+  },
+  "Foot.R": {
+   "head": [
+    -0.32,
+    0.47,
+    0.1
+   ],
+   "tail": [
+    -0.65,
+    -0.25,
+    0.04
+   ],
+   "parent": "Shin.R",
+   "deform": true,
+   "roblox_head": [
+    0.32,
+    0.1,
+    0.47
+   ],
+   "roblox_tail": [
+    0.65,
+    0.04,
+    -0.25
+   ]
+  }
+ }
+}

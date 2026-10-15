@@ -1,0 +1,59 @@
+# runner 7, Oct 15 2026 ~06:00Z, Studio EDIT, read-only (JOB.md "RUNNER NEXT" items 1-3 at bd7709d). Lines unchanged.
+# (1) tools/japan/probe_serverstorage.lua (bd7709d, 1466 bytes, adler32 2289356104), run verbatim:
+QQ SS ServerStorage: 84 children, 318798 descendants in all
+QQ SS   PortoEnvironmentBackup_20261001 (Folder): 291576 descendants (80 children; biggest: BeforeOrganicHillside20261002 56473, BeforeUniformStoreyHeights20261003 50645, BeforeConsistentLargeOpenings20261003 50549, BeforeIndividualBlocks20261002 40625, BeforePlacementStructures20261003 26957)
+QQ SS   JapanBeforeBlender (Folder): 9361 descendants (536 children; biggest: Cherry blossom tree 59, Red maple tree 59, Cherry blossom tree 59, Cherry blossom tree 59, Red maple tree 59)
+QQ SS   JapanMountainAuthoringFacets (Folder): 2306 descendants (2 children; biggest: Mount Fuji 1152, Rumbling volcano 1152)
+QQ SS   JapanBeforeTreeStyleRestoration (Folder): 2178 descendants (2 children; biggest: Replaced tree models 2046, Earlier collider positions 130)
+QQ SS   JapanBuildingInteriorsAndOldFacades (Folder): 2156 descendants (15 children; biggest: Paper umbrella craft 231, Origami library 198, Sushi bar 156, Garden tea house 152, Tea farmhouse 150)
+QQ SS   JapanBeforeDowntownShops (Folder): 2064 descendants (14 children; biggest: Lantern workshop before downtown 242, Cat cafe before downtown 198, Paper umbrella craft before downtown 184, Calligraphy teahouse before downtown 183, Calligraphy teahouse replaced components 176)
+QQ SS   PromenadeBackup (Folder): 2020 descendants (11 children; biggest: Furniture 810, Bollards 684, Ring 214, Boat 148, Squirrels 68)
+QQ SS   JapanBeforeLandscapeRepairs (Folder): 1138 descendants
+QQ SS   SquirrelSwapBackup (Folder): 1088 descendants
+QQ SS   JapanBeforeTouchSeating (Folder): 812 descendants
+QQ SS   JapanBeforeMarketRevision (Folder): 688 descendants
+QQ SS   HudBackup (Folder): 665 descendants
+QQ SS   CSGBackup_Town (Folder): 572 descendants
+QQ SS   JapanBeforeKimonoShop (Folder): 383 descendants
+QQ SS   JapanBeforeMochiRevision (Folder): 331 descendants
+QQ SS   JapanBeforeRamenRevision (Folder): 248 descendants
+QQ SS   JapanBeforeNaturalBlenderRevision (Folder): 196 descendants
+QQ SS   BellaBackup (Folder): 131 descendants
+QQ SS   JapanBeforeReferenceRefinement (Folder): 124 descendants
+QQ SS   GorgeBackup (Folder): 88 descendants
+QQ SS   JapanBeforeYakitoriRevision (Folder): 84 descendants
+QQ SS   JapanBeforeShinkansenRevision (Folder): 76 descendants
+QQ SS   JapanBeforeKyotoPalaceRevision (Folder): 73 descendants
+QQ SS   TidePoolBackup (Folder): 48 descendants
+QQ SS   CSGBackup_BottomStop (Folder): 38 descendants
+QQ SS   JapanBeforeRealWater (Folder): 23 descendants
+QQ SS   CameraTool (Tool): 20 descendants
+QQ SS   ComingSoonWall_before_gates_oct8 (Folder): 19 descendants
+QQ SS   CappuccinoBackup (Folder): 18 descendants
+QQ SS   FunicularBackup (Folder): 16 descendants
+QQ SS   BinocularsTool (Tool): 15 descendants
+QQ SS   CSGBackup_Square (Folder): 15 descendants
+QQ SS   SlingshotTool (Tool): 13 descendants
+QQ SS   Slingshot (Tool): 12 descendants
+QQ SS   ComingSoonWall_v1032 (Folder): 12 descendants
+QQ SS   BalloonTemplate (Model): 8 descendants
+QQ SS   SandCliffKit (Model): 8 descendants
+QQ SS   LagoonBackup (Folder): 7 descendants
+QQ SS   JapanBlenderLibrary (Folder): 7 descendants
+QQ SS   AcornTemplate (Model): 7 descendants
+QQ SS   ... and 44 more children (70 descendants)
+QQ SS END
+# (2) Workspace.MapMusic.MusicClient exported: tools/japan/studio_2026-10-15/MusicClient.lua (11980 chars, adler32 2355573903, verified).
+# (3) a bounded read in Edit (the two Airport connection parts west of x 4500, every JapanAirportPrompt, JapanMap's attributes, each
+#     Railway BoardingPoint and the train):
+QQ JP2 PART Workspace.JapanMap.Airport connection.Provence taxi stop post [Part] at (445.0,5.9,-44.0) size (3.0,0.2,0.2) CanCollide false CanQuery false CanTouch false Anchored true Transparency 0.00
+QQ JP2 PART Workspace.JapanMap.Airport connection.Sign · JAPAN
+Airport taxi [Part] at (445.0,7.4,-44.0) size (5.0,4.0,0.2) CanCollide false CanQuery false CanTouch false Anchored true Transparency 0.00
+QQ JP2 PROMPT Workspace.JapanMap.LanternStreet.JapanArrival.JapanAirportPrompt on Part at (6145.0,0.6,222.0): Destination (438.0,4.4,-36.0); ObjectText "Airport taxi" ActionText "Return to Provence"; MaxActivationDistance 14 Enabled true
+QQ JP2 PROMPT Workspace.JapanMap.Airport connection.Sign · JAPAN
+Airport taxi.JapanAirportPrompt on Part at (445.0,7.4,-44.0): Destination (6145.0,0.6,222.0); ObjectText "Airport taxi" ActionText "Travel to Japan"; MaxActivationDistance 14 Enabled true
+QQ JP2 JapanMap Origin attribute: (6000.0,0.0,0.0); all JapanMap attributes: BlenderImportFacingCorrected=true, BlenderMeshAssets=148, BlenderTrees=143, ClosedSmallBuildings=15, DetailPass=true, DetailedClosedExteriors=true, FinalBuild=2026-10-14 Japan reference refinement / real water / Blender / red-black-blue, FinalVerification=Swimming, four river exits, pool exits, lake stairs, promenade, royal hall, castle stairs, bridges, tea route, closed shops, volcano audio checked 2026-10-14, Finished=true, GentleSwimExits=true, IntegratedVisibility=true, KyotoPalaceRevisionInstalled=true, KyotoPalaceSourceMeshes=26, KyotoPalaceSourceTriangles=242521, LakeshoreBlenderTrees=65, LakeshorePlanted=true, LandmarkPolish=true, LandscapeNewTrees=143, LandscapeRepairVersion=2026-10-14-v1, LandscapeRepairsInstalled=true, LandscapeRepairsStarted=true, LandscapeTeaHedges=104, LeafyMaples=121, MarketRevisionInstalled=2026-10-14-v1, NaturalBlenderMeshes=100, NaturalBlenderRevisionInstalled=true, NaturalMaterialCredits=Photographic ground textures: Poly Haven CC0; Blender geometry and architecture atlas authored for this map, NaturalRevisionNeedsSave=true, NaturalSurfaceMaterialsInstalled=true, NaturalSurfaceRevision=Textured moss soil and weathered stone; reference palette; 2026-10-14, NorthCanalBridgeClearance=true, Origin=(6000.0,0.0,0.0), PalaceReference=User-supplied Kyoto palace photographs, 2026-10-14; vermilion colonnades, gray ceramic roofs, white panels, gilded finials, PartCount=15395, PrivatePreviewUserId=9611145467, RealWaterBasins=8, RealWaterInstalled=true, ReferenceMeshAssets=70, ReferenceRefinementInstalled=true, ReferenceSourceTriangles=615248, RiverBankSlopeRefined=true, RiverEndExitsSealed=true, SceneryAuthoring=Blender 4.5 LTS: sculpted terrain, mountains, shores, trees, Scope=Map only. Real water, Blender terrain, detailed closed shops, enterable royal court and castle. No squirrels., ShinkansenRevisionInstalled=true, ShinkansenRevisionNeedsSave=true, ShinkansenSourceMeshes=22, ShinkansenSourceTriangles=111174, TreeStyleRestored=true, TreeVisualStyle=Earlier Blender maples and blossoms restored, Version=Japan / 2026-10-13 / vermilion-black-indigo, WaterAccessFinished=true, WaterVoxels=100539
+QQ JP2 STATION Palace Grounds station BoardingPoint at (6379.0,2.2,166.0) StationIndex 3
+QQ JP2 STATION Lantern Street station BoardingPoint at (6000.0,2.2,166.0) StationIndex 2
+QQ JP2 STATION Tea Hills station BoardingPoint at (5630.0,2.2,166.0) StationIndex 1
+QQ JP2 TRAIN StationIndex 2 pivot (6000.0,0.0,181.0)
