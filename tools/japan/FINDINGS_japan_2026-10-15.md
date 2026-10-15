@@ -20,7 +20,38 @@ no Area id, no music of its own in the live scripts - it is scenery with a train
 
 ## A. What touches every player now (fix before the next publish, whatever happens to Japan)
 
-@@A@@
+@@A1@@
+
+A2. THE BALLOON (Codex patched the live BalloonServer and BalloonClient; the ordinary ride was checked on both exit paths - completed
+and cut short - and still ends exactly as before: home, jump restored, "home" broadcast, prompt back, balloon_flights awarded; no
+regression for other riders). What is wrong:
+- YOUR SESSION STAYS CHANGED AFTER A JAPAN FLIGHT. The reveal tweens Lighting's fog to "off" (FogEnd 100000), the Atmosphere to
+  density .08 / haze 0 and the CLOUDS to cover .08 / density .1 / white, and nothing ever puts them back: JapanAtmosphere only saves
+  the Lighting values once you are inside Japan's box, which the server allows only AFTER the reveal has finished, so it saves the
+  already-changed values and "restores" those when you leave; nothing touches the Clouds at all. So after one trip to Japan your
+  France and your Porto have no fog, thin white clouds (the look pass set 0.6 / 0.4) and a flat atmosphere until you rejoin - and the
+  next balloon storm snapshots those wrong values too. This is very likely why the game looks different to you than to players.
+  (BalloonClient revealJapan; fix: save FogEnd/FogStart/Atmosphere/Clouds before the reveal and tween them back on previewLanded,
+  "home" and respawn - or let JapanAtmosphere own the values by clearing JapanPreviewInFlight before the reveal; the Clouds need a
+  restore of their own either way.)
+- THE SAFETY NET IS GONE. The old server had a PlayerRemoving handler that freed the balloon (busy nil, prompt on, basket home) if a
+  rider vanished; Codex removed it, and the end-of-flight tail now runs outside the error guard. Any throw there - e.g. the owner
+  leaving at the moment of touchdown, when the tail fires an event at a departed player - leaves `busy` set and the prompt off for
+  EVERY player until the server restarts. (Fix: free busy / prompt at the top of the tail, pcall the tail, put the handler back.)
+- ONE MODULE CAN TAKE THE BALLOON DOWN. BalloonServer (and SpawnReturnServer, and JapanEnvironment) now begin with
+  `require(ServerScriptService:WaitForChild("JapanPreviewAccess"))` with NO timeout. If that module is ever renamed or removed (for
+  instance when Japan is cleaned out of the place) the balloon script blocks before it builds the balloon: no balloon for anyone,
+  and SpawnReturn's dais-return stops. (Fix: WaitForChild with a timeout and a fallback that allows nobody.)
+- YOU CAN NEVER TAKE THE ORDINARY RIDE AGAIN: the preview is keyed on your user id alone, the prompt always says "Fly to Japan", the
+  "fade" phase is dropped and balloon_flights is never awarded to you, so your Passport's balloon entry and the "balloon is ready"
+  sign stay as they are. (Fix: an opt-in - a second prompt or an attribute - and the award on a completed preview too.)
+- Smaller: after a respawn on the owner's abort path the camera is pointed at the dead Humanoid and freezes (stopPreviewCamera
+  restores the old subject); up to ~15 s of blank pale screen with no liveness check during the two stream requests; the landing
+  heights are hard-coded (y .1 / y 4 at (6090..6100, 270)) where the home pad uses a raycast; other players see your balloon freeze
+  out at sea in its storm pose, vanish, and come back to the pad 30-45 s later; the "To Be Continued" sign still shows for its full
+  6 s before the cloud cover; lightning keeps striking behind the white screen until the reveal; "Welcome to Japan, SelBell" is
+  hard-coded; JapanBalloonPhase is set on every rider and read by nothing.
+
 
 ## B. The map itself (for when it opens; nobody else can see it today)
 
