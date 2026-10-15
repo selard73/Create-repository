@@ -3011,3 +3011,10 @@ Job 113 round 2: tools/croc/croc_portrait2.lua (make_croc_portrait2.py, 3633 byt
 sources): CrocClient celebrate() waits up to 8 s while the DailyCard is down (Position.Y.Offset > -100) or the PortraitNote shows
 (TextTransparency < 0.9); PortraitClient's note waits up to 7 s while PlayerGui.CrocToast is up. No deadlock (the card waits only
 before it exists). "QQ CROCP2 DONE: CrocClient true, PortraitClient true". Ask Shannon, run, save.
+
+Result job 113 ROUND 2 INSTALLED (runner 7, Shannon "Yes", Studio EDIT, unpublished): croc_portrait2.lua at 8861a31 (3633, adler32
+832543403): "QQ CROCP2 CrocClient: 37322 -> 37937 chars; backup HudBackup.CrocClient_pre_crocportrait2", "QQ CROCP2 PortraitClient:
+26939 -> 27117 chars; backup HudBackup.PortraitClient_pre_crocportrait2", "QQ CROCP2 DONE: CrocClient true, PortraitClient true".
+Play check: (1) DailyCard down (offset 62) when allfree fired -> the daily card went up at 2.58 s and the croc card appeared at 2.68 s
+(daily offset -290 by then) - no overlap. (2) hungall 0.8 s after a croc card -> the croc card left at 4.8 s, the portrait note showed
+at 4.9 s with no croc card present. Both cards take turns.
