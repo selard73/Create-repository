@@ -3039,3 +3039,20 @@ Custom Events Interact_Prompt / Area / Item / Seat / Tool by Cohort and Name (to
 Funnel steps; it messages the cloud thread "Runner 7: Creator Dashboard read for what brings players back (Oct 17)" (screenshots
 from her if Chrome is not connected). The cloud thread's own check-in fires Oct 17 17:16Z as a fallback. Then: Returning vs New, what
 to build more of.
+## Job 116: Shademade as a guest on the private Japan preview (Studio EDIT; ask Shannon first) - runner 7
+Shannon (Oct 15): "can you set shademade up so that his balloon also goes to Japan map, even though its not done yet, I want him to
+see it." Shademade = Roblox user id 3121141 (users API). tools/japan/japan_guest1.lua (make_japan_guest1.py, 7527 bytes; self-tested
+against the Oct 15 exports with japan_fix1 applied, all seven sources compile patched). Marker JAPANGUEST1_20261015; originals to
+HudBackup.<Name>_pre_japanguest1; an anchor miss skips that script and says so.
+ 1. ServerScriptService.JapanPreviewAccess: IsAllowed = the owner, Access.GuestUserIds ({[3121141] = true}), or any id in the
+    module's attribute GuestUserIds (comma-separated; the installer creates it empty) - Shannon can add or remove guests in
+    Properties. Server side all follows: BalloonServer flies a guest to Japan (and skips the 44-squirrel lock for that ride), the
+    guard lets them stay, the train, the taxi home, SpawnReturn's Area "japan"; JapanPreviewGuard mirrors it to the player
+    attribute JapanPreviewAllowed every 0.2 s.
+ 2. BalloonField.BalloonClient: previewOwner = owner or JapanPreviewAllowed, kept current; the prompt reads "Your balloon · private
+    Japan preview / Fly to Japan" for a guest. 3. JapanPreviewVisibility: waits up to 8 s for the attribute; a guest is not hidden
+    from Japan. 4. JapanAtmosphere, 5. JapanWaterAppearance: lighting and water for a guest. 6. MapMusic.MusicClient: the four owner
+    checks -> isPreview(). 7. JapanMap's three AutomaticFoodSeatContact: the food seats.
+ Prints BalloonField.JapanPreview (false would give everyone the ordinary ride). "QQ JGUEST DONE: ..." with one result per script.
+ Takes effect for Shademade only once PUBLISHED (and on his next join). Check in play: the owner's ride still flies to Japan; an
+ ordinary test player is still hidden from and thrown out of Japan.
