@@ -1850,3 +1850,6 @@ carries over into the italy map, those things should only show if you are on the
 HUD announcements (the top-right banner "Golden Squirrel: <name> is hiding in Rue de Noisette ..." seen in the Porto pictures, and the
 DailyQuestion card/notice) must show only while the player's Area is a French one (forest / village / domaine), hidden in porto (and on
 the boat/balloon?). Find the client that draws them (Daily / DailyQuestion clients) and gate on the player's Area attribute.
+SHANNON (Oct 15): "also, the icon box with the gift in it, should have the word 'gift' under it so it matches the other boxes in
+design" - a GiftsClient tweak (tools/gifts/src/GiftsClient.lua, the HUD gift box): a caption "Gift" under the icon in the same style
+as Passport / Map (font, size, colour); desktop and the phone column alike. Small job; can ride with the announcements fix.
