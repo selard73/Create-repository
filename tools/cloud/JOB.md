@@ -3220,3 +3220,17 @@ tools/treehouse/patch_treehouse3_r2.lua (make_patch_treehouse3_r2.py, 33823 byte
 Preview in play: pick p1 (the look, 4.5 s), hear the bell ding on each piece; to see the finale fast, set the test player's
 Item_tree_p1..p12 (server side, or the Studio save) and pick the last one - the "done" event fires once the twelfth is in.
 Her reset (job 117) is installed and unpublished; after the publish she will meet all of this on her own run.
+
+Result job 119 PREVIEW (runner 7, play test, nothing kept): patch_treehouse3_r2.lua at 8676938 (33823, adler32 1631506975): "QQ TREE119
+(play test: preview only)", "QQ TREE119 DONE: TreehouseClient 31668 chars; the old one is HudBackup.TreehouseClient_pre_r2_1; PieceSound
+rbxassetid://16480570986 at 1.5x". (The test player had Item_treereset_r1 = 1 and no tree items: job 117's reset ran in this play
+test on the Studio player - harmless, Studio never saves the owner.) p1: the ONE sound made was rbxassetid://16480570986 speed 1.50 vol
+0.55 in TreehouseGui (no squirrel fanfare); the camera was scripted from 0.76 s to 7.48 s after the pick = 6.7 s (1.2 fly-in + 4.5 hold
++ ~1 back). I cannot hear it - Shannon to judge the ding. FINALE: p2..p11 set on the server, p12 picked for real -> TreePieces 12, +100
+acorns (110 -> 210), the camera on the house, "Welcome home, SelBell!" in gold at the top, then back, then the "Homebase Treehouse:
+built!" card. Replayed with TreehousePick:FireClient(p, "done", 100, 12) for the picture (t119_finale_welcome_home): the house from
+above with its lantern, the banner across the top over the oak's crown. The fireworks (bursts 18..30 above the deck, 80 particles
+each) show only as a faint sparkle trail in daylight on my capture - the banner band sits where they burst. Suggest: bursts a little
+lower / to the sides, or the banner lower, so the two do not share the sky. The built card after the replays opened on top of the
+camera's house view once (t119_built_card_over_house) - only because I fired done twice; in one real run it comes after the camera
+returns. Waits for her word to install.
