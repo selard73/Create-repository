@@ -2511,3 +2511,12 @@ Job 111 WORDS (Shannon, Oct 15): the name is "Homebase Treehouse" ("the forest i
 the world; they always have the homebase treehouse to come back to as theirs"); roomier inside, a balcony; decorations to buy later.
 The sign before the build: "Future home of Homebase Treehouse. Please excuse the dirt." The first-piece reveal line: "A squirrel was
 going to live here, but you got the first piece, so it's yours now. The squirrel won't mind." (camera on the site ~6 s, then back).
+Job 111 DESIGN AGREED (Shannon, Oct 15: "the pieces should be really really easy to find; the treehouse should be an easy win ...
+what if all the pieces to build the main treehouse are in the forest, then some add on items are in the next sections?" - yes):
+ALL TWELVE pieces in the forest, each beside a forest squirrel (collecting pieces walks the player past the squirrels that open the
+gate), glowing, tags readable from 60 studs, the sign and the pill always saying "N to go"; the house roomier with a balcony; the
+site a cleared circle left of the zip line tower. ADD-ONS (the job after): found in the next sections and drawn in the player's own
+treehouse - Rue de Noisette: a string of lanterns for the balcony, a window box; the chateau: a hammock, a roof telescope; Porto:
+a striped awning / a potted lemon tree; plus a few in the Acorn Store (rug, flag colour, pet bed, lantern colour) for acorns or
+Robux. The finished-house card and the sign name the next add-on and where it waits, with the gate count ("Ten forest squirrels
+open the gate - 7 found"). Pieces already collected are kept on the saves.
