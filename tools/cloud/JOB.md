@@ -3203,3 +3203,20 @@ install_bottle1.lua at 7f0ab4f (43579, adler32 1331052144) - the same QQ BOTTLE 
 (295.0, -48.3, -716.0); spots 1 = REPLY (303, -52.4, -728) + 9 wash; GiftsClient 24294 -> 24362, InteractServer 8921 -> 8985; DONE
 BottleServer 8434, BottleClient 13721, BottleText 7091). Readback: workspace.Bottles = BottleEvent, BottleText, Stand (Persistent),
 BottleServer, BottleClient; TestDayOffset 0; ReplicatedStorage.BottleTemplate present. Asked her to save; she publishes.
+## Job 119: the Homebase's sounds and its two camera moments (Studio EDIT; ask Shannon first) - runner 7
+Shannon (Oct 15, building it herself): "the toast when you find a piece should be a different sound than the toast for when you find
+a squirrel"; "when all pieces are found and the house is complete, maybe do another video quick view of the completed house with
+firework celebration or sparklers or confetti ... 'Welcome home (name of player)!'"; "a 6 second hold is almost too long, maybe make
+it 4.5 seconds for the first one and the final one".
+tools/treehouse/patch_treehouse3_r2.lua (make_patch_treehouse3_r2.py, 33823 bytes, compiles) replaces the installed TreehouseClient
+(old -> HudBackup.TreehouseClient_pre_r2_n) with TreehouseClient3 r2:
+ 1. a piece plays its OWN sound - the harbour bell's ding (rbxassetid://16480570986, the Capitaneria bell) at 1.5x, volume 0.55 -
+    from the folder attributes PieceSound / PieceSoundSpeed / PieceSoundVolume (set by the patch if absent; swap in any sound in
+    Properties). The squirrel fanfare (1845415163) is no longer used for pieces.
+ 2. the first-piece look: 1.2 s fly-in, a 4.5 s hold (was ~5.3), then back; her reveal line shows 6.2 s.
+ 3. the finale on "done": the house redrawn, the camera flies to the finished house (in front of the balcony, up and to the right),
+    fireworks (a burst every ~0.5 s, coloured sparks with a flash of light) over the house and confetti over the deck for 4.5 s,
+    the fanfare, the banner "Welcome home, <DisplayName>!" (gold, top of the screen), then back to the player and the built card.
+Preview in play: pick p1 (the look, 4.5 s), hear the bell ding on each piece; to see the finale fast, set the test player's
+Item_tree_p1..p12 (server side, or the Studio save) and pick the last one - the "done" event fires once the twelfth is in.
+Her reset (job 117) is installed and unpublished; after the publish she will meet all of this on her own run.

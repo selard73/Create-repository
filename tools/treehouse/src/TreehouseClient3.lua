@@ -10,6 +10,7 @@ local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local HttpService = game:GetService("HttpService")
 local TweenService = game:GetService("TweenService")
+local Debris = game:GetService("Debris")
 local UIS = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 local pg = player:WaitForChild("PlayerGui")
@@ -254,6 +255,12 @@ local function sound(id, vol)
 	s.Ended:Connect(function() s:Destroy() end); s:Play()
 	task.delay(6, function() if s.Parent then s:Destroy() end end)
 end
+local function pieceSound()                                                -- (r2, Shannon: "the toast when you find a piece should be a different sound than ... a squirrel")
+	local s = Instance.new("Sound"); s.SoundId = tostring(F:GetAttribute("PieceSound") or "rbxassetid://16480570986")
+	s.Volume = tonumber(F:GetAttribute("PieceSoundVolume")) or 0.55; s.PlaybackSpeed = tonumber(F:GetAttribute("PieceSoundSpeed")) or 1.5; s.Parent = gui
+	s.Ended:Connect(function() s:Destroy() end); s:Play()
+	task.delay(6, function() if s.Parent then s:Destroy() end end)
+end
 local function doneCard(prize)
 	local cg = Instance.new("ScreenGui"); cg.Name = "TreehouseDone"; cg.ResetOnSpawn = false; cg.IgnoreGuiInset = true; cg.DisplayOrder = 100; cg.Parent = pg
 	local card = Instance.new("Frame"); card.AnchorPoint = Vector2.new(0.5, 0.5); card.Position = UDim2.fromScale(0.5, 0.45); card.Size = UDim2.fromOffset(340, 168)
@@ -287,8 +294,8 @@ local function reveal()
 	cam.CameraType = Enum.CameraType.Scriptable
 	local t1 = TweenService:Create(cam, TweenInfo.new(1.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {CFrame = look})
 	t1:Play()
-	say(REVEAL_LINE, 7.5)
-	task.delay(6.5, function()
+	say(REVEAL_LINE, 6.2)
+	task.delay(1.2 + 4.5, function()                                          -- (r2, Shannon: "make it 4.5 seconds": the 1.2 s fly-in, then a 4.5 s hold)
 		local back = (player.Character and player.Character:FindFirstChild("Head")) and CFrame.lookAt(player.Character.Head.Position + Vector3.new(0, 4, 10), player.Character.Head.Position) or from
 		local t2 = TweenService:Create(cam, TweenInfo.new(1.0, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {CFrame = back})
 		t2:Play()
@@ -296,6 +303,78 @@ local function reveal()
 			cam.CameraType = Enum.CameraType.Custom
 			local h = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
 			if h then cam.CameraSubject = h end
+		end)
+	end)
+end
+-- ---------- the last piece: a look at the finished house, fireworks, "Welcome home" (r2, Shannon, Oct 15) ----------
+local function fireworks(centre, secs)
+	local COLS = {C(255, 120, 120), C(255, 206, 90), C(120, 210, 140), C(120, 170, 255), C(230, 140, 230), C(255, 255, 255)}
+	local t0 = os.clock()
+	task.spawn(function()
+		local k = 0
+		while os.clock() - t0 < secs do
+			k += 1
+			local col = COLS[(k % #COLS) + 1]
+			local at = centre + Vector3.new(math.random(-16, 16), math.random(18, 30), math.random(-12, 12))
+			local p = Instance.new("Part"); p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false; p.Transparency = 1
+			p.Size = Vector3.new(1, 1, 1); p.CFrame = CFrame.new(at); p.Parent = folder
+			local e = Instance.new("ParticleEmitter"); e.Rate = 0; e.Speed = NumberRange.new(18, 30); e.SpreadAngle = Vector2.new(180, 180)
+			e.Lifetime = NumberRange.new(0.9, 1.6); e.Acceleration = Vector3.new(0, -14, 0); e.Drag = 2.2; e.LightEmission = 1; e.LightInfluence = 0
+			e.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.7), NumberSequenceKeypoint.new(1, 0)})
+			e.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.7, 0.2), NumberSequenceKeypoint.new(1, 1)})
+			e.Color = ColorSequence.new(col, COLS[((k + 2) % #COLS) + 1]); e.Parent = p
+			local l = Instance.new("PointLight"); l.Color = col; l.Range = 22; l.Brightness = 2.5; l.Shadows = false; l.Parent = p
+			e:Emit(80)
+			TweenService:Create(l, TweenInfo.new(1.1), {Brightness = 0}):Play()
+			Debris:AddItem(p, 2.5)
+			task.wait(0.45 + math.random() * 0.25)
+		end
+	end)
+	-- confetti falling over the deck
+	local cp = Instance.new("Part"); cp.Anchored = true; cp.CanCollide = false; cp.CanQuery = false; cp.CanTouch = false; cp.Transparency = 1
+	cp.Size = Vector3.new(26, 1, 26); cp.CFrame = CFrame.new(centre + Vector3.new(0, 26, 0)); cp.Parent = folder
+	local ce = Instance.new("ParticleEmitter"); ce.Shape = Enum.ParticleEmitterShape.Box; ce.EmissionDirection = Enum.NormalId.Bottom; ce.Rate = 90
+	ce.Speed = NumberRange.new(2, 5); ce.Lifetime = NumberRange.new(3, 4.5); ce.Acceleration = Vector3.new(0, -4, 0); ce.Drag = 0.6
+	ce.RotSpeed = NumberRange.new(-260, 260); ce.Rotation = NumberRange.new(0, 360); ce.Size = NumberSequence.new(0.35); ce.Shape = Enum.ParticleEmitterShape.Box
+	ce.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, COLS[1]), ColorSequenceKeypoint.new(0.33, COLS[2]), ColorSequenceKeypoint.new(0.66, COLS[4]), ColorSequenceKeypoint.new(1, COLS[3])})
+	ce.Parent = cp
+	task.delay(secs, function() ce.Enabled = false end)
+	Debris:AddItem(cp, secs + 5)
+end
+local function welcomeBanner(text, secs)
+	local bg = Instance.new("ScreenGui"); bg.Name = "TreehouseWelcome"; bg.ResetOnSpawn = false; bg.IgnoreGuiInset = true; bg.DisplayOrder = 99; bg.Parent = pg
+	local t = Instance.new("TextLabel"); t.AnchorPoint = Vector2.new(0.5, 0); t.Position = UDim2.fromScale(0.5, 0.14); t.Size = UDim2.new(0.9, 0, 0, 72)
+	t.BackgroundTransparency = 1; t.Font = FONT; t.TextScaled = true; t.TextColor3 = GOLD; t.Text = text; t.TextTransparency = 1; t.Parent = bg
+	local tc = Instance.new("UITextSizeConstraint"); tc.MaxTextSize = 60; tc.Parent = t
+	local st = Instance.new("UIStroke"); st.Color = C(60, 30, 14); st.Thickness = 3; st.Transparency = 1; st.Parent = t
+	TweenService:Create(t, TweenInfo.new(0.5), {TextTransparency = 0}):Play(); TweenService:Create(st, TweenInfo.new(0.5), {Transparency = 0}):Play()
+	task.delay(secs, function()
+		TweenService:Create(t, TweenInfo.new(0.5), {TextTransparency = 1}):Play(); TweenService:Create(st, TweenInfo.new(0.5), {Transparency = 1}):Play()
+		Debris:AddItem(bg, 0.7)
+	end)
+end
+local function finale(prize)
+	local cam = workspace.CurrentCamera
+	if not cam then doneCard(prize) return end
+	local from = cam.CFrame
+	local centre = L(0, 13, 0).Position
+	local look = CFrame.lookAt(L(14, 24, 52).Position, L(0, 14, 0).Position)   -- in front of the balcony, a little to the right and above
+	cam.CameraType = Enum.CameraType.Scriptable
+	TweenService:Create(cam, TweenInfo.new(1.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {CFrame = look}):Play()
+	task.delay(1.0, function()
+		fireworks(centre, 4.5)
+		sound("rbxassetid://1845415163", 0.7)
+		welcomeBanner("Welcome home, " .. player.DisplayName .. "!", 4.3)
+	end)
+	task.delay(1.2 + 4.5, function()                                          -- the same 4.5 s hold as the first look
+		local head = player.Character and player.Character:FindFirstChild("Head")
+		local back = head and CFrame.lookAt(head.Position + Vector3.new(0, 4, 10), head.Position) or from
+		local t2 = TweenService:Create(cam, TweenInfo.new(1.0, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {CFrame = back}); t2:Play()
+		t2.Completed:Connect(function()
+			cam.CameraType = Enum.CameraType.Custom
+			local h = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+			if h then cam.CameraSubject = h end
+			doneCard(prize)
 		end)
 	end)
 end
@@ -323,13 +402,13 @@ ev.OnClientEvent:Connect(function(what, a, b)
 			pieceModels[a] = nil
 		end
 		local n = tonumber(b) or count()
-		sound("rbxassetid://1845415163", 0.45)
+		pieceSound()
 		later()
 		if n == 1 and not revealed then task.delay(0.6, reveal)
 		elseif n >= TOTAL then say("That was the last piece!", 3)
 		else say(string.format("Homebase piece %d of %d! %d more to find", n, TOTAL, TOTAL - n), 3.5) end
 	elseif what == "done" then
-		task.delay(0.8, function() sound("rbxassetid://1845415163", 0.7); doneCard(tonumber(a) or 100) end)
+		task.delay(0.8, function() later(); finale(tonumber(a) or 100) end)    -- (r2: the finished house first, then the card)
 	elseif what == "wait" then
 		say("Your save is still loading - try again in a moment", 3)
 	end
