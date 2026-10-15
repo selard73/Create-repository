@@ -219,7 +219,21 @@ local function makeFlock(site)
 	end
 	table.insert(flocks, {site = site, kind = k, model = m, birds = birds, awake = true, t = math.random() * 100, mesh = tpl ~= nil})
 end
-for _, s in ipairs(sites()) do makeFlock(s) end
+-- v5: the templates are Persistent models but their MeshParts still arrive a moment after the client starts; a perch built before
+-- its mesh is there would stay part-built. So: wait (bounded) for every perch kind's template to have a part, then build.
+local function templateReady(kind)
+	local t = templateFor(kind)
+	return t == nil or t:IsA("BasePart") or t:FindFirstChildWhichIsA("BasePart", true) ~= nil
+end
+local function meshPending()
+	for _, s in ipairs(sites()) do if s.perch and not templateReady(s.kind or "gull") then return true end end
+	return false
+end
+task.spawn(function()
+	local t0 = os.clock()
+	while meshPending() and os.clock() - t0 < 25 do task.wait(0.25) end
+	for _, s in ipairs(sites()) do makeFlock(s) end
+end)
 local PARK = CFrame.new(0, -1000, 0)
 local function park(b)
 	b.root.CFrame = PARK
@@ -290,9 +304,16 @@ local function rebuild()
 	for _, s in ipairs(sites()) do makeFlock(s) end
 end
 F:GetAttributeChangedSignal("Sites"):Connect(rebuild)                  -- a new site list: rebuilt on the spot
-F.ChildAdded:Connect(function(c) if c.Name == "Templates" then task.delay(1, rebuild) end end)   -- a mesh template dropped in later
-local meshKinds = {}
-for _, fl in ipairs(flocks) do if fl.mesh then table.insert(meshKinds, fl.site.kind) end end
-local perches = 0
-for _, fl in ipairs(flocks) do if fl.perch then perches += 1 end end
-print(string.format("Birds: %d sites on this screen (%d perched)%s", #flocks, perches, #meshKinds > 0 and (" (mesh: " .. table.concat(meshKinds, ", ") .. ")") or " (part-built)"))
+local rebuildQueued = false
+local function rebuildSoon()                                            -- a template (or its mesh) arriving later: rebuilt once it is whole
+	if rebuildQueued then return end
+	rebuildQueued = true
+	task.delay(1.5, function() rebuildQueued = false; if not meshPending() then rebuild() else rebuildSoon() end end)
+end
+do local T = F:FindFirstChild("Templates"); if T then T.DescendantAdded:Connect(rebuildSoon) end end
+F.ChildAdded:Connect(function(c) if c.Name == "Templates" then c.DescendantAdded:Connect(rebuildSoon); rebuildSoon() end end)   -- a Templates folder dropped in later
+task.delay(26, function()
+	local meshKinds, perches = {}, 0
+	for _, fl in ipairs(flocks) do if fl.mesh then table.insert(meshKinds, fl.site.kind) end; if fl.perch then perches += 1 end end
+	print(string.format("Birds: %d sites on this screen (%d perched)%s", #flocks, perches, #meshKinds > 0 and (" (mesh: " .. table.concat(meshKinds, ", ") .. ")") or " (part-built)"))
+end)

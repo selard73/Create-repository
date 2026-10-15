@@ -2184,3 +2184,22 @@ proven byte-for-byte in standalone Luau). Round 2 fixes from it: the balloon's t
 it is still this rider's (busy == p) - during the owner's long preview yields the safety net may already have handed it to the next
 rider; a tail fault also clears JapanPreviewInFlight and sends "home"; the backup clone is nil-guarded. BalloonServer now 7 patches.
 Ready for Shannon's yes: run tools/japan/japan_fix1.lua in Edit; expect nine "QQ JFIX" lines and "QQ JFIX DONE: 9 scripts patched".
+
+Birds v5 (cloud thread, after runner 7's fresh play test of the install): the client built the perches before the Persistent
+templates' MeshParts had arrived and never rebuilt. v5 waits (up to 25 s) until every perch kind's template has a part before it
+builds, rebuilds (debounced 1.5 s) when a template or its mesh arrives later, and prints its "Birds: ..." line after that wait.
+Re-run install_birds1.lua in Edit on her word (re-runnable: the Templates carry over; expect "Birds: 7 sites ... (3 perched) (mesh:
+pelican, gull)" in a fresh play test). Not for publishing until that line reads mesh.
+
+## Job 106: the Japan map's visual fixes - READ-ONLY geometry survey first (Edit; no ask), then the fix installer - runner 7
+
+Shannon: "make the visual fixes in the Japan map, especially with the ground, a lot of things are overlapping and a lot of things are
+floating and the water has places where it is exposed and look weird". tools/japan/survey106.lua (compiles; pcall'd; returns its
+lines) measures what the fixer will act on: every prop's gap to the ground under five footprint points (FLOAT / SUNK / SLOPE lines
+with the gap in studs and what lies under), flat ground slabs whose top faces sit within 0.15 studs and overlap (FIGHT lines =
+z-fighting), and the water on a 12-stud grid (visible water, its levels, water over nothing, water lapping over ground parts, the
+JapanWaterBasins manifest) plus a 25-stud ASCII MAP of the island (~ water, v water over nothing, f water over a part, # parts,
+. terrain, blank nothing). Send every line unchanged (the MAP rows too) to tools/japan/survey106_result_<date>.txt. Then PICTURES in
+Edit (camera placed by script, as before): the three worst FLOAT lines, the three worst SUNK, two FIGHT spots, and the water edge at
+two WATER-LAP spots and one WATER-VOID spot - name each picture by the line it shows. The fixer (next commit) re-measures and acts
+on thresholds we set from these numbers: snap floating props down, lift buried ones, nudge fighting slabs, fill / drain water.
