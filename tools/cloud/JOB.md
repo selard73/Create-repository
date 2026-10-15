@@ -1790,3 +1790,6 @@ are unlit at ClockTime 14.5, so the lantern glow itself cannot be judged by day)
 Shannon picks what stays; the Edit run is the same script (undo look_undo1.lua).
 Edit check after the job 99 preview (runner 7): v1369; water refl 0.55 / transp 0.45 / wave 0.06; Bloom threshold 2; no LookGrade;
 0 LookWas_ attributes; grass 96,150,72; HttpEnabled false. Edit untouched by the preview. Her picks pending.
+Job 99 round 2 (cloud thread, after the preview): Bloom threshold 1.2 -> 1.55 (the pale cobbles bloomed by day at 1.2; the lantern glow
+is a night check - ClockTime 14.5 keeps the lamps unlit by day); each of the four changes is now a switch at the top of look_pass1.lua
+(WATER, BLOOM, GRADE, GRASS) so Shannon's picks are one edit each before the Edit run. Her picks pending.
