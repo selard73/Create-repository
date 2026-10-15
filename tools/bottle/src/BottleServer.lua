@@ -19,10 +19,13 @@ local awardItems = RS:WaitForChild("AwardItems", 60)
 local awardAcorns = RS:WaitForChild("AwardAcorns", 60)
 if not (awardItems and awardAcorns) then warn("Bottles: ReplicatedStorage is missing AwardItems / AwardAcorns; the bottles are off") return end
 local function A(name, default) local v = F:GetAttribute(name); if v == nil then return default end; return v end
-local function today()
+local function realDay()                                                   -- what is STORED: always the real day
 	local D = workspace:FindFirstChild("Daily")
 	local off = (D and tonumber(D:GetAttribute("DayOffsetHours"))) or 9
-	local t = math.floor((os.time() - off * 3600) / 86400)
+	return math.floor((os.time() - off * 3600) / 86400)
+end
+local function today()                                                     -- what is COMPARED: in Studio, moved by TestDayOffset (never stored)
+	local t = realDay()
 	if RunService:IsStudio() then t += math.floor(tonumber(F:GetAttribute("TestDayOffset")) or 0) end
 	return t
 end
@@ -77,7 +80,7 @@ ev.OnServerEvent:Connect(function(p, what, a1, a2, a3, a4)
 		if have < cost then ev:FireClient(p, "msg", string.format("A bottle costs %d acorns - you have %d", cost, have)) return end
 		pay(p, -cost)
 		put(p, "bottle_card", to * 1e6 + card * 1e4 + a * 100 + b)
-		put(p, "bottle_out", today() + 1)
+		put(p, "bottle_out", realDay() + 1)
 		ev:FireClient(p, "sent", to, card, a, b)
 		push(p)
 	elseif what == "reply" then
@@ -118,7 +121,7 @@ local function wash()
 			local root = p.Character and p.Character:FindFirstChild("HumanoidRootPart")
 			if not root or (root.Position - m:GetPivot().Position).Magnitude > 14 then return end
 			taken[i] = nil; m:Destroy()
-			local day, paid = today(), get(p, "bottle_paid")
+			local day, paid = realDay(), get(p, "bottle_paid")
 			local n = (math.floor(paid / 10) == day) and (paid % 10) or 0
 			local prize = 0
 			if n < math.min(9, math.floor(A("FindCap", 5))) then prize = math.floor(A("FindPrize", 10)); put(p, "bottle_paid", day * 10 + n + 1) end
@@ -138,6 +141,17 @@ task.spawn(function()
 	end
 end)
 Players.PlayerRemoving:Connect(function(p) view[p] = nil; last[p] = nil end)
+-- a reply comes due at the daily reset while people play: tell every client when the day turns (and when TestDayOffset moves in Studio)
+local function pushAll() for _, p in ipairs(Players:GetPlayers()) do if ready(p) then push(p) end end end
+F:GetAttributeChangedSignal("TestDayOffset"):Connect(pushAll)
+task.spawn(function()
+	local seen = today()
+	while true do
+		task.wait(30)
+		local d = today()
+		if d ~= seen then seen = d; pushAll() end
+	end
+end)
 Players.PlayerAdded:Connect(function(p)
 	task.spawn(function()
 		local t0 = os.clock()

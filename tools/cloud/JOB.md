@@ -3163,3 +3163,20 @@ nearest the stand", "QQ BOTTLE DONE: workspace.Bottles (BottleServer 7718, Bottl
     cards should wait while GiftsGui is up (or the gifts popup should wait for an open bottle card).
  Also: ReplyBottle is a direct child of workspace (not inside workspace.Bottles).
 Waits for round 2 (the review's fixes + these) and her word to install.
+Job 118 ROUND 2 (cloud thread, from runner 7's preview at 137a64f + an independent code review). Same file, tools/bottle/install_bottle1.lua:
+ - SERVER: the save stores only the REAL day (TestDayOffset moves "today" in comparisons only, never what is written); the server
+   pushes every ready player's state when the day turns (a 30 s check) and when TestDayOffset changes - so a reply appears at the
+   daily reset without reopening the panel, and the Studio check shows at once.
+ - CLIENT: the panel is wide and short (640 x 310, two columns: the four cyclers left, the preview and the button right) so a
+   landscape phone keeps ~0.9 scale; the fit keeps 110 px clear for the top HUD bar and sits 24 px low; the Note row reads "Note n of
+   6" (the sentence is in the preview); cycler texts, the preview and the send button TextScaled with size limits; the note card
+   420 x 330 with the signature and the "You wrote" line in their own rooms; the toss and reply bottles live in workspace.Bottles;
+   the reply's Read-it prompt reaches 14 studs, beach bottles 12.
+ - INSTALLER: the scan and every abort run BEFORE the old install is moved (an ABORT leaves the game working; the old stand is
+   ignored by the scan); spot 1 is the REPLY spot and is no longer a wash spot (no beach bottle inside the reply bottle); the sign
+   is lettered on its back too; two small patches, each skipped harmlessly on an anchor miss, backups _pre_bottle1:
+   workspace.Gifts.GiftsClient's MODAL table gets bottle = true (the gifts popup opened over a bottle note in the preview), and
+   workspace.Interact.InteractServer's SKIP_PREFIX gets "bottle_" (the bookkeeping items are not interactions; bottles_found is).
+Preview again in play from this commit: the QQ BOTTLE lines, the panel on desktop (and on her phone emulator if she can switch it),
+the note card with a long "You wrote" line, TestDayOffset 1 -> the reply bottle appears without reopening; then install in Edit
+on her word.

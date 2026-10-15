@@ -1,7 +1,7 @@
 -- install_bottle1.lua (Studio EDIT; re-runnable; its body also runs as a play-test PREVIEW - discarded on stop). Job 118: the MESSAGE IN
 -- A BOTTLE game on the main Porto beach. Scans the beach for open sand and the waterline, puts the stand 10..18 studs from the water
 -- (its back to the sea), picks up to 10 wash-up spots, builds workspace.Bottles + ReplicatedStorage.BottleTemplate. Sources: BottleText
--- (7091), BottleServer (7718), BottleClient (12683) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
+-- (7091), BottleServer (8434), BottleClient (13721) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
 -- AwardAcorns), no publish. Output "QQ BOTTLE".
 local HttpService = game:GetService("HttpService")
 local RS = game:GetService("ReplicatedStorage")
@@ -116,10 +116,13 @@ local awardItems = RS:WaitForChild("AwardItems", 60)
 local awardAcorns = RS:WaitForChild("AwardAcorns", 60)
 if not (awardItems and awardAcorns) then warn("Bottles: ReplicatedStorage is missing AwardItems / AwardAcorns; the bottles are off") return end
 local function A(name, default) local v = F:GetAttribute(name); if v == nil then return default end; return v end
-local function today()
+local function realDay()                                                   -- what is STORED: always the real day
 	local D = workspace:FindFirstChild("Daily")
 	local off = (D and tonumber(D:GetAttribute("DayOffsetHours"))) or 9
-	local t = math.floor((os.time() - off * 3600) / 86400)
+	return math.floor((os.time() - off * 3600) / 86400)
+end
+local function today()                                                     -- what is COMPARED: in Studio, moved by TestDayOffset (never stored)
+	local t = realDay()
 	if RunService:IsStudio() then t += math.floor(tonumber(F:GetAttribute("TestDayOffset")) or 0) end
 	return t
 end
@@ -174,7 +177,7 @@ ev.OnServerEvent:Connect(function(p, what, a1, a2, a3, a4)
 		if have < cost then ev:FireClient(p, "msg", string.format("A bottle costs %d acorns - you have %d", cost, have)) return end
 		pay(p, -cost)
 		put(p, "bottle_card", to * 1e6 + card * 1e4 + a * 100 + b)
-		put(p, "bottle_out", today() + 1)
+		put(p, "bottle_out", realDay() + 1)
 		ev:FireClient(p, "sent", to, card, a, b)
 		push(p)
 	elseif what == "reply" then
@@ -215,7 +218,7 @@ local function wash()
 			local root = p.Character and p.Character:FindFirstChild("HumanoidRootPart")
 			if not root or (root.Position - m:GetPivot().Position).Magnitude > 14 then return end
 			taken[i] = nil; m:Destroy()
-			local day, paid = today(), get(p, "bottle_paid")
+			local day, paid = realDay(), get(p, "bottle_paid")
 			local n = (math.floor(paid / 10) == day) and (paid % 10) or 0
 			local prize = 0
 			if n < math.min(9, math.floor(A("FindCap", 5))) then prize = math.floor(A("FindPrize", 10)); put(p, "bottle_paid", day * 10 + n + 1) end
@@ -235,6 +238,17 @@ task.spawn(function()
 	end
 end)
 Players.PlayerRemoving:Connect(function(p) view[p] = nil; last[p] = nil end)
+-- a reply comes due at the daily reset while people play: tell every client when the day turns (and when TestDayOffset moves in Studio)
+local function pushAll() for _, p in ipairs(Players:GetPlayers()) do if ready(p) then push(p) end end end
+F:GetAttributeChangedSignal("TestDayOffset"):Connect(pushAll)
+task.spawn(function()
+	local seen = today()
+	while true do
+		task.wait(30)
+		local d = today()
+		if d ~= seen then seen = d; pushAll() end
+	end
+end)
 Players.PlayerAdded:Connect(function(p)
 	task.spawn(function()
 		local t0 = os.clock()
@@ -278,7 +292,7 @@ local function fit(frame, w, h)
 	local sc = Instance.new("UIScale"); sc.Parent = frame
 	local function upd()
 		local cam = workspace.CurrentCamera; local v = cam and cam.ViewportSize or Vector2.new(1000, 800)
-		sc.Scale = math.clamp(math.min((v.X - 24) / w, (v.Y - 40) / h), 0.5, 1)
+		sc.Scale = math.clamp(math.min((v.X - 24) / w, (v.Y - 110) / h), 0.5, 1)   -- (round 2: 110 px kept clear for the top HUD bar)
 	end
 	upd(); if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(upd) end
 end
@@ -299,14 +313,15 @@ local function say(text, secs)
 	end)
 end
 -- ---------- the note card (every bottle opened) ----------
-local note = Instance.new("Frame"); note.AnchorPoint = Vector2.new(0.5, 0.5); note.Position = UDim2.fromScale(0.5, 0.5); note.Size = UDim2.fromOffset(400, 300)
+local NW, NH = 420, 330                                                    -- (round 2: room for the signature and the "You wrote" line)
+local note = Instance.new("Frame"); note.AnchorPoint = Vector2.new(0.5, 0.5); note.Position = UDim2.new(0.5, 0, 0.5, 24); note.Size = UDim2.fromOffset(NW, NH)
 note.BackgroundColor3 = PAPER; note.BorderSizePixel = 0; note.Visible = false; note.ZIndex = 3; note.Parent = gui
-corner(note, 18); stroke(note, RIM, 3); fit(note, 400, 300)
-local nHead = label(note, "", 20, 16, 360, 30, 22, SEA, Enum.TextXAlignment.Center)
-local nBody = label(note, "", 26, 56, 348, 140, 19, INK, Enum.TextXAlignment.Center); nBody.TextYAlignment = Enum.TextYAlignment.Center
-local nSign = label(note, "", 26, 198, 348, 24, 15, INK_DIM, Enum.TextXAlignment.Right)
-local nPrize = label(note, "", 26, 224, 348, 20, 15, RGB(176, 120, 20), Enum.TextXAlignment.Center)
-local nClose = button(note, "Lovely!", 140, 250, 120, 38)
+corner(note, 18); stroke(note, RIM, 3); fit(note, NW, NH)
+local nHead = label(note, "", 20, 14, NW - 40, 30, 22, SEA, Enum.TextXAlignment.Center)
+local nBody = label(note, "", 26, 50, NW - 52, 120, 19, INK, Enum.TextXAlignment.Center); nBody.TextYAlignment = Enum.TextYAlignment.Center
+local nSign = label(note, "", 26, 172, NW - 52, 22, 15, INK_DIM, Enum.TextXAlignment.Right)
+local nPrize = label(note, "", 26, 200, NW - 52, 64, 15, RGB(150, 104, 20), Enum.TextXAlignment.Center); nPrize.TextYAlignment = Enum.TextYAlignment.Top
+local nClose = button(note, "Lovely!", (NW - 130) / 2, 274, 130, 40)
 local function chime()
 	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://9116394876"; s.Volume = 0.3; s.PlaybackSpeed = 1.1; s.Parent = gui; s:Play(); Debris:AddItem(s, 4)
 end
@@ -316,25 +331,26 @@ local function showNote(head, body, sign, prize)
 end
 nClose.Activated:Connect(function() note.Visible = false; if pg:GetAttribute("OpenPanel") == "bottle" then pg:SetAttribute("OpenPanel", nil) end end)
 -- ---------- the writing panel ----------
-local W, H = 440, 470
+local W, H = 640, 310                                                      -- (round 2: wide and short, two columns - a landscape phone keeps ~0.9 scale)
 local shade = Instance.new("TextButton"); shade.Size = UDim2.fromScale(1, 1); shade.BackgroundColor3 = RGB(20, 12, 6); shade.BackgroundTransparency = 0.5
 shade.Text = ""; shade.AutoButtonColor = false; shade.BorderSizePixel = 0; shade.Visible = false; shade.ZIndex = 1; shade.Parent = gui
-local panel = Instance.new("Frame"); panel.AnchorPoint = Vector2.new(0.5, 0.5); panel.Position = UDim2.fromScale(0.5, 0.5); panel.Size = UDim2.fromOffset(W, H)
+local panel = Instance.new("Frame"); panel.AnchorPoint = Vector2.new(0.5, 0.5); panel.Position = UDim2.new(0.5, 0, 0.5, 24); panel.Size = UDim2.fromOffset(W, H)
 panel.BackgroundColor3 = FACE; panel.BorderSizePixel = 0; panel.Visible = false; panel.ZIndex = 2; panel.Parent = gui
 corner(panel, 18); stroke(panel, RIM, 3); fit(panel, W, H)
-label(panel, "Messaggi in Bottiglia", 20, 14, 340, 30, 24, INK)
-label(panel, "Write a note, cork it, and toss it out to sea", 20, 44, 400, 20, 14, INK_DIM)
-local close = button(panel, "X", W - 52, 14, 36, 36, SLOT, 20)
-local status = label(panel, "", 20, 70, 400, 36, 15, SEA)
+label(panel, "Messaggi in Bottiglia", 20, 12, 420, 30, 24, INK)
+local close = button(panel, "X", W - 52, 12, 38, 38, SLOT, 20)
+local status = label(panel, "", 20, 46, W - 80, 22, 15, SEA)
 local choice = {to = 1, card = 1, a = 1, b = 1}
 local rows = {}
 local function cycler(y, title, get, count, set)
-	label(panel, title, 20, y + 8, 70, 24, 16, INK_DIM)
-	local prev = button(panel, "<", 90, y, 40, 40, SLOT, 22)
-	local mid = Instance.new("TextLabel"); mid.Position = UDim2.fromOffset(136, y); mid.Size = UDim2.fromOffset(238, 40); mid.BackgroundColor3 = PAPER
-	mid.BorderSizePixel = 0; mid.FontFace = FONT; mid.TextSize = 16; mid.TextColor3 = INK; mid.TextWrapped = true; mid.ZIndex = 4; mid.Parent = panel
+	label(panel, title, 20, y + 10, 70, 24, 15, INK_DIM)
+	local prev = button(panel, "<", 92, y, 40, 44, SLOT, 22)
+	local mid = Instance.new("TextLabel"); mid.Position = UDim2.fromOffset(138, y); mid.Size = UDim2.fromOffset(170, 44); mid.BackgroundColor3 = PAPER
+	mid.BorderSizePixel = 0; mid.FontFace = FONT; mid.TextScaled = true; mid.TextColor3 = INK; mid.TextWrapped = true; mid.ZIndex = 4; mid.Parent = panel
+	local mc = Instance.new("UITextSizeConstraint"); mc.MaxTextSize = 17; mc.MinTextSize = 10; mc.Parent = mid
+	local mp = Instance.new("UIPadding"); mp.PaddingLeft = UDim.new(0, 6); mp.PaddingRight = UDim.new(0, 6); mp.Parent = mid
 	corner(mid, 8)
-	local nxt = button(panel, ">", 380, y, 40, 40, SLOT, 22)
+	local nxt = button(panel, ">", 314, y, 40, 44, SLOT, 22)
 	local row = {mid = mid, get = get}
 	prev.Activated:Connect(function() set(((get() - 2) % count()) + 1) end)
 	nxt.Activated:Connect(function() set((get() % count()) + 1) end)
@@ -345,20 +361,23 @@ local preview, send
 local function card() return Text.CARDS[choice.card] end
 local function refresh()
 	rows[1].mid.Text = Text.TO[choice.to].label
-	rows[2].mid.Text = "Note " .. choice.card .. ": " .. card().text:gsub("{A}", "___"):gsub("{B}", "___")
+	rows[2].mid.Text = "Note " .. choice.card .. " of " .. #Text.CARDS        -- (round 2: the whole sentence is in the preview)
 	rows[3].mid.Text = card().A[choice.a]
 	rows[4].mid.Text = card().B[choice.b]
 	preview.Text = Text.message(choice.to, choice.card, choice.a, choice.b)
 end
-cycler(112, "To:", function() return choice.to end, function() return #Text.TO end, function(v) choice.to = v; refresh() end)
-cycler(160, "Note:", function() return choice.card end, function() return #Text.CARDS end, function(v) choice.card = v; choice.a = 1; choice.b = 1; refresh() end)
-cycler(208, "Blank 1:", function() return choice.a end, function() return #card().A end, function(v) choice.a = v; refresh() end)
-cycler(256, "Blank 2:", function() return choice.b end, function() return #card().B end, function(v) choice.b = v; refresh() end)
-local paper = Instance.new("Frame"); paper.Position = UDim2.fromOffset(20, 306); paper.Size = UDim2.fromOffset(400, 92); paper.BackgroundColor3 = PAPER
+cycler(80, "To:", function() return choice.to end, function() return #Text.TO end, function(v) choice.to = v; refresh() end)
+cycler(134, "Note:", function() return choice.card end, function() return #Text.CARDS end, function(v) choice.card = v; choice.a = 1; choice.b = 1; refresh() end)
+cycler(188, "Blank 1:", function() return choice.a end, function() return #card().A end, function(v) choice.a = v; refresh() end)
+cycler(242, "Blank 2:", function() return choice.b end, function() return #card().B end, function(v) choice.b = v; refresh() end)
+local paper = Instance.new("Frame"); paper.Position = UDim2.fromOffset(372, 80); paper.Size = UDim2.fromOffset(W - 392, 150); paper.BackgroundColor3 = PAPER
 paper.BorderSizePixel = 0; paper.ZIndex = 3; paper.Parent = panel
 corner(paper, 10); stroke(paper, RGB(196, 170, 120), 1.5)
-preview = label(paper, "", 12, 8, 376, 76, 17, INK, Enum.TextXAlignment.Center); preview.TextYAlignment = Enum.TextYAlignment.Center
-send = button(panel, "Cork it & toss it!", 90, 410, 260, 44)
+preview = label(paper, "", 12, 10, W - 416, 130, 18, INK, Enum.TextXAlignment.Center); preview.TextYAlignment = Enum.TextYAlignment.Center
+preview.TextScaled = true; local pc = Instance.new("UITextSizeConstraint"); pc.MaxTextSize = 19; pc.MinTextSize = 11; pc.Parent = preview
+send = button(panel, "Cork it & toss it!", 372, 242, W - 392, 44)
+send.TextScaled = true; local sc2 = Instance.new("UITextSizeConstraint"); sc2.MaxTextSize = 18; sc2.MinTextSize = 11; sc2.Parent = send
+local sp2 = Instance.new("UIPadding"); sp2.PaddingLeft = UDim.new(0, 8); sp2.PaddingRight = UDim.new(0, 8); sp2.Parent = send
 local st = {}
 local function setStatus()
 	if st.sentDay and st.replyReady then status.Text = "A reply to your bottle has washed up by the stand. Go and read it!"; send.Visible = false
@@ -386,7 +405,7 @@ local function toss()
 	for _, d in ipairs(b:GetDescendants()) do if d:IsA("ProximityPrompt") then d:Destroy() elseif d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false end end
 	local from = standCF().Position + Vector3.new(0, 4, 0)
 	local to = from + seaward() * 42 + Vector3.new(0, -5, 0)
-	b:PivotTo(CFrame.new(from)); b.Parent = workspace
+	b:PivotTo(CFrame.new(from)); b.Parent = F
 	local v = Instance.new("NumberValue"); v.Value = 0
 	v.Changed:Connect(function(t)
 		local p = from:Lerp(to, t) + Vector3.new(0, math.sin(t * math.pi) * 14, 0)
@@ -403,9 +422,9 @@ local function placeReply(want)
 	pcall(function() spot = HttpService:JSONDecode(F:GetAttribute("ReplySpot") or "null") end)
 	local pos = spot and Vector3.new(spot[1], spot[2] + 0.35, spot[3]) or (standCF().Position + seaward() * 8)
 	local b = template:Clone(); b.Name = "ReplyBottle"
-	b:PivotTo(CFrame.new(pos) * CFrame.Angles(0, 0.6, math.rad(8))); b.Parent = workspace   -- lying on its side
+	b:PivotTo(CFrame.new(pos) * CFrame.Angles(0, 0.6, math.rad(8))); b.Parent = F   -- lying on its side; (round 2: kept in the game's folder)
 	local prompt = b:FindFirstChildWhichIsA("ProximityPrompt", true)
-	if prompt then prompt.ObjectText = "A reply to your bottle!"; prompt.ActionText = "Read it"; prompt.Triggered:Connect(function() ev:FireServer("reply") end) end
+	if prompt then prompt.ObjectText = "A reply to your bottle!"; prompt.ActionText = "Read it"; prompt.MaxActivationDistance = 14; prompt.Triggered:Connect(function() ev:FireServer("reply") end) end
 	local glow = Instance.new("Highlight"); glow.FillColor = GOLD; glow.OutlineColor = RGB(255, 236, 160); glow.FillTransparency = 0.7; glow.Parent = b
 	replyBottle = b
 end
@@ -440,14 +459,13 @@ end
 if not (RS:FindFirstChild("AwardItems") and RS:FindFirstChild("AwardAcorns")) then print("QQ BOTTLE ABORT: ReplicatedStorage.AwardItems / AwardAcorns missing") return end
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("before Bottles") end)
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
-local old = workspace:FindFirstChild("Bottles")
-if old then local n = 1; while hb:FindFirstChild("Bottles_pre_" .. n) do n += 1 end; old.Name = "Bottles_pre_" .. n; old.Parent = hb; for _, s in ipairs(old:GetDescendants()) do if s:IsA("BaseScript") then s.Enabled = false end end end
-local oldT = RS:FindFirstChild("BottleTemplate"); if oldT then oldT:Destroy() end
+local old = workspace:FindFirstChild("Bottles")                          -- (round 2: kept in place until the scan has passed; an ABORT leaves it working)
 -- ---------- 1: the beach scan ----------
 local X1, X2, Z1, Z2, STEP = 215, 340, -800, -690, 4
 local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude; rp.IgnoreWater = false
 local skip = {}
 for _, pl in ipairs(game:GetService("Players"):GetPlayers()) do if pl.Character then table.insert(skip, pl.Character) end end
+if old then table.insert(skip, old) end                                     -- (a re-run: the old stand never blocks its own site)
 rp.FilterDescendantsInstances = skip
 local sand, water = {}, {}
 for x = X1, X2, STEP do
@@ -516,7 +534,12 @@ end
 if #spots == 0 then print("QQ BOTTLE ABORT: no wash-up spots at the waterline - tell the cloud thread") return end
 local list = {}
 for i, s in ipairs(spots) do table.insert(list, string.format("%d (%.0f, %.1f, %.0f)", i, s[1], s[2], s[3])) end
-print("QQ BOTTLE wash spots (" .. #spots .. "): " .. table.concat(list, " | ") .. "; the reply spot is no. 1, nearest the stand")
+if #spots < 2 then print("QQ BOTTLE ABORT: only one waterline spot - tell the cloud thread") return end
+local replySpot = table.remove(spots, 1)                                   -- (round 2: the reply spot is never a wash spot - no beach bottle inside the reply bottle)
+print("QQ BOTTLE spots: " .. table.concat(list, " | ") .. "; no. 1, nearest the stand, is the REPLY spot, the other " .. #spots .. " are wash spots")
+-- every check passed: now the old install goes
+if old then local n = 1; while hb:FindFirstChild("Bottles_pre_" .. n) do n += 1 end; old.Name = "Bottles_pre_" .. n; old.Parent = hb; for _, s in ipairs(old:GetDescendants()) do if s:IsA("BaseScript") then s.Enabled = false end end end
+local oldT = RS:FindFirstChild("BottleTemplate"); if oldT then oldT:Destroy() end
 -- ---------- 4: the template ----------
 local function part(parent, name, size, color, cf, mat, shape, transp)
 	local p = Instance.new("Part"); p.Name = name; p.Size = size; p.Color = color; p.Material = mat or Enum.Material.SmoothPlastic
@@ -535,14 +558,14 @@ part(tpl, "Note", Vector3.new(1.0, 0.3, 0.3), C(250, 240, 210), CFrame.new(-0.05
 part(tpl, "Ribbon", Vector3.new(0.08, 0.32, 0.32), C(200, 60, 60), CFrame.new(-0.05, 0, 0), Enum.Material.Fabric, Enum.PartType.Cylinder)
 tpl.PrimaryPart = glass
 local pr = Instance.new("ProximityPrompt"); pr.Name = "UncorkPrompt"; pr.ActionText = "Uncork"; pr.ObjectText = "Message in a bottle"
-pr.MaxActivationDistance = 9; pr.RequiresLineOfSight = false; pr.HoldDuration = 0; pr.Parent = glass
+pr.MaxActivationDistance = 12; pr.RequiresLineOfSight = false; pr.HoldDuration = 0; pr.Parent = glass
 local sp = Instance.new("Sparkles"); sp.SparkleColor = C(255, 240, 180); sp.TimeScale = 0.6; sp.Parent = glass
 tpl.Parent = RS
 -- ---------- 5: the folder, the stand, the scripts ----------
 local Fd = Instance.new("Folder"); Fd.Name = "Bottles"
 for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 3, RespawnSeconds = 75, TestDayOffset = 0}) do Fd:SetAttribute(k, v) end
 Fd:SetAttribute("WashSpots", HttpService:JSONEncode(spots))
-Fd:SetAttribute("ReplySpot", HttpService:JSONEncode(spots[1]))
+Fd:SetAttribute("ReplySpot", HttpService:JSONEncode(replySpot))
 local evt = Instance.new("RemoteEvent"); evt.Name = "BottleEvent"; evt.Parent = Fd
 local mod = Instance.new("ModuleScript"); mod.Name = "BottleText"; mod.Source = SRC.BottleText; mod.Parent = Fd
 local St = Instance.new("Model"); St.Name = "Stand"; St.ModelStreamingMode = Enum.ModelStreamingMode.Persistent
@@ -567,6 +590,7 @@ local board = solid("SignBoard", Vector3.new(6.6, 1.5, 0.2), CREAM, L(0, 6.3, 0.
 local sg = Instance.new("SurfaceGui"); sg.Face = Enum.NormalId.Front; sg.CanvasSize = Vector2.new(660, 150); sg.LightInfluence = 0.5; sg.Parent = board
 local function sgText(text, y, h, colour) local t = Instance.new("TextLabel"); t.BackgroundTransparency = 1; t.Position = UDim2.fromScale(0, y); t.Size = UDim2.fromScale(1, h); t.Text = text; t.TextScaled = true; t.FontFace = Font.new("rbxasset://fonts/families/FredokaOne.json"); t.TextColor3 = colour; t.Parent = sg end
 sgText("MESSAGGI IN BOTTIGLIA", 0.06, 0.52, BLUE); sgText("Messages in a Bottle", 0.6, 0.34, WOOD_D)
+do local back = sg:Clone(); back.Face = Enum.NormalId.Back; back.Parent = board end   -- (round 2: lettered on the sea side too)
 local wp = Instance.new("ProximityPrompt"); wp.Name = "WritePrompt"; wp.ActionText = "Write a message"; wp.ObjectText = "Messages in a Bottle"
 wp.MaxActivationDistance = 10; wp.RequiresLineOfSight = false; wp.HoldDuration = 0; wp.Parent = counter
 St.PrimaryPart = counter
@@ -575,6 +599,26 @@ St.Parent = Fd
 local s1 = Instance.new("Script"); s1.Name = "BottleServer"; s1.RunContext = Enum.RunContext.Server; s1.Source = SRC.BottleServer; s1.Parent = Fd
 local s2 = Instance.new("Script"); s2.Name = "BottleClient"; s2.RunContext = Enum.RunContext.Client; s2.Source = SRC.BottleClient; s2.Parent = Fd
 Fd.Parent = workspace
+-- (round 2) the gifts popup waits while a bottle panel is open; the interaction counter skips the bottle bookkeeping items
+local function patchOne(label, sc, find, repl, mark)
+	if not (sc and sc:IsA("LuaSourceContainer")) then print("QQ BOTTLE " .. label .. ": not found; skipped") return end
+	local o = sc.Source
+	if o:find(mark, 1, true) then print("QQ BOTTLE " .. label .. ": already patched") return end
+	local a, b = o:find(find, 1, true)
+	if not a or o:find(find, b + 1, true) then print("QQ BOTTLE " .. label .. ": anchor not found once; skipped (harmless - tell the cloud thread)") return end
+	local n = o:sub(1, a - 1) .. repl .. o:sub(b + 1)
+	local ok, f, err = pcall(function() return loadstring(n) end)
+	if ok and not f then print("QQ BOTTLE " .. label .. ": would not compile; skipped") return end
+	local bn = sc.Name .. "_pre_bottle1"; if not hb:FindFirstChild(bn) then local c = sc:Clone(); c.Name = bn; c.Enabled = false; c.Parent = hb end
+	sc.Source = n
+	print(string.format("QQ BOTTLE %s: %d -> %d chars; backup HudBackup.%s", label, #o, #n, bn))
+end
+local G = workspace:FindFirstChild("Gifts")
+patchOne("GiftsClient", G and G:FindFirstChild("GiftsClient"),
+	[==[album = true, boat = true}]==], [==[album = true, boat = true, bottle = true}   -- BOTTLE1_20261015: the bottle panel is modal too]==], "BOTTLE1_20261015")
+local IA = workspace:FindFirstChild("Interact")
+patchOne("InteractServer", IA and IA:FindFirstChild("InteractServer"),
+	[==[local SKIP_PREFIX = {"daily_", "passport_", "champion", "thanks_"}]==], [==[local SKIP_PREFIX = {"daily_", "passport_", "champion", "thanks_", "bottle_"}   -- BOTTLE1_20261015: the bottle game's bookkeeping]==], "BOTTLE1_20261015")
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after Bottles") end)
-print(string.format("QQ BOTTLE DONE: workspace.Bottles (BottleServer %d, BottleClient %d, BottleText %d chars); the stand at (%.0f, %.1f, %.0f); %d wash spots; send 15, find 10 (5 a day)%s",
+print(string.format("QQ BOTTLE DONE: workspace.Bottles (BottleServer %d, BottleClient %d, BottleText %d chars); the stand at (%.0f, %.1f, %.0f); %d wash spots + the reply spot; send 15, find 10 (5 a day)%s",
 	#s1.Source, #s2.Source, #mod.Source, site.X, site.Y, site.Z, #spots, old and ("; the old folder is HudBackup." .. old.Name) or ""))
