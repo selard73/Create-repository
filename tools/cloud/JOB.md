@@ -3269,3 +3269,18 @@ old -> HudBackup.TreehouseClient_pre_r3_n; "QQ TREE121"):
  Everything from job 119 (the bell, the 4.5 s holds, the finale) stays.
 PREVIEW: walk in through the door with the default avatar (and, if you can, a tall one - head clearance), the ceiling from inside, sit
 on a stool and the armchair (do they sit at the right height, facing the table / the room? does a jump stand up?), pictures inside.
+
+Result job 121 PREVIEW (runner 7, play test, nothing kept): patch_treehouse3_r3.lua at 0b38129 (37042, adler32 514236549): "QQ TREE121 (play
+test: preview only)", "QQ TREE121 DONE: TreehouseClient 34887 chars; the old one is HudBackup.TreehouseClient_pre_r3_3; PieceSound
+rbxassetid://16480570986 at 1.5x". At 12 pieces: deck top 10.56, walls 9 tall (top 19.56), the door posts at z 1.1 and 6.3 (5 wide), the
+lowest thing over the doorway at 18.56 = 8.0 above the deck; the test avatar is 6.30 tall (HipHeight 2.22) - clears with 1.7 to spare.
+SITTING (prompt triggered from the client): stool 1 (top 12.26) -> Sit true, facing -X (toward the table), BUT the LowerTorso's bottom is
+1.02 above the seat top; the armchair (top 12.06) -> Sit true, facing -Z into the room, LowerTorso bottom 1.02 above the cushion
+(t121_armchair_sitting: reads acceptably on the armchair, the cushion being deep). SEATED HEIGHT: about 1.0 too high on both - lower
+the root by ~1.0 (offset p.Size.Y/2 + HipHeight*0.5 + 0.9 -> about + HipHeight*0.5 - 0.1). A jump stood the player up (Sit false).
+Stool 2 did not seat in my test - my placement put stool 1's prompt nearer (they are 2.8 apart, one prompt shows at a time); not a fault
+found. Not installed.
+
+Treehouse RESET round 2 (runner 7, Shannon in this session: "please reset my treehouse to not made yet again so I can see the effects
+once its built" / "set me to zero pieces please", Studio EDIT, unpublished): workspace.Treehouse ResetRound 1 -> 2 (ResetUserIds
+'9611145467', TreehouseReset enabled). Runs once on her next live join after the publish.
