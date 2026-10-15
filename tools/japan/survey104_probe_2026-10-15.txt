@@ -1,0 +1,35 @@
+# Job 104 first look, runner 7, Oct 15 ~04:20Z, Studio Edit v1369, READ-ONLY (a name-keyed probe; the cloud thread writes the detailed survey)
+QQ JAPAN [Workspace] key 'japan': JapanMap (Model): 23074 descendants, 20373 parts box (445,-18,-840)..(7111,160,453); scripts: JapanEnvironment(Script/Legacy 6327), AutomaticFoodSeatContact(Script/Legacy 2245) x3
+QQ JAPAN [ServerScriptService] JapanPreviewAccess (ModuleScript); JapanPreviewGuard (Script)
+QQ JAPAN [ServerStorage] JapanMountainAuthoringFacets (Folder): 2306 descendants, 2304 parts box (5239,-4,-1270)..(6618,306,-375)
+QQ JAPAN [ServerStorage] JapanIntegrationBackup (Folder): scripts HidePortoFromFrance(LocalScript/Legacy 3789), HideFranceFromPorto(LocalScript/Legacy 3221)
+QQ JAPAN [ServerStorage] JapanBeforeBlender (Folder): 9361 descendants, 5398 parts box (5372,-33,-860)..(6640,305,415)
+QQ JAPAN [ServerStorage] JapanBlenderLibrary (Folder): 7 descendants, 5 parts box (6000,-20,-1)..(6000,6,0); JapanBlenderAssetManifest (StringValue); JapanReferenceAssetManifest (StringValue); JapanFinalEditAudit (StringValue)
+QQ JAPAN [ServerStorage] JapanBuildingInteriorsAndOldFacades (Folder): 2156 descendants, 2023 parts box (5470,1,-208)..(6496,23,275)
+QQ JAPAN [ServerStorage] JapanBeforeRealWater (Folder): 23 descendants, 14 parts box (5496,-12,-222)..(6382,4,83)
+QQ JAPAN [ServerStorage] JapanBeforeReferenceRefinement (Folder): 124 descendants, 123 parts box (5426,-2,-300)..(6601,16,407); scripts: Atmosphere before lake extent(LocalScript/Legacy 1723)
+QQ JAPAN [ServerStorage] JapanBeforeNaturalBlenderRevision (Folder): 196 descendants, 93 parts box (5436,-3,-194)..(6753,65,260)
+QQ JAPAN [ServerStorage] JapanBeforeKyotoPalaceRevision (Folder): 73 descendants, 29 parts box (5919,0,-74)..(6485,34,-25)
+QQ JAPAN [ServerStorage] JapanBeforeShinkansenRevision (Folder): 76 descendants, 68 parts box (5955,2,177)..(6045,8,185); scripts: JapanEnvironment(Script/Legacy 3532)
+QQ JAPAN [ServerStorage] JapanBeforePrivatePreview (Folder): 5 descendants; scripts: BalloonServer(Script/Server 11362), BalloonClient(Script/Client 32702), JapanEnvironment(Script/Legacy 6013), JapanAtmosphere(LocalScript/Legacy 1724), SpawnReturnServer(Script/Server 4997)
+QQ JAPAN [ServerStorage] JapanBeforeLandscapeRepairs (Folder): 1138 descendants, 406 parts box (-0,-10,-310)..(7111,25,407)
+QQ JAPAN [ServerStorage] JapanBeforeMarketRevision (Folder): 688 descendants, 550 parts box (-1,-0,-207)..(6043,18,84)
+QQ JAPAN [ServerStorage] JapanBeforeDowntownShops (Folder): 2064 descendants, 1367 parts box (0,-0,-179)..(6034,20,20)
+QQ JAPAN [ServerStorage] JapanBeforeTreeStyleRestoration (Folder): 2178 descendants, 759 parts box (5421,-13,-475)..(7111,126,406)
+QQ JAPAN [ServerStorage] JapanBeforeMochiRevision (Folder): 331 descendants, 209 parts box (-1,-0,0)..(5928,9,87)
+QQ JAPAN [ServerStorage] JapanBeforeRamenRevision (Folder): 248 descendants, 178 parts box (-0,-0,-2)..(5994,13,30)
+QQ JAPAN [ServerStorage] JapanBeforeYakitoriRevision (Folder): 84 descendants, 54 parts box (0,-0,-63)..(6024,9,0)
+QQ JAPAN [ServerStorage] JapanBeforeRamenCart (Folder): 0 descendants
+QQ JAPAN [ServerStorage] JapanBeforeTouchSeating (Folder): 812 descendants, 714 parts box (5966,0,-63)..(6055,15,75); scripts: RamenCartSeatInteraction / RamenSeatInteraction / YakitoriSeatInteraction (Script/Legacy 897 each)
+QQ JAPAN [ServerStorage] JapanBeforeKimonoShop (Folder): 383 descendants, 296 parts box (-1,-0,-54)..(6033,24,0)
+QQ JAPAN [ServerStorage] JapanBeforePalaceMusic / ShopMusic / CountrysideMusic / TeaHouseMusic (Folders): MusicClient(Script/Client 9731 / 10184 / 10585 / 11462)
+QQ JAPAN [StarterPlayerScripts] JapanAtmosphere, JapanWaterAppearance, JapanTrainInteriorCamera, JapanPreviewVisibility (LocalScripts)
+QQ JAPAN registry maps: domaine=15, forest=15, porto=44, village=14; entries outside the four: none (no Japan squirrels registered)
+QQ JAPAN 'JAPAN_RUNTIME_OK' printed by: Workspace.JapanMap.JapanEnvironment (6327)
+QQ JAPAN workspace top 40 by size: PortoNocciola:Model:70630 | JapanMap:Model:23074 | PortraitGallery:Model:2685 | Village:Folder:2379 | SquirrelTwins:Folder:2279 | Domaine:Folder:1820 | Forest:Folder:1107 | SouthGorge:Folder:1061 | Boundary:Folder:721 | VillageKit:Folder:684 | DressShop:Folder:671 | PortoGates:Folder:665 | Chapel:Folder:609 | Trampolines:Folder:581 | Bookshop:Folder:580 | Lagoon:Folder:512 | SandstoneClimb:Folder:379 | HatShop:Folder:271 | DomaineKit:Folder:263 | FarmTower:Model:249 | ForestTower:Model:249 | River:Folder:232 | Grotta:Folder:224 | HallOfGuardians:Folder:165 | Speed:Folder:147 | AcornSpots:Part:130 | Travel:Folder:120 | HallOfFame:Folder:117 | ForestRace:Folder:107 | PortoRace:Folder:107 | Scene:Model:100 | ...
+# Reading: workspace.JapanMap (20,373 parts, x 445..7111 - its box reaches back to x 445 because something of it sits near Porto; the
+# bulk is at x 5200..7100, z -1270..450, up to y 306 = a mountain) with JapanEnvironment (prints JAPAN_RUNTIME_OK: train, airport links,
+# volcano) and three AutomaticFoodSeatContact scripts; ServerScriptService.JapanPreviewAccess (module) + JapanPreviewGuard (script) =
+# a private-preview gate; StarterPlayerScripts: JapanAtmosphere, JapanWaterAppearance, JapanTrainInteriorCamera, JapanPreviewVisibility;
+# ServerStorage holds ~25 "JapanBefore*" revision backups (Blender/Kyoto palace/Shinkansen/market/ramen/mochi/kimono/music ...) and the
+# JapanIntegrationBackup with HidePortoFromFrance / HideFranceFromPorto. No squirrels registered for Japan yet.
