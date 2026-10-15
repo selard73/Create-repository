@@ -2203,3 +2203,20 @@ JapanWaterBasins manifest) plus a 25-stud ASCII MAP of the island (~ water, v wa
 Edit (camera placed by script, as before): the three worst FLOAT lines, the three worst SUNK, two FIGHT spots, and the water edge at
 two WATER-LAP spots and one WATER-VOID spot - name each picture by the line it shows. The fixer (next commit) re-measures and acts
 on thresholds we set from these numbers: snap floating props down, lift buried ones, nudge fighting slabs, fill / drain water.
+
+## Job 107: the statues' second right arm (Shannon, Oct 15: "2 arms on the right hand side, one that holds up the acorn and the original arm the player avatar has") - runner 7
+
+Reading village/build_champion.lua (MakeStatue): the arm pose moves the arm's parts and everything welded to them, so a lone extra
+arm at the side means TWO figures on one spot - every other part overlaps exactly and only the raised arm shows twice. Two paths do
+it: two builds overlapping (the keeper's retries, a Hall refresh) both parent a "Figure" to the same folder and the first is never
+taken down; or a build that throws after parenting (the pose step) leaves an unposed figure and the retry stands a posed one in it.
+STEP 1 (read-only, no ask, Edit or a play test): tools/statues/probe107.lua lists every model with a RightHand (players excluded),
+how many RightHand / RightUpperArm parts it holds, whether its right hand is raised, and flags models within 2.5 studs of another
+("SHARES ITS SPOT WITH"). Send the "QQ ARM" lines; a pair on one spot confirms the cause, a single model with RightHand x2 means a
+worn sleeve instead (tell me, and the fix changes). Also export the live workspace.Champion.ChampionServer to
+tools/statues/studio_2026-10-15/ChampionServer.lua (the repo's village/build_champion.lua is the Oct 10 copy).
+STEP 2 (ask her): tools/statues/armfix1.lua - two exact-string patches of ChampionServer: MakeStatue runs one figure at a time (a
+60 s queue, a failed build frees it) and destroys a same-named figure already in the target folder before parenting the new one.
+Backup HudBackup.ChampionServer_pre_armfix1; expect "QQ ARM DONE: ChampionServer a -> b chars". Then: delete the doubled figures
+standing now (the probe names them) or let the next daily / Hall rebuild replace them, and a play test of the fountain statue, the
+Hall carousel and the harbour Guardian - one right arm each.
