@@ -9,7 +9,7 @@
 -- NOT here (Properties panel only, not scriptable): Terrain.Decoration on + GrassLength ~0.7 (she sets them); the cloud skybox
 -- (her pick from the Toolbox). ClockTime, Atmosphere, Fog, the sun: untouched. Output lines "QQ LOOK".
 -- Shannon's picks: each of the four changes is a switch here (false = left as it is)
-local WATER, BLOOM, GRADE, GRASS = true, true, true, true
+local WATER, BLOOM, GRADE, GRASS = true, false, true, true   -- (Shannon, Oct 15: water, grass, grading stay; bloom not)
 local BLOOM_THRESHOLD = 1.55
 local Lighting = game:GetService("Lighting")
 local Terrain = workspace.Terrain

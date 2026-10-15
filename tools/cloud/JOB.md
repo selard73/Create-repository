@@ -1793,3 +1793,6 @@ Edit check after the job 99 preview (runner 7): v1369; water refl 0.55 / transp 
 Job 99 round 2 (cloud thread, after the preview): Bloom threshold 1.2 -> 1.55 (the pale cobbles bloomed by day at 1.2; the lantern glow
 is a night check - ClockTime 14.5 keeps the lamps unlit by day); each of the four changes is now a switch at the top of look_pass1.lua
 (WATER, BLOOM, GRADE, GRASS) so Shannon's picks are one edit each before the Edit run. Her picks pending.
+SHANNON's picks from the ten look-pass pictures (Oct 15): WATER, GRASS COLOUR and COLOUR GRADING stay; BLOOM does not (the daylight
+paving glare). Runner 7 set BLOOM = false in tools/look/look_pass1.lua (line 12) on epic-hawking and runs it in Edit with that switch;
+undo = tools/look/look_undo1.lua.
