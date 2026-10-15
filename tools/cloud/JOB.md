@@ -3328,3 +3328,23 @@ PieceClips by hand to the good parts. Then install in Edit with that PieceClips 
 Job 124 r6b (cloud thread): Shannon saw the 122 sign in a preview and did not like the layout ("Maybe do Homebase Treehouse Welcome home
 SelBell?"): the finished sign reads "Homebase Treehouse / Welcome home, <DisplayName>!". Same file, patch_treehouse3_r6.lua. Nothing of
 122 / 123 / 124 is installed yet (runner 7).
+Job 118 ROUND 3 (cloud thread; Shannon playing it live, Oct 15): "there should not be 2 right on the shore at once, that is too many.
+maybe one very silly one"; the kiosk "is sitting on a beach towel and in the way of an umbrella ... maybe further up, on the landing
+behind the police officer next to the boat club"; "the fill in the blank is nonsensical"; "we should be able to personalize it more";
+"the replies ... should be short goofy one liners"; the kiosk faces "the way my character is facing now; the same way as the police
+squirrel". Same file, tools/bottle/install_bottle1.lua (a full re-run: the old folder -> HudBackup.Bottles_pre_n; the saves untouched):
+ - MaxBeach 1 (one silly bottle at a time), RespawnSeconds 90.
+ - the KIOSK at her spot: runner 7's reading (473.34, -8.77, -970.93) on the Via della Piazza paving (Cobblestone, top -12.0) by the
+   Circolo Velico courtyard, 12 studs from officer_acorn_police_squirrel_color; yaw 98.6 (hers 98.2, the officer's 99.1 from its
+   bones) - the counter, sign and prompt face that way. No waterline within 40 studs, so the REPLY bottle lies at the kiosk's foot
+   (2.5 right, 4.5 in front, on the ground) and every waterline spot on the main beach is a wash spot. The acorn spot 10 studs away
+   (Workspace.Acorns.Acorn) is not touched.
+ - BottleText: six new cards where every blank-1 x blank-2 pairing reads as a sensible silly sentence; a fifth row "Ask:" with six
+   questions; the note is signed "From <DisplayName>"; the reply is "Dear <DisplayName>," + ONE goofy line - the recipient's own
+   answer to the question (7 x 6 answers); bottles sent before this round (no question) get their echo line. Item_bottle_card is now
+   to*1e8 + q*1e6 + card*1e4 + a*100 + b (old codes < 1e8 decode as before). A squirrel-hint P.S. is built but OFF (folder attribute
+   ReplyHints true turns it on).
+ - the panel 640 x 330 with the fifth row; the reply card 420 x 340.
+PREVIEW in play: the QQ BOTTLE lines ("stand (her spot)", the reply spot line); pictures of the kiosk on the landing from where
+players arrive; the panel with the Ask row; send one; TestDayOffset 1 -> the reply bottle at the kiosk's foot and its one-liner.
+Then install on her word; she publishes.

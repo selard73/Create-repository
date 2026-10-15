@@ -19,7 +19,7 @@ SRC = {n: (HERE / "src" / (n + ".lua")).read_text(encoding="utf-8") for n in ("B
 # round 3: Shannon's spot for the kiosk ("on the landing behind the police officer next to the boat club"), read by runner 7 from her
 # character in Studio Play: x, z, and yaw = the way she faced (the kiosk's front - counter, sign, prompt - faces that way). None = the
 # round-2 automatic choice on the beach.
-STAND = None
+STAND = {"x": 473.3, "z": -970.9, "yaw": 98.6}   # runner 7, Oct 15: her root (473.34, -8.77, -970.93) on the Via della Piazza paving (top -12.0) by the Circolo Velico; her look yaw 98.2, the police squirrel's 99.1
 for s in SRC.values(): assert "]===]" not in s
 lua = r'''-- install_bottle1.lua (Studio EDIT; re-runnable; its body also runs as a play-test PREVIEW - discarded on stop). Job 118: the MESSAGE IN
 -- A BOTTLE game on the main Porto beach. Scans the beach for open sand and the waterline, puts the stand 10..18 studs from the water

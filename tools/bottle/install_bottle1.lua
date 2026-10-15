@@ -565,7 +565,7 @@ end
 -- ---------- 2: the stand ----------
 local SPAWN = Vector3.new(232, -47, -580)
 local site, siteWater, standCF
-local FIXED = nil
+local FIXED = {x = 473.3, z = -970.9, yaw = 98.6}
 if FIXED then
 	local h = workspace:Raycast(Vector3.new(FIXED.x, 120, FIXED.z), Vector3.new(0, -260, 0), rp)
 	if not h then print("QQ BOTTLE ABORT: nothing under the chosen kiosk spot - tell the cloud thread") return end
