@@ -1,0 +1,580 @@
+-- install_bottle1.lua (Studio EDIT; re-runnable; its body also runs as a play-test PREVIEW - discarded on stop). Job 118: the MESSAGE IN
+-- A BOTTLE game on the main Porto beach. Scans the beach for open sand and the waterline, puts the stand 10..18 studs from the water
+-- (its back to the sea), picks up to 10 wash-up spots, builds workspace.Bottles + ReplicatedStorage.BottleTemplate. Sources: BottleText
+-- (7091), BottleServer (7718), BottleClient (12683) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
+-- AwardAcorns), no publish. Output "QQ BOTTLE".
+local HttpService = game:GetService("HttpService")
+local RS = game:GetService("ReplicatedStorage")
+local SS = game:GetService("ServerStorage")
+local T = workspace.Terrain
+local SRC = {BottleText = [===[
+-- BottleText (ModuleScript in workspace.Bottles): every word of the message-in-a-bottle game. Shared by BottleServer and BottleClient;
+-- only INDEXES travel over the network and onto the save, so no player-typed text exists anywhere. Shannon (Oct 6 / Oct 15 2026):
+-- fill-in-the-blank notes sent TO someone at sea; the next day a reply washes up that answers what you picked; silly bottles wash up too.
+local T = {}
+-- who the bottle is for (the reply is signed by them)
+T.TO = {
+	{label = "a stranded pirate", sign = "Captain Barnacle, on a very small island"},
+	{label = "the lighthouse keeper", sign = "Old Lucia, keeper of the lighthouse"},
+	{label = "the big whale", sign = "Balena, the big whale"},
+	{label = "a crab on the rocks", sign = "Granchio, a crab of few words"},
+	{label = "the grumpy squid", sign = "The Squid (still grumpy)"},
+	{label = "whoever finds this", sign = "Someone who found your bottle"},
+	{label = "a squirrel far, far away", sign = "Hana, a squirrel very far to the east"},
+}
+-- the message cards: text with two blanks, the choices for each, and the reply's first line that answers them
+T.CARDS = {
+	{text = "Ahoy! I hope you have enough {A}. I'm sending you {B}.",
+	 A = {"snacks", "sunscreen", "friends", "socks", "adventure", "acorns"},
+	 B = {"a hug", "a joke", "a map", "good luck", "a sandwich", "a tiny boat"},
+	 echo = {"You sent me {B}? Nobody has ever sent me {B} before!", "Enough {A}? I never have enough {A}. How did you know?"}},
+	{text = "Today I found {A} in Porto. It was very {B}.",
+	 A = {"a squirrel", "a crab", "gelato", "a seashell", "a whale", "a lemon"},
+	 B = {"sticky", "shiny", "loud", "suspicious", "delicious", "wonderful"},
+	 echo = {"You found {A} and it was {B}? That is the best news I've had all week.", "I once found {A} too. Mine was not {B}. Yours sounds better."}},
+	{text = "Do you like {A}? I like {B} the most.",
+	 A = {"gelato", "boats", "the beach", "mysteries", "napping", "pizza"},
+	 B = {"lemons", "sunsets", "waves", "acorns", "spaghetti", "singing"},
+	 echo = {"{B}? Me too! Well, {A} a little bit. But mostly {B}.", "We should start a club for everyone who likes {B}."}},
+	{text = "Help! A {A} stole my {B}!",
+	 A = {"seagull", "crab", "squirrel", "pelican", "wave", "cat"},
+	 B = {"hat", "gelato", "sandwich", "shoe", "map", "acorns"},
+	 echo = {"Oh no, a {A} took your {B}? I will keep an eye out for a {A} with a {B}.", "I saw a {A} go past this morning with a {B}. It looked very pleased with itself."}},
+	{text = "If you come to Porto, bring {A} and we can {B}.",
+	 A = {"a kite", "a pizza", "your friends", "a boat", "an umbrella", "a song"},
+	 B = {"go swimming", "eat gelato", "find squirrels", "race scooters", "watch the whale", "build a sandcastle"},
+	 echo = {"Bring {A}? Done. I've wanted to {B} for ages.", "I'm packing {A} right now. Save me a spot and we can {B}."}},
+	{text = "Greetings from the beach! The weather is {A} and I feel {B}.",
+	 A = {"sunny", "windy", "splashy", "perfect", "too hot", "mysterious"},
+	 B = {"happy", "sleepy", "brave", "hungry", "silly", "fancy"},
+	 echo = {"{A} and feeling {B}? That sounds like a perfect beach day.", "It's {A} here too! Well, it's wet. I'm feeling a bit {B} as well."}},
+}
+-- the second line of a reply, in each sender's own voice (same order as T.TO)
+T.VOICE = {
+	{"I've been on this island for 300 days. Or 3. I lost count.", "Send more bottles. I'm building a raft out of them.", "Arr. That means thank you.", "P.S. If you see my ship, tell it to come back."},
+	{"The light is on, the kettle is on, and now I have a letter. Lovely day.", "Wave at the lighthouse tonight. I'll blink back.", "The seagulls here read over my shoulder. Rude.", "I keep every bottle on a shelf. Yours is next to the one with a sock in it."},
+	{"BLUB. (That means hello.)", "I tried to write back, but my flippers are very big. A fish helped.", "I'll swim past the harbour later. Look for the big splash.", "I sang your letter to my friends. They loved it."},
+	{"Click click. Good letter.", "I read it sideways. Crabs read everything sideways.", "Do not tell the seagulls where I live.", "I have pinched your bottle as a souvenir. Sorry. Not sorry."},
+	{"Hmph. I suppose that was... nice. Don't tell anyone.", "I have eight arms, and none of them wanted to write back. But here we are.", "This changes nothing. I am still grumpy. Slightly less grumpy.", "I am keeping the bottle. It's shiny."},
+	{"I found your bottle while looking for my other shoe. Still no shoe, but this was better.", "Your bottle bonked me on the head. Worth it.", "I'm writing back from a very wet beach. Hi!", "I'm going to send one too. Watch out for it!"},
+	{"Your bottle floated all the way to me! The sea is very big.", "Here we have cherry trees and very fast trains. Come visit one day.", "I'm drinking tea and reading your letter. Perfect.", "Konnichiwa! That means hello. Your turn to say it."},
+}
+-- silly bottles that wash up on their own (anyone can find them)
+T.BEACH = {
+	{"Whoever finds this: the gelato shop is open. RUN.", "A seagull who has already been"},
+	{"If found, please return this bottle. It is my favourite bottle.", "Somebody, somewhere"},
+	{"Day 4 on the raft. Still no snacks. Morale: medium.", "Captain Barnacle"},
+	{"Roses are red, the sea is blue, I lost my sandwich, have you seen it too?", "A hungry pelican"},
+	{"This is a test bottle. If you are reading this, the test worked.", "The Porto Bottle Company"},
+	{"The fish say hello. I don't know why they told me. I'm a crab.", "Granchio"},
+	{"Do NOT go into the cave. Unless you want to. It's quite nice actually.", "The Squid"},
+	{"Seen today: one whale, two boats, three squirrels in sunglasses.", "Old Lucia at the lighthouse"},
+	{"I wrote this upside down. Please turn your head.", "A very silly squirrel"},
+	{"Lost: one flip-flop, left foot. Reward: the right flip-flop.", "A beach squirrel"},
+	{"Is this thing on? Hello? HELLO?", "Balena, the big whale"},
+	{"The waves are doing a lot today. Too much, if you ask me.", "Granchio"},
+	{"Note to self: do not let the crab hold the map.", "Captain Barnacle"},
+	{"Greetings from far away! The cherry trees say hi.", "Hana, a squirrel very far to the east"},
+	{"Your hair looks great today. (I can't see you. I'm a bottle.)", "The bottle"},
+	{"Free hugs. Some assembly required.", "An octopus who is NOT the squid"},
+}
+local function fill(s, a, b) return (s:gsub("{A}", a):gsub("{B}", b)) end
+function T.valid(to, card, a, b)
+	local c = T.CARDS[card]
+	return T.TO[to] ~= nil and c ~= nil and c.A[a] ~= nil and c.B[b] ~= nil
+end
+function T.message(to, card, a, b)                        -- what the player sent
+	local c = T.CARDS[card]
+	return "To " .. T.TO[to].label .. ":\n" .. fill(c.text, c.A[a], c.B[b])
+end
+function T.reply(to, card, a, b, seed)                    -- the answer: an echo of what they picked + the sender's voice + the signature
+	local c = T.CARDS[card]
+	local e = c.echo[(seed % #c.echo) + 1]
+	local v = T.VOICE[to][(math.floor(seed / 7) % #T.VOICE[to]) + 1]
+	return fill(e, c.A[a], c.B[b]) .. " " .. v, T.TO[to].sign
+end
+return T
+]===], BottleServer = [===[
+-- BottleServer (Script, server; in workspace.Bottles). The message-in-a-bottle game (job 118). Shannon (Oct 6 / Oct 15 2026):
+--  * at the stand on the Porto beach a player writes a fill-in-the-blank note TO someone at sea (pirate, lighthouse keeper, whale, ...),
+--    pays SendCost acorns and tosses it; ONE a day. After the game's daily reset a reply washes up for them by the stand, answering
+--    what they picked, signed by whoever they wrote to.
+--  * silly bottles wash up along the beach on their own (MaxBeach at a time); uncorking one pays FindPrize acorns, FindCap a day.
+-- The save holds only numbers, through the game's own ledger (RS.AwardItems deltas - no DataStore here):
+--   Item_bottle_out   = the day it was sent + 1 (0 = nothing at sea)   Item_bottle_card = to*1e6 + card*1e4 + a*100 + b
+--   Item_bottle_paid  = day*10 + finds paid that day                    Item_bottles_found / Item_bottle_replies = counts
+-- The day is the Daily's: floor((os.time() - DayOffsetHours h) / 86400), DayOffsetHours from workspace.Daily (9 by default).
+-- Studio only: the folder attribute TestDayOffset moves "today" forward, to see a reply without waiting.
+local Players = game:GetService("Players")
+local RS = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+local HttpService = game:GetService("HttpService")
+local F = script.Parent
+local Text = require(F:WaitForChild("BottleText"))
+local ev = F:WaitForChild("BottleEvent")
+local awardItems = RS:WaitForChild("AwardItems", 60)
+local awardAcorns = RS:WaitForChild("AwardAcorns", 60)
+if not (awardItems and awardAcorns) then warn("Bottles: ReplicatedStorage is missing AwardItems / AwardAcorns; the bottles are off") return end
+local function A(name, default) local v = F:GetAttribute(name); if v == nil then return default end; return v end
+local function today()
+	local D = workspace:FindFirstChild("Daily")
+	local off = (D and tonumber(D:GetAttribute("DayOffsetHours"))) or 9
+	local t = math.floor((os.time() - off * 3600) / 86400)
+	if RunService:IsStudio() then t += math.floor(tonumber(F:GetAttribute("TestDayOffset")) or 0) end
+	return t
+end
+local function item(p, id) return math.floor(tonumber(p:GetAttribute("Item_" .. id)) or 0) end
+-- the ledger answers at the end of the frame, so the server keeps its own view of each player's numbers while they play
+local view = {}
+local function get(p, id) local v = view[p]; if v and v[id] ~= nil then return v[id] end; return item(p, id) end
+local function put(p, id, value)
+	value = math.max(0, math.floor(value))
+	local d = value - get(p, id)
+	view[p] = view[p] or {}; view[p][id] = value
+	if d ~= 0 then awardItems:Fire(p, id, d) end
+end
+local function pay(p, n)
+	if n == 0 then return end
+	awardAcorns:Fire(p, n)
+	p:SetAttribute("Acorns", (tonumber(p:GetAttribute("Acorns")) or 0) + n)
+end
+local function ready(p) return p:GetAttribute("SaveLoaded") == true end
+local function decode(code)
+	return math.floor(code / 1e6) % 100, math.floor(code / 1e4) % 100, math.floor(code / 100) % 100, code % 100
+end
+-- what this player's stand should say, and whether a reply is waiting
+local function state(p)
+	local out, day = get(p, "bottle_out"), today()
+	local s = {cost = A("SendCost", 15), acorns = tonumber(p:GetAttribute("Acorns")) or 0, ready = ready(p)}
+	if out > 0 then
+		s.sentDay = out - 1
+		s.replyReady = day > out - 1
+		local to, card, a, b = decode(get(p, "bottle_card"))
+		if Text.valid(to, card, a, b) then s.sent = {to, card, a, b} end
+	end
+	return s
+end
+local function push(p) ev:FireClient(p, "state", state(p)) end
+local last = {}
+local function throttle(p) local t = os.clock(); if last[p] and t - last[p] < 1 then return false end; last[p] = t; return true end
+ev.OnServerEvent:Connect(function(p, what, a1, a2, a3, a4)
+	if what == "state" then push(p) return end
+	if not throttle(p) then return end
+	if not ready(p) then ev:FireClient(p, "msg", "Your save is still loading - try again in a moment") return end
+	if what == "send" then
+		local to, card, a, b = tonumber(a1), tonumber(a2), tonumber(a3), tonumber(a4)
+		if not (to and card and a and b and Text.valid(to, card, a, b)) then return end
+		local s = state(p)
+		if s.sentDay then
+			ev:FireClient(p, "msg", s.replyReady and "Your reply has washed up by the stand - read it first!" or "Your bottle is already out at sea. Check the beach tomorrow!")
+			return
+		end
+		local cost = math.max(0, math.floor(A("SendCost", 15)))
+		local have = tonumber(p:GetAttribute("Acorns")) or 0
+		if have < cost then ev:FireClient(p, "msg", string.format("A bottle costs %d acorns - you have %d", cost, have)) return end
+		pay(p, -cost)
+		put(p, "bottle_card", to * 1e6 + card * 1e4 + a * 100 + b)
+		put(p, "bottle_out", today() + 1)
+		ev:FireClient(p, "sent", to, card, a, b)
+		push(p)
+	elseif what == "reply" then
+		local out = get(p, "bottle_out")
+		if out <= 0 or today() <= out - 1 then push(p) return end
+		local to, card, a, b = decode(get(p, "bottle_card"))
+		put(p, "bottle_out", 0); put(p, "bottle_card", 0)
+		put(p, "bottle_replies", get(p, "bottle_replies") + 1)
+		if Text.valid(to, card, a, b) then
+			local seed = (out * 31 + card * 7 + a * 3 + b) % 997
+			ev:FireClient(p, "reply", to, card, a, b, seed)
+		end
+		push(p)
+	end
+end)
+-- ---------- the silly bottles on the beach ----------
+local spots = {}
+pcall(function() spots = HttpService:JSONDecode(F:GetAttribute("WashSpots") or "[]") end)
+local beachF = F:FindFirstChild("Beach") or Instance.new("Folder"); beachF.Name = "Beach"; beachF.Parent = F
+beachF:ClearAllChildren()
+local template = RS:FindFirstChild("BottleTemplate")
+local taken = {}
+local function wash()
+	if #spots == 0 or not template then return end
+	local free = {}
+	for i = 1, #spots do if not taken[i] then table.insert(free, i) end end
+	if #free == 0 then return end
+	local i = free[math.random(#free)]
+	local s = spots[i]
+	local m = template:Clone(); m.Name = "BeachBottle"
+	m:PivotTo(CFrame.new(s[1], s[2] + 0.35, s[3]) * CFrame.Angles(0, math.rad(math.random(0, 359)), 0) * CFrame.Angles(0, 0, math.rad(8)))   -- lying on its side (a Cylinder's length is X), neck a little up
+	m.Parent = beachF
+	taken[i] = m
+	local prompt = m:FindFirstChildWhichIsA("ProximityPrompt", true)
+	if prompt then
+		prompt.Triggered:Connect(function(p)
+			if taken[i] ~= m or not ready(p) then return end
+			local root = p.Character and p.Character:FindFirstChild("HumanoidRootPart")
+			if not root or (root.Position - m:GetPivot().Position).Magnitude > 14 then return end
+			taken[i] = nil; m:Destroy()
+			local day, paid = today(), get(p, "bottle_paid")
+			local n = (math.floor(paid / 10) == day) and (paid % 10) or 0
+			local prize = 0
+			if n < math.min(9, math.floor(A("FindCap", 5))) then prize = math.floor(A("FindPrize", 10)); put(p, "bottle_paid", day * 10 + n + 1) end
+			pay(p, prize)
+			put(p, "bottles_found", get(p, "bottles_found") + 1)
+			ev:FireClient(p, "beach", math.random(#Text.BEACH), prize)
+		end)
+	end
+end
+task.spawn(function()
+	for _ = 1, math.max(0, math.floor(A("MaxBeach", 3))) do wash() end
+	while true do
+		task.wait(math.max(10, tonumber(A("RespawnSeconds", 75)) or 75))
+		local n = 0
+		for _, m in pairs(taken) do if m and m.Parent then n += 1 end end
+		if n < math.floor(A("MaxBeach", 3)) then wash() end
+	end
+end)
+Players.PlayerRemoving:Connect(function(p) view[p] = nil; last[p] = nil end)
+Players.PlayerAdded:Connect(function(p)
+	task.spawn(function()
+		local t0 = os.clock()
+		while p.Parent and not ready(p) and os.clock() - t0 < 120 do task.wait(0.5) end
+		if p.Parent then push(p) end
+	end)
+end)
+print(string.format("Bottles: %d wash-up spots, send %d acorns, find %d acorns (%d a day)", #spots, A("SendCost", 15), A("FindPrize", 10), A("FindCap", 5)))
+]===], BottleClient = [===[
+-- BottleClient (Script, RunContext Client; in workspace.Bottles). The stand's writing panel, the toss, the reply bottle by the stand
+-- (only its sender sees it), and the note card for every bottle opened. Job 118. All the words come from BottleText.
+local Players = game:GetService("Players")
+local RS = game:GetService("ReplicatedStorage")
+local TweenService = game:GetService("TweenService")
+local Debris = game:GetService("Debris")
+local HttpService = game:GetService("HttpService")
+local player = Players.LocalPlayer
+local pg = player:WaitForChild("PlayerGui")
+local F = script.Parent
+local Text = require(F:WaitForChild("BottleText"))
+local ev = F:WaitForChild("BottleEvent")
+local RGB = Color3.fromRGB
+local FACE, RIM, PAPER = RGB(250, 241, 219), RGB(118, 80, 46), RGB(255, 250, 236)
+local SLOT, INK, INK_DIM, GOLD, BTN_INK, SEA = RGB(228, 212, 179), RGB(64, 42, 22), RGB(132, 108, 80), RGB(255, 202, 62), RGB(84, 48, 18), RGB(40, 118, 160)
+local FONT = Font.new("rbxasset://fonts/families/FredokaOne.json")
+local function corner(o, r) local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0, r); c.Parent = o end
+local function stroke(o, col, th) local s = Instance.new("UIStroke"); s.Color = col; s.Thickness = th; s.ApplyStrokeMode = Enum.ApplyStrokeMode.Border; s.Parent = o end
+local function label(parent, text, x, y, w, h, size, colour, align)
+	local l = Instance.new("TextLabel"); l.Position = UDim2.fromOffset(x, y); l.Size = UDim2.fromOffset(w, h); l.BackgroundTransparency = 1
+	l.FontFace = FONT; l.TextSize = size; l.TextColor3 = colour or INK; l.Text = text; l.TextWrapped = true
+	l.TextXAlignment = align or Enum.TextXAlignment.Left; l.ZIndex = 4; l.Parent = parent
+	return l
+end
+local function button(parent, text, x, y, w, h, fill, size)
+	local b = Instance.new("TextButton"); b.Position = UDim2.fromOffset(x, y); b.Size = UDim2.fromOffset(w, h); b.BackgroundColor3 = fill or GOLD
+	b.BorderSizePixel = 0; b.FontFace = FONT; b.TextSize = size or 18; b.TextColor3 = BTN_INK; b.Text = text; b.AutoButtonColor = true; b.ZIndex = 4; b.Parent = parent
+	corner(b, 10); stroke(b, RGB(150, 98, 36), 2)
+	return b
+end
+local function fit(frame, w, h)
+	local sc = Instance.new("UIScale"); sc.Parent = frame
+	local function upd()
+		local cam = workspace.CurrentCamera; local v = cam and cam.ViewportSize or Vector2.new(1000, 800)
+		sc.Scale = math.clamp(math.min((v.X - 24) / w, (v.Y - 40) / h), 0.5, 1)
+	end
+	upd(); if workspace.CurrentCamera then workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(upd) end
+end
+for _, n in ipairs({"BottleGui"}) do local g = pg:FindFirstChild(n); if g then g:Destroy() end end
+local gui = Instance.new("ScreenGui"); gui.Name = "BottleGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 8; gui.Parent = pg
+-- ---------- the toast ----------
+local toast = Instance.new("TextLabel"); toast.AnchorPoint = Vector2.new(0.5, 1); toast.Position = UDim2.new(0.5, 0, 1, -150); toast.Size = UDim2.fromOffset(420, 44)
+toast.BackgroundColor3 = RGB(38, 30, 52); toast.BackgroundTransparency = 1; toast.TextTransparency = 1; toast.FontFace = FONT; toast.TextSize = 17
+toast.TextColor3 = RGB(255, 244, 214); toast.TextWrapped = true; toast.ZIndex = 10; toast.Parent = gui
+corner(toast, 14)
+local toastAt = 0
+local function say(text, secs)
+	toast.Text = text; toast.BackgroundTransparency = 0.15; toast.TextTransparency = 0
+	local mine = os.clock(); toastAt = mine
+	task.delay(secs or 3.5, function()
+		if toastAt ~= mine then return end
+		TweenService:Create(toast, TweenInfo.new(0.5), {BackgroundTransparency = 1, TextTransparency = 1}):Play()
+	end)
+end
+-- ---------- the note card (every bottle opened) ----------
+local note = Instance.new("Frame"); note.AnchorPoint = Vector2.new(0.5, 0.5); note.Position = UDim2.fromScale(0.5, 0.5); note.Size = UDim2.fromOffset(400, 300)
+note.BackgroundColor3 = PAPER; note.BorderSizePixel = 0; note.Visible = false; note.ZIndex = 3; note.Parent = gui
+corner(note, 18); stroke(note, RIM, 3); fit(note, 400, 300)
+local nHead = label(note, "", 20, 16, 360, 30, 22, SEA, Enum.TextXAlignment.Center)
+local nBody = label(note, "", 26, 56, 348, 140, 19, INK, Enum.TextXAlignment.Center); nBody.TextYAlignment = Enum.TextYAlignment.Center
+local nSign = label(note, "", 26, 198, 348, 24, 15, INK_DIM, Enum.TextXAlignment.Right)
+local nPrize = label(note, "", 26, 224, 348, 20, 15, RGB(176, 120, 20), Enum.TextXAlignment.Center)
+local nClose = button(note, "Lovely!", 140, 250, 120, 38)
+local function chime()
+	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://9116394876"; s.Volume = 0.3; s.PlaybackSpeed = 1.1; s.Parent = gui; s:Play(); Debris:AddItem(s, 4)
+end
+local function showNote(head, body, sign, prize)
+	nHead.Text = head; nBody.Text = body; nSign.Text = sign and ("- " .. sign) or ""; nPrize.Text = prize or ""
+	note.Visible = true; pg:SetAttribute("OpenPanel", "bottle"); chime()
+end
+nClose.Activated:Connect(function() note.Visible = false; if pg:GetAttribute("OpenPanel") == "bottle" then pg:SetAttribute("OpenPanel", nil) end end)
+-- ---------- the writing panel ----------
+local W, H = 440, 470
+local shade = Instance.new("TextButton"); shade.Size = UDim2.fromScale(1, 1); shade.BackgroundColor3 = RGB(20, 12, 6); shade.BackgroundTransparency = 0.5
+shade.Text = ""; shade.AutoButtonColor = false; shade.BorderSizePixel = 0; shade.Visible = false; shade.ZIndex = 1; shade.Parent = gui
+local panel = Instance.new("Frame"); panel.AnchorPoint = Vector2.new(0.5, 0.5); panel.Position = UDim2.fromScale(0.5, 0.5); panel.Size = UDim2.fromOffset(W, H)
+panel.BackgroundColor3 = FACE; panel.BorderSizePixel = 0; panel.Visible = false; panel.ZIndex = 2; panel.Parent = gui
+corner(panel, 18); stroke(panel, RIM, 3); fit(panel, W, H)
+label(panel, "Messaggi in Bottiglia", 20, 14, 340, 30, 24, INK)
+label(panel, "Write a note, cork it, and toss it out to sea", 20, 44, 400, 20, 14, INK_DIM)
+local close = button(panel, "X", W - 52, 14, 36, 36, SLOT, 20)
+local status = label(panel, "", 20, 70, 400, 36, 15, SEA)
+local choice = {to = 1, card = 1, a = 1, b = 1}
+local rows = {}
+local function cycler(y, title, get, count, set)
+	label(panel, title, 20, y + 8, 70, 24, 16, INK_DIM)
+	local prev = button(panel, "<", 90, y, 40, 40, SLOT, 22)
+	local mid = Instance.new("TextLabel"); mid.Position = UDim2.fromOffset(136, y); mid.Size = UDim2.fromOffset(238, 40); mid.BackgroundColor3 = PAPER
+	mid.BorderSizePixel = 0; mid.FontFace = FONT; mid.TextSize = 16; mid.TextColor3 = INK; mid.TextWrapped = true; mid.ZIndex = 4; mid.Parent = panel
+	corner(mid, 8)
+	local nxt = button(panel, ">", 380, y, 40, 40, SLOT, 22)
+	local row = {mid = mid, get = get}
+	prev.Activated:Connect(function() set(((get() - 2) % count()) + 1) end)
+	nxt.Activated:Connect(function() set((get() % count()) + 1) end)
+	table.insert(rows, row)
+	return row
+end
+local preview, send
+local function card() return Text.CARDS[choice.card] end
+local function refresh()
+	rows[1].mid.Text = Text.TO[choice.to].label
+	rows[2].mid.Text = "Note " .. choice.card .. ": " .. card().text:gsub("{A}", "___"):gsub("{B}", "___")
+	rows[3].mid.Text = card().A[choice.a]
+	rows[4].mid.Text = card().B[choice.b]
+	preview.Text = Text.message(choice.to, choice.card, choice.a, choice.b)
+end
+cycler(112, "To:", function() return choice.to end, function() return #Text.TO end, function(v) choice.to = v; refresh() end)
+cycler(160, "Note:", function() return choice.card end, function() return #Text.CARDS end, function(v) choice.card = v; choice.a = 1; choice.b = 1; refresh() end)
+cycler(208, "Blank 1:", function() return choice.a end, function() return #card().A end, function(v) choice.a = v; refresh() end)
+cycler(256, "Blank 2:", function() return choice.b end, function() return #card().B end, function(v) choice.b = v; refresh() end)
+local paper = Instance.new("Frame"); paper.Position = UDim2.fromOffset(20, 306); paper.Size = UDim2.fromOffset(400, 92); paper.BackgroundColor3 = PAPER
+paper.BorderSizePixel = 0; paper.ZIndex = 3; paper.Parent = panel
+corner(paper, 10); stroke(paper, RGB(196, 170, 120), 1.5)
+preview = label(paper, "", 12, 8, 376, 76, 17, INK, Enum.TextXAlignment.Center); preview.TextYAlignment = Enum.TextYAlignment.Center
+send = button(panel, "Cork it & toss it!", 90, 410, 260, 44)
+local st = {}
+local function setStatus()
+	if st.sentDay and st.replyReady then status.Text = "A reply to your bottle has washed up by the stand. Go and read it!"; send.Visible = false
+	elseif st.sentDay then status.Text = "Your bottle is out at sea. A reply will wash up here tomorrow!"; send.Visible = false
+	else status.Text = "One bottle a day. A reply washes up tomorrow."; send.Visible = true; send.Text = string.format("Cork it & toss it! (%d acorns)", st.cost or 15) end
+end
+local function open()
+	ev:FireServer("state")
+	refresh(); setStatus()
+	shade.Visible = true; panel.Visible = true; pg:SetAttribute("OpenPanel", "bottle")
+end
+local function closePanel() shade.Visible = false; panel.Visible = false; if pg:GetAttribute("OpenPanel") == "bottle" then pg:SetAttribute("OpenPanel", nil) end end
+close.Activated:Connect(closePanel); shade.Activated:Connect(closePanel)
+send.Activated:Connect(function() ev:FireServer("send", choice.to, choice.card, choice.a, choice.b) end)
+-- ---------- the bottle in the world (the toss, the reply) ----------
+local stand = F:WaitForChild("Stand", 60)
+local template = RS:WaitForChild("BottleTemplate", 60)
+local function standCF() return stand and stand:GetPivot() or CFrame.new() end
+local function seaward()                                                  -- the stand's back faces the sea
+	local cf = standCF(); return -cf.LookVector
+end
+local function toss()
+	if not template then return end
+	local b = template:Clone(); b.Name = "TossedBottle"
+	for _, d in ipairs(b:GetDescendants()) do if d:IsA("ProximityPrompt") then d:Destroy() elseif d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false end end
+	local from = standCF().Position + Vector3.new(0, 4, 0)
+	local to = from + seaward() * 42 + Vector3.new(0, -5, 0)
+	b:PivotTo(CFrame.new(from)); b.Parent = workspace
+	local v = Instance.new("NumberValue"); v.Value = 0
+	v.Changed:Connect(function(t)
+		local p = from:Lerp(to, t) + Vector3.new(0, math.sin(t * math.pi) * 14, 0)
+		b:PivotTo(CFrame.new(p) * CFrame.Angles(t * 9, 0, t * 4))
+	end)
+	local tw = TweenService:Create(v, TweenInfo.new(1.6, Enum.EasingStyle.Linear), {Value = 1}); tw:Play()
+	tw.Completed:Connect(function() b:Destroy(); v:Destroy() end)
+end
+local replyBottle
+local function placeReply(want)
+	if not want then if replyBottle then replyBottle:Destroy(); replyBottle = nil end return end
+	if replyBottle or not template then return end
+	local spot
+	pcall(function() spot = HttpService:JSONDecode(F:GetAttribute("ReplySpot") or "null") end)
+	local pos = spot and Vector3.new(spot[1], spot[2] + 0.35, spot[3]) or (standCF().Position + seaward() * 8)
+	local b = template:Clone(); b.Name = "ReplyBottle"
+	b:PivotTo(CFrame.new(pos) * CFrame.Angles(0, 0.6, math.rad(8))); b.Parent = workspace   -- lying on its side
+	local prompt = b:FindFirstChildWhichIsA("ProximityPrompt", true)
+	if prompt then prompt.ObjectText = "A reply to your bottle!"; prompt.ActionText = "Read it"; prompt.Triggered:Connect(function() ev:FireServer("reply") end) end
+	local glow = Instance.new("Highlight"); glow.FillColor = GOLD; glow.OutlineColor = RGB(255, 236, 160); glow.FillTransparency = 0.7; glow.Parent = b
+	replyBottle = b
+end
+local told = false
+ev.OnClientEvent:Connect(function(what, a, b, c, d, e)
+	if what == "state" then
+		st = type(a) == "table" and a or {}
+		setStatus(); placeReply(st.replyReady == true)
+		if st.replyReady and not told then told = true; task.delay(4, function() say("A reply to your bottle has washed up by the bottle stand on the beach!", 5) end) end
+	elseif what == "sent" then
+		closePanel(); toss()
+		task.delay(1.7, function() say("Off it goes! Check the beach tomorrow for a reply.", 4) end)
+	elseif what == "reply" then
+		if replyBottle then replyBottle:Destroy(); replyBottle = nil end
+		local body, sign = Text.reply(a, b, c, d, e or 0)
+		showNote("A reply washed up!", body, sign, "You wrote: " .. Text.CARDS[b].text:gsub("{A}", Text.CARDS[b].A[c]):gsub("{B}", Text.CARDS[b].B[d]))
+	elseif what == "beach" then
+		local n = Text.BEACH[a]
+		if n then showNote("A message in a bottle!", n[1], n[2], (b or 0) > 0 and ("+" .. b .. " acorns") or "You've found all the paid bottles for today - this one's just for fun") end
+	elseif what == "msg" then
+		say(tostring(a), 4)
+	end
+end)
+local prompt = stand and stand:FindFirstChild("WritePrompt", true)
+if prompt then prompt.Triggered:Connect(open) end
+ev:FireServer("state")
+]===]}
+for n, s in pairs(SRC) do
+	local ok, f, err = pcall(function() return loadstring(s) end)
+	if ok and not f then print("QQ BOTTLE ABORT: " .. n .. " does not compile: " .. tostring(err)) return end
+end
+if not (RS:FindFirstChild("AwardItems") and RS:FindFirstChild("AwardAcorns")) then print("QQ BOTTLE ABORT: ReplicatedStorage.AwardItems / AwardAcorns missing") return end
+pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("before Bottles") end)
+local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
+local old = workspace:FindFirstChild("Bottles")
+if old then local n = 1; while hb:FindFirstChild("Bottles_pre_" .. n) do n += 1 end; old.Name = "Bottles_pre_" .. n; old.Parent = hb; for _, s in ipairs(old:GetDescendants()) do if s:IsA("BaseScript") then s.Enabled = false end end end
+local oldT = RS:FindFirstChild("BottleTemplate"); if oldT then oldT:Destroy() end
+-- ---------- 1: the beach scan ----------
+local X1, X2, Z1, Z2, STEP = 215, 340, -800, -690, 4
+local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude; rp.IgnoreWater = false
+local skip = {}
+for _, pl in ipairs(game:GetService("Players"):GetPlayers()) do if pl.Character then table.insert(skip, pl.Character) end end
+rp.FilterDescendantsInstances = skip
+local sand, water = {}, {}
+for x = X1, X2, STEP do
+	for z = Z1, Z2, STEP do
+		local h = workspace:Raycast(Vector3.new(x, 120, z), Vector3.new(0, -260, 0), rp)
+		if h and h.Instance == T then
+			if h.Material == Enum.Material.Water then table.insert(water, Vector3.new(x, h.Position.Y, z))
+			elseif h.Material == Enum.Material.Sand or h.Material == Enum.Material.Ground then table.insert(sand, h.Position) end
+		end
+	end
+end
+print(string.format("QQ BOTTLE scan: x %d..%d z %d..%d step %d - %d open sand points, %d water points", X1, X2, Z1, Z2, STEP, #sand, #water))
+if #sand < 6 or #water < 6 then print("QQ BOTTLE ABORT: too little open sand or water in the scan box - tell the cloud thread (the beach may sit elsewhere)") return end
+local function nearestWater(p)
+	local best, bp = math.huge, nil
+	for _, w in ipairs(water) do local d = (Vector3.new(w.X, 0, w.Z) - Vector3.new(p.X, 0, p.Z)).Magnitude; if d < best then best, bp = d, w end end
+	return best, bp
+end
+local hByXZ = {}
+for _, s in ipairs(sand) do hByXZ[math.floor(s.X + 0.5) .. "," .. math.floor(s.Z + 0.5)] = s.Y end
+local function level(s)
+	for _, o in ipairs({{STEP, 0}, {-STEP, 0}, {0, STEP}, {0, -STEP}}) do
+		local y = hByXZ[math.floor(s.X + o[1] + 0.5) .. "," .. math.floor(s.Z + o[2] + 0.5)]
+		if not y or math.abs(y - s.Y) > 1.5 then return false end
+	end
+	return true
+end
+local op = OverlapParams.new(); op.FilterType = Enum.RaycastFilterType.Exclude; op.FilterDescendantsInstances = {T, table.unpack(skip)}
+local function clear(s, r)
+	for _, pt in ipairs(workspace:GetPartBoundsInRadius(s + Vector3.new(0, 3, 0), r, op)) do
+		if pt.Transparency < 1 or pt.CanCollide then return false, pt end
+	end
+	return true
+end
+-- ---------- 2: the stand ----------
+local SPAWN = Vector3.new(232, -47, -580)
+local site, siteWater
+local cands = {}
+for _, s in ipairs(sand) do
+	local d, wp = nearestWater(s)
+	if d >= 10 and d <= 18 and level(s) then table.insert(cands, {s = s, w = wp, k = (s - SPAWN).Magnitude}) end
+end
+table.sort(cands, function(a, b) return a.k < b.k end)
+local blocked = 0
+for _, c in ipairs(cands) do
+	local ok = clear(c.s, 7)
+	if ok then site, siteWater = c.s, c.w break end
+	blocked += 1
+end
+if not site then print(string.format("QQ BOTTLE ABORT: no open level sand 10..18 studs from the water with 7 clear studs (%d candidates, %d blocked) - tell the cloud thread", #cands, blocked)) return end
+local seaward = Vector3.new(siteWater.X - site.X, 0, siteWater.Z - site.Z).Unit
+local standCF = CFrame.lookAt(site, site - seaward)                      -- its front (LookVector) faces inland, its back the sea
+print(string.format("QQ BOTTLE stand: (%.1f, %.1f, %.1f), %.0f studs from the water, back to the sea toward (%.2f, %.2f); %d candidates, %d blocked before it",
+	site.X, site.Y, site.Z, (Vector3.new(siteWater.X, 0, siteWater.Z) - Vector3.new(site.X, 0, site.Z)).Magnitude, seaward.X, seaward.Z, #cands, blocked))
+-- ---------- 3: the wash spots ----------
+local spots = {}
+local shore = {}
+for _, s in ipairs(sand) do local d = nearestWater(s); if d <= 5 and clear(s, 2.5) then table.insert(shore, s) end end
+table.sort(shore, function(a, b) return (a - site).Magnitude < (b - site).Magnitude end)
+for _, s in ipairs(shore) do
+	local far = true
+	for _, o in ipairs(spots) do if (Vector3.new(o[1], 0, o[3]) - Vector3.new(s.X, 0, s.Z)).Magnitude < 12 then far = false break end end
+	if far then table.insert(spots, {math.floor(s.X * 10 + 0.5) / 10, math.floor(s.Y * 100 + 0.5) / 100, math.floor(s.Z * 10 + 0.5) / 10}) end
+	if #spots >= 10 then break end
+end
+if #spots == 0 then print("QQ BOTTLE ABORT: no wash-up spots at the waterline - tell the cloud thread") return end
+local list = {}
+for i, s in ipairs(spots) do table.insert(list, string.format("%d (%.0f, %.1f, %.0f)", i, s[1], s[2], s[3])) end
+print("QQ BOTTLE wash spots (" .. #spots .. "): " .. table.concat(list, " | ") .. "; the reply spot is no. 1, nearest the stand")
+-- ---------- 4: the template ----------
+local function part(parent, name, size, color, cf, mat, shape, transp)
+	local p = Instance.new("Part"); p.Name = name; p.Size = size; p.Color = color; p.Material = mat or Enum.Material.SmoothPlastic
+	if shape then p.Shape = shape end
+	p.Transparency = transp or 0; p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false
+	p.TopSurface = Enum.SurfaceType.Smooth; p.BottomSurface = Enum.SurfaceType.Smooth; p.CFrame = cf; p.Parent = parent
+	return p
+end
+local C = Color3.fromRGB
+local tpl = Instance.new("Model"); tpl.Name = "BottleTemplate"
+local glass = part(tpl, "Glass", Vector3.new(1.6, 0.72, 0.72), C(150, 205, 175), CFrame.new(), Enum.Material.Glass, Enum.PartType.Cylinder, 0.35)
+glass.Reflectance = 0.2; glass.CanQuery = true
+part(tpl, "Neck", Vector3.new(0.5, 0.36, 0.36), C(150, 205, 175), CFrame.new(1.0, 0, 0), Enum.Material.Glass, Enum.PartType.Cylinder, 0.35)
+part(tpl, "Cork", Vector3.new(0.32, 0.3, 0.3), C(176, 132, 84), CFrame.new(1.38, 0, 0), Enum.Material.Wood, Enum.PartType.Cylinder)
+part(tpl, "Note", Vector3.new(1.0, 0.3, 0.3), C(250, 240, 210), CFrame.new(-0.05, 0, 0), Enum.Material.SmoothPlastic, Enum.PartType.Cylinder)
+part(tpl, "Ribbon", Vector3.new(0.08, 0.32, 0.32), C(200, 60, 60), CFrame.new(-0.05, 0, 0), Enum.Material.Fabric, Enum.PartType.Cylinder)
+tpl.PrimaryPart = glass
+local pr = Instance.new("ProximityPrompt"); pr.Name = "UncorkPrompt"; pr.ActionText = "Uncork"; pr.ObjectText = "Message in a bottle"
+pr.MaxActivationDistance = 9; pr.RequiresLineOfSight = false; pr.HoldDuration = 0; pr.Parent = glass
+local sp = Instance.new("Sparkles"); sp.SparkleColor = C(255, 240, 180); sp.TimeScale = 0.6; sp.Parent = glass
+tpl.Parent = RS
+-- ---------- 5: the folder, the stand, the scripts ----------
+local Fd = Instance.new("Folder"); Fd.Name = "Bottles"
+for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 3, RespawnSeconds = 75, TestDayOffset = 0}) do Fd:SetAttribute(k, v) end
+Fd:SetAttribute("WashSpots", HttpService:JSONEncode(spots))
+Fd:SetAttribute("ReplySpot", HttpService:JSONEncode(spots[1]))
+local evt = Instance.new("RemoteEvent"); evt.Name = "BottleEvent"; evt.Parent = Fd
+local mod = Instance.new("ModuleScript"); mod.Name = "BottleText"; mod.Source = SRC.BottleText; mod.Parent = Fd
+local St = Instance.new("Model"); St.Name = "Stand"; St.ModelStreamingMode = Enum.ModelStreamingMode.Persistent
+local WOOD, WOOD_D, CREAM, RED, BLUE = C(176, 128, 78), C(120, 82, 48), C(250, 244, 228), C(206, 72, 60), C(48, 110, 168)
+local function L(x, y, z) return standCF * CFrame.new(x, y, z) end
+local function solid(name, size, color, cf, mat) local p = part(St, name, size, color, cf, mat or Enum.Material.WoodPlanks); p.CanCollide = true; p.CanQuery = true; return p end
+local counter = solid("Counter", Vector3.new(7, 3.4, 2.4), WOOD, L(0, 1.7, -0.8))
+solid("CounterTop", Vector3.new(7.6, 0.3, 2.9), WOOD_D, L(0, 3.55, -0.8))
+for _, x in ipairs({-3.4, 3.4}) do solid("Post", Vector3.new(0.4, 7.6, 0.4), WOOD_D, L(x, 3.8, 0.6), Enum.Material.Wood) end
+for i = 0, 6 do part(St, "Awning", Vector3.new(1.1, 0.2, 3.6), (i % 2 == 0) and BLUE or CREAM, L(-3.3 + i * 1.1, 7.7, -0.6) * CFrame.Angles(math.rad(-14), 0, 0), Enum.Material.Fabric) end
+for i = 0, 6 do part(St, "AwningFringe", Vector3.new(1.1, 0.45, 0.08), (i % 2 == 0) and BLUE or CREAM, L(-3.3 + i * 1.1, 7.0, -2.35), Enum.Material.Fabric) end
+local crate = solid("Crate", Vector3.new(2.2, 1.4, 1.6), WOOD_D, L(-4.8, 0.7, -0.2))
+for i = 0, 3 do
+	local b = tpl:Clone(); for _, d in ipairs(b:GetDescendants()) do if d:IsA("ProximityPrompt") or d:IsA("Sparkles") then d:Destroy() end end
+	b:PivotTo(L(-5.5 + i * 0.48, 1.9, -0.2) * CFrame.Angles(0, 0, math.rad(80 + (i % 2) * 8))); b.Name = "CrateBottle"; b.Parent = St
+end
+for i = 0, 2 do
+	local b = tpl:Clone(); for _, d in ipairs(b:GetDescendants()) do if d:IsA("ProximityPrompt") or d:IsA("Sparkles") then d:Destroy() end end
+	b:PivotTo(L(-1.6 + i * 1.4, 4.1, -0.6) * CFrame.Angles(0, math.rad(20 * i), math.rad(90))); b.Name = "CounterBottle"; b.Parent = St
+end
+local board = solid("SignBoard", Vector3.new(6.6, 1.5, 0.2), CREAM, L(0, 6.3, 0.62), Enum.Material.SmoothPlastic)
+local sg = Instance.new("SurfaceGui"); sg.Face = Enum.NormalId.Front; sg.CanvasSize = Vector2.new(660, 150); sg.LightInfluence = 0.5; sg.Parent = board
+local function sgText(text, y, h, colour) local t = Instance.new("TextLabel"); t.BackgroundTransparency = 1; t.Position = UDim2.fromScale(0, y); t.Size = UDim2.fromScale(1, h); t.Text = text; t.TextScaled = true; t.FontFace = Font.new("rbxasset://fonts/families/FredokaOne.json"); t.TextColor3 = colour; t.Parent = sg end
+sgText("MESSAGGI IN BOTTIGLIA", 0.06, 0.52, BLUE); sgText("Messages in a Bottle", 0.6, 0.34, WOOD_D)
+local wp = Instance.new("ProximityPrompt"); wp.Name = "WritePrompt"; wp.ActionText = "Write a message"; wp.ObjectText = "Messages in a Bottle"
+wp.MaxActivationDistance = 10; wp.RequiresLineOfSight = false; wp.HoldDuration = 0; wp.Parent = counter
+St.PrimaryPart = counter
+St.WorldPivot = standCF
+St.Parent = Fd
+local s1 = Instance.new("Script"); s1.Name = "BottleServer"; s1.RunContext = Enum.RunContext.Server; s1.Source = SRC.BottleServer; s1.Parent = Fd
+local s2 = Instance.new("Script"); s2.Name = "BottleClient"; s2.RunContext = Enum.RunContext.Client; s2.Source = SRC.BottleClient; s2.Parent = Fd
+Fd.Parent = workspace
+pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after Bottles") end)
+print(string.format("QQ BOTTLE DONE: workspace.Bottles (BottleServer %d, BottleClient %d, BottleText %d chars); the stand at (%.0f, %.1f, %.0f); %d wash spots; send 15, find 10 (5 a day)%s",
+	#s1.Source, #s2.Source, #mod.Source, site.X, site.Y, site.Z, #spots, old and ("; the old folder is HudBackup." .. old.Name) or ""))

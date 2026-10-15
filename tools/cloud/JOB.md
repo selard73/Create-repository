@@ -3109,3 +3109,57 @@ at 66cf63c (4277, adler32 1723564345): "QQ TRESET DONE: workspace.Treehouse.Tree
 ResetRound 1". Readback: Script, RunContext Server, Enabled, 2733 chars; folder attributes ResetUserIds '9611145467', ResetRound 1.
 (Note: in a Studio play test SquirrelSetup never reads or saves the owner's store - studioFullFindsPreview - so a test could not
 spend the live reset either; it would only find no tree items. Not run anyway.)
+## Job 118: the MESSAGE IN A BOTTLE game on the Porto beach (play-test PREVIEW first; install on her word) - runner 7
+Shannon: Oct 6 (HANDOFF_2026-10-07_PORTO_PART7.md: fill-in-the-blank notes sent TO someone at sea, not from a stranded player; the next
+day a reply that answers what you picked; random silly bottles wash up too) + Oct 15 ("preset better with the choose fill in the
+blank"; finds pay acorns, "I thought we were charging acorns to send"; "build it as soon as we can" - for the Oct 18 event).
+tools/bottle/install_bottle1.lua (make_install_bottle1.py; src/BottleText.lua, BottleServer.lua, BottleClient.lua; compiles):
+ - scans the main Porto beach (x 215..340, z -800..-690, step 4) for open sand and water; the STAND on level open sand 10..18 studs
+   from the water with 7 clear studs, the candidate nearest Spawn_porto, its back to the sea; up to 10 WASH SPOTS at the waterline
+   (open sand within 5 of the water, 12 apart); the reply spot = the one nearest the stand. Prints all of it.
+ - workspace.Bottles {BottleEvent, BottleText (module: 7 recipients, 6 cards x 6 x 6 choices, 2 echo lines per card, 4 voice lines
+   per recipient, 16 beach notes), BottleServer, BottleClient (Client), Stand (Persistent: counter, posts, striped awning, crate of
+   bottles, sign MESSAGGI IN BOTTIGLIA / Messages in a Bottle, WritePrompt)} + ReplicatedStorage.BottleTemplate.
+ - SEND at the stand: To / Note / Blank 1 / Blank 2 cyclers, a preview, "Cork it & toss it! (15 acorns)"; one a day; the bottle
+   flies out to sea. After the Daily reset (workspace.Daily DayOffsetHours, 9 h) a glowing reply bottle lies at the reply spot for
+   the sender only; "Read it" -> the reply (the echo of their picks + the recipient's voice + signature) and what they wrote.
+ - BEACH: 3 silly bottles at a time (respawn 75 s), anyone may uncork: a note + 10 acorns, 5 paid a day.
+ - Save, via RS.AwardItems deltas only: Item_bottle_out (day + 1), Item_bottle_card (to*1e6 + card*1e4 + a*100 + b),
+   Item_bottle_paid (day*10 + n), Item_bottles_found, Item_bottle_replies. Folder attributes SendCost 15, FindPrize 10, FindCap 5,
+   MaxBeach 3, RespawnSeconds 75, TestDayOffset (Studio only: set 1 to see tomorrow's reply).
+PREVIEW (play test, the installer's body on the server): the QQ BOTTLE lines (scan counts, the stand, the wash spots); pictures of
+the stand from the beach and the promenade, the panel (desktop + phone emulator), a toss, a beach bottle uncorked (the note card),
+then TestDayOffset 1 -> the reply bottle by the stand and its note. Show her; she can move the stand. Install in Edit on her word.
+
+Result job 118 PREVIEW (runner 7, play test, nothing kept): install_bottle1.lua at 698785f (39406, adler32 1978412821) on the test
+server: "QQ BOTTLE scan: x 215..340 z -800..-690 step 4 - 193 open sand points, 401 water points", "QQ BOTTLE stand: (291.0, -48.1,
+-720.0), 17 studs from the water, back to the sea toward (0.71, -0.71); 25 candidates, 4 blocked before it", "QQ BOTTLE wash spots
+(10): 1 (303, -52.4, -728) | 2 (291, -51.8, -736) | 3 (319, -52.1, -712) | 4 (271, -52.2, -744) | 5 (259, -52.4, -748) | 6 (331,
+-52.3, -704) | 7 (339, -51.6, -720) | 8 (335, -51.8, -740) | 9 (247, -52.8, -752) | 10 (235, -52.9, -720); the reply spot is no. 1,
+nearest the stand", "QQ BOTTLE DONE: workspace.Bottles (BottleServer 7718, BottleClient 12683, BottleText 7091 chars); the stand at
+(291, -48.1, -720); 10 wash spots; send 15, find 10 (5 a day)". Pictures tools/bottle/shots/b1..b8 (force-added).
+ STAND: 55 parts on the client, box (291.3, -44.0, -718.8) 9.8 x 8.2 x 3.6; striped blue awning, bottles on the counter, the crate of
+    bottles at its side, "MESSAGGI IN BOTTIGLIA / Messages in a Bottle" readable from the promenade side (b2, b3); from the sea side
+    the sign board's back is plain white (b1). Sits on the sand between the beach umbrellas, beside the round stone platform and the
+    "LA CALETTA" sign; nothing intersects it. Prompt "Messages in a Bottle / Write a message" (max 10).
+ PANEL (desktop 1672x635, b4): title, "One bottle a day. A reply washes up tomorrow.", To / Note / Blank 1 / Blank 2 cyclers, the
+    preview, "Cork it & toss it! (15 acorns)" - clean. CUT: the Note cycler's own text "Note 1: Ahoy! I hope you have enough ___. I'm
+    sending you" stops mid-sentence (two lines in a one-line box).
+ PHONE: not pictured - Studio's device emulator can't be switched from the MCP. By the code's fit(): the panel is 440 x 470 scaled by
+    min((W-24)/440, (H-40)/470), clamp 0.5..1, centred, IgnoreGuiInset - on an 844 x 390 phone that is 0.745 -> 328 x 350 at y 20..370,
+    x 258..586, so its top ~36 px (title + the X button at about (560, 40)) sit under the top HUD bar's height (the
+    "Squirrel Luminary" pill and the right-hand buttons draw above it, DisplayOrder). Needs a phone check in her Device emulator.
+ TOSS (the send call the button makes): acorns 110 -> 95, Item_bottle_out 20742, Item_bottle_card 1010101, server "sent", then "state";
+    the panel closed. The flight / "Off it goes!" toast was over before my picture (b5 shows after).
+ BEACH: 3 bottles at wash spots 2, 4, 10; "Message in a bottle / Uncork" -> the card "A message in a bottle! / The waves are doing a lot
+    today. Too much, if you ask me. / - Granchio / +10 acorns / Lovely!" (b5); acorns 95 -> 105, Item_bottles_found 1.
+ REPLY (TestDayOffset 1, state refresh): workspace.ReplyBottle at (303, -52.0, -728) on sand (terrain Sand -52.36 under it), glowing,
+    toast "A reply to your bottle has washed up by the bottle stand on the beach!" (b6); prompt max 9 - from 10.2 it does not show, from
+    6.8 it does. "Read it": "A reply washed up! / Enough snacks? I never have enough snacks. How did you know? P.S. If you see my ship,
+    tell it to come back. / - Captain Barnacle, on a very small island / You wrote: ..." (b8), Item_bottle_replies 1. CUT: the "You
+    wrote:" line is one line and stops at "...enough snacks. I'm" (the rest - "sending you a hug." - is lost). The card also has a large
+    empty band under its title.
+ OVERLAP: the game's "Gifts for squirrel friends" popup (GiftsGui) opened on its own timer ON TOP of the reply card (b7) - the bottle
+    cards should wait while GiftsGui is up (or the gifts popup should wait for an open bottle card).
+ Also: ReplyBottle is a direct child of workspace (not inside workspace.Bottles).
+Waits for round 2 (the review's fixes + these) and her word to install.
