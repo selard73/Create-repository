@@ -25,7 +25,7 @@ PIECES = [
     {"id": "p7",  "x": 60,  "z": -105, "kind": "shingles", "yaw": 0},     # by the scientist
     {"id": "p8",  "x": 70,  "z": -140, "kind": "planks",   "yaw": 55},    # by the rainy-day squirrel, deep in the forest
     {"id": "p9",  "x": 210, "z": -70,  "kind": "lantern",  "yaw": 20, "far": True},   # Rue de Noisette, near its spawn
-    {"id": "p10", "x": 240, "z": -70,  "kind": "planks",   "yaw": 80, "far": True},   # Rue de Noisette, by the mime (the first spot, (300,-90), was under a roof - runner 7's preview)
+    {"id": "p10", "x": 240, "z": -60,  "kind": "planks",   "yaw": 80, "far": True},   # Rue de Noisette, by the mime, clear of the plane tree (runner 7 checked: (300,-90) was under a roof, (240,-70) under the canopy)
     {"id": "p11", "x": 455, "z": -75,  "kind": "shingles", "yaw": 10, "far": True},   # the chateau, by Farmer Fernand
     {"id": "p12", "x": 560, "z": -110, "kind": "lantern",  "yaw": 60, "far": True},   # the chateau, past the truffle hunter
 ]
