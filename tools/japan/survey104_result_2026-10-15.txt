@@ -1,0 +1,84 @@
+QQ JAPAN JapanMap Model: 23074 descendants, 20373 parts, box (442,-32,-1275)..(7128,320,471); workspace.StreamingEnabled true
+QQ JAPAN top-level children: 19
+QQ JAPAN   TeaHills (Model): 4373 parts; box (5406,-1,-321)..(5827,30,125)
+QQ JAPAN   Landscape (Model): 4091 parts; box (5345,-32,-366)..(6655,46,470)
+QQ JAPAN   Outdoor market revision (Model): 3663 parts; box (5862,-1,-217)..(6056,25,111)
+QQ JAPAN   PalaceGrounds (Model): 4280 parts; box (6209,-0,-205)..(6555,72,137)
+QQ JAPAN   Natural landscape repairs (Model): 557 parts; box (5406,-5,-493)..(7111,135,389)
+QQ JAPAN   Railway (Model): 866 parts; box (5440,-0,125)..(6560,18,188)
+QQ JAPAN   LanternStreet (Model): 857 parts; box (5840,-0,-223)..(6186,21,275)
+QQ JAPAN   Water basin collision supports (Model): 498 parts; box (5375,-24,-385)..(6625,3,305)
+QQ JAPAN   Downtown street details (Model): 357 parts; box (5983,0,-217)..(6017,1,43)
+QQ JAPAN   Reference refinement - Blender (Model): 278 parts; box (5356,-18,-391)..(7128,60,466)
+QQ JAPAN   Blender maple and blossom groves (Model): 286 parts; box (5409,-4,-320)..(6618,28,425)
+QQ JAPAN   Water bank walking supports (Model): 136 parts; box (5712,-4,-315)..(6369,3,111)
+QQ JAPAN   Kyoto reference palace - Blender (Model): 64 parts; box (6275,3,-65)..(6497,42,-14)
+QQ JAPAN   Airport connection (Model): 44 parts; box (442,-4,-44)..(6318,16,374)
+QQ JAPAN   BlenderScenery (Model): 15 parts; box (5210,-32,-1275)..(6790,320,471)
+QQ JAPAN   MountainBackdrop (Model): 3 parts; box (5426,133,-601)..(5454,175,-559)
+QQ JAPAN   Natural garden details - Blender (Model): 5 parts; box (5811,0,-290)..(6552,4,142)
+QQ JAPAN   JapanWaterBasins (StringValue): 0 parts; box -..-
+QQ JAPAN   JapanEnvironment (Script): 0 parts; box -..-
+QQ JAPAN parts of JapanMap reaching west of x 4500 (France / Porto's ground): 2
+QQ JAPAN   WEST JapanMap.Airport connection.Provence taxi stop post at (445,6,-44) size (3,0,0)
+QQ JAPAN   WEST JapanMap.Airport connection.Sign · JAPAN
+Airport taxi at (445,7,-44) size (5,4,0)
+QQ JAPAN scripts named Japan* or whose Source mentions 'japan' (backups excluded; 120 scripts sit in the backups): 16
+QQ JAPAN   SCRIPT ServerScriptService.JapanPreviewAccess [ModuleScript] 966 chars adler32 3022475091
+QQ JAPAN   SCRIPT ServerScriptService.JapanPreviewGuard [Script/Legacy] 1449 chars adler32 1289811189
+QQ JAPAN   SCRIPT StarterPlayer.StarterPlayerScripts.HideFranceFromPorto [LocalScript/Legacy] 3334 chars adler32 3749545265 (patched: mentions Japan)
+QQ JAPAN   SCRIPT StarterPlayer.StarterPlayerScripts.HidePortoFromFrance [LocalScript/Legacy] 3902 chars adler32 2128947805 (patched: mentions Japan)
+QQ JAPAN   SCRIPT StarterPlayer.StarterPlayerScripts.JapanAtmosphere [LocalScript/Legacy] 1807 chars adler32 505509976
+QQ JAPAN   SCRIPT StarterPlayer.StarterPlayerScripts.JapanPreviewVisibility [LocalScript/Legacy] 2184 chars adler32 2763062018
+QQ JAPAN   SCRIPT StarterPlayer.StarterPlayerScripts.JapanTrainInteriorCamera [LocalScript/Legacy] 1386 chars adler32 2918705991
+QQ JAPAN   SCRIPT StarterPlayer.StarterPlayerScripts.JapanWaterAppearance [LocalScript/Legacy] 1039 chars adler32 2994303476
+QQ JAPAN   SCRIPT Workspace.BalloonField.BalloonClient [Script/Client] 35840 chars adler32 2959540445 (patched: mentions Japan)
+QQ JAPAN   SCRIPT Workspace.BalloonField.BalloonServer [Script/Server] 14415 chars adler32 2262913979 (patched: mentions Japan)
+QQ JAPAN   SCRIPT Workspace.JapanMap.JapanEnvironment [Script/Legacy] 6327 chars adler32 2781988882
+QQ JAPAN   SCRIPT Workspace.JapanMap.Outdoor market revision.Ramen kitchen.AutomaticFoodSeatContact [Script/Legacy] 2245 chars adler32 1604655523 (patched: mentions Japan)
+QQ JAPAN   SCRIPT Workspace.JapanMap.Outdoor market revision.Street ramen cart.AutomaticFoodSeatContact [Script/Legacy] 2245 chars adler32 1604655523 (patched: mentions Japan)
+QQ JAPAN   SCRIPT Workspace.JapanMap.Outdoor market revision.Yakitori counter.AutomaticFoodSeatContact [Script/Legacy] 2245 chars adler32 1604655523 (patched: mentions Japan)
+QQ JAPAN   SCRIPT Workspace.MapMusic.MusicClient [Script/Client] 11980 chars adler32 2355573903 (patched: mentions Japan)
+QQ JAPAN   SCRIPT Workspace.SpawnReturn.SpawnReturnServer [Script/Server] 5219 chars adler32 1743689526 (patched: mentions Japan)
+QQ JAPAN JapanPreviewAccess (ModuleScript, 966 chars, adler32 3022475091): assignments Access.OwnerUserId; 1 long numbers (user ids?)
+QQ JAPAN ServerStorage: 318798 descendants in all; 22 Japan backup folders hold 17794 (6%), 6 other Japan* folders hold 4469 - all of it is in the place file and in server memory
+QQ JAPAN Studio memory now: total 1860 MB; Instances 452, BaseParts 6468, GraphicsParts 83, GraphicsTexture 183, GraphicsMeshParts 42, Sounds 16, Script 222
+QQ JAPAN unanchored parts: 0 (a loose part falls, and a player can push it away for everyone)
+QQ JAPAN huge parts (size > 400): 180
+QQ JAPAN   HUGE JapanMap.BlenderScenery.Sculpted terrain.JP_Volcano_Sculpted size (403,161,400)
+QQ JAPAN   HUGE JapanMap.BlenderScenery.Sculpted terrain.JP_Fuji_Sculpted size (875,320,870)
+QQ JAPAN   HUGE JapanMap.BlenderScenery.Sculpted terrain.JP_Island_Cliffs_West size (33,38,862)
+QQ JAPAN   HUGE JapanMap.BlenderScenery.Sculpted terrain.JP_Ridgeline_1 size (790,93,450)
+QQ JAPAN   HUGE JapanMap.BlenderScenery.Sculpted terrain.JP_Island_Cliffs_North size (1292,38,35)
+QQ JAPAN   HUGE JapanMap.BlenderScenery.Sculpted terrain.JP_Ridgeline_2 size (790,126,450)
+QQ JAPAN   HUGE JapanMap.BlenderScenery.Sculpted terrain.JP_Island_Cliffs_South size (1317,38,35)
+QQ JAPAN   HUGE JapanMap.Landscape.Walkway size (13,0,500)
+QQ JAPAN invisible solid parts (Transparency 1, CanCollide): 855; Neon parts 28; CastShadow parts 6965 of 20373; default-named parts 0 (0%); classes: MeshPart 1207, Part 19154, Union 0, Wedge 0, Truss 0
+QQ JAPAN top-most models of <= 400 parts east of x 4500 checked: 253; FLOATING (nothing within 12 studs under the bottom centre, nothing 6 above - bridges, arches and sunk props can trip it: verify by eye) 7; BURIED under terrain (terrain only, water ignored) 0
+QQ JAPAN   FLOATING JapanMap.Outdoor market revision.Rice and provisions (137 parts) bottom y -0.7 at (6022,-194), 27 wide
+QQ JAPAN   FLOATING JapanMap.Outdoor market revision.Paper umbrella craft (229 parts) bottom y -0.7 at (5979,-166), 30 wide
+QQ JAPAN   FLOATING JapanMap.Landscape.Bamboo clump (36 parts) bottom y 19.3 at (6576,-365), 7 wide
+QQ JAPAN   FLOATING JapanMap.Landscape.Bamboo clump (38 parts) bottom y 14.4 at (5540,-365), 7 wide
+QQ JAPAN   FLOATING JapanMap.MountainBackdrop (3 parts) bottom y 133.2 at (5440,-580), 42 wide
+QQ JAPAN   FLOATING JapanMap.Outdoor market revision.Cat cafe (215 parts) bottom y -0.7 at (6022,7), 30 wide
+QQ JAPAN   FLOATING JapanMap.TeaHills.Fuji photography lookout (10 parts) bottom y 23.0 at (5684,-304), 30 wide
+QQ JAPAN ground grid (x 5200..7100, z -1270..450, every 50): 1365 rays; void (nothing to y -400) 532; parts 573; terrain: Grass 54, Ground 31, LeafyGrass 51, Rock 26, Water 98
+QQ JAPAN   VOID at (5200,-1270) (5200,-1220) (5200,-1170) (5200,-1120) (5200,-1070) (5200,-1020) (5200,-970) (5200,-920) (5200,-870) (5200,-820) (5200,-770) (5200,-720) (5200,-670) (5200,-620) (5200,-570)
+QQ JAPAN seats 12 (1 disabled); ProximityPrompts 7 (Default 7; Default in Edit is normal - PromptClient turns every prompt in workspace Custom at run time); ClickDetectors 0; Humanoids (NPCs) 0; SpawnLocations 0
+QQ JAPAN   PROMPT Airport taxi/Return to Provence [Default] on JapanMap.LanternStreet.JapanArrival
+QQ JAPAN   PROMPT Shinkansen passenger cabin/Take a seat and ride [Default] on JapanMap.Railway.Indigo bullet train.Passenger cabin controls.RideControl
+QQ JAPAN   PROMPT Station platform/Exit train [Default] on JapanMap.Railway.Indigo bullet train.Passenger cabin controls.ExitControl
+QQ JAPAN   PROMPT Palace Grounds station/Ride to next district [Default] on JapanMap.Railway.Palace Grounds station.BoardingPoint
+QQ JAPAN   PROMPT Lantern Street station/Ride to next district [Default] on JapanMap.Railway.Lantern Street station.BoardingPoint
+QQ JAPAN   PROMPT Tea Hills station/Ride to next district [Default] on JapanMap.Railway.Tea Hills station.BoardingPoint
+QQ JAPAN   PROMPT Airport taxi/Travel to Japan [Default] on JapanMap.Airport connection.Sign · JAPAN
+Airport taxi
+QQ JAPAN text labels 154 (108 with non-ASCII characters); fonts: Garamond, GothamMedium
+QQ JAPAN   TEXTS: JAPAN / Tea Hills  |  Lantern Street  |  Palace | Japan arrivals | WELCOME TO JAPAN | CASTLE LOOKOUT | Origami library | Garden tea house | PALACE GROUNDS | Castle kitchen | Koto pavilion | Tea farmhouse | Rice barn | FUJI VIEW | VOLCANO LOOKOUT | TEA HILLS  —  LANTERN STREET  —  PALACE | LANTERN STREET | TEA HILLS | TAXI | JAPAN / Airport taxi | 700 | 500 | 300 | 喫茶 / 本日のおすすめ | 喫茶 | 喫茶 / MENU / 300 / 500 | 喫茶  Cat cafe | 喫 | 寿司 | 寿司  Sushi bar | 寿司 / OPEN | 寿
+QQ JAPAN effects: Light 133, ParticleEmitter 5, Smoke 1, SurfaceAppearance 159, SurfaceGui 154; sounds 1 (0 not on a part or attachment); unique mesh ids 157
+QQ JAPAN Lighting children: Sky:Sky, SunRays:SunRaysEffect, Atmosphere:Atmosphere, Bloom:BloomEffect, DepthOfField:DepthOfFieldEffect(off), LookGrade:ColorCorrectionEffect; ClockTime 14.5; Terrain water refl 0.85 transp 0.65 wave 0.10 (LookWas_* present: true)
+QQ JAPAN workspace.Travel children: TravelServer:Script, TravelClient:Script, TravelEvent:RemoteEvent, Points:Folder
+QQ JAPAN Travel things named for Japan: none
+QQ JAPAN Boundary children: PatchModule
+QQ JAPAN Area today (SpawnReturnServer.areaAt in the repo): z < -300 is 'porto', else the French ids by x - Japan at z -1270..450 straddles that line; what Codex's live SpawnReturnServer does with x > 4500 is in its export
+QQ JAPAN squirrel-like models under JapanMap: 0 (none; the registry has no Japan entries either)

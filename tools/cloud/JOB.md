@@ -2006,3 +2006,25 @@ StarterPlayerScripts JapanAtmosphere / JapanWaterAppearance / JapanTrainInterior
 BalloonServer, BalloonClient, SpawnReturnServer, TravelServer, HidePortoFromFrance / HideFranceFromPorto, and the backups' copies in
 ServerStorage.JapanBeforePrivatePreview (BalloonServer, BalloonClient, JapanEnvironment, JapanAtmosphere, SpawnReturnServer) so the
 cloud thread can diff what Codex changed in the live scripts. Nothing changed in Studio.
+
+Result job 104 (runner 7, on 3740085): survey104 ROUND 2 run in Edit Oct 15 ~04:55Z, no error: 82 QQ JAPAN lines, all unchanged in
+tools/japan/survey104_result_2026-10-15.txt. (Round 1 from 3bf662d had been run first with two one-line fixes - the three NotScriptable
+reads pcall-guarded, and table.insert(texts, s:gsub(..)) passing gsub's count as a 3rd argument - its 91 lines sit beside it as
+survey104_result_round1_2026-10-15.txt: its nested-model pass flags 578 "floating" candidates, mostly bamboo clumps on the slope and
+props whose bottom centre is 0.7 under the ground; round 2's top-most pass flags 7.) Headlines: JapanMap 23,074 descendants / 20,373
+parts, box x 442..7128 - the Airport connection's "Sign · JAPAN / Airport taxi" and its taxi stop post stand in France at (445,6,-44);
+16 Japan scripts outside the backups (Workspace.MapMusic.MusicClient 11980 / adler32 2355573903 mentions Japan too - not exported, say
+if wanted); 120 scripts in 22 backup folders = 17,794 descendants (6% of ServerStorage's 318,798) + 6 other Japan* folders (4,469);
+0 unanchored; 180 huge parts (sculpted terrain meshes, the widest 1317); 855 invisible solid parts; ground grid 532 of 1365 rays void
+(the list caps at 15: the whole x 5200 column from z -1270 to -570 - the sea west of the island; 98 Water hits elsewhere); 7
+ProximityPrompts, all Style Default; 12 seats; 154 text labels (108 Japanese), fonts Garamond + GothamMedium; 1 sound, positional;
+0 NPCs, 0 spawns, 0 squirrels; Travel has nothing named Japan (the taxi prompt is the only link); Lighting = the look pass. EXPORT:
+21 files in tools/japan/studio_2026-10-15/ (14 live + before/ 7), every one adler32-verified against Studio's Source: JapanEnvironment
+6327, AutomaticFoodSeatContact 2245 (three identical copies), JapanPreviewAccess 966, JapanPreviewGuard 1449, JapanAtmosphere 1807,
+JapanWaterAppearance 1039 (ONE line, starts and ends with a space), JapanTrainInteriorCamera 1386, JapanPreviewVisibility 2184 (its
+Source ends LF CR LF - the stray CR is in the file; git's autocrlf may drop it in the blob), BalloonServer 14415, BalloonClient 35840,
+SpawnReturnServer 5219, TravelServer 4939 (= the Oct 14 export), HidePortoFromFrance 3902, HideFranceFromPorto 3334; before/:
+BalloonServer 11362 + BalloonClient 32702 (= tools/balloon/src BalloonServer_ride1.lua / BalloonClient.lua), JapanEnvironment 6013,
+JapanAtmosphere 1724, SpawnReturnServer 4997 (JapanBeforePrivatePreview), HidePortoFromFrance 3789 + HideFranceFromPorto 3221
+(JapanIntegrationBackup). Nothing changed in Studio. Note for the thread: this runner's shell wrapper rejects heredocs holding some
+quote patterns (a quote followed by a space, e.g. gsub(' station','')); such files were written with the Write tool and checksummed.
