@@ -2520,3 +2520,34 @@ treehouse - Rue de Noisette: a string of lanterns for the balcony, a window box;
 a striped awning / a potted lemon tree; plus a few in the Acorn Store (rug, flag colour, pet bed, lantern colour) for acorns or
 Robux. The finished-house card and the sign name the next add-on and where it waits, with the gate count ("Ten forest squirrels
 open the gate - 7 found"). Pieces already collected are kept on the saves.
+
+Result birds v6 + treehouse r4 INSTALLED (runner 7, Shannon's yes, Studio EDIT, unpublished): birds 7111966 (21975, adler32 3433540002):
+"QQ BIRDS DONE: workspace.Birds (BirdsClient 18582 chars; 7 sites ...); the old folder is HudBackup.Birds_pre_3". treehouse f73c0a0
+(35050, adler32 2013708329): 12 "QQ TREE piece" lines as before (none skipped), "QQ TREE DONE: ... 12 pieces placed; TreehouseServer 4806,
+TreehouseClient 20367 chars; RS.TreehousePick); the old folder is HudBackup.Treehouse_pre_1". Not yet looked at in play.
+
+Result job 111 survey (runner 7, f385b20, Edit, read-only): survey111.lua (6029, adler32 407390585) stopped at line 82 ("Position is not a
+valid member of Model Workspace.choc_v2" - the same and/or truncation as survey103: a Model with no parts fell through to m.Position);
+run with that one line replaced by `local lo, hi; if not m:IsA("Model") then lo, hi = m.Position - m.Size / 2, m.Position + m.Size / 2
+end`. Lines unchanged:
+QQ SITE ForestTower box -31.05000114440918, -1, -2.1380996704101562..-15.75, 81.82499694824219, 12.138099670410156, centre (-23, 5); the spawn looks at it along (-0.99, 0.15); LEFT of it is (0.15, 0.99)
+QQ SITE tall walls within 160 studs of the tower: Wall at (-14,25) size 233x1; Terrain at (0,0) size 2044x2044; Leg3 at (-18,10) size 1x1; Leg2 at (-18,0) size 1x1; Leg1 at (-28,0) size 1x1; Leg4 at (-28,10) size 1x1
+QQ SITE A: 45 left of the tower: centre (-17, 49), 52 studs from the spawn, ground 8.8 (terrain Grass); over a 24-stud radius the ground runs y 0.0..220.0; hits: Baseplate 1, Wall 1, terrain Grass 30
+QQ SITE   would clear (4): Boundary.Dressing.pine_squat (-2,24) 12x12, 29 studs out | Boundary.Dressing.pine_mid (-12,20) 8x9, 30 studs out | Boundary.Dressing.pine_mid (-26,24) 12x12, 27 studs out | Boundary.Dressing.pine_tall (-18,26) 9x9, 24 studs out
+QQ SITE   must keep / unsure (0): nothing
+QQ SITE B: 60 left of the tower: centre (-14, 64), 66 studs from the spawn, ground 3.3 (terrain Grass); over a 24-stud radius the ground runs y 0.0..12.1; hits: Baseplate 8, terrain Grass 24
+QQ SITE   would clear (0): nothing
+QQ SITE   must keep / unsure (0): nothing
+QQ SITE C: 45 left, 15 behind: centre (-2, 47), 46 studs from the spawn, ground 12.1 (terrain Grass); over a 24-stud radius the ground runs y 0.3..12.1; hits: Foliage 1, terrain Grass 31
+QQ SITE   would clear (6): Boundary.Dressing.pine_squat (-2,24) 12x12, 23 studs out | Boundary.Dressing.pine_tall (14,25) 9x9, 27 studs out | Boundary.Dressing.round_tree (6,26) 15x14, 23 studs out | Boundary.Dressing.pine_mid (-12,20) 8x9, 29 studs out | Boundary.Dressing.pine_tall (-18,26) 9x9, 27 studs out | Forest.stump_s69 (-7,18) 6x6, 30 studs out
+QQ SITE   must keep / unsure (0): nothing
+QQ SITE D: 45 left, 15 nearer the spawn: centre (-31, 52), 61 studs from the spawn, ground 9.8 (terrain Grass); over a 24-stud radius the ground runs y 0.0..13.9; hits: Baseplate 4, terrain Grass 28
+QQ SITE   would clear (4): Boundary.Dressing.pine_mid (-26,24) 12x12, 29 studs out | Boundary.Dressing.pine_tall (-18,26) 9x9, 29 studs out | Boundary.Dressing.pine_mid (-34,24) 8x8, 28 studs out | Boundary.Dressing.pine_tall (-42,24) 6x6, 29 studs out
+QQ SITE   must keep / unsure (0): nothing
+FINDING: the "Wall at (-14,25) size 233x1" is Workspace.Boundary.Walls.Wall - the forest's INVISIBLE NORTH EDGE (Transparency 1,
+CanCollide, 224 tall, x -130..102). ALL FOUR candidates (z 47..64) lie OUTSIDE it, on the rising grass bank players cannot reach; the
+"would clear" trees are the Boundary.Dressing pines along that edge. Between the tower (box z to 12) and the edge (z 25) there are only
+~13 studs. Ground at x -17: z 15/20 grass y 0.1, z 24/28 the edge pines, z 35 y 3.5, z 45 y 8.5, z 60 y 5.9. So "left of the tower"
+as the spawn sees it is beyond the map edge: either the edge moves north (a clearing at z 35..65 on a bank that rises to ~9-12), or
+the site is elsewhere. Picture tools/treehouse/shots/survey111_spawn_to_tower.jpg (spawn -> tower, the left side = the bank behind
+the edge). Asking Shannon which she means.
