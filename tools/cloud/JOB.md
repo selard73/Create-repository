@@ -2434,3 +2434,18 @@ the acorn is placed on the top of a hand BOX that reaches far above the visible 
 (tools/statues/shots/star_fountain_acorn.jpg) the acorn floats about a head's height above the statue and no raised arm reads.
 Suggest: rest the acorn on the hand's lowest-third point along the arm direction (or on the LeftLowerArm end + a fixed offset), and
 size it from the head, not the body height, when the hand box is taller than ~1.5 x its width.
+
+Job 106 GEO REVIEWED (cloud thread; two adversarial rounds + a third set of fixes): japan_geo1.lua at this commit. Round 3: the
+water is written through the terrain's CHANNELS (only the liquid layer for water, the solid layers for the sand bed - a plain
+voxel round-trip would have notched every existing shore), basin boxes rounded inward to the grid so nothing spills past a bank,
+the wall idempotent and clamped inside the sea on all sides with the sea 150 studs beyond it, the slab rise formula right when the
+lower slab must move, bamboo hover test widened (the one visible lake-bank floater comes down), a task.wait per chunk (Studio stays
+responsive; expect some seconds). RUNNER: SAVE the place first; run in Edit; the "readback" line must say "liquid 0.5" (the sea's
+top cell) - if it says 0 or errors, stop and send me the output; then the play test per the FIXER paragraph (pictures before/after
+at the same spots as shots106, plus the north edge into the sea and the canal's north end).
+Job 110: the zipline card anchors on Zipline/StationPost (dy 4) - the installer from this commit; install on her word (109 is in).
+Job 107b: hallretry1's client anchor confirmed on the live HallClient export (4155); run on her word.
+Job 107c (cloud thread, from runner 7's measurements of STAR's statue: LeftHand box 2.85 tall, the acorn on its top at y 9.42, a
+head above the visible hand): tools/statues/acornhand1.lua - the acorn rests in the PALM (the hand's grip attachment) for every
+statue from now on; the old spot is the fallback. Statues already standing keep their acorn until rebuilt. Run on her word after
+hallretry1 (same Studio window); expect "QQ ACORN DONE: ChampionServer 35767 -> n".

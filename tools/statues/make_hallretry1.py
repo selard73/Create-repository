@@ -43,7 +43,7 @@ srv = (HERE / "studio_2026-10-15/HallServer_France.lua").read_text(encoding="utf
 assert srv.count(SF) == 1 and "HALLRETRY1" not in srv
 chk = HERE / "check"; chk.mkdir(exist_ok=True)
 (chk / "HallServer_France_hallretry1.lua").write_text(srv.replace(SF, SR), encoding="utf-8")
-cli = (ROOT / "domaine/build_halloffame.lua").read_text(encoding="utf-8")
+cli = (HERE / "studio_2026-10-15/HallClient_France.lua").read_text(encoding="utf-8")   # the live export (4155 bytes)
 assert cli.count(CF) == 1 and "HALLRETRY1" not in cli
 luau = os.environ.get("LUAU_COMPILE")
 if luau:

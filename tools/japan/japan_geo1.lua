@@ -2,7 +2,8 @@
 -- a lot of things are floating and the water has places where it is exposed"; her choice for the edge: "real sea with a wall farther
 -- out"). From survey106 and its pictures. Everything is re-measured here; every move is logged (ServerStorage.HudBackup.JapanGeo1_log,
 -- JSON) so it can be undone. No DataStore, no publish. Output "QQ GEO1".
--- (1) PROPS: Landscape bamboo clumps floating on the south ridge's slope (31 flagged) come down onto the ground under their centre; the
+-- (1) PROPS: bamboo clumps hovering evenly come down by their smallest gap (the ridge clumps are planted INTO the slope - a ray from
+--     inside the hill reads a false "gap" - and stay); clumps buried at all five points come up; the
 --     Blue vending machine comes up out of the market platform; the Raked gravel garden and the Fishing bank come down onto their ground;
 --     the Fuji photography lookout gets a stone plinth down to the hillside instead of hovering; any other small prop hovering evenly up
 --     to 3 studs comes down. Bridges, the canal boat, the waterwheel, the castle's inner staircase, the market stalls (their foundations are
@@ -42,7 +43,7 @@ local function extents(list)
 end
 local all = J:GetDescendants()
 local parts = {}
-for _, d in ipairs(all) do if d:IsA("BasePart") then table.insert(parts, d) end end
+for _, d in ipairs(all) do if d:IsA("BasePart") and d.Name ~= "JapanSeaWall" then table.insert(parts, d) end end   -- (a re-run must not measure its own wall)
 local pc = {}
 for _, p in ipairs(parts) do
 	local a = p.Parent
@@ -102,7 +103,7 @@ for _, m in ipairs(models) do
 			-- under the hill. So a clump moves only when it hovers EVENLY (all five points within 2 studs) and by its SMALLEST gap, or
 			-- when all five points are buried, by the smallest burial.)
 			if name == "Bamboo clump" then
-				if minG > 0.3 and maxG - minG < 2 and gC < 3 then line = shift(m, -(minG - 0.15), "bamboo down onto the ground")
+				if minG > 0.3 and maxG - minG < 3 and minG < 4 then line = shift(m, -(minG - 0.15), "bamboo down onto the ground")
 				elseif minB > 0.6 and minB < 6 then line = shift(m, minB - 0.1, "bamboo up out of the ground") end
 			elseif name == "Blue vending machine" then
 				if bC > 0.3 and bC < 3 then line = shift(m, bC, "vending machine up onto the platform") end
@@ -143,7 +144,7 @@ local function slabList()
 end
 local slabMoves, passes = 0, 0
 local risen = {}                                                      -- per part: how far it has risen in all (capped at 0.2)
-local function mayRise(sl) return sl.p.Size.X <= 200 and sl.p.Size.Z <= 200 and not sl.p:GetFullName():find("Natural garden details", 1, true) and (risen[sl.p] or 0) < 0.2 end
+local function mayRise(sl) return sl.p.Size.X <= 200 and sl.p.Size.Z <= 200 and not sl.p:GetFullName():find("Natural garden details", 1, true) and (risen[sl.p] or 0) < 0.36 end
 for pass = 1, 6 do
 	passes = pass
 	local s = slabList()
@@ -160,7 +161,8 @@ for pass = 1, 6 do
 				local up = (b.top > a.top) and b or ((b.area < a.area) and b or a)
 				if not mayRise(up) then up = (up == a) and b or a end
 				if mayRise(up) then
-					local dy = 0.16 - math.abs(b.top - a.top)
+					local other = (up == a) and b or a
+					local dy = 0.16 - (up.top - other.top)              -- (0.16 - the gap when the higher one rises; 0.16 + it when the lower one must)
 					up.p.CFrame = up.p.CFrame + Vector3.new(0, dy, 0); up.top += dy
 					risen[up.p] = (risen[up.p] or 0) + dy
 					table.insert(log.slabs, {path = path(up.p), dy = dy}); fixed += 1; slabMoves += 1
@@ -179,36 +181,58 @@ for _, p in ipairs(J:GetDescendants()) do
 	end
 end
 say("underwater stair supports given the bed's sand look: %d", sup)
--- air -> the material, up to an exact LEVEL: ReadVoxels / WriteVoxels, the top cell's occupancy set to the share under the level
--- (ReplaceMaterial would keep the air cells' zero occupancy, and a Region3 snapped to the 4-stud grid would round every level up)
+-- air -> water (or sand), up to an exact LEVEL, through the terrain's CHANNELS: only the liquid layer is written for water (a plain
+-- ReadVoxels / WriteVoxels round-trip cannot carry a shoreline cell that is part sand and part water, and would notch every shore),
+-- the solid layers for the sand bed. The top cell's occupancy is the share under the level. Basin boxes are rounded INWARD to the
+-- 4-stud grid so no water spills past a declared bank. Falls back to the old voxel API if this Studio has no channels.
 local function fillAir(x1, y1, z1, x2, y2, z2, mat, label, level)
 	local chunks, cells = 0, 0
 	local step = 256
-	local gy1 = math.floor(y1 / 4) * 4
-	local gy2 = math.ceil(y2 / 4) * 4
-	for cx = math.floor(x1 / 4) * 4, x2 - 0.01, step do
-		for cz = math.floor(z1 / 4) * 4, z2 - 0.01, step do
-			local ax, az = cx, cz
-			local bx, bz = math.min(cx + step, math.ceil(x2 / 4) * 4), math.min(cz + step, math.ceil(z2 / 4) * 4)
-			local r = Region3.new(Vector3.new(ax, gy1, az), Vector3.new(bx, gy2, bz))
-			local mats, occ = T:ReadVoxels(r, 4)
-			local sz = mats.Size
-			local changed = false
-			for ix = 1, sz.X do
-				for iy = 1, sz.Y do
-					local bottom = gy1 + (iy - 1) * 4
-					local share = math.clamp((level - bottom) / 4, 0, 1)
-					if share > 0.05 then
-						for iz = 1, sz.Z do
-							if mats[ix][iy][iz] == Enum.Material.Air then
-								mats[ix][iy][iz] = mat; occ[ix][iy][iz] = share; changed = true; cells += 1
+	local gy1, gy2 = math.floor(y1 / 4) * 4, math.ceil(y2 / 4) * 4
+	local gx1, gx2, gz1, gz2 = math.ceil(x1 / 4) * 4, math.floor(x2 / 4) * 4, math.ceil(z1 / 4) * 4, math.floor(z2 / 4) * 4
+	local water = (mat == Enum.Material.Water)
+	for cx = gx1, gx2 - 0.01, step do
+		for cz = gz1, gz2 - 0.01, step do
+			local r = Region3.new(Vector3.new(cx, gy1, cz), Vector3.new(math.min(cx + step, gx2), gy2, math.min(cz + step, gz2)))
+			local okC = pcall(function()
+				local ch = T:ReadVoxelChannels(r, 4, {"SolidMaterial", "SolidOccupancy", "LiquidOccupancy"})
+				local SM, SO, LO = ch.SolidMaterial, ch.SolidOccupancy, ch.LiquidOccupancy
+				local changed = false
+				for ix = 1, #SO do
+					for iy = 1, #SO[ix] do
+						local share = math.clamp((level - (gy1 + (iy - 1) * 4)) / 4, 0, 1)
+						if share > 0.05 then
+							for iz = 1, #SO[ix][iy] do
+								if SO[ix][iy][iz] == 0 and LO[ix][iy][iz] == 0 then
+									if water then LO[ix][iy][iz] = share else SM[ix][iy][iz] = mat; SO[ix][iy][iz] = share end
+									changed = true; cells += 1
+								end
 							end
 						end
 					end
 				end
+				if changed then
+					if water then T:WriteVoxelChannels(r, 4, {LiquidOccupancy = LO}) else T:WriteVoxelChannels(r, 4, {SolidMaterial = SM, SolidOccupancy = SO}) end
+				end
+			end)
+			if not okC then   -- (no channel API: the old pair, Air cells only)
+				local mats, occ = T:ReadVoxels(r, 4)
+				local sz = mats.Size
+				local changed = false
+				for ix = 1, sz.X do
+					for iy = 1, sz.Y do
+						local share = math.clamp((level - (gy1 + (iy - 1) * 4)) / 4, 0, 1)
+						if share > 0.05 then
+							for iz = 1, sz.Z do
+								if mats[ix][iy][iz] == Enum.Material.Air then mats[ix][iy][iz] = mat; occ[ix][iy][iz] = share; changed = true; cells += 1 end
+							end
+						end
+					end
+				end
+				if changed then T:WriteVoxels(r, 4, mats, occ) end
 			end
-			if changed then T:WriteVoxels(r, 4, mats, occ) end
 			chunks += 1
+			task.wait()
 		end
 	end
 	table.insert(log.water, {label = label, x1 = x1, y1 = y1, z1 = z1, x2 = x2, y2 = y2, z2 = z2, mat = mat.Name, level = level, cells = cells})
@@ -232,14 +256,17 @@ if wb and wb:IsA("StringValue") then
 end
 say("rectangular basins refilled from JapanWaterBasins: %d", basins)
 local SEA = -6
-local X1, X2, Z1, Z2 = 4900, 7400, -1500, 900
+local X1, X2, Z1, Z2 = 4750, 7400, -1500, 900
 local lo, hi = extents(parts)
-local WX1, WX2, WZ1, WZ2 = math.max(lo.X - 150, X1), hi.X + 150, lo.Z - 150, hi.Z + 150   -- (lo.X is the chateau taxi sign at 442: the wall's west side is the sea's)
+-- the wall 150 studs out from the map's box, never outside the sea, and the sea 150 studs beyond it on every side (lo.X is the chateau taxi sign at 442, so the west side is pinned)
+local WX1, WX2, WZ1, WZ2 = math.max(lo.X - 150, 4900), math.min(hi.X + 150, X2 - 150), math.max(lo.Z - 150, Z1 + 150), math.min(hi.Z + 150, Z2 - 150)
 local bedChunks, bedCells = fillAir(X1, -64, Z1, X2, -60, Z2, Enum.Material.Sand, "sea bed", -60)
 local seaChunks, seaCells = fillAir(X1, -60, Z1, X2, SEA, Z2, Enum.Material.Water, "sea", SEA)
 do   -- a readback (voxels, not a raycast - raycasts are stale right after a terrain edit): the sea must be there
-	local mm = T:ReadVoxels(Region3.new(Vector3.new(5000, -12, -1200), Vector3.new(5004, -8, -1196)), 4)
-	say("the sea: air below y %d across x %d..%d, z %d..%d is water now (%d cells in %d chunks), on a sand bed (%d cells); readback at (5000,-10,-1200): %s", SEA, X1, X2, Z1, Z2, seaCells, seaChunks, bedCells, mm[1][1][1].Name)
+	local what = "?"
+	local okR = pcall(function() local ch = T:ReadVoxelChannels(Region3.new(Vector3.new(5000, -12, -1200), Vector3.new(5004, -8, -1196)), 4, {"LiquidOccupancy"}); what = "liquid " .. tostring(ch.LiquidOccupancy[1][1][1]) end)
+	if not okR then local mm = T:ReadVoxels(Region3.new(Vector3.new(5000, -12, -1200), Vector3.new(5004, -8, -1196)), 4); what = mm[1][1][1].Name end
+	say("the sea: air below y %d across x %d..%d, z %d..%d is water now (%d cells in %d chunks), on a sand bed (%d cells); readback at (5000,-10,-1200): %s", SEA, X1, X2, Z1, Z2, seaCells, seaChunks, bedCells, what)
 end
 -- the wall, 150 studs out from the map's box (and never short of the sea's edge)
 local wallF = J:FindFirstChild("Sea wall") or Instance.new("Folder"); wallF.Name = "Sea wall"; wallF.Parent = J
