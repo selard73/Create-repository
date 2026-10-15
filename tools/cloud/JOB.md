@@ -3030,5 +3030,5 @@ new server). Nothing installed in Edit is left unpublished.
 PUBLISHED (Shannon, Oct 15, "saved and published"; runner 7 logged at ece2647): the Homebase move (job 112), the Japan horizon (geo2
 to geo4b), birds v7 with the bench gull, croc jobs 113 + 113r2, gift job 114. Nothing installed in Edit is left unpublished.
 Open: the World Pass timing and the under-13 check; the treehouse add-ons and decorations; the piece-finder product id (108);
-Star's statue log lines; later the multi-place split, the PortraitEnvironmentBackup archive, Japan FINDINGS (the canal's bright
+Star's statue log lines; later the multi-place split, the PortoEnvironmentBackup archive, Japan FINDINGS (the canal's bright
 sheet behind the weir, the door, the floating backdrop).
