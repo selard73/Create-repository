@@ -2378,3 +2378,17 @@ without the item: the name, "600 acorns   or   R$ 79" (acorns from the store's P
 here" button that opens the Acorn Store at that row (both buttons there); hides the moment the item is theirs; shows within 45-50
 studs. Spots are the folder's Spots attribute (JSON) - move a card with it. PREVIEW: a play test with a fresh test player (no items):
 pictures of the card at the tower top and at the ramp, then a tap -> the store opens at the row; then install on her word.
+
+Result STAR (runner 7, play test, nothing kept): Shannon: the missing statue is in the FRENCH HALL OF FAME; the record she sent:
+{"day": 20722, "n": 2, "name": "STAR", "t": 1790423656, "uid": 3129625152, "user": "Captin_crunch65"}. In the test:
+GetHumanoidDescriptionFromUserId ok; CreateHumanoidModelFromDescription ok (321 descendants); one accessory "Hair-Male-004-Black
+[Hair, LAYERED]"; HeightScale 1.05 WidthScale 0.88 BodyTypeScale 0.40 (a short body). StatueDebug(3129625152, "STAR") -> "feet 4.40 |
+plinth top 4.40 | box bottom 3.02 | height 6.6", no warning. HallDebug({uid 3129625152, "STAR"}) -> HallJson
+[{"uid":3129625152,"name":"STAR","no":1,"total":44,"day":20722}]; RS.HallStatues.No_1 = Figure 17 parts box (3.5,5.5,2.3) +
+GiantAcorn; the client's HallView_local shows it at (403.0,8.6,-28.5). Picture tools/statues/shots/hall_STAR_statue_test.jpg: the
+statue IS there in Studio - small (about the saluting squirrel's chest height), the acorn floating beside it rather than on the hand.
+So nothing in STAR's avatar breaks the build; on the live server the build must have failed. The French HallServer (exported:
+tools/statues/studio_2026-10-15/HallServer_France.lua, 5874 chars, adler32 1535594508, verified) builds a statue ON REQUEST
+(RemoteFunction from the client), and on a makeStatue failure it warns "HallServer: no statue for No. <n>: <err>" and returns nil
+(nothing cached, so a LATER request would try again). Check HallClient: does it ever ask again after a nil? Her live F9 SERVER log
+would show the warn line if this is it. STAR's statue is also small for the frame (BodyTypeScale 0.4) and its acorn misses the hand.
