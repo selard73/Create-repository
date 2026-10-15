@@ -2750,3 +2750,6 @@ Result job 111 round 3b PREVIEW (runner 7, 608aca5, play test, nothing kept; log
 r3b_*): the floor pass changed 0 of 202 cells; the client replaced (25778 chars, the round-3 one saved as
 HudBackup.TreehouseClient_pre_r3_2 in the preview); the table top 2.75 above the floor, the seats 1.75, the cream mug with its handle;
 at 12 pieces the window shows from inside with the view out, the plant on the sill. Shannon has the pictures; install waits on her word.
+Result job 111 round 3b (runner 7, 608aca5, INSTALLED in Edit on Shannon's "Install the update", unpublished; logged at 8dd6298):
+QQ lines as in the preview; one TreehouseClient (25778 chars); HudBackup.TreehouseClient_pre_r3_2 kept. Homebase Treehouse is done
+through round 3b. Next: japan_geo2.lua (323dd1f) on her yes and a save; then publish.
