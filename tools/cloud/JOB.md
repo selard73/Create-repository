@@ -3081,3 +3081,10 @@ GuestUserIds "123, 9611145467" -> allowed true, pivoted into Japan and left ther
 (3,5,1). Owner restored -> true. Shademade's table entry Access.GuestUserIds[3121141] = true. NOT testable in Play Solo: the
 ordinary player's CLIENT side (JapanPreviewVisibility hiding, the ordinary balloon prompt text) - the client scripts compare the
 UserId with 9611145467 themselves, and the Studio test player is always that id; only a Local Server with a second player shows it.
+Result job 116 play check (runner 7, logged at bf7fe2c; Shannon had already PUBLISHED: "it is published, thank you"): owner -
+IsAllowed true, the balloon prompt "Your balloon · private Japan preview / Fly to Japan". Ordinary player (Play Solo, OwnerUserId set
+to 0 by a temporary server Script - a require from the MCP context gets a separate module copy): JapanPreviewAllowed false; pivoted
+into Japan, returned to Spawn_forest in 0.49 s. Guest by attribute: GuestUserIds "123, 9611145467" -> allowed, stayed; cleared ->
+thrown out. Shademade's table entry [3121141] = true. Not testable solo: an ordinary client's hide / prompt text (the test player
+always has the owner id) - that logic is unchanged for a non-guest id (attribute false -> hidden). JOB 116 CLOSED. The Oct 17
+dashboard read is still scheduled (14:00Z).
