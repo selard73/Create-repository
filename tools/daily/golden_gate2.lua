@@ -44,3 +44,28 @@ local backup = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); backup.
 if not backup:FindFirstChild("QuestionClient_pre_golden2") then local c = s:Clone(); c.Name = "QuestionClient_pre_golden2"; c.Enabled = false; c.Parent = backup end
 s.Source = n
 print(string.format("QQ GOLD DONE: QuestionClient %d -> %d chars; backup ServerStorage.HudBackup.QuestionClient_pre_golden2", #o, #n))
+-- ---- the daily card's golden line follows the gate as the card shows ----
+local D = workspace:FindFirstChild("Daily")
+local ds = D and D:FindFirstChild("DailyClient")
+if not (ds and ds:IsA("LuaSourceContainer")) then print("QQ GOLD DailyClient not found; the card patch skipped") return end
+local od = ds.Source
+if od:find([===[
+FRENCH_GOLDLINE_20261015_V1]===], 1, true) then print("QQ GOLD DailyClient already patched (" .. #od .. ")") return end
+if not od:find("local function frenchMapHudAllowed()", 1, true) then print("QQ GOLD DailyClient has no frenchMapHudAllowed(); the card patch skipped") return end
+local D1, DR = [===[
+	goldLine.Text = (state.goldName ~= "" and state.goldName ~= nil) and string.format("Golden Squirrel today: %s is hiding in %s", state.goldName, state.goldArea) or ""
+]===], [===[
+	goldLine.Text = (state.goldName ~= "" and state.goldName ~= nil) and string.format("Golden Squirrel today: %s is hiding in %s", state.goldName, state.goldArea) or ""
+	goldLine.Visible = frenchMapHudAllowed()   -- FRENCH_GOLDLINE_20261015_V1 (Shannon: the line showed on a card in Italy once; the gate now runs as the card shows, not only on an Area change)
+]===]
+local da, db = od:find(D1, 1, true)
+if not da then print("QQ GOLD DailyClient anchor not found; the card patch skipped") return end
+if od:find(D1, db + 1, true) then print("QQ GOLD DailyClient anchor matches more than once; the card patch skipped") return end
+local nd = od:sub(1, da - 1) .. DR .. od:sub(db + 1)
+do
+	local ok, f, err = pcall(function() return loadstring(nd) end)
+	if ok and not f then print("QQ GOLD DailyClient patched source does not compile: " .. tostring(err) .. "; the card patch skipped") return end
+end
+if not backup:FindFirstChild("DailyClient_pre_golden2") then local c = ds:Clone(); c.Name = "DailyClient_pre_golden2"; c.Enabled = false; c.Parent = backup end
+ds.Source = nd
+print(string.format("QQ GOLD DONE: DailyClient %d -> %d chars; backup ServerStorage.HudBackup.DailyClient_pre_golden2", #od, #nd))

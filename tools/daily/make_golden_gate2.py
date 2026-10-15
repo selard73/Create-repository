@@ -35,19 +35,32 @@ R1 = '''		if not frenchQuestionReminderAllowed() then
 '''
 MARK = "FRENCH_DRAWN_ANNOUNCE_20261015_V1"
 NEED = "local function frenchQuestionReminderAllowed()"
+# DailyClient (the live 15020-byte copy = tools/tools_src/DailyClient.lua): the daily card's golden line is hidden by updateFrenchDailyHud()
+# on every Area change, but showCard() only sets its text - so a card shown before the Area attribute has settled (a join straight into
+# Italy, the boat card) can carry the line until the next Area change. Shannon (Oct 15): "I think it was the daily card's golden line
+# ... must be an edge case because it worked after that". One exact-string patch: the line's visibility follows the gate as the card shows.
+D1 = '\tgoldLine.Text = (state.goldName ~= "" and state.goldName ~= nil) and string.format("Golden Squirrel today: %s is hiding in %s", state.goldName, state.goldArea) or ""\n'
+DR = D1 + '\tgoldLine.Visible = frenchMapHudAllowed()   -- FRENCH_GOLDLINE_20261015_V1 (Shannon: the line showed on a card in Italy once; the gate now runs as the card shows, not only on an Area change)\n'
+DMARK = "FRENCH_GOLDLINE_20261015_V1"
 
 # ---- self-test on the repo's live copy ----
+chk = HERE / "check"; chk.mkdir(exist_ok=True)
 live = (ROOT / "tools/tools_src/QuestionClient_phone1.lua").read_text(encoding="utf-8")
 assert len(live.encode("utf-8")) == 28598, len(live.encode("utf-8"))   # (the live script is 28598 bytes: the runner counts bytes)
 assert live.count(F1) == 1 and NEED in live and MARK not in live
 test = live.replace(F1, R1)
-chk = HERE / "check"; chk.mkdir(exist_ok=True)
+dlive = (ROOT / "tools/tools_src/DailyClient_phone1.lua").read_text(encoding="utf-8")   # (the live 15020-byte copy)
+assert len(dlive.encode("utf-8")) == 15020, len(dlive.encode("utf-8"))
+assert dlive.count(D1) == 1 and DMARK not in dlive and "local function frenchMapHudAllowed()" in dlive
+dtest = dlive.replace(D1, DR)
+(chk / "DailyClient_patched2.lua").write_text(dtest, encoding="utf-8")
 (chk / "QuestionClient_patched2.lua").write_text(test, encoding="utf-8")
 luau = os.environ.get("LUAU_COMPILE")
 if luau:
-    r = subprocess.run([luau, "--null", str(chk / "QuestionClient_patched2.lua")], capture_output=True, text=True)
-    assert "Error" not in (r.stdout + r.stderr), r.stdout + r.stderr
-    print("self-test: the patched QuestionClient compiles")
+    for f in ("QuestionClient_patched2.lua", "DailyClient_patched2.lua"):
+        r = subprocess.run([luau, "--null", str(chk / f)], capture_output=True, text=True)
+        assert "Error" not in (r.stdout + r.stderr), f + r.stdout + r.stderr
+    print("self-test: the patched QuestionClient and DailyClient compile")
 
 lua = r'''-- daily/golden_gate2 (job 101 round 2): EDIT mode. The Wise Squirrel draw announcement (banner + chat line) shows only on the
 -- French map (Shannon, Oct 15 2026). ONE exact-string patch of workspace.DailyQuestion.QuestionClient: the "drawn" block runs only
@@ -77,8 +90,27 @@ local backup = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); backup.
 if not backup:FindFirstChild("QuestionClient_pre_golden2") then local c = s:Clone(); c.Name = "QuestionClient_pre_golden2"; c.Enabled = false; c.Parent = backup end
 s.Source = n
 print(string.format("QQ GOLD DONE: QuestionClient %d -> %d chars; backup ServerStorage.HudBackup.QuestionClient_pre_golden2", #o, #n))
+-- ---- the daily card's golden line follows the gate as the card shows ----
+local D = workspace:FindFirstChild("Daily")
+local ds = D and D:FindFirstChild("DailyClient")
+if not (ds and ds:IsA("LuaSourceContainer")) then print("QQ GOLD DailyClient not found; the card patch skipped") return end
+local od = ds.Source
+if od:find(@@DMARK@@, 1, true) then print("QQ GOLD DailyClient already patched (" .. #od .. ")") return end
+if not od:find("local function frenchMapHudAllowed()", 1, true) then print("QQ GOLD DailyClient has no frenchMapHudAllowed(); the card patch skipped") return end
+local D1, DR = @@D1@@, @@DR@@
+local da, db = od:find(D1, 1, true)
+if not da then print("QQ GOLD DailyClient anchor not found; the card patch skipped") return end
+if od:find(D1, db + 1, true) then print("QQ GOLD DailyClient anchor matches more than once; the card patch skipped") return end
+local nd = od:sub(1, da - 1) .. DR .. od:sub(db + 1)
+do
+	local ok, f, err = pcall(function() return loadstring(nd) end)
+	if ok and not f then print("QQ GOLD DailyClient patched source does not compile: " .. tostring(err) .. "; the card patch skipped") return end
+end
+if not backup:FindFirstChild("DailyClient_pre_golden2") then local c = ds:Clone(); c.Name = "DailyClient_pre_golden2"; c.Enabled = false; c.Parent = backup end
+ds.Source = nd
+print(string.format("QQ GOLD DONE: DailyClient %d -> %d chars; backup ServerStorage.HudBackup.DailyClient_pre_golden2", #od, #nd))
 '''
-for k, v in {"F1": L(F1), "R1": L(R1), "MARK": L(MARK), "NEED": L(NEED)}.items():
+for k, v in {"F1": L(F1), "R1": L(R1), "MARK": L(MARK), "NEED": L(NEED), "D1": L(D1), "DR": L(DR), "DMARK": L(DMARK)}.items():
     assert lua.count("@@" + k + "@@") == 1, k
     lua = lua.replace("@@" + k + "@@", v)
 assert "@@" not in lua
