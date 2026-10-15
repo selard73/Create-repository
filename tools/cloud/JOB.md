@@ -1777,3 +1777,16 @@ daily_day, daily_streak, frenchrank): the filter works. Lines in tools/interact/
 job 99's preview.
 Edit check after the round-2 test (runner 7): v1369; Interact (InteractServer 8921, Enabled true, Repeat 60, Budget 90); Funnel
 (FunnelServer 7394, ForceNew false); backups Funnel_pre_1, Interact_pre_1; no leftovers; HttpEnabled false. Unpublished: job 98 round 2.
+PUBLISHED by Shannon at 2026-10-15T02:50:28.832Z (games API "updated"; "published"): job 98 round 2 (the item filter) is LIVE. Nothing unpublished in Studio.
+Next: job 99's look-pass PREVIEW (play test, before/after pictures, desktop viewport).
+Result job 99 PREVIEW (runner 7, abbc23c; play test, nothing installed, Oct 15 ~03:00Z; desktop viewport only - the emulator is not
+switchable from the MCP): QQ LOOK PREVIEW (play test, discarded on stop) / Terrain.WaterReflectance 0.55 -> 0.85 / WaterTransparency
+0.45 -> 0.65 / WaterWaveSize 0.06 -> 0.1 / Bloom.Threshold 2 -> 1.2 / LookGrade added / Terrain Grass colour 96,150,72 -> 86,140,62 /
+LeafyGrass the same / QQ LOOK DONE (7 lines). Four before/after pairs with the same camera each: tools/look/shots/look-{before,after}-
+{W-harbour,A-meadow,C-forest,B-lantern,D-piazza}.jpg (five spots: the harbour water + sky, the belvedere meadow, the forest floor, a
+piazza lamp post, the fountain square). What shows: the water brighter and more mirror-like; grass a shade deeper; a little more
+contrast and saturation everywhere; BUT at Bloom.Threshold 1.2 the pale piazza cobbles bloom noticeably brighter in daylight (the lamps
+are unlit at ClockTime 14.5, so the lantern glow itself cannot be judged by day). Lines in tools/look/preview99_result_2026-10-15.txt.
+Shannon picks what stays; the Edit run is the same script (undo look_undo1.lua).
+Edit check after the job 99 preview (runner 7): v1369; water refl 0.55 / transp 0.45 / wave 0.06; Bloom threshold 2; no LookGrade;
+0 LookWas_ attributes; grass 96,150,72; HttpEnabled false. Edit untouched by the preview. Her picks pending.
