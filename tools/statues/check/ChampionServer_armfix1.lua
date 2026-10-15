@@ -1,128 +1,4 @@
--- Champion: the Grand Keeper of the Day. Shannon (Sep 25): "the first person to complete [all 44] on any day gets
--- awarded the Grand Keeper of the Great Acorn title and it's numbered by days the game is in existence. For instance,
--- Grand Keeper of the Great Acorn (Day 1); if there is a day where no one gets it, you skip that day. When the first
--- person finds all 44, there should be fireworks seen on all of the maps and an announcement and a statue in the park
--- next to the fountain of that player holding a giant acorn and a squirrel saluting him."
---   THE CLAIM: the moment a player's finds reach every squirrel in the game, the server claims today in a DataStore
---   (DayChampion_v1, key day_<index>; UpdateAsync, so two servers can never both win). The day turns at the daily
---   gift's DayOffsetHours (UTC). Day 1 is LaunchDay (a day index: 20721 = Sep 25 2026); nothing is awarded before it.
---   NUMBERED BY ORDER (Shannon, Sep 26: "I don't want to count it by days because there could be days when no one gets
---   it but count it by order instead 1st, 2nd, 3rd, 4th"): the day claim still makes one winner a day, and each winner
---   also takes the next number in the HALL (same store, key "hall" = {list = {{no, uid, name, user, day, t, total}, ..}};
---   UpdateAsync, so two servers never hand out the same number). The Day winners from before were numbered in the order
---   they won, by the first live server to read the hall (reconcile() also mends a win whose number failed to save).
---   ONCE PER TOTAL (Shannon: winners only - "I think its crazy to give every person a status, then where is the
---   competition?"): whoever has already won with every squirrel there is cannot win again (e.g. after a Reset); when a
---   new map raises the total, everyone races again ("players who progress will get the chance to win it in the next map").
---   THE TITLE: "3rd Grand Keeper of the Great Acorn" - player attribute ChampionTitle, which the honours show on the
---   name tag and the title pill in place of the plain title, set from the hall on join with ChampionNo, ChampionDay,
---   ChampionTotal and ChampionWins (the badge case reads them). Nothing new is written to a player's save.
---   THE PARTY: MessagingService tells every server: fireworks over all three maps, a banner and a chat line for
---   everyone, and the statue is rebuilt.
---   THE STATUE: on the lawn just south of the fountain courtyard, ONE statue on one plinth (Shannon: "the statue
---   should include the character and the squirrel, they should not be 2 separate statues"): the champion's own avatar
---   in marble holding a gilded giant acorn up high in one hand, the other arm hanging relaxed at their side (Shannon:
---   "holding the acorn up in one hand" ... "at her side the way the character's arms naturally fall when standing
---   still"), and beside them on the same plinth the
---   Forest Ranger Squirrel in marble, standing to attention and looking up at them, tail raised high in salute (the
---   squirrel rigs have chest, neck, head and tail bones but no arms, so a paw-to-brow salute cannot be posed). A
---   bronze plaque on the front. The newest Keeper stands there (the last in the hall); before the first one, the
---   squirrel waits beside the acorn.
--- Studio cannot reach the DataStore or MessagingService (API access stays off for tests): there a claim is decided
--- inside the one server, and the day may be before LaunchDay. Studio also gets ChampionDebug (BindableFunction).
--- Also patches workspace.Honours.TitleServer so the honours show ChampionTitle.
--- Run in edit mode (re-runnable).
-return function(opts)
-	opts = opts or {}
-	local RS = game:GetService("ReplicatedStorage")
-	local ServerStorage = game:GetService("ServerStorage")
-	local C = Color3.fromRGB
-	local old = workspace:FindFirstChild("Champion")
-	local keepBadge = old and tonumber(old:GetAttribute("Badge_champion")) or 0          -- a badge id entered in Properties survives a reinstall
-	if old then old:Destroy() end
-	local F = Instance.new("Folder"); F.Name = "Champion"
-	local PX, PZ = opts.x or 260, opts.z or -54
-	-- one plinth, two figures: the champion a little east of the middle, the squirrel to the west, turned to face them
-	local FIG_DX, SQ_DX = opts.figureDX or 2.2, opts.squirrelDX or -3.4
-	F:SetAttribute("LaunchDay", opts.launchDay or 20721)
-	-- the Roblox (profile) badge for the win: 0 until Shannon creates it on the Creator Hub and pastes its id here.
-	-- A Roblox badge cannot carry the day number; the in-game badge case (workspace.BadgeCase) shows that.
-	F:SetAttribute("Badge_champion", opts.badgeId or (keepBadge > 0 and keepBadge) or 2765102309602723)   -- "Grand Keeper of the Day" (Shannon, Sep 25)
-	F:SetAttribute("Scale", 1.5); F:SetAttribute("SquirrelScale", 1.45); F:SetAttribute("SaluteSquirrel", "ranger_squirrel")
-	F:SetAttribute("ChestTilt", -8); F:SetAttribute("HeadTilt", -18); F:SetAttribute("TailTilt", 30)
-	F:SetAttribute("HoldHand", "Left")                                      -- the hand that holds the acorn up (the squirrel's side)
-	-- where each arm points, in the statue's own frame: (out to that arm's side, up, forward)
-	F:SetAttribute("HoldArm", Vector3.new(0.45, 1, 0.15)); F:SetAttribute("FreeArm", Vector3.new(0.22, -1, 0.12)); F:SetAttribute("FreeBend", 15)   -- relaxed: a little out and forward, elbow soft
-	F:SetAttribute("FireworkSeconds", 25); F:SetAttribute("FireworkLaunch", opts.launchSound or ""); F:SetAttribute("FireworkPop", opts.popSound or "")
-	-- the show's sound, heard the same everywhere: Pro Sound Effects "Fireworks Fast 3 (SFX)" (13 s, looped); swap freely
-	F:SetAttribute("FireworkShow", opts.showSound or "rbxassetid://9114447178"); F:SetAttribute("FireworkVolume", 0.6)
-	local ev = RS:FindFirstChild("ChampionEvent")
-	if not ev then ev = Instance.new("RemoteEvent"); ev.Name = "ChampionEvent"; ev.Parent = RS end
-
-	local function part(name, size, cf, colour, material, parent, shape)
-		local p = Instance.new("Part"); p.Name = name; p.Size = size; p.CFrame = cf; p.Color = colour
-		p.Material = material or Enum.Material.SmoothPlastic; p.Anchored = true; p.CanCollide = true
-		p.TopSurface = Enum.SurfaceType.Smooth; p.BottomSurface = Enum.SurfaceType.Smooth
-		if shape then p.Shape = shape end
-		p.Parent = parent
-		return p
-	end
-	local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude; rp.FilterDescendantsInstances = {F}
-	local hit = workspace:Raycast(Vector3.new(PX, 30, PZ), Vector3.new(0, -60, 0), rp)
-	local g = hit and hit.Position.Y or 0
-	local STONE, TRIM, BRONZE = C(214, 208, 196), C(226, 186, 80), C(150, 108, 58)
-
-	-- ---------------------------------------------------------------- the plinth and its plaque ----
-	local plinth = Instance.new("Model"); plinth.Name = "Plinth"; plinth.Parent = F
-	local PW = opts.plinthWidth or 12                                        -- wide enough for the champion and the squirrel side by side
-	part("Base", Vector3.new(PW + 2, 1, 9), CFrame.new(PX, g + 0.5, PZ), STONE, Enum.Material.Marble, plinth)
-	part("Body", Vector3.new(PW, 3, 7), CFrame.new(PX, g + 2.5, PZ), STONE, Enum.Material.Marble, plinth)
-	part("Band", Vector3.new(PW + 0.12, 0.25, 7.12), CFrame.new(PX, g + 3.7, PZ), TRIM, Enum.Material.SmoothPlastic, plinth)
-	part("Cap", Vector3.new(PW + 0.6, 0.4, 7.6), CFrame.new(PX, g + 4.2, PZ), STONE, Enum.Material.Marble, plinth)
-	local plaque = part("Plaque", Vector3.new(5.4, 2.2, 0.15), CFrame.new(PX, g + 2.3, PZ - 3.5 - 0.075), BRONZE, Enum.Material.SmoothPlastic, plinth)
-	local sg = Instance.new("SurfaceGui"); sg.Name = "Words"; sg.Face = Enum.NormalId.Front; sg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
-	sg.PixelsPerStud = 60; sg.LightInfluence = 0.4; sg.Parent = plaque
-	local function line(name, y, h, size, font, colour)
-		local l = Instance.new("TextLabel"); l.Name = name; l.BackgroundTransparency = 1; l.Position = UDim2.new(0, 10, 0, y); l.Size = UDim2.new(1, -20, 0, h)
-		l.Font = font; l.TextScaled = true; l.TextColor3 = colour; l.TextWrapped = true; l.Text = ""; l.Parent = sg
-		local cap = Instance.new("UITextSizeConstraint"); cap.MaxTextSize = size; cap.Parent = l   -- long names and titles shrink to fit
-		local s = Instance.new("UIStroke"); s.Color = C(70, 44, 18); s.Thickness = 1.5; s.Transparency = 0.2; s.Parent = l
-		return l
-	end
-	line("Title", 8, 30, 26, Enum.Font.Antique, C(255, 226, 150)).Text = "THE GRAND KEEPER"
-	line("Day", 38, 24, 20, Enum.Font.Antique, C(255, 236, 190))
-	line("Who", 60, 34, 30, Enum.Font.FredokaOne, C(255, 246, 220)).Text = "This could be you"
-	line("Note", 94, 36, 15, Enum.Font.Merriweather, C(255, 236, 190)).Text = "Be the first to find all 44 squirrels in a day and your statue will stand here."
-	F:SetAttribute("PlinthX", PX); F:SetAttribute("PlinthZ", PZ); F:SetAttribute("TopY", g + 4.4)
-	-- where each of them stands on the top of the plinth
-	F:SetAttribute("FigureX", PX + FIG_DX)
-	F:SetAttribute("SquirrelX", PX + SQ_DX); F:SetAttribute("SquirrelY", g + 4.4); F:SetAttribute("SquirrelZ", PZ)
-
-	-- ---------------------------------------------------------------- the gilded acorn (a template for the server) ----
-	local oldAcorn = ServerStorage:FindFirstChild("ChampionAcorn"); if oldAcorn then oldAcorn:Destroy() end
-	local tpl = ServerStorage:FindFirstChild("AcornTemplate")
-	local acornOk = false
-	if tpl then
-		local a = tpl:Clone(); a.Name = "ChampionAcorn"
-		for _, d in ipairs(a:GetDescendants()) do
-			if d:IsA("BaseScript") or d:IsA("Light") or d:IsA("ParticleEmitter") or d:IsA("Sound") or d:IsA("ClickDetector") or d:IsA("TouchTransmitter") then d:Destroy() end
-		end
-		local hitPart = a:FindFirstChild("Hit"); if hitPart then hitPart:Destroy() end
-		for _, p in ipairs(a:GetDescendants()) do
-			if p:IsA("BasePart") then
-				p.Anchored = true; p.CanCollide = true; p.CastShadow = true
-				if p:IsA("MeshPart") then p.TextureID = "" end
-				local n = p.Name:lower()
-				p.Color = (n == "nut") and C(255, 206, 64) or (n == "cap" and C(214, 160, 44) or C(190, 136, 40))
-				p.Material = Enum.Material.SmoothPlastic; p.Reflectance = 0.2
-			end
-		end
-		a.Parent = ServerStorage
-		acornOk = true
-	end
-
-	-- ---------------------------------------------------------------- server ----
-	local SERVER = [==[local Players = game:GetService("Players")
+local Players = game:GetService("Players")
 local RS = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local DSS = game:GetService("DataStoreService")
@@ -182,10 +58,24 @@ local function wornLook(player)
 	end
 	return next(look) and look or nil
 end
+-- Keeper is per map (Shannon, Oct 3 2026): this French Keeper counts only the three French maps.
+local FRENCH = {forest = true, village = true, domaine = true}
+local FRENCH_ID, NOT_FRENCH = {}, {}
+do
+	local ok, R = pcall(require, workspace.SquirrelScripts.SquirrelRegistry)
+	if ok then for _, q in ipairs(R.squirrels) do if FRENCH[q.map] then FRENCH_ID[q.id] = true else NOT_FRENCH[q.id] = true end end end
+end
+local function frenchFound(player)
+	local s = player:GetAttribute("FoundIds")
+	if type(s) ~= "string" or next(FRENCH_ID) == nil then return tonumber(player:GetAttribute("SquirrelsFound")) or 0 end
+	local n = 0
+	for id in s:gmatch("[^,]+") do if FRENCH_ID[id] then n += 1 end end
+	return n
+end
 local function totalSquirrels()
 	local ids, n = {}, 0
 	for _, m in ipairs(CollectionService:GetTagged("Squirrel")) do
-		local id = m:GetAttribute("SquirrelId")
+		local id = m:GetAttribute("SquirrelId"); if id and NOT_FRENCH[id] then id = nil end
 		if id and not ids[id] then ids[id] = true; n += 1 end
 	end
 	return n
@@ -450,6 +340,18 @@ local function makeFigure(rec, o)
 	local freeSide = (holdSide == "Left") and "Right" or "Left"
 	local upR = aim(holdSide, F:GetAttribute("HoldArm") or Vector3.new(0.45, 1, 0.15), 0)                           -- the acorn, held up high
 	local upL = aim(freeSide, F:GetAttribute("FreeArm") or Vector3.new(0.22, -1, 0.12), F:GetAttribute("FreeBend") or 15)   -- relaxed at the side
+	-- ARMFIX1 round 2 (runner 7 reproduced it on nana3365308's "T2_Ballet_Sleeves", a LAYERED jacket): a WrapLayer top deforms with the
+	-- living rig, not with the carved pose, so its sleeve stays where the arm was - a thin second arm beside the raised one. Marble wears
+	-- no cloth: layered upper-body clothing comes off before the carving; layered pants and shoes keep (no arms in them).
+	do
+		local UPPER = {Jacket = true, Shirt = true, TShirt = true, Sweater = true, DressSkirt = true}
+		for _, acc in ipairs(model:GetChildren()) do
+			if acc:IsA("Accessory") and acc:FindFirstChildWhichIsA("WrapLayer", true) then
+				local okT, t = pcall(function() return acc.AccessoryType.Name end)
+				if okT and UPPER[t] then acc:Destroy() end
+			end
+		end
+	end
 	if hum then hum:Destroy() end
 	stoneify(model)
 	strip(model)
@@ -593,7 +495,7 @@ local function hallFind(uid)                                         -- the play
 end
 local function hallWins(uid) local n = 0; for _, e in ipairs(hall) do if e.uid == uid then n += 1 end end; return n end
 local function hallHas(uid, total)                                   -- already won with this many squirrels (or more)?
-	for _, e in ipairs(hall) do if e.uid == uid and (tonumber(e.total) or 44) >= total then return true end end
+	for _, e in ipairs(hall) do if e.uid == uid then return true end end   -- once per player, whatever the total (Shannon, Oct 9 2026)
 	return false
 end
 -- every player's screen gets the list (for the Hall of Fame at the Chateau): HallJson on this folder, in order
@@ -756,9 +658,9 @@ local function watch(player)
 		while player.Parent and not hallLoaded and os.clock() - t0 < 80 do task.wait(0.5) end
 		if not player.Parent then return end
 		applyTitle(player)
-		local last = tonumber(player:GetAttribute("SquirrelsFound")) or 0
+		local last = frenchFound(player)
 		player:GetAttributeChangedSignal("SquirrelsFound"):Connect(function()
-			local now = tonumber(player:GetAttribute("SquirrelsFound")) or 0
+			task.wait(0.2); local now = frenchFound(player)
 			local total = totalSquirrels()
 			if total > 0 and now >= total and last < total then task.spawn(crown, player) end
 			last = now
@@ -819,226 +721,3 @@ if STUDIO then
 	end
 end
 print("Champion: ready")
-]==]
-
-	-- ---------------------------------------------------------------- client ----
-	local CLIENT = [==[
-local Players = game:GetService("Players")
-local RS = game:GetService("ReplicatedStorage")
-local TweenService = game:GetService("TweenService")
-local Debris = game:GetService("Debris")
-local player = Players.LocalPlayer
-local pg = player:WaitForChild("PlayerGui")
-local F = script.Parent
-local ev = RS:WaitForChild("ChampionEvent")
-local C = Color3.fromRGB
-local NAVY, GOLD, CREAM = C(38, 30, 52), C(240, 200, 90), C(255, 246, 220)
-local FONT = Enum.Font.FredokaOne
-local function ordinal(n)
-	n = math.floor(tonumber(n) or 0)
-	local m100, m10, s = n % 100, n % 10, "th"
-	if m100 < 11 or m100 > 13 then
-		if m10 == 1 then s = "st" elseif m10 == 2 then s = "nd" elseif m10 == 3 then s = "rd" end
-	end
-	return tostring(n) .. s
-end
-
--- ---- the announcement ----
-local gui = Instance.new("ScreenGui"); gui.Name = "ChampionGui"; gui.ResetOnSpawn = false; gui.IgnoreGuiInset = true; gui.DisplayOrder = 17; gui.Parent = pg
-local card = Instance.new("Frame"); card.AnchorPoint = Vector2.new(0.5, 0); card.Position = UDim2.new(0.5, 0, 0, -120); card.Size = UDim2.new(0.9, 0, 0, 78)
-card.BackgroundColor3 = NAVY; card.BackgroundTransparency = 0.05; card.BorderSizePixel = 0; card.Visible = false; card.Parent = gui
-local lim = Instance.new("UISizeConstraint"); lim.MaxSize = Vector2.new(560, 78); lim.Parent = card
-local cc = Instance.new("UICorner"); cc.CornerRadius = UDim.new(0, 16); cc.Parent = card
-local cs = Instance.new("UIStroke"); cs.Color = GOLD; cs.Thickness = 2.5; cs.Parent = card
-local l1 = Instance.new("TextLabel"); l1.BackgroundTransparency = 1; l1.Position = UDim2.fromOffset(12, 8); l1.Size = UDim2.new(1, -24, 0, 32)
-l1.Font = FONT; l1.TextScaled = true; l1.TextColor3 = GOLD; l1.Text = ""; l1.Parent = card
-local l1c = Instance.new("UITextSizeConstraint"); l1c.MaxTextSize = 26; l1c.Parent = l1
-local l2 = Instance.new("TextLabel"); l2.BackgroundTransparency = 1; l2.Position = UDim2.fromOffset(12, 42); l2.Size = UDim2.new(1, -24, 0, 26)
-l2.Font = FONT; l2.TextScaled = true; l2.TextColor3 = CREAM; l2.Text = ""; l2.Parent = card
-local l2c = Instance.new("UITextSizeConstraint"); l2c.MaxTextSize = 17; l2c.Parent = l2
-local shownAt = 0
-local function dailyCardUp()                          -- the daily acorns card is showing (nothing goes on top of it: Shannon)
-	local dg = pg:FindFirstChild("DailyGui")
-	local dc = dg and dg:FindFirstChild("DailyCard")
-	return dc ~= nil and dc:IsA("GuiObject") and dc.Visible and dg.Enabled
-end
-local function titleBannerUp()                        -- the honours' "You are now a ..." banner (finding all 44 brings both at once)
-	local hb = pg:FindFirstChild("HonourBar")
-	local b = hb and hb:FindFirstChild("Banner")
-	return b ~= nil and b:IsA("GuiObject") and b.Visible
-end
-local function announce(a, b, secs)
-	task.spawn(function()
-		local t1 = os.clock()
-		task.wait(0.3)                                    -- (the honours banner, fired in the same moment, shows first)
-		while (dailyCardUp() or titleBannerUp()) and os.clock() - t1 < 90 do task.wait(0.3) end
-		l1.Text = a; l2.Text = b
-		card.Visible = true
-		local mine = os.clock(); shownAt = mine
-		TweenService:Create(card, TweenInfo.new(0.6, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.5, 0, 0, 128)}):Play()
-		task.delay(secs or 10, function()
-			if shownAt ~= mine then return end
-			local t = TweenService:Create(card, TweenInfo.new(0.5), {Position = UDim2.new(0.5, 0, 0, -120)}); t:Play()
-			t.Completed:Connect(function() if shownAt == mine then card.Visible = false end end)
-		end)
-	end)
-end
-local function chat(text)
-	pcall(function()
-		local ch = game:GetService("TextChatService"):WaitForChild("TextChannels", 3):WaitForChild("RBXGeneral", 3)
-		ch:DisplaySystemMessage(text)
-	end)
-end
-
--- ---- fireworks over all three maps (each screen fires its own; nothing is sent over the network) ----
-local SITES = {{0, -60}, {-70, -140}, {70, -170}, {205, -50}, {315, -60}, {260, -170}, {430, -40}, {540, -140}, {650, -60}}
-local COLOURS = {C(255, 60, 60), C(255, 150, 40), C(255, 230, 60), C(80, 230, 90), C(60, 220, 255), C(80, 120, 255), C(180, 90, 255), C(255, 90, 200)}
-local function sound(id, parent, vol)
-	if not id or id == "" then return end
-	local s = Instance.new("Sound"); s.SoundId = id; s.Volume = vol; s.RollOffMaxDistance = 700; s.RollOffMinDistance = 40; s.Parent = parent; s:Play()
-	Debris:AddItem(s, 6)
-end
-local function threeColours(first)
-	local picks, used = {first}, {[first] = true}
-	for _ = 1, 30 do
-		if #picks >= 3 then break end
-		local c = COLOURS[math.random(1, #COLOURS)]
-		if not used[c] then used[c] = true; picks[#picks + 1] = c end
-	end
-	return picks
-end
-local function rocket(x, z)
-	local colour = COLOURS[math.random(1, #COLOURS)]
-	local topY = math.random(80, 120)
-	-- a bright spark going up with only a short, faint wisp behind it (Shannon: "less of a tail traveling up")
-	local r = Instance.new("Part"); r.Name = "Rocket"; r.Shape = Enum.PartType.Ball; r.Size = Vector3.new(0.45, 0.45, 0.45); r.Anchored = true; r.CanCollide = false; r.CanQuery = false
-	r.CastShadow = false; r.Material = Enum.Material.Neon; r.Color = colour; r.CFrame = CFrame.new(x, 4, z); r.Parent = workspace
-	local a0 = Instance.new("Attachment"); a0.Position = Vector3.new(0, 0.08, 0); a0.Parent = r
-	local a1 = Instance.new("Attachment"); a1.Position = Vector3.new(0, -0.08, 0); a1.Parent = r
-	local tr = Instance.new("Trail"); tr.Attachment0 = a0; tr.Attachment1 = a1; tr.Lifetime = 0.035; tr.LightEmission = 1; tr.FaceCamera = true
-	tr.Color = ColorSequence.new(colour); tr.Transparency = NumberSequence.new(0.7, 1); tr.WidthScale = NumberSequence.new(1, 0); tr.Parent = r
-	sound(F:GetAttribute("FireworkLaunch"), r, 0.5)
-	local up = TweenService:Create(r, TweenInfo.new(1.3, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {CFrame = CFrame.new(x + math.random(-6, 6), topY, z + math.random(-6, 6))})
-	up:Play()
-	up.Completed:Connect(function()
-		local at = r.CFrame
-		r.Transparency = 1
-		local b = Instance.new("Part"); b.Anchored = true; b.CanCollide = false; b.CanQuery = false; b.Transparency = 1; b.Size = Vector3.new(1, 1, 1); b.CFrame = at; b.Parent = workspace
-		local att = Instance.new("Attachment"); att.Parent = b
-		-- three colours in every burst, big bright stars that read against a daytime sky, and a glitter of white
-		local picks = threeColours(colour)
-		picks[#picks + 1] = C(255, 250, 225)
-		for k, col in ipairs(picks) do
-			local white = k == #picks
-			local pe = Instance.new("ParticleEmitter"); pe.Texture = "rbxasset://textures/particles/sparkles_main.dds"; pe.LightEmission = 1; pe.LightInfluence = 0
-			pe.Brightness = 2; pe.Color = ColorSequence.new(col); pe.Speed = NumberRange.new(white and 20 or 34, white and 30 or 52)
-			pe.SpreadAngle = Vector2.new(180, 180); pe.Drag = 2.2; pe.Acceleration = Vector3.new(0, -9, 0); pe.Lifetime = NumberRange.new(1.6, 2.6)
-			pe.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, white and 1.4 or 3.2), NumberSequenceKeypoint.new(0.6, white and 1 or 2.2), NumberSequenceKeypoint.new(1, 0)})
-			pe.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.75, 0.15), NumberSequenceKeypoint.new(1, 1)})
-			pe.Rate = 0; pe.Parent = att; pe:Emit(white and 20 or 34)
-		end
-		-- and a flash of the main colour as it goes
-		local ball = Instance.new("Part"); ball.Shape = Enum.PartType.Ball; ball.Material = Enum.Material.Neon; ball.Color = colour; ball.CastShadow = false
-		ball.Anchored = true; ball.CanCollide = false; ball.CanQuery = false; ball.CanTouch = false; ball.Size = Vector3.new(2, 2, 2); ball.Transparency = 0.2; ball.CFrame = at; ball.Parent = workspace
-		TweenService:Create(ball, TweenInfo.new(0.45, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = Vector3.new(14, 14, 14), Transparency = 1}):Play()
-		Debris:AddItem(ball, 0.6)
-		local light = Instance.new("PointLight"); light.Color = colour; light.Brightness = 6; light.Range = 60; light.Parent = b
-		TweenService:Create(light, TweenInfo.new(0.5), {Brightness = 0}):Play()
-		sound(F:GetAttribute("FireworkPop"), b, 0.8)
-		Debris:AddItem(b, 3); Debris:AddItem(r, 0.7)
-	end)
-end
-local showing = false
-local function fireworks(secs)
-	if showing then return end
-	showing = true
-	local id = F:GetAttribute("FireworkShow")
-	if id and id ~= "" then
-		local s = Instance.new("Sound"); s.Name = "FireworkShow"; s.SoundId = id; s.Looped = true; s.Volume = F:GetAttribute("FireworkVolume") or 0.6
-		s.Parent = game:GetService("SoundService"); s:Play()
-		task.delay(secs + 1, function()
-			local t = TweenService:Create(s, TweenInfo.new(2), {Volume = 0}); t:Play()
-			t.Completed:Connect(function() s:Destroy() end)
-		end)
-	end
-	task.spawn(function()
-		local t0 = os.clock()
-		while os.clock() - t0 < secs do
-			-- most of the show goes up over whichever map this screen is looking at; now and then one over a far map
-			local cam = workspace.CurrentCamera
-			local here = cam and cam.CFrame.Position or Vector3.zero
-			local order = {}
-			for k, st in ipairs(SITES) do order[k] = {s = st, d = (Vector2.new(st[1], st[2]) - Vector2.new(here.X, here.Z)).Magnitude} end
-			table.sort(order, function(a, b) return a.d < b.d end)
-			for k, chance in ipairs({1, 0.8, 0.55}) do
-				if math.random() < chance then local st = order[k].s; rocket(st[1] + math.random(-18, 18), st[2] + math.random(-18, 18)) end
-			end
-			if math.random() < 0.25 then local st = order[math.random(4, #order)].s; rocket(st[1] + math.random(-15, 15), st[2] + math.random(-15, 15)) end
-			task.wait(0.35 + math.random() * 0.2)
-		end
-		showing = false
-	end)
-end
-
--- the Keepers are numbered in the order they won (Shannon, Sep 26): "the 3rd Grand Keeper", not "Day 3"
-ev.OnClientEvent:Connect(function(what, a, b, c)
-	if what == "crowned" and type(a) == "table" then
-		local all = tonumber(a.total) or 44
-		local who = a.no and ("the " .. ordinal(a.no) .. " Grand Keeper") or "today's Grand Keeper"
-		if a.uid == player.UserId then
-			announce("You are " .. who .. "!", "Of the Great Acorn - your statue stands by the fountain")
-		else
-			announce(tostring(a.name) .. " is " .. who .. "!", "First to find all " .. all .. " squirrels today")
-		end
-		chat(string.format("%s found all %d squirrels first today and is %s of the Great Acorn! Their statue now stands by the fountain.", tostring(a.name), all, who))
-		fireworks(F:GetAttribute("FireworkSeconds") or 25)
-	elseif what == "late" then
-		-- SAY IT PLAINLY (Shannon, Sep 26, finishing second: "it said I got all 44 and I am the grand keeper, but no fireworks"):
-		-- today's statue is someone else's, and when the next chance comes (the day turns at the daily gift's DayOffsetHours UTC)
-		local daily = workspace:FindFirstChild("Daily")
-		local off = (daily and daily:GetAttribute("DayOffsetHours")) or 9
-		local now = workspace:GetServerTimeNow()
-		local nextAt = (math.floor((now - off * 3600) / 86400) + 1) * 86400 + off * 3600
-		local left = math.max(0, nextAt - now)
-		local h, m = math.floor(left / 3600), math.floor(left % 3600 / 60)
-		local untilNext = (h > 0) and string.format("%dh %dm", h, m) or string.format("%d minutes", math.max(1, m))
-		announce("Today's statue is already " .. tostring(a) .. "'s", "Next chance in " .. untilNext .. " - be the first to find all " .. (tonumber(c) or 44) .. " after the daily reset!", 14)
-		chat(string.format("Today's Grand Keeper statue went to %s. The next one goes to whoever finds all %d squirrels first after the daily reset - in %s.", tostring(a), tonumber(c) or 44, untilNext))
-	elseif what == "already" then
-		announce("All " .. (tonumber(b) or 44) .. " found again!", "You're already the " .. ordinal(a) .. " Grand Keeper. New squirrels mean a new race!")
-	end
-end)
-]==]
-	local s = Instance.new("Script"); s.Name = "ChampionServer"; s.RunContext = Enum.RunContext.Server; s.Source = SERVER; s.Parent = F
-	local c = Instance.new("Script"); c.Name = "ChampionClient"; c.RunContext = Enum.RunContext.Client; c.Source = CLIENT; c.Parent = F
-	F.Parent = workspace
-
-	-- ---------------------------------------------------------------- the honours learn about the champion ----
-	local patched = "no TitleServer"
-	local honours = workspace:FindFirstChild("Honours")
-	local ts = honours and honours:FindFirstChild("TitleServer")
-	if ts then
-		local src = ts.Source
-		if src:find("ChampionTitle", 1, true) then
-			patched = "already"
-		else
-			local function rep(a, b2)
-				local i, j = src:find(a, 1, true)
-				if not i then return false end
-				src = src:sub(1, i - 1) .. b2 .. src:sub(j + 1)
-				return true
-			end
-			local r1 = rep('gui.Title.Text = tier > 0 and TIERS[tier].title or ""',
-				'local champ = player:GetAttribute("ChampionTitle"); if champ == "" then champ = nil end; gui.Size = UDim2.new(0, champ and 380 or 260, 0, 64); gui.Title.Text = champ or (tier > 0 and TIERS[tier].title or "")')
-			local r2 = rep('gui.Title.TextColor3 = tier > 0 and TIERS[tier].colour or C(255, 222, 110)',
-				'gui.Title.TextColor3 = champ and C(255, 214, 60) or (tier > 0 and TIERS[tier].colour or C(255, 222, 110))')
-			local r3 = rep('player:SetAttribute("HonourTitle", tier > 0 and TIERS[tier].title or "")',
-				'local champT = player:GetAttribute("ChampionTitle"); player:SetAttribute("HonourTitle", (champT and champT ~= "") and champT or (tier > 0 and TIERS[tier].title or ""))')
-			local r4 = rep('task.delay(1, function() if player.Parent then update(player, false) end end)',
-				'player:GetAttributeChangedSignal("ChampionTitle"):Connect(function() update(player, false) end); task.delay(1, function() if player.Parent then update(player, false) end end)')
-			if r1 and r2 and r3 and r4 then ts.Source = src; patched = "patched" else patched = string.format("LINES NOT FOUND %s/%s/%s/%s", tostring(r1), tostring(r2), tostring(r3), tostring(r4)) end
-		end
-	end
-	print(string.format("Champion: installed - plinth at (%.0f,%.1f,%.0f), day 1 = %d, acorn template %s, honours %s", PX, g, PZ, F:GetAttribute("LaunchDay"), tostring(acornOk), patched))
-	return F
-end

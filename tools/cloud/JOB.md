@@ -2324,3 +2324,12 @@ BOUTIQUE ruled out: one MakeStatue figure per style (rue, cafe, chateau, riviera
 woodlandbard, moonmagician, harborsailor, variant 1) - every Sleeve / PuffSleeve / Cuff sits on its arm after the pose, none left
 hanging. NEW from Shannon: "it looks like the statue in the monument for star is completely gone" - asking her which monument and
 the exact name; then StatueDebug with that uid shows whether makeFigure fails for that avatar.
+
+Job 107 ROUND 2 (cloud thread; runner 7 reproduced it: nana3365308's "T2_Ballet_Sleeves", a LAYERED jacket - its sleeve stays in the
+avatar's pose beside the carved raised arm; destroying that accessory removes the second arm; the boutique's 12 styles all follow the
+arm). tools/statues/armfix1.lua now carries THREE patches of workspace.Champion.ChampionServer (self-tested on the live 34338-byte
+export): the one-figure-at-a-time queue, the same-spot guard, and - the reproduced cause - layered upper-body clothing (WrapLayer
+accessories of type Jacket / Shirt / TShirt / Sweater / DressSkirt) comes off the figure before stoneify; layered pants and shoes
+keep. Backup HudBackup.ChampionServer_pre_armfix1. On her word: run it in Edit ("QQ ARM DONE: ChampionServer 34338 -> n"), then a
+StatueDebug build of nana3365308 (one right arm), and the fountain / Hall / Guardian statues rebuild themselves at their next refresh
+(or rebuild them now). "The statue in the monument for star is completely gone" (Shannon): waiting for which monument and the name.

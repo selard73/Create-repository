@@ -1,6 +1,6 @@
 -- statues/armfix1 (job 107): EDIT mode. Statues no longer get a second right arm: workspace.Champion.ChampionServer's MakeStatue
 -- builds one figure at a time and removes a same-named figure already on the spot before parenting the new one (Shannon, Oct 15 2026).
--- Two exact-string patches, counted first; compiled where loadstring runs; original -> ServerStorage.HudBackup.ChampionServer_pre_armfix1.
+-- Three exact-string patches (round 2 adds: layered upper-body clothing comes off the figure before the carving - the reproduced cause), counted first; compiled where loadstring runs; original -> ServerStorage.HudBackup.ChampionServer_pre_armfix1.
 -- Output "QQ ARM".
 if game:GetService("RunService"):IsRunning() then print("QQ ARM ABORT - Play mode") return end
 local CH = workspace:FindFirstChild("Champion")
@@ -22,6 +22,24 @@ mk.OnInvoke = function(rec, o)
 	if not ok then error(m) end
 	return m, a, r, l
 end
+]===]}, {[===[
+	if hum then hum:Destroy() end
+	stoneify(model)
+]===], [===[
+	-- ARMFIX1 round 2 (runner 7 reproduced it on nana3365308's "T2_Ballet_Sleeves", a LAYERED jacket): a WrapLayer top deforms with the
+	-- living rig, not with the carved pose, so its sleeve stays where the arm was - a thin second arm beside the raised one. Marble wears
+	-- no cloth: layered upper-body clothing comes off before the carving; layered pants and shoes keep (no arms in them).
+	do
+		local UPPER = {Jacket = true, Shirt = true, TShirt = true, Sweater = true, DressSkirt = true}
+		for _, acc in ipairs(model:GetChildren()) do
+			if acc:IsA("Accessory") and acc:FindFirstChildWhichIsA("WrapLayer", true) then
+				local okT, t = pcall(function() return acc.AccessoryType.Name end)
+				if okT and UPPER[t] then acc:Destroy() end
+			end
+		end
+	end
+	if hum then hum:Destroy() end
+	stoneify(model)
 ]===]}, {[===[
 	model.Parent = o.parent or F
 ]===], [===[
