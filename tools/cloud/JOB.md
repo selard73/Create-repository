@@ -3197,3 +3197,9 @@ floated all the way to me! The sea is very big. / - Hana, a squirrel very far to
 friends and we can build a sandcastle." - every label TextFits true, the You wrote line whole on two lines (r2_reply_long_you_wrote).
 While a bottle card is open PlayerGui OpenPanel = "bottle", and GiftsClient's MODAL now has bottle = true (line 142; line 319 checks it).
 PHONE still not pictured (no emulator from the MCP); by fit() 844 x 390 -> scale 0.90.
+
+Result job 118 ROUND 2 INSTALLED (runner 7, Shannon "Yes, install it" after the round 2 pictures, Studio EDIT, unpublished):
+install_bottle1.lua at 7f0ab4f (43579, adler32 1331052144) - the same QQ BOTTLE lines as the round 2 preview, word for word (stand
+(295.0, -48.3, -716.0); spots 1 = REPLY (303, -52.4, -728) + 9 wash; GiftsClient 24294 -> 24362, InteractServer 8921 -> 8985; DONE
+BottleServer 8434, BottleClient 13721, BottleText 7091). Readback: workspace.Bottles = BottleEvent, BottleText, Stand (Persistent),
+BottleServer, BottleClient; TestDayOffset 0; ReplicatedStorage.BottleTemplate present. Asked her to save; she publishes.
