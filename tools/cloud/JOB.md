@@ -2351,3 +2351,12 @@ ShopClient 38666 -> 40654 chars; Price_...". PLAY TEST: the store's France tab: 
 acorns" (or whatever she set) and a green Robux button with the pass price; the Robux button opens Roblox's prompt (in Studio the
 purchase can be tested with the test-purchase dialog: buy -> the row flips to "owned" and the ride accepts you); a player who
 already owns the pass gets the item on join; phones: the two 70-px buttons fit the row (picture).
+
+Result job 107 ROUND 2 INSTALLED (runner 7, Shannon's "Yes, install it", Studio EDIT, unpublished): armfix1.lua at 5fc434f (3939,
+adler32 4026402376): "QQ ARM ChampionServer is 34338 chars", "QQ ARM DONE: ChampionServer 34338 -> 35767 chars; backup
+ServerStorage.HudBackup.ChampionServer_pre_armfix1". Play test: StatueDebug(4416624022) -> "feet 4.40 | plinth top 4.40 | box bottom
+3.10 | height 9.5"; one Figure on the plinth; accessories left: Summer [Hair], layered sneakers x2, a Face accessory - the layered
+Jacket is gone; log "Champion: the statue of nana3365308 (No. nil) stands by the fountain (arms posed true/true)", no warning.
+Picture tools/statues/shots/nana_statue_after_armfix1.jpg: one raised arm, one relaxed arm, no hanging sleeve. Job 109 read: the
+live ShopClient is 38666 chars (adler32 1446548555); Price_ziphandle 60, Price_glider 1000. STAR: Shannon says the missing statue is in
+the FRENCH HALL OF FAME; asking her for the exact name to rebuild it with StatueDebug.
