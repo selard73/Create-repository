@@ -22,3 +22,10 @@ Interact: Item "passport_porto_bell" by CozyGameMode (Studio, not sent)
 # Note for the cloud thread: Item events fired for daily_day, daily_streak, frenchrank, passport_porto_bell - save bookkeeping (the daily
 # card's day/streak, the French rank, a passport stamp) counts as "items gained"; say if those should be filtered so the dashboard shows
 # only shop buys / keepsakes / the backpack / the chute.
+# ROUND 2 (9d5b80e; install_interact1.lua 11225 bytes, adler32 465068626 = the git blob), runner 7, Oct 15 ~02:50Z, Shannon's yes:
+QQ INTERACT DONE: workspace.Interact (InteractServer 8921 chars; Enabled true, Repeat 60, Budget 90); the old folder is HudBackup.Interact_pre_1
+EDIT after: Interact = InteractServer 8921 (RunContext Server); backup Interact_pre_1 (InteractServer 8554, Enabled false); HttpEnabled false; no leftovers
+# play test (ready, 12 s for the join-time items, then a Harbour bench sit):
+Interact: ready (prompts, clicks, seats, tools, areas, items; events leave only a published place)
+Interact: Seat "Harbour bench" by CozyGameMode (Studio, not sent)
+# bookkeeping Item lines on joining: 0 (round 1 printed daily_day, daily_streak, frenchrank) - the filter works.

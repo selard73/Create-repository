@@ -1769,3 +1769,9 @@ PUBLISHED by Shannon at 02:43:10Z Oct 15 (games API "updated", seen by runner 7 
 + the funnel refresh) is LIVE, Items unfiltered. Round 2 (9d5b80e: Item events skip daily_*, passport_*, frenchrank, champion*,
 thanks_*, funnel, porto) is verified on the branch (install_interact1.lua 11225 bytes, adler32 465068626 = raw); runner 7 is asking
 her yes for the re-run (old folder -> HudBackup.Interact_pre_1), then a quick play test, then her publish, then job 99's preview.
+Result job 98 round 2 (runner 7, 9d5b80e, Shannon's yes; INSTALLED in Edit, Oct 15 ~02:50Z, NOT published): run unpatched (len 11225
+adler 465068626 = the blob). QQ INTERACT DONE: workspace.Interact (InteractServer 8921 chars; Enabled true, Repeat 60, Budget 90); the
+old folder is HudBackup.Interact_pre_1 (InteractServer 8554, disabled). Play test: "Interact: ready ..." then, after 12 s for the
+join-time items, only "Interact: Seat "Harbour bench" by CozyGameMode (Studio, not sent)" - 0 bookkeeping Item lines (round 1 printed
+daily_day, daily_streak, frenchrank): the filter works. Lines in tools/interact/playtest98_result_2026-10-14.txt. She publishes; then
+job 99's preview.
