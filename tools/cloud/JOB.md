@@ -2551,3 +2551,14 @@ CanCollide, 224 tall, x -130..102). ALL FOUR candidates (z 47..64) lie OUTSIDE i
 as the spawn sees it is beyond the map edge: either the edge moves north (a clearing at z 35..65 on a bank that rises to ~9-12), or
 the site is elsewhere. Picture tools/treehouse/shots/survey111_spawn_to_tower.jpg (spawn -> tower, the left side = the bank behind
 the edge). Asking Shannon which she means.
+
+Result job 111 - SHANNON'S ANSWER (runner 7): asked with the spawn -> tower picture ("left of the tower is outside the forest's invisible
+edge, on the grassy bank"), she chose "Move the edge out" = the HILLSIDE behind the tower's left (the hollow plan), not the west
+candidates; survey111 round 2 (5a198cc) not run. The bank, terrain y (read-only, Edit; x -70..30 every 10, z every 5):
+z 15/20: 0.1 everywhere (inside the edge) | z 25 (the edge wall): -3.8..0.2 | z 30: -1.0..3.2 | z 35: 3.7..7.9 | z 40: 7.5..11.2 |
+z 45: 9.5..13.1 | z 50: 9.7..14.1 (the crest) | z 55: 8.2..13.9 | z 60: 4.7..12.8 | z 65: -2.9..10.6 | z 70: -6.6..6.9, and none (no
+terrain) at x 20..30 | z 75: mostly none | z 80+: none at all = the end of the terrain, the world's edge. So the bank is a ridge ~50
+studs deep cresting at y 10-14 around z 45-55, falling away to nothing by z 75-80. On it: only Boundary.Dressing pine_mid / pine_tall
+/ round_tree. The north edge is Boundary.Walls.Wall at (-14.1, 25.0), 233 x 1.2 (x -130..102); the west/south edge wall at (-130,
+-95) 241 x 1.2. NOTE: workspace has TWO children named "Boundary" (a Folder with only PatchModule, and a Folder with 5 children
+holding Walls + Dressing) - workspace.Boundary.Walls fails by name; find the walls by searching.
