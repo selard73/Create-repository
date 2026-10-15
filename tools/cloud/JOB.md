@@ -2951,3 +2951,7 @@ horizon; no diagonal seam. Not yet set in Edit.
 Job 106 round 4b (cloud thread): tools/japan/japan_geo4b.lua sets Shade 1.2 / Reflectance 0.1 on the installed model and its planes
 (Edit, re-runnable, "QQ GEO4B DONE"); japan_geo4.lua's defaults baked to the same. Run on Shannon's word, save; then the Japan
 horizon is done and she can publish.
+
+Result JAPAN GEO4B (runner 7, Shannon "Yes", Studio EDIT, unpublished): japan_geo4b.lua at 9b9e5c4 (1352, adler32 3481514143): "QQ GEO4B
+DONE: Workspace.JapanMap.Horizon sea - Shade 1.20, Reflectance 0.10 on the model and its 34 planes". Readback Shade 1.2, Reflectance 0.1.
+Asked her to save and publish.
