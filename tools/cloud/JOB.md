@@ -2976,3 +2976,9 @@ result compiled, original to HudBackup.<Name>_pre_crocportrait1, marker CROCPORT
 CrocClient may differ from the repo's builder (snore patches etc.) - an anchor miss skips that script and says so; tell the cloud thread.
 Check in play: free all three squirrels - the card with the third line; the painter (80 acorns) - the gallery note for a second player
 or the same client would need two players, so a read of the patched text is enough.
+## Job 114: a 1000-acorn thank-you for Carhartt0520 (Studio EDIT; ask Shannon first) - runner 7
+Shannon (Oct 15): "craft a cute response for carhartt who sent a message to the mayor, and gift them the 1000 acorns as a thank you".
+La Poste dev desk: Carhartt0520 (@Carhartt0520, Roblox id 4348272918, checked on the users API) wrote "hello how are you". She sends
+the reply herself from the dev desk (text in the cloud thread's answer). The acorns: tools/thanks/gift_carhartt0520.lua (compiles)
+adds workspace.Thanks.Gifts.Carhartt0520 = 1000, Id carhartt0520_1, Note = the mayor's note; job 92's ThanksServer pays it once on
+their next join (Item_thanks_carhartt0520_1) with the card "A thank-you from the mayor". Re-runnable. "QQ THANKS DONE".
