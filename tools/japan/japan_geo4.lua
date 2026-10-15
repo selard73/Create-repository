@@ -18,7 +18,7 @@ pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("before Jap
 local log = {}
 local SEA = -6
 local JAPAN_WATER = Color3.fromRGB(24, 112, 151)                       -- JapanWaterAppearance's colour on the client
-local SHADE, REFL = 0.8, 0
+local SHADE, REFL = 1.2, 0.1                                          -- (runner 7's tuning in play, Oct 15: 0.8 a navy band, 1.45 cyan, 1.2 + 0.1 the match)
 local CLIENT = [===[
 -- HorizonSeaClient (RunContext Client): the horizon planes wear the terrain's live WaterColor x the model's Shade attribute, with its
 -- Reflectance attribute - Japan's blue in Japan (JapanWaterAppearance), the default green anywhere else. Change the attributes in play to tune.

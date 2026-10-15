@@ -2943,3 +2943,11 @@ hidden. Shade tuned on the test client only (attributes): 0.80 = a dark navy ban
 1.10 = close, a little dark; 1.20 with Reflectance 0.10 = BEST - the step from 90 up nearly gone (geo4_90_up_shade120_refl010_BEST).
 PLEASE BAKE Shade 1.2, Reflectance 0.1 (I did not set them in Edit). West from (5250,20,-400) at 1.2: the hard dark line at x 4750
 is gone, a faint seam only. Eye level on the north shore: one sea to the horizon. No diagonal seam seen. Pictures tools/japan/shots_geo4/.
+Result JAPAN GEO4 (runner 7, 026423a, INSTALLED in Edit, unpublished; logged at 2dccea8, pictures tools/japan/shots_geo4/): 34 of 34
+planes, 0 hidden, arriving from Porto and from France alike - a Persistent model nested under JapanMap streams fine. Shade tuned on
+the test client: 0.8 a dark navy band, 1.45 too bright cyan, 1.1 close but dark, 1.2 with Reflectance 0.1 best - the step from 90 up
+nearly gone; west from (5250,20,-400) the hard line at x 4750 gone, a faint seam; the north shore at eye level one sea to the
+horizon; no diagonal seam. Not yet set in Edit.
+Job 106 round 4b (cloud thread): tools/japan/japan_geo4b.lua sets Shade 1.2 / Reflectance 0.1 on the installed model and its planes
+(Edit, re-runnable, "QQ GEO4B DONE"); japan_geo4.lua's defaults baked to the same. Run on Shannon's word, save; then the Japan
+horizon is done and she can publish.
