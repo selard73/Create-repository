@@ -2876,3 +2876,20 @@ Pictures tools/japan/shots_geo3/ (force-added). Also: Oct 15's pictures had neve
  PORTO (harbour, then the lighthouse looking east; client fog 350..1100, Atmosphere density 0.30): an ordinary sea to the horizon,
     nothing new (geo3_porto_looking_east).
 Waiting: the cloud's next round (the Model into JapanMap first); geo3 stays in Edit unless Shannon wants it undone.
+Result JAPAN GEO3 (runner 7, b770974, installed in Edit, unpublished; logged at 06a542b, pictures tools/japan/shots_geo3/ - the
+Oct 15 pictures were missing because .gitignore excludes *.jpg; force-added at 2c4916c with shots_geo2): all 34 planes reach the
+client, coloured (24,112,151). BUT 19 of 34 have LocalTransparencyModifier 1: HideFranceFromPorto (hides z > -540) and
+HidePortoFromFrance (hides z < -560) skip ONLY JapanMap descendants, and with JAPANFIX1 their state freezes past x 4500 - so whichever
+side you came from stays hidden (from Porto: the north planes). geo2's folder sat inside JapanMap and was skipped; geo3 moved it out.
+With all planes forced visible the sea runs on to a soft far edge ~1100 out, but the terrain water is a deeper blue than the flat
+planes (a COLOUR step at the streamed terrain's edge ~400-500 out), a thin dark diagonal seam crosses the far planes, and looking
+west from (5250,20,-400) a hard dark line at x 4750 where the terrain water stops. Haze (Atmosphere 0.3 / 1.5) did not hide it.
+Weir: no sliver; the last studs of shallow canal water behind it read as a flat bright sheet. Porto looking east: nothing new.
+## Job 106 round 4: the horizon under JapanMap, shaded and tunable, the tiles edge to edge (Studio EDIT; ask Shannon first) - runner 7
+tools/japan/japan_geo4.lua (compiles; needs geo3 in). Rebuilds "Horizon sea" as a Persistent Model UNDER workspace.JapanMap (the hide
+scripts skip it); 34 planes edge to edge (no 0.5 overlaps), alternate tiles 0.05 lower so no coplanar faces overlap (the diagonal
+seam); Reflectance 0 and the colour x 0.8 (the bare planes read paler than the textured water); the model's attributes Shade (0.8) and
+Reflectance (0) are applied by HorizonSeaClient on start and on any change of them or of Terrain.WaterColor - so the runner can TUNE
+them live in play (Explorer: JapanMap > Horizon sea > Attributes) until the far planes match the terrain water at the streamed edge,
+then set the found values on the model in Edit (they replicate). "QQ GEO4" lines. Check: from Porto's side AND the balloon side
+nothing hidden (34 of 34 with LocalTransparencyModifier 0); the colour step from 90 up and the west line at x 4750 softened; no seam.
