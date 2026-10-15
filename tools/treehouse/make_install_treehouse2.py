@@ -85,7 +85,23 @@ end
 T:FillBlock(CFrame.new(SX, 6, 24), Vector3.new(52, 12, 16), Enum.Material.Air)                     -- x SX-26..SX+26, y 0..12, z 16..32
 -- the dirt round the oak: the top voxel row, whole
 T:FillCylinder(CFrame.new(SX, -2, SZ), 4, 15, Enum.Material.Ground)
-print(string.format("QQ TREE terrain: a mound bank along z 74, floor at y %d (whole voxel rows), a bowl of radius 27..33 cut to y 16, the mouth cut flat z 16..32, dirt radius 15, centred (%d, %d)", FLOOR, SX, SZ))
+-- the floor's level (round 3, runner 7's measurement): a voxel row draws its surface at (row top - 2) + 4 x occupancy, so a FULL top row
+-- renders 2 studs high; the forest's row sits at 0.52 -> y 0.1. The hollow's top row (y -4..0) is set to the forest's 0.52 wherever it is fuller.
+local FLOOR_OCC = 0.52
+do
+	local r = Region3.new(Vector3.new(math.floor((SX - 34) / 4) * 4, -4, math.floor((SZ - 34) / 4) * 4), Vector3.new(math.ceil((SX + 34) / 4) * 4, 0, math.ceil((SZ + 34) / 4) * 4))
+	local ch = T:ReadVoxelChannels(r, 4, {"SolidOccupancy"})
+	local SO = ch.SolidOccupancy
+	local n = 0
+	for ix = 1, #SO do for iy = 1, #SO[ix] do for iz = 1, #SO[ix][iy] do
+		local x, z = r.CFrame.Position.X - r.Size.X / 2 + (ix - 0.5) * 4, r.CFrame.Position.Z - r.Size.Z / 2 + (iz - 0.5) * 4
+		local inside = math.sqrt((x - SX) ^ 2 + (z - SZ) ^ 2) <= 31 or (math.abs(x - SX) <= 26 and z >= 16 and z <= 32)
+		if inside and SO[ix][iy][iz] > FLOOR_OCC then SO[ix][iy][iz] = FLOOR_OCC; n += 1 end
+	end end end
+	T:WriteVoxelChannels(r, 4, {SolidOccupancy = SO})
+	print(string.format("QQ TREE floor: the top voxel row set to %.2f over %d cells (the forest's level, y ~0.1)", FLOOR_OCC, n))
+end
+print(string.format("QQ TREE terrain: a mound bank along z 74, floor at y ~0.1, a bowl of radius 27..33 cut to y 16, the mouth cut flat z 16..32, dirt radius 15, centred (%d, %d)", SX, SZ))
 -- ---------- 5: the edge ----------
 local edges = {}
 for _, p in ipairs(workspace:GetDescendants()) do

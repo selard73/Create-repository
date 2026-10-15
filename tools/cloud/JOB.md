@@ -2718,3 +2718,9 @@ old folder is HudBackup.Treehouse_pre_2". Pictures tools/treehouse/shots/r2_hb*.
     THE DOORWAY from the balcony (r2_hb11): the room's floor and the trunk standing against the back wall, door clear. INSIDE
     (r2_hb10): the trunk at the back, 8 studs of open floor in front of it; the room is empty (no furniture).
 Waits for her word to install (the floor occupancy and the sign post are the two things left).
+Job 111 ROUND 3 (cloud thread, from runner 7's round-2 preview and its voxel reading): the hollow's top voxel row is set to the
+forest's occupancy 0.52 after the terrain work (a full row draws 2 studs high; the forest's draws at 0.1), so the floor and the roots
+sit level with the forest; the sign's post moved behind the board (it hid the bottom line); furniture: a round table, two stools and
+a mug with the walls, a shelf of books and an acorn jar with the window, a rug by the door and a cushion in the corner when done.
+The terraces stay invisible from the tower (the terrain smooths them) - fine. Preview once more from this commit: the floor y at the
+oak (expect ~0.1), the sign, the room; then install on her word.
