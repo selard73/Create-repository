@@ -3180,3 +3180,20 @@ Job 118 ROUND 2 (cloud thread, from runner 7's preview at 137a64f + an independe
 Preview again in play from this commit: the QQ BOTTLE lines, the panel on desktop (and on her phone emulator if she can switch it),
 the note card with a long "You wrote" line, TestDayOffset 1 -> the reply bottle appears without reopening; then install in Edit
 on her word.
+
+Result job 118 ROUND 2 PREVIEW (runner 7, play test, nothing kept): install_bottle1.lua at 7f0ab4f (43579, adler32 1331052144):
+"QQ BOTTLE scan: x 215..340 z -800..-690 step 4 - 194 open sand points, 401 water points", "QQ BOTTLE stand: (295.0, -48.3, -716.0), 17
+studs from the water, back to the sea toward (0.71, -0.71); 25 candidates, 2 blocked before it", "QQ BOTTLE spots: 1 (303, -52.4, -728) |
+2 (291, -51.8, -736) | 3 (319, -52.1, -712) | 4 (271, -52.2, -744) | 5 (331, -52.3, -704) | 6 (339, -51.8, -716) | 7 (335, -51.8, -740) |
+8 (259, -52.4, -748) | 9 (247, -52.8, -752) | 10 (235, -52.9, -716); no. 1, nearest the stand, is the REPLY spot, the other 9 are wash
+spots", "QQ BOTTLE GiftsClient: 24294 -> 24362 chars; backup HudBackup.GiftsClient_pre_bottle1", "QQ BOTTLE InteractServer: 8921 -> 8985
+chars; backup HudBackup.InteractServer_pre_bottle1", "QQ BOTTLE DONE: workspace.Bottles (BottleServer 8434, BottleClient 13721,
+BottleText 7091 chars); the stand at (295, -48.3, -716); 9 wash spots + the reply spot; send 15, find 10 (5 a day)". The stand moved 4
+studs from round 1's (291, -720). PANEL (desktop, r2_panel_desktop_two_columns): 640 x 310 at scale 1, two columns, "Note 1 of 6",
+the preview beside the cyclers - clean. LONGEST message (to 7, card 5, a 3, b 6; 100 chars) sent: 110 -> 95, Item_bottle_out 20742
+(the real day). TestDayOffset 1 (no panel reopen): workspace.Bottles.ReplyBottle appeared on the client 0.1 s later at (303,-52,-728),
+prompt max 14; read from 8.2: "A reply washed up! / Bring your friends? Done. I've wanted to build a sandcastle for ages. Your bottle
+floated all the way to me! The sea is very big. / - Hana, a squirrel very far to the east / You wrote: If you come to Porto, bring your
+friends and we can build a sandcastle." - every label TextFits true, the You wrote line whole on two lines (r2_reply_long_you_wrote).
+While a bottle card is open PlayerGui OpenPanel = "bottle", and GiftsClient's MODAL now has bottle = true (line 142; line 319 checks it).
+PHONE still not pictured (no emulator from the MCP); by fit() 844 x 390 -> scale 0.90.
