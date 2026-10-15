@@ -94,27 +94,16 @@ function T.message(to, card, a, b, q, from)                -- what the player se
 	if from then m ..= "\nFrom " .. from end
 	return m
 end
--- how the sender is getting on, from what the server sent with the reply (info: found, total, treeDone, hintName, hintWhere)
-local function progressLine(info, seed)
-	if type(info) ~= "table" then return nil end
-	local found, total = tonumber(info.found) or 0, tonumber(info.total) or 0
-	if total > 0 and found >= total then return "Word on the waves is you've found every single squirrel. Wow!" end
-	if info.treeDone and seed % 2 == 0 then return "Is that your treehouse I can see from out here? Very fancy." end
-	if total > 0 then return string.format("Word on the waves is you've found %d squirrels. Only %d to go!", found, total - found) end
-	return nil
-end
-function T.reply(to, card, a, b, seed, q, info, name)    -- the answer: Dear <name>, an echo of their picks, the answer to their
-	local c = T.CARDS[card]                                  -- question (or a line in the sender's voice), how they're getting on, a P.S.
-	local e = c.echo[(seed % #c.echo) + 1]
-	local line = fill(e, c.A[a], c.B[b])
-	line = line:sub(1, 1):upper() .. line:sub(2)                          -- (an echo may open with a blank: "Sunny and happy? ...")
-	local parts = {line}
-	if q and T.ANSWER[to] and T.ANSWER[to][q] then table.insert(parts, T.ANSWER[to][q])
-	else table.insert(parts, T.VOICE[to][(math.floor(seed / 7) % #T.VOICE[to]) + 1]) end
-	local pl = progressLine(info, seed); if pl then table.insert(parts, pl) end
-	local body = table.concat(parts, " ")
-	if name then body = "Dear " .. name .. ",\n" .. body end
-	if type(info) == "table" and info.hintName then body ..= "\nP.S. I spotted " .. info.hintName .. (info.hintWhere and (" in " .. info.hintWhere) or "") .. ". Have you met them yet?" end
+function T.reply(to, card, a, b, seed, q, info, name)    -- (round 3b, Shannon: "the replies ... should be short goofy one liners"):
+	local c = T.CARDS[card]                                  -- Dear <name>, then ONE line - their own answer to the question asked;
+	local line                                               -- a bottle sent before round 3 (no question) gets its echo line
+	if q and T.ANSWER[to] and T.ANSWER[to][q] then line = T.ANSWER[to][q]
+	else
+		line = fill(c.echo[(seed % #c.echo) + 1], c.A[a], c.B[b])
+		line = line:sub(1, 1):upper() .. line:sub(2)
+	end
+	local body = (name and ("Dear " .. name .. ",\n") or "") .. line
+	if type(info) == "table" and info.hintName then body ..= "\nP.S. I spotted " .. info.hintName .. (info.hintWhere and (" in " .. info.hintWhere) or "") .. "!" end   -- (only when the folder's ReplyHints is on)
 	return body, T.TO[to].sign
 end
 return T

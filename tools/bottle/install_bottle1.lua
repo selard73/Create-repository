@@ -1,7 +1,7 @@
 -- install_bottle1.lua (Studio EDIT; re-runnable; its body also runs as a play-test PREVIEW - discarded on stop). Job 118: the MESSAGE IN
 -- A BOTTLE game on the main Porto beach. Scans the beach for open sand and the waterline, puts the stand 10..18 studs from the water
 -- (its back to the sea), picks up to 10 wash-up spots, builds workspace.Bottles + ReplicatedStorage.BottleTemplate. Sources: BottleText
--- (11855), BottleServer (10167), BottleClient (14433) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
+-- (11018), BottleServer (10288), BottleClient (14400) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
 -- AwardAcorns), no publish. Output "QQ BOTTLE".
 local HttpService = game:GetService("HttpService")
 local RS = game:GetService("ReplicatedStorage")
@@ -104,27 +104,16 @@ function T.message(to, card, a, b, q, from)                -- what the player se
 	if from then m ..= "\nFrom " .. from end
 	return m
 end
--- how the sender is getting on, from what the server sent with the reply (info: found, total, treeDone, hintName, hintWhere)
-local function progressLine(info, seed)
-	if type(info) ~= "table" then return nil end
-	local found, total = tonumber(info.found) or 0, tonumber(info.total) or 0
-	if total > 0 and found >= total then return "Word on the waves is you've found every single squirrel. Wow!" end
-	if info.treeDone and seed % 2 == 0 then return "Is that your treehouse I can see from out here? Very fancy." end
-	if total > 0 then return string.format("Word on the waves is you've found %d squirrels. Only %d to go!", found, total - found) end
-	return nil
-end
-function T.reply(to, card, a, b, seed, q, info, name)    -- the answer: Dear <name>, an echo of their picks, the answer to their
-	local c = T.CARDS[card]                                  -- question (or a line in the sender's voice), how they're getting on, a P.S.
-	local e = c.echo[(seed % #c.echo) + 1]
-	local line = fill(e, c.A[a], c.B[b])
-	line = line:sub(1, 1):upper() .. line:sub(2)                          -- (an echo may open with a blank: "Sunny and happy? ...")
-	local parts = {line}
-	if q and T.ANSWER[to] and T.ANSWER[to][q] then table.insert(parts, T.ANSWER[to][q])
-	else table.insert(parts, T.VOICE[to][(math.floor(seed / 7) % #T.VOICE[to]) + 1]) end
-	local pl = progressLine(info, seed); if pl then table.insert(parts, pl) end
-	local body = table.concat(parts, " ")
-	if name then body = "Dear " .. name .. ",\n" .. body end
-	if type(info) == "table" and info.hintName then body ..= "\nP.S. I spotted " .. info.hintName .. (info.hintWhere and (" in " .. info.hintWhere) or "") .. ". Have you met them yet?" end
+function T.reply(to, card, a, b, seed, q, info, name)    -- (round 3b, Shannon: "the replies ... should be short goofy one liners"):
+	local c = T.CARDS[card]                                  -- Dear <name>, then ONE line - their own answer to the question asked;
+	local line                                               -- a bottle sent before round 3 (no question) gets its echo line
+	if q and T.ANSWER[to] and T.ANSWER[to][q] then line = T.ANSWER[to][q]
+	else
+		line = fill(c.echo[(seed % #c.echo) + 1], c.A[a], c.B[b])
+		line = line:sub(1, 1):upper() .. line:sub(2)
+	end
+	local body = (name and ("Dear " .. name .. ",\n") or "") .. line
+	if type(info) == "table" and info.hintName then body ..= "\nP.S. I spotted " .. info.hintName .. (info.hintWhere and (" in " .. info.hintWhere) or "") .. "!" end   -- (only when the folder's ReplyHints is on)
 	return body, T.TO[to].sign
 end
 return T
@@ -254,7 +243,7 @@ ev.OnServerEvent:Connect(function(p, what, a1, a2, a3, a4, a5)
 		put(p, "bottle_replies", get(p, "bottle_replies") + 1)
 		if Text.valid(to, card, a, b, q) then
 			local seed = (out * 31 + card * 7 + a * 3 + b + q * 11) % 997
-			ev:FireClient(p, "reply", to, card, a, b, seed, q, progress(p, seed))
+			ev:FireClient(p, "reply", to, card, a, b, seed, q, (F:GetAttribute("ReplyHints") == true) and progress(p, seed) or nil)   -- (3b: one-liners; the squirrel-hint P.S. only if ReplyHints is on)
 		end
 		push(p)
 	end
@@ -379,17 +368,17 @@ local function say(text, secs)
 	end)
 end
 -- ---------- the note card (every bottle opened) ----------
-local NW, NH = 440, 420                                                    -- (round 3: a personal reply - Dear <name>, the answer, how you're doing, a P.S.)
+local NW, NH = 420, 340                                                    -- (round 3b: Dear <name> and a one-line reply)
 local note = Instance.new("Frame"); note.AnchorPoint = Vector2.new(0.5, 0.5); note.Position = UDim2.new(0.5, 0, 0.5, 24); note.Size = UDim2.fromOffset(NW, NH)
 note.BackgroundColor3 = PAPER; note.BorderSizePixel = 0; note.Visible = false; note.ZIndex = 3; note.Parent = gui
 corner(note, 18); stroke(note, RIM, 3); fit(note, NW, NH)
 local nHead = label(note, "", 20, 14, NW - 40, 30, 22, SEA, Enum.TextXAlignment.Center)
-local nBody = label(note, "", 26, 50, NW - 52, 210, 18, INK, Enum.TextXAlignment.Left); nBody.TextYAlignment = Enum.TextYAlignment.Center
-nBody.TextScaled = true; do local c = Instance.new("UITextSizeConstraint"); c.MaxTextSize = 18; c.MinTextSize = 11; c.Parent = nBody end
-local nSign = label(note, "", 26, 264, NW - 52, 22, 15, INK_DIM, Enum.TextXAlignment.Right)
-local nPrize = label(note, "", 26, 292, NW - 52, 64, 14, RGB(150, 104, 20), Enum.TextXAlignment.Center); nPrize.TextYAlignment = Enum.TextYAlignment.Top
+local nBody = label(note, "", 26, 50, NW - 52, 120, 19, INK, Enum.TextXAlignment.Center); nBody.TextYAlignment = Enum.TextYAlignment.Center
+nBody.TextScaled = true; do local c = Instance.new("UITextSizeConstraint"); c.MaxTextSize = 20; c.MinTextSize = 12; c.Parent = nBody end
+local nSign = label(note, "", 26, 176, NW - 52, 22, 15, INK_DIM, Enum.TextXAlignment.Right)
+local nPrize = label(note, "", 26, 204, NW - 52, 64, 14, RGB(150, 104, 20), Enum.TextXAlignment.Center); nPrize.TextYAlignment = Enum.TextYAlignment.Top
 nPrize.TextScaled = true; do local c = Instance.new("UITextSizeConstraint"); c.MaxTextSize = 15; c.MinTextSize = 10; c.Parent = nPrize end
-local nClose = button(note, "Lovely!", (NW - 130) / 2, 364, 130, 40)
+local nClose = button(note, "Lovely!", (NW - 130) / 2, 282, 130, 40)
 local function chime()
 	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://9116394876"; s.Volume = 0.3; s.PlaybackSpeed = 1.1; s.Parent = gui; s:Play(); Debris:AddItem(s, 4)
 end

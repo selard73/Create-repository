@@ -53,17 +53,17 @@ local function say(text, secs)
 	end)
 end
 -- ---------- the note card (every bottle opened) ----------
-local NW, NH = 440, 420                                                    -- (round 3: a personal reply - Dear <name>, the answer, how you're doing, a P.S.)
+local NW, NH = 420, 340                                                    -- (round 3b: Dear <name> and a one-line reply)
 local note = Instance.new("Frame"); note.AnchorPoint = Vector2.new(0.5, 0.5); note.Position = UDim2.new(0.5, 0, 0.5, 24); note.Size = UDim2.fromOffset(NW, NH)
 note.BackgroundColor3 = PAPER; note.BorderSizePixel = 0; note.Visible = false; note.ZIndex = 3; note.Parent = gui
 corner(note, 18); stroke(note, RIM, 3); fit(note, NW, NH)
 local nHead = label(note, "", 20, 14, NW - 40, 30, 22, SEA, Enum.TextXAlignment.Center)
-local nBody = label(note, "", 26, 50, NW - 52, 210, 18, INK, Enum.TextXAlignment.Left); nBody.TextYAlignment = Enum.TextYAlignment.Center
-nBody.TextScaled = true; do local c = Instance.new("UITextSizeConstraint"); c.MaxTextSize = 18; c.MinTextSize = 11; c.Parent = nBody end
-local nSign = label(note, "", 26, 264, NW - 52, 22, 15, INK_DIM, Enum.TextXAlignment.Right)
-local nPrize = label(note, "", 26, 292, NW - 52, 64, 14, RGB(150, 104, 20), Enum.TextXAlignment.Center); nPrize.TextYAlignment = Enum.TextYAlignment.Top
+local nBody = label(note, "", 26, 50, NW - 52, 120, 19, INK, Enum.TextXAlignment.Center); nBody.TextYAlignment = Enum.TextYAlignment.Center
+nBody.TextScaled = true; do local c = Instance.new("UITextSizeConstraint"); c.MaxTextSize = 20; c.MinTextSize = 12; c.Parent = nBody end
+local nSign = label(note, "", 26, 176, NW - 52, 22, 15, INK_DIM, Enum.TextXAlignment.Right)
+local nPrize = label(note, "", 26, 204, NW - 52, 64, 14, RGB(150, 104, 20), Enum.TextXAlignment.Center); nPrize.TextYAlignment = Enum.TextYAlignment.Top
 nPrize.TextScaled = true; do local c = Instance.new("UITextSizeConstraint"); c.MaxTextSize = 15; c.MinTextSize = 10; c.Parent = nPrize end
-local nClose = button(note, "Lovely!", (NW - 130) / 2, 364, 130, 40)
+local nClose = button(note, "Lovely!", (NW - 130) / 2, 282, 130, 40)
 local function chime()
 	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://9116394876"; s.Volume = 0.3; s.PlaybackSpeed = 1.1; s.Parent = gui; s:Play(); Debris:AddItem(s, 4)
 end

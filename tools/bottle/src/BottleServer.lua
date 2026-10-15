@@ -123,7 +123,7 @@ ev.OnServerEvent:Connect(function(p, what, a1, a2, a3, a4, a5)
 		put(p, "bottle_replies", get(p, "bottle_replies") + 1)
 		if Text.valid(to, card, a, b, q) then
 			local seed = (out * 31 + card * 7 + a * 3 + b + q * 11) % 997
-			ev:FireClient(p, "reply", to, card, a, b, seed, q, progress(p, seed))
+			ev:FireClient(p, "reply", to, card, a, b, seed, q, (F:GetAttribute("ReplyHints") == true) and progress(p, seed) or nil)   -- (3b: one-liners; the squirrel-hint P.S. only if ReplyHints is on)
 		end
 		push(p)
 	end
