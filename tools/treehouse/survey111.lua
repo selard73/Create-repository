@@ -53,11 +53,14 @@ local function isSacred(m)
 	local n = m.Name:lower()
 	return n:find("squirrel") or n:find("_color") or n:find("tower") or n:find("spawn") or n:find("wall") or n:find("gate") or n:find("path") or n:find("bridge") or n:find("race") or n:find("sign")
 end
+-- round 2: "left" from the spawn is the hillside beyond the north edge (13 studs behind the tower), so the candidates are now WEST
+-- of the tower along that edge (left with north at the top), and the forest's north-west corner
+local west = f                                                         -- (the spawn looks west at the tower)
 local candidates = {
-	{"A: 45 left of the tower", tc + left * 45},
-	{"B: 60 left of the tower", tc + left * 60},
-	{"C: 45 left, 15 behind", tc + left * 45 - f * 15},
-	{"D: 45 left, 15 nearer the spawn", tc + left * 45 + f * 15},
+	{"E: 45 west of the tower", tc + west * 45},
+	{"F: 70 west of the tower", tc + west * 70},
+	{"G: 55 west, 20 south", tc + west * 55 - left * 20},
+	{"H: the north-west corner, 90 west", tc + west * 90},
 }
 local seen = {}
 for _, c in ipairs(candidates) do
@@ -79,8 +82,8 @@ for _, c in ipairs(candidates) do
 	local clear, keep = {}, {}
 	for _, m in ipairs(workspace:GetDescendants()) do
 		if (m:IsA("Model") or (m:IsA("BasePart") and m.Parent and not m.Parent:IsA("Model"))) and not m:IsA("Terrain") then
-			local lo, hi = m:IsA("Model") and extents(m:GetDescendants()) or (m.Position - m.Size / 2), (m:IsA("Model") and nil or (m.Position + m.Size / 2))
-			if m:IsA("Model") then lo, hi = extents(m:GetDescendants()) end
+			local lo, hi
+			if m:IsA("Model") then lo, hi = extents(m:GetDescendants()) else lo, hi = m.Position - m.Size / 2, m.Position + m.Size / 2 end   -- (runner 7's fix: the and/or truncation)
 			if lo and hi then
 				local mx, mz = (lo.X + hi.X) / 2, (lo.Z + hi.Z) / 2
 				local d = math.sqrt((mx - cx) ^ 2 + (mz - cz) ^ 2)
