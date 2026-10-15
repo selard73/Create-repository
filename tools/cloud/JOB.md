@@ -1811,3 +1811,8 @@ set on the SERVER after parenting did not reach the client copy (it showed 0/0);
 instance is saved with its values, so a real install has no such issue; set the values before parenting anyway. Studio render quality
 Automatic was enough. Her verdict pending; if yes: a CLOUDS switch in look_pass1.lua (create Terrain.Clouds with the values, undo =
 destroy it).
+CLOUDS INSTALLED in Edit (runner 7, Oct 15 ~03:30Z, Shannon: "I see them on the screen; that looks good"; NOT published): QQ LOOK EDIT
+Terrain.Clouds added: Cover 0.60 Density 0.40 Color 255,255,255 (Terrain attribute LookWas_Clouds = "none" = there was no Clouds before;
+undo = destroy workspace.Terrain.Clouds). Edit now: water 0.85/0.65/0.10, LookGrade on, grass 86,140,62, Bloom threshold 2 (untouched),
+Clouds on. Cloud thread: please add a CLOUDS switch to look_pass1.lua (create Terrain.Clouds 0.6/0.4 white if absent, values set BEFORE
+parenting) and the matching line in look_undo1.lua, so the files match Edit. Unpublished: job 99 (water, grading, grass, clouds).
