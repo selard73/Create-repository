@@ -16,7 +16,7 @@ os.makedirs(OUT, exist_ok=True)
 LOG = os.path.join(OUT, "gen_log.txt")
 def log(m): open(LOG, "a").write(str(m) + "\n"); print(m)
 COL = {"Church_Plaster": (0.93, 0.91, 0.85), "Church_Timber": (0.24, 0.17, 0.12), "Church_Stone": (0.58, 0.57, 0.54), "Church_Roof": (0.30, 0.33, 0.38),
-       "Church_Ridge": (0.24, 0.26, 0.30), "Church_Door": (0.40, 0.26, 0.15), "Church_Glass_Blue": (0.55, 0.72, 0.92), "Church_Glass_Gold": (0.95, 0.72, 0.30),
+       "Church_Ridge": (0.24, 0.26, 0.30), "Church_Door_L": (0.40, 0.26, 0.15), "Church_Door_R": (0.40, 0.26, 0.15), "Church_Door_L_Trim": (0.24, 0.17, 0.12), "Church_Door_R_Trim": (0.24, 0.17, 0.12), "Church_Glass_Blue": (0.55, 0.72, 0.92), "Church_Glass_Gold": (0.95, 0.72, 0.30),
        "Church_Glass_Red": (0.80, 0.22, 0.24), "Church_Cross": (0.55, 0.42, 0.22), "Church_Bell": (0.62, 0.48, 0.24), "Church_Louvre": (0.30, 0.22, 0.15),
        "Church_Floor": (0.45, 0.31, 0.19), "Church_Pew": (0.46, 0.30, 0.17), "Church_Altar": (0.92, 0.90, 0.86), "Church_Cloth": (0.75, 0.16, 0.18),
        "Church_Candle": (0.97, 0.95, 0.88), "Church_Flame": (1.0, 0.80, 0.35), "Church_Rope": (0.72, 0.62, 0.45)}
@@ -80,7 +80,7 @@ WIN_Y = [-9.0, -3.0, 3.0]                       # three a side (the fourth bay a
 TOWER = 4.4                  # the bell tower's square, at the front-left corner, its outer corner at (-W/2, -L/2)
 TOWER_H, TOWER_ROOF = 19.0, 22.6
 def build_shell():
-    pl, tb, st, rf, rg, dr, gb, gg, gr, cx, bl, lv = (B(k) for k in ("Church_Plaster", "Church_Timber", "Church_Stone", "Church_Roof", "Church_Ridge", "Church_Door",
+    pl, tb, st, rf, rg, dr, gb, gg, gr, cx, bl, lv = (B(k) for k in ("Church_Plaster", "Church_Timber", "Church_Stone", "Church_Roof", "Church_Ridge", "Church_Door_L",
                                                             "Church_Glass_Blue", "Church_Glass_Gold", "Church_Glass_Red", "Church_Cross", "Church_Bell", "Church_Louvre"))
     hw, hl = W / 2, L / 2
     # the stone plinth all round, and the floor slab inside
@@ -105,7 +105,6 @@ def build_shell():
             box(tb, xm - 0.07, xm + 0.07, wy - WIN_W / 2, wy + WIN_W / 2, WIN_SILL + 1.9, WIN_SILL + 2.0)  # the transom
         # timber framing on the outside face: corner posts, posts between bays, two rails
         for py in [-hl + 0.2, hl - 0.2] + [wy + s * (WIN_W / 2 + 0.35) for wy in WIN_Y for s in (-1, 1)]:
-            box(tb, xo - 0.18 * (1 if sx > 0 else -1) if sx > 0 else xo - 0.18, xo + 0.18 if sx > 0 else xo + 0.18 * 0, py - 0.17, py + 0.17, PLINTH, EAVE + 0.2) if False else None
             box(tb, min(xo, xo + sx * 0.22), max(xo, xo + sx * 0.22), py - 0.17, py + 0.17, PLINTH, EAVE + 0.1)
         for z in (PLINTH + 1.3, EAVE - 0.5):
             box(tb, min(xo, xo + sx * 0.2), max(xo, xo + sx * 0.2), -hl, hl, z - 0.14, z + 0.14)
@@ -121,9 +120,14 @@ def build_shell():
             prism_y(pl, header_outline(0, dw, dspring, EAVE, 0.0), y0, y1)
             prism_y(pl, [(-hw, EAVE), (hw, EAVE), (0, RIDGE)], y0, y1)
             # the double door, set 0.25 in, with plank grooves and a centre split; a rose window above the door
-            prism_y(dr, arch_outline(0, dw - 0.1, FLOOR, dspring), yo + 0.25, yo + 0.45)
-            for gx in (-0.9, -0.45, 0.0, 0.45, 0.9):
-                box(tb, gx - 0.02, gx + 0.02, yo + 0.22, yo + 0.26, FLOOR, dspring + (dw / 2) * math.sqrt(max(0.0, 1 - (gx / (dw / 2)) ** 2)) - 0.05)
+            # two leaves, each half the arch (the left leaf's outline is the arch's left half), 0.2 thick, set 0.25 into the opening
+            r = (dw - 0.1) / 2
+            left = [(-r, FLOOR), (0, FLOOR), (0, dspring + r)] + [(r * math.cos(math.pi / 2 + (math.pi / 2) * i / 6), dspring + r * math.sin(math.pi / 2 + (math.pi / 2) * i / 6)) for i in range(1, 7)]
+            right = [(0, FLOOR), (r, FLOOR)] + [(r * math.cos((math.pi / 2) * i / 6), dspring + r * math.sin((math.pi / 2) * i / 6)) for i in range(0, 7)]
+            prism_y(dr, left, yo + 0.25, yo + 0.45); prism_y(B("Church_Door_R"), right, yo + 0.25, yo + 0.45)
+            for gx in (-0.9, -0.45, 0.45, 0.9):                                   # plank grooves on each leaf (dark strips)
+                leaf = dr if gx < 0 else B("Church_Door_R")
+                box(B("Church_Door_L_Trim") if gx < 0 else B("Church_Door_R_Trim"), gx - 0.02, gx + 0.02, yo + 0.22, yo + 0.26, FLOOR + 0.1, dspring + r * math.sqrt(max(0.0, 1 - (gx / r) ** 2)) - 0.1)
             box(tb, -dw / 2 - 0.2, -dw / 2, yo - 0.05, yo + 0.5, FLOOR, dspring); box(tb, dw / 2, dw / 2 + 0.2, yo - 0.05, yo + 0.5, FLOOR, dspring)
             # the rose window: a round opening above the door - glass disc with a gold rim and a red centre, and a timber cross
             cz = EAVE + 1.6
@@ -172,7 +176,7 @@ def build_shell():
         box(rg, -0.7, 0.7, sy * (hl + ov_end) - 0.3, sy * (hl + ov_end) + 0.3, RIDGE - 0.1, RIDGE + 1.3)
     # THE BELL TOWER at the front-left corner: its outer corner at (-hw, -hl); a square shaft, louvred openings near the top, a
     # pyramidal tiled roof, a cross
-    tx0, tx1 = -hw - 0.0, -hw + TOWER; ty0, ty1 = -hl - 0.0, -hl + TOWER
+    tx0, tx1 = -hw - 0.3, -hw - 0.3 + TOWER; ty0, ty1 = -hl - 0.3, -hl - 0.3 + TOWER   # 0.3 proud of the nave: no face shares a plane with the nave's walls
     box(st, tx0 - 0.15, tx1 + 0.15, ty0 - 0.15, ty1 + 0.15, 0.0, PLINTH)
     # the shaft: four walls (the inside is the bell chamber above 12, the rope room below)
     for (x0, x1, y0, y1) in ((tx0, tx0 + T, ty0, ty1), (tx1 - T, tx1, ty0, ty1), (tx0, tx1, ty0, ty0 + T), (tx0, tx1, ty1 - T, ty1)):
@@ -195,7 +199,8 @@ def build_shell():
     for (px, py) in ((tx0, ty0), (tx1, ty0), (tx0, ty1), (tx1, ty1)):
         box(tb, px - 0.2, px + 0.2, py - 0.2, py + 0.2, PLINTH, TOWER_H + 0.1)
     for z in (PLINTH + 1.3, 9.0, 14.6):
-        box(tb, tx0 - 0.1, tx1 + 0.1, ty0 - 0.1, ty1 + 0.1, z - 0.14, z + 0.14)
+        for (x0, x1, y0, y1) in ((tx0 - 0.1, tx0 + 0.1, ty0 - 0.1, ty1 + 0.1), (tx1 - 0.1, tx1 + 0.1, ty0 - 0.1, ty1 + 0.1), (tx0, tx1, ty0 - 0.1, ty0 + 0.1), (tx0, tx1, ty1 - 0.1, ty1 + 0.1)):
+            box(tb, x0, x1, y0, y1, z - 0.14, z + 0.14)
     # the tower roof: a pyramid of four slabs with up-turned eaves, overhanging 0.9, a ridge finial and the cross
     cxm, cym = tx0 + TOWER / 2, ty0 + TOWER / 2; half = TOWER / 2 + 0.9
     apex = (cxm, cym, TOWER_ROOF)
@@ -207,7 +212,6 @@ def build_shell():
         va2 = rf.verts.new((a[0] * 0.98 + cxm * 0.02, a[1] * 0.98 + cym * 0.02, TOWER_H - 0.6)); vb2 = rf.verts.new((b[0] * 0.98 + cxm * 0.02, b[1] * 0.98 + cym * 0.02, TOWER_H - 0.6)); vt2 = rf.verts.new((cxm, cym, TOWER_ROOF - 0.3))
         rf.faces.new([va, vb, vt]); rf.faces.new([vb2, va2, vt2]); rf.faces.new([va, va2, vb2, vb])
         # the hip ridges
-        box(rg, min(a[0], cxm) - 0.1, max(a[0], cxm) + 0.1, min(a[1], cym) - 0.1, max(a[1], cym) + 0.1, TOWER_H - 0.4, TOWER_H - 0.2) if False else None
     box(rg, cxm - 0.4, cxm + 0.4, cym - 0.4, cym + 0.4, TOWER_ROOF - 0.5, TOWER_ROOF + 0.4)                    # the finial base
     # the cross: 2.2 tall, arms 1.3, on the finial
     box(cx, cxm - 0.12, cxm + 0.12, cym - 0.12, cym + 0.12, TOWER_ROOF + 0.3, TOWER_ROOF + 2.5)
@@ -223,7 +227,7 @@ def build_shell():
     # the tower's doorway into the nave (an opening in the shared wall) is implied: the nave's front-left pier is there; a small arched
     # door on the tower's inner face toward the nave is drawn as a dark recess
     prism_x(tb, arch_outline(ty0 + TOWER / 2 + 0.6, 1.4, FLOOR, FLOOR + 2.0), tx1 - 0.15, tx1 - 0.05)
-    names = ["Church_Plaster", "Church_Timber", "Church_Stone", "Church_Roof", "Church_Ridge", "Church_Door", "Church_Glass_Blue", "Church_Glass_Gold", "Church_Glass_Red", "Church_Cross", "Church_Bell", "Church_Louvre"]
+    names = ["Church_Plaster", "Church_Timber", "Church_Stone", "Church_Roof", "Church_Ridge", "Church_Door_L", "Church_Door_R", "Church_Door_L_Trim", "Church_Door_R_Trim", "Church_Glass_Blue", "Church_Glass_Gold", "Church_Glass_Red", "Church_Cross", "Church_Bell", "Church_Louvre"]
     return names
 def build_interior():
     fl, pw, al, cl, cd, fm, rp, cx = (B(k) for k in ("Church_Floor", "Church_Pew", "Church_Altar", "Church_Cloth", "Church_Candle", "Church_Flame", "Church_Rope", "Church_Cross"))
@@ -309,7 +313,7 @@ try:
     for o in interior: o.name = o.name.replace("_In", "") if not o.name.startswith("Church_Cross") else "Church_Cross_Altar"
     export(shell, "church_shell"); export(interior, "church_interior")
     info = {"church_shell": bbox(shell), "church_interior": bbox(interior), "seats": seats, "bell_rope": rope,
-            "door": {"x": 0, "y": FLOOR, "z": L / 2, "faces": "+z"}, "tower_centre": {"x": -W / 2 + TOWER / 2, "z": L / 2 - TOWER / 2}, "floor_y": FLOOR}
+            "door": {"x": 0, "y": FLOOR, "z": L / 2, "faces": "+z", "width": 2.5, "height": 3.6 + 1.25, "hinge_left_x": -1.25, "hinge_right_x": 1.25, "leaf_z": -(-L / 2 + 0.35)}, "tower_centre": {"x": -W / 2 + TOWER / 2, "z": L / 2 - TOWER / 2}, "floor_y": FLOOR}
     json.dump(info, open(os.path.join(OUT, "pieces.json"), "w"), indent=1); log("BBOX " + json.dumps({k: info[k] for k in ("church_shell", "church_interior")})); log("FBX_DONE")
     if os.environ.get("CHURCH_NO_RENDER"): raise SystemExit
     # previews: Cycles CPU - a three-quarter front view, the front, the interior toward the altar
