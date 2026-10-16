@@ -3913,3 +3913,13 @@ Checked in play before and after the install: the door prompt opens both leaves 
 from the forecourt up the steps into the nave, a pew seat (faces the altar), the bell swings; precise collision on walls/floor/doors;
 HttpEnabled false. Known: a hairline seam above the door arch (fix on the next rebuild). BellSound attribute on JapanMap.Church is "" -
 set a toll sound id when she picks one. Old small church kit in HudBackup (church_*_small_1, church_*_r2_1).
+EDIT (runner 7, solo, Oct 16; Shannon: "please add treehouse counter; use the same bell sound as in the french church bell please"):
+1. JapanMap.Church attribute BellSound = rbxassetid://9113804436 (workspace.Chapel's BellSound; ChurchScript plays it at volume 0.8).
+   Checked in play: the bell prompt plays it (loaded, 18 s long; removed after 12 s like the French chapel's).
+2. tools/treehouse/treecount1.lua at 315f86d (4578 / 3748586558):
+QQ TREECOUNT1 source: 4806 bytes (expected 4806)
+QQ TREECOUNT1 DONE: TreehouseServer patched (4806 -> 6020 bytes): a TreehouseBuilt analytics event per builder (built now / built before); backup HudBackup.TreehouseServer_pre_treecount1. Publish, then restart servers.
+   One "TreehouseBuilt" custom event per builder ever (Field 1 built now / built before, Field 2 device), once per player via
+   Item_tree_counted (AwardItems ledger). Checked in play: building all 12 pieces printed "Treehouse: counted CozyGameMode (built now)",
+   LogCustomEvent fired, Item_tree_done 1, Item_tree_counted 1. NOTE: InteractServer (live since Oct 14) already logs Interact_Item
+   "tree_done" for every finish - the dashboard may already show finishes since then.
