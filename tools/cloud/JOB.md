@@ -3575,3 +3575,30 @@ abort: water to -0.6, bed -3, 10 retired, walkways levelled, 3 taiko bridges (bo
 the edge, rocks/reeds and the pond built; the koi swam BACKWARDS at identity (head +Z). SHANNON, watching live: "that does not look
 promising; that moss on those rocks does not look like moss, those flowers are misaligned and look plastic and the water does not look
 like water". Pictures shots_look2/. HOLD further garden_look2 runs until a new direction is agreed with her.
+## Job 125 garden batch 3: the CANAL kept as a canal (import out3, then a play-test PREVIEW; Edit on her word) - runner 7
+Shannon after look test 2 ("all in all it looks pretty bad, even worse than before" - the moss, reeds, lilies and pale water over a
+grey bed failed; batch 2 is dropped): "actually, I like the look as a canal, how can we keep it as a canal?" Her brief via runner 7: a
+proper Japanese town canal (Kyoto's Shirakawa, Tsuwano), the channel straight, same width, the water at 1.3 as now; stone-block walls
+with a coping instead of the flat concrete slabs; stone steps down to the water by each bridge; the taiko bridges seated so their
+ends meet the walkways (no white approach steps); the walkways flat on the ground; JP_Canal_Rocks retired and the end pool's terrain
+rock cleared; "The waterfall feeds it"; "Yes, koi in the canal" (her Meshy koi, facing 180, swimming along it); "skiff in the water
+too?"; torii / lanterns / pine / rocks / slabs where they fit; NO moss, reeds, lilies, pond rim; grass unchanged; meshes only.
+Blender (tools/japan/garden/gen_garden3.py) -> out3/: canal_wall.fbx + canal_wall_b.fbx (8-long wall segments, the water face at x 0,
+body to -4, stacked blocks both faces, coping 2.1 overhanging 0.3), canal_steps.fbx (five treads 1.85..0.85 out into the water, 4.5
+long), bridge_steps.fbx (Steps_Landing: two steps rising 1.0 at a bridge end), skiff.fbx (a Yanagawa-style punt 14 long, origin at
+the waterline, rails, thwarts, a pole); pieces.json; previews prev_canal_wall / prev_canal_steps / prev_skiff .jpg.
+IMPORT into ServerStorage.JapanGardenKit (as before): Models canal_wall, canal_wall_b, canal_steps, bridge_steps, skiff (mesh names
+kept); koi_meshy already there.
+tools/japan/garden/garden_look3.lua (make_garden_look3.py; compiles): finds the canal from the two "Canal stone bank" parts; TERRAIN
+only in the end pool (z Z1-2..Z1+16): rock above the bed cleared, the water filled flat to 1.3 up to the new end wall; RETIRES ->
+HudBackup.MomijiGardenReplaced: both banks, JP_Canal_Rocks_*, the three "Canal footbridge"s, the approach steps, the weir; LEVELS the
+canal's floating Walkways with their bottom at 0 (top 1.0; the station walkway untouched); PLACES: wall segments both sides alternating
+(the last one pulled back to end at Z2) and four across each end (south at Z1+3.5 where the weir stood, north at Z2+1.5), a taiko bridge
+at each crossing at y 0.7 (deck ends 1.0 = the walkway tops; the deck clears the coping by 0.36 at the wall's back), a landing-steps
+piece at each bridge end, water steps on both walls 3.5 north of each bridge, the waterfall at (CX, 1.0, Z1+5) over the south end wall,
+torii / pine / lanterns (4 at the garden bridge, 2 at each other) / four slabs as look 1, kit rocks at the walls' feet and by the falls,
+5 koi swimming slow ovals in the reaches between bridges, a skiff moored by the garden bridge's west steps and one gliding along the
+longest reach (CanalLife Client script: Life* attributes, nose along the way). Output "QQ GARDEN3 ... DONE ... no parts built".
+PREVIEW in play: walk each bridge end to end (landings meet the walkways?), the walls from the lawn (1.7 of stone + coping above the
+grass) and from the water, the stair into the water, the falls pouring in over the end wall, the koi head-first, the skiffs, pictures
+from a bridge down the canal, from the lawn, one beside Rue de Noisette; part / triangle counts.

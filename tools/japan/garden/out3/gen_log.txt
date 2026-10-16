@@ -1,0 +1,11 @@
+canal_wall.fbx: 2 meshes, 420 tris; A_Wall_Stone 372, A_Wall_Coping 48
+canal_wall_b.fbx: 2 meshes, 432 tris; B_Wall_Stone 384, B_Wall_Coping 48
+canal_steps.fbx: 1 meshes, 84 tris; Steps_Stone 84
+bridge_steps.fbx: 1 meshes, 24 tris; Steps_Landing 24
+skiff.fbx: 3 meshes, 234 tris; Skiff_Wood 66, Skiff_Trim 144, Skiff_Pole 24
+BBOX {"canal_wall": {"min": [-4.324, -1.2, -4.0], "max": [0.311, 2.127, 4.0]}, "canal_wall_b": {"min": [-4.329, -1.2, -4.0], "max": [0.309, 2.102, 4.0]}, "canal_steps": {"min": [0.0, -1.2, -2.3], "max": [4.5, 1.9, 2.3]}, "bridge_steps": {"min": [-3.0, 0.0, -4.4], "max": [0.0, 1.0, 4.4]}, "skiff": {"min": [-8.467, -0.965, -1.9], "max": [7.0, 4.647, 1.9]}}
+FBX_DONE
+shot prev_canal_wall.png
+shot prev_canal_steps.png
+shot prev_skiff.png
+RENDER_DONE
