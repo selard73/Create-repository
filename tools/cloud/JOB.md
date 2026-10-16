@@ -3878,3 +3878,8 @@ false. Optional later: the mist glows a little (LightEmission 0.35) - could drop
 Look 3k INSTALLED (runner 7, Edit re-run of 3f3d364): the falls' chute beam sits on the rock chute and reads as flowing water, the drop
 covered by mist + spray (mist glow could be ~0.1 calmer later), the rock pile clears the coping, boat 19.5 long, no pine. Shannon
 publishes + restarts. The canal round is closed unless her next look finds more.
+Plan decisions (Shannon, Oct 16): bamboo maze at the far end of the tea field by the volcano (bamboo already there); koi food 5 acorns +
+a first-feed-of-the-day reward; sushi match ON HOLD; kimono via the wardrobe (Item_dress_/Item_dresswear_, DressKit catalogue, like
+the French dresses); church: build look A; NEW item 9: a propeller cap you buy (a gadget vending machine) that lets you fly - a quiet
+Doraemon tribute, kept generic. Runner 7 surveying: church sites, the tea-field maze site, the palace koi pond, the wardrobe code.
+Cloud: tools/japan/church/gen_church.py (shell + interior FBX, previews) in progress.

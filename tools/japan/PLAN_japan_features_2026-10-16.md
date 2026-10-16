@@ -100,6 +100,17 @@ only through RS.AwardItems / RS.AwardAcorns, look tests with pictures before any
   village church with a slate spire). The kit is built once, the shells per map.
 - Budget: ~12 meshes for the shell + the interior kit; one import.
 
+## 9. The propeller cap (a quiet tribute)  - MEDIUM, a flight item
+- Shannon: "some sort of tribute to doraemon without it standing out too much; I want to have a cap you can buy with a spinner that
+  lets you fly up and around". Kept generic (a beanie-copter cap - no name, no blue cat): sold from a blue-and-white GADGET VENDING
+  MACHINE in Lantern Street (Japan's vending machines are iconic; that is the wink), a Blender machine mesh with a lit front.
+- The cap: a wardrobe hat (Item_dress_<id> / Item_dresswear_<id>, slot "hat" in the DressKit catalogue): a small round cap with a
+  two-blade spinner on a stalk (Blender; the blades a separate mesh spun by the client while flying).
+- Flight (client controller + a lenient server check): wearing the cap, hold Jump to rise, let go to hover, WASD to move at walk
+  speed x 1.6, max height ~60 above the ground, a FLIGHT METER (about 25 s of lift, recharges on the ground in 20 s) so it is a toy,
+  not a skip; the spinner spins only while flying, with a soft whirr; landing is gentle. Works on every map once bought (her call).
+- Price: her call (my suggestion 300 acorns - a prize item); the meter lengths and the height cap too.
+
 ## Suggested order
 1. Sushi memory match (small, no site work, a daily hook) -> 2. Koi feeding (small, uses what we have, by the palace where archery
 also goes) -> 3. Bamboo maze -> 4. Photographer + treehouse photo -> 5. Archery -> 6. Kimono store -> 7. Cat cafe (her Meshy cats can
@@ -118,5 +129,6 @@ Each one: a design note with her choices, a runner survey of the site, a look te
 - Church: what it does on every map (the bell only, a daily blessing, weddings, a memorial wall...), the site (runner proposes), and the
   look: A. the Goto-island wooden church (white walls, dark timber, tiled roof, small cross tower - my suggestion) or B. Nagasaki's Oura
   style (white Gothic stone, pointed arches).
+- Propeller cap: the price (300?), flight time (25 s?) and height cap (60?), every map or Japan only, the vending machine's spot.
 - Sushi match: free once a day then 3 acorns a go (my suggestion), the 8 sushi kinds, whether the card art may be drawn in UI shapes
   (no upload) or she wants real pictures (one sprite sheet to upload).
