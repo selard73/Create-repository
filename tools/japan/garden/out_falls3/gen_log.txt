@@ -1,0 +1,9 @@
+coverage: 0 wall-end corners / old-wall footprint points NOT inside a stone []; 0 water points inside a stone []
+canal_falls3.fbx: 4 meshes, 2202 tris; Fall_Rock 850, Fall_Rock2 940, Fall_Water 252, Fall_Foam 160
+INFO {"canal_falls3/Fall_Rock": {"min": [-10.956, -4.6, -16.852], "max": [11.235, 6.95, 3.496]}, "canal_falls3/Fall_Rock2": {"min": [-11.229, -4.6, -18.257], "max": [10.826, 8.3, 3.977]}, "canal_falls3/Fall_Water": {"min": [-1.8, 1.32, -10.0], "max": [1.8, 6.66, 1.353]}, "canal_falls3/Fall_Foam": {"min": [-2.768, 1.192, 0.971], "max": [2.935, 1.508, 4.125]}, "canal_falls3": {"min": [-11.229, -4.6, -18.257], "max": [11.235, 8.3, 4.125]}, "beams": {"chute_top": [0, 6.72, -10.0], "lip": [0, 3.42, 0.5], "foot": [0, 1.35, 1.4], "mist": [0, 1.6, 2.2]}}
+FBX_DONE
+shot prev_falls3_from_canal.png
+shot prev_falls3_from_lawn_west.png
+shot prev_falls3_three_quarter.png
+shot prev_falls3_from_behind.png
+RENDER_DONE

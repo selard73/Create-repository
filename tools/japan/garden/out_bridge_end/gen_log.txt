@@ -1,0 +1,10 @@
+steps: the foot at 3.25 from the deck end (23.25 from the bridge centre; the old landing's foot 23.23)
+bridge_end.fbx: 3 meshes, 72 tris; Abut_Stone 12, Abut_Coping 12, Abut_Steps 48
+INFO {"bridge_end/Abut_Stone": {"min": [-3.85, -0.6, -4.6], "max": [-0.05, 1.8, 4.6]}, "bridge_end/Abut_Coping": {"min": [-3.9, 1.75, -4.75], "max": [0.0, 2.18, 4.75]}, "bridge_end/Abut_Steps": {"min": [-0.1, -0.3, -4.45], "max": [3.25, 2.3, 4.45]}, "bridge_end": {"min": [-3.9, -0.6, -4.75], "max": [3.25, 2.3, 4.75]}}
+FBX_DONE
+shot prev_bridge_end_side_BEFORE.png
+shot prev_bridge_end_three_quarter_BEFORE.png
+shot prev_bridge_end_side_AFTER.png
+shot prev_bridge_end_three_quarter_AFTER.png
+shot prev_bridge_end_from_the_bridge_AFTER.png
+RENDER_DONE

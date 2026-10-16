@@ -1,0 +1,4 @@
+canal_falls3: 4 meshes: Fall_Foam, Fall_Rock, Fall_Rock2, Fall_Water
+bridge_end: 3 meshes: Abut_Coping, Abut_Steps, Abut_Stone
+objects: Abut_Coping, Abut_Steps, Abut_Stone, Fall_Foam, Fall_Rock, Fall_Rock2, Fall_Water, bridge_end, canal_falls3
+COMBINE_DONE out_kit11/japan_kit11_falls3_bridge_end.fbx 116044 bytes
