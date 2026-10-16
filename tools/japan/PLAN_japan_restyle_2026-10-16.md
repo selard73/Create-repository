@@ -3,15 +3,18 @@
 Shannon: "I want us to build our own styled off of these ... we will combine this with some of what we already have".
 References: tools/japan/reference_2026-10-16 (ref_01..09). Nothing is copied from that game; we build our own pieces.
 
-## What actually makes the references look real
+**REVISED (Shannon, Oct 16): "I don't want it too realistic, on same par with the italy and france maps, just same elements as in the
+photos".** So: the ELEMENTS from the pictures, built in OUR style - the same look and finish as Rue de Noisette and Porto Nocciola
+(our own parts and meshes, the game's normal light, Roblox's built-in materials with our colours). No photographic textures, no
+overcast/haze grade, no realism pass. The light item (U1) and the photographic ground variants are dropped.
 
-Comparing ref_01 / ref_04 with our canal bridge (shots106/after_canal_north_end) and Lantern Street (fight_Walkway_vs_Lantern_Street_paving):
-1. **Textured surfaces.** Their paving has joints, wear and depth. Ours is flat white SmoothPlastic and plain Slate, so it reads as plastic.
-2. **Dense planting.** Knee-high grass, shrubs and flowers line every edge. Our ground is flat bright-green terrain, ending at hard edges.
-3. **Soft light.** Slightly overcast, hazy, warm and low-contrast. Ours is noon-bright, saturated and sharp-shadowed.
-4. **Organic hero shapes.** Their maples are layered leaf cards, and their rocks, lanterns and bridge are real meshes. Ours are blocky parts.
+## The elements to bring in (from the pictures)
 
-So the biggest gains come from surfaces, planting and light. Those touch the parts we already have, and they are cheap on phones. The hero meshes come after.
+- Garden: a river fed by a waterfall over rocks, a red arched bridge, a torii behind it, autumn maples, one twisted pine, stone
+  lanterns, tufts of tall grass and flower clumps along the edges, a stepping-slab path, a raked-gravel bed.
+- Town: two-storey wooden shopfronts with open fronts, wooden tubs and crates of produce with little price tags, A-frame signs,
+  strings of round paper lanterns across the street, white-plaster-and-timber houses, a temple with red railings, a big torii over
+  the street, stone stairs with rails, trees in planters.
 
 ## KEEP AS IS
 
@@ -24,13 +27,12 @@ So the biggest gains come from surfaces, planting and light. Those touch the par
 ## UPGRADE (existing parts, new look)
 
 **Garden-first upgrades**
-- **U1. Light inside Japan only.** Through JapanAtmosphere, so France and Porto are untouched: soft overcast, gentle haze, a warm colour grade with slightly lower contrast. One script change, zero parts. The cheapest big win.
-- **U2. Ground materials.** New PBR MaterialVariants on the parts we already have:
-  - grey stone slabs with joints for Lantern Street, replacing the flat white;
-  - cobble with inset slabs for garden paths;
-  - mossy wet rock for the canal and lake edges.
-  - Also clean up the duplicated JapanMoss / JM_Photographic variants.
-- **U3. Planting along every edge.** Tall-grass and hydrangea clump meshes (one asset each, reused) along paths, canal banks and building feet; mossy boulders where ground meets wall.
+- ~~U1. Light~~ - dropped (the revision): Japan keeps the game's normal light, like France and Italy.
+- **U2. Ground, in our style.** Lantern Street's flat white paving becomes grey stone slabs (Roblox's Slate/Cobblestone with our
+  colours, laid as slabs with joints - as Porto's piazza is), garden paths cobble with inset stepping slabs, rocks along the canal and
+  lake edges. The duplicated JapanMoss / JM_Photographic variants are tidied.
+- **U3. Planting along the edges.** Tufts of tall grass and flower clumps (our own low-poly clumps, the same kind of thing as the
+  French flower beds; one asset each, reused) along paths, canal banks and building feet; boulders where ground meets wall.
   - Note: Roblox's terrain grass setting covers the whole place, France and Porto included. So Japan gets grass meshes, unless you want terrain grass everywhere.
 - **U4. The red bridge over the canal** becomes a proper arched taiko bridge (a hero mesh), with wet rocks at its feet.
 - **U5. The maple and blossom groves:** layered leaf-card maples in autumn orange and red, replacing the leaf balls, plus one twisted black pine near the bridge.
@@ -53,11 +55,11 @@ So the biggest gains come from surfaces, planting and light. Those touch the par
 
 ## How we build it
 
-- **Hero meshes** come from your Meshy pipeline (Meshy, then Blender, then Roblox, as with the pelican and gull), cut down for phones: stone lantern, taiko bridge, autumn maple, black pine, torii, wooden tub, produce crate, paper lantern, machiya front. Studio's generate_mesh and generate_texture can fill in small pieces.
+- **Hero pieces** come from your Meshy pipeline (in the same stylised look as our Porto squirrels' props, not realistic) (Meshy, then Blender, then Roblox, as with the pelican and gull), cut down for phones: stone lantern, taiko bridge, autumn maple, black pine, torii, wooden tub, produce crate, paper lantern, machiya front. Studio's generate_mesh and generate_texture can fill in small pieces.
 - **Materials** are PBR MaterialVariants applied to parts we already have, so no new parts.
 - **Phone budget:** Japan has 20,422 parts today. Every step reports its before and after counts. Hero meshes are reused across many spots, and wherever a mesh replaces a stack of blocks, the blocks go, so the net count should fall. StreamingEnabled stays on.
 - **Order:**
-  1. A **look test** first: one 40 x 40 patch near the bridge with U1, U2, U3 and a lantern and a maple. Previewed in play, with pictures beside ref_01, and you pick what you like.
+  1. A **look test** first: one 40 x 40 patch near the bridge with the ground, planting, a lantern and a maple in our style. Previewed in play, with pictures beside ref_01 AND beside Rue de Noisette, so you can check it sits on a par with France and Italy.
   2. Then the full garden (N1, U4, U5).
   3. Then the town (U6 to U9, N2).
 - Every step is previewed with pictures before anything is installed, and you publish.
@@ -66,5 +68,5 @@ So the biggest gains come from surfaces, planting and light. Those touch the par
 
 1. Tick the items you want from KEEP, UPGRADE and NEW, or say "all of it".
 2. Where the garden goes: around the canal and bridge (my suggestion), or another spot. You can stand there in Studio, as we did for the treehouse.
-3. Grass: meshes in Japan only (my suggestion), or terrain grass across the whole game.
+3. Grass: our own grass tufts in Japan (my suggestion), or Roblox's terrain grass across the whole game.
 4. Meshy: will you generate the hero props? I can write the prompts for each one.

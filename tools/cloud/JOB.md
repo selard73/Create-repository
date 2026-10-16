@@ -3504,3 +3504,7 @@ details), NEW N1 the Momiji Garden around the existing canal + bridge (~6100, -2
 stairs / planters. First step after her picks: a 40 x 40 LOOK TEST near the bridge (light + materials + grass + one lantern + one
 maple), previewed with pictures beside ref_01. Her questions: which items; the garden's site; grass as Japan-only meshes vs place-wide
 terrain decoration; Meshy hero props (prompts on request). Phone budget: part count reported before/after each step (today 20,422).
+Job 125 revision (Shannon, Oct 16): "I don't want it too realistic, on same par with the italy and france maps, just same elements as
+in the photos". The plan is revised: the ELEMENTS from the pictures in our own style (Rue de Noisette / Porto finish, the game's normal
+light, built-in materials with our colours); the Japan-only light grade (U1) and the photographic ground variants dropped; the look
+test is compared with ref_01 AND with Rue de Noisette.
