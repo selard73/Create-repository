@@ -3695,3 +3695,10 @@ RETIRED and a stepping-stone path of kit slabs laid along each old line from the
 tops 0.23-0.35); the "little black stones everywhere" = JM_Garden_Weathered_Cobbles (one 293 x 275 MeshPart) retired; the boat in the
 canal houses' wood colours (BOAT_COL: hull 103,72,48; rails/beams 65,47,33; seams 44,33,28; floor/deck/benches 120,80,50); the walls
 0.1 lower (WALL_DROP) against the "teeth" at the lawn. The outer-end landings are gone with the walkways.
+## Job 125 canal water: clear water over the canal (Studio EDIT on her word; publish + restart) - runner 7
+"Clear canal, dark floor" (Shannon). tools/japan/water/canalwater1.lua (make_patch_canalwater1.py; rehearsed on runner 7's pushed
+source tools/japan/JapanWaterAppearance_source.lua, 1204 bytes, and the result compiles): an exact-string patch of
+StarterPlayerScripts.JapanWaterAppearance adding a canal-zone state inside the Japan box - over the canal (x 6080..6125, z -230..110)
+WaterTransparency 0.9 / WaterReflectance 0.1, back to 0.32 / 0.45 elsewhere in Japan, the save/restore on leaving Japan unchanged;
+three anchors counted once, backup HudBackup.JapanWaterAppearance_pre_canalwater1, loadstring check, idempotent (marker CANALWATER1).
+Live servers pick it up after publish + restart (players get PlayerScripts copies on join). Goes in with garden look 3 when she installs.
