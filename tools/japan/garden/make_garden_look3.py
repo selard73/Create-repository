@@ -66,7 +66,7 @@ local BOAT_WOOD = false                                                     -- f
 local BRIDGE_LANDING_TURN = 180                                             -- runner 7's profiles (look 3c): the landings came out with the low tread against the deck end -> turned, the high tread meets the deck
 local KOI_TOP_UNDER = 0.2                                                   -- the koi's TOP this far under the surface (Shannon: "the koi should be swimming under the water not above it"); "Clear canal, dark floor"
 local BED_Y = -1.3                                                          -- the canal's new flat Slate bed (the wall meshes reach -1.2), burying the jagged rock ridge at -10
-local WALL_DROP = 0.1                                                       -- the walls set 0.1 lower so their back blocks stop poking "teeth" through the lawn
+local WALL_DROP = 0.0                                                       -- (the "teeth" at the lawn were the deep joints between the lawn-face blocks: fixed in the mesh, gen_garden3; the coping stays at 2.1)
 local BOAT_COL = {Boat_Hull = Color3.fromRGB(103, 72, 48), Boat_Rail = Color3.fromRGB(65, 47, 33), Boat_Beam = Color3.fromRGB(65, 47, 33), Boat_Seam = Color3.fromRGB(44, 33, 28),
 	Boat_Floor = Color3.fromRGB(120, 80, 50), Boat_Deck = Color3.fromRGB(120, 80, 50), Boat_Bench = Color3.fromRGB(120, 80, 50)}   -- the canal houses' wood colours ("the color of the boat ... sticks out")
 -- ---------- 1. the canal ----------
