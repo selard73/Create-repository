@@ -4,7 +4,7 @@
 -- part in JapanMap that wears it (by parent, with sizes); 2. FIXES (only when FIX = true): drops the variant on those parts and gives
 -- them plain Rock in a warm stone grey (the kit rocks' grey), the old variant / material / colour kept as attributes (BlackRockOld*)
 -- so it reverses. Play-test PREVIEW with FIX = true first; Studio EDIT on her word. Output "QQ BLACKROCK1".
-local FIX = true
+local FIX = false                                                          -- SUPERSEDED (runner 7): the black is baked-in dark VERTEX COLOURS in the meshes, not the variant - diagnostics only; the fix is rebuild_dark_meshes.py + ApplyMesh
 local VARIANT = "JM_PhotographicRock"
 local STONE = Color3.new(0.58, 0.57, 0.55)
 local J = workspace:FindFirstChild("JapanMap")

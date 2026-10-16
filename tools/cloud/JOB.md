@@ -3799,3 +3799,10 @@ Look 3g -> 3h (cloud): the water rows written one cell column further under each
 slopes down at the walls; the falls = runner 7's canal_falls piece (1aa2aa8, kit Model "canal_falls", origin at the south end wall's
 water face, placed at (CX, 0, ZS + 0.3)) replacing the old waterfall + spill + foam + FallsRocks. Kit check wants canal_falls (the
 old "waterfall" Model is no longer needed).
+Black rocks, CORRECTED (runner 7): blackrock1 does NOT fix them and would spoil the palace walls (JM_PhotographicRock renders fine
+there) - WITHDRAWN (FIX = false, diagnostics only). The real cause: dark per-vertex colours baked into the meshes (JP_Waterfall_Rockface
+0.13-0.27 luminance, JP_Volcano_Sculpted, JP_Ridgeline_1/2, JP_Island_Cliffs_N/S/W, JP_Koi_Pond_Shore, JP_Onsen_Shore, JP_Rice_Berm_1-3;
+Fuji fine), which Roblox multiplies over colour, material, variant and texture. Runner 7's fix: the geometry rebuilt in Blender without
+vertex colours (tools/japan/rocks/rebuild_dark_meshes.py, out/dark_rock_fix.fbx: JP_Waterfall_Rockface, JP_Onsen_Shore,
+JP_Koi_Pond_Shore first), Shannon imports one combined FBX, each original gets old:ApplyMesh(new) with the original cloned to HudBackup
+(CFrame, Size, Rock + variant kept); the volcano, ridgelines and island cliffs through the same pipeline later. Goes in with the canal.
