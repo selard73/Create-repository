@@ -5,16 +5,21 @@ by each bridge; the bridge ends meeting the paths. Meshes only, in the France/It
 lilies or pond rim.
   canal_wall.fbx    Wall_Stone, Wall_Coping - one wall segment, 8 long (Roblox z -4..4), the WATER face at x 0, the body to x -4 (the lawn
                     side), from y -1.2 (under the water) to the coping top at 2.1 (the old slabs' height): stacked stone blocks on both
-                    faces with staggered joints, a coping of slabs overhanging 0.3 each side
+                    faces with shallow joints, a coping of slabs overhanging 0.3 each side. Opt-in for a future re-export (= a re-import):
+                    GARDEN_PLAIN_WALLS=1 plain faces (the palace flagstone MaterialVariant goes on in Studio), GARDEN_WALL_Z0=-5.5 stonework
+                    down to the deeper bed. Every mesh now has box-projected UVs (one tile per 6 studs) so a MaterialVariant can tile.
   canal_wall_b.fbx  the same with another block pattern (alternate them)
   canal_steps.fbx   Steps_Stone - a stair down into the water from the coping: five treads (1.85, 1.6, 1.35, 1.1, 0.85 - the last two
-                    under the 1.3 water), 4 wide, running 4.5 out from the wall face (x 0..4.5), bottom -1.2; against the wall by each bridge
+                    under the 1.3 water), 4 wide, running 4.5 out from the wall face (x 0..4.5), down to the bed at -5.5; by each bridge
   bridge_steps.fbx  Steps_Landing - two landing steps (rise 0.5 and 1.0, 8.8 wide) at a bridge end: x -3..0 rising toward 0 (the deck end)
   skiff.fbx         Skiff_Wood, Skiff_Trim, Skiff_Pole - a flat-bottomed wooden punt (Yanagawa / Tsuwano style; Shannon: "skiff in the
                     water too?"), 14 long along x (the bow at +x), 3.6 wide, its origin at the WATERLINE (hull bottom -0.45, gunwale 0.9,
                     the bow rising to 1.4), two thwarts, a pole leaning off the stern
 Units, axes, naming as gen_garden1.py (Roblox x = x, y = z, z = -y). Run: blender -b --python gen_garden3.py"""
 import bpy, bmesh, math, os, random, traceback, json
+PLAIN_WALL = os.environ.get("GARDEN_PLAIN_WALLS") is not None      # opt-in: plain textured faces instead of the stacked-block skins (a re-export = a re-import for her)
+WALL_Z0 = float(os.environ.get("GARDEN_WALL_Z0", "-1.2"))           # opt-in: the stonework's bottom (the kit as imported: -1.2; the deeper bed is handled in Studio with a second, lower copy of each segment)
+UV_STUDS = 6.0                                                      # box-projected UVs: one texture tile per 6 studs
 from mathutils import Vector
 D = os.path.dirname(os.path.abspath(__file__))
 OUT = os.environ.get("GARDEN_OUT3") or os.path.join(D, "out3")
@@ -32,8 +37,19 @@ def material(key):
     m.node_tree.nodes["Principled BSDF"].inputs["Roughness"].default_value = 0.85
     return m
 def colkey(name): return name[2:] if name[:2] in ("A_", "B_") else name
+def box_uvs(bm):
+    """planar UVs per face on its dominant axis, UV_STUDS studs per tile - so a MaterialVariant texture tiles over the mesh in Studio"""
+    bm.normal_update()
+    uv = bm.loops.layers.uv.new("UVMap")
+    for f in bm.faces:
+        n = f.normal; ax = max(range(3), key=lambda i: abs(n[i]))
+        for l in f.loops:
+            c = l.vert.co
+            u, v = ((c.y, c.z), (c.x, c.z), (c.x, c.y))[ax]
+            l[uv].uv = (u / UV_STUDS, v / UV_STUDS)
 def obj_from_bm(name, bm):
     bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=0.0005)
+    box_uvs(bm)
     me = bpy.data.meshes.new(name); bm.normal_update(); bm.to_mesh(me); bm.free()
     o = bpy.data.objects.new(name, me); bpy.context.scene.collection.objects.link(o); me.materials.append(material(colkey(name)))
     for p in me.polygons: p.use_smooth = False
@@ -48,13 +64,16 @@ def box(bm, x0, x1, y0, y1, z0, z1, jit=None):
         k = (i + 1) % 4; bm.faces.new([b[i], b[k], t[k], t[i]])
     bm.faces.new(list(reversed(b))); bm.faces.new(t)
 # ---------- the wall segment ----------
-Z0, ZTOP, COPE = -1.2, 1.7, 2.1              # under the water .. the top of the stonework .. the coping top (the old slabs' 2.1)
+Z0, ZTOP, COPE = WALL_Z0, 1.7, 2.1           # under the water .. the top of the stonework .. the coping top (the old slabs' 2.1)
 def build_wall(seed, name):
     rnd = random.Random(seed)
     st, cp = bmesh.new(), bmesh.new()
-    box(st, -3.92, -0.08, -4.0, 4.0, Z0, ZTOP - 0.05)                       # the core, right behind both block skins: the joints between blocks are 0.08 deep, a fine mortar line (0.5-deep slots read as dark spikes - look 3c)
-    courses = [(Z0, -0.25), (-0.25, 0.72), (0.72, ZTOP)]
-    for face, (xi, xo) in (("water", (0.0, -0.55)), ("lawn", (-4.0, -3.45))):
+    if PLAIN_WALL:
+        box(st, -4.0, 0.0, -4.0, 4.0, Z0, ZTOP - 0.05)                      # one plain block: the flagstone texture does the stonework
+    else:
+        box(st, -3.92, -0.08, -4.0, 4.0, Z0, ZTOP - 0.05)                   # the core, right behind both block skins: the joints between blocks are 0.08 deep, a fine mortar line (0.5-deep slots read as dark spikes - look 3c)
+    courses = [c for c in [(-5.5, -3.0), (-3.0, -1.2), (-1.2, -0.25), (-0.25, 0.72), (0.72, ZTOP)] if c[1] > Z0 + 0.01]
+    for face, (xi, xo) in (() if PLAIN_WALL else (("water", (0.0, -0.55)), ("lawn", (-4.0, -3.45)))):
         for ci, (z0, z1) in enumerate(courses):
             y = -4.0 + (0.0 if (ci + (face == "lawn")) % 2 == 0 else rnd.choice((0.6, 0.9)))   # staggered joints
             if y > -4.0: box(st, xi + rnd.uniform(-0.03, 0.03), xo, -4.0, y - 0.03, z0, z1 - 0.03)   # the half block at the start

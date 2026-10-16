@@ -3759,3 +3759,14 @@ swam backwards) and a MEANDER instead of a line (x = X + A1 sin(a+p1) + A2 sin(2
 the heading eased, reaches 14 clear of the bridges); LANTERNS darker (Lantern_Stone 0.40, 0.40, 0.39 via COL_OVERRIDE); the FLOATING
 MAPLE at (6125, 83) (trunk + leaves, "Blender maple and blossom groves") lowered 1.92 (GardenOldCF; re-run safe). Re-runnable in Edit:
 the previous MomijiGarden -> HudBackup.MomijiGarden_prev (one kept), bridges/walkways read back from MomijiGardenReplaced.
+Look 3f COMBINED build (cloud; Shannon: "do what you think is best, once complete, I will publish and check"): items 1-6 above PLUS
+7. FLAGSTONE WALLS with the existing meshes (FLAGSTONE_WALLS: every Wall_Stone in Pavement + MaterialVariant JM_PhotographicPath, white;
+the coping stays cut stone); 8. DEEPER WATER: Slate bed at -4.0 (5.3 deep), a second coping-less copy of every wall segment (sides and
+ends) and of every water stair 2.85 lower (WALL_LOWER_COPY) so the stonework and the stairs reach the bed; the end pool and the falls
+landing follow (the bridge footings are on the lawn behind the walls, no fill needed); koi tops 0.2 under, the boat unchanged. RE-RUN
+SAFE: the canal is read from the retired "Canal stone bank" parts in HudBackup.MomijiGardenReplaced (the first run's abort: "expected 2
+... found 0"), else the surveyed geometry; bridges/walkways from the backup too; the maple guarded by GardenOldCF.
+tools/japan/water/canalwater2.lua (make_patch_canalwater2.py; rehearsed on source + canalwater1 = 1608 bytes -> 1741, compiles): over
+the canal WaterColor (40,104,112) / 0.68 / 0.2, elsewhere in Japan (24,112,151) / 0.32 / 0.45; needs CANALWATER1, idempotent
+(CANALWATER2), backup HudBackup.JapanWaterAppearance_pre_canalwater2. gen_garden3.py keeps opt-in flags (GARDEN_PLAIN_WALLS,
+GARDEN_WALL_Z0) and box UVs for a future re-export; out3/ unchanged (= the kit as imported).
