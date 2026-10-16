@@ -1,7 +1,7 @@
 -- church_install1.lua: the church (Goto-islands style) at SITE (a play-test PREVIEW first; Studio EDIT on Shannon's word; re-runnable).
 -- The kit Models "church_shell" and "church_interior" are placed by bounding box with the door facing the yaw; pews get Seats, the
 -- door leaves swing on a prompt, the bell rope rings the bell, candles glow. Output "QQ CHURCH1".
-local SITE_X, SITE_Z, SITE_YAW, GROUND_Y = 6101, -265, 0, 0            -- <- runner 7's chosen site: the door faces +z turned by SITE_YAW (degrees); GROUND_Y = the lawn under it
+local SITE_X, SITE_Z, SITE_YAW, GROUND_Y = 6101, -266, 0, 0            -- site A (runner 7): the lawn behind the falls, x 6060..6140, z -285..-242; the nave 33.7 long runs north-south, its door (+z) facing the canal at z -249, the back at -283, the hill behind from -320
 local BELL_SOUND = ""                                                   -- a bell toll sound id (rbxassetid://...) when she has picked one; "" = the bell swings silently
 local SS = game:GetService("ServerStorage")
 local TS = game:GetService("TweenService")

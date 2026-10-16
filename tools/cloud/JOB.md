@@ -3896,3 +3896,9 @@ faces +z before the yaw), places both Models by bbox, dresses (plaster SmoothPla
 Marble altar, Glass 0.3, Neon flames + PointLights), 30 invisible Seats on the pews (automatic sit), the door leaves swing 100 degrees on
 a prompt and close after 10 s, the bell rope prompt swings the bell (BELL_SOUND id to pick). Re-runnable (Church_prev kept once).
 IMPORT: out/church_shell.fbx and church_interior.fbx into the kit as Models "church_shell" / "church_interior" (one combined FBX fine).
+Church SITE A (runner 7's survey tools/japan/feature_surveys_2026-10-16): the lawn behind the falls, centre (6101, -266), door facing
+north to the canal (yaw 0), forecourt ~11 to the falls' rocks, the hill behind from z -320. church_install1.lua defaults set.
+Surveys also: the tea-field "Bamboo grove maze" is 102 part-built clumps (3,506 parts) on a 95-wide lawn x 5375..5470, z -330..-60
+with the "Volcano overlook" boardwalk through it; the palace koi pond is a round terrain pond 56 across at (6322, 21), surface 3.9, a
+moon bridge across, 8 old part koi on the surface; the wardrobe = DressKit styles (Catalogue.attach welds MeshParts), Item_dress_ /
+Item_dresswear_, DressServer distance-checks one Spot - the kimono = new styles + meshes + Price_<styleId> + a try-on spot.
