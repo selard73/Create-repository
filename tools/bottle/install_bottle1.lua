@@ -1,7 +1,7 @@
 -- install_bottle1.lua (Studio EDIT; re-runnable; its body also runs as a play-test PREVIEW - discarded on stop). Job 118: the MESSAGE IN
 -- A BOTTLE game on the main Porto beach. Scans the beach for open sand and the waterline, puts the stand 10..18 studs from the water
 -- (its back to the sea), picks up to 10 wash-up spots, builds workspace.Bottles + ReplicatedStorage.BottleTemplate. Sources: BottleText
--- (11018), BottleServer (10292), BottleClient (17730) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
+-- (11018), BottleServer (10292), BottleClient (17706) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
 -- AwardAcorns), no publish. Output "QQ BOTTLE".
 local HttpService = game:GetService("HttpService")
 local RS = game:GetService("ReplicatedStorage")
@@ -496,7 +496,7 @@ local function toss()                                                      -- (r
 	e.Lifetime = NumberRange.new(0.6, 1.1); e.Acceleration = Vector3.new(0, -30, 0); e.Size = NumberSequence.new(0.9, 0.2); e.Color = ColorSequence.new(Color3.fromRGB(230, 245, 255))
 	e.Transparency = NumberSequence.new(0.1, 1); e.Parent = sp; e:Emit(60); Debris:AddItem(sp, 2.5)
 	local sid = tostring(F:GetAttribute("TossSound") or "")
-	if sid ~= "" then local s = Instance.new("Sound"); s.SoundId = sid; s.Volume = 0.45; s.PlaybackSpeed = 0.9; s.Parent = gui; s:Play(); Debris:AddItem(s, 4) end
+	if sid ~= "" then local s = Instance.new("Sound"); s.SoundId = sid; s.Volume = 0.6; s.Parent = gui; s:Play(); Debris:AddItem(s, 4) end
 	local drift = Instance.new("NumberValue"); drift.Value = 0
 	local away = (to - from) * Vector3.new(1, 0, 1); away = away.Magnitude > 0.1 and away.Unit or Vector3.new(0, 0, -1)
 	drift.Changed:Connect(function(t)
@@ -689,7 +689,7 @@ local sp = Instance.new("Sparkles"); sp.SparkleColor = C(255, 240, 180); sp.Time
 tpl.Parent = RS
 -- ---------- 5: the folder, the stand, the scripts ----------
 local Fd = Instance.new("Folder"); Fd.Name = "Bottles"
-for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 1, RespawnSeconds = 90, TestDayOffset = 0, TossSound = "rbxassetid://9116394876"}) do Fd:SetAttribute(k, v) end   -- (round 5: TossSound - the bottle chime, not the croc's splash; any id, or "" for none)   -- (round 3: ONE silly bottle at a time)
+for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 1, RespawnSeconds = 90, TestDayOffset = 0, TossSound = "rbxassetid://129669875728815"}) do Fd:SetAttribute(k, v) end   -- (round 5b: TossSound = her pick "Splash.mp3", not the croc's; any id, or "" for none)   -- (round 3: ONE silly bottle at a time)
 Fd:SetAttribute("WashSpots", HttpService:JSONEncode(spots))
 Fd:SetAttribute("ReplySpot", HttpService:JSONEncode(replySpot))
 do	-- (round 4/5) the toss view: a shore spot where the camera, the throw and the landing see each other over OPEN water (round 4's view

@@ -3428,3 +3428,5 @@ Same file, tools/bottle/install_bottle1.lua (57932 bytes, compiles):
  - wording: "A reply to your bottle is waiting at the bottle kiosk by the boat club!", "... waiting right here by the kiosk", the
    server's "Come back to the kiosk tomorrow!"; opening the panel clears any toast.
  - the clearance check at her spot is 3 studs and reads "a part's box reaches the spot (check by eye)" instead of NOT clear.
+Job 118 round 5b: Shannon's splash pick, rbxassetid://129669875728815 ("Splash.mp3", Teriyaki's Games group, IsPublicDomain true) is
+the TossSound default, at normal speed, volume 0.6. If it does not play (audio privacy), the attribute can be set to another id.

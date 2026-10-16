@@ -181,7 +181,7 @@ local function toss()                                                      -- (r
 	e.Lifetime = NumberRange.new(0.6, 1.1); e.Acceleration = Vector3.new(0, -30, 0); e.Size = NumberSequence.new(0.9, 0.2); e.Color = ColorSequence.new(Color3.fromRGB(230, 245, 255))
 	e.Transparency = NumberSequence.new(0.1, 1); e.Parent = sp; e:Emit(60); Debris:AddItem(sp, 2.5)
 	local sid = tostring(F:GetAttribute("TossSound") or "")
-	if sid ~= "" then local s = Instance.new("Sound"); s.SoundId = sid; s.Volume = 0.45; s.PlaybackSpeed = 0.9; s.Parent = gui; s:Play(); Debris:AddItem(s, 4) end
+	if sid ~= "" then local s = Instance.new("Sound"); s.SoundId = sid; s.Volume = 0.6; s.Parent = gui; s:Play(); Debris:AddItem(s, 4) end
 	local drift = Instance.new("NumberValue"); drift.Value = 0
 	local away = (to - from) * Vector3.new(1, 0, 1); away = away.Magnitude > 0.1 and away.Unit or Vector3.new(0, 0, -1)
 	drift.Changed:Connect(function(t)

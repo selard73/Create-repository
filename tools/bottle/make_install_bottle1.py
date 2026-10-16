@@ -167,7 +167,7 @@ local sp = Instance.new("Sparkles"); sp.SparkleColor = C(255, 240, 180); sp.Time
 tpl.Parent = RS
 -- ---------- 5: the folder, the stand, the scripts ----------
 local Fd = Instance.new("Folder"); Fd.Name = "Bottles"
-for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 1, RespawnSeconds = 90, TestDayOffset = 0, TossSound = "rbxassetid://9116394876"}) do Fd:SetAttribute(k, v) end   -- (round 5: TossSound - the bottle chime, not the croc's splash; any id, or "" for none)   -- (round 3: ONE silly bottle at a time)
+for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 1, RespawnSeconds = 90, TestDayOffset = 0, TossSound = "rbxassetid://129669875728815"}) do Fd:SetAttribute(k, v) end   -- (round 5b: TossSound = her pick "Splash.mp3", not the croc's; any id, or "" for none)   -- (round 3: ONE silly bottle at a time)
 Fd:SetAttribute("WashSpots", HttpService:JSONEncode(spots))
 Fd:SetAttribute("ReplySpot", HttpService:JSONEncode(replySpot))
 do	-- (round 4/5) the toss view: a shore spot where the camera, the throw and the landing see each other over OPEN water (round 4's view
