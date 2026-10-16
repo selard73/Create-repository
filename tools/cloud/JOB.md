@@ -3367,3 +3367,14 @@ Treehouse RESET round 3 (runner 7, Shannon: "Yes, restart me again", Studio EDIT
 
 PUBLISHED (Shannon: "published; testing now"): treehouse r6b (sign "Homebase Treehouse / Welcome home, <name>!", walk-in seats, her 10
 build-sound slices) + ResetRound 3. Nothing left unpublished in Edit.
+
+Result job 118 ROUND 3 PREVIEW (runner 7, partial, play test, nothing kept): install_bottle1.lua at 1f66b4b (51689, adler32 4215756385):
+"QQ BOTTLE stand (her spot): (473.3, -12.0, -970.9) on ...Via della Piazza.Continuous fitted paving, facing yaw 99; NOT clear:
+...13 Hillside town.Filled village paving corners.Circolo Velico level courtyard.Continuous fitted cobblestone; nearest water 244
+studs", "QQ BOTTLE the reply spot: in front of the kiosk at (468, -12.0, -973) - the waterline is more than 30 studs away", "QQ
+BOTTLE spots: 1 (335, -51.8, -740) ... 10 (235, -53.1, -744); no. 1 ... is the REPLY spot, the other 10 are wash spots" (contradicts
+the line before - which is it?), "QQ BOTTLE GiftsClient: already patched", "QQ BOTTLE InteractServer: already patched", "QQ BOTTLE
+DONE: ... (BottleServer 10288, BottleClient 14400, BottleText 11018 chars); the stand at (473, -12.0, -971); 10 wash spots + the reply
+spot; ... the old folder is HudBackup.Bottles_pre_1". SIGN (her complaint about the LIVE stand, same here): SignBoard y -6.45..-4.95,
+the AwningFringe -5.23..-4.78 hangs over its top - from the normal camera "MESSAGGI IN BOTTIGLIA" is hidden, only "Messages in a
+Bottle" shows (r3_kiosk_player_view_sign_hidden). Shannon also wants the toss to be a short animation of the bottle thrown into the sea.
