@@ -130,6 +130,10 @@ local function setStatus()
 end
 local function open()
 	ev:FireServer("state")
+	-- (round 6, Shannon: "if you already sent a message that day ... you should not get the menu ... only the note") - a bottle at sea: just
+	-- the note; a reply waiting: E reads it straight away; otherwise the writing panel
+	if st.sentDay and not st.replyReady then say("Your bottle is out at sea. A reply will wash up here tomorrow!", 4) return end
+	if st.sentDay and st.replyReady then ev:FireServer("reply") return end
 	refresh(); setStatus()
 	shade.Visible = true; panel.Visible = true; pg:SetAttribute("OpenPanel", "bottle")
 	toastAt = 0; toast.BackgroundTransparency = 1; toast.TextTransparency = 1          -- (round 5: no toast left over the panel)
@@ -214,10 +218,11 @@ local function placeReply(want)
 	replyBottle = b
 end
 local told = false
+local promptText                                                           -- (defined below, with the kiosk prompt; the state handler calls it)
 ev.OnClientEvent:Connect(function(what, a, b, c, d, e, f, g)
 	if what == "state" then
 		st = type(a) == "table" and a or {}
-		setStatus(); placeReply(st.replyReady == true)
+		setStatus(); placeReply(st.replyReady == true); if promptText then promptText() end
 		if st.replyReady and not told then told = true; task.delay(4, function() say("A reply to your bottle is waiting at the bottle kiosk by the boat club!", 5) end) end
 	elseif what == "sent" then
 		closePanel()
@@ -239,4 +244,10 @@ ev.OnClientEvent:Connect(function(what, a, b, c, d, e, f, g)
 end)
 local prompt = stand and stand:FindFirstChild("WritePrompt", true)
 if prompt then prompt.Triggered:Connect(open) end
+promptText = function()                                                    -- (round 6) this player's own view of the kiosk prompt
+	if not prompt then return end
+	if st.sentDay and st.replyReady then prompt.ActionText = "Read your reply"
+	elseif st.sentDay then prompt.ActionText = "Your bottle is at sea"
+	else prompt.ActionText = "Write a message" end
+end
 ev:FireServer("state")

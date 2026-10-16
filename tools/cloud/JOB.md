@@ -3453,3 +3453,9 @@ servers for the update and join a fresh server; F9 Server shows a "TreehouseRese
 PUBLISHED (Shannon: "saved and published; servers restarted"): bottle round 5 (c172f87, the kiosk by the boat club, the toss, the splash)
 and the TreehouseReset diagnostics (ResetRound 3). Servers restarted, so her next join is on the new version. Waiting for her F9 Server
 "TreehouseReset:" line.
+Job 118 ROUND 6 (cloud thread; Shannon live after r5, via runner 7: "if you already sent a message that day, if you click E for send a
+message you should not get the menu to choose a message, you should only get the note that says 'Your bottle is out at sea. A reply
+will wash up here tomorrow!'"). BottleClient: E at the kiosk with a bottle at sea shows ONLY that note (a toast, her exact words) -
+no panel; with a reply waiting, E reads it straight away (the reply card), the glowing bottle at the kiosk's foot still works too;
+otherwise the writing panel as before. The kiosk prompt's action text follows (this player's view only): "Write a message" /
+"Your bottle is at sea" / "Read your reply". Same file, tools/bottle/install_bottle1.lua (a full re-run as before).
