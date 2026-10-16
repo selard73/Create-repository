@@ -3471,3 +3471,10 @@ read, or when the player is already within the prompt range of the kiosk. Not in
 Job 118 round 6b (cloud thread, from runner 7's r6 preview at c06626d: all three kiosk states right; the delayed "A reply to your
 bottle is waiting ..." toast landed on top of the open reply card): the toast is skipped when a bottle card or panel is open
 (OpenPanel "bottle"), when the reply has been read by then, or when the player is within 14 studs of the kiosk. Same file.
+
+Result job 118 ROUND 6b PREVIEW + INSTALLED (runner 7): install_bottle1.lua at f4239f9 (59396, adler32 1988666265). Play test: sent one,
+TestDayOffset 1, E at the kiosk ("Read your reply") -> the reply card, and no reminder toast over it for 7 s (r6b_reply_card_clear). Then
+INSTALLED in Edit on Shannon's "Yes, install it", unpublished: stand (473.3, -12.0, -970.9) yaw 99, 3 studs clear; toss view clear; "QQ
+BOTTLE DONE: workspace.Bottles (BottleServer 10292, BottleClient 19182, BottleText 11018 chars) ... the old folder is HudBackup.Bottles_pre_2".
+Readback: BottleEvent, BottleText, Stand, BottleServer, BottleClient; TossSound 129669875728815; TestDayOffset 0. Told her: save, publish,
+restart servers.
