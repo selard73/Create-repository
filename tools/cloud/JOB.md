@@ -3412,3 +3412,19 @@ it at (307, -740) - neither the arc nor the splash shows (r4_toss_view_quay_wall
 SelBell, / Coconuts. Only coconuts. It's coconuts or nothing on this island. / - Captain Barnacle ... / You wrote: ... What's your
 favourite food?" all TextFits (r4_reply_card). Stale line in BottleClient 211: "A reply to your bottle has washed up by the bottle stand
 on the beach!". Not installed.
+Job 118 ROUND 5 (cloud thread). Shannon, on round 4's pictures: "the post holding up the sign on the left side should be behind the sign
+not in front"; "the sound you are using for the throw of the bottle is the same sound as when the croc attacks, that does not work";
+"the animation is so quick you can't tell what is happening". Runner 7's round-4 preview (51603bf): the toss camera looked into the
+quay wall ("Continuous fitted paving", x ~315, top -46.8) - neither the arc nor the splash showed; stale "beach" wording in two
+places; the "Off it goes!" toast left over the Ask row when the panel reopened; "NOT clear" printed for a big courtyard part 31 away.
+Same file, tools/bottle/install_bottle1.lua (57932 bytes, compiles):
+ - the sign posts BEHIND the board (z +0.05; the board's back face is at -0.175).
+ - TossSound folder attribute, default rbxassetid://9116394876 (the bottle notes' chime, at 0.9 speed) - not the croc's splash; any id
+   from the Toolbox, or "" for none.
+ - the toss ~7 s: 0.9 s on the shore with the bottle, a 2.6 s arc (the bottle scaled 2.2x, sparkling), the camera FOLLOWING it, the
+   landing spray, a 3 s bob out to sea, then back. The toast comes as it lands.
+ - the toss view is chosen with sight-line raycasts: the first waterline spot (nearest the kiosk first) whose camera (8 back, 10 up),
+   throw point, arc top and landing (28 out, checked to be over terrain Water) all see each other; printed, or "NO shore spot ..."
+ - wording: "A reply to your bottle is waiting at the bottle kiosk by the boat club!", "... waiting right here by the kiosk", the
+   server's "Come back to the kiosk tomorrow!"; opening the panel clears any toast.
+ - the clearance check at her spot is 3 studs and reads "a part's box reaches the spot (check by eye)" instead of NOT clear.

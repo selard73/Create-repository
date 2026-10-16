@@ -1,7 +1,7 @@
 -- install_bottle1.lua (Studio EDIT; re-runnable; its body also runs as a play-test PREVIEW - discarded on stop). Job 118: the MESSAGE IN
 -- A BOTTLE game on the main Porto beach. Scans the beach for open sand and the waterline, puts the stand 10..18 studs from the water
 -- (its back to the sea), picks up to 10 wash-up spots, builds workspace.Bottles + ReplicatedStorage.BottleTemplate. Sources: BottleText
--- (11018), BottleServer (10288), BottleClient (16676) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
+-- (11018), BottleServer (10292), BottleClient (17730) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
 -- AwardAcorns), no publish. Output "QQ BOTTLE".
 local HttpService = game:GetService("HttpService")
 local RS = game:GetService("ReplicatedStorage")
@@ -224,7 +224,7 @@ ev.OnServerEvent:Connect(function(p, what, a1, a2, a3, a4, a5)
 		if not (to and card and a and b and Text.valid(to, card, a, b, q)) then return end
 		local s = state(p)
 		if s.sentDay then
-			ev:FireClient(p, "msg", s.replyReady and "Your reply has washed up by the stand - read it first!" or "Your bottle is already out at sea. Check the beach tomorrow!")
+			ev:FireClient(p, "msg", s.replyReady and "Your reply is waiting at the kiosk - read it first!" or "Your bottle is already out at sea. Come back to the kiosk tomorrow!")
 			return
 		end
 		local cost = math.max(0, math.floor(A("SendCost", 15)))
@@ -439,7 +439,7 @@ send.TextScaled = true; local sc2 = Instance.new("UITextSizeConstraint"); sc2.Ma
 local sp2 = Instance.new("UIPadding"); sp2.PaddingLeft = UDim.new(0, 8); sp2.PaddingRight = UDim.new(0, 8); sp2.Parent = send
 local st = {}
 local function setStatus()
-	if st.sentDay and st.replyReady then status.Text = "A reply to your bottle has washed up by the stand. Go and read it!"; send.Visible = false
+	if st.sentDay and st.replyReady then status.Text = "A reply to your bottle is waiting right here by the kiosk. Go and read it!"; send.Visible = false
 	elseif st.sentDay then status.Text = "Your bottle is out at sea. A reply will wash up here tomorrow!"; send.Visible = false
 	else status.Text = "One bottle a day. A reply washes up tomorrow."; send.Visible = true; send.Text = string.format("Cork it & toss it! (%d acorns)", st.cost or 15) end
 end
@@ -447,6 +447,7 @@ local function open()
 	ev:FireServer("state")
 	refresh(); setStatus()
 	shade.Visible = true; panel.Visible = true; pg:SetAttribute("OpenPanel", "bottle")
+	toastAt = 0; toast.BackgroundTransparency = 1; toast.TextTransparency = 1          -- (round 5: no toast left over the panel)
 end
 local function closePanel() shade.Visible = false; panel.Visible = false; if pg:GetAttribute("OpenPanel") == "bottle" then pg:SetAttribute("OpenPanel", nil) end end
 close.Activated:Connect(closePanel); shade.Activated:Connect(closePanel)
@@ -458,12 +459,15 @@ local function standCF() return stand and stand:GetPivot() or CFrame.new() end
 local function seaward()                                                  -- the stand's back faces the sea
 	local cf = standCF(); return -cf.LookVector
 end
-local function toss()                                                      -- (round 4) a short shot of the bottle flying into the sea
-	if not template then return end
-	local view
+local function toss()                                                      -- (round 5, Shannon: "so quick you can't tell what is happening") ~7 s:
+	if not template then return end                                        -- the shore, a big bottle flying out, the camera following it, the
+	local view                                                             -- landing, a long bob out to sea
 	pcall(function() view = HttpService:JSONDecode(F:GetAttribute("TossView") or "null") end)
 	local b = template:Clone(); b.Name = "TossedBottle"
 	for _, d in ipairs(b:GetDescendants()) do if d:IsA("ProximityPrompt") then d:Destroy() elseif d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false end end
+	pcall(function() b:ScaleTo(2.2) end)                                    -- big enough to see from the shore
+	local glass = b:FindFirstChild("Glass")
+	if glass then local sp = Instance.new("Sparkles"); sp.SparkleColor = Color3.fromRGB(255, 240, 180); sp.Parent = glass end
 	local from, to, camAt
 	if view then
 		from, to, camAt = Vector3.new(view.from[1], view.from[2], view.from[3]), Vector3.new(view.to[1], view.to[2], view.to[3]), Vector3.new(view.cam[1], view.cam[2], view.cam[3])
@@ -472,31 +476,37 @@ local function toss()                                                      -- (r
 	end
 	local cam = workspace.CurrentCamera
 	local before = cam and cam.CFrame
-	if camAt and cam then
-		cam.CameraType = Enum.CameraType.Scriptable
-		cam.CFrame = CFrame.lookAt(camAt, from:Lerp(to, 0.55) + Vector3.new(0, 2, 0))
-	end
-	b:PivotTo(CFrame.new(from)); b.Parent = F
+	local function look(at) if camAt and cam then cam.CFrame = CFrame.lookAt(camAt, at) end end
+	if camAt and cam then cam.CameraType = Enum.CameraType.Scriptable end
+	b:PivotTo(CFrame.new(from) * CFrame.Angles(0, 0, math.rad(60))); b.Parent = F
+	look(from:Lerp(to, 0.3))
+	task.wait(0.9)                                                         -- a moment on the shore with the bottle before it goes
 	local v = Instance.new("NumberValue"); v.Value = 0
 	v.Changed:Connect(function(t)
-		local p = from:Lerp(to, t) + Vector3.new(0, math.sin(t * math.pi) * 12, 0)
-		b:PivotTo(CFrame.new(p) * CFrame.Angles(t * 9, 0, t * 4))
+		local p = from:Lerp(to, t) + Vector3.new(0, math.sin(t * math.pi) * 14, 0)
+		b:PivotTo(CFrame.new(p) * CFrame.Angles(t * 6, 0, math.rad(60) + t * 3))
+		look(p:Lerp(to, 0.25))
 	end)
-	task.wait(0.35)
-	local tw = TweenService:Create(v, TweenInfo.new(1.3, Enum.EasingStyle.Linear), {Value = 1}); tw:Play()
+	local tw = TweenService:Create(v, TweenInfo.new(2.6, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Value = 1}); tw:Play()
 	tw.Completed:Wait()
-	-- the splash, then it bobs off out to sea
+	-- the landing: a splash of spray and the toss sound, then a long bob out to sea
 	local sp = Instance.new("Part"); sp.Anchored = true; sp.CanCollide = false; sp.CanQuery = false; sp.CanTouch = false; sp.Transparency = 1; sp.Size = Vector3.new(1, 1, 1)
 	sp.CFrame = CFrame.new(to); sp.Parent = F
-	local e = Instance.new("ParticleEmitter"); e.Rate = 0; e.Speed = NumberRange.new(8, 14); e.SpreadAngle = Vector2.new(35, 35); e.EmissionDirection = Enum.NormalId.Top
-	e.Lifetime = NumberRange.new(0.5, 0.9); e.Acceleration = Vector3.new(0, -30, 0); e.Size = NumberSequence.new(0.5, 0.1); e.Color = ColorSequence.new(Color3.fromRGB(230, 245, 255))
-	e.Transparency = NumberSequence.new(0.2, 1); e.Parent = sp; e:Emit(40); Debris:AddItem(sp, 2)
-	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://76469933896339"; s.Volume = 0.6; s.Parent = gui; s:Play(); Debris:AddItem(s, 4)   -- (the croc game's splash, her pick)
+	local e = Instance.new("ParticleEmitter"); e.Rate = 0; e.Speed = NumberRange.new(10, 16); e.SpreadAngle = Vector2.new(35, 35); e.EmissionDirection = Enum.NormalId.Top
+	e.Lifetime = NumberRange.new(0.6, 1.1); e.Acceleration = Vector3.new(0, -30, 0); e.Size = NumberSequence.new(0.9, 0.2); e.Color = ColorSequence.new(Color3.fromRGB(230, 245, 255))
+	e.Transparency = NumberSequence.new(0.1, 1); e.Parent = sp; e:Emit(60); Debris:AddItem(sp, 2.5)
+	local sid = tostring(F:GetAttribute("TossSound") or "")
+	if sid ~= "" then local s = Instance.new("Sound"); s.SoundId = sid; s.Volume = 0.45; s.PlaybackSpeed = 0.9; s.Parent = gui; s:Play(); Debris:AddItem(s, 4) end
 	local drift = Instance.new("NumberValue"); drift.Value = 0
 	local away = (to - from) * Vector3.new(1, 0, 1); away = away.Magnitude > 0.1 and away.Unit or Vector3.new(0, 0, -1)
-	drift.Changed:Connect(function(t) b:PivotTo(CFrame.new(to + away * t * 10 + Vector3.new(0, math.sin(t * 12) * 0.3 - 0.2, 0)) * CFrame.Angles(0, t, math.rad(8))) end)
-	local tw2 = TweenService:Create(drift, TweenInfo.new(1.6, Enum.EasingStyle.Sine), {Value = 1}); tw2:Play()
+	drift.Changed:Connect(function(t)
+		local p = to + away * t * 16 + Vector3.new(0, math.sin(t * 14) * 0.4 - 0.3, 0)
+		b:PivotTo(CFrame.new(p) * CFrame.Angles(0, t * 1.5, math.rad(80) + math.sin(t * 9) * 0.2))
+		look(p)
+	end)
+	local tw2 = TweenService:Create(drift, TweenInfo.new(3.0, Enum.EasingStyle.Linear), {Value = 1}); tw2:Play()
 	tw2.Completed:Wait()
+	task.wait(0.3)
 	b:Destroy(); v:Destroy(); drift:Destroy()
 	if camAt and cam then
 		cam.CameraType = Enum.CameraType.Custom
@@ -523,11 +533,11 @@ ev.OnClientEvent:Connect(function(what, a, b, c, d, e, f, g)
 	if what == "state" then
 		st = type(a) == "table" and a or {}
 		setStatus(); placeReply(st.replyReady == true)
-		if st.replyReady and not told then told = true; task.delay(4, function() say("A reply to your bottle has washed up by the bottle stand on the beach!", 5) end) end
+		if st.replyReady and not told then told = true; task.delay(4, function() say("A reply to your bottle is waiting at the bottle kiosk by the boat club!", 5) end) end
 	elseif what == "sent" then
 		closePanel()
 		task.spawn(toss)
-		task.delay(1.9, function() say("Off it goes! Come back to the kiosk tomorrow for a reply.", 4) end)
+		task.delay(4.2, function() say("Off it goes! Come back to the kiosk tomorrow for a reply.", 4) end)   -- (round 5: as it lands)
 	elseif what == "reply" then
 		if replyBottle then replyBottle:Destroy(); replyBottle = nil end
 		local q, info = f, g
@@ -605,9 +615,9 @@ if FIXED then
 	site = h.Position
 	local d, wp = nearestWater(site); siteWater = wp
 	standCF = CFrame.new(site) * CFrame.Angles(0, math.rad(FIXED.yaw), 0)          -- its front (LookVector) faces the way she faced
-	local ok, by = clear(site, 4)
+	local ok, by = clear(site, 3)
 	print(string.format("QQ BOTTLE stand (her spot): (%.1f, %.1f, %.1f) on %s, facing yaw %.0f; %s; nearest water %.0f studs", site.X, site.Y, site.Z,
-		h.Instance == T and ("terrain " .. h.Material.Name) or h.Instance:GetFullName(), FIXED.yaw, ok and "4 studs clear" or ("NOT clear: " .. by:GetFullName()), d))
+		h.Instance == T and ("terrain " .. h.Material.Name) or h.Instance:GetFullName(), FIXED.yaw, ok and "3 studs clear" or ("a part's box reaches the spot (check by eye): " .. by:GetFullName()), d))
 end
 local cands = {}
 for _, s in ipairs(sand) do
@@ -679,19 +689,38 @@ local sp = Instance.new("Sparkles"); sp.SparkleColor = C(255, 240, 180); sp.Time
 tpl.Parent = RS
 -- ---------- 5: the folder, the stand, the scripts ----------
 local Fd = Instance.new("Folder"); Fd.Name = "Bottles"
-for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 1, RespawnSeconds = 90, TestDayOffset = 0}) do Fd:SetAttribute(k, v) end   -- (round 3: ONE silly bottle at a time)
+for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 1, RespawnSeconds = 90, TestDayOffset = 0, TossSound = "rbxassetid://9116394876"}) do Fd:SetAttribute(k, v) end   -- (round 5: TossSound - the bottle chime, not the croc's splash; any id, or "" for none)   -- (round 3: ONE silly bottle at a time)
 Fd:SetAttribute("WashSpots", HttpService:JSONEncode(spots))
 Fd:SetAttribute("ReplySpot", HttpService:JSONEncode(replySpot))
-do	-- (round 4, Shannon: "a short animation that shows the bottle being thrown into the sea"): a camera on the shore nearest the kiosk,
-	-- looking out to a point on the water ~28 studs out
-	local s0 = spots[1]
-	local sp = Vector3.new(s0[1], s0[2], s0[3])
-	local d, wp = nearestWater(sp)
-	local out = Vector3.new(wp.X - sp.X, 0, wp.Z - sp.Z); out = out.Magnitude > 0.1 and out.Unit or Vector3.new(0, 0, -1)
-	local target = Vector3.new(sp.X, wp.Y, sp.Z) + out * 28
-	local cam = sp - out * 6 + Vector3.new(0, 7, 0)
-	Fd:SetAttribute("TossView", HttpService:JSONEncode({cam = {cam.X, cam.Y, cam.Z}, from = {sp.X, sp.Y + 3, sp.Z}, to = {target.X, target.Y, target.Z}}))
-	print(string.format("QQ BOTTLE toss view: the camera at (%.0f, %.0f, %.0f) on the shore, the bottle lands at (%.0f, %.1f, %.0f) on the water", cam.X, cam.Y, cam.Z, target.X, target.Y, target.Z))
+do	-- (round 4/5) the toss view: a shore spot where the camera, the throw and the landing see each other over OPEN water (round 4's view
+	-- looked into the quay wall - runner 7). Each waterline spot is tried, nearest the kiosk first; the first with clear sight lines wins.
+	local los = RaycastParams.new(); los.FilterType = Enum.RaycastFilterType.Exclude; los.IgnoreWater = true; los.FilterDescendantsInstances = skip
+	local chosen
+	local all = {replySpot and replySpot or nil}
+	for _, s0 in ipairs(spots) do table.insert(all, s0) end
+	for _, s0 in ipairs(all) do
+		if type(s0) == "table" then
+			local sp = Vector3.new(s0[1], s0[2], s0[3])
+			local d, wp = nearestWater(sp)
+			if wp and d <= 8 then
+				local out = Vector3.new(wp.X - sp.X, 0, wp.Z - sp.Z); out = out.Magnitude > 0.1 and out.Unit or Vector3.new(0, 0, -1)
+				local target = Vector3.new(sp.X, wp.Y, sp.Z) + out * 28
+				local down = workspace:Raycast(target + Vector3.new(0, 30, 0), Vector3.new(0, -60, 0), rp)
+				local overWater = down and down.Instance == T and down.Material == Enum.Material.Water
+				local cam = sp - out * 8 + Vector3.new(0, 10, 0)
+				local from = sp + Vector3.new(0, 3, 0)
+				local function sees(a, b) local r = workspace:Raycast(a, b - a, los); return r == nil or (r.Position - b).Magnitude < 2 end
+				local mid = from:Lerp(target, 0.5) + Vector3.new(0, 14, 0)
+				if overWater and sees(cam, target + Vector3.new(0, 1, 0)) and sees(cam, mid) and sees(cam, from) and sees(from, mid) and sees(mid, target + Vector3.new(0, 1, 0)) then
+					chosen = {cam = {cam.X, cam.Y, cam.Z}, from = {from.X, from.Y, from.Z}, to = {target.X, target.Y, target.Z}}
+					print(string.format("QQ BOTTLE toss view: the camera at (%.0f, %.0f, %.0f) on the shore, the bottle lands at (%.0f, %.1f, %.0f) on open water - clear sight lines", cam.X, cam.Y, cam.Z, target.X, target.Y, target.Z))
+					break
+				end
+			end
+		end
+	end
+	if chosen then Fd:SetAttribute("TossView", HttpService:JSONEncode(chosen))
+	else print("QQ BOTTLE toss view: NO shore spot sees open water clearly - the toss flies from the kiosk without the camera cut; tell the cloud thread") end
 end
 local evt = Instance.new("RemoteEvent"); evt.Name = "BottleEvent"; evt.Parent = Fd
 local mod = Instance.new("ModuleScript"); mod.Name = "BottleText"; mod.Source = SRC.BottleText; mod.Parent = Fd
@@ -714,7 +743,7 @@ for i = 0, 2 do
 	b:PivotTo(L(-1.6 + i * 1.4, 4.1, -0.6) * CFrame.Angles(0, math.rad(20 * i), math.rad(90))); b.Name = "CounterBottle"; b.Parent = St
 end
 -- (round 4, Shannon: "you cannot see it under the awning unless you tilt the view") - the board stands ON the awning, clear of the fringe
-for _, x in ipairs({-2.6, 2.6}) do solid("SignPost", Vector3.new(0.25, 1.6, 0.25), WOOD_D, L(x, 8.6, -0.3), Enum.Material.Wood) end
+for _, x in ipairs({-2.6, 2.6}) do solid("SignPost", Vector3.new(0.25, 1.6, 0.25), WOOD_D, L(x, 8.6, 0.05), Enum.Material.Wood) end   -- (round 5: BEHIND the board - its back face is at z -0.175)
 local board = solid("SignBoard", Vector3.new(7.0, 1.9, 0.25), CREAM, L(0, 9.75, -0.3), Enum.Material.SmoothPlastic)
 solid("SignTrim", Vector3.new(7.3, 0.18, 0.32), WOOD_D, L(0, 10.75, -0.3), Enum.Material.Wood)
 local sg = Instance.new("SurfaceGui"); sg.Face = Enum.NormalId.Front; sg.CanvasSize = Vector2.new(660, 150); sg.LightInfluence = 0.5; sg.Parent = board

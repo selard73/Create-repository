@@ -93,9 +93,9 @@ if FIXED then
 	site = h.Position
 	local d, wp = nearestWater(site); siteWater = wp
 	standCF = CFrame.new(site) * CFrame.Angles(0, math.rad(FIXED.yaw), 0)          -- its front (LookVector) faces the way she faced
-	local ok, by = clear(site, 4)
+	local ok, by = clear(site, 3)
 	print(string.format("QQ BOTTLE stand (her spot): (%.1f, %.1f, %.1f) on %s, facing yaw %.0f; %s; nearest water %.0f studs", site.X, site.Y, site.Z,
-		h.Instance == T and ("terrain " .. h.Material.Name) or h.Instance:GetFullName(), FIXED.yaw, ok and "4 studs clear" or ("NOT clear: " .. by:GetFullName()), d))
+		h.Instance == T and ("terrain " .. h.Material.Name) or h.Instance:GetFullName(), FIXED.yaw, ok and "3 studs clear" or ("a part's box reaches the spot (check by eye): " .. by:GetFullName()), d))
 end
 local cands = {}
 for _, s in ipairs(sand) do
@@ -167,19 +167,38 @@ local sp = Instance.new("Sparkles"); sp.SparkleColor = C(255, 240, 180); sp.Time
 tpl.Parent = RS
 -- ---------- 5: the folder, the stand, the scripts ----------
 local Fd = Instance.new("Folder"); Fd.Name = "Bottles"
-for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 1, RespawnSeconds = 90, TestDayOffset = 0}) do Fd:SetAttribute(k, v) end   -- (round 3: ONE silly bottle at a time)
+for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 1, RespawnSeconds = 90, TestDayOffset = 0, TossSound = "rbxassetid://9116394876"}) do Fd:SetAttribute(k, v) end   -- (round 5: TossSound - the bottle chime, not the croc's splash; any id, or "" for none)   -- (round 3: ONE silly bottle at a time)
 Fd:SetAttribute("WashSpots", HttpService:JSONEncode(spots))
 Fd:SetAttribute("ReplySpot", HttpService:JSONEncode(replySpot))
-do	-- (round 4, Shannon: "a short animation that shows the bottle being thrown into the sea"): a camera on the shore nearest the kiosk,
-	-- looking out to a point on the water ~28 studs out
-	local s0 = spots[1]
-	local sp = Vector3.new(s0[1], s0[2], s0[3])
-	local d, wp = nearestWater(sp)
-	local out = Vector3.new(wp.X - sp.X, 0, wp.Z - sp.Z); out = out.Magnitude > 0.1 and out.Unit or Vector3.new(0, 0, -1)
-	local target = Vector3.new(sp.X, wp.Y, sp.Z) + out * 28
-	local cam = sp - out * 6 + Vector3.new(0, 7, 0)
-	Fd:SetAttribute("TossView", HttpService:JSONEncode({cam = {cam.X, cam.Y, cam.Z}, from = {sp.X, sp.Y + 3, sp.Z}, to = {target.X, target.Y, target.Z}}))
-	print(string.format("QQ BOTTLE toss view: the camera at (%.0f, %.0f, %.0f) on the shore, the bottle lands at (%.0f, %.1f, %.0f) on the water", cam.X, cam.Y, cam.Z, target.X, target.Y, target.Z))
+do	-- (round 4/5) the toss view: a shore spot where the camera, the throw and the landing see each other over OPEN water (round 4's view
+	-- looked into the quay wall - runner 7). Each waterline spot is tried, nearest the kiosk first; the first with clear sight lines wins.
+	local los = RaycastParams.new(); los.FilterType = Enum.RaycastFilterType.Exclude; los.IgnoreWater = true; los.FilterDescendantsInstances = skip
+	local chosen
+	local all = {replySpot and replySpot or nil}
+	for _, s0 in ipairs(spots) do table.insert(all, s0) end
+	for _, s0 in ipairs(all) do
+		if type(s0) == "table" then
+			local sp = Vector3.new(s0[1], s0[2], s0[3])
+			local d, wp = nearestWater(sp)
+			if wp and d <= 8 then
+				local out = Vector3.new(wp.X - sp.X, 0, wp.Z - sp.Z); out = out.Magnitude > 0.1 and out.Unit or Vector3.new(0, 0, -1)
+				local target = Vector3.new(sp.X, wp.Y, sp.Z) + out * 28
+				local down = workspace:Raycast(target + Vector3.new(0, 30, 0), Vector3.new(0, -60, 0), rp)
+				local overWater = down and down.Instance == T and down.Material == Enum.Material.Water
+				local cam = sp - out * 8 + Vector3.new(0, 10, 0)
+				local from = sp + Vector3.new(0, 3, 0)
+				local function sees(a, b) local r = workspace:Raycast(a, b - a, los); return r == nil or (r.Position - b).Magnitude < 2 end
+				local mid = from:Lerp(target, 0.5) + Vector3.new(0, 14, 0)
+				if overWater and sees(cam, target + Vector3.new(0, 1, 0)) and sees(cam, mid) and sees(cam, from) and sees(from, mid) and sees(mid, target + Vector3.new(0, 1, 0)) then
+					chosen = {cam = {cam.X, cam.Y, cam.Z}, from = {from.X, from.Y, from.Z}, to = {target.X, target.Y, target.Z}}
+					print(string.format("QQ BOTTLE toss view: the camera at (%.0f, %.0f, %.0f) on the shore, the bottle lands at (%.0f, %.1f, %.0f) on open water - clear sight lines", cam.X, cam.Y, cam.Z, target.X, target.Y, target.Z))
+					break
+				end
+			end
+		end
+	end
+	if chosen then Fd:SetAttribute("TossView", HttpService:JSONEncode(chosen))
+	else print("QQ BOTTLE toss view: NO shore spot sees open water clearly - the toss flies from the kiosk without the camera cut; tell the cloud thread") end
 end
 local evt = Instance.new("RemoteEvent"); evt.Name = "BottleEvent"; evt.Parent = Fd
 local mod = Instance.new("ModuleScript"); mod.Name = "BottleText"; mod.Source = SRC.BottleText; mod.Parent = Fd
@@ -202,7 +221,7 @@ for i = 0, 2 do
 	b:PivotTo(L(-1.6 + i * 1.4, 4.1, -0.6) * CFrame.Angles(0, math.rad(20 * i), math.rad(90))); b.Name = "CounterBottle"; b.Parent = St
 end
 -- (round 4, Shannon: "you cannot see it under the awning unless you tilt the view") - the board stands ON the awning, clear of the fringe
-for _, x in ipairs({-2.6, 2.6}) do solid("SignPost", Vector3.new(0.25, 1.6, 0.25), WOOD_D, L(x, 8.6, -0.3), Enum.Material.Wood) end
+for _, x in ipairs({-2.6, 2.6}) do solid("SignPost", Vector3.new(0.25, 1.6, 0.25), WOOD_D, L(x, 8.6, 0.05), Enum.Material.Wood) end   -- (round 5: BEHIND the board - its back face is at z -0.175)
 local board = solid("SignBoard", Vector3.new(7.0, 1.9, 0.25), CREAM, L(0, 9.75, -0.3), Enum.Material.SmoothPlastic)
 solid("SignTrim", Vector3.new(7.3, 0.18, 0.32), WOOD_D, L(0, 10.75, -0.3), Enum.Material.Wood)
 local sg = Instance.new("SurfaceGui"); sg.Face = Enum.NormalId.Front; sg.CanvasSize = Vector2.new(660, 150); sg.LightInfluence = 0.5; sg.Parent = board

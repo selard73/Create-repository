@@ -104,7 +104,7 @@ ev.OnServerEvent:Connect(function(p, what, a1, a2, a3, a4, a5)
 		if not (to and card and a and b and Text.valid(to, card, a, b, q)) then return end
 		local s = state(p)
 		if s.sentDay then
-			ev:FireClient(p, "msg", s.replyReady and "Your reply has washed up by the stand - read it first!" or "Your bottle is already out at sea. Check the beach tomorrow!")
+			ev:FireClient(p, "msg", s.replyReady and "Your reply is waiting at the kiosk - read it first!" or "Your bottle is already out at sea. Come back to the kiosk tomorrow!")
 			return
 		end
 		local cost = math.max(0, math.floor(A("SendCost", 15)))
