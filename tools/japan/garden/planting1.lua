@@ -8,7 +8,7 @@ local KIT = SS:FindFirstChild("JapanGardenKit")
 local J = workspace:FindFirstChild("JapanMap")
 if not (KIT and J) then print("QQ PLANTING1 ABORT: ServerStorage.JapanGardenKit or workspace.JapanMap missing") return end
 for _, n in ipairs({"azalea", "hydrangea"}) do
-	if not KIT:FindFirstChild(n) then print("QQ PLANTING1 ABORT: the kit has no Model '" .. n .. "' - import tools/japan/garden/out4/*.fbx") return end
+	if not KIT:FindFirstChild(n) then print("QQ PLANTING1 ABORT: the kit has no Model '" .. n .. "' - import Shannon's Meshy shrubs under those names (or out4/*.fbx)") return end
 end
 local BB = {
 	["azalea"] = {min = Vector3.new(-1.766, -0.569, -1.657), max = Vector3.new(1.765, 1.759, 1.651)},
@@ -78,9 +78,24 @@ local function dress(m)
 		end
 	end
 end
+local TARGET_WIDTH = {azalea = 3.5, hydrangea = 3.0}                        -- a Meshy model (textured, any mesh names) is scaled to this footprint and set on the lawn as it is
+local nMeshy = 0
 local function place(kitName, at, yaw, scale, keepBlossom)
 	local src = KIT:FindFirstChild(kitName)
 	local m = src:Clone()
+	local meshy = not src:FindFirstChild("Azalea_Leaf", true) and not src:FindFirstChild("Hydrangea_Leaf", true)
+	if meshy then                                                             -- Shannon's Meshy shrub: keep its texture, scale by its own box, bottom on the lawn
+		for _, p in ipairs(m:GetDescendants()) do if p:IsA("BasePart") then p.Anchored = true; p.CanCollide = true; p.CanQuery = true; p.CanTouch = false; meshes += 1 end end
+		local cf, size = m:GetBoundingBox()
+		local wide = math.max(size.X, size.Z)
+		if wide > 0 then pcall(function() m:ScaleTo(TARGET_WIDTH[kitName] * scale / wide) end) end
+		cf, size = m:GetBoundingBox()
+		m.WorldPivot = CFrame.new(cf.Position - Vector3.new(0, size.Y / 2, 0))
+		m:PivotTo(CFrame.new(at) * CFrame.Angles(0, math.rad(yaw), 0))
+		m.Name = kitName == "azalea" and "Azalea" or "Hydrangea"
+		m.Parent = G; made += 1; nMeshy += 1
+		return m
+	end
 	if keepBlossom then
 		for _, p in ipairs(m:GetDescendants()) do
 			if p:IsA("BasePart") and p.Name:sub(1, 7) == "Azalea_" and p.Name ~= "Azalea_Leaf" and p.Name ~= keepBlossom then p:Destroy() end
@@ -108,4 +123,4 @@ for i, c in ipairs(clusters) do
 end
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after planting1") end)
 if #missing > 0 then print("QQ PLANTING1 uncoloured: " .. table.concat(missing, ", ")) end
-print(string.format("QQ PLANTING1 DONE: JapanMap.MomijiPlanting - %d clumps (%d azaleas, %d hydrangeas) for %d clusters, %d meshes; no parts built", made, nA, nH, #clusters, meshes))
+print(string.format("QQ PLANTING1 DONE: JapanMap.MomijiPlanting - %d clumps (%d azaleas, %d hydrangeas; %d of them Meshy models) for %d clusters, %d meshes; no parts built", made, nA, nH, nMeshy, #clusters, meshes))
