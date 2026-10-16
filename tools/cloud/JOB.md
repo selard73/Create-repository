@@ -3441,3 +3441,11 @@ and a 2.2x bottle placed at the landing spot shows plainly on open water from th
 rbxassetid://129669875728815: IsLoaded, TimeLength 1.78 s, peak loudness 238 on the client. SIGN: posts behind the board, both lines clear
 from the front (r5_sign_front). Wording: "A reply to your bottle is waiting at the bottle kiosk by the boat club!", "Off it goes! Come back
 to the kiosk tomorrow for a reply." (at 4.2 s, as it lands).
+
+Result job 118 ROUND 5 + reset diagnostics INSTALLED (runner 7, Shannon "Yes, install both", Studio EDIT, unpublished): install_bottle1.lua at
+c172f87 (57920, adler32 4160347013) - the same QQ BOTTLE lines as the round 5 preview (stand (473.3, -12.0, -970.9) yaw 99, 3 studs
+clear; toss view camera (283, -42, -732) -> (283, -53.2, -768) clear; DONE BottleServer 10292, BottleClient 17706, BottleText 11018; old
+folder HudBackup.Bottles_pre_1). install_treehouse_reset1.lua at d4b9857 (4725, adler32 2367559483): "QQ TRESET DONE:
+workspace.Treehouse.TreehouseReset (3137 chars); ResetUserIds "9611145467", ResetRound 3". Readback: Bottles = BottleEvent, BottleText,
+Stand, BottleServer, BottleClient; TossSound rbxassetid://129669875728815; TestDayOffset 0. Told her: save, publish, then restart
+servers for the update and join a fresh server; F9 Server shows a "TreehouseReset:" line.
