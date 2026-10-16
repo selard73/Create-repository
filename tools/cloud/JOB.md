@@ -3486,3 +3486,11 @@ PARKED IDEA (Shannon, Oct 16: "lets hold that off for a later time" - do NOT bui
 players can't show it off, and a visitor sees the owner floating above the dirt. Idea: when players are in the hollow together, every
 screen draws the house of whoever there has built the most, the sign naming them ("Welcome to <name>'s Homebase Treehouse!"); their
 own progress unchanged. Raise again only when she asks.
+Result job 117 (Shannon, Oct 16, live after the restarted servers): "it started over, it looks fine" - the treehouse reset (ResetRound 3)
+ran live. The earlier miss was most likely an old server still on the previous version. JOB 117 CLOSED. To reset again later: bump
+workspace.Treehouse ResetRound (the reset runs once per round per listed id; ResetUserIds "9611145467").
+
+NEW REQUEST (Shannon, Oct 16): rebuild Japan in a more realistic style, OUR OWN build styled after nine reference screenshots
+she took in another Roblox game, combined with what we already have ("we will combine this with some of what we already have in our
+current Japan map"); garden first, then the town street. Brief, her quotes, the read of the pictures and a survey of JapanMap:
+tools/japan/reference_2026-10-16/BRIEF.md; pictures ref_01..09.webp there.
