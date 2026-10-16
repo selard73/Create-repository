@@ -3863,3 +3863,11 @@ ParticleEmitters at the foot. Koi approved. Re-run in Edit after her verdict in 
 store with fabric choice, photographer with the volcano backdrop + treehouse photo, koi feeding frenzy at the palace pond, archery at
 the palace targets, a bamboo maze) plus her sushi memory-match idea; each with a build outline and the choices she needs to make;
 suggested order: sushi match -> koi feeding -> bamboo maze -> photographer -> archery -> kimono -> cat cafe. Waiting on her picks.
+INSTALLED job 125 look 3k (runner 7, Studio EDIT re-run, Oct 16, on her notes after publishing - pine "weird and out of place", boat "a
+little too large", "the fountain still needs major work", within her "if it needs a change after that we can adjust it"):
+garden_look3.lua at 3f3d364 (44630 / 4125737292). Previewed first in play (pictures shots_look3k/1-3): the chute beam reads as flowing
+water between the rocks, mist + spray at the lip, the rock pile clear of the coping corner, the boat 5.2 x 2.6 x 19.5, no pine.
+QQ GARDEN3 falls: two scrolling water Beams (chute, drop) + mist and spray particles at the foot; the ribbon mesh a faint glass body, the foam mesh hidden
+QQ GARDEN3 DONE: MomijiGarden - 338 pieces (82 wall segments + 8 end segments, 96 lower copies down to the bed, 3 bridges with landings and water steps, 112 path slabs, 8 lanterns, 5 rocks), 458 meshes; walls in the palace flagstone (Pavement / JM_PhotographicPath); no parts built
+Post-install: surface 1.28, falls 2 beams + 2 emitters, no BlackPine, boat present, DarkRock swap kept, CANALWATER2 kept, HttpEnabled
+false. Optional later: the mist glows a little (LightEmission 0.35) - could drop to about 0.1. Next: she publishes + restarts.
