@@ -73,9 +73,11 @@ def header_outline(c, w, z_spring, z_top, margin, seg=10):
 # ---------- dimensions ----------
 W, L = 16.0, 30.0            # the nave's outer width (x) and length (y); the front at y = -L/2
 T = 0.6                      # wall thickness
-FLOOR, EAVE, RIDGE = 0.9, 8.0, 12.2
+FLOOR, EAVE, RIDGE = 0.9, 8.0, 14.6     # (runner 7, Oct 16 r2: a steeper, much taller roof - Shannon: "the roof must be much taller")
 PLINTH = 1.0
-WIN_W, WIN_SILL, WIN_SPRING = 1.7, 2.6, 5.4   # arched windows: sill, the arch springs at 5.4, top at 6.25
+WIN_W, WIN_SILL, WIN_SPRING = 1.7, 3.2, 6.3   # arched windows set higher ("the windows are too low"): sill 3.2, the arch springs at 6.3, top at 7.15
+S = 2.0                      # the whole church built at twice the first size ("the door comes up to my knees"): an R15 avatar is ~6.3 tall
+PZ = 1.9                     # pew heights in model units are stretched so that, after S, the seat is ~1.9 above the floor (not 1.0)
 WIN_Y = [-9.0, -3.0, 3.0]                       # three a side (the fourth bay at the back holds the chancel)
 TOWER = 4.4                  # the bell tower's square, at the front-left corner, its outer corner at (-W/2, -L/2)
 TOWER_H, TOWER_ROOF = 19.0, 22.6
@@ -115,7 +117,7 @@ def build_shell():
         gable = [(-hw, PLINTH), (hw, PLINTH), (hw, EAVE), (0, RIDGE), (-hw, EAVE)]
         if sy < 0:
             # the front: the gable with the door opening (arched, 2.6 wide, springing at 3.6) - built as two piers + a header + the gable top
-            dw, dspring = 2.6, FLOOR + 2.7
+            dw, dspring = 3.4, FLOOR + 3.6        # (r2: a wider, taller door - about 6.8 wide and 10.6 tall over the floor after S)
             box(pl, -hw, -dw / 2, y0, y1, PLINTH, EAVE); box(pl, dw / 2, hw, y0, y1, PLINTH, EAVE)
             prism_y(pl, header_outline(0, dw, dspring, EAVE, 0.0), y0, y1)
             prism_y(pl, [(-hw, EAVE), (hw, EAVE), (0, RIDGE)], y0, y1)
@@ -125,7 +127,7 @@ def build_shell():
             left = [(-r, FLOOR), (0, FLOOR), (0, dspring + r)] + [(r * math.cos(math.pi / 2 + (math.pi / 2) * i / 6), dspring + r * math.sin(math.pi / 2 + (math.pi / 2) * i / 6)) for i in range(1, 7)]
             right = [(0, FLOOR), (r, FLOOR)] + [(r * math.cos((math.pi / 2) * i / 6), dspring + r * math.sin((math.pi / 2) * i / 6)) for i in range(0, 7)]
             prism_y(dr, left, yo + 0.25, yo + 0.45); prism_y(B("Church_Door_R"), right, yo + 0.25, yo + 0.45)
-            for gx in (-0.9, -0.45, 0.45, 0.9):                                   # plank grooves on each leaf (dark strips)
+            for gx in (-1.2, -0.6, 0.6, 1.2):                                   # plank grooves on each leaf (dark strips)
                 leaf = dr if gx < 0 else B("Church_Door_R")
                 box(B("Church_Door_L_Trim") if gx < 0 else B("Church_Door_R_Trim"), gx - 0.02, gx + 0.02, yo + 0.22, yo + 0.26, FLOOR + 0.1, dspring + r * math.sqrt(max(0.0, 1 - (gx / r) ** 2)) - 0.1)
             box(tb, -dw / 2 - 0.2, -dw / 2, yo - 0.05, yo + 0.5, FLOOR, dspring); box(tb, dw / 2, dw / 2 + 0.2, yo - 0.05, yo + 0.5, FLOOR, dspring)
@@ -138,13 +140,16 @@ def build_shell():
             box(tb, -0.05, 0.05, yo + 0.2, yo + 0.36, cz - 0.9, cz + 0.9); box(tb, -0.9, 0.9, yo + 0.2, yo + 0.36, cz - 0.05, cz + 0.05)
             # three stone steps up to the door, 4.4 wide
             for i, (zt, depth) in enumerate(((0.3, 2.4), (0.6, 1.6), (0.9, 0.8))):
-                box(st, -2.2, 2.2, yo - depth, yo + 0.1, 0.0, zt)
+                box(st, -2.7, 2.7, yo - depth, yo + 0.1, 0.0, zt)
         else:
             prism_y(pl, gable, y0, y1)
         # timber: the gable's bargeboard line and corner posts
         for px in (-hw + 0.2, hw - 0.2):
             box(tb, px - 0.17, px + 0.17, min(yo, yo + sy * 0.22), max(yo, yo + sy * 0.22), PLINTH, EAVE + 0.1)
-        box(tb, -hw, hw, min(yo, yo + sy * 0.2), max(yo, yo + sy * 0.2), PLINTH + 1.3 - 0.14, PLINTH + 1.3 + 0.14)
+        if sy < 0:                                                            # (r2) the front rail stops at the door jambs - it crossed the doorway at chest height
+            for (ra, rb_) in ((-hw, -3.4 / 2 - 0.2), (3.4 / 2 + 0.2, hw)): box(tb, ra, rb_, min(yo, yo + sy * 0.2), max(yo, yo + sy * 0.2), PLINTH + 1.3 - 0.14, PLINTH + 1.3 + 0.14)
+        else:
+            box(tb, -hw, hw, min(yo, yo + sy * 0.2), max(yo, yo + sy * 0.2), PLINTH + 1.3 - 0.14, PLINTH + 1.3 + 0.14)
     # THE ROOF: two slopes from the ridge to the eaves, overhanging 1.3 at the sides and 1.0 at the ends, the lower part curving up
     # (the Japanese eave): built as 8 bands along the slope, each a thin slab; tile courses as small steps on each band
     ov_side, ov_end = 1.3, 1.0
@@ -244,12 +249,12 @@ def build_interior():
         cxp = col * (1.2 + 2.6)
         for row in range(5):
             y = -hl + 4.0 + row * 3.1
-            box(pw, cxp - 2.6, cxp + 2.6, y - 0.25, y + 0.25, FLOOR, FLOOR + 0.9)              # the seat slab (0.5 deep) on the bench front
-            box(pw, cxp - 2.6, cxp + 2.6, y - 0.2, y + 0.75, FLOOR + 0.42, FLOOR + 0.5)         # the seat
-            box(pw, cxp - 2.6, cxp + 2.6, y + 0.72, y + 0.84, FLOOR + 0.5, FLOOR + 1.45)        # the back
+            box(pw, cxp - 2.6, cxp + 2.6, y - 0.25, y + 0.25, FLOOR, FLOOR + 0.42 * PZ)        # the bench front under the seat
+            box(pw, cxp - 2.6, cxp + 2.6, y - 0.2, y + 0.75, FLOOR + 0.42 * PZ, FLOOR + 0.5 * PZ)   # the seat
+            box(pw, cxp - 2.6, cxp + 2.6, y + 0.72, y + 0.84, FLOOR + 0.5 * PZ, FLOOR + 1.2 * PZ)   # the back
             for ex in (cxp - 2.6, cxp + 2.5):
-                box(pw, ex, ex + 0.1, y - 0.25, y + 0.86, FLOOR, FLOOR + 1.05)                  # the ends
-            seats.append({"x": cxp, "y": FLOOR + 0.5, "z": -(y + 0.28), "w": 5.0})               # Roblox axes (z = -y): where a Seat part goes
+                box(pw, ex, ex + 0.1, y - 0.25, y + 0.86, FLOOR, FLOOR + 0.62 * PZ)             # the ends
+            seats.append({"x": cxp * S, "y": (FLOOR + 0.5 * PZ) * S, "z": -(y + 0.28) * S, "w": 5.0 * S})   # Roblox axes (z = -y), scaled: the seat top
     # the altar on the chancel: a stone table with a red runner, a standing cross, two candles
     ay = hl - 3.2
     box(al, -1.6, 1.6, ay - 0.6, ay + 0.6, FLOOR + 0.3, FLOOR + 1.5)
@@ -279,13 +284,14 @@ def build_interior():
     rp.faces.new(list(reversed(ra))); rp.faces.new(rb)
     k = bmesh.ops.create_icosphere(rp, subdivisions=1, radius=0.14)
     for v in k["verts"]: v.co.z *= 1.4; v.co += Vector((cxm, cym, FLOOR + 1.2))
-    return ["Church_Floor", "Church_Pew", "Church_Altar", "Church_Cloth", "Church_Candle", "Church_Flame", "Church_Rope", "Church_Cross"], seats, {"x": cxm, "y": FLOOR + 1.2, "z": -cym}
+    return ["Church_Floor", "Church_Pew", "Church_Altar", "Church_Cloth", "Church_Candle", "Church_Flame", "Church_Rope", "Church_Cross"], seats, {"x": cxm * S, "y": (FLOOR + 1.2) * S, "z": -cym * S}
 def finish(names, suffix):
     objs = []
     for n in names:
         bm = BMS.pop(n, None)
         if bm is None or len(bm.verts) == 0: continue
         bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=0.0005)
+        bmesh.ops.scale(bm, vec=(S, S, S), verts=bm.verts)
         me = bpy.data.meshes.new(n + suffix); bm.normal_update(); bm.to_mesh(me); bm.free()
         o = bpy.data.objects.new(n + suffix, me); bpy.context.scene.collection.objects.link(o); me.materials.append(material(n))
         for p in me.polygons: p.use_smooth = False
@@ -313,7 +319,7 @@ try:
     for o in interior: o.name = o.name.replace("_In", "") if not o.name.startswith("Church_Cross") else "Church_Cross_Altar"
     export(shell, "church_shell"); export(interior, "church_interior")
     info = {"church_shell": bbox(shell), "church_interior": bbox(interior), "seats": seats, "bell_rope": rope,
-            "door": {"x": 0, "y": FLOOR, "z": L / 2, "faces": "+z", "width": 2.5, "height": 3.6 + 1.25, "hinge_left_x": -1.25, "hinge_right_x": 1.25, "leaf_z": -(-L / 2 + 0.35)}, "tower_centre": {"x": -W / 2 + TOWER / 2, "z": L / 2 - TOWER / 2}, "floor_y": FLOOR}
+            "door": {"x": 0, "y": FLOOR * S, "z": L / 2 * S, "faces": "+z (before the import flip)", "width": 2.5 * S}, "tower_centre": {"x": (-W / 2 + TOWER / 2) * S, "z": (L / 2 - TOWER / 2) * S}, "floor_y": FLOOR * S, "scale": S}
     json.dump(info, open(os.path.join(OUT, "pieces.json"), "w"), indent=1); log("BBOX " + json.dumps({k: info[k] for k in ("church_shell", "church_interior")})); log("FBX_DONE")
     if os.environ.get("CHURCH_NO_RENDER"): raise SystemExit
     # previews: Cycles CPU - a three-quarter front view, the front, the interior toward the altar
@@ -323,7 +329,9 @@ try:
         m = bpy.data.materials.new(name); m.use_nodes = True
         m.node_tree.nodes["Principled BSDF"].inputs["Base Color"].default_value = (lin(rgb[0]), lin(rgb[1]), lin(rgb[2]), 1)
         p.data.materials.append(m)
-    plane("Lawn", 1, (0, 0, -0.01), (0.36, 0.62, 0.30), 120, 120)
+    plane("Lawn", 1, (0, 0, -0.01), (0.36, 0.62, 0.30), 240, 240)
+    # a stand-in R15 avatar (6.3 tall) at the door for scale
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(3.5 * S, -L / 2 * S - 3, 3.15)); av = bpy.context.active_object; av.scale = (1.9, 1.0, 6.3)
     sc.render.engine = "CYCLES"; sc.cycles.device = "CPU"; sc.cycles.samples = 32; sc.cycles.use_denoising = False
     sc.render.resolution_x, sc.render.resolution_y = 1100, 700
     sc.world = bpy.data.worlds.new("W"); sc.world.use_nodes = True
@@ -335,12 +343,12 @@ try:
         cam.data.lens = lens; cam.location = Vector(loc); d = Vector(target) - cam.location
         cam.rotation_euler = d.to_track_quat("-Z", "Y").to_euler()
         sc.render.filepath = os.path.join(OUT, fn); bpy.ops.render.render(write_still=True); log(f"shot {fn}")
-    shot("prev_church_front_quarter.png", (-34, -44, 12), (0, 0, 8))
-    shot("prev_church_front.png", (4, -48, 7), (0, 0, 8))
-    shot("prev_church_side.png", (46, 8, 10), (0, 0, 7))
+    shot("prev_church_front_quarter.png", (-68, -88, 24), (0, 0, 16))
+    shot("prev_church_front.png", (8, -96, 14), (0, 0, 16))
+    shot("prev_church_side.png", (92, 16, 20), (0, 0, 14))
     for o in shell:                                                            # the interior: hide the roof and the front wall side for the shot
         if o.name in ("Church_Roof", "Church_Ridge"): o.hide_render = True
-    shot("prev_church_interior.png", (0, -13.5, 5.5), (0, 12, 3.2), 24)
+    shot("prev_church_interior.png", (0, -27, 9), (0, 24, 6.4), 24)
     log("RENDER_DONE")
 except SystemExit:
     pass
