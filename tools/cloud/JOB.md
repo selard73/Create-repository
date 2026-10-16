@@ -3770,3 +3770,9 @@ tools/japan/water/canalwater2.lua (make_patch_canalwater2.py; rehearsed on sourc
 the canal WaterColor (40,104,112) / 0.68 / 0.2, elsewhere in Japan (24,112,151) / 0.32 / 0.45; needs CANALWATER1, idempotent
 (CANALWATER2), backup HudBackup.JapanWaterAppearance_pre_canalwater2. gen_garden3.py keeps opt-in flags (GARDEN_PLAIN_WALLS,
 GARDEN_WALL_Z0) and box UVs for a future re-export; out3/ unchanged (= the kit as imported).
+Look 3f -> 3g (cloud, runner 7's URGENT find): the canal's water surface had been written at -0.7, not 1.3 - a water row's surface is
+its BOTTOM + 4 x occupancy (the [0..4] row at 0.325 = 1.3; my "[-4..0] at 0.825" gave -0.7) - that was "the boats and the fish are in
+mid air". Terrain rows now: Slate 1.0 up to the bed (on the grid, -4.0), full water rows below the surface, the surface row at
+(WATER - y0) / 4. The FALLS: the rock pile at lawn level right behind the south end wall's body (origin (CX, 0, ZS - 3.5); its sheet
+comes down behind the wall, visible above the coping; its foam hidden), plus a re-sized Fall_Water clone as a SPILL over the coping into
+the canal and a Fall_Foam clone on the water in front. KOI: a 6-s wiggle (A3 1.5 at 12a) on top of the slow drift, heading easing x3.

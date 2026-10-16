@@ -101,14 +101,14 @@ local ZS, ZN = Z1 + 3.5, Z2 - 0.5                                             --
 print(string.format("QQ GARDEN3 canal: water faces x %.1f / %.1f (centre %.1f), z %.1f .. %.1f, water %.1f; end walls at z %.1f / %.1f", WEST, EAST, CX, Z1, Z2, WATER, ZS, ZN))
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("before Momiji garden look test 3") end)
 -- ---------- 2. the terrain: a flat dark Slate bed along the whole channel, the water flat at 1.3 to the end walls ----------
--- (Roblox draws a row's surface at (its top - 2) + 4 x occupancy: the -4..0 row at 0.825 = the water at 1.3; the same row's solid at
--- (BED_Y + 2) / 4 = the bed at BED_Y, with every row below full Slate)
+-- (runner 7's measurements, look 3f: a WATER row's surface is its bottom + 4 x occupancy - the [0..4] row at 0.325 = 1.3; the [-4..0]
+-- row at 0.825 drew the surface at -0.7, which is what "the boats and the fish are in mid air" was. The bed is kept ON the 4-grid so it
+-- is full cells only: [-8..-4] Slate 1.0 = the bed top at -4.0.)
 local tbed, tw = 0, 0
 do
 	local x0, x1 = math.floor(WEST / 4) * 4, math.ceil(EAST / 4) * 4
 	local zA, zB = math.floor((Z1 - 2) / 4) * 4, math.ceil((Z2 + 4) / 4) * 4
-	local TB = 4 * math.floor((BED_Y + 2) / 4)                                -- the row whose surface is the bed, and its occupancy
-	local bedOcc = (BED_Y - TB + 2) / 4
+	local BED = 4 * math.floor(BED_Y / 4 + 0.5)                               -- the bed on the grid (-4.0)
 	for zs = zA, zB - 1, 64 do
 		local r = Region3.new(Vector3.new(x0, -16, zs), Vector3.new(x1, 8, math.min(zs + 64, zB)))
 		local ch = T:ReadVoxelChannels(r, 4, {"SolidMaterial", "SolidOccupancy", "LiquidOccupancy"})
@@ -120,10 +120,9 @@ do
 					local y0 = -16 + (iy - 1) * 4
 					for iz = 1, #SO[ix][iy] do
 						local T = y0 + 4                                            -- the row's top
-						if T < TB then SM[ix][iy][iz] = Enum.Material.Slate; SO[ix][iy][iz] = 1; LO[ix][iy][iz] = 0; tbed += 1
-						elseif T == TB then SM[ix][iy][iz] = Enum.Material.Slate; SO[ix][iy][iz] = bedOcc; LO[ix][iy][iz] = (T == 0) and 0.825 or (1 - bedOcc); tw += 1   -- the bed at BED_Y, water above it
-						elseif T < 0 then SO[ix][iy][iz] = 0; LO[ix][iy][iz] = 1; tw += 1                                   -- full water between the bed and the surface row
-						elseif T == 0 then SO[ix][iy][iz] = 0; LO[ix][iy][iz] = 0.825; tw += 1                               -- the surface at 1.3
+						if T <= BED then SM[ix][iy][iz] = Enum.Material.Slate; SO[ix][iy][iz] = 1; LO[ix][iy][iz] = 0; tbed += 1   -- solid Slate up to the bed
+						elseif T <= WATER then SO[ix][iy][iz] = 0; LO[ix][iy][iz] = 1; tw += 1                               -- full water rows under the surface
+						elseif y0 < WATER then SO[ix][iy][iz] = 0; LO[ix][iy][iz] = (WATER - y0) / 4; tw += 1                 -- the surface row: [0..4] at 0.325 = 1.3
 						else SO[ix][iy][iz] = 0; LO[ix][iy][iz] = 0 end
 					end
 				end
@@ -132,7 +131,7 @@ do
 		T:WriteVoxelChannels(r, 4, {SolidMaterial = SM, SolidOccupancy = SO, LiquidOccupancy = LO})
 	end
 end
-print(string.format("QQ GARDEN3 terrain: a flat Slate bed at %.1f along the channel (%d cells below, %d bed/water cells), the water flat at %.1f (%.1f deep)", BED_Y, tbed, tw, WATER, WATER - BED_Y))
+print(string.format("QQ GARDEN3 terrain: a flat Slate bed at %.1f along the channel (%d Slate cells, %d water cells; the surface row [0..4] at %.3f), the water at %.1f (%.1f deep)", BED_Y, tbed, tw, WATER / 4, WATER, WATER - BED_Y))
 -- ---------- 3. retire the concrete banks, the black strips, the old bridges and steps, the weir ----------
 local retire, bridgesZ, walkways = {}, {}, {}
 local function near(cf, r) return math.abs(cf.X - CX) < r end
@@ -300,10 +299,30 @@ for wi, w in ipairs(walkways) do
 end
 print(string.format("QQ GARDEN3 stepping-stone paths: %d slabs along %d old walkway lines (tops 0.23-0.35 above the lawn, stride 2.3-2.6); bridge landings turned %d", nslab, #walkways, BRIDGE_LANDING_TURN))
 -- the waterfall feeding the south end (its rocks over the end wall, the sheet landing in the water)
--- (the piece pours toward +z: its sheet runs from z -0.4 (top) to +1.0 (landing) with the foam at +1.2, its rocks behind at z -1..-7.5.
---  Origin 0.1 behind the end wall's face (ZS + 0.3 - 0.4): the sheet lands in the water just in front of the wall, the rocks pile on the
---  wall's end and the lawn behind - it was INSIDE the garden bridge before, "MAJOR issues")
-place("waterfall", Vector3.new(CX, 1.0, ZS - 0.1), 0, nil, "Waterfall")
+-- (the piece pours toward +z: its sheet runs from z -0.4 (top, y 10.4) to +1.0 (landing) with the foam at +1.2, its rocks behind at
+--  z -1..-7.5, up to ~10 tall. Look 3f: on the wall it sat ON the coping with a boulder over the water. Now: the rock pile at LAWN level
+--  right behind the end wall's body (a rocky rise, the sheet coming down its face behind the wall, visible above the coping), its own
+--  foam hidden, and a SPILL over the coping into the canal: a re-sized Fall_Water clone from the coping top down to the water, with a
+--  Fall_Foam clone on the water in front of the wall)
+local falls = place("waterfall", Vector3.new(CX, 0, ZS - 3.5), 0, nil, "Waterfall")
+if falls then
+	local sheet, foam
+	for _, q in ipairs(falls:GetDescendants()) do
+		if q:IsA("BasePart") then
+			local key = colourKey(q.Name)
+			if key == "Fall_Water" then sheet = q elseif key == "Fall_Foam" then foam = q; q.Transparency = 1 end
+		end
+	end
+	if sheet then
+		local spill = sheet:Clone(); spill.Name = "Fall_Spill"
+		spill.Size = Vector3.new(8.5, 1.6, 1.5)                                 -- the curved sheet squashed: over the lip at 2.1 .. the water at 1.3, 8.5 wide
+		spill.CFrame = CFrame.new(CX, 1.85, ZS + 0.05); spill.Parent = falls; meshes += 1
+	end
+	if foam then
+		local f2 = foam:Clone(); f2.Name = "Fall_Foam_Canal"; f2.Transparency = 0.15
+		f2.Size = Vector3.new(9.5, 0.35, 2.6); f2.CFrame = CFrame.new(CX, WATER + 0.05, ZS + 1.6); f2.Parent = falls; meshes += 1
+	end
+end
 -- look test 1's approved pieces, by the garden bridge (the southernmost crossing)
 local BZ = bridgesZ[1]
 place("torii", Vector3.new(CX - 43, 0, BZ), 90, nil, "Torii")
@@ -344,7 +363,7 @@ local function life(m, x, mid, half, amp, y, speed, bob)
 	-- a meander, not a line: x = X + A1 sin(a + p1) + A2 sin(2.7a + p2) (within CX +- 8), z = Mid + Half sin(0.6a + p3), a = phase + t speed;
 	-- the nose follows the way with gentle turns (CanalLife eases the heading)
 	m:SetAttribute("LifeX", x); m:SetAttribute("LifeMid", mid); m:SetAttribute("LifeHalf", half); m:SetAttribute("LifeAmp", amp)
-	m:SetAttribute("LifeA2", amp * 0.5); m:SetAttribute("LifeP1", rnd:NextNumber(0, 6.28)); m:SetAttribute("LifeP2", rnd:NextNumber(0, 6.28)); m:SetAttribute("LifeP3", rnd:NextNumber(0, 6.28))
+	m:SetAttribute("LifeA2", amp * 0.5); m:SetAttribute("LifeA3", 1.5); m:SetAttribute("LifeP1", rnd:NextNumber(0, 6.28)); m:SetAttribute("LifeP2", rnd:NextNumber(0, 6.28)); m:SetAttribute("LifeP3", rnd:NextNumber(0, 6.28))   -- A3: a 6-s wiggle (12a) so the S-curves are 10-15 long
 	m:SetAttribute("LifeY", y); m:SetAttribute("LifeSpeed", speed); m:SetAttribute("LifePhase", rnd:NextNumber(0, 6.28)); m:SetAttribute("LifeBob", bob)
 	m:PivotTo(CFrame.new(x, y, mid))
 end
@@ -401,12 +420,13 @@ RunService.Heartbeat:Connect(function(dt)
 		if m:IsA("Model") and m:GetAttribute("LifeHalf") then
 			local x0, mid, half, a1 = m:GetAttribute("LifeX"), m:GetAttribute("LifeMid"), m:GetAttribute("LifeHalf"), m:GetAttribute("LifeAmp")
 			local a2, p1, p2, p3 = m:GetAttribute("LifeA2") or 0, m:GetAttribute("LifeP1") or 0, m:GetAttribute("LifeP2") or 0, m:GetAttribute("LifeP3") or 0
+			local a3 = m:GetAttribute("LifeA3") or 0
 			local sp, ph = m:GetAttribute("LifeSpeed"), m:GetAttribute("LifePhase")
 			local a = ph + t * sp
 			local bob = math.sin(t * 1.3 + ph * 3) * m:GetAttribute("LifeBob")
-			local x = x0 + a1 * math.sin(a + p1) + a2 * math.sin(2.7 * a + p2)
+			local x = x0 + a1 * math.sin(a + p1) + a2 * math.sin(2.7 * a + p2) + a3 * math.sin(12 * a + p1)
 			local z = mid + half * math.sin(0.6 * a + p3)
-			local dx = (a1 * math.cos(a + p1) + 2.7 * a2 * math.cos(2.7 * a + p2)) * sp
+			local dx = (a1 * math.cos(a + p1) + 2.7 * a2 * math.cos(2.7 * a + p2) + 12 * a3 * math.cos(12 * a + p1)) * sp
 			local dz = 0.6 * half * math.cos(0.6 * a + p3) * sp
 			local pos = Vector3.new(x, m:GetAttribute("LifeY") + bob, z)
 			local heading = m:GetAttribute("LifeHeading")
@@ -418,7 +438,7 @@ RunService.Heartbeat:Connect(function(dt)
 				if want then
 					local cur = yaws[m] or want
 					local diff = (want - cur + math.pi) % (2 * math.pi) - math.pi
-					cur = cur + diff * math.min(1, dt * 1.5)                       -- eased: gentle turns
+					cur = cur + diff * math.min(1, dt * 3)                         -- eased: gentle turns (fast enough to follow the 6-s wiggle)
 					yaws[m] = cur
 					m:PivotTo(CFrame.new(pos) * CFrame.Angles(0, cur, 0) * CFrame.Angles(0, 0, 0.06 * bob))
 				end
