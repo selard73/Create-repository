@@ -3788,3 +3788,10 @@ of three, 0.35 apart), RETIRES all iris parts -> HudBackup.IrisReplaced (IrisWas
 ~72% azalea (pink 3 : white 2 : magenta 1), ~28% hydrangea, random yaw, size 0.85-1.25; leaves collide, blossoms don't; re-runnable
 (clusters read back from the backup; the previous MomijiPlanting -> HudBackup.MomijiPlanting_prev). "QQ PLANTING1 DONE ...".
 PREVIEW: pictures along the strip beside the railway and one beside a stone lantern; her verdict before Edit.
+## Job 125 black rocks: the black boulders over the stream (PREVIEW, then Edit on her word) - runner 7
+Shannon's picture: huge black faceted boulders over the Japan stream ("what is this and how can we fix it?"). The same cause as the
+black JP_Canal_Rocks strips and the black-cobble sheet: Rock + MaterialVariant JM_PhotographicRock, whose texture does not load ->
+drawn black. tools/japan/rocks/blackrock1.lua (compiles): prints the variant's texture ids from MaterialService and every JapanMap part
+wearing it (by parent, biggest example), and with FIX = true sets them to plain Rock in stone grey (old variant/material/colour kept as
+BlackRockOld* attributes; reversible). Play-test preview first (pictures of the boulders, the palace perimeter wall and anything else
+listed), then Edit on her word.
