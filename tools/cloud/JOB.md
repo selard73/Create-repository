@@ -3481,3 +3481,8 @@ restart servers.
 
 PUBLISHED (Shannon: "saves published and restarted"): bottle round 6b (f4239f9) - E at the kiosk by state, the reply toast fix. Servers
 restarted. Nothing left unpublished in Edit.
+
+PARKED IDEA (Shannon, Oct 16: "lets hold that off for a later time" - do NOT build yet): the Homebase is solo (drawn per screen), so
+players can't show it off, and a visitor sees the owner floating above the dirt. Idea: when players are in the hollow together, every
+screen draws the house of whoever there has built the most, the sign naming them ("Welcome to <name>'s Homebase Treehouse!"); their
+own progress unchanged. Raise again only when she asks.
