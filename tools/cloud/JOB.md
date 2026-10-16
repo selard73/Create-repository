@@ -3923,3 +3923,7 @@ QQ TREECOUNT1 DONE: TreehouseServer patched (4806 -> 6020 bytes): a TreehouseBui
    Item_tree_counted (AwardItems ledger). Checked in play: building all 12 pieces printed "Treehouse: counted CozyGameMode (built now)",
    LogCustomEvent fired, Item_tree_done 1, Item_tree_counted 1. NOTE: InteractServer (live since Oct 14) already logs Interact_Item
    "tree_done" for every finish - the dashboard may already show finishes since then.
+Oct 16 late: her "yes to all" (maze around/under the overlook boardwalk with one bamboo-hedge mesh; koi feeding 5 acorns + first-feed
+reward; kimono as wardrobe colour sets; church A at site A). HANDOFF for the next cloud thread: HANDOFF_2026-10-16_CLOUD.md.
+USAGE RULE (Shannon, Oct 16): stop at 70% of the weekly limit and write a Codex handoff (HANDOFF_<date>_CODEX.md) so Codex continues
+until the reset; the cloud cannot read the meter - ask her (or runner 7) for the figure. Runner 7: tell the cloud if you can see it.

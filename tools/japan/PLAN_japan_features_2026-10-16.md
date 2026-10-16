@@ -132,3 +132,11 @@ Each one: a design note with her choices, a runner survey of the site, a look te
 - Propeller cap: the price (300?), flight time (25 s?) and height cap (60?), every map or Japan only, the vending machine's spot.
 - Sushi match: free once a day then 3 acorns a go (my suggestion), the 8 sushi kinds, whether the card art may be drawn in UI shapes
   (no upload) or she wants real pictures (one sprite sheet to upload).
+
+## Her decisions (Oct 16, late) - "yes to all those things please"
+- Bamboo maze: one Blender bamboo-hedge mesh replaces the 102 part-built clumps; a real ~95 x 110 maze built around and under the
+  Volcano overlook boardwalk (the boardwalk becomes a lookout over it); a new layout each day.
+- Koi feeding at the palace pond: Meshy koi swimming under, 5 acorns a handful, a first-feed-of-the-day reward.
+- Kimono: through the wardrobe, fabrics as colour sets with a contrasting obi.
+- Church: look A at site A (behind the falls, door north). Sushi match on hold.
+- Next cloud thread: HANDOFF_2026-10-16_CLOUD.md.
