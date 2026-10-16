@@ -7,7 +7,7 @@
 --    above it (no paths, lanterns, buildings, trees' trunks), and keep 1.2 from the other clumps. Sizes 1.4-2.1, random yaw. The picture
 --    goes through a SurfaceAppearance with AlphaMode Transparency (a plain TextureID drew its clear background black).
 -- Re-runnable (seeded: the same layout each run). Output "QQ PLANTING3".
-local SEED, DRIFTS, X0, X1, Z0, Z1 = 20261016, 24, 5440, 6560, 116, 166   -- (Shannon: "there are too many, maybe keep half that amount scattered")
+local SEED, DRIFTS, X0, X1, Z0, Z1 = 20261016, 20, 5440, 6560, 116, 166   -- (Shannon: "there are too many, maybe keep half that amount scattered")
 local SS = game:GetService("ServerStorage")
 local KIT = SS:FindFirstChild("JapanGardenKit")
 local J = workspace:FindFirstChild("JapanMap")
