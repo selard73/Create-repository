@@ -6,6 +6,7 @@
 --    so their top meets the higher deck end (bottom stays on the lawn).
 -- 3. "there's a tree sitting right in front of the bridge": the vermilion maple at (6125, -205) by the garden bridge's east end moved
 --    to (6138, -186), clear of the stepping-stone path and the lanterns.
+-- 4. "make the lamps by the waterway slightly less bright": the stone lanterns' paper dimmer and warmer.
 -- Re-runnable (attributes CanalFix1 mark what was done). Output "QQ CANALFIX1".
 local RAISE = 1.6
 local TREE_FROM, TREE_TO = Vector3.new(6125.1, 0, -205.0), Vector3.new(6138, 0, -186)
@@ -52,6 +53,16 @@ if groves then
 		end
 	end
 end
+-- 4. "can you make the lamps by the waterway slightly less bright": the stone lanterns' paper a warmer, dimmer glow
+local dimmed = 0
+for _, p in ipairs(G:GetDescendants()) do
+	if p:IsA("BasePart") and p.Name:find("Lantern_Paper") then
+		p.Color = Color3.fromRGB(205, 158, 96)
+		local l = p:FindFirstChildOfClass("PointLight"); if l then l.Brightness = 0.6; l.Range = 10 end
+		dimmed += 1
+	end
+end
+print(string.format("QQ CANALFIX1 lanterns dimmed: %d", dimmed))
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after canalfix1") end)
 print(string.format("QQ CANALFIX1 DONE: %d water stairs turned round, %d bridges raised %.1f, %d landings stretched, %d maple parts moved to (%.0f, %.0f)",
 	turned, raised, RAISE, landings, moved, TREE_TO.X, TREE_TO.Z))
