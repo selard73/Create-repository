@@ -3806,3 +3806,13 @@ Fuji fine), which Roblox multiplies over colour, material, variant and texture. 
 vertex colours (tools/japan/rocks/rebuild_dark_meshes.py, out/dark_rock_fix.fbx: JP_Waterfall_Rockface, JP_Onsen_Shore,
 JP_Koi_Pond_Shore first), Shannon imports one combined FBX, each original gets old:ApplyMesh(new) with the original cloned to HudBackup
 (CFrame, Size, Rock + variant kept); the volcano, ridgelines and island cliffs through the same pipeline later. Goes in with the canal.
+## Job 125 planting 2: the railway strip's blue irises -> FLOWER CARDS with a rendered iris picture (PREVIEW, Edit on her word) - runner 7
+Planting 1 (azalea / hydrangea Blender mounds) REJECTED by Shannon ("the flowers look like lucky charms"); Meshy foliage ruled out
+("too too many parts"); trees ruled out ("we already have a lot of trees"); "no, I want some flowers". So: flower CARDS - one
+DoubleSided MeshPart per cluster (tools/japan/garden/out_iris/flower_card.fbx: two crossed unit quads with 0..1 UVs, origin at the
+bottom centre; gen_flower_card.py) wearing a Cycles-rendered Japanese iris clump (gen_iris_card.py -> out_iris/iris_card.png 1024 RGBA,
+iris_card_512.png, iris_card_side_check.png) as TextureID. 85 parts replace 510. STEPS: Shannon uploads iris_card.png as an image
+asset (Creator Dashboard, Decal/Image) and imports flower_card.fbx into the kit as Model "flower_card"; the image's asset id goes into
+IMAGE at the top of planting2.lua (make_planting2.py; compiles; it ABORTS while IMAGE is 0), then a play-test preview: groups the
+blooms into the 85 clusters, retires all 510 iris parts -> HudBackup.IrisReplaced, places a card 2.2-3.0 studs at each spot with a
+random yaw, bottom in the lawn; re-runnable. Pictures along the strip; Edit on her word.
