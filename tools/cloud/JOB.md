@@ -3745,3 +3745,8 @@ QQ CANALWATER1 source: 1204 bytes (expected 1204)
 QQ CANALWATER1 DONE: JapanWaterAppearance patched (1204 -> 1608 bytes): over the canal (x 6080..6125, z -230..110) WaterTransparency 0.9 / WaterReflectance 0.1, elsewhere in Japan 0.32 / 0.45 as before; backup HudBackup.JapanWaterAppearance_pre_canalwater1. Publish, then restart servers.
 Verified in a play test after the install: over the canal 0.90 / 0.10, on the lawn at x 6040 (in Japan) 0.32 / 0.45; the PlayerScripts
 copy carries the marker. HttpEnabled restored to false both times. Next: Shannon publishes (Alt+P) and restarts servers.
+Job 125 garden batch 3 INSTALLED (runner 7, Studio Edit, Shannon's "Yes, install it"): garden_look3.lua 24294ed ("DONE: MomijiGarden -
+247 pieces ..., 381 meshes; no parts built"; retired 17 -> HudBackup.MomijiGardenReplaced) and canalwater1.lua f4c7d4e
+("JapanWaterAppearance patched 1204 -> 1608"); verified in play: over the canal 0.90 / 0.10, on the lawn 0.32 / 0.45. Shannon
+publishes + restarts servers. Batch 3 CLOSED. Next for Japan: the town street (U6-U9, N2) - machiya fronts, lantern strings,
+tubs/crates, the street torii, stairs, planters - on her word, with the same look-test-first routine.
