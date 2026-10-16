@@ -3510,3 +3510,7 @@ light, built-in materials with our colours); the Japan-only light grade (U1) and
 test is compared with ref_01 AND with Rue de Noisette.
 Job 125 answers (Shannon, Oct 16): no Meshy (the cloud thread builds the pieces from parts); the grass stays as is; "our current Japan
 map is TERRIBLE and needs fixing" - all of it, garden first around the canal + red bridge. Next: a read-only survey of the canal area.
+
+Result job 125 GARDEN SURVEY (runner 7, Studio EDIT, read-only): tools/japan/garden_survey_2026-10-16/SURVEY.md + g1..g4 + style_rue_de_noisette.
+Shannon's rule (Oct 16): "the no was not to build anything using roblox parts" -> real meshes only (runner 7 models in Blender; generate_mesh
+to try; Meshy last resort) - she said "yes, to all of that".
