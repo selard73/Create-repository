@@ -3610,3 +3610,32 @@ longest reach (CanalLife Client script: Life* attributes, nose along the way). O
 PREVIEW in play: walk each bridge end to end (landings meet the walkways?), the walls from the lawn (1.7 of stone + coping above the
 grass) and from the water, the stair into the water, the falls pouring in over the end wall, the koi head-first, the skiffs, pictures
 from a bridge down the canal, from the lawn, one beside Rue de Noisette; part / triangle counts.
+Result job 125 LOOK TEST 3 (runner 7, play-test PREVIEW of garden_look3.lua at 88e4392, 26249 bytes, adler32 1310844346 checked; nothing
+kept). Kit3 imported by Shannon as one combined FBX (Desktop\Japan garden kit\japan_garden_kit3.fbx: canal_wall, canal_wall_b,
+canal_steps, bridge_steps, skiff, boat), moved into ServerStorage.JapanGardenKit (boat 7.26 x 3.65 x 27.10). QQ lines:
+QQ GARDEN3 koi: Shannon's Meshy koi (kit 'koi_meshy')
+QQ GARDEN3 canal: water faces x 6088.5 / 6113.5 (centre 6101.0), z -223.0 .. 103.0, water 1.3; end walls at z -219.5 / 104.5
+QQ GARDEN3 terrain (end pool only): 12 rock cells cleared, 24 water cells filled to 1.3
+QQ GARDEN3 retired 9 (banks, black strips, footbridges at z -215 / -75 / 80, approach steps, the weir, the old canal boat) -> HudBackup.MomijiGardenReplaced
+QQ GARDEN3 canal walkways levelled flat on the ground (bottom 0): 3
+QQ GARDEN3 life: 5 koi (Meshy) in 2 reaches, a boat moored at z -190 and one poled along the longest reach; CanalLife client script
+QQ GARDEN3 DONE: MomijiGarden - 135 pieces (82 wall segments + 8 end segments, 3 bridges with landings and water steps, 8 lanterns, 8 rocks), 269 meshes; no parts built
+Checks:
+- Retired: JP_Canal_Rocks_84/_118, Canal boat, 3 footbridges, Northern bridge approach steps, 2 Canal stone banks. NOT the weir:
+  "Canal weir" is a FOLDER (8 parts: Weir, Weir lip, 6 Weir stones at y 2.5, z -221..-223), so the Model/BasePart test misses it;
+  its stones still sit behind the south end wall (picture 6).
+- Bridges: all three walked end to end BOTH ways (z -215, -75, 80; HRP peak 9.4, both ends reached). But the WEST "Walkway" parts
+  (centre x 6039, 9 x 0.45 x 78, still tilted 1.4 deg, no GardenOldCF) were NOT levelled: their tops run 1.77 (x 6060) to 2.16 (x 6076),
+  then the landing at 1.00, a 1.16 DROP at each west bridge end (picture 7). The EAST walkways (6131, 9 x 0.45 x 18.1) were levelled
+  bottom 0, but they are 0.45 thick, so their top is 0.45 and the landing is a 0.55 step UP (picture 8). Raycasts per bridge identical.
+- STREAMING BUG: on the client, BoatPoled comes apart. Its parts sit at different offsets from the pivot (dz -12.0 .. -31.6: the rope
+  17 from the hull, the pole 2-3 off) because the parts stream in one by one while the client script is already moving the pivot.
+  The rock about a pivot 15 off swings the floor 1.27..1.73 (below the water 1.3 at times). FIX: ModelStreamingMode = Atomic on every
+  CanalLife model (both boats and the koi) before parenting. The moored boat is fine (static): floor 1.50..1.60, west edge 1.35 off the
+  wall, 5.6 clear of the water steps; no water inside.
+- Koi not visible from above: they swim 0.5-0.8 under the surface and WaterTransparency is 0.65 (picture 9). Suggest 0.15-0.25 under.
+- Moss is back: the kit rocks at the walls' feet and the waterfall rocks show the green Rock_Moss / Fall_Moss bands (pictures 5, 6).
+  Shannon on look 2: "that moss on those rocks does not look like moss". Suggest grey (Rock_Grey) - her call.
+- Boat in Wood material reads greyer than her golden photo (picture 3) - SmoothPlastic shows the colour truer; her call.
+- Counts: JapanMap 20,422 -> 20,310 parts, MeshParts 1,207 -> 1,479; MomijiGarden 274 meshes; 386 parts retired.
+Pictures: tools/japan/garden/shots_look3/ (1-9).
