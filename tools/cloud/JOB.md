@@ -3567,3 +3567,11 @@ lily clusters. Output "QQ GARDEN2 ... DONE ... no parts built".
 PREVIEW in play: the bridge walkable end to end (the deck ends meet the lawn, no old steps), the water at -0.6 with the stone edge
 meeting the lawn, the stream bed visible, the pond with its koi circling the right way round, the stepping stones walkable, pictures:
 from the bridge down the stream, the pond from the lawn and from the stepping stones, one beside Rue de Noisette; part / triangle counts.
+
+Result job 125 LOOK TEST 2 (runner 7, play test, stopped, nothing kept): kit2 (canal_edge, canal_edge_b, reeds, pond_rim, stepstone,
+lilies, koi + her Meshy koi decimated 83,816 -> 1,500 tris, 512 texture) imported by Shannon as one combined FBX, in
+ServerStorage.JapanGardenKit. garden_look2.lua at 20dbe24 aborted at line 334 (RF shadowed; fixed in 81a9f18, not re-run). Before the
+abort: water to -0.6, bed -3, 10 retired, walkways levelled, 3 taiko bridges (both walk tests passed: up 5.3, down to 0.2 on the lawn),
+the edge, rocks/reeds and the pond built; the koi swam BACKWARDS at identity (head +Z). SHANNON, watching live: "that does not look
+promising; that moss on those rocks does not look like moss, those flowers are misaligned and look plastic and the water does not look
+like water". Pictures shots_look2/. HOLD further garden_look2 runs until a new direction is agreed with her.
