@@ -3776,3 +3776,15 @@ mid air". Terrain rows now: Slate 1.0 up to the bed (on the grid, -4.0), full wa
 (WATER - y0) / 4. The FALLS: the rock pile at lawn level right behind the south end wall's body (origin (CX, 0, ZS - 3.5); its sheet
 comes down behind the wall, visible above the coping; its foam hidden), plus a re-sized Fall_Water clone as a SPILL over the coping into
 the canal and a Fall_Foam clone on the water in front. KOI: a 6-s wiggle (A3 1.5 at 12a) on top of the slow drift, heading easing x3.
+## Job 125 planting 1: the railway strip's blue irises -> azalea mounds + hydrangea clumps (import out4, PREVIEW, Edit on her word) - runner 7
+Shannon: "these little blue flowers everywhere look terrible, can you make something better while still keeping with the region and
+scenery?" Runner 7's survey (tools/japan/iris_survey_2026-10-16, 99d77fe): 255 "Blue iris" + 255 "Iris stem" loose parts in
+JapanMap.Landscape, 85 clusters of three along the embankment x 5421..6569, z 140..146, lawn at 0. tools/japan/garden/gen_garden4.py ->
+out4/: azalea.fbx (Azalea_Leaf + Azalea_Pink / White / Magenta blossom clusters: a clipped satsuki mound ~3.5 wide, 1.75 tall; 480 +
+500 tris per colour, one colour kept per clump), hydrangea.fbx (Hydrangea_Leaf + Hydrangea_Bloom, ~3 wide, 1.85 tall; 580 tris);
+pieces.json; previews prev_planting.jpg, prev_planting_close.jpg. IMPORT into ServerStorage.JapanGardenKit as Models "azalea" and
+"hydrangea" (mesh names kept). tools/japan/garden/planting1.lua (make_planting1.py; compiles): groups the blooms into clusters (rows
+of three, 0.35 apart), RETIRES all iris parts -> HudBackup.IrisReplaced (IrisWasIn), places one clump per cluster at the same spot:
+~72% azalea (pink 3 : white 2 : magenta 1), ~28% hydrangea, random yaw, size 0.85-1.25; leaves collide, blossoms don't; re-runnable
+(clusters read back from the backup; the previous MomijiPlanting -> HudBackup.MomijiPlanting_prev). "QQ PLANTING1 DONE ...".
+PREVIEW: pictures along the strip beside the railway and one beside a stone lantern; her verdict before Edit.

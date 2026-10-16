@@ -1,0 +1,7 @@
+azalea.fbx: 4 meshes, 1980 tris; Azalea_Leaf 480, Azalea_Pink 500, Azalea_White 500, Azalea_Magenta 500
+hydrangea.fbx: 2 meshes, 580 tris; Hydrangea_Leaf 400, Hydrangea_Bloom 180
+BBOX {"azalea": {"min": [-1.766, -0.569, -1.657], "max": [1.765, 1.759, 1.651]}, "hydrangea": {"min": [-1.499, -0.189, -1.502], "max": [1.469, 1.84, 1.506]}}
+FBX_DONE
+shot prev_planting.png
+shot prev_planting_close.png
+RENDER_DONE
