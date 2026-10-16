@@ -106,8 +106,8 @@ pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("before Mom
 -- is full cells only: [-8..-4] Slate 1.0 = the bed top at -4.0.)
 local tbed, tw = 0, 0
 do
-	local x0, x1 = math.floor(WEST / 4) * 4, math.ceil(EAST / 4) * 4
-	local zA, zB = math.floor((Z1 - 2) / 4) * 4, math.ceil((Z2 + 4) / 4) * 4
+	local x0, x1 = math.floor(WEST / 4) * 4 - 4, math.ceil(EAST / 4) * 4 + 4       -- one full cell column beyond each wall (6084..6088 / 6116..6120 were outside the region: runner 7)
+	local zA, zB = math.floor((Z1 - 6) / 4) * 4, math.ceil((Z2 + 6) / 4) * 4       -- and a full cell beyond each end wall
 	local BED = 4 * math.floor(BED_Y / 4 + 0.5)                               -- the bed on the grid (-4.0)
 	for zs = zA, zB - 1, 64 do
 		local r = Region3.new(Vector3.new(x0, -16, zs), Vector3.new(x1, 8, math.min(zs + 64, zB)))
@@ -302,7 +302,7 @@ print(string.format("QQ GARDEN3 stepping-stone paths: %d slabs along %d old walk
 -- runner 7's canal_falls piece (gen_falls.py, out_falls): its ORIGIN is the south end wall's WATER FACE at lawn level, the stream running
 -- toward +z: rocks behind the wall (z -18.8..-4.7, flattened against its back), the water ribbon across the coping (2.18) over the lip and
 -- down to the canal (1.32 at z +0.76), foam on the water to z +2.5. Placed at yaw 0 on the coping's face (ZS + 0.3).
-place("canal_falls", Vector3.new(CX, 0, ZS + 0.3), 0, nil, "CanalFalls")
+place("canal_falls", Vector3.new(CX, 0, ZS + 0.3), 180, nil, "CanalFalls")      -- (yaw 180: the import turns the piece round, like the boat - rocks behind the wall, foam in the canal)
 -- look test 1's approved pieces, by the garden bridge (the southernmost crossing)
 local BZ = bridgesZ[1]
 place("torii", Vector3.new(CX - 43, 0, BZ), 90, nil, "Torii")

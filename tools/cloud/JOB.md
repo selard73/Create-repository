@@ -3816,3 +3816,7 @@ asset (Creator Dashboard, Decal/Image) and imports flower_card.fbx into the kit 
 IMAGE at the top of planting2.lua (make_planting2.py; compiles; it ABORTS while IMAGE is 0), then a play-test preview: groups the
 blooms into the 85 clusters, retires all 510 iris parts -> HudBackup.IrisReplaced, places a card 2.2-3.0 studs at each spot with a
 random yaw, bottom in the lawn; re-runnable. Pictures along the strip; Edit on her word.
+Look 3h -> 3i (cloud): the terrain REGION widened one cell column beyond each wall (x0 - 4, x1 + 4) and a cell beyond each end
+(zA - 6, zB + 6) - the filter was right but the columns were never read; canal_falls placed at yaw 180 (the import turns the piece
+round, like the boat). Install set: garden_look3 (3i), canalwater2, runner 7's darkrockfix1 (d1e25b1: ApplyMesh of the colour-free
+copies of JP_Koi_Pond_Shore / JP_Onsen_Shore / JP_Waterfall_Rockface, originals in HudBackup.DarkRockOriginals).
