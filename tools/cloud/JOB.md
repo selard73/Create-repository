@@ -3863,12 +3863,10 @@ ParticleEmitters at the foot. Koi approved. Re-run in Edit after her verdict in 
 store with fabric choice, photographer with the volcano backdrop + treehouse photo, koi feeding frenzy at the palace pond, archery at
 the palace targets, a bamboo maze) plus her sushi memory-match idea; each with a build outline and the choices she needs to make;
 suggested order: sushi match -> koi feeding -> bamboo maze -> photographer -> archery -> kimono -> cat cafe. Waiting on her picks.
-<<<<<<< HEAD
 Japan features plan + a CHURCH (Shannon: "we need a church building somewhere on the map, because we will have one on every map, it
 needs to blend in, but it will be a church"): added to tools/japan/PLAN_japan_features_2026-10-16.md as item 8 - a Goto-islands-style
 church (white plaster + dark timber, Japanese tiled roof, arched windows, a small bell tower with a cross; pews, altar, a bell to ring),
 Blender, one import; a shared interior kit for every map with each map's own shell; her choices: what it does, the site, look A or B.
-=======
 INSTALLED job 125 look 3k (runner 7, Studio EDIT re-run, Oct 16, on her notes after publishing - pine "weird and out of place", boat "a
 little too large", "the fountain still needs major work", within her "if it needs a change after that we can adjust it"):
 garden_look3.lua at 3f3d364 (44630 / 4125737292). Previewed first in play (pictures shots_look3k/1-3): the chute beam reads as flowing
@@ -3877,7 +3875,6 @@ QQ GARDEN3 falls: two scrolling water Beams (chute, drop) + mist and spray parti
 QQ GARDEN3 DONE: MomijiGarden - 338 pieces (82 wall segments + 8 end segments, 96 lower copies down to the bed, 3 bridges with landings and water steps, 112 path slabs, 8 lanterns, 5 rocks), 458 meshes; walls in the palace flagstone (Pavement / JM_PhotographicPath); no parts built
 Post-install: surface 1.28, falls 2 beams + 2 emitters, no BlackPine, boat present, DarkRock swap kept, CANALWATER2 kept, HttpEnabled
 false. Optional later: the mist glows a little (LightEmission 0.35) - could drop to about 0.1. Next: she publishes + restarts.
->>>>>>> origin/claude/epic-hawking-188q4l
 Look 3k INSTALLED (runner 7, Edit re-run of 3f3d364): the falls' chute beam sits on the rock chute and reads as flowing water, the drop
 covered by mist + spray (mist glow could be ~0.1 calmer later), the rock pile clears the coping, boat 19.5 long, no pine. Shannon
 publishes + restarts. The canal round is closed unless her next look finds more.
