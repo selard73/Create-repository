@@ -3820,3 +3820,6 @@ Look 3h -> 3i (cloud): the terrain REGION widened one cell column beyond each wa
 (zA - 6, zB + 6) - the filter was right but the columns were never read; canal_falls placed at yaw 180 (the import turns the piece
 round, like the boat). Install set: garden_look3 (3i), canalwater2, runner 7's darkrockfix1 (d1e25b1: ApplyMesh of the colour-free
 copies of JP_Koi_Pond_Shore / JP_Onsen_Shore / JP_Waterfall_Rockface, originals in HudBackup.DarkRockOriginals).
+Look 3i -> 3j (cloud): the terrain region pads only where a wall covers the cell (x 6084..6116, z -224..104: the east pad and the end
+pads leaked water onto the lawn); canal_falls placed at yaw 0 then turned half round about its own bounding-box centre (a yaw about
+the box-derived origin moved it 16 into the canal). Install-ready on her word.
