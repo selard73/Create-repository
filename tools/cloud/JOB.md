@@ -3902,3 +3902,14 @@ Surveys also: the tea-field "Bamboo grove maze" is 102 part-built clumps (3,506 
 with the "Volcano overlook" boardwalk through it; the palace koi pond is a round terrain pond 56 across at (6322, 21), surface 3.9, a
 moon bridge across, 8 old part koi on the surface; the wardrobe = DressKit styles (Catalogue.attach welds MeshParts), Item_dress_ /
 Item_dresswear_, DressServer distance-checks one Spot - the kimono = new styles + meshes + Price_<styleId> + a try-on spot.
+INSTALLED Japan church (runner 7, SOLO from Oct 16 - no cloud; Studio EDIT on Shannon's "that looks lovely; yes please!"; UNPUBLISHED):
+church_install2.lua at ccf5fcf (14048 / 1212362800); kit church_shell / church_interior from tools/japan/church/out3 (gen_church.py r3:
+twice the first size, steeper taller roof, higher windows, a 6.6 x 10.5 arched door, pews at seat height, mirrored so the tower stands on
+the east front corner and Fuji shows from the garden bridge, arches cut with tessellate_polygon - bmesh.ops.triangulate filled concave
+arch caps). Imported by her as Desktop\Japan garden kit\japan_kit8_church.fbx.
+QQ CHURCH2 placed: shell turned back, interior turned back (the import's half turn undone); shell box (6115.0, 25.1, -279.7) 37.8 x 50.2 x 67.4, z -313.4..-246.0
+QQ CHURCH2 DONE: JapanMap.Church at (6115, -280.8) door north - 2 door leaves, 30 pew seats, bell silent until BellSound is set; ChurchScript runs the doors and the bell
+Checked in play before and after the install: the door prompt opens both leaves inward (they close after 12 s and are solid again), a walk
+from the forecourt up the steps into the nave, a pew seat (faces the altar), the bell swings; precise collision on walls/floor/doors;
+HttpEnabled false. Known: a hairline seam above the door arch (fix on the next rebuild). BellSound attribute on JapanMap.Church is "" -
+set a toll sound id when she picks one. Old small church kit in HudBackup (church_*_small_1, church_*_r2_1).
