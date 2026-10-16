@@ -3651,3 +3651,18 @@ thick) so every bridge landing meets its walkway; every CanalLife model (both bo
 boat streamed in piecemeal while the script moved its pivot); the koi 0.15-0.25 under the surface (0.5-0.8 was invisible at
 WaterTransparency 0.65); MOSS = false: the kit rocks' and the falls' green bands plain grey; BOAT_WOOD = false: the boats in
 SmoothPlastic (truer colour). Flags at the top of garden_look3.lua.
+Result job 125 LOOK TEST 3 FIXES (runner 7, play-test PREVIEW of garden_look3.lua at 04baba5, 27867 bytes, adler32 1370340608 checked;
+fresh play test; nothing kept). Shannon's answers before it: rocks "Plain grey", boat "Golden, smooth" (= MOSS false, BOAT_WOOD false).
+QQ lines:
+QQ GARDEN3 koi: Shannon's Meshy koi (kit 'koi_meshy')
+QQ GARDEN3 canal: water faces x 6088.5 / 6113.5 (centre 6101.0), z -223.0 .. 103.0, water 1.3; end walls at z -219.5 / 104.5
+QQ GARDEN3 terrain (end pool only): 12 rock cells cleared, 24 water cells filled to 1.3
+QQ GARDEN3 retired 10 (banks, black strips, footbridges at z -215 / -75 / 80, approach steps, the weir, the old canal boat) -> HudBackup.MomijiGardenReplaced
+QQ GARDEN3 canal walkways levelled flat, their tops at 1.0 (= the bridge landings): 6
+QQ GARDEN3 life: 5 koi (Meshy, 0.15-0.25 under the surface) in 2 reaches, a boat moored at z -190 and one poled along the longest reach, all Atomic; CanalLife client script; moss off (grey), boats SmoothPlastic
+QQ GARDEN3 DONE: MomijiGarden - 135 pieces (82 wall segments + 8 end segments, 3 bridges with landings and water steps, 8 lanterns, 8 rocks), 269 meshes; no parts built
+Checks: the weir is gone from behind the south wall; walkway top 1.00 = landing 1.00 at all six bridge ends (raycasts); the poled boat
+streams whole (part offsets identical to the moored one, 0.000), its floor 1.51..1.59 while rocking (above the water); koi visible,
+their backs just out of the water (bbox 0.46..1.72, water 1.3); grey rocks; SmoothPlastic boats. NEW small lips at the walkways' OUTER
+ends: west end x 6000 walkway 1.00 vs 0.46 ("Continuous m..." at z -215 / -75) and 0.27 (LanternStreet part at z 80); east end x 6140
+walkway 1.00 vs the lawn 0.00 (a 1.0 ledge; before, the tilted east walkways ramped down). Pictures tools/japan/garden/shots_look3b/1-6.
