@@ -3669,3 +3669,11 @@ walkway 1.00 vs the lawn 0.00 (a 1.0 ledge; before, the tilted east walkways ram
 Look test 3b (runner 7, 04baba5): all six fixes confirmed; Shannon chose rocks "Plain grey" and boat "Golden, smooth". New: levelling
 to 1.0 left a 1-stud lip at the walkways' OUTER ends (x 6000 / 6140) -> a bridge_steps landing piece at each outer end (section 5,
 "QQ GARDEN3 landing steps at the walkways' outer ends: 6").
+Result job 125 look 3 at 30ebfc1 (runner 7, play-test PREVIEW, 28783 / 3292781942 checked, nothing kept): QQ lines as f070290 plus
+"QQ GARDEN3 landing steps at the walkways' outer ends: 6" and "DONE: MomijiGarden - 141 pieces (...), 275 meshes; no parts built".
+The OUTER landing steps face the wrong way: outward from the walkway (1.00) the profile is 0.67 / 1.00 then the path 0.46 (west) or
+the lawn 0.00 (east), the high tread at the outer edge (shots_look3c/1). Turn 180.
+SHANNON: "the koi should be swimming under the water not above it". Koi bbox half-height 0.63, so centre = WATER - 0.2 - 0.63 ~ 0.47
+(tested client-side). Fully submerged they are INVISIBLE in Japan's water: StarterPlayerScripts.JapanWaterAppearance sets
+WaterTransparency 0.32 / Reflectance 0.45 inside the Japan box (shots_look3c/2). 0.8 / 0.15: faint koi (3). 0.9 / 0.10: koi clear,
+but the canal floor's jagged terrain ridge and the grey underwater shore ramps show (4). Asking Shannon; koi/water held until then.
