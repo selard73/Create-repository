@@ -3902,3 +3902,5 @@ Surveys also: the tea-field "Bamboo grove maze" is 102 part-built clumps (3,506 
 with the "Volcano overlook" boardwalk through it; the palace koi pond is a round terrain pond 56 across at (6322, 21), surface 3.9, a
 moon bridge across, 8 old part koi on the surface; the wardrobe = DressKit styles (Catalogue.attach welds MeshParts), Item_dress_ /
 Item_dresswear_, DressServer distance-checks one Spot - the kimono = new styles + meshes + Price_<styleId> + a try-on spot.
+Oct 16 late: her "yes to all" (maze around/under the overlook boardwalk with one bamboo-hedge mesh; koi feeding 5 acorns + first-feed
+reward; kimono as wardrobe colour sets; church A at site A). HANDOFF for the next cloud thread: HANDOFF_2026-10-16_CLOUD.md.
