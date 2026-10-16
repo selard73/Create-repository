@@ -3468,3 +3468,6 @@ straight away (Captain Barnacle). OVERLAP: about 4 s after the day turned, the c
 at the bottle kiosk by the boat club!" appeared OVER the open reply card, covering its "Lovely!" button
 (r6_reply_card_toast_over_button). Fix: skip that toast while a bottle card/panel is open (OpenPanel == "bottle") or once the reply was
 read, or when the player is already within the prompt range of the kiosk. Not installed.
+Job 118 round 6b (cloud thread, from runner 7's r6 preview at c06626d: all three kiosk states right; the delayed "A reply to your
+bottle is waiting ..." toast landed on top of the open reply card): the toast is skipped when a bottle card or panel is open
+(OpenPanel "bottle"), when the reply has been read by then, or when the player is within 14 studs of the kiosk. Same file.

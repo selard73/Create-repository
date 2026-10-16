@@ -1,7 +1,7 @@
 -- install_bottle1.lua (Studio EDIT; re-runnable; its body also runs as a play-test PREVIEW - discarded on stop). Job 118: the MESSAGE IN
 -- A BOTTLE game on the main Porto beach. Scans the beach for open sand and the waterline, puts the stand 10..18 studs from the water
 -- (its back to the sea), picks up to 10 wash-up spots, builds workspace.Bottles + ReplicatedStorage.BottleTemplate. Sources: BottleText
--- (11018), BottleServer (10292), BottleClient (18786) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
+-- (11018), BottleServer (10292), BottleClient (19182) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
 -- AwardAcorns), no publish. Output "QQ BOTTLE".
 local HttpService = game:GetService("HttpService")
 local RS = game:GetService("ReplicatedStorage")
@@ -538,7 +538,15 @@ ev.OnClientEvent:Connect(function(what, a, b, c, d, e, f, g)
 	if what == "state" then
 		st = type(a) == "table" and a or {}
 		setStatus(); placeReply(st.replyReady == true); if promptText then promptText() end
-		if st.replyReady and not told then told = true; task.delay(4, function() say("A reply to your bottle is waiting at the bottle kiosk by the boat club!", 5) end) end
+		if st.replyReady and not told then
+			told = true
+			task.delay(4, function()                                         -- (round 6b: not over an open card, not once read, not when already at the kiosk)
+				if not st.replyReady or pg:GetAttribute("OpenPanel") == "bottle" then return end
+				local root = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+				if root and (root.Position - standCF().Position).Magnitude < 14 then return end
+				say("A reply to your bottle is waiting at the bottle kiosk by the boat club!", 5)
+			end)
+		end
 	elseif what == "sent" then
 		closePanel()
 		task.spawn(toss)

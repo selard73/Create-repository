@@ -223,7 +223,15 @@ ev.OnClientEvent:Connect(function(what, a, b, c, d, e, f, g)
 	if what == "state" then
 		st = type(a) == "table" and a or {}
 		setStatus(); placeReply(st.replyReady == true); if promptText then promptText() end
-		if st.replyReady and not told then told = true; task.delay(4, function() say("A reply to your bottle is waiting at the bottle kiosk by the boat club!", 5) end) end
+		if st.replyReady and not told then
+			told = true
+			task.delay(4, function()                                         -- (round 6b: not over an open card, not once read, not when already at the kiosk)
+				if not st.replyReady or pg:GetAttribute("OpenPanel") == "bottle" then return end
+				local root = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+				if root and (root.Position - standCF().Position).Magnitude < 14 then return end
+				say("A reply to your bottle is waiting at the bottle kiosk by the boat club!", 5)
+			end)
+		end
 	elseif what == "sent" then
 		closePanel()
 		task.spawn(toss)
