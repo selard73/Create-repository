@@ -5,15 +5,15 @@
 -- 4. LEVELS the canal's floating "Walkway" parts flat on the ground (bottom 0; the old CFrame kept as an attribute); 5. PLACES only
 -- imported meshes: the stone-block canal walls with their coping along both sides and across both ends (two block patterns
 -- alternating), a taiko bridge at each old crossing with landing steps so its ends meet the walkways, stone steps down into the water
--- beside each bridge, the waterfall pouring into the south end, koi swimming slow loops along the canal (Shannon's Meshy koi), a skiff
--- moored at the steps and one gliding along the long reach (CanalLife client script), and look test 1's torii, pine, lit lanterns,
--- rocks and stepping slabs. No parts are built. Output "QQ GARDEN3".
+-- beside each bridge, the waterfall pouring into the south end, koi swimming slow loops along the canal (Shannon's Meshy koi), a Yanagawa
+-- boat moored at the steps and one poled back and forth along the long reach (CanalLife client script; the old "Canal boat" retired), and
+-- look test 1's torii, pine, lit lanterns, rocks and stepping slabs. No parts are built. Output "QQ GARDEN3".
 local SS = game:GetService("ServerStorage")
 local T = workspace.Terrain
 local KIT = SS:FindFirstChild("JapanGardenKit")
 local J = workspace:FindFirstChild("JapanMap")
 if not (KIT and J) then print("QQ GARDEN3 ABORT: ServerStorage.JapanGardenKit or workspace.JapanMap missing") return end
-for _, n in ipairs({"torii", "lantern", "bridge", "pine", "rocks", "slabs", "waterfall", "canal_wall", "canal_wall_b", "canal_steps", "bridge_steps", "skiff"}) do
+for _, n in ipairs({"torii", "lantern", "bridge", "pine", "rocks", "slabs", "waterfall", "canal_wall", "canal_wall_b", "canal_steps", "bridge_steps", "boat"}) do
 	if not KIT:FindFirstChild(n) then print("QQ GARDEN3 ABORT: the kit has no Model '" .. n .. "' - import tools/japan/garden/out3/*.fbx too") return end
 end
 local KOI = KIT:FindFirstChild("koi_meshy") or KIT:FindFirstChild("koi")
@@ -54,7 +54,8 @@ local BB = {
 	["canal_wall_b"] = {min = Vector3.new(-4.329, -1.2, -4.0), max = Vector3.new(0.309, 2.102, 4.0)},
 	["canal_steps"] = {min = Vector3.new(0.0, -1.2, -2.3), max = Vector3.new(4.5, 1.9, 2.3)},
 	["bridge_steps"] = {min = Vector3.new(-3.0, 0.0, -4.4), max = Vector3.new(0.0, 1.0, 4.4)},
-	["skiff"] = {min = Vector3.new(-8.467, -0.965, -1.9), max = Vector3.new(7.0, 4.647, 1.9)}
+	["skiff"] = {min = Vector3.new(-8.467, -0.965, -1.9), max = Vector3.new(7.0, 4.647, 1.9)},
+	["boat"] = {min = Vector3.new(-3.63, -0.033, -13.35), max = Vector3.new(3.63, 3.612, 13.75)}
 }
 local COL = {
 	Torii_Red = Color3.new(0.8, 0.2, 0.13),
@@ -94,7 +95,17 @@ local COL = {
 	Steps_Landing = Color3.new(0.63, 0.62, 0.58),
 	Skiff_Wood = Color3.new(0.72, 0.5, 0.28),
 	Skiff_Trim = Color3.new(0.46, 0.29, 0.15),
-	Skiff_Pole = Color3.new(0.55, 0.47, 0.35)
+	Skiff_Pole = Color3.new(0.55, 0.47, 0.35),
+	Boat_Hull = Color3.new(0.86, 0.63, 0.39),
+	Boat_Seam = Color3.new(0.5, 0.32, 0.18),
+	Boat_Rail = Color3.new(0.72, 0.48, 0.27),
+	Boat_Beam = Color3.new(0.64, 0.42, 0.24),
+	Boat_Floor = Color3.new(0.78, 0.58, 0.38),
+	Boat_Deck = Color3.new(0.8, 0.57, 0.35),
+	Boat_Bench = Color3.new(0.75, 0.53, 0.31),
+	Boat_Hat = Color3.new(0.88, 0.78, 0.55),
+	Boat_Pole = Color3.new(0.74, 0.68, 0.44),
+	Boat_Rope = Color3.new(0.92, 0.9, 0.84)
 }
 local function colourKey(name)
 	local n = name:gsub("^[ABP]_", ""):gsub("^Rock%d_", "Rock_"):gsub("%.%d+$", "")
@@ -103,7 +114,7 @@ local function colourKey(name)
 end
 local SOLID = {Bridge_Deck = true, Bridge_Red = true, Bridge_Stone = true, Torii_Red = true, Torii_Black = true, Lantern_Stone = true, Rock_Grey = true,
 	Rock_Moss = true, Slab_Stone = true, Fall_Rock = true, Fall_Moss = true, Pine_Bark = true, Wall_Stone = true, Wall_Coping = true, Steps_Stone = true,
-	Steps_Landing = true, Skiff_Wood = true, Skiff_Trim = true}
+	Steps_Landing = true, Skiff_Wood = true, Skiff_Trim = true, Boat_Hull = true, Boat_Floor = true, Boat_Deck = true, Boat_Bench = true, Boat_Rail = true}
 local WATER = 1.3                                                           -- the canal's water surface, kept
 -- ---------- 1. the canal ----------
 local banks = {}
@@ -155,7 +166,7 @@ for _, d in ipairs(J:GetDescendants()) do
 			if d.Name == "Canal stone bank" or (d:IsA("BasePart") and d.Name:match("^JP_Canal_Rocks")) then table.insert(retire, d)
 			elseif d:IsA("Model") and d.Name == "Canal footbridge" then table.insert(retire, d); table.insert(bridgesZ, cf.Z)
 			elseif d.Name:lower():find("approach steps") and near(cf, 30) then table.insert(retire, d)
-			elseif d.Name == "Canal weir" then table.insert(retire, d) end
+			elseif d.Name == "Canal weir" or d.Name == "Canal boat" then table.insert(retire, d) end
 		end
 	end
 end
@@ -167,7 +178,7 @@ for _, d in ipairs(retire) do
 end
 local nret = 0; for _ in pairs(seen) do nret += 1 end
 table.sort(bridgesZ)
-print(string.format("QQ GARDEN3 retired %d (banks, black strips, footbridges at z %s, approach steps, the weir) -> HudBackup.MomijiGardenReplaced", nret,
+print(string.format("QQ GARDEN3 retired %d (banks, black strips, footbridges at z %s, approach steps, the weir, the old canal boat) -> HudBackup.MomijiGardenReplaced", nret,
 	(function() local t = {}; for _, z in ipairs(bridgesZ) do table.insert(t, string.format("%.0f", z)) end; return table.concat(t, " / ") end)()))
 -- ---------- 4. the floating walkways, flat on the ground ----------
 local levelled = 0
@@ -196,7 +207,7 @@ local function dress(m)
 			p.Anchored = true; p.Material = Enum.Material.SmoothPlastic; p.CastShadow = true
 			if COL[key] then p.Color = COL[key] else table.insert(missing, p.Name) end
 			p.CanCollide = SOLID[key] == true; p.CanQuery = p.CanCollide; p.CanTouch = false
-			if p:IsA("MeshPart") and (key == "Bridge_Deck" or key == "Slab_Stone" or key == "Wall_Coping" or key == "Wall_Stone" or key == "Steps_Stone" or key == "Steps_Landing" or key == "Skiff_Wood") then
+			if p:IsA("MeshPart") and (key == "Bridge_Deck" or key == "Slab_Stone" or key == "Wall_Coping" or key == "Wall_Stone" or key == "Steps_Stone" or key == "Steps_Landing" or key == "Skiff_Wood" or key == "Boat_Hull" or key == "Boat_Floor") then
 				pcall(function() p.CollisionFidelity = Enum.CollisionFidelity.PreciseConvexDecomposition end)
 			end
 			if key == "Lantern_Paper" then
@@ -205,7 +216,11 @@ local function dress(m)
 			elseif key == "Fall_Water" then p.Material = Enum.Material.Glass; p.Transparency = 0.25; p.CastShadow = false; pcall(function() p.DoubleSided = true end)
 			elseif key == "Fall_Foam" then p.Transparency = 0.15; p.CastShadow = false
 			elseif key:sub(1, 4) == "Koi_" then p.CastShadow = false
-			elseif key:sub(1, 6) == "Skiff_" then p.Material = Enum.Material.Wood end
+			elseif key:sub(1, 6) == "Skiff_" then p.Material = Enum.Material.Wood
+			elseif key:sub(1, 5) == "Boat_" then
+				if key == "Boat_Hat" or key == "Boat_Rope" then p.Material = Enum.Material.SmoothPlastic else p.Material = Enum.Material.Wood end   -- (box-projected UVs, the grain along the length)
+				p.CastShadow = key ~= "Boat_Rope"
+			end
 			meshes += 1
 		end
 	end
@@ -324,18 +339,25 @@ for i = 1, 5 do
 	end
 	if m then life(m, CX + rnd:NextNumber(-4, 4), mid, half, rnd:NextNumber(2.5, 5), WATER - rnd:NextNumber(0.5, 0.8), (i % 2 == 0 and 1 or -1) * rnd:NextNumber(0.05, 0.09), 0.08); nkoi += 1 end
 end
--- the skiffs (built along +x, the bow at +x: the pivot turned so its -Z is the bow)
-local function skiff(label, at, yaw)
-	local m = place("skiff", at, yaw, nil, label, 1, LF)
-	if m then local cf = m:GetBoundingBox(); m.WorldPivot = CFrame.new(cf.Position.X, at.Y, cf.Position.Z) * CFrame.Angles(0, math.rad(yaw) + math.rad(-90), 0) end
+-- the boats (runner 7's "boat" from her Yanagawa photo: 27 long with the bow horns, 7.3 wide, the bow at +Z; its origin on the flat
+-- bottom goes at WATER - 0.75 so the floor boards sit 0.3 above the water). The pivot is turned so its -Z is the bow (like the koi).
+local BOAT_Y = WATER - 0.75
+local function boat(label, at, bowYaw)
+	local m = place("boat", at, 0, nil, label, 1, LF)
+	if m then
+		m.WorldPivot = CFrame.new(m:GetPivot().Position) * CFrame.Angles(0, math.rad(180), 0)
+		m:PivotTo(CFrame.new(at) * CFrame.Angles(0, bowYaw, 0))
+	end
 	return m
 end
-skiff("SkiffMoored", Vector3.new(WEST + 2.7, WATER, stepsAt[1] + 10.5), -84)         -- alongside the west wall, just past the garden bridge's water steps
+-- moored along the west wall just past the garden bridge's water steps, bow to the north, a touch off the wall
+boat("BoatMoored", Vector3.new(WEST + 5.0, BOAT_Y, stepsAt[1] + 17), math.pi + 0.05)
 do
+	-- poled back and forth along the longest reach with a FIXED heading (a punt goes stern-first on the way back): no turning in a 25-wide canal
 	local r = reaches[1] or {Z1 + 30, Z2 - 30}
-	local half = (r[2] - r[1]) / 2 - 14
-	local m = skiff("SkiffGliding", Vector3.new(CX + 3, WATER, (r[1] + r[2]) / 2), -90)
-	if m then life(m, CX + 1, (r[1] + r[2]) / 2, half, 4.5, WATER, 0.045, 0.03) end
+	local half = math.max(6, (r[2] - r[1]) / 2 - 16)
+	local m = boat("BoatPoled", Vector3.new(CX + 2, BOAT_Y, (r[1] + r[2]) / 2), math.pi)
+	if m then life(m, CX + 2, (r[1] + r[2]) / 2, half, 0.6, BOAT_Y, 0.035, 0.03); m:SetAttribute("LifeHeading", math.pi) end
 end
 local lifeScript = Instance.new("Script"); lifeScript.Name = "CanalLifeScript"; lifeScript.RunContext = Enum.RunContext.Client
 lifeScript.Source = [==[
@@ -352,13 +374,15 @@ RunService.Heartbeat:Connect(function()
 			local bob = math.sin(t * 1.3 + ph * 3) * m:GetAttribute("LifeBob")
 			local pos = Vector3.new(x0 + amp * math.cos(a), m:GetAttribute("LifeY") + bob, mid + half * math.sin(a))
 			local vel = Vector3.new(-amp * math.sin(a), 0, half * math.cos(a)) * sp
-			if vel.Magnitude > 1e-4 then m:PivotTo(CFrame.lookAt(pos, pos + vel.Unit) * CFrame.Angles(0, 0, 0.06 * bob)) end
+			local heading = m:GetAttribute("LifeHeading")
+			if heading then m:PivotTo(CFrame.new(pos) * CFrame.Angles(0, heading, 0) * CFrame.Angles(0.5 * bob, 0, 0.4 * bob))   -- a fixed heading, a slow rock
+			elseif vel.Magnitude > 1e-4 then m:PivotTo(CFrame.lookAt(pos, pos + vel.Unit) * CFrame.Angles(0, 0, 0.06 * bob)) end
 		end
 	end
 end)
 ]==]
 lifeScript.Parent = LF
-print(string.format("QQ GARDEN3 life: %d koi (%s) in %d reaches, a skiff moored at z %.0f and one gliding; CanalLife client script", nkoi, MESHY_KOI and "Meshy" or "koi.fbx", #reaches, stepsAt[1] + 10.5))
+print(string.format("QQ GARDEN3 life: %d koi (%s) in %d reaches, a boat moored at z %.0f and one poled along the longest reach; CanalLife client script", nkoi, MESHY_KOI and "Meshy" or "koi.fbx", #reaches, stepsAt[1] + 17))
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after Momiji garden look test 3") end)
 if #missing > 0 then print("QQ GARDEN3 missing or uncoloured: " .. table.concat(missing, ", ")) end
 print(string.format("QQ GARDEN3 DONE: MomijiGarden - %d pieces (%d wall segments + %d end segments, %d bridges with landings and water steps, %d lanterns, %d rocks), %d meshes; no parts built", made, k * 2, ends, #bridgesZ, nl, nr, meshes))

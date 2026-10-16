@@ -3610,3 +3610,9 @@ longest reach (CanalLife Client script: Life* attributes, nose along the way). O
 PREVIEW in play: walk each bridge end to end (landings meet the walkways?), the walls from the lawn (1.7 of stone + coping above the
 grass) and from the water, the stair into the water, the falls pouring in over the end wall, the koi head-first, the skiffs, pictures
 from a bridge down the canal, from the lawn, one beside Rue de Noisette; part / triangle counts.
+Batch 3 update (runner 7's boat, 80bd200): Shannon's Yanagawa boat photo -> runner 7's tools/japan/garden/gen_boat.py, out_boat/boat.fbx
+(kit Model "boat", 4,990 tris, bow +Z, origin on the flat bottom) replaces out3's skiff for BOTH boats, and LanternStreet."Canal boat"
+("that terrible thing in there now") is retired. garden_look3.lua: the kit check wants "boat" (skiff no longer needed); the boat's
+origin at WATER - 0.75 so the floor boards sit above the water; Wood material (box UVs), Hull/Floor PreciseConvexDecomposition;
+moored along the west wall past the garden bridge's water steps (bow north), the poled one goes back and forth along the longest
+reach with a FIXED heading (LifeHeading; a punt goes stern-first on the way back - no turning in a 25-wide canal).
