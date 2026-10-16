@@ -3941,3 +3941,32 @@ INSTALLED (runner 7, solo, Studio EDIT, Oct 16 evening; each on Shannon's word; 
    WITH its picture: japan_iris_card.fbx -> rbxassetid://113935459113970) scattered in 16 drifts + 2 singles over the railway lawn
    (x 5440..6560, z 116..166), 1.4-2.1 tall; the picture via SurfaceAppearance AlphaMode Transparency (TextureID drew it black).
 Also: the treehouse counter (treecount1) and the church install from earlier today. Shannon: publish + restart servers.
+CLOUD (Oct 16 late, a cloud session; Shannon sent two pictures: "that is a problem that needs to be fixed and where I circled is a problem
+that needs to be fixed"). NOT INSTALLED - for the PC session to preview in a play test, show her the pictures, install on her word:
+1. The falls' rocks (her picture from the west lawn): r2's Fall_Rock was jittered icospheres - round pale balloons bulging over the lawn
+   and the side walls, dark undersides showing, WallS1's coping sticking out through the pile like a plank. r3 (gen_falls3.py) keeps
+   r2's water (same cleft, chute, ribbon, foam, beam points) with ANGULAR stones (convex hulls: wide base, shoulders, tilted top):
+   the water-fall stone with a straight lip, two guardian stones, stones up the chute to a lintel the water comes out from under, the
+   rise behind lower and grounded (feet at -0.6), stones that swallow S1 / S4's cut ends (checked: every corner of their stonework and
+   coping inside a stone) and stop at x +-11.2 (r2 +-14.4: over the side walls), a hidden core where S2 / S3 stood (no holes),
+   two tones Fall_Rock 0.50/0.49/0.46 and Fall_Rock2 0.43/0.42/0.40 (lighter than the lanterns' 0.40), no vertex colours, box UVs.
+   2202 stone tris. Installer canalfalls3.lua: CanalFalls2 -> HudBackup.Falls3Replaced, canal_falls3 placed by bounding box (half turn
+   detected by the foam), r2's beams / mist / spray re-added. Blender previews out_falls3/prev_falls3_*.png (stand-ins: the real
+   canal_wall kit from out3).
+2. The bridge ends (her circles at a taiko bridge's end): canalfix1 raised the bridges 1.6 and stretched the landings x2.6, so
+   (a) the 0.13 gap between the landing (from the beam tips, 20.232 out) and the bridge's stone footing (to 20.1) became a 2.1-tall
+   slit - her left circle, the green showing through; (b) the footing (from 17.5) never met the wall (lawn face 16.5, coping 16.8):
+   a 0.7..1.0 slot under the beam - her right circle; and the steps became 1.3-tall blocks. Reproduced in Blender with the real
+   bridge.fbx + canal_wall kit (out_bridge_end/prev_bridge_end_*_BEFORE.png). One piece per end (gen_bridge_end.py, kit bridge_end):
+   an abutment from inside the wall (16.15) to the deck end in the walls' flagstone (Abut_Stone: Pavement + JM_PhotographicPath, white),
+   a coping cap at 2.18 (Abut_Coping, 0.08 over the wall's) the beams rest on, and steps (Abut_Steps) with the top tread flush with
+   the deck end (2.3) and 3 more risers of 0.575, the foot at 23.25 (the old one's: the stepping stones still meet it). The old
+   footing (Bridge_Stone) stays, hidden inside (0.05 in from every face). Installer bridgeend1.lua: per TaikoBridge measures the
+   centre and the deck end from Bridge_Stone and the lawn from the old landing, checks the deck end is 2.3 up (skips the bridge if
+   not), LandingW/E<i> -> HudBackup.BridgeEndReplaced, places BridgeEndE/W<i> 20 out (the west one turned; the import's half turn
+   detected by the steps), all solid, CollisionFidelity PreciseConvexDecomposition set on the kit first.
+Files (cloud branch claude/charming-brown-dctdtc, built on claude/epic-hawking-188q4l at ee500bf - merge it in):
+   tools/japan/garden/canalfalls3.lua at 80797e2 (7952 / 309389434), tools/japan/garden/bridgeend1.lua at 80797e2 (7240 / 1609426371),
+   kit tools/japan/garden/out_kit11/japan_kit11_falls3_bridge_end.fbx (one Import 3D: Models canal_falls3 + bridge_end ->
+   ServerStorage.JapanGardenKit; copy it to Desktop\Japan garden kit\ first). Order: import, preview both in a play test (pictures
+   from her two camera spots: the west lawn by the falls, the lawn beside a bridge end), install in Edit on her yes; she publishes.
