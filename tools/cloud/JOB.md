@@ -3883,3 +3883,16 @@ a first-feed-of-the-day reward; sushi match ON HOLD; kimono via the wardrobe (It
 the French dresses); church: build look A; NEW item 9: a propeller cap you buy (a gadget vending machine) that lets you fly - a quiet
 Doraemon tribute, kept generic. Runner 7 surveying: church sites, the tea-field maze site, the palace koi pond, the wardrobe code.
 Cloud: tools/japan/church/gen_church.py (shell + interior FBX, previews) in progress.
+## The CHURCH (Japan first; one on every map) - built, waiting for a site (runner 7 survey) and her verdict on the previews
+Shannon: "we need a church building somewhere on the map ... it needs to blend in, but it will be a church ... please build what you
+describe." tools/japan/church/gen_church.py -> out/: church_shell.fbx (15 meshes, 3.9k tris: plaster walls with real arched window
+openings, dark timber framing, a stone plinth, three stone steps, two door leaves + trims, the tiled roof in 8 bands with tile courses
+and an up-turned eave, ridge cap and end ornaments, the bell tower proud of the nave's corner with louvres, a bronze bell, a pyramid
+roof and a cross; coloured glass in blue/gold/red, a rose window over the door), church_interior.fbx (8 meshes, 1.1k: timber floor,
+chancel step, ten pews, altar + cloth + cross, lectern, candles with flames, the bell rope); pieces.json (bboxes, the 10 seat spots,
+the door hinges, the rope); previews prev_church_front_quarter / front / side / interior .jpg. Footprint 18.7 x 33.7, 25 to the cross.
+tools/japan/church/church_install1.lua (make_church_install.py; compiles): SITE_X / SITE_Z / SITE_YAW / GROUND_Y at the top (the door
+faces +z before the yaw), places both Models by bbox, dresses (plaster SmoothPlastic, Wood timber/pews/floor/doors, Slate stone/roof,
+Marble altar, Glass 0.3, Neon flames + PointLights), 30 invisible Seats on the pews (automatic sit), the door leaves swing 100 degrees on
+a prompt and close after 10 s, the bell rope prompt swings the bell (BELL_SOUND id to pick). Re-runnable (Church_prev kept once).
+IMPORT: out/church_shell.fbx and church_interior.fbx into the kit as Models "church_shell" / "church_interior" (one combined FBX fine).
