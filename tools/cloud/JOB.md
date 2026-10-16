@@ -3396,3 +3396,19 @@ round N; waiting for the save", then either the "N pieces taken back" line, "rou
 never loaded" - so her F9 Server log says which. Re-run tools/treehouse/install_treehouse_reset1.lua in Edit (it replaces the
 script and keeps ResetUserIds / ResetRound 3). Likely cause to rule out first: after a publish, an already-running server keeps the
 OLD place version (no TreehouseReset) until it restarts - "Restart servers for updates" on the Creator Dashboard, or a fresh server.
+
+Result job 118 ROUND 4 PREVIEW (runner 7, play test, nothing kept): install_bottle1.lua at d4b9857 (55382, adler32 2490489069): stand (her
+spot) (473.3, -12.0, -970.9) yaw 99 - STILL "NOT clear: ...Circolo Velico level courtyard.Continuous fitted cobblestone" (that part is at
+(457.5, -12.3, -940.0), 0.5 x 10.6 x 1.3 - 31 studs off; nothing touches the kiosk by eye); "the reply spot: in front of the kiosk at
+(468, -12.0, -973)"; "waterline spots: ... 10 wash spots (the reply lies at the kiosk)"; "toss view: the camera at (341, -45, -740) on
+the shore, the bottle lands at (307, -52.9, -740) on the water"; DONE BottleClient 16676. SIGN: on top of the awning, both lines read from
+the normal camera (r4_kiosk_sign_on_awning). PANEL: five rows To / Note / Blank 1 / Blank 2 / Ask, the preview signed "From SelBell".
+A send happened while the panel was open (not by my code - Shannon may have clicked); the "Off it goes!" toast then sat OVER the Ask row of
+the re-opened panel (r4_panel_five_rows_toast_over_ask). TOSS (FireClient "sent" twice for the pictures - the server refuses a second
+real send the same day: "Your bottle is already out at sea. Check the beach tomorrow!" = stale wording): the camera cuts to the shore
+looking -X, but the view is filled by the stone QUAY WALL ("Continuous fitted paving" at x ~315, top -46.8) and the bottle lands behind
+it at (307, -740) - neither the arc nor the splash shows (r4_toss_view_quay_wall_blocks). Needs a toss line out over open water. REPLY
+(TestDayOffset 1): workspace.Bottles.ReplyBottle at (468.5, -11.6, -972.7), glowing at the kiosk's foot (r4_reply_at_kiosk); card "Dear
+SelBell, / Coconuts. Only coconuts. It's coconuts or nothing on this island. / - Captain Barnacle ... / You wrote: ... What's your
+favourite food?" all TextFits (r4_reply_card). Stale line in BottleClient 211: "A reply to your bottle has washed up by the bottle stand
+on the beach!". Not installed.
