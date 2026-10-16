@@ -3750,3 +3750,12 @@ Job 125 garden batch 3 INSTALLED (runner 7, Studio Edit, Shannon's "Yes, install
 ("JapanWaterAppearance patched 1204 -> 1608"); verified in play: over the canal 0.90 / 0.10, on the lawn 0.32 / 0.45. Shannon
 publishes + restarts servers. Batch 3 CLOSED. Next for Japan: the town street (U6-U9, N2) - machiya fronts, lantern strings,
 tubs/crates, the street torii, stairs, planters - on her word, with the same look-test-first routine.
+Job 125 garden look 3f (cloud; Shannon's notes after the install, via runner 7): the WATERFALL was inside the garden bridge -> its origin
+0.1 behind the south end wall's face (the sheet lands in the water in front of the wall, the rocks pile on the wall's end and the lawn
+behind; the FallsRocks with it) and the GARDEN BRIDGE moves 12 north (-215 -> -203: GARDEN_BRIDGE_FROM/TO; landings, water steps,
+lanterns, torii, pine, slabs and its stepping-stone line follow); ONE boat (the moored one, at the steps + 19; the poled one dropped);
+the NORTH corners' water slot closed (end walls at Z2 - 0.5, overlapping the side walls like the south); KOI: MESHY_KOI_FACING 0 (they
+swam backwards) and a MEANDER instead of a line (x = X + A1 sin(a+p1) + A2 sin(2.7a+p2) within CX +- 8, z = Mid + Half sin(0.6a+p3),
+the heading eased, reaches 14 clear of the bridges); LANTERNS darker (Lantern_Stone 0.40, 0.40, 0.39 via COL_OVERRIDE); the FLOATING
+MAPLE at (6125, 83) (trunk + leaves, "Blender maple and blossom groves") lowered 1.92 (GardenOldCF; re-run safe). Re-runnable in Edit:
+the previous MomijiGarden -> HudBackup.MomijiGarden_prev (one kept), bridges/walkways read back from MomijiGardenReplaced.
