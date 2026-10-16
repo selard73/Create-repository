@@ -17,7 +17,7 @@ local T = workspace.Terrain
 local KIT = SS:FindFirstChild("JapanGardenKit")
 local J = workspace:FindFirstChild("JapanMap")
 if not (KIT and J) then print("QQ GARDEN3 ABORT: ServerStorage.JapanGardenKit or workspace.JapanMap missing") return end
-for _, n in ipairs({"torii", "lantern", "bridge", "pine", "rocks", "slabs", "waterfall", "canal_wall", "canal_wall_b", "canal_steps", "bridge_steps", "boat"}) do
+for _, n in ipairs({"torii", "lantern", "bridge", "pine", "rocks", "slabs", "canal_wall", "canal_wall_b", "canal_steps", "bridge_steps", "boat", "canal_falls"}) do
 	if not KIT:FindFirstChild(n) then print("QQ GARDEN3 ABORT: the kit has no Model '" .. n .. "' - import tools/japan/garden/out3/*.fbx too") return end
 end
 local KOI = KIT:FindFirstChild("koi_meshy") or KIT:FindFirstChild("koi")
@@ -59,7 +59,11 @@ local BB = {
 	["canal_steps"] = {min = Vector3.new(0.0, -1.2, -2.3), max = Vector3.new(4.5, 1.9, 2.3)},
 	["bridge_steps"] = {min = Vector3.new(-3.0, 0.0, -4.4), max = Vector3.new(0.0, 1.0, 4.4)},
 	["skiff"] = {min = Vector3.new(-8.467, -0.965, -1.9), max = Vector3.new(7.0, 4.647, 1.9)},
-	["boat"] = {min = Vector3.new(-3.63, -0.033, -13.35), max = Vector3.new(3.63, 3.612, 13.75)}
+	["boat"] = {min = Vector3.new(-3.63, -0.033, -13.35), max = Vector3.new(3.63, 3.612, 13.75)},
+	["canal_falls"] = {min = Vector3.new(-13.306, -0.3, -18.774), max = Vector3.new(13.477, 8.866, 2.54)},
+	["canal_falls/Fall_Rock"] = {min = Vector3.new(-13.306, -0.3, -18.774), max = Vector3.new(13.477, 8.866, -4.7)},
+	["canal_falls/Fall_Water"] = {min = Vector3.new(-3.2, 1.17, -10.2), max = Vector3.new(3.2, 6.15, 0.76)},
+	["canal_falls/Fall_Foam"] = {min = Vector3.new(-3.247, 1.192, -5.505), max = Vector3.new(3.425, 2.64, 2.54)}
 }
 local COL = {
 	Torii_Red = Color3.new(0.8, 0.2, 0.13),
@@ -172,7 +176,7 @@ do
 		local SM, SO, LO = ch.SolidMaterial, ch.SolidOccupancy, ch.LiquidOccupancy
 		for ix = 1, #SO do
 			local x = x0 + (ix - 0.5) * 4
-			if x + 2 > WEST and x - 2 < EAST then                              -- every cell column the water touches, the edge ones under the walls included (else a trench along the wall)
+			if x + 2 > WEST - 4 and x - 2 < EAST + 4 then                      -- every cell column the water touches AND the next one under each wall (else the surface slopes down toward the dry column: a sloped margin along the walls - runner 7, look 3g)
 				for iy = 1, #SO[ix] do
 					local y0 = -16 + (iy - 1) * 4
 					for iz = 1, #SO[ix][iy] do
@@ -356,30 +360,10 @@ for wi, w in ipairs(walkways) do
 end
 print(string.format("QQ GARDEN3 stepping-stone paths: %d slabs along %d old walkway lines (tops 0.23-0.35 above the lawn, stride 2.3-2.6); bridge landings turned %d", nslab, #walkways, BRIDGE_LANDING_TURN))
 -- the waterfall feeding the south end (its rocks over the end wall, the sheet landing in the water)
--- (the piece pours toward +z: its sheet runs from z -0.4 (top, y 10.4) to +1.0 (landing) with the foam at +1.2, its rocks behind at
---  z -1..-7.5, up to ~10 tall. Look 3f: on the wall it sat ON the coping with a boulder over the water. Now: the rock pile at LAWN level
---  right behind the end wall's body (a rocky rise, the sheet coming down its face behind the wall, visible above the coping), its own
---  foam hidden, and a SPILL over the coping into the canal: a re-sized Fall_Water clone from the coping top down to the water, with a
---  Fall_Foam clone on the water in front of the wall)
-local falls = place("waterfall", Vector3.new(CX, 0, ZS - 3.5), 0, nil, "Waterfall")
-if falls then
-	local sheet, foam
-	for _, q in ipairs(falls:GetDescendants()) do
-		if q:IsA("BasePart") then
-			local key = colourKey(q.Name)
-			if key == "Fall_Water" then sheet = q elseif key == "Fall_Foam" then foam = q; q.Transparency = 1 end
-		end
-	end
-	if sheet then
-		local spill = sheet:Clone(); spill.Name = "Fall_Spill"
-		spill.Size = Vector3.new(8.5, 1.6, 1.5)                                 -- the curved sheet squashed: over the lip at 2.1 .. the water at 1.3, 8.5 wide
-		spill.CFrame = CFrame.new(CX, 1.85, ZS + 0.05); spill.Parent = falls; meshes += 1
-	end
-	if foam then
-		local f2 = foam:Clone(); f2.Name = "Fall_Foam_Canal"; f2.Transparency = 0.15
-		f2.Size = Vector3.new(9.5, 0.35, 2.6); f2.CFrame = CFrame.new(CX, WATER + 0.05, ZS + 1.6); f2.Parent = falls; meshes += 1
-	end
-end
+-- runner 7's canal_falls piece (gen_falls.py, out_falls): its ORIGIN is the south end wall's WATER FACE at lawn level, the stream running
+-- toward +z: rocks behind the wall (z -18.8..-4.7, flattened against its back), the water ribbon across the coping (2.18) over the lip and
+-- down to the canal (1.32 at z +0.76), foam on the water to z +2.5. Placed at yaw 0 on the coping's face (ZS + 0.3).
+place("canal_falls", Vector3.new(CX, 0, ZS + 0.3), 0, nil, "CanalFalls")
 -- look test 1's approved pieces, by the garden bridge (the southernmost crossing)
 local BZ = bridgesZ[1]
 place("torii", Vector3.new(CX - 43, 0, BZ), 90, nil, "Torii")
@@ -401,7 +385,7 @@ for zr = Z1 + 14, Z2 - 10, 37 do
 		place("rocks", Vector3.new(x, 0.1, zr + rnd:NextNumber(-3, 3)), rnd:NextInteger(0, 359), "Rock" .. rnd:NextInteger(1, 3), "WallRock", rnd:NextNumber(0.8, 1.3), RR); nr += 1
 	end
 end
-for _, d in ipairs({{-11, -5}, {11.5, -4.5}, {-13.5, -8}}) do place("rocks", Vector3.new(CX + d[1], 0.15, ZS + d[2]), rnd:NextInteger(0, 359), "Rock" .. rnd:NextInteger(1, 3), "FallsRock", rnd:NextNumber(1.0, 1.4), RR); nr += 1 end   -- on the lawn behind the end wall, with the falls
+-- (no kit rocks by the falls: canal_falls brings its own, and the lawn stays clear for 19 behind the wall face)
 -- ---------- 6. life on the water: koi swimming slow loops, a skiff moored at the steps and one gliding along the long reach ----------
 -- (each Model gets Life* attributes; the CanalLife client script moves it round an oval: z = Mid + Half sin a, x = X + Amp cos a, nose along the way)
 local LF = Instance.new("Folder"); LF.Name = "CanalLife"; LF.Parent = G

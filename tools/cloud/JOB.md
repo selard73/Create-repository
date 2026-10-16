@@ -3795,3 +3795,7 @@ drawn black. tools/japan/rocks/blackrock1.lua (compiles): prints the variant's t
 wearing it (by parent, biggest example), and with FIX = true sets them to plain Rock in stone grey (old variant/material/colour kept as
 BlackRockOld* attributes; reversible). Play-test preview first (pictures of the boulders, the palace perimeter wall and anything else
 listed), then Edit on her word.
+Look 3g -> 3h (cloud): the water rows written one cell column further under each wall (x WEST-4 / EAST+4) so the surface no longer
+slopes down at the walls; the falls = runner 7's canal_falls piece (1aa2aa8, kit Model "canal_falls", origin at the south end wall's
+water face, placed at (CX, 0, ZS + 0.3)) replacing the old waterfall + spill + foam + FallsRocks. Kit check wants canal_falls (the
+old "waterfall" Model is no longer needed).
