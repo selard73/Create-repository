@@ -97,7 +97,7 @@ do
 		local SM, SO, LO = ch.SolidMaterial, ch.SolidOccupancy, ch.LiquidOccupancy
 		for ix = 1, #SO do
 			local x = x0 + (ix - 0.5) * 4
-			if x > WEST and x < EAST then
+			if x + 2 > WEST and x - 2 < EAST then                              -- every cell column the water touches, the edge ones under the walls included (else a trench along the wall)
 				for iy = 1, #SO[ix] do
 					local y0 = -16 + (iy - 1) * 4
 					for iz = 1, #SO[ix][iy] do
@@ -217,8 +217,9 @@ local BRIDGE_Y = 0.7
 local stepsAt = {}
 for i, bz in ipairs(bridgesZ) do
 	place("bridge", Vector3.new(CX, BRIDGE_Y, bz), 0, nil, "TaikoBridge" .. i, 1, BF)
-	place("bridge_steps", Vector3.new(CX - BB.bridge.max.X, 0, bz), 0 + BRIDGE_LANDING_TURN, nil, "LandingW" .. i, 1, BF)
-	place("bridge_steps", Vector3.new(CX + BB.bridge.max.X, 0, bz), 180 + BRIDGE_LANDING_TURN, nil, "LandingE" .. i, 1, BF)
+	local lo = BRIDGE_LANDING_TURN == 180 and -BB.bridge_steps.min.X or 0    -- the piece's origin is its top edge (x -3..0): turned round, it is set 3 outward so the treads stay outside the deck
+	place("bridge_steps", Vector3.new(CX - BB.bridge.max.X - lo, 0, bz), 0 + BRIDGE_LANDING_TURN, nil, "LandingW" .. i, 1, BF)
+	place("bridge_steps", Vector3.new(CX + BB.bridge.max.X + lo, 0, bz), 180 + BRIDGE_LANDING_TURN, nil, "LandingE" .. i, 1, BF)
 	local sz = bz + BB.bridge.max.Z + 3.5                                   -- the stair just downstream (north) of the bridge
 	place("canal_steps", Vector3.new(WEST, 0, sz), 0, nil, "WaterStepsW" .. i, 1, BF)
 	place("canal_steps", Vector3.new(EAST, 0, sz), 180, nil, "WaterStepsE" .. i, 1, BF)

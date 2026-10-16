@@ -3721,3 +3721,7 @@ walks pass both ways (x 6060 <-> 6140, peak 9.4). TWO faults:
 2. The Slate bed has a TRENCH along the EAST wall: terrain bed -1.3 across, then -1.45 (6109.7), -2.15 (6110.9), -3.9 (6112.2), -6.7
    (6113.4) at z -178 (same at z -100 and 0); the west edge dips to -2.8 at 6088.6. Through the clear water it shows as a dark jagged
    band under the east wall (shots_look3d/5). Fill the Slate to the full channel width (the edge cell columns under the walls too).
+Look test 3d -> 3e (cloud): the turned bridge landings set 3 outward (their origin is the top edge, so the 180 turn had swung them
+under the decks); the Slate bed written in every cell column the water touches (x + 2 > WEST and x - 2 < EAST: the edge columns
+under the walls were skipped, leaving a trench along the east wall and a dip at the west). Then ready for her install word:
+garden_look3 + canalwater1 in Edit, publish, restart.
