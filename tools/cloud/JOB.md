@@ -3731,3 +3731,17 @@ water flat at 1.3". Landing profile z -213: lawn 0.00 (6077) -> 0.50 (6078-6078.
 (6081) -> 1.00 -> 1.26; east the mirror. Bed: east wall fixed (-1.0..-1.55 to x 6113.45); the west edge still dips to -2.85 within
 ~1 stud of the wall (x 6088.5-6089.5), not visible by eye in the clear water (shots_look3e/1). Stepping stones meet the steps
 (shots_look3e/2). READY for her install word: garden_look3 (24294ed) + canalwater1 (f4c7d4e), Studio Edit; she publishes + restarts.
+INSTALLED job 125 canal (runner 7, Studio EDIT, Oct 16, on Shannon's "Yes, install it"; UNPUBLISHED until she publishes):
+garden_look3.lua at 24294ed (30813 / 1067205205 checked) - QQ lines identical to look test 3e:
+QQ GARDEN3 koi: Shannon's Meshy koi (kit 'koi_meshy')
+QQ GARDEN3 canal: water faces x 6088.5 / 6113.5 (centre 6101.0), z -223.0 .. 103.0, water 1.3; end walls at z -219.5 / 104.5
+QQ GARDEN3 terrain: a flat Slate bed at -1.3 along the channel (1764 cells below, 588 bed/water cells), the water flat at 1.3
+QQ GARDEN3 retired 17 (banks, black strips, footbridges at z -215 / -75 / 80, approach steps, the weir, the old canal boat, 6 walkway paths, the black-cobble sheet) -> HudBackup.MomijiGardenReplaced
+QQ GARDEN3 stepping-stone paths: 112 slabs along 6 old walkway lines (tops 0.23-0.35 above the lawn, stride 2.3-2.6); bridge landings turned 180
+QQ GARDEN3 life: 5 koi (Meshy, tops 0.20 under the surface) in 2 reaches, a boat moored at z -190 and one poled along the longest reach, all Atomic; CanalLife client script; moss off (grey), boats SmoothPlastic in the houses' wood colours
+QQ GARDEN3 DONE: MomijiGarden - 247 pieces (82 wall segments + 8 end segments, 3 bridges with landings and water steps, 112 path slabs, 8 lanterns, 8 rocks), 381 meshes; no parts built
+canalwater1.lua at f4c7d4e (3092 / 3367570015 checked):
+QQ CANALWATER1 source: 1204 bytes (expected 1204)
+QQ CANALWATER1 DONE: JapanWaterAppearance patched (1204 -> 1608 bytes): over the canal (x 6080..6125, z -230..110) WaterTransparency 0.9 / WaterReflectance 0.1, elsewhere in Japan 0.32 / 0.45 as before; backup HudBackup.JapanWaterAppearance_pre_canalwater1. Publish, then restart servers.
+Verified in a play test after the install: over the canal 0.90 / 0.10, on the lawn at x 6040 (in Japan) 0.32 / 0.45; the PlayerScripts
+copy carries the marker. HttpEnabled restored to false both times. Next: Shannon publishes (Alt+P) and restarts servers.
