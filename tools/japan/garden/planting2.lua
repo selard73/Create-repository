@@ -65,6 +65,10 @@ for i, c in ipairs(clusters) do
 	p.Size = Vector3.new(s, s, s)                                          -- the unit quads: 1 wide, 1 tall, 1 across
 	p.TextureID = IMAGE; p.Color = Color3.new(1, 1, 1); p.Material = Enum.Material.SmoothPlastic; p.Transparency = 0
 	pcall(function() p.DoubleSided = true end)
+	-- (runner 7) the picture through a SurfaceAppearance with AlphaMode Transparency: as a plain TextureID its clear background drew black
+	for _, old in ipairs(p:GetChildren()) do if old:IsA("SurfaceAppearance") then old:Destroy() end end
+	local sa = Instance.new("SurfaceAppearance"); sa.AlphaMode = Enum.AlphaMode.Transparency; sa.ColorMap = IMAGE; sa.Parent = p
+	p.TextureID = ""
 	p.Anchored = true; p.CanCollide = false; p.CanQuery = false; p.CanTouch = false; p.CastShadow = false
 	p.CFrame = CFrame.new(c.sx / c.n + rnd:NextNumber(-0.3, 0.3), s / 2 - 0.08, c.z + rnd:NextNumber(-0.3, 0.3)) * CFrame.Angles(0, math.rad(rnd:NextInteger(0, 359)), 0)
 	p.Parent = G; made += 1
