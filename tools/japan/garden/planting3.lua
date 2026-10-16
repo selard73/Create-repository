@@ -70,8 +70,11 @@ for d = 1, DRIFTS do
 	local got = 0
 	for k = 1, n * 6 do
 		if got >= n then break end
-		local a, r = rnd:NextNumber(0, math.pi * 2), (got == 0) and 0 or rnd:NextNumber(1.3, 2.2 + n * 0.7)
-		local x, z = cx + math.cos(a) * r, cz + math.sin(a) * r * rnd:NextNumber(0.6, 1.0)
+		-- a loose cloud, not a ring (points on a ring read as a planted row): Gaussian offsets, the drift a little longer one way
+		local sig = 1.2 + n * 0.45
+		local g1 = math.sqrt(-2 * math.log(math.max(rnd:NextNumber(), 1e-6))) * math.cos(2 * math.pi * rnd:NextNumber())
+		local g2 = math.sqrt(-2 * math.log(math.max(rnd:NextNumber(), 1e-6))) * math.cos(2 * math.pi * rnd:NextNumber())
+		local x, z = cx + ((got == 0) and 0 or g1 * sig * 1.3), cz + ((got == 0) and 0 or g2 * sig * 0.8)
 		if z > Z0 and z < Z1 and free(x, z) then plant(x, z); got += 1 end
 		if got == 0 and k > 4 then cx = cx + rnd:NextNumber(-6, 6); cz = rnd:NextNumber(Z0 + 3, Z1 - 3) end
 	end
