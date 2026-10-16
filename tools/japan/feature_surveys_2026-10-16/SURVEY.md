@@ -86,7 +86,7 @@ HatKit.Catalogue, Passport.Catalogue, plus Kits_tree.txt, DressShop_top.txt, Kim
   - Worn: `Item_dresswear_<id>` > 0.
   - Changed only by firing `ReplicatedStorage.AwardItems` (BindableEvent, server) with ("dress_<id>", +1) or ("dresswear_<id>", ±n).
   - Purchase: `AwardAcorns` with a negative amount.
-  - The ids are style + colour, e.g. "rue_Buttercup" (see DressKit.Catalogue `M.byId`, `M.order`).
+  - The ids are `<styleId>_<colour index>`, e.g. "rue_1" (Buttercup), "rue_2" (Rose) (DressKit.Catalogue line 50: `M.byId`, `M.order`).
 - **Slots:** Catalogue `M.slots = {'dress','eyewear','necklace'}`, each with one worn Model on the character:
   `models = {dress='WornDress', eyewear='WornSunglasses', necklace='WornNecklace'}`. Wearing an item clears the other worn items
   of the same slot.
