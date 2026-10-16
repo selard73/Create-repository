@@ -3449,3 +3449,7 @@ folder HudBackup.Bottles_pre_1). install_treehouse_reset1.lua at d4b9857 (4725, 
 workspace.Treehouse.TreehouseReset (3137 chars); ResetUserIds "9611145467", ResetRound 3". Readback: Bottles = BottleEvent, BottleText,
 Stand, BottleServer, BottleClient; TossSound rbxassetid://129669875728815; TestDayOffset 0. Told her: save, publish, then restart
 servers for the update and join a fresh server; F9 Server shows a "TreehouseReset:" line.
+
+PUBLISHED (Shannon: "saved and published; servers restarted"): bottle round 5 (c172f87, the kiosk by the boat club, the toss, the splash)
+and the TreehouseReset diagnostics (ResetRound 3). Servers restarted, so her next join is on the new version. Waiting for her F9 Server
+"TreehouseReset:" line.
