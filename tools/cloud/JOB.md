@@ -3904,3 +3904,5 @@ moon bridge across, 8 old part koi on the surface; the wardrobe = DressKit style
 Item_dresswear_, DressServer distance-checks one Spot - the kimono = new styles + meshes + Price_<styleId> + a try-on spot.
 Oct 16 late: her "yes to all" (maze around/under the overlook boardwalk with one bamboo-hedge mesh; koi feeding 5 acorns + first-feed
 reward; kimono as wardrobe colour sets; church A at site A). HANDOFF for the next cloud thread: HANDOFF_2026-10-16_CLOUD.md.
+USAGE RULE (Shannon, Oct 16): stop at 70% of the weekly limit and write a Codex handoff (HANDOFF_<date>_CODEX.md) so Codex continues
+until the reset; the cloud cannot read the meter - ask her (or runner 7) for the figure. Runner 7: tell the cloud if you can see it.

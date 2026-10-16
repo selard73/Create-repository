@@ -18,6 +18,15 @@
   CPU only (Workbench needs libEGL). FBX export `axis_forward="-Z", axis_up="Y", apply_scale_options="FBX_SCALE_ALL",
   bake_space_transform=True`; Roblox axes from Blender: x = x, y = z, z = -y. `.gitignore` drops *.fbx/*.png/*.jpg -> `git add -f`.
 
+## USAGE RULE (Shannon, Oct 16): STOP AT 70% OF THE WEEKLY LIMIT
+- When the weekly usage reaches 70%, stop new work and write a CODEX handoff so Codex can continue until the limit resets next week.
+- This cloud session cannot read the usage meter: ask Shannon for the figure at the start of a thread and every few jobs, or ask
+  runner 7 if it can see it. Stop early rather than late.
+- The Codex handoff (HANDOFF_<date>_CODEX.md at the repo root) must stand alone for an agent with no Claude tools: the repo layout,
+  the branches, what is installed / in flight / decided, the exact files to run and in what order, the checks (length + adler32,
+  luau-compile), the rules (no publishing, no DataStores, look tests first, Blender meshes only), and that Codex works through
+  Shannon in Studio rather than through runner 7.
+
 ## Shannon's standing taste rules (learned the hard way today)
 - "Do not build anything from roblox parts ... if you build it has to be in blender" (parts only for invisible seats/supports).
 - NOT realistic: "on same par with the italy and france maps". Faceted low-poly works for HARD shapes (stone, wood, bridges, rocks,
@@ -87,4 +96,4 @@
 Church preview -> flower cards (when her upload lands) -> koi feeding -> bamboo maze -> kimono -> propeller cap -> the rest of the plan.
 
 **Starter prompt for the new cloud chat:**
-> Read HANDOFF_2026-10-16_CLOUD.md in the repo (branch claude/youthful-curie-8azx86) and continue as the cloud thread for 1001 Squirrels. Merge runner 7's branch claude/epic-hawking-188q4l first and read the latest JOB.md entries.
+> Read HANDOFF_2026-10-16_CLOUD.md in the repo (branch claude/youthful-curie-8azx86) and continue as the cloud thread for 1001 Squirrels. Weekly usage is now __% - stop at 70% and write the Codex handoff. Merge runner 7's branch claude/epic-hawking-188q4l first and read the latest JOB.md entries.
