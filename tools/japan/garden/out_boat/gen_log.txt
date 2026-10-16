@@ -1,0 +1,8 @@
+boat.fbx: 10 meshes, 4990 tris; Boat_Hull 924, Boat_Seam 1484, Boat_Rail 512, Boat_Beam 48, Boat_Deck 112, Boat_Bench 36, Boat_Floor 696, Boat_Hat 128, Boat_Pole 546, Boat_Rope 504
+BBOX {"boat": {"min": [-3.63, -0.033, -13.35], "max": [3.63, 3.612, 13.75]}}
+FBX_DONE
+shot prev_boat_photo_angle.png
+shot prev_boat_side.png
+shot prev_boat_above.png
+shot prev_boat_stern.png
+RENDER_DONE
