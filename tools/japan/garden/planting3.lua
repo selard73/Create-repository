@@ -7,7 +7,7 @@
 --    above it (no paths, lanterns, buildings, trees' trunks), and keep 1.2 from the other clumps. Sizes 1.4-2.1, random yaw. The picture
 --    goes through a SurfaceAppearance with AlphaMode Transparency (a plain TextureID drew its clear background black).
 -- Re-runnable (seeded: the same layout each run). Output "QQ PLANTING3".
-local SEED, DRIFTS, X0, X1, Z0, Z1 = 20261016, 34, 5440, 6560, 116, 166
+local SEED, DRIFTS, X0, X1, Z0, Z1 = 20261016, 24, 5440, 6560, 116, 166   -- (Shannon: "there are too many, maybe keep half that amount scattered")
 local SS = game:GetService("ServerStorage")
 local KIT = SS:FindFirstChild("JapanGardenKit")
 local J = workspace:FindFirstChild("JapanMap")
@@ -66,7 +66,7 @@ for d = 1, DRIFTS do
 	-- a drift: a centre somewhere in the band (spread along x so they don't bunch), then 1-6 clumps around it, closer near the middle
 	local cx = X0 + (X1 - X0) * (d - 1 + rnd:NextNumber(0.1, 0.9)) / DRIFTS
 	local cz = rnd:NextNumber(Z0 + 3, Z1 - 3)
-	local n = ({1, 1, 2, 2, 3, 3, 3, 4, 4, 5, 6})[rnd:NextInteger(1, 11)]
+	local n = ({1, 1, 1, 2, 2, 2, 3, 3, 4})[rnd:NextInteger(1, 9)]
 	local got = 0
 	for k = 1, n * 6 do
 		if got >= n then break end
