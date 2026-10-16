@@ -3540,3 +3540,30 @@ approach steps stand 4.8-5.2 above the new deck ends; walking stuck at x 6118.7)
 rocks = BlenderScenery."Sculpted terrain".JP_Canal_Rocks_84/_118 (Rock + JM_PhotographicRock, render black); the canal walkways float 0.8-2.7
 and tilt; and "the edge of this waterway looks unfinished" (her screenshot shots_look1/her_unfinished_waterway_edge.webp - a small pool
 with grey rocks in the water and a dark stone rim with a round hole on top; location to confirm). Pictures shots_look1/ (force-added).
+## Job 125 garden batch 2: the WATERWAY + the KOI POND (import out2, then a play-test PREVIEW; Edit on her word) - runner 7
+Shannon (Oct 16): "the waterway where the bridge is need SERIOUS fixing", "the edge of this waterway looks unfinished", "this walkway
+is lifted right off the ground", orange maples OUT, and (via runner 7) "waterfall -> natural stream -> KOI POND, not to the sea",
+"stepping stones and lanterns around it", rail / station / arrival court untouched; "I have a koi meshy made for the pond too".
+Blender pieces (tools/japan/garden/gen_garden2.py + gen_garden2b.py, bpy 5.2.2 here; runs the same in her Blender) -> out2/:
+canal_edge.fbx + canal_edge_b.fbx (one 8-long bank segment each, two block patterns: a mossy lawn lip flush with the lawn and two
+stone courses down to -3.2), reeds.fbx (tall leaves + purple iris), pond_rim.fbx (a half-round stone rim, water face radius 12.5 = the
+channel's width, 8-long tails meeting the edge segments, the lip filling the old channel's footprint behind it), stepstone.fbx
+(Step1..3 flat-topped columns, top 0, down to -3.2), koi.fbx (Koi_Orange/White/Gold - the FALLBACK; her Meshy koi preferred),
+lilies.fbx (pads + a pink lotus); pieces.json + pieces_2b.json; previews prev_canal*.jpg, prev_pond*.jpg.
+IMPORT into ServerStorage.JapanGardenKit (as batch 1): Models canal_edge, canal_edge_b, reeds, pond_rim, stepstone, lilies, koi (mesh
+names kept), AND Shannon's Meshy koi as a Model named "koi_meshy" (any mesh names; it is scaled to 2.4 long by the script).
+tools/japan/garden/garden_look2.lua (make_garden_look2.py; compiles): 1. finds the canal from the two "Canal stone bank" parts;
+2. TERRAIN: the water from 1.3 down to -0.6 (the -4..0 row at occupancy 0.35), the bed up to -3 all along (the -8..-4 row at 0.75,
+Ground), rock above the water cut to -1.2, nothing wet under the old banks; 3. RETIRES -> HudBackup.MomijiGardenReplaced (attribute
+GardenWasIn): both banks, JP_Canal_Rocks_*, the three "Canal footbridge"s (their z kept), the approach steps, the weir, bank supports
+whose top is above the new water; the two "River end foundation closure" blocks LOWERED flush with the lawn (GardenOldCF); 4. the
+canal's floating "Walkway" parts levelled flat, top 0.2 (GardenOldCF; the station's walkway at z 139 untouched); 5. PLACES meshes only:
+a taiko bridge at each old crossing (y 0: deck ends at 0.3 on the lawn), the stone edge both sides alternating patterns, rocks and reed
+clumps along it (none at the bridges), the waterfall at the south end, the torii / pine / four lanterns / slabs from look test 1 (NO
+maples); 6. the KOI POND: rim at the channel's north end (centre line ZC = the last 8-multiple, apex ~Z2), seven stepping stones
+across at ZC + 4 (tops -0.1), six koi swimming slow circles (KoiSwim Client script, attributes SwimCX/CZ/R/Y/Speed/Phase; Meshy koi
+if "koi_meshy" is in the kit, else koi.fbx; MESHY_KOI_FACING at the top of the script if they swim backwards), three lanterns, three
+lily clusters. Output "QQ GARDEN2 ... DONE ... no parts built".
+PREVIEW in play: the bridge walkable end to end (the deck ends meet the lawn, no old steps), the water at -0.6 with the stone edge
+meeting the lawn, the stream bed visible, the pond with its koi circling the right way round, the stepping stones walkable, pictures:
+from the bridge down the stream, the pond from the lawn and from the stepping stones, one beside Rue de Noisette; part / triangle counts.

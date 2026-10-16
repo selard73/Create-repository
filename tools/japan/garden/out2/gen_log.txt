@@ -1,0 +1,8 @@
+canal_edge.fbx: 2 meshes, 192 tris; A_Edge_Stone 120, A_Edge_Moss 72
+canal_edge_b.fbx: 2 meshes, 168 tris; B_Edge_Stone 96, B_Edge_Moss 72
+reeds.fbx: 2 meshes, 125 tris; Reed_Leaf 33, Reed_Flower 92
+BBOX {"canal_edge": {"min": [-5.4, -3.2, -4.0], "max": [0.258, 0.621, 4.0]}, "canal_edge_b": {"min": [-5.4, -3.2, -4.0], "max": [0.21, 0.621, 4.0]}, "reeds": {"min": [-0.831, 0.0, -1.039], "max": [0.649, 2.506, 0.564]}}
+FBX_DONE
+shot prev_canal.png
+shot prev_canal_low.png
+RENDER_DONE

@@ -1,0 +1,9 @@
+pond_rim.fbx: 2 meshes, 1024 tris; P_Edge_Stone 624, P_Edge_Moss 400
+stepstone.fbx: 6 meshes, 252 tris; Step1_Stone 64, Step1_Moss 20, Step2_Stone 56, Step2_Moss 20, Step3_Stone 72, Step3_Moss 20
+koi.fbx: 3 meshes, 339 tris; Koi_Orange 113, Koi_White 113, Koi_Gold 113
+lilies.fbx: 2 meshes, 204 tris; Lily_Pad 168, Lily_Flower 36
+BBOX {"pond_rim": {"min": [-17.9, -3.2, -8.0], "max": [17.9, 0.614, 16.5]}, "stepstone": {"min": [-1.939, -3.2, -1.801], "max": [1.743, 0.197, 1.705]}, "koi": {"min": [-1.5, -0.3, -0.45], "max": [0.9, 0.42, 0.45]}, "lilies": {"min": [-1.585, 0.0, -1.403], "max": [1.98, 0.551, 1.952]}, "stepstone/Step1": {"min": [-1.226, -3.2, -1.42], "max": [1.237, 0.151, 1.614]}, "stepstone/Step2": {"min": [-1.298, -3.2, -1.208], "max": [1.102, 0.124, 1.113]}, "stepstone/Step3": {"min": [-1.939, -3.2, -1.801], "max": [1.743, 0.197, 1.705]}, "koi/Koi_Orange": {"min": [-1.5, -0.3, -0.45], "max": [0.9, 0.42, 0.45]}, "koi/Koi_White": {"min": [-1.5, -0.3, -0.45], "max": [0.9, 0.42, 0.45]}, "koi/Koi_Gold": {"min": [-1.5, -0.3, -0.45], "max": [0.9, 0.42, 0.45]}}
+FBX_DONE
+shot prev_pond.png
+shot prev_pond_low.png
+RENDER_DONE
