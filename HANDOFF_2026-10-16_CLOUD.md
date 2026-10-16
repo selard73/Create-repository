@@ -1,6 +1,12 @@
 # Handoff: 1001 Squirrels - the CLOUD thread, Oct 16 2026 -> the next cloud thread
 
 ## >>> READ THIS FIRST <<<
+- SINGLE-SESSION MODE (Shannon, Oct 16, preferred from now on): the cloud + runner split cost a round trip for every fix the cloud
+  could not see (water height, piece orientation, landings, the weir folder, leaks). If you are ONE session on Shannon's PC with
+  Roblox Studio (and Blender / bpy), do it all yourself: build, preview in play, measure, fix, then ask her before the Edit install.
+  Read the "runner 7" steps below as YOUR steps - no send_message, no second branch to merge (still read
+  claude/epic-hawking-188q4l once for anything runner 7 pushed last). Keep a cloud session only for big self-contained builds that
+  need no Studio feedback.
 - You are the CLOUD thread: you write Studio installers / patches / Blender generators in this repo, commit and push to
   `claude/youthful-curie-8azx86`, and hand them to RUNNER 7 (Claude Code session `session_01JuVhpFbJPyyCZ9K5dZyPhB`, via
   `mcp__claude-code-remote__send_message`). Runner 7 runs on Shannon's PC with Roblox Studio: it pulls by commit, checks length +
