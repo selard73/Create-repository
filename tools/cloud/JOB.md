@@ -3823,3 +3823,28 @@ copies of JP_Koi_Pond_Shore / JP_Onsen_Shore / JP_Waterfall_Rockface, originals 
 Look 3i -> 3j (cloud): the terrain region pads only where a wall covers the cell (x 6084..6116, z -224..104: the east pad and the end
 pads leaked water onto the lawn); canal_falls placed at yaw 0 then turned half round about its own bounding-box centre (a yaw about
 the box-derived origin moved it 16 into the canal). Install-ready on her word.
+INSTALLED job 125 canal round 2 (runner 7, Studio EDIT, Oct 16; Shannon: "do what you think is best, once complete, I will publish and
+check, if it needs a change after that we can adjust it"; UNPUBLISHED until she publishes + restarts servers):
+garden_look3.lua at 1a17c52 (39503 / 1870433696), canalwater2.lua at 076ba34 (2884 / 1340980834), darkrockfix1.lua at d1e25b1 (2889 /
+1687206830). Kit imports by her: japan_garden_kit4_walls.fbx (re-exported walls), japan_kit5_falls_and_rocks.fbx (runner 7's canal_falls
++ dark_rock_fix). QQ lines:
+QQ GARDEN3 re-run: the canal read from the retired 'Canal stone bank' parts in HudBackup.MomijiGardenReplaced
+QQ GARDEN3 canal: water faces x 6088.5 / 6113.5 (centre 6101.0), z -223.0 .. 103.0, water 1.3; end walls at z -219.5 / 102.5
+QQ GARDEN3 terrain: a flat Slate bed at -4.0 along the channel (1968 Slate cells, 1312 water cells; the surface row [0..4] at 0.325), the water at 1.3 (5.3 deep)
+QQ GARDEN3 retired 0 (... footbridges at z -203 / -75 / 80 ...) -> HudBackup.MomijiGardenReplaced
+QQ GARDEN3 the previous MomijiGarden -> HudBackup.MomijiGarden_prev (the one before it dropped)
+QQ GARDEN3 stepping-stone paths: 112 slabs along 6 old walkway lines (tops 0.23-0.35 above the lawn, stride 2.3-2.6); bridge landings turned 180
+QQ GARDEN3 life: 5 koi (Meshy, tops 0.20 under the surface, meandering) in 2 reaches, ONE boat moored at z -176, all Atomic; CanalLife client script; moss off (grey), boat SmoothPlastic in the houses' wood colours
+QQ GARDEN3 the floating maple at (6125, 83) lowered 1.92 to the lawn: 2 parts (trunk + leaves; 0 on a re-run)
+QQ GARDEN3 DONE: MomijiGarden - 339 pieces (82 wall segments + 8 end segments, 96 lower copies down to the bed, 3 bridges with landings and water steps, 112 path slabs, 8 lanterns, 5 rocks), 460 meshes; walls in the palace flagstone (Pavement / JM_PhotographicPath); no parts built
+QQ CANALWATER2 source: 1608 bytes (expected 1608)
+QQ CANALWATER2 DONE: JapanWaterAppearance patched (1608 -> 1741 bytes): over the canal WaterColor (40,104,112), WaterTransparency 0.68, WaterReflectance 0.2; elsewhere in Japan (24,112,151) / 0.32 / 0.45; backup HudBackup.JapanWaterAppearance_pre_canalwater2. Publish, then restart servers.
+QQ DARKROCK1 JP_Koi_Pond_Shore: mesh swapped (rbxassetid://91337424857737 -> rbxassetid://94361832119652) ... Rock / 'JM_PhotographicRock' kept
+QQ DARKROCK1 JP_Onsen_Shore: mesh swapped (rbxassetid://139349164901360 -> rbxassetid://95917589191166) ...
+QQ DARKROCK1 JP_Waterfall_Rockface: mesh swapped (rbxassetid://127044325252329 -> rbxassetid://131966406007394) ...
+QQ DARKROCK1 DONE: 3 meshes swapped to the colour-free copies; originals in HudBackup.DarkRockOriginals
+Verified in a play test after the install: water surface 1.28 (west face 1.28, east face 0.94, north end 1.21), below the lawn behind
+every wall; client water at the canal (40,104,112) / 0.68 / 0.20, both markers in the PlayerScripts copy; falls Fall_Rock -238.0..-223.9,
+Fall_Water -229.4..-218.4, Fall_Foam -224.7..-216.7. Pictures shots_install_3j/. HttpEnabled false. Next: she publishes + restarts.
+Still open: the volcano / ridgelines / island cliffs have the same dark vertex colours (same pipeline later); planting 2 (iris cards)
+waits on her image upload + the flower_card import.
