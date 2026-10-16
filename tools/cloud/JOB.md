@@ -3848,3 +3848,8 @@ every wall; client water at the canal (40,104,112) / 0.68 / 0.20, both markers i
 Fall_Water -229.4..-218.4, Fall_Foam -224.7..-216.7. Pictures shots_install_3j/. HttpEnabled false. Next: she publishes + restarts.
 Still open: the volcano / ridgelines / island cliffs have the same dark vertex colours (same pipeline later); planting 2 (iris cards)
 waits on her image upload + the flower_card import.
+Job 125 garden look 3 FINAL - INSTALLED (runner 7, Studio Edit, in order): garden_look3 1a17c52 ("MomijiGarden - 339 pieces ..., 460
+meshes; walls in the palace flagstone; no parts built"; bed -4.0, water 1.3, 5.3 deep), canalwater2 076ba34 (canal teal 0.68 / 0.2),
+darkrockfix1 d1e25b1 (3 meshes colour-free: JP_Koi_Pond_Shore, JP_Onsen_Shore, JP_Waterfall_Rockface; originals in
+HudBackup.DarkRockOriginals). Verified in play. Shannon publishes + restarts. OPEN: the volcano, ridgelines and island cliffs (same
+dark vertex colours; runner 7's dump-and-rebuild pipeline), planting 2 (her image upload + flower_card import), the town street later.
