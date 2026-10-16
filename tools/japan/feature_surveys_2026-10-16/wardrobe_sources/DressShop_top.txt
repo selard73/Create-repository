@@ -1,0 +1,7 @@
+Script DressServer (0 desc) prompts: 
+Script DressClient (0 desc) prompts: 
+Script WardrobeClient (0 desc) prompts: 
+BindableFunction DressDebug (0 desc) prompts: 
+Model Room (663 desc) prompts: Glass:'Try on outfits & accessories', Door:'Go outside'
+Part Doormat (0 desc) prompts: 
+Part DoorPad (1 desc) prompts: DoorPad:'Go inside'
