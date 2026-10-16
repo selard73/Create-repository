@@ -3459,3 +3459,12 @@ will wash up here tomorrow!'"). BottleClient: E at the kiosk with a bottle at se
 no panel; with a reply waiting, E reads it straight away (the reply card), the glowing bottle at the kiosk's foot still works too;
 otherwise the writing panel as before. The kiosk prompt's action text follows (this player's view only): "Write a message" /
 "Your bottle is at sea" / "Read your reply". Same file, tools/bottle/install_bottle1.lua (a full re-run as before).
+
+Result job 118 ROUND 6 PREVIEW (runner 7, play test, nothing kept): install_bottle1.lua at 617e1ee (59000, adler32 761408470): stand (473.3,
+-12.0, -970.9) yaw 99, 3 studs clear; toss view clear; DONE BottleClient 18786. Three states: (1) fresh - prompt "Write a message", E
+-> the five-row panel. (2) after a send (110 -> 95) - prompt "Your bottle is at sea", E -> NO panel, only the toast "Your bottle is out
+at sea. A reply will wash up here tomorrow!" (r6_at_sea_note_only). (3) TestDayOffset 1 - prompt "Read your reply", E -> the reply card
+straight away (Captain Barnacle). OVERLAP: about 4 s after the day turned, the client's delayed toast "A reply to your bottle is waiting
+at the bottle kiosk by the boat club!" appeared OVER the open reply card, covering its "Lovely!" button
+(r6_reply_card_toast_over_button). Fix: skip that toast while a bottle card/panel is open (OpenPanel == "bottle") or once the reply was
+read, or when the player is already within the prompt range of the kiosk. Not installed.
