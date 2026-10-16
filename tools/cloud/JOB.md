@@ -3702,3 +3702,22 @@ StarterPlayerScripts.JapanWaterAppearance adding a canal-zone state inside the J
 WaterTransparency 0.9 / WaterReflectance 0.1, back to 0.32 / 0.45 elsewhere in Japan, the save/restore on leaving Japan unchanged;
 three anchors counted once, backup HudBackup.JapanWaterAppearance_pre_canalwater1, loadstring check, idempotent (marker CANALWATER1).
 Live servers pick it up after publish + restart (players get PlayerScripts copies on join). Goes in with garden look 3 when she installs.
+Result job 125 LOOK TEST 3d (runner 7, play-test PREVIEW of garden_look3.lua at 6bed33d, 30463 / 3534738994 checked; nothing kept).
+Shannon re-imported the walls (Desktop\Japan garden kit\japan_garden_kit4_walls.fbx); the new canal_wall / canal_wall_b replaced the
+kit's (old ones -> HudBackup.JapanGardenKit_old_walls). QQ lines:
+QQ GARDEN3 koi: Shannon's Meshy koi (kit 'koi_meshy')
+QQ GARDEN3 canal: water faces x 6088.5 / 6113.5 (centre 6101.0), z -223.0 .. 103.0, water 1.3; end walls at z -219.5 / 104.5
+QQ GARDEN3 terrain: a flat Slate bed at -1.3 along the channel (1512 cells below, 504 bed/water cells), the water flat at 1.3
+QQ GARDEN3 retired 17 (banks, black strips, footbridges at z -215 / -75 / 80, approach steps, the weir, the old canal boat, 6 walkway paths, the black-cobble sheet) -> HudBackup.MomijiGardenReplaced
+QQ GARDEN3 stepping-stone paths: 112 slabs along 6 old walkway lines (tops 0.23-0.35 above the lawn, stride 2.3-2.6); bridge landings turned 180
+QQ GARDEN3 life: 5 koi (Meshy, tops 0.20 under the surface) in 2 reaches, a boat moored at z -190 and one poled along the longest reach, all Atomic; CanalLife client script; moss off (grey), boats SmoothPlastic in the houses' wood colours
+QQ GARDEN3 DONE: MomijiGarden - 247 pieces (82 wall segments + 8 end segments, 3 bridges with landings and water steps, 112 path slabs, 8 lanterns, 8 rocks), 381 meshes; no parts built
+Checks (water set by hand on the client to 0.9 / 0.10, as canalwater1 will): koi visible UNDER the water (Koi4 top 1.11); boat in the
+houses' browns; wall lawn face clean (no spikes, shots_look3d/4); black stones gone; stepping stones to every bridge; all 6 bridge
+walks pass both ways (x 6060 <-> 6140, peak 9.4). TWO faults:
+1. The bridge LANDINGS moved UNDER the decks: LandingW* at x 6082.3 (was 6079.3), LandingE* at 6119.7 (was 6122.7). The 180 turn
+   rotates about the piece's origin at its edge (BB x -3..0), so it swings 3 studs inward. Profile z -215: lawn 0.00 at x 6079-6080.5,
+   then the deck edge 0.74 (6081), 1.00, 1.26; east the mirror (deck 0.74 at 6121, lawn 0.00 from 6121.5). Shift 3 outward with the turn.
+2. The Slate bed has a TRENCH along the EAST wall: terrain bed -1.3 across, then -1.45 (6109.7), -2.15 (6110.9), -3.9 (6112.2), -6.7
+   (6113.4) at z -178 (same at z -100 and 0); the west edge dips to -2.8 at 6088.6. Through the clear water it shows as a dark jagged
+   band under the east wall (shots_look3d/5). Fill the Slate to the full channel width (the edge cell columns under the walls too).
