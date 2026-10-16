@@ -3478,3 +3478,6 @@ INSTALLED in Edit on Shannon's "Yes, install it", unpublished: stand (473.3, -12
 BOTTLE DONE: workspace.Bottles (BottleServer 10292, BottleClient 19182, BottleText 11018 chars) ... the old folder is HudBackup.Bottles_pre_2".
 Readback: BottleEvent, BottleText, Stand, BottleServer, BottleClient; TossSound 129669875728815; TestDayOffset 0. Told her: save, publish,
 restart servers.
+
+PUBLISHED (Shannon: "saves published and restarted"): bottle round 6b (f4239f9) - E at the kiosk by state, the reply toast fix. Servers
+restarted. Nothing left unpublished in Edit.
