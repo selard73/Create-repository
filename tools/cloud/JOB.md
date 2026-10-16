@@ -3859,3 +3859,7 @@ wall); the FALLS ("still needs major work"; the ribbon read as a glowing plastic
 the coping's corner): the piece set 1.0 further back (FALLS_BACK), the ribbon mesh a faint glass body (0.55), the foam mesh hidden,
 and MOTION the Roblox way - two Beams with a scrolling built-in soft texture (the chute and the drop over the lip) and mist + spray
 ParticleEmitters at the foot. Koi approved. Re-run in Edit after her verdict in a preview.
+## Japan features plan (Oct 16, cloud): tools/japan/PLAN_japan_features_2026-10-16.md - Shannon's list (cat cafe with Meshy cats, kimono
+store with fabric choice, photographer with the volcano backdrop + treehouse photo, koi feeding frenzy at the palace pond, archery at
+the palace targets, a bamboo maze) plus her sushi memory-match idea; each with a build outline and the choices she needs to make;
+suggested order: sushi match -> koi feeding -> bamboo maze -> photographer -> archery -> kimono -> cat cafe. Waiting on her picks.
