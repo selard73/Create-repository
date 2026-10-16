@@ -52,7 +52,7 @@ Z0, ZTOP, COPE = -1.2, 1.7, 2.1              # under the water .. the top of the
 def build_wall(seed, name):
     rnd = random.Random(seed)
     st, cp = bmesh.new(), bmesh.new()
-    box(st, -3.5, -0.45, -4.0, 4.0, Z0, ZTOP - 0.05)                        # the core (its faces are mostly hidden by the block skins)
+    box(st, -3.92, -0.08, -4.0, 4.0, Z0, ZTOP - 0.05)                       # the core, right behind both block skins: the joints between blocks are 0.08 deep, a fine mortar line (0.5-deep slots read as dark spikes - look 3c)
     courses = [(Z0, -0.25), (-0.25, 0.72), (0.72, ZTOP)]
     for face, (xi, xo) in (("water", (0.0, -0.55)), ("lawn", (-4.0, -3.45))):
         for ci, (z0, z1) in enumerate(courses):
@@ -61,7 +61,7 @@ def build_wall(seed, name):
             while y < 3.99:
                 L = min(4.0 - y, rnd.choice((1.2, 1.6, 2.0, 2.4)))
                 d = rnd.uniform(-0.04, 0.05)
-                box(st, xi + (d if face == "water" else -d), xo, y + 0.03, y + L - 0.03, z0 + 0.03, z1 - 0.03)
+                box(st, xi + (d if face == "water" else 0.0), xo, y + 0.03, y + L - 0.03, z0 + 0.03, z1 - 0.03)   # (no jitter on the lawn face: no block edge stands proud)
                 y += L
     y = -4.0
     while y < 3.99:                                                        # the coping slabs, overhanging 0.3 each side
