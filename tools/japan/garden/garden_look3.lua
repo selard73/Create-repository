@@ -187,7 +187,7 @@ print(string.format("QQ GARDEN3 retired %d (banks, black strips, footbridges at 
 	(function() local t = {}; for _, z in ipairs(bridgesZ) do table.insert(t, string.format("%.0f", z)) end; return table.concat(t, " / ") end)()))
 -- ---------- 4. the floating walkways, flat, their tops level with the bridge landings ----------
 local WALK_TOP = 1.0                                                        -- (they are 0.45 thick: levelling by the top, whatever the thickness)
-local levelled = 0
+local levelled, outerEnds = 0, {}
 for _, d in ipairs(J:GetDescendants()) do
 	if d:IsA("BasePart") and d.Name == "Walkway" and d.Size.Y < 4 and near(d.CFrame, 85) and d.Position.Z > Z1 - 20 and d.Position.Z < Z2 + 10 then   -- (the west ones are 62 from the centre; the station's walkway at z 139 is not touched)
 		local top = d.Position.Y + d.Size.Y / 2
@@ -197,6 +197,12 @@ for _, d in ipairs(J:GetDescendants()) do
 			local look = d.CFrame.LookVector; local yaw = math.atan2(-look.X, -look.Z)
 			d.CFrame = CFrame.new(d.Position.X, WALK_TOP - d.Size.Y / 2, d.Position.Z) * CFrame.Angles(0, yaw, 0)
 			levelled += 1
+			-- its OUTER end (away from the canal) now stands 1.0 above whatever is there: a landing-steps piece goes on it (section 5)
+			local axis = d.Size.X >= d.Size.Z and d.CFrame.RightVector * (d.Size.X / 2) or d.CFrame.LookVector * (d.Size.Z / 2)
+			local e1, e2 = d.Position + axis, d.Position - axis
+			local e = math.abs(e1.X - CX) > math.abs(e2.X - CX) and e1 or e2
+			local dir = (Vector3.new(e.X, 0, e.Z) - Vector3.new(d.Position.X, 0, d.Position.Z)).Unit
+			table.insert(outerEnds, {pos = Vector3.new(e.X, 0, e.Z), yaw = math.deg(math.atan2(dir.Z, -dir.X))})
 		end
 	end
 end
@@ -283,6 +289,9 @@ for i, bz in ipairs(bridgesZ) do
 	place("canal_steps", Vector3.new(EAST, 0, sz), 180, nil, "WaterStepsE" .. i, 1, BF)
 	table.insert(stepsAt, sz)
 end
+-- landing steps at the walkways' outer ends too (levelling to 1.0 left a ledge there: 1.0 against the lawn at 0 or a path at 0.3-0.5)
+for i, e in ipairs(outerEnds) do place("bridge_steps", e.pos, e.yaw, nil, "WalkwayLanding" .. i, 1, BF) end
+print(string.format("QQ GARDEN3 landing steps at the walkways' outer ends: %d", #outerEnds))
 -- the waterfall feeding the south end (its rocks over the end wall, the sheet landing in the water)
 place("waterfall", Vector3.new(CX, 1.0, ZS + 1.5), 0, nil, "Waterfall")
 -- look test 1's approved pieces, by the garden bridge (the southernmost crossing)

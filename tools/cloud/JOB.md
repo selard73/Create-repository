@@ -3666,3 +3666,6 @@ streams whole (part offsets identical to the moored one, 0.000), its floor 1.51.
 their backs just out of the water (bbox 0.46..1.72, water 1.3); grey rocks; SmoothPlastic boats. NEW small lips at the walkways' OUTER
 ends: west end x 6000 walkway 1.00 vs 0.46 ("Continuous m..." at z -215 / -75) and 0.27 (LanternStreet part at z 80); east end x 6140
 walkway 1.00 vs the lawn 0.00 (a 1.0 ledge; before, the tilted east walkways ramped down). Pictures tools/japan/garden/shots_look3b/1-6.
+Look test 3b (runner 7, 04baba5): all six fixes confirmed; Shannon chose rocks "Plain grey" and boat "Golden, smooth". New: levelling
+to 1.0 left a 1-stud lip at the walkways' OUTER ends (x 6000 / 6140) -> a bridge_steps landing piece at each outer end (section 5,
+"QQ GARDEN3 landing steps at the walkways' outer ends: 6").
