@@ -3508,3 +3508,5 @@ Job 125 revision (Shannon, Oct 16): "I don't want it too realistic, on same par 
 in the photos". The plan is revised: the ELEMENTS from the pictures in our own style (Rue de Noisette / Porto finish, the game's normal
 light, built-in materials with our colours); the Japan-only light grade (U1) and the photographic ground variants dropped; the look
 test is compared with ref_01 AND with Rue de Noisette.
+Job 125 answers (Shannon, Oct 16): no Meshy (the cloud thread builds the pieces from parts); the grass stays as is; "our current Japan
+map is TERRIBLE and needs fixing" - all of it, garden first around the canal + red bridge. Next: a read-only survey of the canal area.

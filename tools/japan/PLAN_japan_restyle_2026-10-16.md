@@ -70,3 +70,12 @@ overcast/haze grade, no realism pass. The light item (U1) and the photographic g
 2. Where the garden goes: around the canal and bridge (my suggestion), or another spot. You can stand there in Studio, as we did for the treehouse.
 3. Grass: our own grass tufts in Japan (my suggestion), or Roblox's terrain grass across the whole game.
 4. Meshy: will you generate the hero props? I can write the prompts for each one.
+
+## Her answers (Oct 16)
+- "I don't want to make the pieces in meshy, but I will if that's what we have to do" -> NO Meshy: the cloud thread builds every piece
+  from parts in code (as the Homebase treehouse and the bottle kiosk were), in the France/Italy finish; a simple Blender-made mesh only
+  where parts cannot do it, and then only as a one-click import for her.
+- "I do not want to change the grass, we should keep consistent as is now" -> the grass stays exactly as it is (no grass tufts, no
+  terrain decoration). U3 becomes: shrubs, hydrangea / flower clumps and rocks only where the garden needs them.
+- "our current Japan map is TERRIBLE and needs fixing" -> all of it, garden first, around the canal and red bridge (~6100, -215).
+Next: runner 7 surveys the canal area (read-only), then the garden look test is designed from that survey.
