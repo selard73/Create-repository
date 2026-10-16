@@ -1,0 +1,17 @@
+torii.fbx: 3 meshes, 304 tris; Torii_Red 92, Torii_Black 200, Torii_Plaque 12
+lantern.fbx: 2 meshes, 220 tris; Lantern_Stone 200, Lantern_Paper 20
+bridge.fbx: 4 meshes, 1692 tris; Bridge_Red 1248, Bridge_Deck 240, Bridge_Gold 180, Bridge_Stone 24
+maple_a.fbx: 4 meshes, 1142 tris; A_Maple_Bark 182, A_Maple_Red 320, A_Maple_Orange 320, A_Maple_Gold 320
+maple_b.fbx: 4 meshes, 1142 tris; B_Maple_Bark 182, B_Maple_Red 320, B_Maple_Orange 320, B_Maple_Gold 320
+pine.fbx: 2 meshes, 596 tris; Pine_Bark 196, Pine_Needles 400
+rocks.fbx: 6 meshes, 240 tris; Rock1_Grey 62, Rock1_Moss 18, Rock2_Grey 55, Rock2_Moss 25, Rock3_Grey 62, Rock3_Moss 18
+slabs.fbx: 3 meshes, 72 tris; Slab1 24, Slab2 28, Slab3 20
+waterfall.fbx: 4 meshes, 692 tris; Fall_Rock 526, Fall_Moss 114, Fall_Water 20, Fall_Foam 32
+BBOX {"torii": {"min": [-9.881, 0.0, -0.85], "max": [9.881, 16.843, 1.1]}, "lantern": {"min": [-1.55, 0.0, -1.342], "max": [1.55, 5.566, 1.342]}, "bridge": {"min": [-20.232, -2.4, -4.4], "max": [20.232, 8.6, 4.4]}, "maple_a": {"min": [-5.727, -0.046, -5.657], "max": [5.364, 9.639, 4.668]}, "maple_b": {"min": [-4.909, -0.056, -5.891], "max": [5.128, 10.535, 5.688]}, "pine": {"min": [-5.87, -0.186, -5.552], "max": [6.83, 8.686, 3.381]}, "rocks": {"min": [-2.704, -0.462, -2.328], "max": [2.418, 1.394, 2.366]}, "slabs": {"min": [-1.861, 0.0, -1.962], "max": [2.07, 0.35, 2.063]}, "waterfall": {"min": [-8.555, -0.414, -6.462], "max": [8.742, 10.425, 3.761]}, "rocks/Rock1": {"min": [-1.551, -0.392, -1.823], "max": [1.714, 1.14, 1.387]}, "slabs/Slab1": {"min": [-1.338, 0.0, -1.277], "max": [1.37, 0.35, 1.546]}, "rocks/Rock2": {"min": [-2.704, -0.462, -2.328], "max": [2.418, 1.394, 2.366]}, "slabs/Slab2": {"min": [-1.861, 0.0, -1.962], "max": [2.07, 0.35, 2.063]}, "rocks/Rock3": {"min": [-1.098, -0.347, -1.303], "max": [1.166, 1.03, 1.089]}, "slabs/Slab3": {"min": [-1.336, 0.0, -1.039], "max": [1.034, 0.35, 1.101]}}
+FBX_DONE
+shot prev_lineup.png
+shot prev_bridge.png
+shot prev_torii_lantern.png
+shot prev_trees.png
+shot prev_waterfall.png
+RENDER_DONE

@@ -3514,3 +3514,20 @@ map is TERRIBLE and needs fixing" - all of it, garden first around the canal + r
 Result job 125 GARDEN SURVEY (runner 7, Studio EDIT, read-only): tools/japan/garden_survey_2026-10-16/SURVEY.md + g1..g4 + style_rue_de_noisette.
 Shannon's rule (Oct 16): "the no was not to build anything using roblox parts" -> real meshes only (runner 7 models in Blender; generate_mesh
 to try; Meshy last resort) - she said "yes, to all of that".
+## Job 125 garden batch 1: Blender pieces + the look test (import, then a play-test PREVIEW; Edit on her word) - runner 7
+Shannon (Oct 16): "the no was not to build anything using roblox parts" ... "if you build it has to be in blender"; meshes in the
+France/Italy finish; grass unchanged. tools/japan/garden/gen_garden1.py (bpy; run here with bpy 5.2.2 - runs the same in her
+Blender: blender -b --python gen_garden1.py, GARDEN_OUT=dir optional) -> tools/japan/garden/out1/: torii.fbx (304 tris), lantern.fbx
+(220), bridge.fbx (taiko, 40 x 8.8, rise 5.5; ~1.7k), maple_a/maple_b.fbx (~1.1k each, faceted autumn clusters), pine.fbx (~600),
+rocks.fbx (3 shapes, moss tops), slabs.fbx (3), waterfall.fbx (~700: rocks, moss, a curved water sheet, foam); every mesh named for
+its colour; pieces.json (bounding boxes in Roblox axes); previews prev_lineup / bridge / torii_lantern / trees / waterfall .jpg.
+IMPORT: each FBX via Studio's 3D Importer into ServerStorage.JapanGardenKit, one Model per file named after the file (torii,
+lantern, bridge, maple_a, maple_b, pine, rocks, slabs, waterfall), mesh names kept. Then tools/japan/garden/garden_look1.lua
+(make_garden_look1.py; 9218 bytes, compiles): places by bounding box (whatever the importer did to the pivot): the taiko bridge at
+(6101, 0.3, -215) replacing LanternStreet's "Canal footbridge" there (-> HudBackup.MomijiGardenReplaced, with the flat "Vermilion
+maple"s within 30), the waterfall over the weir (6101, 1.0, -222.5) facing north up the canal, a torii on the west path (6058, -215,
+yaw 90), maples (6131, -236) and (6071, -238), a pine (6129, -202), four lit stone lanterns at the bridge ends, rocks at the falls'
+foot, four stepping slabs from the east end toward the falls. Colours by mesh name, SmoothPlastic (Neon paper + PointLight, Glass
+water DoubleSided), the deck and slabs PreciseConvexDecomposition. "QQ GARDEN DONE ... no parts built".
+PREVIEW in play: walk over the bridge (does the arch walk? the ends meet the path?), pictures from the street side, from the bridge
+toward the falls, from above, and one beside Rue de Noisette's trees for the style check; part / triangle counts before and after.
