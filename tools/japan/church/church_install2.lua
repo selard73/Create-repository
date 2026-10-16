@@ -1,6 +1,7 @@
 -- church_install2.lua (runner 7, Oct 16 2026, solo): the Goto-islands church, built twice the first size (Shannon: "that church is too
 -- small, the windows are too low and the door comes up to my knees, the roof must be much taller"), on site A behind the canal falls.
--- Kit Models (ServerStorage.JapanGardenKit) "church_shell" and "church_interior" from tools/japan/church/out2 (gen_church.py, S = 2).
+-- Kit Models (ServerStorage.JapanGardenKit) "church_shell" and "church_interior" from tools/japan/church/out3 (gen_church.py r3: S = 2,
+-- mirrored so the tower stands on the east front corner and Fuji shows from the garden bridge, the arches cut properly, the floor above the plinth).
 -- * placed by bounding box: the import may turn a model half round, so each one's turn is DETECTED (the shell's door / the interior's
 --   altar against its box centre) and undone; the door faces +z (north, toward the canal and the garden bridge)
 -- * dressed (colours, Wood / Slate / Glass / Marble / Neon), precise collision on the walls, floor, pews and door leaves
@@ -23,13 +24,13 @@ for _, n in ipairs({"church_shell", "church_interior"}) do
 end
 local BB = {   -- each model's box in Roblox axes from its Blender origin (out2/pieces.json): the door at +z, the altar at -z
 	church_shell = {min = Vector3.new(-18.894, 0.0, -32.6), max = Vector3.new(18.894, 50.2, 34.8)},
-	church_interior = {min = Vector3.new(-14.8, 1.56, -28.8), max = Vector3.new(14.8, 29.8, 28.8)}
+	church_interior = {min = Vector3.new(-14.8, 1.86, -28.8), max = Vector3.new(14.8, 29.8, 28.8)}
 }
 local SEATS = {   -- the seat tops (out2/pieces.json), each pew 10 wide
-	{-7.6, 3.7, 20.24}, {-7.6, 3.7, 14.04}, {-7.6, 3.7, 7.84}, {-7.6, 3.7, 1.64}, {-7.6, 3.7, -4.56},
-	{7.6, 3.7, 20.24}, {7.6, 3.7, 14.04}, {7.6, 3.7, 7.84}, {7.6, 3.7, 1.64}, {7.6, 3.7, -4.56}
+	{-7.6, 4.0, 20.24}, {-7.6, 4.0, 14.04}, {-7.6, 4.0, 7.84}, {-7.6, 4.0, 1.64}, {-7.6, 4.0, -4.56},
+	{7.6, 4.0, 20.24}, {7.6, 4.0, 14.04}, {7.6, 4.0, 7.84}, {7.6, 4.0, 1.64}, {7.6, 4.0, -4.56}
 }
-local BELL_PROMPT = Vector3.new(-6.6, 4.6, 25.6)   -- in the nave, by the tower's inner door (the rope hangs inside the tower)
+local BELL_PROMPT = Vector3.new(6.6, 4.9, 25.6)   -- (out3: the church mirrored - the tower on the east front corner)   -- in the nave, by the tower's inner door (the rope hangs inside the tower)
 local COL = {
 	Church_Plaster = Color3.new(0.93, 0.91, 0.85), Church_Timber = Color3.new(0.24, 0.17, 0.12), Church_Stone = Color3.new(0.58, 0.57, 0.54),
 	Church_Roof = Color3.new(0.3, 0.33, 0.38), Church_Ridge = Color3.new(0.24, 0.26, 0.3), Church_Door_L = Color3.new(0.4, 0.26, 0.15),

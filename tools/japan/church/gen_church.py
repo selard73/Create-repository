@@ -41,22 +41,34 @@ def box(bm, x0, x1, y0, y1, z0, z1):
     for i in range(4):
         k = (i + 1) % 4; bm.faces.new([b[i], b[k], t[k], t[i]])
     bm.faces.new(list(reversed(b))); bm.faces.new(t)
+def cap_tris(outline):
+    """triangles of a (possibly concave) outline, each wound the same way as the outline"""
+    from mathutils.geometry import tessellate_polygon
+    def area2(p):
+        return sum(p[i][0] * p[(i + 1) % len(p)][1] - p[(i + 1) % len(p)][0] * p[i][1] for i in range(len(p)))
+    sgn = 1 if area2(outline) > 0 else -1
+    out = []
+    for t in tessellate_polygon([[Vector((x, y, 0)) for (x, y) in outline]]):
+        t = list(t)
+        if (1 if area2([outline[i] for i in t]) > 0 else -1) != sgn: t = [t[0], t[2], t[1]]
+        out.append(t)
+    return out
 def prism_x(bm, outline, x0, x1):
     """a polygon in the (y, z) plane extruded along x from x0 to x1 (outline counter-clockwise seen from +x)"""
     a = [bm.verts.new((x0, y, z)) for (y, z) in outline]; b = [bm.verts.new((x1, y, z)) for (y, z) in outline]
     n = len(outline)
     for i in range(n):
         k = (i + 1) % n; bm.faces.new([a[i], b[i], b[k], a[k]])
-    fa = bm.faces.new(list(reversed(a))); fb = bm.faces.new(b)
-    bmesh.ops.triangulate(bm, faces=[fa, fb])
+    for t in cap_tris(outline):                                          # (r3) the caps cut by tessellate_polygon (bmesh's triangulate filled the arches)
+        bm.faces.new([a[t[2]], a[t[1]], a[t[0]]]); bm.faces.new([b[t[0]], b[t[1]], b[t[2]]])
 def prism_y(bm, outline, y0, y1):
     """a polygon in the (x, z) plane extruded along y"""
     a = [bm.verts.new((x, y0, z)) for (x, z) in outline]; b = [bm.verts.new((x, y1, z)) for (x, z) in outline]
     n = len(outline)
     for i in range(n):
         k = (i + 1) % n; bm.faces.new([a[i], b[i], b[k], a[k]])
-    fa = bm.faces.new(a); fb = bm.faces.new(list(reversed(b)))
-    bmesh.ops.triangulate(bm, faces=[fa, fb])
+    for t in cap_tris(outline):
+        bm.faces.new([a[t[0]], a[t[1]], a[t[2]]]); bm.faces.new([b[t[2]], b[t[1]], b[t[0]]])
 def arch_outline(c, w, z_sill, z_spring, seg=10):
     """the window / door shape: a rectangle with a semicircular top; (y or x centre c, width w) -> counter-clockwise outline"""
     r = w / 2; pts = [(c - r, z_sill), (c + r, z_sill), (c + r, z_spring)]
@@ -65,18 +77,21 @@ def arch_outline(c, w, z_sill, z_spring, seg=10):
     pts.append((c - r, z_spring)); return pts
 def header_outline(c, w, z_spring, z_top, margin, seg=10):
     """the wall piece above an arch: a rectangle (wider by margin each side) minus the semicircle"""
-    r = w / 2; pts = [(c - r - margin, z_top), (c - r - margin, z_spring), (c - r, z_spring)]
-    for i in range(1, seg):
+    r = w / 2; pts = [(c - r - margin, z_top), (c - r - margin, z_spring)]
+    if margin > 0: pts.append((c - r, z_spring))                   # (r3) no duplicate corner points when margin is 0: they broke the
+    for i in range(1, seg):                                          # cut, and the plaster filled the arches over the door and windows
         t = math.pi - math.pi * i / seg; pts.append((c + r * math.cos(t), z_spring + r * math.sin(t)))
-    pts += [(c + r, z_spring), (c + r + margin, z_spring), (c + r + margin, z_top)]
+    if margin > 0: pts.append((c + r, z_spring))
+    pts += [(c + r + margin, z_spring), (c + r + margin, z_top)]
     return list(reversed(pts))
 # ---------- dimensions ----------
 W, L = 16.0, 30.0            # the nave's outer width (x) and length (y); the front at y = -L/2
 T = 0.6                      # wall thickness
-FLOOR, EAVE, RIDGE = 0.9, 8.0, 14.6     # (runner 7, Oct 16 r2: a steeper, much taller roof - Shannon: "the roof must be much taller")
+FLOOR, EAVE, RIDGE = 1.05, 8.0, 14.6     # (runner 7, Oct 16 r2: a steeper, much taller roof - Shannon: "the roof must be much taller")
 PLINTH = 1.0
 WIN_W, WIN_SILL, WIN_SPRING = 1.7, 3.2, 6.3   # arched windows set higher ("the windows are too low"): sill 3.2, the arch springs at 6.3, top at 7.15
 S = 2.0                      # the whole church built at twice the first size ("the door comes up to my knees"): an R15 avatar is ~6.3 tall
+MIRROR = True                # (r3) the whole church mirrored left-right: the bell tower on the other front corner, so Mount Fuji shows from the garden bridge
 PZ = 1.9                     # pew heights in model units are stretched so that, after S, the seat is ~1.9 above the floor (not 1.0)
 WIN_Y = [-9.0, -3.0, 3.0]                       # three a side (the fourth bay at the back holds the chancel)
 TOWER = 4.4                  # the bell tower's square, at the front-left corner, its outer corner at (-W/2, -L/2)
@@ -139,7 +154,7 @@ def build_shell():
             prism_y(gr, [(0.25 * math.cos(2 * math.pi * i / 10), cz + 0.25 * math.sin(2 * math.pi * i / 10)) for i in range(10)], yo + 0.23, yo + 0.33)
             box(tb, -0.05, 0.05, yo + 0.2, yo + 0.36, cz - 0.9, cz + 0.9); box(tb, -0.9, 0.9, yo + 0.2, yo + 0.36, cz - 0.05, cz + 0.05)
             # three stone steps up to the door, 4.4 wide
-            for i, (zt, depth) in enumerate(((0.3, 2.4), (0.6, 1.6), (0.9, 0.8))):
+            for i, (zt, depth) in enumerate(((0.35, 2.4), (0.7, 1.6), (1.05, 0.8))):   # (r3) up to the floor at 1.05, above the plinth's 1.0
                 box(st, -2.7, 2.7, yo - depth, yo + 0.1, 0.0, zt)
         else:
             prism_y(pl, gable, y0, y1)
@@ -254,7 +269,7 @@ def build_interior():
             box(pw, cxp - 2.6, cxp + 2.6, y + 0.72, y + 0.84, FLOOR + 0.5 * PZ, FLOOR + 1.2 * PZ)   # the back
             for ex in (cxp - 2.6, cxp + 2.5):
                 box(pw, ex, ex + 0.1, y - 0.25, y + 0.86, FLOOR, FLOOR + 0.62 * PZ)             # the ends
-            seats.append({"x": cxp * S, "y": (FLOOR + 0.5 * PZ) * S, "z": -(y + 0.28) * S, "w": 5.0 * S})   # Roblox axes (z = -y), scaled: the seat top
+            seats.append({"x": cxp * S * (-1 if MIRROR else 1), "y": (FLOOR + 0.5 * PZ) * S, "z": -(y + 0.28) * S, "w": 5.0 * S})   # Roblox axes (z = -y), scaled: the seat top
     # the altar on the chancel: a stone table with a red runner, a standing cross, two candles
     ay = hl - 3.2
     box(al, -1.6, 1.6, ay - 0.6, ay + 0.6, FLOOR + 0.3, FLOOR + 1.5)
@@ -284,14 +299,16 @@ def build_interior():
     rp.faces.new(list(reversed(ra))); rp.faces.new(rb)
     k = bmesh.ops.create_icosphere(rp, subdivisions=1, radius=0.14)
     for v in k["verts"]: v.co.z *= 1.4; v.co += Vector((cxm, cym, FLOOR + 1.2))
-    return ["Church_Floor", "Church_Pew", "Church_Altar", "Church_Cloth", "Church_Candle", "Church_Flame", "Church_Rope", "Church_Cross"], seats, {"x": cxm * S, "y": (FLOOR + 1.2) * S, "z": -cym * S}
+    return ["Church_Floor", "Church_Pew", "Church_Altar", "Church_Cloth", "Church_Candle", "Church_Flame", "Church_Rope", "Church_Cross"], seats, {"x": cxm * S * (-1 if MIRROR else 1), "y": (FLOOR + 1.2) * S, "z": -cym * S}
 def finish(names, suffix):
     objs = []
     for n in names:
         bm = BMS.pop(n, None)
         if bm is None or len(bm.verts) == 0: continue
         bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=0.0005)
-        bmesh.ops.scale(bm, vec=(S, S, S), verts=bm.verts)
+        bmesh.ops.scale(bm, vec=(-S if MIRROR else S, S, S), verts=bm.verts)
+        if MIRROR: bmesh.ops.reverse_faces(bm, faces=bm.faces)          # a mirror turns the faces inside out
+        bmesh.ops.triangulate(bm, faces=bm.faces, quad_method="BEAUTY", ngon_method="EAR_CLIP")   # (r3) concave n-gons (the arched headers) cut here: Roblox's import filled the door's header wrongly
         me = bpy.data.meshes.new(n + suffix); bm.normal_update(); bm.to_mesh(me); bm.free()
         o = bpy.data.objects.new(n + suffix, me); bpy.context.scene.collection.objects.link(o); me.materials.append(material(n))
         for p in me.polygons: p.use_smooth = False
@@ -319,7 +336,7 @@ try:
     for o in interior: o.name = o.name.replace("_In", "") if not o.name.startswith("Church_Cross") else "Church_Cross_Altar"
     export(shell, "church_shell"); export(interior, "church_interior")
     info = {"church_shell": bbox(shell), "church_interior": bbox(interior), "seats": seats, "bell_rope": rope,
-            "door": {"x": 0, "y": FLOOR * S, "z": L / 2 * S, "faces": "+z (before the import flip)", "width": 2.5 * S}, "tower_centre": {"x": (-W / 2 + TOWER / 2) * S, "z": (L / 2 - TOWER / 2) * S}, "floor_y": FLOOR * S, "scale": S}
+            "door": {"x": 0, "y": FLOOR * S, "z": L / 2 * S, "faces": "+z (before the import flip)", "width": 2.5 * S}, "tower_centre": {"x": (-W / 2 + TOWER / 2) * S * (-1 if MIRROR else 1), "z": (L / 2 - TOWER / 2) * S}, "floor_y": FLOOR * S, "scale": S}
     json.dump(info, open(os.path.join(OUT, "pieces.json"), "w"), indent=1); log("BBOX " + json.dumps({k: info[k] for k in ("church_shell", "church_interior")})); log("FBX_DONE")
     if os.environ.get("CHURCH_NO_RENDER"): raise SystemExit
     # previews: Cycles CPU - a three-quarter front view, the front, the interior toward the altar
