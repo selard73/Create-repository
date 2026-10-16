@@ -134,6 +134,9 @@ local GARDEN_BRIDGE_FROM, GARDEN_BRIDGE_TO = -215, -203                     -- t
 local COL_OVERRIDE = {Lantern_Stone = Color3.new(0.40, 0.40, 0.39)}        -- "the lanterns should be a darker gray stone than everything else" (walls 0.56 / 0.66, landings 0.63, slabs 0.66)
 local FLAGSTONE_WALLS = true                                                -- "what if the stone sides were the same color/texture as this?" (the palace wall): Wall_Stone in Pavement + MaterialVariant JM_PhotographicPath, white; the coping stays cut stone
 local WALL_LOWER_COPY = 2.85                                                -- a second, coping-less copy of every wall segment and water stair this much lower, so the stonework reaches the deeper bed
+local PINE = false                                                          -- Shannon (installed look 3): "this tree looks weird and out of place" -> the kit black pine is out
+local BOAT_SCALE = 0.72                                                     -- "the boat I think look a little too large for the space": 27 -> 19.5 long, 7.3 -> 5.3 wide
+local FALLS_BACK = 1.0                                                      -- the falls piece set this much further behind the end wall (its rocks overlapped the coping's corner)
 local BOAT_COL = {Boat_Hull = Color3.fromRGB(103, 72, 48), Boat_Rail = Color3.fromRGB(65, 47, 33), Boat_Beam = Color3.fromRGB(65, 47, 33), Boat_Seam = Color3.fromRGB(44, 33, 28),
 	Boat_Floor = Color3.fromRGB(120, 80, 50), Boat_Deck = Color3.fromRGB(120, 80, 50), Boat_Bench = Color3.fromRGB(120, 80, 50)}   -- the canal houses' wood colours ("the color of the boat ... sticks out")
 -- ---------- 1. the canal ----------
@@ -366,17 +369,72 @@ print(string.format("QQ GARDEN3 stepping-stone paths: %d slabs along %d old walk
 -- runner 7's canal_falls piece (gen_falls.py, out_falls): its ORIGIN is the south end wall's WATER FACE at lawn level, the stream running
 -- toward +z: rocks behind the wall (z -18.8..-4.7, flattened against its back), the water ribbon across the coping (2.18) over the lip and
 -- down to the canal (1.32 at z +0.76), foam on the water to z +2.5. Placed at yaw 0 on the coping's face (ZS + 0.3).
-local fallsM = place("canal_falls", Vector3.new(CX, 0, ZS + 0.3), 0, nil, "CanalFalls")
+local fallsM = place("canal_falls", Vector3.new(CX, 0, ZS + 0.3 - FALLS_BACK), 0, nil, "CanalFalls")
 if fallsM then
 	-- the import turns the piece round and mirrors its box-derived origin, so a yaw about the origin MOVES it: turn it half round about
 	-- its own bounding-box centre instead (verified by runner 7: rocks -238..-224, water -229..-218, foam -225..-217 in the canal)
 	local bc = fallsM:GetBoundingBox().Position
 	fallsM.WorldPivot = CFrame.new(bc); fallsM:PivotTo(CFrame.new(bc) * CFrame.Angles(0, math.pi, 0))
+	-- "the fountain still needs major work": the solid ribbon read as a glowing plastic strip and the foam as folded paper. The water
+	-- gets MOTION the Roblox way - Beams with a scrolling texture down the chute and over the lip, mist and spray particles where it
+	-- lands; the ribbon mesh stays as a faint glassy body under them, the foam mesh is hidden.
+	local F = ZS + 0.3 - FALLS_BACK                                          -- the pour line (the coping's water face, less the set-back)
+	local rockPart
+	for _, q in ipairs(fallsM:GetDescendants()) do
+		if q:IsA("BasePart") then
+			local key = colourKey(q.Name)
+			if key == "Fall_Water" then q.Transparency = 0.55; q.Color = Color3.new(0.85, 0.93, 1); q.Material = Enum.Material.Glass
+			elseif key == "Fall_Foam" then q.Transparency = 1
+			elseif key == "Fall_Rock" then rockPart = q end
+		end
+	end
+	if rockPart then
+		local TEX = "rbxasset://textures/particles/smoke_main.dds"          -- a built-in soft texture: scrolled white down the chute it reads as frothing water
+		local function att(name, pos, normal)
+			local a = Instance.new("Attachment"); a.Name = name; a.Parent = rockPart
+			a.WorldCFrame = CFrame.lookAt(pos, pos + normal, Vector3.new(0, 1, 0))
+			return a
+		end
+		local function beam(name, a0, a1, w0, w1, speed)
+			local b = Instance.new("Beam"); b.Name = name; b.Attachment0 = a0; b.Attachment1 = a1
+			b.Texture = TEX; b.TextureMode = Enum.TextureMode.Wrap; b.TextureLength = 3; b.TextureSpeed = speed
+			b.Color = ColorSequence.new(Color3.new(0.92, 0.97, 1)); b.LightEmission = 0.35; b.LightInfluence = 0.7; b.Brightness = 1.3
+			b.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.45), NumberSequenceKeypoint.new(0.5, 0.3), NumberSequenceKeypoint.new(1, 0.55)})
+			b.Width0 = w0; b.Width1 = w1; b.Segments = 12; b.FaceCamera = false; b.ZOffset = 0.15; b.Parent = rockPart
+			return b
+		end
+		-- the chute: from the ribbon's top (6.1 high, ~9.8 behind the pour line) down to the lip; its surface normal leans up the slope
+		local chuteN = Vector3.new(0, 9.4, 3.8).Unit
+		local aTop = att("FallsTop", Vector3.new(CX, 6.1, F - 9.8), chuteN)
+		local aLip = att("FallsLip", Vector3.new(CX, 2.35, F - 0.3), chuteN)
+		beam("ChuteBeam", aTop, aLip, 5.6, 6.4, 1.6)
+		-- the drop: over the lip into the canal, the sheet facing the canal
+		local aLip2 = att("FallsLip2", Vector3.new(CX, 2.3, F + 0.1), Vector3.new(0, 0.35, 1).Unit)
+		local aFoot = att("FallsFoot", Vector3.new(CX, WATER + 0.05, F + 1.6), Vector3.new(0, 0.35, 1).Unit)
+		beam("DropBeam", aLip2, aFoot, 6.4, 7.2, 2.2)
+		-- mist and spray where it lands
+		local aMist = att("FallsMist", Vector3.new(CX, WATER + 0.2, F + 1.8), Vector3.new(0, 1, 0))
+		local mist = Instance.new("ParticleEmitter"); mist.Name = "Mist"; mist.Texture = TEX
+		mist.Color = ColorSequence.new(Color3.new(1, 1, 1)); mist.LightEmission = 0.2; mist.LightInfluence = 0.8
+		mist.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 1.6), NumberSequenceKeypoint.new(1, 4.2)})
+		mist.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.6), NumberSequenceKeypoint.new(1, 1)})
+		mist.Lifetime = NumberRange.new(1.0, 1.8); mist.Rate = 28; mist.Speed = NumberRange.new(1.5, 3.5); mist.SpreadAngle = Vector2.new(70, 70)
+		mist.Acceleration = Vector3.new(0, -0.8, 0); mist.Rotation = NumberRange.new(0, 360); mist.RotSpeed = NumberRange.new(-20, 20)
+		pcall(function() mist.Shape = Enum.ParticleEmitterShape.Box; mist.ShapeStyle = Enum.ParticleEmitterShapeStyle.Volume end)
+		aMist.Parent = rockPart; mist.Parent = aMist
+		local spray = Instance.new("ParticleEmitter"); spray.Name = "Spray"; spray.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+		spray.Color = ColorSequence.new(Color3.new(0.9, 0.97, 1)); spray.LightEmission = 0.5
+		spray.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.35), NumberSequenceKeypoint.new(1, 0.1)})
+		spray.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.2), NumberSequenceKeypoint.new(1, 1)})
+		spray.Lifetime = NumberRange.new(0.5, 0.9); spray.Rate = 45; spray.Speed = NumberRange.new(4, 7); spray.SpreadAngle = Vector2.new(35, 35)
+		spray.Acceleration = Vector3.new(0, -14, 0); spray.Parent = aMist
+		print("QQ GARDEN3 falls: two scrolling water Beams (chute, drop) + mist and spray particles at the foot; the ribbon mesh a faint glass body, the foam mesh hidden")
+	end
 end
 -- look test 1's approved pieces, by the garden bridge (the southernmost crossing)
 local BZ = bridgesZ[1]
 place("torii", Vector3.new(CX - 43, 0, BZ), 90, nil, "Torii")
-place("pine", Vector3.new(CX + 28, 0, BZ + 13), 200, nil, "BlackPine")
+if PINE then place("pine", Vector3.new(CX + 28, 0, BZ + 13), 200, nil, "BlackPine") end
 local nl = 0
 for i, bz in ipairs(bridgesZ) do
 	for _, d in ipairs(i == 1 and {{-24, 6}, {-24, -6}, {24, 6}, {24, -6}} or {{-24, 6}, {24, 6}}) do
@@ -444,9 +502,9 @@ for i = 1, 5 do
 end
 -- the boats (runner 7's "boat" from her Yanagawa photo: 27 long with the bow horns, 7.3 wide, the bow at +Z; its origin on the flat
 -- bottom goes at WATER - 0.75 so the floor boards sit 0.3 above the water). The pivot is turned so its -Z is the bow (like the koi).
-local BOAT_Y = WATER - 0.75
+local BOAT_Y = WATER + 0.3 - 1.05 * BOAT_SCALE                              -- the floor boards (1.05 above the origin at scale 1) stay 0.3 above the water
 local function boat(label, at, bowYaw)
-	local m = place("boat", at, 0, nil, label, 1, LF)
+	local m = place("boat", at, 0, nil, label, BOAT_SCALE, LF)
 	if m then
 		m.WorldPivot = CFrame.new(m:GetPivot().Position) * CFrame.Angles(0, math.rad(180), 0)
 		m:PivotTo(CFrame.new(at) * CFrame.Angles(0, bowYaw, 0))
@@ -456,7 +514,7 @@ local function boat(label, at, bowYaw)
 end
 -- moored along the west wall just past the garden bridge's water steps, bow to the north, a touch off the wall
 local BOAT_Z = stepsAt[1] + 19                                              -- ("only one boat is needed in the waterway, not 2": the moored one stays, clear of the garden bridge's water steps)
-boat("BoatMoored", Vector3.new(WEST + 5.0, BOAT_Y, BOAT_Z), math.pi + 0.05)
+boat("BoatMoored", Vector3.new(WEST + 1.4 + 3.65 * BOAT_SCALE, BOAT_Y, BOAT_Z), math.pi + 0.05)   -- 1.4 off the wall at any scale
 local lifeScript = Instance.new("Script"); lifeScript.Name = "CanalLifeScript"; lifeScript.RunContext = Enum.RunContext.Client
 lifeScript.Source = [==[
 -- the koi meander along the canal (Life* attributes on each Model): x = X + A1 sin(a + p1) + A2 sin(2.7 a + p2), z = Mid + Half sin(0.6 a + p3),

@@ -3853,3 +3853,9 @@ meshes; walls in the palace flagstone; no parts built"; bed -4.0, water 1.3, 5.3
 darkrockfix1 d1e25b1 (3 meshes colour-free: JP_Koi_Pond_Shore, JP_Onsen_Shore, JP_Waterfall_Rockface; originals in
 HudBackup.DarkRockOriginals). Verified in play. Shannon publishes + restarts. OPEN: the volcano, ridgelines and island cliffs (same
 dark vertex colours; runner 7's dump-and-rebuild pipeline), planting 2 (her image upload + flower_card import), the town street later.
+Look 3 -> 3k (cloud; Shannon after publishing, with pictures): the kit black PINE out ("this tree looks weird and out of place";
+PINE = false); the BOAT at 0.72 ("a little too large for the space"; BOAT_SCALE, its floor kept 0.3 above the water, 1.4 off the
+wall); the FALLS ("still needs major work"; the ribbon read as a glowing plastic strip, the foam as folded paper, the rocks overlapped
+the coping's corner): the piece set 1.0 further back (FALLS_BACK), the ribbon mesh a faint glass body (0.55), the foam mesh hidden,
+and MOTION the Roblox way - two Beams with a scrolling built-in soft texture (the chute and the drop over the lip) and mist + spray
+ParticleEmitters at the foot. Koi approved. Re-run in Edit after her verdict in a preview.
