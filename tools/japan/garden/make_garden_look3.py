@@ -59,6 +59,9 @@ local SOLID = {Bridge_Deck = true, Bridge_Red = true, Bridge_Stone = true, Torii
 	Rock_Moss = true, Slab_Stone = true, Fall_Rock = true, Fall_Moss = true, Pine_Bark = true, Wall_Stone = true, Wall_Coping = true, Steps_Stone = true,
 	Steps_Landing = true, Skiff_Wood = true, Skiff_Trim = true, Boat_Hull = true, Boat_Floor = true, Boat_Deck = true, Boat_Bench = true, Boat_Rail = true}
 local WATER = 1.3                                                           -- the canal's water surface, kept
+local MOSS = false                                                          -- false: the kit rocks' and the falls' green bands go plain grey ("that moss on those rocks does not look like moss")
+local BOAT_WOOD = false                                                     -- false: the boats in SmoothPlastic (the colour truer to her photo); true: Wood (box UVs, the grain along the length)
+local KOI_DEPTH = {0.15, 0.25}                                               -- how far under the surface the koi swim (0.5-0.8 was invisible from above at WaterTransparency 0.65)
 -- ---------- 1. the canal ----------
 local banks = {}
 for _, d in ipairs(J:GetDescendants()) do if d:IsA("BasePart") and d.Name == "Canal stone bank" then table.insert(banks, d) end end
@@ -104,12 +107,14 @@ local retire, bridgesZ = {}, {}
 local function near(cf, r) return math.abs(cf.X - CX) < r end
 for _, d in ipairs(J:GetDescendants()) do
 	if d.Parent and not d:IsDescendantOf(replaced) then
-		local ok, cf = pcall(function() return d:IsA("Model") and d:GetPivot() or (d:IsA("BasePart") and d.CFrame) end)
-		if ok and cf then
-			if d.Name == "Canal stone bank" or (d:IsA("BasePart") and d.Name:match("^JP_Canal_Rocks")) then table.insert(retire, d)
-			elseif d:IsA("Model") and d.Name == "Canal footbridge" then table.insert(retire, d); table.insert(bridgesZ, cf.Z)
-			elseif d.Name:lower():find("approach steps") and near(cf, 30) then table.insert(retire, d)
-			elseif d.Name == "Canal weir" or d.Name == "Canal boat" then table.insert(retire, d) end
+		if d.Name == "Canal weir" or d.Name == "Canal boat" or d.Name == "Canal stone bank" or (d:IsA("BasePart") and d.Name:match("^JP_Canal_Rocks")) then
+			table.insert(retire, d)                                             -- (by name whatever the class: "Canal weir" is a FOLDER of Weir / Weir lip / Weir stones)
+		else
+			local ok, cf = pcall(function() return d:IsA("Model") and d:GetPivot() or (d:IsA("BasePart") and d.CFrame) end)
+			if ok and cf then
+				if d:IsA("Model") and d.Name == "Canal footbridge" then table.insert(retire, d); table.insert(bridgesZ, cf.Z)
+				elseif d.Name:lower():find("approach steps") and near(cf, 30) then table.insert(retire, d) end
+			end
 		end
 	end
 end
@@ -123,21 +128,22 @@ local nret = 0; for _ in pairs(seen) do nret += 1 end
 table.sort(bridgesZ)
 print(string.format("QQ GARDEN3 retired %d (banks, black strips, footbridges at z %s, approach steps, the weir, the old canal boat) -> HudBackup.MomijiGardenReplaced", nret,
 	(function() local t = {}; for _, z in ipairs(bridgesZ) do table.insert(t, string.format("%.0f", z)) end; return table.concat(t, " / ") end)()))
--- ---------- 4. the floating walkways, flat on the ground ----------
+-- ---------- 4. the floating walkways, flat, their tops level with the bridge landings ----------
+local WALK_TOP = 1.0                                                        -- (they are 0.45 thick: levelling by the top, whatever the thickness)
 local levelled = 0
 for _, d in ipairs(J:GetDescendants()) do
-	if d:IsA("BasePart") and d.Name == "Walkway" and d.Size.Y < 4 and near(d.CFrame, 60) and d.Position.Z > Z1 - 20 and d.Position.Z < Z2 + 10 then   -- (the station's walkway at z 139 is not touched)
-		local bottom = d.Position.Y - d.Size.Y / 2
+	if d:IsA("BasePart") and d.Name == "Walkway" and d.Size.Y < 4 and near(d.CFrame, 85) and d.Position.Z > Z1 - 20 and d.Position.Z < Z2 + 10 then   -- (the west ones are 62 from the centre; the station's walkway at z 139 is not touched)
+		local top = d.Position.Y + d.Size.Y / 2
 		local tilt = math.deg(math.acos(math.clamp(d.CFrame.UpVector.Y, -1, 1)))
-		if bottom > 0.3 or bottom < -0.3 or tilt > 0.8 then
+		if math.abs(top - WALK_TOP) > 0.05 or tilt > 0.8 then
 			if d:GetAttribute("GardenOldCF") == nil then d:SetAttribute("GardenOldCF", d.CFrame) end
 			local look = d.CFrame.LookVector; local yaw = math.atan2(-look.X, -look.Z)
-			d.CFrame = CFrame.new(d.Position.X, d.Size.Y / 2, d.Position.Z) * CFrame.Angles(0, yaw, 0)
+			d.CFrame = CFrame.new(d.Position.X, WALK_TOP - d.Size.Y / 2, d.Position.Z) * CFrame.Angles(0, yaw, 0)
 			levelled += 1
 		end
 	end
 end
-print(string.format("QQ GARDEN3 canal walkways levelled flat on the ground (bottom 0): %d", levelled))
+print(string.format("QQ GARDEN3 canal walkways levelled flat, their tops at %.1f (= the bridge landings): %d", WALK_TOP, levelled))
 -- ---------- 5. the meshes ----------
 local old = J:FindFirstChild("MomijiGarden")
 if old then local n = 1; while hb:FindFirstChild("MomijiGarden_pre_" .. n) do n += 1 end; old.Name = "MomijiGarden_pre_" .. n; old.Parent = hb end
@@ -148,7 +154,9 @@ local function dress(m)
 		if p:IsA("BasePart") then
 			local key = colourKey(p.Name)
 			p.Anchored = true; p.Material = Enum.Material.SmoothPlastic; p.CastShadow = true
-			if COL[key] then p.Color = COL[key] else table.insert(missing, p.Name) end
+			local ckey = key
+			if not MOSS then ckey = (key == "Rock_Moss" and "Rock_Grey") or (key == "Fall_Moss" and "Fall_Rock") or key end
+			if COL[ckey] then p.Color = COL[ckey] else table.insert(missing, p.Name) end
 			p.CanCollide = SOLID[key] == true; p.CanQuery = p.CanCollide; p.CanTouch = false
 			if p:IsA("MeshPart") and (key == "Bridge_Deck" or key == "Slab_Stone" or key == "Wall_Coping" or key == "Wall_Stone" or key == "Steps_Stone" or key == "Steps_Landing" or key == "Skiff_Wood" or key == "Boat_Hull" or key == "Boat_Floor") then
 				pcall(function() p.CollisionFidelity = Enum.CollisionFidelity.PreciseConvexDecomposition end)
@@ -161,7 +169,7 @@ local function dress(m)
 			elseif key:sub(1, 4) == "Koi_" then p.CastShadow = false
 			elseif key:sub(1, 6) == "Skiff_" then p.Material = Enum.Material.Wood
 			elseif key:sub(1, 5) == "Boat_" then
-				if key == "Boat_Hat" or key == "Boat_Rope" then p.Material = Enum.Material.SmoothPlastic else p.Material = Enum.Material.Wood end   -- (box-projected UVs, the grain along the length)
+				if BOAT_WOOD and key ~= "Boat_Hat" and key ~= "Boat_Rope" then p.Material = Enum.Material.Wood end   -- (else SmoothPlastic: the colour truer to her photo)
 				p.CastShadow = key ~= "Boat_Rope"
 			end
 			meshes += 1
@@ -275,12 +283,13 @@ for i = 1, 5 do
 		if long > 0 then pcall(function() m:ScaleTo(2.4 / long) end) end
 		cf = m:GetBoundingBox()
 		m.WorldPivot = CFrame.new(cf.Position) * MESHY_KOI_FACING
+		m.ModelStreamingMode = Enum.ModelStreamingMode.Atomic                   -- (streams in whole: CanalLife moves the pivot from the first frame)
 		m.Parent = LF; made += 1
 	else
 		m = place("koi", Vector3.new(CX, WATER - 0.6, mid), 0, ({"Koi_Orange", "Koi_White", "Koi_Gold"})[(i - 1) % 3 + 1], "Koi" .. i, rnd:NextNumber(0.85, 1.15), LF)
-		if m then local cf = m:GetBoundingBox(); m.WorldPivot = CFrame.new(cf.Position) * CFrame.Angles(0, math.rad(-90), 0) end   -- (built along +x: its -Z is then the head)
+		if m then local cf = m:GetBoundingBox(); m.WorldPivot = CFrame.new(cf.Position) * CFrame.Angles(0, math.rad(-90), 0); m.Parent = nil; m.ModelStreamingMode = Enum.ModelStreamingMode.Atomic; m.Parent = LF end   -- (built along +x: its -Z is then the head)
 	end
-	if m then life(m, CX + rnd:NextNumber(-4, 4), mid, half, rnd:NextNumber(2.5, 5), WATER - rnd:NextNumber(0.5, 0.8), (i % 2 == 0 and 1 or -1) * rnd:NextNumber(0.05, 0.09), 0.08); nkoi += 1 end
+	if m then life(m, CX + rnd:NextNumber(-4, 4), mid, half, rnd:NextNumber(2.5, 5), WATER - rnd:NextNumber(KOI_DEPTH[1], KOI_DEPTH[2]), (i % 2 == 0 and 1 or -1) * rnd:NextNumber(0.05, 0.09), 0.05); nkoi += 1 end
 end
 -- the boats (runner 7's "boat" from her Yanagawa photo: 27 long with the bow horns, 7.3 wide, the bow at +Z; its origin on the flat
 -- bottom goes at WATER - 0.75 so the floor boards sit 0.3 above the water). The pivot is turned so its -Z is the bow (like the koi).
@@ -290,6 +299,7 @@ local function boat(label, at, bowYaw)
 	if m then
 		m.WorldPivot = CFrame.new(m:GetPivot().Position) * CFrame.Angles(0, math.rad(180), 0)
 		m:PivotTo(CFrame.new(at) * CFrame.Angles(0, bowYaw, 0))
+		m.Parent = nil; m.ModelStreamingMode = Enum.ModelStreamingMode.Atomic; m.Parent = LF   -- (streams in whole, so the rope never trails 17 studs behind the hull)
 	end
 	return m
 end
@@ -325,7 +335,7 @@ RunService.Heartbeat:Connect(function()
 end)
 ]==]
 lifeScript.Parent = LF
-print(string.format("QQ GARDEN3 life: %d koi (%s) in %d reaches, a boat moored at z %.0f and one poled along the longest reach; CanalLife client script", nkoi, MESHY_KOI and "Meshy" or "koi.fbx", #reaches, stepsAt[1] + 17))
+print(string.format("QQ GARDEN3 life: %d koi (%s, %.2f-%.2f under the surface) in %d reaches, a boat moored at z %.0f and one poled along the longest reach, all Atomic; CanalLife client script; moss %s, boats %s", nkoi, MESHY_KOI and "Meshy" or "koi.fbx", KOI_DEPTH[1], KOI_DEPTH[2], #reaches, stepsAt[1] + 17, MOSS and "on" or "off (grey)", BOAT_WOOD and "Wood" or "SmoothPlastic"))
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after Momiji garden look test 3") end)
 if #missing > 0 then print("QQ GARDEN3 missing or uncoloured: " .. table.concat(missing, ", ")) end
 print(string.format("QQ GARDEN3 DONE: MomijiGarden - %d pieces (%d wall segments + %d end segments, %d bridges with landings and water steps, %d lanterns, %d rocks), %d meshes; no parts built", made, k * 2, ends, #bridgesZ, nl, nr, meshes))

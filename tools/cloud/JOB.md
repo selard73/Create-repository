@@ -3645,3 +3645,9 @@ Checks:
 - Boat in Wood material reads greyer than her golden photo (picture 3) - SmoothPlastic shows the colour truer; her call.
 - Counts: JapanMap 20,422 -> 20,310 parts, MeshParts 1,207 -> 1,479; MomijiGarden 274 meshes; 386 parts retired.
 Pictures: tools/japan/garden/shots_look3/ (1-9).
+Look test 3 fixes (cloud, after runner 7's preview at 88e4392): "Canal weir" is a FOLDER -> retired by name whatever the class; the
+walkways levelled by TOP = 1.0 (the west ones at x 6039, 62 from the centre, were outside the old 60 radius; the east ones are 0.45
+thick) so every bridge landing meets its walkway; every CanalLife model (both boats, the 5 koi) ModelStreamingMode Atomic (the poled
+boat streamed in piecemeal while the script moved its pivot); the koi 0.15-0.25 under the surface (0.5-0.8 was invisible at
+WaterTransparency 0.65); MOSS = false: the kit rocks' and the falls' green bands plain grey; BOAT_WOOD = false: the boats in
+SmoothPlastic (truer colour). Flags at the top of garden_look3.lua.
