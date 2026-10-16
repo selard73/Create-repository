@@ -3481,3 +3481,6 @@ restart servers.
 
 PUBLISHED (Shannon: "saves published and restarted"): bottle round 6b (f4239f9) - E at the kiosk by state, the reply toast fix. Servers
 restarted. Nothing left unpublished in Edit.
+Result job 117 (Shannon, Oct 16, live after the restarted servers): "it started over, it looks fine" - the treehouse reset (ResetRound 3)
+ran live. The earlier miss was most likely an old server still on the previous version. JOB 117 CLOSED. To reset again later: bump
+workspace.Treehouse ResetRound (the reset runs once per round per listed id; ResetUserIds "9611145467").
