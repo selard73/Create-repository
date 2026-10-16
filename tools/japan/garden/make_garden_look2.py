@@ -39,7 +39,7 @@ end
 local KOI = KIT:FindFirstChild("koi_meshy") or KIT:FindFirstChild("koi")
 if not KOI then print("QQ GARDEN2 ABORT: the kit has neither 'koi_meshy' (Shannon's Meshy koi) nor 'koi' (out2/koi.fbx)") return end
 local MESHY_KOI = KOI.Name == "koi_meshy"
-local MESHY_KOI_FACING = CFrame.Angles(0, 0, 0)      -- which way the Meshy fish points: identity = its -Z (Roblox forward). If they swim backwards or sideways, set e.g. CFrame.Angles(0, math.rad(180), 0) or math.rad(90)
+local MESHY_KOI_FACING = CFrame.Angles(0, math.rad(180), 0)   -- the Meshy koi's head points +Z (runner 7's renders); Roblox forward is -Z, so half a turn. If they still swim backwards/sideways: 0 or math.rad(90)
 print("QQ GARDEN2 koi: " .. (MESHY_KOI and "Shannon's Meshy koi (kit 'koi_meshy')" or "out2/koi.fbx (no 'koi_meshy' in the kit)"))
 local BB = {
 @@BB@@
@@ -211,7 +211,7 @@ for z = Z1 + 4, ZC - 8 - 3.99, 8 do
 	place(k % 2 == 1 and "canal_edge" or "canal_edge_b", Vector3.new(EAST + 0.2, 0, z), 180, nil, "EdgeE" .. k, 1, EF)
 end
 -- rocks and reeds along the edge (none on the bridges)
-local RF = Instance.new("Folder"); RF.Name = "EdgeRocksAndReeds"; RF.Parent = G
+local RR = Instance.new("Folder"); RR.Name = "EdgeRocksAndReeds"; RR.Parent = G
 local nr, nd = 0, 0
 for z = Z1 + 6, ZC - 12, 9 do
 	if not nearBridge(z, 8) then
@@ -220,7 +220,7 @@ for z = Z1 + 6, ZC - 12, 9 do
 				local face = side < 0 and WEST or EAST
 				local inWater = rnd:NextNumber() < 0.45
 				local x = face - side * (inWater and rnd:NextNumber(0.6, 1.8) or -rnd:NextNumber(0.4, 1.6))
-				place("rocks", Vector3.new(x, inWater and (WL - 0.3) or 0.05, z + rnd:NextNumber(-3, 3)), rnd:NextInteger(0, 359), "Rock" .. rnd:NextInteger(1, 3), "EdgeRock", rnd:NextNumber(0.7, 1.4), RF)
+				place("rocks", Vector3.new(x, inWater and (WL - 0.3) or 0.05, z + rnd:NextNumber(-3, 3)), rnd:NextInteger(0, 359), "Rock" .. rnd:NextInteger(1, 3), "EdgeRock", rnd:NextNumber(0.7, 1.4), RR)
 				nr += 1
 			end
 		end
@@ -230,7 +230,7 @@ for z = Z1 + 10, ZC - 12, 16 do
 	if not nearBridge(z, 9) then
 		local side = (math.floor(z / 16) % 2 == 0) and -1 or 1
 		local face = side < 0 and WEST or EAST
-		place("reeds", Vector3.new(face - side * 0.9, WL, z + rnd:NextNumber(-2, 2)), rnd:NextInteger(0, 359), nil, "Reeds", rnd:NextNumber(0.9, 1.2), RF)
+		place("reeds", Vector3.new(face - side * 0.9, WL, z + rnd:NextNumber(-2, 2)), rnd:NextInteger(0, 359), nil, "Reeds", rnd:NextNumber(0.9, 1.2), RR)
 		nd += 1
 	end
 end
