@@ -3531,3 +3531,12 @@ foot, four stepping slabs from the east end toward the falls. Colours by mesh na
 water DoubleSided), the deck and slabs PreciseConvexDecomposition. "QQ GARDEN DONE ... no parts built".
 PREVIEW in play: walk over the bridge (does the arch walk? the ends meet the path?), pictures from the street side, from the bridge
 toward the falls, from above, and one beside Rue de Noisette's trees for the style check; part / triangle counts before and after.
+
+Result job 125 LOOK TEST 1 (runner 7): kit imported by Shannon (one combined FBX, the 9 merged in Blender) and moved to ServerStorage.JapanGardenKit
+(9 Models, mesh names kept, 0 scripts). garden_look1.lua at 13739b1 (9218, adler32 989581473) in play: "QQ GARDEN replaced (to
+HudBackup.MomijiGardenReplaced): 1 - Canal footbridge", "QQ GARDEN DONE: workspace.JapanMap.MomijiGarden - 17 pieces, 39 meshes; no parts
+built". Her verdict: orange maples OUT ("the orange trees clash, not the green ones"); the other pieces good; the bridge misaligned (the old
+approach steps stand 4.8-5.2 above the new deck ends; walking stuck at x 6118.7). Her notes on the waterway ("SERIOUS fixing"): the black
+rocks = BlenderScenery."Sculpted terrain".JP_Canal_Rocks_84/_118 (Rock + JM_PhotographicRock, render black); the canal walkways float 0.8-2.7
+and tilt; and "the edge of this waterway looks unfinished" (her screenshot shots_look1/her_unfinished_waterway_edge.webp - a small pool
+with grey rocks in the water and a dark stone rim with a round hole on top; location to confirm). Pictures shots_look1/ (force-added).
