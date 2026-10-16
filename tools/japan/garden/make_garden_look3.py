@@ -22,12 +22,14 @@ def v3(v): return "Vector3.new(%s, %s, %s)" % tuple(v)
 bb = ",\n".join('\t["%s"] = {min = %s, max = %s}' % (k, v3(v["min"]), v3(v["max"])) for k, v in info.items())
 cols = ",\n".join('\t%s = Color3.new(%s, %s, %s)' % (k, *v) for k, v in COL.items())
 lua = r'''-- garden_look3.lua (job 125, LOOK TEST 3: the canal kept as a canal; a play-test PREVIEW first, then Studio EDIT on her word; re-runnable).
--- 1. finds the canal from LanternStreet's two "Canal stone bank" parts (the water at 1.3 stays); 2. TERRAIN: only the end pool - the
--- rock cells poking above the water cleared, the water flat up to the new end wall; 3. RETIRES to HudBackup.MomijiGardenReplaced: both
--- concrete banks, the black JP_Canal_Rocks_* strips, the three "Canal footbridge"s, their white "approach steps", the "Canal weir";
--- 4. LEVELS the canal's floating "Walkway" parts flat on the ground (bottom 0; the old CFrame kept as an attribute); 5. PLACES only
--- imported meshes: the stone-block canal walls with their coping along both sides and across both ends (two block patterns
--- alternating), a taiko bridge at each old crossing with landing steps so its ends meet the walkways, stone steps down into the water
+-- 1. finds the canal from LanternStreet's two "Canal stone bank" parts (the water at 1.3 stays); 2. TERRAIN along the whole channel:
+-- a flat Slate bed at -1.3 ("dark floor"; the jagged rock ridge at -10 buried), the rock poking above the water cleared, the water flat
+-- at 1.3 up to the end walls; 3. RETIRES to HudBackup.MomijiGardenReplaced: both concrete banks, the black JP_Canal_Rocks_* strips,
+-- the three "Canal footbridge"s, their white "approach steps", the "Canal weir" folder, the old "Canal boat", the six brown "Walkway"
+-- paths at the crossings ("I do not like the pavement"), and the black-cobble sheet JM_Garden_Weathered_Cobbles ("little black
+-- stones everywhere"); 5. PLACES only imported meshes: the stone-block canal walls with their coping along both sides and across both
+-- ends (two block patterns alternating), a taiko bridge at each old crossing with landing steps at its ends, a stepping-stone path
+-- (kit slabs) along each old walkway line from the landings out to the paths beyond, stone steps down into the water
 -- beside each bridge, the waterfall pouring into the south end, koi swimming slow loops along the canal (Shannon's Meshy koi), a Yanagawa
 -- boat moored at the steps and one poled back and forth along the long reach (CanalLife client script; the old "Canal boat" retired), and
 -- look test 1's torii, pine, lit lanterns, rocks and stepping slabs. No parts are built. Output "QQ GARDEN3".
@@ -61,9 +63,12 @@ local SOLID = {Bridge_Deck = true, Bridge_Red = true, Bridge_Stone = true, Torii
 local WATER = 1.3                                                           -- the canal's water surface, kept
 local MOSS = false                                                          -- false: the kit rocks' and the falls' green bands go plain grey ("that moss on those rocks does not look like moss")
 local BOAT_WOOD = false                                                     -- false: the boats in SmoothPlastic (the colour truer to her photo); true: Wood (box UVs, the grain along the length)
-local OUTER_LANDING_TURN = 180                                              -- runner 7's look 3c: the walkways' outer landings came out with the high tread at the outer edge -> turned
-local BRIDGE_LANDING_TURN = 0                                               -- the bridge-end landings: set 180 too if their profile shows the low tread against the deck end
-local KOI_DEPTH = {0.15, 0.25}                                               -- how far under the surface the koi swim (0.5-0.8 was invisible from above at WaterTransparency 0.65)
+local BRIDGE_LANDING_TURN = 180                                             -- runner 7's profiles (look 3c): the landings came out with the low tread against the deck end -> turned, the high tread meets the deck
+local KOI_TOP_UNDER = 0.2                                                   -- the koi's TOP this far under the surface (Shannon: "the koi should be swimming under the water not above it"); "Clear canal, dark floor"
+local BED_Y = -1.3                                                          -- the canal's new flat Slate bed (the wall meshes reach -1.2), burying the jagged rock ridge at -10
+local WALL_DROP = 0.1                                                       -- the walls set 0.1 lower so their back blocks stop poking "teeth" through the lawn
+local BOAT_COL = {Boat_Hull = Color3.fromRGB(103, 72, 48), Boat_Rail = Color3.fromRGB(65, 47, 33), Boat_Beam = Color3.fromRGB(65, 47, 33), Boat_Seam = Color3.fromRGB(44, 33, 28),
+	Boat_Floor = Color3.fromRGB(120, 80, 50), Boat_Deck = Color3.fromRGB(120, 80, 50), Boat_Bench = Color3.fromRGB(120, 80, 50)}   -- the canal houses' wood colours ("the color of the boat ... sticks out")
 -- ---------- 1. the canal ----------
 local banks = {}
 for _, d in ipairs(J:GetDescendants()) do if d:IsA("BasePart") and d.Name == "Canal stone bank" then table.insert(banks, d) end end
@@ -78,39 +83,46 @@ local ZS, ZN = Z1 + 3.5, Z2 + 1.5                                             --
 print(string.format("QQ GARDEN3 canal: water faces x %.1f / %.1f (centre %.1f), z %.1f .. %.1f, water %.1f; end walls at z %.1f / %.1f", WEST, EAST, CX, Z1, Z2, WATER, ZS, ZN))
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("before Momiji garden look test 3") end)
--- ---------- 2. the terrain: the end pool's rock cleared, the water flat to the end wall ----------
--- (Roblox draws a row's surface at (its top - 2) + 4 x occupancy: the -4..0 row at 0.825 = y 1.3)
-local tr, tw = 0, 0
+-- ---------- 2. the terrain: a flat dark Slate bed along the whole channel, the water flat at 1.3 to the end walls ----------
+-- (Roblox draws a row's surface at (its top - 2) + 4 x occupancy: the -4..0 row at 0.825 = the water at 1.3; the same row's solid at
+-- (BED_Y + 2) / 4 = the bed at BED_Y, with every row below full Slate)
+local tbed, tw = 0, 0
 do
 	local x0, x1 = math.floor(WEST / 4) * 4, math.ceil(EAST / 4) * 4
-	local zA, zB = math.floor((Z1 - 2) / 4) * 4, math.ceil((Z1 + 16) / 4) * 4
-	local r = Region3.new(Vector3.new(x0, -8, zA), Vector3.new(x1, 8, zB))
-	local ch = T:ReadVoxelChannels(r, 4, {"SolidMaterial", "SolidOccupancy", "LiquidOccupancy"})
-	local SM, SO, LO = ch.SolidMaterial, ch.SolidOccupancy, ch.LiquidOccupancy
-	for ix = 1, #SO do
-		local x = x0 + (ix - 0.5) * 4
-		if x > WEST and x < EAST then
-			for iy = 1, #SO[ix] do
-				local y0 = -8 + (iy - 1) * 4
-				for iz = 1, #SO[ix][iy] do
-					if y0 >= -4 and SO[ix][iy][iz] > 0 then SO[ix][iy][iz] = 0; tr += 1 end       -- the rock poking out of the pool
-					if y0 == -4 then if LO[ix][iy][iz] < 0.825 then LO[ix][iy][iz] = 0.825; tw += 1 end   -- the water flat at 1.3 to the end wall
-					elseif y0 >= 0 and LO[ix][iy][iz] > 0 then LO[ix][iy][iz] = 0 end
+	local zA, zB = math.floor((Z1 - 2) / 4) * 4, math.ceil((Z2 + 4) / 4) * 4
+	local bedOcc = (BED_Y + 2) / 4
+	for zs = zA, zB - 1, 64 do
+		local r = Region3.new(Vector3.new(x0, -16, zs), Vector3.new(x1, 8, math.min(zs + 64, zB)))
+		local ch = T:ReadVoxelChannels(r, 4, {"SolidMaterial", "SolidOccupancy", "LiquidOccupancy"})
+		local SM, SO, LO = ch.SolidMaterial, ch.SolidOccupancy, ch.LiquidOccupancy
+		for ix = 1, #SO do
+			local x = x0 + (ix - 0.5) * 4
+			if x > WEST and x < EAST then
+				for iy = 1, #SO[ix] do
+					local y0 = -16 + (iy - 1) * 4
+					for iz = 1, #SO[ix][iy] do
+						if y0 <= -8 then SM[ix][iy][iz] = Enum.Material.Slate; SO[ix][iy][iz] = 1; LO[ix][iy][iz] = 0; tbed += 1
+						elseif y0 == -4 then
+							SM[ix][iy][iz] = Enum.Material.Slate; SO[ix][iy][iz] = bedOcc; LO[ix][iy][iz] = 0.825; tw += 1   -- the bed at BED_Y, the water to 1.3
+						else SO[ix][iy][iz] = 0; LO[ix][iy][iz] = 0 end
+					end
 				end
 			end
 		end
+		T:WriteVoxelChannels(r, 4, {SolidMaterial = SM, SolidOccupancy = SO, LiquidOccupancy = LO})
 	end
-	T:WriteVoxelChannels(r, 4, {SolidMaterial = SM, SolidOccupancy = SO, LiquidOccupancy = LO})
 end
-print(string.format("QQ GARDEN3 terrain (end pool only): %d rock cells cleared, %d water cells filled to %.1f", tr, tw, WATER))
+print(string.format("QQ GARDEN3 terrain: a flat Slate bed at %.1f along the channel (%d cells below, %d bed/water cells), the water flat at %.1f", BED_Y, tbed, tw, WATER))
 -- ---------- 3. retire the concrete banks, the black strips, the old bridges and steps, the weir ----------
 local replaced = hb:FindFirstChild("MomijiGardenReplaced") or Instance.new("Folder"); replaced.Name = "MomijiGardenReplaced"; replaced.Parent = hb
-local retire, bridgesZ = {}, {}
+local retire, bridgesZ, walkways = {}, {}, {}
 local function near(cf, r) return math.abs(cf.X - CX) < r end
 for _, d in ipairs(J:GetDescendants()) do
 	if d.Parent and not d:IsDescendantOf(replaced) then
-		if d.Name == "Canal weir" or d.Name == "Canal boat" or d.Name == "Canal stone bank" or (d:IsA("BasePart") and d.Name:match("^JP_Canal_Rocks")) then
+		if d.Name == "Canal weir" or d.Name == "Canal boat" or d.Name == "Canal stone bank" or d.Name == "JM_Garden_Weathered_Cobbles" or (d:IsA("BasePart") and d.Name:match("^JP_Canal_Rocks")) then
 			table.insert(retire, d)                                             -- (by name whatever the class: "Canal weir" is a FOLDER of Weir / Weir lip / Weir stones)
+		elseif d:IsA("BasePart") and d.Name == "Walkway" and d.Size.Y < 4 and near(d.CFrame, 85) and d.Position.Z > Z1 - 20 and d.Position.Z < Z2 + 10 then
+			table.insert(retire, d); table.insert(walkways, {pos = d.Position, size = d.Size, right = d.CFrame.RightVector, look = d.CFrame.LookVector})   -- the brown paths at the crossings (the station's at z 139 stays)
 		else
 			local ok, cf = pcall(function() return d:IsA("Model") and d:GetPivot() or (d:IsA("BasePart") and d.CFrame) end)
 			if ok and cf then
@@ -128,30 +140,8 @@ for _, d in ipairs(retire) do
 end
 local nret = 0; for _ in pairs(seen) do nret += 1 end
 table.sort(bridgesZ)
-print(string.format("QQ GARDEN3 retired %d (banks, black strips, footbridges at z %s, approach steps, the weir, the old canal boat) -> HudBackup.MomijiGardenReplaced", nret,
-	(function() local t = {}; for _, z in ipairs(bridgesZ) do table.insert(t, string.format("%.0f", z)) end; return table.concat(t, " / ") end)()))
--- ---------- 4. the floating walkways, flat, their tops level with the bridge landings ----------
-local WALK_TOP = 1.0                                                        -- (they are 0.45 thick: levelling by the top, whatever the thickness)
-local levelled, outerEnds = 0, {}
-for _, d in ipairs(J:GetDescendants()) do
-	if d:IsA("BasePart") and d.Name == "Walkway" and d.Size.Y < 4 and near(d.CFrame, 85) and d.Position.Z > Z1 - 20 and d.Position.Z < Z2 + 10 then   -- (the west ones are 62 from the centre; the station's walkway at z 139 is not touched)
-		local top = d.Position.Y + d.Size.Y / 2
-		local tilt = math.deg(math.acos(math.clamp(d.CFrame.UpVector.Y, -1, 1)))
-		if math.abs(top - WALK_TOP) > 0.05 or tilt > 0.8 then
-			if d:GetAttribute("GardenOldCF") == nil then d:SetAttribute("GardenOldCF", d.CFrame) end
-			local look = d.CFrame.LookVector; local yaw = math.atan2(-look.X, -look.Z)
-			d.CFrame = CFrame.new(d.Position.X, WALK_TOP - d.Size.Y / 2, d.Position.Z) * CFrame.Angles(0, yaw, 0)
-			levelled += 1
-			-- its OUTER end (away from the canal) now stands 1.0 above whatever is there: a landing-steps piece goes on it (section 5)
-			local axis = d.Size.X >= d.Size.Z and d.CFrame.RightVector * (d.Size.X / 2) or d.CFrame.LookVector * (d.Size.Z / 2)
-			local e1, e2 = d.Position + axis, d.Position - axis
-			local e = math.abs(e1.X - CX) > math.abs(e2.X - CX) and e1 or e2
-			local dir = (Vector3.new(e.X, 0, e.Z) - Vector3.new(d.Position.X, 0, d.Position.Z)).Unit
-			table.insert(outerEnds, {pos = Vector3.new(e.X, 0, e.Z), yaw = math.deg(math.atan2(dir.Z, -dir.X))})
-		end
-	end
-end
-print(string.format("QQ GARDEN3 canal walkways levelled flat, their tops at %.1f (= the bridge landings): %d", WALK_TOP, levelled))
+print(string.format("QQ GARDEN3 retired %d (banks, black strips, footbridges at z %s, approach steps, the weir, the old canal boat, %d walkway paths, the black-cobble sheet) -> HudBackup.MomijiGardenReplaced", nret,
+	(function() local t = {}; for _, z in ipairs(bridgesZ) do table.insert(t, string.format("%.0f", z)) end; return table.concat(t, " / ") end)(), #walkways))
 -- ---------- 5. the meshes ----------
 local old = J:FindFirstChild("MomijiGarden")
 if old then local n = 1; while hb:FindFirstChild("MomijiGarden_pre_" .. n) do n += 1 end; old.Name = "MomijiGarden_pre_" .. n; old.Parent = hb end
@@ -164,7 +154,7 @@ local function dress(m)
 			p.Anchored = true; p.Material = Enum.Material.SmoothPlastic; p.CastShadow = true
 			local ckey = key
 			if not MOSS then ckey = (key == "Rock_Moss" and "Rock_Grey") or (key == "Fall_Moss" and "Fall_Rock") or key end
-			if COL[ckey] then p.Color = COL[ckey] else table.insert(missing, p.Name) end
+			if BOAT_COL[key] then p.Color = BOAT_COL[key] elseif COL[ckey] then p.Color = COL[ckey] else table.insert(missing, p.Name) end
 			p.CanCollide = SOLID[key] == true; p.CanQuery = p.CanCollide; p.CanTouch = false
 			if p:IsA("MeshPart") and (key == "Bridge_Deck" or key == "Slab_Stone" or key == "Wall_Coping" or key == "Wall_Stone" or key == "Steps_Stone" or key == "Steps_Landing" or key == "Skiff_Wood" or key == "Boat_Hull" or key == "Boat_Floor") then
 				pcall(function() p.CollisionFidelity = Enum.CollisionFidelity.PreciseConvexDecomposition end)
@@ -211,15 +201,15 @@ local k = 0
 local z = Z1 + 4
 while true do
 	k += 1
-	place(k % 2 == 0 and "canal_wall" or "canal_wall_b", Vector3.new(WEST, 0, z), 0, nil, "WallW" .. k, 1, WF)
-	place(k % 2 == 1 and "canal_wall" or "canal_wall_b", Vector3.new(EAST, 0, z), 180, nil, "WallE" .. k, 1, WF)
+	place(k % 2 == 0 and "canal_wall" or "canal_wall_b", Vector3.new(WEST, -WALL_DROP, z), 0, nil, "WallW" .. k, 1, WF)
+	place(k % 2 == 1 and "canal_wall" or "canal_wall_b", Vector3.new(EAST, -WALL_DROP, z), 180, nil, "WallE" .. k, 1, WF)
 	if z + 4 >= Z2 - 0.01 then break end
 	z = math.min(z + 8, Z2 - 4)
 end
 local ends = 0
 for i, dx in ipairs({-12, -4, 4, 12}) do
-	place(i % 2 == 0 and "canal_wall" or "canal_wall_b", Vector3.new(CX + dx, 0, ZS), -90, nil, "WallS" .. i, 1, WF); ends += 1   -- its face toward +z (the water)
-	place(i % 2 == 1 and "canal_wall" or "canal_wall_b", Vector3.new(CX + dx, 0, ZN), 90, nil, "WallN" .. i, 1, WF); ends += 1    -- its face toward -z
+	place(i % 2 == 0 and "canal_wall" or "canal_wall_b", Vector3.new(CX + dx, -WALL_DROP, ZS), -90, nil, "WallS" .. i, 1, WF); ends += 1   -- its face toward +z (the water)
+	place(i % 2 == 1 and "canal_wall" or "canal_wall_b", Vector3.new(CX + dx, -WALL_DROP, ZN), 90, nil, "WallN" .. i, 1, WF); ends += 1    -- its face toward -z
 end
 -- the bridges (deck ends at 1.0 = the levelled walkways' tops), their landing steps, and the stone steps down to the water beside each
 local BF = Instance.new("Folder"); BF.Name = "Bridges"; BF.Parent = G
@@ -234,9 +224,28 @@ for i, bz in ipairs(bridgesZ) do
 	place("canal_steps", Vector3.new(EAST, 0, sz), 180, nil, "WaterStepsE" .. i, 1, BF)
 	table.insert(stepsAt, sz)
 end
--- landing steps at the walkways' outer ends too (levelling to 1.0 left a ledge there: 1.0 against the lawn at 0 or a path at 0.3-0.5)
-for i, e in ipairs(outerEnds) do place("bridge_steps", e.pos, e.yaw + OUTER_LANDING_TURN, nil, "WalkwayLanding" .. i, 1, BF) end
-print(string.format("QQ GARDEN3 landing steps at the walkways' outer ends: %d (turned %d; bridge-end landings turned %d)", #outerEnds, OUTER_LANDING_TURN, BRIDGE_LANDING_TURN))
+-- stepping-stone paths (the kit slabs) along each retired walkway's line, from the landing's foot out to the far end
+local PF = Instance.new("Folder"); PF.Name = "SteppingStonePaths"; PF.Parent = G
+local nslab = 0
+for wi, w in ipairs(walkways) do
+	local along = w.size.X >= w.size.Z and w.right or w.look                 -- the path's long axis
+	local half = math.max(w.size.X, w.size.Z) / 2
+	local e1, e2 = w.pos + along * half, w.pos - along * half
+	local inner, outer = e1, e2
+	if math.abs(e1.X - CX) > math.abs(e2.X - CX) then inner, outer = e2, e1 end
+	local dir = (Vector3.new(outer.X, 0, outer.Z) - Vector3.new(inner.X, 0, inner.Z)).Unit
+	local side = Vector3.new(-dir.Z, 0, dir.X)
+	local startD = BB.bridge.max.X - math.abs(inner.X - CX) + 3 + 1.4      -- the landing's foot (3 out from the deck end) plus half a slab
+	local total = (outer - inner).Magnitude
+	local d = math.max(startD, 1.4)
+	while d < total - 0.8 do
+		local at = Vector3.new(inner.X, 0, inner.Z) + dir * d + side * rnd:NextNumber(-0.7, 0.7)
+		place("slabs", Vector3.new(at.X, rnd:NextNumber(-0.12, 0.0), at.Z), rnd:NextInteger(0, 359), "Slab" .. rnd:NextInteger(1, 3), "Path" .. wi .. "_" .. (nslab + 1), rnd:NextNumber(1.0, 1.25), PF)
+		nslab += 1
+		d += rnd:NextNumber(2.3, 2.6)
+	end
+end
+print(string.format("QQ GARDEN3 stepping-stone paths: %d slabs along %d old walkway lines (tops 0.23-0.35 above the lawn, stride 2.3-2.6); bridge landings turned %d", nslab, #walkways, BRIDGE_LANDING_TURN))
 -- the waterfall feeding the south end (its rocks over the end wall, the sheet landing in the water)
 place("waterfall", Vector3.new(CX, 1.0, ZS + 1.5), 0, nil, "Waterfall")
 -- look test 1's approved pieces, by the garden bridge (the southernmost crossing)
@@ -300,7 +309,10 @@ for i = 1, 5 do
 		m = place("koi", Vector3.new(CX, WATER - 0.6, mid), 0, ({"Koi_Orange", "Koi_White", "Koi_Gold"})[(i - 1) % 3 + 1], "Koi" .. i, rnd:NextNumber(0.85, 1.15), LF)
 		if m then local cf = m:GetBoundingBox(); m.WorldPivot = CFrame.new(cf.Position) * CFrame.Angles(0, math.rad(-90), 0); m.Parent = nil; m.ModelStreamingMode = Enum.ModelStreamingMode.Atomic; m.Parent = LF end   -- (built along +x: its -Z is then the head)
 	end
-	if m then life(m, CX + rnd:NextNumber(-4, 4), mid, half, rnd:NextNumber(2.5, 5), WATER - rnd:NextNumber(KOI_DEPTH[1], KOI_DEPTH[2]), (i % 2 == 0 and 1 or -1) * rnd:NextNumber(0.05, 0.09), 0.05); nkoi += 1 end
+	if m then
+		local _, size = m:GetBoundingBox()
+		life(m, CX + rnd:NextNumber(-4, 4), mid, half, rnd:NextNumber(2.5, 5), WATER - KOI_TOP_UNDER - size.Y / 2, (i % 2 == 0 and 1 or -1) * rnd:NextNumber(0.05, 0.09), 0.04); nkoi += 1   -- its top KOI_TOP_UNDER under the surface
+	end
 end
 -- the boats (runner 7's "boat" from her Yanagawa photo: 27 long with the bow horns, 7.3 wide, the bow at +Z; its origin on the flat
 -- bottom goes at WATER - 0.75 so the floor boards sit 0.3 above the water). The pivot is turned so its -Z is the bow (like the koi).
@@ -346,10 +358,10 @@ RunService.Heartbeat:Connect(function()
 end)
 ]==]
 lifeScript.Parent = LF
-print(string.format("QQ GARDEN3 life: %d koi (%s, %.2f-%.2f under the surface) in %d reaches, a boat moored at z %.0f and one poled along the longest reach, all Atomic; CanalLife client script; moss %s, boats %s", nkoi, MESHY_KOI and "Meshy" or "koi.fbx", KOI_DEPTH[1], KOI_DEPTH[2], #reaches, stepsAt[1] + 17, MOSS and "on" or "off (grey)", BOAT_WOOD and "Wood" or "SmoothPlastic"))
+print(string.format("QQ GARDEN3 life: %d koi (%s, tops %.2f under the surface) in %d reaches, a boat moored at z %.0f and one poled along the longest reach, all Atomic; CanalLife client script; moss %s, boats %s in the houses' wood colours", nkoi, MESHY_KOI and "Meshy" or "koi.fbx", KOI_TOP_UNDER, #reaches, stepsAt[1] + 17, MOSS and "on" or "off (grey)", BOAT_WOOD and "Wood" or "SmoothPlastic"))
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after Momiji garden look test 3") end)
 if #missing > 0 then print("QQ GARDEN3 missing or uncoloured: " .. table.concat(missing, ", ")) end
-print(string.format("QQ GARDEN3 DONE: MomijiGarden - %d pieces (%d wall segments + %d end segments, %d bridges with landings and water steps, %d lanterns, %d rocks), %d meshes; no parts built", made, k * 2, ends, #bridgesZ, nl, nr, meshes))
+print(string.format("QQ GARDEN3 DONE: MomijiGarden - %d pieces (%d wall segments + %d end segments, %d bridges with landings and water steps, %d path slabs, %d lanterns, %d rocks), %d meshes; no parts built", made, k * 2, ends, #bridgesZ, nslab, nl, nr, meshes))
 '''
 lua = lua.replace("@@BB@@", bb).replace("@@COL@@", cols)
 assert "@@" not in lua

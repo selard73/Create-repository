@@ -3686,3 +3686,12 @@ SHANNON (runner 7, Oct 16, job 125 canal), answers and notes:
   JM_Garden_Weathered_Cobbles (ONE MeshPart, Rock + JM_PhotographicRock, 293.1 x 3.4 x 274.6 at (6225.5, 1.89, -56.5), CanQuery false,
   covers x 6079..6372, z -194..81); hiding it client-side removes every black stone (shots_look3c/5, 6). To be retired.
 - Bridge-end landings also face the wrong way (high tread at the walkway, low at the deck: a dip to 0.5 at each deck end).
+Look test 3c -> 3d (cloud, Shannon's answers via runner 7): BRIDGE_LANDING_TURN = 180 (the landings' low tread had been against the
+deck end); "Clear canal, dark floor": a flat Slate bed at BED_Y -1.3 along the whole channel (every row below full Slate; the water
+0.825 in the -4..0 row), the koi's TOPS 0.2 under the surface (KOI_TOP_UNDER, by each model's bbox) - the clearer canal water itself
+needs a canal-zone override in StarterPlayerScripts.JapanWaterAppearance (0.9 / 0.10 within x 6080..6125, z -230..110): the cloud
+needs that script's source for an exact-string patch; "I do not like the pavement" -> the six brown "Walkway" parts at the crossings
+RETIRED and a stepping-stone path of kit slabs laid along each old line from the landing's foot outward (stride 2.3-2.6, jitter,
+tops 0.23-0.35); the "little black stones everywhere" = JM_Garden_Weathered_Cobbles (one 293 x 275 MeshPart) retired; the boat in the
+canal houses' wood colours (BOAT_COL: hull 103,72,48; rails/beams 65,47,33; seams 44,33,28; floor/deck/benches 120,80,50); the walls
+0.1 lower (WALL_DROP) against the "teeth" at the lawn. The outer-end landings are gone with the walkways.
