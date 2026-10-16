@@ -9,11 +9,13 @@ local SS = game:GetService("ServerStorage")
 local KIT = SS:FindFirstChild("JapanGardenKit")
 local J = workspace:FindFirstChild("JapanMap")
 if not (KIT and J) then print("QQ PLANTING2 ABORT: ServerStorage.JapanGardenKit or workspace.JapanMap missing") return end
-local CARD = KIT:FindFirstChild("flower_card")
+local CARD = KIT:FindFirstChild("iris_card") or KIT:FindFirstChild("flower_card")   -- (runner 7: "iris_card" = the card imported WITH its picture, japan_iris_card.fbx)
 if not CARD then print("QQ PLANTING2 ABORT: the kit has no Model 'flower_card' - import tools/japan/garden/out_iris/flower_card.fbx") return end
 local cardMesh = CARD:IsA("MeshPart") and CARD or CARD:FindFirstChildWhichIsA("MeshPart", true)
 if not cardMesh then print("QQ PLANTING2 ABORT: 'flower_card' holds no MeshPart") return end
-if IMAGE == "rbxassetid://0" then print("QQ PLANTING2 ABORT: set IMAGE at the top to the uploaded iris_card.png asset id first") return end
+if IMAGE == "rbxassetid://0" and cardMesh.TextureID ~= "" then IMAGE = cardMesh.TextureID end   -- (the importer uploaded the picture and set this)
+if IMAGE == "rbxassetid://0" then print("QQ PLANTING2 ABORT: no picture - import japan_iris_card.fbx (the card with its picture) or set IMAGE") return end
+print("QQ PLANTING2 picture: " .. IMAGE)
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 local bak = hb:FindFirstChild("IrisReplaced") or Instance.new("Folder"); bak.Name = "IrisReplaced"; bak.Parent = hb
 -- ---------- 1. the irises and their clusters ----------
