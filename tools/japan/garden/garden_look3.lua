@@ -9,7 +9,9 @@
 -- (kit slabs) along each old walkway line from the landings out to the paths beyond, stone steps down into the water
 -- beside each bridge, the waterfall pouring into the south end, koi swimming slow loops along the canal (Shannon's Meshy koi), a Yanagawa
 -- boat moored at the steps and one poled back and forth along the long reach (CanalLife client script; the old "Canal boat" retired), and
--- look test 1's torii, pine, lit lanterns, rocks and stepping slabs. No parts are built. Output "QQ GARDEN3".
+-- look test 1's torii, pine, lit lanterns, rocks and stepping slabs; 7. the floating maple by the north bridge set down on the lawn.
+-- Re-runnable in Edit (the previous MomijiGarden -> HudBackup.MomijiGarden_prev; the bridges' and walkways' places are read back from
+-- HudBackup.MomijiGardenReplaced). Output "QQ GARDEN3".
 local SS = game:GetService("ServerStorage")
 local T = workspace.Terrain
 local KIT = SS:FindFirstChild("JapanGardenKit")
@@ -21,7 +23,7 @@ end
 local KOI = KIT:FindFirstChild("koi_meshy") or KIT:FindFirstChild("koi")
 if not KOI then print("QQ GARDEN3 ABORT: the kit has neither 'koi_meshy' (Shannon's Meshy koi) nor 'koi' (out2/koi.fbx)") return end
 local MESHY_KOI = KOI.Name == "koi_meshy"
-local MESHY_KOI_FACING = CFrame.Angles(0, math.rad(180), 0)   -- the Meshy koi's head points +Z (runner 7's renders); Roblox forward is -Z, so half a turn. If they swim backwards/sideways: 0 or math.rad(90)
+local MESHY_KOI_FACING = CFrame.Angles(0, 0, 0)               -- Shannon (installed look 3): "the koi are swimming backward" with 180 -> 0: the Meshy koi's head is its -Z, CanalLife's lookAt points -Z along the way
 print("QQ GARDEN3 koi: " .. (MESHY_KOI and "Shannon's Meshy koi (kit 'koi_meshy')" or "out2/koi.fbx (no 'koi_meshy' in the kit)"))
 local BB = {
 	["torii"] = {min = Vector3.new(-9.881, 0.0, -0.85), max = Vector3.new(9.881, 16.843, 1.1)},
@@ -124,6 +126,8 @@ local BRIDGE_LANDING_TURN = 180                                             -- r
 local KOI_TOP_UNDER = 0.2                                                   -- the koi's TOP this far under the surface (Shannon: "the koi should be swimming under the water not above it"); "Clear canal, dark floor"
 local BED_Y = -1.3                                                          -- the canal's new flat Slate bed (the wall meshes reach -1.2), burying the jagged rock ridge at -10
 local WALL_DROP = 0.0                                                       -- (the "teeth" at the lawn were the deep joints between the lawn-face blocks: fixed in the mesh, gen_garden3; the coping stays at 2.1)
+local GARDEN_BRIDGE_FROM, GARDEN_BRIDGE_TO = -215, -203                     -- the garden bridge moves 12 north so the waterfall (now on the lawn behind the south end wall) clears it
+local COL_OVERRIDE = {Lantern_Stone = Color3.new(0.40, 0.40, 0.39)}        -- "the lanterns should be a darker gray stone than everything else" (walls 0.56 / 0.66, landings 0.63, slabs 0.66)
 local BOAT_COL = {Boat_Hull = Color3.fromRGB(103, 72, 48), Boat_Rail = Color3.fromRGB(65, 47, 33), Boat_Beam = Color3.fromRGB(65, 47, 33), Boat_Seam = Color3.fromRGB(44, 33, 28),
 	Boat_Floor = Color3.fromRGB(120, 80, 50), Boat_Deck = Color3.fromRGB(120, 80, 50), Boat_Bench = Color3.fromRGB(120, 80, 50)}   -- the canal houses' wood colours ("the color of the boat ... sticks out")
 -- ---------- 1. the canal ----------
@@ -136,7 +140,7 @@ local EAST = banks[2].Position.X - banks[2].Size.X / 2
 local CX = (WEST + EAST) / 2
 local Z1 = math.min(banks[1].Position.Z - banks[1].Size.Z / 2, banks[2].Position.Z - banks[2].Size.Z / 2)
 local Z2 = math.max(banks[1].Position.Z + banks[1].Size.Z / 2, banks[2].Position.Z + banks[2].Size.Z / 2)
-local ZS, ZN = Z1 + 3.5, Z2 + 1.5                                             -- the end walls' water faces (south: where the weir stood; north: at the closure)
+local ZS, ZN = Z1 + 3.5, Z2 - 0.5                                             -- the end walls (south: where the weir stood; north: 0.5 inside the side walls' end, so the corners close - at Z2 + 1.5 a 1.2 slot of water showed at both north corners)
 print(string.format("QQ GARDEN3 canal: water faces x %.1f / %.1f (centre %.1f), z %.1f .. %.1f, water %.1f; end walls at z %.1f / %.1f", WEST, EAST, CX, Z1, Z2, WATER, ZS, ZN))
 local hb = SS:FindFirstChild("HudBackup") or Instance.new("Folder"); hb.Name = "HudBackup"; hb.Parent = SS
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("before Momiji garden look test 3") end)
@@ -189,6 +193,16 @@ for _, d in ipairs(J:GetDescendants()) do
 		end
 	end
 end
+-- re-runs: the footbridges and walkways are already in HudBackup.MomijiGardenReplaced - read their places from there
+for _, d in ipairs(replaced:GetChildren()) do
+	if d:IsA("Model") and d.Name == "Canal footbridge" then
+		local z = d:GetPivot().Z; local dup = false
+		for _, bz in ipairs(bridgesZ) do if math.abs(bz - z) < 2 then dup = true end end
+		if not dup then table.insert(bridgesZ, z) end
+	elseif d:IsA("BasePart") and d.Name == "Walkway" then
+		table.insert(walkways, {pos = d.Position, size = d.Size, right = d.CFrame.RightVector, look = d.CFrame.LookVector})
+	end
+end
 local seen = {}
 for _, d in ipairs(retire) do
 	local up = d.Parent; local inner = false
@@ -197,11 +211,17 @@ for _, d in ipairs(retire) do
 end
 local nret = 0; for _ in pairs(seen) do nret += 1 end
 table.sort(bridgesZ)
+-- the garden bridge (the southernmost) moves north, its path line with it
+for i, bz in ipairs(bridgesZ) do if math.abs(bz - GARDEN_BRIDGE_FROM) < 3 then bridgesZ[i] = GARDEN_BRIDGE_TO end end
+for _, w in ipairs(walkways) do if math.abs(w.pos.Z - GARDEN_BRIDGE_FROM) < 6 then w.pos = Vector3.new(w.pos.X, w.pos.Y, w.pos.Z + (GARDEN_BRIDGE_TO - GARDEN_BRIDGE_FROM)) end end
 print(string.format("QQ GARDEN3 retired %d (banks, black strips, footbridges at z %s, approach steps, the weir, the old canal boat, %d walkway paths, the black-cobble sheet) -> HudBackup.MomijiGardenReplaced", nret,
 	(function() local t = {}; for _, z in ipairs(bridgesZ) do table.insert(t, string.format("%.0f", z)) end; return table.concat(t, " / ") end)(), #walkways))
 -- ---------- 5. the meshes ----------
 local old = J:FindFirstChild("MomijiGarden")
-if old then local n = 1; while hb:FindFirstChild("MomijiGarden_pre_" .. n) do n += 1 end; old.Name = "MomijiGarden_pre_" .. n; old.Parent = hb end
+if old then
+	local prev = hb:FindFirstChild("MomijiGarden_prev"); if prev then prev:Destroy() end      -- (one previous build kept, not a pile of 380-mesh backups)
+	old.Name = "MomijiGarden_prev"; old.Parent = hb; print("QQ GARDEN3 the previous MomijiGarden -> HudBackup.MomijiGarden_prev (the one before it dropped)")
+end
 local G = Instance.new("Folder"); G.Name = "MomijiGarden"; G.Parent = J
 local made, meshes, missing = 0, 0, {}
 local function dress(m)
@@ -211,7 +231,7 @@ local function dress(m)
 			p.Anchored = true; p.Material = Enum.Material.SmoothPlastic; p.CastShadow = true
 			local ckey = key
 			if not MOSS then ckey = (key == "Rock_Moss" and "Rock_Grey") or (key == "Fall_Moss" and "Fall_Rock") or key end
-			if BOAT_COL[key] then p.Color = BOAT_COL[key] elseif COL[ckey] then p.Color = COL[ckey] else table.insert(missing, p.Name) end
+			if BOAT_COL[key] then p.Color = BOAT_COL[key] elseif COL_OVERRIDE[key] then p.Color = COL_OVERRIDE[key] elseif COL[ckey] then p.Color = COL[ckey] else table.insert(missing, p.Name) end
 			p.CanCollide = SOLID[key] == true; p.CanQuery = p.CanCollide; p.CanTouch = false
 			if p:IsA("MeshPart") and (key == "Bridge_Deck" or key == "Slab_Stone" or key == "Wall_Coping" or key == "Wall_Stone" or key == "Steps_Stone" or key == "Steps_Landing" or key == "Skiff_Wood" or key == "Boat_Hull" or key == "Boat_Floor") then
 				pcall(function() p.CollisionFidelity = Enum.CollisionFidelity.PreciseConvexDecomposition end)
@@ -305,7 +325,10 @@ for wi, w in ipairs(walkways) do
 end
 print(string.format("QQ GARDEN3 stepping-stone paths: %d slabs along %d old walkway lines (tops 0.23-0.35 above the lawn, stride 2.3-2.6); bridge landings turned %d", nslab, #walkways, BRIDGE_LANDING_TURN))
 -- the waterfall feeding the south end (its rocks over the end wall, the sheet landing in the water)
-place("waterfall", Vector3.new(CX, 1.0, ZS + 1.5), 0, nil, "Waterfall")
+-- (the piece pours toward +z: its sheet runs from z -0.4 (top) to +1.0 (landing) with the foam at +1.2, its rocks behind at z -1..-7.5.
+--  Origin 0.1 behind the end wall's face (ZS + 0.3 - 0.4): the sheet lands in the water just in front of the wall, the rocks pile on the
+--  wall's end and the lawn behind - it was INSIDE the garden bridge before, "MAJOR issues")
+place("waterfall", Vector3.new(CX, 1.0, ZS - 0.1), 0, nil, "Waterfall")
 -- look test 1's approved pieces, by the garden bridge (the southernmost crossing)
 local BZ = bridgesZ[1]
 place("torii", Vector3.new(CX - 43, 0, BZ), 90, nil, "Torii")
@@ -327,7 +350,7 @@ for zr = Z1 + 14, Z2 - 10, 37 do
 		place("rocks", Vector3.new(x, 0.1, zr + rnd:NextNumber(-3, 3)), rnd:NextInteger(0, 359), "Rock" .. rnd:NextInteger(1, 3), "WallRock", rnd:NextNumber(0.8, 1.3), RR); nr += 1
 	end
 end
-for _, d in ipairs({{-11, -2}, {11.5, -1}, {-13.5, 3}}) do place("rocks", Vector3.new(CX + d[1], 0.15, ZS + d[2]), rnd:NextInteger(0, 359), "Rock" .. rnd:NextInteger(1, 3), "FallsRock", rnd:NextNumber(1.0, 1.4), RR); nr += 1 end
+for _, d in ipairs({{-11, -5}, {11.5, -4.5}, {-13.5, -8}}) do place("rocks", Vector3.new(CX + d[1], 0.15, ZS + d[2]), rnd:NextInteger(0, 359), "Rock" .. rnd:NextInteger(1, 3), "FallsRock", rnd:NextNumber(1.0, 1.4), RR); nr += 1 end   -- on the lawn behind the end wall, with the falls
 -- ---------- 6. life on the water: koi swimming slow loops, a skiff moored at the steps and one gliding along the long reach ----------
 -- (each Model gets Life* attributes; the CanalLife client script moves it round an oval: z = Mid + Half sin a, x = X + Amp cos a, nose along the way)
 local LF = Instance.new("Folder"); LF.Name = "CanalLife"; LF.Parent = G
@@ -337,15 +360,18 @@ do
 	for _, bz in ipairs(bridgesZ) do table.insert(marks, bz) end
 	table.insert(marks, Z2 - 6)
 	for i = 1, #marks - 1 do
-		local a, b = marks[i] + (i > 1 and 10 or 0), marks[i + 1] - (i < #marks - 1 and 10 or 0)
+		local a, b = marks[i] + (i > 1 and 14 or 0), marks[i + 1] - (i < #marks - 1 and 14 or 0)
 		if b - a > 24 then table.insert(reaches, {a, b}) end
 	end
 	table.sort(reaches, function(p, q) return (p[2] - p[1]) > (q[2] - q[1]) end)
 end
 local function life(m, x, mid, half, amp, y, speed, bob)
+	-- a meander, not a line: x = X + A1 sin(a + p1) + A2 sin(2.7a + p2) (within CX +- 8), z = Mid + Half sin(0.6a + p3), a = phase + t speed;
+	-- the nose follows the way with gentle turns (CanalLife eases the heading)
 	m:SetAttribute("LifeX", x); m:SetAttribute("LifeMid", mid); m:SetAttribute("LifeHalf", half); m:SetAttribute("LifeAmp", amp)
+	m:SetAttribute("LifeA2", amp * 0.5); m:SetAttribute("LifeP1", rnd:NextNumber(0, 6.28)); m:SetAttribute("LifeP2", rnd:NextNumber(0, 6.28)); m:SetAttribute("LifeP3", rnd:NextNumber(0, 6.28))
 	m:SetAttribute("LifeY", y); m:SetAttribute("LifeSpeed", speed); m:SetAttribute("LifePhase", rnd:NextNumber(0, 6.28)); m:SetAttribute("LifeBob", bob)
-	m:PivotTo(CFrame.new(x + amp, y, mid))
+	m:PivotTo(CFrame.new(x, y, mid))
 end
 local nkoi = 0
 for i = 1, 5 do
@@ -369,7 +395,7 @@ for i = 1, 5 do
 	end
 	if m then
 		local _, size = m:GetBoundingBox()
-		life(m, CX + rnd:NextNumber(-4, 4), mid, half, rnd:NextNumber(2.5, 5), WATER - KOI_TOP_UNDER - size.Y / 2, (i % 2 == 0 and 1 or -1) * rnd:NextNumber(0.05, 0.09), 0.04); nkoi += 1   -- its top KOI_TOP_UNDER under the surface
+		life(m, CX + rnd:NextNumber(-2, 2), mid, half, rnd:NextNumber(3.5, 4.0), WATER - KOI_TOP_UNDER - size.Y / 2, (i % 2 == 0 and 1 or -1) * rnd:NextNumber(0.06, 0.1), 0.04); nkoi += 1   -- its top KOI_TOP_UNDER under the surface; x within CX +- 8
 	end
 end
 -- the boats (runner 7's "boat" from her Yanagawa photo: 27 long with the bow horns, 7.3 wide, the bow at +Z; its origin on the flat
@@ -385,38 +411,61 @@ local function boat(label, at, bowYaw)
 	return m
 end
 -- moored along the west wall just past the garden bridge's water steps, bow to the north, a touch off the wall
-boat("BoatMoored", Vector3.new(WEST + 5.0, BOAT_Y, stepsAt[1] + 17), math.pi + 0.05)
-do
-	-- poled back and forth along the longest reach with a FIXED heading (a punt goes stern-first on the way back): no turning in a 25-wide canal
-	local r = reaches[1] or {Z1 + 30, Z2 - 30}
-	local half = math.max(6, (r[2] - r[1]) / 2 - 16)
-	local m = boat("BoatPoled", Vector3.new(CX + 2, BOAT_Y, (r[1] + r[2]) / 2), math.pi)
-	if m then life(m, CX + 2, (r[1] + r[2]) / 2, half, 0.6, BOAT_Y, 0.035, 0.03); m:SetAttribute("LifeHeading", math.pi) end
-end
+local BOAT_Z = stepsAt[1] + 19                                              -- ("only one boat is needed in the waterway, not 2": the moored one stays, clear of the garden bridge's water steps)
+boat("BoatMoored", Vector3.new(WEST + 5.0, BOAT_Y, BOAT_Z), math.pi + 0.05)
 local lifeScript = Instance.new("Script"); lifeScript.Name = "CanalLifeScript"; lifeScript.RunContext = Enum.RunContext.Client
 lifeScript.Source = [==[
--- the koi and the gliding skiff move round slow ovals along the canal (Life* attributes on each Model); client-side, synced by server time
+-- the koi meander along the canal (Life* attributes on each Model): x = X + A1 sin(a + p1) + A2 sin(2.7 a + p2), z = Mid + Half sin(0.6 a + p3),
+-- a = phase + t speed; the nose follows the way, the heading eased so the turns are gentle; client-side, synced by server time
 local RunService = game:GetService("RunService")
 local folder = script.Parent
-RunService.Heartbeat:Connect(function()
+local yaws = {}
+RunService.Heartbeat:Connect(function(dt)
 	local t = workspace:GetServerTimeNow()
 	for _, m in ipairs(folder:GetChildren()) do
 		if m:IsA("Model") and m:GetAttribute("LifeHalf") then
-			local x0, mid, half, amp = m:GetAttribute("LifeX"), m:GetAttribute("LifeMid"), m:GetAttribute("LifeHalf"), m:GetAttribute("LifeAmp")
+			local x0, mid, half, a1 = m:GetAttribute("LifeX"), m:GetAttribute("LifeMid"), m:GetAttribute("LifeHalf"), m:GetAttribute("LifeAmp")
+			local a2, p1, p2, p3 = m:GetAttribute("LifeA2") or 0, m:GetAttribute("LifeP1") or 0, m:GetAttribute("LifeP2") or 0, m:GetAttribute("LifeP3") or 0
 			local sp, ph = m:GetAttribute("LifeSpeed"), m:GetAttribute("LifePhase")
 			local a = ph + t * sp
 			local bob = math.sin(t * 1.3 + ph * 3) * m:GetAttribute("LifeBob")
-			local pos = Vector3.new(x0 + amp * math.cos(a), m:GetAttribute("LifeY") + bob, mid + half * math.sin(a))
-			local vel = Vector3.new(-amp * math.sin(a), 0, half * math.cos(a)) * sp
+			local x = x0 + a1 * math.sin(a + p1) + a2 * math.sin(2.7 * a + p2)
+			local z = mid + half * math.sin(0.6 * a + p3)
+			local dx = (a1 * math.cos(a + p1) + 2.7 * a2 * math.cos(2.7 * a + p2)) * sp
+			local dz = 0.6 * half * math.cos(0.6 * a + p3) * sp
+			local pos = Vector3.new(x, m:GetAttribute("LifeY") + bob, z)
 			local heading = m:GetAttribute("LifeHeading")
-			if heading then m:PivotTo(CFrame.new(pos) * CFrame.Angles(0, heading, 0) * CFrame.Angles(0.5 * bob, 0, 0.4 * bob))   -- a fixed heading, a slow rock
-			elseif vel.Magnitude > 1e-4 then m:PivotTo(CFrame.lookAt(pos, pos + vel.Unit) * CFrame.Angles(0, 0, 0.06 * bob)) end
+			if heading then
+				m:PivotTo(CFrame.new(pos) * CFrame.Angles(0, heading, 0) * CFrame.Angles(0.5 * bob, 0, 0.4 * bob))   -- a fixed heading, a slow rock
+			else
+				local want = yaws[m]
+				if dx * dx + dz * dz > 1e-6 then want = math.atan2(-dx, -dz) end      -- the yaw whose -Z points along (dx, dz)
+				if want then
+					local cur = yaws[m] or want
+					local diff = (want - cur + math.pi) % (2 * math.pi) - math.pi
+					cur = cur + diff * math.min(1, dt * 1.5)                       -- eased: gentle turns
+					yaws[m] = cur
+					m:PivotTo(CFrame.new(pos) * CFrame.Angles(0, cur, 0) * CFrame.Angles(0, 0, 0.06 * bob))
+				end
+			end
 		end
 	end
 end)
 ]==]
 lifeScript.Parent = LF
-print(string.format("QQ GARDEN3 life: %d koi (%s, tops %.2f under the surface) in %d reaches, a boat moored at z %.0f and one poled along the longest reach, all Atomic; CanalLife client script; moss %s, boats %s in the houses' wood colours", nkoi, MESHY_KOI and "Meshy" or "koi.fbx", KOI_TOP_UNDER, #reaches, stepsAt[1] + 17, MOSS and "on" or "off (grey)", BOAT_WOOD and "Wood" or "SmoothPlastic"))
+print(string.format("QQ GARDEN3 life: %d koi (%s, tops %.2f under the surface, meandering) in %d reaches, ONE boat moored at z %.0f, all Atomic; CanalLife client script; moss %s, boat %s in the houses' wood colours", nkoi, MESHY_KOI and "Meshy" or "koi.fbx", KOI_TOP_UNDER, #reaches, BOAT_Z, MOSS and "on" or "off (grey)", BOAT_WOOD and "Wood" or "SmoothPlastic"))
+-- ---------- 7. the floating maple by the north bridge (east side): it stood on the old walkway at z 80, 1.9 above the lawn ----------
+local lowered = 0
+local groves = J:FindFirstChild("Blender maple and blossom groves")
+if groves then
+	for _, d in ipairs(groves:GetChildren()) do
+		if d:IsA("BasePart") and (d.Name == "Solid branching trunk" or d.Name == "Vermilion maple - individual Blender leaves") and d:GetAttribute("GardenOldCF") == nil then
+			local want = d.Name == "Solid branching trunk" and Vector3.new(6125.1, 5.22, 83.0) or Vector3.new(6125.0, 9.02, 83.1)
+			if (d.Position - want).Magnitude < 1.0 then d:SetAttribute("GardenOldCF", d.CFrame); d.CFrame = d.CFrame - Vector3.new(0, 1.92, 0); lowered += 1 end
+		end
+	end
+end
+print(string.format("QQ GARDEN3 the floating maple at (6125, 83) lowered 1.92 to the lawn: %d parts (trunk + leaves; 0 on a re-run)", lowered))
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after Momiji garden look test 3") end)
 if #missing > 0 then print("QQ GARDEN3 missing or uncoloured: " .. table.concat(missing, ", ")) end
 print(string.format("QQ GARDEN3 DONE: MomijiGarden - %d pieces (%d wall segments + %d end segments, %d bridges with landings and water steps, %d path slabs, %d lanterns, %d rocks), %d meshes; no parts built", made, k * 2, ends, #bridgesZ, nslab, nl, nr, meshes))
