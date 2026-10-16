@@ -3575,3 +3575,11 @@ abort: water to -0.6, bed -3, 10 retired, walkways levelled, 3 taiko bridges (bo
 the edge, rocks/reeds and the pond built; the koi swam BACKWARDS at identity (head +Z). SHANNON, watching live: "that does not look
 promising; that moss on those rocks does not look like moss, those flowers are misaligned and look plastic and the water does not look
 like water". Pictures shots_look2/. HOLD further garden_look2 runs until a new direction is agreed with her.
+NEW DIRECTION job 125 (runner 7, Oct 16): Shannon: "actually, I like the look as a canal, how can we keep it as a canal?" Her answers:
+the south end - "The waterfall feeds it"; koi - "Yes, koi in the canal". Brief (also sent by message): a proper Japanese town canal
+(Kyoto Shirakawa / Tsuwano). Keep the straight channel, its width and the water at 1.3. Stone-block canal WALL meshes with a coping
+edge replace the flat concrete "Canal stone bank" slabs; the approved waterfall pours into the south end in place of the weir box
+(clear the terrain rock cells in the end pool); her Meshy koi (kit koi_meshy, facing 180) swim slowly along the canal; stone steps down
+to the water by each bridge; the taiko bridges seated on levelled walkways, no old white approach steps; JP_Canal_Rocks_84/_118
+retired; torii, stone lanterns, pine and kit rocks/slabs where they fit. NO moss caps, reeds, lilies, pond rim or orange maples. Grass
+unchanged. Meshes only, no Roblox-part builds. Runner 7 previews the look test in play with pictures before any install.
