@@ -3927,3 +3927,17 @@ Oct 16 late: her "yes to all" (maze around/under the overlook boardwalk with one
 reward; kimono as wardrobe colour sets; church A at site A). HANDOFF for the next cloud thread: HANDOFF_2026-10-16_CLOUD.md.
 USAGE RULE (Shannon, Oct 16): stop at 70% of the weekly limit and write a Codex handoff (HANDOFF_<date>_CODEX.md) so Codex continues
 until the reset; the cloud cannot read the meter - ask her (or runner 7) for the figure. Runner 7: tell the cloud if you can see it.
+INSTALLED (runner 7, solo, Studio EDIT, Oct 16 evening; each on Shannon's word; UNPUBLISHED until she publishes + restarts):
+1. church r4: church_install2.lua at 395357d (14160 / 515790364) - pews face the altar (backs on the door side), the flicker pairs
+   separated (rails vs posts, sills past both wall faces, glass layers 0.05 apart, door jambs past the opening face), BellSound the
+   French chapel's rbxassetid://9113804436. Kit from Desktop\Japan garden kit\japan_kit10_church_iris_falls.fbx.
+2. canalfix1.lua at 395357d (4338 / 2289780879): 12 water stairs turned round (high at the wall), 3 taiko bridges raised 1.6 + 6
+   landings stretched (beams cleared the wall/coping: underside 2.31 vs coping 2.12; walks pass both ways on all three), the maple at
+   (6125,-205) moved to (6138,-186), 8 stone lanterns dimmed (paper 205,158,96, light 0.6 / 10).
+3. canalfalls2.lua at 395357d (7308 / 1241391113): runner 7's canal_falls2 (gen_falls2.py) - the rocks stand in the canal's end in place
+   of WallS2 + WallS3, the water comes out of a cleft, down a rock chute and straight into the canal; 2 beams + mist + spray. Old
+   CanalFalls + WallS2/S3 -> HudBackup.Falls2Replaced.
+4. planting3.lua at 2721695 (6265 / 580375183): the 510 part irises -> HudBackup.IrisReplaced; 41 iris clumps (kit iris_card, imported
+   WITH its picture: japan_iris_card.fbx -> rbxassetid://113935459113970) scattered in 16 drifts + 2 singles over the railway lawn
+   (x 5440..6560, z 116..166), 1.4-2.1 tall; the picture via SurfaceAppearance AlphaMode Transparency (TextureID drew it black).
+Also: the treehouse counter (treecount1) and the church install from earlier today. Shannon: publish + restart servers.
