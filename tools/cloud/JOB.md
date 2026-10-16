@@ -3430,3 +3430,14 @@ Same file, tools/bottle/install_bottle1.lua (57932 bytes, compiles):
  - the clearance check at her spot is 3 studs and reads "a part's box reaches the spot (check by eye)" instead of NOT clear.
 Job 118 round 5b: Shannon's splash pick, rbxassetid://129669875728815 ("Splash.mp3", Teriyaki's Games group, IsPublicDomain true) is
 the TossSound default, at normal speed, volume 0.6. If it does not play (audio privacy), the attribute can be set to another id.
+
+Result job 118 ROUND 5 PREVIEW (runner 7, play test, nothing kept): f126f3a (57940, adler32 2055725830) then c172f87 (57920, adler32
+4160347013, the splash TossSound): "QQ BOTTLE stand (her spot): (473.3, -12.0, -970.9) ... facing yaw 99; 3 studs clear; nearest water
+244 studs", "QQ BOTTLE toss view: the camera at (283, -42, -732) on the shore, the bottle lands at (283, -53.2, -768) on open water -
+clear sight lines", "QQ BOTTLE DONE: ... BottleClient 17706 ...". TOSS: mid-arc the 2.2x bottle with sparkles flies out over open sea
+against the sky, the lighthouse path and tide pools to the right (r5_toss_mid_arc). The landing moment itself could not be caught live
+(screen_capture timed out twice at ~3.5 s); a raycast camera -> landing hits terrain Water at (283.0, -52.9, -767.7) - nothing between -
+and a 2.2x bottle placed at the landing spot shows plainly on open water from the toss camera (r5_landing_view_open_water). SOUND
+rbxassetid://129669875728815: IsLoaded, TimeLength 1.78 s, peak loudness 238 on the client. SIGN: posts behind the board, both lines clear
+from the front (r5_sign_front). Wording: "A reply to your bottle is waiting at the bottle kiosk by the boat club!", "Off it goes! Come back
+to the kiosk tomorrow for a reply." (at 4.2 s, as it lands).
