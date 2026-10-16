@@ -3391,3 +3391,8 @@ Same file, tools/bottle/install_bottle1.lua (55361 bytes, compiles):
  - clear(): the floor the kiosk stands on no longer counts as an obstacle (round 3 flagged the courtyard cobblestone under it).
  Runner 7 also reported (0163d94): the treehouse did NOT reset live for her after the last publish; a forced Studio re-run took 12 +
  done to 0 correctly. Open: her F9 "TreehouseReset:" lines / an old server / another account. ResetRound is 3 in Edit.
+Job 117 r2 (cloud thread, for the live reset that did not happen): TreehouseReset now prints on every listed join - "joined - listed,
+round N; waiting for the save", then either the "N pieces taken back" line, "round N was already done on this save", or "the save
+never loaded" - so her F9 Server log says which. Re-run tools/treehouse/install_treehouse_reset1.lua in Edit (it replaces the
+script and keeps ResetUserIds / ResetRound 3). Likely cause to rule out first: after a publish, an already-running server keeps the
+OLD place version (no TreehouseReset) until it restarts - "Restart servers for updates" on the Creator Dashboard, or a fresh server.

@@ -17,13 +17,14 @@ local function listed(p)
 end
 local function run(p)
 	if not listed(p) then return end
+	print(string.format("TreehouseReset: %s (%d) joined - listed, round %s; waiting for the save", p.Name, p.UserId, tostring(F:GetAttribute("ResetRound"))))   -- (round 2: F9 says what happened)
 	local t0 = os.clock()
 	while p.Parent and p:GetAttribute("SaveLoaded") ~= true and os.clock() - t0 < 120 do task.wait(0.5) end
-	if not p.Parent or p:GetAttribute("SaveLoaded") ~= true then return end
+	if not p.Parent or p:GetAttribute("SaveLoaded") ~= true then print("TreehouseReset: " .. p.Name .. " - the save never loaded; nothing done") return end
 	task.wait(2)                                                                -- the save's items are on the player by now
 	local round = math.max(1, math.floor(tonumber(F:GetAttribute("ResetRound")) or 1))
 	local flag = "treereset_r" .. round
-	if (tonumber(p:GetAttribute("Item_" .. flag)) or 0) >= 1 then return end
+	if (tonumber(p:GetAttribute("Item_" .. flag)) or 0) >= 1 then print(string.format("TreehouseReset: %s - round %d was already done on this save; bump ResetRound to reset again", p.Name, round)) return end
 	local pieces, done = {}, 0
 	for name, v in pairs(p:GetAttributes()) do
 		local id = name:match("^Item_(tree_.+)$")
