@@ -112,19 +112,19 @@ def build_shell():
         for wy in WIN_Y:
             box(pl, x0, x1, wy - WIN_W / 2, wy + WIN_W / 2, PLINTH, WIN_SILL)    # under the sill
             prism_x(pl, header_outline(wy, WIN_W, WIN_SPRING, EAVE, 0.0), x0, x1)   # the arched header
-            box(st, x0 - 0.1 * sx if sx > 0 else x0, x1 + 0.1 if sx > 0 else x1 + 0.0, wy - WIN_W / 2 - 0.15, wy + WIN_W / 2 + 0.15, WIN_SILL - 0.18, WIN_SILL + 0.02)   # a stone sill
+            box(st, x0 - 0.1, x1 + 0.1, wy - WIN_W / 2 - 0.15, wy + WIN_W / 2 + 0.15, WIN_SILL - 0.18, WIN_SILL + 0.04)   # a stone sill (r4: past both wall faces - flush faces flickered)
             # the glass: a blue field with a gold border and a red centre, in the wall's middle plane, 0.06 thick
             xm = sx * (hw - T / 2)
-            prism_x(gg, arch_outline(wy, WIN_W - 0.1, WIN_SILL + 0.05, WIN_SPRING), xm - 0.03, xm + 0.03)
-            prism_x(gb, arch_outline(wy, WIN_W - 0.5, WIN_SILL + 0.25, WIN_SPRING - 0.2), xm - 0.04, xm + 0.04)
-            box(gr, xm - 0.05, xm + 0.05, wy - 0.22, wy + 0.22, WIN_SILL + 1.2, WIN_SILL + 1.9)
-            box(tb, xm - 0.07, xm + 0.07, wy - 0.05, wy + 0.05, WIN_SILL, WIN_SPRING + WIN_W / 2)        # the mullion
-            box(tb, xm - 0.07, xm + 0.07, wy - WIN_W / 2, wy + WIN_W / 2, WIN_SILL + 1.9, WIN_SILL + 2.0)  # the transom
+            prism_x(gg, arch_outline(wy, WIN_W - 0.1, WIN_SILL + 0.06, WIN_SPRING), xm - 0.03, xm + 0.03)
+            prism_x(gb, arch_outline(wy, WIN_W - 0.5, WIN_SILL + 0.25, WIN_SPRING - 0.2), xm - 0.08, xm + 0.08)
+            box(gr, xm - 0.13, xm + 0.13, wy - 0.22, wy + 0.22, WIN_SILL + 1.2, WIN_SILL + 1.88)
+            box(tb, xm - 0.18, xm + 0.18, wy - 0.05, wy + 0.05, WIN_SILL + 0.06, WIN_SPRING + WIN_W / 2 - 0.08)        # the mullion
+            box(tb, xm - 0.18, xm + 0.18, wy - WIN_W / 2 + 0.06, wy + WIN_W / 2 - 0.06, WIN_SILL + 1.9, WIN_SILL + 2.0)  # the transom
         # timber framing on the outside face: corner posts, posts between bays, two rails
         for py in [-hl + 0.2, hl - 0.2] + [wy + s * (WIN_W / 2 + 0.35) for wy in WIN_Y for s in (-1, 1)]:
             box(tb, min(xo, xo + sx * 0.22), max(xo, xo + sx * 0.22), py - 0.17, py + 0.17, PLINTH, EAVE + 0.1)
         for z in (PLINTH + 1.3, EAVE - 0.5):
-            box(tb, min(xo, xo + sx * 0.2), max(xo, xo + sx * 0.2), -hl, hl, z - 0.14, z + 0.14)
+            box(tb, min(xo, xo + sx * 0.12), max(xo, xo + sx * 0.12), -hl, hl, z - 0.14, z + 0.14)
     # END WALLS (y = +-hl): gables up to the ridge; the front has the door, the back is plain
     for sy in (-1, 1):
         yo, yi = sy * hl, sy * (hl - T)
@@ -145,7 +145,7 @@ def build_shell():
             for gx in (-1.2, -0.6, 0.6, 1.2):                                   # plank grooves on each leaf (dark strips)
                 leaf = dr if gx < 0 else B("Church_Door_R")
                 box(B("Church_Door_L_Trim") if gx < 0 else B("Church_Door_R_Trim"), gx - 0.02, gx + 0.02, yo + 0.22, yo + 0.26, FLOOR + 0.1, dspring + r * math.sqrt(max(0.0, 1 - (gx / r) ** 2)) - 0.1)
-            box(tb, -dw / 2 - 0.2, -dw / 2, yo - 0.05, yo + 0.5, FLOOR, dspring); box(tb, dw / 2, dw / 2 + 0.2, yo - 0.05, yo + 0.5, FLOOR, dspring)
+            box(tb, -dw / 2 - 0.2, -dw / 2 + 0.06, yo - 0.05, yo + 0.66, FLOOR, dspring); box(tb, dw / 2 - 0.06, dw / 2 + 0.2, yo - 0.05, yo + 0.66, FLOOR, dspring)   # (r4) past the opening face
             # the rose window: a round opening above the door - glass disc with a gold rim and a red centre, and a timber cross
             cz = EAVE + 1.6
             ring = [(0.9 * math.cos(2 * math.pi * i / 16), cz + 0.9 * math.sin(2 * math.pi * i / 16)) for i in range(16)]
@@ -162,9 +162,9 @@ def build_shell():
         for px in (-hw + 0.2, hw - 0.2):
             box(tb, px - 0.17, px + 0.17, min(yo, yo + sy * 0.22), max(yo, yo + sy * 0.22), PLINTH, EAVE + 0.1)
         if sy < 0:                                                            # (r2) the front rail stops at the door jambs - it crossed the doorway at chest height
-            for (ra, rb_) in ((-hw, -3.4 / 2 - 0.2), (3.4 / 2 + 0.2, hw)): box(tb, ra, rb_, min(yo, yo + sy * 0.2), max(yo, yo + sy * 0.2), PLINTH + 1.3 - 0.14, PLINTH + 1.3 + 0.14)
+            for (ra, rb_) in ((-hw, -3.4 / 2 - 0.2), (3.4 / 2 + 0.2, hw)): box(tb, ra, rb_, min(yo, yo + sy * 0.12), max(yo, yo + sy * 0.12), PLINTH + 1.3 - 0.14, PLINTH + 1.3 + 0.14)
         else:
-            box(tb, -hw, hw, min(yo, yo + sy * 0.2), max(yo, yo + sy * 0.2), PLINTH + 1.3 - 0.14, PLINTH + 1.3 + 0.14)
+            box(tb, -hw, hw, min(yo, yo + sy * 0.12), max(yo, yo + sy * 0.12), PLINTH + 1.3 - 0.14, PLINTH + 1.3 + 0.14)
     # THE ROOF: two slopes from the ridge to the eaves, overhanging 1.3 at the sides and 1.0 at the ends, the lower part curving up
     # (the Japanese eave): built as 8 bands along the slope, each a thin slab; tile courses as small steps on each band
     ov_side, ov_end = 1.3, 1.0
@@ -264,11 +264,11 @@ def build_interior():
         cxp = col * (1.2 + 2.6)
         for row in range(5):
             y = -hl + 4.0 + row * 3.1
-            box(pw, cxp - 2.6, cxp + 2.6, y - 0.25, y + 0.25, FLOOR, FLOOR + 0.42 * PZ)        # the bench front under the seat
+            box(pw, cxp - 2.5, cxp + 2.5, y + 0.05, y + 0.45, FLOOR, FLOOR + 0.42 * PZ - 0.01)  # the support under the seat
             box(pw, cxp - 2.6, cxp + 2.6, y - 0.2, y + 0.75, FLOOR + 0.42 * PZ, FLOOR + 0.5 * PZ)   # the seat
-            box(pw, cxp - 2.6, cxp + 2.6, y + 0.72, y + 0.84, FLOOR + 0.5 * PZ, FLOOR + 1.2 * PZ)   # the back
+            box(pw, cxp - 2.6, cxp + 2.6, y - 0.32, y - 0.2, FLOOR + 0.42 * PZ, FLOOR + 1.2 * PZ)   # the back - on the door side (r4)
             for ex in (cxp - 2.6, cxp + 2.5):
-                box(pw, ex, ex + 0.1, y - 0.25, y + 0.86, FLOOR, FLOOR + 0.62 * PZ)             # the ends
+                box(pw, ex - 0.05, ex + 0.15, y - 0.36, y + 0.8, FLOOR, FLOOR + 0.62 * PZ)       # the ends (r4: proud of the seat's ends)
             seats.append({"x": cxp * S * (-1 if MIRROR else 1), "y": (FLOOR + 0.5 * PZ) * S, "z": -(y + 0.28) * S, "w": 5.0 * S})   # Roblox axes (z = -y), scaled: the seat top
     # the altar on the chancel: a stone table with a red runner, a standing cross, two candles
     ay = hl - 3.2

@@ -1,6 +1,6 @@
 -- church_install2.lua (runner 7, Oct 16 2026, solo): the Goto-islands church, built twice the first size (Shannon: "that church is too
 -- small, the windows are too low and the door comes up to my knees, the roof must be much taller"), on site A behind the canal falls.
--- Kit Models (ServerStorage.JapanGardenKit) "church_shell" and "church_interior" from tools/japan/church/out3 (gen_church.py r3: S = 2,
+-- Kit Models (ServerStorage.JapanGardenKit) "church_shell" and "church_interior" from tools/japan/church/out4 (r4: pews facing the altar, flicker fixes; earlier out3 (gen_church.py r3: S = 2,
 -- mirrored so the tower stands on the east front corner and Fuji shows from the garden bridge, the arches cut properly, the floor above the plinth).
 -- * placed by bounding box: the import may turn a model half round, so each one's turn is DETECTED (the shell's door / the interior's
 --   altar against its box centre) and undone; the door faces +z (north, toward the canal and the garden bridge)
@@ -50,7 +50,7 @@ local old = J:FindFirstChild("Church")
 if old then local prev = hb:FindFirstChild("Church_prev"); if prev then prev:Destroy() end; old.Name = "Church_prev"; old.Parent = hb end
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("before church2") end)
 local G = Instance.new("Folder"); G.Name = "Church"
-G:SetAttribute("BellSound", "")   -- a toll sound id (rbxassetid://...) when Shannon picks one
+G:SetAttribute("BellSound", "rbxassetid://9113804436")   -- the French chapel's bell (Shannon: "use the same bell sound as in the french church bell")
 local fidelityFailed, missing = 0, {}
 local function keyOf(p) return (p.Name:gsub("%.%d+$", "")) end
 local function find(m, key) for _, p in ipairs(m:GetDescendants()) do if p:IsA("BasePart") and keyOf(p) == key then return p end end end

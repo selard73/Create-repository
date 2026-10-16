@@ -1,0 +1,9 @@
+church_shell.fbx: 15 meshes, 3916 tris; Church_Plaster 600, Church_Timber 816, Church_Stone 132, Church_Roof 192, Church_Ridge 624, Church_Door_L 32, Church_Door_R 32, Church_Door_L_Trim 24, Church_Door_R_Trim 24, Church_Glass_Blue 348, Church_Glass_Gold 348, Church_Glass_Red 108, Church_Cross 24, Church_Bell 372, Church_Louvre 240
+church_interior.fbx: 8 meshes, 1092 tris; Church_Floor 204, Church_Pew 660, Church_Altar 12, Church_Cloth 12, Church_Candle 48, Church_Flame 80, Church_Rope 40, Church_Cross_Altar 36
+BBOX {"church_shell": {"min": [-18.894, 0.0, -32.6], "max": [18.894, 50.2, 34.8]}, "church_interior": {"min": [-14.8, 1.86, -28.8], "max": [14.8, 29.8, 28.8]}}
+FBX_DONE
+shot prev_church_front_quarter.png
+shot prev_church_front.png
+shot prev_church_side.png
+shot prev_church_interior.png
+RENDER_DONE
