@@ -250,4 +250,5 @@ promptText = function()                                                    -- (r
 	elseif st.sentDay then prompt.ActionText = "Your bottle is at sea"
 	else prompt.ActionText = "Write a message" end
 end
+promptText()                                                               -- (a state that arrived before this line)
 ev:FireServer("state")

@@ -1,7 +1,7 @@
 -- install_bottle1.lua (Studio EDIT; re-runnable; its body also runs as a play-test PREVIEW - discarded on stop). Job 118: the MESSAGE IN
 -- A BOTTLE game on the main Porto beach. Scans the beach for open sand and the waterline, puts the stand 10..18 studs from the water
 -- (its back to the sea), picks up to 10 wash-up spots, builds workspace.Bottles + ReplicatedStorage.BottleTemplate. Sources: BottleText
--- (11018), BottleServer (10292), BottleClient (18668) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
+-- (11018), BottleServer (10292), BottleClient (18786) chars. No DataStore of ours (the save is touched only through RS.AwardItems /
 -- AwardAcorns), no publish. Output "QQ BOTTLE".
 local HttpService = game:GetService("HttpService")
 local RS = game:GetService("ReplicatedStorage")
@@ -565,6 +565,7 @@ promptText = function()                                                    -- (r
 	elseif st.sentDay then prompt.ActionText = "Your bottle is at sea"
 	else prompt.ActionText = "Write a message" end
 end
+promptText()                                                               -- (a state that arrived before this line)
 ev:FireServer("state")
 ]===]}
 for n, s in pairs(SRC) do
