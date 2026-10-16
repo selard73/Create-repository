@@ -3494,3 +3494,13 @@ NEW REQUEST (Shannon, Oct 16): rebuild Japan in a more realistic style, OUR OWN 
 she took in another Roblox game, combined with what we already have ("we will combine this with some of what we already have in our
 current Japan map"); garden first, then the town street. Brief, her quotes, the read of the pictures and a survey of JapanMap:
 tools/japan/reference_2026-10-16/BRIEF.md; pictures ref_01..09.webp there.
+## Job 125: the Japan restyle (design; her choices first) - cloud thread
+Shannon (Oct 16, via runner 7, brief tools/japan/reference_2026-10-16/BRIEF.md + ref_01..09): restyle Japan more realistically, OUR OWN
+build styled after nine screenshots of another game, combined with what we have; "Both, garden first". The plan for her to choose from:
+tools/japan/PLAN_japan_restyle_2026-10-16.md - KEEP (train, palace, Fuji/volcano, lake/horizon, balloon/taxi/gate, shop interiors,
+squirrels), UPGRADE U1-U9 (Japan-only soft light via JapanAtmosphere; PBR ground variants; grass/hydrangea clump meshes; the canal's
+taiko bridge; layered autumn maples + a black pine; then timber/plaster/roof tiles, paper-lantern strings, market tubs/crates, temple
+details), NEW N1 the Momiji Garden around the existing canal + bridge (~6100, -215) and N2 Lantern Street machiya fronts / torii /
+stairs / planters. First step after her picks: a 40 x 40 LOOK TEST near the bridge (light + materials + grass + one lantern + one
+maple), previewed with pictures beside ref_01. Her questions: which items; the garden's site; grass as Japan-only meshes vs place-wide
+terrain decoration; Meshy hero props (prompts on request). Phone budget: part count reported before/after each step (today 20,422).
