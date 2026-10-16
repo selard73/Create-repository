@@ -61,6 +61,8 @@ local SOLID = {Bridge_Deck = true, Bridge_Red = true, Bridge_Stone = true, Torii
 local WATER = 1.3                                                           -- the canal's water surface, kept
 local MOSS = false                                                          -- false: the kit rocks' and the falls' green bands go plain grey ("that moss on those rocks does not look like moss")
 local BOAT_WOOD = false                                                     -- false: the boats in SmoothPlastic (the colour truer to her photo); true: Wood (box UVs, the grain along the length)
+local OUTER_LANDING_TURN = 180                                              -- runner 7's look 3c: the walkways' outer landings came out with the high tread at the outer edge -> turned
+local BRIDGE_LANDING_TURN = 0                                               -- the bridge-end landings: set 180 too if their profile shows the low tread against the deck end
 local KOI_DEPTH = {0.15, 0.25}                                               -- how far under the surface the koi swim (0.5-0.8 was invisible from above at WaterTransparency 0.65)
 -- ---------- 1. the canal ----------
 local banks = {}
@@ -225,16 +227,16 @@ local BRIDGE_Y = 0.7
 local stepsAt = {}
 for i, bz in ipairs(bridgesZ) do
 	place("bridge", Vector3.new(CX, BRIDGE_Y, bz), 0, nil, "TaikoBridge" .. i, 1, BF)
-	place("bridge_steps", Vector3.new(CX - BB.bridge.max.X, 0, bz), 0, nil, "LandingW" .. i, 1, BF)
-	place("bridge_steps", Vector3.new(CX + BB.bridge.max.X, 0, bz), 180, nil, "LandingE" .. i, 1, BF)
+	place("bridge_steps", Vector3.new(CX - BB.bridge.max.X, 0, bz), 0 + BRIDGE_LANDING_TURN, nil, "LandingW" .. i, 1, BF)
+	place("bridge_steps", Vector3.new(CX + BB.bridge.max.X, 0, bz), 180 + BRIDGE_LANDING_TURN, nil, "LandingE" .. i, 1, BF)
 	local sz = bz + BB.bridge.max.Z + 3.5                                   -- the stair just downstream (north) of the bridge
 	place("canal_steps", Vector3.new(WEST, 0, sz), 0, nil, "WaterStepsW" .. i, 1, BF)
 	place("canal_steps", Vector3.new(EAST, 0, sz), 180, nil, "WaterStepsE" .. i, 1, BF)
 	table.insert(stepsAt, sz)
 end
 -- landing steps at the walkways' outer ends too (levelling to 1.0 left a ledge there: 1.0 against the lawn at 0 or a path at 0.3-0.5)
-for i, e in ipairs(outerEnds) do place("bridge_steps", e.pos, e.yaw, nil, "WalkwayLanding" .. i, 1, BF) end
-print(string.format("QQ GARDEN3 landing steps at the walkways' outer ends: %d", #outerEnds))
+for i, e in ipairs(outerEnds) do place("bridge_steps", e.pos, e.yaw + OUTER_LANDING_TURN, nil, "WalkwayLanding" .. i, 1, BF) end
+print(string.format("QQ GARDEN3 landing steps at the walkways' outer ends: %d (turned %d; bridge-end landings turned %d)", #outerEnds, OUTER_LANDING_TURN, BRIDGE_LANDING_TURN))
 -- the waterfall feeding the south end (its rocks over the end wall, the sheet landing in the water)
 place("waterfall", Vector3.new(CX, 1.0, ZS + 1.5), 0, nil, "Waterfall")
 -- look test 1's approved pieces, by the garden bridge (the southernmost crossing)
