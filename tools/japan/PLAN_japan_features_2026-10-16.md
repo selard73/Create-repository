@@ -83,6 +83,23 @@ only through RS.AwardItems / RS.AwardAcorns, look tests with pictures before any
 - Fits phones (the bottle panel already does), no new assets but the tray mesh and the card art, a client script + a tiny server
   validator for the award. A daily free go is the comeback hook.
 
+## 8. A church (one on every map; here it must blend in)  - MEDIUM, a Blender building
+- Shannon: "we need a church building somewhere on the map, because we will have one on every map, it needs to blend in, but it will
+  be a church." Not odd for Japan: the Goto Islands and Nagasaki have 150-year-old churches that look exactly like this brief - white
+  wood or plaster walls with dark timber, a Japanese TILED roof (the same kawara tiles as the houses), arched windows, a small square
+  bell tower with a cross (Egami, Kashiragashima, Tabira). Blended, and still a church.
+- Build (Blender, our finish): a nave ~30 x 16, 11 high to the ridge; white plaster with dark timber framing (Lantern Street's palette);
+  a steep tiled roof with up-turned eaves; six arched windows with simple coloured glass panes (Glass + a soft Neon frame at dusk); a
+  wooden double door up three stone steps; a 22-tall bell tower at the front corner with louvred openings, a bronze bell inside and a
+  cross on top. Interior: pews (automatic sit), a plain altar with a cross, a lectern, candles (PointLights). A bell rope: ProximityPrompt
+  "Ring the bell" -> the bell swings (tween) and tolls (sound), once a minute per player.
+- Site: a runner survey - candidates: the quiet lawn past the canal's south end (behind the falls), the rise near the station, or the
+  lawn by the arrival court. Footprint ~34 x 20 with a path and two stone lanterns at the gate.
+- Shared with every map: the same interior kit (pews, altar, bell) and whatever the church DOES in the game (her call: a quiet place,
+  the bell, a daily blessing, weddings?), with each map's own exterior (Italy: a Romanesque stone chapel with a campanile; France: a
+  village church with a slate spire). The kit is built once, the shells per map.
+- Budget: ~12 meshes for the shell + the interior kit; one import.
+
 ## Suggested order
 1. Sushi memory match (small, no site work, a daily hook) -> 2. Koi feeding (small, uses what we have, by the palace where archery
 also goes) -> 3. Bamboo maze -> 4. Photographer + treehouse photo -> 5. Archery -> 6. Kimono store -> 7. Cat cafe (her Meshy cats can
@@ -98,5 +115,8 @@ Each one: a design note with her choices, a runner survey of the site, a look te
 - Kimono: how many fabrics, patterns she wants (I'd propose 8: indigo wave, cherry blossom, crane, hemp leaf, plum, gold chrysanthemum,
   tortoiseshell, black with red obi), the price, classic clothing OK.
 - Cats: how many and which breeds; whether cats also wander outside the cafe.
+- Church: what it does on every map (the bell only, a daily blessing, weddings, a memorial wall...), the site (runner proposes), and the
+  look: A. the Goto-island wooden church (white walls, dark timber, tiled roof, small cross tower - my suggestion) or B. Nagasaki's Oura
+  style (white Gothic stone, pointed arches).
 - Sushi match: free once a day then 3 acorns a go (my suggestion), the 8 sushi kinds, whether the card art may be drawn in UI shapes
   (no upload) or she wants real pictures (one sprite sheet to upload).

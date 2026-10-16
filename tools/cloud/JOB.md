@@ -3863,3 +3863,7 @@ ParticleEmitters at the foot. Koi approved. Re-run in Edit after her verdict in 
 store with fabric choice, photographer with the volcano backdrop + treehouse photo, koi feeding frenzy at the palace pond, archery at
 the palace targets, a bamboo maze) plus her sushi memory-match idea; each with a build outline and the choices she needs to make;
 suggested order: sushi match -> koi feeding -> bamboo maze -> photographer -> archery -> kimono -> cat cafe. Waiting on her picks.
+Japan features plan + a CHURCH (Shannon: "we need a church building somewhere on the map, because we will have one on every map, it
+needs to blend in, but it will be a church"): added to tools/japan/PLAN_japan_features_2026-10-16.md as item 8 - a Goto-islands-style
+church (white plaster + dark timber, Japanese tiled roof, arched windows, a small bell tower with a cross; pews, altar, a bell to ring),
+Blender, one import; a shared interior kit for every map with each map's own shell; her choices: what it does, the site, look A or B.
