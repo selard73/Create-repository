@@ -1,0 +1,7 @@
+canal_falls.fbx: 3 meshes, 1356 tris; Fall_Rock 848, Fall_Water 348, Fall_Foam 160
+BBOX {"canal_falls": {"min": [-13.306, -0.3, -18.774], "max": [13.477, 8.866, 2.54]}, "canal_falls/Fall_Rock": {"min": [-13.306, -0.3, -18.774], "max": [13.477, 8.866, -4.7]}, "canal_falls/Fall_Water": {"min": [-3.2, 1.17, -10.2], "max": [3.2, 6.15, 0.76]}, "canal_falls/Fall_Foam": {"min": [-3.247, 1.192, -5.505], "max": [3.425, 2.64, 2.54]}}
+FBX_DONE
+shot prev_falls_from_canal.png
+shot prev_falls_three_quarter.png
+shot prev_falls_from_lawn.png
+RENDER_DONE
