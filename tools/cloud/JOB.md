@@ -3677,3 +3677,12 @@ SHANNON: "the koi should be swimming under the water not above it". Koi bbox hal
 (tested client-side). Fully submerged they are INVISIBLE in Japan's water: StarterPlayerScripts.JapanWaterAppearance sets
 WaterTransparency 0.32 / Reflectance 0.45 inside the Japan box (shots_look3c/2). 0.8 / 0.15: faint koi (3). 0.9 / 0.10: koi clear,
 but the canal floor's jagged terrain ridge and the grey underwater shore ramps show (4). Asking Shannon; koi/water held until then.
+SHANNON (runner 7, Oct 16, job 125 canal), answers and notes:
+- Koi water: "Clear canal, dark floor" (clearer, less shiny water only around the canal + a smooth dark canal bed; koi fully under).
+- "I actually don't like the color of the boat, it does not match everything else and sticks out" -> match the houses' timber
+  (house wood by area near the canal: WoodPlanks 65,47,33 / Wood 44,33,28 / Wood 120,67,33 / Wood 103,72,48 / pale planks 220,205,183).
+- "I do not like the pavement" = the BROWN STONE PATHS to the bridges; instead: "Stepping stones".
+- "there are still little black stones everywhere beyond the pavement" = JapanMap."Natural garden details - Blender".
+  JM_Garden_Weathered_Cobbles (ONE MeshPart, Rock + JM_PhotographicRock, 293.1 x 3.4 x 274.6 at (6225.5, 1.89, -56.5), CanQuery false,
+  covers x 6079..6372, z -194..81); hiding it client-side removes every black stone (shots_look3c/5, 6). To be retired.
+- Bridge-end landings also face the wrong way (high tread at the walkway, low at the deck: a dip to 0.5 at each deck end).
