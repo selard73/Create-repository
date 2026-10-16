@@ -3725,3 +3725,9 @@ Look test 3d -> 3e (cloud): the turned bridge landings set 3 outward (their orig
 under the decks); the Slate bed written in every cell column the water touches (x + 2 > WEST and x - 2 < EAST: the edge columns
 under the walls were skipped, leaving a trench along the east wall and a dip at the west). Then ready for her install word:
 garden_look3 + canalwater1 in Edit, publish, restart.
+Result job 125 LOOK TEST 3e (runner 7, play-test PREVIEW of garden_look3.lua at 24294ed, 30813 / 1067205205 checked; nothing kept).
+QQ lines as 3d except: "QQ GARDEN3 terrain: a flat Slate bed at -1.3 along the channel (1764 cells below, 588 bed/water cells), the
+water flat at 1.3". Landing profile z -213: lawn 0.00 (6077) -> 0.50 (6078-6078.5) -> 0.84 -> 1.00 (6079.5-6080.5) -> deck edge 0.74
+(6081) -> 1.00 -> 1.26; east the mirror. Bed: east wall fixed (-1.0..-1.55 to x 6113.45); the west edge still dips to -2.85 within
+~1 stud of the wall (x 6088.5-6089.5), not visible by eye in the clear water (shots_look3e/1). Stepping stones meet the steps
+(shots_look3e/2). READY for her install word: garden_look3 (24294ed) + canalwater1 (f4c7d4e), Studio Edit; she publishes + restarts.
