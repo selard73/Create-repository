@@ -143,20 +143,51 @@ local function standCF() return stand and stand:GetPivot() or CFrame.new() end
 local function seaward()                                                  -- the stand's back faces the sea
 	local cf = standCF(); return -cf.LookVector
 end
-local function toss()
+local function toss()                                                      -- (round 4) a short shot of the bottle flying into the sea
 	if not template then return end
+	local view
+	pcall(function() view = HttpService:JSONDecode(F:GetAttribute("TossView") or "null") end)
 	local b = template:Clone(); b.Name = "TossedBottle"
 	for _, d in ipairs(b:GetDescendants()) do if d:IsA("ProximityPrompt") then d:Destroy() elseif d:IsA("BasePart") then d.Anchored = true; d.CanCollide = false end end
-	local from = standCF().Position + Vector3.new(0, 4, 0)
-	local to = from + seaward() * 42 + Vector3.new(0, -5, 0)
+	local from, to, camAt
+	if view then
+		from, to, camAt = Vector3.new(view.from[1], view.from[2], view.from[3]), Vector3.new(view.to[1], view.to[2], view.to[3]), Vector3.new(view.cam[1], view.cam[2], view.cam[3])
+	else
+		from = standCF().Position + Vector3.new(0, 4, 0); to = from + seaward() * 42 + Vector3.new(0, -5, 0)
+	end
+	local cam = workspace.CurrentCamera
+	local before = cam and cam.CFrame
+	if camAt and cam then
+		cam.CameraType = Enum.CameraType.Scriptable
+		cam.CFrame = CFrame.lookAt(camAt, from:Lerp(to, 0.55) + Vector3.new(0, 2, 0))
+	end
 	b:PivotTo(CFrame.new(from)); b.Parent = F
 	local v = Instance.new("NumberValue"); v.Value = 0
 	v.Changed:Connect(function(t)
-		local p = from:Lerp(to, t) + Vector3.new(0, math.sin(t * math.pi) * 14, 0)
+		local p = from:Lerp(to, t) + Vector3.new(0, math.sin(t * math.pi) * 12, 0)
 		b:PivotTo(CFrame.new(p) * CFrame.Angles(t * 9, 0, t * 4))
 	end)
-	local tw = TweenService:Create(v, TweenInfo.new(1.6, Enum.EasingStyle.Linear), {Value = 1}); tw:Play()
-	tw.Completed:Connect(function() b:Destroy(); v:Destroy() end)
+	task.wait(0.35)
+	local tw = TweenService:Create(v, TweenInfo.new(1.3, Enum.EasingStyle.Linear), {Value = 1}); tw:Play()
+	tw.Completed:Wait()
+	-- the splash, then it bobs off out to sea
+	local sp = Instance.new("Part"); sp.Anchored = true; sp.CanCollide = false; sp.CanQuery = false; sp.CanTouch = false; sp.Transparency = 1; sp.Size = Vector3.new(1, 1, 1)
+	sp.CFrame = CFrame.new(to); sp.Parent = F
+	local e = Instance.new("ParticleEmitter"); e.Rate = 0; e.Speed = NumberRange.new(8, 14); e.SpreadAngle = Vector2.new(35, 35); e.EmissionDirection = Enum.NormalId.Top
+	e.Lifetime = NumberRange.new(0.5, 0.9); e.Acceleration = Vector3.new(0, -30, 0); e.Size = NumberSequence.new(0.5, 0.1); e.Color = ColorSequence.new(Color3.fromRGB(230, 245, 255))
+	e.Transparency = NumberSequence.new(0.2, 1); e.Parent = sp; e:Emit(40); Debris:AddItem(sp, 2)
+	local s = Instance.new("Sound"); s.SoundId = "rbxassetid://76469933896339"; s.Volume = 0.6; s.Parent = gui; s:Play(); Debris:AddItem(s, 4)   -- (the croc game's splash, her pick)
+	local drift = Instance.new("NumberValue"); drift.Value = 0
+	local away = (to - from) * Vector3.new(1, 0, 1); away = away.Magnitude > 0.1 and away.Unit or Vector3.new(0, 0, -1)
+	drift.Changed:Connect(function(t) b:PivotTo(CFrame.new(to + away * t * 10 + Vector3.new(0, math.sin(t * 12) * 0.3 - 0.2, 0)) * CFrame.Angles(0, t, math.rad(8))) end)
+	local tw2 = TweenService:Create(drift, TweenInfo.new(1.6, Enum.EasingStyle.Sine), {Value = 1}); tw2:Play()
+	tw2.Completed:Wait()
+	b:Destroy(); v:Destroy(); drift:Destroy()
+	if camAt and cam then
+		cam.CameraType = Enum.CameraType.Custom
+		local h = player.Character and player.Character:FindFirstChildOfClass("Humanoid"); if h then cam.CameraSubject = h end
+		if before then cam.CFrame = before end
+	end
 end
 local replyBottle
 local function placeReply(want)
@@ -179,8 +210,9 @@ ev.OnClientEvent:Connect(function(what, a, b, c, d, e, f, g)
 		setStatus(); placeReply(st.replyReady == true)
 		if st.replyReady and not told then told = true; task.delay(4, function() say("A reply to your bottle has washed up by the bottle stand on the beach!", 5) end) end
 	elseif what == "sent" then
-		closePanel(); toss()
-		task.delay(1.7, function() say("Off it goes! Check the beach tomorrow for a reply.", 4) end)
+		closePanel()
+		task.spawn(toss)
+		task.delay(1.9, function() say("Off it goes! Come back to the kiosk tomorrow for a reply.", 4) end)
 	elseif what == "reply" then
 		if replyBottle then replyBottle:Destroy(); replyBottle = nil end
 		local q, info = f, g

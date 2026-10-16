@@ -3378,3 +3378,16 @@ DONE: ... (BottleServer 10288, BottleClient 14400, BottleText 11018 chars); the 
 spot; ... the old folder is HudBackup.Bottles_pre_1". SIGN (her complaint about the LIVE stand, same here): SignBoard y -6.45..-4.95,
 the AwningFringe -5.23..-4.78 hangs over its top - from the normal camera "MESSAGGI IN BOTTIGLIA" is hidden, only "Messages in a
 Bottle" shows (r3_kiosk_player_view_sign_hidden). Shannon also wants the toss to be a short animation of the bottle thrown into the sea.
+Job 118 ROUND 4 (cloud thread; from Shannon via runner 7 at 0163d94: "you cannot see [the sign] under the awning unless you tilt the
+view"; "the animation for cork it and throw it, it should be a short animation that shows the bottle being thrown into the sea").
+Same file, tools/bottle/install_bottle1.lua (55361 bytes, compiles):
+ - the sign board stands ON the awning (y ~8.8..10.7 above the kiosk's floor, two short posts and a trim on top), both faces lettered -
+   both lines readable at normal camera height, clear of the fringe.
+ - the toss: the camera cuts to the shore spot nearest the kiosk (TossView attribute, set by the installer: the camera 6 behind and 7
+   above the waterline spot, looking out), the bottle arcs ~28 studs out over the water, splashes (spray + the croc game's splash
+   sound, her pick 76469933896339), bobs and drifts away, then the camera comes back (~3.3 s). Toast: "Off it goes! Come back to the
+   kiosk tomorrow for a reply."
+ - the "waterline spots" line now says plainly whether no. 1 is the reply spot or the reply lies at the kiosk (round 3 printed both).
+ - clear(): the floor the kiosk stands on no longer counts as an obstacle (round 3 flagged the courtyard cobblestone under it).
+ Runner 7 also reported (0163d94): the treehouse did NOT reset live for her after the last publish; a forced Studio re-run took 12 +
+ done to 0 correctly. Open: her F9 "TreehouseReset:" lines / an old server / another account. ResetRound is 3 in Edit.

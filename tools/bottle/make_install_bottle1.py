@@ -78,7 +78,8 @@ end
 local op = OverlapParams.new(); op.FilterType = Enum.RaycastFilterType.Exclude; op.FilterDescendantsInstances = {T, table.unpack(skip)}
 local function clear(s, r)
 	for _, pt in ipairs(workspace:GetPartBoundsInRadius(s + Vector3.new(0, 3, 0), r, op)) do
-		if pt.Transparency < 1 or pt.CanCollide then return false, pt end
+		local top = pt.Position.Y + pt.Size.Y / 2
+		if top > s.Y + 0.6 and (pt.Transparency < 1 or pt.CanCollide) then return false, pt end   -- (round 4: the floor under it does not count)
 	end
 	return true
 end
@@ -139,7 +140,7 @@ else                                                                       -- (r
 	replySpot = {math.floor(f.X * 10 + 0.5) / 10, math.floor(((h and h.Position.Y) or site.Y) * 100 + 0.5) / 100, math.floor(f.Z * 10 + 0.5) / 10}
 	print(string.format("QQ BOTTLE the reply spot: in front of the kiosk at (%.0f, %.1f, %.0f) - the waterline is more than 30 studs away", replySpot[1], replySpot[2], replySpot[3]))
 end
-print("QQ BOTTLE spots: " .. table.concat(list, " | ") .. "; no. 1, nearest the stand, is the REPLY spot, the other " .. #spots .. " are wash spots")
+print("QQ BOTTLE waterline spots: " .. table.concat(list, " | ") .. string.format("; %d wash spots%s", #spots, (#list > #spots) and ", no. 1 (nearest the kiosk) is the REPLY spot" or " (the reply lies at the kiosk)"))
 -- every check passed: now the old install goes
 if old then local n = 1; while hb:FindFirstChild("Bottles_pre_" .. n) do n += 1 end; old.Name = "Bottles_pre_" .. n; old.Parent = hb; for _, s in ipairs(old:GetDescendants()) do if s:IsA("BaseScript") then s.Enabled = false end end end
 local oldT = RS:FindFirstChild("BottleTemplate"); if oldT then oldT:Destroy() end
@@ -169,6 +170,17 @@ local Fd = Instance.new("Folder"); Fd.Name = "Bottles"
 for k, v in pairs({SendCost = 15, FindPrize = 10, FindCap = 5, MaxBeach = 1, RespawnSeconds = 90, TestDayOffset = 0}) do Fd:SetAttribute(k, v) end   -- (round 3: ONE silly bottle at a time)
 Fd:SetAttribute("WashSpots", HttpService:JSONEncode(spots))
 Fd:SetAttribute("ReplySpot", HttpService:JSONEncode(replySpot))
+do	-- (round 4, Shannon: "a short animation that shows the bottle being thrown into the sea"): a camera on the shore nearest the kiosk,
+	-- looking out to a point on the water ~28 studs out
+	local s0 = spots[1]
+	local sp = Vector3.new(s0[1], s0[2], s0[3])
+	local d, wp = nearestWater(sp)
+	local out = Vector3.new(wp.X - sp.X, 0, wp.Z - sp.Z); out = out.Magnitude > 0.1 and out.Unit or Vector3.new(0, 0, -1)
+	local target = Vector3.new(sp.X, wp.Y, sp.Z) + out * 28
+	local cam = sp - out * 6 + Vector3.new(0, 7, 0)
+	Fd:SetAttribute("TossView", HttpService:JSONEncode({cam = {cam.X, cam.Y, cam.Z}, from = {sp.X, sp.Y + 3, sp.Z}, to = {target.X, target.Y, target.Z}}))
+	print(string.format("QQ BOTTLE toss view: the camera at (%.0f, %.0f, %.0f) on the shore, the bottle lands at (%.0f, %.1f, %.0f) on the water", cam.X, cam.Y, cam.Z, target.X, target.Y, target.Z))
+end
 local evt = Instance.new("RemoteEvent"); evt.Name = "BottleEvent"; evt.Parent = Fd
 local mod = Instance.new("ModuleScript"); mod.Name = "BottleText"; mod.Source = SRC.BottleText; mod.Parent = Fd
 local St = Instance.new("Model"); St.Name = "Stand"; St.ModelStreamingMode = Enum.ModelStreamingMode.Persistent
@@ -189,7 +201,10 @@ for i = 0, 2 do
 	local b = tpl:Clone(); for _, d in ipairs(b:GetDescendants()) do if d:IsA("ProximityPrompt") or d:IsA("Sparkles") then d:Destroy() end end
 	b:PivotTo(L(-1.6 + i * 1.4, 4.1, -0.6) * CFrame.Angles(0, math.rad(20 * i), math.rad(90))); b.Name = "CounterBottle"; b.Parent = St
 end
-local board = solid("SignBoard", Vector3.new(6.6, 1.5, 0.2), CREAM, L(0, 6.3, 0.62), Enum.Material.SmoothPlastic)
+-- (round 4, Shannon: "you cannot see it under the awning unless you tilt the view") - the board stands ON the awning, clear of the fringe
+for _, x in ipairs({-2.6, 2.6}) do solid("SignPost", Vector3.new(0.25, 1.6, 0.25), WOOD_D, L(x, 8.6, -0.3), Enum.Material.Wood) end
+local board = solid("SignBoard", Vector3.new(7.0, 1.9, 0.25), CREAM, L(0, 9.75, -0.3), Enum.Material.SmoothPlastic)
+solid("SignTrim", Vector3.new(7.3, 0.18, 0.32), WOOD_D, L(0, 10.75, -0.3), Enum.Material.Wood)
 local sg = Instance.new("SurfaceGui"); sg.Face = Enum.NormalId.Front; sg.CanvasSize = Vector2.new(660, 150); sg.LightInfluence = 0.5; sg.Parent = board
 local function sgText(text, y, h, colour) local t = Instance.new("TextLabel"); t.BackgroundTransparency = 1; t.Position = UDim2.fromScale(0, y); t.Size = UDim2.fromScale(1, h); t.Text = text; t.TextScaled = true; t.FontFace = Font.new("rbxasset://fonts/families/FredokaOne.json"); t.TextColor3 = colour; t.Parent = sg end
 sgText("MESSAGGI IN BOTTIGLIA", 0.06, 0.52, BLUE); sgText("Messages in a Bottle", 0.6, 0.34, WOOD_D)
