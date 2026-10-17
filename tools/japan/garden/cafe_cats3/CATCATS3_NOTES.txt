@@ -1,55 +1,47 @@
-1001 Squirrels - corrected seven-cat skeleton import, kit27
+1001 Squirrels - cafe preview ready for approval (October 17, 2026)
 
-NEXT IMPORT: japan_kit27_cat_cafe_cats3.fbx
-This file contains only the same seven cats and three alignment markers.
-It replaces their rig import. Do not reimport kit26 or the wall decorations.
-Stop Play, import kit27 from Desktop\Japan garden kit, then authorize
-"anchor and prepare preview". Do not start Play before source preparation.
+NO FURTHER IMPORT IS NEEDED.
+Shannon imported kit27 and authorized anchoring/preparation. The seven corrected
+cat rigs passed their actual Roblox mesh-asset bind/name/hierarchy checks.
+All seven are now animated independently in the running temporary Play preview.
 
-Why another import is needed:
-The earlier combined FBX reused generic bone names across seven armatures.
-Blender preserved the separate rigs, but Roblox's importer conflated same-named
-bones. All seven imported skeletons inherited Adorable Tabby's bind transforms.
-Whisker Wonder's actual uploaded mesh data showed its Root about 27 studs away
-from its own mesh center. Bone counts alone therefore did not establish a usable
-rig. The original import is preserved and safely anchored in ServerStorage.
+Persistent Edit sources in ServerStorage.JapanGardenKit:
+- cat_cafe1: 94 anchored furniture source meshes, including 3 markers.
+- catwall1: 41 anchored wall-decoration source meshes, including 3 markers.
+- cat_cafe_cats3: 10 anchored source meshes with 70 unique bones, including 3 markers.
+- cafe_cats3_raw: original kit27 import, 10 meshes + RootPart, all 11 anchored;
+  all original import metadata and 70 bones retained.
+- cafe_finishing1_raw: preserved original kit26 import. Do not use its cat rigs.
+JapanMap remained at 20,896 descendants during source preparation.
 
-Kit27 gives each cat ten globally unique bone names (C01_ through C07_).
-The actual FBX was reimported into Blender and checked for all 70 unique names,
-original geometry, textures, normalized weights, unchanged bounds and actual
-head deformation. Actual Roblox bind data/animation remains pending import.
-The saved .blend is editable, with textures packed; procedural idles are driven
-by the client controller, not baked animation tracks in this export.
+The Play-only cafe contains 136 meshes, 7 cats/70 bones, 38 wall-decoration meshes,
+5 visitor Seats, 4 steam emitters, cafe music/meows and the existing camera guard.
+Seven head transforms changed independently over two seconds, all Root transforms
+remained identity, and the cats' paws stayed on their pads in the pictures.
+An actual on-screen 25-degree head-turn probe visibly deformed the cream kitten's
+head; the probe was immediately removed and gentle motion resumed. Diagnostic
+pictures are labeled separately from the final natural-idle review pictures.
+All 70 bone transforms reset at distance and all seven idles resumed on return.
+Avatar visibility, normal camera, and unanchored player physics restored.
+No permanent cafe installation, publication or direct DataStore writes.
 
-Current Studio state:
-- Edit: ServerStorage.JapanGardenKit.cat_cafe1 remains the 94-mesh furniture source.
-- Edit: cafe_finishing1_raw holds all 51 kit26 meshes, the importer RootPart and
-  original 70 conflated bones. All 52 parts are anchored. Original import preserved.
-- Edit: catwall1 is the prepared 41-mesh wall source, recovered from the flattened
-  import; exact marker orientation and bounds verified, imported joints removed
-  from the derived copies. JapanMap stayed at 20,896 descendants during preparation.
-- Play Server: 91 furniture meshes + 38 wall meshes + 7 resting-pose cats.
-  All cats are deliberately static here, with no claim of working idles.
-  Four steaming mugs, five visitor seats, cafe audio and camera guard are present.
-  The final eight-waypoint entrance/aisle walk passed; health 100.
-- No permanent cafe installation, publication or direct DataStore writes.
+NEXT: Shannon reviews the running preview and pictures and explicitly approves
+installation. Source-preparation authorization alone is not installation approval.
 
-Next operator steps:
-1. Inspect the actual kit27 import. Expect ten MeshParts and 70 unique bones;
-   importer may again flatten all objects and put bones under a shared RootPart.
-2. Run prepare_catcafe_cats3.lua only with Shannon's source-prep authorization.
-   It checks each cat's actual mesh-asset bone names, parents and bind CFrames
-   against the imported hierarchy before any scene mutation. Then it preserves
-   the raw import and derives independent ten-bone hierarchies under each mesh.
-3. Start Play. Run catcafe1.lua, catcafe1_audio.lua, catcafe_cats3.lua, catwall1.lua.
-   Use the existing source kit23 and wall source; neither needs reimporting.
-4. Inspect actual resting and moving poses, paws, textures, streaming and pictures.
-   Unique-name controller strips only the cat's explicit prefix for its logical
-   Head/Chest/Ear/Tail mapping. It preserves the imported bone names for binding.
-5. Get Shannon's yes to the actual finished play-test pictures before permanent
-   cafe installation. Source preparation alone is not installation approval.
-6. Install the same reviewed scripts in Edit only after that yes; configure the
-   29 furniture colliders separately and independently read back. Shannon publishes.
+After her yes:
+1. Compare the current approved preview to play_review/placement_manifest.json
+   (136 MeshParts + 5 Seats) and retain any later approved adjustments.
+2. Stop Play. Run the same reviewed scripts in Edit, in this order:
+   tools/japan/garden/catcafe1.lua with CATCAFE1_ALLOW_EDIT=true
+   tools/japan/garden/catcafe1_audio.lua with CATCAFE1_ALLOW_EDIT=true
+   tools/japan/garden/cafe_cats3/catcafe_cats3.lua with CATCAFE_CATS3_ALLOW_EDIT=true
+   tools/japan/garden/catwall1/catwall1.lua with CATWALL1_ALLOW_EDIT=true
+3. Set PreciseConvexDecomposition on the 29 placed collidable furniture meshes
+   in a SEPARATE Edit call, then independently read back. Cats/wall decor are
+   noncollidable. Compare installed transforms/assets/materials to the preview.
+4. Verify a fresh Play: automatically installed cafe, all seven idles, camera,
+   audio, streaming, entry/aisle and seats. Stop Play after verification.
+5. Shannon publishes and restarts servers; never publish on her behalf.
 
-Do not run the original prepare_cafe_finishing1.lua on the flattened kit26.
-Use the prepared wall source and corrected cats3 workflow above.
+Actual runtime images/checks: tools/japan/garden/cafe_cats3/play_review.
+Full job history: tools/cloud/JOB.md. Latest preview commit follows 82870f3.

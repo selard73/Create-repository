@@ -1,0 +1,119 @@
+{
+  "kit27_import": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"JapanDescendants\":20896,\"imports\":[{\"bones\":70,\"meshes\":10,\"name\":\"japan_kit27_cat_cafe_cats3\",\"unique\":70,\"anchors\":0,\"prefixes\":{\"C06_\":10,\"C05_\":10,\"C07_\":10,\"C03_\":10,\"C04_\":10,\"C02_\":10,\"C01_\":10},\"cats\":[{\"size\":\"1.428018569946289, 1.9500000476837158, 1.6896944046020508\",\"name\":\"CC3_Adorable_Tabby_Kitten\",\"texture\":\"rbxassetid://109338480032334\"},{\"size\":\"1.3693790435791016, 2.1000001430511475, 1.5010802745819092\",\"name\":\"CC3_Blush_Eared_Kitten\",\"texture\":\"rbxassetid://102245139818960\"},{\"size\":\"1.3591537475585938, 2.200000286102295, 2.4594638347625732\",\"name\":\"CC3_Curious_Little_Tabby\",\"texture\":\"rbxassetid://75014181069902\"},{\"size\":\"1.1537046432495117, 2.1499996185302734, 3.050274133682251\",\"name\":\"CC3_Emerald_Eyed_Tabby_Ki\",\"texture\":\"rbxassetid://139374932727320\"},{\"size\":\"1.020359992980957, 1.4500000476837158, 3.5660977363586426\",\"name\":\"CC3_Ginger_Whiskers\",\"texture\":\"rbxassetid://80168981422602\"},{\"size\":\"1.074416160583496, 2.200000286102295, 2.6710431575775146\",\"name\":\"CC3_Tuxedo_Kitten\",\"texture\":\"rbxassetid://119318595016900\"},{\"size\":\"1.6177181005477905, 2.1500000953674316, 1.897634506225586\",\"name\":\"CC3_Whisker_Wonder\",\"texture\":\"rbxassetid://108552975577223\"}],\"parts\":11}],\"cafeInstalled\":false}"
+      }
+    ],
+    "isError": false
+  },
+  "kit27_preflight": {
+    "content": [
+      {
+        "type": "text",
+        "text": "KIT27_PREFLIGHT_PASS: seven distinct rigs, all 70 bone names/parents and actual mesh bind transforms match; no mutation"
+      }
+    ],
+    "isError": false
+  },
+  "kit27_prep": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CATCATS3 PREP: 10 anchored source meshes, 70 unique bones; all seven asset bind poses verified; independent cat skeletons; raw import preserved; JapanMap unchanged"
+      }
+    ],
+    "isError": false
+  },
+  "kit27_prepReadback": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"JapanDescendants\":20896,\"sources\":[{\"bones\":70,\"name\":\"cat_cafe_cats3\",\"perCat\":{\"CC3_Whisker_Wonder\":10,\"CC3_Blush_Eared_Kitten\":10,\"CC3_Ginger_Whiskers\":10,\"CC3_Tuxedo_Kitten\":10,\"CC3_Curious_Little_Tabby\":10,\"CC3_Emerald_Eyed_Tabby_Ki\":10,\"CC3_Adorable_Tabby_Kitten\":10},\"anchored\":10,\"parts\":10},{\"bones\":70,\"name\":\"cafe_cats3_raw\",\"perCat\":[],\"anchored\":11,\"parts\":11},{\"bones\":0,\"name\":\"catwall1\",\"perCat\":[],\"anchored\":41,\"parts\":41},{\"bones\":0,\"name\":\"cat_cafe1\",\"perCat\":[],\"anchored\":94,\"parts\":94}]}"
+      }
+    ],
+    "isError": false
+  },
+  "kit27_furniture": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CATCAFE1 DONE: 91 meshes, 5 visitor Seats, 8 reserved cat spots, 29 collidable meshes; 53 old fixtures backed up\nQQ CATCAFE1 BOUNDS: x 6012.20..6033.54 y 0.46..9.19 z -5.68..19.69\nQQ CATCAFE1 PRESERVED: existing facade, roof, upper floor, walls and floor; all other shops/fronts and ShopBacks\nQQ CATCAFE1 TEA: 4 steaming table mugs; subtle particle wisps\nQQ CATCAFE1 CATS: not imported; cat spots are adjustable placeholders in metadata only\nQQ CATCAFE1 STATUS: PLAY-TEST SERVER PREVIEW ONLY; discarded on stop"
+      }
+    ],
+    "isError": false
+  },
+  "kit27_audio": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CATCAFE1 AUDIO: playlist 91013239854044,132290528373653; cafe volume 0.22; existing map fades retained\nQQ CATCAFE1 MEOWS: 134699420140804,134881862056957,83454004588488,133371725828981; one at a time, 30-60 seconds apart, no immediate repeat\nQQ CATCAFE1 AUDIO VERIFY: check all six asset loads and both playlist transitions in the Client; configuration is not proof of audibility\nQQ CATCAFE1 AUDIO STATUS: PLAY-TEST SERVER PREVIEW ONLY; discarded on stop"
+      }
+    ],
+    "isError": false
+  },
+  "kit27_cats": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CATCATS3 DONE: 7 anchored skinned cats, 70 bones, client idle controller; 3 window beds, 3 shelves, cubby top\nQQ CATCATS3 PRESERVED: cafe furnishings, steaming tea, playlist/meows, camera guard and other shops\nQQ CATCATS3 STATUS: SERVER PREVIEW; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "kit27_wall": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CATWALL1 DONE: 38 anchored noncollidable meshes; two oak ledges, ceramic cats, planter, books, cup, vase and cat portrait\nQQ CATWALL1 PRESERVED: room, furniture, steaming tea, cats, sound, camera and other shops\nQQ CATWALL1 STATUS: SERVER PREVIEW; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "kit27_motionInitial": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"bones\":70,\"motion\":[{\"headChangeDegrees\":3.890078319606933,\"cat\":\"Tuxedo_Kitten\",\"rootStill\":true},{\"headChangeDegrees\":1.3697364881598178,\"cat\":\"Adorable_Tabby_Kitten\",\"rootStill\":true},{\"headChangeDegrees\":2.695152305682246,\"cat\":\"Whisker_Wonder\",\"rootStill\":true},{\"headChangeDegrees\":1.3723057065048006,\"cat\":\"Emerald_Eyed_Tabby_Ki\",\"rootStill\":true},{\"headChangeDegrees\":3.0988252368098738,\"cat\":\"Blush_Eared_Kitten\",\"rootStill\":true},{\"headChangeDegrees\":4.7312681960864249,\"cat\":\"Curious_Little_Tabby\",\"rootStill\":true},{\"headChangeDegrees\":5.224047561682627,\"cat\":\"Ginger_Whiskers\",\"rootStill\":true}],\"wall\":38,\"seats\":5,\"cats\":7,\"steam\":4}"
+      }
+    ],
+    "isError": false
+  },
+  "kit27_skinCheck": {
+    "content": [
+      {
+        "type": "text",
+        "text": "sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Tools.ExecuteLuauTool:116: sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Util.CommandExecution:54: EditableMesh is not accessible. Go to the Security Tab in Experience Settings to enable this API."
+      }
+    ],
+    "isError": true
+  },
+  "kit27_cull": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"presentBones\":70,\"resetBones\":70,\"avatar\":\"6027, 7, 110\"}"
+      }
+    ],
+    "isError": false
+  },
+  "kit27_resume": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"avatarAnchored\":false,\"resumed\":[{\"headAngle\":2.9605501914970815,\"anchored\":true,\"cat\":\"Tuxedo_Kitten\"},{\"headAngle\":8.934283585348539,\"anchored\":true,\"cat\":\"Adorable_Tabby_Kitten\"},{\"headAngle\":2.6087954492414249,\"anchored\":true,\"cat\":\"Whisker_Wonder\"},{\"headAngle\":2.5096746767891418,\"anchored\":true,\"cat\":\"Emerald_Eyed_Tabby_Ki\"},{\"headAngle\":7.823180000795776,\"anchored\":true,\"cat\":\"Blush_Eared_Kitten\"},{\"headAngle\":5.58531931877305,\"anchored\":true,\"cat\":\"Curious_Little_Tabby\"},{\"headAngle\":3.723942078896012,\"anchored\":true,\"cat\":\"Ginger_Whiskers\"}],\"health\":100}"
+      }
+    ],
+    "isError": false
+  },
+  "kit27_final": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"meshes\":136,\"seats\":5,\"idleController\":true,\"bones\":70,\"music\":[{\"name\":\"MusicA\",\"volume\":0,\"id\":\"rbxassetid://133364143276489\",\"loaded\":true,\"playing\":false},{\"name\":\"MusicB\",\"volume\":0.2199999988079071,\"id\":\"rbxassetid://91013239854044\",\"loaded\":true,\"playing\":true},{\"name\":\"CatCafeMeow\",\"volume\":0.2800000011920929,\"id\":\"rbxassetid://83454004588488\",\"loaded\":true,\"playing\":false}],\"health\":100,\"avatarAnchored\":false,\"wall\":38,\"cameraGuard\":true,\"cats\":7,\"steam\":4}"
+      }
+    ],
+    "isError": false
+  }
+}
