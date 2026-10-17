@@ -4600,3 +4600,15 @@ QQ CAFEINTERIOR2 COMPILE: camera_client.lua parsed; body NOT executed; no scene 
 - Final read-only Edit survey: stopped; JapanMap 21,063 descendants; existing cafe 253 descendants; no CatCafeInterior model installed. Existing precise climbing/cubby colliders confirmed. No new source import, scene change, publication or DataStore write occurred.
 - Saved scripts, original shell .blend, manifest, source/bounds checks and three reviewed design pictures. Combined FBX byte-identical in repository, chat outputs and OneDrive/Desktop/Japan garden kit. Grocer kit28 is separately prepared and still pending import.
 NEXT: Shannon imports ONLY japan_kit29_cat_cafe_interior2.fbx in stopped Edit and says to anchor/prepare. Inspect the real import and store it before Play. Run the new installer on Server; test actual doorway entry/exit, timeout/death/respawn recovery, walking paths, four visitor Seats without forced-seat teleport tests, camera orbit/phone views, idles, audio, steam and preservation. Show close actual Play pictures; install in Edit only after her yes. Shannon publishes.
+
+
+## French mailbox E-prompt wording (Codex solo, Oct 17 2026) - INSTALLED IN EDIT
+Shannon explicitly requested changing the French mailbox E interaction from dev to mayor, matching the opened mailbox menu.
+- Read-only inspection found Workspace.PostOffice.PostBox.Body.PostPrompt.ObjectText still set to La Poste - write to the dev. PostClient already uses La Poste - write to the mayor in its normal relabel function; the panel wording was already corrected. The earlier housekeeping source patch had not changed the saved ProximityPrompt property.
+- Applied only the saved prompt ObjectText correction in stopped Edit, using before/after undo waypoints. ActionText remains Open and the keyboard key remains E. Readback confirmed both PostClient/PostServer source strings and mailbox descendant count unchanged. No avatar/camera movement, Play session, letters, notification logic, DataStore writes or publication.
+Actual installer output:
+QQ MAILBOX MAYOR PROMPT: La Poste - write to the dev -> La Poste - write to the mayor
+QQ MAILBOX PRESERVED: ActionText=Open; key=E; mailbox scripts and contents unchanged
+QQ MAILBOX STATUS: EDIT; NOT PUBLISHED
+- Added a guarded, rerunnable narrow installer at tools/housekeeping/mailbox_mayor_prompt.lua. Japan cafe/grocer previews and all other maps remain as before.
+NEXT: Shannon publishes when ready; fresh servers receive the corrected default prompt.
