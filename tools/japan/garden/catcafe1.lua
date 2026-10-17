@@ -89,6 +89,28 @@ for i,spot in ipairs({{-7.7,7.05,-11.9},{1.6,7.05,-7.2},{7.2,7.05,-16.2}})do
  local a=Instance.new("Attachment");a.Name="LampPosition";a.Position=p.CFrame:PointToObjectSpace(target:PointToWorldSpace(Vector3.new(table.unpack(spot))));a.Parent=p
  local l=Instance.new("PointLight");l.Color=Color3.fromRGB(255,222,180);l.Brightness=.8;l.Range=13;l.Shadows=false;l.Parent=a
 end
+-- Four hot mugs already exist in kit23: add a quiet wisp at each tea surface.
+-- Orient attachments through the placement frame so steam rises upright after FBX import.
+local steamingMugs=0
+for i,x in ipairs({-10.05,-5.75})do
+ local p=assert(parts["C1_TableGoods"..(i-1).."_Tea"])
+ for mug,offset in ipairs({{-.5,.25},{.6,-.1}})do
+  local a=Instance.new("Attachment");a.Name="TeaSteam"..mug
+  a.CFrame=p.CFrame:ToObjectSpace(target*CFrame.new(x+offset[1],3.65,-11.6+offset[2]));a.Parent=p
+  local steam=Instance.new("ParticleEmitter");steam.Name="GentleTeaSteam"
+  steam.Texture="rbxasset://textures/particles/smoke_main.dds"
+  steam.Color=ColorSequence.new(Color3.fromRGB(242,240,232))
+  steam.Size=NumberSequence.new({NumberSequenceKeypoint.new(0,.12),NumberSequenceKeypoint.new(.4,.28),NumberSequenceKeypoint.new(1,.48)})
+  steam.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(.18,.8),NumberSequenceKeypoint.new(.6,.9),NumberSequenceKeypoint.new(1,1)})
+  steam.Rate=5;steam.Lifetime=NumberRange.new(1.3,1.9);steam.Speed=NumberRange.new(.45,.7)
+  steam.Acceleration=target:VectorToWorldSpace(Vector3.new(.035,.12,0))
+  steam.EmissionDirection=Enum.NormalId.Top;steam.SpreadAngle=Vector2.new(9,9)
+  steam.Rotation=NumberRange.new(0,360);steam.RotSpeed=NumberRange.new(-18,18)
+  steam.LightEmission=0;steam.LightInfluence=.25;steam.VelocityInheritance=0
+  steam.LockedToPart=false;steam.Enabled=true;steam.Parent=a
+  steamingMugs+=1
+ end
+end
 -- Metadata only. Meshy cats remain Shannon's assets; fit/animate after she imports them.
 model:SetAttribute("CatSpotsLocalJSON",game:GetService("HttpService"):JSONEncode(CONFIG.catSpots))
 model:SetAttribute("CatsPendingImport",true)
@@ -117,6 +139,7 @@ pcall(function()game:GetService("ChangeHistoryService"):SetWaypoint("After Cat c
 print(string.format("QQ CATCAFE1 DONE: %d meshes, %d visitor Seats, %d reserved cat spots, %d collidable meshes; %d old fixtures backed up",#CONFIG.meshNames-3,#CONFIG.seats,#CONFIG.catSpots,colliders,#retire))
 print(string.format("QQ CATCAFE1 BOUNDS: x %.2f..%.2f y %.2f..%.2f z %.2f..%.2f",min.X,max.X,min.Y,max.Y,min.Z,max.Z))
 print("QQ CATCAFE1 PRESERVED: existing facade, roof, upper floor, walls and floor; all other shops/fronts and ShopBacks")
+print(string.format("QQ CATCAFE1 TEA: %d steaming table mugs; subtle particle wisps",steamingMugs))
 print("QQ CATCAFE1 CATS: not imported; cat spots are adjustable placeholders in metadata only")
 print("QQ CATCAFE1 STATUS: "..(Run:IsRunning() and "PLAY-TEST SERVER PREVIEW ONLY; discarded on stop" or "EDIT; NOT PUBLISHED"))
 -- After approved Edit installation, set precise collision on placed collidable

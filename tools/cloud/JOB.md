@@ -4297,3 +4297,12 @@ CATCAFE1_PREP_SYNTAX_PASS: source preparation compiles; not executed
 - Four Blender design-study pictures in out_catcafe1 (01_inside, 02_seating, 03_cat_window, 04_layout). Existing facade/floor are simplified context in these pictures. They are NOT actual Roblox play-test pictures, and the missing cats remain pending from Meshy.
 - Combined FBX copied to OneDrive/Desktop/Japan garden kit/japan_kit23_cat_cafe1.fbx. User-facing picture and FBX copies in this chat's outputs folder. No Studio build changes, no publish, no DataStore writes, and no fabricated installer QQ outputs.
 NEXT: Shannon imports kit23 and authorizes anchoring/preparing it BEFORE Play; run prepare_catcafe1 in Edit, then catcafe1 on the play-test Server. Move the test avatar into the market (announce first) to keep streaming loaded. Inspect actual front/interior/cubby/window pictures, test entry/aisles and all five seats, adjust before review, and install only on her yes. Confirm final cat scale/poses when her Meshy cats are imported. Grocer remains installed; other shops unchanged.
+
+
+## Cat cafe1 steaming tea requested (Codex solo, Oct 17 2026) - preview script only
+Shannon requested: "be sure to include some steaming mugs of tea on the tables".
+- Added four gentle ParticleEmitters to catcafe1.lua: two existing mugs on each table. Attachments sit just above the tea/rim at local y 3.65, matching the generator's mug positions, and are oriented through the placement frame so they rise upright regardless of imported mesh axes.
+- Low-rate warm-white wisps fade in and out over 1.3-1.9 seconds. No new visible geometry, FBX changes or extra import needed; the Desktop kit23 remains current. Updated the working installer/template too.
+- Checked the Roblox ParticleEmitter primary API documentation and reviewed the script diff. Read-only Studio syntax validation compiled the updated function without executing it:
+CATCAFE1_STEAM_SYNTAX_PASS: updated installer compiles; function not executed; Studio unchanged
+- No installer QQ outputs yet: steam appearance/strength and mug alignment must be judged in the actual cafe Server preview after Shannon imports and authorizes source preparation. Existing Blender pictures do not include this runtime effect. No Studio scene changes or publishing.
