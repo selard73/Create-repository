@@ -3996,3 +3996,32 @@ bridgeend1 in Edit" - NOT published (her Alt+P, then restart servers).
   and bridge 1's west end from the grass beside it (before / after / closer).
 - Undo: CanalFalls3 -> delete, HudBackup.Falls3Replaced.CanalFalls2 back into JapanMap.MomijiGarden; BridgeEnd* -> delete, the six
   HudBackup.BridgeEndReplaced Landing* back into MomijiGarden.Bridges (attribute BridgeEndWasIn on each).
+## The palace koi pond done the canal's way (runner 7, solo, Oct 17) - INSTALLED in Edit, NOT published
+Shannon: "fix the pond by the royal palace the same way we fixed this waterway". Pond = PalaceGrounds."Koi pond set piece", centre
+(6322, 21.5), water 3.9; it had a rounded rock rim (BlenderScenery."Sculpted terrain".JP_Koi_Pond_Shore, CanQuery false) over a ragged
+hole in the court meshes (JM_Court_Stone / JM_Court_Moss, CanQuery false - rays hit their collision boxes, so look with the rim hidden
+via LocalTransparencyModifier), a sand/rock bowl down to -12, and 8 part koi floating ON the water. The court around is white Pavement +
+JM_PhotographicPath (the canal walls' own flagstone), y 3.0-3.25; invisible "Pond shallow bank" supports at r 37-46 (kept).
+Built (tools/japan/garden): gen_pond.py -> out_pond/pond_ring.fbx (24 meshes, 5072 tris: Wall_Stone_0..7 water face r 32 from -0.6,
+8.5 thick to r 40.5 with a flagstone ledge at 4.1; Wall_Coping_0..7 = 64 cut-stone slabs r 31.6..36.2 at 4.3..4.7; Apron_Stone_0..7
+paving r 40.4..49.2 at 3.19 with an edge bevel); check_pond.py (closed meshes, previews); kit japan_kit13_pond_ring2.fbx (she imported
+it; anchored + moved into ServerStorage.JapanGardenKit as pond_ring; round 1's ring parked as HudBackup.pond_ring_r1).
+Installer pondfix1.lua at 1f8b6be (13617 / 3455938339), run in Edit on her "Yes, install pondfix1 in Edit":
+QQ PONDFIX1 terrain: 1388 bed cells (Slate, top 0), 293 water cells (surface 3.9, flat to r 33.5), 48 rim cells cleared; backup HudBackup.PondTerrain_pre1
+QQ PONDFIX1 ring: PondRing at (6322.0, 2.05, 21.5) 98.4 x 5.30 x 98.4; 16 flagstone pieces (wall + paving), 8 coping pieces; precise collision on 24
+QQ PONDFIX1 koi: 10 Meshy koi in PondLife (Atomic, tops 0.2 under the surface, rings r 8..25), PondLifeScript (client)
+QQ PONDFIX1 water look: patched 1741 -> 1877 bytes (teal 40,104,112 / 0.68 / 0.2 inside x 6262..6382, z -38..81); backup HudBackup.JapanWaterAppearance_pre_pondwater1
+QQ PONDFIX1 DONE: retired JP_Koi_Pond_Shore, Koi fish -> HudBackup.PondReplaced; publish, then restart servers (the water look is a StarterPlayerScripts change)
+Then: the 24 PondRing parts were still CollisionFidelity Default (the pcall "succeeded" on the unparented clone) -> set Precise on the
+placed parts; rays now coping 4.70 / ledge 4.10 / paving 3.19. Installer fixed afterwards to set it after parenting (later commit).
+Checked: no bridge or landing part overlaps the ring; the moon bridge's underside clears the coping by 1.3-2.3; no script mentions the
+retired pieces; the koi swim on the client (a RunContext Client script made at run time on the test server ran on the client).
+LESSONS: (1) terrain water rounds off over its outermost 4-stud cell - it is flat only inside a square of four water-cell centres; a
+cell is needed when its 8 x 8 box around the centre reaches inside the flat radius (closed form: hypot(max(|dx|-4,0), max(|dz|-4,0)) <
+R). Round 1 (wall face r 35, cells inside r 37.6) showed a jagged dark strip at the wall (picture r1_from_bridge_GAP); a test-only
+marker ring (yellow r 32 / red r 35, parented INSIDE JapanMap - the hide-scripts hide anything outside it) proved flat water to r 32;
+round 2 moved the face to r 32; "flat to 33.5" closed the last two slivers. (2) Set CollisionFidelity only on PARENTED parts.
+Pictures (Create-repository-shots\pond_2026-10-17, sent): before/after from the west court and the SW rim, the bridge view, an overview.
+Undo: delete PondRing + PondLife; HudBackup.PondReplaced's two back to their PondWasIn; Terrain:PasteRegion(HudBackup.PondTerrain_pre1,
+Vector3int16.new(1567, -4, -8), true); JapanWaterAppearance.Source from HudBackup.JapanWaterAppearance_pre_pondwater1.
+Shannon: publish, then restart servers (the teal water reaches players on their next join).

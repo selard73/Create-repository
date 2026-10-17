@@ -12,7 +12,7 @@
 --    sand rim above 0 is cleared out to r 44
 --  * places the kit Model "pond_ring" (gen_pond.py, round 2) as PondRing: the wall (water face r 32, ledge 4.1) and the paving out to r 49.2 in
 --    the palace flagstone (Pavement + JM_PhotographicPath, white - the court's own), the coping slabs in the canal's cut stone; all
---    solid, PreciseConvexDecomposition set on the placed parts (a kit setting does not reach clones made in the same call)
+--    solid, PreciseConvexDecomposition set on the placed parts once parented (set on the kit, or on an unparented clone, it stays Default)
 --  * PondLife: 10 of Shannon's Meshy koi (kit koi_meshy, 2.4 long, Atomic) circling in slow meanders, their tops 0.2 under the
 --    surface (PondLifeScript, client-side, synced by server time)
 --  * StarterPlayerScripts.JapanWaterAppearance: the canal's teal water (40,104,112 / 0.68 / 0.2) also round the pond (marker
@@ -94,10 +94,13 @@ for _, p in ipairs(m:GetDescendants()) do
 		else
 			p.Material = Enum.Material.SmoothPlastic; p.Color = COPING; ncope += 1
 		end
-		if p:IsA("MeshPart") and pcall(function() p.CollisionFidelity = Enum.CollisionFidelity.PreciseConvexDecomposition end) then nfid += 1 end
 	end
 end
 m.Parent = POND
+task.wait()
+for _, p in ipairs(m:GetDescendants()) do                                                      -- AFTER parenting: set on an unparented clone it came back Default (Oct 17 install)
+	if p:IsA("MeshPart") and pcall(function() p.CollisionFidelity = Enum.CollisionFidelity.PreciseConvexDecomposition end) and p.CollisionFidelity == Enum.CollisionFidelity.PreciseConvexDecomposition then nfid += 1 end
+end
 local rcf, rs = m:GetBoundingBox()
 print(string.format("QQ PONDFIX1 ring: PondRing at (%.1f, %.2f, %.1f) %.1f x %.2f x %.1f; %d flagstone pieces (wall + paving), %d coping pieces; precise collision on %d",
 	rcf.X, rcf.Y, rcf.Z, rs.X, rs.Y, rs.Z, nflag, ncope, nfid))
