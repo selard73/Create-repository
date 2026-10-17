@@ -1,0 +1,3 @@
+moon_bridge_end2: 3 meshes, 180 tris; MB2_Wood 36, MB2_Red 120, MB2_Stone 24
+INFO {"min": [-5.0, -0.3, -2.1], "max": [5.0, 5.15, 5.4]}
+FBX_DONE

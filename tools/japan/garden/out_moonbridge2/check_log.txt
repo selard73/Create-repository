@@ -1,0 +1,9 @@
+prev_mb2_three_quarter.png: first thing in view = MB2_Wood at 17.8; camera at (-12.0, -13.0, 5.5)
+shot prev_mb2_three_quarter.png
+prev_mb2_front.png: first thing in view = Cube at 16.8; camera at (0.0, -16.0, 4.5)
+shot prev_mb2_front.png
+prev_mb2_side.png: first thing in view = MB2_Red at 10.7; camera at (-15.0, -1.4, 3.4)
+shot prev_mb2_side.png
+prev_mb2_from_pond.png: first thing in view = MB2_Stone at 12.6; camera at (-9.0, 9.0, 4.0)
+shot prev_mb2_from_pond.png
+CHECK_DONE
