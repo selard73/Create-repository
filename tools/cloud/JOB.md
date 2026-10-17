@@ -4083,3 +4083,17 @@ foot) - never a bolted-on stair or a stand-alone stone landing; (2) render the p
 as she would before showing her; two blind rounds cost her patience. (3) Blender camera tuples: write them in the piece's local frame (x, up, out).
 Pictures: tools/japan/garden/shots_moonbridge_2026-10-17 (1-3 round 1, 4-6 round 2, 7-8 round 3 = installed look).
 Undo: delete the pond set's MoonBridgeEnds; HudBackup.MoonBridgeReplaced's two Walkway slabs back to their MoonBridgeWasIn. Shannon: publish.
+## Japan 'feels too big' - option 3 chosen (Oct 17 ~03:50Z): make the train obvious, fill the lawns with the planned features, trim the margins
+Shannon: 'Is there some way we can shrink the japan map so that things are closer together?' -> 'Go with option 3: make the train obvious, fill the
+empty lawns with the planned features, then trim the margins'. Density survey (parts per 100x100): the built band is x 5378..6660, z -300..300; the
+core (market to palace) ~500 wide; empty: the south strip below the railway, the tea field round the maze, the north hill margin, the east ring.
+TRAIN FACTS (JapanEnvironment, read-only): 3 stations at z 151, platform y 9: Tea Hills (5630), Lantern Street (6000), Palace Grounds (6379); each
+has BoardingPoint + JapanTrainPrompt 'Ride to <next>' (rides are one-way round the loop TH -> LS -> PG -> TH, ~8-10 s, the train on z origin+181,
+Indigo bullet train with a passenger seat; signs 'TEA HILLS - LANTERN STREET - PALACE GROUNDS'). Arrival into Japan: LanternStreet.JapanArrival
+(6145, 0.6, 222) on the 'Arrival court' (6130, 224), sign 'Japan arrivals' at (6145, 13, 246) - 145 west / 70 north of the Lantern Street station.
+WAYFINDING DESIGN (not built): Blender meshes only - (1) at the arrival court a wooden fingerpost: 'Bullet train', 'Palace', 'Tea Hills & bamboo maze',
+'Canal garden & church' with distances, and a map board 'you are here'; (2) a tall nobori banner 'EKI / STATION' at each station, seen from afar, and a
+platform board 'Next: <station>'; (3) fingerposts at the junctions (canal bridges, market ends, palace gate). Then features into the gaps: koi
+feeding at the pond (PondLife koi exist), photographer on the west lawn with the volcano behind, archery on the palace court, cat cafe in the
+market (her Meshy cats); then the south strip below the railway + the north margin -> sea/cliff (terrain only). PAUSED at usage: weekly all-models
+61%, Fable 80% (her 70% rule).
