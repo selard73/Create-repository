@@ -7,7 +7,7 @@ local event=bridge:WaitForChild("Transition")
 local room=workspace.JapanMap.ShopFronts:WaitForChild("CatCafeInterior")
 local streetFrame=bridge:GetAttribute("StreetFrame")
 local roomFrame=bridge:GetAttribute("RoomFrame")
-local active={};local cooldown={};local serial=0;local alive=true
+local active={};local cooldown={};local mustLeaveDoor={};local serial=0;local alive=true
 local function character(player)
  local c=player.Character;local h=c and c:FindFirstChildOfClass("Humanoid");local r=c and c:FindFirstChild("HumanoidRootPart")
  if c and h and r and h.Health>0 then return c,h,r end
@@ -23,6 +23,7 @@ end
 local function finish(player,success,reason)
  local s=active[player];if not s then return end
  active[player]=nil;cooldown[player]=os.clock()+2
+ if not success then mustLeaveDoor[player]=true end
  -- Cleanup must also release a dead or recently replaced character's root.
  if s.root.Parent then
   if not success and s.moved and s.char.Parent then s.char:PivotTo(s.originalPivot)end
@@ -68,7 +69,7 @@ local connection=event.OnServerEvent:Connect(function(player,action,token)
 end)
 local removed=Players.PlayerRemoving:Connect(function(p)
  local s=active[p];if s and s.root.Parent then s.root.Anchored=s.wasAnchored end
- active[p]=nil;cooldown[p]=nil
+ active[p]=nil;cooldown[p]=nil;mustLeaveDoor[p]=nil
 end)
 task.spawn(function()
  while alive and script.Parent do
@@ -83,7 +84,9 @@ task.spawn(function()
     if c then
      local q=roomFrame:PointToObjectSpace(r.Position)
      local inRoom=math.abs(q.X)<18 and q.Z<2.8 and q.Z>-29 and q.Y>-.5 and q.Y<14
-     if inRoom then
+     if mustLeaveDoor[p]then
+      if not nearDoor(r.Position,true)and not nearDoor(r.Position,false)then mustLeaveDoor[p]=nil end
+     elseif inRoom then
       if nearDoor(r.Position,true)then begin(p,false)end
      elseif nearDoor(r.Position,false)then begin(p,true)
      elseif p:GetAttribute("InCatCafeInterior")then p:SetAttribute("InCatCafeInterior",false)end

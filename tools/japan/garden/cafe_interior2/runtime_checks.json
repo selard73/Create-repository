@@ -1,0 +1,179 @@
+{
+  "status": "SERVER PREVIEW ONLY; kit29 source prepared in Edit; no permanent cafe installation; not published",
+  "date": "2026-10-17",
+  "notes": [
+    "Latest full installer ran in a fresh Play after runtime fixes.",
+    "Four visitor seats tested through normal walking/jump, no forced Seat:Sit.",
+    "Timeout test deliberately withheld Faded acknowledgement; after recovery root released, fade cleared and retry waited for leaving the doorway.",
+    "Death test occurred while root anchored during doorway fade; old root released, new character healthy and unanchored; final reentry passed.",
+    "Six indoor heads changed over two seconds; outside Whisker head changed 2.402244 degrees over two seconds at street.",
+    "Two tracks/four meow IDs retained; first music asset loaded and playing at volume .22. Meow playback timing not forced.",
+    "Transient blank 3D captures did not reproduce after doorway exit/reentry. No lighting/geometry changes made. Normal Custom-camera view subsequently rendered correctly.",
+    "Five final native Play pictures saved with temporary photo camera and HUD/avatar hiding; all overrides removed.",
+    "Computer Use viewport inspection permission timed out; no UI actions were taken.",
+    "No multi-player session was run."
+  ],
+  "checks": {
+    "cafeInteriorPreparation": {
+      "content": [
+        {
+          "type": "text",
+          "text": "QQ CAFEINTERIOR2 PREPARED: 36 source meshes anchored; raw import preserved; JapanMap unchanged"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInteriorFreshInventory": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"bones\":60,\"meshes\":159,\"scripts\":[\"Workspace.JapanMap.ShopFronts.CatCafeInterior.Cats.CafeCatsClient\",\"Workspace.JapanMap.ShopFronts.CatCafeInterior.CafeCamera\",{\"enabled\":true,\"path\":\"ReplicatedStorage.CafeInterior2Link.CafeInterior2DoorwayClient\",\"runContext\":\"Enum.RunContext.Client\"}],\"seats\":[{\"name\":\"BenchSeat0\",\"disabled\":true},{\"name\":\"BenchSeat1\",\"disabled\":false},{\"name\":\"BenchSeat2\",\"disabled\":false},{\"name\":\"ChairSeat0\",\"disabled\":false},{\"name\":\"ChairSeat1\",\"disabled\":false}],\"cats\":[],\"steam\":4}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInteriorEntryKeyboard": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"fade\":1,\"sit\":false,\"anchored\":false,\"pos\":[-11,3.2247314453125,-5.200194835662842],\"inside\":true}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInteriorExitKeyboard": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"fade\":1,\"sit\":false,\"anchored\":false,\"pos\":[-9.359999656677246,2.6449880599975588,3.000000476837158],\"inside\":false}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInteriorChairStand": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"seatWelds\":0,\"sit\":false,\"anchored\":false,\"pos\":[-13.0186767578125,3.2247314453125,-8.652342796325684]}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInteriorBenchChecks": [
+      {
+        "name": "BenchSeat2",
+        "seated": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"sit\":true,\"seat\":\"BenchSeat2\"}"
+            }
+          ],
+          "isError": false
+        },
+        "stand": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"sit\":false,\"seatWelds\":0,\"anchored\":false}"
+            }
+          ],
+          "isError": false
+        }
+      },
+      {
+        "name": "BenchSeat1",
+        "seated": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"sit\":true,\"seat\":\"BenchSeat1\"}"
+            }
+          ],
+          "isError": false
+        },
+        "stand": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"sit\":false,\"seatWelds\":0,\"anchored\":false}"
+            }
+          ],
+          "isError": false
+        }
+      }
+    ],
+    "cafeInteriorPhoneOrbit": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"viewport\":[750,382],\"pass\":true,\"cases\":32,\"maxOverflow\":0.00009819865226745605}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInteriorDesktopOrbit": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"viewport\":[1389,401],\"pass\":true,\"cases\":32,\"maxOverflow\":0.00009760260581970215}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInteriorTimeoutCheck": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"beganAnchored\":true,\"endedAnchored\":false,\"positionDelta\":0.028403282165527345,\"health\":100,\"inside\":false,\"fade\":1}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInteriorCleanEntryAudioIdles": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"sounds\":[{\"path\":\"SoundService.MusicA\",\"volume\":0.2199999988079071,\"id\":\"rbxassetid://91013239854044\",\"loaded\":true,\"playing\":true},{\"path\":\"SoundService.CatCafeMeow\",\"volume\":0.2800000011920929,\"id\":\"\",\"loaded\":false,\"playing\":false}],\"sitting\":false,\"idles\":[],\"fade\":1,\"localPosition\":[-11,3.2247314453125,-5.200194835662842],\"anchored\":false,\"inside\":true}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInteriorSixIdles": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"viewport\":\"1366, 768\",\"idles\":[{\"headDelta\":2.2591476069013054,\"bone\":\"C06_Head\"},{\"headDelta\":5.498824791331771,\"bone\":\"C04_Head\"},{\"headDelta\":2.761020302160322,\"bone\":\"C02_Head\"},{\"headDelta\":2.008180843585649,\"bone\":\"C07_Head\"},{\"headDelta\":4.569775630237466,\"bone\":\"C03_Head\"},{\"headDelta\":4.5867183413605059,\"bone\":\"C05_Head\"}]}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInteriorDeathRespawnCheck": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"oldRootReleased\":true,\"newAnchored\":false,\"replaced\":true,\"newHealth\":100,\"diedDuringTransition\":true,\"inside\":true}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInteriorCleanExit": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"anchored\":false,\"clouds\":{\"enabled\":true,\"color\":\"1, 1, 1\",\"density\":0.10000000149011612,\"cover\":0.07999999821186066},\"inside\":false}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInteriorFinalClientState": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"seatWelds\":0,\"sitting\":false,\"seat\":\"none\",\"anchored\":false,\"inside\":true,\"viewport\":\"1389, 401\",\"health\":100,\"position\":[-11,3.2247314453125,-5.200194835662842],\"fadeGuiCount\":1,\"fov\":70,\"cameraType\":\"Enum.CameraType.Custom\",\"fade\":1}"
+        }
+      ],
+      "isError": false
+    }
+  }
+}

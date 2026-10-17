@@ -17,9 +17,11 @@ Door controller:
 - Root is briefly anchored while fading/loading. No forced Seat:Sit call is used.
 - Destination is requested for streaming before moving; client checks its replicated
   root position and a collidable floor before acknowledging readiness.
-- Original pivot/anchor state is retained for rollback. Timeout, respawn and script
-  replacement restore the state and clear the fade. These paths require actual Play
-  validation after import; compilation alone is not runtime proof.
+- Original pivot/anchor state is retained for rollback. A failed transition releases
+  the root, clears the fade, and waits for the player to leave the doorway before
+  retrying. Timeout and death/respawn recovery were exercised in actual Play.
+- One client Script under ReplicatedStorage starts for current and future players.
+  Startup removes an orphan fade overlay. The fade covers the full device viewport.
 
 Preservation:
 - Back up the original complete cafe, then create the separate playable interior.
@@ -59,9 +61,24 @@ https://create.roblox.com/docs/workspace/streaming
 https://create.roblox.com/docs/reference/engine/classes/Player#RequestStreamAroundAsync
 https://create.roblox.com/docs/scripting/locations
 
-Source-review corrections: StarterPlayerScripts receives a LocalScript so its template
-and copied player script do not both run. Transition cleanup releases the stored root
+Runtime correction: the doorway client is one RunContext=Client Script under its
+ReplicatedStorage bridge. This starts for existing preview players and future joins;
+adding a StarterPlayerScripts template during Play cannot populate client-only
+PlayerScripts from the server. Transition cleanup releases the stored root
 even if its Humanoid has died or the player has a replacement character.
 The Blender library review assembler resolves original parent transforms explicitly
 before detaching appended furniture. Every reused furniture mesh is checked against its
 source manifest plus the intended translation; all 82 bounds agree within .003 studs.
+
+Actual kit29 Play validation (Oct 17 2026): see runtime_checks.json and the five
+play/cafe_larger_play_*.jpg pictures. Entry/exit keyboard walkthroughs passed;
+both chairs and both visitor bench seats were entered naturally and exited by jump.
+The cat's bench corner is disabled for visitors. No forced Seat:Sit call was used.
+64 extreme runtime camera orbit cases passed (32 desktop, 32 landscape phone), with
+maximum near-plane overflow below .0001 studs. All seven ten-bone rigs remain intact,
+all seven heads animated, four tea emitters remain, and the first music track was
+loaded/playing. Existing two-track/four-meow source and timing remain unchanged.
+Timeout fault injection and death during an active transition both released the root
+and cleared the fade; the final respawned character re-entered normally. Multi-player
+concurrency has not been tested. Final default viewport, Custom/FOV70 camera, HUD,
+avatar visibility and standing controls restored. Permanent Edit install is pending.

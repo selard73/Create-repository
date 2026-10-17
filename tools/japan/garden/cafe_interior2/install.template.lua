@@ -130,7 +130,7 @@ room.WorldPivot=frame;display.WorldPivot=streetFrame
 local bridge=Instance.new("Folder");bridge.Name="CafeInterior2Link";bridge:SetAttribute("CafeInteriorVersion","interior2");bridge:SetAttribute("StreetFrame",streetFrame);bridge:SetAttribute("RoomFrame",frame)
 local event=Instance.new("RemoteEvent");event.Name="Transition";event.Parent=bridge
 local server=Instance.new("Script");server.Name="CafeInterior2Doorway";server.Enabled=false;server.Source=[====[__SERVER__]====];server:SetAttribute("CafeInteriorVersion","interior2")
-local client=Instance.new("LocalScript");client.Name="CafeInterior2DoorwayClient";client.Enabled=false;client.Source=[====[__CLIENT__]====];client:SetAttribute("CafeInteriorVersion","interior2")
+local client=Instance.new("Script");client.Name="CafeInterior2DoorwayClient";client.RunContext=Enum.RunContext.Client;client.Enabled=false;client.Source=[====[__CLIENT__]====];client:SetAttribute("CafeInteriorVersion","interior2")
 verify()
 local createdBackup=false
 if not backup then backup=Instance.new("Folder");backup.Name="CafeInterior2Originals";createdBackup=true end
@@ -156,11 +156,10 @@ if not ok then
 end
 -- Geometry and preservation checks are complete before enabling doorway behavior.
 for _,v in pairs({oldService,oldClient,oldLink})do if v then v:Destroy()end end
-for _,p in ipairs(game.Players:GetPlayers())do
- local scripts=p:FindFirstChild("PlayerScripts");local old=scripts and scripts:FindFirstChild(client.Name);if old then old:Destroy()end
-end
-bridge.Parent=RS;server.Parent=SSS;client.Parent=SPS;server.Enabled=true;client.Enabled=true
-if Run:IsRunning()then for _,p in ipairs(game.Players:GetPlayers())do local scripts=p:FindFirstChild("PlayerScripts");if scripts then client:Clone().Parent=scripts end end end
+-- A single replicated client Script runs for both current players and future joins.
+-- PlayerScripts is client-only; adding a LocalScript template during Play cannot
+-- populate an already joined player's scripts from the server.
+client.Parent=bridge;bridge.Parent=RS;server.Parent=SSS;server.Enabled=true;client.Enabled=true
 if previous then previous:Destroy()end
 if current~=original then current:Destroy()end
 pcall(function()game:GetService("ChangeHistoryService"):SetWaypoint("After larger cat cafe interior")end)

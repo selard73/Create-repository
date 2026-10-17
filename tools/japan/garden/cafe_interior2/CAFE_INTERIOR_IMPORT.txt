@@ -1,31 +1,27 @@
-LARGER CAT CAFE - KIT29 - DESIGN REVIEW, NOT INSTALLED
+LARGER CAT CAFE - KIT29 - ACTUAL PLAY PREVIEW READY
 
-Shannon chose a separate, larger interior after finding the current cafe too cramped.
-The new room is 34 x 28 studs with an 11.3-stud ceiling. The exterior dimensions stay.
+Kit29 is already imported, anchored and stored. No further import is needed.
+Both the raw import and clean 36-mesh source are in ServerStorage.JapanGardenKit.
 
-Import ONLY japan_kit29_cat_cafe_interior2.fbx for this cafe rebuild from:
-C:\Users\slard\OneDrive\Desktop\Japan garden kit
+The larger 34 x 28 room is running in the temporary Play preview. The original
+street exterior dimensions and furnished window view remain. Six cats occupy
+different indoor spots; seated Whisker Wonder greets visitors outside.
 
-In stopped Studio Edit, use File > Import 3D. Do not start Play while the new import
-is loose in Workspace. After importing, say "imported - anchor and prepare preview".
+Actual Play checks completed: doorway entry/exit, timeout recovery without a retry
+loop, death during a doorway fade followed by respawn/reentry, normal walking,
+all four visitor seats and jump-to-stand, phone/desktop camera bounds, seven idle
+rigs, four steam emitters, and first background music track loaded/playing.
+Both music IDs and all four intermittent meow IDs are retained. Meow timing was
+not forced, and this was a single-player Studio test.
 
-The file contains the new room shell and rug only: 36 meshes including three markers.
-Existing furniture, wall knickknacks and the seven rigged cats are reused by the installer.
-No cat or furniture reimport is needed. The outside seated greeter remains by the door;
-the other six cats have distinct indoor positions and the cream kitten stays smaller.
+Five actual Play pictures are saved as cafe_larger_play_*.jpg. The earlier Blender
+pictures remain design references. Normal camera, avatar visibility, HUD and default
+viewport are restored; Play is left running with the avatar standing inside.
 
-The temporary preview will include the doorway fade, a clear central walking route,
-four steaming mugs, the original two music tracks and four intermittent meow sounds.
-The street-facing furnished view stays behind the original windows. Visitor seating
-exists only in the larger playable room; the corner cushion is reserved for its cat.
+Permanent installation awaits Shannon's approval of these Play pictures.
+On approval, stop Play and run the reviewed cafe_interior2.lua in Edit with
+CAFEINTERIOR2_ALLOW_EDIT=true. Verify the placement manifest and a fresh Play.
+Only Shannon publishes. No permanent larger cafe installation has happened yet.
 
-Next checks AFTER import: actual entrance/exit transitions, failed-load recovery,
-walking routes, camera orbit/phone views, four visitor Seats, all seven cat idles,
-music/steam, streaming and preservation of the exterior and other shops.
-
-Blender pictures are design previews only. The scripts have been compiled but the new
-doorway behavior has NOT been run in Play. Permanent installation waits for Shannon's
-approval of actual Play pictures. Only Shannon publishes.
-
-This rebuild incorporates the pending cafe spread2 layout; do not run spread2 separately
-after the larger-room installer. Grocer kit28 is a separate pending task.
+This rebuild incorporates the pending cafe spread2 layout. Do not run spread2 or
+older complete cafe/cat installers afterward. Grocer kit28 remains a separate task.

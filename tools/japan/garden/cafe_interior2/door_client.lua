@@ -7,9 +7,13 @@ local bridge=game:GetService("ReplicatedStorage"):WaitForChild("CafeInterior2Lin
 local event=bridge:WaitForChild("Transition")
 local room=workspace:WaitForChild("JapanMap"):WaitForChild("ShopFronts"):WaitForChild("CatCafeInterior")
 local frame=bridge:GetAttribute("RoomFrame")
+local pg=player:WaitForChild("PlayerGui")
+-- A refreshed preview script must not leave a prior fade overlay behind.
+for _,old in ipairs(pg:GetChildren())do if old:IsA("ScreenGui")and old.Name=="CafeDoorwayFade"then old:Destroy()end end
 local gui=Instance.new("ScreenGui");gui.Name="CafeDoorwayFade";gui.IgnoreGuiInset=true;gui.ResetOnSpawn=false;gui.DisplayOrder=10000;gui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
+gui.ScreenInsets=Enum.ScreenInsets.None;gui.ClipToDeviceSafeArea=false
 local shade=Instance.new("Frame");shade.Size=UDim2.fromScale(1,1);shade.BackgroundColor3=Color3.fromRGB(28,24,21);shade.BackgroundTransparency=1;shade.BorderSizePixel=0;shade.Parent=gui
-gui.Parent=player:WaitForChild("PlayerGui")
+gui.Parent=pg
 local pending;local visible=nil;local runningTween;local alive=true
 local function fade(value)
  if runningTween then runningTween:Cancel()end

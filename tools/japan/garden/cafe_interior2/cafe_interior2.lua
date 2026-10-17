@@ -188,7 +188,7 @@ local event=bridge:WaitForChild("Transition")
 local room=workspace.JapanMap.ShopFronts:WaitForChild("CatCafeInterior")
 local streetFrame=bridge:GetAttribute("StreetFrame")
 local roomFrame=bridge:GetAttribute("RoomFrame")
-local active={};local cooldown={};local serial=0;local alive=true
+local active={};local cooldown={};local mustLeaveDoor={};local serial=0;local alive=true
 local function character(player)
  local c=player.Character;local h=c and c:FindFirstChildOfClass("Humanoid");local r=c and c:FindFirstChild("HumanoidRootPart")
  if c and h and r and h.Health>0 then return c,h,r end
@@ -204,6 +204,7 @@ end
 local function finish(player,success,reason)
  local s=active[player];if not s then return end
  active[player]=nil;cooldown[player]=os.clock()+2
+ if not success then mustLeaveDoor[player]=true end
  -- Cleanup must also release a dead or recently replaced character's root.
  if s.root.Parent then
   if not success and s.moved and s.char.Parent then s.char:PivotTo(s.originalPivot)end
@@ -249,7 +250,7 @@ local connection=event.OnServerEvent:Connect(function(player,action,token)
 end)
 local removed=Players.PlayerRemoving:Connect(function(p)
  local s=active[p];if s and s.root.Parent then s.root.Anchored=s.wasAnchored end
- active[p]=nil;cooldown[p]=nil
+ active[p]=nil;cooldown[p]=nil;mustLeaveDoor[p]=nil
 end)
 task.spawn(function()
  while alive and script.Parent do
@@ -264,7 +265,9 @@ task.spawn(function()
     if c then
      local q=roomFrame:PointToObjectSpace(r.Position)
      local inRoom=math.abs(q.X)<18 and q.Z<2.8 and q.Z>-29 and q.Y>-.5 and q.Y<14
-     if inRoom then
+     if mustLeaveDoor[p]then
+      if not nearDoor(r.Position,true)and not nearDoor(r.Position,false)then mustLeaveDoor[p]=nil end
+     elseif inRoom then
       if nearDoor(r.Position,true)then begin(p,false)end
      elseif nearDoor(r.Position,false)then begin(p,true)
      elseif p:GetAttribute("InCatCafeInterior")then p:SetAttribute("InCatCafeInterior",false)end
@@ -280,7 +283,7 @@ script.Destroying:Connect(function()
  for _,p in ipairs(list)do finish(p,false,"Doorway refreshed")end
 end)
 ]====];server:SetAttribute("CafeInteriorVersion","interior2")
-local client=Instance.new("LocalScript");client.Name="CafeInterior2DoorwayClient";client.Enabled=false;client.Source=[====[-- Brief fade with a local floor/readiness check. No loading UI remains after failure.
+local client=Instance.new("Script");client.Name="CafeInterior2DoorwayClient";client.RunContext=Enum.RunContext.Client;client.Enabled=false;client.Source=[====[-- Brief fade with a local floor/readiness check. No loading UI remains after failure.
 local Players=game:GetService("Players")
 local Tween=game:GetService("TweenService")
 local Run=game:GetService("RunService")
@@ -289,9 +292,13 @@ local bridge=game:GetService("ReplicatedStorage"):WaitForChild("CafeInterior2Lin
 local event=bridge:WaitForChild("Transition")
 local room=workspace:WaitForChild("JapanMap"):WaitForChild("ShopFronts"):WaitForChild("CatCafeInterior")
 local frame=bridge:GetAttribute("RoomFrame")
+local pg=player:WaitForChild("PlayerGui")
+-- A refreshed preview script must not leave a prior fade overlay behind.
+for _,old in ipairs(pg:GetChildren())do if old:IsA("ScreenGui")and old.Name=="CafeDoorwayFade"then old:Destroy()end end
 local gui=Instance.new("ScreenGui");gui.Name="CafeDoorwayFade";gui.IgnoreGuiInset=true;gui.ResetOnSpawn=false;gui.DisplayOrder=10000;gui.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
+gui.ScreenInsets=Enum.ScreenInsets.None;gui.ClipToDeviceSafeArea=false
 local shade=Instance.new("Frame");shade.Size=UDim2.fromScale(1,1);shade.BackgroundColor3=Color3.fromRGB(28,24,21);shade.BackgroundTransparency=1;shade.BorderSizePixel=0;shade.Parent=gui
-gui.Parent=player:WaitForChild("PlayerGui")
+gui.Parent=pg
 local pending;local visible=nil;local runningTween;local alive=true
 local function fade(value)
  if runningTween then runningTween:Cancel()end
@@ -373,11 +380,10 @@ if not ok then
 end
 -- Geometry and preservation checks are complete before enabling doorway behavior.
 for _,v in pairs({oldService,oldClient,oldLink})do if v then v:Destroy()end end
-for _,p in ipairs(game.Players:GetPlayers())do
- local scripts=p:FindFirstChild("PlayerScripts");local old=scripts and scripts:FindFirstChild(client.Name);if old then old:Destroy()end
-end
-bridge.Parent=RS;server.Parent=SSS;client.Parent=SPS;server.Enabled=true;client.Enabled=true
-if Run:IsRunning()then for _,p in ipairs(game.Players:GetPlayers())do local scripts=p:FindFirstChild("PlayerScripts");if scripts then client:Clone().Parent=scripts end end end
+-- A single replicated client Script runs for both current players and future joins.
+-- PlayerScripts is client-only; adding a LocalScript template during Play cannot
+-- populate an already joined player's scripts from the server.
+client.Parent=bridge;bridge.Parent=RS;server.Parent=SSS;server.Enabled=true;client.Enabled=true
 if previous then previous:Destroy()end
 if current~=original then current:Destroy()end
 pcall(function()game:GetService("ChangeHistoryService"):SetWaypoint("After larger cat cafe interior")end)
