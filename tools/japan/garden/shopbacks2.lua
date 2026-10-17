@@ -122,7 +122,9 @@ for si, S in ipairs(SHOPS) do
 	take(doorZ - doorW / 2, doorZ + doorW / 2)
 	-- ground-floor windows: away from the door, spread over the wall
 	local wins = {}
-	local cands = {cf.Z - sz.Z * 0.3, cf.Z + sz.Z * 0.3, cf.Z - sz.Z * 0.12, cf.Z + sz.Z * 0.12, cf.Z - sz.Z * 0.42, cf.Z + sz.Z * 0.42}
+	local cands = {}                                                                             -- every 3 studs along the wall, the spots farthest from the door first
+	for wz = z0 + 2.4, z1 - 2.4, 3.0 do table.insert(cands, wz) end
+	table.sort(cands, function(p, q) return math.abs(p - doorZ) > math.abs(q - doorZ) end)
 	for _, wz in ipairs(cands) do
 		if #wins < S.gwin and free(wz - 2.4, wz + 2.4) and wz - 2.2 > z0 and wz + 2.2 < z1 then
 			place(string.format("%s_window%d", S[1], #wins), "back_window2", wallX, wz, outDir); take(wz - 2.4, wz + 2.4); table.insert(wins, wz)
