@@ -4053,3 +4053,13 @@ Pictures (Create-repository-shots\maze_2026-10-17, sent): walkway before / after
 Not built (Oct 16 plan, ask her first): a finish reward at the exit (acorns once a day), a timer, a "lost?" hint.
 Undo: delete JapanMap.BambooMaze + ServerStorage.BambooMazeSpare; HudBackup.MazeReplaced's 5 back to their MazeWasIn; the walkway's
 Size / CFrame from its MazeWasSize / MazeWasCFrame. Shannon: publish, then restart servers.
+## Bamboo maze exit reward (runner 7, Oct 17) - INSTALLED in Edit, NOT published
+Shannon: "Yes, add a once-a-day acorn reward at the maze exit". mazereward1.lua at 0820f8a (8438 / 3558197670), run in Edit on her "Yes, install mazereward1 in Edit":
+QQ MAZEREWARD1 DONE: BambooMaze.RewardAcorns 25 (once a day, the Daily's day), MazeEvent + MazeReward (server) + MazeFinishClient (client card)
+How: MazeReward checks every 0.3 s; the ENTRANCE cell (3,11) marks a player on the way, leaving the footprint (or y > 30) clears it, the EXIT
+cell (4,0) while on the way = a finish: first of the Daily's day pays RewardAcorns (RS.AwardAcorns) and sets Item_mazeday = day (AwardItems
+delta); every finish counts Item_maze_done. Card = ThanksClient's look/place ("You found your way out!", "Hooray!").
+Play test (3 hops): outside -> exit cell paid nothing; entrance -> exit set Item_mazeday 20742, maze_done 1, card "+25 acorns"; again: maze_done 2,
+card "You've had today's maze prize already." NOTE: in Studio the purse does not move - SquirrelSetup adds owed acorns only when its save
+(UpdateAsync) succeeds, and Studio API access is off; live it lands with the next save (~8 s), like every other reward.
+Picture: tools/japan/garden/shots_maze_2026-10-17/5_finish_card_at_the_exit.jpg. Shannon: publish, then restart servers.
