@@ -1,0 +1,3 @@
+EXPORTED 36 shell meshes; 7840 triangles
+ROUNDTRIP_PASS: all shell names, counts and bounds within .003 studs
+CAFEINTERIOR2_DONE

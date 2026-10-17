@@ -1,0 +1,35 @@
+{
+  "room": {"width":34,"depth":28,"height":11.3,"origin":[6014,1200,7],"yaw":-90,"doorX":-11},
+  "groups": {
+    "C1_Bench":[-3.5,0,-7.35],
+    "C1_Table0":[-2.95,0,-5.7],"C1_TableGoods0":[-2.95,0,-5.7],
+    "C1_Table1":[-0.55,0,-5.7],"C1_TableGoods1":[-0.55,0,-5.7],
+    "C1_Chair0":[-2.95,0,-5.0],"C1_Chair1":[-0.55,0,-5.0],
+    "C1_Art":[-3.5,0,-8.6],
+    "C1_Counter":[2.9,0,-8.2],"C1_CounterMenu":[2.9,0,-8.2],
+    "C1_Shelves":[2.9,0.4,-8.9],"C1_TeaJars":[2.9,0.4,-8.9],"C1_Cups":[2.9,0.4,-8.9],
+    "C1_TeaService":[2.9,0,-8.2],"C1_Pastry":[2.9,0,-8.2],"C1_PastryCover":[2.9,0,-8.2],
+    "C1_WindowBench":[1.4,0,0],"C1_WindowBeds":[1.4,0,0],
+    "C1_Climb0":[4.5,0,-7.3],"C1_Climb1":[4.5,0.5,-8.1],"C1_Climb2":[4.5,2.4,-8.7],
+    "C1_Scratcher":[4.5,0,-3.9],"C1_Cubby":[7.8,0,0.65],"C1_CubbyBeds":[7.8,0,0.65],
+    "C1_Bowls":[4.3,0,-6.5],
+    "C1_Lamp0":[-3.1,3.2,-5.6],"C1_Lamp1":[0.0,3.2,-1.3],"C1_Lamp2":[2.5,3.2,-6.1]
+  },
+  "wallDecorDelta":[-4.4,1.0,-5.0],
+  "seats": [
+    {"name":"BenchSeat0","position":[-14.15,1.96,-24.0],"look":[0,0,1],"reserved":true},
+    {"name":"BenchSeat1","position":[-11.4,1.96,-24.0],"look":[0,0,1]},
+    {"name":"BenchSeat2","position":[-8.65,1.96,-24.0],"look":[0,0,1]},
+    {"name":"ChairSeat0","position":[-13.0,1.99,-12.7],"look":[0,0,-1]},
+    {"name":"ChairSeat1","position":[-6.3,1.99,-12.7],"look":[0,0,-1]}
+  ],
+  "cats": [
+    {"name":"Whisker_Wonder","position":[-5.1,-0.5798532,2.15],"yaw":-15,"scale":0.90,"outside":true,"spot":"SeatedDoorwayGreeter"},
+    {"name":"Emerald_Eyed_Tabby_Ki","position":[4.5,2.32,-1.82],"yaw":125,"scale":0.93,"spot":"SingleWindowCat"},
+    {"name":"Tuxedo_Kitten","position":[14.3,0.01,-19.4],"yaw":180,"scale":0.90,"spot":"BesideFoodBowls"},
+    {"name":"Ginger_Whiskers","position":[15.15,7.09,-21.2],"yaw":-140,"scale":0.94,"spot":"HighPerchPounce"},
+    {"name":"Curious_Little_Tabby","position":[-4.3,0.01,-24.0],"yaw":25,"scale":0.90,"spot":"BesideBenchFloor"},
+    {"name":"Blush_Eared_Kitten","position":[12.6,0.58,-7.2],"yaw":-5,"scale":0.84,"spot":"InsideCubby"},
+    {"name":"Adorable_Tabby_Kitten","position":[-14.15,1.95,-24.0],"yaw":20,"scale":1,"spot":"CornerBench"}
+  ]
+}

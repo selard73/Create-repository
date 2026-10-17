@@ -1,0 +1,31 @@
+LARGER CAT CAFE - KIT29 - DESIGN REVIEW, NOT INSTALLED
+
+Shannon chose a separate, larger interior after finding the current cafe too cramped.
+The new room is 34 x 28 studs with an 11.3-stud ceiling. The exterior dimensions stay.
+
+Import ONLY japan_kit29_cat_cafe_interior2.fbx for this cafe rebuild from:
+C:\Users\slard\OneDrive\Desktop\Japan garden kit
+
+In stopped Studio Edit, use File > Import 3D. Do not start Play while the new import
+is loose in Workspace. After importing, say "imported - anchor and prepare preview".
+
+The file contains the new room shell and rug only: 36 meshes including three markers.
+Existing furniture, wall knickknacks and the seven rigged cats are reused by the installer.
+No cat or furniture reimport is needed. The outside seated greeter remains by the door;
+the other six cats have distinct indoor positions and the cream kitten stays smaller.
+
+The temporary preview will include the doorway fade, a clear central walking route,
+four steaming mugs, the original two music tracks and four intermittent meow sounds.
+The street-facing furnished view stays behind the original windows. Visitor seating
+exists only in the larger playable room; the corner cushion is reserved for its cat.
+
+Next checks AFTER import: actual entrance/exit transitions, failed-load recovery,
+walking routes, camera orbit/phone views, four visitor Seats, all seven cat idles,
+music/steam, streaming and preservation of the exterior and other shops.
+
+Blender pictures are design previews only. The scripts have been compiled but the new
+doorway behavior has NOT been run in Play. Permanent installation waits for Shannon's
+approval of actual Play pictures. Only Shannon publishes.
+
+This rebuild incorporates the pending cafe spread2 layout; do not run spread2 separately
+after the larger-room installer. Grocer kit28 is a separate pending task.

@@ -1,0 +1,82 @@
+{
+  "compiled": [
+    {
+      "name": "prepare_cafe_interior2.lua",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "QQ CAFEINTERIOR2 COMPILE: prepare_cafe_interior2.lua parsed; body NOT executed; no scene mutation"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "door_server.lua",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "QQ CAFEINTERIOR2 COMPILE: door_server.lua parsed; body NOT executed; no scene mutation"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "door_client.lua",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "QQ CAFEINTERIOR2 COMPILE: door_client.lua parsed; body NOT executed; no scene mutation"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "cafe_interior2.lua",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "QQ CAFEINTERIOR2 COMPILE: cafe_interior2.lua parsed; body NOT executed; no scene mutation"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "camera_client.lua",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "QQ CAFEINTERIOR2 COMPILE: camera_client.lua parsed; body NOT executed; no scene mutation"
+          }
+        ],
+        "isError": false
+      }
+    }
+  ],
+  "cameraMath": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"MATH_ONLY_NO_CAMERA_MOVEMENT\",\"cases\":1440,\"maxNearPlaneOverflow\":0.0000019073486328125}"
+      }
+    ],
+    "isError": false
+  },
+  "editReadback": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"running\":false,\"japanCount\":21063,\"cafeCount\":253,\"rows\":[{\"collide\":false,\"name\":\"C1_Climb2_SageSoft\",\"fidelity\":\"Default\"},{\"collide\":true,\"name\":\"C1_Cubby_OakDark\",\"fidelity\":\"PreciseConvexDecomposition\"},{\"collide\":true,\"name\":\"C1_Climb2_OakLight\",\"fidelity\":\"PreciseConvexDecomposition\"},{\"collide\":false,\"name\":\"C1_CubbyBeds_Rose\",\"fidelity\":\"Default\"},{\"collide\":true,\"name\":\"C1_Cubby_OakLight\",\"fidelity\":\"PreciseConvexDecomposition\"},{\"collide\":true,\"name\":\"C1_Climb2_OakDark\",\"fidelity\":\"PreciseConvexDecomposition\"},{\"collide\":false,\"name\":\"C1_CubbyBeds_Indigo\",\"fidelity\":\"Default\"}],\"streaming\":true,\"interiorExists\":false}"
+      }
+    ],
+    "isError": false
+  }
+}

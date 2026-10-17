@@ -1,0 +1,67 @@
+CAFE INTERIOR2 - IMPLEMENTATION AND VALIDATION NOTES
+
+Authoritative layout: layout.json. The manifest embeds it for the Studio installer.
+The new shell uses separate convex wall/floor panels so default mesh collision cannot
+fill the room or close the doorway. Existing precise furniture colliders are cloned.
+Furniture sizes are retained; all placement changes are translations in the cafe frame.
+
+Room origin was read-only surveyed at the proposed elevated location: no existing
+parts in the surrounding box. The installer repeats the clearance check. The remote
+room stays hidden locally from street players and appears before their doorway fade
+completes. The sealed short entrance recess prevents a player walking out into space.
+
+Door controller:
+- Server detects standing players at one of the two measured doorways.
+- Only server-selected destinations are accepted; remote messages acknowledge a
+  current server-issued transition token. No client coordinates are accepted.
+- Root is briefly anchored while fading/loading. No forced Seat:Sit call is used.
+- Destination is requested for streaming before moving; client checks its replicated
+  root position and a collidable floor before acknowledging readiness.
+- Original pivot/anchor state is retained for rollback. Timeout, respawn and script
+  replacement restore the state and clear the fade. These paths require actual Play
+  validation after import; compilation alone is not runtime proof.
+
+Preservation:
+- Back up the original complete cafe, then create the separate playable interior.
+- Retain a clone of the original furnished street view, remove its Seats/cats/camera,
+  and place only the seated Whisker greeter outside. Six cats occupy the larger room.
+- Preserve all cat mesh/texture assets, ten-bone skeletons and idle source.
+- Remove only the previously identified unwanted doorway neon lamp; preserve all
+  other facade objects and outside dimensions.
+- Keep existing music controller source/playlists/meow timing; move only its cafe
+  zone attributes. The original zone values are backed up for rollback.
+- Snapshot/verify existing Japan instances outside the cafe and targeted lamp.
+
+Preview/install:
+1. Inspect actual imported kit29, then run prepare_cafe_interior2.lua in Edit only
+   after Shannon says to anchor/prepare. Validate the stored source independently.
+2. Start Play, run cafe_interior2.lua on Server, inspect default new-shell colliders
+   and unchanged precise furniture colliders. Do not force seats during movement.
+3. Test transitions normally, stress timeout/respawn cleanup, walk the actual paths,
+   inspect camera near plane and take close actual Play pictures. Check idles/audio.
+4. Install the same reviewed code in Edit only on picture approval using its explicit
+   CAFEINTERIOR2_ALLOW_EDIT guard. Verify a fresh Play without rerunning installers.
+5. Shannon publishes. Never publish or write DataStores from this workflow.
+
+Rendering: generate shell with gen_cafe_interior2.py, assemble the reused assets with
+assemble_review.py, then render one view per process with render_interior.py. The latter
+uses render-only texture limits, smaller denoised eye-level views and a non-denoised
+overhead view to reduce memory; original textures
+and geometry are unchanged. The review cats are static rest-pose copies only in Blender;
+actual Roblox models retain all seven complete rigs.
+Review assembly needs the previously prepared local furniture/decor/cat assets. Set
+JAPAN_CAFE_REVIEW_ASSETS to their work folder on another machine. The existing local
+work folder is the fallback when this script is run from the repository. This new kit
+contains only original room geometry, not another copy of the supplied cat models.
+
+Primary API references:
+https://create.roblox.com/docs/workspace/streaming
+https://create.roblox.com/docs/reference/engine/classes/Player#RequestStreamAroundAsync
+https://create.roblox.com/docs/scripting/locations
+
+Source-review corrections: StarterPlayerScripts receives a LocalScript so its template
+and copied player script do not both run. Transition cleanup releases the stored root
+even if its Humanoid has died or the player has a replacement character.
+The Blender library review assembler resolves original parent transforms explicitly
+before detaching appended furniture. Every reused furniture mesh is checked against its
+source manifest plus the intended translation; all 82 bounds agree within .003 studs.

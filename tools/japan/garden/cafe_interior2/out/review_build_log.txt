@@ -1,0 +1,2 @@
+REVIEW_ASSEMBLY_PASS: 82 full-size furniture meshes; 38 wall-decor meshes; six supplied cats inside, seated greeter reserved outside
+CAFEINTERIOR2_REVIEW_DONE

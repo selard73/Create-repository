@@ -4564,3 +4564,39 @@ QQ GROCERSTOCK1 COMPILE: grocerstock1.lua parsed; body NOT executed; no scene mu
 - Current Studio had independently returned to stopped Edit. Readback: JapanMap 21,063 descendants, grocer2 intact with all eight old stock meshes, no ShelfStock installation and no grocerstock1 source; cafe 136 meshes and original enabled corner Seat. The prior cafe spread2 Play preview is no longer running; its pictures/script remain saved and still await approval. No Studio appearance/install mutation occurred in this task, and no camera/avatar movement was needed.
 - Saved native source, combined FBX, exact manifest, scripts, references, checks and four design pictures. Byte-identical FBX copied to Desktop/Japan garden kit and chat outputs; editable source .blend and instructions in outputs. No publishing or direct DataStore writes.
 NEXT: Shannon imports ONLY japan_kit28_grocer_stock1.fbx in stopped Edit, then authorizes anchor/preparation. Inspect the actual import, prepare/store it BEFORE Play, then run grocerstock1.lua on the Server and show close actual play pictures. Install in Edit only after Shannon approves those pictures. Cafe spread2 approval is separately pending; no new cafe import is needed. Shannon publishes.
+
+
+## Larger separate cat cafe interior kit29 (Codex solo, Oct 17 2026) - DESIGN REVIEW, IMPORT PENDING
+Shannon found the cafe too cramped and explicitly chose a separate larger interior with a doorway transition during voice: "rearranging furniture isn't going to make enough space" and "let's do a rebuild for the interior". This authorizes preparing the new design and temporary preview; permanent Edit installation still waits for actual Play pictures and her yes. The voice session ended and work continued solo.
+- New playable room: 34 x 28 studs (952 square studs), 11.3-stud ceiling, approximately twice the original 25 x 19 clear floor area. Original exterior dimensions and furnished street window view retained. Original complete cafe is backed up by the future installer; six cats and visitor seating move into the new room, with seated Whisker Wonder alone outside.
+- Built kit29 from original native Blender mesh geometry: floorboards, separate convex walls, ceiling/beams, wainscot, opaque shoji panels, paw noren, sealed doorway recess and expanded rug. 36 meshes including three alignment markers; 7,840 triangles. Room geometry only: existing 82 furniture meshes, 38 wall-decor meshes and all seven ten-bone cat rigs are reused without another import. Furniture dimensions remain unchanged.
+Actual shell build output:
+EXPORTED 36 shell meshes; 7840 triangles
+ROUNDTRIP_PASS: all shell names, counts and bounds within .003 studs
+CAFEINTERIOR2_DONE
+- Shared layout places Adorable on the far bench cushion, Curious on the floor beside the bench, Tuxedo by bowls, Ginger on the highest wall perch, Emerald alone at the window, and smaller Blush inside the cubby. Whisker is the seated street greeter. Existing spread2 scale choices and reserved corner Seat are incorporated; do NOT install the earlier spread2 script separately after this rebuild.
+- Blender review initially omitted visible furniture because appended FBX children lost their unevaluated parent-axis transform when detached. Corrected the cause by resolving the source parent hierarchy before detachment. All 82 resulting furniture bounds independently match the original manifest plus the intended translation within .003 studs, with no resizing. All six indoor cat mesh envelopes fit the room. Static cat copies are used only for Blender pictures; actual Roblox rigs and textures are preserved.
+Actual corrected assembly output:
+REVIEW_ASSEMBLY_PASS: 82 full-size furniture meshes; 38 wall-decor meshes; six supplied cats inside, seated greeter reserved outside
+CAFEINTERIOR2_REVIEW_DONE
+- Initial denoised wide render exhausted available memory. Used isolated per-view Blender processes, four render threads and render-only texture limits; original textures remain unchanged. The overhead view was rendered without denoising; smaller final eye-level views used a lower-memory denoiser configuration. All three final pictures visually reviewed. These are Blender design pictures, NOT actual Roblox Play screenshots.
+Actual final render outputs:
+RENDER cafe_larger_interior
+CAFEINTERIOR2_RENDER_DONE
+RENDER cafe_larger_seating
+CAFEINTERIOR2_RENDER_DONE
+RENDER cafe_larger_floorplan
+CAFEINTERIOR2_RENDER_DONE
+- Read-only Studio survey found no existing geometry around the proposed remote room at (6014,1200,7), yaw -90; installer repeats clearance checks. New room is Persistent for streaming, locally hidden from street players. It has a sealed exit recess. New wall pieces are individually convex; existing precise furniture colliders are cloned intact.
+- Prepared guarded source anchoring/storage script and Server-first staged installer with original-cafe backup, rollback and preservation checks. Doorway server chooses destinations, accepts only active transition acknowledgements, requests streaming, briefly anchors a standing character while faded, and waits for the client to confirm a local collidable floor before release. Timeout/death/replacement cleanup releases the stored root. No forced Seat:Sit calls. Client is a LocalScript in StarterPlayerScripts, avoiding duplicate RunContext execution. All of this behavior still requires runtime Play testing after import.
+- Preserves existing music controller source, two cafe tracks, four intermittent meow IDs, all original cat assets/70 bones and idle source, and four steaming mugs. Only the cafe listening-zone attributes move to the larger room. Only the previously identified unwanted doorway neon lamp is removed/backed up. Unrelated shops, grass and other facade objects are covered by preservation snapshots.
+Actual source compilation checks (functions were NOT executed; no ModuleScript or scene object created):
+QQ CAFEINTERIOR2 COMPILE: prepare_cafe_interior2.lua parsed; body NOT executed; no scene mutation
+QQ CAFEINTERIOR2 COMPILE: door_server.lua parsed; body NOT executed; no scene mutation
+QQ CAFEINTERIOR2 COMPILE: door_client.lua parsed; body NOT executed; no scene mutation
+QQ CAFEINTERIOR2 COMPILE: cafe_interior2.lua parsed; body NOT executed; no scene mutation
+QQ CAFEINTERIOR2 COMPILE: camera_client.lua parsed; body NOT executed; no scene mutation
+- Math-only camera check: 1,440 combinations of interior focus, yaw/pitch, phone/landscape aspect and FOV; maximum near-plane box overflow 0.0000019073486328125 studs. No avatar/camera movement. This verifies the clipping calculation only, not actual phone controls or runtime behavior.
+- Final read-only Edit survey: stopped; JapanMap 21,063 descendants; existing cafe 253 descendants; no CatCafeInterior model installed. Existing precise climbing/cubby colliders confirmed. No new source import, scene change, publication or DataStore write occurred.
+- Saved scripts, original shell .blend, manifest, source/bounds checks and three reviewed design pictures. Combined FBX byte-identical in repository, chat outputs and OneDrive/Desktop/Japan garden kit. Grocer kit28 is separately prepared and still pending import.
+NEXT: Shannon imports ONLY japan_kit29_cat_cafe_interior2.fbx in stopped Edit and says to anchor/prepare. Inspect the real import and store it before Play. Run the new installer on Server; test actual doorway entry/exit, timeout/death/respawn recovery, walking paths, four visitor Seats without forced-seat teleport tests, camera orbit/phone views, idles, audio, steam and preservation. Show close actual Play pictures; install in Edit only after her yes. Shannon publishes.
