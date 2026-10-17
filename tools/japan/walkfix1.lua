@@ -5,8 +5,8 @@
 --  A. FLAT slabs over the lawn: TeaHills (5689, 0.68, 70) and (5802, 0.68, 70) -> lowered to y 0.085 like the others.
 --  B. TeaHills (5657, 1.50, -82): a flat slab 1.3 over the lawn at its west end, into the hill at its east end (it meets the tea lookout
 --     ramp) -> tilted into a gentle ramp (lawn end top 0.31, hill end as it was) with a solid earth wedge under it.
---  C. The three station approaches (Tea Hills / Lantern Street / Palace Grounds): slabs at 0.98 and ~1.56 stepping up to the platform
---     (2.10) with air under -> solid stone blocks fill under each slab down to the lawn, so they read as built terraces.
+--  C. The three station approaches (Tea Hills / Lantern Street / Palace Grounds): a 3.7-deg slab from the lawn up to the platform
+--     (2.10) with air under -> a solid dark-stone wedge under each, like D.
 --  D. The three RAMPS (the palace gate passage 5 deg from the lawn to the court at 3.0; the keep approach 14 deg from the court to 13.8;
 --     the volcano lookout 19 deg from the lawn to the deck at 10) -> a solid WedgePart fill under each from its lowest ground up to its
 --     underside: the gate in the court's flagstone (a paved ramp), the keep and the lookout in dark stone (an embankment).
@@ -25,7 +25,7 @@ local function walkways(folder, test)
 	return t
 end
 local function near(p, x, y, z, tol) return math.abs(p.Position.X - x) < tol and math.abs(p.Position.Y - y) < 0.3 and math.abs(p.Position.Z - z) < tol end
-local function flat(p) return math.abs(p.Orientation.X) < 1 and math.abs(p.Orientation.Z) < 1 end   -- level (a yaw of 90 is still flat)
+local function flat(p) return math.abs(p.Orientation.X) < 2.5 and math.abs(p.Orientation.Z) < 2.5 end   -- level-ish (a yaw of 90 is still flat; the lawn slabs carry up to 1.7 deg)
 local function restore(p) local was = p:GetAttribute("WalkFixWasCFrame"); if was then p.CFrame = was end end   -- re-runs start from the original
 local report = {}
 local function say(s) table.insert(report, s) end
@@ -45,7 +45,9 @@ end
 -- ---------- A. flat slabs over the lawn ----------
 local nA = 0
 for _, p in ipairs(walkways(J, function(d) return (near(d, 5689, 0.68, 70, 3) or near(d, 5802, 0.68, 70, 3)) and flat(d) end)) do
-	keepOld(p); restore(p); p.CFrame = CFrame.new(p.Position.X, SLAB_Y, p.Position.Z) * (p.CFrame - p.Position); nA += 1
+	keepOld(p); restore(p)
+	local yaw = select(2, p.CFrame:ToOrientation())
+	p.CFrame = CFrame.new(p.Position.X, SLAB_Y, p.Position.Z) * CFrame.Angles(0, yaw, 0); nA += 1   -- level, same heading
 	say(string.format("A: %s at (%.0f, %.0f) lowered to y %.3f", p.Name, p.Position.X, p.Position.Z, SLAB_Y))
 end
 -- ---------- B. the tea lookout approach slab -> a gentle ramp with earth under ----------
@@ -75,25 +77,15 @@ for _, p in ipairs(walkways(J, function(d) return near(d, 5657, 1.50, -82, 3) or
 	paint(w, EARTH); w.Parent = F
 	say(string.format("B: tea lookout slab tilted: lawn end top %.2f, hill end top %.2f over %.0f (%.1f deg); earth wedge %s", topLawn, topHill, Lh, math.deg(math.atan(rise / Lh)), tostring(w.Size)))
 end
--- ---------- C. the station approaches: solid blocks under the stepped slabs ----------
+-- ---------- C + D. the ramps: a wedge under each (the station approaches are 3.7-deg ramps from the lawn to the platform) ----------
 local nC = 0
-for _, st in ipairs({{"Tea Hills station", 5630}, {"Lantern Street station", 6000}, {"Palace Grounds station", 6379}}) do
-	local s = J.Railway:FindFirstChild(st[1])
-	if s then
-		for _, p in ipairs(walkways(s, function(d) return d.Position.Y - d.Size.Y / 2 > LAWN_Y + 0.2 and flat(d) end)) do
-			local bottom = p.Position.Y - p.Size.Y / 2
-			local h = bottom - (LAWN_Y - 0.1)
-			block("Fill_" .. st[1]:gsub(" ", "") .. "_" .. math.floor(p.Position.Z), CFrame.new(p.Position.X, LAWN_Y - 0.1 + h / 2, p.Position.Z) * (p.CFrame - p.Position), Vector3.new(p.Size.X - 0.1, h, p.Size.Z - 0.1), DARK)
-			nC += 1
-			say(string.format("C: %s slab at z %.0f (top %.2f): stone block %.2f tall under it", st[1], p.Position.Z, p.Position.Y + p.Size.Y / 2, h))
-		end
-	end
-end
--- ---------- D. the ramps: a wedge under each ----------
 local RAMPS = {
 	{"Fill_GateRamp", 6379, 1.63, 120.5, FLAG, nil},
 	{"Fill_KeepRamp", 6438, 8.43, -161, DARK, nil},
 	{"Fill_LookoutRamp", 5417.5, 4.88, -288, DARK, nil},
+	{"Fill_TeaHillsStationRamp", 5630, 0.98, 139, DARK, nil},
+	{"Fill_LanternStreetStationRamp", 6000, 0.98, 139, DARK, nil},
+	{"Fill_PalaceGroundsStationRamp", 6379, 0.98, 139, DARK, nil},
 }
 local nD = 0
 for _, r in ipairs(RAMPS) do
@@ -135,4 +127,4 @@ F.Parent = J
 task.wait()
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after walkfix1") end)
 for _, s in ipairs(report) do print("QQ WALKFIX1 " .. s) end
-print(string.format("QQ WALKFIX1 DONE: %d slabs lowered, 1 slab made a ramp, %d station blocks, %d ramp wedges in JapanMap.WalkFills; the lake pier left for its own decision", nA, nC, nD))
+print(string.format("QQ WALKFIX1 DONE: %d slabs lowered, 1 slab made a ramp, %d ramp wedges (3 station approaches, the gate, the keep, the lookout) in JapanMap.WalkFills; the lake pier left for its own decision", nA, nD))
