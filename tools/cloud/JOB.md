@@ -4116,3 +4116,15 @@ the ground excepted) caught the roof banner before any picture - keep that patte
 Pictures: tools/japan/garden/shots_wayfinding_2026-10-17. Undo: delete JapanMap.Wayfinding. Shannon: publish.
 NEXT in option 3: features into the gaps (koi feeding at the pond first), then trim the south strip + north margin to sea/cliff.
 PUBLISHED by Shannon ~04:45Z Oct 17: the wayfinding (wayfinding1) + the moon bridge ends (moonbridgeend3) are LIVE once servers restart. NEXT from her: "many walkways that are jacked up and sitting above the main ground they are on, we need all of those fixed".
+## Japan floating walkways (runner 7, Oct 17 ~05:20Z) - walkfix1 PREVIEWED in play, awaiting her yes
+Shannon: "many walkways that are jacked up and sitting above the main ground they are on, we need all of those fixed". Survey of 134 walkway-like parts
+(Walkway x38, Market/Lantern Street paving, 70 small slabs, 22 promenade treads, the lake boardwalk): the lawns are an INVISIBLE CanCollide floor at y 0 with a
+grass mesh at -0.04 over terrain at -6, so most 'Walkway' slabs at y 0.08 are fine. Really floating: 2 flat TeaHills slabs at 0.68; the tea-lookout approach
+slab at 1.50 (1.3 of air at its lawn end); 6 RAMPS with air under (the palace gate passage 5 deg, the keep approach 14 deg, the volcano lookout 19 deg, the
+3 station approaches 3.7 deg); and the lake pier (JM_JR_Lake_Boardwalk on stilts over the lawn + Promenade end landing 16 up) - its own decision.
+walkfix1.lua at 0dc654a (9735 / 316200853): A lowers the two slabs to 0.085 (level, same heading); B tilts the tea-lookout slab into a 1-deg ramp with an
+earth wedge under; C+D a solid WedgePart under each ramp from its lowest ground to its underside (gate in the court flagstone, the rest dark Slate). Fills in
+JapanMap.WalkFills (undo: delete), moved slabs keep WalkFixWasCFrame (re-runs restore it). Round 1 missed 3 things (a 1.7-deg 'flat' slab, the station slabs
+being ramps not steps, the keep ramp's ground being another walkway) - fixed in 7dd4380 + 0dc654a; the final run reported all 1+1+6. Pictures:
+Create-repository-shots/walkfix_2026-10-17 (gate, keep, station, lookout before/after).
+ALSO from her: "the back sides of the shops are just plain walls, they need to be finished to look like the back of the shops would actually look like" - next.
