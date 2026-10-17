@@ -4026,3 +4026,30 @@ Undo: delete PondRing + PondLife; HudBackup.PondReplaced's two back to their Pon
 Vector3int16.new(1567, -4, -8), true); JapanWaterAppearance.Source from HudBackup.JapanWaterAppearance_pre_pondwater1.
 Shannon: publish, then restart servers (the teal water reaches players on their next join).
 PUBLISHED by Shannon 2026-10-17T00:51:57Z (Studio log "Place published"): falls r3 + bridge ends and the palace pond (pondfix1) are LIVE once servers restart.
+## The bamboo maze (runner 7, solo, Oct 17) - INSTALLED in Edit, NOT published
+Shannon: "a proper bamboo forest maze ... the bamboo needs to be close enough together so that it makes solid walls, so you can't see
+through them, with twists and turns, some wrong turns, and one entrance and one exit, like a corn maze". Oct 16 decisions kept: one
+Blender bamboo mesh replaces the 102 part-built clumps; a new layout each day.
+Site: the flat lawn (y 0, part floor) at the far end of the tea field, x 5377..5470, z -272.5..-161.5 (the terrain rises from x 5470).
+Kit (tools/japan/garden/gen_bamboo.py -> out_bamboo/japan_kit14_bamboo_maze.fbx, she imported it; anchored + moved into JapanGardenKit):
+bamboo_wall_A/B/C (one 12-long wall slot each: Bamboo_Core_X dark box x +-5.85 y -0.3..21.5 z +-1.15 = the only collider; Bamboo_Culm_X
+dense culms on both faces + across both ends, textured (bamboo_culm.png embedded: 4 greens, node every 6 studs); Bamboo_LeafL_X /
+LeafD_X tufts at 17..27 + sprays at 9..19; ~1500 tris), maze_gate (posts + bars Gate_Culm, Gate_Board, Gate_Rope). check_bamboo.py
+renders a maze corner (its first version laid the walls flat: keep the importer's axis rotation on the Empty, drop only its position).
+Installer bamboomaze1.lua at d3db96c (15793 / 3429328660), run in Edit on her "Yes, install bamboomaze1 in Edit":
+QQ BAMBOOMAZE1 retired 5 part-bamboo models -> HudBackup.MazeReplaced; Walkway now z -161.5..-83.0 (was 193.0 long)
+QQ BAMBOOMAZE1 DONE: BambooMaze 260 wall slots + 2 gates at x 5377.0..5470.0, z -272.5..-161.5; today (day 20742, seed 331877): 141 walls up, 119 open, the way through 79 cells; MazeServer lays out each day, MazeCamera holds the zoom at 9 inside
+How it works: JapanMap.BambooMaze = Walls (slots H_c_j along x on line j, V_i_r along z on line i; 10 x 12 cells of 9), EntranceGate
+(5410, -163; signs: outside "竹の迷路 / BAMBOO MAZE · ENTRANCE", inside "ENTRANCE · 入口"), ExitGate (5419, -271; outside "BAMBOO MAZE ·
+EXIT", inside "EXIT · 出口"), MazeLayout (ModuleScript: recursive backtracker from the entrance cell, 10 seeds a day = (os.time() -
+9 h) // 86400, the longest way through wins; apply() moves open inner slots to ServerStorage.BambooMazeSpare), MazeServer (server:
+lays out the day at start), MazeCamera (client: CameraMaxZoomDistance <= 9 inside the footprint, the player's own value kept in the
+attribute MazeCamSaved). Checked in Edit: knee-high rays pass the entrance and the exit, the south wall beside the entrance blocks,
+signs read the right way, HttpEnabled false.
+Preview lesson: round 1 of the preview stopped halfway (FindFirstChild("Bamboo_Core") - the kit names carry the variant letter) after
+it had retired the old bamboo on the test server, so she saw an empty lawn ("that is not right, not at all"); fixed in d3db96c. An
+installer should find everything it needs BEFORE it changes anything.
+Pictures (Create-repository-shots\maze_2026-10-17, sent): walkway before / after, the first corridor, from above.
+Not built (Oct 16 plan, ask her first): a finish reward at the exit (acorns once a day), a timer, a "lost?" hint.
+Undo: delete JapanMap.BambooMaze + ServerStorage.BambooMazeSpare; HudBackup.MazeReplaced's 5 back to their MazeWasIn; the walkway's
+Size / CFrame from its MazeWasSize / MazeWasCFrame. Shannon: publish, then restart servers.
