@@ -1,0 +1,2 @@
+CATCATS3_ROUNDTRIP_PASS: 7 cats, 70 globally unique bone names, original geometry/textures/weights preserved, seven deformation checks passed
+CATCATS3_DONE
