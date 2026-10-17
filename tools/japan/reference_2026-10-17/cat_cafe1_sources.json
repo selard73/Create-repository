@@ -1,0 +1,24 @@
+{
+  "design": "Cat cafe1, retained measured machiya facade with a fitted interior for future Meshy cats",
+  "primary_references": [
+    {
+      "url": "https://japancatnetworkintl.squarespace.com/maneki-machiya-cat-cafe",
+      "role": "Traditional Kyoto machiya shared with rescue cats; sitting, playing, climbing and resting spaces."
+    },
+    {
+      "url": "https://manekimachiya.com/",
+      "role": "Traditional timber house context and existing beams/lattice."
+    },
+    {
+      "url": "https://www.airbnb.com/experiences/4659675",
+      "role": "Maneki Machiya photo listing; image-search views show open floors, low tables and cat furniture."
+    }
+  ],
+  "reference_image_urls": [
+    "https://a0.muscache.com/im/pictures/Mt/MtTemplate-4659675/original/868c23a8-4624-49ea-ac16-675d0d9d3443.jpeg?im_q=highq&im_w=720",
+    "https://images.squarespace-cdn.com/content/v1/61558e41faf39617f242b1d9/b5f6f301-4672-4551-9981-c048b335a43c/P1110617.jpeg"
+  ],
+  "access_note": "Primary pages and indexed image-search results were read. Direct image fetches returned cache misses; in-app browser was unavailable. No remote images downloaded or used as texture assets. Design uses the measured existing Studio facade and the referenced room/retreat arrangement, not an exact visual reproduction.",
+  "user_cats": "Shannon confirmed the cats are still in Meshy; no cat files imported or modified. 8 editable reserved positions in manifest/model metadata; final sizing after import.",
+  "preview_status": "Blender exported/reimported FBX design studies only. Actual Roblox play preview requires Shannon to import kit23 and approve source preparation."
+}

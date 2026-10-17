@@ -1,0 +1,6949 @@
+{
+  "children": [
+    {
+      "class": "Model",
+      "name": "Traditional downtown facade",
+      "count": 164
+    },
+    {
+      "class": "Model",
+      "name": "Food display",
+      "count": 6
+    },
+    {
+      "class": "Part",
+      "name": "Service counter",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Counter front boards",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Counter leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Counter leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Handwritten shop sign",
+      "count": 2
+    },
+    {
+      "class": "Part",
+      "name": "Entrance threshold",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Ramen bowl",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Bamboo chopstick",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Pot on rear cooking bench",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Ramen bowl",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Bamboo chopstick",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Pot on rear cooking bench",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Bamboo chopstick",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Broth in bowl",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Bamboo chopstick",
+      "count": 0
+    },
+    {
+      "class": "Model",
+      "name": "Food display",
+      "count": 6
+    },
+    {
+      "class": "Part",
+      "name": "Exposed roof beam",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Exposed roof beam",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Ramen bowl",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Stool leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Round stool seat",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Exposed roof beam",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Exposed roof beam",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Exposed roof beam",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Bamboo chopstick",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Stool leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Broth in bowl",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Bamboo chopstick",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Stool leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Stool leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Stool leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Stool leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Stool leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Broth in bowl",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Broth in bowl",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Bamboo chopstick",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Bamboo chopstick",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Ramen bowl",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Round stool seat",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Handwritten shop sign",
+      "count": 2
+    },
+    {
+      "class": "Part",
+      "name": "Stool leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Stool leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Stool leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Round stool seat",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Stool leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Stool leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Stone foundation",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Shop floor",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Back wall",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Cedar corner post",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Side wall",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Lintel over open shop",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Cedar corner post",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Cedar corner post",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Handwritten shop sign",
+      "count": 2
+    },
+    {
+      "class": "Part",
+      "name": "Handwritten shop sign",
+      "count": 2
+    },
+    {
+      "class": "Part",
+      "name": "Side wall",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Handwritten shop sign",
+      "count": 2
+    },
+    {
+      "class": "Part",
+      "name": "Cedar corner post",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Small cooking pot",
+      "count": 2
+    },
+    {
+      "class": "Model",
+      "name": "Goods display",
+      "count": 4
+    },
+    {
+      "class": "Model",
+      "name": "Goods display",
+      "count": 4
+    },
+    {
+      "class": "Part",
+      "name": "Handwritten shop sign",
+      "count": 2
+    },
+    {
+      "class": "Part",
+      "name": "Menu board leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Menu board leg",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Pot on rear cooking bench",
+      "count": 0
+    },
+    {
+      "class": "Part",
+      "name": "Kitchen preparation bench",
+      "count": 0
+    }
+  ],
+  "texts": [
+    {
+      "parent": "Handwritten shop sign",
+      "text": "喫"
+    },
+    {
+      "parent": "Handwritten shop sign",
+      "text": "喫茶  Cat cafe"
+    },
+    {
+      "parent": "Handwritten shop sign",
+      "text": "喫茶"
+    },
+    {
+      "parent": "Handwritten shop sign",
+      "text": "喫茶"
+    },
+    {
+      "parent": "Handwritten shop sign",
+      "text": "喫茶\n本日のおすすめ"
+    },
+    {
+      "parent": "Handwritten shop sign",
+      "text": "700"
+    },
+    {
+      "parent": "Handwritten shop sign",
+      "text": "500"
+    },
+    {
+      "parent": "Handwritten shop sign",
+      "text": "300"
+    },
+    {
+      "parent": "Handwritten shop sign",
+      "text": "喫茶\nMENU\n300 / 500"
+    }
+  ],
+  "parts": [
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6014.25,
+        4.35,
+        -5.16,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Recessed entrance frame",
+      "collide": true,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.24,
+        7.7,
+        0.42
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6014.2002,
+        4.3,
+        -5.58,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Narrow entrance side screen",
+      "collide": true,
+      "material": "WoodPlanks",
+      "color": [
+        0.63529,
+        0.56078,
+        0.46667
+      ],
+      "size": [
+        0.84,
+        7.5,
+        0.25
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6014.2002,
+        8.3,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Entrance lintel",
+      "collide": true,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        26,
+        0.42,
+        0.5
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.7998,
+        9.65,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Upper storey beam",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        26.25,
+        0.35,
+        0.48
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.7998,
+        14.65,
+        -6,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Timber corner beam",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.34,
+        10.5,
+        0.42
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6024,
+        14.65,
+        -6,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Upper timber side wall",
+      "collide": true,
+      "material": "WoodPlanks",
+      "color": [
+        0.63529,
+        0.56078,
+        0.46667
+      ],
+      "size": [
+        0.35,
+        10.2,
+        20
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.7998,
+        14.65,
+        20,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Timber corner beam",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.34,
+        10.5,
+        0.42
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6024,
+        14.65,
+        20,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Upper timber side wall",
+      "collide": true,
+      "material": "WoodPlanks",
+      "color": [
+        0.63529,
+        0.56078,
+        0.46667
+      ],
+      "size": [
+        0.35,
+        10.2,
+        20
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.7998,
+        5,
+        0.69,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window jamb",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.2,
+        4.5,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.7998,
+        2.85,
+        10.12,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window rail",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        19.06,
+        0.17,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.7998,
+        7.15,
+        10.12,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window rail",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        19.06,
+        0.17,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        9.65,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        8.55,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        10.75,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        12.95,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        11.85,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        15.15,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        18.45,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        16.25,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        17.35,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "ridge",
+      "class": "MeshPart",
+      "cf": [
+        6024.05469,
+        22.64149,
+        7.065,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "ridge_geom",
+      "collide": false,
+      "material": "Plastic",
+      "color": [
+        0.63922,
+        0.63529,
+        0.64706
+      ],
+      "size": [
+        2.67805,
+        0.81701,
+        23.82176
+      ]
+    },
+    {
+      "parent": "roof tiles",
+      "class": "MeshPart",
+      "cf": [
+        6024.00049,
+        21.29662,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "roof tiles_geom",
+      "collide": false,
+      "material": "Plastic",
+      "color": [
+        0.63922,
+        0.63529,
+        0.64706
+      ],
+      "size": [
+        29.80146,
+        3.49325,
+        24.00117
+      ]
+    },
+    {
+      "parent": "eaves",
+      "class": "MeshPart",
+      "cf": [
+        6024.03027,
+        21.38646,
+        7.03715,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "eaves_geom",
+      "collide": false,
+      "material": "Plastic",
+      "color": [
+        0.63922,
+        0.63529,
+        0.64706
+      ],
+      "size": [
+        29.61991,
+        2.38157,
+        23.71681
+      ]
+    },
+    {
+      "parent": "ridge",
+      "class": "MeshPart",
+      "cf": [
+        6012.41064,
+        10.2866,
+        7.05933,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "ridge_geom",
+      "collide": false,
+      "material": "Plastic",
+      "color": [
+        0.63922,
+        0.63529,
+        0.64706
+      ],
+      "size": [
+        2.4444,
+        0.32681,
+        4.76435
+      ]
+    },
+    {
+      "parent": "eaves",
+      "class": "MeshPart",
+      "cf": [
+        6012.40576,
+        9.78458,
+        7.03391,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "eaves_geom",
+      "collide": false,
+      "material": "Plastic",
+      "color": [
+        0.63922,
+        0.63529,
+        0.64706
+      ],
+      "size": [
+        27.03563,
+        0.95263,
+        4.74336
+      ]
+    },
+    {
+      "parent": "roof tiles",
+      "class": "MeshPart",
+      "cf": [
+        6012.3999,
+        9.74865,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "roof tiles_geom",
+      "collide": false,
+      "material": "Plastic",
+      "color": [
+        0.63922,
+        0.63529,
+        0.64706
+      ],
+      "size": [
+        27.20133,
+        1.3973,
+        4.80023
+      ]
+    },
+    {
+      "parent": "branches",
+      "class": "MeshPart",
+      "cf": [
+        6011.74805,
+        2.58403,
+        -4.99821,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "branches_geom",
+      "collide": false,
+      "material": "Plastic",
+      "color": [
+        0.63922,
+        0.63529,
+        0.64706
+      ],
+      "size": [
+        1.99652,
+        2.16806,
+        1.79614
+      ]
+    },
+    {
+      "parent": "leaves",
+      "class": "MeshPart",
+      "cf": [
+        6011.75342,
+        2.60484,
+        -5.00089,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "leaves_geom",
+      "collide": false,
+      "material": "Plastic",
+      "color": [
+        0.63922,
+        0.63529,
+        0.64706
+      ],
+      "size": [
+        1.99826,
+        2.19032,
+        1.79278
+      ]
+    },
+    {
+      "parent": "leaves",
+      "class": "MeshPart",
+      "cf": [
+        6011.65332,
+        2.60484,
+        18.69911,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "leaves_geom",
+      "collide": false,
+      "material": "Plastic",
+      "color": [
+        0.63922,
+        0.63529,
+        0.64706
+      ],
+      "size": [
+        1.99826,
+        2.19032,
+        1.79278
+      ]
+    },
+    {
+      "parent": "branches",
+      "class": "MeshPart",
+      "cf": [
+        6011.64795,
+        2.58403,
+        18.70179,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "branches_geom",
+      "collide": false,
+      "material": "Plastic",
+      "color": [
+        0.63922,
+        0.63529,
+        0.64706
+      ],
+      "size": [
+        1.99652,
+        2.16806,
+        1.79614
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        6.88,
+        2.34,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.47059,
+        0.26275,
+        0.12941
+      ],
+      "size": [
+        0.027,
+        1.50407,
+        1.50407
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        6.66,
+        2.34,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.47059,
+        0.26275,
+        0.12941
+      ],
+      "size": [
+        0.027,
+        1.42344,
+        1.42344
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        6.44,
+        2.34,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.47059,
+        0.26275,
+        0.12941
+      ],
+      "size": [
+        0.027,
+        1.2778,
+        1.2778
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        6.22,
+        2.34,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.47059,
+        0.26275,
+        0.12941
+      ],
+      "size": [
+        0.027,
+        1.0402,
+        1.0402
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        5.97,
+        2.34,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Lantern cap",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.16,
+        0.84,
+        0.84
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        8.23,
+        2.34,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Lantern cap",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.16,
+        0.84,
+        0.84
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6012.6001,
+        9.27,
+        19.5,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Eave rafter",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.13,
+        0.18,
+        3.8
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6012.6001,
+        9.27,
+        14.7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Eave rafter",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.13,
+        0.18,
+        3.8
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6012.6001,
+        9.27,
+        5.1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Eave rafter",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.13,
+        0.18,
+        3.8
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6012.6001,
+        9.27,
+        -2.1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Eave rafter",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.13,
+        0.18,
+        3.8
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6012.6001,
+        9.27,
+        2.7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Eave rafter",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.13,
+        0.18,
+        3.8
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.75,
+        1.67,
+        -5,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Potting soil",
+      "collide": false,
+      "material": "Ground",
+      "color": [
+        0.21961,
+        0.18824,
+        0.12941
+      ],
+      "size": [
+        0.07,
+        1.28,
+        1.28
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.37988,
+        14.82,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine horizontal lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7,
+        0.065,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        -3.98,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.37988,
+        13.57,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine horizontal lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7,
+        0.065,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6012.6001,
+        9.27,
+        17.1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Eave rafter",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.13,
+        0.18,
+        3.8
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.37988,
+        12.32,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine horizontal lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7,
+        0.065,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6014.6001,
+        7.55,
+        -2.36,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Warm shop wall lamp",
+      "collide": false,
+      "material": "Neon",
+      "color": [
+        1,
+        0.86275,
+        0.6
+      ],
+      "size": [
+        0.5,
+        0.68,
+        0.4
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.6499,
+        1.05,
+        18.7,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Earthenware plant pot",
+      "collide": true,
+      "material": "CeramicTiles",
+      "color": [
+        0.36863,
+        0.27451,
+        0.19216
+      ],
+      "size": [
+        1.2,
+        1.45,
+        1.45
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6014.6001,
+        7.55,
+        15.4008,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Warm shop wall lamp",
+      "collide": false,
+      "material": "Neon",
+      "color": [
+        1,
+        0.86275,
+        0.6
+      ],
+      "size": [
+        0.5,
+        0.68,
+        0.4
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.75,
+        1.05,
+        -5,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Earthenware plant pot",
+      "collide": true,
+      "material": "CeramicTiles",
+      "color": [
+        0.36863,
+        0.27451,
+        0.19216
+      ],
+      "size": [
+        1.2,
+        1.45,
+        1.45
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        7.1,
+        2.34,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.47059,
+        0.26275,
+        0.12941
+      ],
+      "size": [
+        0.027,
+        1.53,
+        1.53
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        7.32,
+        2.34,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.47059,
+        0.26275,
+        0.12941
+      ],
+      "size": [
+        0.027,
+        1.50407,
+        1.50407
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        7.98,
+        2.34,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.47059,
+        0.26275,
+        0.12941
+      ],
+      "size": [
+        0.027,
+        1.0402,
+        1.0402
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6010.72021,
+        7.1,
+        2.34,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.74902,
+        0.26667,
+        0.15294
+      ],
+      "size": [
+        0.8,
+        1.45,
+        0.13
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        8.7,
+        2.34,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Lantern cord",
+      "collide": false,
+      "material": "Fabric",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.04,
+        1,
+        0.04
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.6499,
+        1.67,
+        18.7,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Potting soil",
+      "collide": false,
+      "material": "Ground",
+      "color": [
+        0.21961,
+        0.18824,
+        0.12941
+      ],
+      "size": [
+        0.07,
+        1.28,
+        1.28
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        7.54,
+        2.34,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.47059,
+        0.26275,
+        0.12941
+      ],
+      "size": [
+        0.027,
+        1.42344,
+        1.42344
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        7.76,
+        2.34,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.47059,
+        0.26275,
+        0.12941
+      ],
+      "size": [
+        0.027,
+        1.2778,
+        1.2778
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.46973,
+        11.12,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window rail",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7.2,
+        0.17,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.46973,
+        13.57,
+        -4.5,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window jamb",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.2,
+        5.1,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.46973,
+        13.57,
+        2.5,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window jamb",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.2,
+        5.1,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        -1.82,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        -3.26,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        -1.1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.46973,
+        16.02,
+        15,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window rail",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7.2,
+        0.17,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        -2.54,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.37988,
+        13.57,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine horizontal lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7,
+        0.065,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.5498,
+        13.57,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0.47999998927116394,
+      "name": "Shop window glazing",
+      "collide": true,
+      "material": "Glass",
+      "color": [
+        0.60784,
+        0.6549,
+        0.59216
+      ],
+      "size": [
+        7,
+        4.9,
+        0.07
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.37988,
+        12.32,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine horizontal lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7,
+        0.065,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.37988,
+        14.82,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine horizontal lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7,
+        0.065,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        4.74,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        1.78,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        4.02,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.46973,
+        16.02,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window rail",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7.2,
+        0.17,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        1.06,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6010.1001,
+        9.35,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Rain gutter",
+      "collide": false,
+      "material": "Metal",
+      "color": [
+        0.25882,
+        0.2549,
+        0.23137
+      ],
+      "size": [
+        27.4,
+        0.14,
+        0.17
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6010.2002,
+        4.65,
+        20.15,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Rain downpipe",
+      "collide": false,
+      "material": "Metal",
+      "color": [
+        0.25882,
+        0.2549,
+        0.23137
+      ],
+      "size": [
+        0.16,
+        8.4,
+        0.16
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        6.18,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        6.9,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        5.46,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        7.62,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        8.34,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.7002,
+        13.57,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Shadow behind upper window",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.28627,
+        0.25882,
+        0.20392
+      ],
+      "size": [
+        7,
+        4.9,
+        0.15
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        9.06,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6012.6001,
+        9.27,
+        12.3,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Eave rafter",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.13,
+        0.18,
+        3.8
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6012.6001,
+        9.27,
+        9.9,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Eave rafter",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.13,
+        0.18,
+        3.8
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6012.6001,
+        9.27,
+        0.3,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Eave rafter",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.13,
+        0.18,
+        3.8
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6012.6001,
+        9.27,
+        7.5,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Eave rafter",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.13,
+        0.18,
+        3.8
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.5,
+        7.1,
+        2.34,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Paper lantern",
+      "collide": false,
+      "material": "Fabric",
+      "color": [
+        0.74902,
+        0.26667,
+        0.15294
+      ],
+      "size": [
+        1.55,
+        2.35,
+        1.55
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.64014,
+        8.15,
+        10.12,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.33333,
+        0.23529,
+        0.15294
+      ],
+      "size": [
+        12,
+        1.15,
+        0.13
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6012.6001,
+        9.27,
+        -4.5,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Eave rafter",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.13,
+        0.18,
+        3.8
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6011.3501,
+        7.2,
+        19.2,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.83137,
+        0.76471,
+        0.61569
+      ],
+      "size": [
+        1.8,
+        3.7,
+        0.13
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.7002,
+        13.57,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Shadow behind upper window",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.28627,
+        0.25882,
+        0.20392
+      ],
+      "size": [
+        7,
+        4.9,
+        0.15
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.70996,
+        4.05,
+        10.12,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine horizontal lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        18.86,
+        0.065,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.70996,
+        5.3,
+        10.12,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine horizontal lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        18.86,
+        0.065,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.70996,
+        6.55,
+        10.12,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine horizontal lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        18.86,
+        0.065,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6014.25,
+        4.35,
+        20,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Recessed entrance frame",
+      "collide": true,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.24,
+        7.7,
+        0.42
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6014.25,
+        4.35,
+        0.44,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Recessed entrance frame",
+      "collide": true,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        0.24,
+        7.7,
+        0.42
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        12.02,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        12.74,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        13.46,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        9.78,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.46973,
+        11.12,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window rail",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7.2,
+        0.17,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.46973,
+        16.02,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window rail",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7.2,
+        0.17,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.46973,
+        13.57,
+        3.5,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window jamb",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.2,
+        5.1,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.46973,
+        13.57,
+        10.5,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window jamb",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.2,
+        5.1,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.5498,
+        13.57,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0.47999998927116394,
+      "name": "Shop window glazing",
+      "collide": true,
+      "material": "Glass",
+      "color": [
+        0.60784,
+        0.6549,
+        0.59216
+      ],
+      "size": [
+        7,
+        4.9,
+        0.07
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        14.9,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        14.18,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        15.62,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        16.34,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        17.06,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        17.78,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.37988,
+        14.82,
+        15,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine horizontal lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7,
+        0.065,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.37988,
+        13.57,
+        15,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine horizontal lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7,
+        0.065,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.37988,
+        12.32,
+        15,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine horizontal lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7,
+        0.065,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        0.34,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.40967,
+        13.57,
+        -0.38,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.9,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.46973,
+        11.12,
+        15,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window rail",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        7.2,
+        0.17,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.46973,
+        13.57,
+        11.5,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window jamb",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.2,
+        5.1,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.46973,
+        13.57,
+        18.5,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window jamb",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.2,
+        5.1,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.5498,
+        13.57,
+        15,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0.47999998927116394,
+      "name": "Shop window glazing",
+      "collide": true,
+      "material": "Glass",
+      "color": [
+        0.60784,
+        0.6549,
+        0.59216
+      ],
+      "size": [
+        7,
+        4.9,
+        0.07
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.7002,
+        13.57,
+        15,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Shadow behind upper window",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.28627,
+        0.25882,
+        0.20392
+      ],
+      "size": [
+        7,
+        4.9,
+        0.15
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.7998,
+        19.45,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Upper storey beam",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        26.25,
+        0.35,
+        0.48
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6014,
+        1.8,
+        10.12,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Lower cedar window base",
+      "collide": true,
+      "material": "WoodPlanks",
+      "color": [
+        0.63529,
+        0.56078,
+        0.46667
+      ],
+      "size": [
+        18.86,
+        2,
+        0.3
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6014,
+        14.65,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Upper plaster wall",
+      "collide": true,
+      "material": "Plaster",
+      "color": [
+        0.76863,
+        0.71765,
+        0.61961
+      ],
+      "size": [
+        26,
+        10.2,
+        0.35
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6024,
+        9.4,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Second floor ceiling",
+      "collide": true,
+      "material": "WoodPlanks",
+      "color": [
+        0.2549,
+        0.18431,
+        0.12941
+      ],
+      "size": [
+        26,
+        0.35,
+        20
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6014.8501,
+        7.6,
+        -2.36,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Short doorway noren",
+      "collide": false,
+      "material": "Fabric",
+      "color": [
+        0.16471,
+        0.25882,
+        0.3098
+      ],
+      "size": [
+        1.72,
+        1.05,
+        0.08
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6014.8501,
+        7.6,
+        -4.16,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Short doorway noren",
+      "collide": false,
+      "material": "Fabric",
+      "color": [
+        0.16471,
+        0.25882,
+        0.3098
+      ],
+      "size": [
+        1.72,
+        1.05,
+        0.08
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6014.8501,
+        7.6,
+        -0.56,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Short doorway noren",
+      "collide": false,
+      "material": "Fabric",
+      "color": [
+        0.16471,
+        0.25882,
+        0.3098
+      ],
+      "size": [
+        1.72,
+        1.05,
+        0.08
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        14.05,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.87988,
+        5,
+        10.12,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0.47999998927116394,
+      "name": "Shop window glazing",
+      "collide": true,
+      "material": "Glass",
+      "color": [
+        0.60784,
+        0.6549,
+        0.59216
+      ],
+      "size": [
+        18.86,
+        4.3,
+        0.07
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.7998,
+        5,
+        19.55,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Window jamb",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.2,
+        4.5,
+        0.22
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6034,
+        14.65,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Upper plaster wall",
+      "collide": true,
+      "material": "Plaster",
+      "color": [
+        0.76863,
+        0.71765,
+        0.61961
+      ],
+      "size": [
+        26,
+        10.2,
+        0.35
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        1.95,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        3.05,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        4.15,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        5.25,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        6.35,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Traditional downtown facade",
+      "class": "Part",
+      "cf": [
+        6013.73975,
+        5,
+        7.45,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Fine vertical lattice",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.27843,
+        0.2,
+        0.14118
+      ],
+      "size": [
+        0.075,
+        4.3,
+        0.12
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.5,
+        3.4,
+        10.38,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Service counter",
+      "collide": true,
+      "material": "WoodPlanks",
+      "color": [
+        0.86275,
+        0.80392,
+        0.71765
+      ],
+      "size": [
+        16.38,
+        0.35,
+        4
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6015.6499,
+        1.9,
+        10.38,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Counter front boards",
+      "collide": true,
+      "material": "WoodPlanks",
+      "color": [
+        0.86275,
+        0.80392,
+        0.71765
+      ],
+      "size": [
+        16.38,
+        2.55,
+        0.2
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6018.8999,
+        1.95,
+        18.27,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Counter leg",
+      "collide": true,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.3,
+        2.9,
+        0.3
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6018.8999,
+        1.95,
+        2.49,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Counter leg",
+      "collide": true,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.3,
+        2.9,
+        0.3
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6015.47998,
+        2.35,
+        14.9664,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.93725,
+        0.8549,
+        0.67059
+      ],
+      "size": [
+        4.5,
+        1.2,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6012.2998,
+        0.49,
+        -2.36,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Entrance threshold",
+      "collide": true,
+      "material": "Slate",
+      "color": [
+        0.45098,
+        0.44314,
+        0.40784
+      ],
+      "size": [
+        6,
+        0.25,
+        4
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        3.9,
+        7.9,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Ramen bowl",
+      "collide": false,
+      "material": "Glass",
+      "color": [
+        0.93725,
+        0.8549,
+        0.67059
+      ],
+      "size": [
+        0.45,
+        1.45,
+        1.45
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        4.22,
+        7.84,
+        -0.29552,
+        0,
+        0.95534,
+        0,
+        1,
+        0,
+        -0.95534,
+        0,
+        -0.29552
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.79608,
+        0.6902,
+        0.46275
+      ],
+      "size": [
+        0.055,
+        0.055,
+        1.55
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6030.5,
+        4.05,
+        9.6,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Pot on rear cooking bench",
+      "collide": false,
+      "material": "Metal",
+      "color": [
+        0.25098,
+        0.26667,
+        0.26667
+      ],
+      "size": [
+        1.1,
+        1.6,
+        1.6
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        3.9,
+        12.5,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Ramen bowl",
+      "collide": false,
+      "material": "Glass",
+      "color": [
+        0.93725,
+        0.8549,
+        0.67059
+      ],
+      "size": [
+        0.45,
+        1.45,
+        1.45
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        4.22,
+        12.32,
+        -0.29552,
+        0,
+        0.95534,
+        0,
+        1,
+        0,
+        -0.95534,
+        0,
+        -0.29552
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.79608,
+        0.6902,
+        0.46275
+      ],
+      "size": [
+        0.055,
+        0.055,
+        1.55
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6030.5,
+        4.05,
+        7,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Pot on rear cooking bench",
+      "collide": false,
+      "material": "Metal",
+      "color": [
+        0.25098,
+        0.26667,
+        0.26667
+      ],
+      "size": [
+        1.1,
+        1.6,
+        1.6
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        4.22,
+        12.44,
+        -0.29552,
+        0,
+        0.95534,
+        0,
+        1,
+        0,
+        -0.95534,
+        0,
+        -0.29552
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.79608,
+        0.6902,
+        0.46275
+      ],
+      "size": [
+        0.055,
+        0.055,
+        1.55
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        4.14,
+        12.5,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Broth in bowl",
+      "collide": false,
+      "material": "SmoothPlastic",
+      "color": [
+        0.62745,
+        0.4,
+        0.18431
+      ],
+      "size": [
+        0.06,
+        1.22,
+        1.22
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        4.22,
+        7.72,
+        -0.29552,
+        0,
+        0.95534,
+        0,
+        1,
+        0,
+        -0.95534,
+        0,
+        -0.29552
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.79608,
+        0.6902,
+        0.46275
+      ],
+      "size": [
+        0.055,
+        0.055,
+        1.55
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6032,
+        19.55,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Exposed roof beam",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        26.8,
+        0.28,
+        0.3
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6028,
+        19.55,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Exposed roof beam",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        26.8,
+        0.28,
+        0.3
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        3.9,
+        5.6,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Ramen bowl",
+      "collide": false,
+      "material": "Glass",
+      "color": [
+        0.16471,
+        0.25882,
+        0.3098
+      ],
+      "size": [
+        0.45,
+        1.45,
+        1.45
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6019.16992,
+        1.25,
+        -0.89,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.13,
+        1.35,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6019.6001,
+        2.05,
+        -1.32,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Round stool seat",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.37255,
+        0.26275,
+        0.18431
+      ],
+      "size": [
+        0.25,
+        1.45,
+        1.45
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6024,
+        19.55,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Exposed roof beam",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        26.8,
+        0.28,
+        0.3
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6020,
+        19.55,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Exposed roof beam",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        26.8,
+        0.28,
+        0.3
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6016,
+        19.55,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Exposed roof beam",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        26.8,
+        0.28,
+        0.3
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        4.22,
+        5.54,
+        -0.29552,
+        0,
+        0.95534,
+        0,
+        1,
+        0,
+        -0.95534,
+        0,
+        -0.29552
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.79608,
+        0.6902,
+        0.46275
+      ],
+      "size": [
+        0.055,
+        0.055,
+        1.55
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6020.02979,
+        1.25,
+        -0.89,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.13,
+        1.35,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        4.14,
+        5.6,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Broth in bowl",
+      "collide": false,
+      "material": "SmoothPlastic",
+      "color": [
+        0.62745,
+        0.4,
+        0.18431
+      ],
+      "size": [
+        0.06,
+        1.22,
+        1.22
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        4.22,
+        5.42,
+        -0.29552,
+        0,
+        0.95534,
+        0,
+        1,
+        0,
+        -0.95534,
+        0,
+        -0.29552
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.79608,
+        0.6902,
+        0.46275
+      ],
+      "size": [
+        0.055,
+        0.055,
+        1.55
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6021.77002,
+        1.25,
+        -1.75,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.13,
+        1.35,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6022.62988,
+        1.25,
+        -0.89,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.13,
+        1.35,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6020.02979,
+        1.25,
+        -1.75,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.13,
+        1.35,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6019.16992,
+        1.25,
+        -1.75,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.13,
+        1.35,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6022.62988,
+        1.25,
+        -1.75,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.13,
+        1.35,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        4.14,
+        10.2,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Broth in bowl",
+      "collide": false,
+      "material": "SmoothPlastic",
+      "color": [
+        0.62745,
+        0.4,
+        0.18431
+      ],
+      "size": [
+        0.06,
+        1.22,
+        1.22
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        4.14,
+        7.9,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Broth in bowl",
+      "collide": false,
+      "material": "SmoothPlastic",
+      "color": [
+        0.62745,
+        0.4,
+        0.18431
+      ],
+      "size": [
+        0.06,
+        1.22,
+        1.22
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        4.22,
+        10.14,
+        -0.29552,
+        0,
+        0.95534,
+        0,
+        1,
+        0,
+        -0.95534,
+        0,
+        -0.29552
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.79608,
+        0.6902,
+        0.46275
+      ],
+      "size": [
+        0.055,
+        0.055,
+        1.55
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        4.22,
+        10.02,
+        -0.29552,
+        0,
+        0.95534,
+        0,
+        1,
+        0,
+        -0.95534,
+        0,
+        -0.29552
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.79608,
+        0.6902,
+        0.46275
+      ],
+      "size": [
+        0.055,
+        0.055,
+        1.55
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6017.2002,
+        3.9,
+        10.2,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Ramen bowl",
+      "collide": false,
+      "material": "Glass",
+      "color": [
+        0.16471,
+        0.25882,
+        0.3098
+      ],
+      "size": [
+        0.45,
+        1.45,
+        1.45
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6024.7998,
+        2.05,
+        -1.32,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Round stool seat",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.37255,
+        0.26275,
+        0.18431
+      ],
+      "size": [
+        0.25,
+        1.45,
+        1.45
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6033.75,
+        5.85,
+        2.32,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.93725,
+        0.8549,
+        0.67059
+      ],
+      "size": [
+        3.1,
+        3.6,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6025.22998,
+        1.25,
+        -0.89,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.13,
+        1.35,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6024.37012,
+        1.25,
+        -0.89,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.13,
+        1.35,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6021.77002,
+        1.25,
+        -0.89,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.13,
+        1.35,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6022.2002,
+        2.05,
+        -1.32,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Round stool seat",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.37255,
+        0.26275,
+        0.18431
+      ],
+      "size": [
+        0.25,
+        1.45,
+        1.45
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6025.22998,
+        1.25,
+        -1.75,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.13,
+        1.35,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6024.37012,
+        1.25,
+        -1.75,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.13,
+        1.35,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6024,
+        0.395,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Stone foundation",
+      "collide": true,
+      "material": "Slate",
+      "color": [
+        0.45098,
+        0.44314,
+        0.40784
+      ],
+      "size": [
+        26.8,
+        0.45,
+        21
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6024,
+        0.88985,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Shop floor",
+      "collide": true,
+      "material": "WoodPlanks",
+      "color": [
+        0.86275,
+        0.80392,
+        0.71765
+      ],
+      "size": [
+        26,
+        0.3,
+        20.5
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6034,
+        4.95,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Back wall",
+      "collide": true,
+      "material": "Plaster",
+      "color": [
+        0.71373,
+        0.64314,
+        0.52941
+      ],
+      "size": [
+        26,
+        9.3,
+        0.4
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6034,
+        9.95,
+        -6,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Cedar corner post",
+      "collide": true,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.52,
+        19.9,
+        0.52
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6024,
+        4.95,
+        20,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Side wall",
+      "collide": true,
+      "material": "WoodPlanks",
+      "color": [
+        0.86275,
+        0.80392,
+        0.71765
+      ],
+      "size": [
+        0.4,
+        9.3,
+        20
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6014,
+        8.65,
+        7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Lintel over open shop",
+      "collide": true,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        26,
+        0.55,
+        0.5
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6014,
+        9.95,
+        20,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Cedar corner post",
+      "collide": true,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.52,
+        19.9,
+        0.52
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6034,
+        9.95,
+        20,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Cedar corner post",
+      "collide": true,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.52,
+        19.9,
+        0.52
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6015.4502,
+        3.55,
+        7.7,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.93725,
+        0.8549,
+        0.67059
+      ],
+      "size": [
+        0.85,
+        1.1,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6015.4502,
+        3.55,
+        10.5,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.93725,
+        0.8549,
+        0.67059
+      ],
+      "size": [
+        0.85,
+        1.1,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6024,
+        4.95,
+        -6,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Side wall",
+      "collide": true,
+      "material": "WoodPlanks",
+      "color": [
+        0.86275,
+        0.80392,
+        0.71765
+      ],
+      "size": [
+        0.4,
+        9.3,
+        20
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6015.4502,
+        3.55,
+        13.3,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.93725,
+        0.8549,
+        0.67059
+      ],
+      "size": [
+        0.85,
+        1.1,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6014,
+        9.95,
+        -6,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Cedar corner post",
+      "collide": true,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        0.52,
+        19.9,
+        0.52
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6018.1001,
+        3.95,
+        12.98,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Small cooking pot",
+      "collide": false,
+      "material": "Metal",
+      "color": [
+        0.24706,
+        0.25882,
+        0.2549
+      ],
+      "size": [
+        0.9,
+        1.35,
+        1.35
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6009.1001,
+        2.15,
+        0.76,
+        -0.00819,
+        -0.15622,
+        0.98769,
+        0.05169,
+        0.98633,
+        0.15643,
+        -0.99863,
+        0.05234,
+        0
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.17255,
+        0.12941,
+        0.1098
+      ],
+      "size": [
+        2.6,
+        3,
+        0.13
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6009.62061,
+        0.46023,
+        -0.23297,
+        -0.00819,
+        -0.15622,
+        0.98769,
+        0.05169,
+        0.98633,
+        0.15643,
+        -0.99863,
+        0.05234,
+        0
+      ],
+      "transparency": 0,
+      "name": "Menu board leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.37255,
+        0.26275,
+        0.18431
+      ],
+      "size": [
+        0.12,
+        2.1,
+        0.12
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6009.63574,
+        0.36718,
+        1.56456,
+        -0.00819,
+        -0.15622,
+        0.98769,
+        0.05169,
+        0.98633,
+        0.15643,
+        -0.99863,
+        0.05234,
+        0
+      ],
+      "transparency": 0,
+      "name": "Menu board leg",
+      "collide": false,
+      "material": "Wood",
+      "color": [
+        0.37255,
+        0.26275,
+        0.18431
+      ],
+      "size": [
+        0.12,
+        2.1,
+        0.12
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6030.5,
+        4.05,
+        12.2,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparency": 0,
+      "name": "Pot on rear cooking bench",
+      "collide": false,
+      "material": "Metal",
+      "color": [
+        0.25098,
+        0.26667,
+        0.26667
+      ],
+      "size": [
+        1.1,
+        1.6,
+        1.6
+      ]
+    },
+    {
+      "parent": "Cat cafe",
+      "class": "Part",
+      "cf": [
+        6030.5,
+        3.45,
+        10.12,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "transparency": 0,
+      "name": "Kitchen preparation bench",
+      "collide": true,
+      "material": "WoodPlanks",
+      "color": [
+        0.86275,
+        0.80392,
+        0.71765
+      ],
+      "size": [
+        14.56,
+        0.3,
+        3.3
+      ]
+    }
+  ]
+}
