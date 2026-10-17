@@ -1,0 +1,121 @@
+{
+  "compile": "Complete regenerated installer parsed without executing body",
+  "finalState": {"camera": "Custom (deferred read)", "inside": true, "sitting": false, "anchored": false, "health": 100, "fov": 70, "viewport": "1389, 401", "grainAsset": "Success"},
+  "pictures": ["cafe_rustic_walnut_overview.jpg", "cafe_rustic_walnut_nook.jpg"],
+  "textureCount": 4,
+  "basePartCount": 371,
+  "floors": [
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_FloorBase_OakDark",
+      "variant": "",
+      "color": [
+        0.40392157435417175,
+        0.2980392277240753,
+        0.21568627655506134
+      ],
+      "material": "SmoothPlastic",
+      "texture": false
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Floor_OakDark",
+      "variant": "",
+      "color": [
+        0.3921568691730499,
+        0.29019609093666077,
+        0.2078431397676468
+      ],
+      "material": "SmoothPlastic",
+      "texture": {
+        "tileU": 9,
+        "transparency": 0.6499999761581421,
+        "offsetV": 0,
+        "tint": [
+          0.4901960790157318,
+          0.4000000059604645,
+          0.3137255012989044
+        ],
+        "offsetU": 0,
+        "face": "Top",
+        "asset": "rbxassetid://114296702911787",
+        "tileV": 9
+      }
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_VestibuleFloor_Oak",
+      "variant": "",
+      "color": [
+        0.40392157435417175,
+        0.2980392277240753,
+        0.21568627655506134
+      ],
+      "material": "SmoothPlastic",
+      "texture": {
+        "tileU": 9,
+        "transparency": 0.6499999761581421,
+        "offsetV": 0,
+        "tint": [
+          0.4901960790157318,
+          0.4000000059604645,
+          0.3137255012989044
+        ],
+        "offsetU": 0,
+        "face": "Top",
+        "asset": "rbxassetid://114296702911787",
+        "tileV": 9
+      }
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Floor_Oak",
+      "variant": "",
+      "color": [
+        0.40392157435417175,
+        0.2980392277240753,
+        0.21568627655506134
+      ],
+      "material": "SmoothPlastic",
+      "texture": {
+        "tileU": 9,
+        "transparency": 0.6499999761581421,
+        "offsetV": 0,
+        "tint": [
+          0.4901960790157318,
+          0.4000000059604645,
+          0.3137255012989044
+        ],
+        "offsetU": 0,
+        "face": "Top",
+        "asset": "rbxassetid://114296702911787",
+        "tileV": 9
+      }
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Floor_OakLight",
+      "variant": "",
+      "color": [
+        0.4156862795352936,
+        0.30588236451148987,
+        0.2235294133424759
+      ],
+      "material": "SmoothPlastic",
+      "texture": {
+        "tileU": 9,
+        "transparency": 0.6499999761581421,
+        "offsetV": 0,
+        "tint": [
+          0.4901960790157318,
+          0.4000000059604645,
+          0.3137255012989044
+        ],
+        "offsetU": 0,
+        "face": "Top",
+        "asset": "rbxassetid://114296702911787",
+        "tileV": 9
+      }
+    }
+  ],
+  "outputs": [
+    "QQ CAFECOZY3 FLOOR: five dark walnut floor meshes; subtle board tones and four soft cedar-grain textures; existing plank geometry retained",
+    "QQ CAFECOZY3 RUSTIC CHECK: 371 existing cafe parts; four floor-grain textures; no trial MaterialVariant remains",
+    "QQ CAFECOZY3 RUSTIC STATUS: SERVER PREVIEW ONLY; not installed in Edit or published"
+  ]
+}

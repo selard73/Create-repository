@@ -86,3 +86,18 @@ Updated polish_patch.lua and regenerated/compiled the complete installer.
 Latest actual Play pictures: cafe_walnut_floor_overview.jpg and cafe_walnut_floor_nook.jpg.
 See floor_checks.json. Previous photos show the lighter floor.
 Preview only; permanent Edit installation awaits Shannon's yes. Shannon publishes.
+
+UPDATE: rustic walnut grain (Oct 17) - latest preview
+Shannon requested a more rustic floor to suit the timber building. Final floor uses
+four low-opacity tinted Texture instances on the existing visible mesh tops, using
+the exterior's existing cedar image114296702911787. Transparency .65, tint125/102/80,
+tile9x9, Top face, offsets0. Small board-tone variation keeps the dark walnut palette.
+The floor base has no overlay. Existing SmoothPlastic base finish, mesh geometry,
+collisions, furniture, cats, steam and audio remain. No new uploaded assets.
+Tested full cedar material and built-in wood first; both were visually too busy.
+A temporary material variant was also tried and removed; none remains or is installed.
+Latest actual pictures: cafe_rustic_walnut_overview.jpg, cafe_rustic_walnut_nook.jpg.
+Full regenerated installer parsed. Same floor source reapplied to Play; four textures,
+371 BaseParts. Check texture properties against rustic_floor_checks.json as well as
+the updated BasePart preview_manifest.json when installing.
+Still Server preview only, awaiting Shannon's yes. Shannon publishes.

@@ -4720,3 +4720,19 @@ QQ CAFECOZY3 FLOOR STATUS: SERVER PREVIEW ONLY; no Edit installation or publicat
 - Reviewed two actual Play pictures from the same overview/right-nook angles. Saved cafe_walnut_floor_overview.jpg and cafe_walnut_floor_nook.jpg, floor_checks.json, notes and updated371-part manifest. Earlier photos show the lighter floor.
 - Removed photo bindings and avatar/HUD overrides. Deferred read after MCP camera wrapper confirmed Custom camera, FOV70, default1389x401 viewport; inside, health100, standing/unanchored. No Edit installation, publication or direct DataStore write.
 NEXT: Shannon reviews the darker floor. On her yes use the latest cafe_cozy3.lua with CAFECOZY3_ALLOW_EDIT=true, compare the latest manifest, then fresh Play verification. Shannon publishes.
+
+
+## Cafe rustic walnut floor (Codex solo, Oct 17 2026) - SERVER PREVIEW ONLY
+Shannon asked whether the floor should look more rustic for the timber building. Prepared and visually compared several floor-only treatments in Play, retaining the darker palette.
+- Existing exterior JapanMarketCedar material proved too streaky across the room. Built-in Wood produced a busy pattern across the merged mesh groups. A temporary cafe-only MaterialVariant was tried with the existing cedar relief/wear maps and then removed; no global material was changed.
+- Final treatment blends the exterior's existing cedar color image114296702911787 onto four visible floor-mesh tops using Texture instances: Top face,9x9 tile, zero offsets, tint125/102/80, transparency.65. Five floor meshes retain SmoothPlastic base finish and have slight walnut tone variation (103/76/55,106/78/57,100/74/53). Hidden floor base has no texture. No new geometry or uploaded assets.
+- Updated polish_patch.lua; regenerated complete installer and reapplied exactly its floor section in Play. Texture creation reuses named instances, leaving four after reapplication. Furniture, cats, steam, audio and exterior were outside this patch.
+Actual outputs:
+QQ CAFECOZY3 RUSTIC COMPILE: complete regenerated installer parsed; body not executed
+QQ CAFECOZY3 FLOOR: five dark walnut floor meshes; subtle board tones and four soft cedar-grain textures; existing plank geometry retained
+QQ CAFECOZY3 RUSTIC CHECK: 371 existing cafe parts; four floor-grain textures; no trial MaterialVariant remains
+QQ CAFECOZY3 RUSTIC STATUS: SERVER PREVIEW ONLY; not installed in Edit or published
+- Saved actual Play pictures cafe_rustic_walnut_overview.jpg and cafe_rustic_walnut_nook.jpg, texture/material readback in rustic_floor_checks.json, updated371-part manifest and notes. Initial large baseline dump exceeded the tool's text limit; no full before/after geometry comparison is claimed for this pass. Only floor surface properties and named textures were edited.
+- Removed photo bindings and avatar/HUD overrides; deferred read confirmed Custom camera, FOV70, default1389x401 viewport, avatar inside standing/unanchored with health100. Cedar image fetch status Success. PowerShell startup hit an out-of-memory error while saving; a lightweight cmd/Python invocation completed the local save without closing apps.
+- Consulted Roblox MaterialVariant/MaterialService primary documentation while checking the temporary material trial: https://create.roblox.com/docs/reference/engine/classes/MaterialVariant and https://create.roblox.com/docs/reference/engine/classes/MaterialService .
+NEXT: Shannon reviews the rustic floor pictures. Still no Edit installation or publication. On her yes install latest cafe_cozy3.lua with CAFECOZY3_ALLOW_EDIT=true; compare preview_manifest.json AND four texture settings in rustic_floor_checks.json, then fresh Play verification. Shannon publishes.
