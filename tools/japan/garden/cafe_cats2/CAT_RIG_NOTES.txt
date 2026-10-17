@@ -1,0 +1,20 @@
+Seven cats for the Japan cat cafe - kit25 supersedes the six-cat kit24 import
+
+Shannon explicitly chose to ADD Adorable Tabby Kitten as a seventh cat. The previous six cats retain their source meshes, rigs, textures, sizes and cafe placements. No cream-kitten replacement.
+
+IMPORT THIS SINGLE COMBINED FILE: japan_kit25_cat_cafe_cats2.fbx
+It contains all seven cats, not just the new kitten: seven skinned meshes plus three alignment markers, 63,000 triangles total, 70 bones. Stop Play before import. Preserve model hierarchy and skinning; do not merge the cats. Ask Codex to anchor and prepare before starting another play test. Source preparation expects inner Model cat_cafe_cats2, CC2_ mesh/marker names, and exactly 10 meshes / 70 bones. The old kit24 does not also need importing.
+
+The new kitten retains its supplied seated pose, green eyes, original fur texture and curled tail. Height 1.95 studs; placed on the previously empty lower climbing pad (Climb0), local position (10.65,1.84,-5.5), yaw -100. Visitor seats and route unchanged; the inside cubby remains available. Seven actual mesh vertex envelopes fit their pads and the room.
+
+New source: Meshy_AI_Adorable_Tabby_Kitten_1017152518_texture_fbx.zip, supplied from Downloads. Original archive and texture maps untouched. Original mesh 2,644,426 triangles; reduced to 9,000 with its UVs retained and 2048-square colour texture embedded. Ten weighted bones: Root, Body, Chest, Head, Ear.L/R, Tail1..4. Purpose-made stationary idle rig, as with the six prior cats; not a walking or blinking rig. Paws stay planted, head/ears/tail move and chest has gentle motion. An editable Blender idle action is included in the combined .blend; runtime uses procedural bones and no animation upload.
+
+Import recovery: default Blender import crashed with an access violation. Import succeeded with custom normals/animation parsing disabled. Final repeatable preparation also disables global undo and releases imported material/image memory before reduction. Computed skin weights normalized, at most four bones per vertex, no unweighted vertices. Look and curious test poses keep planted paw displacement at zero. Inspected the actual pose renders.
+
+Combined FBX roundtrip validated seven skinned meshes and seven armatures, 70 bones, nine-thousand triangles per cat, normalized <=4 influences, UVs and all textures, matching bounds within .002 studs, actual vertex deformation when each re-imported Head bone rotates. New cafe pictures are native Blender design studies, NOT Roblox play-test screenshots. Real Studio skinning and motion validation remain pending import.
+
+Prepared prepare_catcafe_cats2.lua (Edit source anchor/store on Shannon's explicit request), catcafe_cats2.lua (Server preview default; permanent Edit guard CATCAFE_CATS2_ALLOW_EDIT) and separate/embedded catcafe_cats2_client.lua. Retains cafe geometry, tea, music/meows and camera guard. Client idles are distance-culled, limited to 30Hz, and per-cat Models stream atomically. Syntax validated without executing any installers. No Studio mutation in this batch.
+
+Rebuild new kitten under sibling cafe_cat7: prepare_source.py -> inspect_cats.py -> rig_cats.py. Then cafe_cats2/prepare_batch.py -> package_cats.py -> build_installers.py. Reuse the previous six prepared Blender sources from sibling cafe_cats1; do not rebuild or repaint them. package_cats.py can accept the existing cafe review .blend path after '--'. Local source assets remain in this chat's work folders; originals are in Downloads. Final editable source: cat_cafe_seven_cats_rigged.blend.
+
+NEXT: Shannon imports kit25 and authorizes source preparation. Inspect actual importer hierarchy/bones/textures and markers, anchor/store source in Edit, run cafe furniture + audio/camera + seven cats in Server preview, check actual poses/paws/streaming/seats/walking, then show real pictures. Permanent installation requires Shannon's yes. No publish or DataStore writes. Other shops untouched.

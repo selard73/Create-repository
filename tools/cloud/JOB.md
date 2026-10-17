@@ -4386,3 +4386,26 @@ CATCATS1_SYNTAX_PASS: preparation, placement installer and client idle controlle
 - Source/scripts/manifest/checks/pictures/combined FBX saved under tools/japan/garden/cafe_cats1. Original ZIPs, extracted full-resolution sources and intermediate Blender files remain local. User-facing rigged .blend, FBX, notes and pictures in current chat outputs. Combined FBX copied byte-identically to OneDrive/Desktop/Japan garden kit/japan_kit24_cat_cafe_cats1.fbx.
 - No cat source import, no Studio scene mutation, no cat runtime/play-test validation yet. Existing cafe play preview left running; prior furniture/audio/camera guard still PREVIEW ONLY. Source kit23 remains safely anchored/stored in Edit. No publication or DataStore writes. Other shops untouched.
 NEXT: Shannon stops Play and imports kit24, then authorizes anchor/preparation. Inspect exact importer hierarchy/bones/textures read-only first, prepare source in Edit, then preview cafe + audio/camera + cats on Server. Check real movement, paws/scale/directions, streaming, seats/walkways and low close pictures. Install the approved complete cafe only after her yes. Shannon publishes.
+
+
+## Cat cafe cats2: seventh kitten added; combined kit25 ready (Codex solo, Oct 17 2026) - NOT IMPORTED OR INSTALLED
+Shannon supplied Meshy_AI_Adorable_Tabby_Kitten_1017152518_texture_fbx.zip and explicitly answered "Add it as a seventh cat". All prior six cats retained; the cream kitten was not replaced. Original archive/textures untouched.
+- Original 2,644,426-triangle seated green-eyed tabby reduced to 9,000 triangles and a 2048-square colour texture, with UVs retained. Default Blender import crashed with an access violation; custom-normal/animation parsing disabled recovered the import. Final lower-memory preparation additionally disables global undo and releases imported material/image memory before reduction. No other apps or Studio sessions closed.
+- Traced anatomical joints from actual front/side/top geometry. Built 10-bone stationary idle rig with head, ears, chest and four tail bones; zero unweighted vertices, normalized <=4 influences. Inspected look/curious pose renders. Paws stay planted; not a walking/blinking rig.
+Actual rig output:
+Adorable_Tabby_Kitten: 10 bones, 9000 tris, grounded paw delta 0
+CATRIG_DONE
+- Kit25 contains ALL SEVEN cats, superseding the prior kit24 for import: 10 MeshParts (7 cats + 3 markers), 70 bones, 63,000 triangles. Reuses the six original prepared rigs. First six metadata verified unchanged: mesh counts/bounds, bone structure/weight counts, heights, cafe positions/yaws/spots.
+Actual Blender export validation:
+EXPORTED 7 skinned cats + 3 alignment markers
+ROUNDTRIP_PASS: 7 meshes, 70 bones, zero unweighted vertices, <=4 influences, textures present, posed mesh deformation verified
+RENDER cafe_seventh_kitten
+RENDER cafe_seven_cats_corner
+CATPACKAGE_DONE
+- Seventh cat height 1.95 studs on previously empty lower climbing platform Climb0 at cafe-local (10.65,1.84,-5.5), yaw -100. Seven actual mesh envelopes fit their pad rectangles and room; visitor seats/walking route retained. Cubby interior remains free. Saved low close native Blender cafe pictures; these are NOT Roblox play-test pictures.
+- New prepare_catcafe_cats2.lua expects inner cat_cafe_cats2 Model with CC2_ names, 10 meshes, 70 bones, textures and 2-stud scale markers before anchoring/storage. New Server-first placement installer accepts prior tagged cats1/cats2 group only, preserves room/tea/audio/camera/other shops. Uses existing client idles with atomic cat Models and distance culling. Requires CATCAFE_CATS2_ALLOW_EDIT=true for a later explicitly approved permanent install.
+Read-only syntax result (functions not executed):
+CATCATS2_SYNTAX_PASS: seven-cat preparation, placement and client idle controller compile; functions not executed; Studio unchanged
+- Saved scripts/checks/manifest/pictures/FBX in garden/cafe_cats2; new kitten preparation in garden/cafe_cat7. All original archives and intermediate model sources remain local. User-facing combined seven-cat .blend/FBX and pictures in chat outputs. Byte-identical japan_kit25_cat_cafe_cats2.fbx copied to OneDrive/Desktop/Japan garden kit. Kit24 preserved but is not additionally needed for import.
+- No Studio mutations, imports, permanent cafe installation, publication or DataStore writes. Existing cafe play preview left running; all new cafe additions still preview-only. No other shops changed.
+NEXT: Shannon stops Play, imports only kit25, and authorizes anchoring/preparation. Inspect actual hierarchy/scale/bones/textures; prepare source in Edit; Server-preview cafe furniture + audio/camera + seven cats. Validate actual movement, paws, streaming and seat/walking access; show actual play-test pictures; install only on her yes. Shannon publishes.

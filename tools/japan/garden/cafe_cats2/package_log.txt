@@ -1,0 +1,5 @@
+EXPORTED 7 skinned cats + 3 alignment markers
+ROUNDTRIP_PASS: 7 meshes, 70 bones, zero unweighted vertices, <=4 influences, textures present, posed mesh deformation verified
+RENDER cafe_seventh_kitten
+RENDER cafe_seven_cats_corner
+CATPACKAGE_DONE

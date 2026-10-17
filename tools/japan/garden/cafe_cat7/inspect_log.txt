@@ -1,0 +1,11 @@
+IMPORT_START C:\Users\slard\Documents\Codex\2026-10-17\we\work\cafe_cat7\src\Adorable_Tabby_Kitten_1017152518\Meshy_AI_Adorable_Tabby_Kitten_1017152518_texture_fbx\Meshy_AI_Adorable_Tabby_Kitten_1017152518_texture.fbx
+IMPORT_FINISHED
+Released imported materials/textures; explicit colour map loaded after reduction
+{'cat': 'Adorable_Tabby_Kitten', 'imported': [{'name': 'Mesh_0', 'type': 'MESH', 'dims': [1.4084360599517822, 1.6574310064315796, 1.9049720764160156]}]}
+Applied transform
+Saved full points; source triangles 2644426
+DECIMATE_START
+DECIMATE_FINISHED
+{'name': 'Adorable_Tabby_Kitten', 'original': [{'name': 'Mesh_0', 'type': 'MESH', 'dims': [1.4084360599517822, 1.6574310064315796, 1.9049720764160156]}], 'source_triangles': 2644426, 'triangles': 9000, 'vertices': 4432, 'lo': [-0.885718584060669, -1.0427765846252441, -0.003940004855394363], 'hi': [0.8780625462532043, 1.0442073345184326, 2.4045536518096924], 'raw_texture_size': [4096, 4096], 'uv_layers': 1}
+Adorable_Tabby_Kitten prepared and rendered
+CATINSPECT_DONE
