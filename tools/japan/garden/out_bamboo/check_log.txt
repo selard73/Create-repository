@@ -1,0 +1,5 @@
+empties: bamboo_wall_A, bamboo_wall_B, bamboo_wall_C, maze_gate
+shot prev_bamboo_corridor.png
+shot prev_bamboo_entrance.png
+shot prev_bamboo_above.png
+CHECK_DONE

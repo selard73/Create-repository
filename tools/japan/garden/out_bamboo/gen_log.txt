@@ -1,0 +1,7 @@
+bamboo_wall_A: 4 meshes, 1560 tris; Bamboo_Core_A 12, Bamboo_Culm_A 564, Bamboo_LeafL_A 500, Bamboo_LeafD_A 484
+bamboo_wall_B: 4 meshes, 1504 tris; Bamboo_Core_B 12, Bamboo_Culm_B 552, Bamboo_LeafL_B 460, Bamboo_LeafD_B 480
+bamboo_wall_C: 4 meshes, 1514 tris; Bamboo_Core_C 12, Bamboo_Culm_C 552, Bamboo_LeafL_C 496, Bamboo_LeafD_C 454
+maze_gate: 3 meshes, 132 tris; Gate_Culm 48, Gate_Board 12, Gate_Rope 72
+INFO {"bamboo_wall_A": {"min": [-7.388, -0.311, -4.012], "max": [7.74, 26.42, 3.803]}, "bamboo_wall_B": {"min": [-7.807, -0.31, -3.985], "max": [7.462, 26.502, 3.753]}, "bamboo_wall_C": {"min": [-7.377, -0.311, -4.102], "max": [8.156, 26.421, 4.329]}, "maze_gate": {"min": [-4.306, -0.3, -0.56], "max": [4.305, 11.6, 0.56]}}
+kit: 241084 bytes
+FBX_DONE
