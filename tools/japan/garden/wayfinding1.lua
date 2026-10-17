@@ -45,14 +45,15 @@ local F = Instance.new("Folder"); F.Name = "Wayfinding"
 for _, n in ipairs({"sign_post", "sign_finger", "nobori_banner", "map_board"}) do
 	for _, p in ipairs(KIT[n]:GetDescendants()) do if p:IsA("BasePart") then p.Anchored = true end end
 end
--- the ground under a point: the first non-transparent hit, the kit / Wayfinding skipped
+-- the ground under a point: the first hit a player can stand on (Japan's lawns are invisible CanCollide floor parts at y 0 over
+-- terrain at -6, so transparency says nothing here), the kit / Wayfinding skipped
 local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Exclude; rp.FilterDescendantsInstances = {F, KIT}
 local function ground(x, z)
 	local o = Vector3.new(x, 80, z)
 	for _ = 1, 8 do
 		local h = workspace:Raycast(o, Vector3.new(0, -120, 0), rp)
 		if not h then return nil end
-		if h.Instance == workspace.Terrain or h.Instance.Transparency < 0.95 then return h.Position.Y, h.Instance end
+		if h.Instance == workspace.Terrain or h.Instance.CanCollide then return h.Position.Y, h.Instance end
 		o = h.Position - Vector3.new(0, 0.05, 0)
 	end
 end
@@ -81,12 +82,14 @@ local function gui(part, face, name, pps)
 	local sg = Instance.new("SurfaceGui"); sg.Name = name; sg.Face = face; sg.SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
 	sg.PixelsPerStud = pps; sg.LightInfluence = 0.7; sg.AlwaysOnTop = false; sg.Parent = part; return sg
 end
-local function overlaps(m)
+local function overlaps(m, gy)                                                    -- what a piece runs into, the ground it stands in excepted
 	local op = OverlapParams.new(); op.FilterType = Enum.RaycastFilterType.Exclude; op.FilterDescendantsInstances = {F, KIT, workspace.Terrain}
 	local hit = {}
 	for _, p in ipairs(m:GetDescendants()) do
 		if p:IsA("BasePart") then
-			for _, q in ipairs(workspace:GetPartsInPart(p, op)) do if q.Transparency < 0.95 then hit[q.Name] = true end end
+			for _, q in ipairs(workspace:GetPartsInPart(p, op)) do
+				if q.Transparency < 0.95 and q.Position.Y + q.Size.Y / 2 > (gy or -1e9) + 0.05 then hit[q.Name] = true end
+			end
 		end
 	end
 	local t = {}; for k in pairs(hit) do table.insert(t, k) end
@@ -103,7 +106,7 @@ for _, P in ipairs(POSTS) do
 	post:PivotTo(CFrame.new(P.at.X, gy, P.at.Z))
 	dress(post, {Post_Wood = {Enum.Material.Wood, C(76, 54, 36), true}, Post_Stone = {Enum.Material.Slate, C(115, 112, 108), true}, default = {Enum.Material.Wood, C(76, 54, 36), true}})
 	post.Parent = F; nposts += 1
-	local ov = overlaps(post)
+	local ov = overlaps(post, gy)
 	for i, id in ipairs(P.fingers) do
 		local place = PLACES[id]
 		local f = KIT.sign_finger:Clone(); f.Name = "Finger_" .. P.name .. "_" .. id
@@ -163,7 +166,7 @@ do
 		do local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(1, 0); c.Parent = here end
 		label(bg, "you are here", 9, C(200, 40, 30), UDim2.fromScale(u(6145) + 0.02, v(222) - 0.03), UDim2.fromScale(0.2, 0.06))
 		b.Parent = F
-		local ov = overlaps(b)
+		local ov = overlaps(b, gy)
 		table.insert(report, string.format("MapBoard at (%.0f, %.2f, %.0f) on %s%s", BOARD_AT.X, gy, BOARD_AT.Z, gi and gi.Name or "?", #ov > 0 and (" OVERLAPS " .. table.concat(ov, ", ")) or ""))
 	else table.insert(report, "MapBoard: NO GROUND - skipped") end
 end
@@ -171,7 +174,7 @@ end
 local nban = 0
 for name, pos in pairs(STATIONS) do
 	for _, dx in ipairs({-34, 34}) do
-		local x, z = pos.X + dx, 121
+		local x, z = pos.X + dx, 114                                                  -- 11 off the platform's edge, clear of its roof
 		local gy, gi = ground(x, z)
 		if gy then
 			local n = KIT.nobori_banner:Clone(); n.Name = "Banner_" .. name:gsub(" ", "") .. (dx < 0 and "_W" or "_E")
@@ -189,7 +192,7 @@ for name, pos in pairs(STATIONS) do
 				label(sg, name:upper(), 0, CREAM, UDim2.fromScale(0.08, 0.82), UDim2.fromScale(0.84, 0.09))
 			end
 			n.Parent = F; nban += 1
-			local ov = overlaps(n)
+			local ov = overlaps(n, gy)
 			if #ov > 0 then table.insert(report, n.Name .. " OVERLAPS " .. table.concat(ov, ", ")) end
 		else table.insert(report, name .. " banner at x " .. x .. ": NO GROUND - skipped") end
 	end
