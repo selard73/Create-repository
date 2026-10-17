@@ -3970,3 +3970,29 @@ Files (cloud branch claude/charming-brown-dctdtc, built on claude/epic-hawking-1
    kit tools/japan/garden/out_kit11/japan_kit11_falls3_bridge_end.fbx (one Import 3D: Models canal_falls3 + bridge_end ->
    ServerStorage.JapanGardenKit; copy it to Desktop\Japan garden kit\ first). Order: import, preview both in a play test (pictures
    from her two camera spots: the west lawn by the falls, the lawn beside a bridge end), install in Edit on her yes; she publishes.
+RESULT falls r3 + bridge ends (runner 7, PC session, Oct 17 ~00:10Z): INSTALLED in Edit on Shannon's "Yes, install both canalfalls3 and
+bridgeend1 in Edit" - NOT published (her Alt+P, then restart servers).
+- Merged claude/charming-brown-dctdtc into claude/epic-hawking-188q4l (fast-forward to 2232337).
+- The kit FBX was NOT in the cloud's push (.gitignore has *.fbx; never `git add -f`ed). Rebuilt it here from gen_falls3.py + gen_bridge_end.py
+  (GARDEN_NO_RENDER=1) + tools/combine_fbx.py: same tris, same pieces.json bounds, same size 116044 bytes. Copied to
+  OneDrive\Desktop\Japan garden kit\; she imported it (workspace.japan_kit11_falls3_bridge_end).
+- LESSON: Import 3D leaves the parts UNANCHORED in workspace. My first play test started with them there: physics tumbled them before
+  I moved them (Fall_Rock turned ~67 deg, the abutment tilted 8.8 deg) and the preview was wrong. Anchor + move the import into
+  ServerStorage.JapanGardenKit BEFORE any play test (done: canal_falls3 + bridge_end in the kit, anchored, empty import root removed).
+- Preview (play test, installers fetched at 80797e2 and checked 7952/309389434 and 7240/1609426371) and install (same in Edit):
+  QQ FALLS3 replaced (-> HudBackup.Falls3Replaced): CanalFalls2
+  QQ FALLS3 DONE: CanalFalls3 (turned back) at (6101.0, 1.9, -226.3) 22.5 x 12.9 x 22.4, x 6089.8..6112.2, z -237.5..-215.1; 2 stone meshes, 2 beams, 2 emitters
+  QQ BRIDGEEND1 BridgeEndE1 (turned back): at x 6121.0, lawn -0.00, deck end 2.30 (+0.00), steps' centre 21.58 out (expected 21.57)
+  QQ BRIDGEEND1 BridgeEndW1 (turned back): at x 6081.0, lawn -0.00, deck end 2.30 (+0.00), steps' centre 21.58 out (expected 21.57)
+  QQ BRIDGEEND1 BridgeEndE2 (turned back): at x 6121.0, lawn -0.00, deck end 2.30 (+0.00), steps' centre 21.58 out (expected 21.57)
+  QQ BRIDGEEND1 BridgeEndW2 (turned back): at x 6081.0, lawn -0.00, deck end 2.30 (+0.00), steps' centre 21.58 out (expected 21.57)
+  QQ BRIDGEEND1 BridgeEndE3 (turned back): at x 6121.0, lawn -0.00, deck end 2.30 (+0.00), steps' centre 21.58 out (expected 21.57)
+  QQ BRIDGEEND1 BridgeEndW3 (turned back): at x 6081.0, lawn -0.00, deck end 2.30 (+0.00), steps' centre 21.58 out (expected 21.57)
+  QQ BRIDGEEND1 DONE: 6 bridge ends placed on 3 bridges, 6 old landings / ends -> HudBackup.BridgeEndReplaced
+- GOTCHA: the installers set CollisionFidelity PreciseConvexDecomposition on the KIT and clone it in the same call - the clones came out
+  Default (steps walked like a ramp: tops 2.30, 2.00, 1.61, 1.23). Set it on the 20 placed MeshParts directly (2 falls stones + 6 x 3
+  bridge-end parts); rays now: coping 2.18, treads 2.30 / 1.72 / 1.15 / 0.57. Next installer: set it on the clone, not only the kit.
+- Pictures (Create-repository-shots\falls3_bridgeend1_2026-10-16, sent to her): the falls from the west lawn (before / after / closer)
+  and bridge 1's west end from the grass beside it (before / after / closer).
+- Undo: CanalFalls3 -> delete, HudBackup.Falls3Replaced.CanalFalls2 back into JapanMap.MomijiGarden; BridgeEnd* -> delete, the six
+  HudBackup.BridgeEndReplaced Landing* back into MomijiGarden.Bridges (attribute BridgeEndWasIn on each).
