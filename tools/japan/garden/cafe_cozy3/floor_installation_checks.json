@@ -1,0 +1,97 @@
+{
+  "status": "Approved floor and moss rugs installed in Edit; not published.",
+  "installerOutput": "QQ CAFE FLOOR GRAIN: 238 reused real mesh boards plus vestibule; grain follows board length; original physical floor retained\nQQ CAFE FLOOR CHECK: all371 original parts retain transforms, colors, materials, mesh IDs and physical flags; four old visual surfaces hidden\nQQ CAFE FLOOR REFLECTION: client sky reflection .12 only inside cafe; prior value restored on exit; no server lighting change\nQQ CAFE FLOOR STATUS: EDIT INSTALLED; NOT PUBLISHED",
+  "approvedPreviewMatches": [
+    "QQ CAFE FLOOR INSTALLED MATCH: non-rug parts 1-100 match approved geometry, surfaces and physical flags",
+    "QQ CAFE FLOOR INSTALLED MATCH: non-rug parts 101-200 match approved geometry, surfaces and physical flags",
+    "QQ CAFE FLOOR INSTALLED MATCH: non-rug parts 201-300 match approved geometry, surfaces and physical flags",
+    "QQ CAFE FLOOR INSTALLED MATCH: non-rug parts 301-400 match approved geometry, surfaces and physical flags",
+    "QQ CAFE FLOOR INSTALLED MATCH: non-rug parts 401-500 match approved geometry, surfaces and physical flags",
+    "QQ CAFE FLOOR INSTALLED MATCH: non-rug parts 501-600 match approved geometry, surfaces and physical flags",
+    "QQ CAFE FLOOR INSTALLED MATCH: non-rug parts 601-604 match approved geometry, surfaces and physical flags"
+  ],
+  "freshEntry": {
+    "bellLoaded": true,
+    "sitting": false,
+    "fade": 1,
+    "bellCount": 1,
+    "anchored": false,
+    "specular": 0.11999999731779099,
+    "inside": true
+  },
+  "freshExit": {
+    "sitting": false,
+    "fade": 1,
+    "bellCount": 2,
+    "anchored": false,
+    "specular": 1,
+    "inside": false
+  },
+  "canonicalCompile": "QQ CAFE CANONICAL COMPILE: regenerated full installer includes approved floor and moss rugs; parsed without executing body",
+  "finalEdit": {
+    "floorFinish": "lengthwise_walnut4",
+    "reservedSeats": 2,
+    "bones": 70,
+    "rugs": [
+      {
+        "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_SageSoft",
+        "color": [
+          0.2823529541492462,
+          0.33725491166114807,
+          0.20392157137393951
+        ]
+      },
+      {
+        "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_Rug",
+        "color": [
+          0.35686275362968445,
+          0.4117647111415863,
+          0.2549019753932953
+        ]
+      },
+      {
+        "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_Cream",
+        "color": [
+          0.40784314274787903,
+          0.45490196347236633,
+          0.3019607961177826
+        ]
+      },
+      {
+        "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_SageSoft",
+        "color": [
+          0.2823529541492462,
+          0.33725491166114807,
+          0.20392157137393951
+        ]
+      },
+      {
+        "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_Rug",
+        "color": [
+          0.35686275362968445,
+          0.4117647111415863,
+          0.2549019753932953
+        ]
+      },
+      {
+        "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_Cream",
+        "color": [
+          0.40784314274787903,
+          0.45490196347236633,
+          0.3019607961177826
+        ]
+      }
+    ],
+    "usableSeats": 6,
+    "serverSpecular": 1,
+    "steamEmitters": 10,
+    "mode": "Edit",
+    "reflectionClientEnabled": true,
+    "parts": 610,
+    "wallCount": 9,
+    "rugPalette": "moss1",
+    "status": "Both approved refinements installed; NOT PUBLISHED"
+  },
+  "rugInstallerOutput": "QQ CAFE RUG MOSS: six rug meshes recolored; muted moss body, soft green weave and darker moss borders\nQQ CAFE RUG MOSS CHECK: 6 rug color changes; all610 part transforms/materials/collisions/anchoring and all non-rug colors unchanged\nQQ CAFE RUG MOSS STATUS: EDIT INSTALLED; NOT PUBLISHED",
+  "approval": "Floor approved with I think that looks ok. Automatic review initially rejected rug installation as ambiguous; Shannon subsequently explicitly replied Yes, save the moss-green rugs. Rug installation then succeeded."
+}

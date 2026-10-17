@@ -1,4 +1,4 @@
-CAT CAFE COZY3 - INSTALLED IN EDIT; NOT PUBLISHED
+CAT CAFE COZY3 - FLOOR AND MOSS RUGS INSTALLED IN EDIT; NOT PUBLISHED
 
 Shannon asked for a cuter, more inviting cafe and a closed door with an interact button.
 This revision builds on imported kit29. No new import is needed.
@@ -176,3 +176,25 @@ builder and regenerate the610-part manifest. In a staged full rebuild use its
 room frame and attach reflection client after the new doorway link is committed.
 Pictures: cafe_lengthwise_floor_overview.jpg, cafe_lengthwise_floor_nook.jpg.
 Checks: aligned_floor_checks.json. Never publish; Shannon publishes.
+
+LATEST INSTALLED STATUS: lengthwise floor + moss rugs (Oct 17)
+Shannon approved the floor with I think that looks ok, then explicitly approved
+permanent moss rugs with Yes, save the moss-green rugs. Both are installed in Edit.
+Floor installer is exact approved8621b28 source. All604 non-rug parts matched the
+approved Play preview, including239 lengthwise wood visual meshes and preserved
+original collision surfaces. Updated rug installer accepts371 or610 parts and
+validates inventory BEFORE changing color. Exactly6 moss rug colors changed;
+all610 part geometry/material/collision/anchoring and non-rug colors preserved.
+Nine wall colors remain171/155/132. Six usable/two reserved Seats,70 cat bones
+and10 subtle steam emitters retained. Server environment specular stays1.
+Fresh Play started from installed floor without rerunning installer: E entry
+sets local specular.12, exit restores1; fade cleared, standing/unanchored,
+bell Played counts1/2. Stopped Edit afterward. Rugs verified in Edit afterward.
+Canonical build_preview.py now includes both approved patches. Aligned floor
+uses the staged bridge frame, and reflection client is staged under that bridge
+before it is committed. Regenerated full installer parses; body not rerun.
+preview_manifest.json now records all610 installed parts and approved moss rugs,
+including transparency, material variant, physical flags and collision fidelity.
+Use floor_installation_checks.json for current results. Earlier pending-preview
+notes are historical and superseded. No publication or direct DataStore write.
+Ready for Shannon to publish and verify a fresh server.

@@ -4822,3 +4822,23 @@ QQ CAFE FLOOR STATUS: SERVER PREVIEW; NOT PUBLISHED
 - Announced avatar/camera movement. Actual E exit: inside=false, specular1, standing/unanchored. Actual E reentry: inside=true, specular.12, standing/unanchored. Original70 cat bones retained. Camera Custom/FOV70 restored, HUD/avatar restored, health100. Render QualityLevel temporarily10 for consistent grain photos, returned Automatic. Play remains inside cafe for Shannon's review.
 - Saved source patch, reflection client, guarded narrow installer/builder, checks and two actual Play photos. Canonical full cafe installer/371-part manifest remain installed baseline pending approval. Moss rugs also remain Play preview only. No permanent Edit change, publication or DataStore write.
 NEXT: Shannon reviews grain direction and reflection correction. On her approval stop Play, apply install_aligned_floor.lua with CAFEFLOOR4_ALLOW_EDIT=true and approved moss installer; integrate both approved patches/client into canonical full builder and regenerate manifest, then fresh Play entry/exit verification. Shannon publishes.
+
+
+## Approved lengthwise cafe floor and moss rugs installed (Codex solo, Oct 17 2026) - INSTALLED; NOT PUBLISHED
+Shannon approved the floor with "I think that looks ok". Automatic approval review initially rejected the rug installation because that approval was not considered unambiguous for rugs; no rug mutation occurred. Continued authorized floor installation and asked separately. Shannon then explicitly replied "Yes, save the moss-green rugs" and the rug installation succeeded.
+- Installed exact approved floor installer from8621b28 in stopped Edit. Verified all604 non-rug parts against captured approved Play geometry, colors, materials/variants, transparency, mesh IDs, collision fidelity and physical flags. No whole-cafe replacement.
+Actual floor output:
+QQ CAFE FLOOR GRAIN: 238 reused real mesh boards plus vestibule; grain follows board length; original physical floor retained
+QQ CAFE FLOOR CHECK: all371 original parts retain transforms, colors, materials, mesh IDs and physical flags; four old visual surfaces hidden
+QQ CAFE FLOOR REFLECTION: client sky reflection .12 only inside cafe; prior value restored on exit; no server lighting change
+QQ CAFE FLOOR STATUS: EDIT INSTALLED; NOT PUBLISHED
+- Started fresh Play from installed scene without rerunning installer. Actual E entry: inside=true, local environment specular.12, standing/unanchored, cleared fade1, bell loaded/count1. Actual E exit: inside=false, local environment specular restored1, standing/unanchored, cleared fade1, bell count2. Removed camera binding and stopped Play. Server Lighting remains1.
+- Updated narrow moss installer inventory guard to accept the new610-part cafe (or previous371), asserting before mutation. Applied only after explicit rug approval. Actual output:
+QQ CAFE RUG MOSS: six rug meshes recolored; muted moss body, soft green weave and darker moss borders
+QQ CAFE RUG MOSS CHECK: 6 rug color changes; all610 part transforms/materials/collisions/anchoring and all non-rug colors unchanged
+QQ CAFE RUG MOSS STATUS: EDIT INSTALLED; NOT PUBLISHED
+- All six moss rug colors verified exactly (body91/105/65, weave104/116/77, border72/86/52). Nine approved wall colors unchanged171/155/132. Final inventory610 BaseParts,70 original cat bones, six usable Seats/two reserved and10 subtle steam emitters. Reflection client enabled under CafeInterior2Link. No temporary material variants retained.
+- Integrated approved floor and moss patches into canonical builder, using staged bridge RoomFrame and staging reflection client before bridge commit. Regenerated full cafe_cozy3.lua. Canonical body was not rerun in Edit. Compilation result:
+QQ CAFE CANONICAL COMPILE: regenerated full installer includes approved floor and moss rugs; parsed without executing body
+- Updated610-part preview_manifest.json and generated seven bounded installation checks; saved floor_installation_checks.json and latest status notes. Stopped Edit is ready for Shannon to publish. No publication or direct DataStore write.
+NEXT: Shannon publishes, restarts servers and checks the approved cafe floor/moss rugs in a fresh server. Grocer shelf variety/kit28 and other shop work remain separate.
