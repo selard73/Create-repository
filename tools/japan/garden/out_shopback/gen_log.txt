@@ -1,0 +1,10 @@
+back_door: 4 meshes, 168 tris; Door_Wood 84, Door_Frame 36, Door_Step 12, Door_Hood 36
+back_window: 4 meshes, 144 tris; Win_Frame 48, Win_Bars 72, Win_Paper 12, Win_Sill 12
+crate_stack: 2 meshes, 108 tris; Crate_Wood 36, Crate_Band 72
+sake_barrel: 3 meshes, 176 tris; Barrel_Straw 44, Barrel_Rope 88, Barrel_Lid 44
+water_butt: 2 meshes, 144 tris; Butt_Wood 56, Butt_Hoop 88
+firewood: 2 meshes, 336 tris; Wood_Log 168, Wood_End 168
+laundry_pole: 5 meshes, 88 tris; Pole_Post 24, Pole_Bamboo 28, Cloth_A 12, Cloth_B 12, Cloth_C 12
+bin: 2 meshes, 24 tris; Bin_Wood 12, Bin_Lid 12
+INFO {"back_door": {"min": [-3.3, 0.0, -0.0], "max": [3.3, 10.1, 1.9]}, "back_window": {"min": [-2.0, 5.75, -0.0], "max": [2.0, 9.0, 0.6]}, "crate_stack": {"min": [-1.14, 0.0, -1.14], "max": [3.74, 4.45, 1.54]}, "sake_barrel": {"min": [-1.27, 0.0, -1.27], "max": [1.27, 3.2, 1.27]}, "water_butt": {"min": [-1.135, 0.0, -1.135], "max": [1.135, 3.9, 1.135]}, "firewood": {"min": [-2.0, -0.027, -1.211], "max": [2.0, 1.809, 1.181]}, "laundry_pole": {"min": [-2.6, 0.0, -0.14], "max": [2.6, 5.0, 0.4]}, "bin": {"min": [-0.95, 0.0, -0.95], "max": [0.95, 2.15, 0.95]}}
+FBX_DONE
