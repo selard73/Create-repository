@@ -4148,3 +4148,4 @@ CanCollide floor at 0 + grass mesh at -0.04 + terrain sea at -6; measure props a
 her screenshots are small - take close, low pictures of the exact thing.
 Pictures: tools/japan/shots_ground_2026-10-17 (gate/station/keep/lookout before-after, pier before-after, shore + stream close). Shannon: publish.
 NEXT from her: the shop backs ("the back sides of the shops are just plain walls, they need to be finished to look like the back of the shops would actually look like").
+PUBLISHED by Shannon ~06:20Z Oct 17: islandbase1 + propground1 + walkfix1 LIVE once servers restart. Next: the shop backs.
