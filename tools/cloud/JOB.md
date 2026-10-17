@@ -4707,3 +4707,16 @@ QQ CAFECOZY3 WOOD STATUS: SERVER PREVIEW ONLY; no Edit installation or publicati
 - Reviewed two close actual Play pictures from the same previous overview/right-nook camera angles. Saved cafe_darkwood_overview.jpg and cafe_darkwood_nook.jpg, contrast_checks.json, updated371-part manifest and notes. Earlier pictures are historical.
 - Photo bindings/visibility overrides removed; normal camera restored after the tool camera wrapper. Avatar inside, health100, standing/unanchored. No permanent Edit change, publication or direct DataStore write.
 NEXT: Shannon reviews these darker-wood pictures. On her yes use the latest cafe_cozy3.lua with CAFECOZY3_ALLOW_EDIT=true, compare the manifest, then fresh Play verification. Shannon publishes.
+
+
+## Cafe darker walnut floor (Codex solo, Oct 17 2026) - SERVER PREVIEW ONLY
+Shannon requested a darker wood floor after reviewing the dark furniture/trim. Changed the five existing floor meshes to RGB103,72,51, retaining the quiet matte finish and existing plank seams.
+- Updated polish_patch.lua and regenerated the self-contained cafe_cozy3.lua. Ran only its floor section on the current Play Server; no furniture, cats, steam, audio or exterior changes.
+Actual outputs:
+QQ CAFECOZY3 FLOOR COMPILE: complete regenerated installer parsed; body not executed
+QQ CAFECOZY3 FLOOR: five existing floor meshes changed to dark matte walnut; plank seams retained; no strong grain added
+QQ CAFECOZY3 FLOOR CHECK: five color changes only; all 371 cafe parts retain geometry, materials, collision and anchoring
+QQ CAFECOZY3 FLOOR STATUS: SERVER PREVIEW ONLY; no Edit installation or publication
+- Reviewed two actual Play pictures from the same overview/right-nook angles. Saved cafe_walnut_floor_overview.jpg and cafe_walnut_floor_nook.jpg, floor_checks.json, notes and updated371-part manifest. Earlier photos show the lighter floor.
+- Removed photo bindings and avatar/HUD overrides. Deferred read after MCP camera wrapper confirmed Custom camera, FOV70, default1389x401 viewport; inside, health100, standing/unanchored. No Edit installation, publication or direct DataStore write.
+NEXT: Shannon reviews the darker floor. On her yes use the latest cafe_cozy3.lua with CAFECOZY3_ALLOW_EDIT=true, compare the latest manifest, then fresh Play verification. Shannon publishes.

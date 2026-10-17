@@ -75,3 +75,14 @@ Latest actual Play pictures: cafe_darkwood_overview.jpg and cafe_darkwood_nook.j
 See contrast_checks.json for actual changed properties and preservation output.
 Normal Custom camera, HUD and avatar visibility restored after pictures.
 Preview only; permanent Edit installation still awaits Shannon's yes. Shannon publishes.
+
+UPDATE: darker walnut floor (Oct 17) - latest preview
+Shannon requested a darker wood floor after reviewing the walnut furniture/trim.
+The five existing floor meshes now use RGB103,72,51, retaining their quiet matte
+finish and existing plank seams. No strong procedural grain or new texture added.
+Only these five colors changed; all371 cafe BaseParts retained geometry, materials,
+collision and anchoring. Furniture, seven cats, audio and steam unchanged.
+Updated polish_patch.lua and regenerated/compiled the complete installer.
+Latest actual Play pictures: cafe_walnut_floor_overview.jpg and cafe_walnut_floor_nook.jpg.
+See floor_checks.json. Previous photos show the lighter floor.
+Preview only; permanent Edit installation awaits Shannon's yes. Shannon publishes.

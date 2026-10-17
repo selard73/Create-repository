@@ -476,10 +476,12 @@ print("QQ CAFECOZY3 DOORS: two closed lattice mesh doors; E/gamepad/tap prompts;
 local floorCount=0
 for _,p in ipairs(room.Architecture:GetChildren())do
  if p:IsA("MeshPart")and(p.Name:find("CI2_Floor",1,true)==1 or p.Name=="CI2_VestibuleFloor_Oak")then
-  p.Material=Enum.Material.SmoothPlastic;p.Color=Color3.fromRGB(187,163,132);floorCount+=1
+  p.Material=Enum.Material.SmoothPlastic;p.Color=Color3.fromRGB(103,72,51);floorCount+=1
  end
 end
 assert(floorCount==5,"Unexpected cafe floor mesh count")
+room:SetAttribute("CafeFloorFinish","matte_walnut2")
+print("QQ CAFECOZY3 FLOOR: five existing floor meshes changed to dark matte walnut; plank seams retained; no strong grain added")
 local steamCount=0
 for _,root in ipairs({room,display})do for _,v in ipairs(root:GetDescendants())do
  if v:IsA("ParticleEmitter")and v.Name=="GentleTeaSteam"then
@@ -493,7 +495,7 @@ end end
 assert(steamCount==10,"Expected six interior mugs and four street-display mugs")
 bridge:SetAttribute("DoorSound","rbxassetid://131845870598154");bridge:SetAttribute("DoorVolume",.6)
 room:SetAttribute("CafePolishVersion","quiet_floor_steam_bell1")
-print("QQ CAFECOZY3 POLISH: five floor meshes in uniform matte honey oak; ten steam emitters reduced to small pale wisps; seven cats retained")
+print("QQ CAFECOZY3 POLISH: five floor meshes in uniform matte walnut; ten steam emitters reduced to small pale wisps; seven cats retained")
 print("QQ CAFECOZY3 BELL: French shop sound 131845870598154 at volume .6; one ring per successful entry or exit")
 
 -- Interior-only wood contrast, shared by the staged installer and narrow Play refresh.

@@ -4457,9 +4457,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_FloorBase_OakDark",
     "collide": true,
     "color": [
-      0.7333,
-      0.6392,
-      0.5176
+      0.4039,
+      0.2824,
+      0.2
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://88282086902102",
@@ -4487,9 +4487,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Floor_Oak",
     "collide": true,
     "color": [
-      0.7333,
-      0.6392,
-      0.5176
+      0.4039,
+      0.2824,
+      0.2
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://113585388450679",
@@ -4517,9 +4517,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Floor_OakDark",
     "collide": true,
     "color": [
-      0.7333,
-      0.6392,
-      0.5176
+      0.4039,
+      0.2824,
+      0.2
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://126518066639684",
@@ -4547,9 +4547,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Floor_OakLight",
     "collide": true,
     "color": [
-      0.7333,
-      0.6392,
-      0.5176
+      0.4039,
+      0.2824,
+      0.2
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://84350590827429",
@@ -5087,9 +5087,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_VestibuleFloor_Oak",
     "collide": true,
     "color": [
-      0.7333,
-      0.6392,
-      0.5176
+      0.4039,
+      0.2824,
+      0.2
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://95928484054291",
