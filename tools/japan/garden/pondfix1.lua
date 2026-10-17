@@ -5,9 +5,11 @@
 -- -12, and 8 part koi floating ON the water. This script:
 --  * retires the rock rim and the part koi to ServerStorage.HudBackup.PondReplaced (attribute PondWasIn on each)
 --  * terrain (backup HudBackup.PondTerrain_pre1, first run only): a flat Slate bed at 0 (3.9 of water) inside r 42; the water row
---    [0..4] kept as water only in cells whose centre is within r 37.6: terrain water rounds off over its outermost cell, so it is
---    flat only inside squares of four water-cell centres - out to r 32, the wall's water face (round 1's face at 35 showed a jagged
---    dark strip) - and it reaches r 40.3 at worst, inside the wall's 40.5 back; the old sand rim above 0 cleared out to r 44
+--    [0..4] kept as water exactly in the cells that keep it FLAT out to r 33.5 (1.5 past the wall's water face at r 32): terrain water
+--    rounds off over its outermost cell, so a point is flat only inside a square of four water-cell centres, i.e. a cell is needed when
+--    its 8 x 8 box around the centre reaches inside r 33.5 (293 cells; their edges reach r 40.3, inside the wall's 40.5 back). Round 1
+--    (face at 35) showed a jagged dark strip; round 2's r-37.6 cut left two slivers; this rule closed them in the play test. The old
+--    sand rim above 0 is cleared out to r 44
 --  * places the kit Model "pond_ring" (gen_pond.py, round 2) as PondRing: the wall (water face r 32, ledge 4.1) and the paving out to r 49.2 in
 --    the palace flagstone (Pavement + JM_PhotographicPath, white - the court's own), the coping slabs in the canal's cut stone; all
 --    solid, PreciseConvexDecomposition set on the placed parts (a kit setting does not reach clones made in the same call)
@@ -21,7 +23,7 @@
 local SS = game:GetService("ServerStorage")
 local T = workspace.Terrain
 local CX, CZ, WATER = 6322, 21.5, 3.9
-local R_THR, R_BED, R_CLEAR = 37.6, 42, 44
+local R_FLAT, R_BED, R_CLEAR = 33.5, 42, 44
 local KOI_N, KOI_TOP_UNDER, KOI_LONG = 10, 0.2, 2.4
 local KIT = SS:FindFirstChild("JapanGardenKit")
 local J = workspace:FindFirstChild("JapanMap")
@@ -64,7 +66,7 @@ for i = 1, sx do
 				local yb = Y0 + (j - 1) * 4
 				if yb < 0 then
 					if r < R_BED then mats[i][j][k] = Enum.Material.Slate; occ[i][j][k] = 1; nbed += 1 end
-				elseif yb == 0 and r < R_THR then
+				elseif yb == 0 and math.sqrt(math.max(math.abs(x - CX) - 4, 0) ^ 2 + math.max(math.abs(z - CZ) - 4, 0) ^ 2) < R_FLAT then
 					mats[i][j][k] = Enum.Material.Water; occ[i][j][k] = WATER / 4; nwater += 1
 				else
 					if mats[i][j][k] ~= Enum.Material.Air then nclear += 1 end
@@ -75,7 +77,7 @@ for i = 1, sx do
 	end
 end
 T:WriteVoxels(reg, 4, mats, occ)
-print(string.format("QQ PONDFIX1 terrain: %d bed cells (Slate, top 0), %d water cells (surface %.1f, centres inside r %.1f), %d rim cells cleared; backup HudBackup.PondTerrain_pre1", nbed, nwater, WATER, R_THR, nclear))
+print(string.format("QQ PONDFIX1 terrain: %d bed cells (Slate, top 0), %d water cells (surface %.1f, flat to r %.1f), %d rim cells cleared; backup HudBackup.PondTerrain_pre1", nbed, nwater, WATER, R_FLAT, nclear))
 -- ---------- 3. the ring ----------
 for _, p in ipairs(SRC:GetDescendants()) do if p:IsA("BasePart") then p.Anchored = true end end
 local m = SRC:Clone(); m.Name = "PondRing"

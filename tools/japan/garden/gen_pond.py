@@ -7,8 +7,8 @@ heights: Blender z = Roblox y; the water surface stays at 3.9):
   Wall_Stone_k   (k = 0..7, one per 45 deg) the pond wall: water face at r 32.0 from y -0.6 (in the bed) to 4.3, an 8.5-thick body to
                  r 40.5, its outer top a flagstone ledge at 4.1 (0.9 over the paving) - Studio: Pavement + JM_PhotographicPath, white (as
                  the canal walls). Why so thick: terrain water rounds off over its outermost 4-stud cell, so it is flat only where a point
-                 sits inside a square of four water-cell centres. Water cells with centres inside r 37.6 are flat out to r 32 (round 1
-                 put the face at 35 and the water stopped short of it in a jagged line) and reach r 40.3 at worst - all inside the wall.
+                 sits inside a square of four water-cell centres. pondfix1 keeps the cells that make it flat to r 33.5 (round 1 put the
+                 face at 35 and the water stopped short of it in a jagged line); they reach r 40.3 - all inside the wall.
   Wall_Coping_k  cut-stone coping slabs r 31.6..36.2 (0.4 over the water; 4.6 wide as the canal's), y 4.3..4.7, 64 slabs round, 0.06
                  joints - Studio: the canal coping's SmoothPlastic 0.66 / 0.65 / 0.61
   Apron_Stone_k  the paving that closes the court's hole: r 40.4..49.2, top 3.19 (between the palace pebble apron 3.13 and the
