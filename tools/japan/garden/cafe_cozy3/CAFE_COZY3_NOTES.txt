@@ -3,7 +3,7 @@ CAT CAFE COZY3 - PLAY PREVIEW ONLY, NOT INSTALLED OR PUBLISHED
 Shannon asked for a cuter, more inviting cafe and a closed door with an interact button.
 This revision builds on imported kit29. No new import is needed.
 
-Design: warm light wood; cream, sage and dusty pink; two seating areas; clearer cat cubby;
+Design: dark walnut furniture and espresso trim; cream, sage and dusty pink; two seating areas;
 greenery and books; quieter floor colors; lower ceiling/lamps; six steaming mugs.
 Seven original Meshy cat rigs and all audio assets are retained. Whisker greets outside,
 Adorable and Tuxedo share sofas, Curious is beside the left seating, Emerald at the window,
@@ -62,3 +62,16 @@ emitters (six interior, four street display) use 1.2 particles/sec, .9-1.25-seco
 Latest actual pictures are cafe_quiet_floor_preview.jpg and cafe_subtle_steam_preview.jpg;
 earlier images show the preceding floor/steam. Entry/exit bell counts1 and2; stale token
 left count2; sound loaded,1.974 seconds. See polish_checks.json. Still Server preview only.
+
+UPDATE: dark wood contrast (Oct 17) - latest preview
+Shannon found the pale room too monotone and requested more dark wood. The latest
+installer includes contrast_patch.lua after the quiet-floor/steam/bell polish.
+63 interior meshes now have espresso beams/trim, walnut sofa/chair frames and counter,
+medium brown shelves and warm tabletop/cubby wood. Cream walls and colored upholstery
+remain. The five matte floor meshes, cats, tea objects, steam and exterior are unchanged.
+Only colors changed; all 371 cafe BaseParts retained geometry, material, anchoring and
+collision. Full generated installer parsed; narrow color patch ran on current Play Server.
+Latest actual Play pictures: cafe_darkwood_overview.jpg and cafe_darkwood_nook.jpg.
+See contrast_checks.json for actual changed properties and preservation output.
+Normal Custom camera, HUD and avatar visibility restored after pictures.
+Preview only; permanent Edit installation still awaits Shannon's yes. Shannon publishes.

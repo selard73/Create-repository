@@ -4693,3 +4693,17 @@ QQ CAFECOZY3 BELL CLIENT: valid regenerated source installed on Play Server; one
 - Real E exit and entry succeeded, with sound Played event counts1 then2, sound loaded/length1.973696s, avatar unanchored and fade1. A stale FadeIn token(-999) left count2. Seven cats and furniture arrangement retained. New source also embedded in complete guarded installer. Read back all five floor properties and all ten steam settings.
 - Saved two new actual Play pictures from the same prior overview/tea angles, polish_checks.json, updated371-part manifest (only five surface changes), notes and generator. Earlier pictures remain historical. Normal Custom camera/default viewport/HUD/avatar restored afterward; avatar inside standing. No publication, direct DataStore write, or permanent Edit installation.
 NEXT: Shannon reviews the calmer floor/steam and bell in Play. Current package still awaits her approval for permanent installation; use the latest cafe_cozy3.lua with CAFECOZY3_ALLOW_EDIT=true on her yes. Shannon publishes.
+
+
+## Cafe dark wood contrast (Codex solo, Oct 17 2026) - SERVER PREVIEW ONLY
+Shannon found the pale room too monotone and requested more dark wood. Applied an interior-only color pass to the existing Play preview: espresso beams/posts/trim, walnut furniture frames and counter, medium-brown shelving, warm brown tabletops/cubby, and darker ceiling wood. Kept the quiet matte floor, cream walls, sage/pink cushions, seven cats, steam and audio.
+- Added contrast_patch.lua after polish_patch.lua in the generator; regenerated the self-contained cafe_cozy3.lua. Applied exactly the same patch narrowly to the Play Server. No new import or geometry/layout change.
+Actual outputs:
+QQ CAFECOZY3 WOOD COMPILE: complete regenerated installer parsed; body not executed
+QQ CAFECOZY3 WOOD: 63 interior meshes recolored; espresso beams/trim; walnut furniture/counter; warm brown tops; quiet floor and soft cushions retained
+QQ CAFECOZY3 WOOD CHECK: 63 color changes; all 371 existing cafe parts retain geometry, materials, collision and anchoring; cats and street display unchanged
+QQ CAFECOZY3 WOOD STATUS: SERVER PREVIEW ONLY; no Edit installation or publication
+- Snapshot check covered all371 BaseParts in both cafe models. Exactly63 interior colors changed; every CFrame, Size, Material, CanCollide and Anchored value matched. Cats and street display colors unchanged. Doorway/rig/audio scripts not replaced; existing runtime validations remain applicable to this color-only pass.
+- Reviewed two close actual Play pictures from the same previous overview/right-nook camera angles. Saved cafe_darkwood_overview.jpg and cafe_darkwood_nook.jpg, contrast_checks.json, updated371-part manifest and notes. Earlier pictures are historical.
+- Photo bindings/visibility overrides removed; normal camera restored after the tool camera wrapper. Avatar inside, health100, standing/unanchored. No permanent Edit change, publication or direct DataStore write.
+NEXT: Shannon reviews these darker-wood pictures. On her yes use the latest cafe_cozy3.lua with CAFECOZY3_ALLOW_EDIT=true, compare the manifest, then fresh Play verification. Shannon publishes.

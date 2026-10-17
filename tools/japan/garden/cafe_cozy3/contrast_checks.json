@@ -1,0 +1,832 @@
+{
+  "compile": "Complete regenerated installer parsed without body execution",
+  "finalState": {"camera": "Custom (deferred read after MCP camera override)", "inside": true, "anchored": false, "sitting": false, "health": 100, "viewport": "1389, 401", "fov": 70},
+  "pictures": ["cafe_darkwood_overview.jpg", "cafe_darkwood_nook.jpg"],
+  "preservedPartCount": 371,
+  "changes": [
+    {
+      "before": [
+        0.46666666865348816,
+        0.3529411852359772,
+        0.25882354378700256
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_BackRail_TimberEdge",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_BackWainscot_OakDark",
+      "after": [
+        0.35686275362968445,
+        0.23529411852359772,
+        0.16078431904315948
+      ]
+    },
+    {
+      "before": [
+        0.46666666865348816,
+        0.3529411852359772,
+        0.25882354378700256
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Beams_TimberEdge",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_CeilingBase_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Ceiling_OakLight",
+      "after": [
+        0.5882353186607361,
+        0.45490196347236633,
+        0.32156863808631897
+      ]
+    },
+    {
+      "before": [
+        0.4156862795352936,
+        0.30980393290519714,
+        0.23137255012989044
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_DoorFrame_Timber",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Lattice_Oak",
+      "after": [
+        0.35686275362968445,
+        0.23529411852359772,
+        0.16078431904315948
+      ]
+    },
+    {
+      "before": [
+        0.46666666865348816,
+        0.3529411852359772,
+        0.25882354378700256
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_LeftRail_TimberEdge",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_LeftWainscot_OakDark",
+      "after": [
+        0.35686275362968445,
+        0.23529411852359772,
+        0.16078431904315948
+      ]
+    },
+    {
+      "before": [
+        0.46666666865348816,
+        0.3529411852359772,
+        0.25882354378700256
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Posts_TimberEdge",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.46666666865348816,
+        0.3529411852359772,
+        0.25882354378700256
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_RightRail_TimberEdge",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_RightWainscot_OakDark",
+      "after": [
+        0.35686275362968445,
+        0.23529411852359772,
+        0.16078431904315948
+      ]
+    },
+    {
+      "before": [
+        0.46666666865348816,
+        0.3529411852359772,
+        0.25882354378700256
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_WindowFrame_TimberEdge",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallShelf.CW1_FrontShelf_Oak",
+      "after": [
+        0.43921568989753723,
+        0.3019607961177826,
+        0.20000000298023224
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallShelf.CW1_FrontShelf_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallShelf.CW1_FrontShelf_OakLight",
+      "after": [
+        0.43921568989753723,
+        0.3019607961177826,
+        0.20000000298023224
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingSofa.C1_Bench_Oak",
+      "after": [
+        0.35686275362968445,
+        0.23529411852359772,
+        0.16078431904315948
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingSofa.C1_Bench_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTeaTable.C1_Table1_Oak",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTeaTable.C1_Table1_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTeaTable.C1_Table1_OakLight",
+      "after": [
+        0.5215686559677124,
+        0.364705890417099,
+        0.239215686917305
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.RearCatPortrait.CW1_CatPortrait_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.DoorCatRelief.CW1_CatPortrait_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.47843137383461,
+        0.3490196168422699,
+        0.239215686917305
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.Door_Frame",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.35686275362968445,
+        0.2666666805744171,
+        0.1882352977991104
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.Door_Reveal",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.47843137383461,
+        0.3490196168422699,
+        0.239215686917305
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.Door_Wood",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.46666666865348816,
+        0.3529411852359772,
+        0.25882354378700256
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Art_TimberEdge",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Bench_Oak",
+      "after": [
+        0.35686275362968445,
+        0.23529411852359772,
+        0.16078431904315948
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Bench_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair0_Oak",
+      "after": [
+        0.35686275362968445,
+        0.23529411852359772,
+        0.16078431904315948
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair0_OakLight",
+      "after": [
+        0.43921568989753723,
+        0.3019607961177826,
+        0.20000000298023224
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair1_Oak",
+      "after": [
+        0.35686275362968445,
+        0.23529411852359772,
+        0.16078431904315948
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair1_OakLight",
+      "after": [
+        0.43921568989753723,
+        0.3019607961177826,
+        0.20000000298023224
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb0_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb0_OakLight",
+      "after": [
+        0.43921568989753723,
+        0.3019607961177826,
+        0.20000000298023224
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb1_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb1_OakLight",
+      "after": [
+        0.43921568989753723,
+        0.3019607961177826,
+        0.20000000298023224
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb2_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb2_OakLight",
+      "after": [
+        0.43921568989753723,
+        0.3019607961177826,
+        0.20000000298023224
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Counter_Oak",
+      "after": [
+        0.35686275362968445,
+        0.23529411852359772,
+        0.16078431904315948
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Counter_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Counter_OakLight",
+      "after": [
+        0.5215686559677124,
+        0.364705890417099,
+        0.239215686917305
+      ]
+    },
+    {
+      "before": [
+        0.46666666865348816,
+        0.3529411852359772,
+        0.25882354378700256
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Counter_TimberEdge",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Cubby_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Cubby_OakLight",
+      "after": [
+        0.5215686559677124,
+        0.364705890417099,
+        0.239215686917305
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Shelves_OakLight",
+      "after": [
+        0.43921568989753723,
+        0.3019607961177826,
+        0.20000000298023224
+      ]
+    },
+    {
+      "before": [
+        0.46666666865348816,
+        0.3529411852359772,
+        0.25882354378700256
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Shelves_TimberEdge",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table0_Oak",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table0_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table0_OakLight",
+      "after": [
+        0.5215686559677124,
+        0.364705890417099,
+        0.239215686917305
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table1_Oak",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table1_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table1_OakLight",
+      "after": [
+        0.5215686559677124,
+        0.364705890417099,
+        0.239215686917305
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_WindowBench_Oak",
+      "after": [
+        0.35686275362968445,
+        0.23529411852359772,
+        0.16078431904315948
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_WindowBench_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_WindowBench_OakLight",
+      "after": [
+        0.5215686559677124,
+        0.364705890417099,
+        0.239215686917305
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BackShelf_Oak",
+      "after": [
+        0.43921568989753723,
+        0.3019607961177826,
+        0.20000000298023224
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BackShelf_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BackShelf_OakLight",
+      "after": [
+        0.43921568989753723,
+        0.3019607961177826,
+        0.20000000298023224
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPortrait_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7098039388656616,
+        0.5607843399047852,
+        0.4000000059604645
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_FrontShelf_Oak",
+      "after": [
+        0.43921568989753723,
+        0.3019607961177826,
+        0.20000000298023224
+      ]
+    },
+    {
+      "before": [
+        0.5607843399047852,
+        0.42352941632270813,
+        0.3019607961177826
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_FrontShelf_OakDark",
+      "after": [
+        0.25882354378700256,
+        0.16862745583057404,
+        0.12156862765550613
+      ]
+    },
+    {
+      "before": [
+        0.7686274647712708,
+        0.6392157077789307,
+        0.48627451062202454
+      ],
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_FrontShelf_OakLight",
+      "after": [
+        0.43921568989753723,
+        0.3019607961177826,
+        0.20000000298023224
+      ]
+    }
+  ],
+  "outputs": [
+    "QQ CAFECOZY3 WOOD: 63 interior meshes recolored; espresso beams/trim; walnut furniture/counter; warm brown tops; quiet floor and soft cushions retained",
+    "QQ CAFECOZY3 WOOD CHECK: 63 color changes; all 371 existing cafe parts retain geometry, materials, collision and anchoring; cats and street display unchanged",
+    "QQ CAFECOZY3 WOOD STATUS: SERVER PREVIEW ONLY; no Edit installation or publication"
+  ]
+}

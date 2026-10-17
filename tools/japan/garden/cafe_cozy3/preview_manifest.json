@@ -4217,9 +4217,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_BackRail_TimberEdge",
     "collide": false,
     "color": [
-      0.4667,
-      0.3529,
-      0.2588
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://111707979226278",
@@ -4247,9 +4247,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_BackWainscot_OakDark",
     "collide": false,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.3569,
+      0.2353,
+      0.1608
     ],
     "material": "Wood",
     "mesh": "rbxassetid://93386341871634",
@@ -4307,9 +4307,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Beams_TimberEdge",
     "collide": false,
     "color": [
-      0.4667,
-      0.3529,
-      0.2588
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://134947455849643",
@@ -4337,9 +4337,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_CeilingBase_OakDark",
     "collide": true,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://119912282748578",
@@ -4367,9 +4367,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Ceiling_OakLight",
     "collide": false,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.5882,
+      0.4549,
+      0.3216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://87724475370826",
@@ -4397,9 +4397,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_DoorFrame_Timber",
     "collide": false,
     "color": [
-      0.4157,
-      0.3098,
-      0.2314
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://96064460592811",
@@ -4637,9 +4637,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Lattice_Oak",
     "collide": false,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.3569,
+      0.2353,
+      0.1608
     ],
     "material": "Wood",
     "mesh": "rbxassetid://112607543977529",
@@ -4667,9 +4667,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_LeftRail_TimberEdge",
     "collide": false,
     "color": [
-      0.4667,
-      0.3529,
-      0.2588
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://80835932666634",
@@ -4697,9 +4697,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_LeftWainscot_OakDark",
     "collide": false,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.3569,
+      0.2353,
+      0.1608
     ],
     "material": "Wood",
     "mesh": "rbxassetid://106951708855481",
@@ -4817,9 +4817,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Posts_TimberEdge",
     "collide": false,
     "color": [
-      0.4667,
-      0.3529,
-      0.2588
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://119232288753533",
@@ -4847,9 +4847,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_RightRail_TimberEdge",
     "collide": false,
     "color": [
-      0.4667,
-      0.3529,
-      0.2588
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://130297245733277",
@@ -4877,9 +4877,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_RightWainscot_OakDark",
     "collide": false,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.3569,
+      0.2353,
+      0.1608
     ],
     "material": "Wood",
     "mesh": "rbxassetid://104501065979884",
@@ -5177,9 +5177,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_WindowFrame_TimberEdge",
     "collide": false,
     "color": [
-      0.4667,
-      0.3529,
-      0.2588
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://77356231141432",
@@ -5867,9 +5867,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallShelf.CW1_FrontShelf_Oak",
     "collide": false,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.4392,
+      0.302,
+      0.2
     ],
     "material": "Wood",
     "mesh": "rbxassetid://134685896243084",
@@ -5897,9 +5897,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallShelf.CW1_FrontShelf_OakDark",
     "collide": false,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://82599853775379",
@@ -5927,9 +5927,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallShelf.CW1_FrontShelf_OakLight",
     "collide": false,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.4392,
+      0.302,
+      0.2
     ],
     "material": "Wood",
     "mesh": "rbxassetid://80737015055220",
@@ -6197,9 +6197,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingSofa.C1_Bench_Oak",
     "collide": true,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.3569,
+      0.2353,
+      0.1608
     ],
     "material": "Wood",
     "mesh": "rbxassetid://99041581397138",
@@ -6227,9 +6227,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingSofa.C1_Bench_OakDark",
     "collide": true,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://97198275681300",
@@ -6407,9 +6407,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTeaTable.C1_Table1_Oak",
     "collide": true,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://124772412887360",
@@ -6437,9 +6437,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTeaTable.C1_Table1_OakDark",
     "collide": true,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://113801345408924",
@@ -6467,9 +6467,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTeaTable.C1_Table1_OakLight",
     "collide": true,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.5216,
+      0.3647,
+      0.2392
     ],
     "material": "Wood",
     "mesh": "rbxassetid://122940907029315",
@@ -6557,9 +6557,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.RearCatPortrait.CW1_CatPortrait_OakDark",
     "collide": false,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://133482521059031",
@@ -7067,9 +7067,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.DoorCatRelief.CW1_CatPortrait_OakDark",
     "collide": false,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://133482521059031",
@@ -7187,9 +7187,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.Door_Frame",
     "collide": false,
     "color": [
-      0.4784,
-      0.349,
-      0.2392
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://99319551496704",
@@ -7247,9 +7247,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.Door_Reveal",
     "collide": true,
     "color": [
-      0.3569,
-      0.2667,
-      0.1882
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://139920439524742",
@@ -7277,9 +7277,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.Door_Wood",
     "collide": false,
     "color": [
-      0.4784,
-      0.349,
-      0.2392
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://77889047035073",
@@ -7367,9 +7367,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Art_TimberEdge",
     "collide": false,
     "color": [
-      0.4667,
-      0.3529,
-      0.2588
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://115956831799682",
@@ -7397,9 +7397,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Bench_Oak",
     "collide": true,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.3569,
+      0.2353,
+      0.1608
     ],
     "material": "Wood",
     "mesh": "rbxassetid://99041581397138",
@@ -7427,9 +7427,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Bench_OakDark",
     "collide": true,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://97198275681300",
@@ -7637,9 +7637,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair0_Oak",
     "collide": true,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.3569,
+      0.2353,
+      0.1608
     ],
     "material": "Wood",
     "mesh": "rbxassetid://139293223933233",
@@ -7667,9 +7667,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair0_OakLight",
     "collide": true,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.4392,
+      0.302,
+      0.2
     ],
     "material": "Wood",
     "mesh": "rbxassetid://92085362889194",
@@ -7697,9 +7697,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair1_Oak",
     "collide": true,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.3569,
+      0.2353,
+      0.1608
     ],
     "material": "Wood",
     "mesh": "rbxassetid://136135213379205",
@@ -7727,9 +7727,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair1_OakLight",
     "collide": true,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.4392,
+      0.302,
+      0.2
     ],
     "material": "Wood",
     "mesh": "rbxassetid://75231206993172",
@@ -7787,9 +7787,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb0_OakDark",
     "collide": true,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://111542904398721",
@@ -7817,9 +7817,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb0_OakLight",
     "collide": true,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.4392,
+      0.302,
+      0.2
     ],
     "material": "Wood",
     "mesh": "rbxassetid://105559045919909",
@@ -7877,9 +7877,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb1_OakDark",
     "collide": true,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://114392641893347",
@@ -7907,9 +7907,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb1_OakLight",
     "collide": true,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.4392,
+      0.302,
+      0.2
     ],
     "material": "Wood",
     "mesh": "rbxassetid://102258655073807",
@@ -7967,9 +7967,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb2_OakDark",
     "collide": true,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://114081621860295",
@@ -7997,9 +7997,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb2_OakLight",
     "collide": true,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.4392,
+      0.302,
+      0.2
     ],
     "material": "Wood",
     "mesh": "rbxassetid://125459581630825",
@@ -8087,9 +8087,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Counter_Oak",
     "collide": true,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.3569,
+      0.2353,
+      0.1608
     ],
     "material": "Wood",
     "mesh": "rbxassetid://136801009093114",
@@ -8117,9 +8117,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Counter_OakDark",
     "collide": true,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://98922260375337",
@@ -8147,9 +8147,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Counter_OakLight",
     "collide": true,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.5216,
+      0.3647,
+      0.2392
     ],
     "material": "Wood",
     "mesh": "rbxassetid://107690097260864",
@@ -8177,9 +8177,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Counter_TimberEdge",
     "collide": true,
     "color": [
-      0.4667,
-      0.3529,
-      0.2588
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://87712566911662",
@@ -8267,9 +8267,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Cubby_OakDark",
     "collide": true,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://113424041015698",
@@ -8297,9 +8297,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Cubby_OakLight",
     "collide": true,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.5216,
+      0.3647,
+      0.2392
     ],
     "material": "Wood",
     "mesh": "rbxassetid://135948241607606",
@@ -8897,9 +8897,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Shelves_OakLight",
     "collide": false,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.4392,
+      0.302,
+      0.2
     ],
     "material": "Wood",
     "mesh": "rbxassetid://106467751110601",
@@ -8927,9 +8927,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Shelves_TimberEdge",
     "collide": false,
     "color": [
-      0.4667,
-      0.3529,
-      0.2588
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://83959932619875",
@@ -8957,9 +8957,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table0_Oak",
     "collide": true,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://72227212145996",
@@ -8987,9 +8987,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table0_OakDark",
     "collide": true,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://85097300845350",
@@ -9017,9 +9017,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table0_OakLight",
     "collide": true,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.5216,
+      0.3647,
+      0.2392
     ],
     "material": "Wood",
     "mesh": "rbxassetid://83915331619130",
@@ -9047,9 +9047,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table1_Oak",
     "collide": true,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://124772412887360",
@@ -9077,9 +9077,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table1_OakDark",
     "collide": true,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://113801345408924",
@@ -9107,9 +9107,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table1_OakLight",
     "collide": true,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.5216,
+      0.3647,
+      0.2392
     ],
     "material": "Wood",
     "mesh": "rbxassetid://122940907029315",
@@ -9677,9 +9677,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_WindowBench_Oak",
     "collide": true,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.3569,
+      0.2353,
+      0.1608
     ],
     "material": "Wood",
     "mesh": "rbxassetid://132060403529535",
@@ -9707,9 +9707,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_WindowBench_OakDark",
     "collide": true,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://124670883698764",
@@ -9737,9 +9737,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_WindowBench_OakLight",
     "collide": true,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.5216,
+      0.3647,
+      0.2392
     ],
     "material": "Wood",
     "mesh": "rbxassetid://71058293016596",
@@ -9767,9 +9767,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BackShelf_Oak",
     "collide": false,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.4392,
+      0.302,
+      0.2
     ],
     "material": "Wood",
     "mesh": "rbxassetid://74250364856163",
@@ -9797,9 +9797,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BackShelf_OakDark",
     "collide": false,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://126328592278887",
@@ -9827,9 +9827,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BackShelf_OakLight",
     "collide": false,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.4392,
+      0.302,
+      0.2
     ],
     "material": "Wood",
     "mesh": "rbxassetid://111747570364768",
@@ -10397,9 +10397,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPortrait_OakDark",
     "collide": false,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://133482521059031",
@@ -10517,9 +10517,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_FrontShelf_Oak",
     "collide": false,
     "color": [
-      0.7098,
-      0.5608,
-      0.4
+      0.4392,
+      0.302,
+      0.2
     ],
     "material": "Wood",
     "mesh": "rbxassetid://134685896243084",
@@ -10547,9 +10547,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_FrontShelf_OakDark",
     "collide": false,
     "color": [
-      0.5608,
-      0.4235,
-      0.302
+      0.2588,
+      0.1686,
+      0.1216
     ],
     "material": "Wood",
     "mesh": "rbxassetid://82599853775379",
@@ -10577,9 +10577,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_FrontShelf_OakLight",
     "collide": false,
     "color": [
-      0.7686,
-      0.6392,
-      0.4863
+      0.4392,
+      0.302,
+      0.2
     ],
     "material": "Wood",
     "mesh": "rbxassetid://80737015055220",
