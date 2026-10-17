@@ -4365,3 +4365,24 @@ QQ CATCAFE1 CAMERA PREVIEW: room-only camera guard added; normal camera outside 
 CATCAFE1_CAMERA_INSTALLER_SYNTAX_PASS: final installer with embedded camera guard compiles; not rerun
 - Actual corrected normal-camera picture saved as cat_cafe_camera_review.jpg in the play-review folder and chat outputs. Its view remains in front of the back lining while looking toward the entrance. Existing geometry, tea, audio and other shops were unchanged. Preview remains running, avatar standing in the cafe, normal orbit controls active. No Edit mutation, installation, publish or DataStore write in this job.
 NEXT: receive Shannon's Meshy cat files or folder path. Inspect source meshes, textures, topology and scale before choosing the Blender rig/animation approach; fit the imported cats to the existing eight reserved cafe spots. Continue previews and seek approval before permanent Studio installation. The camera guard is now part of the final cafe installer; the audio installer remains a separate required step.
+
+
+## Cat cafe cats1: six Meshy idle rigs and kit24 ready for import (Codex solo, Oct 17 2026) - NOT IMPORTED OR INSTALLED
+Shannon supplied six Meshy FBX ZIPs from Downloads, following her request to build/rig the cats in Blender and place them in the cafe. Worked solo. Original archives untouched. She explicitly chose to keep the faint diagonal lettering in Blush Eared Kitten's supplied texture for this preview.
+- Imported/inspected all six source meshes and their textures. Preserved their distinctive seated, standing and stretching forms. Prepared six 9,000-triangle meshes (54,000 total) with 2048-square colour textures and 10 bones each; purpose-made stationary idle rigs, not walking/blinking rigs. Editable Blender idle actions retained in local rigged source; Roblox runtime uses procedural bone transforms without animation uploads.
+- Measured and traced head/ears/tails from front/side/top mesh projections. Manual blended skin weights, normalized to <=4 influences; paws kept on stationary Root. Six pose tests passed with planted paw displacement zero. Inspected actual rendered look/curious poses.
+- Exported one combined japan_kit24_cat_cafe_cats1.fbx: six skinned cat meshes, 60 bones, three tiny alignment markers. Re-imported actual FBX and validated counts, UVs, textures, normalized weights, bounds within .002 studs and real vertex deformation when each imported Head bone turns.
+Actual Blender output:
+EXPORTED 6 skinned cats + 3 alignment markers
+ROUNDTRIP_PASS: 6 meshes, 60 bones, zero unweighted vertices, <=4 influences, textures present, posed mesh deformation verified
+RENDER cats_lineup
+RENDER cafe_cats_window
+RENDER cafe_cats_climbing
+CATPACKAGE_DONE
+- Native Blender cafe study: three window cats (Whisker, Ginger, Blush), Emerald/Tuxedo on middle/high climbing shelves, Curious on cubby top. Corrected first-render facing directions toward the room. All actual mesh vertices fit reserved pad rectangles and room bounds. Original furniture and visitor routes retained. These pictures are BLENDER studies, NOT Roblox play-test pictures.
+- Prepared strict prepare_catcafe_cats1.lua and catcafe_cats1.lua, with separate client idle controller and explicit permanent Edit guard. Source-prep checks 9 MeshParts/60 bones, textures, hierarchy and 2-stud marker scale before any mutation. Installer places via marker frame, modifies only cafe Cats group, uses anchored non-collidable skinned meshes and atomic per-cat streaming; client motion distance-culled at 85 studs/30Hz. No duplicate meows/music added.
+Read-only Studio compilation result (function definitions only):
+CATCATS1_SYNTAX_PASS: preparation, placement installer and client idle controller compile; functions not executed; Studio unchanged
+- Source/scripts/manifest/checks/pictures/combined FBX saved under tools/japan/garden/cafe_cats1. Original ZIPs, extracted full-resolution sources and intermediate Blender files remain local. User-facing rigged .blend, FBX, notes and pictures in current chat outputs. Combined FBX copied byte-identically to OneDrive/Desktop/Japan garden kit/japan_kit24_cat_cafe_cats1.fbx.
+- No cat source import, no Studio scene mutation, no cat runtime/play-test validation yet. Existing cafe play preview left running; prior furniture/audio/camera guard still PREVIEW ONLY. Source kit23 remains safely anchored/stored in Edit. No publication or DataStore writes. Other shops untouched.
+NEXT: Shannon stops Play and imports kit24, then authorizes anchor/preparation. Inspect exact importer hierarchy/bones/textures read-only first, prepare source in Edit, then preview cafe + audio/camera + cats on Server. Check real movement, paws/scale/directions, streaming, seats/walkways and low close pictures. Install the approved complete cafe only after her yes. Shannon publishes.

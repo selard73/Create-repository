@@ -1,0 +1,27 @@
+Six Meshy cats for 1001 Squirrels / Japan cat cafe, 17 October 2026
+
+READY FOR SHANNON TO IMPORT: japan_kit24_cat_cafe_cats1.fbx
+One combined FBX, 6 textured skinned meshes + 3 tiny alignment markers. Keep the hierarchy and skinning; do not merge the cats or discard the bones. Source cats have unique CC1_ names. After import, ask Codex to anchor and prepare BEFORE entering Play.
+
+Each cat has 9,000 triangles, a 2048-square embedded colour texture, and 10 deform bones: Root, Body, Chest, Head, Ear.L, Ear.R, Tail1..Tail4. All vertices weighted, normalized, <=4 influences. Six source meshes originally totalled 3,007,600 triangles. Source ZIPs and full-resolution textures are untouched in Downloads; extraction and original-resolution geometry are in the chat work folder.
+
+These are purpose-made stationary idle rigs, retaining each supplied seated/standing/stretching pose. They support gentle head turns/tilts, ear flicks, tail swishes, and chest movement with planted paws. They are not walking or blinking rigs. Original eyes and whiskers move with the head. Blender rigged source contains an editable GentleIdle action per cat; FBX omits baked animation because the prepared Roblox client drives bones directly and requires no animation uploads. Final motion still needs actual Studio import/play verification.
+
+Blush Eared Kitten has faint diagonal lettering in its supplied colour texture. Shannon explicitly chose to keep this texture for the preview. No texture repainting or watermark removal was performed.
+
+Placement: Whisker Wonder, Ginger Whiskers and Blush Eared Kitten on the three window beds; Emerald Tabby and Tuxedo Kitten on middle/high climbing platforms; Curious Tabby on the cubby top. Lowest platform and inside cubby remain free. Heights 2.15, 1.45, 2.10, 2.15, 2.20 and 2.20 studs respectively; the stretching ginger's length is about 3.57 studs. Actual mesh vertices fit all six pad rectangles and the room envelope.
+
+Validation completed: FBX exported and imported back into Blender; 9 meshes, 6 armatures, 60 bones, texture dimensions/path resolution, UVs, normalized <=4 weights, matching bounds within .002 studs, and actual deformation when imported Head bone rotates. Planted paw displacement is zero in look/curious test poses. Native Blender cafe render pictures are design previews, not Roblox play-test screenshots. Scene facade is simplified context inherited from the previous approved furniture design study.
+
+Scripts:
+- prepare_catcafe_cats1.lua: explicit user-authorized Edit source anchoring/storage only. Strict 9 mesh / 60 bone and texture preflight, scale marker checks. If importer hierarchy/names differ, inspect read-only first.
+- catcafe_cats1.lua: Server preview by default, explicit CATCAFE_CATS1_ALLOW_EDIT guard for a later approved permanent install. Creates only CatCafe.Cats, retains cafe furniture/audio/steam/camera and all other shops.
+- catcafe_cats1_client.lua: client idles, bounded 30Hz and 85-stud distance cull, streaming-aware atomic cat Models, teardown on script destruction. Cafe music/meows remain supplied ambient audio; not duplicated here.
+
+Importer scale and direction are checked using 3 markers, 2 studs apart. Source marker Origin is Blender (-4,3,0); each rig origin is (index*4.5,0,0), so marker-relative Roblox coordinates are (index*4.5+4,0,3). The placement script reconstructs these measured frames; it does not use arbitrary bounding-box pivots. Part PivotOffset carries the desired floor frame for runtime model-axis bone motion.
+
+Rebuild pipeline, one Blender process at a time: unpack.py -> inspect_cats.py -> rig_cats.py -> package_cats.py -> build_installers.py. run_blender.py is the existing Store-launcher wrapper in C:/Users/slard/roblox-props/meshy. package_cats.py optionally accepts the cafe review .blend path after '--'. Cat source references come directly from Shannon's supplied assets and measured orthographic geometry. No image-generation approximations.
+
+Roblox primary reference checked: https://create.roblox.com/docs/art/modeling/specifications (20,000 triangles per mesh and maximum 4 bone influences); our 9,000-triangle meshes remain below this. Rigging: https://create.roblox.com/docs/art/modeling/rigging.
+
+NEXT: Shannon imports kit24 and authorizes preparation; then run strict source inspection/preparation, preview furniture + audio + camera guard + cats on Server, verify bones/textures/orientation, actual motion and grounded paws, seats/walkway and take low close pictures. Install in Edit only after her yes to those pictures. Existing cafe additions including camera guard are still preview-only; source kit23 is safely stored. Never publish; Shannon publishes. No DataStore writes.

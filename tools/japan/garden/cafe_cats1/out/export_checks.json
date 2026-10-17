@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Whisker_Wonder",
+    "bones": 10,
+    "triangles": 9000,
+    "max_influences": 4,
+    "unweighted": 0,
+    "texture": [
+      2048,
+      2048
+    ],
+    "roundtrip_pose_delta": 0.10328273649893521
+  },
+  {
+    "name": "Emerald_Eyed_Tabby_Ki",
+    "bones": 10,
+    "triangles": 9000,
+    "max_influences": 3,
+    "unweighted": 0,
+    "texture": [
+      2048,
+      2048
+    ],
+    "roundtrip_pose_delta": 0.09431343960475673
+  },
+  {
+    "name": "Tuxedo_Kitten",
+    "bones": 10,
+    "triangles": 9000,
+    "max_influences": 3,
+    "unweighted": 0,
+    "texture": [
+      2048,
+      2048
+    ],
+    "roundtrip_pose_delta": 0.06670583323169799
+  },
+  {
+    "name": "Ginger_Whiskers",
+    "bones": 10,
+    "triangles": 9000,
+    "max_influences": 3,
+    "unweighted": 0,
+    "texture": [
+      2048,
+      2048
+    ],
+    "roundtrip_pose_delta": 0.07637257186574233
+  },
+  {
+    "name": "Curious_Little_Tabby",
+    "bones": 10,
+    "triangles": 9000,
+    "max_influences": 3,
+    "unweighted": 0,
+    "texture": [
+      2048,
+      2048
+    ],
+    "roundtrip_pose_delta": 0.11092058970967553
+  },
+  {
+    "name": "Blush_Eared_Kitten",
+    "bones": 10,
+    "triangles": 9000,
+    "max_influences": 4,
+    "unweighted": 0,
+    "texture": [
+      2048,
+      2048
+    ],
+    "roundtrip_pose_delta": 0.10015749690896991
+  }
+]

@@ -1,0 +1,7 @@
+Whisker_Wonder: 10 bones, 9000 tris, grounded paw delta 0
+Emerald_Eyed_Tabby_Ki: 10 bones, 9000 tris, grounded paw delta 0
+Tuxedo_Kitten: 10 bones, 9000 tris, grounded paw delta 0
+Ginger_Whiskers: 10 bones, 9000 tris, grounded paw delta 0
+Curious_Little_Tabby: 10 bones, 9000 tris, grounded paw delta 0
+Blush_Eared_Kitten: 10 bones, 9000 tris, grounded paw delta 0
+CATRIG_DONE
