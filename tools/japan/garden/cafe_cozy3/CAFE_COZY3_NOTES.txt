@@ -1,4 +1,4 @@
-CAT CAFE COZY3 - PLAY PREVIEW ONLY, NOT INSTALLED OR PUBLISHED
+CAT CAFE COZY3 - INSTALLED IN EDIT; NOT PUBLISHED
 
 Shannon asked for a cuter, more inviting cafe and a closed door with an interact button.
 This revision builds on imported kit29. No new import is needed.
@@ -20,8 +20,8 @@ The builder reads the adjacent cafe_interior2 template, manifest, and original d
 The generated cafe_cozy3.lua is self-contained and is the exact full installer used for the preview.
 Do not install cafe_interior2.lua or the older spread2 script over this revision.
 
-Installation is pending Shannon's approval of these actual Play pictures.
-On approval: stop Play, run cafe_cozy3.lua in Edit with CAFECOZY3_ALLOW_EDIT=true;
+Shannon approved this revision; it is installed in Edit and passed fresh Play verification.
+Installer procedure: stopped Edit, cafe_cozy3.lua with CAFECOZY3_ALLOW_EDIT=true;
 compare preview_manifest.json, then test fresh Play without rerunning the installer.
 Never publish; Shannon publishes. Never write DataStores.
 
@@ -120,3 +120,15 @@ See soft_palette_checks.json and rustic_floor_checks.json for the saved revision
 Shannon said "that looks better" during review. Retained as current preview; this
 feedback was not treated as an explicit request for permanent installation.
 Still Play-only. Install in Edit on her yes; Shannon publishes.
+
+INSTALLED STATUS (Oct 17)
+Shannon replied yes to permanent Edit installation. Installed the exact approved source
+from revision594edf8; checked all371 parts against preview_manifest.json and all four
+floor textures against rustic_floor_checks.json. Seven cats/70 bones, six usable Seats,
+two reserved Seats and ten subtle steam emitters confirmed. Original cafe backed up.
+Fresh Play used the installed scene without rerunning the installer. Actual E entry and
+exit succeeded, fade cleared, avatar standing/unanchored, bell Played counts1 then2.
+Stopped Play afterward; installed interior and enabled controllers remain in Edit.
+See installation_checks.json. No publication or direct DataStore write by Codex.
+Ready for Shannon to publish and verify a fresh server. Earlier preview-only entries
+above are historical. This final approved version is now installed in Edit.

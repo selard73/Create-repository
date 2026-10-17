@@ -4763,3 +4763,32 @@ QQ CAFECOZY3 SOFT MANIFEST: all371 parts match prior layout/meshes/materials/col
 - Compared all371 BaseParts against the saved pre-crash manifest, then saved only the15 intended palette updates. Final checks record normal Custom camera, FOV70,1389x635 viewport, health100, inside standing/unanchored, grain image fetch Success. HUD/avatar/photo overrides removed.
 - Fresh session has cooler floor reflections than the earlier session; no global lighting or floor appearance workaround was applied. Photos show actual current rendering. Saved soft_palette_checks.json, updated notes/manifest, generated installer, patch and two pictures.
 NEXT: Current softer palette is preferred by Shannon. Still awaiting explicit yes to permanent Edit installation. Install latest cafe_cozy3.lua with CAFECOZY3_ALLOW_EDIT=true, compare preview_manifest.json and rustic_floor_checks.json, then fresh Play verification. Shannon publishes.
+
+
+## Approved cafe installed in Edit (Codex solo, Oct 17 2026) - INSTALLED; NOT PUBLISHED
+Shannon replied "yes" to installing the current warm-wall/muted-rug preview. Installed the exact generated cafe_cozy3.lua from approved source revision594edf8 with CAFECOZY3_ALLOW_EDIT=true in stopped Edit, then ran a fresh Play session without rerunning any installer.
+Actual installation output:
+QQ CAFECOZY3: warm quiet floor; two tea/seating nooks; six visitor seats; seven original cats; inward-facing cubby; plants and cat artwork; 9.8 ceiling
+QQ CAFECOZY3 DOORS: two closed lattice mesh doors; E/gamepad/tap prompts; walking cannot begin entry or exit; existing shop exterior retained
+QQ CAFECOZY3 FLOOR: five dark walnut floor meshes; subtle board tones and four soft cedar-grain textures; existing plank geometry retained
+QQ CAFECOZY3 POLISH: dark rustic walnut floor; ten steam emitters reduced to small pale wisps; seven cats retained
+QQ CAFECOZY3 BELL: French shop sound 131845870598154 at volume .6; one ring per successful entry or exit
+QQ CAFECOZY3 WOOD: 63 interior meshes recolored; espresso beams/trim; walnut furniture/counter; warm brown tops; quiet floor and soft cushions retained
+QQ CAFECOZY3 SOFT PALETTE: nine warm putty wall meshes; six muted flax rug meshes with quiet sage/rose borders; dark timber and rustic floor retained
+QQ CAFEINTERIOR2 BUILT: 33 new shell meshes; 82 full-size furniture meshes; 38 original wall decor meshes; 34x28 room, lowered 9.8 ceiling
+QQ CAFEINTERIOR2 CATS: six inside in distinct spots; seated Whisker greeter outside; seven intact ten-bone rigs; cream at 84 percent
+QQ CAFEINTERIOR2 DOORWAY: same-server fade and destination-floor check; closed mesh doors; E/tap entry and exit only; no walk-through transition
+QQ CAFEINTERIOR2 PRESERVED: 20807 existing Japan instances outside cafe/doorway lamp; original cafe backed up; exterior dimensions and other shops unchanged
+QQ CAFEINTERIOR2 AUDIO: existing two-track playlist and four meows retained; listening zone moved to larger room; four original steaming mugs plus two at the new seating nook
+QQ CAFEINTERIOR2 STATUS: EDIT; NOT PUBLISHED
+- Edit preservation count20807 differs from the earlier Play preview's20905 because this installation checked the saved Edit scene. The installer asserted every captured unrelated Japan instance's identity/parent/part properties and the existing music controller source unchanged. Original cafe is backed up in ServerStorage.HudBackup.CafeInterior2Originals.CatCafe; kit29 remains36 anchored source meshes.
+Actual approved-preview comparison outputs:
+QQ CAFECOZY3 INSTALLED MATCH: batch 1-100; geometry, colors, materials, collision, anchoring and mesh IDs match approved preview
+QQ CAFECOZY3 INSTALLED MATCH: batch 101-200; geometry, colors, materials, collision, anchoring and mesh IDs match approved preview
+QQ CAFECOZY3 INSTALLED MATCH: batch 201-300; geometry, colors, materials, collision, anchoring and mesh IDs match approved preview
+QQ CAFECOZY3 INSTALLED MATCH: batch 301-371; geometry, colors, materials, collision, anchoring and mesh IDs match approved preview
+- Separately verified all four floor textures (asset114296702911787, Top, tile9x9, offsets0, tint125/102/80, transparency.65). Inventory:371 BaseParts; seven cats/70 bones; six enabled visitor Seats and two cat-reserved disabled Seats; ten subtle steam emitters. Both room/street cubby and climb meshes retain PreciseConvexDecomposition. French bell attributes131845870598154/.6 remain.
+- Announced avatar/camera movement for fresh Play verification. Actual E entry: inside=true, anchored=false, sitting=false, fade1, bell loaded/count1. Actual E exit: inside=false, anchored=false, sitting=false, fade1, bell count2. No installer ran in this fresh test. Removed temporary camera binding; temporary bell observation ended with Play.
+QQ CAFECOZY3 FINAL: stopped Edit; approved interior and doorway controllers retained after fresh Play; NOT PUBLISHED
+- Saved installation_checks.json and updated package status notes. Sources and screenshots remain the approved versions; no visual revisions were made during installation. No publication or direct DataStore write.
+NEXT: Shannon publishes the installed cafe, then checks a fresh server. The approved separate interior, interact doors, French bell, seven distributed cats, dark rustic floor, warm walls/muted rugs and subtle tea steam are now in Edit. Grocer kit28 and other storefront work remain separate.

@@ -1,0 +1,95 @@
+{
+  "approval": "Shannon replied yes to installing the current soft-wall/rug preview",
+  "status": "INSTALLED IN EDIT; NOT PUBLISHED",
+  "installerOutput": "QQ CAFECOZY3: warm quiet floor; two tea/seating nooks; six visitor seats; seven original cats; inward-facing cubby; plants and cat artwork; 9.8 ceiling\nQQ CAFECOZY3 DOORS: two closed lattice mesh doors; E/gamepad/tap prompts; walking cannot begin entry or exit; existing shop exterior retained\nQQ CAFECOZY3 FLOOR: five dark walnut floor meshes; subtle board tones and four soft cedar-grain textures; existing plank geometry retained\nQQ CAFECOZY3 POLISH: dark rustic walnut floor; ten steam emitters reduced to small pale wisps; seven cats retained\nQQ CAFECOZY3 BELL: French shop sound 131845870598154 at volume .6; one ring per successful entry or exit\nQQ CAFECOZY3 WOOD: 63 interior meshes recolored; espresso beams/trim; walnut furniture/counter; warm brown tops; quiet floor and soft cushions retained\nQQ CAFECOZY3 SOFT PALETTE: nine warm putty wall meshes; six muted flax rug meshes with quiet sage/rose borders; dark timber and rustic floor retained\nQQ CAFEINTERIOR2 BUILT: 33 new shell meshes; 82 full-size furniture meshes; 38 original wall decor meshes; 34x28 room, lowered 9.8 ceiling\nQQ CAFEINTERIOR2 CATS: six inside in distinct spots; seated Whisker greeter outside; seven intact ten-bone rigs; cream at 84 percent\nQQ CAFEINTERIOR2 DOORWAY: same-server fade and destination-floor check; closed mesh doors; E/tap entry and exit only; no walk-through transition\nQQ CAFEINTERIOR2 PRESERVED: 20807 existing Japan instances outside cafe/doorway lamp; original cafe backed up; exterior dimensions and other shops unchanged\nQQ CAFEINTERIOR2 AUDIO: existing two-track playlist and four meows retained; listening zone moved to larger room; four original steaming mugs plus two at the new seating nook\nQQ CAFEINTERIOR2 STATUS: EDIT; NOT PUBLISHED",
+  "manifestChecks": [
+    "QQ CAFECOZY3 INSTALLED MATCH: batch 1-100; geometry, colors, materials, collision, anchoring and mesh IDs match approved preview",
+    "QQ CAFECOZY3 INSTALLED MATCH: batch 101-200; geometry, colors, materials, collision, anchoring and mesh IDs match approved preview",
+    "QQ CAFECOZY3 INSTALLED MATCH: batch 201-300; geometry, colors, materials, collision, anchoring and mesh IDs match approved preview",
+    "QQ CAFECOZY3 INSTALLED MATCH: batch 301-371; geometry, colors, materials, collision, anchoring and mesh IDs match approved preview"
+  ],
+  "inventory": {
+    "textures": 4,
+    "sourceMeshes": 36,
+    "reservedSeats": 2,
+    "enabledSeats": 6,
+    "bones": 70,
+    "backup": true,
+    "scripts": [
+      {
+        "class": "Script",
+        "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Cats.CafeCatsClient"
+      },
+      {
+        "class": "Script",
+        "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CafeCamera"
+      },
+      {
+        "class": "Script",
+        "path": "Workspace.JapanMap.ShopFronts.CatCafe.Cats.CafeCatsClient"
+      }
+    ],
+    "status": "EDIT INSTALLED; NOT PUBLISHED",
+    "colliders": [
+      {
+        "collide": true,
+        "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb2_OakLight",
+        "fidelity": "PreciseConvexDecomposition"
+      },
+      {
+        "collide": true,
+        "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb0_OakLight",
+        "fidelity": "PreciseConvexDecomposition"
+      },
+      {
+        "collide": true,
+        "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Cubby_OakLight",
+        "fidelity": "PreciseConvexDecomposition"
+      },
+      {
+        "collide": true,
+        "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb1_OakLight",
+        "fidelity": "PreciseConvexDecomposition"
+      },
+      {
+        "collide": true,
+        "path": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Climb2_OakLight",
+        "fidelity": "PreciseConvexDecomposition"
+      },
+      {
+        "collide": true,
+        "path": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Climb0_OakLight",
+        "fidelity": "PreciseConvexDecomposition"
+      },
+      {
+        "collide": true,
+        "path": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Cubby_OakLight",
+        "fidelity": "PreciseConvexDecomposition"
+      },
+      {
+        "collide": true,
+        "path": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Climb1_OakLight",
+        "fidelity": "PreciseConvexDecomposition"
+      }
+    ],
+    "cats": 7,
+    "steam": 10
+  },
+  "freshEntry": {
+    "bellLoaded": true,
+    "fade": 1,
+    "sit": false,
+    "anchored": false,
+    "bellCount": 1,
+    "inside": true
+  },
+  "freshExit": {
+    "bellLoaded": true,
+    "fade": 1,
+    "sit": false,
+    "anchored": false,
+    "bellCount": 2,
+    "inside": false
+  },
+  "finalEdit": "QQ CAFECOZY3 FINAL: stopped Edit; approved interior and doorway controllers retained after fresh Play; NOT PUBLISHED"
+}
