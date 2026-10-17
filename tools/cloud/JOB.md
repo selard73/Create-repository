@@ -4182,3 +4182,20 @@ ShopFronts.Mikan.Sign.Sign_Panel. Pictures: tools/japan/garden/shots_shopfront_2
 HudBackup.MikanFrontReplaced's parts back to their MikanWasIn. Shannon: publish.
 NEXT: the other shop fronts the same way (one reference each; the Takayama dark-timber front is saved as a file), then koi feeding / photographer / archery / cat cafe / margins.
 Oct 17 05:26:35Z: Shannon saved + published again (Studio log PublishSuccessful) for the greengrocer FRONT; it was in Edit (11 pieces, all visible) but she did not see it live after the 05:17 and 05:22 publishes while the shop backs did show. Roblox's games API 'updated' still said 05:17:19 at 05:27 (it has lagged before). TO CHECK TOMORROW in a FRESH server (Shut Down All Servers first): the Mikan greengrocer front (tiled awning on posts, baskets on benches). If still missing: in the live game press F9 > Server/Client and look for workspace.JapanMap.ShopFronts.Mikan; if absent, re-run shopfront_mikan1 (30d5769) in Edit, Save to Roblox, publish; if present but invisible, the kit21 mesh assets may still be processing on Roblox's side.
+
+
+## Mikan greengrocer front REJECTED and ROLLED BACK (Codex solo with Shannon, Oct 17 2026, 13:05 UTC / 09:05 EDT) - EDIT ONLY, NOT published
+Shannon confirmed the kit21 front DOES show in a fresh live server, then rejected it: added items in the middle of the walkway, an unnecessary floating extra sign, and the look not matching her reference. Her explicit instruction: "please reverse the green grocer changes completely and we start from scratch with that. Do not undo any other changes."
+This supersedes the previous Mikan-front acceptance. No new design or replacement front is installed.
+- Ran tools/japan/garden/shopfront_mikan1_undo.lua directly through Studio MCP in Edit under that authorization.
+- Preflight verified all 16 original parts and their MikanWasIn destinations BEFORE changes.
+- Removed only JapanMap.ShopFronts.Mikan from the map; retained its rejected 11-piece set in ServerStorage.HudBackup.MikanFrontRejected_20261017.Mikan.
+- Restored the original 13 Canvas panels, 2 Awning brackets, and 1 Awning front rail to Mikan greengrocer.Weathered cloth awning, preserving their CFrames and sizes and removing the rollback-only MikanWasIn attribute.
+- Checked all 20,939 existing Japan instances outside the rejected front for unchanged parent/name and, for BaseParts, transform, size, colour/material, transparency, anchoring and collision/query/touch settings. ShopBacks remains 164 pieces / 646 descendants.
+- Same-camera close, low Studio Edit captures before and after: camera (5998,6.5,-136), look-at (6011,5,-157). Added awning/posts, shelving, baskets/benches, bamboo, banners, lamp and extra sign are removed. Existing signs, counters, produce, roof, lanterns, neighbouring shops and all backs remain.
+- Not published; Shannon publishes and restarts servers when ready. The fresh live server will keep the rejected front until then.
+QQ MIKANFRONT1_UNDO DONE: 11 added front pieces removed from JapanMap.ShopFronts.Mikan -> ServerStorage.HudBackup.MikanFrontRejected_20261017.Mikan
+QQ MIKANFRONT1_UNDO RESTORED: 13 Canvas panels, 2 Awning brackets, 1 Awning front rail to Mikan greengrocer.Weathered cloth awning; original transforms preserved
+QQ MIKANFRONT1_UNDO VERIFIED: 20939 existing Japan instances outside the rejected front unchanged; ShopBacks 164 pieces / 646 descendants unchanged
+QQ MIKANFRONT1_UNDO STATUS: Edit only; not published; no replacement front installed
+NEXT: restart the Mikan design from the actual grocery reference. That original chat photo was NOT saved (SHOPFRONTS.md #2 is only prose); obtain the image from Shannon before rebuilding. Fit displays within the shop frontage and preserve a clear lane; do not add a duplicate sign. Show close play-test pictures and install only after her yes. Other shop fronts wait.
