@@ -4063,3 +4063,4 @@ Play test (3 hops): outside -> exit cell paid nothing; entrance -> exit set Item
 card "You've had today's maze prize already." NOTE: in Studio the purse does not move - SquirrelSetup adds owed acorns only when its save
 (UpdateAsync) succeeds, and Studio API access is off; live it lands with the next save (~8 s), like every other reward.
 Picture: tools/japan/garden/shots_maze_2026-10-17/5_finish_card_at_the_exit.jpg. Shannon: publish, then restart servers.
+PUBLISHED by Shannon 2026-10-17T01:16:52Z (Studio log): the bamboo maze (bamboomaze1) + its exit reward (mazereward1) are LIVE once servers restart.
