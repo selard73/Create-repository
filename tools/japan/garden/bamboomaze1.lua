@@ -75,7 +75,9 @@ local spare = Instance.new("Folder"); spare.Name = "BambooMazeSpare"
 maze:SetAttribute("Footprint", Vector3.new(FX0, FZ0, 0)); maze:SetAttribute("FootprintMax", Vector3.new(FX1, FZ1, 0))
 local function prep(src, partName, mid)
 	for _, p in ipairs(src:GetDescendants()) do if p:IsA("BasePart") then p.Anchored = true end end
-	local ref = src:FindFirstChild(partName, true)
+	local ref
+	for _, d in ipairs(src:GetDescendants()) do if d:IsA("BasePart") and key(d) == partName then ref = d end end   -- (kit names carry the variant: Bamboo_Core_A)
+	if not ref then error("the kit's " .. src.Name .. " has no " .. partName) end
 	local R = (ref and ref.Size.Z > ref.Size.X) and CFrame.Angles(0, math.pi / 2, 0) or CFrame.new()   -- the kit runs along X; undo a quarter turn if the import made one
 	src.WorldPivot = CFrame.new(ref.Position - Vector3.new(0, mid, 0)) * R
 end
