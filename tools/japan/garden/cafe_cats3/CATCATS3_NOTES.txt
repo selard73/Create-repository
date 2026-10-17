@@ -47,3 +47,7 @@ fresh server. Codex has not published or directly written DataStores.
 Review pictures: tools/japan/garden/cafe_cats3/play_review.
 Installation evidence: tools/japan/garden/cafe_cats3/install_review.
 Full history and actual installer output: tools/cloud/JOB.md.
+
+UPDATE October 17: Shannon reported publishing the original cafe. New natural
+cat arrangement/lamp-removal preview awaits approval. See cafe_spread2 notes
+and JOB.md before any installation. No import needed.

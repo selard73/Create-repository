@@ -1,0 +1,35 @@
+{
+  "status": "SERVER PREVIEW ONLY, not installed",
+  "priorCafePublished": "Shannon reported publishing and reviewed the live cafe",
+  "changes": "Revised natural distribution of all seven cats, proportional scale adjustments, doorway lamp removed, corner seat reserved for cat",
+  "avatar": "Restarted preview after forced-seat test state; final Server and Client standing, not seated, not anchored, zero SeatWelds",
+  "checks": {
+    "cafeSpread2Install": {
+      "content": [
+        {
+          "type": "text",
+          "text": "QQ CAFE SPREAD2: seated Whisker greeter, Adorable on corner bench, Curious beside bench, cream kitten in cubby, Emerald alone at window, Tuxedo by bowls, crouching Ginger on highest perch\nQQ CAFE SPREAD2 SIZE: cream kitten at 84 percent; Whisker/Curious/Tuxedo 90 percent, Emerald 93 percent, Ginger 94 percent, Adorable unchanged; original rig proportions retained\nQQ CAFE SPREAD2 LAMP: only doorway neon lamp and its PointLight backed up; exterior lantern and other lamps retained\nQQ CAFE SPREAD2 SEATS: corner BenchSeat0 reserved for cat; four visitor seats remain enabled\nQQ CAFE SPREAD2 PRESERVED: all seven cats/70 bones, original textures and idle controller source; furniture, tea, sound, camera and other shops unchanged\nQQ CAFE SPREAD2 STATUS: SERVER PREVIEW; NOT PUBLISHED"
+        }
+      ],
+      "isError": false
+    },
+    "cafeSpread2Checks": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"preserved\":21059,\"meshCount\":136,\"maxBoneScaleError\":0,\"preciseColliders\":29,\"bones\":70,\"avatar\":{\"seated\":false,\"anchored\":false,\"health\":100,\"sit\":false},\"disabledSeats\":1,\"unexpectedChanges\":[],\"avatarSeatWelds\":0,\"enabledSeats\":4,\"cats\":[{\"spot\":\"InsideCubby\",\"sizeError\":0,\"scale\":0.8399999737739563,\"anchored\":true,\"pivot\":[6021.85009765625,1.6198532581329346,11.799994468688965,-0.08715558797121048,0,-0.9961923956871033,0,1,0,0.9961923956871033,0,-0.08715558797121048],\"name\":\"Blush_Eared_Kitten\",\"collide\":false,\"height\":1.7640000581741334,\"boneScaleError\":0,\"mesh\":\"rbxassetid://124730189245357\",\"texture\":\"rbxassetid://102245139818960\"},{\"spot\":\"CornerBench\",\"sizeError\":0,\"scale\":1,\"anchored\":true,\"pivot\":[6030.64990234375,2.9898533821105959,-3.649998664855957,0.34201931953430178,0,-0.9396904706954956,0,1,0,0.9396904706954956,0,0.34201931953430178],\"name\":\"Adorable_Tabby_Kitten\",\"collide\":false,\"height\":1.9500000476837159,\"boneScaleError\":0,\"mesh\":\"rbxassetid://116984439955963\",\"texture\":\"rbxassetid://109338480032334\"},{\"spot\":\"HighPerchPounce\",\"sizeError\":0,\"scale\":0.9399999976158142,\"anchored\":true,\"pivot\":[6026.5,5.72985315322876,17.650218963623048,-0.642787516117096,0,0.7660443782806397,0,1,0,-0.7660443782806397,0,-0.642787516117096],\"name\":\"Ginger_Whiskers\",\"collide\":false,\"height\":1.3630000352859498,\"boneScaleError\":0,\"mesh\":\"rbxassetid://105805425031788\",\"texture\":\"rbxassetid://80168981422602\"},{\"spot\":\"BesideBenchFloor\",\"sizeError\":0,\"scale\":0.8999999761581421,\"anchored\":true,\"pivot\":[6030.9501953125,1.0498533248901368,4.7497382164001469,0.42261818051338198,0,-0.9063076376914978,0,1,0,0.9063076376914978,0,0.42261818051338198],\"name\":\"Curious_Little_Tabby\",\"collide\":false,\"height\":1.9800002574920655,\"boneScaleError\":0,\"mesh\":\"rbxassetid://127393798201832\",\"texture\":\"rbxassetid://75014181069902\"},{\"spot\":\"SeatedDoorwayGreeter\",\"sizeError\":0,\"scale\":0.8999999761581421,\"anchored\":true,\"pivot\":[6011.85009765625,0.46000009775161745,1.8999420404434205,-0.25881847739219668,0,-0.9659236073493958,0,1,0,0.9659236073493958,0,-0.25881847739219668],\"name\":\"Whisker_Wonder\",\"collide\":false,\"height\":1.9350000619888306,\"boneScaleError\":0,\"mesh\":\"rbxassetid://72034803639634\",\"texture\":\"rbxassetid://108552975577223\"},{\"spot\":\"SingleWindowCat\",\"sizeError\":0,\"scale\":0.9300000071525574,\"anchored\":true,\"pivot\":[6015.81982421875,3.3598530292510988,10.100000381469727,0.8191519975662231,0,0.5735763907432556,0,1,0,-0.5735763907432556,0,0.8191519975662231],\"name\":\"Emerald_Eyed_Tabby_Ki\",\"collide\":false,\"height\":1.9994996786117554,\"boneScaleError\":0,\"mesh\":\"rbxassetid://95313722808228\",\"texture\":\"rbxassetid://139374932727320\"},{\"spot\":\"BesideFoodBowls\",\"sizeError\":0,\"scale\":0.8999999761581421,\"anchored\":true,\"pivot\":[6026.9501953125,1.0498530864715577,17.10000228881836,-4.371138828673793e-8,0,1,0,1,0,-1,0,-4.371138828673793e-8],\"name\":\"Tuxedo_Kitten\",\"collide\":false,\"height\":1.9800002574920655,\"boneScaleError\":0,\"mesh\":\"rbxassetid://107654439926311\",\"texture\":\"rbxassetid://119318595016900\"}],\"steam\":4}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeSpread2Motion": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"rootsIdentity\":true,\"heads\":[{\"name\":\"Whisker_Wonder\",\"changeDegrees\":1.9492318287367965},{\"name\":\"Ginger_Whiskers\",\"changeDegrees\":4.298012648446414},{\"name\":\"Emerald_Eyed_Tabby_Ki\",\"changeDegrees\":2.800440952398462},{\"name\":\"Blush_Eared_Kitten\",\"changeDegrees\":1.6751462624628224},{\"name\":\"Curious_Little_Tabby\",\"changeDegrees\":3.527477236949296},{\"name\":\"Adorable_Tabby_Kitten\",\"changeDegrees\":2.7273519518638018},{\"name\":\"Tuxedo_Kitten\",\"changeDegrees\":3.780718026371743}],\"avatarSit\":false,\"avatarSeated\":false}"
+        }
+      ],
+      "isError": false
+    }
+  }
+}

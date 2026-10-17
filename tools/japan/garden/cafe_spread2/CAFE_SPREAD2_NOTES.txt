@@ -1,0 +1,35 @@
+1001 Squirrels - cafe layout revision READY FOR REVIEW (October 17, 2026)
+
+The original completed cafe was published by Shannon.
+The new cat arrangement and doorway-lamp removal are TEMPORARY PLAY PREVIEW ONLY.
+No import is needed. Awaiting approval of the new actual Play pictures.
+
+Seven distinct positions:
+- Whisker Wonder: seated tabby greeting visitors beside the entrance.
+- Adorable Tabby: far corner bench cushion marked by Shannon.
+- Curious Tabby: floor beside the bench, as marked.
+- Blush Eared Kitten: smaller, inside the cubby.
+- Emerald Tabby: the only window cat, on the middle cushion.
+- Tuxedo: floor in front of the food bowls.
+- Ginger: crouching pose on the highest climbing platform.
+
+Sizes adjusted proportionally; cream kitten reduced 16 percent.
+Other upright cats about 1.94-2.00 studs. Ginger stays lower in its crouched pose.
+Original textures and all seven ten-bone rigs retained. All seven idles verified.
+Corner cushion reserved for the cat: four visitor seats remain enabled.
+Only the old neon lamp in front of the doorway curtain was removed/backed up.
+
+The earlier floating-avatar incident was from a forced-seat test in a discarded
+preview. The final preview started clean. Final Server/Client checks confirm
+standing, Sit=false, no SeatPart, unanchored, health100, zero avatar SeatWelds.
+Normal character visibility, GUI states and camera were restored.
+
+All 136 meshes/70 bones, 29 precise colliders and four steaming mugs retained.
+All cat mesh sizes and bone translations match their intended scales exactly.
+21,059 other snapshotted Japan instances unchanged.
+
+Pictures and checks: tools/japan/garden/cafe_spread2.
+After Shannon approves the pictures: stop Play; run cafe_spread2.lua with
+CAFE_SPREAD2_ALLOW_EDIT=true, verify the saved 141-part manifest and intended
+cat/seat/lamp changes, then a clean fresh Play. Do not rerun the old installers.
+No permanent revision installed yet. Shannon publishes after installation.
