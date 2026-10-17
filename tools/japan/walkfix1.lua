@@ -25,6 +25,8 @@ local function walkways(folder, test)
 	return t
 end
 local function near(p, x, y, z, tol) return math.abs(p.Position.X - x) < tol and math.abs(p.Position.Y - y) < 0.3 and math.abs(p.Position.Z - z) < tol end
+local function flat(p) return math.abs(p.Orientation.X) < 1 and math.abs(p.Orientation.Z) < 1 end   -- level (a yaw of 90 is still flat)
+local function restore(p) local was = p:GetAttribute("WalkFixWasCFrame"); if was then p.CFrame = was end end   -- re-runs start from the original
 local report = {}
 local function say(s) table.insert(report, s) end
 local old = J:FindFirstChild("WalkFills"); if old then old:Destroy() end
@@ -42,13 +44,13 @@ local function block(name, cf, size, look, parent)
 end
 -- ---------- A. flat slabs over the lawn ----------
 local nA = 0
-for _, p in ipairs(walkways(J, function(d) return (near(d, 5689, 0.68, 70, 3) or near(d, 5802, 0.68, 70, 3)) and d.Orientation.Magnitude < 1 end)) do
-	keepOld(p); p.CFrame = CFrame.new(p.Position.X, SLAB_Y, p.Position.Z) * (p.CFrame - p.Position); nA += 1
+for _, p in ipairs(walkways(J, function(d) return (near(d, 5689, 0.68, 70, 3) or near(d, 5802, 0.68, 70, 3)) and flat(d) end)) do
+	keepOld(p); restore(p); p.CFrame = CFrame.new(p.Position.X, SLAB_Y, p.Position.Z) * (p.CFrame - p.Position); nA += 1
 	say(string.format("A: %s at (%.0f, %.0f) lowered to y %.3f", p.Name, p.Position.X, p.Position.Z, SLAB_Y))
 end
 -- ---------- B. the tea lookout approach slab -> a gentle ramp with earth under ----------
-for _, p in ipairs(walkways(J, function(d) return near(d, 5657, 1.50, -82, 3) end)) do
-	keepOld(p)
+for _, p in ipairs(walkways(J, function(d) return near(d, 5657, 1.50, -82, 3) or (d:GetAttribute("WalkFixWasCFrame") and near(d, 5657, 1.02, -82, 3)) end)) do
+	keepOld(p); restore(p)
 	local dir, L, W = longAxis(p)
 	local a, b = p.Position - dir * (L / 2), p.Position + dir * (L / 2)                -- which end is over the lawn? the one with terrain far below is the lawn end
 	local rp = RaycastParams.new(); rp.FilterType = Enum.RaycastFilterType.Include; rp.FilterDescendantsInstances = {workspace.Terrain}
@@ -78,7 +80,7 @@ local nC = 0
 for _, st in ipairs({{"Tea Hills station", 5630}, {"Lantern Street station", 6000}, {"Palace Grounds station", 6379}}) do
 	local s = J.Railway:FindFirstChild(st[1])
 	if s then
-		for _, p in ipairs(walkways(s, function(d) return d.Position.Y - d.Size.Y / 2 > LAWN_Y + 0.2 and d.Orientation.Magnitude < 1 end)) do
+		for _, p in ipairs(walkways(s, function(d) return d.Position.Y - d.Size.Y / 2 > LAWN_Y + 0.2 and flat(d) end)) do
 			local bottom = p.Position.Y - p.Size.Y / 2
 			local h = bottom - (LAWN_Y - 0.1)
 			block("Fill_" .. st[1]:gsub(" ", "") .. "_" .. math.floor(p.Position.Z), CFrame.new(p.Position.X, LAWN_Y - 0.1 + h / 2, p.Position.Z) * (p.CFrame - p.Position), Vector3.new(p.Size.X - 0.1, h, p.Size.Z - 0.1), DARK)
@@ -114,7 +116,7 @@ for _, r in ipairs(RAMPS) do
 		for _ = 1, 8 do
 			local h = workspace:Raycast(o, Vector3.new(0, -60, 0), rp)
 			if not h then break end
-			if h.Instance == workspace.Terrain or h.Instance.CanCollide then if h.Instance.Name ~= "Walkway" then g = math.min(g, h.Position.Y) end break end
+			if h.Instance == workspace.Terrain or h.Instance.CanCollide then g = math.min(g, h.Position.Y) break end   -- (another walkway under it is the ground: the keep ramp crosses a court walkway)
 			o = h.Position - Vector3.new(0, 0.05, 0)
 		end
 	end
