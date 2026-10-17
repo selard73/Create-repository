@@ -172,9 +172,11 @@ do
 end
 -- ---------- station banners ----------
 local nban = 0
+local BANNER_SPOTS = {["Palace Grounds"] = {{6350, 141}, {6410, 141}}}                 -- a gatehouse roof fills z 108..126 there: the lawn strip in front of the platform
 for name, pos in pairs(STATIONS) do
-	for _, dx in ipairs({-34, 34}) do
+	for k, dx in ipairs({-34, 34}) do
 		local x, z = pos.X + dx, 114                                                  -- 11 off the platform's edge, clear of its roof
+		if BANNER_SPOTS[name] then x, z = BANNER_SPOTS[name][k][1], BANNER_SPOTS[name][k][2] end
 		local gy, gi = ground(x, z)
 		if gy then
 			local n = KIT.nobori_banner:Clone(); n.Name = "Banner_" .. name:gsub(" ", "") .. (dx < 0 and "_W" or "_E")
