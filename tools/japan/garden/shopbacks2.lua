@@ -83,11 +83,11 @@ local F = Instance.new("Folder"); F.Name = "ShopBacks"
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("before shopbacks2") end)
 local report, nplaced, flips = {}, 0, 0
 local rnd = Random.new(1020)
-local function place(name, n, wallX, z, outDir, off, yaw)
+local function place(name, n, wallX, z, outDir, off, yaw, y)
 	local m = KIT[n]:Clone(); m.Name = name
 	local baseYaw = (outDir > 0) and math.pi / 2 or -math.pi / 2                           -- R_y(+90) sends local +z to world +x
 	local x = wallX + outDir * ((WALLSIDE[n] and ZOFF[n] or 0) + (off or 0))
-	local pivot = CFrame.new(x, 0, z) * CFrame.Angles(0, baseYaw + (yaw or 0), 0) * KITR
+	local pivot = CFrame.new(x, y or 0, z) * CFrame.Angles(0, baseYaw + (yaw or 0), 0) * KITR
 	m:PivotTo(pivot)
 	if WALLSIDE[n] then                                                                    -- the piece must stand on the OUT side of the wall; if it landed inside, turn it round
 		local cf = m:GetBoundingBox()
@@ -113,7 +113,16 @@ for si, S in ipairs(SHOPS) do
 	place(S[1] .. "_door", "back_door2", wallX, doorZ, outDir)
 	place(S[1] .. "_window", "back_window2", wallX, winZ, outDir)
 	place(S[1] .. "_pipe", "drainpipe", wallX, cf.Z + side * (sz.Z / 2 - 1.1), outDir)
-	place(S[1] .. "_lantern", "chochin", wallX, doorZ - side * 3.6, outDir, 0, (outDir > 0) == (side > 0) and 0 or 0)
+	place(S[1] .. "_lantern", "chochin", wallX, doorZ - side * 3.6, outDir, 0, 0)
+	-- the two-storey shops (22+ tall): a pair of lattice windows on the upper floor (13.3..16.9), each under its own tile hood
+	local nup = 0
+	if sz.Y >= 22 then
+		for _, dz in ipairs({-5.5, 5.5}) do
+			place(string.format("%s_upper%d", S[1], nup), "back_window2", wallX, cf.Z + dz, outDir, 0, 0, 8.0)
+			place(string.format("%s_upperhood%d", S[1], nup), "awning_section", wallX, cf.Z + dz, outDir, 0, 0, 8.6)
+			nup += 1
+		end
+	end
 	-- the lattice band along the lower wall, 4-wide panels from end to end, none across the door; the awning over the whole width
 	local z0, z1 = cf.Z - sz.Z / 2 + 0.6, cf.Z + sz.Z / 2 - 0.6
 	local nlat, nawn = 0, 0
@@ -135,7 +144,7 @@ for si, S in ipairs(SHOPS) do
 		local yaw = (pn == "crate_stack2" or pn == "sake_barrel2") and rnd:NextNumber(-0.4, 0.4) or 0
 		place(string.format("%s_%s%d", S[1], pn, k), pn, wallX, z, outDir, off, yaw)
 	end
-	table.insert(report, string.format("%s: back wall x %.1f, door z %.0f, window z %.0f, %d lattice panels, %d awning sections, lantern, pipe at the %s corner, %d yard things", S[1], wallX, doorZ, winZ, nlat, nawn, side > 0 and "north" or "south", #S[2]))
+	table.insert(report, string.format("%s: back wall x %.1f, door z %.0f, window z %.0f, %d upper windows, %d lattice panels, %d awning sections, lantern, pipe at the %s corner, %d yard things", S[1], wallX, doorZ, winZ, nup, nlat, nawn, side > 0 and "north" or "south", #S[2]))
 end
 F.Parent = J
 task.wait()
