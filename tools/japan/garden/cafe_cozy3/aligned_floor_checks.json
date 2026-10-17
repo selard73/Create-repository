@@ -1,0 +1,55 @@
+{
+  "installerOutput": "QQ CAFE FLOOR GRAIN: 238 reused real mesh boards plus vestibule; grain follows board length; original physical floor retained\nQQ CAFE FLOOR CHECK: all371 original parts retain transforms, colors, materials, mesh IDs and physical flags; four old visual surfaces hidden\nQQ CAFE FLOOR REFLECTION: client sky reflection .12 only inside cafe; prior value restored on exit; no server lighting change\nQQ CAFE FLOOR STATUS: SERVER PREVIEW; NOT PUBLISHED",
+  "state": {
+    "sitting": false,
+    "rugPalette": "moss1",
+    "floorFinish": "lengthwise_walnut4",
+    "anchored": false,
+    "trialVariantExists": false,
+    "inside": true,
+    "bones": 70,
+    "grainMeshes": 239,
+    "health": 100,
+    "fov": 70,
+    "camera": "Custom",
+    "quality": "Automatic",
+    "specular": 0.11999999731779099,
+    "parts": 610
+  },
+  "geometry": {
+    "newVisualMeshes": 239,
+    "originalPartsPreserved": 371,
+    "maxGrainAxisError": 0,
+    "floorRayHits": [
+      "CI2_FloorBase_OakDark",
+      "CI2_FloorBase_OakDark",
+      "CI2_Floor_OakDark",
+      "CI2_Floor_Oak",
+      "CI2_VestibuleFloor_Oak"
+    ]
+  },
+  "doorway": {
+    "exit": {
+      "inside": false,
+      "specular": 1,
+      "sitting": false,
+      "anchored": false
+    },
+    "entry": {
+      "inside": true,
+      "specular": 0.12,
+      "sitting": false,
+      "anchored": false
+    }
+  },
+  "diagnostic": {
+    "cause": "Grazing-angle sky reflection caused grey-blue edge haze. Temporary client specular=0 comparison removed it; restored immediately afterward.",
+    "failedTrials": "Blank custom material and matte MaterialVariant trials removed. Official wood map asset IDs failed PreloadAsync; available cedar variant rendered without grain in this Play session. Final uses working built-in Wood, aligned mesh axes and cafe-only client reflection control.",
+    "photoQuality": "Temporarily Level10 for consistent grain review; restored Automatic."
+  },
+  "pictures": [
+    "cafe_lengthwise_floor_overview.jpg",
+    "cafe_lengthwise_floor_nook.jpg"
+  ],
+  "status": "Server Play preview only. Installed cafe and canonical whole-cafe installer unchanged."
+}

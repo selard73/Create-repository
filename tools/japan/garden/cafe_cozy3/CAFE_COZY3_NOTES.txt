@@ -148,3 +148,31 @@ full installer and update the six preview_manifest.json colors to the approved m
 readback. Do not leave the canonical whole-cafe installer reverting the approved rugs.
 Pictures: cafe_moss_rugs_overview.jpg and cafe_moss_rugs_nook.jpg.
 Checks: moss_rug_checks.json. Shannon publishes after approved installation.
+
+PENDING FLOOR REFINEMENT: lengthwise_walnut4 (Oct 17)
+Shannon rejected the muddy floor, then clarified to KEEP grain and run it along
+the boards. Flat/blank finish was rejected. Final uses built-in Wood on239 reused
+imported real MeshParts (238 boards + vestibule), each with material X axis along
+board length. Same plank dimensions/centers/footprint. Original371 cafe parts
+remain; four original batched visual surfaces are hidden but retain collision.
+No new asset upload/import. Final inventory610 BaseParts, original70 cat bones.
+Grey-blue dusty edges were confirmed as environment specular reflection by a
+temporary client-only zero-reflection A/B. Final CafeFloorReflectionClient sets
+EnvironmentSpecularScale=.12 only for the player inside cafe, restores the prior
+value on exit. Actual E exit restored1; reentry returned.12. Server Lighting stays1.
+This reduces reflection across interior surfaces while inside, not only floor.
+New material trials removed; no custom MaterialVariant remains. Some official
+wood map IDs failed to load; the final solution uses built-in Wood instead.
+Preview photos temporarily used render QualityLevel10; restored Automatic.
+HUD/avatar/normal Custom camera restored; Play remains inside cafe for review.
+Guarded install_aligned_floor.lua built by build_aligned_floor.py is the exact
+final narrow installer. Permanent Edit requires CAFEFLOOR4_ALLOW_EDIT=true after
+Shannon approves. Preserve current approved walls and preferred moss rugs.
+Moss rugs are also still Play only; no permanent changes made during this job.
+Full cafe_cozy3.lua and preview_manifest.json STILL describe installed flax-rug
+cafe; do not claim they include these pending floor/rug changes. On approval use
+the two narrow installers, then integrate their patches/client into canonical
+builder and regenerate the610-part manifest. In a staged full rebuild use its
+room frame and attach reflection client after the new doorway link is committed.
+Pictures: cafe_lengthwise_floor_overview.jpg, cafe_lengthwise_floor_nook.jpg.
+Checks: aligned_floor_checks.json. Never publish; Shannon publishes.
