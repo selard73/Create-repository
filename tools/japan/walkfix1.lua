@@ -7,6 +7,7 @@
 --     ramp) -> tilted into a gentle ramp (lawn end top 0.31, hill end as it was) with a solid earth wedge under it.
 --  C. The three station approaches (Tea Hills / Lantern Street / Palace Grounds): a 3.7-deg slab from the lawn up to the platform
 --     (2.10) with air under -> a solid dark-stone wedge under each, like D.
+--  E. The volcano lookout DECK (36 x 22, bottom at 8 over the flat lawn at 0, on nothing): a dark stone block under it, lawn to underside.
 --  D. The three RAMPS (the palace gate passage 5 deg from the lawn to the court at 3.0; the keep approach 14 deg from the court to 13.8;
 --     the volcano lookout 19 deg from the lawn to the deck at 10) -> a solid WedgePart fill under each from its lowest ground up to its
 --     underside: the gate in the court's flagstone (a paved ramp), the keep and the lookout in dark stone (an embankment).
@@ -123,8 +124,19 @@ for _, r in ipairs(RAMPS) do
 	paint(w, r[5]); w.Parent = F; nD += 1
 	say(string.format("D: %s: wedge %.1f wide x %.2f tall x %.1f long from ground %.2f (ramp tops %.2f -> %.2f, underside at the low end %.2f)", r[1], W, H, Lh, g, lo.Y, hi.Y, loU))
 end
+-- ---------- E. the volcano lookout deck itself: 36 x 22, its bottom at 8 over a flat lawn at 0, on nothing ----------
+local deck
+for _, d in ipairs(J.TeaHills:FindFirstChild("Volcano overlook") and J.TeaHills["Volcano overlook"]:GetChildren() or {}) do
+	if d:IsA("BasePart") and d.Name == "Volcano lookout deck" then deck = d end
+end
+if deck then
+	local bottom = deck.Position.Y - deck.Size.Y / 2
+	local h = bottom - (LAWN_Y - 0.1)
+	block("Fill_LookoutDeck", CFrame.new(deck.Position.X, LAWN_Y - 0.1 + h / 2, deck.Position.Z), Vector3.new(deck.Size.X - 0.6, h, deck.Size.Z - 0.6), DARK)
+	say(string.format("E: a stone block %.1f x %.2f x %.1f under the lookout deck (bottom %.2f)", deck.Size.X - 0.6, h, deck.Size.Z - 0.6, bottom))
+else say("E: lookout deck not found") end
 F.Parent = J
 task.wait()
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after walkfix1") end)
 for _, s in ipairs(report) do print("QQ WALKFIX1 " .. s) end
-print(string.format("QQ WALKFIX1 DONE: %d slabs lowered, 1 slab made a ramp, %d ramp wedges (3 station approaches, the gate, the keep, the lookout) in JapanMap.WalkFills; the lake pier left for its own decision", nA, nD))
+print(string.format("QQ WALKFIX1 DONE: %d slabs lowered, 1 slab made a ramp, %d ramp wedges (3 station approaches, the gate, the keep, the lookout) + the lookout deck's block in JapanMap.WalkFills; the lake pier left for its own decision", nA, nD))
