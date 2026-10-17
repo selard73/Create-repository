@@ -1,0 +1,53 @@
+CAT CAFE COZY3 - PLAY PREVIEW ONLY, NOT INSTALLED OR PUBLISHED
+
+Shannon asked for a cuter, more inviting cafe and a closed door with an interact button.
+This revision builds on imported kit29. No new import is needed.
+
+Design: warm light wood; cream, sage and dusty pink; two seating areas; clearer cat cubby;
+greenery and books; quieter floor colors; lower ceiling/lamps; six steaming mugs.
+Seven original Meshy cat rigs and all audio assets are retained. Whisker greets outside,
+Adorable and Tuxedo share sofas, Curious is beside the left seating, Emerald at the window,
+Ginger on the highest perch, and smaller Blush inside the hollow cubby.
+
+References reviewed for seating integration and warm materials (no photos/assets copied):
+https://catmocha.jp/shop/fukutsu/
+https://catmocha.jp/en/howto/
+https://catmocha.jp/en/shop/shibuya
+Prompt API: https://create.roblox.com/docs/ui/proximity-prompts
+
+Rebuild: python build_preview.py
+The builder reads the adjacent cafe_interior2 template, manifest, and original doorway client.
+The generated cafe_cozy3.lua is self-contained and is the exact full installer used for the preview.
+Do not install cafe_interior2.lua or the older spread2 script over this revision.
+
+Installation is pending Shannon's approval of these actual Play pictures.
+On approval: stop Play, run cafe_cozy3.lua in Edit with CAFECOZY3_ALLOW_EDIT=true;
+compare preview_manifest.json, then test fresh Play without rerunning the installer.
+Never publish; Shannon publishes. Never write DataStores.
+
+Door behavior: closed reused lattice meshes, standard E/ButtonX/clickable prompt,
+existing game custom prompt UI; server validates proximity and correct side.
+Only explicit interaction begins the same-server fade transition. Walking never starts it.
+Two-second cooldown, destination-floor readiness, death/timeout cleanup remain.
+
+Runtime verification:
+- Walking into the closed entrance stayed outside. Keyboard entry and exit passed.
+- Phone landscape preview displays a clear 116x47 cafe button without HUD overlap.
+- Pointer automation did not trigger the simulated touch button; its InputHoldBegin/End
+  path was separately exercised successfully. Actual touch device and gamepad remain untested.
+- Both added sofa Seats accepted natural walking/jump contact and released on jump.
+- 64 runtime camera orbits (32 laptop, 32 phone) passed the new lower room bounds;
+  maximum near-plane overflow .0000248 studs.
+- Final room has 223 meshes, six indoor cats/60 bones, six enabled visitor Seats,
+  two cat-reserved disabled Seats, six steam emitters. Outside greeter has ten bones.
+- Existing first music track loaded and playing; two-track/four-meow source unchanged.
+- 20,905 existing Japan instances outside cafe/identified doorway lamp passed preservation.
+- Final full-source preview active, avatar inside standing/unanchored, fade cleared;
+  photo bindings/visibility overrides removed and normal Custom camera/default viewport restored.
+- Single-player Studio testing only; earlier kit29 timeout/respawn tests remain documented
+  in cafe_interior2/runtime_checks.json. No unrelated scene or permanent Edit changes this turn.
+
+Actual Play pictures: cafe_cozy3_overview.jpg, cafe_cozy3_nook.jpg,
+cafe_cozy3_tea.jpg, cafe_cozy3_phone_door.jpg.
+The tea picture preceded only the added right cubby shelf; its pictured area is unchanged.
+The phone doorway picture preceded only that indoor shelf; its pictured area is unchanged.

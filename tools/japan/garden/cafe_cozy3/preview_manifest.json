@@ -1,0 +1,11124 @@
+[
+  {
+    "cf": [
+      6033.0098,
+      6.4899,
+      -0.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Art_Paper",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8627,
+      0.702
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://136136273694565",
+    "size": [
+      5.18,
+      2.4,
+      0.08
+    ]
+  },
+  {
+    "cf": [
+      6032.9399,
+      6.5249,
+      -0.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Art_SageSoft",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.5922,
+      0.4745
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://110433294881916",
+    "size": [
+      1.7095,
+      1.45,
+      0.07
+    ]
+  },
+  {
+    "cf": [
+      6033.1201,
+      6.4899,
+      -0.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Art_TimberEdge",
+    "collide": false,
+    "color": [
+      0.3412,
+      0.2431,
+      0.1647
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://115956831799682",
+    "size": [
+      5.5,
+      2.7,
+      0.17
+    ]
+  },
+  {
+    "cf": [
+      6030.8501,
+      3.4899,
+      -0.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Bench_Oak",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.4667,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://99041581397138",
+    "size": [
+      8.78,
+      2.4,
+      3.1
+    ]
+  },
+  {
+    "cf": [
+      6030.8501,
+      2.2649,
+      -0.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Bench_OakDark",
+    "collide": true,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://97198275681300",
+    "size": [
+      8.7,
+      2.45,
+      2.48
+    ]
+  },
+  {
+    "cf": [
+      6030.7974,
+      3.6374,
+      -0.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Bench_SageSoft",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.5922,
+      0.4745
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://99017577485611",
+    "size": [
+      8.17,
+      1.855,
+      2.635
+    ]
+  },
+  {
+    "cf": [
+      6029,
+      1.4599,
+      17.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Bowls_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://114445899517653",
+    "size": [
+      2.44,
+      0.34,
+      0.94
+    ]
+  },
+  {
+    "cf": [
+      6029,
+      1.4474,
+      18.65,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Bowls_Glass",
+    "collide": false,
+    "color": [
+      0.7843,
+      0.8588,
+      0.8353
+    ],
+    "material": "Glass",
+    "mesh": "rbxassetid://74717568268298",
+    "size": [
+      0.74,
+      0.015,
+      0.74
+    ]
+  },
+  {
+    "cf": [
+      6029,
+      1.1899,
+      17.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Bowls_Oak",
+    "collide": false,
+    "color": [
+      0.6392,
+      0.4667,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://84110089942403",
+    "size": [
+      2.7,
+      0.28,
+      1.15
+    ]
+  },
+  {
+    "cf": [
+      6028.9883,
+      1.4199,
+      17.1357,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Bowls_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://72840664791762",
+    "size": [
+      0.5444,
+      0.09,
+      0.5763
+    ]
+  },
+  {
+    "cf": [
+      6023.8052,
+      9.1599,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Ceiling_OakLight",
+    "collide": false,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://79444835919989",
+    "size": [
+      25,
+      0.06,
+      19.355
+    ]
+  },
+  {
+    "cf": [
+      6023.7998,
+      9.0299,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Ceiling_TimberEdge",
+    "collide": false,
+    "color": [
+      0.3412,
+      0.2431,
+      0.1647
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://93007472098758",
+    "size": [
+      25,
+      0.2,
+      18.64
+    ]
+  },
+  {
+    "cf": [
+      6021.7002,
+      2.8799,
+      -3.05,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Chair0_Indigo",
+    "collide": false,
+    "color": [
+      0.2588,
+      0.3412,
+      0.4118
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://91207067835880",
+    "size": [
+      2.3,
+      0.3,
+      2.1
+    ]
+  },
+  {
+    "cf": [
+      6021.6978,
+      2.9176,
+      -3.05,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Chair0_Oak",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.4667,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://139293223933233",
+    "size": [
+      2.45,
+      3.6908,
+      2.2544
+    ]
+  },
+  {
+    "cf": [
+      6020.6802,
+      4.4999,
+      -3.05,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Chair0_OakLight",
+    "collide": true,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://92085362889194",
+    "size": [
+      2.2,
+      0.42,
+      0.2
+    ]
+  },
+  {
+    "cf": [
+      6021.6978,
+      2.9176,
+      1.25,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Chair1_Oak",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.4667,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://136135213379205",
+    "size": [
+      2.45,
+      3.6908,
+      2.2544
+    ]
+  },
+  {
+    "cf": [
+      6020.6802,
+      4.4999,
+      1.25,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Chair1_OakLight",
+    "collide": true,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://75231206993172",
+    "size": [
+      2.2,
+      0.42,
+      0.2
+    ]
+  },
+  {
+    "cf": [
+      6021.7002,
+      2.8799,
+      1.25,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Chair1_Rose",
+    "collide": false,
+    "color": [
+      0.6667,
+      0.4667,
+      0.4471
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://140057213420765",
+    "size": [
+      2.3,
+      0.3,
+      2.1
+    ]
+  },
+  {
+    "cf": [
+      6019.5,
+      2.0899,
+      18.29,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Climb0_OakDark",
+    "collide": true,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://111542904398721",
+    "size": [
+      2.4108,
+      0.8247,
+      2.5446
+    ]
+  },
+  {
+    "cf": [
+      6019.5,
+      2.5899,
+      17.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Climb0_OakLight",
+    "collide": true,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://105559045919909",
+    "size": [
+      3.35,
+      0.22,
+      3.5
+    ]
+  },
+  {
+    "cf": [
+      6019.5,
+      2.7899,
+      17.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Climb0_SageSoft",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.5922,
+      0.4745
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://124834165000720",
+    "size": [
+      3.15,
+      0.18,
+      3.28
+    ]
+  },
+  {
+    "cf": [
+      6022.8999,
+      3.5399,
+      18.29,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Climb1_OakDark",
+    "collide": true,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://114392641893347",
+    "size": [
+      2.4108,
+      0.8247,
+      2.5446
+    ]
+  },
+  {
+    "cf": [
+      6022.8999,
+      4.0399,
+      17.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Climb1_OakLight",
+    "collide": true,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://102258655073807",
+    "size": [
+      3.35,
+      0.22,
+      3.5
+    ]
+  },
+  {
+    "cf": [
+      6022.8999,
+      4.2399,
+      17.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Climb1_SageSoft",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.5922,
+      0.4745
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://82221843656698",
+    "size": [
+      3.15,
+      0.18,
+      3.28
+    ]
+  },
+  {
+    "cf": [
+      6026.5,
+      4.9399,
+      18.29,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Climb2_OakDark",
+    "collide": true,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://114081621860295",
+    "size": [
+      2.4108,
+      0.8247,
+      2.5446
+    ]
+  },
+  {
+    "cf": [
+      6026.5,
+      5.4399,
+      17.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Climb2_OakLight",
+    "collide": true,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://125459581630825",
+    "size": [
+      3.35,
+      0.22,
+      3.5
+    ]
+  },
+  {
+    "cf": [
+      6026.5,
+      5.6399,
+      17.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Climb2_SageSoft",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.5922,
+      0.4745
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://120863181109247",
+    "size": [
+      3.15,
+      0.18,
+      3.28
+    ]
+  },
+  {
+    "cf": [
+      6030.4502,
+      4.6599,
+      10.95,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_CounterMenu_Paper",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8627,
+      0.702
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://80713128119293",
+    "size": [
+      1.55,
+      0.75,
+      0.045
+    ]
+  },
+  {
+    "cf": [
+      6029.96,
+      2.4399,
+      14.2975,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Counter_Oak",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.4667,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://136801009093114",
+    "size": [
+      8.415,
+      2.65,
+      0.11
+    ]
+  },
+  {
+    "cf": [
+      6031.2998,
+      2.4299,
+      14.3,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Counter_OakDark",
+    "collide": true,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://98922260375337",
+    "size": [
+      8.3,
+      2.78,
+      2.6
+    ]
+  },
+  {
+    "cf": [
+      6031.2998,
+      3.9899,
+      14.3,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Counter_OakLight",
+    "collide": true,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://107690097260864",
+    "size": [
+      8.7,
+      0.25,
+      3.05
+    ]
+  },
+  {
+    "cf": [
+      6029.8799,
+      1.1899,
+      14.3,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Counter_TimberEdge",
+    "collide": true,
+    "color": [
+      0.3412,
+      0.2431,
+      0.1647
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://87712566911662",
+    "size": [
+      8.5,
+      0.16,
+      0.13
+    ]
+  },
+  {
+    "cf": [
+      6022.7002,
+      4.9299,
+      11.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_CubbyBeds_Indigo",
+    "collide": false,
+    "color": [
+      0.2588,
+      0.3412,
+      0.4118
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://101331721044211",
+    "size": [
+      4.05,
+      0.32,
+      3.35
+    ]
+  },
+  {
+    "cf": [
+      6022.7002,
+      1.4599,
+      11.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_CubbyBeds_Rose",
+    "collide": false,
+    "color": [
+      0.6667,
+      0.4667,
+      0.4471
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://122173804414866",
+    "size": [
+      3.8,
+      0.32,
+      3.2
+    ]
+  },
+  {
+    "cf": [
+      6020.8252,
+      2.8899,
+      11.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Cubby_OakDark",
+    "collide": true,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://113424041015698",
+    "size": [
+      2.891,
+      2.891,
+      0.111
+    ]
+  },
+  {
+    "cf": [
+      6022.7002,
+      2.8899,
+      11.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Cubby_OakLight",
+    "collide": true,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://135948241607606",
+    "size": [
+      4.4,
+      3.7,
+      3.7
+    ]
+  },
+  {
+    "cf": [
+      6032.6499,
+      5.6036,
+      13.9775,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Cups_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://115308673789606",
+    "size": [
+      6.215,
+      1.7875,
+      0.66
+    ]
+  },
+  {
+    "cf": [
+      6032.6499,
+      5.8724,
+      13.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Cups_Tea",
+    "collide": false,
+    "color": [
+      0.4118,
+      0.4588,
+      0.2275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://114109603137284",
+    "size": [
+      5.736,
+      1.205,
+      0.336
+    ]
+  },
+  {
+    "cf": [
+      6032.6499,
+      5.6036,
+      13.9775,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Cups_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://120241382702635",
+    "size": [
+      3.515,
+      1.7875,
+      0.66
+    ]
+  },
+  {
+    "cf": [
+      6025.8999,
+      8.3599,
+      -0.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Lamp0_Cream",
+    "collide": false,
+    "color": [
+      0.9059,
+      0.8706,
+      0.7725
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://79469970935067",
+    "size": [
+      1.34,
+      0.7,
+      1.34
+    ]
+  },
+  {
+    "cf": [
+      6025.8999,
+      8.8699,
+      -0.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Lamp0_DarkMetal",
+    "collide": false,
+    "color": [
+      0.2157,
+      0.2314,
+      0.2196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://77133141443602",
+    "size": [
+      0.054,
+      0.42,
+      0.054
+    ]
+  },
+  {
+    "cf": [
+      6025.8999,
+      8.4434,
+      -0.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Lamp0_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://81062803513359",
+    "size": [
+      1.36,
+      0.593,
+      1.36
+    ]
+  },
+  {
+    "cf": [
+      6021.2002,
+      8.3599,
+      8.6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Lamp1_Cream",
+    "collide": false,
+    "color": [
+      0.9059,
+      0.8706,
+      0.7725
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://121866492151867",
+    "size": [
+      1.34,
+      0.7,
+      1.34
+    ]
+  },
+  {
+    "cf": [
+      6021.2002,
+      8.8699,
+      8.6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Lamp1_DarkMetal",
+    "collide": false,
+    "color": [
+      0.2157,
+      0.2314,
+      0.2196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://83031290771853",
+    "size": [
+      0.054,
+      0.42,
+      0.054
+    ]
+  },
+  {
+    "cf": [
+      6021.2002,
+      8.4434,
+      8.6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Lamp1_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://85079664588756",
+    "size": [
+      1.36,
+      0.593,
+      1.36
+    ]
+  },
+  {
+    "cf": [
+      6030.2002,
+      8.3599,
+      14.2,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Lamp2_Cream",
+    "collide": false,
+    "color": [
+      0.9059,
+      0.8706,
+      0.7725
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://129460708385714",
+    "size": [
+      1.34,
+      0.7,
+      1.34
+    ]
+  },
+  {
+    "cf": [
+      6030.2002,
+      8.8699,
+      14.2,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Lamp2_DarkMetal",
+    "collide": false,
+    "color": [
+      0.2157,
+      0.2314,
+      0.2196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://86838504629280",
+    "size": [
+      0.054,
+      0.42,
+      0.054
+    ]
+  },
+  {
+    "cf": [
+      6030.2002,
+      8.4434,
+      14.2,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Lamp2_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://137840018063798",
+    "size": [
+      1.36,
+      0.593,
+      1.36
+    ]
+  },
+  {
+    "cf": [
+      6023.8877,
+      2.0399,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Lining_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://88529858824733",
+    "size": [
+      25.33,
+      2,
+      19.085
+    ]
+  },
+  {
+    "cf": [
+      6023.8501,
+      3.0999,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Lining_TimberEdge",
+    "collide": false,
+    "color": [
+      0.3412,
+      0.2431,
+      0.1647
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://131457094675281",
+    "size": [
+      25.37,
+      0.14,
+      19.1
+    ]
+  },
+  {
+    "cf": [
+      6023.9199,
+      5.6899,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Lining_Wall",
+    "collide": false,
+    "color": [
+      0.9059,
+      0.8745,
+      0.7882
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://139483570120691",
+    "size": [
+      25.3,
+      6.9,
+      19.24
+    ]
+  },
+  {
+    "cf": [
+      6030.9888,
+      4.7036,
+      16,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_PastryCover_Glass",
+    "collide": false,
+    "color": [
+      0.7843,
+      0.8588,
+      0.8353
+    ],
+    "material": "Glass",
+    "mesh": "rbxassetid://70548370798224",
+    "size": [
+      3.455,
+      1.0275,
+      1.9725
+    ]
+  },
+  {
+    "cf": [
+      6030.6499,
+      4.4699,
+      16,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Pastry_Cream",
+    "collide": false,
+    "color": [
+      0.9059,
+      0.8706,
+      0.7725
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://87923318194936",
+    "size": [
+      1.946,
+      0.4,
+      0.5265
+    ]
+  },
+  {
+    "cf": [
+      6031,
+      4.1599,
+      16,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Pastry_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://116145840352148",
+    "size": [
+      3.25,
+      0.16,
+      1.8
+    ]
+  },
+  {
+    "cf": [
+      6031.3501,
+      4.4699,
+      16,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Pastry_Rose",
+    "collide": false,
+    "color": [
+      0.6667,
+      0.4667,
+      0.4471
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://78803543361127",
+    "size": [
+      1.946,
+      0.4,
+      0.5265
+    ]
+  },
+  {
+    "cf": [
+      6031,
+      4.2699,
+      16,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Pastry_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://95003889559887",
+    "size": [
+      2.95,
+      0.08,
+      1.5
+    ]
+  },
+  {
+    "cf": [
+      6026.8252,
+      1.0899,
+      -0.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Rug_Cream",
+    "collide": false,
+    "color": [
+      0.9059,
+      0.8706,
+      0.7725
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://127655966258809",
+    "size": [
+      8.2,
+      0.008,
+      9.38
+    ]
+  },
+  {
+    "cf": [
+      6026.5,
+      1.0809,
+      -0.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Rug_Rug",
+    "collide": false,
+    "color": [
+      0.8118,
+      0.7647,
+      0.6196
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://107273624619944",
+    "size": [
+      8.6,
+      0.012,
+      11.5
+    ]
+  },
+  {
+    "cf": [
+      6026.5,
+      1.0579,
+      -0.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Rug_SageSoft",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.5922,
+      0.4745
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://93479982060172",
+    "size": [
+      9.1,
+      0.035,
+      12
+    ]
+  },
+  {
+    "cf": [
+      6022.8999,
+      2.5399,
+      17.65,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Scratcher_OakDark",
+    "collide": true,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://140014390832139",
+    "size": [
+      0.56,
+      3,
+      0.56
+    ]
+  },
+  {
+    "cf": [
+      6022.8999,
+      2.4849,
+      17.65,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Scratcher_Rope",
+    "collide": false,
+    "color": [
+      0.7608,
+      0.6667,
+      0.4863
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://88835626241574",
+    "size": [
+      0.64,
+      2.615,
+      0.64
+    ]
+  },
+  {
+    "cf": [
+      6032.7202,
+      5.8399,
+      14.3,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Shelves_OakLight",
+    "collide": false,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://106467751110601",
+    "size": [
+      7.8,
+      2.55,
+      0.8
+    ]
+  },
+  {
+    "cf": [
+      6033.0801,
+      6.0899,
+      14.325,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Shelves_TimberEdge",
+    "collide": false,
+    "color": [
+      0.3412,
+      0.2431,
+      0.1647
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://83959932619875",
+    "size": [
+      7.73,
+      4.85,
+      0.18
+    ]
+  },
+  {
+    "cf": [
+      6025.8921,
+      2.5172,
+      -3.05,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Table0_Oak",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.4667,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://72227212145996",
+    "size": [
+      2.2584,
+      2.8676,
+      1.9837
+    ]
+  },
+  {
+    "cf": [
+      6025.6001,
+      3.9199,
+      -3.05,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Table0_OakDark",
+    "collide": true,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://85097300845350",
+    "size": [
+      3.24,
+      0.09,
+      3.24
+    ]
+  },
+  {
+    "cf": [
+      6025.6001,
+      4.0099,
+      -3.05,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Table0_OakLight",
+    "collide": true,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://83915331619130",
+    "size": [
+      3.24,
+      0.2,
+      3.24
+    ]
+  },
+  {
+    "cf": [
+      6025.8921,
+      2.5172,
+      1.25,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Table1_Oak",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.4667,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://124772412887360",
+    "size": [
+      2.2584,
+      2.8676,
+      1.9837
+    ]
+  },
+  {
+    "cf": [
+      6025.6001,
+      3.9199,
+      1.25,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Table1_OakDark",
+    "collide": true,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://113801345408924",
+    "size": [
+      3.24,
+      0.09,
+      3.24
+    ]
+  },
+  {
+    "cf": [
+      6025.6001,
+      4.0099,
+      1.25,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Table1_OakLight",
+    "collide": true,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://122940907029315",
+    "size": [
+      3.24,
+      0.2,
+      3.24
+    ]
+  },
+  {
+    "cf": [
+      6025.2988,
+      4.5499,
+      -2.8448,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TableGoods0_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://98227206817510",
+    "size": [
+      1.8796,
+      0.88,
+      1.6427
+    ]
+  },
+  {
+    "cf": [
+      6024.9502,
+      4.6799,
+      -2.5537,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TableGoods0_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://124884508259360",
+    "size": [
+      0.9662,
+      0.8853,
+      0.1775
+    ]
+  },
+  {
+    "cf": [
+      6025.5249,
+      4.6724,
+      -3,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TableGoods0_Tea",
+    "collide": false,
+    "color": [
+      0.4118,
+      0.4588,
+      0.2275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://120731659764682",
+    "size": [
+      1.556,
+      0.005,
+      0.806
+    ]
+  },
+  {
+    "cf": [
+      6025.3501,
+      4.4036,
+      -3.4875,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TableGoods0_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://73038134309118",
+    "size": [
+      0.965,
+      0.5875,
+      0.84
+    ]
+  },
+  {
+    "cf": [
+      6025.7002,
+      4.4036,
+      1.9125,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TableGoods1_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://96590588057697",
+    "size": [
+      0.965,
+      0.5875,
+      0.84
+    ]
+  },
+  {
+    "cf": [
+      6025.0498,
+      4.3099,
+      1.25,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TableGoods1_Rose",
+    "collide": false,
+    "color": [
+      0.6667,
+      0.4667,
+      0.4471
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://84473524163604",
+    "size": [
+      0.672,
+      0.26,
+      0.312
+    ]
+  },
+  {
+    "cf": [
+      6025.5249,
+      4.6724,
+      1.3,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TableGoods1_Tea",
+    "collide": false,
+    "color": [
+      0.4118,
+      0.4588,
+      0.2275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://88729884494991",
+    "size": [
+      1.556,
+      0.005,
+      0.806
+    ]
+  },
+  {
+    "cf": [
+      6025.1948,
+      4.4036,
+      1.03,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TableGoods1_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://74091472403267",
+    "size": [
+      1.4,
+      0.5875,
+      1.15
+    ]
+  },
+  {
+    "cf": [
+      6032.6499,
+      7.4799,
+      13.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TeaJars_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://80717965436294",
+    "size": [
+      3.36,
+      0.68,
+      0.66
+    ]
+  },
+  {
+    "cf": [
+      6032.6499,
+      7.8649,
+      13.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TeaJars_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://137798611021301",
+    "size": [
+      6.1,
+      0.07,
+      0.7
+    ]
+  },
+  {
+    "cf": [
+      6032.6499,
+      7.4799,
+      13.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TeaJars_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://98508822616387",
+    "size": [
+      6.06,
+      0.68,
+      0.66
+    ]
+  },
+  {
+    "cf": [
+      6031.1001,
+      4.5049,
+      12.1535,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TeaService_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://125060612069488",
+    "size": [
+      1.3762,
+      0.85,
+      0.9454
+    ]
+  },
+  {
+    "cf": [
+      6031.1001,
+      4.6199,
+      12.6963,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TeaService_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://78105440148998",
+    "size": [
+      0.9662,
+      0.8853,
+      0.1775
+    ]
+  },
+  {
+    "cf": [
+      6030.7998,
+      4.6624,
+      13.65,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TeaService_Tea",
+    "collide": false,
+    "color": [
+      0.4118,
+      0.4588,
+      0.2275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://90410104206713",
+    "size": [
+      0.456,
+      0.005,
+      0.456
+    ]
+  },
+  {
+    "cf": [
+      6030.7998,
+      4.3936,
+      13.7125,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_TeaService_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://107184049775045",
+    "size": [
+      0.965,
+      0.5875,
+      0.84
+    ]
+  },
+  {
+    "cf": [
+      6013,
+      0.7449,
+      -2.36,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_Threshold_Stone",
+    "collide": true,
+    "color": [
+      0.4706,
+      0.4549,
+      0.4118
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://81052017553796",
+    "size": [
+      5.6,
+      0.57,
+      1.6
+    ]
+  },
+  {
+    "cf": [
+      6015.8198,
+      3.1899,
+      15.75,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_WindowBeds_Indigo",
+    "collide": false,
+    "color": [
+      0.2588,
+      0.3412,
+      0.4118
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://71305939520942",
+    "size": [
+      4.45,
+      0.34,
+      2.75
+    ]
+  },
+  {
+    "cf": [
+      6015.8198,
+      3.1899,
+      10.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_WindowBeds_Rose",
+    "collide": false,
+    "color": [
+      0.6667,
+      0.4667,
+      0.4471
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://71490526338945",
+    "size": [
+      4.45,
+      0.34,
+      2.75
+    ]
+  },
+  {
+    "cf": [
+      6015.8198,
+      3.1899,
+      4.45,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_WindowBeds_SageSoft",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.5922,
+      0.4745
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://118630955026352",
+    "size": [
+      4.45,
+      0.34,
+      2.75
+    ]
+  },
+  {
+    "cf": [
+      6015.8252,
+      1.9399,
+      10.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_WindowBench_Oak",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.4667,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://132060403529535",
+    "size": [
+      16.13,
+      1.8,
+      2.18
+    ]
+  },
+  {
+    "cf": [
+      6016.6499,
+      1.5399,
+      10.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_WindowBench_OakDark",
+    "collide": true,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://124670883698764",
+    "size": [
+      16.65,
+      0.15,
+      0.15
+    ]
+  },
+  {
+    "cf": [
+      6015.8198,
+      2.9299,
+      10.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.C1_WindowBench_OakLight",
+    "collide": true,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://71058293016596",
+    "size": [
+      16.9,
+      0.22,
+      2.85
+    ]
+  },
+  {
+    "cf": [
+      6011.8501,
+      1.4275,
+      1.8994,
+      0.2588,
+      0,
+      0.9659,
+      0,
+      1,
+      0,
+      -0.9659,
+      0,
+      0.2588
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.Cats.Whisker_Wonder.Whisker_Wonder",
+    "collide": false,
+    "color": [
+      1,
+      1,
+      1
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://72034803639634",
+    "size": [
+      1.4559,
+      1.935,
+      1.7079
+    ]
+  },
+  {
+    "cf": [
+      6013.7788,
+      3.3713,
+      -2.36,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.EntranceDoor.DoorCatRelief.CW1_CatPortrait_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://104467611858027",
+    "size": [
+      0.0167,
+      0.0808,
+      0.5416
+    ]
+  },
+  {
+    "cf": [
+      6013.7769,
+      3.3811,
+      -2.36,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.EntranceDoor.DoorCatRelief.CW1_CatPortrait_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://128489479655722",
+    "size": [
+      0.0147,
+      0.152,
+      0.3174
+    ]
+  },
+  {
+    "cf": [
+      6013.8613,
+      3.4399,
+      -2.36,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.EntranceDoor.DoorCatRelief.CW1_CatPortrait_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://133482521059031",
+    "size": [
+      0.072,
+      1.008,
+      0.9024
+    ]
+  },
+  {
+    "cf": [
+      6013.8179,
+      3.4399,
+      -2.36,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.EntranceDoor.DoorCatRelief.CW1_CatPortrait_Paper",
+    "collide": false,
+    "color": [
+      0.949,
+      0.9059,
+      0.8157
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://101341493382942",
+    "size": [
+      0.0216,
+      0.8928,
+      0.7872
+    ]
+  },
+  {
+    "cf": [
+      6013.7881,
+      3.4675,
+      -2.3649,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.EntranceDoor.DoorCatRelief.CW1_CatPortrait_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://95491678267151",
+    "size": [
+      0.036,
+      0.7896,
+      0.6514
+    ]
+  },
+  {
+    "cf": [
+      6013.7969,
+      3.4303,
+      -2.36,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.EntranceDoor.DoorCatRelief.CW1_CatPortrait_Sage",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://97608353714019",
+    "size": [
+      0.0336,
+      0.5952,
+      0.528
+    ]
+  },
+  {
+    "cf": [
+      6014.25,
+      4.5899,
+      -2.36,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.EntranceDoor.Door_Frame",
+    "collide": false,
+    "color": [
+      0.4784,
+      0.349,
+      0.2392
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://99319551496704",
+    "size": [
+      5.35,
+      7.1,
+      0.55
+    ]
+  },
+  {
+    "cf": [
+      6014.3149,
+      5.5296,
+      -2.36,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.EntranceDoor.Door_Paper",
+    "collide": false,
+    "color": [
+      0.9294,
+      0.8784,
+      0.7608
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://108342315878527",
+    "size": [
+      3.5364,
+      3.2994,
+      0.06
+    ]
+  },
+  {
+    "cf": [
+      6014.6699,
+      4.381,
+      -2.36,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.EntranceDoor.Door_Reveal",
+    "collide": true,
+    "color": [
+      0.3569,
+      0.2667,
+      0.1882
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://139920439524742",
+    "size": [
+      4.1712,
+      6.6824,
+      0.55
+    ]
+  },
+  {
+    "cf": [
+      6014.2051,
+      4.3184,
+      -2.3419,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.EntranceDoor.Door_Wood",
+    "collide": false,
+    "color": [
+      0.4784,
+      0.349,
+      0.2392
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://77889047035073",
+    "size": [
+      3.5727,
+      6.1394,
+      0.24
+    ]
+  },
+  {
+    "cf": [
+      6028.1001,
+      7.0899,
+      -4.77,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_BackShelf_Oak",
+    "collide": false,
+    "color": [
+      0.6392,
+      0.4667,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://74250364856163",
+    "size": [
+      0.07,
+      0.08,
+      5.5
+    ]
+  },
+  {
+    "cf": [
+      6028.1001,
+      6.7099,
+      -5.2094,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_BackShelf_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://126328592278887",
+    "size": [
+      0.6711,
+      0.55,
+      3.65
+    ]
+  },
+  {
+    "cf": [
+      6028.1001,
+      6.9899,
+      -5.13,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_BackShelf_OakLight",
+    "collide": false,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://111747570364768",
+    "size": [
+      0.82,
+      0.18,
+      5.5
+    ]
+  },
+  {
+    "cf": [
+      6026.4102,
+      7.5055,
+      -4.911,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_Books_Cream",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://89384681117288",
+    "size": [
+      0.0152,
+      0.2021,
+      0.6078
+    ]
+  },
+  {
+    "cf": [
+      6026.4102,
+      7.5399,
+      -4.913,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_Books_Gold",
+    "collide": false,
+    "color": [
+      0.7882,
+      0.6627,
+      0.3569
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://138491313480949",
+    "size": [
+      0.009,
+      0.665,
+      0.72
+    ]
+  },
+  {
+    "cf": [
+      6026.1401,
+      7.4699,
+      -5.1425,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_Books_Indigo",
+    "collide": false,
+    "color": [
+      0.2588,
+      0.3412,
+      0.4118
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://129977671275603",
+    "size": [
+      0.445,
+      0.74,
+      0.265
+    ]
+  },
+  {
+    "cf": [
+      6026.4102,
+      7.5399,
+      -5.15,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_Books_Paper",
+    "collide": false,
+    "color": [
+      0.9059,
+      0.8706,
+      0.7725
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://118968637410835",
+    "size": [
+      0.38,
+      0.81,
+      0.72
+    ]
+  },
+  {
+    "cf": [
+      6026.4102,
+      7.5399,
+      -5.1425,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_Books_Rose",
+    "collide": false,
+    "color": [
+      0.6667,
+      0.4667,
+      0.4471
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://100566725270602",
+    "size": [
+      0.445,
+      0.88,
+      0.265
+    ]
+  },
+  {
+    "cf": [
+      6026.6802,
+      7.4399,
+      -5.1425,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_Books_Sage",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.5922,
+      0.4745
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://121562262443117",
+    "size": [
+      0.445,
+      0.68,
+      0.265
+    ]
+  },
+  {
+    "cf": [
+      6030.0952,
+      8.2649,
+      -5.082,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_BudVase_Gold",
+    "collide": false,
+    "color": [
+      0.7882,
+      0.6627,
+      0.3569
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://80491145471863",
+    "size": [
+      0.0442,
+      0.224,
+      0.444
+    ]
+  },
+  {
+    "cf": [
+      6030.1885,
+      7.9698,
+      -5.115,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_BudVase_Green",
+    "collide": false,
+    "color": [
+      0.3412,
+      0.498,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://116974576800369",
+    "size": [
+      0.0521,
+      0.185,
+      0.3043
+    ]
+  },
+  {
+    "cf": [
+      6030.0957,
+      8.0044,
+      -5.1251,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_BudVase_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://95823614748454",
+    "size": [
+      0.0441,
+      0.6564,
+      0.3795
+    ]
+  },
+  {
+    "cf": [
+      6030.105,
+      8.2649,
+      -5.125,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_BudVase_Rose",
+    "collide": false,
+    "color": [
+      0.6667,
+      0.4667,
+      0.4471
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://121481080980704",
+    "size": [
+      0.0861,
+      0.4997,
+      0.7099
+    ]
+  },
+  {
+    "cf": [
+      6030.1001,
+      7.4249,
+      -5.13,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_BudVase_Terracotta",
+    "collide": false,
+    "color": [
+      0.7059,
+      0.4118,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://84267795826512",
+    "size": [
+      0.46,
+      0.65,
+      0.46
+    ]
+  },
+  {
+    "cf": [
+      6021.75,
+      6.4849,
+      -5.12,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_CatPlanter_Celadon",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://77832516480305",
+    "size": [
+      0.64,
+      0.55,
+      0.64
+    ]
+  },
+  {
+    "cf": [
+      6021.8013,
+      6.2214,
+      -5.0189,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_CatPlanter_Green",
+    "collide": false,
+    "color": [
+      0.3412,
+      0.498,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://133845652866418",
+    "size": [
+      0.68,
+      1.6752,
+      1.0554
+    ]
+  },
+  {
+    "cf": [
+      6021.75,
+      6.4622,
+      -4.814,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_CatPlanter_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://129339588569337",
+    "size": [
+      0.0228,
+      0.0492,
+      0.3236
+    ]
+  },
+  {
+    "cf": [
+      6021.7578,
+      6.2039,
+      -5.0096,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_CatPlanter_LeafLight",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.6235,
+      0.3843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://104982922488451",
+    "size": [
+      0.6814,
+      1.9596,
+      1.381
+    ]
+  },
+  {
+    "cf": [
+      6021.75,
+      6.3699,
+      -4.815,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_CatPlanter_Rose",
+    "collide": false,
+    "color": [
+      0.6667,
+      0.4667,
+      0.4471
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://116287138233182",
+    "size": [
+      0.019,
+      0.036,
+      0.0514
+    ]
+  },
+  {
+    "cf": [
+      6024.1001,
+      6.847,
+      -5.298,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_CatPortrait_Cream",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://104467611858027",
+    "size": [
+      0.0348,
+      0.1682,
+      1.1284
+    ]
+  },
+  {
+    "cf": [
+      6024.1001,
+      6.8675,
+      -5.2939,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_CatPortrait_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://128489479655722",
+    "size": [
+      0.0306,
+      0.3167,
+      0.6612
+    ]
+  },
+  {
+    "cf": [
+      6024.1001,
+      6.9899,
+      -5.47,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_CatPortrait_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://133482521059031",
+    "size": [
+      0.15,
+      2.1,
+      1.88
+    ]
+  },
+  {
+    "cf": [
+      6024.1001,
+      6.9899,
+      -5.379,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_CatPortrait_Paper",
+    "collide": false,
+    "color": [
+      0.9059,
+      0.8706,
+      0.7725
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://101341493382942",
+    "size": [
+      0.045,
+      1.86,
+      1.64
+    ]
+  },
+  {
+    "cf": [
+      6024.0898,
+      7.0474,
+      -5.3175,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_CatPortrait_Rose",
+    "collide": false,
+    "color": [
+      0.6667,
+      0.4667,
+      0.4471
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://95491678267151",
+    "size": [
+      0.075,
+      1.645,
+      1.3571
+    ]
+  },
+  {
+    "cf": [
+      6024.1001,
+      6.9699,
+      -5.335,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_CatPortrait_Sage",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.5922,
+      0.4745
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://97608353714019",
+    "size": [
+      0.07,
+      1.24,
+      1.1
+    ]
+  },
+  {
+    "cf": [
+      6020.2998,
+      6.1899,
+      -4.77,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_FrontShelf_Oak",
+    "collide": false,
+    "color": [
+      0.6392,
+      0.4667,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://134685896243084",
+    "size": [
+      0.07,
+      0.08,
+      4.8
+    ]
+  },
+  {
+    "cf": [
+      6020.2998,
+      5.8099,
+      -5.2094,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_FrontShelf_OakDark",
+    "collide": false,
+    "color": [
+      0.4549,
+      0.3176,
+      0.2039
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://82599853775379",
+    "size": [
+      0.6711,
+      0.55,
+      3.202
+    ]
+  },
+  {
+    "cf": [
+      6020.2998,
+      6.0899,
+      -5.13,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_FrontShelf_OakLight",
+    "collide": false,
+    "color": [
+      0.7451,
+      0.5882,
+      0.4078
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://80737015055220",
+    "size": [
+      0.82,
+      0.18,
+      4.8
+    ]
+  },
+  {
+    "cf": [
+      6019,
+      6.7799,
+      -5.0862,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_LuckyCat_Cream",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://85506734346136",
+    "size": [
+      0.5276,
+      1.2,
+      0.84
+    ]
+  },
+  {
+    "cf": [
+      6019.0498,
+      6.6999,
+      -4.887,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_LuckyCat_Gold",
+    "collide": false,
+    "color": [
+      0.7882,
+      0.6627,
+      0.3569
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://121431876188884",
+    "size": [
+      0.07,
+      0.14,
+      0.13
+    ]
+  },
+  {
+    "cf": [
+      6019.0498,
+      6.9546,
+      -4.8929,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_LuckyCat_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://96311709491570",
+    "size": [
+      0.0704,
+      0.2085,
+      0.5876
+    ]
+  },
+  {
+    "cf": [
+      6019.0498,
+      6.7599,
+      -5.12,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_LuckyCat_Red",
+    "collide": false,
+    "color": [
+      0.7255,
+      0.2471,
+      0.2157
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://82120421083199",
+    "size": [
+      0.53,
+      0.0682,
+      0.53
+    ]
+  },
+  {
+    "cf": [
+      6019.0498,
+      7.1124,
+      -4.9546,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_LuckyCat_Rose",
+    "collide": false,
+    "color": [
+      0.6667,
+      0.4667,
+      0.4471
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://129226396890375",
+    "size": [
+      0.2058,
+      0.415,
+      0.56
+    ]
+  },
+  {
+    "cf": [
+      6020.4365,
+      6.3664,
+      -5.12,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_MiniCups_Rose",
+    "collide": false,
+    "color": [
+      0.6667,
+      0.4667,
+      0.4471
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://76792121866446",
+    "size": [
+      0.5,
+      0.313,
+      0.573
+    ]
+  },
+  {
+    "cf": [
+      6028.415,
+      7.4299,
+      -5.1225,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_SleepingCat_Cream",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://76182165200297",
+    "size": [
+      0.535,
+      0.6,
+      1.23
+    ]
+  },
+  {
+    "cf": [
+      6028.0498,
+      7.423,
+      -4.863,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_SleepingCat_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://73022975635219",
+    "size": [
+      0.0228,
+      0.0403,
+      0.3131
+    ]
+  },
+  {
+    "cf": [
+      6028.4199,
+      7.2514,
+      -5.13,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_SleepingCat_Rose",
+    "collide": false,
+    "color": [
+      0.6667,
+      0.4667,
+      0.4471
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://90534202975663",
+    "size": [
+      0.6,
+      0.313,
+      1.44
+    ]
+  },
+  {
+    "cf": [
+      6028.5498,
+      7.2501,
+      -4.89,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafe.LeftWallDecor.CW1_SleepingCat_Terracotta",
+    "collide": false,
+    "color": [
+      0.7059,
+      0.4118,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://92857680805140",
+    "size": [
+      0.1046,
+      0.2895,
+      0.8866
+    ]
+  },
+  {
+    "cf": [
+      6041.96,
+      1204.88,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_BackRail_TimberEdge",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.3529,
+      0.2588
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://111707979226278",
+    "size": [
+      34,
+      6.16,
+      0.11
+    ]
+  },
+  {
+    "cf": [
+      6041.98,
+      1200.9,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_BackWainscot_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://93386341871634",
+    "size": [
+      33.71,
+      1.8,
+      0.06
+    ]
+  },
+  {
+    "cf": [
+      6042.1001,
+      1204.9,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_BackWall_Wall",
+    "collide": true,
+    "color": [
+      0.9373,
+      0.902,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://78248753841536",
+    "size": [
+      34.4,
+      9.8,
+      0.2
+    ]
+  },
+  {
+    "cf": [
+      6028,
+      1209.52,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Beams_TimberEdge",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.3529,
+      0.2588
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://134947455849643",
+    "size": [
+      34,
+      0.44,
+      27.66
+    ]
+  },
+  {
+    "cf": [
+      6026.7002,
+      1209.89,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_CeilingBase_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://119912282748578",
+    "size": [
+      34.4,
+      0.18,
+      31
+    ]
+  },
+  {
+    "cf": [
+      6027.8701,
+      1209.79,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Ceiling_OakLight",
+    "collide": false,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://87724475370826",
+    "size": [
+      34,
+      0.06,
+      27.69
+    ]
+  },
+  {
+    "cf": [
+      6014.04,
+      1204.1125,
+      -4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_DoorFrame_Timber",
+    "collide": false,
+    "color": [
+      0.4157,
+      0.3098,
+      0.2314
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://96064460592811",
+    "size": [
+      6.25,
+      8.225,
+      0.28
+    ]
+  },
+  {
+    "cf": [
+      6013.8999,
+      1208.9,
+      -4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_DoorHeader_Wall",
+    "collide": true,
+    "color": [
+      0.9373,
+      0.902,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://105358344788525",
+    "size": [
+      6,
+      1.8,
+      0.2
+    ]
+  },
+  {
+    "cf": [
+      6028,
+      1199.8,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_FloorBase_OakDark",
+    "collide": true,
+    "color": [
+      0.702,
+      0.5882,
+      0.4588
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://88282086902102",
+    "size": [
+      34.4,
+      0.18,
+      28.4
+    ]
+  },
+  {
+    "cf": [
+      6028,
+      1199.9351,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Floor_Oak",
+    "collide": true,
+    "color": [
+      0.7137,
+      0.6,
+      0.4667
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://113585388450679",
+    "size": [
+      33.975,
+      0.13,
+      27.98
+    ]
+  },
+  {
+    "cf": [
+      6028,
+      1199.9351,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Floor_OakDark",
+    "collide": true,
+    "color": [
+      0.702,
+      0.5882,
+      0.4588
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://126518066639684",
+    "size": [
+      31.975,
+      0.13,
+      27.98
+    ]
+  },
+  {
+    "cf": [
+      6028,
+      1199.9351,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Floor_OakLight",
+    "collide": true,
+    "color": [
+      0.7333,
+      0.6196,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://84350590827429",
+    "size": [
+      33.975,
+      0.13,
+      27.98
+    ]
+  },
+  {
+    "cf": [
+      6013.8999,
+      1204.9,
+      -8.6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_FrontLeft_Wall",
+    "collide": true,
+    "color": [
+      0.9373,
+      0.902,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://130811543157307",
+    "size": [
+      3.2,
+      9.8,
+      0.2
+    ]
+  },
+  {
+    "cf": [
+      6013.8999,
+      1204.9,
+      11.6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_FrontRight_Wall",
+    "collide": true,
+    "color": [
+      0.9373,
+      0.902,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://123029979864452",
+    "size": [
+      25.2,
+      9.8,
+      0.2
+    ]
+  },
+  {
+    "cf": [
+      6014.1299,
+      1204.75,
+      11.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Lattice_Oak",
+    "collide": false,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://112607543977529",
+    "size": [
+      23.54,
+      5.5,
+      0.08
+    ]
+  },
+  {
+    "cf": [
+      6028,
+      1204.88,
+      -9.98,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_LeftRail_TimberEdge",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.3529,
+      0.2588
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://80835932666634",
+    "size": [
+      0.11,
+      6.16,
+      28
+    ]
+  },
+  {
+    "cf": [
+      6027.8999,
+      1200.9,
+      -9.98,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_LeftWainscot_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://106951708855481",
+    "size": [
+      0.06,
+      1.8,
+      27.71
+    ]
+  },
+  {
+    "cf": [
+      6028,
+      1204.9,
+      -10.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_LeftWall_Wall",
+    "collide": true,
+    "color": [
+      0.9373,
+      0.902,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://102763985758995",
+    "size": [
+      0.2,
+      9.8,
+      28.4
+    ]
+  },
+  {
+    "cf": [
+      6014.0801,
+      1206.84,
+      -4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_NorenPaw_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://100863461346624",
+    "size": [
+      3.78,
+      0.76,
+      0.036
+    ]
+  },
+  {
+    "cf": [
+      6014.04,
+      1206.8,
+      -4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Noren_SageSoft",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://109960132378274",
+    "size": [
+      5.94,
+      2.38,
+      0.045
+    ]
+  },
+  {
+    "cf": [
+      6028,
+      1204.8,
+      7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Posts_TimberEdge",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.3529,
+      0.2588
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://119232288753533",
+    "size": [
+      33.94,
+      9.6,
+      27.68
+    ]
+  },
+  {
+    "cf": [
+      6028,
+      1204.88,
+      23.98,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_RightRail_TimberEdge",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.3529,
+      0.2588
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://130297245733277",
+    "size": [
+      0.11,
+      6.16,
+      28
+    ]
+  },
+  {
+    "cf": [
+      6027.8999,
+      1200.9,
+      23.98,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_RightWainscot_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://104501065979884",
+    "size": [
+      0.06,
+      1.8,
+      27.71
+    ]
+  },
+  {
+    "cf": [
+      6028,
+      1204.9,
+      24.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_RightWall_Wall",
+    "collide": true,
+    "color": [
+      0.9373,
+      0.902,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://76172735507914",
+    "size": [
+      0.2,
+      9.8,
+      28.4
+    ]
+  },
+  {
+    "cf": [
+      6033.5752,
+      1200.05,
+      -3.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://114076146625060",
+    "size": [
+      10.6,
+      0.008,
+      12.675
+    ]
+  },
+  {
+    "cf": [
+      6033.3999,
+      1200.041,
+      -3.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_Rug",
+    "collide": false,
+    "color": [
+      0.8784,
+      0.8275,
+      0.7216
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://113573037028632",
+    "size": [
+      11,
+      0.012,
+      13.9
+    ]
+  },
+  {
+    "cf": [
+      6033.3999,
+      1200.0179,
+      -3.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_SageSoft",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://89970454268500",
+    "size": [
+      11.5,
+      0.035,
+      14.4
+    ]
+  },
+  {
+    "cf": [
+      6014.0449,
+      1204.75,
+      11.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Shoji_Washilight",
+    "collide": false,
+    "color": [
+      0.9294,
+      0.9098,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://136856064410780",
+    "size": [
+      23.54,
+      5.5,
+      0.06
+    ]
+  },
+  {
+    "cf": [
+      6011.2998,
+      1204.9,
+      -4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_VestibuleEnd_Wall",
+    "collide": true,
+    "color": [
+      0.9373,
+      0.902,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://129561900250790",
+    "size": [
+      6.4,
+      9.8,
+      0.2
+    ]
+  },
+  {
+    "cf": [
+      6012.6001,
+      1199.9351,
+      -4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_VestibuleFloor_Oak",
+    "collide": true,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://95928484054291",
+    "size": [
+      6.4,
+      0.13,
+      2.8
+    ]
+  },
+  {
+    "cf": [
+      6012.6001,
+      1204.9,
+      -7.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_VestibuleLeft_Wall",
+    "collide": true,
+    "color": [
+      0.9373,
+      0.902,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://134864780700640",
+    "size": [
+      0.2,
+      9.8,
+      2.8
+    ]
+  },
+  {
+    "cf": [
+      6012.6001,
+      1204.9,
+      -0.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_VestibuleRight_Wall",
+    "collide": true,
+    "color": [
+      0.9373,
+      0.902,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://122182125066594",
+    "size": [
+      0.2,
+      9.8,
+      2.8
+    ]
+  },
+  {
+    "cf": [
+      6014.1099,
+      1204.75,
+      11.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_WindowFrame_TimberEdge",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.3529,
+      0.2588
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://77356231141432",
+    "size": [
+      23.8,
+      5.76,
+      0.12
+    ]
+  },
+  {
+    "cf": [
+      6036.9995,
+      1202.9249,
+      -7.1529,
+      -0.342,
+      0,
+      0.9397,
+      0,
+      1,
+      0,
+      -0.9397,
+      0,
+      -0.342
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Cats.Adorable_Tabby_Kitten.Adorable_Tabby_Kitten",
+    "collide": false,
+    "color": [
+      1,
+      1,
+      1
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://116984439955963",
+    "size": [
+      1.428,
+      1.95,
+      1.6897
+    ]
+  },
+  {
+    "cf": [
+      6019.7002,
+      1201.4619,
+      18.7495,
+      0.9962,
+      0,
+      -0.0872,
+      0,
+      1,
+      0,
+      0.0872,
+      0,
+      0.9962
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Cats.Blush_Eared_Kitten.Blush_Eared_Kitten",
+    "collide": false,
+    "color": [
+      1,
+      1,
+      1
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://124730189245357",
+    "size": [
+      1.1503,
+      1.764,
+      1.2609
+    ]
+  },
+  {
+    "cf": [
+      6037.4014,
+      1201,
+      1.4992,
+      -0.4226,
+      0,
+      0.9063,
+      0,
+      1,
+      0,
+      -0.9063,
+      0,
+      -0.4226
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Cats.Curious_Little_Tabby.Curious_Little_Tabby",
+    "collide": false,
+    "color": [
+      1,
+      1,
+      1
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://127393798201832",
+    "size": [
+      1.2232,
+      1.98,
+      2.2135
+    ]
+  },
+  {
+    "cf": [
+      6015.8198,
+      1203.3197,
+      11.5,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Cats.Emerald_Eyed_Tabby_Ki.Emerald_Eyed_Tabby_Ki",
+    "collide": false,
+    "color": [
+      1,
+      1,
+      1
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://95313722808228",
+    "size": [
+      1.0729,
+      1.9995,
+      2.8368
+    ]
+  },
+  {
+    "cf": [
+      6035.1997,
+      1207.7715,
+      22.1497,
+      0.6428,
+      0,
+      -0.766,
+      0,
+      1,
+      0,
+      0.766,
+      0,
+      0.6428
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Cats.Ginger_Whiskers.Ginger_Whiskers",
+    "collide": false,
+    "color": [
+      1,
+      1,
+      1
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://105805425031788",
+    "size": [
+      0.9591,
+      1.363,
+      3.3521
+    ]
+  },
+  {
+    "cf": [
+      6026.75,
+      1202.9399,
+      16.9,
+      0.9063,
+      0,
+      0.4226,
+      0,
+      1,
+      0,
+      -0.4226,
+      0,
+      0.9063
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Cats.Tuxedo_Kitten.Tuxedo_Kitten",
+    "collide": false,
+    "color": [
+      1,
+      1,
+      1
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://107654439926311",
+    "size": [
+      0.967,
+      1.98,
+      2.4039
+    ]
+  },
+  {
+    "cf": [
+      6039.1001,
+      1203.4475,
+      5.9,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CounterCatPlanter.CW1_CatPlanter_Celadon",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://77832516480305",
+    "size": [
+      0.832,
+      0.715,
+      0.832
+    ]
+  },
+  {
+    "cf": [
+      6038.9688,
+      1203.105,
+      5.9667,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CounterCatPlanter.CW1_CatPlanter_Green",
+    "collide": false,
+    "color": [
+      0.3412,
+      0.498,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://133845652866418",
+    "size": [
+      0.884,
+      2.1778,
+      1.3721
+    ]
+  },
+  {
+    "cf": [
+      6038.7021,
+      1203.4181,
+      5.9,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CounterCatPlanter.CW1_CatPlanter_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://129339588569337",
+    "size": [
+      0.0297,
+      0.064,
+      0.4207
+    ]
+  },
+  {
+    "cf": [
+      6038.9565,
+      1203.0823,
+      5.9102,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CounterCatPlanter.CW1_CatPlanter_LeafLight",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.6235,
+      0.3843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://104982922488451",
+    "size": [
+      0.8858,
+      2.5475,
+      1.7953
+    ]
+  },
+  {
+    "cf": [
+      6038.7036,
+      1203.298,
+      5.9,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CounterCatPlanter.CW1_CatPlanter_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://116287138233182",
+    "size": [
+      0.0247,
+      0.0468,
+      0.0668
+    ]
+  },
+  {
+    "cf": [
+      6022.3896,
+      1207.1156,
+      23.191,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallBooks.CW1_Books_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://89384681117288",
+    "size": [
+      0.0152,
+      0.2021,
+      0.6078
+    ]
+  },
+  {
+    "cf": [
+      6022.3896,
+      1207.1499,
+      23.193,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallBooks.CW1_Books_Gold",
+    "collide": false,
+    "color": [
+      0.7882,
+      0.6627,
+      0.3569
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://138491313480949",
+    "size": [
+      0.009,
+      0.665,
+      0.72
+    ]
+  },
+  {
+    "cf": [
+      6022.6597,
+      1207.08,
+      23.4225,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallBooks.CW1_Books_Indigo",
+    "collide": false,
+    "color": [
+      0.5255,
+      0.6196,
+      0.6353
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://129977671275603",
+    "size": [
+      0.445,
+      0.74,
+      0.265
+    ]
+  },
+  {
+    "cf": [
+      6022.3896,
+      1207.1499,
+      23.43,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallBooks.CW1_Books_Paper",
+    "collide": false,
+    "color": [
+      0.949,
+      0.9059,
+      0.8157
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://118968637410835",
+    "size": [
+      0.38,
+      0.81,
+      0.72
+    ]
+  },
+  {
+    "cf": [
+      6022.3896,
+      1207.1499,
+      23.4225,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallBooks.CW1_Books_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://100566725270602",
+    "size": [
+      0.445,
+      0.88,
+      0.265
+    ]
+  },
+  {
+    "cf": [
+      6022.1196,
+      1207.0499,
+      23.4225,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallBooks.CW1_Books_Sage",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://121562262443117",
+    "size": [
+      0.445,
+      0.68,
+      0.265
+    ]
+  },
+  {
+    "cf": [
+      6020.2002,
+      1207.0399,
+      23.43,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallPlanter.CW1_CatPlanter_Celadon",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://77832516480305",
+    "size": [
+      0.768,
+      0.66,
+      0.768
+    ]
+  },
+  {
+    "cf": [
+      6020.1387,
+      1206.7238,
+      23.3087,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallPlanter.CW1_CatPlanter_Green",
+    "collide": false,
+    "color": [
+      0.3412,
+      0.498,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://133845652866418",
+    "size": [
+      0.816,
+      2.0103,
+      1.2665
+    ]
+  },
+  {
+    "cf": [
+      6020.2002,
+      1207.0128,
+      23.0628,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallPlanter.CW1_CatPlanter_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://129339588569337",
+    "size": [
+      0.0274,
+      0.0591,
+      0.3883
+    ]
+  },
+  {
+    "cf": [
+      6020.1909,
+      1206.7029,
+      23.2975,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallPlanter.CW1_CatPlanter_LeafLight",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.6235,
+      0.3843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://104982922488451",
+    "size": [
+      0.8176,
+      2.3515,
+      1.6572
+    ]
+  },
+  {
+    "cf": [
+      6020.2002,
+      1206.902,
+      23.064,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallPlanter.CW1_CatPlanter_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://116287138233182",
+    "size": [
+      0.0228,
+      0.0432,
+      0.0616
+    ]
+  },
+  {
+    "cf": [
+      6021.2002,
+      1206.71,
+      23.09,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallShelf.CW1_FrontShelf_Oak",
+    "collide": false,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://134685896243084",
+    "size": [
+      0.07,
+      0.08,
+      4.8
+    ]
+  },
+  {
+    "cf": [
+      6021.2002,
+      1206.33,
+      23.5294,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallShelf.CW1_FrontShelf_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://82599853775379",
+    "size": [
+      0.6711,
+      0.55,
+      3.202
+    ]
+  },
+  {
+    "cf": [
+      6021.2002,
+      1206.61,
+      23.45,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CubbyWallShelf.CW1_FrontShelf_OakLight",
+    "collide": false,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://80737015055220",
+    "size": [
+      0.82,
+      0.18,
+      4.8
+    ]
+  },
+  {
+    "cf": [
+      6030.1523,
+      1204.245,
+      12.6951,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingFlowers.CW1_BudVase_Gold",
+    "collide": false,
+    "color": [
+      0.7882,
+      0.6627,
+      0.3569
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://80491145471863",
+    "size": [
+      0.0442,
+      0.224,
+      0.444
+    ]
+  },
+  {
+    "cf": [
+      6030.1851,
+      1203.95,
+      12.7884,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingFlowers.CW1_BudVase_Green",
+    "collide": false,
+    "color": [
+      0.3412,
+      0.498,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://116974576800369",
+    "size": [
+      0.0521,
+      0.185,
+      0.3043
+    ]
+  },
+  {
+    "cf": [
+      6030.1953,
+      1203.9845,
+      12.6956,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingFlowers.CW1_BudVase_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://95823614748454",
+    "size": [
+      0.0441,
+      0.6564,
+      0.3795
+    ]
+  },
+  {
+    "cf": [
+      6030.1953,
+      1204.245,
+      12.7049,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingFlowers.CW1_BudVase_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://121481080980704",
+    "size": [
+      0.0861,
+      0.4997,
+      0.7099
+    ]
+  },
+  {
+    "cf": [
+      6030.2002,
+      1203.4049,
+      12.7,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingFlowers.CW1_BudVase_Terracotta",
+    "collide": false,
+    "color": [
+      0.7059,
+      0.4118,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://84267795826512",
+    "size": [
+      0.46,
+      0.65,
+      0.46
+    ]
+  },
+  {
+    "cf": [
+      6029.626,
+      1200.05,
+      14.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://114076146625060",
+    "size": [
+      8.268,
+      0.008,
+      9.126
+    ]
+  },
+  {
+    "cf": [
+      6029.5,
+      1200.041,
+      14.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_Rug",
+    "collide": false,
+    "color": [
+      0.902,
+      0.851,
+      0.7569
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://113573037028632",
+    "size": [
+      8.58,
+      0.012,
+      10.008
+    ]
+  },
+  {
+    "cf": [
+      6029.5,
+      1200.0179,
+      14.9,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_SageSoft",
+    "collide": false,
+    "color": [
+      0.7294,
+      0.6,
+      0.5686
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://89970454268500",
+    "size": [
+      8.97,
+      0.035,
+      10.368
+    ]
+  },
+  {
+    "cf": [
+      6029.5,
+      1202.45,
+      17.1001,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingSofa.C1_Bench_Oak",
+    "collide": true,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://99041581397138",
+    "size": [
+      8.78,
+      2.4,
+      3.1
+    ]
+  },
+  {
+    "cf": [
+      6029.5,
+      1201.225,
+      17.1001,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingSofa.C1_Bench_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://97198275681300",
+    "size": [
+      8.7,
+      2.45,
+      2.48
+    ]
+  },
+  {
+    "cf": [
+      6029.5,
+      1202.5975,
+      17.0474,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingSofa.C1_Bench_SageSoft",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6275,
+      0.5922
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://99017577485611",
+    "size": [
+      8.17,
+      1.855,
+      2.635
+    ]
+  },
+  {
+    "cf": [
+      6029.5,
+      1203.3638,
+      12.7625,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTea.C1_TableGoods1_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://96590588057697",
+    "size": [
+      0.965,
+      0.5875,
+      0.84
+    ]
+  },
+  {
+    "cf": [
+      6028.8496,
+      1203.27,
+      12.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTea.C1_TableGoods1_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://84473524163604",
+    "size": [
+      0.672,
+      0.26,
+      0.312
+    ]
+  },
+  {
+    "cf": [
+      6029.3247,
+      1203.6324,
+      12.15,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTea.C1_TableGoods1_Tea",
+    "collide": false,
+    "color": [
+      0.4118,
+      0.4588,
+      0.2275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://88729884494991",
+    "size": [
+      1.556,
+      0.005,
+      0.806
+    ]
+  },
+  {
+    "cf": [
+      6028.9946,
+      1203.3638,
+      11.88,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTea.C1_TableGoods1_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://74091472403267",
+    "size": [
+      1.4,
+      0.5875,
+      1.15
+    ]
+  },
+  {
+    "cf": [
+      6029.6919,
+      1201.4773,
+      12.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTeaTable.C1_Table1_Oak",
+    "collide": true,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://124772412887360",
+    "size": [
+      2.2584,
+      2.8676,
+      1.9837
+    ]
+  },
+  {
+    "cf": [
+      6029.3999,
+      1202.88,
+      12.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTeaTable.C1_Table1_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://113801345408924",
+    "size": [
+      3.24,
+      0.09,
+      3.24
+    ]
+  },
+  {
+    "cf": [
+      6029.3999,
+      1202.97,
+      12.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTeaTable.C1_Table1_OakLight",
+    "collide": true,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://122940907029315",
+    "size": [
+      3.24,
+      0.2,
+      3.24
+    ]
+  },
+  {
+    "cf": [
+      6041.4595,
+      1205.0571,
+      18.2,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.RearCatPortrait.CW1_CatPortrait_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://104467611858027",
+    "size": [
+      0.047,
+      0.2271,
+      1.5234
+    ]
+  },
+  {
+    "cf": [
+      6041.4541,
+      1205.0848,
+      18.2,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.RearCatPortrait.CW1_CatPortrait_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://128489479655722",
+    "size": [
+      0.0413,
+      0.4276,
+      0.8926
+    ]
+  },
+  {
+    "cf": [
+      6041.6919,
+      1205.25,
+      18.2,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.RearCatPortrait.CW1_CatPortrait_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://133482521059031",
+    "size": [
+      0.2025,
+      2.835,
+      2.538
+    ]
+  },
+  {
+    "cf": [
+      6041.5688,
+      1205.25,
+      18.2,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.RearCatPortrait.CW1_CatPortrait_Paper",
+    "collide": false,
+    "color": [
+      0.949,
+      0.9059,
+      0.8157
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://101341493382942",
+    "size": [
+      0.0608,
+      2.511,
+      2.214
+    ]
+  },
+  {
+    "cf": [
+      6041.4858,
+      1205.3276,
+      18.1862,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.RearCatPortrait.CW1_CatPortrait_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://95491678267151",
+    "size": [
+      0.1012,
+      2.2208,
+      1.832
+    ]
+  },
+  {
+    "cf": [
+      6041.5098,
+      1205.223,
+      18.2,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.RearCatPortrait.CW1_CatPortrait_Sage",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://97608353714019",
+    "size": [
+      0.0945,
+      1.674,
+      1.485
+    ]
+  },
+  {
+    "cf": [
+      6016.2466,
+      1202.5981,
+      17.0851,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.WindowBooks.CW1_Books_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://89384681117288",
+    "size": [
+      0.0221,
+      0.293,
+      0.8813
+    ]
+  },
+  {
+    "cf": [
+      6016.2437,
+      1202.6479,
+      17.0851,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.WindowBooks.CW1_Books_Gold",
+    "collide": false,
+    "color": [
+      0.7882,
+      0.6627,
+      0.3569
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://138491313480949",
+    "size": [
+      0.013,
+      0.9642,
+      1.044
+    ]
+  },
+  {
+    "cf": [
+      6015.9106,
+      1202.5465,
+      17.4767,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.WindowBooks.CW1_Books_Indigo",
+    "collide": false,
+    "color": [
+      0.5255,
+      0.6196,
+      0.6353
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://129977671275603",
+    "size": [
+      0.6452,
+      1.073,
+      0.3843
+    ]
+  },
+  {
+    "cf": [
+      6015.8999,
+      1202.6479,
+      17.0851,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.WindowBooks.CW1_Books_Paper",
+    "collide": false,
+    "color": [
+      0.949,
+      0.9059,
+      0.8157
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://118968637410835",
+    "size": [
+      0.551,
+      1.1745,
+      1.044
+    ]
+  },
+  {
+    "cf": [
+      6015.9106,
+      1202.6479,
+      17.0851,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.WindowBooks.CW1_Books_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://100566725270602",
+    "size": [
+      0.6452,
+      1.276,
+      0.3842
+    ]
+  },
+  {
+    "cf": [
+      6015.9106,
+      1202.5031,
+      16.6936,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.WindowBooks.CW1_Books_Sage",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://121562262443117",
+    "size": [
+      0.6452,
+      0.986,
+      0.3843
+    ]
+  },
+  {
+    "cf": [
+      6015.7998,
+      1202.4775,
+      4.6,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.WindowCatPlanter.CW1_CatPlanter_Celadon",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://77832516480305",
+    "size": [
+      1.088,
+      0.935,
+      1.088
+    ]
+  },
+  {
+    "cf": [
+      6015.9717,
+      1202.0295,
+      4.5128,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.WindowCatPlanter.CW1_CatPlanter_Green",
+    "collide": false,
+    "color": [
+      0.3412,
+      0.498,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://133845652866418",
+    "size": [
+      1.1559,
+      2.8479,
+      1.7942
+    ]
+  },
+  {
+    "cf": [
+      6016.3198,
+      1202.4391,
+      4.6,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.WindowCatPlanter.CW1_CatPlanter_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://129339588569337",
+    "size": [
+      0.0388,
+      0.0837,
+      0.5501
+    ]
+  },
+  {
+    "cf": [
+      6015.9873,
+      1201.9999,
+      4.5867,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.WindowCatPlanter.CW1_CatPlanter_LeafLight",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.6235,
+      0.3843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://104982922488451",
+    "size": [
+      1.1583,
+      3.3314,
+      2.3477
+    ]
+  },
+  {
+    "cf": [
+      6016.3184,
+      1202.282,
+      4.6,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.WindowCatPlanter.CW1_CatPlanter_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://116287138233182",
+    "size": [
+      0.0323,
+      0.0612,
+      0.0873
+    ]
+  },
+  {
+    "cf": [
+      6014.3711,
+      1202.3314,
+      -4,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.DoorCatRelief.CW1_CatPortrait_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://104467611858027",
+    "size": [
+      0.0167,
+      0.0808,
+      0.5416
+    ]
+  },
+  {
+    "cf": [
+      6014.373,
+      1202.3413,
+      -4,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.DoorCatRelief.CW1_CatPortrait_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://128489479655722",
+    "size": [
+      0.0147,
+      0.152,
+      0.3174
+    ]
+  },
+  {
+    "cf": [
+      6014.2886,
+      1202.4,
+      -4,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.DoorCatRelief.CW1_CatPortrait_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://133482521059031",
+    "size": [
+      0.072,
+      1.008,
+      0.9024
+    ]
+  },
+  {
+    "cf": [
+      6014.332,
+      1202.4,
+      -4,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.DoorCatRelief.CW1_CatPortrait_Paper",
+    "collide": false,
+    "color": [
+      0.949,
+      0.9059,
+      0.8157
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://101341493382942",
+    "size": [
+      0.0216,
+      0.8928,
+      0.7872
+    ]
+  },
+  {
+    "cf": [
+      6014.3618,
+      1202.4276,
+      -3.9951,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.DoorCatRelief.CW1_CatPortrait_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://95491678267151",
+    "size": [
+      0.036,
+      0.7896,
+      0.6514
+    ]
+  },
+  {
+    "cf": [
+      6014.353,
+      1202.3904,
+      -4,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.DoorCatRelief.CW1_CatPortrait_Sage",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://97608353714019",
+    "size": [
+      0.0336,
+      0.5952,
+      0.528
+    ]
+  },
+  {
+    "cf": [
+      6013.8999,
+      1203.95,
+      -4,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.Door_Frame",
+    "collide": false,
+    "color": [
+      0.4784,
+      0.349,
+      0.2392
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://99319551496704",
+    "size": [
+      5.85,
+      7.9,
+      0.55
+    ]
+  },
+  {
+    "cf": [
+      6013.835,
+      1204.9956,
+      -4,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.Door_Paper",
+    "collide": false,
+    "color": [
+      0.9294,
+      0.8784,
+      0.7608
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://108342315878527",
+    "size": [
+      3.8669,
+      3.6712,
+      0.06
+    ]
+  },
+  {
+    "cf": [
+      6013.48,
+      1203.7177,
+      -4,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.Door_Reveal",
+    "collide": true,
+    "color": [
+      0.3569,
+      0.2667,
+      0.1882
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://139920439524742",
+    "size": [
+      4.561,
+      7.4353,
+      0.55
+    ]
+  },
+  {
+    "cf": [
+      6013.9448,
+      1203.6479,
+      -4.0198,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.ExitDoor.Door_Wood",
+    "collide": false,
+    "color": [
+      0.4784,
+      0.349,
+      0.2392
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://77889047035073",
+    "size": [
+      3.9066,
+      6.8312,
+      0.24
+    ]
+  },
+  {
+    "cf": [
+      6041.6099,
+      1205.45,
+      -4.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Art_Paper",
+    "collide": false,
+    "color": [
+      0.949,
+      0.9059,
+      0.8157
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://136136273694565",
+    "size": [
+      5.18,
+      2.4,
+      0.08
+    ]
+  },
+  {
+    "cf": [
+      6041.54,
+      1205.485,
+      -4.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Art_SageSoft",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://110433294881916",
+    "size": [
+      1.7095,
+      1.45,
+      0.07
+    ]
+  },
+  {
+    "cf": [
+      6041.7202,
+      1205.45,
+      -4.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Art_TimberEdge",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.3529,
+      0.2588
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://115956831799682",
+    "size": [
+      5.5,
+      2.7,
+      0.17
+    ]
+  },
+  {
+    "cf": [
+      6037.2002,
+      1202.45,
+      -4.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Bench_Oak",
+    "collide": true,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://99041581397138",
+    "size": [
+      8.78,
+      2.4,
+      3.1
+    ]
+  },
+  {
+    "cf": [
+      6037.2002,
+      1201.225,
+      -4.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Bench_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://97198275681300",
+    "size": [
+      8.7,
+      2.45,
+      2.48
+    ]
+  },
+  {
+    "cf": [
+      6037.1475,
+      1202.5975,
+      -4.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Bench_SageSoft",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://99017577485611",
+    "size": [
+      8.17,
+      1.855,
+      2.635
+    ]
+  },
+  {
+    "cf": [
+      6035.5,
+      1200.42,
+      22.2,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Bowls_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://114445899517653",
+    "size": [
+      2.44,
+      0.34,
+      0.94
+    ]
+  },
+  {
+    "cf": [
+      6035.5,
+      1200.4075,
+      22.95,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Bowls_Glass",
+    "collide": false,
+    "color": [
+      0.7843,
+      0.8588,
+      0.8353
+    ],
+    "material": "Glass",
+    "mesh": "rbxassetid://74717568268298",
+    "size": [
+      0.74,
+      0.015,
+      0.74
+    ]
+  },
+  {
+    "cf": [
+      6035.5,
+      1200.15,
+      22.2,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Bowls_Oak",
+    "collide": false,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://84110089942403",
+    "size": [
+      2.7,
+      0.28,
+      1.15
+    ]
+  },
+  {
+    "cf": [
+      6035.4883,
+      1200.38,
+      21.4357,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Bowls_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://72840664791762",
+    "size": [
+      0.5444,
+      0.09,
+      0.5763
+    ]
+  },
+  {
+    "cf": [
+      6025.7002,
+      1201.84,
+      -6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair0_Indigo",
+    "collide": false,
+    "color": [
+      0.5255,
+      0.6196,
+      0.6353
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://91207067835880",
+    "size": [
+      2.3,
+      0.3,
+      2.1
+    ]
+  },
+  {
+    "cf": [
+      6025.6978,
+      1201.8777,
+      -6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair0_Oak",
+    "collide": true,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://139293223933233",
+    "size": [
+      2.45,
+      3.6908,
+      2.2544
+    ]
+  },
+  {
+    "cf": [
+      6024.6802,
+      1203.46,
+      -6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair0_OakLight",
+    "collide": true,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://92085362889194",
+    "size": [
+      2.2,
+      0.42,
+      0.2
+    ]
+  },
+  {
+    "cf": [
+      6025.6978,
+      1201.8777,
+      0.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair1_Oak",
+    "collide": true,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://136135213379205",
+    "size": [
+      2.45,
+      3.6908,
+      2.2544
+    ]
+  },
+  {
+    "cf": [
+      6024.6802,
+      1203.46,
+      0.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair1_OakLight",
+    "collide": true,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://75231206993172",
+    "size": [
+      2.2,
+      0.42,
+      0.2
+    ]
+  },
+  {
+    "cf": [
+      6025.7002,
+      1201.84,
+      0.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Chair1_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://140057213420765",
+    "size": [
+      2.3,
+      0.3,
+      2.1
+    ]
+  },
+  {
+    "cf": [
+      6026.7998,
+      1201.05,
+      22.79,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb0_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://111542904398721",
+    "size": [
+      2.4108,
+      0.8247,
+      2.5446
+    ]
+  },
+  {
+    "cf": [
+      6026.7998,
+      1201.55,
+      22.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb0_OakLight",
+    "collide": true,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://105559045919909",
+    "size": [
+      3.35,
+      0.22,
+      3.5
+    ]
+  },
+  {
+    "cf": [
+      6026.7998,
+      1201.75,
+      22.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb0_SageSoft",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://124834165000720",
+    "size": [
+      3.15,
+      0.18,
+      3.28
+    ]
+  },
+  {
+    "cf": [
+      6031,
+      1203,
+      22.79,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb1_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://114392641893347",
+    "size": [
+      2.4108,
+      0.8247,
+      2.5446
+    ]
+  },
+  {
+    "cf": [
+      6031,
+      1203.5,
+      22.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb1_OakLight",
+    "collide": true,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://102258655073807",
+    "size": [
+      3.35,
+      0.22,
+      3.5
+    ]
+  },
+  {
+    "cf": [
+      6031,
+      1203.7,
+      22.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb1_SageSoft",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://82221843656698",
+    "size": [
+      3.15,
+      0.18,
+      3.28
+    ]
+  },
+  {
+    "cf": [
+      6035.2002,
+      1206.3,
+      22.79,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb2_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://114081621860295",
+    "size": [
+      2.4108,
+      0.8247,
+      2.5446
+    ]
+  },
+  {
+    "cf": [
+      6035.2002,
+      1206.8,
+      22.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb2_OakLight",
+    "collide": true,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://125459581630825",
+    "size": [
+      3.35,
+      0.22,
+      3.5
+    ]
+  },
+  {
+    "cf": [
+      6035.2002,
+      1207,
+      22.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Climb2_SageSoft",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://120863181109247",
+    "size": [
+      3.15,
+      0.18,
+      3.28
+    ]
+  },
+  {
+    "cf": [
+      6038.6504,
+      1203.62,
+      5.75,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_CounterMenu_Paper",
+    "collide": false,
+    "color": [
+      0.949,
+      0.9059,
+      0.8157
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://80713128119293",
+    "size": [
+      1.55,
+      0.75,
+      0.045
+    ]
+  },
+  {
+    "cf": [
+      6038.1602,
+      1201.4,
+      9.0975,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Counter_Oak",
+    "collide": true,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://136801009093114",
+    "size": [
+      8.415,
+      2.65,
+      0.11
+    ]
+  },
+  {
+    "cf": [
+      6039.5,
+      1201.39,
+      9.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Counter_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://98922260375337",
+    "size": [
+      8.3,
+      2.78,
+      2.6
+    ]
+  },
+  {
+    "cf": [
+      6039.5,
+      1202.95,
+      9.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Counter_OakLight",
+    "collide": true,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://107690097260864",
+    "size": [
+      8.7,
+      0.25,
+      3.05
+    ]
+  },
+  {
+    "cf": [
+      6038.0801,
+      1200.15,
+      9.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Counter_TimberEdge",
+    "collide": true,
+    "color": [
+      0.4667,
+      0.3529,
+      0.2588
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://87712566911662",
+    "size": [
+      8.5,
+      0.16,
+      0.13
+    ]
+  },
+  {
+    "cf": [
+      6019.7002,
+      1203.89,
+      19.3005,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_CubbyBeds_Indigo",
+    "collide": false,
+    "color": [
+      0.5255,
+      0.6196,
+      0.6353
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://101331721044211",
+    "size": [
+      4.05,
+      0.32,
+      3.35
+    ]
+  },
+  {
+    "cf": [
+      6019.7002,
+      1200.42,
+      19.3005,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_CubbyBeds_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://122173804414866",
+    "size": [
+      3.8,
+      0.32,
+      3.2
+    ]
+  },
+  {
+    "cf": [
+      6019.7002,
+      1201.85,
+      17.4255,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Cubby_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://113424041015698",
+    "size": [
+      2.891,
+      2.891,
+      0.111
+    ]
+  },
+  {
+    "cf": [
+      6019.7002,
+      1201.85,
+      19.3005,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Cubby_OakLight",
+    "collide": true,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://135948241607606",
+    "size": [
+      4.4,
+      3.7,
+      3.7
+    ]
+  },
+  {
+    "cf": [
+      6041.5498,
+      1204.9637,
+      8.7775,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Cups_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://115308673789606",
+    "size": [
+      6.215,
+      1.7875,
+      0.66
+    ]
+  },
+  {
+    "cf": [
+      6041.5498,
+      1205.2325,
+      8.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Cups_Tea",
+    "collide": false,
+    "color": [
+      0.4118,
+      0.4588,
+      0.2275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://114109603137284",
+    "size": [
+      5.736,
+      1.205,
+      0.336
+    ]
+  },
+  {
+    "cf": [
+      6041.5498,
+      1204.9637,
+      8.7775,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Cups_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://120241382702635",
+    "size": [
+      3.515,
+      1.7875,
+      0.66
+    ]
+  },
+  {
+    "cf": [
+      6031.5,
+      1208.3199,
+      -3.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Lamp0_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://79469970935067",
+    "size": [
+      1.34,
+      0.7,
+      1.34
+    ]
+  },
+  {
+    "cf": [
+      6031.5,
+      1209.1799,
+      -3.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Lamp0_DarkMetal",
+    "collide": false,
+    "color": [
+      0.2157,
+      0.2314,
+      0.2196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://77133141443602",
+    "size": [
+      0.054,
+      1.12,
+      0.054
+    ]
+  },
+  {
+    "cf": [
+      6031.5,
+      1208.4034,
+      -3.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Lamp0_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://81062803513359",
+    "size": [
+      1.36,
+      0.593,
+      1.36
+    ]
+  },
+  {
+    "cf": [
+      6022.5,
+      1208.3199,
+      8.6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Lamp1_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://121866492151867",
+    "size": [
+      1.34,
+      0.7,
+      1.34
+    ]
+  },
+  {
+    "cf": [
+      6022.5,
+      1209.1799,
+      8.6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Lamp1_DarkMetal",
+    "collide": false,
+    "color": [
+      0.2157,
+      0.2314,
+      0.2196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://83031290771853",
+    "size": [
+      0.054,
+      1.12,
+      0.054
+    ]
+  },
+  {
+    "cf": [
+      6022.5,
+      1208.4034,
+      8.6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Lamp1_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://85079664588756",
+    "size": [
+      1.36,
+      0.593,
+      1.36
+    ]
+  },
+  {
+    "cf": [
+      6036.3003,
+      1208.3199,
+      16.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Lamp2_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://129460708385714",
+    "size": [
+      1.34,
+      0.7,
+      1.34
+    ]
+  },
+  {
+    "cf": [
+      6036.3003,
+      1209.1799,
+      16.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Lamp2_DarkMetal",
+    "collide": false,
+    "color": [
+      0.2157,
+      0.2314,
+      0.2196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://86838504629280",
+    "size": [
+      0.054,
+      1.12,
+      0.054
+    ]
+  },
+  {
+    "cf": [
+      6036.3003,
+      1208.4034,
+      16.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Lamp2_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://137840018063798",
+    "size": [
+      1.36,
+      0.593,
+      1.36
+    ]
+  },
+  {
+    "cf": [
+      6039.189,
+      1203.6637,
+      10.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_PastryCover_Glass",
+    "collide": false,
+    "color": [
+      0.7843,
+      0.8588,
+      0.8353
+    ],
+    "material": "Glass",
+    "mesh": "rbxassetid://70548370798224",
+    "size": [
+      3.455,
+      1.0275,
+      1.9725
+    ]
+  },
+  {
+    "cf": [
+      6038.8501,
+      1203.4301,
+      10.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Pastry_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://87923318194936",
+    "size": [
+      1.946,
+      0.4,
+      0.5265
+    ]
+  },
+  {
+    "cf": [
+      6039.2002,
+      1203.12,
+      10.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Pastry_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://116145840352148",
+    "size": [
+      3.25,
+      0.16,
+      1.8
+    ]
+  },
+  {
+    "cf": [
+      6039.5503,
+      1203.4301,
+      10.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Pastry_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://78803543361127",
+    "size": [
+      1.946,
+      0.4,
+      0.5265
+    ]
+  },
+  {
+    "cf": [
+      6039.2002,
+      1203.23,
+      10.8,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Pastry_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://95003889559887",
+    "size": [
+      2.95,
+      0.08,
+      1.5
+    ]
+  },
+  {
+    "cf": [
+      6026.7998,
+      1201.5,
+      22.15,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Scratcher_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://140014390832139",
+    "size": [
+      0.56,
+      3,
+      0.56
+    ]
+  },
+  {
+    "cf": [
+      6026.7998,
+      1201.4449,
+      22.15,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Scratcher_Rope",
+    "collide": false,
+    "color": [
+      0.7608,
+      0.6667,
+      0.4863
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://88835626241574",
+    "size": [
+      0.64,
+      2.615,
+      0.64
+    ]
+  },
+  {
+    "cf": [
+      6041.6201,
+      1205.2001,
+      9.1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Shelves_OakLight",
+    "collide": false,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://106467751110601",
+    "size": [
+      7.8,
+      2.55,
+      0.8
+    ]
+  },
+  {
+    "cf": [
+      6041.98,
+      1205.4501,
+      9.125,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Shelves_TimberEdge",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.3529,
+      0.2588
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://83959932619875",
+    "size": [
+      7.73,
+      4.85,
+      0.18
+    ]
+  },
+  {
+    "cf": [
+      6030.5923,
+      1201.4773,
+      -6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table0_Oak",
+    "collide": true,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://72227212145996",
+    "size": [
+      2.2584,
+      2.8676,
+      1.9837
+    ]
+  },
+  {
+    "cf": [
+      6030.3003,
+      1202.88,
+      -6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table0_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://85097300845350",
+    "size": [
+      3.24,
+      0.09,
+      3.24
+    ]
+  },
+  {
+    "cf": [
+      6030.3003,
+      1202.97,
+      -6,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table0_OakLight",
+    "collide": true,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://83915331619130",
+    "size": [
+      3.24,
+      0.2,
+      3.24
+    ]
+  },
+  {
+    "cf": [
+      6030.5923,
+      1201.4773,
+      0.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table1_Oak",
+    "collide": true,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://124772412887360",
+    "size": [
+      2.2584,
+      2.8676,
+      1.9837
+    ]
+  },
+  {
+    "cf": [
+      6030.3003,
+      1202.88,
+      0.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table1_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://113801345408924",
+    "size": [
+      3.24,
+      0.09,
+      3.24
+    ]
+  },
+  {
+    "cf": [
+      6030.3003,
+      1202.97,
+      0.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_Table1_OakLight",
+    "collide": true,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://122940907029315",
+    "size": [
+      3.24,
+      0.2,
+      3.24
+    ]
+  },
+  {
+    "cf": [
+      6029.999,
+      1203.51,
+      -5.7948,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TableGoods0_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://98227206817510",
+    "size": [
+      1.8796,
+      0.88,
+      1.6427
+    ]
+  },
+  {
+    "cf": [
+      6029.6504,
+      1203.64,
+      -5.5037,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TableGoods0_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://124884508259360",
+    "size": [
+      0.9662,
+      0.8853,
+      0.1775
+    ]
+  },
+  {
+    "cf": [
+      6030.2251,
+      1203.6324,
+      -5.95,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TableGoods0_Tea",
+    "collide": false,
+    "color": [
+      0.4118,
+      0.4588,
+      0.2275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://120731659764682",
+    "size": [
+      1.556,
+      0.005,
+      0.806
+    ]
+  },
+  {
+    "cf": [
+      6030.0503,
+      1203.3638,
+      -6.4375,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TableGoods0_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://73038134309118",
+    "size": [
+      0.965,
+      0.5875,
+      0.84
+    ]
+  },
+  {
+    "cf": [
+      6030.4004,
+      1203.3638,
+      1.3625,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TableGoods1_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://96590588057697",
+    "size": [
+      0.965,
+      0.5875,
+      0.84
+    ]
+  },
+  {
+    "cf": [
+      6029.75,
+      1203.27,
+      0.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TableGoods1_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://84473524163604",
+    "size": [
+      0.672,
+      0.26,
+      0.312
+    ]
+  },
+  {
+    "cf": [
+      6030.2251,
+      1203.6324,
+      0.75,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TableGoods1_Tea",
+    "collide": false,
+    "color": [
+      0.4118,
+      0.4588,
+      0.2275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://88729884494991",
+    "size": [
+      1.556,
+      0.005,
+      0.806
+    ]
+  },
+  {
+    "cf": [
+      6029.895,
+      1203.3638,
+      0.48,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TableGoods1_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://74091472403267",
+    "size": [
+      1.4,
+      0.5875,
+      1.15
+    ]
+  },
+  {
+    "cf": [
+      6041.5498,
+      1206.84,
+      8.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TeaJars_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://80717965436294",
+    "size": [
+      3.36,
+      0.68,
+      0.66
+    ]
+  },
+  {
+    "cf": [
+      6041.5498,
+      1207.225,
+      8.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TeaJars_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://137798611021301",
+    "size": [
+      6.1,
+      0.07,
+      0.7
+    ]
+  },
+  {
+    "cf": [
+      6041.5498,
+      1206.84,
+      8.7,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TeaJars_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://98508822616387",
+    "size": [
+      6.06,
+      0.68,
+      0.66
+    ]
+  },
+  {
+    "cf": [
+      6039.3003,
+      1203.465,
+      6.9535,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TeaService_Ceramic",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://125060612069488",
+    "size": [
+      1.3762,
+      0.85,
+      0.9454
+    ]
+  },
+  {
+    "cf": [
+      6039.3003,
+      1203.58,
+      7.4963,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TeaService_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://78105440148998",
+    "size": [
+      0.9662,
+      0.8853,
+      0.1775
+    ]
+  },
+  {
+    "cf": [
+      6039,
+      1203.6226,
+      8.45,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TeaService_Tea",
+    "collide": false,
+    "color": [
+      0.4118,
+      0.4588,
+      0.2275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://90410104206713",
+    "size": [
+      0.456,
+      0.005,
+      0.456
+    ]
+  },
+  {
+    "cf": [
+      6039,
+      1203.3538,
+      8.5125,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TeaService_White",
+    "collide": false,
+    "color": [
+      0.9255,
+      0.8941,
+      0.8196
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://107184049775045",
+    "size": [
+      0.965,
+      0.5875,
+      0.84
+    ]
+  },
+  {
+    "cf": [
+      6015.8198,
+      1202.15,
+      17.15,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_WindowBeds_Indigo",
+    "collide": false,
+    "color": [
+      0.5255,
+      0.6196,
+      0.6353
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://71305939520942",
+    "size": [
+      4.45,
+      0.34,
+      2.75
+    ]
+  },
+  {
+    "cf": [
+      6015.8198,
+      1202.15,
+      11.5,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_WindowBeds_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://71490526338945",
+    "size": [
+      4.45,
+      0.34,
+      2.75
+    ]
+  },
+  {
+    "cf": [
+      6015.8198,
+      1202.15,
+      5.85,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_WindowBeds_SageSoft",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "Fabric",
+    "mesh": "rbxassetid://118630955026352",
+    "size": [
+      4.45,
+      0.34,
+      2.75
+    ]
+  },
+  {
+    "cf": [
+      6015.8252,
+      1200.9,
+      11.5,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_WindowBench_Oak",
+    "collide": true,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://132060403529535",
+    "size": [
+      16.13,
+      1.8,
+      2.18
+    ]
+  },
+  {
+    "cf": [
+      6016.6499,
+      1200.5,
+      11.5,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_WindowBench_OakDark",
+    "collide": true,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://124670883698764",
+    "size": [
+      16.65,
+      0.15,
+      0.15
+    ]
+  },
+  {
+    "cf": [
+      6015.8198,
+      1201.89,
+      11.5,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_WindowBench_OakLight",
+    "collide": true,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://71058293016596",
+    "size": [
+      16.9,
+      0.22,
+      2.85
+    ]
+  },
+  {
+    "cf": [
+      6033.1001,
+      1207.05,
+      -9.17,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BackShelf_Oak",
+    "collide": false,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://74250364856163",
+    "size": [
+      0.07,
+      0.08,
+      5.5
+    ]
+  },
+  {
+    "cf": [
+      6033.1001,
+      1206.67,
+      -9.6094,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BackShelf_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://126328592278887",
+    "size": [
+      0.6711,
+      0.55,
+      3.65
+    ]
+  },
+  {
+    "cf": [
+      6033.1001,
+      1206.95,
+      -9.53,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BackShelf_OakLight",
+    "collide": false,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://111747570364768",
+    "size": [
+      0.82,
+      0.18,
+      5.5
+    ]
+  },
+  {
+    "cf": [
+      6031.4102,
+      1207.4656,
+      -9.311,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_Books_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://89384681117288",
+    "size": [
+      0.0152,
+      0.2021,
+      0.6078
+    ]
+  },
+  {
+    "cf": [
+      6031.4102,
+      1207.5,
+      -9.313,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_Books_Gold",
+    "collide": false,
+    "color": [
+      0.7882,
+      0.6627,
+      0.3569
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://138491313480949",
+    "size": [
+      0.009,
+      0.665,
+      0.72
+    ]
+  },
+  {
+    "cf": [
+      6031.1401,
+      1207.4301,
+      -9.5425,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_Books_Indigo",
+    "collide": false,
+    "color": [
+      0.5255,
+      0.6196,
+      0.6353
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://129977671275603",
+    "size": [
+      0.445,
+      0.74,
+      0.265
+    ]
+  },
+  {
+    "cf": [
+      6031.4102,
+      1207.5,
+      -9.55,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_Books_Paper",
+    "collide": false,
+    "color": [
+      0.949,
+      0.9059,
+      0.8157
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://118968637410835",
+    "size": [
+      0.38,
+      0.81,
+      0.72
+    ]
+  },
+  {
+    "cf": [
+      6031.4102,
+      1207.5,
+      -9.5425,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_Books_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://100566725270602",
+    "size": [
+      0.445,
+      0.88,
+      0.265
+    ]
+  },
+  {
+    "cf": [
+      6031.6802,
+      1207.4,
+      -9.5425,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_Books_Sage",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://121562262443117",
+    "size": [
+      0.445,
+      0.68,
+      0.265
+    ]
+  },
+  {
+    "cf": [
+      6035.0952,
+      1208.225,
+      -9.482,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BudVase_Gold",
+    "collide": false,
+    "color": [
+      0.7882,
+      0.6627,
+      0.3569
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://80491145471863",
+    "size": [
+      0.0442,
+      0.224,
+      0.444
+    ]
+  },
+  {
+    "cf": [
+      6035.1885,
+      1207.9301,
+      -9.515,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BudVase_Green",
+    "collide": false,
+    "color": [
+      0.3412,
+      0.498,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://116974576800369",
+    "size": [
+      0.0521,
+      0.185,
+      0.3043
+    ]
+  },
+  {
+    "cf": [
+      6035.0957,
+      1207.9646,
+      -9.5251,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BudVase_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://95823614748454",
+    "size": [
+      0.0441,
+      0.6564,
+      0.3795
+    ]
+  },
+  {
+    "cf": [
+      6035.105,
+      1208.225,
+      -9.525,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BudVase_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://121481080980704",
+    "size": [
+      0.0861,
+      0.4997,
+      0.7099
+    ]
+  },
+  {
+    "cf": [
+      6035.1001,
+      1207.385,
+      -9.53,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_BudVase_Terracotta",
+    "collide": false,
+    "color": [
+      0.7059,
+      0.4118,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://84267795826512",
+    "size": [
+      0.46,
+      0.65,
+      0.46
+    ]
+  },
+  {
+    "cf": [
+      6026.75,
+      1206.4449,
+      -9.52,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPlanter_Celadon",
+    "collide": false,
+    "color": [
+      0.4667,
+      0.5569,
+      0.5412
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://77832516480305",
+    "size": [
+      0.64,
+      0.55,
+      0.64
+    ]
+  },
+  {
+    "cf": [
+      6026.8013,
+      1206.1815,
+      -9.4189,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPlanter_Green",
+    "collide": false,
+    "color": [
+      0.3412,
+      0.498,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://133845652866418",
+    "size": [
+      0.68,
+      1.6752,
+      1.0554
+    ]
+  },
+  {
+    "cf": [
+      6026.75,
+      1206.4224,
+      -9.214,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPlanter_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://129339588569337",
+    "size": [
+      0.0228,
+      0.0492,
+      0.3236
+    ]
+  },
+  {
+    "cf": [
+      6026.7578,
+      1206.1641,
+      -9.4096,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPlanter_LeafLight",
+    "collide": false,
+    "color": [
+      0.5176,
+      0.6235,
+      0.3843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://104982922488451",
+    "size": [
+      0.6814,
+      1.9596,
+      1.381
+    ]
+  },
+  {
+    "cf": [
+      6026.75,
+      1206.33,
+      -9.215,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPlanter_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://116287138233182",
+    "size": [
+      0.019,
+      0.036,
+      0.0514
+    ]
+  },
+  {
+    "cf": [
+      6029.1001,
+      1206.8071,
+      -9.698,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPortrait_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://104467611858027",
+    "size": [
+      0.0348,
+      0.1682,
+      1.1284
+    ]
+  },
+  {
+    "cf": [
+      6029.1001,
+      1206.8276,
+      -9.6939,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPortrait_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://128489479655722",
+    "size": [
+      0.0306,
+      0.3167,
+      0.6612
+    ]
+  },
+  {
+    "cf": [
+      6029.1001,
+      1206.95,
+      -9.87,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPortrait_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://133482521059031",
+    "size": [
+      0.15,
+      2.1,
+      1.88
+    ]
+  },
+  {
+    "cf": [
+      6029.1001,
+      1206.95,
+      -9.779,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPortrait_Paper",
+    "collide": false,
+    "color": [
+      0.949,
+      0.9059,
+      0.8157
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://101341493382942",
+    "size": [
+      0.045,
+      1.86,
+      1.64
+    ]
+  },
+  {
+    "cf": [
+      6029.0898,
+      1207.0074,
+      -9.7175,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPortrait_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://95491678267151",
+    "size": [
+      0.075,
+      1.645,
+      1.3571
+    ]
+  },
+  {
+    "cf": [
+      6029.1001,
+      1206.9301,
+      -9.735,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_CatPortrait_Sage",
+    "collide": false,
+    "color": [
+      0.6157,
+      0.6941,
+      0.5529
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://97608353714019",
+    "size": [
+      0.07,
+      1.24,
+      1.1
+    ]
+  },
+  {
+    "cf": [
+      6025.2998,
+      1206.15,
+      -9.17,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_FrontShelf_Oak",
+    "collide": false,
+    "color": [
+      0.7098,
+      0.5608,
+      0.4
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://134685896243084",
+    "size": [
+      0.07,
+      0.08,
+      4.8
+    ]
+  },
+  {
+    "cf": [
+      6025.2998,
+      1205.77,
+      -9.6094,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_FrontShelf_OakDark",
+    "collide": false,
+    "color": [
+      0.5608,
+      0.4235,
+      0.302
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://82599853775379",
+    "size": [
+      0.6711,
+      0.55,
+      3.202
+    ]
+  },
+  {
+    "cf": [
+      6025.2998,
+      1206.05,
+      -9.53,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_FrontShelf_OakLight",
+    "collide": false,
+    "color": [
+      0.7686,
+      0.6392,
+      0.4863
+    ],
+    "material": "Wood",
+    "mesh": "rbxassetid://80737015055220",
+    "size": [
+      0.82,
+      0.18,
+      4.8
+    ]
+  },
+  {
+    "cf": [
+      6024,
+      1206.74,
+      -9.4862,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_LuckyCat_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://85506734346136",
+    "size": [
+      0.5276,
+      1.2,
+      0.84
+    ]
+  },
+  {
+    "cf": [
+      6024.0498,
+      1206.66,
+      -9.287,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_LuckyCat_Gold",
+    "collide": false,
+    "color": [
+      0.7882,
+      0.6627,
+      0.3569
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://121431876188884",
+    "size": [
+      0.07,
+      0.14,
+      0.13
+    ]
+  },
+  {
+    "cf": [
+      6024.0498,
+      1206.9148,
+      -9.2929,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_LuckyCat_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://96311709491570",
+    "size": [
+      0.0704,
+      0.2085,
+      0.5876
+    ]
+  },
+  {
+    "cf": [
+      6024.0498,
+      1206.72,
+      -9.52,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_LuckyCat_Red",
+    "collide": false,
+    "color": [
+      0.7255,
+      0.2471,
+      0.2157
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://82120421083199",
+    "size": [
+      0.53,
+      0.0682,
+      0.53
+    ]
+  },
+  {
+    "cf": [
+      6024.0498,
+      1207.0725,
+      -9.3546,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_LuckyCat_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://129226396890375",
+    "size": [
+      0.2058,
+      0.415,
+      0.56
+    ]
+  },
+  {
+    "cf": [
+      6025.4365,
+      1206.3265,
+      -9.52,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_MiniCups_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://76792121866446",
+    "size": [
+      0.5,
+      0.313,
+      0.573
+    ]
+  },
+  {
+    "cf": [
+      6033.415,
+      1207.39,
+      -9.5225,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_SleepingCat_Cream",
+    "collide": false,
+    "color": [
+      0.9451,
+      0.9098,
+      0.8275
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://76182165200297",
+    "size": [
+      0.535,
+      0.6,
+      1.23
+    ]
+  },
+  {
+    "cf": [
+      6033.0498,
+      1207.3832,
+      -9.263,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_SleepingCat_Ink",
+    "collide": false,
+    "color": [
+      0.2353,
+      0.1804,
+      0.1294
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://73022975635219",
+    "size": [
+      0.0228,
+      0.0403,
+      0.3131
+    ]
+  },
+  {
+    "cf": [
+      6033.4199,
+      1207.2115,
+      -9.53,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_SleepingCat_Rose",
+    "collide": false,
+    "color": [
+      0.7804,
+      0.6078,
+      0.5843
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://90534202975663",
+    "size": [
+      0.6,
+      0.313,
+      1.44
+    ]
+  },
+  {
+    "cf": [
+      6033.5498,
+      1207.2102,
+      -9.29,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.LeftWallDecor.CW1_SleepingCat_Terracotta",
+    "collide": false,
+    "color": [
+      0.7059,
+      0.4118,
+      0.298
+    ],
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://92857680805140",
+    "size": [
+      0.1046,
+      0.2895,
+      0.8866
+    ]
+  },
+  {
+    "cf": [
+      6037,
+      1201.96,
+      -7.15,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.VisitorSeats.BenchSeat0",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "material": "Plastic",
+    "size": [
+      1.7,
+      0.15,
+      1.7
+    ]
+  },
+  {
+    "cf": [
+      6037,
+      1201.96,
+      -4.4,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.VisitorSeats.BenchSeat1",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "material": "Plastic",
+    "size": [
+      1.7,
+      0.15,
+      1.7
+    ]
+  },
+  {
+    "cf": [
+      6037,
+      1201.96,
+      -1.65,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.VisitorSeats.BenchSeat2",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "material": "Plastic",
+    "size": [
+      1.7,
+      0.15,
+      1.7
+    ]
+  },
+  {
+    "cf": [
+      6025.7002,
+      1201.99,
+      -6,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.VisitorSeats.ChairSeat0",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "material": "Plastic",
+    "size": [
+      1.7,
+      0.15,
+      1.7
+    ]
+  },
+  {
+    "cf": [
+      6025.7002,
+      1201.99,
+      0.7,
+      0,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.VisitorSeats.ChairSeat1",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "material": "Plastic",
+    "size": [
+      1.7,
+      0.15,
+      1.7
+    ]
+  },
+  {
+    "cf": [
+      6032.25,
+      1201.96,
+      16.9,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.VisitorSeats.NookSeat0",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "material": "Plastic",
+    "size": [
+      1.7,
+      0.15,
+      1.7
+    ]
+  },
+  {
+    "cf": [
+      6029.5,
+      1201.96,
+      16.9,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.VisitorSeats.NookSeat1",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "material": "Plastic",
+    "size": [
+      1.7,
+      0.15,
+      1.7
+    ]
+  },
+  {
+    "cf": [
+      6026.75,
+      1201.96,
+      16.9,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.VisitorSeats.NookSeat2",
+    "collide": true,
+    "color": [
+      0.6392,
+      0.6353,
+      0.6471
+    ],
+    "material": "Plastic",
+    "size": [
+      1.7,
+      0.15,
+      1.7
+    ]
+  }
+]

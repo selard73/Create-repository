@@ -1,0 +1,66 @@
+{
+  "QQ": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFECOZY3: warm quiet floor; two tea/seating nooks; six visitor seats; seven original cats; inward-facing cubby; plants and cat artwork; 9.8 ceiling\nQQ CAFECOZY3 DOORS: two closed lattice mesh doors; E/gamepad/tap prompts; walking cannot begin entry or exit; existing shop exterior retained\nQQ CAFEINTERIOR2 BUILT: 33 new shell meshes; 82 full-size furniture meshes; 38 original wall decor meshes; 34x28 room, lowered 9.8 ceiling\nQQ CAFEINTERIOR2 CATS: six inside in distinct spots; seated Whisker greeter outside; seven intact ten-bone rigs; cream at 84 percent\nQQ CAFEINTERIOR2 DOORWAY: same-server fade and destination-floor check; closed mesh doors; E/tap entry and exit only; no walk-through transition\nQQ CAFEINTERIOR2 PRESERVED: 20905 existing Japan instances outside cafe/doorway lamp; original cafe backed up; exterior dimensions and other shops unchanged\nQQ CAFEINTERIOR2 AUDIO: existing two-track playlist and four meows retained; listening zone moved to larger room; four original steaming mugs plus two at the new seating nook\nQQ CAFEINTERIOR2 STATUS: SERVER PREVIEW; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "cameraDesktop": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"viewport\":\"1366, 768\",\"ceilingLimit\":9.15,\"maxOverflow\":0.0000247955322265625,\"samples\":32}"
+      }
+    ],
+    "isError": false
+  },
+  "cameraPhone": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"viewport\":\"750, 382\",\"ceilingLimit\":9.15,\"maxOverflow\":0.0000247955322265625,\"samples\":32}"
+      }
+    ],
+    "isError": false
+  },
+  "inventoryBeforeFinalShelf": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"meshes\":209,\"doorMode\":\"InteractionOnly\",\"sit\":false,\"reservedSeats\":2,\"inside\":true,\"bones\":70,\"anchored\":false,\"seatWelds\":0,\"enabledSeats\":6,\"cats\":[{\"bones\":10,\"name\":\"Emerald_Eyed_Tabby_Ki\",\"scale\":0.9300000071525574},{\"bones\":10,\"name\":\"Tuxedo_Kitten\",\"scale\":0.8999999761581421},{\"bones\":10,\"name\":\"Ginger_Whiskers\",\"scale\":0.9399999976158142},{\"bones\":10,\"name\":\"Curious_Little_Tabby\",\"scale\":0.8999999761581421},{\"bones\":10,\"name\":\"Blush_Eared_Kitten\",\"scale\":0.8399999737739563},{\"bones\":10,\"name\":\"Adorable_Tabby_Kitten\",\"scale\":1},{\"bones\":10,\"name\":\"Whisker_Wonder\",\"scale\":0.8999999761581421}],\"steam\":6}"
+      }
+    ],
+    "isError": false
+  },
+  "final": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"meshes\":223,\"audio\":[{\"id\":\"rbxassetid://91013239854044\",\"volume\":0.2199999988079071,\"loaded\":true,\"playing\":true}],\"indoorBones\":60,\"anchored\":false,\"root\":\"-11, 3.2247314453125, -5.200194835662842\",\"inside\":true,\"visitorSeats\":6,\"camera\":\"Enum.CameraType.Scriptable\",\"health\":100,\"standing\":true,\"viewport\":\"1389, 401\",\"fade\":1,\"fov\":70,\"steam\":6}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "doorChecks": {
+    "walkIntoClosedDoor": "Blocked on street, no transition, unanchored; root local z .26074 before reveal moved back .12.",
+    "keyboardEntryExit": "Both passed with fade cleared; final-source entry repeated and passed.",
+    "mobileUI": "iPhone 17 Pro landscape 750x382: café pill visible, 116x47. Pointer tool did not activate it. Explicit InputHoldBegin/InputHoldEnd (same calls used by custom touch button) passed. Physical touch not verified.",
+    "seats": "NookSeat0 and NookSeat1 naturally entered using walking/jump; jumped clear; no forced Seat:Sit or seated teleport.",
+    "camera": "32 desktop and 32 phone extreme orbit probes; .0000247955 max near-plane overflow.",
+    "limitations": "Single player Studio only. Keyboard/gamepad/touch prompt configured; actual gamepad and device touch not tested. Earlier kit29 timeout/death cleanup tests retained; doorway now requires explicit interaction."
+  },
+  "afterPhotoCleanup": {
+    "camera": "Enum.CameraType.Custom",
+    "standing": true,
+    "anchored": false,
+    "fade": 1,
+    "viewport": "1389, 401",
+    "note": "Verified after next-frame restoration; MCP had reset the immediate restoration to Scriptable."
+  }
+}
