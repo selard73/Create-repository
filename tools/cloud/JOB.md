@@ -4254,3 +4254,26 @@ QQ MIKANGROCER2 PREVIEW COLLISION: 27 placed meshes set to PreciseConvexDecompos
 - Final Server counts: 84 meshes, 84 anchored, 12 product labels, 27 collidable meshes; ShopBacks still 646 descendants. No other shop changes. All replacement fixtures remain inside the frontage; existing main roof/shell/floor/main sign retained.
 - Captured and inspected ACTUAL Roblox play-test pictures, not Blender renders: shots_mikangrocer2_2026-10-17/mikan_play_front.jpg, mikan_play_inside.jpg, mikan_play_pickles.jpg. Matching user-facing copies are in the current chat's outputs folder. Temporarily hid PlayerGui overlays for pictures; the timed Gifts panel reappeared and was hidden again before the saved closeup.
 - No permanent grocer installation, no publication, no direct DataStore writes. Source kit is safely prepared in Edit. Play preview left running for review; stopping Play discards the replacement. NEXT: show these pictures and obtain Shannon's yes to install grocer2, then stop Play, run the same installer in Edit with the explicit guard, verify collision and preserved neighbours, and record the actual result. Shannon publishes.
+
+
+## Mikan grocer2 APPROVED and INSTALLED in Edit (Codex solo, Oct 17 2026) - NOT PUBLISHED
+Shannon approved the actual Roblox play-test pictures: "yes, please, that looks great" in response to "Shall I install this version?".
+- Captured a manifest of all 84 approved preview MeshParts before stopping Play: names, mesh assets, transforms/sizes (4 decimal places), materials/colours, anchoring, collision enablement and transparency. Stopped Play and ran the SAME mikangrocer2.lua in Edit with MIKAN2_ALLOW_EDIT=true.
+- Snapshotted 20,758 pre-existing Japan instances outside the original Mikan shop before installation; verified unchanged parent/name and BasePart CFrame, size, colour, material, transparency, anchoring, collision/query/touch properties after installation. All other shops and ShopBacks remain unchanged.
+Actual installer output:
+QQ MIKANGROCER2 DONE: 84 meshes, 12 product labels, 27 collidable meshes; 71 original direct children -> HudBackup.MikanGrocer2Originals
+QQ MIKANGROCER2 BOUNDS: x 6010.76..6034.71 y 0.46..11.09 z -171.00..-145.00; stock inside original front x >= 6013
+QQ MIKANGROCER2 PRESERVED: original roof, shell, floor, main sign; all other shops and all ShopBacks
+QQ MIKANGROCER2 STATUS: EDIT; NOT PUBLISHED
+QQ MIKANGROCER2 EDIT VERIFIED: 20758 pre-existing Japan instances outside Mikan unchanged
+- Applied precise collision on the placed meshes in a SEPARATE Edit call, then verified actual readback (all 27 precise). Unlike the temporary Server-only setter during the previous preview, Edit configuration persisted into fresh Play and after stopping.
+QQ MIKANGROCER2 EDIT COLLISION SET: 27 collidable placed MeshParts; separate readback required
+- Compared the installed mesh manifest against the approved Server preview: 84/84 match, zero differences in the properties listed above. CollisionFidelity is checked separately.
+- Started ONE fresh play session to verify persistence and the newly configured collision. The installed front appeared automatically, without rerunning the installer. Announced and moved the test avatar to the market, then used bounded direct Humanoid:MoveTo calls through the entrance, interior aisle/back area and out again. All 7 targets reached without jumping; client streamed all 84 meshes.
+QQ MIKANGROCER2 FRESH PLAY: 84 installed meshes present; 27/27 colliders retain PreciseConvexDecomposition
+QQ MIKANGROCER2 FRESH WALK: 7/7 targets reached without jumping; max horizontal distance 1.16 studs; 84-mesh client check 84; health 100
+- Stopped the verification play session. Final independent Edit readback:
+QQ MIKANGROCER2 FINAL EDIT: 84/84 meshes anchored; 12 labels; 27/27 precise colliders; 71 originals backed up; ShopBacks 646 descendants; NOT PUBLISHED
+- Installed front: Workspace.JapanMap.ShopFronts.Mikan, MikanBuildVersion=grocer2. Reusable source remains ServerStorage.JapanGardenKit.mikan_grocer2 (87 anchored meshes including markers). Replaced original fixtures are preserved in ServerStorage.HudBackup.MikanGrocer2Originals with Mikan2WasIn attributes. Original main roof, building shell, floor and single main shop sign retained.
+- The approved actual-game pictures remain in garden/shots_mikangrocer2_2026-10-17 and this chat's outputs folder. No changes to other shops, no publication, no direct DataStore writes. Studio left in EDIT. Shannon publishes and restarts live servers when ready.
+NEXT: Cat cafe, one reference-led shop at a time, retaining the existing approved Kimono shop. Closed Book & Stationery / Tea Merchant / bonsai-florist replacements are already approved as concepts, but still need their individual mesh previews and installation approvals.
