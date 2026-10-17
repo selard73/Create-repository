@@ -14,17 +14,21 @@ if not (M and KIT) then print("QQ SHOPBACKS2 ABORT: JapanMap.'Outdoor market rev
 local PIECES = {"back_door2", "back_window2", "lattice_panel", "awning_section", "chochin", "crate_stack2", "sake_barrel2", "water_tub", "wood_shed", "broom", "drainpipe"}
 for _, n in ipairs(PIECES) do if not KIT:FindFirstChild(n) then print("QQ SHOPBACKS2 ABORT: the kit has no Model '" .. n .. "' - import japan_kit20_shop_backs2.fbx") return end end
 local RECESS = 0.5                                                                        -- how far the door / window recess goes into the wall
+-- each shop its own back (Shannon: "the rear for each should vary, it is not exactly the same in real life"):
+--   yard = the things on the lawn; lattice = the dark band: full / left / right / none; awning = full / door (over the door only);
+--   doors = 1 or 2 (a double door for the storerooms); gwin = ground-floor windows 0..2; upper = upper-floor windows 0..2 (two-storey shops);
+--   lanterns 0..2; pipes = S / N / both corners; doorAt = -1 (south) / 0 (centre) / 1 (north)
 local SHOPS = {
-	{"Sushi bar", {"sake_barrel2", "water_tub", "crate_stack2"}},
-	{"Rice and provisions", {"crate_stack2", "sake_barrel2", "broom"}},
-	{"Paper umbrella craft", {"crate_stack2", "broom"}},
-	{"Calligraphy teahouse", {"wood_shed", "water_tub", "broom"}},
-	{"Mikan greengrocer", {"crate_stack2", "crate_stack2", "broom"}},
-	{"Ramen kitchen", {"sake_barrel2", "water_tub", "wood_shed"}},
-	{"Lantern workshop", {"wood_shed", "crate_stack2"}},
-	{"Kimono atelier", {"water_tub", "broom"}},
-	{"Kimono shop", {"crate_stack2", "broom"}},
-	{"Cat cafe", {"water_tub", "crate_stack2", "broom"}},
+	{"Sushi bar",            {"sake_barrel2", "water_tub", "crate_stack2"}, lattice = "full",  awning = "full", doors = 1, gwin = 1, upper = 0, lanterns = 1, pipes = "S",    doorAt = 1},
+	{"Rice and provisions",  {"crate_stack2", "crate_stack2", "sake_barrel2"}, lattice = "none", awning = "door", doors = 2, gwin = 0, upper = 0, lanterns = 0, pipes = "N",    doorAt = 0},
+	{"Paper umbrella craft", {"crate_stack2", "broom"},                  lattice = "left",  awning = "full", doors = 1, gwin = 2, upper = 2, lanterns = 1, pipes = "S",    doorAt = -1},
+	{"Calligraphy teahouse", {"wood_shed", "water_tub", "broom"},        lattice = "right", awning = "full", doors = 1, gwin = 1, upper = 1, lanterns = 1, pipes = "N",    doorAt = 1},
+	{"Mikan greengrocer",    {"crate_stack2", "crate_stack2", "crate_stack2"}, lattice = "none", awning = "door", doors = 2, gwin = 1, upper = 0, lanterns = 0, pipes = "S",    doorAt = 0},
+	{"Ramen kitchen",        {"sake_barrel2", "water_tub", "wood_shed"},  lattice = "full",  awning = "full", doors = 1, gwin = 1, upper = 0, lanterns = 1, pipes = "N",    doorAt = -1},
+	{"Lantern workshop",     {"wood_shed", "crate_stack2"},               lattice = "left",  awning = "full", doors = 1, gwin = 2, upper = 2, lanterns = 2, pipes = "both", doorAt = -1},
+	{"Kimono atelier",       {"water_tub", "broom"},                      lattice = "full",  awning = "full", doors = 1, gwin = 1, upper = 2, lanterns = 1, pipes = "N",    doorAt = 1},
+	{"Kimono shop",          {"crate_stack2", "broom"},                   lattice = "right", awning = "door", doors = 1, gwin = 2, upper = 1, lanterns = 0, pipes = "S",    doorAt = -1},
+	{"Cat cafe",             {"water_tub", "crate_stack2", "broom"},      lattice = "full",  awning = "full", doors = 1, gwin = 1, upper = 2, lanterns = 1, pipes = "both", doorAt = 0},
 }
 local C = Color3.fromRGB
 local TILE = {Enum.Material.Slate, C(58, 58, 66)}
@@ -105,46 +109,76 @@ for si, S in ipairs(SHOPS) do
 	local h = workspace:Raycast(Vector3.new(cf.X + outDir * (sz.X / 2 + 12), 5, cf.Z), Vector3.new(-outDir * 30, 0, 0), rp)
 	if not h then table.insert(report, S[1] .. ": no back wall found - skipped") continue end
 	local wallX = h.Position.X
-	local half = sz.Z / 2 - 2.6
-	-- (the yard things stand in front of the lattice band)
-	local side = (si % 2 == 0) and 1 or -1
-	local doorZ = cf.Z + side * rnd:NextNumber(2.5, 4.5)
-	local winZ = cf.Z - side * rnd:NextNumber(5.5, 7.0)
-	place(S[1] .. "_door", "back_door2", wallX, doorZ, outDir)
-	place(S[1] .. "_window", "back_window2", wallX, winZ, outDir)
-	place(S[1] .. "_pipe", "drainpipe", wallX, cf.Z + side * (sz.Z / 2 - 1.1), outDir)
-	place(S[1] .. "_lantern", "chochin", wallX, doorZ - side * 3.6, outDir, 0, 0)
-	-- the two-storey shops (22+ tall): a pair of lattice windows on the upper floor (13.3..16.9), each under its own tile hood
+	local z0, z1 = cf.Z - sz.Z / 2 + 0.6, cf.Z + sz.Z / 2 - 0.6                                -- the usable wall, off the corner posts
+	local taken = {}                                                                             -- z spans already used on the wall: {a, b}
+	local function free(a, b) for _, t in ipairs(taken) do if a < t[2] and b > t[1] then return false end end return true end
+	local function take(a, b) table.insert(taken, {a, b}) end
+	-- the door(s)
+	local doorZ = cf.Z + S.doorAt * rnd:NextNumber(4.0, 6.0)
+	local doorW = (S.doors == 2) and 9.6 or 5.9
+	if S.doors == 2 then
+		place(S[1] .. "_doorA", "back_door2", wallX, doorZ - 2.4, outDir); place(S[1] .. "_doorB", "back_door2", wallX, doorZ + 2.4, outDir)
+	else place(S[1] .. "_door", "back_door2", wallX, doorZ, outDir) end
+	take(doorZ - doorW / 2, doorZ + doorW / 2)
+	-- ground-floor windows: away from the door, spread over the wall
+	local wins = {}
+	local cands = {cf.Z - sz.Z * 0.3, cf.Z + sz.Z * 0.3, cf.Z - sz.Z * 0.12, cf.Z + sz.Z * 0.12}
+	for _, wz in ipairs(cands) do
+		if #wins < S.gwin and free(wz - 2.4, wz + 2.4) and wz - 2.2 > z0 and wz + 2.2 < z1 then
+			place(string.format("%s_window%d", S[1], #wins), "back_window2", wallX, wz, outDir); take(wz - 2.4, wz + 2.4); table.insert(wins, wz)
+		end
+	end
+	-- lanterns beside the door
+	for k = 1, S.lanterns do
+		local lz = doorZ + (k == 1 and -1 or 1) * (doorW / 2 + 1.3)
+		place(string.format("%s_lantern%d", S[1], k), "chochin", wallX, lz, outDir, 0, 0)
+	end
+	-- upper-floor windows (two-storey shops): 2 spread, 1 centred
 	local nup = 0
-	if sz.Y >= 22 then
-		for _, dz in ipairs({-5.5, 5.5}) do
-			place(string.format("%s_upper%d", S[1], nup), "back_window2", wallX, cf.Z + dz, outDir, 0, 0, 8.0)
-			place(string.format("%s_upperhood%d", S[1], nup), "awning_section", wallX, cf.Z + dz, outDir, 0, 0, 8.6)
+	if sz.Y >= 22 and S.upper > 0 then
+		local ups = (S.upper == 2) and {cf.Z - 5.5, cf.Z + 5.5} or {cf.Z}
+		for _, uz in ipairs(ups) do
+			place(string.format("%s_upper%d", S[1], nup), "back_window2", wallX, uz, outDir, 0, 0, 8.0)
+			place(string.format("%s_upperhood%d", S[1], nup), "awning_section", wallX, uz, outDir, 0, 0, 8.6)
 			nup += 1
 		end
 	end
-	-- the lattice band along the lower wall, 4-wide panels from end to end, none across the door; the awning over the whole width
-	local z0, z1 = cf.Z - sz.Z / 2 + 0.6, cf.Z + sz.Z / 2 - 0.6
-	local nlat, nawn = 0, 0
-	local z = z0 + 2.0
-	while z + 2.0 <= z1 + 0.01 do
-		if math.abs(z - doorZ) > 4.4 then place(string.format("%s_lattice%d", S[1], nlat), "lattice_panel", wallX, z, outDir); nlat += 1 end
-		z += 4.0
+	-- the lattice band: full / one half / none, never across the door or a window
+	local nlat = 0
+	if S.lattice ~= "none" then
+		local la, lb = z0, z1
+		if S.lattice == "left" then lb = cf.Z - 0.5 elseif S.lattice == "right" then la = cf.Z + 0.5 end
+		local z = la + 2.0
+		while z + 2.0 <= lb + 0.01 do
+			if free(z - 2.0, z + 2.0) then place(string.format("%s_lattice%d", S[1], nlat), "lattice_panel", wallX, z, outDir); nlat += 1 end
+			z += 4.0
+		end
 	end
-	z = z0 + 2.0
-	while z - 2.0 < z1 - 0.5 do place(string.format("%s_awning%d", S[1], nawn), "awning_section", wallX, math.min(z, z1 - 2.0), outDir); nawn += 1; z += 4.0 end
-	-- yard slots along the wall (left end, right end, beside the window), never within 4.5 of the door
+	-- the awning: the whole width, or three sections over the door only
+	local nawn = 0
+	if S.awning == "full" then
+		local z = z0 + 2.0
+		while z - 2.0 < z1 - 0.5 do place(string.format("%s_awning%d", S[1], nawn), "awning_section", wallX, math.min(z, z1 - 2.0), outDir); nawn += 1; z += 4.0 end
+	else
+		for _, dz in ipairs({-4.0, 0, 4.0}) do place(string.format("%s_awning%d", S[1], nawn), "awning_section", wallX, doorZ + dz, outDir); nawn += 1 end
+	end
+	-- drainpipes at the corners
+	local npipe = 0
+	for _, c in ipairs({{"S", -1}, {"N", 1}}) do
+		if S.pipes == "both" or S.pipes == c[1] then place(S[1] .. "_pipe" .. c[1], "drainpipe", wallX, cf.Z + c[2] * (sz.Z / 2 - 1.1), outDir); npipe += 1 end
+	end
+	-- the yard things: in front of the wall, out of the door's way, spread along it
 	local slots = {}
-	for _, z in ipairs({cf.Z - half + 2.0, cf.Z + half - 2.0, winZ + (side > 0 and -4.2 or 4.2), cf.Z - half + 6.5, cf.Z + half - 6.5}) do
-		if math.abs(z - doorZ) > 4.5 and math.abs(z - winZ) > 2.2 and math.abs(z - cf.Z) < sz.Z / 2 - 2.2 then table.insert(slots, z) end
+	for _, z in ipairs({z0 + 2.6, z1 - 2.6, z0 + 7.0, z1 - 7.0, cf.Z}) do
+		if math.abs(z - doorZ) > doorW / 2 + 2.6 then table.insert(slots, z) end
 	end
 	for k, pn in ipairs(S[2]) do
 		local z = slots[((k - 1) % math.max(#slots, 1)) + 1] or cf.Z
-		local off = (pn == "crate_stack2" or pn == "sake_barrel2" or pn == "water_tub") and rnd:NextNumber(1.6, 2.4) or 0
+		local off = (pn == "crate_stack2" or pn == "sake_barrel2" or pn == "water_tub") and rnd:NextNumber(1.6, 2.6) or 0
 		local yaw = (pn == "crate_stack2" or pn == "sake_barrel2") and rnd:NextNumber(-0.4, 0.4) or 0
 		place(string.format("%s_%s%d", S[1], pn, k), pn, wallX, z, outDir, off, yaw)
 	end
-	table.insert(report, string.format("%s: back wall x %.1f, door z %.0f, window z %.0f, %d upper windows, %d lattice panels, %d awning sections, lantern, pipe at the %s corner, %d yard things", S[1], wallX, doorZ, winZ, nup, nlat, nawn, side > 0 and "north" or "south", #S[2]))
+	table.insert(report, string.format("%s: wall x %.1f, %s door at z %.0f, %d ground windows, %d upper, %d lanterns, lattice %s (%d), awning %s (%d), %d pipes, %d yard things", S[1], wallX, S.doors == 2 and "double" or "single", doorZ, #wins, nup, S.lanterns, S.lattice, nlat, S.awning, nawn, npipe, #S[2]))
 end
 F.Parent = J
 task.wait()
