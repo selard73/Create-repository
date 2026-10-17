@@ -4097,3 +4097,21 @@ platform board 'Next: <station>'; (3) fingerposts at the junctions (canal bridge
 feeding at the pond (PondLife koi exist), photographer on the west lawn with the volcano behind, archery on the palace court, cat cafe in the
 market (her Meshy cats); then the south strip below the railway + the north margin -> sea/cliff (terrain only). PAUSED at usage: weekly all-models
 61%, Fable 80% (her 70% rule).
+## Japan wayfinding (option 3, step 1) - INSTALLED in Edit (runner 7, Oct 17 ~04:40Z), NOT published
+Kit japan_kit18_wayfinding.fbx (gen_wayfinding.py: sign_post, sign_finger, nobori_banner, map_board; she imported it, moved into JapanGardenKit).
+Installer wayfinding1.lua at 7cb4a5d (15435 / 1559267975), run in Edit on her "Yes, install wayfinding1 in Edit":
+QQ WAYFINDING1 Arrival at (6137, 0.30, 214) on Arrival court, 5 fingers
+QQ WAYFINDING1 GardenBridge at (6070, 0.00, -209) on Japan land foundation basin cut, 4 fingers
+QQ WAYFINDING1 MazeGate at (5419, 0.00, -148) on Japan land foundation basin cut, 4 fingers
+QQ WAYFINDING1 PalaceCourt at (6336, 4.05, -42) on Royal court floor, 4 fingers
+QQ WAYFINDING1 MapBoard at (6127, 0.40, 209) on Walkway
+QQ WAYFINDING1 DONE: 4 fingerposts with 17 fingers, 1 map board, 6 station banners in JapanMap.Wayfinding
+What it is: JapanMap.Wayfinding = Post_<name> + Finger_<name>_<place> (each finger turned at its target, 'name   NNN m' on both faces, SurfaceGui 50 px/stud),
+MapBoard (the island drawn in UI: train line + 3 station dots, the places, 'you are here' at the arrival mat), Banner_<station>_W/E (indigo nobori
+'駅 / STATION / 新幹線 / BULLET TRAIN / <name>' both faces) at z 114 for Tea Hills / Lantern Street, z 141 for Palace Grounds (a gatehouse roof fills
+z 108..126 there). Places/targets and distances are tables at the top of the installer (PLACES / POSTS / STATIONS / BANNER_SPOTS).
+LESSONS: Japan's lawns are INVISIBLE CanCollide floor parts at y 0 over terrain at -6 ('Japan land foundation basin cut', Transparency 1) - a ground ray
+must accept the first CanCollide hit, not the first visible one (two posts sank to -6 in round 1). The installer's own overlap report (GetPartsInPart,
+the ground excepted) caught the roof banner before any picture - keep that pattern. The Gifts card pops 180 s into a test: hide GiftsGui again before late pictures.
+Pictures: tools/japan/garden/shots_wayfinding_2026-10-17. Undo: delete JapanMap.Wayfinding. Shannon: publish.
+NEXT in option 3: features into the gaps (koi feeding at the pond first), then trim the south strip + north margin to sea/cliff.
