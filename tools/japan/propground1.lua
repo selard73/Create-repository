@@ -29,7 +29,7 @@ local KIND = {
 local SINK = {rock = nil, bush = 0.3, tree = 0.15, lantern = 0.03}
 local function kindOf(name)
 	local n = name:lower()
-	if n:find("cliff") or n:find("ridgeline") or n:find("volcano") or n:find("shore") or n:find("berm") or n:find("basin") or n:find("stepping") or n:find("slab") or n:find("wall") or n:find("coping") or n:find("path") or n:find("lantern street") or n:find("post") then return nil end
+	if n:find("cliff") or n:find("rockface") or n:find("ridgeline") or n:find("volcano") or n:find("shore") or n:find("berm") or n:find("basin") or n:find("stepping") or n:find("slab") or n:find("wall") or n:find("coping") or n:find("path") or n:find("lantern street") or n:find("post") then return nil end
 	for _, k in ipairs(KIND) do if n:find(k[1], 1, true) then return k[2] end end
 	return nil
 end
@@ -47,7 +47,11 @@ for _, d in ipairs(J:GetDescendants()) do
 		local inside = false
 		local a = d.Parent
 		while a and a ~= J do if seen[a] then inside = true break end; a = a.Parent end
-		if not inside then seen[d] = true; table.insert(cands, d) end
+		if not inside then
+			local big = false                                                            -- a GROUP named like a rock ("Natural bank rocks") is not a rock: look inside it
+			if d:IsA("Model") then local _, sz = d:GetBoundingBox(); big = math.max(sz.X, sz.Y, sz.Z) > 70 end
+			if not big then seen[d] = true; table.insert(cands, d) end
+		end
 	end
 end
 local function box(inst) if inst:IsA("Model") then return inst:GetBoundingBox() end return inst.CFrame, inst.Size end
@@ -88,6 +92,7 @@ for ci, inst in ipairs(cands) do
 			if w and (water == nil or w > water) then water = w end
 		end
 		byKind[kind] = (byKind[kind] or 0) + 1
+		if g == nil and kind == "rock" and water then g = water - 4 end                   -- a rock over open water: a shoal 4 under the surface is its ground
 		if g == nil then nothing += 1
 		else
 			local gap = bottom - g
@@ -104,9 +109,9 @@ for ci, inst in ipairs(cands) do
 					local piv = inst:GetPivot()
 					inst:PivotTo(piv + Vector3.new(0, target - bottom, 0))
 					if shoal then
-						local r = math.max(sz.X, sz.Z) / 2 + 1
-						local reg = Region3.new(Vector3.new(cf.X - r, g - 4, cf.Z - r), Vector3.new(cf.X + r, target + 0.3, cf.Z + r)):ExpandToGrid(4)
-						pcall(function() T:FillRegion(reg, 4, Enum.Material.Sand) end)
+						local w, l = sz.X + 2, sz.Z + 2
+						local h = (target + 0.4) - (g - 2)
+						pcall(function() T:FillBlock(CFrame.new(cf.X, (target + 0.4 + g - 2) / 2, cf.Z), Vector3.new(w, h, l), Enum.Material.Sand) end)
 						shoals += 1
 					end
 				end
