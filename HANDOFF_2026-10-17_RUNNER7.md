@@ -43,3 +43,6 @@ and C:\Users\slard\Create-repository-shots. Every result is in tools/cloud/JOB.m
 Install pattern: fetch the raw GitHub file at a SHA on the Server / Edit datamodel (HttpEnabled on, GetAsync, off), adler32 check, run
 in a ModuleScript wrapper with a collecting print; the same code is the play-test preview. Her kit folder: OneDrive\Desktop\Japan garden kit.
 GOTCHA: GitHub pushes can fail on this PC when it is low on memory (git's credential prompt will not start) - commit locally, push later.
+
+## Oct 17 ~08:30Z addendum
+- Mikan greengrocer front INSTALLED in Edit (shopfront_mikan1 at 30d5769, kit21), unpublished with the shop backs. Next: the other fronts, each from a reference; then option-3 features; then the margins.

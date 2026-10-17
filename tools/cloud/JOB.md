@@ -4170,3 +4170,14 @@ Pictures: tools/japan/garden/shots_shopbacks_2026-10-17 (round 1 rejected; round
 LESSONS: a kit piece's pivot must sit at its GROUND LINE, not its lowest vertex (windows/awnings/lanterns dropped to the floor); R_y(+90) sends local +z to
 world +x - get the facing right AND add a side check; when she gives references, build to them, not to a guess.
 NEXT: the Mikan greengrocer FRONT from her photo (SHOPFRONTS.md #2), then the other fronts.
+## Mikan greengrocer FRONT - INSTALLED in Edit (runner 7, Oct 17 ~08:30Z), NOT published
+From her grocery-store photo (tools/japan/reference_2026-10-17/SHOPFRONTS.md #2). gen_shopfront_mikan.py -> kit japan_kit21_mikan_front.fbx (she imported;
+moved into JapanGardenKit): front_awning (30 wide, 11 deep tiled awning on a timber frame, posts on the lane, knee braces), sign_board, jar_shelf, basket_bench,
+potted_bamboo, andon_sign, side_banner. Installer shopfront_mikan1.lua at 30d5769 (9206 / 1542604885), run in Edit on her "Yes, install shopfront_mikan1 in Edit":
+QQ MIKANFRONT1 DONE: 11 pieces in JapanMap.ShopFronts.Mikan (kit turned back); awning box x 5993.4..6024.0 y 0.5..11.4 z -164..-152; 16 canvas parts -> HudBackup.MikanFrontReplaced
+(the 'awning box' line reads the oriented box axis-aligned - the awning really spans z -173..-143 and x 6003..6014; harmless). Precise collision set on the 10
+solid meshes after the install. Retired: 13 Canvas panels + 2 Awning brackets + the Awning front rail (the canvas canopy over the lane). Kept: the tiled shop
+roof, counters, vegetables, noren, paper lanterns, signs. The sign reads '八百屋 みかん · MIKAN GREENGROCER' (SurfaceGui, Antique font) - change it on
+ShopFronts.Mikan.Sign.Sign_Panel. Pictures: tools/japan/garden/shots_shopfront_2026-10-17 (before / after from the lane). Undo: delete ShopFronts.Mikan,
+HudBackup.MikanFrontReplaced's parts back to their MikanWasIn. Shannon: publish.
+NEXT: the other shop fronts the same way (one reference each; the Takayama dark-timber front is saved as a file), then koi feeding / photographer / archery / cat cafe / margins.
