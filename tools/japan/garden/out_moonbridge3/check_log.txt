@@ -1,0 +1,9 @@
+prev_mb3_three_quarter.png: first thing in view = MB3_Red at 10.5; camera at (-12.0, -13.0, 5.5)
+shot prev_mb3_three_quarter.png
+prev_mb3_front.png: first thing in view = Cube at 16.8; camera at (0.0, -16.0, 4.5)
+shot prev_mb3_front.png
+prev_mb3_side.png: first thing in view = court at 36.6; camera at (-15.0, -1.4, 3.4)
+shot prev_mb3_side.png
+prev_mb3_from_pond.png: first thing in view = MB3_Deck at 13.3; camera at (-9.0, 9.0, 4.0)
+shot prev_mb3_from_pond.png
+CHECK_DONE

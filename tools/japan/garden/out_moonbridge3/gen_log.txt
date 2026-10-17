@@ -1,0 +1,4 @@
+moon_bridge_end3: 3 meshes, 248 tris; MB3_Deck 36, MB3_Red 168, MB3_Stone 44
+deck line: joint z 4.26 top 0.48; foot z 5.93 top 0.02
+INFO {"min": [-4.9, -0.38, -2.1], "max": [4.9, 5.12, 7.0]}
+FBX_DONE
