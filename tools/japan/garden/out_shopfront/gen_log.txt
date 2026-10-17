@@ -1,0 +1,9 @@
+front_awning: 2 meshes, 588 tris
+sign_board: 2 meshes, 24 tris
+jar_shelf: 5 meshes, 2160 tris
+basket_bench: 5 meshes, 282 tris
+potted_bamboo: 3 meshes, 232 tris
+andon_sign: 2 meshes, 84 tris
+side_banner: 3 meshes, 88 tris
+INFO {"front_awning": {"min": [-15.3, 0.0, -0.05], "max": [15.3, 10.9, 11.05]}, "sign_board": {"min": [-4.5, 0.0, -0.0], "max": [4.5, 2.2, 0.42]}, "jar_shelf": {"min": [-4.02, 0.0, -0.05], "max": [4.02, 7.227, 1.3]}, "basket_bench": {"min": [-3.0, 0.0, -0.85], "max": [3.0, 2.4, 0.85]}, "potted_bamboo": {"min": [-1.582, 0.0, -1.574], "max": [1.7, 6.905, 1.296]}, "andon_sign": {"min": [-1.25, 0.0, -1.25], "max": [1.25, 5.6, 1.25]}, "side_banner": {"min": [-1.3, 1.7, -0.1], "max": [1.3, 8.3, 0.38]}}
+FBX_DONE
