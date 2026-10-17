@@ -1,3 +1,4 @@
+-- Run catcafe1_audio.lua after this build to preview Shannon's playlist and meows.
 -- Cat cafe 1. Preview on the play-test Server before any approved Edit install.
 -- Shannon imports kit23. Prepare/anchor the source in Edit before starting Play.
 -- Uses her existing facade. Her Meshy cats are still in Meshy; no substitute cats.
