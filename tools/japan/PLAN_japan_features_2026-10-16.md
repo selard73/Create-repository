@@ -140,3 +140,37 @@ Each one: a design note with her choices, a runner survey of the site, a look te
 - Kimono: through the wardrobe, fabrics as colour sets with a contrasting obi.
 - Church: look A at site A (behind the falls, door north). Sushi match on hold.
 - Next cloud thread: HANDOFF_2026-10-16_CLOUD.md.
+
+
+## Street shop direction - Shannon, Oct 17 2026 (supersedes opening every shop)
+Shannon liked the new Mikan grocer2 Blender design studies: "that looks a lot better". This is design feedback, not approval to install: her import and the actual Roblox Server play-test pictures are still pending.
+
+Explicit instructions for the street:
+- Mix enterable interiors with detailed closed storefronts, like the France map.
+- Build out the Cat cafe. Leave the existing approved Kimono shop as it is.
+- Keep the Ramen kitchen largely as it is; add interior tables and chairs.
+- Replace the duplicate Kimono atelier with a different business. It must have a closed, non-enterable door and a window through which a dressed interior is visible.
+- Keep the Pottery table build; review its player-facing name.
+- Combine the lantern and umbrella businesses into ONE shop and build it out.
+- Make Calligraphy teahouse a closed storefront; review whether that name is appropriate.
+- Review whether Rice and provisions is redundant alongside the new Mikan grocer.
+
+Codex recommendations (PROPOSED replacements, not approved names or installed changes):
+- Kimono atelier -> a closed Book & Stationery shop: bound books, paper stacks, brushes and ink behind glass.
+- Calligraphy teahouse -> a closed Tea Merchant: tea tins, jars, teapots and a modest calligraphy scroll in its window display.
+- Rice and provisions -> a closed Florist: bouquets, seasonal stems and ceramic vases behind a glazed timber front. Consolidate a small rice/dry-goods section into Mikan if this replacement is accepted.
+- Pottery table -> player-facing Pottery Stall / Ceramics, while preserving its build and existing internal identifier until script references are checked.
+- Lantern workshop -> the combined Lanterns & Umbrellas shop: hanging chochin, upright wagasa, one opened umbrella and a craft bench. The former umbrella premises could be a closed craft storeroom with a dressed window; its exact reuse is still a proposal. Do not remove or physically join the two buildings by assumption.
+- Sushi bar and unmentioned stalls are outside this revision unless Shannon directs otherwise.
+
+Design approach: closed shops still get fitted shut doors, readable glazing, shallow three-dimensional stock displays and warm interior light. Keep thresholds and the lane clear. Different glazing/lattice/display arrangements per business. All new visible construction is mesh geometry.
+
+Read-only Studio findings: Ramen kitchen has 4 functioning counter Seats and no named tables. Preserve those seats/food behaviour when adding dining furniture; begin with a compact two-table layout, fit to a measured clear circulation path before preview. Cat cafe currently has 3 decorative stool tops, no Seat objects, no named tables and 4 ramen-bowl props: its interior needs a cafe-specific redesign, not just cats added to the current cooking display. Do not promise imported cat models exist based on the old feature plan; locate Shannon's assets before selecting poses/animation.
+
+Research:
+- Kidoairaku, Nishiki Market's official listing: an actual pottery shop selling the makers' tableware. Supports Pottery Stall / Ceramics as a business label: https://www.kyoto-nishiki.or.jp/en/stores/kidoairaku/
+- Kyoto's official travel guide, A House Living with Tea: a tea room's alcove displays calligraphy and flowers. That supports a cultural relationship, not "calligraphy teahouse" as an established shop category: https://kyoto.travel/en/see-and-do/totousha.html
+- Kyoto's official craft guide documents wagasa and chochin as distinct paper crafts. Combining their retail display is a design recommendation, not a claim that every traditional shop sold both: https://kyoto.travel/en/travel-inspiration/kyoto-craftmanship-small-production-crafts/
+- Hachidaime Gihey's own site documents a specialist rice business. A separate rice shop is plausible, but optional for this compact game street: https://hachidaime.com/en/
+
+Working order: finish Mikan's pending import/preparation/actual play-test approval first, then Cat cafe as the next substantial interior; Ramen dining furniture, combined craft shop, then closed fronts individually. Reference -> fitted mesh design -> Shannon imports one combined FBX -> authorized anchoring/storage -> Server play-test pictures -> her yes -> Edit install. Do not treat the street-plan discussion as blanket approval for Edit mutations. No new gameplay prices/rewards or DataStore changes are authorized by this design discussion.
