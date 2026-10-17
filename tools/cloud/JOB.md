@@ -4064,3 +4064,22 @@ card "You've had today's maze prize already." NOTE: in Studio the purse does not
 (UpdateAsync) succeeds, and Studio API access is off; live it lands with the next save (~8 s), like every other reward.
 Picture: tools/japan/garden/shots_maze_2026-10-17/5_finish_card_at_the_exit.jpg. Shannon: publish, then restart servers.
 PUBLISHED by Shannon 2026-10-17T01:16:52Z (Studio log): the bamboo maze (bamboomaze1) + its exit reward (mazereward1) are LIVE once servers restart.
+## Moon bridge ends at the palace pond (runner 7, Oct 17) - round 3 INSTALLED in Edit, NOT published
+Shannon: "you fixed the palace pond but did not fix the entrances of the bridge going across please fix it and make it look nice and complete".
+Round 1 (moonbridgeend1 / kit15: white cut-stone landing + steps + cheek walls, lanterns in front): previewed, "that looks really bad", "really really bad" - never installed.
+Round 2 (moonbridgeend2 / kit16: a straight wooden stair with its own posts and rails): previewed, "that is better but its still got issues ... look at how
+other japanese bridges are designed, be smart please" - never installed.
+Round 3 (gen_moonbridge_end3.py / moonbridgeend3.lua at 79efbce, 7228 / 2768106258; kit japan_kit17_moonbridge_end3.fbx + kit15's post_finial): what a
+taiko-bashi does - the ARCH ITSELF runs on down to the court (two more deck segments on the bridge's own curve, 9 wide, 0.4 thick, WoodPlanks
+103/72/48), the curved red rails run with it to a pair of heavy end posts (oyabashira, 0.6 sq) that alone carry gold giboshi, a plain post at the
+joint and one enclosing the bridge's own end post, and a dark fitted-stone abutment (Slate 58/56/54) under the end with a sill into the apron's
+bevel. Checked in Blender renders against a stand-in of the real bridge end BEFORE any play test. Run in Edit on her "Yes, install moonbridgeend3 in Edit":
+QQ MOONBRIDGEEND3 DONE: the arch runs on to the court at both ends (deck ends z -21.07 / 65.07, x 6322.0): North at (6322.0, 5.58, 67.5), South at (6322.0, 5.58, -23.5); 4 giboshi; 2 slabs -> HudBackup.MoonBridgeReplaced; precise collision on 0
+Then CollisionFidelity Precise set on the 6 MB3 meshes in a SEPARATE call (set inside the installer, even after parenting + task.wait, it stayed
+Default - the same as the pond ring; do it as its own call after every install). Deck line by rays, both ends: 5.34 5.02 4.78 4.45 4.11 3.78 3.59
+3.40 3.31 3.31 (the bridge's own 0.33/stud slope carried on to the court at 3.19).
+LESSONS: (1) a fix must match the thing's OWN style and the real-world form (a taiko bridge's arch reaches the ground; posts with giboshi at the
+foot) - never a bolted-on stair or a stand-alone stone landing; (2) render the piece against a stand-in of the real context and look at the pictures
+as she would before showing her; two blind rounds cost her patience. (3) Blender camera tuples: write them in the piece's local frame (x, up, out).
+Pictures: tools/japan/garden/shots_moonbridge_2026-10-17 (1-3 round 1, 4-6 round 2, 7-8 round 3 = installed look).
+Undo: delete the pond set's MoonBridgeEnds; HudBackup.MoonBridgeReplaced's two Walkway slabs back to their MoonBridgeWasIn. Shannon: publish.
