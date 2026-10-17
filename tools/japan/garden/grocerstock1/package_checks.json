@@ -1,0 +1,13 @@
+{
+  "fbxSha256Copies": {
+    "C:\\Users\\slard\\Documents\\Codex\\2026-10-17\\we\\work\\grocerstock1\\out\\japan_kit28_grocer_stock1.fbx": "10477718b52c843fe7e8d436a9b62a50c4415fcc6d252f282dfaf68a7641cfb2",
+    "C:\\Users\\slard\\Create-repository\\tools\\japan\\garden\\grocerstock1\\out\\japan_kit28_grocer_stock1.fbx": "10477718b52c843fe7e8d436a9b62a50c4415fcc6d252f282dfaf68a7641cfb2",
+    "C:\\Users\\slard\\Documents\\Codex\\2026-10-17\\we\\outputs\\japan_kit28_grocer_stock1.fbx": "10477718b52c843fe7e8d436a9b62a50c4415fcc6d252f282dfaf68a7641cfb2",
+    "C:\\Users\\slard\\OneDrive\\Desktop\\Japan garden kit\\japan_kit28_grocer_stock1.fbx": "10477718b52c843fe7e8d436a9b62a50c4415fcc6d252f282dfaf68a7641cfb2"
+  },
+  "status": "Geometry/export validated; all four Blender images inspected; actual Roblox import and Play preview pending",
+  "visibleMeshes": 68,
+  "markers": 3,
+  "triangles": 46252,
+  "maxMeshTriangles": 4680
+}

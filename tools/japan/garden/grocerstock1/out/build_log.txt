@@ -1,0 +1,17 @@
+EXPORTED 71 meshes, 44 product groups, 46252 triangles
+ROUNDTRIP_PASS: mesh names, counts and bounds agree within .003 studs
+RENDER grocer_shelf_overview
+RENDER grocer_tea_detail
+RENDER grocer_pantry_detail
+Traceback (most recent call last):
+  File "C:\Users\slard\Documents\Codex\2026-10-17\we\work\grocerstock1\gen_grocerstock1.py", line 209, in <module>
+    review_context();bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'grocerstock1_shelf_review.blend'));render_review();log('GROCERSTOCK1_DONE')
+                                                                                                      ~~~~~~~~~~~~~^^
+  File "C:\Users\slard\Documents\Codex\2026-10-17\we\work\grocerstock1\gen_grocerstock1.py", line 189, in render_review
+    camera.location=P(loc);camera.rotation_euler=(Vector(P(target))-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.lens=lens;sc.render.filepath=str(OUT/(name+'.png'));bpy.ops.render.render(write_still=True);log('RENDER '+name)
+                                                                                                                                                                                        ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+RuntimeError: Error: out of memory
+Error: out of memory
+
+
+GROCERSTOCK1_FAILED

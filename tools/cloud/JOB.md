@@ -4539,3 +4539,28 @@ QQ CAFE SPREAD2 STATUS: SERVER PREVIEW; NOT PUBLISHED
 - Saved six close actual Play pictures, raw checks and 141-part placement manifest in garden/cafe_spread2; user-facing pictures/current notes in chat outputs. Source cafe_spread2.lua only; prior installers and source kits retained.
 - All changes in this section are SERVER PREVIEW ONLY, awaiting Shannon's approval of the revised pictures. The original published cafe remains in Edit; no new permanent Studio mutation, publication or direct DataStore writes. Play left running normally for review.
 NEXT: Shannon approves the revised layout/pictures. Then stop Play and run cafe_spread2.lua in Edit with CAFE_SPREAD2_ALLOW_EDIT=true, compare final manifest and scaled rigs, independently check only the intended lamp/seat/cat changes and a clean fresh Play. Do not rerun the old cafe/cat installers, which would reset this arrangement. No import needed. Shannon publishes.
+
+
+## Distinct grocer shelf merchandise kit28 (Codex solo, Oct 17 2026) - BLENDER DESIGN PREVIEW, IMPORT PENDING
+Shannon supplied a rear-shelf screenshot and asked that TEA, PANTRY and DRY GOODS have varied recognisable products matching their descriptions. This is an additional request; it does NOT approve the pending cafe spread2 installation.
+- Read the current Mikan generator/installer and actual scene. The old rear shelves repeat the same four generic package shapes under all three category signs. Identified eight separate old stock meshes to replace, with three structural shelf meshes and three category boards retained. No produce, pickle-barrel, facade or other shop changes are in scope.
+- Consulted primary Ippodo tea packaging references, Kikkoman soy/mirin context, and MAFF dry-food references (URLs in REFERENCES.txt). Built original native Blender merchandise with actual mesh lettering; no copied brand artwork or product textures.
+- Tea: rimmed cylindrical sencha/hojicha/genmaicha tins, smaller matcha tins, folded packets and loose-leaf sample tray. Pantry: shaped soy/mirin/vinegar/sesame-oil bottles, squat miso tubs with wood lids, shichimi spice tins. Dry goods: individual bound udon/soba strands, layered nori sheets, tied wavy kombu strips and baskets of shiitake with caps/gills/star cuts.
+- New kit28 contains 71 meshes (68 visible stock meshes plus three placement markers), 44 product groups, 46,252 triangles total; largest mesh 4,680 triangles. All vertices fit the measured shelf bays/levels and remain behind the shelf front. Products are noncollidable. FBX reimport checked exact names/counts and all bounds within .003 studs.
+- First Blender attempt exported/roundtripped but hit an out-of-memory error on the second render. Reduced render concurrency to four threads and widened the overview/changed close-up framing. The second run completed the overview, tea and pantry pictures but ran out of memory on the fourth view. Rendered the final dry-goods close-up in a fresh isolated Blender process. Retained the failed batch log and separate recovery log; the generator now also supports geometry-only builds and isolated per-view rendering. Reviewed all four final design pictures. These are explicitly Blender design pictures, NOT actual Roblox play pictures or proof of asset import.
+Actual successful export/roundtrip and first three render lines from the batch log:
+EXPORTED 71 meshes, 44 product groups, 46252 triangles
+ROUNDTRIP_PASS: mesh names, counts and bounds agree within .003 studs
+RENDER grocer_shelf_overview
+RENDER grocer_tea_detail
+RENDER grocer_pantry_detail
+Actual separate dry-goods render recovery output:
+RENDER grocer_dry_goods_detail
+GROCERSTOCK1_RENDER_DONE
+- Prepared source-only anchoring/storage script and guarded Server-first replacement installer. Preparation preserves the raw import and derives a clean anchored source after names/counts/scale/bounds checks. Installer stages all stock before replacing only the eight exact old meshes, keeps originals in HudBackup.GrocerStock1Originals, validates unchanged existing Japan instances, and rolls back on failure. Both scripts compiled inside non-executed function bodies in Studio Edit; no ModuleScript or scene object was created.
+Actual compile-only outputs:
+QQ GROCERSTOCK1 COMPILE: prepare_grocerstock1.lua parsed; body NOT executed; no scene mutation
+QQ GROCERSTOCK1 COMPILE: grocerstock1.lua parsed; body NOT executed; no scene mutation
+- Current Studio had independently returned to stopped Edit. Readback: JapanMap 21,063 descendants, grocer2 intact with all eight old stock meshes, no ShelfStock installation and no grocerstock1 source; cafe 136 meshes and original enabled corner Seat. The prior cafe spread2 Play preview is no longer running; its pictures/script remain saved and still await approval. No Studio appearance/install mutation occurred in this task, and no camera/avatar movement was needed.
+- Saved native source, combined FBX, exact manifest, scripts, references, checks and four design pictures. Byte-identical FBX copied to Desktop/Japan garden kit and chat outputs; editable source .blend and instructions in outputs. No publishing or direct DataStore writes.
+NEXT: Shannon imports ONLY japan_kit28_grocer_stock1.fbx in stopped Edit, then authorizes anchor/preparation. Inspect the actual import, prepare/store it BEFORE Play, then run grocerstock1.lua on the Server and show close actual play pictures. Install in Edit only after Shannon approves those pictures. Cafe spread2 approval is separately pending; no new cafe import is needed. Shannon publishes.

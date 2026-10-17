@@ -1,0 +1,23 @@
+GROCER SHELF STOCK - KIT28 - DESIGN PREVIEW, NOT INSTALLED
+
+Import ONLY japan_kit28_grocer_stock1.fbx from:
+C:\Users\slard\OneDrive\Desktop\Japan garden kit
+
+In stopped Studio Edit, use File > Import 3D. Do not start Play with the new
+import loose in Workspace. After importing, say: "imported - anchor and prepare preview".
+
+Codex will anchor/store the source, preserve the raw import, and prepare a
+temporary Server play preview with close actual game pictures. The old shop
+stock is replaced in persistent Edit only after Shannon approves those pictures.
+
+Contents: distinct tea tins and folded packets, soy/mirin/vinegar/sesame-oil
+bottles, miso tubs and shichimi tins, udon/soba bundles, nori/kombu and shiitake.
+The product names are mesh lettering. No additional texture upload is needed.
+
+Scope: replace ONLY the eight old generic rear-shelf stock meshes. Retain the
+three shelf meshes, three category signs, produce, pickle barrels and facade.
+All new merchandise is anchored/noncollidable and stays inside the shelving.
+
+No other kit should be reimported. The cafe spread2 layout is separately
+awaiting picture approval; it needs no new import. Do not rerun the old cafe
+installers, which would reset that layout. Shannon alone publishes.

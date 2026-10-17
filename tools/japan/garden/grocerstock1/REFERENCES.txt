@@ -1,0 +1,23 @@
+Grocer shelf stock references
+
+Shannon requested clearly different, recognisable products under TEA, PANTRY
+and DRY GOODS, matching the category descriptions. Her supplied October 17
+screenshot is the layout reference: the existing shelves and signs stay.
+
+- Ippodo Hosen: loose-leaf tea in a cylindrical metal tin.
+  https://ippodotea.com/products/hosen-150
+- Ippodo sencha/hojicha packets and teabags:
+  https://global.ippodo-tea.co.jp/blogs/news/new-releases-one-pot-teabag-hojicha-and-sencha
+  https://global.ippodo-tea.co.jp/products/sencha591913
+- Kikkoman soy sauce and mirin product context:
+  https://www.kikkoman.com/en/culture/soysaucemuseum/features/
+  https://www.kikkoman.com/en/culture/mirinmuseum/
+- Japan Ministry of Agriculture, Forestry and Fisheries: dried foods including
+  kombu and shiitake, supporting distinct visible dry ingredients.
+  https://www.maff.go.jp/j/pr/aff/1909/spe2_01.html
+  https://www.maff.go.jp/j/shokusan/gaisyoku/pamphlet/pdf/washoku_english.pdf
+
+Original stylised geometry and generic product labels; no brand art or
+downloaded product textures. The shelf design renders are Blender previews,
+not pictures of an installed Roblox scene. Actual import/play validation is
+pending Shannon's kit28 import.

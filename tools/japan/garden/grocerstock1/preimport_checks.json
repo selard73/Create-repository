@@ -1,0 +1,29 @@
+{
+  "prepareCompile": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCERSTOCK1 COMPILE: prepare_grocerstock1.lua parsed; body NOT executed; no scene mutation"
+      }
+    ],
+    "isError": false
+  },
+  "installCompile": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCERSTOCK1 COMPILE: grocerstock1.lua parsed; body NOT executed; no scene mutation"
+      }
+    ],
+    "isError": false
+  },
+  "editBefore": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"japanDescendants\":21063,\"cafeMeshes\":136,\"place\":117372258657114,\"stock1Imported\":false,\"grocerVersion\":\"grocer2\",\"originalStock\":[{\"name\":\"M2_Pantry_ClothBag\",\"mesh\":\"rbxassetid://99522727148881\"},{\"name\":\"M2_Pantry_CedarPale\",\"mesh\":\"rbxassetid://106066847746799\"},{\"name\":\"M2_Pantry_Paper\",\"mesh\":\"rbxassetid://136257910529931\"},{\"name\":\"M2_Pantry_BottleBrown\",\"mesh\":\"rbxassetid://80951521852289\"},{\"name\":\"M2_Pantry_Timber\",\"mesh\":\"rbxassetid://71362811376795\"},{\"name\":\"M2_Pantry_Ceramic\",\"mesh\":\"rbxassetid://132095468622784\"},{\"name\":\"M2_Pantry_CedarLight\",\"mesh\":\"rbxassetid://101010644627736\"},{\"name\":\"M2_Pantry_Sage\",\"mesh\":\"rbxassetid://74966721961130\"}],\"mode\":\"Edit\",\"cafeCornerSeatDisabled\":false,\"stock1Installed\":false}"
+      }
+    ],
+    "isError": false
+  }
+}
