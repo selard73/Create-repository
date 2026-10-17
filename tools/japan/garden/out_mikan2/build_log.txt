@@ -1,0 +1,7 @@
+EXPORTED 87 meshes; 53816 triangles
+ROUNDTRIP_PASS: all exported mesh names and bounds match within 0.003 studs
+RENDER 01_front
+RENDER 02_inside
+RENDER 03_barrels
+RENDER 04_produce
+MIKAN2_DONE

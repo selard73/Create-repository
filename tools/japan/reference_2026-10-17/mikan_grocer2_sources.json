@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-17",
+  "design": "Mikan grocer2: fresh produce with a small Kyoto pickle section",
+  "sources": [
+    {
+      "url": "https://takakuraya.jp/shops/",
+      "role": "Primary source: Takakuraya describes wooden pickle barrels lining its storefront; cucumber, cabbage and Kyoto vegetables."
+    },
+    {
+      "url": "https://www.kyoto-nishiki.or.jp/en/stores/takakuraya/",
+      "role": "Market association account of cucumber/cabbage, daikon and eggplant pickles."
+    },
+    {
+      "url": "https://www.kyoto-nishiki.or.jp/en/stores/yontora/",
+      "role": "Primary market association reference for fresh Kyoto vegetables, fruit and pantry goods."
+    },
+    {
+      "url": "https://www.kyotonishiki-ec.com/SHOP/192032/203185/list.html",
+      "role": "Market shop imagery of shallow wooden produce crates and attached product labels."
+    }
+  ],
+  "localStyle": "Shannon's approved existing Kimono shop: fitted dark timber, shallow eave, restrained signage and visible organized goods.",
+  "preserved": [
+    "Existing Mikan main tiled roof",
+    "Existing structural shell and floor",
+    "Existing main shop sign",
+    "All ShopBacks and every other shop"
+  ],
+  "pending": "Shannon imports one combined FBX; anchor/store source before play; run installer on temporary play-test Server; show close pictures; install only after her yes; she publishes."
+}
