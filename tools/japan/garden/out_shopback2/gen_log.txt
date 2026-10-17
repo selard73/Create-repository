@@ -1,0 +1,13 @@
+back_door2: 5 meshes, 252 tris
+back_window2: 5 meshes, 192 tris
+lattice_panel: 3 meshes, 156 tris
+awning_section: 2 meshes, 124 tris
+chochin: 3 meshes, 240 tris
+crate_stack2: 2 meshes, 108 tris
+sake_barrel2: 3 meshes, 208 tris
+water_tub: 3 meshes, 272 tris
+wood_shed: 4 meshes, 660 tris
+broom: 2 meshes, 24 tris
+drainpipe: 2 meshes, 60 tris
+INFO {"back_door2": {"min": [-3.0, 0.0, -0.5], "max": [3.0, 8.5, 1.7]}, "back_window2": {"min": [-2.1, 5.3, -0.5], "max": [2.1, 8.9, 0.6]}, "lattice_panel": {"min": [-2.0, 0.0, -0.06], "max": [2.0, 4.4, 0.38]}, "awning_section": {"min": [-2.1, 7.9, -0.1], "max": [2.1, 9.52, 2.0]}, "chochin": {"min": [-0.74, 5.3, -0.1], "max": [0.74, 8.0, 1.94]}, "crate_stack2": {"min": [-1.14, 0.0, -1.14], "max": [3.74, 4.45, 1.54]}, "sake_barrel2": {"min": [-1.38, 0.0, -1.345], "max": [1.38, 3.3, 1.345]}, "water_tub": {"min": [-2.0, 0.0, -1.414], "max": [1.9, 2.3, 1.414]}, "wood_shed": {"min": [-3.0, -0.018, -0.291], "max": [3.0, 5.02, 2.553]}, "broom": {"min": [-0.75, 0.0, -0.05], "max": [0.75, 5.6, 1.1]}, "drainpipe": {"min": [-0.45, 0.0, -0.05], "max": [0.45, 9.2, 0.75]}}
+FBX_DONE
