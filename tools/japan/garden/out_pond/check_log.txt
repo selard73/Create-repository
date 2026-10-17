@@ -1,0 +1,5 @@
+checked 24 meshes; problems: none
+shot prev_pond_edge.png
+shot prev_pond_close.png
+shot prev_pond_above.png
+CHECK_DONE
