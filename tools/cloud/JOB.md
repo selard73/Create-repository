@@ -4128,3 +4128,23 @@ JapanMap.WalkFills (undo: delete), moved slabs keep WalkFixWasCFrame (re-runs re
 being ramps not steps, the keep ramp's ground being another walkway) - fixed in 7dd4380 + 0dc654a; the final run reported all 1+1+6. Pictures:
 Create-repository-shots/walkfix_2026-10-17 (gate, keep, station, lookout before/after).
 ALSO from her: "the back sides of the shops are just plain walls, they need to be finished to look like the back of the shops would actually look like" - next.
+## Japan's floating ground - INSTALLED in Edit (runner 7, Oct 17 ~06:10Z), NOT published. Her words: "the ground was floating, make it look right";
+"those rocks by the water are floating in mid air, please please please, clean this up! do a good job".
+ROOT CAUSE (survey): the island's lawn is ONE grass mesh sheet (JM_JR_BasinGround_1..8, x 5356..6644 z -391..466, top -0.04, 4 thick) and under
+13,000 of its 17,000 cells the terrain is the SEA at -6 - a 2-stud void of water under the whole lawn; every edge/cut showed a green slab over water.
+Three scripts, run in Edit in this order on her "Yes, install islandbase1, propground1 and walkfix1 in Edit" (all previewed in play first):
+1. islandbase1.lua at 36822bb (7174 / 1741917845): terrain row [-8..-4] made solid Ground under the sheet (53,282 cells), an earth bank (-1.5) + sand
+   bar (-4) where the sheet ends over the sea (702 + 2 cells), the lake pier + 39 promenade parts lowered 1.0 so its stilts stand on the lawn
+   (IslandBaseWasY). Backup HudBackup.IslandBase_pre1 (PasteRegion corner 1338, -2, -98).
+2. propground1.lua at f1b5c03 (8024 / 1034937922): 496 props (rocks 136, trees 271, bushes 86) measured against real ground (terrain not water, or a
+   CanCollide part; trees/lanterns at the trunk, rocks/bushes at 5 points); 25 floating > 0.25 set down with a sink (lake weathered stones up to 15.4,
+   stream mossy stones ~3, bamboo clumps + foothill blossoms on the north hill up to 19.5); 2 rocks over deep water on a Sand shoal (FillBlock).
+   PropGroundWasCF on each. GOTCHA fixed on the way: a GROUP Model named like a rock ('Natural bank rocks') swallowed the boulders - groups > 70 are
+   looked inside; 'rockface' excluded (the tea waterfall face would have dropped 24).
+3. walkfix1.lua at 458ef4c (10678 / 2365063292): 2 lawn slabs levelled to 0.085, the tea-lookout slab a 1-deg ramp on an earth wedge, solid wedges under
+   the 6 ramps (gate / keep / lookout / 3 station approaches), a stone block under the volcano lookout deck. JapanMap.WalkFills; WalkFixWasCFrame.
+LESSONS: look for the CAUSE, not the symptom (the first round patched wedges under slabs - 'that does not look fixed?'); Japan's lawn = invisible
+CanCollide floor at 0 + grass mesh at -0.04 + terrain sea at -6; measure props against real ground over the WHOLE map, not the one she pointed at;
+her screenshots are small - take close, low pictures of the exact thing.
+Pictures: tools/japan/shots_ground_2026-10-17 (gate/station/keep/lookout before-after, pier before-after, shore + stream close). Shannon: publish.
+NEXT from her: the shop backs ("the back sides of the shops are just plain walls, they need to be finished to look like the back of the shops would actually look like").
