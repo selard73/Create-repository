@@ -19,16 +19,16 @@ local RECESS = 0.5                                                              
 --   doors = 1 or 2 (a double door for the storerooms); gwin = ground-floor windows 0..2; upper = upper-floor windows 0..2 (two-storey shops);
 --   lanterns 0..2; pipes = S / N / both corners; doorAt = -1 (south) / 0 (centre) / 1 (north)
 local SHOPS = {
-	{"Sushi bar",            {"sake_barrel2", "water_tub", "crate_stack2"}, lattice = "full",  awning = "full", doors = 1, gwin = 1, upper = 0, lanterns = 1, pipes = "S",    doorAt = 1},
-	{"Rice and provisions",  {"crate_stack2", "crate_stack2", "sake_barrel2"}, lattice = "none", awning = "door", doors = 2, gwin = 0, upper = 0, lanterns = 0, pipes = "N",    doorAt = 0},
+	{"Sushi bar",            {"sake_barrel2", "water_tub", "crate_stack2"}, lattice = "full",  awning = "full", doors = 1, gwin = 2, upper = 0, lanterns = 1, pipes = "S",    doorAt = 1},
+	{"Rice and provisions",  {"crate_stack2", "crate_stack2", "sake_barrel2"}, lattice = "none", awning = "door", doors = 2, gwin = 1, upper = 0, lanterns = 0, pipes = "N",    doorAt = 0},
 	{"Paper umbrella craft", {"crate_stack2", "broom"},                  lattice = "left",  awning = "full", doors = 1, gwin = 2, upper = 2, lanterns = 1, pipes = "S",    doorAt = -1},
-	{"Calligraphy teahouse", {"wood_shed", "water_tub", "broom"},        lattice = "right", awning = "full", doors = 1, gwin = 1, upper = 1, lanterns = 1, pipes = "N",    doorAt = 1},
+	{"Calligraphy teahouse", {"wood_shed", "water_tub", "broom"},        lattice = "right", awning = "full", doors = 1, gwin = 2, upper = 2, lanterns = 1, pipes = "N",    doorAt = 1},
 	{"Mikan greengrocer",    {"crate_stack2", "crate_stack2", "crate_stack2"}, lattice = "none", awning = "door", doors = 2, gwin = 1, upper = 0, lanterns = 0, pipes = "S",    doorAt = 0},
-	{"Ramen kitchen",        {"sake_barrel2", "water_tub", "wood_shed"},  lattice = "full",  awning = "full", doors = 1, gwin = 1, upper = 0, lanterns = 1, pipes = "N",    doorAt = -1},
+	{"Ramen kitchen",        {"sake_barrel2", "water_tub", "wood_shed"},  lattice = "full",  awning = "full", doors = 1, gwin = 2, upper = 0, lanterns = 1, pipes = "N",    doorAt = -1},
 	{"Lantern workshop",     {"wood_shed", "crate_stack2"},               lattice = "left",  awning = "full", doors = 1, gwin = 2, upper = 2, lanterns = 2, pipes = "both", doorAt = -1},
-	{"Kimono atelier",       {"water_tub", "broom"},                      lattice = "full",  awning = "full", doors = 1, gwin = 1, upper = 2, lanterns = 1, pipes = "N",    doorAt = 1},
-	{"Kimono shop",          {"crate_stack2", "broom"},                   lattice = "right", awning = "door", doors = 1, gwin = 2, upper = 1, lanterns = 0, pipes = "S",    doorAt = -1},
-	{"Cat cafe",             {"water_tub", "crate_stack2", "broom"},      lattice = "full",  awning = "full", doors = 1, gwin = 1, upper = 2, lanterns = 1, pipes = "both", doorAt = 0},
+	{"Kimono atelier",       {"water_tub", "broom"},                      lattice = "full",  awning = "full", doors = 1, gwin = 2, upper = 2, lanterns = 1, pipes = "N",    doorAt = 1},
+	{"Kimono shop",          {"crate_stack2", "broom"},                   lattice = "right", awning = "door", doors = 1, gwin = 2, upper = 2, lanterns = 0, pipes = "S",    doorAt = -1},
+	{"Cat cafe",             {"water_tub", "crate_stack2", "broom"},      lattice = "full",  awning = "full", doors = 1, gwin = 2, upper = 2, lanterns = 1, pipes = "both", doorAt = 0},
 }
 local C = Color3.fromRGB
 local TILE = {Enum.Material.Slate, C(58, 58, 66)}
@@ -122,7 +122,7 @@ for si, S in ipairs(SHOPS) do
 	take(doorZ - doorW / 2, doorZ + doorW / 2)
 	-- ground-floor windows: away from the door, spread over the wall
 	local wins = {}
-	local cands = {cf.Z - sz.Z * 0.3, cf.Z + sz.Z * 0.3, cf.Z - sz.Z * 0.12, cf.Z + sz.Z * 0.12}
+	local cands = {cf.Z - sz.Z * 0.3, cf.Z + sz.Z * 0.3, cf.Z - sz.Z * 0.12, cf.Z + sz.Z * 0.12, cf.Z - sz.Z * 0.42, cf.Z + sz.Z * 0.42}
 	for _, wz in ipairs(cands) do
 		if #wins < S.gwin and free(wz - 2.4, wz + 2.4) and wz - 2.2 > z0 and wz + 2.2 < z1 then
 			place(string.format("%s_window%d", S[1], #wins), "back_window2", wallX, wz, outDir); take(wz - 2.4, wz + 2.4); table.insert(wins, wz)
