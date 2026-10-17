@@ -5,9 +5,10 @@
 -- -12, and 8 part koi floating ON the water. This script:
 --  * retires the rock rim and the part koi to ServerStorage.HudBackup.PondReplaced (attribute PondWasIn on each)
 --  * terrain (backup HudBackup.PondTerrain_pre1, first run only): a flat Slate bed at 0 (3.9 of water) inside r 42; the water row
---    [0..4] kept as water only in cells whose centre is within r 37.6 (they cover the wall's water face, r 35, with no gap and stay
---    inside its 40.5 back); the old sand rim above 0 cleared out to r 44
---  * places the kit Model "pond_ring" (gen_pond.py) as PondRing: the wall (water face r 35, ledge 4.1) and the paving out to r 49.2 in
+--    [0..4] kept as water only in cells whose centre is within r 37.6: terrain water rounds off over its outermost cell, so it is
+--    flat only inside squares of four water-cell centres - out to r 32, the wall's water face (round 1's face at 35 showed a jagged
+--    dark strip) - and it reaches r 40.3 at worst, inside the wall's 40.5 back; the old sand rim above 0 cleared out to r 44
+--  * places the kit Model "pond_ring" (gen_pond.py, round 2) as PondRing: the wall (water face r 32, ledge 4.1) and the paving out to r 49.2 in
 --    the palace flagstone (Pavement + JM_PhotographicPath, white - the court's own), the coping slabs in the canal's cut stone; all
 --    solid, PreciseConvexDecomposition set on the placed parts (a kit setting does not reach clones made in the same call)
 --  * PondLife: 10 of Shannon's Meshy koi (kit koi_meshy, 2.4 long, Atomic) circling in slow meanders, their tops 0.2 under the
@@ -15,6 +16,8 @@
 --  * StarterPlayerScripts.JapanWaterAppearance: the canal's teal water (40,104,112 / 0.68 / 0.2) also round the pond (marker
 --    PONDWATER1; backup HudBackup.JapanWaterAppearance_pre_pondwater1). A running client keeps its old copy until it rejoins.
 -- Re-runnable (PondRing and PondLife are rebuilt; the terrain backup is kept from the first run). Output "QQ PONDFIX1".
+-- Undo: PondRing + PondLife -> delete; HudBackup.PondReplaced's two back to their PondWasIn; Terrain:PasteRegion(HudBackup.PondTerrain_pre1,
+-- Vector3int16.new(1567, -4, -8), true); JapanWaterAppearance.Source from HudBackup.JapanWaterAppearance_pre_pondwater1.
 local SS = game:GetService("ServerStorage")
 local T = workspace.Terrain
 local CX, CZ, WATER = 6322, 21.5, 3.9
@@ -26,7 +29,7 @@ local PG = J and J:FindFirstChild("PalaceGrounds")
 local POND = PG and PG:FindFirstChild("Koi pond set piece")
 if not (KIT and POND) then print("QQ PONDFIX1 ABORT: ServerStorage.JapanGardenKit or JapanMap.PalaceGrounds.'Koi pond set piece' missing") return end
 local SRC = KIT:FindFirstChild("pond_ring")
-if not SRC then print("QQ PONDFIX1 ABORT: the kit has no Model 'pond_ring' - import japan_kit12_pond_ring.fbx") return end
+if not SRC then print("QQ PONDFIX1 ABORT: the kit has no Model 'pond_ring' - import japan_kit13_pond_ring2.fbx") return end
 local KOI = KIT:FindFirstChild("koi_meshy")
 if not KOI then print("QQ PONDFIX1 ABORT: the kit has no 'koi_meshy' (Shannon's Meshy koi)") return end
 local BB = {min = Vector3.new(-49.2, -0.6, -49.2), max = Vector3.new(49.2, 4.7, 49.2)}            -- out_pond/pieces.json (Roblox axes)
@@ -109,9 +112,9 @@ for i = 1, KOI_N do
 	kcf, ksz = k:GetBoundingBox()
 	k.WorldPivot = CFrame.new(kcf.Position)                                                        -- the Meshy koi's head is its -Z (as in the canal)
 	k.ModelStreamingMode = Enum.ModelStreamingMode.Atomic
-	local R = 9 + (i - 1) * 2 + rnd:NextNumber(-1, 1)                                                -- 9..27: spread over the pond
-	local a1 = math.min(rnd:NextNumber(2, 3.5), 31.5 - R - 1.2)
-	local a2 = math.min(rnd:NextNumber(0.6, 1.2), 31.5 - R - a1)
+	local R = 8 + (i - 1) * 1.8 + rnd:NextNumber(-0.8, 0.8)                                         -- 8..25: spread over the pond
+	local a1 = math.min(rnd:NextNumber(2, 3.5), 28.5 - R - 1.2)                                     -- the koi (2.4 long) stay 3.5 off the r 32 face
+	local a2 = math.min(rnd:NextNumber(0.6, 1.2), 28.5 - R - a1)
 	k:SetAttribute("PondCX", CX); k:SetAttribute("PondCZ", CZ); k:SetAttribute("PondR", R)
 	k:SetAttribute("PondA1", a1); k:SetAttribute("PondA2", a2)
 	k:SetAttribute("PondP1", rnd:NextNumber(0, 6.28)); k:SetAttribute("PondP2", rnd:NextNumber(0, 6.28))
@@ -159,7 +162,7 @@ end)
 ]==]
 ls.Parent = LF
 LF.Parent = POND
-print(string.format("QQ PONDFIX1 koi: %d Meshy koi in PondLife (Atomic, tops %.1f under the surface, rings r 9..27), PondLifeScript (client)", nkoi, KOI_TOP_UNDER))
+print(string.format("QQ PONDFIX1 koi: %d Meshy koi in PondLife (Atomic, tops %.1f under the surface, rings r 8..25), PondLifeScript (client)", nkoi, KOI_TOP_UNDER))
 -- ---------- 5. the canal's teal water round the pond too ----------
 local sps = game:GetService("StarterPlayer"):FindFirstChild("StarterPlayerScripts")
 local wa = sps and sps:FindFirstChild("JapanWaterAppearance")

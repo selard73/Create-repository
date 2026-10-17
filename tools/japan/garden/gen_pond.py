@@ -4,11 +4,13 @@ water and koi swimming under the surface. The pond had a rounded rock rim (JP_Ko
 ragged hole in the court mesh, a sand bowl down to -12, and part koi floating ON the water.
 This builds ONE ring, centred on the origin (the installer puts the origin at the pond's centre (6322, 0, 21.5); heights are world
 heights: Blender z = Roblox y; the water surface stays at 3.9):
-  Wall_Stone_k   (k = 0..7, one per 45 deg) the pond wall: water face at r 35.0 from y -0.6 (in the bed) to 4.3, a 5.5-thick body to
-                 r 40.5 (the terrain's 4-stud water cells reach r 40.3 at worst: all inside), its outer top a flagstone ledge at 4.1
-                 (0.9 over the paving) - Studio: Pavement + JM_PhotographicPath, white (as the canal walls)
-  Wall_Coping_k  cut-stone coping slabs r 34.6..38.4 (0.4 over the water), y 4.3..4.7, 64 slabs round, 0.06 joints - Studio: the
-                 canal coping's SmoothPlastic 0.66 / 0.65 / 0.61
+  Wall_Stone_k   (k = 0..7, one per 45 deg) the pond wall: water face at r 32.0 from y -0.6 (in the bed) to 4.3, an 8.5-thick body to
+                 r 40.5, its outer top a flagstone ledge at 4.1 (0.9 over the paving) - Studio: Pavement + JM_PhotographicPath, white (as
+                 the canal walls). Why so thick: terrain water rounds off over its outermost 4-stud cell, so it is flat only where a point
+                 sits inside a square of four water-cell centres. Water cells with centres inside r 37.6 are flat out to r 32 (round 1
+                 put the face at 35 and the water stopped short of it in a jagged line) and reach r 40.3 at worst - all inside the wall.
+  Wall_Coping_k  cut-stone coping slabs r 31.6..36.2 (0.4 over the water; 4.6 wide as the canal's), y 4.3..4.7, 64 slabs round, 0.06
+                 joints - Studio: the canal coping's SmoothPlastic 0.66 / 0.65 / 0.61
   Apron_Stone_k  the paving that closes the court's hole: r 40.4..49.2, top 3.19 (between the palace pebble apron 3.13 and the
                  walkway 3.25), a bevel down to 2.95 at the outer edge - Studio: Pavement + JM_PhotographicPath, white (the court's own)
 UVs: vertical faces cylindrical (round the ring), horizontal faces planar, 6 studs per tile (as the canal kit), so a Studio material
@@ -23,7 +25,7 @@ LOG = os.path.join(OUT, "gen_log.txt")
 def log(m): open(LOG, "a").write(str(m) + "\n"); print(m)
 COL = {"Wall_Stone": (0.56, 0.55, 0.51), "Wall_Coping": (0.66, 0.65, 0.61), "Apron_Stone": (0.60, 0.58, 0.54)}
 UV_STUDS = 6.0
-R_FACE, R_BACK, R_COPE_IN, R_COPE_OUT = 35.0, 40.5, 34.6, 38.4
+R_FACE, R_BACK, R_COPE_IN, R_COPE_OUT = 32.0, 40.5, 31.6, 36.2
 Y_BOT, Y_WALL_TOP, Y_LEDGE, Y_COPE = -0.6, 4.3, 4.1, 4.7
 R_APRON_IN, R_APRON_FLAT, R_APRON_OUT = 40.4, 48.6, 49.2
 Y_APRON_BOT, Y_APRON, Y_APRON_EDGE = 2.8, 3.19, 2.95
