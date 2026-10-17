@@ -4149,3 +4149,24 @@ her screenshots are small - take close, low pictures of the exact thing.
 Pictures: tools/japan/shots_ground_2026-10-17 (gate/station/keep/lookout before-after, pier before-after, shore + stream close). Shannon: publish.
 NEXT from her: the shop backs ("the back sides of the shops are just plain walls, they need to be finished to look like the back of the shops would actually look like").
 PUBLISHED by Shannon ~06:20Z Oct 17: islandbase1 + propground1 + walkfix1 LIVE once servers restart. Next: the shop backs.
+## Shop backs - round 2 INSTALLED in Edit (runner 7, Oct 17 ~07:40Z), NOT published
+Shannon: "the back sides of the shops are just plain walls, they need to be finished to look like the back of the shops would actually look like".
+Round 1 (gen_shop_back.py / shopbacks1.lua / kit19: plank door stuck on the wall, window lost inside the wall, 'laundry' = three coloured rectangles, tapered bins):
+previewed, rejected - "the doors are not connected to the wall", "what are those red white and blue hanging things?", "that looks terrible". Never installed.
+She then sent three references (tools/japan/reference_2026-10-17/SHOPFRONTS.md): a machiya front (dark lattice band, continuous tile awning, lattice door/window,
+paper lantern), a grocery front, a Takayama dark-timber front.
+Round 2 (gen_shop_back2.py -> kit japan_kit20_shop_backs2.fbx, she imported it; shopbacks2.lua): lattice door + lattice window SET INTO the wall (a 0.5 recess),
+a dark koshi lattice band along the lower wall, a continuous tile awning on brackets, a paper chochin lantern, upper-floor lattice windows with tile hoods
+on the two-storey shops, drainpipes, and yard things (crates, sake barrel, water tub with ladle, firewood lean-to, broom). Her asks on the way, all done:
+windows (the first run had set them at ground level - pivot at the lowest point, fixed: pivot at the ground line), the door's dark recess in front (mirrored
+facing, fixed + a side check), upper-floor windows, 'each one should not look exactly alike' (per-shop layout: double doors on the two storerooms with no
+lattice and an awning over the door only, lattice full / one half / none, door south / centre / north, lanterns 0-2, pipes S / N / both), 'more than one
+window' (two ground-floor windows on every shop, one on the storerooms; two upstairs on every two-storey shop; window spots every 3 studs, farthest from the door first).
+INSTALLED = GitHub 394403d (14987 / 3371887766) + the window-spots patch applied in Luau = local commit cc7b8c3 (15172 / 2055611249). The patch is in the
+repo file; GitHub pushes FAILED during this stretch ('could not read Username for https://github.com' - git's credential prompt script would not start; the PC
+was low on memory with Studio + Blender + a play test) - push when it works again.
+QQ SHOPBACKS2 DONE: 164 pieces behind 10 shops in JapanMap.ShopBacks (kit turned back; 0 pieces turned round by the side check)
+Pictures: tools/japan/garden/shots_shopbacks_2026-10-17 (round 1 rejected; round 2 close + rows). Undo: delete JapanMap.ShopBacks. Shannon: publish.
+LESSONS: a kit piece's pivot must sit at its GROUND LINE, not its lowest vertex (windows/awnings/lanterns dropped to the floor); R_y(+90) sends local +z to
+world +x - get the facing right AND add a side check; when she gives references, build to them, not to a guess.
+NEXT: the Mikan greengrocer FRONT from her photo (SHOPFRONTS.md #2), then the other fronts.

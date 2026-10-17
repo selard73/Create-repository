@@ -1,0 +1,4 @@
+empties: back_door, back_window, bin, crate_stack, firewood, laundry_pole, sake_barrel, water_butt
+shot prev_shopback_yard.png
+shot prev_shopback_door.png
+CHECK_DONE
