@@ -4115,3 +4115,4 @@ must accept the first CanCollide hit, not the first visible one (two posts sank 
 the ground excepted) caught the roof banner before any picture - keep that pattern. The Gifts card pops 180 s into a test: hide GiftsGui again before late pictures.
 Pictures: tools/japan/garden/shots_wayfinding_2026-10-17. Undo: delete JapanMap.Wayfinding. Shannon: publish.
 NEXT in option 3: features into the gaps (koi feeding at the pond first), then trim the south strip + north margin to sea/cliff.
+PUBLISHED by Shannon ~04:45Z Oct 17: the wayfinding (wayfinding1) + the moon bridge ends (moonbridgeend3) are LIVE once servers restart. NEXT from her: "many walkways that are jacked up and sitting above the main ground they are on, we need all of those fixed".
