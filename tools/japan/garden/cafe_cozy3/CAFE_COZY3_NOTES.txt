@@ -51,3 +51,14 @@ Actual Play pictures: cafe_cozy3_overview.jpg, cafe_cozy3_nook.jpg,
 cafe_cozy3_tea.jpg, cafe_cozy3_phone_door.jpg.
 The tea picture preceded only the added right cubby shelf; its pictured area is unchanged.
 The phone doorway picture preceded only that indoor shelf; its pictured area is unchanged.
+
+UPDATE: door bell, quieter floor and subtle steam (Oct 17)
+Use the latest generated cafe_cozy3.lua, which includes polish_patch.lua and the generated
+door_client.lua. Bell 131845870598154 at .6 matches all three French shops; it plays once
+on each successful entry/exit, with no ring for stale/aborted completion.
+Five floor meshes use uniform matte honey oak with the same geometry. All ten steam
+emitters (six interior, four street display) use 1.2 particles/sec, .9-1.25-second life,
+.23 maximum size and seven percent peak opacity, pale additive color. Seven cats retained.
+Latest actual pictures are cafe_quiet_floor_preview.jpg and cafe_subtle_steam_preview.jpg;
+earlier images show the preceding floor/steam. Entry/exit bell counts1 and2; stale token
+left count2; sound loaded,1.974 seconds. See polish_checks.json. Still Server preview only.

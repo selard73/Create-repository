@@ -45,15 +45,32 @@ server=server.replace('alive=false;connection:Disconnect();removed:Disconnect()'
 (D/'door_server.lua').write_text(server)
 camera=(BASE/'camera_client.lua').read_text().replace('Vector3.new(16.80,11.05,-.15)','Vector3.new(16.80,9.15,-.15)')
 (D/'camera_client.lua').write_text(camera)
+client=(BASE/'door_client.lua').read_text()
+bell='''-- Same door bell and volume as the French Bookshop, HatShop and DressShop.
+local doorBell=Instance.new("Sound");doorBell.Name="CafeDoorBell"
+doorBell.SoundId=bridge:GetAttribute("DoorSound")or"rbxassetid://131845870598154"
+doorBell.Volume=bridge:GetAttribute("DoorVolume")or .6;doorBell.PlaybackSpeed=1;doorBell.Looped=false;doorBell.Parent=gui
+task.spawn(function()pcall(function()game:GetService("ContentProvider"):PreloadAsync({doorBell})end)end)
+'''
+assert client.count('gui.Parent=pg\n')==1
+client=client.replace('gui.Parent=pg\n','gui.Parent=pg\n'+bell)
+finish='  if pending and pending.token==token then pending=nil;fade(1)end'
+assert client.count(finish)==1
+client=client.replace(finish,'''  if pending and pending.token==token then
+   pending=nil
+   if action=="FadeIn"then doorBell:Stop();doorBell.TimePosition=0;doorBell:Play()end
+   fade(1)
+  end''')
+(D/'door_client.lua').write_text(client)
 template=(BASE/'install.template.lua').read_text()
 template=template.replace('CAFEINTERIOR2_ALLOW_EDIT==true','CAFECOZY3_ALLOW_EDIT==true')
 marker='verify()\nlocal createdBackup=false'
 assert template.count(marker)==1
-template=template.replace(marker,(D/'cozy_patch.lua').read_text()+'\n'+marker)
+template=template.replace(marker,(D/'cozy_patch.lua').read_text()+'\n'+(D/'polish_patch.lua').read_text()+'\n'+marker)
 template=template.replace('38 wall decor meshes; 34x28 room, 11.3 ceiling','38 original wall decor meshes; 34x28 room, lowered 9.8 ceiling')
 template=template.replace('runtime entrance/exit, timeout, respawn and camera tests still required','closed mesh doors; E/tap entry and exit only; no walk-through transition')
 template=template.replace('four steaming mugs retained','four original steaming mugs plus two at the new seating nook')
 import json
-code=template.replace('__DATA__',json.dumps(json.loads((BASE/'out/manifest.json').read_text()),separators=(',',':'))).replace('__CAMERA__',camera).replace('__SERVER__',server).replace('__CLIENT__',(BASE/'door_client.lua').read_text())
+code=template.replace('__DATA__',json.dumps(json.loads((BASE/'out/manifest.json').read_text()),separators=(',',':'))).replace('__CAMERA__',camera).replace('__SERVER__',server).replace('__CLIENT__',client)
 (D/'cafe_cozy3.lua').write_text(code)
 print('CAFECOZY3_SOURCE_READY: staged existing-mesh redesign with prompt-only doors')

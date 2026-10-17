@@ -296,6 +296,11 @@ local gui=Instance.new("ScreenGui");gui.Name="CafeDoorwayFade";gui.IgnoreGuiInse
 gui.ScreenInsets=Enum.ScreenInsets.None;gui.ClipToDeviceSafeArea=false
 local shade=Instance.new("Frame");shade.Size=UDim2.fromScale(1,1);shade.BackgroundColor3=Color3.fromRGB(28,24,21);shade.BackgroundTransparency=1;shade.BorderSizePixel=0;shade.Parent=gui
 gui.Parent=pg
+-- Same door bell and volume as the French Bookshop, HatShop and DressShop.
+local doorBell=Instance.new("Sound");doorBell.Name="CafeDoorBell"
+doorBell.SoundId=bridge:GetAttribute("DoorSound")or"rbxassetid://131845870598154"
+doorBell.Volume=bridge:GetAttribute("DoorVolume")or .6;doorBell.PlaybackSpeed=1;doorBell.Looped=false;doorBell.Parent=gui
+task.spawn(function()pcall(function()game:GetService("ContentProvider"):PreloadAsync({doorBell})end)end)
 local pending;local visible=nil;local runningTween;local alive=true
 local function fade(value)
  if runningTween then runningTween:Cancel()end
@@ -340,7 +345,11 @@ local receive=event.OnClientEvent:Connect(function(action,token,inside,target)
   until os.clock()>deadline or pending~=this or not alive
   if pending==this then event:FireServer(ready and "Ready"or"Abort",token)end
  elseif action=="FadeIn"or action=="Abort"then
-  if pending and pending.token==token then pending=nil;fade(1)end
+  if pending and pending.token==token then
+   pending=nil
+   if action=="FadeIn"then doorBell:Stop();doorBell.TimePosition=0;doorBell:Play()end
+   fade(1)
+  end
  end
 end)
 local removing=player.CharacterRemoving:Connect(function()if pending then event:FireServer("Abort",pending.token)end;pending=nil;fade(1)end)
@@ -462,6 +471,30 @@ makeDoor(room,"ExitDoor",frame*CFrame.new(-11,0,.1)*CFrame.Angles(0,math.pi,0),5
 room:SetAttribute("CafeCozyVersion","cozy3");room:SetAttribute("InteriorCeilingHeight",9.8);bridge:SetAttribute("DoorwayMode","InteractionOnly")
 print("QQ CAFECOZY3: warm quiet floor; two tea/seating nooks; six visitor seats; seven original cats; inward-facing cubby; plants and cat artwork; 9.8 ceiling")
 print("QQ CAFECOZY3 DOORS: two closed lattice mesh doors; E/gamepad/tap prompts; walking cannot begin entry or exit; existing shop exterior retained")
+
+-- The same small appearance/audio patch is used by the full staged installer and Play refresh.
+local floorCount=0
+for _,p in ipairs(room.Architecture:GetChildren())do
+ if p:IsA("MeshPart")and(p.Name:find("CI2_Floor",1,true)==1 or p.Name=="CI2_VestibuleFloor_Oak")then
+  p.Material=Enum.Material.SmoothPlastic;p.Color=Color3.fromRGB(187,163,132);floorCount+=1
+ end
+end
+assert(floorCount==5,"Unexpected cafe floor mesh count")
+local steamCount=0
+for _,root in ipairs({room,display})do for _,v in ipairs(root:GetDescendants())do
+ if v:IsA("ParticleEmitter")and v.Name=="GentleTeaSteam"then
+  v.Rate=1.2;v.Lifetime=NumberRange.new(.9,1.25);v.Speed=NumberRange.new(.18,.27);v.Acceleration=Vector3.new(0,.04,0)
+  v.Size=NumberSequence.new({NumberSequenceKeypoint.new(0,.055),NumberSequenceKeypoint.new(.45,.14),NumberSequenceKeypoint.new(1,.23)})
+  v.Color=ColorSequence.new(Color3.fromRGB(250,247,240))
+  v.Transparency=NumberSequence.new({NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(.25,.93),NumberSequenceKeypoint.new(1,1)})
+  v.LightInfluence=0;v.LightEmission=1;steamCount+=1
+ end
+end end
+assert(steamCount==10,"Expected six interior mugs and four street-display mugs")
+bridge:SetAttribute("DoorSound","rbxassetid://131845870598154");bridge:SetAttribute("DoorVolume",.6)
+room:SetAttribute("CafePolishVersion","quiet_floor_steam_bell1")
+print("QQ CAFECOZY3 POLISH: five floor meshes in uniform matte honey oak; ten steam emitters reduced to small pale wisps; seven cats retained")
+print("QQ CAFECOZY3 BELL: French shop sound 131845870598154 at volume .6; one ring per successful entry or exit")
 
 verify()
 local createdBackup=false

@@ -1,0 +1,37 @@
+{
+  "exit": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"fade\":1,\"bellCount\":1,\"loaded\":true,\"anchored\":false,\"playing\":false,\"inside\":false}"
+      }
+    ],
+    "isError": false
+  },
+  "entry": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"fade\":1,\"bellCount\":2,\"loaded\":true,\"anchored\":false,\"playing\":false,\"inside\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "staleToken": "Bell count remained 2 after unsolicited stale FadeIn token -999",
+  "bellAsset": {
+    "id": "rbxassetid://131845870598154",
+    "volume": 0.6,
+    "length": 1.9736961451247166,
+    "source": "Read from Workspace.Bookshop/HatShop/DressShop DoorSound and DoorVolume"
+  },
+  "appearance": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"roomMeshes\":352,\"status\":\"SERVER PREVIEW ONLY\",\"floors\":[{\"color\":\"0.733333, 0.639216, 0.517647\",\"material\":\"SmoothPlastic\",\"name\":\"CI2_FloorBase_OakDark\"},{\"color\":\"0.733333, 0.639216, 0.517647\",\"material\":\"SmoothPlastic\",\"name\":\"CI2_Floor_OakDark\"},{\"color\":\"0.733333, 0.639216, 0.517647\",\"material\":\"SmoothPlastic\",\"name\":\"CI2_VestibuleFloor_Oak\"},{\"color\":\"0.733333, 0.639216, 0.517647\",\"material\":\"SmoothPlastic\",\"name\":\"CI2_Floor_Oak\"},{\"color\":\"0.733333, 0.639216, 0.517647\",\"material\":\"SmoothPlastic\",\"name\":\"CI2_Floor_OakLight\"}],\"steam\":[{\"path\":\"Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TableGoods1_Tea.TeaSteam1.GentleTeaSteam\",\"opacity\":0.06999999284744263,\"lightEmission\":1,\"maxSize\":0.23000000417232514,\"rate\":1.2000000476837159,\"life\":[0.8999999761581421,1.25]},{\"path\":\"Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TableGoods1_Tea.TeaSteam2.GentleTeaSteam\",\"opacity\":0.06999999284744263,\"lightEmission\":1,\"maxSize\":0.23000000417232514,\"rate\":1.2000000476837159,\"life\":[0.8999999761581421,1.25]},{\"path\":\"Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TableGoods0_Tea.TeaSteam1.GentleTeaSteam\",\"opacity\":0.06999999284744263,\"lightEmission\":1,\"maxSize\":0.23000000417232514,\"rate\":1.2000000476837159,\"life\":[0.8999999761581421,1.25]},{\"path\":\"Workspace.JapanMap.ShopFronts.CatCafeInterior.Furniture.C1_TableGoods0_Tea.TeaSteam2.GentleTeaSteam\",\"opacity\":0.06999999284744263,\"lightEmission\":1,\"maxSize\":0.23000000417232514,\"rate\":1.2000000476837159,\"life\":[0.8999999761581421,1.25]},{\"path\":\"Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTea.C1_TableGoods1_Tea.TeaSteam1.GentleTeaSteam\",\"opacity\":0.06999999284744263,\"lightEmission\":1,\"maxSize\":0.23000000417232514,\"rate\":1.2000000476837159,\"life\":[0.8999999761581421,1.25]},{\"path\":\"Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingTea.C1_TableGoods1_Tea.TeaSteam2.GentleTeaSteam\",\"opacity\":0.06999999284744263,\"lightEmission\":1,\"maxSize\":0.23000000417232514,\"rate\":1.2000000476837159,\"life\":[0.8999999761581421,1.25]},{\"path\":\"Workspace.JapanMap.ShopFronts.CatCafe.C1_TableGoods1_Tea.TeaSteam1.GentleTeaSteam\",\"opacity\":0.06999999284744263,\"lightEmission\":1,\"maxSize\":0.23000000417232514,\"rate\":1.2000000476837159,\"life\":[0.8999999761581421,1.25]},{\"path\":\"Workspace.JapanMap.ShopFronts.CatCafe.C1_TableGoods1_Tea.TeaSteam2.GentleTeaSteam\",\"opacity\":0.06999999284744263,\"lightEmission\":1,\"maxSize\":0.23000000417232514,\"rate\":1.2000000476837159,\"life\":[0.8999999761581421,1.25]},{\"path\":\"Workspace.JapanMap.ShopFronts.CatCafe.C1_TableGoods0_Tea.TeaSteam1.GentleTeaSteam\",\"opacity\":0.06999999284744263,\"lightEmission\":1,\"maxSize\":0.23000000417232514,\"rate\":1.2000000476837159,\"life\":[0.8999999761581421,1.25]},{\"path\":\"Workspace.JapanMap.ShopFronts.CatCafe.C1_TableGoods0_Tea.TeaSteam2.GentleTeaSteam\",\"opacity\":0.06999999284744263,\"lightEmission\":1,\"maxSize\":0.23000000417232514,\"rate\":1.2000000476837159,\"life\":[0.8999999761581421,1.25]}]}"
+      }
+    ],
+    "isError": false
+  },
+  "note": "Appearance patch and regenerated client applied narrowly to existing Server preview. Full regenerated installer parsed. No permanent Edit change; seven cats retained."
+}
