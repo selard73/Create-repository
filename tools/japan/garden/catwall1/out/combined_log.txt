@@ -1,0 +1,2 @@
+FINISHING1_ROUNDTRIP_PASS: 51 meshes, 7 cats, 70 bones; wall bounds, textures, weights and actual skin deformation preserved
+FINISHING1_DONE

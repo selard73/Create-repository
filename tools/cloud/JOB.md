@@ -4409,3 +4409,24 @@ CATCATS2_SYNTAX_PASS: seven-cat preparation, placement and client idle controlle
 - Saved scripts/checks/manifest/pictures/FBX in garden/cafe_cats2; new kitten preparation in garden/cafe_cat7. All original archives and intermediate model sources remain local. User-facing combined seven-cat .blend/FBX and pictures in chat outputs. Byte-identical japan_kit25_cat_cafe_cats2.fbx copied to OneDrive/Desktop/Japan garden kit. Kit24 preserved but is not additionally needed for import.
 - No Studio mutations, imports, permanent cafe installation, publication or DataStore writes. Existing cafe play preview left running; all new cafe additions still preview-only. No other shops changed.
 NEXT: Shannon stops Play, imports only kit25, and authorizes anchoring/preparation. Inspect actual hierarchy/scale/bones/textures; prepare source in Edit; Server-preview cafe furniture + audio/camera + seven cats. Validate actual movement, paws, streaming and seat/walking access; show actual play-test pictures; install only on her yes. Shannon publishes.
+
+
+## Cat cafe left-wall knickknacks and combined finishing kit26 (Codex solo, Oct 17 2026) - NOT IMPORTED OR INSTALLED
+Shannon requested cute knickknacks on the bare left side wall. Read-only Play inspection and an announced temporary camera capture confirmed the wall beside the tea tables. No Edit mutations or scene additions were made this turn.
+- Built native mesh decorations fitted to the existing cream/oak room: two shallow oak ledges, ceramic beckoning cat with red collar, sleeping cat on a rose pad, tiny tea cup/saucer, cat-shaped celadon planter with trailing vine, three miniature books, blossom vase, and framed smiling cat relief/paw prints. Reference: Gotokuji's official manekineko page (https://gotokuji.jp/en/manekineko/); original modeled artwork, no copied imagery.
+- Reviewed native Blender room pictures and refined the leaves, smooth curves, sleeping-cat details and camera framing. Wall geometry sits beside the tea seating, above the walking area, projecting less than one stud from the inner left wall. The existing back-wall paw artwork, furniture, tea, sound, camera and seven living cats are unchanged. Pictures are Blender design previews with render-only soft fill, NOT Roblox play-test pictures.
+- 41 source meshes including 3 two-stud alignment markers; 38 placed noncollidable meshes; 20,228 source triangles. Each mesh under 10,000 triangles. Checked wall fit and FBX round-trip names/bounds within .003 studs.
+Actual generator results:
+EXPORTED 41 meshes; 20228 triangles
+ROUNDTRIP_PASS: all mesh names and bounds within .003 studs
+CATWALL1_DONE
+- Combined all seven previously prepared cats with the new wall meshes into ONE japan_kit26_cafe_finishing1.fbx. Root cafe_finishing1 retains inner cat_cafe_cats2 and catwall1 Models. This supersedes kit25 for the NEXT import; do not import both. Existing prepared kit23 furniture source remains needed. Cats retain original textures (including Shannon-approved cream-kitten lettering), ten-bone rigs and seven placement configurations.
+Actual combined-export check:
+FINISHING1_ROUNDTRIP_PASS: 51 meshes, 7 cats, 70 bones; wall bounds, textures, weights and actual skin deformation preserved
+FINISHING1_DONE
+- prepare_cafe_finishing1.lua preflights BOTH source groups before anchoring/storage: 51 exact named meshes, 70 cat bones, textures, two-stud orthogonal markers, wall bounds. It moves only the imported two inner Models into ServerStorage.JapanGardenKit after Shannon's authorization. Also saved standalone wall preparation helper. No placed scene changes in preparation.
+- catwall1.lua is Server-first, requires explicit CATWALL1_ALLOW_EDIT for later approved installation, reconstructs source orientation from markers, validates left-wall bounds, restores palette, removes markers, and adds only CatCafe.LeftWallDecor with 38 noncollidable anchored mesh pieces. Seven-cat placement/idles use the unchanged cafe_cats2 scripts.
+Actual read-only syntax check (function definitions compiled, not executed):
+CATWALL1_SYNTAX_PASS: combined preparation and wall placement compile; functions not executed; Studio unchanged
+- Saved scripts, manifest/checks, pictures and final combined FBX in garden/catwall1. User-facing FBX, packed editable combined .blend, Blender pictures and notes in chat outputs. Byte-identical final combined FBX copied to OneDrive/Desktop/Japan garden kit. No installer QQ lines yet, no import, no new persistent source, no scene additions, no publication or DataStore writes. Existing Play session retained.
+NEXT: Shannon stops Play and imports ONLY kit26, then authorizes anchoring/preparation BEFORE Play. Inspect actual hierarchy and run prepare_cafe_finishing1 in Edit. Server-preview cafe furniture + audio/camera + seven cats + wall decor; verify real appearance/motion/streaming/access and show actual close pictures. Install only on her yes to those pictures. Shannon publishes.

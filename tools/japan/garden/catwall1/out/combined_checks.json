@@ -1,0 +1,46 @@
+{
+  "meshes": 51,
+  "wall_placed_meshes": 38,
+  "cats": 7,
+  "armatures": 7,
+  "bones": 70,
+  "triangles": 83264,
+  "bounds_tolerance": 0.003,
+  "skinchecks": [
+    {
+      "mesh": "CC2_Adorable_Tabby_Kitten",
+      "bones": 10,
+      "pose_delta": 0.07822433113746957
+    },
+    {
+      "mesh": "CC2_Blush_Eared_Kitten",
+      "bones": 10,
+      "pose_delta": 0.10015749690896991
+    },
+    {
+      "mesh": "CC2_Curious_Little_Tabby",
+      "bones": 10,
+      "pose_delta": 0.11092058970967553
+    },
+    {
+      "mesh": "CC2_Emerald_Eyed_Tabby_Ki",
+      "bones": 10,
+      "pose_delta": 0.09431343960475673
+    },
+    {
+      "mesh": "CC2_Ginger_Whiskers",
+      "bones": 10,
+      "pose_delta": 0.07637257186574233
+    },
+    {
+      "mesh": "CC2_Tuxedo_Kitten",
+      "bones": 10,
+      "pose_delta": 0.06670583323169799
+    },
+    {
+      "mesh": "CC2_Whisker_Wonder",
+      "bones": 10,
+      "pose_delta": 0.10328273649893521
+    }
+  ]
+}

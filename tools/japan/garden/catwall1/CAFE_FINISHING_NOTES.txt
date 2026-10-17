@@ -1,0 +1,49 @@
+1001 Squirrels - cafe finishing kit26 (October 17, 2026)
+
+IMPORT ONLY japan_kit26_cafe_finishing1.fbx for this next batch.
+It combines all seven prepared Meshy cats with the requested left-wall decorations.
+It supersedes kit25 for the next import; importing both would duplicate the cats.
+The existing kit23 cafe furniture source remains in Studio and is still needed.
+
+Shannon imports through File > Import 3D from:
+C:\Users\slard\OneDrive\Desktop\Japan garden kit\
+Stop Play first. After import, authorize anchoring/preparation BEFORE starting Play.
+
+Expected import structure:
+cafe_finishing1
+  cat_cafe_cats2 (7 skinned cat meshes, 70 bones, 3 alignment markers)
+  catwall1 (38 decoration meshes, 3 alignment markers)
+
+The wall design adds two shallow oak shelves, ceramic beckoning/sleeping cats,
+a cat-shaped planter and trailing vine, miniature books, a tea cup/saucer,
+a blossom vase, and a framed smiling cat relief with paw prints.
+The reference for the beckoning cat is Gotokuji's official manekineko page:
+https://gotokuji.jp/en/manekineko/
+The geometry/artwork is original and built from meshes in Blender.
+All wall pieces are noncollidable and project less than one stud into the room.
+The seven living cats retain their supplied textures, prepared rigs and positions.
+Shannon approved keeping the cream kitten's faint texture lettering for preview.
+
+The accompanying pictures are BLENDER DESIGN PREVIEWS, not Roblox play-test photos.
+The soft fill light used to make the wall details legible is render-only.
+Nothing in this batch has been installed in Studio or published.
+
+Next authorized source-preparation sequence:
+1. Read the actual imported hierarchy, mesh count, bones, textures and marker scale.
+2. With Shannon's authorization, run prepare_cafe_finishing1.lua in Edit.
+   It validates BOTH sources before anchoring all 51 meshes and moving the two
+   inner Models into ServerStorage.JapanGardenKit. It does not build the cafe.
+3. Start Play. Run cafe furniture, cafe audio/camera, catcafe_cats2.lua, catwall1.lua
+   on the SERVER. Wall placement only adds CatCafe.LeftWallDecor.
+4. Announce camera/avatar movements. Inspect actual close pictures of the wall and
+   all seven cats; verify idle motion, texture, placement, seats and walking access.
+5. Only install the approved full cafe batch in Edit after Shannon says yes to the
+   actual play-test pictures. Apply precise collision separately to furniture
+   colliders and independently read it back. Cats/decor have no colliders.
+6. Shannon publishes. Never publish or write DataStores on her behalf.
+
+Sources and scripts in work/catwall1 and repository tools/japan/garden/catwall1.
+Editable combined .blend is in this chat's outputs folder, with textures packed.
+Cat animation actions are retained in .blend; the FBX has no baked animations.
+The existing client idle controller drives stationary head, ear, chest and tail
+motions in Roblox. Walking and blinking animations are not included.

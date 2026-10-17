@@ -1,0 +1,5 @@
+EXPORTED 41 meshes; 20228 triangles
+ROUNDTRIP_PASS: all mesh names and bounds within .003 studs
+RENDER cafe_left_wall
+RENDER cafe_wall_details
+CATWALL1_DONE
