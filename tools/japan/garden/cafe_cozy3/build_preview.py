@@ -66,7 +66,7 @@ template=(BASE/'install.template.lua').read_text()
 template=template.replace('CAFEINTERIOR2_ALLOW_EDIT==true','CAFECOZY3_ALLOW_EDIT==true')
 marker='verify()\nlocal createdBackup=false'
 assert template.count(marker)==1
-template=template.replace(marker,(D/'cozy_patch.lua').read_text()+'\n'+(D/'polish_patch.lua').read_text()+'\n'+(D/'contrast_patch.lua').read_text()+'\n'+marker)
+template=template.replace(marker,(D/'cozy_patch.lua').read_text()+'\n'+(D/'polish_patch.lua').read_text()+'\n'+(D/'contrast_patch.lua').read_text()+'\n'+(D/'soft_palette_patch.lua').read_text()+'\n'+marker)
 template=template.replace('38 wall decor meshes; 34x28 room, 11.3 ceiling','38 original wall decor meshes; 34x28 room, lowered 9.8 ceiling')
 template=template.replace('runtime entrance/exit, timeout, respawn and camera tests still required','closed mesh doors; E/tap entry and exit only; no walk-through transition')
 template=template.replace('four steaming mugs retained','four original steaming mugs plus two at the new seating nook')

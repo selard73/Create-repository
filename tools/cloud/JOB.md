@@ -4736,3 +4736,30 @@ QQ CAFECOZY3 RUSTIC STATUS: SERVER PREVIEW ONLY; not installed in Edit or publis
 - Removed photo bindings and avatar/HUD overrides; deferred read confirmed Custom camera, FOV70, default1389x401 viewport, avatar inside standing/unanchored with health100. Cedar image fetch status Success. PowerShell startup hit an out-of-memory error while saving; a lightweight cmd/Python invocation completed the local save without closing apps.
 - Consulted Roblox MaterialVariant/MaterialService primary documentation while checking the temporary material trial: https://create.roblox.com/docs/reference/engine/classes/MaterialVariant and https://create.roblox.com/docs/reference/engine/classes/MaterialService .
 NEXT: Shannon reviews the rustic floor pictures. Still no Edit installation or publication. On her yes install latest cafe_cozy3.lua with CAFECOZY3_ALLOW_EDIT=true; compare preview_manifest.json AND four texture settings in rustic_floor_checks.json, then fresh Play verification. Shannon publishes.
+
+
+## Cafe softer walls/rugs after Studio restart (Codex solo, Oct 17 2026) - SERVER PREVIEW ONLY
+Shannon reopened Studio after the crash, said the walls contrasted too strongly with the floor, and added that both walls and rugs stood out too brightly. Prepared a softer palette and restored the saved cafe preview in the reopened place. She subsequently said "that looks better"; retained as current preview, without interpreting that feedback as a permanent-install instruction.
+- New Studio connection d05ed347-b277-4e88-9fa9-15bf278747d2, same place117372258657114. Read-only Edit inspection found36 anchored kit29 source meshes with preparation attribute, source lattice door, existing253-descendant cafe, and no larger interior. No Edit mutation was needed.
+- Added soft_palette_patch.lua after the existing grain/timber patches in build_preview.py. Final nine wall meshes are171/155/132; two rug bodies141/124/96 and weave151/133/105, with sage117/130/100 and rose145/117/108 borders. No floor, timber, furniture, cat, lamp or global lighting change for this adjustment.
+- Ran regenerated full installer on fresh Play Server, then refined the first wall/rug tones narrowly after actual pictures. Both final full source and initial source compiled. Narrow final refinement directly asserted CFrame/Size/Material/CanCollide unchanged.
+Actual full installer output (palette line applies to the final refined colors as well):
+QQ CAFECOZY3: warm quiet floor; two tea/seating nooks; six visitor seats; seven original cats; inward-facing cubby; plants and cat artwork; 9.8 ceiling
+QQ CAFECOZY3 DOORS: two closed lattice mesh doors; E/gamepad/tap prompts; walking cannot begin entry or exit; existing shop exterior retained
+QQ CAFECOZY3 FLOOR: five dark walnut floor meshes; subtle board tones and four soft cedar-grain textures; existing plank geometry retained
+QQ CAFECOZY3 POLISH: dark rustic walnut floor; ten steam emitters reduced to small pale wisps; seven cats retained
+QQ CAFECOZY3 BELL: French shop sound 131845870598154 at volume .6; one ring per successful entry or exit
+QQ CAFECOZY3 WOOD: 63 interior meshes recolored; espresso beams/trim; walnut furniture/counter; warm brown tops; quiet floor and soft cushions retained
+QQ CAFECOZY3 SOFT PALETTE: nine warm putty wall meshes; six muted flax rug meshes with quiet sage/rose borders; dark timber and rustic floor retained
+QQ CAFEINTERIOR2 BUILT: 33 new shell meshes; 82 full-size furniture meshes; 38 original wall decor meshes; 34x28 room, lowered 9.8 ceiling
+QQ CAFEINTERIOR2 CATS: six inside in distinct spots; seated Whisker greeter outside; seven intact ten-bone rigs; cream at 84 percent
+QQ CAFEINTERIOR2 DOORWAY: same-server fade and destination-floor check; closed mesh doors; E/tap entry and exit only; no walk-through transition
+QQ CAFEINTERIOR2 PRESERVED: 20905 existing Japan instances outside cafe/doorway lamp; original cafe backed up; exterior dimensions and other shops unchanged
+QQ CAFEINTERIOR2 AUDIO: existing two-track playlist and four meows retained; listening zone moved to larger room; four original steaming mugs plus two at the new seating nook
+QQ CAFEINTERIOR2 STATUS: SERVER PREVIEW; NOT PUBLISHED
+QQ CAFECOZY3 SOFT PALETTE COMPILE: final complete installer parsed; body not executed
+QQ CAFECOZY3 SOFT MANIFEST: all371 parts match prior layout/meshes/materials/collisions; only15 intended wall/rug colors differ (transform tolerance.0002)
+- After announced avatar/camera movement, actual E entry from the street succeeded in the new session; inside=true, sitting=false, anchored=false. Saved two actual Play pictures from the previous overview/nook positions. A timed Gifts popup was hidden temporarily before the final nook picture; no gift action was taken.
+- Compared all371 BaseParts against the saved pre-crash manifest, then saved only the15 intended palette updates. Final checks record normal Custom camera, FOV70,1389x635 viewport, health100, inside standing/unanchored, grain image fetch Success. HUD/avatar/photo overrides removed.
+- Fresh session has cooler floor reflections than the earlier session; no global lighting or floor appearance workaround was applied. Photos show actual current rendering. Saved soft_palette_checks.json, updated notes/manifest, generated installer, patch and two pictures.
+NEXT: Current softer palette is preferred by Shannon. Still awaiting explicit yes to permanent Edit installation. Install latest cafe_cozy3.lua with CAFECOZY3_ALLOW_EDIT=true, compare preview_manifest.json and rustic_floor_checks.json, then fresh Play verification. Shannon publishes.

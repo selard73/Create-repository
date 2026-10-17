@@ -101,3 +101,22 @@ Full regenerated installer parsed. Same floor source reapplied to Play; four tex
 371 BaseParts. Check texture properties against rustic_floor_checks.json as well as
 the updated BasePart preview_manifest.json when installing.
 Still Server preview only, awaiting Shannon's yes. Shannon publishes.
+
+UPDATE: warm putty walls and muted flax rugs (Oct 17) - current preview
+After reopening Studio, Shannon found the walls/rugs too bright against the dark floor.
+The stored36-mesh kit29 source survived, anchored and prepared. Rebuilt the entire cafe
+in a fresh Play session, then refined nine wall meshes to171/155/132 and six rug meshes:
+body141/124/96, weave151/133/105, sage border117/130/100, rose border145/117/108.
+soft_palette_patch.lua runs after the floor and timber patches in the full installer.
+All371 parts compared to the prior saved layout: only15 requested colors differ;
+mesh IDs/materials/collisions match, transforms/sizes within.0002. Final refinement
+also checked CFrame/Size/Material/CanCollide preservation directly before/after.
+E entrance worked in the fresh session. Full installer preserved20905 other Japan
+instances and existing music source. Camera/HUD/avatar restored after pictures.
+Fresh session renders a cooler floor reflection than the earlier session; no global
+lighting or floor material changes were made for these pictures.
+Latest photos: cafe_soft_palette_overview.jpg and cafe_soft_palette_nook.jpg.
+See soft_palette_checks.json and rustic_floor_checks.json for the saved revision.
+Shannon said "that looks better" during review. Retained as current preview; this
+feedback was not treated as an explicit request for permanent installation.
+Still Play-only. Install in Edit on her yes; Shannon publishes.

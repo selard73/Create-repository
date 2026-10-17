@@ -1,0 +1,215 @@
+{
+  "parts": 371,
+  "colorChanges": [
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_BackWall_Wall",
+      "before": [
+        0.9373,
+        0.902,
+        0.8275
+      ],
+      "after": [
+        0.6706,
+        0.6078,
+        0.5176
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_DoorHeader_Wall",
+      "before": [
+        0.9373,
+        0.902,
+        0.8275
+      ],
+      "after": [
+        0.6706,
+        0.6078,
+        0.5176
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_FrontLeft_Wall",
+      "before": [
+        0.9373,
+        0.902,
+        0.8275
+      ],
+      "after": [
+        0.6706,
+        0.6078,
+        0.5176
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_FrontRight_Wall",
+      "before": [
+        0.9373,
+        0.902,
+        0.8275
+      ],
+      "after": [
+        0.6706,
+        0.6078,
+        0.5176
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_LeftWall_Wall",
+      "before": [
+        0.9373,
+        0.902,
+        0.8275
+      ],
+      "after": [
+        0.6706,
+        0.6078,
+        0.5176
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_RightWall_Wall",
+      "before": [
+        0.9373,
+        0.902,
+        0.8275
+      ],
+      "after": [
+        0.6706,
+        0.6078,
+        0.5176
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_Cream",
+      "before": [
+        0.9451,
+        0.9098,
+        0.8275
+      ],
+      "after": [
+        0.5922,
+        0.5216,
+        0.4118
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_Rug",
+      "before": [
+        0.8784,
+        0.8275,
+        0.7216
+      ],
+      "after": [
+        0.5529,
+        0.4863,
+        0.3765
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_SageSoft",
+      "before": [
+        0.6157,
+        0.6941,
+        0.5529
+      ],
+      "after": [
+        0.4588,
+        0.5098,
+        0.3922
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_VestibuleEnd_Wall",
+      "before": [
+        0.9373,
+        0.902,
+        0.8275
+      ],
+      "after": [
+        0.6706,
+        0.6078,
+        0.5176
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_VestibuleLeft_Wall",
+      "before": [
+        0.9373,
+        0.902,
+        0.8275
+      ],
+      "after": [
+        0.6706,
+        0.6078,
+        0.5176
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_VestibuleRight_Wall",
+      "before": [
+        0.9373,
+        0.902,
+        0.8275
+      ],
+      "after": [
+        0.6706,
+        0.6078,
+        0.5176
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_Cream",
+      "before": [
+        0.9451,
+        0.9098,
+        0.8275
+      ],
+      "after": [
+        0.5922,
+        0.5216,
+        0.4118
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_Rug",
+      "before": [
+        0.902,
+        0.851,
+        0.7569
+      ],
+      "after": [
+        0.5529,
+        0.4863,
+        0.3765
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_SageSoft",
+      "before": [
+        0.7294,
+        0.6,
+        0.5686
+      ],
+      "after": [
+        0.5686,
+        0.4588,
+        0.4235
+      ]
+    }
+  ],
+  "otherDifferences": [],
+  "transformTolerance": 0.0002,
+  "finalState": {
+    "health": 100,
+    "camera": "Custom",
+    "sitting": false,
+    "fov": 70,
+    "viewport": "1389, 635",
+    "anchored": false,
+    "grainAsset": "Success",
+    "inside": true
+  },
+  "sourceCompile": "Final complete installer parsed; body not executed",
+  "entry": "Fresh Play keyboard E entry passed, avatar standing/unanchored inside",
+  "installerOutput": "QQ CAFECOZY3: warm quiet floor; two tea/seating nooks; six visitor seats; seven original cats; inward-facing cubby; plants and cat artwork; 9.8 ceiling\nQQ CAFECOZY3 DOORS: two closed lattice mesh doors; E/gamepad/tap prompts; walking cannot begin entry or exit; existing shop exterior retained\nQQ CAFECOZY3 FLOOR: five dark walnut floor meshes; subtle board tones and four soft cedar-grain textures; existing plank geometry retained\nQQ CAFECOZY3 POLISH: dark rustic walnut floor; ten steam emitters reduced to small pale wisps; seven cats retained\nQQ CAFECOZY3 BELL: French shop sound 131845870598154 at volume .6; one ring per successful entry or exit\nQQ CAFECOZY3 WOOD: 63 interior meshes recolored; espresso beams/trim; walnut furniture/counter; warm brown tops; quiet floor and soft cushions retained\nQQ CAFECOZY3 SOFT PALETTE: nine warm putty wall meshes; six muted flax rug meshes with quiet sage/rose borders; dark timber and rustic floor retained\nQQ CAFEINTERIOR2 BUILT: 33 new shell meshes; 82 full-size furniture meshes; 38 original wall decor meshes; 34x28 room, lowered 9.8 ceiling\nQQ CAFEINTERIOR2 CATS: six inside in distinct spots; seated Whisker greeter outside; seven intact ten-bone rigs; cream at 84 percent\nQQ CAFEINTERIOR2 DOORWAY: same-server fade and destination-floor check; closed mesh doors; E/tap entry and exit only; no walk-through transition\nQQ CAFEINTERIOR2 PRESERVED: 20905 existing Japan instances outside cafe/doorway lamp; original cafe backed up; exterior dimensions and other shops unchanged\nQQ CAFEINTERIOR2 AUDIO: existing two-track playlist and four meows retained; listening zone moved to larger room; four original steaming mugs plus two at the new seating nook\nQQ CAFEINTERIOR2 STATUS: SERVER PREVIEW; NOT PUBLISHED\n"
+}

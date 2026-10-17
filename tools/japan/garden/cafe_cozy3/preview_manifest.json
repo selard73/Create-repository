@@ -4277,9 +4277,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_BackWall_Wall",
     "collide": true,
     "color": [
-      0.9373,
-      0.902,
-      0.8275
+      0.6706,
+      0.6078,
+      0.5176
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://78248753841536",
@@ -4427,9 +4427,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_DoorHeader_Wall",
     "collide": true,
     "color": [
-      0.9373,
-      0.902,
-      0.8275
+      0.6706,
+      0.6078,
+      0.5176
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://105358344788525",
@@ -4577,9 +4577,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_FrontLeft_Wall",
     "collide": true,
     "color": [
-      0.9373,
-      0.902,
-      0.8275
+      0.6706,
+      0.6078,
+      0.5176
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://130811543157307",
@@ -4607,9 +4607,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_FrontRight_Wall",
     "collide": true,
     "color": [
-      0.9373,
-      0.902,
-      0.8275
+      0.6706,
+      0.6078,
+      0.5176
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://123029979864452",
@@ -4727,9 +4727,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_LeftWall_Wall",
     "collide": true,
     "color": [
-      0.9373,
-      0.902,
-      0.8275
+      0.6706,
+      0.6078,
+      0.5176
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://102763985758995",
@@ -4907,9 +4907,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_RightWall_Wall",
     "collide": true,
     "color": [
-      0.9373,
-      0.902,
-      0.8275
+      0.6706,
+      0.6078,
+      0.5176
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://76172735507914",
@@ -4937,9 +4937,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_Cream",
     "collide": false,
     "color": [
-      0.9451,
-      0.9098,
-      0.8275
+      0.5922,
+      0.5216,
+      0.4118
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://114076146625060",
@@ -4967,9 +4967,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_Rug",
     "collide": false,
     "color": [
-      0.8784,
-      0.8275,
-      0.7216
+      0.5529,
+      0.4863,
+      0.3765
     ],
     "material": "Fabric",
     "mesh": "rbxassetid://113573037028632",
@@ -4997,9 +4997,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_SageSoft",
     "collide": false,
     "color": [
-      0.6157,
-      0.6941,
-      0.5529
+      0.4588,
+      0.5098,
+      0.3922
     ],
     "material": "Fabric",
     "mesh": "rbxassetid://89970454268500",
@@ -5057,9 +5057,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_VestibuleEnd_Wall",
     "collide": true,
     "color": [
-      0.9373,
-      0.902,
-      0.8275
+      0.6706,
+      0.6078,
+      0.5176
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://129561900250790",
@@ -5117,9 +5117,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_VestibuleLeft_Wall",
     "collide": true,
     "color": [
-      0.9373,
-      0.902,
-      0.8275
+      0.6706,
+      0.6078,
+      0.5176
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://134864780700640",
@@ -5147,9 +5147,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_VestibuleRight_Wall",
     "collide": true,
     "color": [
-      0.9373,
-      0.902,
-      0.8275
+      0.6706,
+      0.6078,
+      0.5176
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://122182125066594",
@@ -6107,9 +6107,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_Cream",
     "collide": false,
     "color": [
-      0.9451,
-      0.9098,
-      0.8275
+      0.5922,
+      0.5216,
+      0.4118
     ],
     "material": "SmoothPlastic",
     "mesh": "rbxassetid://114076146625060",
@@ -6137,9 +6137,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_Rug",
     "collide": false,
     "color": [
-      0.902,
-      0.851,
-      0.7569
+      0.5529,
+      0.4863,
+      0.3765
     ],
     "material": "Fabric",
     "mesh": "rbxassetid://113573037028632",
@@ -6167,9 +6167,9 @@
     "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_SageSoft",
     "collide": false,
     "color": [
-      0.7294,
-      0.6,
-      0.5686
+      0.5686,
+      0.4588,
+      0.4235
     ],
     "material": "Fabric",
     "mesh": "rbxassetid://89970454268500",
