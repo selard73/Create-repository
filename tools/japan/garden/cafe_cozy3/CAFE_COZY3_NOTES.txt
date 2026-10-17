@@ -132,3 +132,19 @@ Stopped Play afterward; installed interior and enabled controllers remain in Edi
 See installation_checks.json. No publication or direct DataStore write by Codex.
 Ready for Shannon to publish and verify a fresh server. Earlier preview-only entries
 above are historical. This final approved version is now installed in Edit.
+
+PENDING RUG REFINEMENT (Oct 17)
+Shannon accepted the walls but rejected the rug color; she selected muted moss green.
+Previewed both rugs with body91/105/65, weave104/116/77, border72/86/52.
+Only six rug meshes changed color; all371 part transforms/materials/collisions/anchoring
+and all non-rug colors were checked unchanged. Nine walls remain171/155/132.
+The new rug colors are PLAY PREVIEW ONLY; the previously approved cafe is installed.
+Current full cafe_cozy3.lua and preview_manifest.json still describe the installed
+flax-rug version. This is intentional until the moss pictures receive approval.
+On her yes: stop Play, run install_moss_rugs.lua with CAFERUGMOSS_ALLOW_EDIT=true.
+Use this narrow installer rather than rebuilding the whole cafe. Then incorporate
+moss_rug_patch.lua after soft_palette_patch.lua in build_preview.py, regenerate the
+full installer and update the six preview_manifest.json colors to the approved moss
+readback. Do not leave the canonical whole-cafe installer reverting the approved rugs.
+Pictures: cafe_moss_rugs_overview.jpg and cafe_moss_rugs_nook.jpg.
+Checks: moss_rug_checks.json. Shannon publishes after approved installation.

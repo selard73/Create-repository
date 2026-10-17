@@ -1,0 +1,63 @@
+{
+  "finalState": {"camera":"Custom","sitting":false,"fov":70,"viewport":"1389, 635","anchored":false,"health":100,"inside":true},
+  "status": "RUGS: SERVER PREVIEW ONLY; larger cafe already installed in Edit",
+  "choice": "Shannon selected muted moss green; approved walls unchanged",
+  "outputs": "QQ CAFE RUG MOSS: six rug meshes recolored; muted moss body, soft green weave and darker moss borders\nQQ CAFE RUG MOSS CHECK: 6 rug color changes; all371 part transforms/materials/collisions/anchoring and all non-rug colors unchanged\nQQ CAFE RUG MOSS STATUS: SERVER PREVIEW; NOT PUBLISHED",
+  "readback": {
+    "wallsUnchanged": true,
+    "rugs": [
+      {
+        "color": [
+          0.2823529541492462,
+          0.33725491166114807,
+          0.20392157137393951
+        ],
+        "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_SageSoft"
+      },
+      {
+        "color": [
+          0.35686275362968445,
+          0.4117647111415863,
+          0.2549019753932953
+        ],
+        "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_Rug"
+      },
+      {
+        "color": [
+          0.40784314274787903,
+          0.45490196347236633,
+          0.3019607961177826
+        ],
+        "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.Architecture.CI2_Rug_Cream"
+      },
+      {
+        "color": [
+          0.2823529541492462,
+          0.33725491166114807,
+          0.20392157137393951
+        ],
+        "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_SageSoft"
+      },
+      {
+        "color": [
+          0.35686275362968445,
+          0.4117647111415863,
+          0.2549019753932953
+        ],
+        "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_Rug"
+      },
+      {
+        "color": [
+          0.40784314274787903,
+          0.45490196347236633,
+          0.3019607961177826
+        ],
+        "path": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.ReadingRug_Cream"
+      }
+    ]
+  },
+  "pictures": [
+    "cafe_moss_rugs_overview.jpg",
+    "cafe_moss_rugs_nook.jpg"
+  ]
+}

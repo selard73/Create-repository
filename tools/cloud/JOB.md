@@ -4792,3 +4792,17 @@ QQ CAFECOZY3 INSTALLED MATCH: batch 301-371; geometry, colors, materials, collis
 QQ CAFECOZY3 FINAL: stopped Edit; approved interior and doorway controllers retained after fresh Play; NOT PUBLISHED
 - Saved installation_checks.json and updated package status notes. Sources and screenshots remain the approved versions; no visual revisions were made during installation. No publication or direct DataStore write.
 NEXT: Shannon publishes the installed cafe, then checks a fresh server. The approved separate interior, interact doors, French bell, seven distributed cats, dark rustic floor, warm walls/muted rugs and subtle tea steam are now in Edit. Grocer kit28 and other storefront work remain separate.
+
+
+## Moss green cafe rugs (Codex solo, Oct 17 2026) - RUG PREVIEW ONLY; CAFE ALREADY INSTALLED
+Shannon said the walls were right but the rug colors were not. Asked her preferred rug direction and she selected "Muted moss green". Prepared both rugs in that palette, leaving the approved walls unchanged.
+- Read-only Edit confirmed nine walls171/155/132 and the installed flax rugs. Started Play from that installed scene. Added a guarded narrow install_moss_rugs.lua, built from moss_rug_patch.lua by build_moss_installer.py. No whole-cafe rebuild.
+- Moss body91/105/65, weave104/116/77, darker moss borders72/86/52 on both rugs. No geometry/material/floor/lighting changes.
+Actual preview output:
+QQ CAFE RUG MOSS: six rug meshes recolored; muted moss body, soft green weave and darker moss borders
+QQ CAFE RUG MOSS CHECK: 6 rug color changes; all371 part transforms/materials/collisions/anchoring and all non-rug colors unchanged
+QQ CAFE RUG MOSS STATUS: SERVER PREVIEW; NOT PUBLISHED
+- Readback additionally verified all nine wall colors remain exactly171/155/132. Announced avatar/camera movement; actual E entry worked, then took close overview/nook pictures. Normal Custom camera/FOV70 and HUD/avatar restored; final viewport1389, 635, inside=true, standing/unanchored, health100.
+- Saved cafe_moss_rugs_overview.jpg, cafe_moss_rugs_nook.jpg, narrow installer/source, moss_rug_checks.json and notes. The existing full cafe_cozy3.lua and371-part preview_manifest.json remain the installed flax-rug baseline until this additional refinement is approved.
+- Larger cafe installation from the prior job remains in Edit. This job changed only the Play rugs; no Edit change, publication or direct DataStore write.
+NEXT: Shannon reviews the moss rugs. On her yes stop Play and apply install_moss_rugs.lua with CAFERUGMOSS_ALLOW_EDIT=true. Then add moss_rug_patch.lua after soft_palette_patch.lua in the canonical builder, regenerate cafe_cozy3.lua, and update the six manifest colors so a future rebuild retains the approved moss rugs. Preserve the walls. Shannon publishes.
