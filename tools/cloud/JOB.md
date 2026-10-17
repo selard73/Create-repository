@@ -4842,3 +4842,15 @@ QQ CAFE RUG MOSS STATUS: EDIT INSTALLED; NOT PUBLISHED
 QQ CAFE CANONICAL COMPILE: regenerated full installer includes approved floor and moss rugs; parsed without executing body
 - Updated610-part preview_manifest.json and generated seven bounded installation checks; saved floor_installation_checks.json and latest status notes. Stopped Edit is ready for Shannon to publish. No publication or direct DataStore write.
 NEXT: Shannon publishes, restarts servers and checks the approved cafe floor/moss rugs in a fresh server. Grocer shelf variety/kit28 and other shop work remain separate.
+
+
+## Treehouse mug handle orientation (Codex solo, Oct 17 2026) - PREVIEW PREPARED
+Shannon requested a quick correction outside Japan: the handle on the treehouse table mug was backwards. Read the current live TreehouseClient source and identified the three handle parts; vertical bar was on cup side, arms projected outwards with a small gap from the cup.
+- Prepared a narrowly guarded patch changing only three z coordinates: vertical bar -5.72 to -5.5, upper/lower arm centers -5.6 to -5.7. Sizes/colors/materials/cup body/table unchanged. The arms now overlap the cup and the outer bar. Patch edits the current live source rather than replacing it with an older client, retaining the approved Welcome sign and all gameplay.
+- Announced camera movement. Studio play profile had0 tree pieces, so drew an isolated exact-source table/stools/mug on the Play Client; did not change completion/progress/player attributes or save data. No reward or pickup calls. Initial photo hidden by distance culling; temporary render binding affected preview only. Saved actual corrected close-up.
+Actual validation outputs:
+QQ TREEHOUSE MUG PREVIEW: three handle pieces reversed; arms overlap cup and outer bar; mug body/table/stools unchanged; player progress untouched
+QQ TREEHOUSE MUG COMPILE: current live client with only three handle coordinates changed parses successfully; body not executed
+QQ TREEHOUSE MUG CLEANUP: temporary local table removed; HUD and camera restored; player progress untouched
+- Removed temporary table and photo bindings, restored HUD/Custom camera, stopped Play. No Japan changes or permanent source change. Prepared stopped-Edit installer with source compile, disabled backup, idempotence and server/reset preservation checks. No publication or direct DataStore write.
+NEXT: Asked Shannon for yes to save this exact correction under her standing preview-first rule. On approval apply patch_treehouse_mug_handle1.lua with TREEHOUSEMUG_ALLOW_EDIT=true in stopped Edit. Only current TreehouseClient.Source changes; Shannon publishes.

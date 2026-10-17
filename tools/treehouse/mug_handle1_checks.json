@@ -1,0 +1,14 @@
+{
+  "placeId":117372258657114,
+  "source":"workspace.Treehouse.TreehouseClient",
+  "cause":"The handle's vertical bar was at local z=-5.72 on the cup side; both arms extended away from the cup from z=-5.6, leaving a backwards bracket and a small gap at the cup.",
+  "changes":[
+    {"part":"outer handle bar","before":[6.9,13.65,-5.72],"after":[6.9,13.65,-5.5]},
+    {"part":"upper handle arm","before":[6.9,13.9,-5.6],"after":[6.9,13.9,-5.7]},
+    {"part":"lower handle arm","before":[6.9,13.4,-5.6],"after":[6.9,13.4,-5.7]}
+  ],
+  "validation":"Exactly3 CFrame changes in the client-only table preview; all sizes, colors and materials unchanged. Corrected arms overlap cup and outer bar. Full current live client with only3 coordinate substitutions parsed without executing body.",
+  "preview":"Actual Play screenshot of isolated table/stools/mug drawn from exact live source. Studio player had0 tree pieces, so no completion/progress attributes or save data were altered. Distant-avatar culling initially hid preview; temporary render binding made only preview visible. Preview/HUD/camera bindings removed and Play stopped afterward.",
+  "screenshot":"treehouse_mug_corrected.jpg",
+  "status":"Preview prepared; permanent installation requires Shannon's yes. No Japan changes or publication."
+}
