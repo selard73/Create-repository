@@ -54,12 +54,13 @@ local function dress(m)
 	end
 end
 local WALLSIDE = {back_door2 = true, back_window2 = true, broom = true, drainpipe = true, wood_shed = true, lattice_panel = true, awning_section = true, chochin = true}
-local function prep(src)
+local YMIN = {back_window2 = 5.3, chochin = 5.3, awning_section = 7.9}                    -- pieces whose geometry starts above the ground (out_shopback2/pieces.json)
+local function prep(src, n)
 	for _, p in ipairs(src:GetDescendants()) do if p:IsA("BasePart") then p.Anchored = true end end
 	local cf, sz = src:GetBoundingBox()
-	src.WorldPivot = CFrame.new(cf.X, cf.Y - sz.Y / 2, cf.Z)
+	src.WorldPivot = CFrame.new(cf.X, cf.Y - sz.Y / 2 - (YMIN[n] or 0), cf.Z)             -- the pivot at the piece's GROUND line, not its lowest point
 end
-for _, n in ipairs(PIECES) do prep(KIT[n]) end
+for _, n in ipairs(PIECES) do prep(KIT[n], n) end
 -- the kit's "out" is +z; an import may face -z: detect by the door's step (on the out side) against the door's reveal (into the wall)
 local flipped
 do
@@ -80,13 +81,18 @@ end
 local old = J:FindFirstChild("ShopBacks"); if old then old:Destroy() end
 local F = Instance.new("Folder"); F.Name = "ShopBacks"
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("before shopbacks2") end)
-local report, nplaced = {}, 0
+local report, nplaced, flips = {}, 0, 0
 local rnd = Random.new(1020)
 local function place(name, n, wallX, z, outDir, off, yaw)
 	local m = KIT[n]:Clone(); m.Name = name
-	local baseYaw = (outDir > 0) and -math.pi / 2 or math.pi / 2                           -- the piece's +z along +x (east) or -x (west)
+	local baseYaw = (outDir > 0) and math.pi / 2 or -math.pi / 2                           -- R_y(+90) sends local +z to world +x
 	local x = wallX + outDir * ((WALLSIDE[n] and ZOFF[n] or 0) + (off or 0))
-	m:PivotTo(CFrame.new(x, 0, z) * CFrame.Angles(0, baseYaw + (yaw or 0), 0) * KITR)
+	local pivot = CFrame.new(x, 0, z) * CFrame.Angles(0, baseYaw + (yaw or 0), 0) * KITR
+	m:PivotTo(pivot)
+	if WALLSIDE[n] then                                                                    -- the piece must stand on the OUT side of the wall; if it landed inside, turn it round
+		local cf = m:GetBoundingBox()
+		if (cf.X - wallX) * outDir < 0 then m:PivotTo(pivot * CFrame.Angles(0, math.pi, 0)); flips += 1 end
+	end
 	dress(m); m.Parent = F; nplaced += 1
 	return m
 end
@@ -135,4 +141,4 @@ F.Parent = J
 task.wait()
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after shopbacks2") end)
 for _, r in ipairs(report) do print("QQ SHOPBACKS2 " .. r) end
-print(string.format("QQ SHOPBACKS2 DONE: %d pieces behind %d shops in JapanMap.ShopBacks (kit %s)", nplaced, #SHOPS, flipped and "turned back" or "as imported"))
+print(string.format("QQ SHOPBACKS2 DONE: %d pieces behind %d shops in JapanMap.ShopBacks (kit %s; %d pieces turned round by the side check)", nplaced, #SHOPS, flipped and "turned back" or "as imported", flips))
