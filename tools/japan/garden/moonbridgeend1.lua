@@ -8,6 +8,7 @@
 --    with stone caps (the pond wall's materials: Pavement + JM_PhotographicPath white; cut stone 0.66 / 0.63); solid, precise collision
 --    set once parented
 --  * a pair of stone lanterns at the foot of the steps: copies of the canal's StoneLantern1 (her darker stone, dimmed glow)
+--  * the north end's missing red end posts: the south end's two copied across (mirrored) into MoonBridgeEnds
 --  * a gold giboshi (onion finial, kit "post_finial") on top of each of the four red end posts
 -- Re-runnable (the MoonBridgeEnds folder is rebuilt). Output "QQ MOONBRIDGEEND1".
 -- Undo: delete the pond set's MoonBridgeEnds folder; HudBackup.MoonBridgeReplaced's two slabs back to their MoonBridgeWasIn.
@@ -86,12 +87,31 @@ for _, e in ipairs({{"North", zN, 0}, {"South", zS, math.pi}}) do
 		L.Parent = F
 	end
 end
--- 3. the finials on the four end posts
-local nfin = 0
+-- 3. end posts: the north end had none (its handrails ran out to the deck end unheld) - the south end's two are copied across,
+--    mirrored about the bridge's middle, into MoonBridgeEnds (the bridge model itself is left as it was)
+local endPosts = {S = {}, N = {}}
 for _, p in ipairs(br:GetDescendants()) do
 	if p:IsA("BasePart") and key(p) == "Bridge post" then
 		local a, b = ext(p)
-		if math.abs(a.Z - zS) < 1 or math.abs(b.Z - zN) < 1 then
+		if math.abs(a.Z - zS) < 1 then table.insert(endPosts.S, p) elseif math.abs(b.Z - zN) < 1 then table.insert(endPosts.N, p) end
+	end
+end
+local mirrored = 0
+for _, pair in ipairs({{"S", "N"}, {"N", "S"}}) do
+	if #endPosts[pair[2]] == 0 then
+		for _, p in ipairs(endPosts[pair[1]]) do
+			local c = p:Clone(); c.Name = "Bridge post"
+			c.CFrame = CFrame.new(p.Position.X, p.Position.Y, zS + zN - p.Position.Z) * (p.CFrame - p.Position)
+			c.Parent = F; table.insert(endPosts[pair[2]], c); mirrored += 1
+		end
+	end
+end
+-- 4. the finials on the four end posts
+local nfin = 0
+for _, side in ipairs({"S", "N"}) do
+	for _, p in ipairs(endPosts[side]) do
+		local a, b = ext(p)
+		do
 			local f = FIN:Clone(); f.Name = "Finial"
 			for _, q in ipairs(f:GetDescendants()) do
 				if q:IsA("BasePart") then q.Anchored = true; q.CanCollide = false; q.CanQuery = false; q.CanTouch = false; q.Material = Enum.Material.Metal; q.Color = Color3.new(0.85, 0.66, 0.30) end
@@ -113,5 +133,5 @@ for _, m in ipairs(placed) do
 end
 pcall(function() game:GetService("ChangeHistoryService"):SetWaypoint("after moonbridgeend1") end)
 local s1, s2 = placed[1]:GetBoundingBox(), placed[2]:GetBoundingBox()
-print(string.format("QQ MOONBRIDGEEND1 DONE: ends at the deck ends z %.2f / %.2f (x %.1f): North at (%.1f, %.2f, %.1f), South at (%.1f, %.2f, %.1f); 4 lanterns, %d finials; %d slabs -> HudBackup.MoonBridgeReplaced; precise collision on %d",
-	zS, zN, CX, s1.X, s1.Y, s1.Z, s2.X, s2.Y, s2.Z, nfin, retired, nfid))
+print(string.format("QQ MOONBRIDGEEND1 DONE: ends at the deck ends z %.2f / %.2f (x %.1f): North at (%.1f, %.2f, %.1f), South at (%.1f, %.2f, %.1f); 4 lanterns, %d end posts copied across, %d finials; %d slabs -> HudBackup.MoonBridgeReplaced; precise collision on %d",
+	zS, zN, CX, s1.X, s1.Y, s1.Z, s2.X, s2.Y, s2.Z, mirrored, nfin, retired, nfid))
