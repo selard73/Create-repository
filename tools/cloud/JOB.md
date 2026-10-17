@@ -4025,3 +4025,4 @@ Pictures (Create-repository-shots\pond_2026-10-17, sent): before/after from the 
 Undo: delete PondRing + PondLife; HudBackup.PondReplaced's two back to their PondWasIn; Terrain:PasteRegion(HudBackup.PondTerrain_pre1,
 Vector3int16.new(1567, -4, -8), true); JapanWaterAppearance.Source from HudBackup.JapanWaterAppearance_pre_pondwater1.
 Shannon: publish, then restart servers (the teal water reaches players on their next join).
+PUBLISHED by Shannon 2026-10-17T00:51:57Z (Studio log "Place published"): falls r3 + bridge ends and the palace pond (pondfix1) are LIVE once servers restart.
