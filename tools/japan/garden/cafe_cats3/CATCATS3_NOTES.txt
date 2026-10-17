@@ -1,47 +1,49 @@
-1001 Squirrels - cafe preview ready for approval (October 17, 2026)
+1001 Squirrels - cafe INSTALLED IN EDIT (October 17, 2026)
 
-NO FURTHER IMPORT IS NEEDED.
-Shannon imported kit27 and authorized anchoring/preparation. The seven corrected
-cat rigs passed their actual Roblox mesh-asset bind/name/hierarchy checks.
-All seven are now animated independently in the running temporary Play preview.
+Shannon approved installation with "yes pleaae" after reviewing the actual Play
+preview and pictures. Installation and fresh-Play verification are complete.
+NO FURTHER IMPORT IS NEEDED. NOT PUBLISHED. Studio is back in Edit mode.
 
-Persistent Edit sources in ServerStorage.JapanGardenKit:
-- cat_cafe1: 94 anchored furniture source meshes, including 3 markers.
-- catwall1: 41 anchored wall-decoration source meshes, including 3 markers.
-- cat_cafe_cats3: 10 anchored source meshes with 70 unique bones, including 3 markers.
-- cafe_cats3_raw: original kit27 import, 10 meshes + RootPart, all 11 anchored;
-  all original import metadata and 70 bones retained.
-- cafe_finishing1_raw: preserved original kit26 import. Do not use its cat rigs.
-JapanMap remained at 20,896 descendants during source preparation.
+Installed in Workspace.JapanMap.ShopFronts.CatCafe:
+- 136 anchored meshes: 91 furniture, 38 left-wall decorations, 7 skinned cats.
+- Seven independent ten-bone idle rigs (70 bones total), atomic cat Models.
+- Five working visitor Seats and four steaming table mugs.
+- Two-track cafe playlist: 91013239854044 and 132290528373653.
+- Intermittent meows: 134699420140804, 134881862056957, 83454004588488,
+  133371725828981; one at a time, 30-60 seconds apart, no immediate repeat.
+- Existing reviewed camera guard keeps the camera/near plane inside the lining.
+- All 29 collidable furniture meshes use PreciseConvexDecomposition, set in a
+  separate Edit call and independently verified in Edit and fresh Play.
+- Final 141-part manifest exactly matches the approved preview (136 meshes +
+  5 Seats); assets, placement, material and other recorded properties unchanged.
+- 20,628 pre-existing Japan instances outside the original cafe unchanged.
+- Original 53 cafe fixtures and original music controller preserved in HudBackup.
 
-The Play-only cafe contains 136 meshes, 7 cats/70 bones, 38 wall-decoration meshes,
-5 visitor Seats, 4 steam emitters, cafe music/meows and the existing camera guard.
-Seven head transforms changed independently over two seconds, all Root transforms
-remained identity, and the cats' paws stayed on their pads in the pictures.
-An actual on-screen 25-degree head-turn probe visibly deformed the cream kitten's
-head; the probe was immediately removed and gentle motion resumed. Diagnostic
-pictures are labeled separately from the final natural-idle review pictures.
-All 70 bone transforms reset at distance and all seven idles resumed on return.
-Avatar visibility, normal camera, and unanchored player physics restored.
-No permanent cafe installation, publication or direct DataStore writes.
+Fresh Play, without rerunning installers:
+- All 136 meshes, seven cats/70 bones, five Seats and four steam emitters present.
+- All seven head transforms changed independently; all Root transforms identity.
+- Twelve entry/aisle/counter-approach waypoints passed without jumping or seating,
+  maximum horizontal error 1.218 studs; health 100.
+- All five Seats accepted the avatar and reported correct Occupant and SeatPart.
+- Six natural camera-orbit checks: zero room/near-plane overflow; max zoom 128.
+- Cafe music loaded/playing at .22; street music stopped. Scheduled meow asset
+  133371725828981 loaded. Earlier complete playlist-transition, all-asset-load,
+  meow-timing and 144-case camera checks remain recorded in JOB.md.
+- Play stopped; persistent installation and collider settings independently read
+  back in Edit; final manifest still identical to the approved preview.
 
-NEXT: Shannon reviews the running preview and pictures and explicitly approves
-installation. Source-preparation authorization alone is not installation approval.
+The wall installer's guard was corrected to permit explicitly approved Edit use.
+Its geometry and output match the approved Server preview. The generator was
+updated with the same guard. No further source/appearance changes were made.
 
-After her yes:
-1. Compare the current approved preview to play_review/placement_manifest.json
-   (136 MeshParts + 5 Seats) and retain any later approved adjustments.
-2. Stop Play. Run the same reviewed scripts in Edit, in this order:
-   tools/japan/garden/catcafe1.lua with CATCAFE1_ALLOW_EDIT=true
-   tools/japan/garden/catcafe1_audio.lua with CATCAFE1_ALLOW_EDIT=true
-   tools/japan/garden/cafe_cats3/catcafe_cats3.lua with CATCAFE_CATS3_ALLOW_EDIT=true
-   tools/japan/garden/catwall1/catwall1.lua with CATWALL1_ALLOW_EDIT=true
-3. Set PreciseConvexDecomposition on the 29 placed collidable furniture meshes
-   in a SEPARATE Edit call, then independently read back. Cats/wall decor are
-   noncollidable. Compare installed transforms/assets/materials to the preview.
-4. Verify a fresh Play: automatically installed cafe, all seven idles, camera,
-   audio, streaming, entry/aisle and seats. Stop Play after verification.
-5. Shannon publishes and restarts servers; never publish on her behalf.
+Source kits remain safely anchored in ServerStorage.JapanGardenKit:
+cat_cafe1 (94), catwall1 (41), cat_cafe_cats3 (10 with 70 unique bones).
+Original cafe_cats3_raw (11 parts/70 bones) and cafe_finishing1_raw (52 parts/
+70 bones) preserved. Do not use the old kit26 cat rigs or import again.
 
-Actual runtime images/checks: tools/japan/garden/cafe_cats3/play_review.
-Full job history: tools/cloud/JOB.md. Latest preview commit follows 82870f3.
+NEXT: Shannon presses Alt+P to publish, then shuts down old servers and joins a
+fresh server. Codex has not published or directly written DataStores.
+
+Review pictures: tools/japan/garden/cafe_cats3/play_review.
+Installation evidence: tools/japan/garden/cafe_cats3/install_review.
+Full history and actual installer output: tools/cloud/JOB.md.

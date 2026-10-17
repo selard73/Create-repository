@@ -52,7 +52,7 @@ print('QQ CATWALL1 PREP: 41 anchored source meshes in ServerStorage.JapanGardenK
 install=r'''-- Requested left-wall knickknacks. Play-test SERVER first; install only after Shannon approves pictures.
 local Run=game:GetService('RunService')
 assert(Run:IsStudio() and game.PlaceId==117372258657114,'Wrong place')
-assert(Run:IsServer() and (Run:IsRunning() or CATWALL1_ALLOW_EDIT==true),'Server preview only until approved')
+assert((Run:IsRunning() and Run:IsServer()) or (not Run:IsRunning() and CATWALL1_ALLOW_EDIT==true),'Server preview only until approved')
 '''+common+r'''
 local SS=game:GetService('ServerStorage')
 local source=assert(SS.JapanGardenKit:FindFirstChild('catwall1'),'Import and prepare kit26 before Play')

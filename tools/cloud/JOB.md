@@ -4481,3 +4481,38 @@ QQ CATWALL1 STATUS: SERVER PREVIEW; NOT PUBLISHED
 - Restored avatar visibility, normal Custom camera/FOV 70 and normal player physics. Review overlays remain hidden/reset when Play stops. Preview left running in the cafe. No diagnostic pose remains. No permanent cafe installation, publishing or direct DataStore writes.
 - Saved three actual natural-idle cafe pictures, two clearly named deformation diagnostic pictures, raw check outputs, and a 141-part placement manifest (136 MeshParts + five Seats) for later installation comparison in garden/cafe_cats3/play_review and chat outputs. Confirmed all four repository installer sources match the scripts executed for this preview. Updated current notes: no further import; awaiting installation approval.
 NEXT: Shannon reviews the actual preview/pictures and explicitly says yes to installation. Then stop Play, run the same FOUR scripts in Edit with their explicit guards: catcafe1 + catcafe1_audio (CATCAFE1_ALLOW_EDIT), cafe_cats3/catcafe_cats3 (CATCAFE_CATS3_ALLOW_EDIT), catwall1/catwall1 (CATWALL1_ALLOW_EDIT). Configure the 29 furniture colliders separately in Edit, independently read back, compare approved placement manifest, and verify fresh Play persistence/idles/audio/camera/access. Shannon publishes; never publish for her.
+
+
+## Approved complete cat cafe installed and fresh-Play verified (Codex solo, Oct 17 2026) - INSTALLED IN EDIT, NOT PUBLISHED
+Shannon answered "yes pleaae" to the final installation question after the actual animated cafe preview/pictures. This explicitly authorized the complete reviewed cafe installation. Announced avatar/camera moves; worked solo.
+- Compared the running Server preview to the saved 141-part approval manifest: exact match. Stopped Play, snapshotted 20,628 pre-existing Japan instances outside the original cafe, then ran the four reviewed installers in Edit with their explicit approval flags.
+- Furniture, audio and cats installed successfully. The wall installer initially rejected Edit before mutation because its guard required Run:IsServer() even in Edit. Corrected only that guard to allow either running Server or stopped Edit with CATWALL1_ALLOW_EDIT=true, updated the generator identically, then installed the same 38 approved wall meshes. No geometry/appearance changes.
+Actual successful installer and preservation outputs:
+QQ CATCAFE1 DONE: 91 meshes, 5 visitor Seats, 8 reserved cat spots, 29 collidable meshes; 53 old fixtures backed up
+QQ CATCAFE1 BOUNDS: x 6012.20..6033.54 y 0.46..9.19 z -5.68..19.69
+QQ CATCAFE1 PRESERVED: existing facade, roof, upper floor, walls and floor; all other shops/fronts and ShopBacks
+QQ CATCAFE1 TEA: 4 steaming table mugs; subtle particle wisps
+QQ CATCAFE1 CATS: not imported; cat spots are adjustable placeholders in metadata only
+QQ CATCAFE1 STATUS: EDIT; NOT PUBLISHED
+QQ CATCAFE1 AUDIO: playlist 91013239854044,132290528373653; cafe volume 0.22; existing map fades retained
+QQ CATCAFE1 MEOWS: 134699420140804,134881862056957,83454004588488,133371725828981; one at a time, 30-60 seconds apart, no immediate repeat
+QQ CATCAFE1 AUDIO VERIFY: check all six asset loads and both playlist transitions in the Client; configuration is not proof of audibility
+QQ CATCAFE1 AUDIO STATUS: EDIT; NOT PUBLISHED
+QQ CATCATS3 DONE: 7 anchored skinned cats, 70 bones, client idle controller; 3 window beds, 3 shelves, cubby top
+QQ CATCATS3 PRESERVED: cafe furnishings, steaming tea, playlist/meows, camera guard and other shops
+QQ CATCATS3 STATUS: EDIT; NOT PUBLISHED
+QQ CATWALL1 DONE: 38 anchored noncollidable meshes; two oak ledges, ceramic cats, planter, books, cup, vase and cat portrait
+QQ CATWALL1 PRESERVED: room, furniture, steaming tea, cats, sound, camera and other shops
+QQ CATWALL1 STATUS: EDIT; NOT PUBLISHED
+QQ CATCAFE FINAL INSTALL PRESERVED: 20628 pre-existing Japan instances outside original cafe unchanged
+QQ CATCAFE EDIT COLLISION SET: 29 collidable meshes; separate independent readback required
+QQ CATCAFE FINAL EDIT PRESERVED: 20628 pre-existing Japan instances outside original cafe unchanged after fresh Play
+- The furniture installer's historical placeholder-cat line precedes the separate cats3 installer. The final cafe DOES contain all seven supplied cats.
+- Compared installed and final post-Play Edit manifests to the approved preview: 141/141 parts exactly match all recorded fields, including mesh/texture assets, CFrames, PivotOffsets, sizes, colors, materials and collision flags. CollisionFidelity is deliberately separate: set all 29 collidable meshes to PreciseConvexDecomposition in a separate Edit call, then independently read back all 29. All 136 MeshParts anchored, 70 bones, five Seats and four steam emitters present.
+- Original 53 cafe fixtures backed up in ServerStorage.HudBackup.CatCafe1Originals; original music controller in CatCafe1MusicOriginal. Final preservation check again confirmed all 20,628 snapshotted instances outside the original cafe unchanged, including the grocer, kimono shop, other shops/fronts, ShopBacks and landscape.
+- Started a FRESH Play without rerunning any installers. All installed furniture/decor/cats/controllers appeared automatically. All 29 precise colliders retained. Twelve entrance/central-aisle/counter-approach waypoints passed with no jumping or accidental seating; maximum horizontal error 1.2177734375 studs, health 100. Separately tested all five Seats: each actual Occupant and Humanoid.SeatPart matched; unseated and restored avatar afterward.
+- Fresh Client: 136 meshes, seven independently changing head transforms over two seconds (1.53 to 5.31 degrees), all Root transforms identity, 70 bones, five Seats, four steam emitters and camera guard. Six fresh natural-orbit views had zero camera/near-plane overflow; CameraMaxZoomDistance remained 128. This supplements the earlier 144-case camera check.
+- Fresh cafe music asset 91013239854044 loaded/playing at .22, street track stopped. Scheduled meow 133371725828981 subsequently loaded. Earlier complete six-asset loading, both music transitions and eight naturally scheduled meows remain the full audio timing evidence; this fresh check confirms persistent configuration/playback state, not a claim of listening.
+- Stopped verification Play and independently read back the persistent Edit installation: 136/136 anchored meshes, 29/29 precise colliders, seven atomic ten-bone cats, 38 wall meshes, five Seats, four steam emitters, enabled Client camera/idle scripts and patched music controller. All source/raw kits remain anchored and preserved.
+- Saved raw installation/fresh-Play/final-Edit checks and final 141-part manifest in garden/cafe_cats3/install_review. Updated current notes to INSTALLED IN EDIT; no import needed. No publication or direct DataStore writes. Studio left in Edit.
+NEXT: Shannon publishes with Alt+P and restarts old servers, then checks a fresh live server. No further import or installer run is needed.

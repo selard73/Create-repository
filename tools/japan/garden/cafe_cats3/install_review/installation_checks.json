@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-17",
+  "authorization": "Shannon: \"yes pleaae\" to permanent installation of the reviewed cafe",
+  "mode": "Edit",
+  "published": false,
+  "approvedManifestMatch": true,
+  "installedManifestMatch": true,
+  "parts": 141,
+  "checks": {
+    "cafeInstallBefore": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"preservedJapanInstances\":20628,\"sources\":{\"catwall1\":41,\"cat_cafe_cats3\":10,\"cat_cafe1\":94},\"JapanBefore\":20896}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInstall_furniture": {
+      "content": [
+        {
+          "type": "text",
+          "text": "QQ CATCAFE1 DONE: 91 meshes, 5 visitor Seats, 8 reserved cat spots, 29 collidable meshes; 53 old fixtures backed up\nQQ CATCAFE1 BOUNDS: x 6012.20..6033.54 y 0.46..9.19 z -5.68..19.69\nQQ CATCAFE1 PRESERVED: existing facade, roof, upper floor, walls and floor; all other shops/fronts and ShopBacks\nQQ CATCAFE1 TEA: 4 steaming table mugs; subtle particle wisps\nQQ CATCAFE1 CATS: not imported; cat spots are adjustable placeholders in metadata only\nQQ CATCAFE1 STATUS: EDIT; NOT PUBLISHED"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInstall_audio": {
+      "content": [
+        {
+          "type": "text",
+          "text": "QQ CATCAFE1 AUDIO: playlist 91013239854044,132290528373653; cafe volume 0.22; existing map fades retained\nQQ CATCAFE1 MEOWS: 134699420140804,134881862056957,83454004588488,133371725828981; one at a time, 30-60 seconds apart, no immediate repeat\nQQ CATCAFE1 AUDIO VERIFY: check all six asset loads and both playlist transitions in the Client; configuration is not proof of audibility\nQQ CATCAFE1 AUDIO STATUS: EDIT; NOT PUBLISHED"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInstall_cats": {
+      "content": [
+        {
+          "type": "text",
+          "text": "QQ CATCATS3 DONE: 7 anchored skinned cats, 70 bones, client idle controller; 3 window beds, 3 shelves, cubby top\nQQ CATCATS3 PRESERVED: cafe furnishings, steaming tea, playlist/meows, camera guard and other shops\nQQ CATCATS3 STATUS: EDIT; NOT PUBLISHED"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInstall_wall": {
+      "content": [
+        {
+          "type": "text",
+          "text": "QQ CATWALL1 DONE: 38 anchored noncollidable meshes; two oak ledges, ceramic cats, planter, books, cup, vase and cat portrait\nQQ CATWALL1 PRESERVED: room, furniture, steaming tea, cats, sound, camera and other shops\nQQ CATWALL1 STATUS: EDIT; NOT PUBLISHED"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInstallPreserved": {
+      "content": [
+        {
+          "type": "text",
+          "text": "QQ CATCAFE FINAL INSTALL PRESERVED: 20628 pre-existing Japan instances outside original cafe unchanged"
+        }
+      ],
+      "isError": false
+    },
+    "cafeCollisionSet": {
+      "content": [
+        {
+          "type": "text",
+          "text": "QQ CATCAFE EDIT COLLISION SET: 29 collidable meshes; separate independent readback required"
+        }
+      ],
+      "isError": false
+    },
+    "cafeInstallReadback": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"catsVersion\":\"cats3\",\"meshes\":136,\"precise\":29,\"seats\":5,\"anchored\":136,\"bones\":70,\"musicBackup\":true,\"backedUpFixtures\":53,\"wallVersion\":\"catwall1\",\"cameraGuard\":true,\"steam\":4,\"colliders\":29}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeFreshWalk": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"bones\":70,\"health\":100,\"automaticallyPresentMeshes\":136,\"preciseColliders\":29,\"walk\":[{\"waypoint\":1,\"distance\":1.2177734375,\"seated\":false},{\"waypoint\":2,\"distance\":0.5056866407394409,\"seated\":false},{\"waypoint\":3,\"distance\":0.6258047223091126,\"seated\":false},{\"waypoint\":4,\"distance\":0.6909628510475159,\"seated\":false},{\"waypoint\":5,\"distance\":0.47496187686920168,\"seated\":false},{\"waypoint\":6,\"distance\":0.6588925123214722,\"seated\":false},{\"waypoint\":7,\"distance\":0.8346272706985474,\"seated\":false},{\"waypoint\":8,\"distance\":0.8056967258453369,\"seated\":false},{\"waypoint\":9,\"distance\":0.7683563828468323,\"seated\":false},{\"waypoint\":10,\"distance\":0.6370305418968201,\"seated\":false},{\"waypoint\":11,\"distance\":0.6413858532905579,\"seated\":false},{\"waypoint\":12,\"distance\":0.7295187711715698,\"seated\":false}]}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeFreshClient": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"audio\":[{\"name\":\"MusicA\",\"volume\":0.2199999988079071,\"id\":\"rbxassetid://91013239854044\",\"loaded\":true,\"playing\":true},{\"name\":\"MusicB\",\"volume\":0,\"id\":\"rbxassetid://133364143276489\",\"loaded\":true,\"playing\":false},{\"name\":\"CatCafeMeow\",\"volume\":0.2800000011920929,\"id\":\"\",\"loaded\":false,\"playing\":false}],\"cameraGuard\":true,\"counts\":{\"bones\":70,\"seats\":5,\"mesh\":136,\"steam\":4},\"motion\":[{\"headChange\":4.090026984917179,\"cat\":\"Emerald_Eyed_Tabby_Ki\",\"rootIdentity\":true},{\"headChange\":5.31278922136084,\"cat\":\"Whisker_Wonder\",\"rootIdentity\":true},{\"headChange\":4.61778844500807,\"cat\":\"Curious_Little_Tabby\",\"rootIdentity\":true},{\"headChange\":1.5344211002286994,\"cat\":\"Tuxedo_Kitten\",\"rootIdentity\":true},{\"headChange\":2.547142960141716,\"cat\":\"Ginger_Whiskers\",\"rootIdentity\":true},{\"headChange\":3.602392032426465,\"cat\":\"Adorable_Tabby_Kitten\",\"rootIdentity\":true},{\"headChange\":4.875801402226241,\"cat\":\"Blush_Eared_Kitten\",\"rootIdentity\":true}]}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeFreshSeats": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"seats\":[{\"seat\":\"BenchSeat0\",\"occupant\":true,\"seatPart\":true},{\"seat\":\"BenchSeat1\",\"occupant\":true,\"seatPart\":true},{\"seat\":\"BenchSeat2\",\"occupant\":true,\"seatPart\":true},{\"seat\":\"ChairSeat0\",\"occupant\":true,\"seatPart\":true},{\"seat\":\"ChairSeat1\",\"occupant\":true,\"seatPart\":true}],\"health\":100,\"count\":5}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeFreshCameraAudio": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"camera\":[{\"inside\":true,\"overflow\":0,\"yaw\":0},{\"inside\":true,\"overflow\":0,\"yaw\":60},{\"inside\":true,\"overflow\":0,\"yaw\":120},{\"inside\":true,\"overflow\":0,\"yaw\":180},{\"inside\":true,\"overflow\":0,\"yaw\":240},{\"inside\":true,\"overflow\":0,\"yaw\":300}],\"maxOverflow\":0,\"audio\":[{\"time\":5.269,\"name\":\"MusicA\",\"volume\":0.2199999988079071,\"id\":\"rbxassetid://91013239854044\",\"length\":133.60825396825397,\"loaded\":true,\"playing\":true},{\"time\":0,\"name\":\"MusicB\",\"volume\":0,\"id\":\"rbxassetid://133364143276489\",\"length\":158.27997916666667,\"loaded\":true,\"playing\":false},{\"time\":0,\"name\":\"CatCafeMeow\",\"volume\":0.2800000011920929,\"id\":\"rbxassetid://133371725828981\",\"length\":0.809795918367347,\"loaded\":true,\"playing\":false}],\"health\":100,\"maxZoom\":128}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeFinalEdit": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"precise\":29,\"anchored\":136,\"published\":false,\"wallMeshes\":38,\"sources\":[{\"bones\":0,\"anchored\":94,\"name\":\"cat_cafe1\",\"parts\":94},{\"bones\":0,\"anchored\":41,\"name\":\"catwall1\",\"parts\":41},{\"bones\":70,\"anchored\":10,\"name\":\"cat_cafe_cats3\",\"parts\":10},{\"bones\":70,\"anchored\":11,\"name\":\"cafe_cats3_raw\",\"parts\":11},{\"bones\":70,\"anchored\":52,\"name\":\"cafe_finishing1_raw\",\"parts\":52}],\"snapshotKeys\":[\"instance\",\"name\",\"parent\"],\"scripts\":[{\"length\":2660,\"path\":\"Workspace.JapanMap.ShopFronts.CatCafe.CafeCamera\",\"disabled\":false,\"context\":\"Enum.RunContext.Client\"},{\"length\":2789,\"path\":\"Workspace.JapanMap.ShopFronts.CatCafe.Cats.CafeCatsClient\",\"disabled\":false,\"context\":\"Enum.RunContext.Client\"}],\"mode\":\"Edit\",\"snapshotFirstKey\":\"1\",\"steam\":4,\"preserveSnapshotCount\":20628,\"meshes\":136,\"snapshotFirstType\":\"table\",\"seats\":5,\"bones\":70,\"musicBackup\":true,\"backedUpFixtures\":53,\"musicLength\":14003,\"cameraGuard\":true,\"cats\":[{\"bones\":10,\"streaming\":\"Enum.ModelStreamingMode.Atomic\",\"name\":\"Whisker_Wonder\"},{\"bones\":10,\"streaming\":\"Enum.ModelStreamingMode.Atomic\",\"name\":\"Emerald_Eyed_Tabby_Ki\"},{\"bones\":10,\"streaming\":\"Enum.ModelStreamingMode.Atomic\",\"name\":\"Tuxedo_Kitten\"},{\"bones\":10,\"streaming\":\"Enum.ModelStreamingMode.Atomic\",\"name\":\"Ginger_Whiskers\"},{\"bones\":10,\"streaming\":\"Enum.ModelStreamingMode.Atomic\",\"name\":\"Curious_Little_Tabby\"},{\"bones\":10,\"streaming\":\"Enum.ModelStreamingMode.Atomic\",\"name\":\"Blush_Eared_Kitten\"},{\"bones\":10,\"streaming\":\"Enum.ModelStreamingMode.Atomic\",\"name\":\"Adorable_Tabby_Kitten\"}],\"colliders\":29}"
+        }
+      ],
+      "isError": false
+    },
+    "cafeFinalPreserved": {
+      "content": [
+        {
+          "type": "text",
+          "text": "QQ CATCAFE FINAL EDIT PRESERVED: 20628 pre-existing Japan instances outside original cafe unchanged after fresh Play"
+        }
+      ],
+      "isError": false
+    }
+  }
+}
