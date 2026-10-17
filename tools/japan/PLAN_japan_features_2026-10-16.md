@@ -174,3 +174,14 @@ Research:
 - Hachidaime Gihey's own site documents a specialist rice business. A separate rice shop is plausible, but optional for this compact game street: https://hachidaime.com/en/
 
 Working order: finish Mikan's pending import/preparation/actual play-test approval first, then Cat cafe as the next substantial interior; Ramen dining furniture, combined craft shop, then closed fronts individually. Reference -> fitted mesh design -> Shannon imports one combined FBX -> authorized anchoring/storage -> Server play-test pictures -> her yes -> Edit install. Do not treat the street-plan discussion as blanket approval for Edit mutations. No new gameplay prices/rewards or DataStore changes are authorized by this design discussion.
+
+
+## Closed storefront replacements APPROVED by Shannon - Oct 17 2026
+This supersedes the proposed status of these three replacements above. Shannon approved:
+- Kimono atelier -> Book & Stationery. Closed storefront only, non-enterable, with a carefully dressed display window.
+- Calligraphy teahouse -> Tea Merchant. Closed shop, with a carefully dressed display window.
+- Rice and provisions -> Florist. Closed shop. Shannon suggested "maybe something with bonsai?"
+
+Design direction for development: Book & Stationery has bound books, patterned paper, brushes and ink arranged on timber shelves; Tea Merchant has tea tins, ceramic jars, teapots and cups; florist becomes a Bonsai & Flowers concept with three distinct miniature trees as the window focus, shallow ceramic pots, visible moss, staggered timber stands, and a restrained seasonal flower accent. Each front gets a fitted shut door, real glazing with visible stock depth, and a distinct window composition. No enterable full interiors for these three shops. All displays sit within their building frontage.
+Bonsai form/display references for the upcoming individual design: Seikou-en (https://www.seikouen.cc/bonsaien.html) and the Omiya Bonsai Art Museum collection (https://www.bonsai-art-museum.jp/en/collection-search/). Select and inspect specific tree references before modelling; no claim that this proposed mixed retail arrangement is a historic standard.
+This approval settles the business replacements and closed-access treatment. It is not a completed preview or an instruction to install unpreviewed geometry. Existing one-at-a-time reference / mesh / import / Server picture / Edit approval workflow continues. Grocer import/play preview is still pending; Kimono shop remains unchanged.

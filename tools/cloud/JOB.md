@@ -4227,3 +4227,10 @@ Shannon liked the grocer2 design studies, then asked for a mix of enterable shop
 - Read-only Studio survey: Ramen kitchen has 4 working counter Seats, no named tables. Cat cafe has 3 decorative stool tops, no Seat objects, no named tables, and 4 ramen-bowl props. Preserve ramen's existing counter/food behaviour; give the cafe its own furnishings and purpose.
 - No camera/avatar moves, no Studio Edit changes, no installer executed, no new QQ output, no publication or DataStore writes.
 - Mikan kit22 remains AWAITING SHANNON'S IMPORT AND SERVER PLAY PREVIEW. Her positive Blender-render feedback does not replace the required play-test pictures/yes. Next substantial interior: Cat cafe, after the grocer review. Continue one shop at a time.
+
+
+## Three closed storefront replacements approved (Codex solo, Oct 17 2026) - PLAN UPDATED, NO STUDIO EDIT
+Shannon explicitly approved Kimono atelier -> Book & Stationery, Calligraphy teahouse -> Tea Merchant, and Rice and provisions -> Florist. All three must be closed/non-enterable shops with attractive visible window displays. She suggested bonsai for the florist.
+- Updated the feature plan to supersede the previous proposed status of those three replacements. Developing Bonsai & Flowers as the florist concept: a few distinct bonsai in shallow ceramic pots, moss, timber display stands and a small seasonal flower accent. Exact geometry/look still requires its own reference and preview.
+- Found primary bonsai references: https://www.seikouen.cc/bonsaien.html and https://www.bonsai-art-museum.jp/en/collection-search/ . Specific visual references must be inspected when modelling this shop.
+- No Studio mutation, no installer or QQ output, no publication. Grocer kit22 import/play preview still pending; continue one shop at a time and keep the approved Kimono shop unchanged.
