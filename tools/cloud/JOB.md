@@ -4612,3 +4612,16 @@ QQ MAILBOX PRESERVED: ActionText=Open; key=E; mailbox scripts and contents uncha
 QQ MAILBOX STATUS: EDIT; NOT PUBLISHED
 - Added a guarded, rerunnable narrow installer at tools/housekeeping/mailbox_mayor_prompt.lua. Japan cafe/grocer previews and all other maps remain as before.
 NEXT: Shannon publishes when ready; fresh servers receive the corrected default prompt.
+
+
+## Completed treehouse sign greeting (Codex solo, Oct 17 2026) - INSTALLED IN EDIT
+Shannon approved shortening the completed treehouse sign from Welcome home, <display name>! to Welcome, <display name>! after discussing the wording.
+- Verified the current Studio TreehouseClient source matches tools/treehouse/src/TreehouseClient3.lua. Changed only the completed branch of signText, retaining the treehouse name on the first line and player.DisplayName personalization. Kept unfinished-build wording, completion banner/fireworks and all other behavior unchanged.
+- Compiled the revised whole client inside a non-executed function before applying. Used a narrow guarded patch and before/after undo waypoints in stopped Edit. Exact source readback passed; server/reset source strings and treehouse descendant count remained unchanged. No Play session, avatar/camera movement, progression changes, DataStore writes or publication.
+Actual validation and installer outputs:
+QQ TREEHOUSE SIGN: updated client source parsed; body not executed
+QQ TREEHOUSE SIGN: completed sign now shows the treehouse name, then Welcome, <display name>!
+QQ TREEHOUSE PRESERVED: only one client source line changed; progress wording, completion sequence, server and reset unchanged
+QQ TREEHOUSE STATUS: EDIT; NOT PUBLISHED
+- Updated the canonical client source and added tools/treehouse/patch_treehouse_sign_welcome.lua for this correction. Existing older whole-client installers are historical; rerunning one could restore its older sign wording. Japan cafe/grocer work remains pending as previously logged.
+NEXT: Shannon publishes when ready. Fresh sessions render the shorter personalized completed sign.

@@ -271,7 +271,7 @@ local function buildHouse(n)
 	end
 end
 local function signText(n)
-	if n >= TOTAL then return NAME .. "\nWelcome home, " .. player.DisplayName .. "!" end   -- (r6b, Shannon: "Maybe do Homebase Treehouse Welcome home SelBell?")
+	if n >= TOTAL then return NAME .. "\nWelcome, " .. player.DisplayName .. "!" end   -- r7: Shannon requested a shorter completed-sign greeting.
 	if n < STAGES.deck then return string.format("Future home of\n%s.\nPlease excuse the dirt.\n%d of %d pieces found.", NAME, n, TOTAL) end
 	return string.format("%s\n%d of %d pieces found.\n%d to go.", NAME, n, TOTAL, TOTAL - n)
 end
