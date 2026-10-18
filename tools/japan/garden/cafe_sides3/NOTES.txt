@@ -1,3 +1,5 @@
+SUPERSEDED by cafe_sides4 + cafe_side_tone1 after Shannon requested less symmetrical spacing and lighter upper timber. Historical notes follow; do not install v3.
+
 CAFE NORTH SIDE v3 -- ACTUAL PLAY PREVIEW; AWAITING SHANNON'S YES
 Replaces rejected cafe_sides1. Provisional cafe_sides2 / kit34 was abandoned before import; do not package or install it.
 Shannon rejected the first side as rough/harsh, asked whether it matched the accepted rear, and said the revision looked plastic.

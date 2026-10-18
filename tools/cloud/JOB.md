@@ -5113,3 +5113,28 @@ QQ CAFE SIDES3 CLEANUP:photo binding removed; HUD, world billboards, avatar visi
 QQ CAFE SIDES3 EDIT CHECK:preview discarded; original north walls and164 accepted rear models retained; accepted register1 interior intact; no side details permanently installed
 - Studio stopped. No permanent Edit scene change, publication or direct DataStore write. Saved actual Play and accepted-rear reference pictures, guarded installer, manifest/checks and notes.
 NEXT: Shannon reviews rear-matched side pictures and explicitly approves before CAFE_SIDES3_ALLOW_EDIT=true in stopped Edit. Compare manifest and fresh Play, then Shannon publishes. Never install rejected cafe_sides1 or provisional cafe_sides2. Other pending previews/imports retain their separate approval requirements.
+
+
+## Cafe side upper tone and less symmetrical windows (Codex solo, Oct 17 2026) - PLAY PREVIEW READY; NOT INSTALLED
+Shannon asked why upper timber was darker and whether the difference was too much. Original upper RGB162,143,119 versus lower220,205,183 caused the strong division, with roof shade also visible. Previewed north upper wall210,195,172 only; wood grain/material unchanged.
+- Rebuilt v3 temporarily on Play Server, compared original and warmer wall from same camera after surroundings loaded. Tone trial compared18261 Japan BaseParts and verified exactly one Color changed; geometry/material/physical properties remained unchanged.
+QQ CAFE SIDE TONE1:only north upper wall color changed162,143,119 to210,195,172; lower wall220,205,183 retained; original grain/material and geometry retained
+QQ CAFE SIDE TONE1 BACKUP:original Color3 stored on upper wall CafeSideToneWasColor; rollback restores it and removes SideWoodToneVersion
+QQ CAFE SIDE TONE1 STATUS:SERVER PREVIEW; NOT PUBLISHED
+QQ CAFE SIDE TONE1 CHECK:18261 Japan parts compared; exactly one Color changed, all checked geometry/material/physical properties retained
+- While previewing Shannon said upper/lower windows were too symmetrical. Prepared v4, retaining all rear-matched mesh proportions and moving upper pair toward rear. First adjacent arrangement was too close; she requested slightly more separation. Final centers6022.8/6028.6, gap1.6 between sills. Lower window6019.2 and service door6029 remain.
+QQ CAFE SIDES4:35 real mesh parts; closed service door, three original-size lattice windows with the upper pair grouped toward the rear, continuous lower tiled eave and two upper hoods
+QQ CAFE SIDES4 STYLE:33 parts copied from the accepted cafe rear with identical size, color, material and texture; original shaded recesses retained; two stone mesh steps fitted to floor1.039853
+QQ CAFE SIDES4 PRESERVED:21691 original Japan instances unchanged; both wall colors, all accepted backs, cafe interior/front/cats/audio and other shops retained
+QQ CAFE SIDES4 STATUS:SERVER PREVIEW; NOT PUBLISHED
+QQ CAFE SIDE TONE1:only north upper wall color changed162,143,119 to210,195,172; lower wall220,205,183 retained; original grain/material and geometry retained
+QQ CAFE SIDE TONE1 BACKUP:original Color3 stored on upper wall CafeSideToneWasColor; rollback restores it and removes SideWoodToneVersion
+QQ CAFE SIDE TONE1 STATUS:SERVER PREVIEW; NOT PUBLISHED
+QQ CAFE SIDES4 SPACING:upper window centers6022.8/6028.6;5.8 studs apart and1.6 studs between sills; upper pair remains offset toward rear
+QQ CAFE SIDES4 CHECK:35 anchored meshes, two step colliders, no prompts/scripts; upper centers6022.8/6028.6 and1.6-stud sill gap; warm upper tone, lower wall and accepted register1 retained
+- Final v4 + tone1 saved as separate guarded scripts. Tone1 now requires rear4. Original upper Color3 backed up as an attribute only during preview; independent rollback documented. Full35-part manifest and final colors saved. V3 symmetric arrangement marked superseded; do not install it.
+- Actual final overview and closer pictures inspected. Timed gift overlay appeared during close photo, hidden without claiming rewards; clean close retaken. Camera/avatar movement announced. Original tones/geometry and all accepted rear/front/interior work preserved except the single explicit preview color adjustment.
+QQ CAFE SIDES4 CLEANUP:camera binding removed; HUD/billboards/avatar visibility restored; no reward interaction
+QQ CAFE SIDES4 EDIT CHECK:side and color previews discarded; original upper wall162,143,119 restored; no side or tone version installed; accepted register1 intact
+- No permanent Edit appearance change, publication or direct DataStore write. Studio stopped; both side layout and tone await approval.
+NEXT: obtain explicit yes for final cafe_sides4 + cafe_side_tone1 pictures. Only then run CAFE_SIDES4_ALLOW_EDIT=true followed by CAFE_SIDE_TONE1_ALLOW_EDIT=true in stopped Edit, compare manifest, fresh Play, Shannon publishes. Other pending Japan previews/imports unchanged.

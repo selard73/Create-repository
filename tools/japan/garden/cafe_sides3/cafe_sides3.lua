@@ -1,3 +1,5 @@
+-- SUPERSEDED: use cafe_sides4 + cafe_side_tone1 after separate approval.
+error("Superseded cafe_sides3 must not run; use cafe_sides4")
 -- Rear-matched north side. Server preview first; Edit only after Shannon approves its pictures.
 local Run=game:GetService("RunService")
 assert(Run:IsStudio() and game.PlaceId==117372258657114,"Wrong place")
