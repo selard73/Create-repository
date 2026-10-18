@@ -1,0 +1,47 @@
+{
+  "importPrepared": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCERSTOCK2 PREPARED: 64 source meshes anchored; raw import preserved; JapanMap unchanged"
+      }
+    ],
+    "isError": false
+  },
+  "preview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCERSTOCK2 DONE: 61 anchored noncollidable meshes; tea tins/packets, pantry bottles/miso/spices, noodles/seaweed/shiitake\nQQ GROCERSTOCK2 BOUNDS: local x -5.090..11.365 y 0.430..5.785 z -20.360..-19.280; all stock behind shelf front\nQQ GROCERSTOCK2 PRESERVED: 21683 existing Japan instances; shelf frames and signs, produce, barrels, cafe and all other shops\nQQ GROCERSTOCK2 LABELS:44 printed labels; paper follows bottle/tin/tub curves and packet slopes; nine textured label batches, no raised lettering\nQQ GROCERSTOCK2 STATUS: SERVER PREVIEW; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "client": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"result\":\"QQ GROCERSTOCK2 CLIENT: all9 printed label batches loaded; white tint, Precise rendering and no label shadows verified\",\"labels\":[{\"state\":\"Success\",\"name\":\"GS2_TeaLow_Label\",\"texture\":\"rbxassetid://99085097194355\"},{\"state\":\"Success\",\"name\":\"GS2_DryLow_Label\",\"texture\":\"rbxassetid://99085097194355\"},{\"state\":\"Success\",\"name\":\"GS2_PantryMid_Label\",\"texture\":\"rbxassetid://99085097194355\"},{\"state\":\"Success\",\"name\":\"GS2_PantryTop_Label\",\"texture\":\"rbxassetid://99085097194355\"},{\"state\":\"Success\",\"name\":\"GS2_DryTop_Label\",\"texture\":\"rbxassetid://99085097194355\"},{\"state\":\"Success\",\"name\":\"GS2_DryMid_Label\",\"texture\":\"rbxassetid://99085097194355\"},{\"state\":\"Success\",\"name\":\"GS2_TeaTop_Label\",\"texture\":\"rbxassetid://99085097194355\"},{\"state\":\"Success\",\"name\":\"GS2_TeaMid_Label\",\"texture\":\"rbxassetid://99085097194355\"},{\"state\":\"Success\",\"name\":\"GS2_PantryLow_Label\",\"texture\":\"rbxassetid://99085097194355\"}]}"
+      }
+    ],
+    "isError": false
+  },
+  "cleanup": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCERSTOCK2 CLEANUP: photo bindings removed; HUD, avatar visibility and normal camera restored"
+      }
+    ],
+    "isError": false
+  },
+  "editCheck": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCERSTOCK2 EDIT CHECK:64 clean source meshes anchored with9 label textures; raw import stored; original8 stock meshes remain; approved side-facing barrel signs and cafe retained; preview discarded, awaiting approval"
+      }
+    ],
+    "isError": false
+  }
+}

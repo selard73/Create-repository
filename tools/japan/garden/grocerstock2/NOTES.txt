@@ -1,41 +1,37 @@
-GROCERSTOCK2 / KIT32 - CORRECTED MODEL READY; IMPORT/PREVIEW PENDING
+GROCERSTOCK2 / KIT32 — IMPORTED; PLAY PREVIEW READY; NOT INSTALLED
 
-Shannon rejected stock1 labels because bottles are rounded while labels were
-straight and floating. This is a geometry/attachment fault, not just text size.
-Do not install grocerstock1. Its source71 meshes and raw import are anchored in
-ServerStorage.JapanGardenKit, but Mikan in Edit still has the original8 generic
-stock meshes and no ShelfStock. The Play replacement was discarded on stop.
+Shannon imported corrected kit32 after rejecting straight floating labels in stock1.
+Prepared64 source meshes including3 alignment markers in stopped Edit.
+ServerStorage.JapanGardenKit.grocerstock2 and grocerstock2_raw are anchored.
+Nine printed-label mesh batches use texture rbxassetid://99085097194355.
+All nine client texture loads succeeded in Play; white tint, Precise rendering,
+and no label shadows verified. No new import needed.
 
-Correction:44 printed labels in a single embedded2048px atlas; nine UV-mapped
-label mesh batches. Bottle/tin/spice/noodle bands follow cylindrical facets;
-miso labels follow taper; packet colored panel/label follow the sloped surface.
-Curved paper includes every container facet boundary; sampled clearance stays
-above .0014 studs, avoiding corner intersections. Paper sits .0015 studs above
-matching facets; packet
-paper .003 including its underlying colored panel. No raised text meshes.
-Removed the old floating straight gold decoration on bottle fronts and the
-raised tea emblems; container shapes and44 ingredient groups retained.
-Flat labels are used only for flat sheets/basket faces. Label text is generic,
-with crisp Segoe UI Bold lettering; no brand artwork. Source model artwork
-embedded and retained after FBX roundtrip,9 texture/UV checks passed.
+Actual Play Server preview:61 visible stock meshes,44 product groups,
+44 printed labels,42538 source triangles. Bottle/tin/spice/noodle labels follow
+curves; miso labels follow taper; packet labels follow sloped faces.
+Source facet-clearance checks remain in out/manifest.json. Close angled
+game pictures reviewed: curved paper against containers, no original flat
+floating label slabs. Labels wrap away naturally toward sides.
 
-64 source meshes including3 alignment markers,61 visible stock meshes,
-42538 triangles. Bounds fit existing shelf footprint; no new collider.
-Blender angled bottle/packet pictures reviewed. These are NOT game pictures.
-Prepared scripts parse; their bodies have NOT run. New kit32 is in outputs and
-Desktop Japan garden kit, copies byte-identical. Studio remains stopped Edit.
+Tea: colored tins, folded packets, matcha, loose leaves.
+Pantry: soy sauce, mirin, miso, sesame oil, rice vinegar, shichimi.
+Dry goods: udon/soba bundles, nori/kombu, shiitake baskets.
+Only8 generic M2_Pantry stock meshes replaced in preview. All61 new meshes
+anchored, noncollidable/nontouch; shelf fit verified. Preserved21683 existing
+Japan instances including shelf structures/category signs, new approved
+side-facing barrel signs, produce, cafe and all other shops.
 
-NEXT: Shannon imports kit32 with textures enabled. Run prepare_grocerstock2.lua
-in Edit before Play; it preflights64 exact names,2-stud markers,bounds and9 label
-textures, stores raw import and clean anchored source grocerstock2. Then run
-grocerstock2.lua on Play Server. Inspect actual texture loading, orientation,
-label adhesion/legibility from an angle and shelf fit. All61 pieces noncollide.
-Only eight original M2_Pantry stock meshes retire, with GrocerStock2Originals
-backup; shelf structures/signs, fresh produce, pickle tubs and cafe preserved.
-Only after actual Play pictures and Shannon's yes run in stopped Edit with
-GROCERSTOCK2_ALLOW_EDIT=true, compare complete preview manifest, test fresh Play.
-Shannon publishes. Do not rerun old whole-grocer installer afterward without
-also reapplying stock2; old mikangrocer2.lua builds the generic original stock.
+Five actual Play pictures and complete61-part preview manifest saved.
+Removed photo bindings, restored HUD/avatar/normal camera, stopped Play.
+Edit still has old8 stock meshes and no ShelfStock. Source kit remains stored.
+Shannon reported barrel-sign changes published before this import.
 
-Cafe accepted as complete by Shannon, installed80abd19. More cats later only
-if supplied. Maze kit30 remains separate import/preview pending.
+NEXT: Shannon reviews actual Play pictures and explicitly says yes.
+Then run grocerstock2.lua in stopped Edit with GROCERSTOCK2_ALLOW_EDIT=true.
+Compare every stock mesh property/transform/texture to play_preview_manifest.json,
+verify original backup and preserved barrel signs, then fresh Play.
+Do not install rejected stock1. Do not publish; Shannon publishes.
+Historical mikangrocer2 whole-shop builder would replace later stock2/sign
+patches; do not rerun without reconciling/reapplying approved revisions.
+Cafe remains accepted and installed; maze kit30 remains separate.

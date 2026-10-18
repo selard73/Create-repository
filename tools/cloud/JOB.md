@@ -4996,3 +4996,22 @@ QQ GROCER BARREL SIGNS MATCH: six installed transforms and sizes match approved 
 - No kit32 import detected before Play; stock2 remains pending, rejected stock1 never installed. Existing stock2 installer already snapshots/preserves all other Japan instance transforms, including these approved signs. Historical whole-shop mikangrocer2 builder not rerun; NOTES records its later-patch requirement.
 - No publication or direct DataStore write. Studio stopped in Edit, ready for Shannon's publish. Saved installation/fresh-Play/final-Edit evidence.
 NEXT: Shannon publishes approved barrel signs. Corrected stock2 / kit32 still requires her import, source anchoring before Play, actual game picture review and separate yes before installation. Cafe remains accepted; maze kit30 remains separate.
+
+
+## Corrected grocer kit32 imported and previewed (Codex solo, Oct 17 2026) - PLAY PREVIEW READY; NOT INSTALLED
+Shannon reported the approved side-facing barrel signs published, then imported kit32. Read-only survey found exactly64 unanchored source meshes, no scripts, one marker set and nine label textures (rbxassetid://99085097194355). Ran prepared source-only anchor/storage script before any Play.
+QQ GROCERSTOCK2 PREPARED: 64 source meshes anchored; raw import preserved; JapanMap unchanged
+- Fresh Play Server ran the reviewed stock2 installer; only eight original generic rear-stock meshes replaced. Actual output:
+QQ GROCERSTOCK2 DONE: 61 anchored noncollidable meshes; tea tins/packets, pantry bottles/miso/spices, noodles/seaweed/shiitake
+QQ GROCERSTOCK2 BOUNDS: local x -5.090..11.365 y 0.430..5.785 z -20.360..-19.280; all stock behind shelf front
+QQ GROCERSTOCK2 PRESERVED: 21683 existing Japan instances; shelf frames and signs, produce, barrels, cafe and all other shops
+QQ GROCERSTOCK2 LABELS:44 printed labels; paper follows bottle/tin/tub curves and packet slopes; nine textured label batches, no raised lettering
+QQ GROCERSTOCK2 STATUS: SERVER PREVIEW; NOT PUBLISHED
+QQ GROCERSTOCK2 CLIENT: all9 printed label batches loaded; white tint, Precise rendering and no label shadows verified
+- Client preloaded all nine label meshes plus their shared atlas successfully. Actual angled close views show paper following bottle/tin/tub curves; packet labels against sloped faces. Printed labels replace original floating flat slabs/raised text. Text wraps out of view naturally at curved sides; direct views remain readable. No geometry/appearance tweak was required during this preview.
+- Captured five actual game photos: whole shelf/category signs, pantry bottles, tea packets/tins, dry goods, low shiitake/nori detail. Original timed gift popup was hidden temporarily without reward interaction. Announced avatar/camera movement; used Server avatar placement near shop for streaming, with temporary client camera/HUD/avatar photo overrides.
+- Saved full61-part preview manifest including transforms, sizes, colors, material/physical flags, mesh/texture IDs and render fidelity. Total137 grocer parts (84-8+61). All new meshes anchored/noncollidable/nontouch. Label atlas loaded on all9 with white tint, Precise rendering and no label shadows. Approved barrelSignFacingVersion side1 and cafe register1 retained.
+QQ GROCERSTOCK2 CLEANUP: photo bindings removed; HUD, avatar visibility and normal camera restored
+QQ GROCERSTOCK2 EDIT CHECK:64 clean source meshes anchored with9 label textures; raw import stored; original8 stock meshes remain; approved side-facing barrel signs and cafe retained; preview discarded, awaiting approval
+- No permanent stock appearance change, publication or direct DataStore write. Only imported kit anchored/stored in Edit. Old8 stock meshes still installed; rejected stock1 remains source only.
+NEXT: Shannon reviews actual Play pictures and explicitly approves before grocerstock2.lua with GROCERSTOCK2_ALLOW_EDIT=true in stopped Edit. Compare exact preview manifest, check backups/preserved objects and fresh Play. Barrel signs already approved/installed and user-reported published; cafe accepted; maze kit30 separate.
