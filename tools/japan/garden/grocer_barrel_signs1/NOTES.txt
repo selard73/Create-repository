@@ -1,12 +1,13 @@
-SIDE-FACING BARREL SIGNS — PLAY PREVIEW ONLY
-Shannon requested the signs readable from beside the barrels.
-Three existing paper boards and posts rotated -90 degrees around their respective barrel centers.
-Front faces now point toward the side customer aisle (grocer local -X).
-Only six CFrames change; existing wording, materials, sizes, products and barrels remain.
-Actual Play photos reviewed. Preview discarded; original signs remain in Edit.
-No import is needed for this sign change.
-After explicit yes, run turn_barrel_signs1.lua in stopped Edit with BARRELSIGNS1_ALLOW_EDIT=true.
-Installer backs up six originals in ServerStorage.HudBackup.GrocerBarrelSigns1Originals.
-Then compare saved transforms to preview_checks.json and verify fresh Play.
-Do not publish. This approval is separate from pending grocer stock2 / kit32.
-Kit32 not yet imported. Rejected stock1 remains source only; old shelf stock remains installed.
+SIDE-FACING BARREL SIGNS — APPROVED AND INSTALLED; NOT PUBLISHED
+Shannon approved: "looks good please update".
+Applied the exact reviewed narrow installer in stopped Edit.
+Only six transforms changed: three existing boards and their posts rotated -90 degrees around barrel centers.
+Text faces grocer local-X, toward the side customer aisle; original wording, sizes, materials and other shop parts remain.
+Installed transforms/sizes match approved preview; original six source meshes backed up in ServerStorage.HudBackup.GrocerBarrelSigns1Originals.
+Fresh Play verified installed positions without rerunning the installer, then stopped and verified Edit again.
+Current84-part grocer inventory retained. No import required.
+Do not rerun this installer on installed side1; it intentionally rejects an already-rotated shop.
+Historical mikangrocer2.lua whole-shop rebuild would remove this later narrow revision; reapply only after inspecting/reconciling its original backup/version.
+Pending grocerstock2.lua preserves all other Japan instance transforms and can coexist with these signs.
+Kit32 corrected printed shelf labels remain unimported/unpreviewed/uninstalled. Rejected stock1 remains source only.
+No publication or direct DataStore write. Shannon publishes.

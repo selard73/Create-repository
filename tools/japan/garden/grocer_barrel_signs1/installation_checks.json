@@ -1,0 +1,40 @@
+{
+  "approval": "Shannon: looks good please update",
+  "installation": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCER BARREL SIGNS: three existing boards and their posts rotated90 degrees around their barrel centers; text faces the side customer aisle\nQQ GROCER BARREL SIGNS PRESERVED: only six transforms changed; barrels, products, wording, shelf stock and all other shop parts unchanged\nQQ GROCER BARREL SIGNS STATUS: EDIT INSTALLED; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "editMatch": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCER BARREL SIGNS MATCH: six installed transforms and sizes match approved preview; three labels face side aisle; original six meshes backed up;84 grocer parts retained"
+      }
+    ],
+    "isError": false
+  },
+  "freshPlayMatch": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCER BARREL SIGNS MATCH: six installed transforms and sizes match approved preview; three labels face side aisle; original six meshes backed up;84 grocer parts retained"
+      }
+    ],
+    "isError": false
+  },
+  "finalEditMatch": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCER BARREL SIGNS MATCH: six installed transforms and sizes match approved preview; three labels face side aisle; original six meshes backed up;84 grocer parts retained"
+      }
+    ],
+    "isError": false
+  },
+  "published": false
+}

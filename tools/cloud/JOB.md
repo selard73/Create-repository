@@ -4983,3 +4983,16 @@ QQ GROCER BARREL SIGNS CLEANUP: photo bindings removed; HUD, avatar visibility a
 QQ GROCER BARREL SIGNS EDIT CHECK: original three sign orientations remain; preview discarded; shelf stock unchanged; kit32 import markers=0; awaiting sign approval
 - Saved installer, original survey/final transforms and two actual Play pictures. Play stopped; no permanent sign installation, publication or direct DataStore write. Approved cafe remains untouched. No kit32 import marker found; corrected grocery label kit32 awaits Shannon's import, anchoring and separate actual game review. Kit30 maze trail also remains separate.
 NEXT: Shannon reviews sign picture and says yes before BARRELSIGNS1_ALLOW_EDIT=true in stopped Edit. This approval covers the three barrel signs only. Do not install rejected stock1 or assume approval of pending stock2.
+
+
+## Approved side-facing grocer barrel signs installed (Codex solo, Oct 17 2026) - INSTALLED; NOT PUBLISHED
+Shannon approved the exact picture: "looks good please update". Applied reviewed turn_barrel_signs1.lua from795243b in stopped Edit with BARRELSIGNS1_ALLOW_EDIT=true.
+QQ GROCER BARREL SIGNS: three existing boards and their posts rotated90 degrees around their barrel centers; text faces the side customer aisle
+QQ GROCER BARREL SIGNS PRESERVED: only six transforms changed; barrels, products, wording, shelf stock and all other shop parts unchanged
+QQ GROCER BARREL SIGNS STATUS: EDIT INSTALLED; NOT PUBLISHED
+QQ GROCER BARREL SIGNS MATCH: six installed transforms and sizes match approved preview; three labels face side aisle; original six meshes backed up;84 grocer parts retained
+- Fresh Play started from installed scene without rerunning the installer; the same six-transform/size/text/count/backup checks passed on Server. No avatar/camera movement or photo override was required. Stopped Play and repeated verification in Edit; approved orientations persist.
+- Original six sign/post meshes backed up in ServerStorage.HudBackup.GrocerBarrelSigns1Originals with change-history waypoints. Existing84-part grocer inventory, barrels, goods, category labels and shelf stock preserved. Approved cafe register1 unchanged.
+- No kit32 import detected before Play; stock2 remains pending, rejected stock1 never installed. Existing stock2 installer already snapshots/preserves all other Japan instance transforms, including these approved signs. Historical whole-shop mikangrocer2 builder not rerun; NOTES records its later-patch requirement.
+- No publication or direct DataStore write. Studio stopped in Edit, ready for Shannon's publish. Saved installation/fresh-Play/final-Edit evidence.
+NEXT: Shannon publishes approved barrel signs. Corrected stock2 / kit32 still requires her import, source anchoring before Play, actual game picture review and separate yes before installation. Cafe remains accepted; maze kit30 remains separate.
