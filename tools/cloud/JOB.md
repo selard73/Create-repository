@@ -4854,3 +4854,12 @@ QQ TREEHOUSE MUG COMPILE: current live client with only three handle coordinates
 QQ TREEHOUSE MUG CLEANUP: temporary local table removed; HUD and camera restored; player progress untouched
 - Removed temporary table and photo bindings, restored HUD/Custom camera, stopped Play. No Japan changes or permanent source change. Prepared stopped-Edit installer with source compile, disabled backup, idempotence and server/reset preservation checks. No publication or direct DataStore write.
 NEXT: Asked Shannon for yes to save this exact correction under her standing preview-first rule. On approval apply patch_treehouse_mug_handle1.lua with TREEHOUSEMUG_ALLOW_EDIT=true in stopped Edit. Only current TreehouseClient.Source changes; Shannon publishes.
+
+
+## Treehouse mug handle approved and installed (Codex solo, Oct 17 2026) - INSTALLED; NOT PUBLISHED
+Shannon explicitly replied "Yes, save the correction" to the pending preview approval. Applied patch_treehouse_mug_handle1.lua in stopped Edit with TREEHOUSEMUG_ALLOW_EDIT=true.
+QQ TREEHOUSE MUG: corrected three handle positions; outer bar away from cup and both arms join the cup
+QQ TREEHOUSE PRESERVED: only three coordinate values changed in current client; mug body, table, sign, progress and all other scripts unchanged
+QQ TREEHOUSE STATUS: EDIT INSTALLED; NOT PUBLISHED
+The patch compiled the current revised client without executing it, retained disabled backup HudBackup.TreehouseClient_pre_mug_handle1, and asserted server/reset source and tree instance count unchanged. No other scene changes. Shannon's preceding "updates published" was before this mug install; mug requires her next publish.
+NEXT: Personal free acorn trail for the bamboo maze requested; kit30 mesh and isolated client controls being prepared. Preview and pictures before permanent installation.
