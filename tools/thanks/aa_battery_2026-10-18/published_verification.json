@@ -1,0 +1,106 @@
+{
+  "publication": {
+    "utc": "2026-10-18T10:47:35.820Z",
+    "placeId": 117372258657114,
+    "log": "Place published. Eligible players can now play this place in Roblox."
+  },
+  "payment": {
+    "repeatEvents": 0,
+    "after": 1110,
+    "passed": true,
+    "receipt": 1,
+    "before": 100,
+    "realGiftUnchanged": true,
+    "giftAmount": 1000,
+    "repeatElapsed": 34.518234199997096,
+    "repeatBalance": 1110,
+    "giftEvents": 1,
+    "otherStartupAwards": 10
+  },
+  "card": {
+    "enabled": true,
+    "received": [
+      {
+        "acorns": 1000,
+        "note": "Merci pour votre gentil mot ! Voici 1 000 glands pour vos prochaines aventures.\n— Le maire",
+        "title": "A thank-you from the mayor"
+      }
+    ],
+    "labels": [
+      {
+        "bounds": [
+          239,
+          20
+        ],
+        "fits": true,
+        "text": "A thank-you from the mayor",
+        "pos": [
+          550.5,
+          62
+        ],
+        "size": [
+          288,
+          26
+        ]
+      },
+      {
+        "bounds": [
+          276,
+          42
+        ],
+        "fits": true,
+        "text": "Merci pour votre gentil mot ! Voici 1 000 glands pour vos prochaines aventures.\n— Le maire",
+        "pos": [
+          550.5,
+          90
+        ],
+        "size": [
+          288,
+          56
+        ]
+      },
+      {
+        "bounds": [
+          189,
+          15
+        ],
+        "fits": true,
+        "text": "1000 acorns are in your purse.",
+        "pos": [
+          550.5,
+          146
+        ],
+        "size": [
+          288,
+          22
+        ]
+      },
+      {
+        "bounds": [
+          81,
+          17
+        ],
+        "fits": true,
+        "text": "Thank you!",
+        "pos": [
+          619.5,
+          176
+        ],
+        "size": [
+          150,
+          34
+        ]
+      }
+    ]
+  },
+  "recipient": {
+    "attributes": {
+      "Id": "aa_battery_1",
+      "Note": "Merci pour votre gentil mot ! Voici 1 000 glands pour vos prochaines aventures.\n— Le maire",
+      "VerifiedUserId": 111500896
+    },
+    "name": "AA_Battery",
+    "amount": "1000"
+  },
+  "limitations": "Actual AA_Battery login/receipt not observed. Test used a temporary owner-named clone with the same amount, note and receipt ID in Studio; real game ledger ran. Studio owner save guard prevents persistence. Duplicate check reran join handling with receipt present; did not perform a real live rejoin."
+}

@@ -5258,3 +5258,14 @@ Shannon clarified she already sent the statue reply through the mailbox and requ
 - Same recipient AA_Battery, amount1000 and one-time Id aa_battery_1 retained; six total gift entries, no new payout/gift. Note measures42px in56px box, so the card returns to its original168px height. Long-note support remains unchanged for future notes.
 - Canonical installer/note updated; short_note_readback.json supersedes prior note text in verification.json/card_preview.jpg, which remain historical evidence of the earlier version. No mailbox send, direct DataStore write or publish.
 - Normal Save reported no changes despite attribute readback; Save to Roblox with Notes completed10:46:50 UTC (06:46 EDT),8645ms, CreatorOutput confirmed saved. Version note: Shorten AA_Battery acorn gift note. No publication. Ready for Shannon to publish.
+
+
+## AA_Battery post-publication verification (Codex solo, Oct18 2026) - PUBLISH CONFIRMED; TEST PASSED
+Shannon said published and requested verification. Studio log confirms her actual Publish (publishType1), StudioPublishPlace6639ms, CreatorOutput Place published at10:47:35.820 UTC (06:47 EDT), following short-note save10:46:50 UTC. Current Edit gift/config/source verified.
+- Fresh Play used a temporary clone of AA_Battery's gift with only Name changed to local owner CozyGameMode, VerifiedUserId removed as metadata, TemporaryStudioCheck=true. Same amount1000, Id aa_battery_1 and short note. Original six real gifts retained.
+- Actual unchanged ThanksServer and SquirrelSetup ledger handlers ran. Verified Studio owner's canSave=false guard and savePlayer exits before DataStore UpdateAsync; no test balance persisted, no direct DataStore writes.
+- Owner started100; unrelated normal startup award10 arrived, then exactly one AwardItems receipt thanks_aa_battery_1=1 and one AwardAcorns event1000. Balance1110. Gift-attributable difference1000 after accounting for separately recorded10 event.
+- Actual client received one card:1000 acorns with exact shorter French note. All four labels TextFits=true, note TextBounds42 within56; actual screenshot inspected. Card original168px height.
+- Restarted actual ThanksServer to rerun join handling with claimed receipt present. After34.52s (normal delay8s), zero extra ledger events, balance1110 and flag1 unchanged, exactly one client message total. This tests repeat eligibility with existing receipt, not an actual live account rejoin.
+- Removed temporary gift/listeners then stopped Play. Final Edit has six gifts only, correct AA_Battery amount/id/note, both scripts enabled. No permanent scene changes, save or publish performed during verification.
+- Evidence: tools/thanks/aa_battery_2026-10-18/published_verification.json and short_note_actual_test.jpg. Actual AA_Battery receipt/login has not been observed; gift is ready for next join to an updated server.
