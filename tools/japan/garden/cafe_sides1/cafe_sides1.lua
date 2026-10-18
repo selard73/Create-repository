@@ -1,3 +1,5 @@
+-- REJECTED by Shannon: rough/harsh. Kept only as history. Use cafe_sides3 after its separate approval.
+error("Rejected cafe_sides1 must not run; review cafe_sides3 instead")
 -- One north-wall treatment. Play Server first; saved Edit only after Shannon's picture approval.
 local Run=game:GetService("RunService")
 assert(Run:IsStudio() and game.PlaceId==117372258657114,"Wrong place")

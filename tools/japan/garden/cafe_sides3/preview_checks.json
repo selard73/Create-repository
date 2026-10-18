@@ -1,0 +1,38 @@
+{
+  "preview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDES3:35 real mesh parts; closed service door, three original-size lattice windows, continuous lower tiled eave and two upper hoods\nQQ CAFE SIDES3 STYLE:33 parts copied from the accepted cafe rear with identical size, color, material and texture; original shaded recesses retained; two stone mesh steps fitted to floor1.039853\nQQ CAFE SIDES3 PRESERVED:21691 original Japan instances unchanged; both wall colors, all accepted backs, cafe interior/front/cats/audio and other shops retained\nQQ CAFE SIDES3 STATUS:SERVER PREVIEW; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "checks": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDES3 CHECK:35 anchored meshes; two step rays meet0.519927/1.039853 within.001; retained wall blocks door; no prompts/scripts; accepted interior register1 intact"
+      }
+    ],
+    "isError": false
+  },
+  "cleanup": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDES3 CLEANUP:photo binding removed; HUD, world billboards, avatar visibility and normal camera restored"
+      }
+    ],
+    "isError": false
+  },
+  "edit": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDES3 EDIT CHECK:preview discarded; original north walls and164 accepted rear models retained; accepted register1 interior intact; no side details permanently installed"
+      }
+    ],
+    "isError": false
+  }
+}

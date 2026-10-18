@@ -1,0 +1,15 @@
+CAFE NORTH SIDE v3 -- ACTUAL PLAY PREVIEW; AWAITING SHANNON'S YES
+Replaces rejected cafe_sides1. Provisional cafe_sides2 / kit34 was abandoned before import; do not package or install it.
+Shannon rejected the first side as rough/harsh, asked whether it matched the accepted rear, and said the revision looked plastic.
+Inspected the actual accepted cafe rear in Edit, including a close view, before this revision.
+The new side uses clones of its INSTALLED rear assemblies, retaining original dimensions/materials/colors/textures and deep shaded panels.
+35 real MeshParts:33 unchanged-size rear component copies and2 original stone mesh steps fitted to floor height.
+Three windows retain the accepted rear window proportions. Full lower tiled eave plus individual upper hoods repeat that rear's treatment.
+Both original side wall colors, all164 rear models, accepted cafe interior/front/cats/audio, and every other existing Japan object retained.
+No new imports, scripts, door prompts or working service entrance. Only two step meshes collide; original solid wall blocks passage.
+Actual Play validation:21691 original Japan instances unchanged; step ray heights0.519927/1.039853 within.001; accepted register1 retained.
+Preview/close/before images are actual Play. rear_reference images are read-only Edit inspection.
+Temporary HUD, billboard, avatar and camera photo overrides removed; Play stopped; no permanent side details.
+Install only after explicit approval of these pictures: cafe_sides3.lua with CAFE_SIDES3_ALLOW_EDIT=true in stopped Edit.
+Compare preview_manifest.json, run fresh Play, and leave publishing to Shannon.
+Other pending work remains separate: ramen side1 and lantern clearance; grocer stock2; curtain kit33; maze trail kit30.

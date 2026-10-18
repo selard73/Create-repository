@@ -5094,3 +5094,22 @@ QQ CAFE SIDES CLEANUP: photo binding removed; HUD, world billboards, avatar visi
 QQ CAFE SIDES EDIT CHECK: preview discarded; original walls/colors and accepted register1 interior remain; other pending previews not installed
 - Studio stopped. Saved guarded installer, exact preview manifest/checks, notes and4 Play pictures. No permanent Edit scene change, publication or direct DataStore write. Original cafe interior, street front, cats, doorway/audio/register and all other Japan work untouched.
 NEXT: Shannon reviews this cafe north-side treatment and says yes before CAFE_SIDES1_ALLOW_EDIT=true in stopped Edit. Compare manifest/fresh Play, Shannon publishes. Ramen side and lantern previews await separate approvals; grocer stock2 approval pending; curtain kit33 and maze kit30 imports pending.
+
+
+## Cafe side revised to match its accepted rear (Codex solo, Oct 17 2026) - PLAY PREVIEW READY; NOT INSTALLED
+Shannon rejected cafe_sides1 as rough/harsh, asked whether the rear style had actually been inspected, and said the provisional revision looked plastic. No approval to install either rejected design.
+- Inspected the accepted cafe rear directly in Studio with overall and close photos. It has dark timber, deeply shaded lattice recesses, a full lower tiled eave and small upper hoods. The earlier side altered reveal/paper placement and window widths; provisional new kit34 used paler fine frames. Both approaches abandoned.
+- Local provisional cafe_sides2 Blender kit passed manifold/outward normal/FBX roundtrip checks (41 source meshes,21292 triangles) but was never packaged to Desktop, imported, previewed in game or installed. Keep it local only. Marked cafe_sides1 explicitly rejected and blocked its installer.
+- New cafe_sides3 copies the ACTUALLY INSTALLED accepted cafe rear meshes, preserving33 original component sizes/colors/materials/textures and their shaded panel construction. Door toward rear; original-size lower window and paired upper windows; full lower tiled eave and two upper hoods. Two stone mesh steps fitted to actual floor. No new import.
+- Announced movement before play-test avatar/camera placement. Ran guarded installer only on Play Server:
+QQ CAFE SIDES3:35 real mesh parts; closed service door, three original-size lattice windows, continuous lower tiled eave and two upper hoods
+QQ CAFE SIDES3 STYLE:33 parts copied from the accepted cafe rear with identical size, color, material and texture; original shaded recesses retained; two stone mesh steps fitted to floor1.039853
+QQ CAFE SIDES3 PRESERVED:21691 original Japan instances unchanged; both wall colors, all accepted backs, cafe interior/front/cats/audio and other shops retained
+QQ CAFE SIDES3 STATUS:SERVER PREVIEW; NOT PUBLISHED
+- Client preloaded all35 meshes successfully. Inspected actual overview and low close photo; streamed surroundings before final overview. Saved same-camera before photo and complete35-part manifest with transforms, mesh/texture IDs, materials/colors, collision flags and source references.
+QQ CAFE SIDES3 CHECK:35 anchored meshes; two step rays meet0.519927/1.039853 within.001; retained wall blocks door; no prompts/scripts; accepted interior register1 intact
+- Both original side wall colors retained. All164 accepted rear models, cafe interior/front/cats/door/audio/register and other shops unchanged. Service door has no prompt and retained wall blocks entry. Initial snapshot validates all21691 original Japan instances unchanged.
+QQ CAFE SIDES3 CLEANUP:photo binding removed; HUD, world billboards, avatar visibility and normal camera restored
+QQ CAFE SIDES3 EDIT CHECK:preview discarded; original north walls and164 accepted rear models retained; accepted register1 interior intact; no side details permanently installed
+- Studio stopped. No permanent Edit scene change, publication or direct DataStore write. Saved actual Play and accepted-rear reference pictures, guarded installer, manifest/checks and notes.
+NEXT: Shannon reviews rear-matched side pictures and explicitly approves before CAFE_SIDES3_ALLOW_EDIT=true in stopped Edit. Compare manifest and fresh Play, then Shannon publishes. Never install rejected cafe_sides1 or provisional cafe_sides2. Other pending previews/imports retain their separate approval requirements.
