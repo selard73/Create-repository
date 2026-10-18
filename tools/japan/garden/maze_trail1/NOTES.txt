@@ -1,0 +1,20 @@
+ACORN TRAIL — PREPARATION ONLY, NOT INSTALLED
+
+Import japan_kit30_maze_acorn_trail.fbx with Studio File > Import 3D.
+The file is also in the usual Desktop/Japan garden kit folder.
+Leave the imported model intact. Codex will anchor its three meshes and store
+maze_trail_acorn in ServerStorage.JapanGardenKit before any Play preview.
+
+Prepared controls: G (keyboard), Y (controller), Drop acorn (touch).
+Only the local player sees their trail. Free decorative markers; no currency
+spending, rewards, remotes or saved-data changes. Trail persists for the session,
+including stepping out and back in. Clear requires a second tap within3 seconds.
+3-stud spacing, 300-marker cap without evicting old breadcrumbs. Grounded,
+alive, standing player and maze-ground ray checks; no markers outside the maze.
+
+PENDING: Import, actual in-Play compilation/function/visual tests, phone layout,
+exact mesh grounding and screenshots, then Shannon's approval before Edit.
+Do not claim this feature is installed or publish it.
+
+Mug handle correction was separately approved and installed in Edit. Shannon
+must publish that correction in her next publish.

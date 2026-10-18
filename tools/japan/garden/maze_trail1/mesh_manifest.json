@@ -1,0 +1,20 @@
+{
+  "pieces": [
+    {
+      "name": "TrailAcorn_Nut",
+      "vertices": 140,
+      "polygons": 242
+    },
+    {
+      "name": "TrailAcorn_Cap",
+      "vertices": 280,
+      "polygons": 482
+    },
+    {
+      "name": "TrailAcorn_Stem",
+      "vertices": 30,
+      "polygons": 42
+    }
+  ],
+  "fbx": "C:\\Users\\slard\\Documents\\Codex\\2026-10-17\\we\\outputs\\japan_kit30_maze_acorn_trail.fbx"
+}
