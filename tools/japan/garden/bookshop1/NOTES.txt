@@ -92,3 +92,13 @@ NEXT: On Shannon's yes, install current install_bookshop1.lua with
 BOOKSHOP1_ALLOW_EDIT=true and pottery_name1.lua with POTTERYSTALL_ALLOW_EDIT=true
 in stopped Edit. Compare canonical preview, fresh Play without installers, stop,
 Save to Roblox with Notes. Shannon publishes; no reimport or rebuilding other shops.
+
+TEA MERCHANT NAME PREVIEW — Oct18
+-Shannon also requested renaming Calligraphy teahouse; follows her earlier
+ explicit Tea Merchant selection. tea_name1.lua changes the one main sign to
+ お茶  Tea Merchant. Japanese tea wording and internal model name are retained.
+-Actual Play sign fits; preview/tea_merchant.jpg and tea_name1_checks.json record
+ the result. Original label backed up in preview only; stopped Edit unchanged.
+-This is a wording-only preview, not the future closed display-window rebuild.
+-Not installed or saved. On approval use TEAMERCHANT_ALLOW_EDIT=true in stopped
+ Edit with the same script. Bookshop/Pottery stall approvals also remain pending.

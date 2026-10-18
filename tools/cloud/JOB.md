@@ -5400,3 +5400,13 @@ QQ POTTERY STALL1 STATUS: SERVER PREVIEW; NOT PUBLISHED
 -Inspected and saved actual front/window/pottery pictures in bookshop1/preview. Current play_preview_manifest.json and play_checks.json are canonical. pottery_name1.lua changes only the visible label; keeps the internal Pottery table identifier and backs up original lettering.
 -Restored preview camera/HUD/avatar, stopped Play; fresh verification session also stopped. Final Edit original atelier245 parts retained, original 陶器  Pottery table label retained, no BookStationery or fixture/name backups installed.119 clean/raw sources remain anchored; HttpEnabled=false. No Save, Publish or direct DataStore writes.
 NEXT: Show actual pictures and obtain Shannon's yes. Then install current bookshop1 and pottery_name1 scripts with their explicit Edit flags, compare canonical version, fresh Play WITHOUT installers, stop and Save to Roblox with Notes. Shannon publishes. No reimport or other shop rebuild.
+
+
+## Tea Merchant name correction (Codex solo, Oct18 2026) - ACTUAL PLAY PREVIEW; NOT INSTALLED
+Shannon also requested a replacement name for Calligraphy teahouse. Followed her earlier explicit Tea Merchant choice. Read-only audit found one main label お茶  Calligraphy teahouse, eight other tea/price labels and no live script references to the internal model name.
+QQ TEA MERCHANT1: one visible label changed to お茶  Tea Merchant; original label backed up; geometry and internal model identifier retained
+QQ TEA MERCHANT1 STATUS: SERVER PREVIEW; NOT PUBLISHED
+-Guarded tea_name1.lua changes only the main label Text and records the original in HudBackup.TeaMerchantName1. No new geometry, import or storefront redesign. Existing Japanese tea wording retained.
+-Actual Client readback お茶  Tea Merchant, TextFits=true, TextBounds358x58 within620.4x58.19. Inspected close actual Play picture preview/tea_merchant.jpg. Evidence tea_name1_checks.json includes survey and installer output.
+-Restored preview camera/HUD/avatar visibility and stopped Play. Final Edit confirms original tea and pottery labels, no tea/pottery/bookshop backup or BookStationery installation, HttpEnabled=false. No Save, Publish or DataStore write.
+NEXT: Obtain approval for Tea Merchant name plus the previously previewed Book & Stationery storefront and Pottery stall wording. Each remains uninstalled. Tea name only uses TEAMERCHANT_ALLOW_EDIT=true on approval; its full closed storefront remains separate future work.
