@@ -1,0 +1,16 @@
+Japan kit 36 — REVISED Lanterns & Umbrellas from Shannon's pictures
+
+Use this revised file in stopped Studio: File > Import 3D:
+japan_kit36_lanterns_umbrellas2.fbx
+
+This replaces the earlier plain model ending umbrellas1.fbx. Do not import
+both versions. Import this single combined file at default scale; no textures
+need to be imported separately.
+
+Tell Codex "revised kit36 imported" when complete. Please do not start Play
+until Codex anchors and stores it. Then the actual Play preview comes before
+any permanent installation. Shannon approves the pictures and publishes later.
+
+Includes four patterned open umbrellas, folded umbrellas, varied painted
+lanterns, fuller timber cabinets, a working display bench, and a clear aisle.
+Shannon explicitly left the old umbrella shop's replacement for later.

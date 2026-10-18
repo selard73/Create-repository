@@ -1,0 +1,71 @@
+{
+  "stage": "Blender geometry only; Roblox asset appearance and walking still require imported Play preview",
+  "sourceMeshes": 336,
+  "placedMeshes": 333,
+  "triangles": 204132,
+  "maxTriangles": 4800,
+  "bounds": {
+    "min": [
+      -15.524999618530273,
+      -0.5799999833106995,
+      -18.795000076293945
+    ],
+    "max": [
+      15.324999809265137,
+      8.119999885559082,
+      1.940000057220459
+    ]
+  },
+  "thresholdBottomWorldY": 0.45985319668930047,
+  "observedLaneY": 0.460000157,
+  "plannedWalkingRouteXZ": [
+    [
+      -11.6,
+      1.5
+    ],
+    [
+      -11.6,
+      -6.0
+    ],
+    [
+      -6.8,
+      -6.0
+    ],
+    [
+      -2,
+      -9.5
+    ],
+    [
+      3.8,
+      -9.5
+    ],
+    [
+      3.8,
+      -13
+    ],
+    [
+      -6,
+      -13
+    ]
+  ],
+  "characterRadius": 1.1,
+  "entryClearWidth": 4.525,
+  "entryHeaderClearHeight": 7.205,
+  "ceilingLocalBottom": 8.185,
+  "openUmbrellaTopMax": 7.77,
+  "preservedOriginalParts": 130,
+  "retiredFixtureRoots": 131,
+  "retiredFixtureParts": 136,
+  "retiredLabels": 14,
+  "otherPremises": "Shannon explicitly deferred replacement; Paper umbrella craft unchanged",
+  "referenceFiles": [
+    "9.png",
+    "7.png",
+    "8.png",
+    "4.png",
+    "3.png",
+    "0.png"
+  ],
+  "paint": "Original curved thin-mesh floral/leaf patterns, no copied image pixels or branding",
+  "previewLimit": "Materials, paper illumination and existing shell are approximations in Blender; verify in Roblox after import"
+}

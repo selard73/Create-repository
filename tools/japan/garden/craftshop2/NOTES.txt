@@ -1,0 +1,71 @@
+CRAFTSHOP2 / REVISED KIT36 — MODEL/IMPORT READY; NOT INSTALLED
+
+CURRENT DIRECTION
+Shannon supplied six pictures after the plain craftshop1 model. They are the
+primary visual references for this revision. She explicitly chose to leave the
+former umbrella shop's replacement for later; that building stays untouched.
+Do not import/install craftshop1. Current file ends lanterns_umbrellas2.fbx.
+
+User references (local originals, not copied into this public repository)
+C:/Users/slard/OneDrive/Pictures/Screenshots 1/
+- 9.png: red parasols, dense blossom dots, leaves and red/white radial panels.
+- 7.png: varied cream/teal/coral umbrellas with blossoms and visible bamboo ribs.
+- 8.png: warm timber, shoji and layered decorative umbrellas in a room.
+- 4.png: dark shop joinery, varied hanging red lanterns, warm welcoming doorway.
+- 3.png: a full canopy of cream paper lanterns, strong product display density.
+- 0.png: painted paper lanterns on timber shelves, warm light and craft bench.
+Original motifs and geometry, no image pixels, watermarks, writing or brands
+copied from the reference images. Hiyoshiya/Ozeki research remains secondary.
+
+REVISION
+- 336 source meshes, including3 markers;333 placed meshes;204132 triangles,
+  largest mesh4800 triangles. Real MeshParts only, no new visible plain Parts.
+- Four open umbrella patterns: cream botanical, red blossom shower, teal
+  botanical and smaller red/ivory radial panels; exposed fine bamboo ribs.
+- Three different original painted-lantern motif families: plum sprigs,
+  paired leaves and floral clusters. Painted thin geometry follows each shade
+  curve; double-sided and non-shadow-casting in the installer.
+- Rear cabinet with9 lanterns, side shelves with6, varied hanging/window lamps,
+  front folded rack plus6 full-size folded umbrellas inside, supply drawers,
+  tied paper bundles, workbench with unfinished frame and paper/paste tools.
+- Warm timber back-wall bands/cabinet details and one red eave lantern.
+- Glazing .94 transparency/.02 reflectance; gentle warm point lights placed
+  just outside the paper so they can illuminate the opaque shade faces.
+- Blender materials/glow and context shell are approximate. Actual Roblox
+  rendering/lighting/assets/walking require the imported SERVER preview.
+
+PLACEMENT / PRESERVATION
+- Same existing Lantern workshop; frame5983.5,1.03985318,-117, yaw+90.
+- Original inventory266 parts; installer backs up131 roots containing136 parts
+  and14 labels, preserving130 original shell/facade parts and all other Japan.
+- Keeps existing floor, walls, ceiling, roof, upper front, awning, exterior
+  lantern and plants. Former Paper umbrella craft229 parts untouched.
+- Source uses C2_ markers and craftshop2 storage; old C1_ import is rejected.
+- Guarded prepare_craftshop2.lua validates all names/meshes/bounds/markers,
+  anchors/stores source before Play, retains raw import intact.
+- install_craftshop2.lua defaults to Server preview; stopped Edit additionally
+  requires CRAFTSHOP2_ALLOW_EDIT=true and Shannon's explicit approval.
+- New model JapanMap.ShopFronts.LanternsUmbrellas; backup HudBackup.Craftshop2Originals.
+- Off-tree assembly, exact unrelated property preservation checks, rollback.
+
+VERIFICATION / FILES
+- FBX export/reimport names and bounds passed within.003 for all336 meshes.
+- layout_checks.json: full footprint, grounded step, collider AABB checks with
+  1.1-stud avatar radius along planned entry/aisle route. NOT an actual Play test.
+- Model pictures out/01_front.png,02_inside.png,03_window.png,04_painted_stock.png.
+- gen_craftshop2.py + geometry_helpers.py + reference_details.py reproduce kit.
+- out/manifest.json; build_installers.py + install_body.txt generate operations.
+- Both Lua operations syntax-checked as UNCALLED functions with manifest JSON
+  omitted from the syntax check; JSON itself generated/validated by Python.
+- Studio reconnected with new id2cb11f0c-24c8-49cb-ae0e-2bc360eb2a40, same place.
+  Read-only check: original266/229 shops, no loose C1/C2 kit, bookshop1 source119,
+  HttpEnabled=false. No Studio edit, Save, Publish or DataStore write.
+
+NEXT
+Shannon imports the revised kit36, then anchor/store source before Play. Run
+actual Server preview, inspect asset loading, all painted surfaces, sign fit,
+warm lights and glass, walk entry/aisle and inspect boundary collisions. Show
+close actual Play pictures, restore camera/HUD/avatar, stop. Install exact
+approved version only after her yes; verify saved Edit through fresh Play,
+Save to Roblox, never Publish. Old umbrella premises deferred by her choice.
+Bookshop35/Pottery stall/Tea Merchant remain separate pending approvals.

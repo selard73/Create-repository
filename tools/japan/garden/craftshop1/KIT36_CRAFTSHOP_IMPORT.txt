@@ -1,3 +1,6 @@
+SUPERSEDED — use the revised kit36 ending lanterns_umbrellas2.fbx.
+Current instructions are in ../craftshop2/KIT36_CRAFTSHOP_IMPORT.txt.
+
 Japan kit 36 — Lanterns & Umbrellas
 
 In stopped Roblox Studio, use File > Import 3D and import:

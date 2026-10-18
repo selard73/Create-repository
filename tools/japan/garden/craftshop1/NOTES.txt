@@ -1,3 +1,6 @@
+SUPERSEDED MODEL: Shannon supplied six richer shop/umbrella references on Oct18.
+Do not import or install this first version. Revision craftshop2 is in preparation.
+
 CRAFTSHOP1 / KIT36 — MODEL PREVIEW AND IMPORT READY, NOT INSTALLED
 
 Shannon requested combining the Lantern shop and Paper umbrella craft into one
@@ -27,9 +30,9 @@ Current scope
   paper, paste bowl/brush and supply boxes. Central aisle and entrance clear.
 - Existing floor, building shell, upper facade, awning, exterior lantern and
   plants retained. No other shop, landscape, lighting system or gameplay writes.
-- Former Paper umbrella craft: asked Shannon whether to make a closed craft
-  storeroom/display or decide its replacement later. No answer yet; that building
-  is not modified by this kit. Do not physically join or remove either building.
+- Former Paper umbrella craft: Shannon explicitly chose on Oct18 to leave its
+  replacement for later. Keep that building untouched during kit36 work; no
+  storeroom conversion, closure, removal or physical joining is authorized.
 
 Files
 - gen_craftshop1.py + geometry_helpers.py: original Blender geometry source.
