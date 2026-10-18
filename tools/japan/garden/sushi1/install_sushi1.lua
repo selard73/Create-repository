@@ -38,6 +38,8 @@ local source=assert(game.ServerStorage.JapanGardenKit:FindFirstChild("sushi_bar1
 local parts,sf,count=collect(source)
 for _,p in pairs(parts)do assert(p.Anchored,"Source must be anchored before Play")end
 local target=CFrame.new(table.unpack(CONFIG.origin))*CFrame.Angles(0,math.rad(CONFIG.yaw),0)
+local floorSource=assert(J.ShopFronts.CatCafeInterior:FindFirstChild("CI2_VestibuleFloor_Oak",true),"Approved real box mesh missing")
+assert(floorSource:IsA("MeshPart")and floorSource.MeshId=="rbxassetid://95928484054291","Unexpected floor source")
 local shellNames={["Shop floor"]=true,["Stone foundation"]=true,["Back wall"]=true,["Side wall"]=true,["Cedar corner post"]=true,["Lintel over open shop"]=true,["Tiled shop roof"]=true,["Exposed roof beam"]=true}
 local removed={};local preserved={};local originalCount=0
 for _,v in ipairs(shop:GetChildren())do
@@ -56,7 +58,7 @@ for i,p in ipairs(J:GetDescendants())do
 end
 local model=Instance.new("Model");model.Name="SushiBar";model:SetAttribute("SushiBuildVersion","sushi1");model.WorldPivot=target
 pcall(function()model.ModelStreamingMode=Enum.ModelStreamingMode.Atomic end)
-local collisionGroups={S1_Floor=true,S1_BarBody=true,S1_BarTop=true,S1_RearCabinet=true,S1_RearTop=true,S1_StepLower=true,S1_StepUpper=true,S1_RearWall=true}
+local collisionGroups={S1_Floor=true,S1_Ceiling=true,S1_BarBody=true,S1_BarTop=true,S1_RearCabinet=true,S1_RearTop=true,S1_StepLower=true,S1_StepUpper=true,S1_RearWall=true}
 local made={};local meshes=0
 for n,p in pairs(parts)do if n~="S1_Origin"and n~="S1_Right"and n~="S1_Front"then
  local q=p:Clone();q.Name=n;q.CFrame=target*sf:ToObjectSpace(p.CFrame)
@@ -64,16 +66,29 @@ for n,p in pairs(parts)do if n~="S1_Origin"and n~="S1_Right"and n~="S1_Front"the
  q.Color=Color3.fromRGB(table.unpack(m.rgb));q.Material=Enum.Material[m.material];q.MaterialVariant="";q.TextureID=""
  for _,d in ipairs(q:GetChildren())do if d:IsA("SurfaceAppearance")then d:Destroy()end end
  q.Transparency=k=="Glass"and .75 or 0;q.CastShadow=k~="Glass";q.Anchored=true;q.CanTouch=false;q.CanQuery=true
+ if k=="Glass"then q.Material=Enum.Material.SmoothPlastic;q.Transparency=.82;q.Reflectance=0 end
+ if n=="S1_SideBacking_Walnut"then q.Size-=Vector3.new(.04,0,0)end
  q.CanCollide=collisionGroups[g]==true;q.Parent=model;made[n]=q;meshes+=1
 end end
+-- Roblox baked the FBX object rotation into vertices. Use the accepted cafe
+-- real box mesh for the visible boards, with local X aligned along each board.
+local oldFloor=assert(made.S1_Floor_WalnutLight);oldFloor.Transparency=1;oldFloor.CanQuery=false
+local floor=Instance.new("Model");floor.Name="AlignedFloorBoards";floor.Parent=model
+local floorColors={{103,76,55},{106,79,57},{100,73,52}}
+for i=0,16 do
+ local q=floorSource:Clone();q:ClearAllChildren();for k in pairs(q:GetAttributes())do q:SetAttribute(k,nil)end
+ q.Name=string.format("WalnutBoard_%02d",i);q.Size=Vector3.new(17.5,.07,1.53);q.CFrame=target*CFrame.new(-12.4+i*1.55,.035,-8.9)*CFrame.Angles(0,math.pi/2,0)
+ q.Color=Color3.fromRGB(table.unpack(floorColors[i%3+1]));q.Material=Enum.Material.Wood;q.MaterialVariant="";q.TextureID="";q.Transparency=0;q.Reflectance=0
+ q.Anchored=true;q.CanCollide=false;q.CanTouch=false;q.CanQuery=false;q.CastShadow=true;q.Parent=floor
+end
 local normals={{Enum.NormalId.Front,Vector3.new(0,0,-1)},{Enum.NormalId.Back,Vector3.new(0,0,1)},{Enum.NormalId.Left,Vector3.new(-1,0,0)},{Enum.NormalId.Right,Vector3.new(1,0,0)},{Enum.NormalId.Top,Vector3.new(0,1,0)},{Enum.NormalId.Bottom,Vector3.new(0,-1,0)}}
 for _,r in ipairs(CONFIG.labels)do
  local p=assert(made[r.name]);local outward=target:VectorToWorldSpace(Vector3.new(table.unpack(r.front)));local face,best=nil,-1
  for _,n in ipairs(normals)do local d=p.CFrame:VectorToWorldSpace(n[2]):Dot(outward);if d>best then face=n[1];best=d end end
  assert(best>.999,"Menu alignment")
  local gui=Instance.new("SurfaceGui");gui.Name="SushiMenu";gui.Face=face;gui.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud;gui.PixelsPerStud=120;gui.LightInfluence=.65;gui.Parent=p
- local t=Instance.new("TextLabel");t.Name="English";t.Size=UDim2.fromScale(.88,.15);t.Position=UDim2.fromScale(.06,.80);t.BackgroundTransparency=1;t.Text=r.text;t.TextColor3=Color3.fromRGB(39,45,39);t.Font=Enum.Font.Garamond;t.TextScaled=true;t.TextWrapped=false;t.Parent=gui
- local jp=Instance.new("TextLabel");jp.Name="Japanese";jp.Size=UDim2.fromScale(.78,.70);jp.Position=UDim2.fromScale(.11,.04);jp.BackgroundTransparency=1;jp.Text=r.jp;jp.TextColor3=t.TextColor3;jp.Font=Enum.Font.SourceSans;jp.TextScaled=true;jp.TextWrapped=false;jp.Parent=gui
+ local t=Instance.new("TextLabel");t.Name="English";t.Size=UDim2.fromScale(.88,.15);t.Position=UDim2.fromScale(.06,.80);t.BackgroundTransparency=1;t.Text=r.text;t.TextColor3=Color3.fromRGB(39,45,39);t.Font=Enum.Font.Garamond;t.TextScaled=false;t.TextSize=18;t.TextWrapped=false;t.Parent=gui
+ local jp=Instance.new("TextLabel");jp.Name="Japanese";jp.Size=UDim2.fromScale(.78,.70);jp.Position=UDim2.fromScale(.11,.04);jp.BackgroundTransparency=1;jp.Text=r.jp;jp.TextColor3=t.TextColor3;jp.Font=Enum.Font.SourceSans;jp.TextScaled=false;jp.TextSize=40;jp.TextWrapped=false;jp.Parent=gui
 end
 local seats=Instance.new("Folder");seats.Name="CustomerSeats";seats.Parent=model
 for _,s in ipairs(CONFIG.seats)do
@@ -102,6 +117,7 @@ end)
 if not ok then model:Destroy();for _,v in ipairs(backup:GetChildren())do v.Parent=shop;v:SetAttribute("SushiBar1OriginalParent",nil)end;backup:Destroy();error(err)end
 if not Run:IsRunning()then game.ChangeHistoryService:SetWaypoint("After approved sushi bar")end
 print("QQ SUSHI1: "..meshes.." real meshes; six aligned functional seats; counter, chef aisle, prep bench, fish case and individual sushi settings")
+print("QQ SUSHI1 FLOOR:17 reused real mesh boards, grain along board length; imported floor retained as invisible collision surface")
 print("QQ SUSHI1 PRESERVED: "..originalCount.." other Japan instances; original building shell, roof, main sign and all shop backs retained")
 print("QQ SUSHI1 BACKUP: "..#removed.." original sushi fixtures retained in HudBackup.SushiBar1Originals; no other shop rebuilt")
 print("QQ SUSHI1 STATUS: "..(Run:IsRunning()and"SERVER PREVIEW"or"EDIT INSTALLED").."; NOT PUBLISHED")

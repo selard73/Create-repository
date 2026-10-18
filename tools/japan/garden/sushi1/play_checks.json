@@ -1,0 +1,76 @@
+{
+  "status": "PLAY PREVIEW COMPLETE; NOT INSTALLED; awaiting Shannon approval",
+  "preparation": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ SUSHI1 PREPARED: 192 real mesh sources anchored and stored; 2 identical raw imports retained; JapanMap unchanged"
+      }
+    ],
+    "isError": false
+  },
+  "preview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ SUSHI1: 189 real meshes; six aligned functional seats; counter, chef aisle, prep bench, fish case and individual sushi settings\nQQ SUSHI1 FLOOR:17 reused real mesh boards, grain along board length; imported floor retained as invisible collision surface\nQQ SUSHI1 PRESERVED: 21659 other Japan instances; original building shell, roof, main sign and all shop backs retained\nQQ SUSHI1 BACKUP: 85 original sushi fixtures retained in HudBackup.SushiBar1Originals; no other shop rebuilt\nQQ SUSHI1 STATUS: SERVER PREVIEW; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "walk": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[{\"state\":\"Running\",\"x\":8.6,\"z\":-3,\"elapsed\":0.3319831999979215,\"distance\":0.724609375,\"rootY\":4.332995414733887},{\"state\":\"Running\",\"x\":8.6,\"z\":-8,\"elapsed\":0.31711470000300326,\"distance\":0.7958984375,\"rootY\":4.334693431854248},{\"state\":\"Running\",\"x\":8.6,\"z\":-13,\"elapsed\":0.33364190000429519,\"distance\":0.85791015625,\"rootY\":4.334693431854248},{\"state\":\"Running\",\"x\":-8,\"z\":-13,\"elapsed\":0.9988660000017262,\"distance\":0.7660657167434692,\"rootY\":4.33468770980835},{\"state\":\"Running\",\"x\":8.6,\"z\":-13,\"elapsed\":1.0008591999940109,\"distance\":0.7066321969032288,\"rootY\":4.334693431854248},{\"state\":\"Running\",\"x\":8.6,\"z\":-2.4,\"elapsed\":0.6984591000000364,\"distance\":0.6152521967887878,\"rootY\":4.334690093994141},{\"state\":\"Running\",\"x\":-10,\"z\":-2.4,\"elapsed\":1.1008456999988994,\"distance\":1.1492156982421876,\"rootY\":4.334693431854248},{\"state\":\"Running\",\"x\":0,\"z\":2.5,\"elapsed\":0.631917999999132,\"distance\":0.7817512154579163,\"rootY\":3.6825520992279054}]"
+      }
+    ],
+    "isError": false
+  },
+  "seats": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[{\"cushionTop\":3.029849886894226,\"lowerTorsoY\":3.5767526626586916,\"state\":\"Seated\",\"seatPart\":true,\"seat\":1,\"rootY\":4.375771522521973,\"occupied\":true,\"seatTop\":3.079853344708681},{\"cushionTop\":3.029849886894226,\"lowerTorsoY\":3.5770370960235597,\"state\":\"Seated\",\"seatPart\":true,\"seat\":2,\"rootY\":4.375771522521973,\"occupied\":true,\"seatTop\":3.079853344708681},{\"cushionTop\":3.029849886894226,\"lowerTorsoY\":3.5838074684143068,\"state\":\"Seated\",\"seatPart\":true,\"seat\":3,\"rootY\":4.375771522521973,\"occupied\":true,\"seatTop\":3.079853344708681},{\"cushionTop\":3.029849886894226,\"lowerTorsoY\":3.5804286003112795,\"state\":\"Seated\",\"seatPart\":true,\"seat\":4,\"rootY\":4.375771522521973,\"occupied\":true,\"seatTop\":3.079853344708681},{\"cushionTop\":3.029849886894226,\"lowerTorsoY\":3.5838074684143068,\"state\":\"Seated\",\"seatPart\":true,\"seat\":5,\"rootY\":4.375771522521973,\"occupied\":true,\"seatTop\":3.079853344708681},{\"cushionTop\":3.029849886894226,\"lowerTorsoY\":3.569456100463867,\"state\":\"Seated\",\"seatPart\":true,\"seat\":6,\"rootY\":4.375771522521973,\"occupied\":true,\"seatTop\":3.079853344708681}]"
+      }
+    ],
+    "isError": false
+  },
+  "assetsAndText": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"labels\":[{\"text\":\"GREEN TEA\",\"fits\":true,\"size\":18},{\"text\":\"お\\n茶\",\"fits\":true,\"size\":40},{\"text\":\"TUNA\",\"fits\":true,\"size\":18},{\"text\":\"ま\\nぐ\\nろ\",\"fits\":true,\"size\":40},{\"text\":\"MAKI\",\"fits\":true,\"size\":18},{\"text\":\"巻\\nき\",\"fits\":true,\"size\":40},{\"text\":\"SALMON\",\"fits\":true,\"size\":18},{\"text\":\"サ\\nー\\nモ\\nン\",\"fits\":true,\"size\":40},{\"text\":\"TAMAGO\",\"fits\":true,\"size\":18},{\"text\":\"玉\\n子\",\"fits\":true,\"size\":40},{\"text\":\"NIGIRI\",\"fits\":true,\"size\":18},{\"text\":\"に\\nぎ\\nり\",\"fits\":true,\"size\":40}],\"assetStates\":{\"Success\":230},\"meshParts\":206}"
+      }
+    ],
+    "isError": false
+  },
+  "comparison": {
+    "content": [
+      {
+        "type": "text",
+        "text": "All 212 parts match the reviewed preview: exact appearance/physics flags and transforms/sizes within .001"
+      }
+    ],
+    "isError": false
+  },
+  "boundary": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[{\"distance\":4.939999580383301,\"hit\":\"Workspace.JapanMap.ShopFronts.SushiBar.S1_Ceiling_WalnutLight\"},{\"distance\":13.300000190734864,\"hit\":\"Workspace.JapanMap.Outdoor market revision.Sushi bar.Side wall\"},{\"distance\":13.299999237060547,\"hit\":\"Workspace.JapanMap.Outdoor market revision.Sushi bar.Side wall\"},{\"distance\":5.66015625,\"hit\":\"Workspace.JapanMap.ShopFronts.SushiBar.S1_RearWall_Wall\"}]"
+      }
+    ],
+    "isError": false
+  },
+  "edit": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"installed\":false,\"grocerStock\":\"stock2\",\"httpEnabled\":false,\"stored\":{\"sushi_bar1_raw_duplicate2\":192,\"sushi_bar1_raw\":192,\"sushi_bar1\":192},\"originalSushiParts\":141}"
+      }
+    ],
+    "isError": false
+  },
+  "note": "Raw mesh-ID string PreloadAsync reported Failure even for known loaded assets. Rechecked actual MeshPart instances: all230 callbacks Success. CollisionFidelity writes remained Default; all collidable geometry is simple closed slabs/boxes and actual floor/boundary rays and walking passed."
+}

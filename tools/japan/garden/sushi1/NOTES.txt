@@ -1,5 +1,5 @@
 SUSHI BAR 1 / JAPAN KIT34
-Status: BLENDER MODEL PREVIEW AND IMPORT KIT ONLY. NOT IN STUDIO. NOT INSTALLED, SAVED OR PUBLISHED.
+Status: IMPORTED, ANCHORED AND PLAY-PREVIEWED. NOT INSTALLED, SAVED OR PUBLISHED. Awaiting Shannon's approval.
 
 Requested by Shannon: build the existing sushi shop into a proper sushi bar.
 Inspected the actual shop and both supplied screenshots. Existing building is27x18 studs,
@@ -39,12 +39,26 @@ and creates checked, anchored clean source sushi_bar1 in ServerStorage.JapanGard
 The script rejects wrong scale, missing/duplicate meshes, scripts, wrong bounds, and previously stored source.
 
 Next:
-1. Actual Play Server preview using install_sushi1.lua; set mesh collision fidelity separately if needed.
-2. Check every asset loaded, all six seats align with cushion tops, avatar walking/entry/head clearance,
-   chef route, near walls and camera, labels in actual lighting; take close natural Play pictures.
-3. Stop Play; verify original Edit shop unchanged. Ask Shannon for approval of actual pictures.
-4. Only after approval install same version in Edit, compare canonical preview, fresh Play without installer,
+1. Shannon reviews actual pictures in preview/inside.jpg and preview/counter.jpg.
+2. Only after approval install same version in Edit, compare canonical play_preview_manifest.json, fresh Play without installer,
    Save to Roblox with Notes. Shannon publishes. No direct DataStore writes, no other shop builders.
+
+PLAY PREVIEW RESULTS / OCT18:
+Two identical imports validated (same192 assets, sizes and relative transforms), all384 raw parts anchored,
+both retained as sushi_bar1_raw and sushi_bar1_raw_duplicate2; clean192-part source sushi_bar1 stored.
+Roblox baked FBX rotations. Visible floor uses17 cloned real box meshes from the accepted cafe floor source,
+with X axis along board length. Imported floor retained invisibly for collision. Ceiling also collides.
+Side backing narrowed.04 to sit in front of plaster at plank gaps. Clear case uses SmoothPlastic/.82 alpha.
+Menu fixed sizes40 Japanese/18 English avoid the game's automatic TextScaled conversion to tiny8pt text.
+Final206 MeshParts+6 Seats=212 parts. All match recorded preview within.001 and exact appearance/flags.
+All230 asset callbacks passed when preloading actual MeshPart instances. Raw-ID string preload was misleading.
+All12 menu labels fit. Actual avatar walked8 goals through entrance/customer/staff aisles, all Running and
+within1.15 studs. All6 seats occupied correctly; seat top3.07985 is.05 above cushion top3.02985.
+Up/left/right/back boundary rays hit ceiling or structural walls. CollisionFidelity remained Default despite
+set attempts; closed slab/box collisions passed actual tests. Do not claim Precise was applied.
+Fresh regenerated preview reproduced all212 parts and final readable labels. No permanent sushi front exists;
+original141 parts remain in Edit; all source copies anchored. Preview camera, HUD and avatar overrides cleared.
+Updated installer is canonical; no further mesh import required. Do NOT rerun prepare on stored sources.
 
 Installation backs up only retired sushi fixtures to HudBackup.SushiBar1Originals. It checks every unrelated
 Japan instance remains in the same parent and preserves every other part's geometry and appearance.

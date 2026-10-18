@@ -34,8 +34,17 @@ local candidates={}
 for _,v in ipairs(workspace:GetChildren())do if v:IsA("Model")and v.Name~="JapanMap"then
  for _,p in ipairs(v:GetDescendants())do if p:IsA("MeshPart")and key(p.Name)=="S1_Origin"then table.insert(candidates,v);break end end
 end end
-assert(#candidates==1,"Expected one imported kit34")
+assert(#candidates>=1 and #candidates<=2,"Expected one kit34 or two identical imports")
 local raw=candidates[1];local parts,frame,count=collect(raw)
+for i=2,#candidates do
+ local dp,df,dc=collect(candidates[i]);assert(dc==count,"Duplicate import differs")
+ for n,p in pairs(parts)do
+  local q=dp[n];assert(q.MeshId==p.MeshId and(q.Size-p.Size).Magnitude<.001,"Duplicate asset differs: "..n)
+  local a=frame:ToObjectSpace(p.CFrame);local b=df:ToObjectSpace(q.CFrame)
+  assert((a.Position-b.Position).Magnitude<.001 and a.RightVector:Dot(b.RightVector)>.99999 and a.UpVector:Dot(b.UpVector)>.99999,"Duplicate transform differs")
+ end
+ assert(not kit:FindFirstChild("sushi_bar1_raw_duplicate"..i),"Duplicate backup already exists")
+end
 local source=Instance.new("Model");source.Name="sushi_bar1"
 for n,p in pairs(parts)do
  local q=p:Clone();q.Name=n
@@ -43,6 +52,7 @@ for n,p in pairs(parts)do
  q.Anchored=true;q.CanCollide=false;q.CanTouch=false;q.Parent=source
 end
 source.WorldPivot=frame;source:SetAttribute("SushiKitVersion","sushi1")
-for _,p in ipairs(raw:GetDescendants())do if p:IsA("BasePart")then p.Anchored=true;p.CanTouch=false end end
+for _,v in ipairs(candidates)do for _,p in ipairs(v:GetDescendants())do if p:IsA("BasePart")then p.Anchored=true;p.CanTouch=false end end end
 raw:SetAttribute("OriginalImportName",raw.Name);raw.Name="sushi_bar1_raw";raw.Parent=kit;source.Parent=kit
-print("QQ SUSHI1 PREPARED: "..count.." real mesh sources anchored and stored; raw import retained; JapanMap unchanged")
+for i=2,#candidates do local v=candidates[i];v:SetAttribute("OriginalImportName",v.Name);v.Name="sushi_bar1_raw_duplicate"..i;v.Parent=kit end
+print("QQ SUSHI1 PREPARED: "..count.." real mesh sources anchored and stored; "..#candidates.." identical raw imports retained; JapanMap unchanged")
