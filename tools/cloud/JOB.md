@@ -5383,3 +5383,20 @@ Shannon requested replacing the Kimono atelier to the right of the sushi bar wit
 - Both scripts syntax-checked as uncalled functions; not run. Final Edit audit still has original atelier245 parts, no BookStationery, no bookshop1 source or backup. OwnerStartArea=japan, ramen ends1 retained, HttpEnabled=false. No Studio scene edits, Save, Publish or direct DataStore writes in this task.
 - Source/manifest/survey/checks/model pictures/FBX: tools/japan/garden/bookshop1. Combined import copied to Desktop Japan garden kit/japan_kit35_book_stationery1.fbx with KIT35_BOOKSHOP_IMPORT.txt. Previous three approved corrections remain saved as recorded above.
 NEXT: Shannon imports kit35, then anchor/store BEFORE Play. Prepare actual Server preview, check assets/labels, closed door/window collisions and clear street passage, show close low Play pictures. Install/save only on her yes. No other shop rebuilt.
+
+
+## Bookshop kit35 and Pottery stall wording (Codex solo, Oct18 2026) - ACTUAL PLAY PREVIEW; NOT INSTALLED
+Shannon requested Pottery table be called Pottery stall, then reported kit35 imported. Read-only check found one119-part loose import and one visible pottery name label; no script references to Pottery table.
+QQ BOOKSHOP1 PREPARED: 119 real mesh sources anchored and stored; 1 identical raw imports retained; JapanMap unchanged
+-Anchored/stored119 clean and119 raw source meshes BEFORE Play. No further import needed.
+QQ BOOKSHOP1: 116 real meshes; closed timber door, clear display window, books, washi, envelopes, brushes and inkstone
+QQ BOOKSHOP1 PRESERVED: 21796 other Japan instances; upper facade, roof, awning, lantern, plants and all other shops retained
+QQ BOOKSHOP1 BACKUP: 65 original retail fixtures/assemblies (70 parts, nine old labels) retained in HudBackup.Bookshop1Originals
+QQ BOOKSHOP1 STATUS: SERVER PREVIEW; NOT PUBLISHED
+QQ POTTERY STALL1: one visible label changed to 陶器  Pottery stall; original label backed up; geometry and internal model identifier retained
+QQ POTTERY STALL1 STATUS: SERVER PREVIEW; NOT PUBLISHED
+-Actual Play refinements: main sign TextSize100, glazing Transparency.86/Reflectance.02, postcard illustration meshes DoubleSided so their flat artwork faces the street. No geometry reimport. Updated guarded installer reproduces this exact version in fresh Play:116-part canonical comparison within.001 and exact appearance/physical flags; four labels and two lights match.
+-Client loaded116 meshes with124 Success callbacks; four bookshop labels and Pottery stall fit. Nine door/window barrier rays passed. Actual client-controlled character moved3.68/3.33/3.32 studs toward the door/two panes and stopped outside each surface. Walked the frontage both directions, ending within.24 studs of goals. Initial server MoveTo did not move the avatar and was not counted as a pass; bounded late-render client movement supplied valid evidence. A missing PlayerModule lookup was abandoned, and stopping Play cleared it.
+-Inspected and saved actual front/window/pottery pictures in bookshop1/preview. Current play_preview_manifest.json and play_checks.json are canonical. pottery_name1.lua changes only the visible label; keeps the internal Pottery table identifier and backs up original lettering.
+-Restored preview camera/HUD/avatar, stopped Play; fresh verification session also stopped. Final Edit original atelier245 parts retained, original 陶器  Pottery table label retained, no BookStationery or fixture/name backups installed.119 clean/raw sources remain anchored; HttpEnabled=false. No Save, Publish or direct DataStore writes.
+NEXT: Show actual pictures and obtain Shannon's yes. Then install current bookshop1 and pottery_name1 scripts with their explicit Edit flags, compare canonical version, fresh Play WITHOUT installers, stop and Save to Roblox with Notes. Shannon publishes. No reimport or other shop rebuild.

@@ -44,7 +44,7 @@ local function assemble()
   local g,k=n:match("^(.*)_([^_]+)$");local m=assert(CONFIG.materials[k])
   q.Color=Color3.fromRGB(table.unpack(m.rgb));q.Material=Enum.Material[m.material];q.MaterialVariant="";q.TextureID="";q.Reflectance=0
   for _,d in ipairs(q:GetChildren())do if d:IsA("SurfaceAppearance")then d:Destroy()end end
-  q.Transparency=k=="Glass"and .96 or 0;q.CastShadow=k~="Glass";q.Anchored=true;q.CanTouch=false;q.CanQuery=true;q.CanCollide=collision[g]==true;q.Parent=model;made[n]=q;meshes+=1
+  q.Transparency=k=="Glass"and .86 or 0;q.Reflectance=k=="Glass"and .02 or 0;q.DoubleSided=g:find('B1_PostcardArt',1,true)~=nil;q.CastShadow=k~="Glass";q.Anchored=true;q.CanTouch=false;q.CanQuery=true;q.CanCollide=collision[g]==true;q.Parent=model;made[n]=q;meshes+=1
  end end
  local normals={{Enum.NormalId.Front,Vector3.new(0,0,-1)},{Enum.NormalId.Back,Vector3.new(0,0,1)},{Enum.NormalId.Left,Vector3.new(-1,0,0)},{Enum.NormalId.Right,Vector3.new(1,0,0)},{Enum.NormalId.Top,Vector3.new(0,1,0)},{Enum.NormalId.Bottom,Vector3.new(0,-1,0)}}
  for _,r in ipairs(CONFIG.labels)do
@@ -52,7 +52,7 @@ local function assemble()
   for _,n in ipairs(normals)do local d=p.CFrame:VectorToWorldSpace(n[2]):Dot(outward);if d>best then face=n[1];best=d end end
   assert(best>.999,"Shop sign alignment")
   local gui=Instance.new("SurfaceGui");gui.Name="BookshopLettering";gui.Face=face;gui.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud;gui.PixelsPerStud=120;gui.LightInfluence=.75;gui.Parent=p
-  local t=Instance.new("TextLabel");t.Name="ShopText";t.Size=UDim2.fromScale(.94,.88);t.Position=UDim2.fromScale(.03,.06);t.BackgroundTransparency=1;t.Text=r.text;t.TextColor3=Color3.fromRGB(table.unpack(r.rgb));t.Font=Enum.Font.Garamond;t.TextScaled=false;t.TextSize=r.size;t.TextWrapped=false;t.Parent=gui
+  local t=Instance.new("TextLabel");t.Name="ShopText";t.Size=UDim2.fromScale(.94,.88);t.Position=UDim2.fromScale(.03,.06);t.BackgroundTransparency=1;t.Text=r.text;t.TextColor3=Color3.fromRGB(table.unpack(r.rgb));t.Font=Enum.Font.Garamond;t.TextScaled=false;t.TextSize=r.name=="B1_MainSign_Walnut"and 100 or r.size;t.TextWrapped=false;t.Parent=gui
  end
  for i,x in ipairs({-4,10.5})do
   local p=assert(made["B1_WindowLamp"..(i-1).."_Paper"]);local a=Instance.new("Attachment");a.Name="WarmDisplayLight";a.Position=p.CFrame:PointToObjectSpace(target:PointToWorldSpace(Vector3.new(x,5.90,-2.4)));a.Parent=p

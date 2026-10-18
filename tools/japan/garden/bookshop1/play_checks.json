@@ -1,0 +1,99 @@
+{
+  "status": "ACTUAL PLAY PREVIEW PASSED; NOT INSTALLED",
+  "source": {
+    "clean": 119,
+    "raw": 119,
+    "anchored": true
+  },
+  "canonical": {
+    "lights": 2,
+    "exactAppearance": true,
+    "geometryTolerance": 0.001,
+    "oldFixtures": 65,
+    "canonicalMeshCount": 116,
+    "potteryOriginal": "陶器  Pottery table",
+    "labels": 4
+  },
+  "client": {
+    "pottery": {
+      "fits": true,
+      "text": "陶器  Pottery stall"
+    },
+    "meshes": 116,
+    "assets": {
+      "Success": 124
+    },
+    "labels": [
+      {
+        "text": "本と文具   Books & Stationery",
+        "fits": true,
+        "size": 100
+      },
+      {
+        "text": "FOREST TALES",
+        "fits": true,
+        "size": 15
+      },
+      {
+        "text": "CLOSED",
+        "fits": true,
+        "size": 33
+      },
+      {
+        "text": "KYOTO SKETCHES",
+        "fits": true,
+        "size": 15
+      }
+    ]
+  },
+  "walking": {
+    "closedFacadesAndReturn": [
+      {
+        "state": "Running",
+        "blocked": true,
+        "name": "B1_DoorGlass_Glass",
+        "z": -54.09,
+        "endX": 5987.3154296875,
+        "moved": 3.6845703125,
+        "frontPlaneX": 5986.77734375,
+        "startX": 5991
+      },
+      {
+        "state": "Running",
+        "blocked": true,
+        "name": "B1_Glazing0_Glass",
+        "z": -65,
+        "endX": 5987.67333984375,
+        "moved": 3.32666015625,
+        "frontPlaneX": 5987.12744140625,
+        "startX": 5991
+      },
+      {
+        "state": "Running",
+        "blocked": true,
+        "name": "B1_Glazing1_Glass",
+        "z": -73,
+        "endX": 5987.68017578125,
+        "moved": 3.31982421875,
+        "frontPlaneX": 5987.12744140625,
+        "startX": 5991
+      },
+      {
+        "state": "Running",
+        "kind": "street return",
+        "distance": 0.23383000493049622
+      }
+    ],
+    "streetForwardDistance": 0.2000732421875,
+    "barrierRays": 9,
+    "method": "Bounded client RenderStep Humanoid:Move; measured actual movement and stopping outside each glass plane. Initial server MoveTo was overridden and was not counted as a passing test."
+  },
+  "finalEdit": {
+    "originalAtelierParts": 245,
+    "potteryText": "陶器  Pottery table",
+    "bookshopInstalled": false,
+    "potteryBackup": false,
+    "httpEnabled": false
+  },
+  "pending": "Shannon's yes before permanent installation and Save to Roblox. No publishing by Codex."
+}

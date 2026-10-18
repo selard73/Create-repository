@@ -1,5 +1,7 @@
 KIT35 BOOK & STATIONERY — former Kimono atelier
-Status: BLENDER DESIGN PREVIEW / IMPORT READY. NOT INSTALLED. NO PLAY PREVIEW YET.
+Status: ACTUAL PLAY PREVIEW PASSED; NOT INSTALLED. Awaiting Shannon's approval.
+Kit35 is already imported:119 clean and119 raw meshes anchored in ServerStorage.
+Do not import again or rerun preparation. Current installer is ready for approval.
 
 Shannon requested a closed detailed storefront to the right of the sushi bar.
 This follows her earlier choice of Book & Stationery for the former atelier.
@@ -65,4 +67,28 @@ Scope / safeguards
 - No Studio save/publish, no DataStore writes, and no permanent scene edits
   during kit preparation. Previous approved three corrections remain saved.
 
-NEXT: Shannon imports kit35; anchor/store and actual Play preview, then approval.
+PLAY PREVIEW UPDATE — Oct18
+-116 placed MeshParts match the recorded canonical Play manifest exactly for
+ appearance/flags and within.001 for transforms/sizes in a fresh second preview.
+-124 client asset callbacks Success; all four bookshop labels and the pottery
+ label fit. Nine barrier rays pass. Real character movement tests stop outside
+ the closed door and both window panes; street travel passes both directions.
+-Runtime refinements require no new import: main sign TextSize100, glazing
+ Transparency.86/Reflectance.02, three postcard pictures DoubleSided=true.
+-Actual pictures in preview/front.jpg, window.jpg and pottery_stall.jpg.
+-pottery_name1.lua changes only 陶器  Pottery table to 陶器  Pottery stall,
+ with the original label backed up; original internal model name retained.
+-Initial server MoveTo was cancelled by normal player controls, so it was not
+ counted as a pass. The current PlayerScripts has no PlayerModule; an attempted
+ lookup was abandoned and Play stopped. Bounded client RenderStep movement
+ then provided the actual walking evidence. Compare door clearance against
+ its recessed pane, not the more-forward window plane.
+-Stopped Play. Edit still has original245 atelier parts and Pottery table label;
+ no new shop or fixture backups installed. Anchored source retained.
+-The earlier layout_checks.json and Blender renders describe the design stage.
+ play_checks.json and play_preview_manifest.json describe the actual preview.
+
+NEXT: On Shannon's yes, install current install_bookshop1.lua with
+BOOKSHOP1_ALLOW_EDIT=true and pottery_name1.lua with POTTERYSTALL_ALLOW_EDIT=true
+in stopped Edit. Compare canonical preview, fresh Play without installers, stop,
+Save to Roblox with Notes. Shannon publishes; no reimport or rebuilding other shops.
