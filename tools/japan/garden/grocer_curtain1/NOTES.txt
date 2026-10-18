@@ -1,0 +1,39 @@
+GROCER CURTAIN1 / KIT33 — MODEL READY; IMPORT REQUIRED; NOT INSTALLED
+Shannon reported the green entry curtain hanging behind the beam.
+Measured curtain localZ.086..244 vs beam frontZ.25; beam intersects fabric.
+The old Sage mesh also has reversed face patches: moving in Play exposes
+square holes. Precise alone leaves them. DoubleSided fills them with patchy
+lighting. Rejected all transform-only/property-only trials; Play discarded.
+diagnostic_transform_only.lua is REJECTED; NEVER install it.
+
+Built three subtly folded green panels as closed .012-stud-thick geometry
+with consistent outward normals, plus wooden rail and two short mounts.
+Cloth spans X-10.70..-6.00,Y7.26..8.28,Z.314..446. Clears beam by.064,
+left lantern envelope by.05 inX, bottom7.26 above shop floor.
+Original rear rod remains as anchor for new standoffs; original beam,
+lanterns, eave and all other shop objects stay. New mountZ.04..355.
+Cloth retains original Sage87/112/86 Fabric; wood65/47/35.
+3 visible mesh batches+3 source markers,2304 total triangles.
+Closed-manifold/outward-normal checks and FBX roundtrip names/bounds pass.
+Model image uses simplified context beam/lantern that is NOT exported.
+It is a Blender model preview, NOT an actual game review.
+
+Kit33 in current chat outputs and Desktop Japan garden kit; SHA256 copies match.
+prepare_curtain1.lua and install_curtain1.lua compile; bodies NOT run.
+No permanent curtain changes. Studio stopped; original cloth intact.
+Kit32 stock2 already anchored/stored; actual shelf preview awaits approval.
+Approved side-facing barrel signs installed and user reported published.
+Cafe accepted/installed; maze kit30 remains separate.
+
+NEXT: Shannon imports japan_kit33_grocer_curtain1.fbx.
+Run prepare_curtain1.lua in stopped Edit BEFORE Play;6 source meshes anchored
+and raw preserved in ServerStorage.JapanGardenKit.grocer_curtain1(_raw).
+Run install_curtain1.lua on Play SERVER. Retires only M2_Facade_Sage into
+HudBackup.GrocerCurtain1Originals;3 visible meshes in Mikan.Noren1.
+Verify cloth normals, front/side/back rendering and beam/lantern clearance,
+show low close actual game images. Then ask approval for curtain and still-
+pending shelf stock separately or clearly together. Only on yes set
+GROCER_CURTAIN1_ALLOW_EDIT=true in stopped Edit. Preserve all other Japan
+instances; source installer contains broad preservation check/rollback.
+Do not publish. Historical whole-shop mikangrocer2 builder overwrites later
+curtain/stock/sign patches; do not rerun without reconciling these revisions.

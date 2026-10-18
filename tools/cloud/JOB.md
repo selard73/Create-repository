@@ -5015,3 +5015,28 @@ QQ GROCERSTOCK2 CLEANUP: photo bindings removed; HUD, avatar visibility and norm
 QQ GROCERSTOCK2 EDIT CHECK:64 clean source meshes anchored with9 label textures; raw import stored; original8 stock meshes remain; approved side-facing barrel signs and cafe retained; preview discarded, awaiting approval
 - No permanent stock appearance change, publication or direct DataStore write. Only imported kit anchored/stored in Edit. Old8 stock meshes still installed; rejected stock1 remains source only.
 NEXT: Shannon reviews actual Play pictures and explicitly approves before grocerstock2.lua with GROCERSTOCK2_ALLOW_EDIT=true in stopped Edit. Compare exact preview manifest, check backups/preserved objects and fresh Play. Barrel signs already approved/installed and user-reported published; cafe accepted; maze kit30 separate.
+
+
+## Grocer curtain behind beam: topology diagnosed; replacement kit33 ready (Codex solo, Oct 17 2026) - IMPORT PENDING
+Shannon supplied a screenshot showing green entry curtain behind the beam. This was NOT approval of pending stock2. Read-only survey: cloth localZ.086..244, beam frontZ.25, so beam crosses the fabric.
+- First Play diagnostic brought original cloth forward.22, narrowed to4.7 and centeredX-8.35 to clear left lantern; added3 small copied mesh supports. Actual diagnostic output (superseded, never install):
+QQ GROCER CURTAIN: cloth forward.22 studs; width4.70 and centerX-8.35 keep it clear of left lantern; original height/color retained
+QQ GROCER CURTAIN SUPPORT: three existing real-mesh copies form a wooden rail and two standoffs connected to the original rear rod; no import required
+QQ GROCER CURTAIN PRESERVED: one existing mesh moved/resized; all other original grocer parts, beam, signs, stock and lanterns unchanged
+QQ GROCER CURTAIN STATUS: SERVER PREVIEW; NOT PUBLISHED
+- Natural entrance picture revealed square holes in the original mesh once visible. Precise rendering alone did not cure them. DoubleSided=true filled gaps but produced alternating patches. Source gen_mikan2.py exports coplanar duplicated reversed quads; source inspection and facing test implicate imported normals/backface topology. Rejected transform/property-only solution; no permanent change.
+- Announced avatar/camera movement before photo; all camera/HUD/avatar overrides removed, then stopped Play.
+QQ GROCER CURTAIN DIAGNOSTIC CLEANUP: temporary camera, HUD and avatar overrides removed
+- Built new solid .012-thick closed cloth with gentle folds and consistent outward normals, original Sage color/Fabric for game, wooden mounting rail and two standoffs to original rear rod.3 visible batches,3 alignment markers. New cloth minZ.314 clears beamZ.25 by.064; minX-10.70 clears lantern rightmost-10.75 by.05; bottomY7.26 retains original avatar clearance. Original beam/lantern/eave/rod untouched.
+QQ GROCER CURTAIN MODEL:6 source meshes,3 visible batches; 2304 triangles; closed manifold cloth with consistent outward normals
+QQ GROCER CURTAIN CLEARANCE: cloth-to-beam 0.064 studs; lanternX 0.05 studs; floor 7.26 studs
+QQ GROCER CURTAIN FBX: roundtrip names/count and bounds passed
+GROCERCURTAIN_DONE
+
+- Blender model review rendered and inspected; only framing/color-management adjusted for final model image, geometry unchanged. Model render includes simplified nonexported context beam/lantern and is explicitly not an actual game preview.
+QQ GROCER CURTAIN COMPILE: curtain1Prepare parses; body not run; temporary compiler module removed
+QQ GROCER CURTAIN COMPILE: curtain1Install parses; body not run; temporary compiler module removed
+QQ GROCER CURTAIN READY STATE: original curtain unchanged in Edit; all diagnostic trials discarded; barrel signs retained; kit32 source stored and shelf preview awaiting approval; kit33 not imported
+- Prepared guarded6-mesh source anchor/storage script and3-mesh installer; only compile tested, bodies not executed. Installer backs up original M2_Facade_Sage, preserves all other Japan instances, rolls back on failure, and requires explicit Edit approval flag. Packaged kit33 to repo/current-chat outputs/Desktop; SHA256 copies match.
+- No permanent curtain edit, publication or direct DataStore write. Stock2 corrected shelf kit32 remains safely stored; actual game shelf preview shown in017d36c but still awaiting explicit approval. Barrel signs installed and user-reported published; cafe accepted; maze kit30 separate.
+NEXT: Shannon imports kit33. Anchor/store before Play, preview actual cloth front/side/back and beam/lantern clearance with pictures, obtain explicit approval before installation. Do not use rejected diagnostic_transform_only.lua.

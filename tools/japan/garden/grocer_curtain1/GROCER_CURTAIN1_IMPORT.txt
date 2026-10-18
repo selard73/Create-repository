@@ -1,0 +1,5 @@
+Import japan_kit33_grocer_curtain1.fbx from Desktop Japan garden kit.
+This contains only the replacement curtain, mounting rail, and alignment markers.
+Leave Play stopped and tell Codex imported.
+Codex anchors/stores all6 meshes before Play, then prepares actual game pictures.
+Nothing gets installed permanently until you approve that preview.

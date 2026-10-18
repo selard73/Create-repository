@@ -1,0 +1,62 @@
+{
+  "survey": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"parts\":[{\"path\":\"Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_CedarDark\",\"class\":\"MeshPart\",\"localCF\":[-0.0500030517578125,7.040000915527344,0.85009765625,-1,0,0,0,1,0,0,0,-1],\"cf\":[6012.14990234375,8.079854011535645,-158.0500030517578,4.371138828673793e-8,0,1,0,1,0,-1,0,4.371138828673793e-8],\"hi\":[11.657989501953125,7.771500587463379,1.3579106330871583],\"name\":\"M2_Facade_CedarDark\",\"transparency\":0,\"lo\":[-11.75799560546875,6.30850076675415,0.3422846496105194],\"size\":[23.416000366210939,1.4630002975463868,1.0160000324249268]},{\"path\":\"Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_Tile\",\"class\":\"MeshPart\",\"localCF\":[0,9.422935485839844,1.044921875,-1,0,0,0,1,0,0,0,-1],\"cf\":[6011.955078125,10.462788581848145,-158,4.371138828673793e-8,0,1,0,1,0,-1,0,4.371138828673793e-8],\"hi\":[13,9.799999237060547,2.239746570587158],\"name\":\"M2_Facade_Tile\",\"transparency\":0,\"lo\":[-13,9.04587173461914,-0.14990290999412538],\"size\":[26,0.7541275024414063,2.3899998664855959]},{\"path\":\"Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_Cream\",\"class\":\"MeshPart\",\"localCF\":[-0.0500030517578125,7.040000915527344,0.85009765625,-1,0,0,0,1,0,0,0,-1],\"cf\":[6012.14990234375,8.079854011535645,-158.0500030517578,4.371138828673793e-8,0,1,0,1,0,-1,0,4.371138828673793e-8],\"hi\":[11.649993896484375,7.90000057220459,1.3500981330871583],\"name\":\"M2_Facade_Cream\",\"transparency\":0,\"lo\":[-11.75,6.1800007820129398,0.3500971496105194],\"size\":[23.399999618530275,1.7200002670288087,1]},{\"path\":\"Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_TileEdge\",\"class\":\"MeshPart\",\"localCF\":[-0.0250091552734375,9.540000915527344,1.02001953125,-1,0,0,0,1,0,0,0,-1],\"cf\":[6011.97998046875,10.579854011535645,-158.02500915527345,4.371138828673793e-8,0,1,0,1,0,-1,0,4.371138828673793e-8],\"hi\":[12.7349853515625,9.90246295928955,2.160645008087158],\"name\":\"M2_Facade_TileEdge\",\"transparency\":0,\"lo\":[-12.785003662109375,9.177538871765137,-0.12060602754354477],\"size\":[25.520000457763673,0.7249240875244141,2.281231164932251]},{\"path\":\"Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_DarkMetal\",\"class\":\"MeshPart\",\"localCF\":[-0.0500030517578125,8.322502136230469,0.5390625,-1,0,0,0,1,0,0,0,-1],\"cf\":[6012.4609375,9.36235523223877,-158.0500030517578,4.371138828673793e-8,0,1,0,1,0,-1,0,4.371138828673793e-8],\"hi\":[11.194992065429688,8.745001792907715,0.8779301643371582],\"name\":\"M2_Facade_DarkMetal\",\"transparency\":0,\"lo\":[-11.294998168945313,7.900002479553223,0.2001948207616806],\"size\":[22.489999771118165,0.8449997901916504,0.6780000329017639]},{\"path\":\"Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_Sage\",\"class\":\"MeshPart\",\"localCF\":[-8.800003051757813,7.770000457763672,0.1650390625,-1,0,0,0,1,0,0,0,-1],\"cf\":[6012.8349609375,8.809853553771973,-166.8000030517578,4.371138828673793e-8,0,1,0,1,0,-1,0,4.371138828673793e-8],\"hi\":[-6.040008544921875,8.279999732971192,0.2441411316394806],\"name\":\"M2_Facade_Sage\",\"transparency\":0,\"lo\":[-11.55999755859375,7.260001182556152,0.08593776077032089],\"size\":[5.520000457763672,1.0199995040893555,0.15857723355293275]},{\"path\":\"Workspace.JapanMap.Outdoor market revision.Mikan greengrocer.Handwritten shop sign\",\"class\":\"Part\",\"localCF\":[4.25,8.410146713256836,0.5,-1,0,-8.742277657347586e-8,0,1,0,8.742277657347586e-8,0,-1],\"cf\":[6012.5,9.449999809265137,-153.75,-4.371138828673793e-8,0,1,0,1,0,-1,0,-4.371138828673793e-8],\"hi\":[10.75,9.360146522521973,0.5649415254592896],\"name\":\"Handwritten shop sign\",\"transparency\":0,\"lo\":[-2.25,7.460146903991699,0.4350581169128418],\"size\":[13,1.899999976158142,0.12999999523162843]},{\"path\":\"Workspace.JapanMap.Outdoor market revision.Mikan greengrocer.Exposed roof beam\",\"class\":\"Part\",\"localCF\":[0,9.81014633178711,-2,-1,0,-8.742277657347586e-8,0,1,0,8.742277657347586e-8,0,-1],\"cf\":[6015,10.84999942779541,-158,-4.371138828673793e-8,0,1,0,1,0,-1,0,-4.371138828673793e-8],\"hi\":[12.899993896484375,9.950146675109864,-1.8500970602035523],\"name\":\"Exposed roof beam\",\"transparency\":0,\"lo\":[-12.899993896484375,9.670145988464356,-2.149902820587158],\"size\":[25.799999237060548,0.2800000011920929,0.30000001192092898]},{\"path\":\"Workspace.JapanMap.Outdoor market revision.Mikan greengrocer.Lintel over open shop\",\"class\":\"Part\",\"localCF\":[0,7.610146522521973,0,-1,0,-8.742277657347586e-8,0,1,0,8.742277657347586e-8,0,-1],\"cf\":[6013,8.649999618530274,-158,-4.371138828673793e-8,0,1,0,1,0,-1,0,-4.371138828673793e-8],\"hi\":[12.5,7.885146141052246,0.250000536441803],\"name\":\"Lintel over open shop\",\"transparency\":0,\"lo\":[-12.5,7.335146903991699,-0.250000536441803],\"size\":[25,0.550000011920929,0.5]}],\"frame\":[6013,1.0398532152175904,-158,-4.371138828673793e-8,0,-1,0,1,0,1,0,-4.371138828673793e-8]}"
+      }
+    ],
+    "isError": false
+  },
+  "diagnosticPreview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCER CURTAIN: cloth forward.22 studs; width4.70 and centerX-8.35 keep it clear of left lantern; original height/color retained\nQQ GROCER CURTAIN SUPPORT: three existing real-mesh copies form a wooden rail and two standoffs connected to the original rear rod; no import required\nQQ GROCER CURTAIN PRESERVED: one existing mesh moved/resized; all other original grocer parts, beam, signs, stock and lanterns unchanged\nQQ GROCER CURTAIN STATUS: SERVER PREVIEW; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "diagnosticRendering": {
+    "original": "Automatic, DoubleSided=false: square gaps",
+    "preciseOnly": "Precise, DoubleSided=false: square gaps persist",
+    "doubleSided": "Precise, DoubleSided=true: gaps fill but patchy opposite-facing shading remains",
+    "resolution": "Discard all diagnostic trials; rebuild cloth as closed solid thickness with outward normals; new kit33 import required"
+  },
+  "cleanup": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCER CURTAIN DIAGNOSTIC CLEANUP: temporary camera, HUD and avatar overrides removed"
+      }
+    ],
+    "isError": false
+  },
+  "prepareCompile": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCER CURTAIN COMPILE: curtain1Prepare parses; body not run; temporary compiler module removed"
+      }
+    ],
+    "isError": false
+  },
+  "installCompile": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCER CURTAIN COMPILE: curtain1Install parses; body not run; temporary compiler module removed"
+      }
+    ],
+    "isError": false
+  },
+  "readyState": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCER CURTAIN READY STATE: original curtain unchanged in Edit; all diagnostic trials discarded; barrel signs retained; kit32 source stored and shelf preview awaiting approval; kit33 not imported"
+      }
+    ],
+    "isError": false
+  }
+}
