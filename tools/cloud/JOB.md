@@ -5221,3 +5221,18 @@ QQ RICE PADDIES1 FINAL EDIT:three grounded banks and36 collision sections persis
 - File > Save to Roblox completed03:23:16 UTC Oct18 (Oct17 evening local). CreatorOutput: Saved new changes in "1001 Squirrels" to Roblox; StudioSavePlaceToCloud6439ms. This was Save to Roblox, not Publish. No direct DataStore writes. Studio stopped.
 - Sources, two FBXs, installation/rollback scripts, manifests, checks and photos: tools/japan/rice_paddies1. Sources/rollback protected by guards; do not rerun installed repair.
 NEXT: Shannon reviews the saved repair and publishes. Pending other shop/maze work unchanged; overnight permission covered rice paddies only.
+
+
+## Farm stream bridge buried ends (Codex solo, Oct 17 2026) - PLAY PREVIEW; NOT INSTALLED
+Shannon likes the waterway design but pointed out both ends of the small Farm stream bridge buried in its hills. Diagnosed original end deck~Y1.53 versus existing Terrain bank tops~Y4.50-4.63. Previewed raising the entire existing120-part bridge3.2 studs. No new geometry, span/arch/appearance preserved; no terrain, water, grass or path writes.
+QQ FARM BRIDGE LIFT1:120 existing bridge parts raised3.2 studs; original span, arch, rails, colors and materials retained
+QQ FARM BRIDGE LIFT1 PRESERVED:18177 other Japan parts unchanged; no terrain or water writes
+QQ FARM BRIDGE LIFT1 BACKUP:HudBackup.FarmBridge_pre_lift1 plus120 original CFrame attributes
+QQ FARM BRIDGE LIFT1 STATUS:SERVER PREVIEW; NOT INSTALLED
+-240 deck rays all above bank surface. Six end landing checks: deckY4.74862; bank heights4.50313-4.60819, step.14043-.24550. Actual Client Humanoid walked from west path over arch to east path and back: four goals within.66309,.86768,1.14648,.68359 studs; all recorded states Running, no jump required.
+- Inspected actual Play pictures from both ends and overview. Saved guarded installer/rollback, full120-part prospective manifest and checks under tools/japan/farm_bridge_lift1. Original bridge is legacy Parts; retained existing geometry without constructing new Parts.
+QQ FARM BRIDGE LIFT1 CLEANUP:camera, HUD and avatar visibility restored
+QQ FARM BRIDGE LIFT1 EDIT CHECK:preview discarded; original120-part bridge retained; camera restored; rice repair remains installed; no permanent bridge change
+- Studio stopped. No save, publish or direct DataStore write for this preview. Prior rice authorization did not extend to this new bridge request; standing preview-first rule applies.
+NEXT: Shannon approves pictures, then FARM_BRIDGE_LIFT1_ALLOW_EDIT=true and run install.lua once; clear guard, compare120-part manifest and fresh Play. She publishes. Preserve all other pending work.
+
