@@ -5269,3 +5269,19 @@ Shannon said published and requested verification. Studio log confirms her actua
 - Restarted actual ThanksServer to rerun join handling with claimed receipt present. After34.52s (normal delay8s), zero extra ledger events, balance1110 and flag1 unchanged, exactly one client message total. This tests repeat eligibility with existing receipt, not an actual live account rejoin.
 - Removed temporary gift/listeners then stopped Play. Final Edit has six gifts only, correct AA_Battery amount/id/note, both scripts enabled. No permanent scene changes, save or publish performed during verification.
 - Evidence: tools/thanks/aa_battery_2026-10-18/published_verification.json and short_note_actual_test.jpg. Actual AA_Battery receipt/login has not been observed; gift is ready for next join to an updated server.
+
+## Approved farm bridge lift and owner French arrival (Codex solo, Oct18 2026) - INSTALLED AND SAVED; NOT PUBLISHED
+Shannon reported the bridge still buried live. Rice repair had been installed; bridge remained an unsaved preview. Re-presented actual bridge preview. Automatic approval review initially blocked the inferred approval; no changes occurred in that attempt. Shannon then explicitly said "Yes, install and save the bridge lift."
+QQ FARM BRIDGE LIFT1:120 existing bridge parts raised3.2 studs; original span, arch, rails, colors and materials retained
+QQ FARM BRIDGE LIFT1 PRESERVED:18177 other Japan parts unchanged; no terrain or water writes
+QQ FARM BRIDGE LIFT1 BACKUP:HudBackup.FarmBridge_pre_lift1 plus120 original CFrame attributes
+QQ FARM BRIDGE LIFT1 STATUS:EDIT INSTALLED; NOT PUBLISHED
+- Fixed installer guard to allow stopped Edit even when IsClient is true; no geometry change to the prior preview. All120 saved bridge parts match the approved manifest within.001, including backups, dimensions, rotations and appearance. Fresh Play240 deck rays clear terrain; minimum gap.13555. Prior preview walk across and back remains valid. Original backup retained.
+- Computer Use stopped during browser navigation due to unverified current URL; stopped Play and reported bridge installation not yet saved. No gift-notification changes were installed and no notifications sent. Existing GiftsClient already offers the Roblox opt-in prompt. Notification sender/Creator Hub setup remains pending.
+- Shannon next requested always starting her own character in France, with normal travel available. Prepared a four-line owner-only branch in SpawnReturnServer before Studio/saved-area rules, controlled by OwnerStartArea=forest. No saved-data writes; existing Studio owner's canSave=false guard retained.
+- Actual Play preview showed her at French forest arrival (3,4.2265625,1), Area forest and RespawnLocation Spawn_forest. Tested144 policy cases:72 owner cases choose France,72 other-account cases unchanged; clearing override restores original behavior in all144. Picture shown; Shannon explicitly approved "Yes, save my French arrival setting."
+QQ OWNER FRENCH START1: account9611145467 uses Spawn_forest in Studio and live; other players unchanged; clear OwnerStartArea to disable; original script backed up; EDIT INSTALLED, NOT PUBLISHED
+- Saved original server as disabled HudBackup.SpawnReturnServer_pre_ownerFrench1; original StudioStartPorto=true retained for others. Source readback exact. Fresh Play started owner at Spawn_forest without any installer, with bridge lift1 still present. Stopped Play.
+- Save to Roblox with Notes completed2026-10-18T11:20:19.886Z (07:20 EDT),10036ms, CreatorOutput confirmed saved. Version title "Owner French arrival and farm bridge lift". Both approved changes included. No publication by Codex.
+NEXT: Shannon publishes and rejoins a fresh server. Gift notification sender remains unfinished; opt-in cannot be enabled on behalf of recipients. Other pending previews keep separate approvals.
+

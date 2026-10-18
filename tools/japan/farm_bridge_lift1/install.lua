@@ -1,6 +1,6 @@
 local RunService=game:GetService("RunService")
 assert(RunService:IsRunning() or _G.FARM_BRIDGE_LIFT1_ALLOW_EDIT==true,"Preview first; Edit installation requires Shannon's approval.")
-assert(not RunService:IsClient(),"Run on Server or approved Edit.")
+assert(not RunService:IsRunning() or not RunService:IsClient(),"Run on Server or approved Edit.")
 local bridge=workspace.JapanMap.TeaHills["Farm stream bridge"]
 assert(not bridge:GetAttribute("FarmBridgeLiftVersion"),"Bridge lift already installed.")
 local before={} local others={}

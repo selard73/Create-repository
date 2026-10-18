@@ -1,0 +1,37 @@
+{
+  "test": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"overrideDisabledRestores\":144,\"previewOnly\":true,\"otherPlayersUnchanged\":72,\"cases\":144,\"ownerFrench\":72}"
+      }
+    ],
+    "isError": false
+  },
+  "ownerId": 9611145467,
+  "spawn": "Spawn_forest",
+  "onlyAccount": true,
+  "bridgeInstalled": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ FARM BRIDGE LIFT1:120 existing bridge parts raised3.2 studs; original span, arch, rails, colors and materials retained\nQQ FARM BRIDGE LIFT1 PRESERVED:18177 other Japan parts unchanged; no terrain or water writes\nQQ FARM BRIDGE LIFT1 BACKUP:HudBackup.FarmBridge_pre_lift1 plus120 original CFrame attributes\nQQ FARM BRIDGE LIFT1 STATUS:EDIT INSTALLED; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "bridgeManifestCheck": {
+    "expected": 120,
+    "actual": 120,
+    "differences": []
+  },
+  "bridgeFresh": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"version\":\"lift1\",\"minClearance\":0.13554859161376954,\"deckRays\":240,\"parts\":120}"
+      }
+    ],
+    "isError": false
+  }
+}
