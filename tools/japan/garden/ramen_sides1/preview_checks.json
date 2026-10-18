@@ -1,0 +1,45 @@
+{
+  "preview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ RAMEN SIDES: north wall has one closed lattice service door with a brass pull, two stone steps, one wide paper-backed lattice window and a matching tile hood;16 real mesh parts\nQQ RAMEN SIDES FIT: door threshold matches shop floor1.039853; steps reach ground0; frames penetrate wall.2 studs; paper sits behind lattice and ahead of opaque backing\nQQ RAMEN SIDES PRESERVED: all 21691 original Japan instances unchanged; solid wall retained; no entrance prompt or doorway behavior\nQQ RAMEN SIDES STATUS: SERVER PREVIEW; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "geometry": {
+    "sideVersion": "north1",
+    "wallHit": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.Side wall",
+    "message": "QQ RAMEN SIDES CHECK:16 anchored real meshes; two exact-height collidable steps; original wall blocks passage; no prompts/scripts; accepted barrel signs preserved",
+    "upperStep": 1.0398023128509521,
+    "wallPosition": [
+      5972,
+      4,
+      30.19999885559082
+    ],
+    "lowerStep": 0.519875705242157,
+    "colliders": 2,
+    "parts": 16
+  },
+  "assets": "12 distinct MeshIds successfully loaded on Client; all16 placed MeshParts use them.",
+  "collisionNote": "PreciseConvexDecomposition assignment did not persist; saved properties remain Default. Both convex solid steps passed actual collidable raycast height checks within .001.",
+  "cleanup": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ RAMEN SIDES CLEANUP: photo binding removed; HUD/avatar visibility and normal camera restored"
+      }
+    ],
+    "isError": false
+  },
+  "editCheck": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ RAMEN SIDES EDIT CHECK: original north wall unchanged; side preview discarded; lantern and grocer previews still pending; approved barrel signs retained"
+      }
+    ],
+    "isError": false
+  }
+}

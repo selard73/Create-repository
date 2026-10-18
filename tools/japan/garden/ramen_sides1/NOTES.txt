@@ -1,0 +1,19 @@
+RAMEN NORTH SIDE DETAILS — PLAY PREVIEW READY; NOT INSTALLED
+Shannon chose closed service doors for the Japan shop sides.
+First review: Ramen kitchen north side (worldZ30.2), using saved Takayama dark-timber reference and existing real-mesh kit20 door/window/awning sources. No import needed.
+
+16 anchored MeshParts: closed lattice door with muted brass pull, two stone steps, one wide paper-backed lattice window and a short tile hood. All original Japan geometry/materials/physical flags unchanged. No wall cut, new entrance or prompt.
+Window sillY4.5, top8.1. Door frameY1.039853..9.539853; two solid step rises of .5199266. Frames penetrate original wall by .2, no floating gap. Original full-volume reveal meshes were thinned to .024 as dark backings ahead of the wall; paper moved ahead of backing and behind the lattice. Source models and installed ShopBacks are unchanged.
+South side is next to the existing Pickle stall; no service door added into that occupied space. Remaining shop sides are still queued; vary each composition.
+
+Preview executed on Play Server only. Original21691 Japan instances preserved; actual close/low photos and all12 distinct mesh assets reviewed. Steps raycast atY.5198757 and1.0398023 (within.001 of target). Original collidable Side wall blocks passage. No prompts/scripts added. CollisionFidelity assignment to PreciseConvexDecomposition did not persist; Default is recorded honestly; these are convex solid steps and their measured collisions passed.
+First temporary13-part version omitted pull; removed in Play then rebuilt with final16-part script. First camera was inside neighboring sushi building; adjusted to clear north side. No changes to original scene or other pending preview work.
+
+Studio stopped; normal camera/HUD/avatar restored. Await explicit picture approval before running ramen_sides1.lua with RAMEN_SIDES1_ALLOW_EDIT=true in stopped Edit. After install compare exact preview_manifest and fresh Play. Installation adds only RamenSideDetails1 and SideDetailsVersion=north1; rollback/remove that model+attribute only. Shannon publishes.
+
+Other pending work remains separate:
+- Ramen lantern clearance: preview ready, awaiting approval.
+- Grocer stock2 kit32: stored/previewed, awaiting approval.
+- Grocer curtain kit33: prepared file, import still pending.
+- Maze acorn trail kit30: import pending.
+Approved cafe and grocer barrel signs remain untouched.

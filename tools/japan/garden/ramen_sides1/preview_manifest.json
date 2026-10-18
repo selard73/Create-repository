@@ -1,0 +1,642 @@
+[
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.ClosedServiceDoor.Door_Frame",
+    "color": [
+      0.2549019753932953,
+      0.18431372940540314,
+      0.13725490868091583
+    ],
+    "anchored": true,
+    "cf": [
+      5972,
+      5.289853096008301,
+      30.274991989135742,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "Wood",
+    "mesh": "rbxassetid://99319551496704",
+    "size": [
+      5.900000095367432,
+      8.5,
+      0.550000011920929
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "Door_Frame",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.ClosedServiceDoor.Door_Paper",
+    "color": [
+      0.7764706015586853,
+      0.7215686440467834,
+      0.6000000238418579
+    ],
+    "anchored": true,
+    "cf": [
+      5972,
+      6.414853096008301,
+      30.240001678466797,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://108342315878527",
+    "size": [
+      3.9000000953674316,
+      3.9499998092651367,
+      0.017999999225139618
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "Door_Paper",
+    "collision": "Default",
+    "shadow": false,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.ClosedServiceDoor.Door_Reveal",
+    "color": [
+      0.10588235408067703,
+      0.0941176488995552,
+      0.0784313753247261
+    ],
+    "anchored": true,
+    "cf": [
+      5972,
+      5.039853096008301,
+      30.21500015258789,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://139920439524742",
+    "size": [
+      4.599999904632568,
+      8,
+      0.024000000208616257
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "Door_Reveal",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.ClosedServiceDoor.Door_Wood",
+    "color": [
+      0.40392157435417175,
+      0.2705882489681244,
+      0.16470588743686676
+    ],
+    "anchored": true,
+    "cf": [
+      5972.02001953125,
+      4.964852333068848,
+      30.319997787475586,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "Wood",
+    "mesh": "rbxassetid://77889047035073",
+    "size": [
+      3.940000057220459,
+      7.349999904632568,
+      0.23999999463558197
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "Door_Wood",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.ClosedServiceDoor.PullBar",
+    "color": [
+      0.40784314274787903,
+      0.35686275362968445,
+      0.24705882370471954
+    ],
+    "anchored": true,
+    "cf": [
+      5973.64990234375,
+      3.839853286743164,
+      30.579999923706055,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "variant": "",
+    "material": "Metal",
+    "mesh": "rbxassetid://139920439524742",
+    "size": [
+      0.10000000149011612,
+      0.6399999856948853,
+      0.10000000149011612
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "PullBar",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.ClosedServiceDoor.PullMountTop",
+    "color": [
+      0.40784314274787903,
+      0.35686275362968445,
+      0.24705882370471954
+    ],
+    "anchored": true,
+    "cf": [
+      5973.64990234375,
+      4.109853267669678,
+      30.46000099182129,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "variant": "",
+    "material": "Metal",
+    "mesh": "rbxassetid://139920439524742",
+    "size": [
+      0.10000000149011612,
+      0.10000000149011612,
+      0.23999999463558197
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "PullMountTop",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.ClosedServiceDoor.PullMountBottom",
+    "color": [
+      0.40784314274787903,
+      0.35686275362968445,
+      0.24705882370471954
+    ],
+    "anchored": true,
+    "cf": [
+      5973.64990234375,
+      3.5698533058166504,
+      30.46000099182129,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "variant": "",
+    "material": "Metal",
+    "mesh": "rbxassetid://139920439524742",
+    "size": [
+      0.10000000149011612,
+      0.10000000149011612,
+      0.23999999463558197
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "PullMountBottom",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.ClosedServiceDoor.LowerStep",
+    "color": [
+      0.4431372582912445,
+      0.43529412150382996,
+      0.3960784375667572
+    ],
+    "anchored": true,
+    "cf": [
+      5972,
+      0.2599633038043976,
+      31.549999237060547,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "Slate",
+    "mesh": "rbxassetid://122772802158251",
+    "size": [
+      6.5,
+      0.5199266076087952,
+      2.9000000953674316
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "LowerStep",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": true,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.ClosedServiceDoor.UpperStep",
+    "color": [
+      0.4431372582912445,
+      0.43529412150382996,
+      0.3960784375667572
+    ],
+    "anchored": true,
+    "cf": [
+      5972,
+      0.7798898816108704,
+      31,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "Slate",
+    "mesh": "rbxassetid://122772802158251",
+    "size": [
+      6,
+      0.5199266076087952,
+      1.7999999523162842
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "UpperStep",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": true,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.LatticeWindow.Win_Bars",
+    "color": [
+      0.2549019753932953,
+      0.18431372940540314,
+      0.13725490868091583
+    ],
+    "anchored": true,
+    "cf": [
+      5981.5,
+      6.300005912780762,
+      30.339996337890625,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "Wood",
+    "mesh": "rbxassetid://92374114241719",
+    "size": [
+      4.5,
+      2.8000001907348633,
+      0.2800000011920929
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "Win_Bars",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.LatticeWindow.Win_Frame",
+    "color": [
+      0.2549019753932953,
+      0.18431372940540314,
+      0.13725490868091583
+    ],
+    "anchored": true,
+    "cf": [
+      5981.5,
+      6.4000043869018555,
+      30.274993896484375,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "Wood",
+    "mesh": "rbxassetid://81572277849184",
+    "size": [
+      5.69999885559082,
+      3.3999996185302734,
+      0.550000011920929
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "Win_Frame",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.LatticeWindow.Win_Paper",
+    "color": [
+      0.7764706015586853,
+      0.7215686440467834,
+      0.6000000238418579
+    ],
+    "anchored": true,
+    "cf": [
+      5981.5,
+      6.299999713897705,
+      30.240001678466797,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://113864798238678",
+    "size": [
+      4.5,
+      2.8000001907348633,
+      0.017999999225139618
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "Win_Paper",
+    "collision": "Default",
+    "shadow": false,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.LatticeWindow.Win_Reveal",
+    "color": [
+      0.10588235408067703,
+      0.0941176488995552,
+      0.0784313753247261
+    ],
+    "anchored": true,
+    "cf": [
+      5981.5,
+      6.299999713897705,
+      30.21500015258789,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "SmoothPlastic",
+    "mesh": "rbxassetid://99992150026628",
+    "size": [
+      4.80000114440918,
+      3.000000476837158,
+      0.024000000208616257
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "Win_Reveal",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.LatticeWindow.Win_Sill",
+    "color": [
+      0.32549020648002625,
+      0.23137255012989044,
+      0.1568627506494522
+    ],
+    "anchored": true,
+    "cf": [
+      5981.5,
+      4.65000057220459,
+      30.399993896484375,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "Wood",
+    "mesh": "rbxassetid://79191249594510",
+    "size": [
+      6.30000114440918,
+      0.2999997138977051,
+      0.8000000715255737
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "Win_Sill",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.ServiceDoorHood.Awning_Tile",
+    "color": [
+      0.22745098173618317,
+      0.22745098173618317,
+      0.25882354378700256
+    ],
+    "anchored": true,
+    "cf": [
+      5972,
+      9.897997856140137,
+      30.833751678466797,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "Slate",
+    "mesh": "rbxassetid://112099984819322",
+    "size": [
+      6.299995422363281,
+      0.7760002017021179,
+      1.3324998617172241
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "Awning_Tile",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  },
+  {
+    "render": "Precise",
+    "path": "Workspace.JapanMap.Outdoor market revision.Ramen kitchen.RamenSideDetails1.ServiceDoorHood.Awning_Wood",
+    "color": [
+      0.2549019753932953,
+      0.18431372940540314,
+      0.13725490868091583
+    ],
+    "anchored": true,
+    "cf": [
+      5972,
+      9.449999809265137,
+      30.736249923706055,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "variant": "",
+    "material": "Wood",
+    "mesh": "rbxassetid://125731138982595",
+    "size": [
+      6,
+      0.9200000762939453,
+      1.2024999856948853
+    ],
+    "touch": false,
+    "transparency": 0,
+    "name": "Awning_Wood",
+    "collision": "Default",
+    "shadow": true,
+    "query": true,
+    "collide": false,
+    "texture": ""
+  }
+]

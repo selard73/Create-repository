@@ -5057,3 +5057,22 @@ QQ RAMEN LANTERNS CLEANUP: camera bindings removed; HUD/avatar visibility and no
 QQ RAMEN LANTERNS EDIT CHECK: original42 lantern parts remain unchanged; preview brackets discarded; grocer curtain/shelf updates still pending
 - Stopped Play. No permanent ramen change, publication or direct DataStore write. Kit33 absent before Play; grocer stock2 approval and kit33 import/preview remain pending separately.
 NEXT: Shannon reviews and approves before RAMEN_LANTERNS1_ALLOW_EDIT=true in stopped Edit. Compare manifest and fresh Play; Shannon publishes. Do not infer approval of pending grocer changes.
+
+
+## Ramen north side service door and window (Codex solo, Oct 17 2026) - PLAY PREVIEW READY; NOT INSTALLED
+Shannon asked for windows and/or side doors on shop sides and selected "Closed service doors (recommended)". This is not approval of the earlier ramen lantern or grocer previews. Working one shop treatment at a time.
+- Read-only survey found all10 market shop side walls blank. Chose Ramen kitchen north wall atworldZ30.2, with a clear approach; south side is next to the existing Pickle stall. Ground raycast at the service-door site hits collidable foundationY0. Saved Takayama dark-timber/lattice reference inspected. Reused existing anchored kit20 real mesh components; no import required.
+- Door near rearX5972, wide lattice window toward frontX5981.5. One short tile hood, brass pull and two solid stone steps. Door threshold matches actual floorY1.039853; frame top9.539853; window sill4.5/top8.1. Frames penetrate wall.2 studs. Thin dark backings and paper are placed ahead of the opaque wall, paper behind lattice; original full-volume source reveals would otherwise hide the paper. Source kits and all installed backs unchanged.
+- Initial13-part Play preview inspected, then removed and rebuilt as final16-part version with a modest brass pull. Only temporary Play content changed. Actual final output:
+QQ RAMEN SIDES: north wall has one closed lattice service door with a brass pull, two stone steps, one wide paper-backed lattice window and a matching tile hood;16 real mesh parts
+QQ RAMEN SIDES FIT: door threshold matches shop floor1.039853; steps reach ground0; frames penetrate wall.2 studs; paper sits behind lattice and ahead of opaque backing
+QQ RAMEN SIDES PRESERVED: all 21691 original Japan instances unchanged; solid wall retained; no entrance prompt or doorway behavior
+QQ RAMEN SIDES STATUS: SERVER PREVIEW; NOT PUBLISHED
+QQ RAMEN SIDES CLIENT: all placed mesh assets loaded successfully
+- All12 distinct MeshIds fetched successfully on Client. Exact16-part manifest saved. Close angled and natural overview photos inspected; same-camera north-wall before photo retained. First south-wall camera was inside neighboring sushi building and next showed the existing Pickle stall; neither retained as final review. Avatar/camera movement announced beforehand.
+- Separate CollisionFidelity assignment to PreciseConvexDecomposition did not persist (remained Default), so first verification's fidelity assertion failed. Recorded actual property instead and checked the convex solid step geometry with collision rays. Lower/upper step hitsY.5198757/1.0398023 within.001 of targets; wall still blocks horizontal passage. No geometry changes were needed.
+QQ RAMEN SIDES CHECK:16 anchored real meshes; two exact-height collidable steps; original wall blocks passage; no prompts/scripts; accepted barrel signs preserved
+QQ RAMEN SIDES CLEANUP: photo binding removed; HUD/avatar visibility and normal camera restored
+QQ RAMEN SIDES EDIT CHECK: original north wall unchanged; side preview discarded; lantern and grocer previews still pending; approved barrel signs retained
+- Studio stopped. No permanent Edit change, publication or direct DataStore write. Saved guarded installer, checks, manifest, notes and3 actual game photos. Installation adds only RamenSideDetails1 + SideDetailsVersion=north1; all original objects retained. Ramen lantern clearance still awaits approval, grocer stock2 kit32 awaits approval, grocer curtain kit33 import remains pending, maze trail kit30 separate. Approved cafe unchanged.
+NEXT: Shannon reviews this north-wall treatment and says yes before RAMEN_SIDES1_ALLOW_EDIT=true in stopped Edit. Compare exact manifest and fresh Play; Shannon publishes. Other shop sides still queued for varied treatments.
