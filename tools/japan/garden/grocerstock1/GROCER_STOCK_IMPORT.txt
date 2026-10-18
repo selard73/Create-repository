@@ -1,3 +1,6 @@
+SUPERSEDED: DO NOT INSTALL STOCK1. Shannon rejected the flat floating labels.
+Use corrected grocerstock2 kit32 and its import instructions.
+
 GROCER SHELF STOCK - KIT28 - DESIGN PREVIEW, NOT INSTALLED
 
 Import ONLY japan_kit28_grocer_stock1.fbx from:

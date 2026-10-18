@@ -4946,3 +4946,25 @@ QQ CAFE REGISTER FRESH PLAY: actual E entry and exit successful; standing/unanch
 QQ CAFE REGISTER FINAL EDIT:624 parts,70 cat bones,6 usable/2 reserved Seats,10 steam emitters; original room backup retained; approved details persist after Play
 - Fresh Play used installed scene without rerunning detail installer. Actual entry inside=true, specular.12; exit inside=false, specular1; both standing/unanchored. Bell131845870598154 loaded. Initial camera capture briefly dim during render settling and not retained as a new review photo; approved five preview photos remain. Temporary HUD/camera overrides removed, Play stopped.
 - Saved installation outputs, complete installed manifest and current status notes. No publication or direct DataStore write. Ready for Shannon's publish; additional cats await files. Maze kit30 import/preview remains separate and pending.
+
+
+## Grocer kit28 preview rejected; curved printed labels rebuilt as kit32 (Codex solo, Oct 17 2026) - MODEL READY; NEW IMPORT PENDING
+Shannon accepted the cafe and asked to include the grocery ingredient update. Read-only inspection showed no stock kit imported or installed. She imported kit28, then Codex anchored/stored it and ran the guarded Play preview.
+QQ GROCERSTOCK1 PREPARED: 71 source meshes anchored; raw import preserved; JapanMap unchanged
+QQ GROCERSTOCK1 DONE: 68 anchored noncollidable meshes; tea tins/packets, pantry bottles/miso/spices, noodles/seaweed/shiitake
+QQ GROCERSTOCK1 BOUNDS: local x -5.090..11.365 y 0.430..5.785 z -20.360..-19.271; all stock behind shelf front
+QQ GROCERSTOCK1 PRESERVED: 21683 existing Japan instances; shelf frames and signs, produce, barrels, cafe and all other shops
+QQ GROCERSTOCK1 STATUS: SERVER PREVIEW; NOT PUBLISHED
+- Actual game overview showed distinct tea tins/packets, pantry bottles/miso/spices, noodles/seaweed/shiitake. Inspected labels from close/normal viewpoints. Temporary mesh-detail, double-sided and .025 spacing trials did not resolve the underlying design problem; all trials were restored. Shannon rejected: "no, the labels are not acceptable", clarifying "the bottles are rounded, but the labels are straight and floating".
+- Acknowledged geometry fault. Restored HUD/avatar/normal camera, stopped Play; no permanent grocer appearance change. Raw/clean stock1 sources remain safely anchored. Old generic eight meshes remain in saved Edit; rejected stock1 was never installed or published.
+- Built stock2 from same44-product layout with44 printed labels, a single embedded2048x2048 atlas and9 UV-mapped label batches. Curved paper follows actual faceted bottle/tin/spice/tub profiles (.0015 radial offset); packet labels and colored panels follow sloped packaging (.003 paper offset including band). Removed protruding flat bottle decorations and raised text/emblems. Original containers, category allocation and shelf dimensions retained. No AI-generated brand art or new gameplay.
+EXPORTED 64 meshes, 44 product groups; 44 printed labels; 42538 triangles
+ROUNDTRIP_PASS: exact mesh names/count, bounds within .003; all nine printed-label meshes have UVs and embedded image material
+GROCERLABELS_DONE
+- Separate Blender processes completed angled bottle and packet renders (GROCERREVIEW_DONE for each). Reviewed both: paper follows the surfaces and text renders as print. These are model previews, NOT actual Roblox Play images. Need actual game verification after import, including embedded texture loading.
+QQ GROCERSTOCK2 COMPILE: grocer2Prepare parsed; body not executed; temporary compiler module removed
+QQ GROCERSTOCK2 COMPILE: grocer2Preview parsed; body not executed; temporary compiler module removed
+QQ GROCERSTOCK2 READY STATE: Studio stopped; old eight grocer stock meshes remain; rejected stock1 source71 anchored/raw stored; approved cafe register1 intact; corrected kit32 not imported
+- Packaged kit32 to repository, current chat outputs and Desktop Japan garden kit; SHA256 copies match. Prepared source-only anchor/storage and guarded Server-first installer. Preparation requires all9 label textures. Placement uses white tint for textured labels, Precise rendering on those9 low-poly label batches and no label shadows; other stock uses original materials. Both scripts only parsed; neither executed.
+- Current scope remains only eight generic M2_Pantry stock meshes, with shelf frames/signs, produce, pickle barrels, cafe and all other Japan instances preserved. Marked kit28 instructions superseded. No publication or direct DataStore write.
+NEXT: Shannon imports ONLY japan_kit32_grocer_stock2.fbx with textures enabled, then anchor/store in Edit BEFORE Play. Run grocerstock2.lua on Server, inspect close angled Play pictures/texture loading/shelf clearance. Install only on her yes with GROCERSTOCK2_ALLOW_EDIT=true, then exact verification and fresh Play. Cafe remains accepted and installed; acorn maze kit30 remains separate.

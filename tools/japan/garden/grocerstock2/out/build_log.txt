@@ -1,0 +1,3 @@
+EXPORTED 64 meshes, 44 product groups; 44 printed labels; 42538 triangles
+ROUNDTRIP_PASS: exact mesh names/count, bounds within .003; all nine printed-label meshes have UVs and embedded image material
+GROCERLABELS_DONE

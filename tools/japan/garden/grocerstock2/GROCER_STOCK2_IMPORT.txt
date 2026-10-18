@@ -1,0 +1,14 @@
+GROCER CORRECTED LABELS - KIT32
+
+Import ONLY japan_kit32_grocer_stock2.fbx with File > Import 3D.
+It is also in Desktop / Japan garden kit. Keep texture import enabled; the
+label artwork is embedded in this FBX, so there is no separate image upload.
+Leave Play stopped and tell Codex when imported. Codex will anchor/store it
+before preparing a fresh Play preview. No need to remove or reimport kit28.
+
+Kit28's flat floating labels were rejected and were NOT installed in the shop.
+This replacement keeps the same varied ingredients but wraps printed labels
+around bottles/tins/tubs and fits packet labels to their sloped surfaces.
+Photos supplied now are Blender model previews, not Roblox Play screenshots.
+Permanent installation follows Shannon's approval of the actual Play preview.
+Shannon publishes. Cafe remains complete and unchanged.

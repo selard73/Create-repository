@@ -1,0 +1,5658 @@
+{
+  "prepare": "QQ GROCERSTOCK1 PREPARED: 71 source meshes anchored; raw import preserved; JapanMap unchanged",
+  "preview": "QQ GROCERSTOCK1 DONE: 68 anchored noncollidable meshes; tea tins/packets, pantry bottles/miso/spices, noodles/seaweed/shiitake\nQQ GROCERSTOCK1 BOUNDS: local x -5.090..11.365 y 0.430..5.785 z -20.360..-19.271; all stock behind shelf front\nQQ GROCERSTOCK1 PRESERVED: 21683 existing Japan instances; shelf frames and signs, produce, barrels, cafe and all other shops\nQQ GROCERSTOCK1 STATUS: SERVER PREVIEW; NOT PUBLISHED",
+  "checks": {
+    "retired": [
+      {
+        "touch": false,
+        "fullName": "ServerStorage.HudBackup.GrocerStock1Originals.M2_Pantry_ClothBag",
+        "color": [
+          0.7843137383460999,
+          0.7137255072593689,
+          0.5647059082984924
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6033,
+          3.919854164123535,
+          -155.3300018310547,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pantry_ClothBag",
+        "variant": "",
+        "query": true,
+        "material": "Fabric",
+        "mesh": "rbxassetid://99522727148881",
+        "size": [
+          15.920000076293945,
+          4.899999618530273,
+          0.7000007629394531
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "ServerStorage.HudBackup.GrocerStock1Originals.M2_Pantry_CedarPale",
+        "color": [
+          0.772549033164978,
+          0.6117647290229797,
+          0.40392157435417175
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6033,
+          4.44985294342041,
+          -155.3300018310547,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pantry_CedarPale",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://106066847746799",
+        "size": [
+          15.959999084472656,
+          3.879999876022339,
+          0.720001220703125
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "ServerStorage.HudBackup.GrocerStock1Originals.M2_Pantry_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.95361328125,
+          3.8498544692993164,
+          -155.3300018310547,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pantry_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://136257910529931",
+        "size": [
+          15.739999771118164,
+          4.420000076293945,
+          0.6444988250732422
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "ServerStorage.HudBackup.GrocerStock1Originals.M2_Pantry_BottleBrown",
+        "color": [
+          0.43529412150382996,
+          0.239215686917305,
+          0.13333334028720856
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6033,
+          3.94985294342041,
+          -155.3300018310547,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pantry_BottleBrown",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://80951521852289",
+        "size": [
+          13.240001678466797,
+          4.960000038146973,
+          0.5400009155273438
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "ServerStorage.HudBackup.GrocerStock1Originals.M2_Pantry_Timber",
+        "color": [
+          0.2549019753932953,
+          0.18431372940540314,
+          0.13725490868091583
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6033,
+          4.584855079650879,
+          -155.3300018310547,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pantry_Timber",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://71362811376795",
+        "size": [
+          12.956785202026367,
+          3.9099998474121094,
+          0.2545509338378906
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "ServerStorage.HudBackup.GrocerStock1Originals.M2_Pantry_Ceramic",
+        "color": [
+          0.46666666865348816,
+          0.5568627715110779,
+          0.5411764979362488
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6033,
+          3.769852638244629,
+          -155.3300018310547,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pantry_Ceramic",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://132095468622784",
+        "size": [
+          15.941947937011719,
+          4.600000381469727,
+          0.720001220703125
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "ServerStorage.HudBackup.GrocerStock1Originals.M2_Pantry_CedarLight",
+        "color": [
+          0.6941176652908325,
+          0.5254902243614197,
+          0.33725491166114807
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6033,
+          4.229855537414551,
+          -155.3300018310547,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pantry_CedarLight",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://101010644627736",
+        "size": [
+          15.941947937011719,
+          3.9200000762939453,
+          0.720001220703125
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "ServerStorage.HudBackup.GrocerStock1Originals.M2_Pantry_Sage",
+        "color": [
+          0.34117648005485535,
+          0.43921568989753723,
+          0.33725491166114807
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6033,
+          3.8498544692993164,
+          -155.3300018310547,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pantry_Sage",
+        "variant": "",
+        "query": true,
+        "material": "Fabric",
+        "mesh": "rbxassetid://74966721961130",
+        "size": [
+          13.34000015258789,
+          4.760000228881836,
+          0.6199989318847656
+        ]
+      }
+    ],
+    "frame": [
+      6013,
+      1.0398532152175903,
+      -158,
+      -4.371138828673793e-8,
+      0,
+      -1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      -4.371138828673793e-8
+    ],
+    "parts": [
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Ceiling_CedarLight",
+        "color": [
+          0.6941176652908325,
+          0.5254902243614197,
+          0.33725491166114807
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6023.85986328125,
+          11.04985523223877,
+          -158,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Ceiling_CedarLight",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://136288570432606",
+        "size": [
+          24.200000762939453,
+          0.07999992370605469,
+          21.03499984741211
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Counter_Brass",
+        "color": [
+          0.6196078658103943,
+          0.5176470875740051,
+          0.29411765933036804
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6027.89990234375,
+          5.19985294342041,
+          -167.59999084472656,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Counter_Brass",
+        "variant": "",
+        "query": true,
+        "material": "Metal",
+        "mesh": "rbxassetid://130884866445625",
+        "size": [
+          1.4399995803833008,
+          0.32000017166137695,
+          1.3200006484985352
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Counter_Cedar",
+        "color": [
+          0.5843137502670288,
+          0.42352941632270813,
+          0.2549019753932953
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6026.5498046875,
+          2.5898523330688477,
+          -166.489990234375,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Counter_Cedar",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://139644517851530",
+        "size": [
+          4.759999752044678,
+          2.5500001907348633,
+          0.11999988555908203
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Counter_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6028.7998046875,
+          4.339852333068848,
+          -164.8000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Counter_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://94037557779694",
+        "size": [
+          0.7000002861022949,
+          0.34999990463256836,
+          0.6499996185302734
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Counter_CedarLight",
+        "color": [
+          0.6941176652908325,
+          0.5254902243614197,
+          0.33725491166114807
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6028,
+          4.059853553771973,
+          -166.5,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Counter_CedarLight",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://97875508011781",
+        "size": [
+          5.100000381469727,
+          0.25,
+          3.40000057220459
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Counter_Cream",
+        "color": [
+          0.9058823585510254,
+          0.8705882430076599,
+          0.772549033164978
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6027.5849609375,
+          4.719853401184082,
+          -167.59999084472656,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Counter_Cream",
+        "variant": "",
+        "query": true,
+        "material": "Fabric",
+        "mesh": "rbxassetid://118054496098868",
+        "size": [
+          0.6800003051757812,
+          0.679999828338623,
+          0.12999916076660156
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Counter_DarkMetal",
+        "color": [
+          0.21568627655506134,
+          0.23137255012989044,
+          0.21960784494876862
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6027.89990234375,
+          4.654854774475098,
+          -167.59999084472656,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Counter_DarkMetal",
+        "variant": "",
+        "query": true,
+        "material": "Metal",
+        "mesh": "rbxassetid://132995579899122",
+        "size": [
+          1.4000005722045898,
+          0.929999828338623,
+          1.1999998092651367
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Counter_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6027.75,
+          4.282353401184082,
+          -165.59999084472656,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Counter_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://113519922305600",
+        "size": [
+          1.4499998092651367,
+          0.13499999046325684,
+          1
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Counter_TimberEdge",
+        "color": [
+          0.34117648005485535,
+          0.24313725531101227,
+          0.16470588743686676
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6028,
+          2.5248498916625977,
+          -166.5,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Counter_TimberEdge",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://103252585300444",
+        "size": [
+          4.760000228881836,
+          2.9700000286102295,
+          3.060000419616699
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6012.14990234375,
+          8.079854011535645,
+          -158.0500030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Facade_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://123360106111393",
+        "size": [
+          23.416000366210938,
+          1.4630002975463867,
+          1.0160000324249268
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_Cream",
+        "color": [
+          0.9058823585510254,
+          0.8705882430076599,
+          0.772549033164978
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6012.14990234375,
+          8.079854011535645,
+          -158.0500030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Facade_Cream",
+        "variant": "",
+        "query": true,
+        "material": "Fabric",
+        "mesh": "rbxassetid://89979779645940",
+        "size": [
+          23.399999618530273,
+          1.7200002670288086,
+          1
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_DarkMetal",
+        "color": [
+          0.21568627655506134,
+          0.23137255012989044,
+          0.21960784494876862
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6012.4609375,
+          9.36235523223877,
+          -158.0500030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Facade_DarkMetal",
+        "variant": "",
+        "query": true,
+        "material": "Metal",
+        "mesh": "rbxassetid://75230853835203",
+        "size": [
+          22.489999771118164,
+          0.8449997901916504,
+          0.6780000329017639
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_Sage",
+        "color": [
+          0.34117648005485535,
+          0.43921568989753723,
+          0.33725491166114807
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6012.8349609375,
+          8.809853553771973,
+          -166.8000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Facade_Sage",
+        "variant": "",
+        "query": true,
+        "material": "Fabric",
+        "mesh": "rbxassetid://123819209485994",
+        "size": [
+          5.520000457763672,
+          1.0199995040893555,
+          0.15857723355293274
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_Tile",
+        "color": [
+          0.2823529541492462,
+          0.2980392277240753,
+          0.3137255012989044
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6011.955078125,
+          10.462788581848145,
+          -158,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Facade_Tile",
+        "variant": "",
+        "query": true,
+        "material": "Slate",
+        "mesh": "rbxassetid://125136997252704",
+        "size": [
+          26,
+          0.7541275024414062,
+          2.3899998664855957
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_TileEdge",
+        "color": [
+          0.364705890417099,
+          0.3764705955982208,
+          0.3764705955982208
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6011.97998046875,
+          10.579854011535645,
+          -158.02500915527344,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Facade_TileEdge",
+        "variant": "",
+        "query": true,
+        "material": "Slate",
+        "mesh": "rbxassetid://78812804799084",
+        "size": [
+          25.520000457763672,
+          0.7249240875244141,
+          2.281231164932251
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_Timber",
+        "color": [
+          0.2549019753932953,
+          0.18431372940540314,
+          0.13725490868091583
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6012.044921875,
+          5.854855537414551,
+          -158,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Facade_Timber",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://83903857916145",
+        "size": [
+          26,
+          9.630000114440918,
+          2.390000104904175
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Facade_TimberEdge",
+        "color": [
+          0.34117648005485535,
+          0.24313725531101227,
+          0.16470588743686676
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6012.123046875,
+          5.761410713195801,
+          -158.0500030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Facade_TimberEdge",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://78358743979254",
+        "size": [
+          24.05500030517578,
+          8.74311637878418,
+          1.9942950010299683
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_pantry0_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6031.97998046875,
+          7.469853401184082,
+          -160.64999389648438,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_pantry0_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://119537822276574",
+        "size": [
+          3.0999999046325684,
+          0.5499997138977051,
+          0.05500030517578125
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_pantry1_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6031.97998046875,
+          7.469853401184082,
+          -154.9499969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_pantry1_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://123050842171104",
+        "size": [
+          3.0999999046325684,
+          0.5499997138977051,
+          0.05500030517578125
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_pantry2_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6031.97998046875,
+          7.469853401184082,
+          -149.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_pantry2_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://130579254721129",
+        "size": [
+          3.0999999046325684,
+          0.5499997138977051,
+          0.05500030517578125
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_pickle0_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6021.14990234375,
+          4.38985538482666,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_pickle0_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://107337274756664",
+        "size": [
+          2.25,
+          0.6499998569488525,
+          0.054999351501464844
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_pickle0_stem_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6021.18017578125,
+          3.939854621887207,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_pickle0_stem_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://75316174963244",
+        "size": [
+          0.07999992370605469,
+          0.8999998569488525,
+          0.07999992370605469
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_pickle1_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6025.64990234375,
+          4.38985538482666,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_pickle1_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://126998888982373",
+        "size": [
+          2.25,
+          0.6499998569488525,
+          0.054999351501464844
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_pickle1_stem_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6025.68017578125,
+          3.939854621887207,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_pickle1_stem_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://81265817517916",
+        "size": [
+          0.07999992370605469,
+          0.8999998569488525,
+          0.07999992370605469
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_pickle2_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6030.14990234375,
+          4.38985538482666,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_pickle2_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://109992975660776",
+        "size": [
+          2.25,
+          0.6499998569488525,
+          0.05500030517578125
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_pickle2_stem_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6030.18017578125,
+          3.939854621887207,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_pickle2_stem_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://110782264259396",
+        "size": [
+          0.07999992370605469,
+          0.8999998569488525,
+          0.07999992370605469
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_produce0_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6013.18994140625,
+          3.419854164123535,
+          -159.4499969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_produce0_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://100533765616903",
+        "size": [
+          2,
+          0.49000000953674316,
+          0.05500000715255737
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_produce1_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6013.18994140625,
+          3.419854164123535,
+          -154.5,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_produce1_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://95722531600628",
+        "size": [
+          2,
+          0.49000000953674316,
+          0.05500000715255737
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_produce2_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6013.18994140625,
+          3.419854164123535,
+          -149.5500030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_produce2_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://125518360212670",
+        "size": [
+          2,
+          0.49000000953674316,
+          0.05500000715255737
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_produce3_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6015.08984375,
+          4.569855690002441,
+          -159.4499969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_produce3_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://110503875052453",
+        "size": [
+          2,
+          0.49000000953674316,
+          0.05500006675720215
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_produce4_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6015.08984375,
+          4.569855690002441,
+          -154.5,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_produce4_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://123409888049630",
+        "size": [
+          2,
+          0.49000000953674316,
+          0.05500006675720215
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Label_produce5_Paper",
+        "color": [
+          0.9254902005195618,
+          0.8627451062202454,
+          0.7019608020782471
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6015.08984375,
+          4.569855690002441,
+          -149.5500030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Label_produce5_Paper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://76829359071436",
+        "size": [
+          2,
+          0.49000000953674316,
+          0.05500006675720215
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Lining_Cedar",
+        "color": [
+          0.5843137502670288,
+          0.42352941632270813,
+          0.2549019753932953
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6023.947265625,
+          2.219853401184082,
+          -158.0175018310547,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Lining_Cedar",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://79275801949304",
+        "size": [
+          24.514999389648438,
+          2.359999895095825,
+          21.514999389648438
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Lining_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6024.33251953125,
+          2.219853401184082,
+          -158,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Lining_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://98900545214028",
+        "size": [
+          24.479999542236328,
+          2.359999895095825,
+          20.744998931884766
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Lining_Cream",
+        "color": [
+          0.9058823585510254,
+          0.8705882430076599,
+          0.772549033164978
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6027.18994140625,
+          7.1398515701293945,
+          -158,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Lining_Cream",
+        "variant": "",
+        "query": true,
+        "material": "Fabric",
+        "mesh": "rbxassetid://87960566924094",
+        "size": [
+          24.25,
+          7.300000190734863,
+          14.619999885559082
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Lining_DarkMetal",
+        "color": [
+          0.21568627655506134,
+          0.23137255012989044,
+          0.21960784494876862
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6025,
+          10.249852180480957,
+          -159,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Lining_DarkMetal",
+        "variant": "",
+        "query": true,
+        "material": "Metal",
+        "mesh": "rbxassetid://102434897073174",
+        "size": [
+          0.06999999284744263,
+          1.5200004577636719,
+          9.069999694824219
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Lining_Timber",
+        "color": [
+          0.2549019753932953,
+          0.18431372940540314,
+          0.13725490868091583
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6025,
+          9.159855842590332,
+          -159,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Lining_Timber",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://138889042655662",
+        "size": [
+          1.2400000095367432,
+          0.05000019073486328,
+          10.24000072479248
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Lining_TimberEdge",
+        "color": [
+          0.34117648005485535,
+          0.24313725531101227,
+          0.16470588743686676
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6023.94482421875,
+          3.469853401184082,
+          -158,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Lining_TimberEdge",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://105744160799013",
+        "size": [
+          24.530000686645508,
+          0.16000008583068848,
+          21.490001678466797
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pantry_Cedar",
+        "color": [
+          0.5843137502670288,
+          0.42352941632270813,
+          0.2549019753932953
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6033.14990234375,
+          4.239853858947754,
+          -154.9499969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pantry_Cedar",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://81559289386381",
+        "size": [
+          17.600000381469727,
+          5.860000133514404,
+          2.25
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pantry_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6031.990234375,
+          4.2998552322387695,
+          -154.9499969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pantry_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://104038390217485",
+        "size": [
+          17.600000381469727,
+          5.920000076293945,
+          0.07999992370605469
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pantry_TimberEdge",
+        "color": [
+          0.34117648005485535,
+          0.24313725531101227,
+          0.16470588743686676
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6033.22021484375,
+          4.38985538482666,
+          -154.9499969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pantry_TimberEdge",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://96330937305939",
+        "size": [
+          17.520000457763672,
+          6.699999809265137,
+          0.35000038146972656
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle0_Cedar",
+        "color": [
+          0.5843137502670288,
+          0.42352941632270813,
+          0.2549019753932953
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6020.60009765625,
+          2.3898515701293945,
+          -148.29998779296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle0_Cedar",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://89543802580954",
+        "size": [
+          3.1916379928588867,
+          2.700000047683716,
+          3.191638946533203
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle0_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6020.60009765625,
+          1.1798526048660278,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle0_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://121461810911549",
+        "size": [
+          2.687999725341797,
+          0.12000000476837158,
+          2.688000202178955
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle0_CedarLight",
+        "color": [
+          0.6941176652908325,
+          0.5254902243614197,
+          0.33725491166114807
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6020.60009765625,
+          2.3898515701293945,
+          -148.29998779296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle0_CedarLight",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://72384993053099",
+        "size": [
+          3.1916399002075195,
+          2.700000047683716,
+          3.1916394233703613
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle0_CedarPale",
+        "color": [
+          0.772549033164978,
+          0.6117647290229797,
+          0.40392157435417175
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6020.60009765625,
+          2.488266944885254,
+          -148.29998779296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle0_CedarPale",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://76740563042588",
+        "size": [
+          3.0652990341186523,
+          2.8968281745910645,
+          3.0652990341186523
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle0_Cucumber",
+        "color": [
+          0.30980393290519714,
+          0.45490196347236633,
+          0.1882352977991104
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6020.8173828125,
+          3.6479616165161133,
+          -148.40206909179688,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle0_Cucumber",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://79451222799278",
+        "size": [
+          2.743358612060547,
+          0.3066589832305908,
+          2.479968547821045
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle0_Hoop",
+        "color": [
+          0.33725491166114807,
+          0.29411765933036804,
+          0.2078431397676468
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6020.60009765625,
+          2.38485050201416,
+          -148.29998779296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle0_Hoop",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://107569337657379",
+        "size": [
+          3.2530221939086914,
+          2.309999942779541,
+          3.2530221939086914
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle0_Leaf",
+        "color": [
+          0.27450981736183167,
+          0.4588235318660736,
+          0.22745098173618317
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6020.88525390625,
+          3.6735620498657227,
+          -148.2791748046875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle0_Leaf",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://109119182886623",
+        "size": [
+          2.6484146118164062,
+          0.2259831428527832,
+          2.492253303527832
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle0_PickleBrine",
+        "color": [
+          0.5607843399047852,
+          0.45490196347236633,
+          0.250980406999588
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6020.60009765625,
+          3.4248552322387695,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle0_PickleBrine",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://94319241573589",
+        "size": [
+          2.8600006103515625,
+          0.07000017166137695,
+          2.859999656677246
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle1_Cedar",
+        "color": [
+          0.5843137502670288,
+          0.42352941632270813,
+          0.2549019753932953
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6025.10009765625,
+          2.3898515701293945,
+          -148.29998779296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle1_Cedar",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://121348097461105",
+        "size": [
+          3.1916379928588867,
+          2.700000047683716,
+          3.1916379928588867
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle1_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6025.10009765625,
+          1.1798526048660278,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle1_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://124294691402662",
+        "size": [
+          2.687999725341797,
+          0.12000000476837158,
+          2.687999725341797
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle1_CedarLight",
+        "color": [
+          0.6941176652908325,
+          0.5254902243614197,
+          0.33725491166114807
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6025.10009765625,
+          2.3898515701293945,
+          -148.29998779296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle1_CedarLight",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://102384991964319",
+        "size": [
+          3.1916399002075195,
+          2.700000047683716,
+          3.1916399002075195
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle1_CedarPale",
+        "color": [
+          0.772549033164978,
+          0.6117647290229797,
+          0.40392157435417175
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6025.10009765625,
+          2.488266944885254,
+          -148.29998779296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle1_CedarPale",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://91465109325358",
+        "size": [
+          3.0652990341186523,
+          2.8968281745910645,
+          3.0652990341186523
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle1_Hoop",
+        "color": [
+          0.33725491166114807,
+          0.29411765933036804,
+          0.2078431397676468
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6025.10009765625,
+          2.38485050201416,
+          -148.29998779296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle1_Hoop",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://134007610934842",
+        "size": [
+          3.2530221939086914,
+          2.309999942779541,
+          3.2530221939086914
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle1_PickleBrine",
+        "color": [
+          0.5607843399047852,
+          0.45490196347236633,
+          0.250980406999588
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6025.10009765625,
+          3.4248552322387695,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle1_PickleBrine",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://93584291634242",
+        "size": [
+          2.8600006103515625,
+          0.07000017166137695,
+          2.8600006103515625
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle1_PickleGold",
+        "color": [
+          0.7921568751335144,
+          0.658823549747467,
+          0.29019609093666077
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6025.123046875,
+          3.6320314407348633,
+          -148.26165771484375,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle1_PickleGold",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://102514909425904",
+        "size": [
+          2.677959442138672,
+          0.37363767623901367,
+          2.406764030456543
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle2_Cedar",
+        "color": [
+          0.5843137502670288,
+          0.42352941632270813,
+          0.2549019753932953
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6029.60009765625,
+          2.3898515701293945,
+          -148.29998779296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle2_Cedar",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://110936103504238",
+        "size": [
+          3.1916379928588867,
+          2.700000047683716,
+          3.191638946533203
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle2_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6029.60009765625,
+          1.1798526048660278,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle2_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://131430589674120",
+        "size": [
+          2.687999725341797,
+          0.12000000476837158,
+          2.687999725341797
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle2_CedarLight",
+        "color": [
+          0.6941176652908325,
+          0.5254902243614197,
+          0.33725491166114807
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6029.60009765625,
+          2.3898515701293945,
+          -148.29998779296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle2_CedarLight",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://88544652587531",
+        "size": [
+          3.1916399002075195,
+          2.700000047683716,
+          3.1916399002075195
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle2_CedarPale",
+        "color": [
+          0.772549033164978,
+          0.6117647290229797,
+          0.40392157435417175
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6029.60009765625,
+          2.488266944885254,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle2_CedarPale",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://92339045724360",
+        "size": [
+          3.065298080444336,
+          2.8968284130096436,
+          3.065298080444336
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle2_Hoop",
+        "color": [
+          0.33725491166114807,
+          0.29411765933036804,
+          0.2078431397676468
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6029.60009765625,
+          2.38485050201416,
+          -148.29998779296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle2_Hoop",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://124322008340552",
+        "size": [
+          3.2530221939086914,
+          2.309999942779541,
+          3.2530221939086914
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle2_PickleBrine",
+        "color": [
+          0.5607843399047852,
+          0.45490196347236633,
+          0.250980406999588
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6029.60009765625,
+          3.4248552322387695,
+          -148.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle2_PickleBrine",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://111872144787967",
+        "size": [
+          2.8600006103515625,
+          0.07000017166137695,
+          2.8600006103515625
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Pickle2_PickleRed",
+        "color": [
+          0.5921568870544434,
+          0.2549019753932953,
+          0.3019607961177826
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6029.5986328125,
+          3.6298837661743164,
+          -148.43621826171875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Pickle2_PickleRed",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://137975566233144",
+        "size": [
+          2.435117721557617,
+          0.3728618621826172,
+          2.3155746459960938
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Produce_Carrot",
+        "color": [
+          0.8549019694328308,
+          0.48235294222831726,
+          0.16862745583057404
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6016.21484375,
+          4.821854591369629,
+          -154.5018768310547,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Produce_Carrot",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://110289167508924",
+        "size": [
+          4.06771183013916,
+          0.29047393798828125,
+          1.1855487823486328
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Produce_Cedar",
+        "color": [
+          0.5843137502670288,
+          0.42352941632270813,
+          0.2549019753932953
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6015.18017578125,
+          3.0298547744750977,
+          -154.5,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Produce_Cedar",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://103705752788699",
+        "size": [
+          14.5,
+          3.7699999809265137,
+          3.9599997997283936
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Produce_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6015.125,
+          3.0048532485961914,
+          -154.5,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Produce_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://111398540485602",
+        "size": [
+          15,
+          3.930000066757202,
+          4.029999732971191
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Produce_CedarLight",
+        "color": [
+          0.6941176652908325,
+          0.5254902243614197,
+          0.33725491166114807
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6015.18017578125,
+          2.977353096008301,
+          -154.5,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Produce_CedarLight",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://79219233556529",
+        "size": [
+          14.610000610351562,
+          3.875,
+          3.8499999046325684
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Produce_Cucumber",
+        "color": [
+          0.30980393290519714,
+          0.45490196347236633,
+          0.1882352977991104
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6016.1298828125,
+          4.749855995178223,
+          -149.54981994628906,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Produce_Cucumber",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://133684164092896",
+        "size": [
+          3.980401039123535,
+          0.28800010681152344,
+          1.0882737636566162
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Produce_Leaf",
+        "color": [
+          0.27450981736183167,
+          0.4588235318660736,
+          0.22745098173618317
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6014.521484375,
+          4.256852149963379,
+          -154.57244873046875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Produce_Leaf",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://84523261196055",
+        "size": [
+          13.88387680053711,
+          1.7040002346038818,
+          2.3966479301452637
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Produce_LeafLight",
+        "color": [
+          0.4941176474094391,
+          0.6392157077789307,
+          0.32549020648002625
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6014.27001953125,
+          3.6298532485961914,
+          -154.4550018310547,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Produce_LeafLight",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://114655007203458",
+        "size": [
+          4.680000305175781,
+          0.8279998302459717,
+          1.8932498693466187
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Produce_Orange",
+        "color": [
+          0.8980392217636108,
+          0.5372549295425415,
+          0.16078431904315948
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6014.27001953125,
+          3.8527536392211914,
+          -159.4499969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Produce_Orange",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://80973056380788",
+        "size": [
+          4.163508415222168,
+          0.9388000965118408,
+          1.4435083866119385
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Produce_OrangeLight",
+        "color": [
+          0.9490196108818054,
+          0.6470588445663452,
+          0.239215686917305
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6014.27001953125,
+          3.8527536392211914,
+          -159.4499969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Produce_OrangeLight",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://82356216361084",
+        "size": [
+          4.163508415222168,
+          0.9388000965118408,
+          1.4435083866119385
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Produce_Purple",
+        "color": [
+          0.30588236451148987,
+          0.19607843458652496,
+          0.364705890417099
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6014.22998046875,
+          3.5998544692993164,
+          -149.54994201660156,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Produce_Purple",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://131950863154286",
+        "size": [
+          4.1549072265625,
+          0.4140000343322754,
+          0.9763400554656982
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Produce_Radish",
+        "color": [
+          0.8823529481887817,
+          0.8823529481887817,
+          0.772549033164978
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6016.21142578125,
+          4.821854591369629,
+          -159.4692840576172,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Produce_Radish",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://114245099646174",
+        "size": [
+          4.0720415115356445,
+          0.3929939270019531,
+          1.1927831172943115
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Produce_TimberEdge",
+        "color": [
+          0.34117648005485535,
+          0.24313725531101227,
+          0.16470588743686676
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6015.2001953125,
+          2.514279365539551,
+          -154.5,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Produce_TimberEdge",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://125615085325330",
+        "size": [
+          14.680000305175781,
+          2.9488515853881836,
+          3.380000114440918
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.M2_Threshold_Stone",
+        "color": [
+          0.47058823704719543,
+          0.45490196347236633,
+          0.4117647111415863
+        ],
+        "anchored": true,
+        "collision": "PreciseConvexDecomposition",
+        "collide": true,
+        "cf": [
+          6011.97998046875,
+          0.7448512315750122,
+          -166.6999969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "M2_Threshold_Stone",
+        "variant": "",
+        "query": true,
+        "material": "Slate",
+        "mesh": "rbxassetid://132191239147226",
+        "size": [
+          6.399999618530273,
+          0.5699999928474426,
+          1.600000023841858
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryLow_Cedar",
+        "color": [
+          0.5843137502670288,
+          0.42352941632270813,
+          0.2549019753932953
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          1.7098513841629028,
+          -149.89498901367188,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryLow_Cedar",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://117682298449397",
+        "size": [
+          3.1549997329711914,
+          0.3800000250339508,
+          0.9200000762939453
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryLow_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          1.5098506212234497,
+          -149.89498901367188,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryLow_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://99500205238354",
+        "size": [
+          3.0999999046325684,
+          0.07999998331069946,
+          0.9200000762939453
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryLow_CedarLight",
+        "color": [
+          0.6941176652908325,
+          0.5254902243614197,
+          0.33725491166114807
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          1.7098513841629028,
+          -149.89498901367188,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryLow_CedarLight",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://95839721572601",
+        "size": [
+          3.140000343322754,
+          0.3800000250339508,
+          0.9650001525878906
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryLow_Gills",
+        "color": [
+          0.7607843279838562,
+          0.6470588445663452,
+          0.4588235318660736
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.84619140625,
+          1.9441272020339966,
+          -149.91177368164062,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryLow_Gills",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://134729030679789",
+        "size": [
+          2.7950873374938965,
+          0.43843114376068115,
+          0.8711166381835938
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryLow_Ink",
+        "color": [
+          0.23529411852359772,
+          0.18039216101169586,
+          0.12941177189350128
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.4111328125,
+          1.7802420854568481,
+          -149.1212158203125,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryLow_Ink",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://134622525222478",
+        "size": [
+          4.26692533493042,
+          0.5774264335632324,
+          0.12024688720703125
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryLow_Label",
+        "color": [
+          0.9490196108818054,
+          0.9019607901573181,
+          0.7686274647712708
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.7919921875,
+          1.7778502702713013,
+          -149.1324920654297,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryLow_Label",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://127575380591713",
+        "size": [
+          4.355000019073486,
+          0.5760000348091125,
+          0.8759994506835938
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryLow_Mushroom",
+        "color": [
+          0.4627451002597809,
+          0.3137255012989044,
+          0.20392157137393951
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.845703125,
+          1.9809218645095825,
+          -149.9113311767578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryLow_Mushroom",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://92155284467205",
+        "size": [
+          2.81373929977417,
+          0.36201852560043335,
+          0.8799991607666016
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryLow_Nori",
+        "color": [
+          0.1411764770746231,
+          0.21568627655506134,
+          0.14901961386203766
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          1.7573500871658325,
+          -147.27999877929688,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryLow_Nori",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://112973122642510",
+        "size": [
+          0.9899997711181641,
+          0.5729999542236328,
+          0.7199993133544922
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryMid_ClothBag",
+        "color": [
+          0.7843137383460999,
+          0.7137255072593689,
+          0.5647059082984924
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.68994140625,
+          4.209851264953613,
+          -147.76998901367188,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryMid_ClothBag",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://80645697411557",
+        "size": [
+          2.2200002670288086,
+          0.031177043914794922,
+          0.035999298095703125
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryMid_Ink",
+        "color": [
+          0.23529411852359772,
+          0.18039216101169586,
+          0.12941177189350128
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.68359375,
+          3.861842155456543,
+          -149.01815795898438,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryMid_Ink",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://104843108408450",
+        "size": [
+          4.679266452789307,
+          0.20472264289855957,
+          0.0452117919921875
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryMid_Kombu",
+        "color": [
+          0.27450981736183167,
+          0.2862745225429535,
+          0.15294118225574493
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.7939453125,
+          3.9498510360717773,
+          -147.7685546875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryMid_Kombu",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://125896794812658",
+        "size": [
+          2.267059326171875,
+          1.1600000858306885,
+          0.16175079345703125
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryMid_Label",
+        "color": [
+          0.9490196108818054,
+          0.9019607901573181,
+          0.7686274647712708
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.6923828125,
+          3.849850654602051,
+          -149.02499389648438,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryMid_Label",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://124434423861028",
+        "size": [
+          4.740000247955322,
+          0.34999990463256836,
+          0.05700111389160156
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryMid_Nori",
+        "color": [
+          0.1411764770746231,
+          0.21568627655506134,
+          0.14901961386203766
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.787109375,
+          3.9198522567749023,
+          -150.4499969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryMid_Nori",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://123812183608713",
+        "size": [
+          2.020000457763672,
+          1.1000001430511475,
+          0.16006851196289062
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryTop_Ink",
+        "color": [
+          0.23529411852359772,
+          0.18039216101169586,
+          0.12941177189350128
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.5810546875,
+          5.9364213943481445,
+          -149.42886352539062,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryTop_Ink",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://73538768833373",
+        "size": [
+          4.280152797698975,
+          0.11218118667602539,
+          0.0010000000474974513
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryTop_Label",
+        "color": [
+          0.9490196108818054,
+          0.9019607901573181,
+          0.7686274647712708
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.58984375,
+          5.9298505783081055,
+          -149.42999267578125,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryTop_Label",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://140018140957902",
+        "size": [
+          4.319999694824219,
+          0.3600001335144043,
+          0.01200103759765625
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryTop_Soba",
+        "color": [
+          0.615686297416687,
+          0.529411792755127,
+          0.4000000059604645
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85693359375,
+          6.001921653747559,
+          -148.1973419189453,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryTop_Soba",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://92520160761973",
+        "size": [
+          1.922450065612793,
+          1.46533203125,
+          0.4420814514160156
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryTop_TeaBlue",
+        "color": [
+          0.2235294133424759,
+          0.33725491166114807,
+          0.41960784792900085
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          5.9198503494262695,
+          -149.41200256347656,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryTop_TeaBlue",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://101809613697544",
+        "size": [
+          4.389999866485596,
+          0.8000001907348633,
+          0.5100002288818359
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_DryTop_Udon",
+        "color": [
+          0.9137254953384399,
+          0.8549019694328308,
+          0.6941176652908325
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85693359375,
+          6.002243995666504,
+          -150.63734436035156,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_DryTop_Udon",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://133007294954920",
+        "size": [
+          1.9224486351013184,
+          1.4659733772277832,
+          0.4420814514160156
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryLow_Gold",
+        "color": [
+          0.7019608020782471,
+          0.572549045085907,
+          0.2980392277240753
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.75,
+          2.2069005966186523,
+          -156.46499633789062,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryLow_Gold",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://92466807896800",
+        "size": [
+          1.6208000183105469,
+          0.9560999870300293,
+          0.5262012481689453
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryLow_Ink",
+        "color": [
+          0.23529411852359772,
+          0.18039216101169586,
+          0.12941177189350128
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.7890625,
+          1.9833918809890747,
+          -154.78907775878906,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryLow_Ink",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://140736852402412",
+        "size": [
+          4.948160171508789,
+          0.41291648149490356,
+          0.5920619964599609
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryLow_Ivory",
+        "color": [
+          0.9019607901573181,
+          0.8627451062202454,
+          0.7372549176216125
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          2.1398515701293945,
+          -156.46499633789062,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryLow_Ivory",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://80250772325825",
+        "size": [
+          1.75,
+          1.3399999141693115,
+          0.6800003051757812
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryLow_Label",
+        "color": [
+          0.9490196108818054,
+          0.9019607901573181,
+          0.7686274647712708
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.55615234375,
+          1.9537516832351685,
+          -154.8286895751953,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryLow_Label",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://130455315946212",
+        "size": [
+          4.927400588989258,
+          0.5378000736236572,
+          0.11999893188476562
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryLow_Pepper",
+        "color": [
+          0.6509804129600525,
+          0.239215686917305,
+          0.15294118225574493
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          1.794850468635559,
+          -153.55499267578125,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryLow_Pepper",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://74733383613277",
+        "size": [
+          2.4800000190734863,
+          0.6500000357627869,
+          0.4699993133544922
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryLow_TeaBlue",
+        "color": [
+          0.2235294133424759,
+          0.33725491166114807,
+          0.41960784792900085
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          2.862351417541504,
+          -156.46499633789062,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryLow_TeaBlue",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://126550850560449",
+        "size": [
+          1.444000005722046,
+          0.10500001907348633,
+          0.37400054931640625
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryMid_CedarDark",
+        "color": [
+          0.48627451062202454,
+          0.33725491166114807,
+          0.1921568661928177
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          4.142851829528809,
+          -155.6999969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryMid_CedarDark",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://75357334343702",
+        "size": [
+          2.9549999237060547,
+          0.00800013542175293,
+          0.7800006866455078
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryMid_CedarLight",
+        "color": [
+          0.6941176652908325,
+          0.5254902243614197,
+          0.33725491166114807
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          4.084851264953613,
+          -155.6999969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryMid_CedarLight",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://113935121612977",
+        "size": [
+          3.559999942779541,
+          0.1099998950958252,
+          1.0200004577636719
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryMid_Gold",
+        "color": [
+          0.7019608020782471,
+          0.572549045085907,
+          0.2980392277240753
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          3.8935022354125977,
+          -155.1156005859375,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryMid_Gold",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://96153975398583",
+        "size": [
+          4.584799766540527,
+          0.9023001194000244,
+          0.8759994506835938
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryMid_Ink",
+        "color": [
+          0.23529411852359772,
+          0.18039216101169586,
+          0.12941177189350128
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.6787109375,
+          4.096156120300293,
+          -155.045654296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryMid_Ink",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://98369254210584",
+        "size": [
+          4.426210403442383,
+          0.897390604019165,
+          0.6501331329345703
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryMid_Ivory",
+        "color": [
+          0.9019607901573181,
+          0.8627451062202454,
+          0.7372549176216125
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          3.6998510360717773,
+          -155.6999969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryMid_Ivory",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://107576548550901",
+        "size": [
+          3.500000238418579,
+          0.6600000858306885,
+          0.9599990844726562
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryMid_Label",
+        "color": [
+          0.9490196108818054,
+          0.9019607901573181,
+          0.7686274647712708
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.46240234375,
+          3.8095521926879883,
+          -155.05209350585938,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryMid_Label",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://134503776355995",
+        "size": [
+          4.485800266265869,
+          0.399399995803833,
+          0.2110004425048828
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryMid_Oil",
+        "color": [
+          0.3607843220233917,
+          0.2862745225429535,
+          0.125490203499794
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          3.904850959777832,
+          -153.0500030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryMid_Oil",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://131041304435047",
+        "size": [
+          0.559999942779541,
+          1.070000171661377,
+          0.5599994659423828
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryMid_TeaRed",
+        "color": [
+          0.6117647290229797,
+          0.29411765933036804,
+          0.22745098173618317
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          3.6998510360717773,
+          -155.6999969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryMid_TeaRed",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://132099743955772",
+        "size": [
+          0.9599999189376831,
+          0.6600000858306885,
+          0.9599990844726562
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryTop_Amber",
+        "color": [
+          0.615686297416687,
+          0.3960784375667572,
+          0.14901961386203766
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          5.994851112365723,
+          -153.59999084472656,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryTop_Amber",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://92054001006997",
+        "size": [
+          1.6200001239776611,
+          1.4499998092651367,
+          0.6199989318847656
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryTop_Gold",
+        "color": [
+          0.7019608020782471,
+          0.572549045085907,
+          0.2980392277240753
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.7578125,
+          6.05985164642334,
+          -155.11380004882812,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryTop_Gold",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://119226529704509",
+        "size": [
+          4.5298004150390625,
+          1.0460000038146973,
+          0.4818000793457031
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryTop_Ink",
+        "color": [
+          0.23529411852359772,
+          0.18039216101169586,
+          0.12941177189350128
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.54296875,
+          5.865551948547363,
+          -155.1123504638672,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryTop_Ink",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://138868704351063",
+        "size": [
+          4.504199028015137,
+          0.17220163345336914,
+          0.0402069091796875
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryTop_Ivory",
+        "color": [
+          0.9019607901573181,
+          0.8627451062202454,
+          0.7372549176216125
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          6.7723493576049805,
+          -153.59999084472656,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryTop_Ivory",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://80801152171765",
+        "size": [
+          1.3409998416900635,
+          0.10500001907348633,
+          0.3409996032714844
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryTop_Label",
+        "color": [
+          0.9490196108818054,
+          0.9019607901573181,
+          0.7686274647712708
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.5517578125,
+          5.864150047302246,
+          -155.11279296875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryTop_Label",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://126753187025479",
+        "size": [
+          4.558800220489502,
+          0.40939998626708984,
+          0.05200004577636719
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryTop_Soy",
+        "color": [
+          0.26274511218070984,
+          0.14509804546833038,
+          0.09803921729326248
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          5.959851264953613,
+          -156.27999877929688,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryTop_Soy",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://76022904859994",
+        "size": [
+          2.299999713897705,
+          1.380000114440918,
+          0.5400009155273438
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_PantryTop_TeaRed",
+        "color": [
+          0.6117647290229797,
+          0.29411765933036804,
+          0.22745098173618317
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          6.702349662780762,
+          -156.27999877929688,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_PantryTop_TeaRed",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://84620188144503",
+        "size": [
+          2.057000160217285,
+          0.10500001907348633,
+          0.2970008850097656
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaLow_Cedar",
+        "color": [
+          0.5843137502670288,
+          0.42352941632270813,
+          0.2549019753932953
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.72021484375,
+          1.6098510026931763,
+          -159.1699981689453,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaLow_Cedar",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://136131135319331",
+        "size": [
+          1.5500000715255737,
+          0.20000001788139343,
+          0.8500003814697266
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaLow_CedarLight",
+        "color": [
+          0.6941176652908325,
+          0.5254902243614197,
+          0.33725491166114807
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.72021484375,
+          1.5098506212234497,
+          -159.1699981689453,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaLow_CedarLight",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://73041169403972",
+        "size": [
+          1.5500000715255737,
+          0.07999998331069946,
+          0.8299999237060547
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaLow_CedarPale",
+        "color": [
+          0.772549033164978,
+          0.6117647290229797,
+          0.40392157435417175
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          2.789851188659668,
+          -161.14999389648438,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaLow_CedarPale",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://75913067833571",
+        "size": [
+          0.7409999370574951,
+          0.06500005722045898,
+          0.09000015258789062
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaLow_Gold",
+        "color": [
+          0.7019608020782471,
+          0.572549045085907,
+          0.2980392277240753
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          2.154850959777832,
+          -162.5,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaLow_Gold",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://111517932244172",
+        "size": [
+          0.9759998321533203,
+          1.2349998950958252,
+          0.9759998321533203
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaLow_Ink",
+        "color": [
+          0.23529411852359772,
+          0.18039216101169586,
+          0.12941177189350128
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.44580078125,
+          1.925742268562317,
+          -160.74632263183594,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaLow_Ink",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://86839388579513",
+        "size": [
+          4.157093048095703,
+          0.7124804258346558,
+          0.35015869140625
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaLow_Kraft",
+        "color": [
+          0.7607843279838562,
+          0.6235294342041016,
+          0.4313725531101227
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          2.1398515701293945,
+          -161.14999389648438,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaLow_Kraft",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://102855376389605",
+        "size": [
+          0.9500000476837158,
+          1.3399999141693115,
+          0.39999961853027344
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaLow_Label",
+        "color": [
+          0.9490196108818054,
+          0.9019607901573181,
+          0.7686274647712708
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.455078125,
+          1.9367514848709106,
+          -160.74240112304688,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaLow_Label",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://136282185706279",
+        "size": [
+          4.244799613952637,
+          0.8137999773025513,
+          0.36199951171875
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaLow_TeaBlue",
+        "color": [
+          0.2235294133424759,
+          0.33725491166114807,
+          0.41960784792900085
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          2.1298513412475586,
+          -162.5,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaLow_TeaBlue",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://98201401792046",
+        "size": [
+          0.9600000381469727,
+          1.3199999332427979,
+          0.9599990844726562
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaLow_TeaGreen",
+        "color": [
+          0.27843138575553894,
+          0.43529412150382996,
+          0.32549020648002625
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.35498046875,
+          2.5288515090942383,
+          -162.5005340576172,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaLow_TeaGreen",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://110800110542557",
+        "size": [
+          0.18404436111450195,
+          0.33000004291534424,
+          0.044773101806640625
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaLow_TeaLeaf",
+        "color": [
+          0.2235294133424759,
+          0.3019607961177826,
+          0.13725490868091583
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.72216796875,
+          1.6197139024734497,
+          -159.17333984375,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaLow_TeaLeaf",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://79058220257159",
+        "size": [
+          1.4629064798355103,
+          0.07890284061431885,
+          0.7943897247314453
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaLow_TeaRed",
+        "color": [
+          0.6117647290229797,
+          0.29411765933036804,
+          0.22745098173618317
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.64501953125,
+          2.220250129699707,
+          -161.14999389648438,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaLow_TeaRed",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://125642162186023",
+        "size": [
+          0.6080000400543213,
+          0.6967999935150146,
+          0.017999649047851562
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaLow_Tin",
+        "color": [
+          0.729411780834198,
+          0.7098039388656616,
+          0.6078431606292725
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          2.839850425720215,
+          -162.5,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaLow_Tin",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://87017866913207",
+        "size": [
+          0.9840002059936523,
+          0.10000002384185791,
+          0.9839992523193359
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaMid_CedarPale",
+        "color": [
+          0.772549033164978,
+          0.6117647290229797,
+          0.40392157435417175
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          4.589852333068848,
+          -161.61000061035156,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaMid_CedarPale",
+        "variant": "",
+        "query": true,
+        "material": "Wood",
+        "mesh": "rbxassetid://129839747531158",
+        "size": [
+          2.7883999347686768,
+          0.16499996185302734,
+          0.09000015258789062
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaMid_Gold",
+        "color": [
+          0.7019608020782471,
+          0.572549045085907,
+          0.2980392277240753
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          3.674851417541504,
+          -158.75498962402344,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaMid_Gold",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://111150787572554",
+        "size": [
+          1.625999927520752,
+          0.47499990463256836,
+          0.7360000610351562
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaMid_Ink",
+        "color": [
+          0.23529411852359772,
+          0.18039216101169586,
+          0.12941177189350128
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.546875,
+          3.8919572830200195,
+          -160.47605895996094,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaMid_Ink",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://98797235461055",
+        "size": [
+          4.857705116271973,
+          0.5115540027618408,
+          0.1481170654296875
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaMid_Ivory",
+        "color": [
+          0.9019607901573181,
+          0.8627451062202454,
+          0.7372549176216125
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          3.6498517990112305,
+          -159.1999969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaMid_Ivory",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://125040681581564",
+        "size": [
+          0.7199999690055847,
+          0.5600001811981201,
+          0.7199993133544922
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaMid_Kraft",
+        "color": [
+          0.7607843279838562,
+          0.6235294342041016,
+          0.4313725531101227
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          4.0148515701293945,
+          -161.61000061035156,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaMid_Kraft",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://123648338476862",
+        "size": [
+          2.9600000381469727,
+          1.2899999618530273,
+          0.39999961853027344
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaMid_Label",
+        "color": [
+          0.9490196108818054,
+          0.9019607901573181,
+          0.7686274647712708
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.55615234375,
+          3.8668012619018555,
+          -160.4784393310547,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaMid_Label",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://135565465523550",
+        "size": [
+          4.9033002853393555,
+          0.696699857711792,
+          0.15999984741210938
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaMid_TeaGreen",
+        "color": [
+          0.27843138575553894,
+          0.43529412150382996,
+          0.32549020648002625
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.8115234375,
+          3.8987512588500977,
+          -160.44979858398438,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaMid_TeaGreen",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://131754180731610",
+        "size": [
+          4.999600410461426,
+          1.057800054550171,
+          0.7173862457275391
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaMid_TeaRed",
+        "color": [
+          0.6117647290229797,
+          0.29411765933036804,
+          0.22745098173618317
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.64501953125,
+          4.036252021789551,
+          -161.6199951171875,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaMid_TeaRed",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://77982181875323",
+        "size": [
+          0.49920010566711426,
+          0.6187999248504639,
+          0.017999649047851562
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaMid_Tin",
+        "color": [
+          0.729411780834198,
+          0.7098039388656616,
+          0.6078431606292725
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          3.979851722717285,
+          -158.7554931640625,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaMid_Tin",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://77250095835712",
+        "size": [
+          1.627000093460083,
+          0.09999990463256836,
+          0.7379989624023438
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaTop_Gold",
+        "color": [
+          0.7019608020782471,
+          0.572549045085907,
+          0.2980392277240753
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          5.859850883483887,
+          -160.4499969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaTop_Gold",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://132312097137541",
+        "size": [
+          5.076000213623047,
+          1.0450000762939453,
+          0.8159999847412109
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaTop_Ink",
+        "color": [
+          0.23529411852359772,
+          0.18039216101169586,
+          0.12941177189350128
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.453125,
+          5.725031852722168,
+          -160.44650268554688,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaTop_Ink",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://117600558140898",
+        "size": [
+          4.834292411804199,
+          0.32250404357910156,
+          0.040111541748046875
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaTop_Ivory",
+        "color": [
+          0.9019607901573181,
+          0.8627451062202454,
+          0.7372549176216125
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          5.579850196838379,
+          -158.27999877929688,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaTop_Ivory",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://99252298407562",
+        "size": [
+          0.7200000286102295,
+          0.619999885559082,
+          0.7199993133544922
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaTop_Label",
+        "color": [
+          0.9490196108818054,
+          0.9019607901573181,
+          0.7686274647712708
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.4619140625,
+          5.718350410461426,
+          -160.4499969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaTop_Label",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://72957175906757",
+        "size": [
+          4.887199878692627,
+          0.5446000099182129,
+          0.05200004577636719
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaTop_TeaBlue",
+        "color": [
+          0.2235294133424759,
+          0.33725491166114807,
+          0.41960784792900085
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          5.7948503494262695,
+          -159.3000030517578,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaTop_TeaBlue",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://116555321176566",
+        "size": [
+          0.8000000715255737,
+          1.0500001907348633,
+          0.7999992370605469
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaTop_TeaGreen",
+        "color": [
+          0.27843138575553894,
+          0.43529412150382996,
+          0.32549020648002625
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.8115234375,
+          5.834851264953613,
+          -160.58425903320312,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaTop_TeaGreen",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://90555715003043",
+        "size": [
+          4.791485786437988,
+          1.130000114440918,
+          0.7973861694335938
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaTop_TeaRed",
+        "color": [
+          0.6117647290229797,
+          0.29411765933036804,
+          0.22745098173618317
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          5.784850120544434,
+          -161.5399932861328,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaTop_TeaRed",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://131949216902275",
+        "size": [
+          0.7200000286102295,
+          1.0300002098083496,
+          0.7199993133544922
+        ]
+      },
+      {
+        "touch": false,
+        "fullName": "Workspace.JapanMap.ShopFronts.Mikan.ShelfStock.GS1_TeaTop_Tin",
+        "color": [
+          0.729411780834198,
+          0.7098039388656616,
+          0.6078431606292725
+        ],
+        "anchored": true,
+        "collision": "Default",
+        "collide": false,
+        "cf": [
+          6032.85009765625,
+          6.194849967956543,
+          -160.4499969482422,
+          4.371138828673793e-8,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          4.371138828673793e-8
+        ],
+        "transparency": 0,
+        "name": "GS1_TeaTop_Tin",
+        "variant": "",
+        "query": true,
+        "material": "SmoothPlastic",
+        "mesh": "rbxassetid://82514678871955",
+        "size": [
+          5.078000068664551,
+          0.6100001335144043,
+          0.8199996948242188
+        ]
+      }
+    ]
+  },
+  "rejection": [
+    "no, the labels are not acceptable",
+    "ni, the bottles are rounded, but the labels are straight and floating"
+  ],
+  "diagnostics": "Tried Precise rendering, double-sided text and .025 label separation in temporary Play only. None resolved the design issue. Restored original rendering properties/positions, removed HUD/avatar/camera overrides, stopped Play.",
+  "ready": "QQ GROCERSTOCK2 READY STATE: Studio stopped; old eight grocer stock meshes remain; rejected stock1 source71 anchored/raw stored; approved cafe register1 intact; corrected kit32 not imported",
+  "compile": [
+    "QQ GROCERSTOCK2 COMPILE: grocer2Prepare parsed; body not executed; temporary compiler module removed",
+    "QQ GROCERSTOCK2 COMPILE: grocer2Preview parsed; body not executed; temporary compiler module removed"
+  ]
+}

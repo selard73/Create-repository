@@ -1,0 +1,17 @@
+{
+  "fbxCopies": {
+    "C:\\Users\\slard\\Documents\\Codex\\2026-10-17\\we\\work\\grocerstock2\\out\\japan_kit32_grocer_stock2.fbx": "f8f93cc09d04d0f3176ebc80348cf2d76210d540a3a0673f339b28aed64c4b3d",
+    "C:\\Users\\slard\\Create-repository\\tools\\japan\\garden\\grocerstock2\\out\\japan_kit32_grocer_stock2.fbx": "f8f93cc09d04d0f3176ebc80348cf2d76210d540a3a0673f339b28aed64c4b3d",
+    "C:\\Users\\slard\\Documents\\Codex\\2026-10-17\\we\\outputs\\japan_kit32_grocer_stock2.fbx": "f8f93cc09d04d0f3176ebc80348cf2d76210d540a3a0673f339b28aed64c4b3d",
+    "C:\\Users\\slard\\OneDrive\\Desktop\\Japan garden kit\\japan_kit32_grocer_stock2.fbx": "f8f93cc09d04d0f3176ebc80348cf2d76210d540a3a0673f339b28aed64c4b3d"
+  },
+  "sourceMeshes": 64,
+  "placedMeshes": 61,
+  "productGroups": 44,
+  "printedLabels": 44,
+  "texturedMeshBatches": 9,
+  "triangles": 42538,
+  "geometryRoundtrip": true,
+  "embeddedTextureRoundtrip": true,
+  "gamePreview": "pending kit32 import"
+}

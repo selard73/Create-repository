@@ -1,0 +1,41 @@
+GROCERSTOCK2 / KIT32 - CORRECTED MODEL READY; IMPORT/PREVIEW PENDING
+
+Shannon rejected stock1 labels because bottles are rounded while labels were
+straight and floating. This is a geometry/attachment fault, not just text size.
+Do not install grocerstock1. Its source71 meshes and raw import are anchored in
+ServerStorage.JapanGardenKit, but Mikan in Edit still has the original8 generic
+stock meshes and no ShelfStock. The Play replacement was discarded on stop.
+
+Correction:44 printed labels in a single embedded2048px atlas; nine UV-mapped
+label mesh batches. Bottle/tin/spice/noodle bands follow cylindrical facets;
+miso labels follow taper; packet colored panel/label follow the sloped surface.
+Curved paper includes every container facet boundary; sampled clearance stays
+above .0014 studs, avoiding corner intersections. Paper sits .0015 studs above
+matching facets; packet
+paper .003 including its underlying colored panel. No raised text meshes.
+Removed the old floating straight gold decoration on bottle fronts and the
+raised tea emblems; container shapes and44 ingredient groups retained.
+Flat labels are used only for flat sheets/basket faces. Label text is generic,
+with crisp Segoe UI Bold lettering; no brand artwork. Source model artwork
+embedded and retained after FBX roundtrip,9 texture/UV checks passed.
+
+64 source meshes including3 alignment markers,61 visible stock meshes,
+42538 triangles. Bounds fit existing shelf footprint; no new collider.
+Blender angled bottle/packet pictures reviewed. These are NOT game pictures.
+Prepared scripts parse; their bodies have NOT run. New kit32 is in outputs and
+Desktop Japan garden kit, copies byte-identical. Studio remains stopped Edit.
+
+NEXT: Shannon imports kit32 with textures enabled. Run prepare_grocerstock2.lua
+in Edit before Play; it preflights64 exact names,2-stud markers,bounds and9 label
+textures, stores raw import and clean anchored source grocerstock2. Then run
+grocerstock2.lua on Play Server. Inspect actual texture loading, orientation,
+label adhesion/legibility from an angle and shelf fit. All61 pieces noncollide.
+Only eight original M2_Pantry stock meshes retire, with GrocerStock2Originals
+backup; shelf structures/signs, fresh produce, pickle tubs and cafe preserved.
+Only after actual Play pictures and Shannon's yes run in stopped Edit with
+GROCERSTOCK2_ALLOW_EDIT=true, compare complete preview manifest, test fresh Play.
+Shannon publishes. Do not rerun old whole-grocer installer afterward without
+also reapplying stock2; old mikangrocer2.lua builds the generic original stock.
+
+Cafe accepted as complete by Shannon, installed80abd19. More cats later only
+if supplied. Maze kit30 remains separate import/preview pending.
