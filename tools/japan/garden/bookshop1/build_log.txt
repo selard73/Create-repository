@@ -1,0 +1,6 @@
+EXPORTED 119 meshes, 39489 triangles
+ROUNDTRIP_PASS: all names and bounds within .003 studs
+RENDER 01_storefront
+RENDER 02_window
+RENDER 03_writing_goods
+BOOKSHOP1_DONE

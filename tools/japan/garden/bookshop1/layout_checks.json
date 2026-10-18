@@ -1,0 +1,68 @@
+{
+  "status": "MODEL VERIFIED; ACTUAL PLAY PREVIEW PENDING IMPORT",
+  "meshCountIncludingMarkers": 119,
+  "installedMeshCount": 116,
+  "triangles": 39489,
+  "maxTrianglesPerMesh": 3888,
+  "localBounds": {
+    "min": [
+      -14.765000343322754,
+      -0.5799999833106995,
+      -4.980000019073486
+    ],
+    "max": [
+      14.819999694824219,
+      7.704999923706055,
+      1.3799999952316284
+    ]
+  },
+  "groundAtThresholdAndPlinth": 0.45985318,
+  "fbxRoundtripTolerance": 0.003,
+  "closedDoorHeaderFit": "PASS",
+  "proposedRetirement": {
+    "topLevelObjects": 65,
+    "parts": 70,
+    "oldLabels": 9,
+    "existingShopPartsRetained": 175
+  },
+  "scriptReferencesToKimonoAtelier": [],
+  "unrelatedSceneChanges": false,
+  "sha256": {
+    "out/japan_kit35_book_stationery1.fbx": "172847bb8a7ed605473f7f49d79dc0c27a23e32d0a2d0468dada9458db0e8a69",
+    "out/manifest.json": "94b6eaeacd33eb299ab8f6bd44ee70508cc9c8fd44460b2625cc5edcd5bf8326",
+    "prepare_bookshop1.lua": "c93234702f0dcc8a20c1e2d2d1c4a74f1511dabe16656b99bba3a13cf3496efc",
+    "install_bookshop1.lua": "302bdd9325b26ad3735ca49ab772ace3004998da8ad3501ddb0b8ea322aa2a9e"
+  },
+  "pending": [
+    "User import",
+    "Anchor and store import before Play",
+    "Actual Server preview",
+    "Client asset/lettering checks",
+    "Door and window collision walk test",
+    "Street passage walk test",
+    "Pictures and user approval before permanent installation"
+  ],
+  "observedStudioGroundRays": {
+    "positionsXZ": [
+      [
+        5987.15,
+        -68.4
+      ],
+      [
+        5987.6,
+        -54.09
+      ],
+      [
+        5988.3,
+        -54.09
+      ],
+      [
+        5989.8,
+        -54.09
+      ]
+    ],
+    "allHitY": 0.4600001573562622,
+    "instance": "JapanMap.Outdoor market revision.Stone lane and hanging lanterns.Continuous market walking surface",
+    "bottomFitError": 0.00014697735626223452
+  }
+}

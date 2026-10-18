@@ -1,0 +1,68 @@
+KIT35 BOOK & STATIONERY — former Kimono atelier
+Status: BLENDER DESIGN PREVIEW / IMPORT READY. NOT INSTALLED. NO PLAY PREVIEW YET.
+
+Shannon requested a closed detailed storefront to the right of the sushi bar.
+This follows her earlier choice of Book & Stationery for the former atelier.
+Only this shop's lower retail frontage and old goods are in scope.
+
+Design
+- Closed timber sliding door with glass, brass pull and a small CLOSED card.
+- Clear two-bay window, restrained transom lattice, warm timber cabinets,
+  books and open reading display, original cover motifs, postcards,
+  patterned paper, envelopes, rolled paper, brush rack/pot and inkstone set.
+- Fitted stone sill/plinth, new items behind the front plane except shallow
+  joinery and the existing-location threshold. No new goods on the lane.
+- Original upper facade, balcony, roof, tiled awning, lantern and plants stay.
+- Original model name Kimono atelier retained for structural/history continuity;
+  no scripts reference it in the read-only audit. Player-facing labels replaced.
+
+References (viewed/read Oct18 2026; no logos/art copied)
+Kyukyodo official product categories and writing implements:
+https://kyukyodo.co.jp/product/
+https://kyukyodo.co.jp/product/calligraphic/syoga.html
+https://kyukyodo.co.jp/product/calligraphic/fude.html
+https://kyukyodo.co.jp/product/japanese_paper/series.html
+JR Central's photo of Kyoto Kyukyodo: timber cabinetry and organised stationery:
+https://souda-kyoto.jp/blog/00962.html
+https://souda-kyoto.jp/blog/ea410e0000006ay9-img/07.jpg
+
+Files
+- out/japan_kit35_book_stationery1.fbx: ONLY combined import file.
+- out/01_storefront.png, 02_window.png, 03_writing_goods.png: Blender renders.
+  Existing shell/awning/lantern/plants are approximate context proxies and are
+  EXCLUDED from the FBX. Actual Roblox appearance still needs the Play preview.
+- gen_bookshop1.py + geometry_helpers.py: reproducible original mesh source.
+- out/manifest.json: alignment markers, local bounds, material/label settings.
+- survey.json: read-only existing-shop geometry; no Studio scene changes.
+- build_installers.py + install_body.txt generate the guarded Luau operations.
+
+Import / preview procedure
+1. Shannon imports japan_kit35_book_stationery1.fbx in stopped Studio.
+2. On her import/anchor instruction run prepare_bookshop1.lua in Edit. It
+   checks unique meshes/asset IDs/three markers/bounds, permits one import or
+   two identical copies, anchors them ALL before Play, retains raw copies and
+   stores clean source ServerStorage.JapanGardenKit.bookshop1.
+3. Start Play only after anchoring. Run install_bookshop1.lua on SERVER.
+   It defaults to preview only. Inspect the glass, labels, wood, illumination,
+   old-label removal and full facade in actual Play. Walk into the door/window
+   to verify closed collision, and along the street to verify clear passage.
+   Preload the actual MeshPart instances; raw-ID preload has misled before.
+4. Show close, low actual Play pictures, restore camera/avatar/HUD and stop Play.
+5. Only on Shannon's explicit yes, run the same installer in stopped Edit with
+   BOOKSHOP1_ALLOW_EDIT=true. Compare with canonical approved preview, perform
+   fresh Play WITHOUT installer, stop, Save to Roblox with Notes. Never publish.
+
+Scope / safeguards
+- Installer selects 65 original retail fixtures/assemblies containing70 parts
+  and9 old labels, backed up intact to HudBackup.Bookshop1Originals on install.
+- Retains175 original shop parts plus all unrelated Japan instances/properties.
+- Construction off-tree before retirement; rollback restores original parents.
+- Guards reject wrong place, client-only preview, repeated installs and
+  changed old inventory. New visible geometry consists only of real MeshParts.
+- Door/window collision uses closed panes/slabs; no hidden usable entrance,
+  teleport, interaction prompt, seat or gameplay/data change is added.
+- Current code syntax checked as an UNCALLED function in Edit, not executed.
+- No Studio save/publish, no DataStore writes, and no permanent scene edits
+  during kit preparation. Previous approved three corrections remain saved.
+
+NEXT: Shannon imports kit35; anchor/store and actual Play preview, then approval.

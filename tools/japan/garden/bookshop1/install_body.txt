@@ -1,0 +1,87 @@
+-- Play SERVER preview. Stopped Edit additionally needs Shannon's explicit approval.
+local Run=game:GetService("RunService")
+assert(Run:IsStudio()and game.PlaceId==117372258657114,"Wrong place")
+assert((Run:IsRunning()and Run:IsServer())or(not Run:IsRunning()and BOOKSHOP1_ALLOW_EDIT==true),"Preview first; permanent installation requires Shannon's yes")
+--CONFIG--
+--COMMON--
+local J=workspace.JapanMap
+local shop=assert(J["Outdoor market revision"]:FindFirstChild("Kimono atelier"))
+local facade=assert(shop:FindFirstChild("Traditional downtown facade"))
+local fronts=J:FindFirstChild("ShopFronts")
+assert(not(fronts and fronts:FindFirstChild("BookStationery")),"Bookshop already present; inspect instead")
+local hb=assert(game.ServerStorage:FindFirstChild("HudBackup"))
+assert(not hb:FindFirstChild("Bookshop1Originals"),"Backup already exists; inspect instead")
+local source=assert(game.ServerStorage.JapanGardenKit:FindFirstChild("bookshop1"),"Import and anchor kit35 first")
+local parts,sf,count=collect(source)
+for _,p in pairs(parts)do assert(p.Anchored,"Source must be anchored before Play")end
+local target=CFrame.new(table.unpack(CONFIG.origin))*CFrame.Angles(0,math.rad(CONFIG.yaw),0)
+local rootRemove={["Goods display"]=true,["Hanging indigo fabric"]=true,["Entrance threshold"]=true,["Handwritten shop sign"]=true,["Service counter"]=true,["Menu board leg"]=true,["Counter leg"]=true,["Rolled bamboo blind"]=true,["Counter front boards"]=true}
+local facadeRemove={["Handwritten shop sign"]=true,["Window rail"]=true,["Window jamb"]=true,["Fine vertical lattice"]=true,["Fine horizontal lattice"]=true,["Lower cedar window base"]=true,["Shop window glazing"]=true,["Narrow entrance side screen"]=true,["Short doorway noren"]=true,["Recessed entrance frame"]=true,["Warm shop wall lamp"]=true}
+local removed={};local parents={};local removeSet={};local preserved={};local originalCount=0
+for _,v in ipairs(shop:GetChildren())do if rootRemove[v.Name]then table.insert(removed,v);parents[v]=shop end end
+for _,v in ipairs(facade:GetChildren())do if facadeRemove[v.Name]and v:IsA("BasePart")and v.Position.Y<9 then table.insert(removed,v);parents[v]=facade end end
+assert(#removed==CONFIG.retiredRoots,"Old shop inventory differs; survey again")
+local retiredParts=0;local retiredLabels=0
+for _,v in ipairs(removed)do
+ removeSet[v]=true
+ if v:IsA("BasePart")then retiredParts+=1 end
+ for _,d in ipairs(v:GetDescendants())do removeSet[d]=true;if d:IsA("BasePart")then retiredParts+=1 end;if d:IsA("TextLabel")then retiredLabels+=1 end end
+end
+assert(retiredParts==CONFIG.retiredParts and retiredLabels==9,"Original retail fixtures/labels differ")
+for i,p in ipairs(J:GetDescendants())do if not removeSet[p]then
+ local r={parent=p.Parent};if p:IsA("BasePart")then r.cf=p.CFrame;r.size=p.Size;r.color=p.Color;r.material=p.Material;r.variant=p.MaterialVariant;r.alpha=p.Transparency;r.collide=p.CanCollide;r.query=p.CanQuery;r.touch=p.CanTouch;r.anchored=p.Anchored end
+ preserved[p]=r;originalCount+=1
+end;if i%1000==0 then task.wait()end end
+local model=Instance.new("Model");model.Name="BookStationery";model:SetAttribute("BookshopVersion","bookshop1");model:SetAttribute("ClosedStorefront",true);model.WorldPivot=target
+pcall(function()model.ModelStreamingMode=Enum.ModelStreamingMode.Atomic end)
+local collision={B1_DisplayBack=true,B1_Returns=true,B1_DisplayCeiling=true,B1_Platform=true,B1_BaseBacking=true,B1_StonePlinth=true,B1_Glazing0=true,B1_Glazing1=true,B1_DoorBack=true,B1_DoorSideFill=true,B1_DoorGlass=true,B1_DoorLower=true,B1_DoorJamb=true,B1_DoorRails=true,B1_Header=true,B1_Threshold=true,B1_WindowPosts=true,B1_WindowRails=true}
+collision.B1_DoorAlcoveReturns=true
+collision.B1_JointClosures=true
+local made={};local meshes=0
+local function assemble()
+ for n,p in pairs(parts)do if n~="B1_Origin"and n~="B1_Right"and n~="B1_Front"then
+  local q=p:Clone();q.Name=n;q.CFrame=target*sf:ToObjectSpace(p.CFrame)
+  local g,k=n:match("^(.*)_([^_]+)$");local m=assert(CONFIG.materials[k])
+  q.Color=Color3.fromRGB(table.unpack(m.rgb));q.Material=Enum.Material[m.material];q.MaterialVariant="";q.TextureID="";q.Reflectance=0
+  for _,d in ipairs(q:GetChildren())do if d:IsA("SurfaceAppearance")then d:Destroy()end end
+  q.Transparency=k=="Glass"and .96 or 0;q.CastShadow=k~="Glass";q.Anchored=true;q.CanTouch=false;q.CanQuery=true;q.CanCollide=collision[g]==true;q.Parent=model;made[n]=q;meshes+=1
+ end end
+ local normals={{Enum.NormalId.Front,Vector3.new(0,0,-1)},{Enum.NormalId.Back,Vector3.new(0,0,1)},{Enum.NormalId.Left,Vector3.new(-1,0,0)},{Enum.NormalId.Right,Vector3.new(1,0,0)},{Enum.NormalId.Top,Vector3.new(0,1,0)},{Enum.NormalId.Bottom,Vector3.new(0,-1,0)}}
+ for _,r in ipairs(CONFIG.labels)do
+  local p=assert(made[r.name]);local outward=target:VectorToWorldSpace(Vector3.new(0,0,1));local face,best=nil,-1
+  for _,n in ipairs(normals)do local d=p.CFrame:VectorToWorldSpace(n[2]):Dot(outward);if d>best then face=n[1];best=d end end
+  assert(best>.999,"Shop sign alignment")
+  local gui=Instance.new("SurfaceGui");gui.Name="BookshopLettering";gui.Face=face;gui.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud;gui.PixelsPerStud=120;gui.LightInfluence=.75;gui.Parent=p
+  local t=Instance.new("TextLabel");t.Name="ShopText";t.Size=UDim2.fromScale(.94,.88);t.Position=UDim2.fromScale(.03,.06);t.BackgroundTransparency=1;t.Text=r.text;t.TextColor3=Color3.fromRGB(table.unpack(r.rgb));t.Font=Enum.Font.Garamond;t.TextScaled=false;t.TextSize=r.size;t.TextWrapped=false;t.Parent=gui
+ end
+ for i,x in ipairs({-4,10.5})do
+  local p=assert(made["B1_WindowLamp"..(i-1).."_Paper"]);local a=Instance.new("Attachment");a.Name="WarmDisplayLight";a.Position=p.CFrame:PointToObjectSpace(target:PointToWorldSpace(Vector3.new(x,5.90,-2.4)));a.Parent=p
+  local l=Instance.new("PointLight");l.Color=Color3.fromRGB(255,225,182);l.Brightness=.6;l.Range=10;l.Shadows=false;l.Parent=a
+ end
+end
+local assembled,assemblyError=pcall(assemble)
+if not assembled then model:Destroy();error(assemblyError)end
+-- Everything is constructed off-tree before any original fixture is moved.
+if not Run:IsRunning()then game.ChangeHistoryService:SetWaypoint("Before approved bookshop")end
+local backup=Instance.new("Folder");backup.Name="Bookshop1Originals"
+local createdFronts=false
+local ok,err=pcall(function()
+ backup.Parent=hb
+ for _,v in ipairs(removed)do v:SetAttribute("Bookshop1OriginalParent",v.Parent:GetFullName());v.Parent=backup end
+ if not fronts then fronts=Instance.new("Folder");fronts.Name="ShopFronts";fronts.Parent=J;createdFronts=true end
+ model.Parent=fronts
+ for p,r in pairs(preserved)do
+  assert(p.Parent==r.parent,"Unrelated parent changed: "..p.Name)
+  if p:IsA("BasePart")then assert(p.CFrame==r.cf and p.Size==r.size and p.Color==r.color and p.Material==r.material and p.MaterialVariant==r.variant and p.Transparency==r.alpha and p.CanCollide==r.collide and p.CanQuery==r.query and p.CanTouch==r.touch and p.Anchored==r.anchored,"Unrelated property changed: "..p.Name)end
+ end
+ for _,p in ipairs(shop:GetDescendants())do if p:IsA("TextLabel")then assert(not p.Text:find("きもの",1,true)and not p.Text:find("Kimono",1,true),"Old branding remains")end end
+ for n,p in pairs(made)do assert(p.Anchored and p:IsA("MeshPart"),"Invalid new construction");local localPos=target:PointToObjectSpace(p.Position);assert(localPos.Z<1.4,"New fixture projects onto lane: "..n)end
+end)
+if not ok then
+ model:Destroy();for _,v in ipairs(removed)do v.Parent=parents[v];v:SetAttribute("Bookshop1OriginalParent",nil)end;backup:Destroy();if createdFronts then fronts:Destroy()end;error(err)
+end
+if not Run:IsRunning()then game.ChangeHistoryService:SetWaypoint("After approved bookshop")end
+print("QQ BOOKSHOP1: "..meshes.." real meshes; closed timber door, clear display window, books, washi, envelopes, brushes and inkstone")
+print("QQ BOOKSHOP1 PRESERVED: "..originalCount.." other Japan instances; upper facade, roof, awning, lantern, plants and all other shops retained")
+print("QQ BOOKSHOP1 BACKUP: "..#removed.." original retail fixtures/assemblies ("..retiredParts.." parts, nine old labels) retained in HudBackup.Bookshop1Originals")
+print("QQ BOOKSHOP1 STATUS: "..(Run:IsRunning()and"SERVER PREVIEW"or"EDIT INSTALLED").."; NOT PUBLISHED")

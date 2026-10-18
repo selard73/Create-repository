@@ -1,0 +1,12 @@
+Japan kit 35 — closed Books & Stationery shop
+
+In stopped Roblox Studio, use File > Import 3D and import:
+japan_kit35_book_stationery1.fbx
+
+Import the one combined file at its default scale. No separate textures needed.
+Tell Codex "kit35 imported" when it finishes. Please do not start Play yet:
+Codex will first anchor and safely store the import, then prepare the play-test
+preview. Nothing replaces the current shop permanently until you approve it.
+
+The finished shop has a closed timber door and a detailed glass display window.
+The existing roof, upper floor, lantern and plants remain in the map.
