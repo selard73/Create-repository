@@ -5236,3 +5236,18 @@ QQ FARM BRIDGE LIFT1 EDIT CHECK:preview discarded; original120-part bridge retai
 - Studio stopped. No save, publish or direct DataStore write for this preview. Prior rice authorization did not extend to this new bridge request; standing preview-first rule applies.
 NEXT: Shannon approves pictures, then FARM_BRIDGE_LIFT1_ALLOW_EDIT=true and run install.lua once; clear guard, compare120-part manifest and fresh Play. She publishes. Preserve all other pending work.
 
+
+
+## AA_Battery mayor thank-you gift (Codex solo, Oct 18 2026) - INSTALLED AND SAVED; NOT PUBLISHED
+Shannon explicitly requested1000 acorns and a thank-you note for AA_Battery after approving the French reply. Verified Roblox username AA_Battery/userId111500896 through Players name/id APIs. No prior gift for that username; existing five gifts preserved.
+- Uses existing workspace.Thanks.Gifts and unmodified ThanksServer. One StringValue AA_Battery=1000, Id aa_battery_1, VerifiedUserId111500896, full approved French note including the statue joke and Le maire signature. Paid once through the game's ledger on next join to an updated server; no direct DataStore writes.
+- Full205-character note measured84 pixels at font14/width288, exceeding original56-pixel note box. Narrow ThanksClient adjustment expands note/card and moves amount/button accordingly. Full note box92 and card204; previous five gifts retain56/168 layout. Original client backed up as HudBackup.ThanksClient_pre_AABattery (disabled).
+- Play preview invoked ThanksEvent for the local tester only to display the card; no reward events fired, tester balance unchanged. All four text elements TextFits=true; note TextBounds84 within92; no vertical overlap. At320-wide phone layout, card bottom282 fits568 viewport. Actual Play picture inspected.
+QQ AA BATTERY GIFT:AA_Battery (111500896),1000 acorns,Id aa_battery_1,approved French mayor note; one-time gift queued
+QQ AA BATTERY GIFT PRESERVED:5 previous gifts and original ThanksServer unchanged
+QQ AA BATTERY CARD:long notes expand the card; original short-note layout retained; original client backed up
+QQ AA BATTERY GIFT STATUS:EDIT INSTALLED; NOT PUBLISHED
+- Readback confirmed exactly one recipient entry, six total gifts, exact note/amount/id, exact revised client and original backup, unchanged ThanksServer; both scripts enabled. Initial Edit guard rejected because IsClient can be true while Studio stopped; changed guard to reject Client only while running. Initial attempt made no edits.
+- File > Save to Roblox confirmed2026-10-18T10:40:30Z (06:40 EDT),7540ms, CreatorOutput Saved new changes in1001 Squirrels to Roblox. PlaceVersion1525 read back. Save only, not Publish. Studio stopped. No map edits, no camera move, no direct DataStore writes.
+- Canonical narrow installer tools/thanks/gift_aa_battery.lua; card source tools/thanks/ThanksClient.lua; evidence/backups/note/photo under tools/thanks/aa_battery_2026-10-18. Legacy install_thanks1.lua is a historical whole-system installer; do not rerun it over current gifts/client.
+NEXT: Shannon publishes; AA_Battery receives1000 acorns and the note once on joining an updated server. Delivery not yet observed. Farm bridge lift remains a preview awaiting approval.

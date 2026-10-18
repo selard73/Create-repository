@@ -33,6 +33,12 @@ ev.OnClientEvent:Connect(function(info)
 	if type(info) ~= "table" then return end
 	title.Text = tostring(info.title or "A thank-you from the mayor"); note.Text = tostring(info.note or "")
 	sum.Text = string.format("%d acorns are in your purse.", tonumber(info.acorns) or 0)
+	-- Keep longer personal notes above the acorn amount and button.
+	local bounds = game:GetService("TextService"):GetTextSize(note.Text, note.TextSize, FONT, Vector2.new(W - 32, 10000))
+	local noteHeight = math.max(56, bounds.Y + 8)
+	note.Size = UDim2.fromOffset(W - 32, noteHeight)
+	sum.Position = UDim2.fromOffset(16, 38 + noteHeight)
+	card.Size = UDim2.fromOffset(W, H + noteHeight - 56)
 	task.spawn(function()
 		local t0 = os.clock()
 		while os.clock() - t0 < 120 do

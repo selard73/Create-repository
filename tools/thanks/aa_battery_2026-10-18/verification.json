@@ -1,0 +1,104 @@
+{
+  "identity": {
+    "ok": true,
+    "username": "AA_Battery",
+    "id": 111500896
+  },
+  "card": {
+    "enabled": true,
+    "viewport": [
+      1389,
+      635
+    ],
+    "labels": [
+      {
+        "y": 62,
+        "x": 550.5,
+        "fits": true,
+        "height": 26,
+        "text": "A thank-you from the mayor",
+        "textHeight": 20,
+        "width": 288
+      },
+      {
+        "y": 90,
+        "x": 550.5,
+        "fits": true,
+        "height": 92,
+        "text": "Merci, AA_Battery ! Votre message recharge les batteries de toute la mairie ! J’ai transmis vos compliments aux écureuils… maintenant, ils veulent chacun leur propre statue devant la mairie ! 🐿️\n— Le maire",
+        "textHeight": 84,
+        "width": 288
+      },
+      {
+        "y": 182,
+        "x": 550.5,
+        "fits": true,
+        "height": 22,
+        "text": "1000 acorns are in your purse.",
+        "textHeight": 15,
+        "width": 288
+      },
+      {
+        "y": 212,
+        "x": 619.5,
+        "fits": true,
+        "height": 34,
+        "text": "Thank you!",
+        "textHeight": 17,
+        "width": 150
+      }
+    ]
+  },
+  "layouts": {
+    "phoneHeight": 568,
+    "layouts": [
+      {
+        "noteHeight": 56,
+        "name": "mentallyunstable_xo",
+        "cardHeight": 168
+      },
+      {
+        "noteHeight": 56,
+        "name": "blizzy_1718",
+        "cardHeight": 168
+      },
+      {
+        "noteHeight": 56,
+        "name": "bdawg_012",
+        "cardHeight": 168
+      },
+      {
+        "noteHeight": 56,
+        "name": "Carhartt0520",
+        "cardHeight": 168
+      },
+      {
+        "noteHeight": 56,
+        "name": "Aspej000",
+        "cardHeight": 168
+      },
+      {
+        "noteHeight": 92,
+        "name": "AA_Battery",
+        "cardHeight": 204
+      }
+    ],
+    "phoneBottom": 282,
+    "balanceUnchanged": true,
+    "phoneWidth": 320
+  },
+  "installed": {
+    "studioStopped": true,
+    "totalGifts": 6,
+    "gift": {
+      "attributes": {
+        "Id": "aa_battery_1",
+        "Note": "Merci, AA_Battery ! Votre message recharge les batteries de toute la mairie ! J’ai transmis vos compliments aux écureuils… maintenant, ils veulent chacun leur propre statue devant la mairie ! 🐿️\n— Le maire",
+        "VerifiedUserId": 111500896
+      },
+      "name": "AA_Battery",
+      "amount": "1000"
+    },
+    "recipientCount": 1
+  }
+}
