@@ -5040,3 +5040,20 @@ QQ GROCER CURTAIN READY STATE: original curtain unchanged in Edit; all diagnosti
 - Prepared guarded6-mesh source anchor/storage script and3-mesh installer; only compile tested, bodies not executed. Installer backs up original M2_Facade_Sage, preserves all other Japan instances, rolls back on failure, and requires explicit Edit approval flag. Packaged kit33 to repo/current-chat outputs/Desktop; SHA256 copies match.
 - No permanent curtain edit, publication or direct DataStore write. Stock2 corrected shelf kit32 remains safely stored; actual game shelf preview shown in017d36c but still awaiting explicit approval. Barrel signs installed and user-reported published; cafe accepted; maze kit30 separate.
 NEXT: Shannon imports kit33. Anchor/store before Play, preview actual cloth front/side/back and beam/lantern clearance with pictures, obtain explicit approval before installation. Do not use rejected diagnostic_transform_only.lua.
+
+
+## Ramen lanterns clear the red sign row (Codex solo, Oct 17 2026) - PLAY PREVIEW READY; NOT INSTALLED
+Shannon supplied screenshot of lanterns stuck in hanging signs. Read-only survey identified Ramen kitchen (not separate ramen cart). Both21-part assemblies centeredZ3.10/20.35 overlap red panel rowZ.98..22.57.
+- Narrow preview moves complete assemblies toZ-.25/23.80, retaining worldX/Y, sizes, lettering, attached lights and all properties. Two small matching metal brackets cloned from an existing MeshPart support chains at canopy ends. No import/new plain-part build.
+- First execution failed syntax parsing before mutations (three or keywords lacked whitespace); corrected and reran. Actual successful output:
+QQ RAMEN LANTERNS: both21-part assemblies moved outside the sign row; new centerZ-.25/23.80; original height, size, lettering and lights retained
+QQ RAMEN LANTERNS SUPPORT: two short matching real-mesh brackets connect chains to canopy ends; no import needed
+QQ RAMEN LANTERNS PRESERVED:42 existing transforms changed; all other 21649 Japan instances and properties unchanged
+QQ RAMEN LANTERNS STATUS: SERVER PREVIEW; NOT PUBLISHED
+QQ RAMEN LANTERNS CLEARANCE: both bodies/lettering/ribs clear the red panels by more than.36 studs;42 moved parts plus2 real-mesh brackets
+- Measured clearances: 0.370001, 0.369998 studs. All21649 other Japan instances/properties preserved, including signs, counter, seats, food, grocer and cafe. New bracket meshes anchored/noncollidable; original physical flags retained.
+- Announced avatar/camera movement. Actual front photo shows all4 panels unobstructed; side photo shows lantern outside end panel, chain/bracket support and space beside neighboring stall. Saved complete44-part preview and42-part original manifests.
+QQ RAMEN LANTERNS CLEANUP: camera bindings removed; HUD/avatar visibility and normal camera restored
+QQ RAMEN LANTERNS EDIT CHECK: original42 lantern parts remain unchanged; preview brackets discarded; grocer curtain/shelf updates still pending
+- Stopped Play. No permanent ramen change, publication or direct DataStore write. Kit33 absent before Play; grocer stock2 approval and kit33 import/preview remain pending separately.
+NEXT: Shannon reviews and approves before RAMEN_LANTERNS1_ALLOW_EDIT=true in stopped Edit. Compare manifest and fresh Play; Shannon publishes. Do not infer approval of pending grocer changes.

@@ -1,0 +1,23 @@
+RAMEN LANTERNS1 — ACTUAL PLAY PREVIEW READY; NOT INSTALLED
+Target: workspace.JapanMap['Outdoor market revision']['Ramen kitchen'].
+Do not edit separate ramen cart or other shops.
+Both original21-part assemblies overlap red hanging sign row.
+Preview moves center worldZ3.100001/20.350000 to-.25/23.80.
+All42 original pieces retained: bodies, ribs, caps, chains, lettering and lights.
+Only worldZ changes; original height, size and all properties stay.
+Two short matching dark-metal real-mesh brackets support chains at canopy ends.
+No new import. No canopy/sign changes. End-panel clearance about.37 each.
+All21649 other Japan instances/properties unchanged.
+Saved44-part preview and42-part original manifests, two actual Play pictures.
+Front and side photos reviewed; signs clear, lanterns flank sign row.
+Photo overrides removed, Play stopped; original Edit unchanged.
+No permanent installation, publication or direct DataStore write.
+
+NEXT: Explicit approval before lantern_clearance1.lua in stopped Edit with
+RAMEN_LANTERNS1_ALLOW_EDIT=true. Backup42 originals in
+ServerStorage.HudBackup.RamenLanterns1Originals; new brackets in
+shop.LanternEndBrackets1; LanternClearanceVersion=ends1.
+Compare saved preview manifest, verify fresh Play. Shannon publishes.
+Grocer stock2 shelf approval and curtain kit33 import/preview remain pending;
+this request did not approve those. Cafe accepted; barrel signs published
+per Shannon; maze kit30 separate.
