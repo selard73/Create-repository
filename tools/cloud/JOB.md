@@ -5295,3 +5295,16 @@ Shannon asked to enable notifications, clarified the game currently has a16+ res
 - Stopped Play. Final Edit check: six gifts retained, HttpEnabled=false, no OpenCloud installed, OwnerStartArea=forest, FarmBridgeLiftVersion=lift1. No scene edits, DataStore writes, Save or Publish during this notification task.
 - Generic reusable operation notes: tools/thanks/notifications1/NOTES.md. Detailed private request/result evidence: local task work/notifications_2026-10-18/evidence.json. OpenCloudService is deprecated; re-evaluate modern HTTP route for any future automated sender.
 NEXT: These recipients must opt in themselves before gift alerts can reach them. No automatic send queue is installed. French owner arrival and bridge lift remain saved and ready for Shannon to publish as previously recorded.
+
+## Approved corrected grocer shelf stock installed and saved (Codex solo, Oct18 2026) - INSTALLED AND SAVED; NOT PUBLISHED
+Shannon reported the updated grocery items still absent live. Read-only audit confirmed kit32 source64/raw64 safely stored, but no ShelfStock in Edit and all8 generic meshes still present. The earlier corrected-label work remained a discarded Play preview. Repeated stock2 preview, verified all61 meshes against its canonical manifest, and showed fresh shelves/bottles pictures. Shannon explicitly approved: "Yes, install and save the shelf update."
+QQ GROCERSTOCK2 DONE: 61 anchored noncollidable meshes; tea tins/packets, pantry bottles/miso/spices, noodles/seaweed/shiitake
+QQ GROCERSTOCK2 BOUNDS: local x -5.090..11.365 y 0.430..5.785 z -20.360..-19.280; all stock behind shelf front
+QQ GROCERSTOCK2 PRESERVED: 21669 existing Japan instances; shelf frames and signs, produce, barrels, cafe and all other shops
+QQ GROCERSTOCK2 LABELS:44 printed labels; paper follows bottle/tin/tub curves and packet slopes; nine textured label batches, no raised lettering
+QQ GROCERSTOCK2 STATUS: EDIT; NOT PUBLISHED
+- Guarded exact installer ran in stopped Edit with GROCERSTOCK2_ALLOW_EDIT=true. Wrapped with full61-part comparison and backup identity verification; rollback prepared but not needed. All61 parts match canonical preview within.001 for geometry/color and exactly for appearance/physical flags;8 original objects backed up under HudBackup.GrocerStock2Originals. No whole-shop rebuild.
+- Fresh Play WITHOUT any installer retained61 stock meshes,8 backups,64 anchored source meshes, BarrelSignFacingVersion=side1. Client loaded all9 printed label meshes and their atlas successfully. Stopped Play. Final Edit recheck matched all61 parts; HttpEnabled=false, bridge lift1 and OwnerStartArea=forest retained.
+- Save to Roblox with Notes confirmed2026-10-18T11:43:21.460Z (07:43 EDT), StudioSavePlaceToCloud6740ms, CreatorOutput Saved new changes in "1001 Squirrels" to Roblox. Version title Approved grocer shelf stock and fitted labels. Save only; no publication by Codex and no direct DataStore write.
+- Updated tools/japan/garden/grocerstock2/NOTES.txt. Evidence: installation_2026-10-18_checks.json, approved_2026-10-18_shelves.jpg and approved_2026-10-18_bottles.jpg. Historical preview manifest remains canonical and matches installed result exactly.
+NEXT: Shannon publishes and rejoins a fresh server to see the installed shelves. Grocer curtain, ramen-side/lantern and maze work retain their separate approval/import states.

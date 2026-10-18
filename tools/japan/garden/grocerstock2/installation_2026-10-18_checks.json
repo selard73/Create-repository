@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-18",
+  "authorization": "Yes, install and save the shelf update",
+  "preview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ GROCERSTOCK2 DONE: 61 anchored noncollidable meshes; tea tins/packets, pantry bottles/miso/spices, noodles/seaweed/shiitake\nQQ GROCERSTOCK2 BOUNDS: local x -5.090..11.365 y 0.430..5.785 z -20.360..-19.280; all stock behind shelf front\nQQ GROCERSTOCK2 PRESERVED: 21767 existing Japan instances; shelf frames and signs, produce, barrels, cafe and all other shops\nQQ GROCERSTOCK2 LABELS:44 printed labels; paper follows bottle/tin/tub curves and packet slopes; nine textured label batches, no raised lettering\nQQ GROCERSTOCK2 STATUS: SERVER PREVIEW; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "previewComparison": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"version\":\"stock2\",\"position\":\"6024, 4.300000190734863, -154\",\"parts\":170,\"compared\":61,\"differences\":[],\"barrelVersion\":\"side1\"}"
+      }
+    ],
+    "isError": false
+  },
+  "previewTextures": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"stockParts\":61,\"loads\":{\"rbxassetid://102006928261486\":\"Success\",\"rbxassetid://104340416786743\":\"Success\",\"rbxassetid://97848408315296\":\"Success\",\"rbxassetid://119833637383907\":\"Success\",\"rbxassetid://99085097194355\":\"Success\",\"rbxassetid://136917577357246\":\"Success\",\"rbxassetid://117019954284096\":\"Success\",\"rbxassetid://123812863275085\":\"Success\",\"rbxassetid://121379220844294\":\"Success\",\"rbxassetid://137821712103214\":\"Success\"},\"labels\":9}"
+      }
+    ],
+    "isError": false
+  },
+  "installation": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"logs\":[\"QQ GROCERSTOCK2 DONE: 61 anchored noncollidable meshes; tea tins/packets, pantry bottles/miso/spices, noodles/seaweed/shiitake\",\"QQ GROCERSTOCK2 BOUNDS: local x -5.090..11.365 y 0.430..5.785 z -20.360..-19.280; all stock behind shelf front\",\"QQ GROCERSTOCK2 PRESERVED: 21669 existing Japan instances; shelf frames and signs, produce, barrels, cafe and all other shops\",\"QQ GROCERSTOCK2 LABELS:44 printed labels; paper follows bottle/tin/tub curves and packet slopes; nine textured label batches, no raised lettering\",\"QQ GROCERSTOCK2 STATUS: EDIT; NOT PUBLISHED\"],\"bridge\":\"lift1\",\"differences\":0,\"originalsBackedUp\":8,\"verified\":61,\"barrelSigns\":\"side1\",\"ownerStartArea\":\"forest\"}"
+      }
+    ],
+    "isError": false
+  },
+  "freshServer": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"sourceParts\":64,\"verifiedParts\":61,\"version\":\"stock2\",\"backupCount\":8,\"differences\":[],\"barrelSigns\":\"side1\",\"withoutRerunningInstaller\":true}"
+      }
+    ],
+    "isError": false
+  },
+  "freshClient": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"parts\":61,\"loads\":{\"rbxassetid://102006928261486\":\"Success\",\"rbxassetid://104340416786743\":\"Success\",\"rbxassetid://97848408315296\":\"Success\",\"rbxassetid://119833637383907\":\"Success\",\"rbxassetid://99085097194355\":\"Success\",\"rbxassetid://136917577357246\":\"Success\",\"rbxassetid://121379220844294\":\"Success\",\"rbxassetid://123812863275085\":\"Success\",\"rbxassetid://117019954284096\":\"Success\",\"rbxassetid://137821712103214\":\"Success\"},\"allLoaded\":true,\"labels\":9}"
+      }
+    ],
+    "isError": false
+  },
+  "save": {
+    "title": "Approved grocer shelf stock and fitted labels",
+    "timestampUtc": "2026-10-18T11:43:21.460Z",
+    "operation": "StudioSavePlaceToCloud",
+    "durationMs": 6740,
+    "creatorOutput": "Saved new changes in \"1001 Squirrels\" to Roblox.",
+    "publishedByCodex": false
+  },
+  "finalEdit": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"playRunning\":false,\"httpEnabled\":false,\"bridgeVersion\":\"lift1\",\"barrelSigns\":\"side1\",\"savedStockVersion\":\"stock2\",\"count\":61,\"backupCount\":8,\"differences\":[],\"ownerStartArea\":\"forest\"}"
+      }
+    ],
+    "isError": false
+  }
+}

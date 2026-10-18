@@ -1,37 +1,38 @@
-GROCERSTOCK2 / KIT32 — IMPORTED; PLAY PREVIEW READY; NOT INSTALLED
+GROCERSTOCK2 / KIT32 - INSTALLED AND SAVED OCT18 2026; SHANNON PUBLISHES
 
-Shannon imported corrected kit32 after rejecting straight floating labels in stock1.
-Prepared64 source meshes including3 alignment markers in stopped Edit.
-ServerStorage.JapanGardenKit.grocerstock2 and grocerstock2_raw are anchored.
-Nine printed-label mesh batches use texture rbxassetid://99085097194355.
-All nine client texture loads succeeded in Play; white tint, Precise rendering,
-and no label shadows verified. No new import needed.
+Shannon reported that the corrected stock never reached the live game. Confirmed
+that the earlier kit32 work was only a Play preview; the eight generic stock
+meshes were still in saved Edit. Repeated the exact stock2 preview against the
+current map, showed fresh whole-shelf and angled-bottle pictures, then received
+explicit approval: Yes, install and save the shelf update.
 
-Actual Play Server preview:61 visible stock meshes,44 product groups,
-44 printed labels,42538 source triangles. Bottle/tin/spice/noodle labels follow
-curves; miso labels follow taper; packet labels follow sloped faces.
-Source facet-clearance checks remain in out/manifest.json. Close angled
-game pictures reviewed: curved paper against containers, no original flat
-floating label slabs. Labels wrap away naturally toward sides.
+Installed61 stock meshes in Workspace.JapanMap.ShopFronts.Mikan.ShelfStock,
+GrocerStockVersion=stock2. Only the eight old generic stock meshes were retired
+to ServerStorage.HudBackup.GrocerStock2Originals. All21669 other existing Japan
+instances preserved, including current barrel signs, cafe, rice and bridge work.
+No rebuild of the whole grocer. No DataStore writes or publication by Codex.
+
+All61 meshes match play_preview_manifest.json within.001 for transforms,
+dimensions and color, exactly for IDs, materials and physical/render flags.
+Fresh Play WITHOUT rerunning the installer retained61 meshes and8 originals
+in backup. Nine label batches and the shared atlas all loaded successfully on
+the client. Final stopped-Edit readback again matched the complete manifest.
 
 Tea: colored tins, folded packets, matcha, loose leaves.
 Pantry: soy sauce, mirin, miso, sesame oil, rice vinegar, shichimi.
 Dry goods: udon/soba bundles, nori/kombu, shiitake baskets.
-Only8 generic M2_Pantry stock meshes replaced in preview. All61 new meshes
-anchored, noncollidable/nontouch; shelf fit verified. Preserved21683 existing
-Japan instances including shelf structures/category signs, new approved
-side-facing barrel signs, produce, cafe and all other shops.
+44 product groups and44 printed labels. Labels follow curved containers and
+sloped packets; no raised text or original flat floating slabs. Source64 meshes
+remain anchored in JapanGardenKit.grocerstock2; raw import preserved. No import
+needed. Label texture: rbxassetid://99085097194355.
 
-Five actual Play pictures and complete61-part preview manifest saved.
-Removed photo bindings, restored HUD/avatar/normal camera, stopped Play.
-Edit still has old8 stock meshes and no ShelfStock. Source kit remains stored.
-Shannon reported barrel-sign changes published before this import.
+Save to Roblox with Notes confirmed2026-10-18T11:43:21.460Z (07:43 EDT),6740ms.
+Version title: Approved grocer shelf stock and fitted labels.
+CreatorOutput: Saved new changes in "1001 Squirrels" to Roblox.
 
-NEXT: Shannon reviews actual Play pictures and explicitly says yes.
-Then run grocerstock2.lua in stopped Edit with GROCERSTOCK2_ALLOW_EDIT=true.
-Compare every stock mesh property/transform/texture to play_preview_manifest.json,
-verify original backup and preserved barrel signs, then fresh Play.
-Do not install rejected stock1. Do not publish; Shannon publishes.
-Historical mikangrocer2 whole-shop builder would replace later stock2/sign
-patches; do not rerun without reconciling/reapplying approved revisions.
-Cafe remains accepted and installed; maze kit30 remains separate.
+Evidence: installation_2026-10-18_checks.json and approved_2026-10-18_*.jpg.
+Earlier play_preview_* files/photos remain the exact canonical reference.
+
+NEXT: Shannon publishes, restarts servers, and joins a fresh server. Do not
+rerun rejected stock1 or the historical mikangrocer2 whole-shop builder.
+Other pending shop/curtain/maze work remains separate; nothing else installed.
