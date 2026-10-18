@@ -1,0 +1,13 @@
+CAFE NORTH SIDE — PLAY PREVIEW READY; NOT INSTALLED
+Shannon supplied a photo of the cat cafe north side and clarified: "The bare wall needs windows or a door". Earlier choice of CLOSED service doors still applies. Both original wood colors are preserved exactly; no color correction requested.
+
+Preview: 26 anchored real MeshParts under Outdoor market revision / Cat cafe / CafeSideDetails1.
+Three paper-backed lattice windows: one broad lower window atX6019.2 (sillY4.5, top8.1), paired narrower upper windowsX6019.4/6028.6 (sillY13.5, top17.1). Closed service doorX6029, baseY1.039853185, top9.539853185, muted brass pull, two stone steps and short tile hood. Lower wall outsideZ20.2; upper outsideZ20.175.
+Reference: previously inspected saved Takayama dark timber/lattice shopfront and existing Japanese shop mesh kit20. Uses stored back_door2, back_window2, awning_section; no new import. Original source meshes remain unchanged. Full source reveals thinned into dark backings; paper in front of backing/opaque wall and behind lattice. Frames embedded .2 studs. Steps reach ground0 and actual floor1.039853. Convex meshes retain Default CollisionFidelity; collision ray heights passed within .001.
+
+All21691 original Japan instances unchanged, including original wood colors, accepted cafe front/doorway/separate interior/cats/audio/register, ramen shop and grocer. Only two steps collide; original solid wall blocks service doorway. No added prompt, script or entrance behavior. Existing cafe interior remains register1. No lantern placement changes.
+Actual Play pictures: overview, ground-floor close, upper close; before image also saved (early streaming and collectible markers visible before photo hiding; use after images for review). All12 distinct mesh IDs loaded successfully. Complete26-part manifest saved.
+
+Studio stopped and photo camera/HUD/world billboards/avatar overrides restored. Nothing installed or published.
+Await explicit approval of these cafe-side pictures before running cafe_sides1.lua with CAFE_SIDES1_ALLOW_EDIT=true in stopped Edit. Compare exact manifest and run fresh Play. Rollback removes ONLY CafeSideDetails1 and SideDetailsVersion=north1 from original Cat cafe model; no original parts replaced.
+Ramen side treatment and lantern clearance remain separate pending approvals. Grocer stock2 pending approval; curtain kit33 and maze kit30 import pending. Do not treat cafe approval as approval of those changes. Shannon publishes.

@@ -1,0 +1,58 @@
+{
+  "preview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDES: north wall has one closed lattice service door with a brass pull, two stone steps, one broad lower lattice window, paired upper lattice windows and a matching tile hood;26 real mesh parts\nQQ CAFE SIDES FIT: door threshold matches shop floor1.039853; steps reach ground0; frames penetrate wall.2 studs; paper sits behind lattice and ahead of opaque backing\nQQ CAFE SIDES PRESERVED: all 21691 original Japan instances unchanged; both original wood colors and solid walls retained; cafe interior, real front entrance and other shops unchanged; no service-door prompt\nQQ CAFE SIDES STATUS: SERVER PREVIEW; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "geometry": {
+    "wallHit": "Workspace.JapanMap.Outdoor market revision.Cat cafe.Side wall",
+    "walls": [
+      {
+        "name": "Upper timber side wall",
+        "color": [
+          0.6352941393852234,
+          0.5607843399047852,
+          0.46666666865348816
+        ]
+      },
+      {
+        "name": "Side wall",
+        "color": [
+          0.8627451062202454,
+          0.8039215803146362,
+          0.7176470756530762
+        ]
+      }
+    ],
+    "message": "QQ CAFE SIDES CHECK:26 anchored meshes; three windows; two steps meet actual floor; closed wall blocks passage; both original wood colors preserved; accepted interior register1 intact",
+    "upperStep": 1.0398023128509521,
+    "cafeVersion": "register1",
+    "windows": 3,
+    "lowerStep": 0.519875705242157,
+    "colliders": 2,
+    "parts": 26
+  },
+  "assets": "12 distinct MeshIds all fetched successfully on Client; 26 placed MeshParts.",
+  "cleanup": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDES CLEANUP: photo binding removed; HUD, world billboards, avatar visibility and normal camera restored"
+      }
+    ],
+    "isError": false
+  },
+  "editCheck": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDES EDIT CHECK: preview discarded; original walls/colors and accepted register1 interior remain; other pending previews not installed"
+      }
+    ],
+    "isError": false
+  }
+}
