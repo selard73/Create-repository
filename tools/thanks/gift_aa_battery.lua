@@ -6,7 +6,7 @@ assert(RunService:IsRunning() or _G.AA_BATTERY_GIFT_ALLOW_EDIT==true,"Explicit E
 assert(game.PlaceId==117372258657114,"Wrong place")
 local f=assert(workspace:FindFirstChild("Thanks"),"Gift system missing")
 local gifts=assert(f:FindFirstChild("Gifts"),"Gift list missing")
-local NOTE=[====[Merci, AA_Battery ! Votre message recharge les batteries de toute la mairie ! J’ai transmis vos compliments aux écureuils… maintenant, ils veulent chacun leur propre statue devant la mairie ! 🐿️
+local NOTE=[====[Merci pour votre gentil mot ! Voici 1 000 glands pour vos prochaines aventures.
 — Le maire]====]
 local NAME,ID,AMOUNT="AA_Battery","aa_battery_1",1000
 local OLD=[====[-- ThanksClient (workspace.Thanks, RunContext Client): the thank-you card (daily-card look). Shown when the server pays a gift;

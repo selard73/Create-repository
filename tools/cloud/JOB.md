@@ -5251,3 +5251,10 @@ QQ AA BATTERY GIFT STATUS:EDIT INSTALLED; NOT PUBLISHED
 - File > Save to Roblox confirmed2026-10-18T10:40:30Z (06:40 EDT),7540ms, CreatorOutput Saved new changes in1001 Squirrels to Roblox. PlaceVersion1525 read back. Save only, not Publish. Studio stopped. No map edits, no camera move, no direct DataStore writes.
 - Canonical narrow installer tools/thanks/gift_aa_battery.lua; card source tools/thanks/ThanksClient.lua; evidence/backups/note/photo under tools/thanks/aa_battery_2026-10-18. Legacy install_thanks1.lua is a historical whole-system installer; do not rerun it over current gifts/client.
 NEXT: Shannon publishes; AA_Battery receives1000 acorns and the note once on joining an updated server. Delivery not yet observed. Farm bridge lift remains a preview awaiting approval.
+
+
+## AA_Battery shorter separate gift note (Codex solo, Oct18 2026) - INSTALLED AND SAVED; NOT PUBLISHED
+Shannon clarified she already sent the statue reply through the mailbox and requested a different, shorter acorn note. Replaced only the existing gift's Note with: Merci pour votre gentil mot ! Voici 1 000 glands pour vos prochaines aventures. / — Le maire.
+- Same recipient AA_Battery, amount1000 and one-time Id aa_battery_1 retained; six total gift entries, no new payout/gift. Note measures42px in56px box, so the card returns to its original168px height. Long-note support remains unchanged for future notes.
+- Canonical installer/note updated; short_note_readback.json supersedes prior note text in verification.json/card_preview.jpg, which remain historical evidence of the earlier version. No mailbox send, direct DataStore write or publish.
+- Normal Save reported no changes despite attribute readback; Save to Roblox with Notes completed10:46:50 UTC (06:46 EDT),8645ms, CreatorOutput confirmed saved. Version note: Shorten AA_Battery acorn gift note. No publication. Ready for Shannon to publish.
