@@ -2,7 +2,7 @@ from pathlib import Path
 import json
 D=Path(__file__).resolve().parent
 rows=json.loads((D/'preview_manifest.json').read_text())
-assert len(rows)==610
+assert len(rows)==624
 for start in range(0,len(rows),100):
     data=json.dumps(rows[start:start+100],separators=(',',':'))
     code='''local expected=game:GetService("HttpService"):JSONDecode([==[DATA]==])
@@ -10,7 +10,7 @@ local parts={};local total=0
 for _,root in ipairs({workspace.JapanMap.ShopFronts.CatCafe,workspace.JapanMap.ShopFronts.CatCafeInterior})do
  for _,p in ipairs(root:GetDescendants())do if p:IsA("BasePart")then assert(not parts[p:GetFullName()]);parts[p:GetFullName()]=p;total+=1 end end
 end
-assert(total==610,"Unexpected installed cafe part count")
+assert(total==624,"Unexpected installed cafe part count")
 for _,e in ipairs(expected)do
  local p=assert(parts[e.name],"Missing "..e.name)
  local cf={p.CFrame:GetComponents()};local size={p.Size.X,p.Size.Y,p.Size.Z};local color={p.Color.R,p.Color.G,p.Color.B}
@@ -25,4 +25,4 @@ end
 return "QQ CAFECOZY3 INSTALLED MATCH: batch START-END; geometry, colors, materials, collision, anchoring and mesh IDs match approved preview"
 '''.replace('DATA',data).replace('START',str(start+1)).replace('END',str(min(start+100,len(rows))))
     (D/f'check_install_{start//100}.lua').write_text(code,encoding='utf-8')
-print('Seven bounded checks prepared for all610 installed cafe parts')
+print('Seven bounded checks prepared for all624 installed cafe parts')

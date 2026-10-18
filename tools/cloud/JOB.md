@@ -4924,3 +4924,25 @@ QQ CAFE REGISTER CLEANUP: photo bindings removed; HUD, avatar visibility and nor
 QQ CAFE REGISTER EDIT CHECK: original cafe still unchanged; imported kit14 anchored meshes safely stored; awaiting preview approval
 - Saved five actual Play pictures,624-part manifest/comparison, output and updated status notes. Canonical cafe_cozy3 remains the installed610-part version. Only imported source kit anchored/stored in Edit; no permanent cafe revision, publication or direct DataStore write.
 NEXT: Shannon reviews register/pot/counter/perch pictures and approves before preview_register1.lua with CAFEREGISTER1_ALLOW_EDIT=true. Then verify manifest and integrate approved changes into canonical builder/source. Do not install superseded ORDER/PAY variant. More Meshy cats await files; kit30 maze trail still awaiting import; mug correction already installed.
+
+
+## Approved cafe register, planter and landing installed (Codex solo, Oct 17 2026) - INSTALLED; NOT PUBLISHED
+Shannon replied "yes" to the explicit request to save the register/counter, planter and perch preview. Applied exact approved preview_register1.lua from572731c in stopped Edit with CAFEREGISTER1_ALLOW_EDIT=true. Original room backed up; no whole-cafe replacement.
+Actual installer output:
+QQ CAFE DETAIL CHECK: 470 original interior parts; 30 moved, 5 resized, 440 unchanged transforms; register/tray and three landing-perch real-mesh additions
+QQ CAFE WINDOW: planter on bare bench edge; cushion shifted clear; trailing vine hangs in front of bench
+QQ CAFE COUNTER: forward3.6 studs; wall shelves stay; tea and pastries retained; proper mesh register with keypad, cash drawer, receipt and two-sided display; change tray; no sign, attendant or payment gameplay
+QQ CAFE JUMP: new rear-wall cushioned landing in Ginger's facing direction; original cat transform/scale/rig unchanged
+QQ CAFE DETAIL STATUS: EDIT INSTALLED; NOT PUBLISHED
+QQ CAFE REGISTER PRESERVED: doorway, camera, reflection and audio controllers unchanged; original interior backed up
+QQ CAFE REGISTER FINAL MATCH: all624 installed parts match approved preview; one planter detail differs by .0001221 stud in Y (float precision), within .0002 transform tolerance; all other fields match
+QQ CAFE REGISTER INSTALLED MATCH: parts331-440 verified in stopped Edit with .0002 transform tolerance; every other property matches approved preview
+- Initial overly strict .00001 transform comparison flagged one scaled planter Ink mesh. Read full installed manifest: only that detail differs by .0001220703125 stud in Y (one float step at Y1200); all other624-part fields match. Resolved comparison uses established .0002 transform tolerance and reran affected range in stopped Edit. No extra geometry adjustment needed.
+- All approved floor, moss rugs, walls, seats, cat transforms/rigs, street display and controllers preserved. New11 register/tray meshes and3 perch meshes. Original hidden menu SurfaceGui disabled. Backup retained.
+QQ CAFE REGISTER CANONICAL COMPILE: full cafe installer with approved register details parses; body not executed
+QQ CAFE REGISTER STAGING: isolated approved pre-change room clone receives canonical patch; all484 resulting interior parts match installed geometry/appearance/physical flags within .0003; clone discarded
+- Integrated the identical approved detail body into canonical builder as a scoped staged-room function; removed narrow install's live-room lookup/Edit-backup steps only. Full builder not executed against live cafe. Updated624-part canonical manifest and bounded installation-check generator. Earlier610-part floor notes historical.
+QQ CAFE REGISTER FRESH PLAY: actual E entry and exit successful; standing/unanchored; specular .12 inside and1 outside; bell loaded; normal camera/HUD restored
+QQ CAFE REGISTER FINAL EDIT:624 parts,70 cat bones,6 usable/2 reserved Seats,10 steam emitters; original room backup retained; approved details persist after Play
+- Fresh Play used installed scene without rerunning detail installer. Actual entry inside=true, specular.12; exit inside=false, specular1; both standing/unanchored. Bell131845870598154 loaded. Initial camera capture briefly dim during render settling and not retained as a new review photo; approved five preview photos remain. Temporary HUD/camera overrides removed, Play stopped.
+- Saved installation outputs, complete installed manifest and current status notes. No publication or direct DataStore write. Ready for Shannon's publish; additional cats await files. Maze kit30 import/preview remains separate and pending.

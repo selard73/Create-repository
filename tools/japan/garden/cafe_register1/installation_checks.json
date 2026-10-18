@@ -1,0 +1,41 @@
+{
+  "approval": "Shannon replied yes to saving the counter, planter and perch preview.",
+  "install": "QQ CAFE DETAIL CHECK: 470 original interior parts; 30 moved, 5 resized, 440 unchanged transforms; register/tray and three landing-perch real-mesh additions\nQQ CAFE WINDOW: planter on bare bench edge; cushion shifted clear; trailing vine hangs in front of bench\nQQ CAFE COUNTER: forward3.6 studs; wall shelves stay; tea and pastries retained; proper mesh register with keypad, cash drawer, receipt and two-sided display; change tray; no sign, attendant or payment gameplay\nQQ CAFE JUMP: new rear-wall cushioned landing in Ginger's facing direction; original cat transform/scale/rig unchanged\nQQ CAFE DETAIL STATUS: EDIT INSTALLED; NOT PUBLISHED\nQQ CAFE REGISTER PRESERVED: doorway, camera, reflection and audio controllers unchanged; original interior backed up",
+  "checks": [
+    "QQ CAFE REGISTER INSTALLED MATCH: parts 1-110 match approved Play geometry, appearance, meshes and physical flags",
+    "QQ CAFE REGISTER INSTALLED MATCH: parts 111-220 match approved Play geometry, appearance, meshes and physical flags",
+    "QQ CAFE REGISTER INSTALLED MATCH: parts 221-330 match approved Play geometry, appearance, meshes and physical flags",
+    "sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Tools.ExecuteLuauTool:116: sabuiltin_Assistant.rbxm.Assistant.Packages._Index.AssistantUI.AssistantUI.Util.CommandExecution:54: AssistantCommand:6: CFrame Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CounterCatPlanter.CW1_CatPlanter_Ink",
+    "QQ CAFE REGISTER INSTALLED MATCH: parts 441-550 match approved Play geometry, appearance, meshes and physical flags",
+    "QQ CAFE REGISTER INSTALLED MATCH: parts 551-624 match approved Play geometry, appearance, meshes and physical flags"
+  ],
+  "resolvedComparison": "QQ CAFE REGISTER FINAL MATCH: all624 installed parts match approved preview; one planter detail differs by .0001221 stud in Y (float precision), within .0002 transform tolerance; all other fields match",
+  "floatDifferences": [
+    {
+      "name": "Workspace.JapanMap.ShopFronts.CatCafeInterior.CozyNooks.CounterCatPlanter.CW1_CatPlanter_Ink",
+      "changes": {
+        "cf": 0.0001220703125
+      }
+    }
+  ],
+  "compile": "QQ CAFE REGISTER CANONICAL COMPILE: full cafe installer with approved register details parses; body not executed",
+  "staging": "QQ CAFE REGISTER STAGING: isolated approved pre-change room clone receives canonical patch; all484 resulting interior parts match installed geometry/appearance/physical flags within .0003; clone discarded",
+  "freshEntry": {
+    "bellLoaded": true,
+    "unanchored": true,
+    "bellId": "rbxassetid://131845870598154",
+    "standing": true,
+    "specular": 0.11999999731779099,
+    "inside": true
+  },
+  "freshExit": {
+    "standing": true,
+    "unanchored": true,
+    "specular": 1,
+    "inside": false
+  },
+  "freshPlay": "QQ CAFE REGISTER FRESH PLAY: actual E entry and exit successful; standing/unanchored; specular .12 inside and1 outside; bell loaded; normal camera/HUD restored",
+  "finalEdit": "QQ CAFE REGISTER FINAL EDIT:624 parts,70 cat bones,6 usable/2 reserved Seats,10 steam emitters; original room backup retained; approved details persist after Play",
+  "published": false,
+  "resolvedEditRange": "QQ CAFE REGISTER INSTALLED MATCH: parts331-440 verified in stopped Edit with .0002 transform tolerance; every other property matches approved preview"
+}

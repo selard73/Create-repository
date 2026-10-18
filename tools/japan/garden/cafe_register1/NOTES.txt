@@ -1,3 +1,21 @@
+LATEST STATUS: APPROVED AND INSTALLED IN EDIT; NOT PUBLISHED
+Shannon replied yes to saving this register/counter, planter and perch preview.
+Applied preview_register1.lua in stopped Edit with CAFEREGISTER1_ALLOW_EDIT=true.
+Original interior backup: ServerStorage.HudBackup.CafeInterior_pre_register1.
+624 installed parts match preview; one scaled planter detail differs by one
+float step (.0001221 stud in Y), within .0002 transform tolerance. All other
+properties match. Stopped-Edit verification rerun for that range successfully.
+Fresh Play without rerunning installer: actual E entry/exit succeeded, standing
+and unanchored; interior reflection .12, outside1; French bell asset loaded.
+HUD/camera restored and Play stopped. Final Edit confirms624 parts,70 bones,
+6 usable/2 reserved Seats,10 steam emitters and persistent register1 details.
+Canonical cafe_cozy3 builder now applies the approved detail body to its staged
+room; full installer compiles, and isolated pre-change clone test produces the
+same484 interior parts. Clone discarded; live whole-cafe builder not rerun.
+Canonical preview_manifest.json updated to624 installed parts; bounded check
+generator updated accordingly. No publication or direct DataStore write.
+Ready for Shannon to publish. Earlier preview/pending notes below are history.
+
 CAFE REGISTER1 / KIT31 - PLAY PREVIEW READY; NOT INSTALLED
 
 Shannon rejected ORDER & PAY: show, don't tell. Previous cafe_detail1 sign
