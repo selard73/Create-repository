@@ -5181,3 +5181,18 @@ QQ CAFE SIDE SHIFT1 CLEANUP:camera/HUD/billboards/avatar overrides removed
 QQ CAFE SIDE SHIFT1 EDIT CHECK:earlier approved side4/tone1 remain installed; latest1.6-stud shift discarded and awaits approval; original installed upper-left center6022.0 retained
 - Studio stopped. Newly requested shift is NOT installed; earlier approved35-part side/tone remain installed. No publication or direct DataStore write. Other pending Japan previews/imports unchanged.
 NEXT: explicit approval of cafe_side_shift1 pictures, then CAFE_SIDE_SHIFT1_ALLOW_EDIT=true only. Do not rerun cafe_sides4 or tone1. Compare prospective manifest, fresh Play, Shannon publishes.
+
+
+## Approved further-left cafe window installed (Codex solo, Oct 17 2026) - INSTALLED; NOT PUBLISHED
+Shannon approved the latest preview with "that works". Ran cafe_side_shift1 only in stopped Edit using CAFE_SIDE_SHIFT1_ALLOW_EDIT=true. No base or tone rebuild.
+QQ CAFE SIDE SHIFT1:7 upper-left window/hood meshes moved1.6 studs left; new center6020.4, lower window6019.2, right upper6028.6;1.2-stud offset from lower window and4.0-stud upper sill gap
+QQ CAFE SIDE SHIFT1 BACKUP:7 original CFrames stored on CafeSideShift1WasCFrame; sizes/materials/colors unchanged
+QQ CAFE SIDE SHIFT1 STATUS:EDIT INSTALLED; NOT PUBLISHED
+QQ CAFE SIDE SHIFT1 INSTALL VERIFIED:all35 side parts match approved preview within.001;7 original-transform backups verified; accepted interior register1 retained
+- Transaction compared every35-part position/size/appearance against the approved prospective manifest and verified7 exact original-transform backups. On failure it would restore those7 transforms and remove the shift attributes/version; no rollback needed.
+- Fresh Play checked the saved scene without rerunning any installer:
+QQ CAFE SIDE SHIFT1 FRESH PLAY:saved upper-left6020.4, right6028.6 and lower6019.2 verified;35 anchored meshes and7 backups persist; warm wood,164 rear models and accepted interior retained
+QQ CAFE SIDE SHIFT1 FINAL EDIT:approved further-left position persists; Studio stopped, ready for Shannon to publish
+- Current installed upper-left6020.4, lower6019.2 and upper-right6028.6: small1.2 offset from lower,4.0 gap between upper sills. Side4/tone1 remain; base/current notes updated to distinguish original base manifest from final shift1 manifest.
+- Saved installation/fresh-Play/final-Edit evidence. Studio stopped; no publication or direct DataStore write.
+NEXT: Shannon publishes the approved cafe side. Do not rerun side4/tone1/shift1 installers. Other pending ramen-side/lantern, grocer-stock2, curtain-kit33 and maze-kit30 approvals/imports remain separate.

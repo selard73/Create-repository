@@ -1,0 +1,29 @@
+{
+  "installation": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDE SHIFT1:7 upper-left window/hood meshes moved1.6 studs left; new center6020.4, lower window6019.2, right upper6028.6;1.2-stud offset from lower window and4.0-stud upper sill gap\nQQ CAFE SIDE SHIFT1 BACKUP:7 original CFrames stored on CafeSideShift1WasCFrame; sizes/materials/colors unchanged\nQQ CAFE SIDE SHIFT1 STATUS:EDIT INSTALLED; NOT PUBLISHED\nQQ CAFE SIDE SHIFT1 INSTALL VERIFIED:all35 side parts match approved preview within.001;7 original-transform backups verified; accepted interior register1 retained"
+      }
+    ],
+    "isError": false
+  },
+  "freshPlay": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDE SHIFT1 FRESH PLAY:saved upper-left6020.4, right6028.6 and lower6019.2 verified;35 anchored meshes and7 backups persist; warm wood,164 rear models and accepted interior retained"
+      }
+    ],
+    "isError": false
+  },
+  "finalEdit": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDE SHIFT1 FINAL EDIT:approved further-left position persists; Studio stopped, ready for Shannon to publish"
+      }
+    ],
+    "isError": false
+  }
+}
