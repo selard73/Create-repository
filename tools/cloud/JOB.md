@@ -5138,3 +5138,15 @@ QQ CAFE SIDES4 CLEANUP:camera binding removed; HUD/billboards/avatar visibility 
 QQ CAFE SIDES4 EDIT CHECK:side and color previews discarded; original upper wall162,143,119 restored; no side or tone version installed; accepted register1 intact
 - No permanent Edit appearance change, publication or direct DataStore write. Studio stopped; both side layout and tone await approval.
 NEXT: obtain explicit yes for final cafe_sides4 + cafe_side_tone1 pictures. Only then run CAFE_SIDES4_ALLOW_EDIT=true followed by CAFE_SIDE_TONE1_ALLOW_EDIT=true in stopped Edit, compare manifest, fresh Play, Shannon publishes. Other pending Japan previews/imports unchanged.
+
+
+## Cafe upper-left window a little farther left (Codex solo, Oct 17 2026) - REVISED PLAY PREVIEW; NOT INSTALLED
+Shannon requested the left window move over a little more, continuing the upper-window spacing discussion. Shifted upper-left window AND its tiled hood0.8 studs left toX6022.0; right window stays6028.6. Final sill gap2.4, center spacing6.6. Retained warm upper wood210,195,172 and all other details.
+- Fresh Play Server ran revised cafe_sides4 then unchanged cafe_side_tone1; original21691 Japan instances preserved by side installer before explicit tone change. All cafe mesh assets preloaded successfully. Compared all35 final parts to preceding manifest:
+QQ CAFE SIDES4 LEFT COMPARISON:7 upper-left window/hood meshes moved only0.8 studs left;28 other preview meshes retained; sizes/materials/colors/textures unchanged
+QQ CAFE SIDES4 LEFT:upper-left window/hood moved0.8 studs left; centers6022.0/6028.6;2.4-stud sill gap; right window and warmer upper tone retained
+- Actual same-camera overview and close pictures captured/inspected. Final canonical manifest and NOTES updated; new left_adjustment_checks.json records this revision. Previous pictures/checks retained as history.
+QQ CAFE SIDES4 LEFT CLEANUP:photo camera/HUD/billboards/avatar overrides removed
+QQ CAFE SIDES4 LEFT EDIT CHECK:all side/tone previews discarded; accepted cafe retained; nothing installed
+- Studio stopped; no permanent Edit appearance change, publication or direct DataStore write.
+NEXT: Shannon approves latest left_overview/left_close pictures before guarded cafe_sides4 + cafe_side_tone1 installation. Other pending work unchanged.

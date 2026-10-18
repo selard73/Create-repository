@@ -1,6 +1,7 @@
 CAFE NORTH SIDE v4 + TONE1 -- PLAY PREVIEW ONLY; AWAITING APPROVAL
 Shannon found upper wood too dark, then found upper/lower windows too symmetrical, then requested slightly more space between the upper pair.
-Final35-mesh treatment retains v3's accepted-rear timber dimensions/materials. Upper centersX6022.8/6028.6,5.8 apart,1.6 between4.2-wide sills. Lower window stays6019.2; service door6029. Tiled hoods follow upper windows.
+Final35-mesh treatment retains v3's accepted-rear timber dimensions/materials. Upper centersX6022.0/6028.6,6.6 apart,2.4 between4.2-wide sills. Lower window stays6019.2; service door6029. Tiled hoods follow upper windows.
+Latest left_adjustment_checks.json verifies only7 upper-left window/hood meshes moved0.8 studs left;28 other meshes and all appearances unchanged. Current photos: cafe_sides4_left_overview.jpg and cafe_sides4_left_close.jpg; earlier photos are historical. Canonical preview_manifest.json updated to latest spacing.
 Tone1 changes ONLY north upper wall from RGB162,143,119 to210,195,172. Lower remains220,205,183. WoodPlanks grain/material unchanged.
 Two guarded scripts required after explicit approval: cafe_sides4.lua (CAFE_SIDES4_ALLOW_EDIT=true), then ../cafe_side_tone1/cafe_side_tone1.lua (CAFE_SIDE_TONE1_ALLOW_EDIT=true).
 Tone1 requires side versionrear4; saves original upper Color3 in CafeSideToneWasColor; sets SideWoodToneVersion=warm1.

@@ -62,12 +62,12 @@ end
 local door=copyRear(doorSource,"ClosedServiceDoor",7,6029,floorTop,20.2,true)
 -- The source's dark recessed panels, timber grain and original lattice proportions are retained.
 copyRear(windowSource,"GroundFloorWindow",1.5,6019.2,-8,20.2,false)
-copyRear(windowSource,"UpperFrontWindow",1.5,6022.8,0,20.175,false)
+copyRear(windowSource,"UpperFrontWindow",1.5,6022.0,0,20.175,false)
 copyRear(windowSource,"UpperRearWindow",1.5,6028.6,0,20.175,false)
 for i,x in {6016,6020,6024,6028,6032} do
  copyRear(awningSource,"LowerTiledEave"..i,7.995461940765381,x,floorTop,20.2,false)
 end
-copyRear(hoodSource,"UpperFrontHood",1.5,6022.8,0,20.175,false)
+copyRear(hoodSource,"UpperFrontHood",1.5,6022.0,0,20.175,false)
 copyRear(hoodSource,"UpperRearHood",1.5,6028.6,0,20.175,false)
 -- Two mesh risers meet the actual floor while keeping the rear step's stone appearance.
 for _,r in {{"LowerStep",6.4,floorTop/4,2.8,1.35},{"UpperStep",6,floorTop*.75,1.8,.8}} do
