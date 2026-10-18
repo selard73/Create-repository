@@ -1,5 +1,5 @@
 SUSHI BAR 1 / JAPAN KIT34
-Status: IMPORTED, ANCHORED AND PLAY-PREVIEWED. NOT INSTALLED, SAVED OR PUBLISHED. Awaiting Shannon's approval.
+Status: APPROVED, INSTALLED AND SAVED TO ROBLOX on2026-10-18 at13:41:30 UTC (09:41 EDT). NOT PUBLISHED by Codex.
 
 Requested by Shannon: build the existing sushi shop into a proper sushi bar.
 Inspected the actual shop and both supplied screenshots. Existing building is27x18 studs,
@@ -39,9 +39,8 @@ and creates checked, anchored clean source sushi_bar1 in ServerStorage.JapanGard
 The script rejects wrong scale, missing/duplicate meshes, scripts, wrong bounds, and previously stored source.
 
 Next:
-1. Shannon reviews actual pictures in preview/inside.jpg and preview/counter.jpg.
-2. Only after approval install same version in Edit, compare canonical play_preview_manifest.json, fresh Play without installer,
-   Save to Roblox with Notes. Shannon publishes. No direct DataStore writes, no other shop builders.
+Shannon publishes and rejoins a fresh server. Installation is complete; do not rerun prepare or installer.
+No direct DataStore writes or other shop builders.
 
 PLAY PREVIEW RESULTS / OCT18:
 Two identical imports validated (same192 assets, sizes and relative transforms), all384 raw parts anchored,
@@ -56,10 +55,24 @@ All12 menu labels fit. Actual avatar walked8 goals through entrance/customer/sta
 within1.15 studs. All6 seats occupied correctly; seat top3.07985 is.05 above cushion top3.02985.
 Up/left/right/back boundary rays hit ceiling or structural walls. CollisionFidelity remained Default despite
 set attempts; closed slab/box collisions passed actual tests. Do not claim Precise was applied.
-Fresh regenerated preview reproduced all212 parts and final readable labels. No permanent sushi front exists;
-original141 parts remain in Edit; all source copies anchored. Preview camera, HUD and avatar overrides cleared.
+At the preview stage, fresh regeneration reproduced all212 parts and final readable labels; no permanent front then existed.
+Original141 parts were retained through preview; all source copies anchored. Preview camera, HUD and avatar overrides cleared.
 Updated installer is canonical; no further mesh import required. Do NOT rerun prepare on stored sources.
 
 Installation backs up only retired sushi fixtures to HudBackup.SushiBar1Originals. It checks every unrelated
 Japan instance remains in the same parent and preserves every other part's geometry and appearance.
 No attendants, purchases, food rewards or new commerce scripts are included.
+
+APPROVED INSTALLATION / OCT18:
+Shannon explicitly approved: "Yes, install and save it".
+Current canonical installer ran in stopped Edit with SUSHI1_ALLOW_EDIT=true. All212 parts matched the
+approved play_preview_manifest.json before Play, during a fresh Play WITHOUT installer, and after Stop.
+Exactly85 old fixture objects retained intact in HudBackup.SushiBar1Originals;21561 other Japan
+instances preserved. Clean192 source and both raw192 copies remain anchored in ServerStorage.
+Fresh client checked206 meshes,230 successful asset callbacks and all12 fitting menu labels at18/40.
+Actual fresh screenshot inspected. Camera/HUD/avatar overrides restored before Stop.
+Save to Roblox with Notes confirmed2026-10-18T13:41:30.054Z, StudioSavePlaceToCloud7191ms,
+publishType2, CreatorOutput Saved new changes in "1001 Squirrels" to Roblox.
+Version title: Approved sushi bar interior and storefront.
+Evidence: installation_2026-10-18_checks.json. Grocer stock2 remains installed; HttpEnabled=false.
+No publication or direct DataStore write. Shannon publishes and rejoins a fresh server.

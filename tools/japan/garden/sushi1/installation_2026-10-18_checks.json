@@ -1,0 +1,48 @@
+{
+  "status": "installed-and-saved-not-published",
+  "approval": "Yes, install and save it",
+  "date": "2026-10-18",
+  "placeId": 117372258657114,
+  "save": {
+    "utc": "2026-10-18T13:41:30.054Z",
+    "title": "Approved sushi bar interior and storefront",
+    "operation": "StudioSavePlaceToCloud",
+    "publishType": 2,
+    "durationMs": 7191,
+    "confirmation": "Saved new changes in \"1001 Squirrels\" to Roblox."
+  },
+  "installation": {
+    "meshes": 206,
+    "seats": 6,
+    "parts": 212,
+    "retiredFixtureObjects": 85,
+    "preservedOtherJapanInstances": 21561,
+    "version": "sushi1",
+    "sourceMeshes": 192,
+    "rawCopies": [
+      192,
+      192
+    ],
+    "grocerStockVersion": "stock2",
+    "httpEnabled": false
+  },
+  "checks": {
+    "editMatchesCanonicalPreview": true,
+    "freshPlayWithoutInstallerMatchesCanonicalPreview": true,
+    "postPlayEditMatchesCanonicalPreview": true,
+    "transformAndSizeTolerance": 0.001,
+    "appearanceAndPhysicsFlagsExact": true,
+    "assetCallbacks": {
+      "Success": 230
+    },
+    "menuLabels": 12,
+    "allMenuLabelsFit": true,
+    "englishFontSize": 18,
+    "japaneseFontSize": 40,
+    "visualScreenshotInspected": true,
+    "temporaryCameraHudAvatarOverridesRestored": true
+  },
+  "previousPlayPhysicalChecks": "Recorded in play_checks.json: eight actual walking goals, six actual seat occupations, floor/wall/ceiling boundary rays. Exact final installed scene matches approved play_preview_manifest.json.",
+  "publishing": "Shannon publishes; no publication by Codex.",
+  "logs": "QQ SUSHI1: 189 real meshes; six aligned functional seats; counter, chef aisle, prep bench, fish case and individual sushi settings\nQQ SUSHI1 FLOOR:17 reused real mesh boards, grain along board length; imported floor retained as invisible collision surface\nQQ SUSHI1 PRESERVED: 21561 other Japan instances; original building shell, roof, main sign and all shop backs retained\nQQ SUSHI1 BACKUP: 85 original sushi fixtures retained in HudBackup.SushiBar1Originals; no other shop rebuilt\nQQ SUSHI1 STATUS: EDIT INSTALLED; NOT PUBLISHED"
+}

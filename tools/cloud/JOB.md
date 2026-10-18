@@ -5336,3 +5336,18 @@ QQ SUSHI1 STATUS: SERVER PREVIEW; NOT PUBLISHED
 - Restored normal camera/HUD/avatar and stopped Play. Final Edit original sushi141 parts retained, no SushiBar model or backup installed;192 clean source plus two192 raw imports remain anchored in ServerStorage.JapanGardenKit. Grocer stock2 remains installed; HttpEnabled=false. No Save, Publish or direct DataStore write.
 - Showed actual pictures and asked Shannon whether to install/save; approval pending at this record. No further import needed. Sources/preview scripts/notes updated in sushi1.
 NEXT: On explicit yes, run current install_sushi1.lua in stopped Edit with SUSHI1_ALLOW_EDIT=true, compare212-part canonical preview, fresh Play without installer and Save to Roblox with Notes. Shannon publishes. Do not rerun preparation on stored sources. Other pending work keeps separate approval.
+
+
+## Approved sushi bar installed and saved (Codex solo, Oct18 2026) - INSTALLED AND SAVED; NOT PUBLISHED
+Shannon reviewed the actual Play pictures and explicitly approved: "Yes, install and save it".
+QQ SUSHI1: 189 real meshes; six aligned functional seats; counter, chef aisle, prep bench, fish case and individual sushi settings
+QQ SUSHI1 FLOOR:17 reused real mesh boards, grain along board length; imported floor retained as invisible collision surface
+QQ SUSHI1 PRESERVED: 21561 other Japan instances; original building shell, roof, main sign and all shop backs retained
+QQ SUSHI1 BACKUP: 85 original sushi fixtures retained in HudBackup.SushiBar1Originals; no other shop rebuilt
+QQ SUSHI1 STATUS: EDIT INSTALLED; NOT PUBLISHED
+- Ran current guarded install_sushi1.lua in stopped Edit with SUSHI1_ALLOW_EDIT=true. All212 parts (206 MeshParts+6 Seats) match approved play_preview_manifest.json within.001 for transforms/sizes and exactly for appearance and physical flags.
+- Fresh Play WITHOUT installer retained the same212 parts. Client loaded206 meshes with230 Success callbacks; all12 menu labels fit at40 Japanese/18 English. Actual screenshot inspected. The prior eight walking goals, six seating checks and boundary-ray checks remain recorded in play_checks.json for this exact geometry.
+- Restored camera/HUD/avatar and stopped Play. Final Edit again matches canonical212 parts;85 original fixtures safely backed up, clean192 source and both192 raw imports anchored. Grocer stock2 retained; HttpEnabled=false. No other shop rebuild or direct DataStore write.
+- Save to Roblox with Notes confirmed2026-10-18T13:41:30.054Z (09:41 EDT), StudioSavePlaceToCloud7191ms, publishType2, CreatorOutput Saved new changes in "1001 Squirrels" to Roblox. Version title: Approved sushi bar interior and storefront. No publication by Codex.
+- Updated sushi1/NOTES.txt and added installation_2026-10-18_checks.json. Earlier preview records are historical; sushi1 is now permanently installed and saved.
+NEXT: Shannon publishes and rejoins a fresh server. Do not rerun prepare or installation. Other pending work retains separate approvals.
