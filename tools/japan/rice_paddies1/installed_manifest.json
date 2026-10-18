@@ -1,0 +1,1445 @@
+[
+  {
+    "path": "Workspace.JapanMap.BlenderScenery.Sculpted terrain.JP_Rice_Berm_1",
+    "fidelity": "Default",
+    "color": [
+      1,
+      1,
+      1
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": false,
+    "cf": [
+      5496,
+      1.3250000476837158,
+      83,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 0,
+    "name": "JP_Rice_Berm_1",
+    "variant": "JM_PhotographicEarth",
+    "collide": false,
+    "material": "Ground",
+    "mesh": "rbxassetid://125379819144461",
+    "size": [
+      59,
+      3.049999952316284,
+      52
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.BlenderScenery.Sculpted terrain.JP_Rice_Berm_2",
+    "fidelity": "Default",
+    "color": [
+      1,
+      1,
+      1
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": false,
+    "cf": [
+      5556,
+      1.3250000476837158,
+      83,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 0,
+    "name": "JP_Rice_Berm_2",
+    "variant": "JM_PhotographicEarth",
+    "collide": false,
+    "material": "Ground",
+    "mesh": "rbxassetid://125379819144461",
+    "size": [
+      59,
+      3.049999952316284,
+      52
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.BlenderScenery.Sculpted terrain.JP_Rice_Berm_3",
+    "fidelity": "Default",
+    "color": [
+      1,
+      1,
+      1
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": false,
+    "cf": [
+      5616,
+      1.3250000476837158,
+      83,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 0,
+    "name": "JP_Rice_Berm_3",
+    "variant": "JM_PhotographicEarth",
+    "collide": false,
+    "material": "Ground",
+    "mesh": "rbxassetid://125379819144461",
+    "size": [
+      59,
+      3.049999952316284,
+      52
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy1_JP_RiceCollision_01",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5469.818359375,
+      1.3250000476837158,
+      66.61994171142578,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy1_JP_RiceCollision_01",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://130689734902277",
+    "size": [
+      6.084991455078125,
+      3.049999952316284,
+      11.201263427734375
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy1_JP_RiceCollision_02",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5471.99560546875,
+      1.3250000476837158,
+      61.59241485595703,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy1_JP_RiceCollision_02",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://120001500402311",
+    "size": [
+      7.6890869140625,
+      3.049999952316284,
+      6.288444519042969
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy1_JP_RiceCollision_03",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5491.50390625,
+      1.3250000476837158,
+      60,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy1_JP_RiceCollision_03",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://135286715030858",
+    "size": [
+      39.783660888671875,
+      3.049999952316284,
+      6
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy1_JP_RiceCollision_04",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5514.8271484375,
+      1.3250000476837158,
+      60.190757751464844,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy1_JP_RiceCollision_04",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://120799136882203",
+    "size": [
+      13.05426025390625,
+      3.049999952316284,
+      5.5074615478515625
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy1_JP_RiceCollision_05",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5520.6259765625,
+      1.3250000476837158,
+      62.133628845214844,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy1_JP_RiceCollision_05",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://92924437627485",
+    "size": [
+      7.22381591796875,
+      3.049999952316284,
+      6.663299560546875
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy1_JP_RiceCollision_06",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5522.466796875,
+      1.3250000476837158,
+      79.06446075439453,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy1_JP_RiceCollision_06",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://129217885766813",
+    "size": [
+      6.06634521484375,
+      3.049999952316284,
+      34.387725830078125
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy1_JP_RiceCollision_07",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5522.181640625,
+      1.3250000476837158,
+      99.38005828857422,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy1_JP_RiceCollision_07",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://110696389342893",
+    "size": [
+      6.0849609375,
+      3.049999952316284,
+      11.201263427734375
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy1_JP_RiceCollision_08",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5520.00439453125,
+      1.3250000476837158,
+      104.40758514404297,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy1_JP_RiceCollision_08",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://99437238812875",
+    "size": [
+      7.6890869140625,
+      3.049999952316284,
+      6.288444519042969
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy1_JP_RiceCollision_09",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5500.49609375,
+      1.3250000476837158,
+      106,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy1_JP_RiceCollision_09",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://95951362492085",
+    "size": [
+      39.783721923828125,
+      3.049999952316284,
+      6
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy1_JP_RiceCollision_10",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5477.1728515625,
+      1.3250000476837158,
+      105.80924224853516,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy1_JP_RiceCollision_10",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://127746563232185",
+    "size": [
+      13.054229736328125,
+      3.049999952316284,
+      5.5074615478515625
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy1_JP_RiceCollision_11",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5471.3740234375,
+      1.3250000476837158,
+      103.86637115478516,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy1_JP_RiceCollision_11",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://137998821741042",
+    "size": [
+      7.22381591796875,
+      3.049999952316284,
+      6.663299560546875
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy1_JP_RiceCollision_12",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5469.533203125,
+      1.3250000476837158,
+      86.93553924560547,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy1_JP_RiceCollision_12",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://106223110234871",
+    "size": [
+      6.066314697265625,
+      3.049999952316284,
+      34.387725830078125
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy2_JP_RiceCollision_01",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5529.818359375,
+      1.3250000476837158,
+      66.61994171142578,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy2_JP_RiceCollision_01",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://130689734902277",
+    "size": [
+      6.084991455078125,
+      3.049999952316284,
+      11.201263427734375
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy2_JP_RiceCollision_02",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5531.99560546875,
+      1.3250000476837158,
+      61.59241485595703,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy2_JP_RiceCollision_02",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://120001500402311",
+    "size": [
+      7.6890869140625,
+      3.049999952316284,
+      6.288444519042969
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy2_JP_RiceCollision_03",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5551.50390625,
+      1.3250000476837158,
+      60,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy2_JP_RiceCollision_03",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://135286715030858",
+    "size": [
+      39.783660888671875,
+      3.049999952316284,
+      6
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy2_JP_RiceCollision_04",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5574.8271484375,
+      1.3250000476837158,
+      60.190757751464844,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy2_JP_RiceCollision_04",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://120799136882203",
+    "size": [
+      13.05426025390625,
+      3.049999952316284,
+      5.5074615478515625
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy2_JP_RiceCollision_05",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5580.6259765625,
+      1.3250000476837158,
+      62.133628845214844,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy2_JP_RiceCollision_05",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://92924437627485",
+    "size": [
+      7.22381591796875,
+      3.049999952316284,
+      6.663299560546875
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy2_JP_RiceCollision_06",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5582.466796875,
+      1.3250000476837158,
+      79.06446075439453,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy2_JP_RiceCollision_06",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://129217885766813",
+    "size": [
+      6.06634521484375,
+      3.049999952316284,
+      34.387725830078125
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy2_JP_RiceCollision_07",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5582.181640625,
+      1.3250000476837158,
+      99.38005828857422,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy2_JP_RiceCollision_07",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://110696389342893",
+    "size": [
+      6.0849609375,
+      3.049999952316284,
+      11.201263427734375
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy2_JP_RiceCollision_08",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5580.00439453125,
+      1.3250000476837158,
+      104.40758514404297,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy2_JP_RiceCollision_08",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://99437238812875",
+    "size": [
+      7.6890869140625,
+      3.049999952316284,
+      6.288444519042969
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy2_JP_RiceCollision_09",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5560.49609375,
+      1.3250000476837158,
+      106,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy2_JP_RiceCollision_09",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://95951362492085",
+    "size": [
+      39.783721923828125,
+      3.049999952316284,
+      6
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy2_JP_RiceCollision_10",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5537.1728515625,
+      1.3250000476837158,
+      105.80924224853516,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy2_JP_RiceCollision_10",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://127746563232185",
+    "size": [
+      13.054229736328125,
+      3.049999952316284,
+      5.5074615478515625
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy2_JP_RiceCollision_11",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5531.3740234375,
+      1.3250000476837158,
+      103.86637115478516,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy2_JP_RiceCollision_11",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://137998821741042",
+    "size": [
+      7.22381591796875,
+      3.049999952316284,
+      6.663299560546875
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy2_JP_RiceCollision_12",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5529.533203125,
+      1.3250000476837158,
+      86.93553924560547,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy2_JP_RiceCollision_12",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://106223110234871",
+    "size": [
+      6.066314697265625,
+      3.049999952316284,
+      34.387725830078125
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy3_JP_RiceCollision_01",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5589.818359375,
+      1.3250000476837158,
+      66.61994171142578,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy3_JP_RiceCollision_01",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://130689734902277",
+    "size": [
+      6.084991455078125,
+      3.049999952316284,
+      11.201263427734375
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy3_JP_RiceCollision_02",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5591.99560546875,
+      1.3250000476837158,
+      61.59241485595703,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy3_JP_RiceCollision_02",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://120001500402311",
+    "size": [
+      7.6890869140625,
+      3.049999952316284,
+      6.288444519042969
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy3_JP_RiceCollision_03",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5611.50390625,
+      1.3250000476837158,
+      60,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy3_JP_RiceCollision_03",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://135286715030858",
+    "size": [
+      39.783660888671875,
+      3.049999952316284,
+      6
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy3_JP_RiceCollision_04",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5634.8271484375,
+      1.3250000476837158,
+      60.190757751464844,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy3_JP_RiceCollision_04",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://120799136882203",
+    "size": [
+      13.05426025390625,
+      3.049999952316284,
+      5.5074615478515625
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy3_JP_RiceCollision_05",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5640.6259765625,
+      1.3250000476837158,
+      62.133628845214844,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy3_JP_RiceCollision_05",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://92924437627485",
+    "size": [
+      7.22381591796875,
+      3.049999952316284,
+      6.663299560546875
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy3_JP_RiceCollision_06",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5642.466796875,
+      1.3250000476837158,
+      79.06446075439453,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy3_JP_RiceCollision_06",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://129217885766813",
+    "size": [
+      6.06634521484375,
+      3.049999952316284,
+      34.387725830078125
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy3_JP_RiceCollision_07",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5642.181640625,
+      1.3250000476837158,
+      99.38005828857422,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy3_JP_RiceCollision_07",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://110696389342893",
+    "size": [
+      6.0849609375,
+      3.049999952316284,
+      11.201263427734375
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy3_JP_RiceCollision_08",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5640.00439453125,
+      1.3250000476837158,
+      104.40758514404297,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy3_JP_RiceCollision_08",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://99437238812875",
+    "size": [
+      7.6890869140625,
+      3.049999952316284,
+      6.288444519042969
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy3_JP_RiceCollision_09",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5620.49609375,
+      1.3250000476837158,
+      106,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy3_JP_RiceCollision_09",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://95951362492085",
+    "size": [
+      39.783721923828125,
+      3.049999952316284,
+      6
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy3_JP_RiceCollision_10",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5597.1728515625,
+      1.3250000476837158,
+      105.80924224853516,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy3_JP_RiceCollision_10",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://127746563232185",
+    "size": [
+      13.054229736328125,
+      3.049999952316284,
+      5.5074615478515625
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy3_JP_RiceCollision_11",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5591.3740234375,
+      1.3250000476837158,
+      103.86637115478516,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy3_JP_RiceCollision_11",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://137998821741042",
+    "size": [
+      7.22381591796875,
+      3.049999952316284,
+      6.663299560546875
+    ]
+  },
+  {
+    "path": "Workspace.JapanMap.RiceBankCollision1.Paddy3_JP_RiceCollision_12",
+    "fidelity": "PreciseConvexDecomposition",
+    "color": [
+      0.6392157077789307,
+      0.6352941393852234,
+      0.6470588445663452
+    ],
+    "anchored": true,
+    "touch": false,
+    "query": true,
+    "cf": [
+      5589.533203125,
+      1.3250000476837158,
+      86.93553924560547,
+      -1,
+      0,
+      -8.742277657347586e-8,
+      0,
+      1,
+      0,
+      8.742277657347586e-8,
+      0,
+      -1
+    ],
+    "transparency": 1,
+    "name": "Paddy3_JP_RiceCollision_12",
+    "variant": "",
+    "collide": true,
+    "material": "Plastic",
+    "mesh": "rbxassetid://106223110234871",
+    "size": [
+      6.066314697265625,
+      3.049999952316284,
+      34.387725830078125
+    ]
+  }
+]

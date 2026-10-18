@@ -5196,3 +5196,28 @@ QQ CAFE SIDE SHIFT1 FINAL EDIT:approved further-left position persists; Studio s
 - Current installed upper-left6020.4, lower6019.2 and upper-right6028.6: small1.2 offset from lower,4.0 gap between upper sills. Side4/tone1 remain; base/current notes updated to distinguish original base manifest from final shift1 manifest.
 - Saved installation/fresh-Play/final-Edit evidence. Studio stopped; no publication or direct DataStore write.
 NEXT: Shannon publishes the approved cafe side. Do not rerun side4/tone1/shift1 installers. Other pending ramen-side/lantern, grocer-stock2, curtain-kit33 and maze-kit30 approvals/imports remain separate.
+
+
+## Rice paddy grounded banks and soil beds (Codex solo, Oct 17 2026) - INSTALLED AND SAVED; NOT PUBLISHED
+Shannon supplied three screenshots showing black floating banks, exposed water underneath and gray rock patches. She explicitly authorized overnight changes while asleep, preserving field dimensions, water and green rice planting. Completed Play previews and self-review, then installed under this authorization.
+- Found the cause: three original open berm meshes have dark baked vertex colors~.149-.290, spanY1.15-2.05 over lawnY-.04, and sit below waterY2.25. Material/color settings alone cannot correct the baked tint. Rebuilt same59x52 X/Z footprints in Blender with closed grounded sides, toeY-.20/crown2.85, no dark vertex tint. Kept photographic earth material.
+- Direct EditableMesh generation unavailable on Play Server; direct CreateAssetAsync unavailable in this Studio build. Used normal Studio FBX importer through computer-use skill instead, with Anchored selected, then moved13 imported mesh sources to ServerStorage.JapanGardenKit before Play. No API/security settings changed. Persistent render mesh125379819144461; imported1696 vertices/1680 triangles; all vertex colors white.
+- Replaced only792 existing Rock material cells with Mud inside basin bounds. Read/WriteVoxelChannels touched SolidMaterial only; all2880 solid and liquid occupancy values compared exactly. Water properties and three center surface levels2.25 retained.
+- A whole-ring precise collider incorrectly spanned portions of water, caught by wider ray grid after initial center test. Rejected; built12 closed collision sections per field. Corrected imported180-degree X/Z reversal based on actual measured centers. Final36 invisible real meshes support walking; render ring collision disabled.
+QQ RICE PADDIES1:3 closed real-mesh banks; original59x52 footprints and positions retained; ground toeY-.20, crownY2.85
+QQ RICE PADDIES1 COLLISION:36 invisible real-mesh sections support bank walking; render rings do not collide
+QQ RICE PADDIES1 COLOR:baked dark vertex tint removed; original photographic earth material retained
+QQ RICE PADDIES1 BED:792 Rock cells changed to Mud inside three basin footprints; all solid and liquid occupancy values unchanged
+QQ RICE PADDIES1 PRESERVED:18258 other Japan parts checked;315 rice seedlings, boats, lawn, paths and water appearance retained
+QQ RICE PADDIES1 BACKUP:HudBackup.RicePaddies_pre_grounded1 holds original3 meshes and3 terrain regions
+QQ RICE PADDIES1 STATUS:EDIT INSTALLED; NOT PUBLISHED
+- Exact39-part installed manifest matches self-reviewed Play geometry/appearance/flags with zero difference.315 rice seedlings and18258 unrelated Japan BaseParts retained. Backups contain3 original meshes plus3 TerrainRegions with voxel paste corners.
+- Final preview and fresh saved-scene Play passed360 crown rays and75 unobstructed interior-water rays. Server crown heights2.8498125-2.85; client2.8498912-2.85. Actual local-player walk climbed onto eastern bank and traversed crown; both goals reached within1.1 studs, groundY2.6970/2.8410, Running. All client mesh assets loaded.
+QQ RICE PADDIES1 FRESH PLAY:saved repair present;36 collision sections,315 seedlings and three original water levels2.25 verified
+QQ RICE PADDIES1 CLIENT:all collision mesh assets loaded successfully
+QQ RICE PADDIES1 CLEANUP:camera, HUD and avatar visibility restored
+QQ RICE PADDIES1 FINAL EDIT:three grounded banks and36 collision sections persist; six originals/terrain backups retained; Studio stopped; ready for Shannon to publish
+- Actual close/low-edge/overview Play photos inspected; final installed close/overview saved. No under-bank water or exposed gray edge rock visible. Preserved all shops, boats, grass, paths and unrelated black ridge/volcano meshes.
+- File > Save to Roblox completed03:23:16 UTC Oct18 (Oct17 evening local). CreatorOutput: Saved new changes in "1001 Squirrels" to Roblox; StudioSavePlaceToCloud6439ms. This was Save to Roblox, not Publish. No direct DataStore writes. Studio stopped.
+- Sources, two FBXs, installation/rollback scripts, manifests, checks and photos: tools/japan/rice_paddies1. Sources/rollback protected by guards; do not rerun installed repair.
+NEXT: Shannon reviews the saved repair and publishes. Pending other shop/maze work unchanged; overnight permission covered rice paddies only.

@@ -1,0 +1,60 @@
+{
+  "previewOutput": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ RICE PADDIES1:3 closed real-mesh banks; original59x52 footprints and positions retained; ground toeY-.20, crownY2.85\nQQ RICE PADDIES1 COLLISION:36 invisible real-mesh sections support bank walking; render rings do not collide\nQQ RICE PADDIES1 COLOR:baked dark vertex tint removed; original photographic earth material retained\nQQ RICE PADDIES1 BED:792 Rock cells changed to Mud inside three basin footprints; all solid and liquid occupancy values unchanged\nQQ RICE PADDIES1 PRESERVED:18258 other Japan parts checked;315 rice seedlings, boats, lawn, paths and water appearance retained\nQQ RICE PADDIES1 BACKUP:HudBackup.RicePaddies_pre_grounded1 holds original3 meshes and3 terrain regions\nQQ RICE PADDIES1 STATUS:SERVER PREVIEW; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "installOutput": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ RICE PADDIES1:3 closed real-mesh banks; original59x52 footprints and positions retained; ground toeY-.20, crownY2.85\nQQ RICE PADDIES1 COLLISION:36 invisible real-mesh sections support bank walking; render rings do not collide\nQQ RICE PADDIES1 COLOR:baked dark vertex tint removed; original photographic earth material retained\nQQ RICE PADDIES1 BED:792 Rock cells changed to Mud inside three basin footprints; all solid and liquid occupancy values unchanged\nQQ RICE PADDIES1 PRESERVED:18258 other Japan parts checked;315 rice seedlings, boats, lawn, paths and water appearance retained\nQQ RICE PADDIES1 BACKUP:HudBackup.RicePaddies_pre_grounded1 holds original3 meshes and3 terrain regions\nQQ RICE PADDIES1 STATUS:EDIT INSTALLED; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "previewCollision": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"maxCrownY\":2.8499999046325685,\"waterOpeningRays\":75,\"minCrownY\":2.8498125076293947,\"crownRays\":360}"
+      }
+    ],
+    "isError": false
+  },
+  "freshServerCollision": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"maxCrownY\":2.8499999046325685,\"waterOpeningRays\":75,\"minCrownY\":2.8498125076293947,\"crownRays\":360}"
+      }
+    ],
+    "isError": false
+  },
+  "freshClientCollision": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"maxCrownY\":2.8499999046325685,\"waterOpeningRays\":75,\"minCrownY\":2.849891185760498,\"crownRays\":360}"
+      }
+    ],
+    "isError": false
+  },
+  "walking": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[{\"state\":\"Running\",\"rootY\":5.79392147064209,\"groundY\":2.697028160095215,\"distance\":0.7648544311523438,\"ground\":\"Paddy3_JP_RiceCollision_09\"},{\"state\":\"Running\",\"rootY\":6.065638065338135,\"groundY\":2.8410160541534426,\"distance\":0.6841335296630859,\"ground\":\"Paddy3_JP_RiceCollision_09\"}]"
+      }
+    ],
+    "isError": false
+  },
+  "solidCellsCompared": 2880,
+  "liquidCellsCompared": 2880,
+  "soilMaterialChanges": 792,
+  "unrelatedPartsCompared": 18258
+}

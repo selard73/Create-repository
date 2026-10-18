@@ -1,0 +1,15 @@
+{
+  "vertices": 840,
+  "triangles": 1680,
+  "closedManifold": true,
+  "positiveVolume": 2109.5176365716097,
+  "footprint": [
+    59,
+    52
+  ],
+  "worldY": [
+    -0.2,
+    2.85
+  ],
+  "vertexColorAttributes": 0
+}
