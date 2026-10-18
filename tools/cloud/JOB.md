@@ -4904,3 +4904,23 @@ RENDER cafe_register_model_server
 - Replacement includes previous pot/cushion, moved service counter, plant and landing-perch corrections. Hides original little menu board and disables its SurfaceGui; creates no ORDER/PAY sign. Register faces controls/drawer into rear service aisle and customer display into room; tray near customer edge. Tea set moves an additional.3 left for clearance. No attendant (her prior choice), no more cats added until supplied.
 - Stopped Edit; no permanent cafe mutations, publication or direct DataStore writes. Canonical installed610-part cafe remains unchanged. Previous detail1 NOTES marked superseded.
 NEXT: Shannon imports kit31. Anchor/store cafe_register1 in ServerStorage.JapanGardenKit before Play; run cafe_register1/preview_register1.lua on Server; inspect scale/normals/orientation/clearance and show actual Play pictures. Install only after her yes with CAFEREGISTER1_ALLOW_EDIT=true, then integrate into canonical source/manifest. Kit30 acorn trail import still pending; mug already installed.
+
+
+## Cafe register kit31 imported and previewed (Codex solo, Oct 17 2026) - PLAY PREVIEW READY; NOT INSTALLED
+Shannon said "imported" for kit31. Anchored all14 imported MeshParts and stored cafe_register1 in ServerStorage.JapanGardenKit before Play, per standing workflow. No scripts in kit; alignment markers correctly resolve horizontal180-degree import orientation.
+QQ CAFE REGISTER IMPORT: all14 MeshParts anchored and stored in ServerStorage.JapanGardenKit.cafe_register1; no scripts; cafe unchanged
+- Ran prepared narrow register replacement on Play Server. Actual output:
+QQ CAFE DETAIL CHECK: 470 original interior parts; 30 moved, 5 resized, 440 unchanged transforms; register/tray and three landing-perch real-mesh additions
+QQ CAFE WINDOW: planter on bare bench edge; cushion shifted clear; trailing vine hangs in front of bench
+QQ CAFE COUNTER: forward3.6 studs; wall shelves stay; tea and pastries retained; proper mesh register with keypad, cash drawer, receipt and two-sided display; change tray; no sign, attendant or payment gameplay
+QQ CAFE JUMP: new rear-wall cushioned landing in Ginger's facing direction; original cat transform/scale/rig unchanged
+QQ CAFE DETAIL STATUS: SERVER PREVIEW; NOT PUBLISHED
+
+QQ CAFE REGISTER COMPARISON: all610 original cafe parts retained;30 moved,5 planter meshes resized,one old menu hidden;14 new real meshes; all other original properties unchanged
+- Inventory624 total BaseParts (484 interior,140 street),70 original cat bones, six usable/two reserved Seats, ten steam emitters. Eleven register/tray meshes anchored and noncollidable/nontouch/nonquery. No change to approved floor, moss rugs, walls, cats, seats, street or scripts. Full original-property comparison retained in preview_checks.json.
+- Announced avatar/camera movement; placed test avatar inside for furniture review only. Five actual Play photos show customer counter, close register, operator controls/drawer/receipt, window pot clear of cushion with trailing vine beyond edge, and tabby's new landing. Register correctly oriented; tea/pastries remain separated. Rear aisle physical layout unchanged from prior successful7.4567-stud walk; added register/tray have no collision. No new walk/door test needed for this decorative revision.
+- Initial scene rendering briefly dim, settled before saved photos. No lighting override or image alteration. Temporary HUD/avatar hiding and camera binding removed, then stopped Play.
+QQ CAFE REGISTER CLEANUP: photo bindings removed; HUD, avatar visibility and normal camera restored
+QQ CAFE REGISTER EDIT CHECK: original cafe still unchanged; imported kit14 anchored meshes safely stored; awaiting preview approval
+- Saved five actual Play pictures,624-part manifest/comparison, output and updated status notes. Canonical cafe_cozy3 remains the installed610-part version. Only imported source kit anchored/stored in Edit; no permanent cafe revision, publication or direct DataStore write.
+NEXT: Shannon reviews register/pot/counter/perch pictures and approves before preview_register1.lua with CAFEREGISTER1_ALLOW_EDIT=true. Then verify manifest and integrate approved changes into canonical builder/source. Do not install superseded ORDER/PAY variant. More Meshy cats await files; kit30 maze trail still awaiting import; mug correction already installed.

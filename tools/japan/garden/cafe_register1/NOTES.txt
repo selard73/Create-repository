@@ -1,34 +1,42 @@
-CAFE REGISTER1 / KIT31 — MODEL READY; IMPORT AND PLAY PREVIEW PENDING
+CAFE REGISTER1 / KIT31 - PLAY PREVIEW READY; NOT INSTALLED
 
-Shannon rejected the ORDER & PAY sign: "show, don't tell". Do NOT install the
-previous cafe_detail1 sign preview. This replaces the sign and flattened planter
-dish with an original small register and purpose-built ceramic change tray.
+Shannon rejected ORDER & PAY: show, don't tell. Previous cafe_detail1 sign
+preview is superseded. Kit31 is now imported, all14 MeshParts anchored and
+stored at ServerStorage.JapanGardenKit.cafe_register1. Marker frame correctly
+handled the imported horizontal180-degree turn; source model was not flipped.
 
-Register: cream bevelled one-piece wedge casing, dark cash drawer, brass pull,
-sloped keypad, cream/sage/terracotta keys, receipt slip, two-sided numeric LCD.
-Operator keys and drawer face the rear serving aisle; customer display faces
-into the cafe. Tray has two decorative coins. Decorative only, no payment code.
-Eleven visible mesh batches plus3 orientation-marker meshes in the import.
-Reference for details/scale is the game's French bookshop register, rebuilt as
-real meshes in Blender. No Creator Store model is used.
+Actual Play Server preview_register1.lua ran successfully. Small cream/dark
+register has keypad, cash drawer/brass pull, receipt and two-sided numeric LCD.
+Operator controls face the rear aisle; customer display faces into room.
+Proper celadon change tray has two decorative coins. Tea and pastry remain on
+either side. Original little menu hidden with SurfaceGui disabled; no sign.
+No attendant or payment gameplay (Shannon chose counter space only).
 
-Import outputs/japan_kit31_cafe_register.fbx with File > Import 3D. Also copied
-to Desktop/Japan garden kit. Anchor all14 mesh parts and move cafe_register1 to
-ServerStorage.JapanGardenKit BEFORE Play. Marker distances2 studs must hold;
-installer detects rotation through CR1_Origin/Right/Front, not by guessing.
+Includes the requested window-pot/cushion correction, counter3.6 studs forward,
+smaller counter-edge planter and three-mesh landing shelf ahead of the orange
+tabby's existing pose. Existing wall shelves unchanged. Rear aisle approximately
+3.795 studs to shelf front, same physical layout tested in prior detail1 Play
+(7.4567-stud unobstructed walk); new register/tray all noncollidable.
 
-Prepared preview_register1.lua includes the prior window-pot/cushion fix,
-counter moved3.6 studs forward, smaller edge plant and new tabby landing perch.
-Original little menu panel is hidden; no ORDER/PAY sign is created. Tea is moved
-.3 studs farther left than the previous preview for register clearance.
-Register at room-local(1.85,3.09,-22.15); tray(1.90,3.09,-20.95).
+624 total cafe BaseParts:140 street,484 interior. Compared all610 originals
+against approved installed manifest:30 moved,5 counter-planter meshes resized;
+old menu transparency/query changed. All other original part properties match.
+Fourteen added meshes:11 register/tray and3 perch. Seven cats70 bones, six usable
+and two reserved Seats, ten subtle steam emitters retained. Approved walls,
+lengthwise_walnut4 floor and moss1 rugs unchanged.
 
-Generator export/reimport verified all mesh names and bounds within .003 studs.
-Renders are BLENDER MODEL REVIEWS, not in-game pictures. Kit not imported and
-new installer NOT RUN yet. Need real Play placement/scale/clearance review and
-pictures after import, then Shannon's yes before permanent Edit. The original
-cafe floor/walls/moss rugs/seats/cats remain installed and unchanged. On approval
-use CAFEREGISTER1_ALLOW_EDIT=true; update canonical builder/manifest afterward.
+Five actual unaltered Play pictures in shots/; inventory/full manifest and
+comparison in preview_checks.json. Initial scene took a moment to finish
+rendering; final pictures use the settled normal lighting with no override.
+Avatar/camera movement announced; HUD/avatar temporarily hidden for photos,
+then restored with normal camera before stopping Play. Stopped Edit confirmed
+original cafe unchanged and kit safely stored. No publish or DataStore write.
 
-No attendant yet (Shannon explicitly chose counter space only); more Meshy cats
-await her files. Kit30 acorn-trail import also pending. Mug correction installed.
+WAIT FOR SHANNON'S YES to this preview. Only then run preview_register1.lua
+with CAFEREGISTER1_ALLOW_EDIT=true in stopped Edit; it backs up original room.
+Verify exact approved manifest. Integrate patch into canonical cafe_cozy3
+builder and update canonical manifest afterward so future rebuilds retain it.
+Do NOT use superseded cafe_detail1 sign installer. Shannon publishes.
+
+Extra cats await her files. Maze kit30 remains import/preview pending. Mug
+correction already installed; her next publish includes it.
