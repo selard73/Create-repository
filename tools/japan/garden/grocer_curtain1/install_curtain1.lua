@@ -177,4 +177,3 @@ print("QQ GROCER CURTAIN: three solid folded cloth panels in front of beam; smal
 print(string.format("QQ GROCER CURTAIN CLEARANCE: beam %.3f; lanternX %.3f; floor %.3f studs",lo.Z-.25,lo.X+10.75,lo.Y))
 print("QQ GROCER CURTAIN PRESERVED: original curtain backed up; all other "..#preserved.." Japan instances unchanged, including beam, lanterns, barrel signs, shelf stock and cafe")
 print("QQ GROCER CURTAIN STATUS: "..(Run:IsRunning()and"SERVER PREVIEW"or"EDIT INSTALLED").."; NOT PUBLISHED")
-

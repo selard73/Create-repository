@@ -109,4 +109,3 @@ try:
  sc.render.filepath=str(OUT/'grocer_curtain1_model.png');bpy.ops.render.render(write_still=True)
  log('GROCERCURTAIN_DONE')
 except Exception:log(traceback.format_exc());log('GROCERCURTAIN_FAILED')
-

@@ -40,4 +40,3 @@ source:SetAttribute("GrocerCurtainVersion","front1")
 for _,p in all do p.Anchored=true;p.CanTouch=false end
 raw:SetAttribute("OriginalImportName",raw.Name);raw.Name="grocer_curtain1_raw";raw.Parent=kit;source.Parent=kit
 print("QQ GROCER CURTAIN PREPARED:6 real source meshes anchored/stored; raw import preserved; JapanMap unchanged")
-

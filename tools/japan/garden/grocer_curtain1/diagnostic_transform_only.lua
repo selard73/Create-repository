@@ -55,4 +55,3 @@ print("QQ GROCER CURTAIN: cloth forward.22 studs; width4.70 and centerX-8.35 kee
 print("QQ GROCER CURTAIN SUPPORT: three existing real-mesh copies form a wooden rail and two standoffs connected to the original rear rod; no import required")
 print("QQ GROCER CURTAIN PRESERVED: one existing mesh moved/resized; all other original grocer parts, beam, signs, stock and lanterns unchanged")
 print("QQ GROCER CURTAIN STATUS: "..(Run:IsRunning()and"SERVER PREVIEW"or"EDIT INSTALLED").."; NOT PUBLISHED")
-
