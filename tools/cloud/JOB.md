@@ -5150,3 +5150,34 @@ QQ CAFE SIDES4 LEFT CLEANUP:photo camera/HUD/billboards/avatar overrides removed
 QQ CAFE SIDES4 LEFT EDIT CHECK:all side/tone previews discarded; accepted cafe retained; nothing installed
 - Studio stopped; no permanent Edit appearance change, publication or direct DataStore write.
 NEXT: Shannon approves latest left_overview/left_close pictures before guarded cafe_sides4 + cafe_side_tone1 installation. Other pending work unchanged.
+
+
+## Approved cafe side4 and warm upper timber installed (Codex solo, Oct 17 2026) - INSTALLED; NOT PUBLISHED
+Shannon accepted the latest shown spacing with "that will have to do". Installed the exact approved35-part cafe_sides4 then tone1 in stopped Edit under their explicit guards. Combined transaction rolls back new side/color if either execution or manifest validation fails.
+QQ CAFE SIDES4:35 real mesh parts; closed service door, three original-size lattice windows with the upper pair grouped toward the rear, continuous lower tiled eave and two upper hoods
+QQ CAFE SIDES4 STYLE:33 parts copied from the accepted cafe rear with identical size, color, material and texture; original shaded recesses retained; two stone mesh steps fitted to floor1.039853
+QQ CAFE SIDES4 PRESERVED:21593 original Japan instances unchanged; both wall colors, all accepted backs, cafe interior/front/cats/audio and other shops retained
+QQ CAFE SIDES4 STATUS:EDIT INSTALLED; NOT PUBLISHED
+QQ CAFE SIDE TONE1:only north upper wall color changed162,143,119 to210,195,172; lower wall220,205,183 retained; original grain/material and geometry retained
+QQ CAFE SIDE TONE1 BACKUP:original Color3 stored on upper wall CafeSideToneWasColor; rollback restores it and removes SideWoodToneVersion
+QQ CAFE SIDE TONE1 STATUS:EDIT INSTALLED; NOT PUBLISHED
+QQ CAFE SIDES4 INSTALL VERIFIED:all35 parts match approved preview manifest within.001; warm upper color and original-color backup exact;164 rear models and accepted interior retained
+- Fresh Play used the saved scene without rerunning installers. Announced avatar/camera movement, checked exact manifest, both step ray heights and closed service wall, then captured installed view.
+QQ CAFE SIDES4 FRESH PLAY:35 installed parts match preview; both step heights pass; closed wall blocks door; no prompts/scripts; upper/lower colors and accepted register1 retained
+QQ CAFE SIDES4 FRESH CLIENT:all cafe mesh assets loaded successfully
+QQ CAFE SIDES4 INSTALLED CLEANUP:normal camera/HUD/billboards/avatar restored
+QQ CAFE SIDES4 FINAL EDIT:35 anchored approved side meshes persist; upper centers6022.0/6028.6; warm upper tone and original-color backup persist; accepted interior retained; ready for Shannon to publish
+- All164 accepted rear models and register1 interior retained. Saved original upper color attribute for rollback. No publication or direct DataStore write. Edit original-instance count21593 differs from Play21691 because runtime adds objects; each installation's full snapshot independently checked.
+NEXT: Shannon publishes after outstanding window-position discussion below is resolved.
+
+## Further-left cafe window, slightly offset from lower window (Codex solo, Oct 17 2026) - NEW PLAY PREVIEW; NOT INSTALLED
+After base installation Shannon requested upper-left window farther left, specifying it need not align exactly with the lower one. Kept installed base; prepared a separate narrow7-part shift.
+QQ CAFE SIDE SHIFT1:7 upper-left window/hood meshes moved1.6 studs left; new center6020.4, lower window6019.2, right upper6028.6;1.2-stud offset from lower window and4.0-stud upper sill gap
+QQ CAFE SIDE SHIFT1 BACKUP:7 original CFrames stored on CafeSideShift1WasCFrame; sizes/materials/colors unchanged
+QQ CAFE SIDE SHIFT1 STATUS:SERVER PREVIEW; NOT PUBLISHED
+QQ CAFE SIDE SHIFT1 CHECK:7 window/hood meshes moved only1.6 studs left;28 other side meshes and all sizes/materials/colors/textures retained;7 original-transform backups exact
+- Upper-left center6020.4 versus lower6019.2 retains1.2-stud offset. Upper-right6028.6 unchanged; sill gap4.0. Hood follows left window. Actual same-camera overview and close pictures inspected; full35-part prospective manifest and exact7 CFrame backups saved.
+QQ CAFE SIDE SHIFT1 CLEANUP:camera/HUD/billboards/avatar overrides removed
+QQ CAFE SIDE SHIFT1 EDIT CHECK:earlier approved side4/tone1 remain installed; latest1.6-stud shift discarded and awaits approval; original installed upper-left center6022.0 retained
+- Studio stopped. Newly requested shift is NOT installed; earlier approved35-part side/tone remain installed. No publication or direct DataStore write. Other pending Japan previews/imports unchanged.
+NEXT: explicit approval of cafe_side_shift1 pictures, then CAFE_SIDE_SHIFT1_ALLOW_EDIT=true only. Do not rerun cafe_sides4 or tone1. Compare prospective manifest, fresh Play, Shannon publishes.

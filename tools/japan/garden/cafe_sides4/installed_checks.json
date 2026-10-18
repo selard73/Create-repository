@@ -1,0 +1,47 @@
+{
+  "install": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDES4:35 real mesh parts; closed service door, three original-size lattice windows with the upper pair grouped toward the rear, continuous lower tiled eave and two upper hoods\nQQ CAFE SIDES4 STYLE:33 parts copied from the accepted cafe rear with identical size, color, material and texture; original shaded recesses retained; two stone mesh steps fitted to floor1.039853\nQQ CAFE SIDES4 PRESERVED:21593 original Japan instances unchanged; both wall colors, all accepted backs, cafe interior/front/cats/audio and other shops retained\nQQ CAFE SIDES4 STATUS:EDIT INSTALLED; NOT PUBLISHED\nQQ CAFE SIDE TONE1:only north upper wall color changed162,143,119 to210,195,172; lower wall220,205,183 retained; original grain/material and geometry retained\nQQ CAFE SIDE TONE1 BACKUP:original Color3 stored on upper wall CafeSideToneWasColor; rollback restores it and removes SideWoodToneVersion\nQQ CAFE SIDE TONE1 STATUS:EDIT INSTALLED; NOT PUBLISHED\nQQ CAFE SIDES4 INSTALL VERIFIED:all35 parts match approved preview manifest within.001; warm upper color and original-color backup exact;164 rear models and accepted interior retained"
+      }
+    ],
+    "isError": false
+  },
+  "freshPlay": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDES4 FRESH PLAY:35 installed parts match preview; both step heights pass; closed wall blocks door; no prompts/scripts; upper/lower colors and accepted register1 retained"
+      }
+    ],
+    "isError": false
+  },
+  "client": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDES4 FRESH CLIENT:all cafe mesh assets loaded successfully"
+      }
+    ],
+    "isError": false
+  },
+  "cleanup": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDES4 INSTALLED CLEANUP:normal camera/HUD/billboards/avatar restored"
+      }
+    ],
+    "isError": false
+  },
+  "final": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDES4 FINAL EDIT:35 anchored approved side meshes persist; upper centers6022.0/6028.6; warm upper tone and original-color backup persist; accepted interior retained; ready for Shannon to publish"
+      }
+    ],
+    "isError": false
+  }
+}

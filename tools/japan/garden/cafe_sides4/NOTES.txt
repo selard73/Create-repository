@@ -1,13 +1,9 @@
-CAFE NORTH SIDE v4 + TONE1 -- PLAY PREVIEW ONLY; AWAITING APPROVAL
-Shannon found upper wood too dark, then found upper/lower windows too symmetrical, then requested slightly more space between the upper pair.
-Final35-mesh treatment retains v3's accepted-rear timber dimensions/materials. Upper centersX6022.0/6028.6,6.6 apart,2.4 between4.2-wide sills. Lower window stays6019.2; service door6029. Tiled hoods follow upper windows.
-Latest left_adjustment_checks.json verifies only7 upper-left window/hood meshes moved0.8 studs left;28 other meshes and all appearances unchanged. Current photos: cafe_sides4_left_overview.jpg and cafe_sides4_left_close.jpg; earlier photos are historical. Canonical preview_manifest.json updated to latest spacing.
-Tone1 changes ONLY north upper wall from RGB162,143,119 to210,195,172. Lower remains220,205,183. WoodPlanks grain/material unchanged.
-Two guarded scripts required after explicit approval: cafe_sides4.lua (CAFE_SIDES4_ALLOW_EDIT=true), then ../cafe_side_tone1/cafe_side_tone1.lua (CAFE_SIDE_TONE1_ALLOW_EDIT=true).
-Tone1 requires side versionrear4; saves original upper Color3 in CafeSideToneWasColor; sets SideWoodToneVersion=warm1.
-Undo tone by restoring that Color3 and removing backup/version attributes. Undo side by removing only CafeSideDetails4 and SideDetailsVersion.
-Cafe_sides3 symmetric arrangement is superseded. Rejected v1 and provisional v2 remain unusable.
-Actual Play photos show final spacing and tone; before_tone photo shows previous symmetric v3 with original darker upper wall.
-35-part exact manifest plus upper/lower colors saved. Geometry/material/physical comparison of18261 parts verified only one Color changed for tone trial.
-Original21691 Japan instances unchanged by detail installer before applying one explicit color change. Accepted interior register1 and all fronts/backs/other pending work preserved.
-HUD/billboards/avatar/camera restored; Studio stopped; all side/color changes discarded. Nothing installed or published.
+CAFE NORTH SIDE v4 + TONE1 -- INSTALLED IN STUDIO; NOT PUBLISHED
+Shannon accepted the latest shown version with "that will have to do". Installed cafe_sides4 + cafe_side_tone1 in stopped Edit, then verified a fresh Play.
+Installed35-mesh manifest matches approved preview within.001. Upper centers6022.0/6028.6, lower6019.2, door6029; upper sill gap2.4.
+Upper north wall RGB210,195,172; lower220,205,183. Original upper162,143,119 stored in CafeSideToneWasColor.
+Installed side versionrear4 and tone versionwarm1. All164 rear models and accepted interior register1 retained.
+Guarded source installers reject an existing installation. Undo tone via saved Color3 + remove backup/version attributes; undo side removes only CafeSideDetails4 and SideDetailsVersion.
+After installation Shannon requested a further-left position, slightly offset from the lower window. That later request is previewed separately in ../cafe_side_shift1 and is NOT installed yet.
+Current installed proof: installed_checks.json / cafe_sides4_installed.jpg. New prospective shift: upper-left6020.4, right6028.6; see shift1 pictures and await approval.
+Studio stopped. Shannon publishes; no direct DataStore write.

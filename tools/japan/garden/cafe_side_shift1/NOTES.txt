@@ -1,0 +1,8 @@
+CAFE UPPER-LEFT WINDOW SHIFT1 -- ACTUAL PLAY PREVIEW; NOT INSTALLED
+Requires the now-installed cafe_sides4 + cafe_side_tone1. Do not rerun those installers.
+Shannon requested upper-left window farther left; it need not line up exactly with the lower window.
+This patch moves7 upper-left window/hood meshes1.6 studs left: center6022.0 ->6020.4. Lower window6019.2 remains, leaving1.2 offset. Upper right6028.6 remains, leaving4.0 between sills.
+35-part comparison: exactly7 CFrames shifted;28 other meshes, all sizes/materials/colors/textures unchanged.7 exact original CFrames stored on CafeSideShift1WasCFrame.
+Actual overview and close Play pictures saved. Studio stopped; preview discarded. Previously approved side4 and tone1 remain installed at6022.0.
+After explicit approval run cafe_side_shift1.lua with CAFE_SIDE_SHIFT1_ALLOW_EDIT=true in stopped Edit. Verify preview_manifest.json, run fresh Play, leave publish to Shannon.
+Undo only this shift by restoring7 CafeSideShift1WasCFrame attributes then removing them and shop SideWindowShiftVersion=left1.

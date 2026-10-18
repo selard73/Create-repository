@@ -1,0 +1,30 @@
+{
+  "preview": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDE SHIFT1:7 upper-left window/hood meshes moved1.6 studs left; new center6020.4, lower window6019.2, right upper6028.6;1.2-stud offset from lower window and4.0-stud upper sill gap\nQQ CAFE SIDE SHIFT1 BACKUP:7 original CFrames stored on CafeSideShift1WasCFrame; sizes/materials/colors unchanged\nQQ CAFE SIDE SHIFT1 STATUS:SERVER PREVIEW; NOT PUBLISHED"
+      }
+    ],
+    "isError": false
+  },
+  "comparison": "QQ CAFE SIDE SHIFT1 CHECK:7 window/hood meshes moved only1.6 studs left;28 other side meshes and all sizes/materials/colors/textures retained;7 original-transform backups exact",
+  "cleanup": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDE SHIFT1 CLEANUP:camera/HUD/billboards/avatar overrides removed"
+      }
+    ],
+    "isError": false
+  },
+  "edit": {
+    "content": [
+      {
+        "type": "text",
+        "text": "QQ CAFE SIDE SHIFT1 EDIT CHECK:earlier approved side4/tone1 remain installed; latest1.6-stud shift discarded and awaits approval; original installed upper-left center6022.0 retained"
+      }
+    ],
+    "isError": false
+  }
+}
