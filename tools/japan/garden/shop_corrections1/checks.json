@@ -1,0 +1,157 @@
+{
+  "status": "approved-installed-saved-not-published",
+  "approval": "Yes, install and save all three",
+  "save": {
+    "utc": "2026-10-18T14:28:36.695Z",
+    "operation": "StudioSavePlaceToCloud",
+    "publishType": 2,
+    "durationMs": 8253,
+    "title": "Japan arrival, ramen lanterns and sushi sign"
+  },
+  "ownerArrival": {
+    "destination": "Workspace.JapanMap.LanternStreet.JapanArrival",
+    "ownerUserId": 9611145467,
+    "newCharacterPosition": [
+      6145,
+      4.0748291015625,
+      222
+    ],
+    "normalDeathRespawnPosition": [
+      6145,
+      4.099999904632568,
+      222
+    ],
+    "normalTravelAwayStayedInFrance": true,
+    "freshPlayWithoutInstaller": {
+      "position": [
+        6145,
+        4.0748291015625,
+        222
+      ],
+      "area": "japan",
+      "health": 100
+    },
+    "policyChecks": {
+      "ownerCasesJapan": 40,
+      "otherPlayerCasesUnchanged": 80,
+      "clearOverrideCasesUnchanged": 120
+    },
+    "testSetupNote": "After replacing a running script, the pre-existing character had no new Died connection. Created a new test character before testing normal death/respawn. Fresh Play after permanent installation confirmed startup."
+  },
+  "ramen": {
+    "matchedParts": 44,
+    "originalMovedParts": 42,
+    "realMeshBrackets": 2,
+    "clearances": [
+      0.3700013756752014,
+      0.3699979782104492
+    ],
+    "canonicalManifest": "../ramen_lanterns1/preview_manifest.json",
+    "matchedInPreviewEditAndFreshPlay": true
+  },
+  "sushi": {
+    "installedInterior212PartsUnchanged": true,
+    "finalSign": {
+      "cf": [
+        5984.31982421875,
+        9.850000381469727,
+        -25,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "version": "center1",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "material": "Wood",
+      "size": [
+        13,
+        1.899999976158142,
+        0.12999999523162842
+      ]
+    }
+  },
+  "logs": [
+    {
+      "key": "ownerJapanInstaller",
+      "preview": {
+        "content": [
+          {
+            "type": "text",
+            "text": "QQ OWNER JAPAN START1: account9611145467 joins and respawns at existing JapanArrival; access policy retained; normal travel and other accounts unchanged\nQQ OWNER JAPAN START1 STATUS: SERVER PREVIEW; NOT PUBLISHED"
+          }
+        ],
+        "isError": false
+      },
+      "installed": {
+        "content": [
+          {
+            "type": "text",
+            "text": "QQ OWNER JAPAN START1: account9611145467 joins and respawns at existing JapanArrival; access policy retained; normal travel and other accounts unchanged\nQQ OWNER JAPAN START1 STATUS: EDIT INSTALLED; NOT PUBLISHED"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "key": "ramenLanternInstaller",
+      "preview": {
+        "content": [
+          {
+            "type": "text",
+            "text": "QQ RAMEN LANTERNS: both21-part assemblies moved outside the sign row; new centerZ-.25/23.80; original height, size, lettering and lights retained\nQQ RAMEN LANTERNS SUPPORT: two short matching real-mesh brackets connect chains to canopy ends; no import needed\nQQ RAMEN LANTERNS PRESERVED:42 existing transforms changed; all other 21856 Japan instances and properties unchanged\nQQ RAMEN LANTERNS STATUS: SERVER PREVIEW; NOT PUBLISHED"
+          }
+        ],
+        "isError": false
+      },
+      "installed": {
+        "content": [
+          {
+            "type": "text",
+            "text": "QQ RAMEN LANTERNS: both21-part assemblies moved outside the sign row; new centerZ-.25/23.80; original height, size, lettering and lights retained\nQQ RAMEN LANTERNS SUPPORT: two short matching real-mesh brackets connect chains to canopy ends; no import needed\nQQ RAMEN LANTERNS PRESERVED:42 existing transforms changed; all other 21758 Japan instances and properties unchanged\nQQ RAMEN LANTERNS STATUS: EDIT INSTALLED; NOT PUBLISHED"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "key": "sushiSignInstaller",
+      "preview": {
+        "content": [
+          {
+            "type": "text",
+            "text": "QQ SUSHI SIGN1: existing sign centered atZ-25, raised0.40 and set against front beam; wording, size and materials retained\nQQ SUSHI SIGN1 PRESERVED: all other Japan parts and the approved sushi interior unchanged\nQQ SUSHI SIGN1 STATUS: SERVER PREVIEW; NOT PUBLISHED"
+          }
+        ],
+        "isError": false
+      },
+      "installed": {
+        "content": [
+          {
+            "type": "text",
+            "text": "QQ SUSHI SIGN1: existing sign centered atZ-25, raised0.40 and set against front beam; wording, size and materials retained\nQQ SUSHI SIGN1 PRESERVED: all other Japan parts and the approved sushi interior unchanged\nQQ SUSHI SIGN1 STATUS: EDIT INSTALLED; NOT PUBLISHED"
+          }
+        ],
+        "isError": false
+      }
+    }
+  ],
+  "finalReadback": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"sign\":{\"cf\":[5984.31982421875,9.850000381469727,-25,-4.371138828673793e-8,0,-1,0,1,0,1,0,-4.371138828673793e-8],\"version\":\"center1\",\"color\":[0.1725490242242813,0.12941177189350129,0.10980392247438431],\"material\":\"Wood\",\"size\":[13,1.899999976158142,0.12999999523162843]},\"httpEnabled\":false,\"spawnSourceExact\":true,\"ownerStart\":\"japan\"}"
+      }
+    ],
+    "isError": false
+  }
+}

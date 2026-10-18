@@ -1,3 +1,7 @@
+CURRENT: APPROVED, INSTALLED AND SAVED2026-10-18T14:28:36.695Z; NOT PUBLISHED by Codex.
+Shannon approved all three shop_corrections1 changes. All44 parts match original preview;42 original parts backed up.
+See ../shop_corrections1/NOTES.txt and checks.json. Do not rerun installer. The earlier preview record follows.
+
 RAMEN LANTERNS1 — ACTUAL PLAY PREVIEW READY; NOT INSTALLED
 Target: workspace.JapanMap['Outdoor market revision']['Ramen kitchen'].
 Do not edit separate ramen cart or other shops.

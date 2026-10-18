@@ -5351,3 +5351,23 @@ QQ SUSHI1 STATUS: EDIT INSTALLED; NOT PUBLISHED
 - Save to Roblox with Notes confirmed2026-10-18T13:41:30.054Z (09:41 EDT), StudioSavePlaceToCloud7191ms, publishType2, CreatorOutput Saved new changes in "1001 Squirrels" to Roblox. Version title: Approved sushi bar interior and storefront. No publication by Codex.
 - Updated sushi1/NOTES.txt and added installation_2026-10-18_checks.json. Earlier preview records are historical; sushi1 is now permanently installed and saved.
 NEXT: Shannon publishes and rejoins a fresh server. Do not rerun prepare or installation. Other pending work retains separate approvals.
+
+
+## Approved Japan arrival, ramen lanterns and sushi sign (Codex solo, Oct18 2026) - INSTALLED AND SAVED; NOT PUBLISHED
+Shannon confirmed sushi/grocer now look good live, but requested Japan arrival, the missing ramen lantern update, and improved sushi sign placement. Read-only audit found OwnerStartArea=forest (the earlier approved request), ramen lanterns still original/no version, sushi main sign4.59 studs off center.
+- Prepared actual Play previews: owner-only Japan arrival using existing marker, original ramen lantern ends1 placement, and existing sushi sign centered/raised.40/set against beam. Showed close pictures. Shannon explicitly approved: "Yes, install and save all three".
+QQ OWNER JAPAN START1: account9611145467 joins and respawns at existing JapanArrival; access policy retained; normal travel and other accounts unchanged
+QQ OWNER JAPAN START1 STATUS: EDIT INSTALLED; NOT PUBLISHED
+QQ RAMEN LANTERNS: both21-part assemblies moved outside the sign row; new centerZ-.25/23.80; original height, size, lettering and lights retained
+QQ RAMEN LANTERNS SUPPORT: two short matching real-mesh brackets connect chains to canopy ends; no import needed
+QQ RAMEN LANTERNS PRESERVED:42 existing transforms changed; all other 21758 Japan instances and properties unchanged
+QQ RAMEN LANTERNS STATUS: EDIT INSTALLED; NOT PUBLISHED
+QQ SUSHI SIGN1: existing sign centered atZ-25, raised0.40 and set against front beam; wording, size and materials retained
+QQ SUSHI SIGN1 PRESERVED: all other Japan parts and the approved sushi interior unchanged
+QQ SUSHI SIGN1 STATUS: EDIT INSTALLED; NOT PUBLISHED
+- Owner JapanArrival is a Part, so source resolves that marker without creating a public SpawnLocation; owner-only CharacterAdded path handles respawn while aim leaves RespawnLocation nil for the Japan target. Existing access policy retained. Preview new-character arrival, normal death/respawn and travel away to France passed. Policy comparison:40 owner cases Japan,80 other-account cases unchanged,120 cleared-override cases unchanged. Initial preview script replacement required a new test character to attach its normal Died handler before death/respawn verification.
+- Installed all three in stopped Edit with explicit scoped approval flags. Original spawn source,42 lantern parts and sushi sign retained in HudBackup.SpawnReturnServer_pre_ownerJapan1, RamenLanterns1Originals, SushiSign_pre_center1. Earlier French backup remains.
+- Fresh Play WITHOUT installers starts owner6145,4.0748291,222,Area japan,Health100. Lantern44-part canonical match passes; signs clear both lantern bodies by about.37 studs. Sushi sign center5984.32,9.85,-25; approved interior212 parts unchanged. Stopped Play; final source readback exact and all backups retained. Grocer stock2 unchanged; HttpEnabled=false.
+- Save to Roblox with Notes confirmed2026-10-18T14:28:36.695Z (10:28 EDT), StudioSavePlaceToCloud8253ms,publishType2, CreatorOutput Saved new changes in "1001 Squirrels" to Roblox. Version title: Japan arrival, ramen lanterns and sushi sign. No publication by Codex or direct DataStore write.
+- Canonical correction files, tests, checks.json and actual pictures under tools/japan/garden/shop_corrections1; ramen placement installer stays in ramen_lanterns1. Updated old notes to reflect superseded French setting and installed lantern update.
+NEXT: Shannon publishes and rejoins a fresh server. Do not rerun these installed corrections. Other pending work remains separate.

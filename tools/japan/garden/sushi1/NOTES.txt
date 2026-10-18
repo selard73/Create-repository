@@ -76,3 +76,5 @@ publishType2, CreatorOutput Saved new changes in "1001 Squirrels" to Roblox.
 Version title: Approved sushi bar interior and storefront.
 Evidence: installation_2026-10-18_checks.json. Grocer stock2 remains installed; HttpEnabled=false.
 No publication or direct DataStore write. Shannon publishes and rejoins a fresh server.
+
+OCT18 FOLLOW-UP: Existing main sign centered, raised.40 and moved against front beam after approved pictures; saved14:28:36 UTC. Interior212 parts unchanged. See ../shop_corrections1. Shannon confirmed sushi and grocer look good live before these follow-up corrections.

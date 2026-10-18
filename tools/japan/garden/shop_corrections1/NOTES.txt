@@ -1,0 +1,39 @@
+SHOP CORRECTIONS1 / OCT18 2026
+APPROVED, INSTALLED AND SAVED; NOT PUBLISHED BY CODEX.
+Shannon approved actual Play pictures: "Yes, install and save all three".
+Save confirmed2026-10-18T14:28:36.695Z (10:28 EDT),8253ms,publishType2.
+Version title: Japan arrival, ramen lanterns and sushi sign.
+
+1. Owner Japan arrival
+Prior temporary OwnerStartArea=forest was working as previously requested.
+Now OwnerStartArea=japan. SpawnReturnServer uses existing JapanArrival marker
+for owner9611145467 only, with JapanPreviewAccess authorization retained.
+JapanArrival is a Part, not SpawnLocation; aim clears RespawnLocation only
+for this owner Japan target and CharacterAdded brings that character to the marker.
+No public/random Japan spawn, saved-data write or change to other-player policy.
+Original French source backed up disabled in HudBackup.SpawnReturnServer_pre_ownerJapan1.
+Earlier pre-French backup also retained. Clearing override restores previous policy.
+Normal travel is available. Join/respawn select Japan.
+Preview tested a new character, normal death/respawn, and travel away to France.
+40 owner cases choose Japan;80 other-account cases unchanged;120 clear-override cases unchanged.
+Fresh Play WITHOUT installer started owner at6145,4.0748291,222,Area japan,Health100.
+
+2. Ramen lanterns
+Existing lantern_clearance1.lua under ../ramen_lanterns1 is canonical.
+42 original parts shifted only in worldZ to-.25/23.80;2 existing real-mesh support clones.
+All44 parts match its original preview manifest, including fresh Play after installation.
+Both red-panel clearances exceed.36. Original42 parts backed up in HudBackup.RamenLanterns1Originals.
+Shop LanternClearanceVersion=ends1. No other ramen remodeling.
+
+3. Sushi sign
+Only existing main sign moved: center5984.32,9.85,-25. Same13x1.9x.13 sign, original
+wording/size/material retained. Centered, raised.40 and placed against front beam.
+Original sign retained in HudBackup.SushiSign_pre_center1; SushiSignPlacementVersion=center1.
+Approved sushi interior212 parts match previous canonical manifest unchanged.
+
+Pictures: actual Play screenshots, sushi_sign_preview.jpg,ramen_lanterns_preview.jpg,japan_arrival_preview.jpg.
+checks.json records preview/installation outputs and verification.
+owner_japan1.lua and sushi_sign1.lua are guarded installers; do not rerun on installed scenes.
+SpawnReturnServer.lua is final installed source; _before file is historical.
+No publication or direct DataStore write; HttpEnabled=false. Other shop updates preserved.
+NEXT: Shannon publishes and rejoins a fresh server.

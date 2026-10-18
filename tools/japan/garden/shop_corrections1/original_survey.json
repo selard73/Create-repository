@@ -1,0 +1,1557 @@
+{
+  "sushi": {
+    "attributes": {
+      "DisplayKind": "Food",
+      "MarketFrame": null,
+      "MarketShop": true,
+      "MarketDepth": 18,
+      "MarketWidth": 27
+    },
+    "parts": [
+      {
+        "cf": [
+          5978,
+          12.34999942779541,
+          -25,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Exposed roof beam",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          27.799999237060547,
+          0.2800000011920929,
+          0.30000001192092896
+        ]
+      },
+      {
+        "cf": [
+          5970,
+          12.34999942779541,
+          -25,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Exposed roof beam",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          27.799999237060547,
+          0.2800000011920929,
+          0.30000001192092896
+        ]
+      },
+      {
+        "cf": [
+          5975,
+          14.649999618530273,
+          -25,
+          -1,
+          0,
+          -8.742277657347586e-8,
+          0,
+          1,
+          0,
+          8.742277657347586e-8,
+          0,
+          -1
+        ],
+        "name": "Tiled shop roof",
+        "class": "MeshPart",
+        "texts": [],
+        "size": [
+          22,
+          4.599999904632568,
+          32
+        ]
+      },
+      {
+        "cf": [
+          5974,
+          12.34999942779541,
+          -25,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Exposed roof beam",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          27.799999237060547,
+          0.2800000011920929,
+          0.30000001192092896
+        ]
+      },
+      {
+        "cf": [
+          5966,
+          6.349999904632568,
+          -38.5,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Cedar corner post",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.5199999809265137,
+          12.699999809265137,
+          0.5199999809265137
+        ]
+      },
+      {
+        "cf": [
+          5975,
+          0.39500001072883606,
+          -25,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Stone foundation",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          27.799999237060547,
+          0.44999998807907104,
+          19
+        ]
+      },
+      {
+        "cf": [
+          5975,
+          0.8898531794548035,
+          -25,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Shop floor",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          27,
+          0.30000001192092896,
+          18.5
+        ]
+      },
+      {
+        "cf": [
+          5984,
+          6.349999904632568,
+          -38.5,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Cedar corner post",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.5199999809265137,
+          12.699999809265137,
+          0.5199999809265137
+        ]
+      },
+      {
+        "cf": [
+          5966,
+          6.349999904632568,
+          -25,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Back wall",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          27,
+          12.399999618530273,
+          0.4000000059604645
+        ]
+      },
+      {
+        "cf": [
+          5975,
+          6.349999904632568,
+          -38.5,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Side wall",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.4000000059604645,
+          12.399999618530273,
+          18
+        ]
+      },
+      {
+        "cf": [
+          5975,
+          6.349999904632568,
+          -11.5,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Side wall",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.4000000059604645,
+          12.399999618530273,
+          18
+        ]
+      },
+      {
+        "cf": [
+          5966,
+          6.349999904632568,
+          -11.5,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Cedar corner post",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.5199999809265137,
+          12.699999809265137,
+          0.5199999809265137
+        ]
+      },
+      {
+        "cf": [
+          5984,
+          6.349999904632568,
+          -11.5,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Cedar corner post",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.5199999809265137,
+          12.699999809265137,
+          0.5199999809265137
+        ]
+      },
+      {
+        "cf": [
+          5984.5,
+          9.449999809265137,
+          -29.59000015258789,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Handwritten shop sign",
+        "class": "Part",
+        "texts": [
+          "寿司  Sushi bar"
+        ],
+        "size": [
+          13,
+          1.899999976158142,
+          0.12999999523162842
+        ]
+      },
+      {
+        "cf": [
+          5984,
+          8.649999618530273,
+          -25,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Lintel over open shop",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          27,
+          0.550000011920929,
+          0.5
+        ]
+      },
+      {
+        "cf": [
+          5982,
+          12.34999942779541,
+          -25,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Exposed roof beam",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          27.799999237060547,
+          0.2800000011920929,
+          0.30000001192092896
+        ]
+      }
+    ]
+  },
+  "spawnScript": "-- SpawnReturn: load each character onto the dais of the section they were last in.\nlocal Players = game:GetService(\"Players\")\n-- JAPANFIX1_20261015: the preview module is optional - without it nobody may enter Japan and this script still runs\nlocal PreviewAccess\ndo\n\tlocal m=game.ServerScriptService:FindFirstChild(\"JapanPreviewAccess\")\n\tlocal ok, mod=false, nil\n\tif m then ok, mod=pcall(require, m) end\n\tPreviewAccess=(ok and type(mod) == \"table\") and mod or {IsAllowed = function() return false end, IsJapan = function() return false end, CanUsePrompt = function() return false end}\nend\nlocal RunService = game:GetService(\"RunService\")\nlocal DAIS = {\"forest\", \"village\", \"domaine\", \"porto\"}           -- a player respawns at the last of these daises they stood on\nlocal function daisAt(pos)\n\tfor _, id in ipairs(DAIS) do\n\t\tlocal sp = workspace:FindFirstChild(\"Spawn_\" .. id)\n\t\tif sp then\n\t\t\tlocal d = pos - sp.Position\n\t\t\tif math.abs(d.X) < 6 and math.abs(d.Z) < 6 and d.Y > -2 and d.Y < 9 then return id end\n\t\tend\n\tend\nend\nlocal boundary = workspace:FindFirstChild(\"Boundary\")\nlocal NEED = (boundary and boundary:GetAttribute(\"Need\")) or 10\nlocal ORDER = {\"forest\", \"village\", \"domaine\"}                   -- each one is behind the one before it\nlocal RANK = {forest = 1, village = 2, domaine = 3}\nlocal EDGE = {{\"domaine\", 353}, {\"village\", 150}}                -- same x lines the gates use\n\nlocal function areaAt(pos)\n\tif pos.Z < -300 then return \"porto\" end                   -- the gorge, the plunge pool and the shore: Porto Nocciola (Travel)\n\tfor _, a in ipairs(EDGE) do if pos.X >= a[2] then return a[1] end end\n\treturn \"forest\"\nend\nlocal function spawnOf(id)\n\treturn workspace:FindFirstChild(\"Spawn_\" .. id) or workspace:FindFirstChild(\"Spawn_forest\")\n\t\tor workspace:FindFirstChildWhichIsA(\"SpawnLocation\", true)\nend\nlocal function target(player)                                    -- never past a gate that is still shut\n\t-- OWNER_FRENCH_START1_20261018: Shannon requested a temporary French start in Studio and live servers.\n\t-- Clear OwnerStartArea on SpawnReturn to restore her usual saved-arrival behavior.\n\tlocal ownerArea = script.Parent:GetAttribute(\"OwnerStartArea\")\n\tif player.UserId == 9611145467 and RANK[ownerArea] then return ownerArea end\n\t-- Shannon's Studio tests start in Italy (SpawnReturn attribute StudioStartPorto = false turns it off; never in a live game)\n\tif RunService:IsStudio() and script.Parent:GetAttribute(\"StudioStartPorto\") ~= false then return \"porto\" end\n\t-- the last dais they touched (saved as their area); older saves fall back to the last section they were in\n\tlocal area = player:GetAttribute(\"Dais\") or player:GetAttribute(\"SavedArea\") or player:GetAttribute(\"Area\") or \"forest\"\n\t-- Porto Nocciola (Travel): a player who has landed there (Item_porto) comes back to its dais; anyone else whose last\n\t-- area is the south (in transit down the river) comes back to the last French section they stood in (Item_frenchrank)\n\tif area == \"porto\" then\n\t\tif (player:GetAttribute(\"Item_porto\") or 0) >= 1 then return \"porto\" end\n\t\tarea = ORDER[player:GetAttribute(\"Item_frenchrank\") or 0] or \"forest\"\n\tend\n\tlocal want = RANK[area] or 1\n\tlocal reach = 1                                              -- how far the finds so far let them go\n\twhile reach < #ORDER and (player:GetAttribute(\"Found_\" .. ORDER[reach]) or 0) >= NEED do reach += 1 end\n\treturn ORDER[math.min(want, reach)]\nend\nlocal function aim(player)                                       -- point the next spawn at the right dais\n\tlocal id = target(player)\n\tlocal sp = spawnOf(id)\n\tif sp then player.RespawnLocation = sp end\n\treturn id, sp\nend\nlocal function bringIn(player)\n\tlocal t0 = os.clock()\n\twhile player.Parent and player:GetAttribute(\"SaveLoaded\") ~= true and os.clock() - t0 < 8 do task.wait(0.15) end\n\tif not player.Parent then return end\n\tlocal id, sp = aim(player)\n\tlocal char = player.Character\n\tif not char then\n\t\tplayer:LoadCharacter()\n\telseif sp and char.PrimaryPart and areaAt(char.PrimaryPart.Position) ~= id then\n\t\tchar:PivotTo(sp.CFrame + Vector3.new(0, 3.5, 0))          -- the character beat the save; walk it over\n\tend\nend\nlocal function join(player)\n\tplayer.CharacterAdded:Connect(function(char)\n\t\tlocal hum = char:WaitForChild(\"Humanoid\", 15)\n\t\tif hum then\n\t\t\thum.Died:Connect(function()\n\t\t\t\ttask.wait(Players.RespawnTime)\n\t\t\t\tif player.Parent then pcall(aim, player); pcall(function() player:LoadCharacter() end) end\n\t\t\tend)\n\t\tend\n\tend)\n\ttask.spawn(function()\n\t\tlocal ok, err = pcall(bringIn, player)\n\t\tif not ok then warn(\"SpawnReturn: \" .. tostring(err)) end\n\t\tif player.Parent and not player.Character then pcall(function() player:LoadCharacter() end) end\n\tend)\n\ttask.delay(14, function()                                     -- nobody is ever left without a character\n\t\tif player.Parent and not player.Character then pcall(function() player:LoadCharacter() end) end\n\tend)\nend\nPlayers.PlayerAdded:Connect(join)\nfor _, player in ipairs(Players:GetPlayers()) do task.spawn(join, player) end\n\n-- which section they are in now, checked often enough to catch a walk through a gate\ntask.spawn(function()\n\twhile true do\n\t\ttask.wait(0.5)\n\t\tfor _, player in ipairs(Players:GetPlayers()) do\n\t\t\tlocal char = player.Character\n\t\t\tlocal root = char and char:FindFirstChild(\"HumanoidRootPart\")\n\t\t\tif root and PreviewAccess.IsAllowed(player) and not player:GetAttribute(\"JapanPreviewInFlight\") and PreviewAccess.IsJapan(root.Position) then\n\t\t\t\tif player:GetAttribute(\"Area\") ~= \"japan\" then player:SetAttribute(\"Area\", \"japan\") end   -- (JAPANFIX1: Japan is its own area, not the last one she left)\n\t\t\telseif root and not (PreviewAccess.IsAllowed(player) and (player:GetAttribute(\"JapanPreviewInFlight\") or PreviewAccess.IsJapan(root.Position))) then\n\t\t\t\tlocal dais = daisAt(root.Position)\n\t\t\t\tif dais and dais ~= player:GetAttribute(\"Dais\") then\n\t\t\t\t\tplayer:SetAttribute(\"Dais\", dais)\n\t\t\t\t\tpcall(aim, player)\n\t\t\t\tend\n\t\t\t\tlocal id = areaAt(root.Position)\n\t\t\t\tif id ~= player:GetAttribute(\"Area\") then\n\t\t\t\t\tplayer:SetAttribute(\"Area\", id)\n\t\t\t\t\tpcall(aim, player)\n\t\t\t\tend\n\t\t\tend\n\t\tend\n\tend\nend)\nPlayers.CharacterAutoLoads = false                                -- last, so a fault above still leaves spawning working\n\n",
+  "spawnAttributes": {
+    "StudioStartPorto": true,
+    "OwnerStartArea": "forest"
+  },
+  "ramen": {
+    "attributes": {
+      "DisplayKind": "Food",
+      "SeatingInteraction": "Automatic touch; Space to stand; three-second exit cooldown",
+      "MarketShop": true,
+      "MarketFrame": null,
+      "RamenReferenceRevision": "Yatai open counter, red noren, paper lanterns, four usable seats",
+      "MarketDepth": 21,
+      "MarketWidth": 28
+    },
+    "parts": [
+      {
+        "cf": [
+          5993.68017578125,
+          6.099999904632568,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Large cream ramen lantern",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          3.6500000953674316,
+          1.7000000476837158,
+          1.7000000476837158
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          4.25,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Black lantern cap",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.14000000059604645,
+          1.5,
+          1.5
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          7.949999809265137,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Black lantern cap",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.14000000059604645,
+          1.5,
+          1.5
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          5.71999979019165,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          5.940000057220459,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          6.159999847412109,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          5.059999942779541,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          6.380000114440918,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          7.699999809265137,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          7.480000019073486,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          6.820000171661377,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          6.599999904632568,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          7.039999961853027,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          4.839999675750732,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          6.099999904632568,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Large cream ramen lantern",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          3.6500000953674316,
+          1.7000000476837158,
+          1.7000000476837158
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          4.25,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Black lantern cap",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.14000000059604645,
+          1.5,
+          1.5
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          5.279999732971191,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          5.5,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          4.619999885559082,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          4.400000095367432,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          6.380000114440918,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          6.159999847412109,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          7.480000019073486,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          7.259999752044678,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          7.039999961853027,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          7.949999809265137,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Black lantern cap",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.14000000059604645,
+          1.5,
+          1.5
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          7.699999809265137,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          8.5,
+          3.100001335144043,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Lantern hanging chain",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.03999999910593033,
+          1.100000023841858,
+          0.03999999910593033
+        ]
+      },
+      {
+        "cf": [
+          5994.5458984375,
+          6.099999904632568,
+          3.100001335144043,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Ramen lantern lettering",
+        "class": "Part",
+        "texts": [
+          "ラ\nー\nメ\nン"
+        ],
+        "size": [
+          1.149999976158142,
+          3.119999885559082,
+          0.12999999523162842
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          6.599999904632568,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          5.940000057220459,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          5.71999979019165,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          5.5,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          6.820000171661377,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          5.279999732971191,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          5.059999942779541,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          4.839999675750732,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5994.5458984375,
+          6.099999904632568,
+          20.350000381469727,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Ramen lantern lettering",
+        "class": "Part",
+        "texts": [
+          "ラ\nー\nメ\nン"
+        ],
+        "size": [
+          1.149999976158142,
+          3.119999885559082,
+          0.12999999523162842
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          7.259999752044678,
+          20.350000381469727,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          8.5,
+          20.350000381469727,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Lantern hanging chain",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.03999999910593033,
+          1.100000023841858,
+          0.03999999910593033
+        ]
+      },
+      {
+        "cf": [
+          5993.66015625,
+          8.09999942779541,
+          19.950000762939453,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Red ramen noren 4",
+        "class": "Part",
+        "texts": [
+          "RAMEN"
+        ],
+        "size": [
+          5.239999771118164,
+          1.6200000047683716,
+          0.12999999523162842
+        ]
+      },
+      {
+        "cf": [
+          5993.66015625,
+          8.09999942779541,
+          14.500000953674316,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Red ramen noren 3",
+        "class": "Part",
+        "texts": [
+          "らーめん"
+        ],
+        "size": [
+          5.239999771118164,
+          1.6200000047683716,
+          0.12999999523162842
+        ]
+      },
+      {
+        "cf": [
+          5993.66015625,
+          8.09999942779541,
+          3.600001335144043,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Red ramen noren 1",
+        "class": "Part",
+        "texts": [
+          "屋台"
+        ],
+        "size": [
+          5.239999771118164,
+          1.6200000047683716,
+          0.12999999523162842
+        ]
+      },
+      {
+        "cf": [
+          5993.60009765625,
+          8.899999618530273,
+          11.80000114440918,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Canopy front rail",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          22,
+          0.1599999964237213,
+          0.1599999964237213
+        ]
+      },
+      {
+        "cf": [
+          5993.66015625,
+          8.09999942779541,
+          9.05000114440918,
+          -4.371138828673793e-8,
+          0,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -4.371138828673793e-8
+        ],
+        "name": "Red ramen noren 2",
+        "class": "Part",
+        "texts": [
+          "ラーメン"
+        ],
+        "size": [
+          5.239999771118164,
+          1.6200000047683716,
+          0.12999999523162842
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          4.400000095367432,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      },
+      {
+        "cf": [
+          5993.68017578125,
+          4.619999885559082,
+          3.100001335144043,
+          1.910685465164705e-15,
+          4.371138828673793e-8,
+          -1,
+          1,
+          -4.371138828673793e-8,
+          0,
+          -4.371138828673793e-8,
+          -1,
+          -4.371138828673793e-8
+        ],
+        "name": "Fine lantern rib",
+        "class": "Part",
+        "texts": [],
+        "size": [
+          0.02500000037252903,
+          1.7200000286102295,
+          1.7200000286102295
+        ]
+      }
+    ]
+  }
+}

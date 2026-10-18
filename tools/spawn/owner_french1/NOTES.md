@@ -1,3 +1,6 @@
+CURRENT: Superseded at Shannon's request by owner Japan arrival, approved and saved Oct18 2026 at14:28:36 UTC.
+OwnerStartArea is now japan. See tools/japan/garden/shop_corrections1. Original French request/history follows.
+
 # Owner French arrival — installed and saved, awaiting publication
 Shannon explicitly requested and approved a temporary French start for her account (9611145467 / CozyGameMode).
 Only SpawnReturnServer changes: the owner-only override precedes the Studio Porto preference and saved-area logic. OwnerStartArea on workspace.SpawnReturn is forest.
