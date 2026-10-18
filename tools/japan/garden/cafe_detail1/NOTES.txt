@@ -1,0 +1,34 @@
+CAFE DETAIL1 — PLAY PREVIEW ONLY; NOT INSTALLED
+
+Shannon's VR review requested window pot/table correction, space behind the
+existing counter for orders/payment, a destination for the pouncing orange
+tabby, and more cats later when she supplies them. She chose to prepare the
+counter space only; no attendant now.
+
+Window: moved the cat planter clear of the cushion onto bare bench; trailing
+vine now hangs over the front edge. Pot base .015 studs above tabletop.
+Counter: moved3.6 studs forward; retained wall shelves, tea and pastry display;
+smaller edge planter, central shallow cat-ear payment dish and ORDER & PAY sign.
+Working aisle behind counter approximately3.795 studs to shelf front. A temporary
+client movement binding walked the standing/unanchored player7.46 studs through
+the aisle, then was removed. No attendant, order flow or payment logic added.
+Tabby: three-piece real-mesh landing shelf wraps onto rear wall; head-to-target
+horizontal alignment .9995. Cat model/rig/scale unaltered. Portrait lowered .75
+stud for clearance below the new braces. Existing imported meshes reused.
+
+614 total cafe parts, including140 street display and474 interior.31 original
+parts moved,5 of those resized (counter planter), four mesh additions. All610
+original part colors/materials/transparency/physical flags preserved. Approved
+walnut floor/moss rugs/walls/seats/cat transforms preserved. Seven cats70 bones,
+six usable/two reserved Seats, ten steam emitters remain.
+
+Pictures and full manifest saved; HUD/avatar restored and Play stopped.
+Apply detail_patch.lua in stopped Edit ONLY AFTER SHANNON APPROVES, setting
+CAFEDETAIL1_ALLOW_EDIT=true. Guard requires470 original interior parts and
+approved lengthwise_walnut4/moss1. It backs up the original interior first.
+Then verify against preview_checks.json and integrate the patch into canonical
+cafe_cozy3 builder so future rebuilds preserve it. Do not modify canonical
+installed manifest/source until approval. Shannon publishes.
+
+Acorn maze kit30 remains ready but unimported; awaiting her import before
+anchoring and gameplay preview. Mug correction already installed1667b15.

@@ -1,0 +1,5 @@
+QQ CAFE DETAIL CHECK: 470 original interior parts; 31 moved, 5 resized, 439 unchanged transforms; four real-mesh additions
+QQ CAFE WINDOW: planter on bare bench edge; cushion shifted clear; trailing vine hangs in front of bench
+QQ CAFE COUNTER: forward3.6 studs; wall shelves stay; tea and pastries retained; central order/payment area; no attendant or payment gameplay added
+QQ CAFE JUMP: new rear-wall cushioned landing in Ginger's facing direction; original cat transform/scale/rig unchanged
+QQ CAFE DETAIL STATUS: SERVER PREVIEW; NOT PUBLISHED

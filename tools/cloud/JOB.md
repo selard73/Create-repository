@@ -4872,3 +4872,22 @@ Shannon: "updates published; also, I want to make feature where you can drop aco
 - Prepared code is NOT YET RUN or gameplay validated. Stopped Studio after read-only Play HUD inspection; no preview marks or new permanent maze objects. Requested Shannon import kit30; next anchor/store the exact imported model before starting Play. Need inspect FBX orientation/scale, actual ground placement, compile, keyboard/gamepad/touch/phone checks and low natural screenshots, then approval before permanent install.
 - Separate approved mug correction installed and recorded in1667b15. This maze preparation does not change it or the approved cafe. Existing unrelated untracked check logs retained.
 NEXT: Shannon imports kit30. Anchor/store before Play, run install_maze_trail1.lua on Play Server, verify exact mechanics and screens, show pictures, ask yes before Edit. No publish.
+
+
+## Cafe VR detail review: pot, service counter, jumping tabby (Codex solo, Oct 17 2026) - PLAY PREVIEW READY
+Shannon reports cafe looks good in VR; requested window pot/stem clipping correction, counter pulled forward with serving/payment space while retaining some props, additional cats later, and a destination for the orange tabby's jump pose. Asked whether to add attendant now; she explicitly chose "Prepare the counter space for now."
+- Diagnosed planter: cat pot was partly buried in a cushion; wall-planter trailing vine crossed the tabletop. Moved planter to bare front-edge area and shifted unoccupied cushion clear. Pot base .015 studs above bench; natural close photo shows whole pot and trailing vine outside the bench.
+- Pulled counter forward3.6 studs; left wall shelves/cups in place. Retained tea and pastries at opposite ends, moved existing menu to center with ORDER & PAY, reused a shallow cat-ear ceramic mesh as payment dish; reduced edge planter. Approximately3.795 studs from countertop back to shelf front. No attendant or ordering/payment gameplay added.
+- Added a matching three-mesh cushioned rear-wall landing perch in the orange tabby's existing facing direction (horizontal dot .999514); kept every cat transform/scale/rig unchanged. Lowered portrait .75 for brace clearance.
+Actual installer output:
+QQ CAFE DETAIL CHECK: 470 original interior parts; 31 moved, 5 resized, 439 unchanged transforms; four real-mesh additions
+QQ CAFE WINDOW: planter on bare bench edge; cushion shifted clear; trailing vine hangs in front of bench
+QQ CAFE COUNTER: forward3.6 studs; wall shelves stay; tea and pastries retained; central order/payment area; no attendant or payment gameplay added
+QQ CAFE JUMP: new rear-wall cushioned landing in Ginger's facing direction; original cat transform/scale/rig unchanged
+QQ CAFE DETAIL STATUS: SERVER PREVIEW; NOT PUBLISHED
+
+- Compared complete614-part Play manifest to610-part approved installed manifest: exactly31 original parts moved;5 planter meshes resized; all other original properties preserved. Four real-mesh additions. Original street display, floor/walls/rugs, seats and cat transforms unchanged. Seven cats70 bones; six usable/two reserved Seats, ten steam emitters retained.
+- Announced camera/avatar movements. E input did not trigger during initial inspection setup; used temporary server-side interior placement/inside attribute for furniture preview only. Did not change door code. Server MoveTo did not move the player; PlayerModule was absent. Tested actual character physics using a temporary client Humanoid Move render binding: walked7.4567 studs through rear aisle, standing/unanchored, final room-local position1.3433,3.2247,-24.9014; removed binding immediately afterward.
+QQ CAFE DETAIL CLEANUP: temporary photo/walk bindings removed; HUD and character visibility restored
+- Captured four actual Play pictures (window, counter, landing, aisle); stopped Play. No permanent cafe edits. Narrow approved-Edit installer prepared with original-room backup and preflight checks. Canonical cafe_cozy3 remains the installed pre-detail version until approval. No publication or direct DataStore writes.
+NEXT: Shannon reviews pictures and says yes before detail_patch.lua with CAFEDETAIL1_ALLOW_EDIT=true in stopped Edit. Then exact manifest verification and canonical builder integration. Await more Meshy cats. Maze kit30 import/preview remains pending; mug correction already installed.
