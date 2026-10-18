@@ -4968,3 +4968,18 @@ QQ GROCERSTOCK2 READY STATE: Studio stopped; old eight grocer stock meshes remai
 - Packaged kit32 to repository, current chat outputs and Desktop Japan garden kit; SHA256 copies match. Prepared source-only anchor/storage and guarded Server-first installer. Preparation requires all9 label textures. Placement uses white tint for textured labels, Precise rendering on those9 low-poly label batches and no label shadows; other stock uses original materials. Both scripts only parsed; neither executed.
 - Current scope remains only eight generic M2_Pantry stock meshes, with shelf frames/signs, produce, pickle barrels, cafe and all other Japan instances preserved. Marked kit28 instructions superseded. No publication or direct DataStore write.
 NEXT: Shannon imports ONLY japan_kit32_grocer_stock2.fbx with textures enabled, then anchor/store in Edit BEFORE Play. Run grocerstock2.lua on Server, inspect close angled Play pictures/texture loading/shelf clearance. Install only on her yes with GROCERSTOCK2_ALLOW_EDIT=true, then exact verification and fresh Play. Cafe remains accepted and installed; acorn maze kit30 remains separate.
+
+
+## Grocer barrel signs turned toward side aisle (Codex solo, Oct 17 2026) - PLAY PREVIEW READY
+Shannon asked to turn the signs in the barrels so they can be read while facing the barrels from the side.
+- Read-only survey: original three ProductLabel SurfaceGuis face grocer local+Z (entrance), while customer aisle is local-X. Rotated each existing paper board AND its timber post -90 degrees around its own barrel center; the sign stays planted inside the barrel footprint. No new meshes or import.
+- Ran guarded narrow installer on fresh Play Server only. Actual output:
+QQ GROCER BARREL SIGNS: three existing boards and their posts rotated90 degrees around their barrel centers; text faces the side customer aisle
+QQ GROCER BARREL SIGNS PRESERVED: only six transforms changed; barrels, products, wording, shelf stock and all other shop parts unchanged
+QQ GROCER BARREL SIGNS STATUS: SERVER PREVIEW; NOT PUBLISHED
+- Verified all six final transforms, unchanged84-part grocer inventory and local-X label normals. Existing Japanese/English wording and sizes unchanged. Boards now at localX10.25, postsX10.2803; same originalY; barrel centerZ retained. Shelf stock remains original generic stock pending corrected kit32 import.
+- Announced avatar/camera movement. First client lookup could not see streamed-out Mikan; moved test avatar near grocer on Server, then client photo setup succeeded. Actual Play overview/close images inspected: all three labels readable from side aisle; sign posts remain within barrels. Timed Gifts overlay hidden temporarily without reward interaction, then clean picture captured.
+QQ GROCER BARREL SIGNS CLEANUP: photo bindings removed; HUD, avatar visibility and normal camera restored
+QQ GROCER BARREL SIGNS EDIT CHECK: original three sign orientations remain; preview discarded; shelf stock unchanged; kit32 import markers=0; awaiting sign approval
+- Saved installer, original survey/final transforms and two actual Play pictures. Play stopped; no permanent sign installation, publication or direct DataStore write. Approved cafe remains untouched. No kit32 import marker found; corrected grocery label kit32 awaits Shannon's import, anchoring and separate actual game review. Kit30 maze trail also remains separate.
+NEXT: Shannon reviews sign picture and says yes before BARRELSIGNS1_ALLOW_EDIT=true in stopped Edit. This approval covers the three barrel signs only. Do not install rejected stock1 or assume approval of pending stock2.
