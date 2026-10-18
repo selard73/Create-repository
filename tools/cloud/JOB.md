@@ -4891,3 +4891,16 @@ QQ CAFE DETAIL STATUS: SERVER PREVIEW; NOT PUBLISHED
 QQ CAFE DETAIL CLEANUP: temporary photo/walk bindings removed; HUD and character visibility restored
 - Captured four actual Play pictures (window, counter, landing, aisle); stopped Play. No permanent cafe edits. Narrow approved-Edit installer prepared with original-room backup and preflight checks. Canonical cafe_cozy3 remains the installed pre-detail version until approval. No publication or direct DataStore writes.
 NEXT: Shannon reviews pictures and says yes before detail_patch.lua with CAFEDETAIL1_ALLOW_EDIT=true in stopped Edit. Then exact manifest verification and canonical builder integration. Await more Meshy cats. Maze kit30 import/preview remains pending; mug correction already installed.
+
+
+## Cafe counter: show its purpose with a register (Codex solo, Oct 17 2026) - KIT31 READY; NOT INSTALLED
+Shannon rejected the ORDER & PAY sign: "no, 'order/pay' does not cut it, lol, show, don't tell please". This is not approval of prior detail1. Previous sign preview is superseded; permanent cafe still unchanged.
+- Inspected the existing French bookshop register as a style/detail reference. Read-only free Creator Store search was explored; four InsertService LoadAsset calls in Play failed with User is not authorized to access Asset, so no marketplace models were loaded or used. Empty temporary candidate folder disappeared when Play stopped. Built an original Blender mesh instead.
+- New compact cream/charcoal register has a bevelled closed wedge casing, operator keypad, drawer with brass pull, receipt, and numeric display on both sides. Proper shallow celadon change tray with two decorative coins.11 visible mesh batches plus3 alignment markers. Real meshes only; no additional scripts/currency/payment gameplay. Total export triangles: 15976.
+ROUNDTRIP_PASS: names and bounds within .003 studs
+RENDER cafe_register_model_customer
+RENDER cafe_register_model_server
+- Images are Blender model-review renders, explicitly described that way to Shannon; not Play pictures. FBX and two model views saved in workspace outputs; kit31 also copied to usual Desktop Japan garden kit folder. Generated guarded preview installer preflights all imported mesh markers/materials/count and anchoring before any cafe changes. Installer not run yet.
+- Replacement includes previous pot/cushion, moved service counter, plant and landing-perch corrections. Hides original little menu board and disables its SurfaceGui; creates no ORDER/PAY sign. Register faces controls/drawer into rear service aisle and customer display into room; tray near customer edge. Tea set moves an additional.3 left for clearance. No attendant (her prior choice), no more cats added until supplied.
+- Stopped Edit; no permanent cafe mutations, publication or direct DataStore writes. Canonical installed610-part cafe remains unchanged. Previous detail1 NOTES marked superseded.
+NEXT: Shannon imports kit31. Anchor/store cafe_register1 in ServerStorage.JapanGardenKit before Play; run cafe_register1/preview_register1.lua on Server; inspect scale/normals/orientation/clearance and show actual Play pictures. Install only after her yes with CAFEREGISTER1_ALLOW_EDIT=true, then integrate into canonical source/manifest. Kit30 acorn trail import still pending; mug already installed.

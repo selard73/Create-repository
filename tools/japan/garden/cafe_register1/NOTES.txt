@@ -1,0 +1,34 @@
+CAFE REGISTER1 / KIT31 — MODEL READY; IMPORT AND PLAY PREVIEW PENDING
+
+Shannon rejected the ORDER & PAY sign: "show, don't tell". Do NOT install the
+previous cafe_detail1 sign preview. This replaces the sign and flattened planter
+dish with an original small register and purpose-built ceramic change tray.
+
+Register: cream bevelled one-piece wedge casing, dark cash drawer, brass pull,
+sloped keypad, cream/sage/terracotta keys, receipt slip, two-sided numeric LCD.
+Operator keys and drawer face the rear serving aisle; customer display faces
+into the cafe. Tray has two decorative coins. Decorative only, no payment code.
+Eleven visible mesh batches plus3 orientation-marker meshes in the import.
+Reference for details/scale is the game's French bookshop register, rebuilt as
+real meshes in Blender. No Creator Store model is used.
+
+Import outputs/japan_kit31_cafe_register.fbx with File > Import 3D. Also copied
+to Desktop/Japan garden kit. Anchor all14 mesh parts and move cafe_register1 to
+ServerStorage.JapanGardenKit BEFORE Play. Marker distances2 studs must hold;
+installer detects rotation through CR1_Origin/Right/Front, not by guessing.
+
+Prepared preview_register1.lua includes the prior window-pot/cushion fix,
+counter moved3.6 studs forward, smaller edge plant and new tabby landing perch.
+Original little menu panel is hidden; no ORDER/PAY sign is created. Tea is moved
+.3 studs farther left than the previous preview for register clearance.
+Register at room-local(1.85,3.09,-22.15); tray(1.90,3.09,-20.95).
+
+Generator export/reimport verified all mesh names and bounds within .003 studs.
+Renders are BLENDER MODEL REVIEWS, not in-game pictures. Kit not imported and
+new installer NOT RUN yet. Need real Play placement/scale/clearance review and
+pictures after import, then Shannon's yes before permanent Edit. The original
+cafe floor/walls/moss rugs/seats/cats remain installed and unchanged. On approval
+use CAFEREGISTER1_ALLOW_EDIT=true; update canonical builder/manifest afterward.
+
+No attendant yet (Shannon explicitly chose counter space only); more Meshy cats
+await her files. Kit30 acorn-trail import also pending. Mug correction installed.
