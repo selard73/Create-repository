@@ -1,0 +1,81 @@
+-- Server preview only until Shannon approves the actual Play pictures.
+local Run=game:GetService('RunService')
+assert(Run:IsStudio()and game.PlaceId==117372258657114,'Wrong place')
+assert((Run:IsRunning()and Run:IsServer())or(not Run:IsRunning()and CRAFTSHOP1_ALLOW_EDIT==true),'Preview first; installation needs Shannon approval')
+--CONFIG--
+--COMMON--
+local J=workspace.JapanMap
+local shop=assert(J['Outdoor market revision']:FindFirstChild('Lantern workshop'))
+local facade=assert(shop:FindFirstChild('Traditional downtown facade'))
+local fronts=J:FindFirstChild('ShopFronts')
+assert(not(fronts and fronts:FindFirstChild('LanternsUmbrellas')),'Shop already installed; inspect instead')
+local hb=assert(game.ServerStorage:FindFirstChild('HudBackup'))
+assert(not hb:FindFirstChild('Craftshop1Originals'),'Backup already exists')
+local source=assert(game.ServerStorage.JapanGardenKit:FindFirstChild('craftshop1'),'Import and anchor kit36 first')
+local parts,sf,count=collect(source)
+for _,p in pairs(parts)do assert(p.Anchored,'Source must be anchored before Play')end
+local target=CFrame.new(table.unpack(CONFIG.origin))*CFrame.Angles(0,math.rad(CONFIG.yaw),0)
+local rootRemove={['Goods display']=true,['Handwritten shop sign']=true,['Entrance threshold']=true,['Service counter']=true,['Menu board leg']=true,['Counter leg']=true,['Rolled bamboo blind']=true,['Counter front boards']=true,['Lantern cord']=true,['Lantern cap']=true,['Paper rib']=true,['Paper lantern']=true}
+local facadeRemove={['Handwritten shop sign']=true,['Window rail']=true,['Window jamb']=true,['Fine vertical lattice']=true,['Fine horizontal lattice']=true,['Lower cedar window base']=true,['Shop window glazing']=true,['Narrow entrance side screen']=true,['Short doorway noren']=true,['Recessed entrance frame']=true,['Warm shop wall lamp']=true}
+local removed={};local parents={};local removeSet={};local preserved={};local originalCount=0
+for _,v in ipairs(shop:GetChildren())do if rootRemove[v.Name]then table.insert(removed,v);parents[v]=shop end end
+for _,v in ipairs(facade:GetChildren())do if facadeRemove[v.Name]and v:IsA('BasePart')and v.Position.Y<9 then table.insert(removed,v);parents[v]=facade end end
+assert(#removed==CONFIG.retiredRoots,'Original inventory differs; survey again')
+local retiredParts,retiredLabels=0,0
+for _,v in ipairs(removed)do
+ removeSet[v]=true;if v:IsA('BasePart')then retiredParts+=1 end
+ for _,d in ipairs(v:GetDescendants())do removeSet[d]=true;if d:IsA('BasePart')then retiredParts+=1 elseif d:IsA('TextLabel')then retiredLabels+=1 end end
+end
+assert(retiredParts==CONFIG.retiredParts and retiredLabels==CONFIG.retiredLabels,'Original fixtures or labels differ')
+for i,p in ipairs(J:GetDescendants())do if not removeSet[p]then
+ local r={parent=p.Parent};if p:IsA('BasePart')then r.cf=p.CFrame;r.size=p.Size;r.color=p.Color;r.material=p.Material;r.variant=p.MaterialVariant;r.alpha=p.Transparency;r.collide=p.CanCollide;r.query=p.CanQuery;r.touch=p.CanTouch;r.anchored=p.Anchored end
+ preserved[p]=r;originalCount+=1
+end;if i%1000==0 then task.wait()end end
+local model=Instance.new('Model');model.Name='LanternsUmbrellas';model:SetAttribute('CraftshopVersion','craftshop1');model.WorldPivot=target
+pcall(function()model.ModelStreamingMode=Enum.ModelStreamingMode.Atomic end)
+local collision={C1_WindowBase=true,C1_WindowDeck=true,C1_Glazing0=true,C1_Glazing1=true,C1_Glazing2=true,C1_Threshold=true,C1_WorkTop=true,C1_StockCabinet=true,C1_CabinetTop=true,C1_LeftShelf0=true,C1_LeftShelf1=true,C1_BackUmbrellaA=true,C1_BackUmbrellaB=true}
+local made={};local meshes=0
+local function assemble()
+ for n,p in pairs(parts)do if n~='C1_Origin'and n~='C1_Right'and n~='C1_Front'then
+  local q=p:Clone();q.Name=n;q.CFrame=target*sf:ToObjectSpace(p.CFrame)
+  local g,k=n:match('^(.*)_([^_]+)$');local m=assert(CONFIG.materials[k])
+  q.Color=Color3.fromRGB(table.unpack(m.rgb));q.Material=Enum.Material[m.material];q.MaterialVariant='';q.TextureID='';q.Reflectance=k=='Glass'and .02 or 0
+  for _,d in ipairs(q:GetChildren())do if d:IsA('SurfaceAppearance')then d:Destroy()end end
+  q.Transparency=k=='Glass'and .88 or 0;q.DoubleSided=g:find('Umbrella',1,true)~=nil;q.CastShadow=k~='Glass';q.Anchored=true;q.CanTouch=false;q.CanQuery=true;q.CanCollide=collision[g]==true;q.Parent=model;made[n]=q;meshes+=1
+ end end
+ local normals={{Enum.NormalId.Front,Vector3.new(0,0,-1)},{Enum.NormalId.Back,Vector3.new(0,0,1)},{Enum.NormalId.Left,Vector3.new(-1,0,0)},{Enum.NormalId.Right,Vector3.new(1,0,0)},{Enum.NormalId.Top,Vector3.new(0,1,0)},{Enum.NormalId.Bottom,Vector3.new(0,-1,0)}}
+ for _,r in ipairs(CONFIG.labels)do
+  local p=assert(made[r.name]);local outward=target:VectorToWorldSpace(Vector3.new(0,0,1));local face,best=nil,-1
+  for _,n in ipairs(normals)do local d=p.CFrame:VectorToWorldSpace(n[2]):Dot(outward);if d>best then face=n[1];best=d end end
+  assert(best>.999,'Sign alignment')
+  local gui=Instance.new('SurfaceGui');gui.Name='CraftshopLettering';gui.Face=face;gui.SizingMode=Enum.SurfaceGuiSizingMode.PixelsPerStud;gui.PixelsPerStud=120;gui.LightInfluence=.75;gui.Parent=p
+  local t=Instance.new('TextLabel');t.Name='ShopText';t.Size=UDim2.fromScale(.94,.88);t.Position=UDim2.fromScale(.03,.06);t.BackgroundTransparency=1;t.Text=r.text;t.TextColor3=Color3.fromRGB(table.unpack(r.rgb));t.Font=Enum.Font.Garamond;t.TextScaled=false;t.TextSize=r.size;t.TextWrapped=false;t.Parent=gui
+ end
+ for _,r in ipairs(CONFIG.lights)do
+  local p=assert(made[r.part]);local a=Instance.new('Attachment');a.Name='SoftPaperLight';a.Position=p.CFrame:PointToObjectSpace(target:PointToWorldSpace(Vector3.new(table.unpack(r.position))));a.Parent=p
+  local l=Instance.new('PointLight');l.Color=Color3.fromRGB(255,229,190);l.Brightness=r.brightness;l.Range=r.range;l.Shadows=false;l.Parent=a
+ end
+end
+local assembled,assemblyError=pcall(assemble)
+if not assembled then model:Destroy();error(assemblyError)end
+if not Run:IsRunning()then game.ChangeHistoryService:SetWaypoint('Before approved combined craft shop')end
+local backup=Instance.new('Folder');backup.Name='Craftshop1Originals'
+local createdFronts=false
+local ok,err=pcall(function()
+ backup.Parent=hb
+ for _,v in ipairs(removed)do v:SetAttribute('Craftshop1OriginalParent',v.Parent:GetFullName());v.Parent=backup end
+ if not fronts then fronts=Instance.new('Folder');fronts.Name='ShopFronts';fronts.Parent=J;createdFronts=true end
+ model.Parent=fronts
+ for p,r in pairs(preserved)do
+  assert(p.Parent==r.parent,'Unrelated parent changed: '..p.Name)
+  if p:IsA('BasePart')then assert(p.CFrame==r.cf and p.Size==r.size and p.Color==r.color and p.Material==r.material and p.MaterialVariant==r.variant and p.Transparency==r.alpha and p.CanCollide==r.collide and p.CanQuery==r.query and p.CanTouch==r.touch and p.Anchored==r.anchored,'Unrelated property changed: '..p.Name)end
+ end
+ for _,p in ipairs(shop:GetDescendants())do if p:IsA('TextLabel')then assert(not p.Text:find('Lantern workshop',1,true),'Old shop name remains')end end
+ for n,p in pairs(made)do assert(p.Anchored and p:IsA('MeshPart'),'Invalid construction');assert(target:PointToObjectSpace(p.Position).Z<1.3,'Fixture projects onto lane: '..n)end
+end)
+if not ok then model:Destroy();for _,v in ipairs(removed)do v.Parent=parents[v];v:SetAttribute('Craftshop1OriginalParent',nil)end;backup:Destroy();if createdFronts then fronts:Destroy()end;error(err)end
+if not Run:IsRunning()then game.ChangeHistoryService:SetWaypoint('After approved combined craft shop')end
+print('QQ CRAFTSHOP1: '..meshes..' real meshes; Lanterns & Umbrellas window, hanging and standing lanterns, folded/open wagasa and artisan workbench')
+print('QQ CRAFTSHOP1 PRESERVED: '..originalCount..' other Japan instances; existing shell, floor, roof, upper facade, plants and all other shops retained')
+print('QQ CRAFTSHOP1 BACKUP: '..#removed..' original fixture roots ('..retiredParts..' parts, '..retiredLabels..' labels) retained in HudBackup.Craftshop1Originals')
+print('QQ CRAFTSHOP1 STATUS: '..(Run:IsRunning()and'SERVER PREVIEW'or'EDIT INSTALLED')..'; NOT PUBLISHED')

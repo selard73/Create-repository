@@ -1,0 +1,58 @@
+CRAFTSHOP1 / KIT36 — MODEL PREVIEW AND IMPORT READY, NOT INSTALLED
+
+Shannon requested combining the Lantern shop and Paper umbrella craft into one
+shop. Her earlier plan identified the larger Lantern workshop as the destination.
+Use Lanterns & Umbrellas as the shared player-facing name.
+
+References inspected
+- Hiyoshiya Kyoto head office: traditional timber frontage, clear entrance,
+  slatted joinery and paper lamps. Official photograph visually inspected.
+  https://hiyoshiya.wagasa.com/en/about/
+- Ozeki Tokyo shop: paper lanterns in varied shapes/heights, restrained shades,
+  thin bamboo ribs. Official showroom photograph visually inspected.
+  https://www.ozeki-lantern.co.jp/en/
+- Tsujikura: open janome umbrella ring, folded wagasa, paper/bamboo construction.
+  https://www.kyoto-tsujikura.com/en
+All new models and arrangements are original; no copied brand art.
+
+Current scope
+- Existing Lantern workshop at frame (5983.5,1.03985318,-117), yaw +90 degrees.
+- 160 source meshes / 157 placed meshes. 122636 triangles total.
+- 131 original fixture roots (136 parts and14 labels) retired to backup only
+  during the guarded installer. 130 original building/facade parts remain.
+- New clear window, dark timber joinery, three lanterns at different heights,
+  tabletop lantern, folded umbrella rack, indigo ringed umbrella in the window.
+- Interior folded umbrella rack, cream and red open umbrella displays, drawer
+  cabinet, lantern shelves and workbench with unfinished bamboo lantern frame,
+  paper, paste bowl/brush and supply boxes. Central aisle and entrance clear.
+- Existing floor, building shell, upper facade, awning, exterior lantern and
+  plants retained. No other shop, landscape, lighting system or gameplay writes.
+- Former Paper umbrella craft: asked Shannon whether to make a closed craft
+  storeroom/display or decide its replacement later. No answer yet; that building
+  is not modified by this kit. Do not physically join or remove either building.
+
+Files
+- gen_craftshop1.py + geometry_helpers.py: original Blender geometry source.
+- out/manifest.json: local bounds, RGB/material palette, labels and lights.
+- out/japan_kit36_lanterns_umbrellas1.fbx: one combined import.
+- out/01_front.png,02_inside.png,03_window.png: BLENDER MODEL pictures, not Play.
+  Context building/materials are approximations; existing Studio shell is kept.
+- layout_checks.json: names, triangle counts, footprint, grounded threshold,
+  and planned path checks against collider bounds. Actual walking still pending.
+- survey.json: read-only live measurements of both original shops.
+- prepare_craftshop1.lua: validates marker orientation, per-mesh bounds, names,
+  unique/duplicate imports, then anchors/stores clean and raw source before Play.
+- install_craftshop1.lua: Server preview by default. Stopped Edit additionally
+  requires CRAFTSHOP1_ALLOW_EDIT=true and Shannon's explicit approval.
+- Original fixtures retained in HudBackup.Craftshop1Originals on installation;
+  every unrelated Japan instance/property checked. Rollback restores parents.
+
+NEXT
+1. Shannon imports kit36. Only after her import instruction prepare the source.
+2. Actual SERVER preview; verify asset loads, name fits, warm lights, glass,
+   walking through entry/central aisle and all details at close camera height.
+3. Show actual Play pictures, restore camera/HUD/avatar and stop. On her yes,
+   install exact approved version in Edit, compare, fresh Play without installer,
+   stop and Save to Roblox. NEVER publish; Shannon publishes.
+4. Bookshop kit35 and Pottery stall/Tea Merchant names remain separate pending
+   approvals. Do not infer approval for them from this new combined-shop request.

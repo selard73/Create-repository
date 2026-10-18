@@ -1,0 +1,61 @@
+{
+  "stage": "Blender geometry only; Roblox asset appearance and walking still require imported Play preview",
+  "sourceMeshes": 160,
+  "placedMeshes": 157,
+  "triangles": 122636,
+  "maxTriangles": 4800,
+  "bounds": {
+    "min": [
+      -15.399999618530273,
+      -0.5799999833106995,
+      -18.44499969482422
+    ],
+    "max": [
+      15.324999809265137,
+      8.119999885559082,
+      1.1950000524520874
+    ]
+  },
+  "thresholdBottomWorldY": 0.45985319668930047,
+  "observedLaneY": 0.460000157,
+  "plannedWalkingRouteXZ": [
+    [
+      -11.6,
+      1.5
+    ],
+    [
+      -11.6,
+      -6.0
+    ],
+    [
+      -6.8,
+      -6.0
+    ],
+    [
+      -2,
+      -9.5
+    ],
+    [
+      3.8,
+      -9.5
+    ],
+    [
+      3.8,
+      -13
+    ],
+    [
+      -6,
+      -13
+    ]
+  ],
+  "characterRadius": 1.1,
+  "entryClearWidth": 4.525,
+  "entryHeaderClearHeight": 7.205,
+  "ceilingLocalBottom": 8.185,
+  "openUmbrellaTopMax": 7.77,
+  "preservedOriginalParts": 130,
+  "retiredFixtureRoots": 131,
+  "retiredFixtureParts": 136,
+  "retiredLabels": 14,
+  "otherPremises": "Paper umbrella craft replacement awaiting Shannon preference; not altered by this installer"
+}

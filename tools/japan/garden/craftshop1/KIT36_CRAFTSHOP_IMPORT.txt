@@ -1,0 +1,14 @@
+Japan kit 36 — Lanterns & Umbrellas
+
+In stopped Roblox Studio, use File > Import 3D and import:
+japan_kit36_lanterns_umbrellas1.fbx
+
+Import the single combined file at its default scale. No separate textures.
+Tell Codex "kit36 imported" when it finishes. Please do not start Play yet:
+Codex first anchors and stores the source meshes, then prepares the actual
+play-test preview. Permanent installation follows your approval of that preview.
+
+This kit creates the combined business in the existing Lantern workshop:
+a glazed display, lanterns, folded and open umbrellas, an artisan bench,
+storage drawers and an open entrance with browsing space inside.
+The old umbrella premises is a separate pending reuse decision.
