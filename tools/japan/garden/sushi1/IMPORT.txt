@@ -1,0 +1,15 @@
+JAPAN KIT34 - SUSHI BAR
+
+Import japan_kit34_sushi_bar1.fbx using Studio's File > Import 3D.
+One combined model; retain all meshes, including three tiny alignment markers.
+Default scale; do not move, resize or separate the pieces after import.
+If the importer offers Anchored, turn it on.
+
+After import, tell Codex "imported - anchor and prepare preview".
+Codex will verify/anchor every source mesh and move it to ServerStorage.JapanGardenKit BEFORE Play,
+then create a temporary Play preview inside the existing sushi building.
+The original shop remains unchanged until you approve actual play-test pictures.
+
+The Blender pictures show the model and approximate retained walls/sign, not the game's exact lighting.
+The existing tiled roof, original sign and other shops remain intact.
+Do not publish yet; this file is for the next preview.

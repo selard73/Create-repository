@@ -1,0 +1,5089 @@
+{
+  "other": [
+    {
+      "text": "700",
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign.Market lettering.TextLabel",
+      "name": "TextLabel",
+      "class": "TextLabel"
+    },
+    {
+      "text": "500",
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign.Market lettering.TextLabel",
+      "name": "TextLabel",
+      "class": "TextLabel"
+    },
+    {
+      "text": "300",
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign.Market lettering.TextLabel",
+      "name": "TextLabel",
+      "class": "TextLabel"
+    },
+    {
+      "text": "寿司  Sushi bar",
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign.Market lettering.TextLabel",
+      "name": "TextLabel",
+      "class": "TextLabel"
+    },
+    {
+      "text": "寿司\nOPEN",
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign.Market lettering.TextLabel",
+      "name": "TextLabel",
+      "class": "TextLabel"
+    },
+    {
+      "text": "寿司\n本日のおすすめ",
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign.Market lettering.TextLabel",
+      "name": "TextLabel",
+      "class": "TextLabel"
+    },
+    {
+      "text": "寿",
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign.Market lettering.TextLabel",
+      "name": "TextLabel",
+      "class": "TextLabel"
+    },
+    {
+      "text": "寿司",
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign.Market lettering.TextLabel",
+      "name": "TextLabel",
+      "class": "TextLabel"
+    },
+    {
+      "text": "寿",
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign.Market lettering.TextLabel",
+      "name": "TextLabel",
+      "class": "TextLabel"
+    },
+    {
+      "text": "寿司\nMENU\n300 / 500",
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign.Market lettering.TextLabel",
+      "name": "TextLabel",
+      "class": "TextLabel"
+    }
+  ],
+  "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar",
+  "attributes": {
+    "DisplayKind": "Food",
+    "MarketFrame": null,
+    "MarketShop": true,
+    "MarketDepth": 18,
+    "MarketWidth": 27
+  },
+  "backMatches": [
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_window1"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_door"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_awning0"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_lantern1"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_awning2"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_awning1"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_window0"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_awning6"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_sake_barrel21"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_pipeS"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_awning3"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_awning5"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_awning4"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_crate_stack23"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.ShopBacks.Sushi bar_water_tub2"
+    },
+    {
+      "class": "Model",
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar"
+    }
+  ],
+  "pivot": [
+    5975,
+    0.15000000596046448,
+    -25,
+    -4.371138828673793e-8,
+    0,
+    -1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    -4.371138828673793e-8
+  ],
+  "parts": [
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.469305038452148,
+        -12,
+        0.052335914224386215,
+        0,
+        -0.9986295104026794,
+        0,
+        1,
+        0,
+        0.9986295104026794,
+        0,
+        0.052335914224386215
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        1.1613903045654297,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -12,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Awning bracket",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.309999465942383,
+        -38.849998474121094,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Awning bracket",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.15000000596046448,
+        0.18000000715255737,
+        6.800000190734863
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -14,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.2862745225429535,
+        0.3529411852359772,
+        0.364705890417099
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.560780048370361,
+        -16,
+        -0.05233600363135338,
+        0,
+        -0.9986295104026794,
+        0,
+        1,
+        0,
+        0.9986295104026794,
+        0,
+        -0.05233600363135338
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        0.97843998670578,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.602283954620361,
+        -14,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        0.895432710647583,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -34,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.45939302444458,
+        -34,
+        -0.05233600363135338,
+        0,
+        -0.9986295104026794,
+        0,
+        1,
+        0,
+        0.9986295104026794,
+        0,
+        -0.05233600363135338
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        1.181214451789856,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.2862745225429535,
+        0.3529411852359772,
+        0.364705890417099
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -32,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.2862745225429535,
+        0.3529411852359772,
+        0.364705890417099
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.472357749938965,
+        -32,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        1.155285120010376,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -30,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.604172706604004,
+        -30,
+        0.052335914224386215,
+        0,
+        -0.9986295104026794,
+        0,
+        1,
+        0,
+        0.9986295104026794,
+        0,
+        0.052335914224386215
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        0.8916547894477844,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -28,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.557240962982178,
+        -28,
+        -0.05233600363135338,
+        0,
+        -0.9986295104026794,
+        0,
+        1,
+        0,
+        0.9986295104026794,
+        0,
+        -0.05233600363135338
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        0.985518753528595,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -26,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.2862745225429535,
+        0.3529411852359772,
+        0.364705890417099
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -24,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.2862745225429535,
+        0.3529411852359772,
+        0.364705890417099
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.5153021812438965,
+        -24,
+        0.052335914224386215,
+        0,
+        -0.9986295104026794,
+        0,
+        1,
+        0,
+        0.9986295104026794,
+        0,
+        0.052335914224386215
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        1.069395661354065,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -22,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.437519550323486,
+        -26,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        1.2249614000320435,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Awning bracket",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.309999465942383,
+        -11.149999618530273,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Awning bracket",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.15000000596046448,
+        0.18000000715255737,
+        6.800000190734863
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Awning front rail",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.5,
+        8.050000190734863,
+        -25,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Awning front rail",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        28.200000762939453,
+        0.11999999731779099,
+        0.11999999731779099
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -38,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.572685241699219,
+        -38,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        0.9546294808387756,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -36,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.59454870223999,
+        -36,
+        0.052335914224386215,
+        0,
+        -0.9986295104026794,
+        0,
+        1,
+        0,
+        0.9986295104026794,
+        0,
+        0.052335914224386215
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        0.9109023809432983,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -20,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.511511325836182,
+        -20,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        1.0769778490066528,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.6149797439575195,
+        -22,
+        -0.05233600363135338,
+        0,
+        -0.9986295104026794,
+        0,
+        1,
+        0,
+        0.9986295104026794,
+        0,
+        -0.05233600363135338
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        0.8700405955314636,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Separate noren curtain",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5990.4599609375,
+        7.438496112823486,
+        -18,
+        0.052335914224386215,
+        0,
+        -0.9986295104026794,
+        0,
+        1,
+        0,
+        0.9986295104026794,
+        0,
+        0.052335914224386215
+      ],
+      "transparency": 0,
+      "name": "Separate noren curtain",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.9199999570846558,
+        1.2230074405670166,
+        0.09000000357627869
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.2862745225429535,
+        0.3529411852359772,
+        0.364705890417099
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -16,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Weathered cloth awning.Canvas panel",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5987.25,
+        8.549999237060547,
+        -18,
+        -4.371138828673793e-8,
+        0.15643447637557983,
+        -0.9876883625984192,
+        0,
+        0.9876883625984192,
+        0.15643447637557983,
+        1,
+        6.837967969630654e-9,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Canvas panel",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        2.0399999618530273,
+        0.10000000149011612,
+        6.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Goods display.shelves.shelves_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5968.00146484375,
+        3.271275043487549,
+        -32.83586120605469,
+        -4.371139183945161e-8,
+        0,
+        -0.9999998807907104,
+        0,
+        1,
+        0,
+        1.0000001192092896,
+        0,
+        -4.371138473402425e-8
+      ],
+      "transparency": 0,
+      "name": "shelves_geom",
+      "collide": false,
+      "texture": "rbxassetid://127676106707472",
+      "material": "Plastic",
+      "mesh": "rbxassetid://98224962574795",
+      "size": [
+        4.926860332489014,
+        4.616018772125244,
+        2.2974605560302734
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Goods display.frame.frame_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5968,
+        3.6500356197357178,
+        -32.83000183105469,
+        -4.371139183945161e-8,
+        0,
+        -0.9999998807907104,
+        0,
+        1,
+        0,
+        1.0000001192092896,
+        0,
+        -4.371138473402425e-8
+      ],
+      "transparency": 0,
+      "name": "frame_geom",
+      "collide": false,
+      "texture": "rbxassetid://125898627637892",
+      "material": "Plastic",
+      "mesh": "rbxassetid://96640544534389",
+      "size": [
+        4.999999523162842,
+        5.800070762634277,
+        2.500065326690674
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Goods display.frame.frame_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5968,
+        3.450033664703369,
+        -19.600000381469727,
+        -4.371139183945161e-8,
+        0,
+        -0.9999998807907104,
+        0,
+        1,
+        0,
+        1.0000001192092896,
+        0,
+        -4.371138473402425e-8
+      ],
+      "transparency": 0,
+      "name": "frame_geom",
+      "collide": false,
+      "texture": "rbxassetid://125898627637892",
+      "material": "Plastic",
+      "mesh": "rbxassetid://96640544534389",
+      "size": [
+        3.999999761581421,
+        5.500067234039307,
+        2.500065326690674
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Goods display.shelves.shelves_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5968.00146484375,
+        3.0908641815185547,
+        -19.60468864440918,
+        -4.371139183945161e-8,
+        0,
+        -0.9999998807907104,
+        0,
+        1,
+        0,
+        1.0000001192092896,
+        0,
+        -4.371138473402425e-8
+      ],
+      "transparency": 0,
+      "name": "shelves_geom",
+      "collide": false,
+      "texture": "rbxassetid://127676106707472",
+      "material": "Plastic",
+      "mesh": "rbxassetid://98224962574795",
+      "size": [
+        3.94148850440979,
+        4.377259254455566,
+        2.2974605560302734
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Produce display.leaves.leaves_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5988.01220703125,
+        1.8639626502990723,
+        -35.034175872802734,
+        -0.14658574759960175,
+        0,
+        -0.9891982078552246,
+        0,
+        1,
+        0,
+        0.989197850227356,
+        0,
+        -0.14658579230308533
+      ],
+      "transparency": 0,
+      "name": "leaves_geom",
+      "collide": false,
+      "texture": "rbxassetid://95354955706319",
+      "material": "Plastic",
+      "mesh": "rbxassetid://104098138908817",
+      "size": [
+        3.0312113761901855,
+        0.7906073331832886,
+        2.4446535110473633
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Produce display.oranges.oranges_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5988.1103515625,
+        1.4723931550979614,
+        -35.0074462890625,
+        -0.14658574759960175,
+        0,
+        -0.9891982078552246,
+        0,
+        1,
+        0,
+        0.989197850227356,
+        0,
+        -0.14658579230308533
+      ],
+      "transparency": 0,
+      "name": "oranges_geom",
+      "collide": false,
+      "texture": "rbxassetid://109887677427208",
+      "material": "Plastic",
+      "mesh": "rbxassetid://89506291265412",
+      "size": [
+        3.7075552940368652,
+        2.055213451385498,
+        2.6349728107452393
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Produce display.crate.crate_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5988.10009765625,
+        1.1104077100753784,
+        -34.98994064331055,
+        -0.14658574759960175,
+        0,
+        -0.9891982078552246,
+        0,
+        1,
+        0,
+        0.989197850227356,
+        0,
+        -0.14658579230308533
+      ],
+      "transparency": 0,
+      "name": "crate_geom",
+      "collide": false,
+      "texture": "rbxassetid://85392343777290",
+      "material": "Plastic",
+      "mesh": "rbxassetid://100219878530472",
+      "size": [
+        4.200103282928467,
+        1.4208155870437622,
+        3.200077533721924
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Produce display.crate.crate_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5987.5,
+        0.958920955657959,
+        -31.5899600982666,
+        -0.011961057782173157,
+        0,
+        -0.9999287128448486,
+        0,
+        1,
+        0,
+        0.99992835521698,
+        0,
+        -0.01196106243878603
+      ],
+      "transparency": 0,
+      "name": "crate_geom",
+      "collide": false,
+      "texture": "rbxassetid://85392343777290",
+      "material": "Plastic",
+      "mesh": "rbxassetid://100219878530472",
+      "size": [
+        3.2000787258148193,
+        1.2178418636322021,
+        2.800067901611328
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Produce display.oranges.oranges_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5987.5068359375,
+        1.26919424533844,
+        -31.604225158691406,
+        -0.011961057782173157,
+        0,
+        -0.9999287128448486,
+        0,
+        1,
+        0,
+        0.99992835521698,
+        0,
+        -0.01196106243878603
+      ],
+      "transparency": 0,
+      "name": "oranges_geom",
+      "collide": false,
+      "texture": "rbxassetid://109887677427208",
+      "material": "Plastic",
+      "mesh": "rbxassetid://89506291265412",
+      "size": [
+        2.8248040676116943,
+        1.7616115808486938,
+        2.3056013584136963
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Produce display.leaves.leaves_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5987.41845703125,
+        1.6048251390457153,
+        -31.614444732666016,
+        -0.011961057782173157,
+        0,
+        -0.9999287128448486,
+        0,
+        1,
+        0,
+        0.99992835521698,
+        0,
+        -0.01196106243878603
+      ],
+      "transparency": 0,
+      "name": "leaves_geom",
+      "collide": false,
+      "texture": "rbxassetid://95354955706319",
+      "material": "Plastic",
+      "mesh": "rbxassetid://104098138908817",
+      "size": [
+        2.3094944953918457,
+        0.6776633858680725,
+        2.1390719413757324
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Food display.trays.trays_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5986.5,
+        3.9578371047973633,
+        -32.252201080322266,
+        -4.371139183945161e-8,
+        0,
+        -0.9999998807907104,
+        0,
+        1,
+        0,
+        1.0000001192092896,
+        0,
+        -4.371138473402425e-8
+      ],
+      "transparency": 0,
+      "name": "trays_geom",
+      "collide": false,
+      "texture": "rbxassetid://100048722532365",
+      "material": "Plastic",
+      "mesh": "rbxassetid://132236730125453",
+      "size": [
+        6.999999046325684,
+        0.7356742024421692,
+        3.100076198577881
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Food display.sauce cup.sauce cup_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5985.77978515625,
+        4.449573040008545,
+        -34.43596649169922,
+        -4.371139183945161e-8,
+        0,
+        -0.9999998807907104,
+        0,
+        1,
+        0,
+        1.0000001192092896,
+        0,
+        -4.371138473402425e-8
+      ],
+      "transparency": 0,
+      "name": "sauce cup_geom",
+      "collide": false,
+      "texture": "rbxassetid://137378815368836",
+      "material": "Plastic",
+      "mesh": "rbxassetid://89747021153943",
+      "size": [
+        1.7048593759536743,
+        0.5208545327186584,
+        1.0042603015899658
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Food display.food.food_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5986.4990234375,
+        4.368151664733887,
+        -32.316383361816406,
+        -4.371139183945161e-8,
+        0,
+        -0.9999998807907104,
+        0,
+        1,
+        0,
+        1.0000001192092896,
+        0,
+        -4.371138473402425e-8
+      ],
+      "transparency": 0,
+      "name": "food_geom",
+      "collide": false,
+      "texture": "rbxassetid://125536770090823",
+      "material": "Plastic",
+      "mesh": "rbxassetid://79128898416320",
+      "size": [
+        5.517029762268066,
+        0.6557640433311462,
+        2.3216164112091064
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stool leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5973.6298828125,
+        1.25,
+        -15.930000305175781,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.12999999523162842,
+        1.350000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign",
+      "color": [
+        0.9372549057006836,
+        0.8549019694328308,
+        0.6705882549285889
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.5498046875,
+        3.5500001907348633,
+        -26.049999237060547,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.8500000238418579,
+        1.100000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Lantern cap",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        5.920000076293945,
+        -13.499999046325684,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Lantern cap",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.1599999964237213,
+        0.8399999737739563,
+        0.8399999737739563
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign",
+      "color": [
+        0.9372549057006836,
+        0.8549019694328308,
+        0.6705882549285889
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.5498046875,
+        3.5500001907348633,
+        -28.849998474121094,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.8500000238418579,
+        1.100000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        7.710000038146973,
+        -36.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.2778018712997437,
+        1.2778018712997437
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        7.930000305175781,
+        -36.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.0401999950408936,
+        1.0401999950408936
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Lantern cord",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        8.65000057220459,
+        -36.5,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Lantern cord",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        0.03999999910593033,
+        1,
+        0.03999999910593033
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stool leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5972.77001953125,
+        1.25,
+        -16.790000915527344,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.12999999523162842,
+        1.350000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stool leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5972.77001953125,
+        1.25,
+        -15.930000305175781,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.12999999523162842,
+        1.350000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Entrance threshold",
+      "color": [
+        0.45098039507865906,
+        0.4431372582912445,
+        0.40784314274787903
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5985.7001953125,
+        0.49000000953674316,
+        -15.279999732971191,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Entrance threshold",
+      "collide": true,
+      "texture": "",
+      "material": "Slate",
+      "mesh": "",
+      "size": [
+        6,
+        0.25,
+        4
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign",
+      "color": [
+        0.9372549057006836,
+        0.8549019694328308,
+        0.6705882549285889
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.5498046875,
+        3.5500001907348633,
+        -31.649999618530273,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.8500000238418579,
+        1.100000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5984.5,
+        9.449999809265137,
+        -29.59000015258789,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        13,
+        1.899999976158142,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986,
+        7.150000095367432,
+        -11.19999885559082,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        2.200000047683716,
+        5,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign",
+      "color": [
+        0.9372549057006836,
+        0.8549019694328308,
+        0.6705882549285889
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5966.25,
+        5.849999904632568,
+        -20.139999389648438,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        3.0999999046325684,
+        3.5999999046325684,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        6.830000400543213,
+        -13.499999046325684,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.5040677785873413,
+        1.5040677785873413
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        7.050000190734863,
+        -13.499999046325684,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.5299999713897705,
+        1.5299999713897705
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        7.269999980926514,
+        -13.499999046325684,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.5040677785873413,
+        1.5040677785873413
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Lantern cap",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        8.180000305175781,
+        -13.499999046325684,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Lantern cap",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.1599999964237213,
+        0.8399999737739563,
+        0.8399999737739563
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        6.170000076293945,
+        -13.499999046325684,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.0401999950408936,
+        1.0401999950408936
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        6.390000343322754,
+        -13.499999046325684,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.2778018712997437,
+        1.2778018712997437
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        6.610000133514404,
+        -13.499999046325684,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.4234391450881958,
+        1.4234391450881958
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign",
+      "color": [
+        0.8705882430076599,
+        0.38823530077934265,
+        0.18039216101169586
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5989.57958984375,
+        7.050000190734863,
+        -36.5,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.800000011920929,
+        1.4500000476837158,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper lantern",
+      "color": [
+        0.9372549057006836,
+        0.8549019694328308,
+        0.6705882549285889
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        7.050000190734863,
+        -13.499999046325684,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper lantern",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.5499999523162842,
+        2.3499999046325684,
+        1.5499999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        7.050000190734863,
+        -36.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.5299999713897705,
+        1.5299999713897705
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        7.269999980926514,
+        -36.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.5040677785873413,
+        1.5040677785873413
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        6.390000343322754,
+        -36.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.2778018712997437,
+        1.2778018712997437
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        7.490000247955322,
+        -36.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.4234391450881958,
+        1.4234391450881958
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        6.610000133514404,
+        -36.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.4234391450881958,
+        1.4234391450881958
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        6.830000400543213,
+        -36.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.5040677785873413,
+        1.5040677785873413
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper lantern",
+      "color": [
+        0.8705882430076599,
+        0.38823530077934265,
+        0.18039216101169586
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        7.050000190734863,
+        -36.5,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper lantern",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        1.5499999523162842,
+        2.3499999046325684,
+        1.5499999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        6.170000076293945,
+        -36.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.0401999950408936,
+        1.0401999950408936
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Lantern cap",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        5.920000076293945,
+        -36.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Lantern cap",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.1599999964237213,
+        0.8399999737739563,
+        0.8399999737739563
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Lantern cap",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        8.180000305175781,
+        -36.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Lantern cap",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.1599999964237213,
+        0.8399999737739563,
+        0.8399999737739563
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Cedar corner post",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5966,
+        6.349999904632568,
+        -38.5,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Cedar corner post",
+      "collide": true,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.5199999809265137,
+        12.699999809265137,
+        0.5199999809265137
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stone foundation",
+      "color": [
+        0.45098039507865906,
+        0.4431372582912445,
+        0.40784314274787903
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5975,
+        0.39500001072883606,
+        -25,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stone foundation",
+      "collide": true,
+      "texture": "",
+      "material": "Slate",
+      "mesh": "",
+      "size": [
+        27.799999237060547,
+        0.44999998807907104,
+        19
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Shop floor",
+      "color": [
+        0.8627451062202454,
+        0.8039215803146362,
+        0.7176470756530762
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5975,
+        0.8898531794548035,
+        -25,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Shop floor",
+      "collide": true,
+      "texture": "",
+      "material": "WoodPlanks",
+      "mesh": "",
+      "size": [
+        27,
+        0.30000001192092896,
+        18.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Cedar corner post",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5984,
+        6.349999904632568,
+        -38.5,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Cedar corner post",
+      "collide": true,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.5199999809265137,
+        12.699999809265137,
+        0.5199999809265137
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Back wall",
+      "color": [
+        0.7137255072593689,
+        0.6431372761726379,
+        0.529411792755127
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5966,
+        6.349999904632568,
+        -25,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Back wall",
+      "collide": true,
+      "texture": "",
+      "material": "Plaster",
+      "mesh": "",
+      "size": [
+        27,
+        12.399999618530273,
+        0.4000000059604645
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Side wall",
+      "color": [
+        0.8627451062202454,
+        0.8039215803146362,
+        0.7176470756530762
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5975,
+        6.349999904632568,
+        -38.5,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Side wall",
+      "collide": true,
+      "texture": "",
+      "material": "WoodPlanks",
+      "mesh": "",
+      "size": [
+        0.4000000059604645,
+        12.399999618530273,
+        18
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Side wall",
+      "color": [
+        0.8627451062202454,
+        0.8039215803146362,
+        0.7176470756530762
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5975,
+        6.349999904632568,
+        -11.5,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Side wall",
+      "collide": true,
+      "texture": "",
+      "material": "WoodPlanks",
+      "mesh": "",
+      "size": [
+        0.4000000059604645,
+        12.399999618530273,
+        18
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Cedar corner post",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5966,
+        6.349999904632568,
+        -11.5,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Cedar corner post",
+      "collide": true,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.5199999809265137,
+        12.699999809265137,
+        0.5199999809265137
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Cedar corner post",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5984,
+        6.349999904632568,
+        -11.5,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Cedar corner post",
+      "collide": true,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.5199999809265137,
+        12.699999809265137,
+        0.5199999809265137
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Lintel over open shop",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5984,
+        8.649999618530273,
+        -25,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Lintel over open shop",
+      "collide": true,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        27,
+        0.550000011920929,
+        0.5
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Service counter",
+      "color": [
+        0.8627451062202454,
+        0.8039215803146362,
+        0.7176470756530762
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.5,
+        3.4000000953674316,
+        -28.510000228881836,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Service counter",
+      "collide": true,
+      "texture": "",
+      "material": "WoodPlanks",
+      "mesh": "",
+      "size": [
+        17.010000228881836,
+        0.3499999940395355,
+        4
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Counter front boards",
+      "color": [
+        0.8627451062202454,
+        0.8039215803146362,
+        0.7176470756530762
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.35009765625,
+        1.899999976158142,
+        -28.510000228881836,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Counter front boards",
+      "collide": true,
+      "texture": "",
+      "material": "WoodPlanks",
+      "mesh": "",
+      "size": [
+        17.010000228881836,
+        2.549999952316284,
+        0.20000000298023224
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Counter leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5985.10009765625,
+        1.9500000476837158,
+        -20.30500030517578,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Counter leg",
+      "collide": true,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.30000001192092896,
+        2.9000000953674316,
+        0.30000001192092896
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Tiled shop roof",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5975,
+        14.649999618530273,
+        -25,
+        -1,
+        0,
+        -8.742277657347586e-8,
+        0,
+        1,
+        0,
+        8.742277657347586e-8,
+        0,
+        -1
+      ],
+      "transparency": 0,
+      "name": "Tiled shop roof",
+      "collide": false,
+      "texture": "",
+      "material": "Plaster",
+      "mesh": "rbxassetid://76908057325127",
+      "size": [
+        22,
+        4.599999904632568,
+        32
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Exposed roof beam",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5974,
+        12.34999942779541,
+        -25,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Exposed roof beam",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        27.799999237060547,
+        0.2800000011920929,
+        0.30000001192092896
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Exposed roof beam",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5982,
+        12.34999942779541,
+        -25,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Exposed roof beam",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        27.799999237060547,
+        0.2800000011920929,
+        0.30000001192092896
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Exposed roof beam",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5978,
+        12.34999942779541,
+        -25,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Exposed roof beam",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        27.799999237060547,
+        0.2800000011920929,
+        0.30000001192092896
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Exposed roof beam",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5970,
+        12.34999942779541,
+        -25,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Exposed roof beam",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        27.799999237060547,
+        0.2800000011920929,
+        0.30000001192092896
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Counter leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5985.10009765625,
+        1.9500000476837158,
+        -36.71500015258789,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Counter leg",
+      "collide": true,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.30000001192092896,
+        2.9000000953674316,
+        0.30000001192092896
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Food display.trays.trays_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5986.5,
+        3.887004852294922,
+        -24.42759895324707,
+        0.0799146518111229,
+        0,
+        -0.9968016147613525,
+        0,
+        1,
+        0,
+        0.9968018531799316,
+        0,
+        0.0799146369099617
+      ],
+      "transparency": 0,
+      "name": "trays_geom",
+      "collide": false,
+      "texture": "rbxassetid://100048722532365",
+      "material": "Plastic",
+      "mesh": "rbxassetid://132236730125453",
+      "size": [
+        5.999999523162842,
+        0.624009370803833,
+        2.8000690937042236
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Food display.food.food_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5986.49462890625,
+        4.235039234161377,
+        -24.48237419128418,
+        0.0799146518111229,
+        0,
+        -0.9968016147613525,
+        0,
+        1,
+        0,
+        0.9968018531799316,
+        0,
+        0.0799146369099617
+      ],
+      "transparency": 0,
+      "name": "food_geom",
+      "collide": false,
+      "texture": "rbxassetid://125536770090823",
+      "material": "Plastic",
+      "mesh": "rbxassetid://79128898416320",
+      "size": [
+        4.728882312774658,
+        0.5562283992767334,
+        2.0969440937042236
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Food display.sauce cup.sauce cup_geom",
+      "color": [
+        0.6392157077789307,
+        0.6352941393852234,
+        0.6470588445663452
+      ],
+      "class": "MeshPart",
+      "anchored": true,
+      "cf": [
+        5985.7021484375,
+        4.304101943969727,
+        -26.24142074584961,
+        0.0799146518111229,
+        0,
+        -0.9968016147613525,
+        0,
+        1,
+        0,
+        0.9968018531799316,
+        0,
+        0.0799146369099617
+      ],
+      "transparency": 0,
+      "name": "sauce cup_geom",
+      "collide": false,
+      "texture": "rbxassetid://137378815368836",
+      "material": "Plastic",
+      "mesh": "rbxassetid://89747021153943",
+      "size": [
+        1.4613080024719238,
+        0.4417962431907654,
+        0.9070738554000854
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign",
+      "color": [
+        0.9372549057006836,
+        0.8549019694328308,
+        0.6705882549285889
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.52001953125,
+        2.3499999046325684,
+        -33.27280044555664,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        4.5,
+        1.2000000476837158,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Pot on rear cooking bench",
+      "color": [
+        0.250980406999588,
+        0.2666666805744171,
+        0.2666666805744171
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5969.5,
+        4.050000190734863,
+        -27.899999618530273,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Pot on rear cooking bench",
+      "collide": false,
+      "texture": "",
+      "material": "Metal",
+      "mesh": "",
+      "size": [
+        1.100000023841858,
+        1.600000023841858,
+        1.600000023841858
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Pot on rear cooking bench",
+      "color": [
+        0.250980406999588,
+        0.2666666805744171,
+        0.2666666805744171
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5969.5,
+        4.050000190734863,
+        -30.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Pot on rear cooking bench",
+      "collide": false,
+      "texture": "",
+      "material": "Metal",
+      "mesh": "",
+      "size": [
+        1.100000023841858,
+        1.600000023841858,
+        1.600000023841858
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign",
+      "color": [
+        0.9372549057006836,
+        0.8549019694328308,
+        0.6705882549285889
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5989.57958984375,
+        7.050000190734863,
+        -13.499999046325684,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.800000011920929,
+        1.4500000476837158,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Lantern cord",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        8.65000057220459,
+        -13.499999046325684,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Lantern cord",
+      "collide": false,
+      "texture": "",
+      "material": "Fabric",
+      "mesh": "",
+      "size": [
+        0.03999999910593033,
+        1,
+        0.03999999910593033
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Broth in bowl",
+      "color": [
+        0.6274510025978088,
+        0.4000000059604645,
+        0.18431372940540314
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        4.139999866485596,
+        -30.799999237060547,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Broth in bowl",
+      "collide": false,
+      "texture": "",
+      "material": "SmoothPlastic",
+      "mesh": "",
+      "size": [
+        0.05999999865889549,
+        1.2200000286102295,
+        1.2200000286102295
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Ramen bowl",
+      "color": [
+        0.9372549057006836,
+        0.8549019694328308,
+        0.6705882549285889
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        3.9000000953674316,
+        -30.799999237060547,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Ramen bowl",
+      "collide": false,
+      "texture": "",
+      "material": "Glass",
+      "mesh": "",
+      "size": [
+        0.44999998807907104,
+        1.4500000476837158,
+        1.4500000476837158
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Pot on rear cooking bench",
+      "color": [
+        0.250980406999588,
+        0.2666666805744171,
+        0.2666666805744171
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5969.5,
+        4.050000190734863,
+        -25.30000114440918,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Pot on rear cooking bench",
+      "collide": false,
+      "texture": "",
+      "material": "Metal",
+      "mesh": "",
+      "size": [
+        1.100000023841858,
+        1.600000023841858,
+        1.600000023841858
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Kitchen preparation bench",
+      "color": [
+        0.8627451062202454,
+        0.8039215803146362,
+        0.7176470756530762
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5969.5,
+        3.450000047683716,
+        -28.239999771118164,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Kitchen preparation bench",
+      "collide": true,
+      "texture": "",
+      "material": "WoodPlanks",
+      "mesh": "",
+      "size": [
+        15.119999885559082,
+        0.30000001192092896,
+        3.299999952316284
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Small cooking pot",
+      "color": [
+        0.24705882370471954,
+        0.25882354378700256,
+        0.2549019753932953
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5985.89990234375,
+        3.950000047683716,
+        -31.209999084472656,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Small cooking pot",
+      "collide": false,
+      "texture": "",
+      "material": "Metal",
+      "mesh": "",
+      "size": [
+        0.8999999761581421,
+        1.350000023841858,
+        1.350000023841858
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Handwritten shop sign",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.89990234375,
+        2.1500000953674316,
+        -18.520000457763672,
+        0.00818710494786501,
+        0.15622007846832275,
+        -0.9876883625984192,
+        0.05169161781668663,
+        0.9863347411155701,
+        0.15643447637557983,
+        0.9986295104026794,
+        -0.0523359514772892,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Handwritten shop sign",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        2.5999999046325684,
+        3,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Menu board leg",
+      "color": [
+        0.37254902720451355,
+        0.26274511218070984,
+        0.18431372940540314
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.3642578125,
+        0.3671836853027344,
+        -19.324562072753906,
+        0.00818710494786501,
+        0.15622007846832275,
+        -0.9876883625984192,
+        0.05169161781668663,
+        0.9863347411155701,
+        0.15643447637557983,
+        0.9986295104026794,
+        -0.0523359514772892,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Menu board leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.11999999731779099,
+        2.0999999046325684,
+        0.11999999731779099
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Menu board leg",
+      "color": [
+        0.37254902720451355,
+        0.26274511218070984,
+        0.18431372940540314
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.37939453125,
+        0.46022868156433105,
+        -17.527029037475586,
+        0.00818710494786501,
+        0.15622007846832275,
+        -0.9876883625984192,
+        0.05169161781668663,
+        0.9863347411155701,
+        0.15643447637557983,
+        0.9986295104026794,
+        -0.0523359514772892,
+        -4.3173230324100587e-8
+      ],
+      "transparency": 0,
+      "name": "Menu board leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.11999999731779099,
+        2.0999999046325684,
+        0.11999999731779099
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Round stool seat",
+      "color": [
+        0.37254902720451355,
+        0.26274511218070984,
+        0.18431372940540314
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5975.7998046875,
+        2.049999952316284,
+        -16.360000610351562,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Round stool seat",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.25,
+        1.4500000476837158,
+        1.4500000476837158
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stool leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5977.97021484375,
+        1.25,
+        -15.930000305175781,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.12999999523162842,
+        1.350000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stool leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5977.97021484375,
+        1.25,
+        -16.790000915527344,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.12999999523162842,
+        1.350000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Round stool seat",
+      "color": [
+        0.37254902720451355,
+        0.26274511218070984,
+        0.18431372940540314
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5978.39990234375,
+        2.049999952316284,
+        -16.360000610351562,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Round stool seat",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.25,
+        1.4500000476837158,
+        1.4500000476837158
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stool leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5978.830078125,
+        1.25,
+        -15.930000305175781,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.12999999523162842,
+        1.350000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        7.490000247955322,
+        -13.499999046325684,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.4234391450881958,
+        1.4234391450881958
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        7.930000305175781,
+        -13.499999046325684,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.0401999950408936,
+        1.0401999950408936
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Paper rib",
+      "color": [
+        0.47058823704719543,
+        0.26274511218070984,
+        0.12941177189350128
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5988.7998046875,
+        7.710000038146973,
+        -13.499999046325684,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Paper rib",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.027000000700354576,
+        1.2778018712997437,
+        1.2778018712997437
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Bamboo chopstick",
+      "color": [
+        0.7960784435272217,
+        0.6901960968971252,
+        0.4627451002597809
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        4.220000267028809,
+        -30.619998931884766,
+        0.29552018642425537,
+        0,
+        -0.9553365111351013,
+        0,
+        1,
+        0,
+        0.9553365111351013,
+        0,
+        0.29552018642425537
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.054999999701976776,
+        0.054999999701976776,
+        1.5499999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Ramen bowl",
+      "color": [
+        0.9372549057006836,
+        0.8549019694328308,
+        0.6705882549285889
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        3.9000000953674316,
+        -26.19999885559082,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Ramen bowl",
+      "collide": false,
+      "texture": "",
+      "material": "Glass",
+      "mesh": "",
+      "size": [
+        0.44999998807907104,
+        1.4500000476837158,
+        1.4500000476837158
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Bamboo chopstick",
+      "color": [
+        0.7960784435272217,
+        0.6901960968971252,
+        0.4627451002597809
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        4.220000267028809,
+        -28.31999969482422,
+        0.29552018642425537,
+        0,
+        -0.9553365111351013,
+        0,
+        1,
+        0,
+        0.9553365111351013,
+        0,
+        0.29552018642425537
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.054999999701976776,
+        0.054999999701976776,
+        1.5499999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Bamboo chopstick",
+      "color": [
+        0.7960784435272217,
+        0.6901960968971252,
+        0.4627451002597809
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        4.220000267028809,
+        -30.739999771118164,
+        0.29552018642425537,
+        0,
+        -0.9553365111351013,
+        0,
+        1,
+        0,
+        0.9553365111351013,
+        0,
+        0.29552018642425537
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.054999999701976776,
+        0.054999999701976776,
+        1.5499999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Broth in bowl",
+      "color": [
+        0.6274510025978088,
+        0.4000000059604645,
+        0.18431372940540314
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        4.139999866485596,
+        -28.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Broth in bowl",
+      "collide": false,
+      "texture": "",
+      "material": "SmoothPlastic",
+      "mesh": "",
+      "size": [
+        0.05999999865889549,
+        1.2200000286102295,
+        1.2200000286102295
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Ramen bowl",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        3.9000000953674316,
+        -28.5,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Ramen bowl",
+      "collide": false,
+      "texture": "",
+      "material": "Glass",
+      "mesh": "",
+      "size": [
+        0.44999998807907104,
+        1.4500000476837158,
+        1.4500000476837158
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stool leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5976.22998046875,
+        1.25,
+        -15.930000305175781,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.12999999523162842,
+        1.350000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stool leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5975.3701171875,
+        1.25,
+        -16.790000915527344,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.12999999523162842,
+        1.350000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Bamboo chopstick",
+      "color": [
+        0.7960784435272217,
+        0.6901960968971252,
+        0.4627451002597809
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        4.220000267028809,
+        -28.439998626708984,
+        0.29552018642425537,
+        0,
+        -0.9553365111351013,
+        0,
+        1,
+        0,
+        0.9553365111351013,
+        0,
+        0.29552018642425537
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.054999999701976776,
+        0.054999999701976776,
+        1.5499999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stool leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5973.6298828125,
+        1.25,
+        -16.790000915527344,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.12999999523162842,
+        1.350000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Round stool seat",
+      "color": [
+        0.37254902720451355,
+        0.26274511218070984,
+        0.18431372940540314
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5973.2001953125,
+        2.049999952316284,
+        -16.360000610351562,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Round stool seat",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.25,
+        1.4500000476837158,
+        1.4500000476837158
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stool leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5976.22998046875,
+        1.25,
+        -16.790000915527344,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.12999999523162842,
+        1.350000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Bamboo chopstick",
+      "color": [
+        0.7960784435272217,
+        0.6901960968971252,
+        0.4627451002597809
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        4.220000267028809,
+        -23.719999313354492,
+        0.29552018642425537,
+        0,
+        -0.9553365111351013,
+        0,
+        1,
+        0,
+        0.9553365111351013,
+        0,
+        0.29552018642425537
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.054999999701976776,
+        0.054999999701976776,
+        1.5499999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stool leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5978.830078125,
+        1.25,
+        -16.790000915527344,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.12999999523162842,
+        1.350000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Stool leg",
+      "color": [
+        0.1725490242242813,
+        0.12941177189350128,
+        0.10980392247438431
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5975.3701171875,
+        1.25,
+        -15.930000305175781,
+        -4.371138828673793e-8,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Stool leg",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.12999999523162842,
+        1.350000023841858,
+        0.12999999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Bamboo chopstick",
+      "color": [
+        0.7960784435272217,
+        0.6901960968971252,
+        0.4627451002597809
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        4.220000267028809,
+        -26.020000457763672,
+        0.29552018642425537,
+        0,
+        -0.9553365111351013,
+        0,
+        1,
+        0,
+        0.9553365111351013,
+        0,
+        0.29552018642425537
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.054999999701976776,
+        0.054999999701976776,
+        1.5499999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Bamboo chopstick",
+      "color": [
+        0.7960784435272217,
+        0.6901960968971252,
+        0.4627451002597809
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        4.220000267028809,
+        -26.139999389648438,
+        0.29552018642425537,
+        0,
+        -0.9553365111351013,
+        0,
+        1,
+        0,
+        0.9553365111351013,
+        0,
+        0.29552018642425537
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.054999999701976776,
+        0.054999999701976776,
+        1.5499999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Broth in bowl",
+      "color": [
+        0.6274510025978088,
+        0.4000000059604645,
+        0.18431372940540314
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        4.139999866485596,
+        -23.899999618530273,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Broth in bowl",
+      "collide": false,
+      "texture": "",
+      "material": "SmoothPlastic",
+      "mesh": "",
+      "size": [
+        0.05999999865889549,
+        1.2200000286102295,
+        1.2200000286102295
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Bamboo chopstick",
+      "color": [
+        0.7960784435272217,
+        0.6901960968971252,
+        0.4627451002597809
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        4.220000267028809,
+        -23.84000015258789,
+        0.29552018642425537,
+        0,
+        -0.9553365111351013,
+        0,
+        1,
+        0,
+        0.9553365111351013,
+        0,
+        0.29552018642425537
+      ],
+      "transparency": 0,
+      "name": "Bamboo chopstick",
+      "collide": false,
+      "texture": "",
+      "material": "Wood",
+      "mesh": "",
+      "size": [
+        0.054999999701976776,
+        0.054999999701976776,
+        1.5499999523162842
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Ramen bowl",
+      "color": [
+        0.16470588743686676,
+        0.25882354378700256,
+        0.30980393290519714
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        3.9000000953674316,
+        -23.899999618530273,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Ramen bowl",
+      "collide": false,
+      "texture": "",
+      "material": "Glass",
+      "mesh": "",
+      "size": [
+        0.44999998807907104,
+        1.4500000476837158,
+        1.4500000476837158
+      ]
+    },
+    {
+      "path": "Workspace.JapanMap.Outdoor market revision.Sushi bar.Broth in bowl",
+      "color": [
+        0.6274510025978088,
+        0.4000000059604645,
+        0.18431372940540314
+      ],
+      "class": "Part",
+      "anchored": true,
+      "cf": [
+        5986.7998046875,
+        4.139999866485596,
+        -26.19999885559082,
+        1.910685465164705e-15,
+        4.371138828673793e-8,
+        -1,
+        1,
+        -4.371138828673793e-8,
+        0,
+        -4.371138828673793e-8,
+        -1,
+        -4.371138828673793e-8
+      ],
+      "transparency": 0,
+      "name": "Broth in bowl",
+      "collide": false,
+      "texture": "",
+      "material": "SmoothPlastic",
+      "mesh": "",
+      "size": [
+        0.05999999865889549,
+        1.2200000286102295,
+        1.2200000286102295
+      ]
+    }
+  ]
+}

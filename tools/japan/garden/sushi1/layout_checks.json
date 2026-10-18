@@ -1,0 +1,14 @@
+{
+  "status": "BLENDER MODEL ONLY; Studio import and Play verification pending",
+  "meshes_with_markers": 192,
+  "triangles": 105438,
+  "highest_mesh_triangles": 8640,
+  "six_seats_aligned_to_cushion_tops": true,
+  "grounded_steps": true,
+  "staff_aisle_studs": 4.300000190734863,
+  "front_aisle_studs": 4.417508220672607,
+  "right_side_route_studs": 5.664999999999999,
+  "noren_bottom_above_floor_origin": 6.608939170837402,
+  "roundtrip": "all names and bounds within .003; see Blender log",
+  "real_walk_and_seat_tests": "PENDING IMPORT"
+}

@@ -1,0 +1,51 @@
+SUSHI BAR 1 / JAPAN KIT34
+Status: BLENDER MODEL PREVIEW AND IMPORT KIT ONLY. NOT IN STUDIO. NOT INSTALLED, SAVED OR PUBLISHED.
+
+Requested by Shannon: build the existing sushi shop into a proper sushi bar.
+Inspected the actual shop and both supplied screenshots. Existing building is27x18 studs,
+front facing world+X; the old service counter and orange crates sit outside the frontage.
+Original shell, tiled roof, main Sushi bar sign and all164 shop-back models remain intact.
+
+References (read and counter photo visually inspected Oct18 2026):
+https://sushi-tanji.com/en/ - timber counter with customer seats and separate chef workspace.
+https://sushi-tanji.com/wp-content/uploads/2025/08/DSC9629-1024x683.jpg
+https://www.gourmet.gotokyo.org/article/69.html - Edomae counter service, nigiri, tea and individual settings.
+Original stylised mesh design, no restaurant branding/art copied.
+
+Build:
+- Six backed wooden chairs with indigo cushions, seat-top height1.99 above local floor origin.
+- Warm hinoki-colour counter with dark slatted timber base and brass foot rail.
+- Small ingredient case: salmon, tuna, white fish, egg and shrimp shapes; serving sushi is on guest dishes.
+- Individual sushi plates, chopsticks/rests, tea and soy dishes, with modest rice-grain detail.
+- Chef working aisle, rear preparation/storage bench, rice tub/paddle, rolling mat, dish stacks and sink/faucet.
+- Asymmetrical crockery shelves, Japanese menu strips with English captions, original framed fish motif.
+- Three paper pendants, softly curved indigo noren, slim front lattice panels and one entry lantern.
+- Broad grounded entrance steps. No merchandise or seating on the street.
+- Restrained wide dark floorboards and warm walls. Blender grain is an approximation of Studio Wood.
+
+Files:
+out/japan_kit34_sushi_bar1.fbx - one combined import, includes three alignment markers.
+out/manifest.json - canonical names, material colours, bounds and triangles; origin5984,1.03985318,-25, yaw90.
+survey.json - read-only original sushi inventory.
+gen_sushi1.py - original generator; standalone Blender.
+build_installers.py - generates guarded scripts from manifest.
+prepare_sushi1.lua - AFTER Shannon imports and asks to anchor/prepare, stopped Edit only.
+install_sushi1.lua - Play Server preview by default. Edit requires SUSHI1_ALLOW_EDIT=true AND Shannon's explicit yes.
+
+Import:
+Shannon uses File > Import 3D on japan_kit34_sushi_bar1.fbx.
+After import, anchor/store all sources BEFORE any Play. Preparation retains raw import as sushi_bar1_raw,
+and creates checked, anchored clean source sushi_bar1 in ServerStorage.JapanGardenKit.
+The script rejects wrong scale, missing/duplicate meshes, scripts, wrong bounds, and previously stored source.
+
+Next:
+1. Actual Play Server preview using install_sushi1.lua; set mesh collision fidelity separately if needed.
+2. Check every asset loaded, all six seats align with cushion tops, avatar walking/entry/head clearance,
+   chef route, near walls and camera, labels in actual lighting; take close natural Play pictures.
+3. Stop Play; verify original Edit shop unchanged. Ask Shannon for approval of actual pictures.
+4. Only after approval install same version in Edit, compare canonical preview, fresh Play without installer,
+   Save to Roblox with Notes. Shannon publishes. No direct DataStore writes, no other shop builders.
+
+Installation backs up only retired sushi fixtures to HudBackup.SushiBar1Originals. It checks every unrelated
+Japan instance remains in the same parent and preserves every other part's geometry and appearance.
+No attendants, purchases, food rewards or new commerce scripts are included.
