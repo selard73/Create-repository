@@ -1,5 +1,8 @@
 # Handoff to Codex - 1001 Squirrels, Japan map (Oct 17 2026, 05:30 UTC)
 
+## Current cat cafe roof fix (Oct 19)
+The four original cedar corner posts and two matching front facade beams were extended to top Y20.25 so they tuck under the existing tiled roof. Saved in Studio with Notes, not published by Codex. Shannon checks after publishing. Guarded replay source: tools/japan/garden/cafe_roof_supports1.lua.
+
 ## Shannon's Oct 18 workflow update (supersedes standing rules 1 and 2 below)
 For a mechanical change such as the 44th-squirrel boat invitation, play-test to confirm it works before installing. For a visual change, install and save first; Shannon checks it after she publishes. She still publishes herself. Do not keep asking for preview approval. The no-publish, no-DataStore-write, no-extra-Studio, real-mesh, reference/style, and announced-avatar-movement rules remain.
 The ramen counter and stools face the street; Shannon stopped the glass-door proposal. Do not add a glass door across the open counter. The rejected vertical OPEN plaque was removed from the live scene.

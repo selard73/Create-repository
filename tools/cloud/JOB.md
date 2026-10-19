@@ -5461,3 +5461,11 @@ QQ RAMEN OPEN SIGN RAISED1: original red bilingual sign mounted on the side-entr
 - Floor topY1.04: bottomY7.75 leaves6.71 studs of headroom, about.41 beyond a6.3-stud avatar. Lantern centerZ23.8 is clear of sign nearZ26.95. Original low sign cloned as SideEntranceSignBeforeRaised1 in the backup; rejected vertical plaque remains in backup. No new visible geometry.
 - Inspected matching natural street views before/after in Studio. Final lettering and position looked readable and attached to the beam. Studio save with Notes confirmed2026-10-19T02:55:05.728Z, publishType2, CreatorOutput Saved new changes in 1001 Squirrels to Roblox. Version title Raise ramen OPEN sign above side entrance. Shannon has not published this version.
 - Canonical reinstaller: tools/japan/garden/shop_cleanup2/raise_ramen_open_sign1.lua. Current Edit attribute EntranceSignVersion=raised_red1; do not rerun installer on saved state.
+
+
+## Cat cafe roof corner posts joined (Codex solo, Oct 18/19 2026) - SAVED; NOT PUBLISHED
+Shannon's screenshot showed a visible gap between a side cedar post and the upper tiled roof. Surveyed the four existing posts and roof mesh in stopped Edit. Each post topped at Y19.90; roof underside at those four centers was Y19.918-19.981.
+QQ CAFE ROOF SUPPORTS1: four cedar corner posts and two matching front beams extended from top Y19.90 to Y20.25; bases and all other cafe geometry unchanged
+- Existing timber pieces only: each base stays at its original height; no new geometry, door, interior or other shop changed. The four post tops now tuck 0.269-0.332 studs into the roof mesh. Inspected the roof corner in Studio. Original sizes/centers stored on each piece as attributes; Cafe RoofSupportJoinVersion=1.
+- Saved to Roblox with Notes; Studio log at 2026-10-19T03:12:03.688Z confirms CreatorOutput Saved new changes in 1001 Squirrels to Roblox, publishType2. Version title: Join cat cafe roof supports to roof. Shannon publishes and checks the live appearance. Codex did not publish or write DataStores.
+- Replayable guarded source: tools/japan/garden/cafe_roof_supports1.lua. Do not rerun against the saved scene.
