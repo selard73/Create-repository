@@ -3,6 +3,7 @@
 ## Shannon's Oct 18 workflow update (supersedes standing rules 1 and 2 below)
 For a mechanical change such as the 44th-squirrel boat invitation, play-test to confirm it works before installing. For a visual change, install and save first; Shannon checks it after she publishes. She still publishes herself. Do not keep asking for preview approval. The no-publish, no-DataStore-write, no-extra-Studio, real-mesh, reference/style, and announced-avatar-movement rules remain.
 The ramen counter and stools face the street; Shannon stopped the glass-door proposal. Do not add a glass door across the open counter. The rejected vertical OPEN plaque was removed from the live scene.
+The original red OPEN sign was later restored above the side entry, mounted on its timber lintel at Y8.30 with bottom Y7.75; it is saved for Shannon to publish. No door.
 
 
 Shannon (Roblox user selard73 / Studio account CozyGameMode, display name SelBell, user id 9611145467) builds "1001 Squirrels" on

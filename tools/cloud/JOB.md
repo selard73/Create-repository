@@ -5452,3 +5452,12 @@ QQ CAFE CHAIR SLATS1: six real wood mesh extensions join the back slats to the c
 - Cat café chair gap confirmed from a low inside view. Three slat tips per chair now overlap the cushion edge; inspected the matching after view. Source reuses the existing real chair rail mesh.
 - Save to Roblox with Notes completed 2026-10-19T02:38:59.526Z, publishType2, CreatorOutput confirmed Saved new changes in 1001 Squirrels to Roblox. Version title: Boat invite and Japan shop/cafe fixes. Shannon has not published this saved version. No direct DataStore write.
 - Current source: tools/boatinvite/priority2 and tools/japan/garden/cafe_chair_slats1.lua plus shop_cleanup2/install_rice_crates2.lua. Imported craftshop2 remains stored, not installed. Book & Stationery and Tea Merchant remain uninstalled. Pavement signs remain pending.
+
+
+## Original ramen OPEN sign raised over the entry (Codex solo, Oct 18/19 2026) - SAVED; NOT PUBLISHED
+Shannon proposed moving the existing red OPEN sign above players' heads at the open side entrance. Retained the open street-facing ramen counter and stools; no glass door or wall added.
+QQ RAMEN OPEN SIGN RAISED1: original red bilingual sign mounted on the side-entry lintel, bottom 7.75; clear of player heads and lantern; rejected wooden plaque stays in backup
+- Original red Part and SurfaceGui restored from HudBackup.RamenOpenSign2, resized3.2x1.1, centered(5987.82,8.30,26.95), mounted flush against lintel. Text changed from two lines to one readable line, 営業中   OPEN. TextScaled restored after an initial small-text render was caught and corrected.
+- Floor topY1.04: bottomY7.75 leaves6.71 studs of headroom, about.41 beyond a6.3-stud avatar. Lantern centerZ23.8 is clear of sign nearZ26.95. Original low sign cloned as SideEntranceSignBeforeRaised1 in the backup; rejected vertical plaque remains in backup. No new visible geometry.
+- Inspected matching natural street views before/after in Studio. Final lettering and position looked readable and attached to the beam. Studio save with Notes confirmed2026-10-19T02:55:05.728Z, publishType2, CreatorOutput Saved new changes in 1001 Squirrels to Roblox. Version title Raise ramen OPEN sign above side entrance. Shannon has not published this version.
+- Canonical reinstaller: tools/japan/garden/shop_cleanup2/raise_ramen_open_sign1.lua. Current Edit attribute EntranceSignVersion=raised_red1; do not rerun installer on saved state.
