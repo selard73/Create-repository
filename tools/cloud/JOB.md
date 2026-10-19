@@ -5433,3 +5433,22 @@ Shannon explicitly answered Leave its replacement for later for the former umbre
 -Studio reconnected as2cb11f0c-24c8-49cb-ae0e-2bc360eb2a40, same1001Squirrels place. Read-only check confirms original lantern266/umbrella229 parts, bookshop1 source119, no looseC1/C2 kits,HttpEnabled=false. No Studio scene write, Save, Publish or DataStore write. Earlier attempt to record the deferred-premises choice stopped at a line-ending guard without edits; corrected and included in this update.
 -Desktop Japan garden kit/japan_kit36_lanterns_umbrellas2.fbx is the CURRENT import; instructions updated. Earlier craftshop1 remains historical and is marked superseded. Shannon was told to hold off the old file.
 NEXT: Import revised kit36 ending umbrellas2.fbx. Then anchor/store before actual SERVER preview, check assets/paint/sign/lights/glass/walking, show close Play pictures and install/save only on her yes. Former umbrella replacement explicitly deferred. Bookshop35/Pottery stall/Tea Merchant approvals remain separate and pending.
+
+
+## Boat priority, rice crates, pottery label and cafe chair slats (Codex solo, Oct 18/19 2026) - SAVED; NOT PUBLISHED
+Shannon changed the workflow: play-test mechanics first, then install; install/save visuals first, then she checks after publishing. This supersedes the old preview/yes rule.
+QQ CRAFTSHOP2 PREPARED: 336 real mesh sources anchored and stored; 1 identical raw imports retained; JapanMap unchanged
+QQ BOAT INVITE PRIORITY2: 44th find opens immediately above all other game windows; five-second boat camera; Take the boat boards via existing validated travel
+QQ BOAT INVITE PRIORITY2: late profile load and returning eligible players covered; map/collection stale flags released; originals backed up
+QQ BOAT INVITE PRIORITY2 STATUS: EDIT INSTALLED; NOT PUBLISHED
+QQ POTTERY STALL1: one visible label changed to 陶器  Pottery stall; original label backed up; geometry and internal model identifier retained
+QQ POTTERY STALL1 STATUS: EDIT INSTALLED; NOT PUBLISHED
+QQ RICE CRATES2: display1 moved -2.587 X / 0.125 Y; counter clearance 0.160 studs; all fruit and leaves moved together
+QQ RICE CRATES2: display2 moved -2.162 X / 0.075 Y; counter clearance 0.160 studs; all fruit and leaves moved together
+QQ RICE CRATES2: two original complete produce models repositioned; countertop stock and all other shop parts retained
+QQ CAFE CHAIR SLATS1: six real wood mesh extensions join the back slats to the cushions on both café chairs; chairs and seats otherwise unchanged
+- Boat test in actual Play: with map open, count43->44 showed the modal in about.006s; camera viewed the real boat for5.023s, avatar position unchanged. Returning eligible account also prompted; other panel could not steal priority. Desktop Take the boat click seated owner on moving boat. Phone landscape layout inspected and text fitted; mobile touch click was not verified. Owner Play has canSave=false and did not write live progress.
+- Old floating ramen OPEN sign and rejected wooden plaque are in HudBackup.RamenOpenSign2. Shannon pointed out that counter and stools sit outside and stopped the proposed glass door; no door was installed. Do not restore the rejected plaque.
+- Cat café chair gap confirmed from a low inside view. Three slat tips per chair now overlap the cushion edge; inspected the matching after view. Source reuses the existing real chair rail mesh.
+- Save to Roblox with Notes completed 2026-10-19T02:38:59.526Z, publishType2, CreatorOutput confirmed Saved new changes in 1001 Squirrels to Roblox. Version title: Boat invite and Japan shop/cafe fixes. Shannon has not published this saved version. No direct DataStore write.
+- Current source: tools/boatinvite/priority2 and tools/japan/garden/cafe_chair_slats1.lua plus shop_cleanup2/install_rice_crates2.lua. Imported craftshop2 remains stored, not installed. Book & Stationery and Tea Merchant remain uninstalled. Pavement signs remain pending.

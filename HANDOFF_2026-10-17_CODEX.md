@@ -1,16 +1,18 @@
 # Handoff to Codex - 1001 Squirrels, Japan map (Oct 17 2026, 05:30 UTC)
 
+## Shannon's Oct 18 workflow update (supersedes standing rules 1 and 2 below)
+For a mechanical change such as the 44th-squirrel boat invitation, play-test to confirm it works before installing. For a visual change, install and save first; Shannon checks it after she publishes. She still publishes herself. Do not keep asking for preview approval. The no-publish, no-DataStore-write, no-extra-Studio, real-mesh, reference/style, and announced-avatar-movement rules remain.
+The ramen counter and stools face the street; Shannon stopped the glass-door proposal. Do not add a glass door across the open counter. The rejected vertical OPEN plaque was removed from the live scene.
+
+
 Shannon (Roblox user selard73 / Studio account CozyGameMode, display name SelBell, user id 9611145467) builds "1001 Squirrels" on
 Roblox (placeId 117372258657114, universe 10766369535). Claude's credits are out until Wednesday Oct 21 ~11:00 UTC; Codex takes over
 the Japan map until then. This file is the whole picture. Read it, then `tools/cloud/JOB.md` (every job's result, newest at the end)
 and `HANDOFF_2026-10-17_RUNNER7.md` / `HANDOFF_2026-10-16_RUNNER7.md` (the two previous days).
 
-## Her standing rules (follow exactly)
-1. **Ask before every Studio edit.** Read-only probes and play-test previews need no ask. "Do what you think is best" covers the batch
-   she named, nothing more.
-2. **Preview first, with pictures, then install only on her yes.** Preview = run the installer on the play-test SERVER datamodel (it is
-   discarded on stop), take close, low pictures of the exact thing from a natural camera, judge them yourself as she would, fix before
-   she has to say so. Never call a look "fixed". Then the same script in Edit on her yes.
+## Her standing rules (current workflow)
+1. **Visual changes:** install and save them in Studio; Shannon checks after she publishes.
+2. **Mechanical changes:** confirm the behavior in a play test before installing and saving.
 3. **Never publish** - she presses Alt+P, then restarts servers. **Never write DataStores. Never launch Studio** (a second instance
    freezes it). Never move her avatar/camera without saying so first.
 4. **Japan = real meshes only, stylised like the France / Porto maps; the grass stays as it is; Meshy only as a last resort.** No builds
