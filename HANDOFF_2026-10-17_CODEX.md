@@ -1,5 +1,8 @@
 # Handoff to Codex - 1001 Squirrels, Japan map (Oct 17 2026, 05:30 UTC)
 
+## Current popup readability fix (Oct 18 EDT)
+The badge, mail, locked-area gate and sea-glass notice cards now use readable cream medium-weight text with gold borders on their cards instead of around letters. Saved in Studio with Notes, not published by Codex. Original client Scripts are backed up in HudBackup.PopupReadability1Originals; guarded replay source tools/ui/popup_readability1.lua. Shannon publishes and checks.
+
 ## Current cat cafe roof fix (Oct 19)
 The four original cedar corner posts and two matching front facade beams were extended to top Y20.25 so they tuck under the existing tiled roof. Saved in Studio with Notes, not published by Codex. Shannon checks after publishing. Guarded replay source: tools/japan/garden/cafe_roof_supports1.lua.
 
