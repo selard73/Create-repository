@@ -1,0 +1,4 @@
+-- phone21b (Oct 20 2026): the Send-while-typing button never got its tap in the iPhone XR test - the tap that puts the
+-- keyboard away is used up by the text box (UIS.InputBegan saw it, gameProcessed, at the button's spot). Catch any tap on
+-- the button (6 px margin) through UserInputService too; one send per tap (the sending flag and a 1 s guard).
+-- (Installed from the command bar on top of phone21; see the conversation log for the exact replacements.)

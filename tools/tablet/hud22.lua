@@ -1,0 +1,5 @@
+-- hud22 (Oct 20 2026): Shannon: "we need to rearrange the icons on the phone, the gift icon should be at the right bottom of the
+-- stack the passport should go where the gift is now, the squirrel and map icons should move up one place". PHONES only:
+-- GiftsClient puts the Gift button in the HUD column with LayoutOrder 10 (bottom) and moves Bar.Passport into the HudBar at
+-- the Gift's old spot (AnchorPoint 1,0 at (1, COLUMN_X, 0, bar top)). Tablets keep acorns / Passport / squirrels / map with
+-- the Gift beside the top. Backup: HudBackup.GiftsClient_pre_hud22. (Installed from the command bar.)
