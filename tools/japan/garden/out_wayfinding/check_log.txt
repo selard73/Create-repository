@@ -1,0 +1,4 @@
+empties: map_board, nobori_banner, sign_finger, sign_post
+shot prev_wayfinding_all.png
+shot prev_wayfinding_post.png
+CHECK_DONE

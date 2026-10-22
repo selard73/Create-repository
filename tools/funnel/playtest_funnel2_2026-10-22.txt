@@ -1,0 +1,31 @@
+funnel2 preview, Studio play test, Oct 22 2026 (nothing is sent from Studio; these are the lines it prints instead).
+Test player wiped to 0 finds and marked New (ForceNew), device reported as Tablet; 10 forest finds, walk into the Rue,
+10 Rue finds, walk into the Chateau, 12 Chateau finds, then leave (PlayerRemoving's handler run by hand).
+
+Funnel: step 1 Joined for CozyGameMode (Tablet, New)
+Stats: SquirrelFound Forest: Mr. Holmes Squirrel = 1 (Device - Tablet, Cohort - New)
+Funnel: step 2 First squirrel
+Stats: SquirrelFound Forest: Rainy Day Squirrel = 2 ... Surfer Dude Squirrel = 5
+Funnel: step 3 Five squirrels
+Stats: SquirrelFound Forest: Nacho Libre Squirrel = 6, Gordo Squirrel = 7
+Stats: AreaFPS Forest = 60 (Device - Tablet, Cohort - New)
+Stats: AreaMemory Forest = 5974            (Studio's own memory here; in the game it is the player's device)
+Stats: SquirrelFound Forest: Fairy Squirrel = 8, Ski-a-roo Squirrel = 9, Ballerina Squirrel = 10
+Funnel: step 4 Ten squirrels (Rue open)
+Interact: Area "village"
+Funnel: step 5 Reached the Rue
+Stats: SquirrelFound Rue: Gerard the Mailman Squirrel = 1 ... Dale the Tourist Squirrel = 9
+Stats: AreaFPS Rue = 50 (Device - Tablet, Cohort - New)     <- 60 in the forest, 50 on the Rue, same PC
+Stats: AreaMemory Rue = 5958
+Stats: SquirrelFound Rue: French Painter Squirrel = 10
+Funnel: step 6 Twenty squirrels
+Interact: Area "domaine"
+Funnel: step 7 Reached the Chateau
+Stats: SquirrelFound Chateau: Gardener Squirrel = 1 ... Sunflower Squirrel = 10
+Funnel: step 8 Thirty squirrels
+Stats: SquirrelFound Chateau: Grape Stomper Gigi = 11, Shepherd Squirrel = 12
+(leaves)
+Stats: StillMissing Chateau: Chevre Squirrel = 1
+Stats: StillMissing Chateau: Truffle Hunter = 1
+Stats: StillMissing Chateau: Picnic Pierre = 1
+Stats: QuitInFrance Chateau: 12 of 15 = 8 (Device - Tablet, Stayed under 1 min)

@@ -1,0 +1,4 @@
+empties: awning_section, back_door2, back_window2, broom, chochin, crate_stack2, drainpipe, lattice_panel, sake_barrel2, water_tub, wood_shed
+shot prev_shopback2_yard.png
+shot prev_shopback2_door.png
+CHECK_DONE

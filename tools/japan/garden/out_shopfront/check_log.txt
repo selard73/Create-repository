@@ -1,0 +1,4 @@
+empties: andon_sign, basket_bench, front_awning, jar_shelf, potted_bamboo, side_banner, sign_board
+shot prev_mikan_front.png
+shot prev_mikan_quarter.png
+CHECK_DONE
