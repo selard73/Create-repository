@@ -1,0 +1,4 @@
+vending_machine: 37 meshes, 7983 tris (largest D_Silver 1320)
+recycle_bin: 4 meshes, 480 tris (largest BIN_Lid 240)
+INFO {"vending_machine": {"min": [-2.4, -0.3, -0.45], "max": [2.4, 6.84, 3.0]}, "recycle_bin": {"min": [-0.78, -0.02, -0.03], "max": [0.78, 2.75, 1.23]}}
+FBX_DONE

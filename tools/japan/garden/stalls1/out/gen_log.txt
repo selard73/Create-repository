@@ -1,0 +1,10 @@
+textures made
+kakigori_a: 15 meshes, 1894 tris (largest KG_FaceSnow 360)
+kakigori_b: 16 meshes, 18316 tris (largest KG_MoundBlue 4872)
+kori_flag: 2 meshes, 104 tris (largest KG_FlagPole 92)
+takoyaki_a: 13 meshes, 10892 tris (largest TK_BallTex 9504)
+takoyaki_b: 8 meshes, 11198 tris (largest TK_BallTex.001 7128)
+FBX_DONE
+rendered render_served3.png
+rendered render_takoyaki3.png
+RENDER_DONE

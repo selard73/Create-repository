@@ -1,0 +1,126 @@
+{
+ "kakigori_a": {
+  "min": [
+   -2.35,
+   0.0,
+   -0.936
+  ],
+  "max": [
+   3.05,
+   2.42,
+   0.6
+  ],
+  "parts": {
+   "KG_Iron": 112,
+   "KG_Enamel": 56,
+   "KG_Chrome": 246,
+   "KG_Knob": 36,
+   "KG_Glass": 60,
+   "KG_FaceSnow": 360,
+   "KG_Tray": 44,
+   "KG_Ice": 44,
+   "KG_Wood": 44,
+   "KG_SyrupRed": 176,
+   "KG_SyrupGreen": 200,
+   "KG_SyrupBlue": 224,
+   "KG_SyrupYellow": 196,
+   "KG_CupTex": 56,
+   "KG_Straw": 40
+  }
+ },
+ "kakigori_b": {
+  "min": [
+   -2.95,
+   0.0,
+   -0.92
+  ],
+  "max": [
+   2.9,
+   2.27,
+   0.82
+  ],
+  "parts": {
+   "KG_CupTex.001": 1536,
+   "KG_Wood.001": 132,
+   "KG_Chrome.001": 168,
+   "KG_MoundBlue": 4872,
+   "KG_MiniStick": 40,
+   "KG_MiniFlag1": 12,
+   "KG_MoundBear": 4872,
+   "KG_Cookie": 88,
+   "KG_FaceSnow.001": 952,
+   "KG_Choco": 96,
+   "KG_SyrupRed.001": 144,
+   "KG_Pink": 96,
+   "KG_MoundStraw": 4872,
+   "KG_Cream": 360,
+   "KG_SyrupGreen.001": 64,
+   "KG_MiniFlag2": 12
+  }
+ },
+ "kori_flag": {
+  "min": [
+   -0.25,
+   0.0,
+   -0.25
+  ],
+  "max": [
+   1.29,
+   6.6,
+   0.25
+  ],
+  "parts": {
+   "KG_FlagPole": 92,
+   "KG_FlagCloth": 12
+  }
+ },
+ "takoyaki_a": {
+  "min": [
+   -2.95,
+   0.0,
+   -1.03
+  ],
+  "max": [
+   2.78,
+   1.28,
+   1.025
+  ],
+  "parts": {
+   "TK_IronDark": 44,
+   "TK_Chrome": 92,
+   "TK_Iron": 44,
+   "TK_BallTex": 9504,
+   "TK_Sauce": 560,
+   "TK_SauceBottle": 112,
+   "TK_RedCap": 56,
+   "TK_MayoBottle": 112,
+   "TK_YellowCap": 56,
+   "TK_Glass": 60,
+   "TK_Bonito": 44,
+   "TK_Bamboo": 44,
+   "TK_Pick": 164
+  }
+ },
+ "takoyaki_b": {
+  "min": [
+   -2.78,
+   0.0,
+   -0.82
+  ],
+  "max": [
+   2.705,
+   0.72,
+   0.82
+  ],
+  "parts": {
+   "TK_Paper": 132,
+   "TK_BallTex.001": 7128,
+   "TK_Sauce.001": 1260,
+   "TK_Mayo": 934,
+   "TK_Nori": 396,
+   "TK_Bonito.001": 1260,
+   "TK_Glass.001": 44,
+   "TK_Chrome.001": 44
+  }
+ }
+}

@@ -1,0 +1,6 @@
+empties: recycle_bin, vending_machine
+shot prev_vending_front34.png
+shot prev_vending_display.png
+shot prev_vending_lower.png
+shot prev_vending_side.png
+CHECK_DONE

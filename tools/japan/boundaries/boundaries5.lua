@@ -1,0 +1,14 @@
+-- boundaries5.lua (Oct 23 2026): the mountain closed. Shannon: "those fences for the borders in the Japan map do not go all the
+-- way up the mountainside and you can still go up and around them; maybe make them go far up and then make a boundary fence
+-- along the mountain bottom and an invisible border so you cannot go further?"
+-- The mountain foot is z ~-330 right across the island (land x 5365..6650; ground y 0..4 at -325, rising from there).
+--  1. The two side runs (West fence - tea path (north), East fence - behind the church) trimmed at z -330: their sections
+--     north of the line and the matching sky-block length go; the end post stands on the line.
+--  2. A fence along the foot the whole width: wood x 5365..6132.5 (farm/Lantern side), bamboo 6132.5..6650 (palace side),
+--     boards facing the island; level stepped sections x1.25 tall, footholds non-solid, as the other runs.
+--  3. The "Mountain wall": one invisible solid slab along z -330, x 5345..6670, y -10..300 - nothing gets onto the mountain.
+--  4. OpenPolygon's north edge = -330; JapanGateServer: a player north of -330 is walked back to Gate7Back (5960, -318),
+--     a spot in Lantern Street just inside the foot fence (boundaries5b).
+-- NOTE for her: the "Volcano lookout" (wayfinding finger at the maze gate, volcano at (5440, 154, -580)) is beyond the line.
+-- Run in Studio: the installer text is the execute_luau call recorded in the session (same code as boundaries4's fenceRun).
+-- Guard: JapanGates attribute Boundaries5. "QQ BOUNDARIES5".

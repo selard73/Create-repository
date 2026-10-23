@@ -1,0 +1,8 @@
+empties: kakigori_a, kakigori_b, kori_flag, takoyaki_a, takoyaki_b
+shot prev_kakigori.png
+shot prev_kakigori_close.png
+shot prev_served.png
+shot prev_takoyaki.png
+shot prev_takoyaki_close.png
+shot prev_flag.png
+CHECK_DONE

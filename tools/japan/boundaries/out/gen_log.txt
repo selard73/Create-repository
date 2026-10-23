@@ -1,0 +1,7 @@
+FBX: JF_WoodSection__Wood_Dark 36 tris, JF_WoodSection__Wood_Cap 24 tris, JF_WoodSection__Wood_Mid 48 tris, JF_WoodPost__Wood_Dark 12 tris, JF_WoodPost__Wood_Cap 12 tris, JF_BambooSection__Wood_Dark 12 tris, JF_BambooSection__Bamboo 180 tris, JF_BambooSection__Bamboo_Dark 120 tris, JF_BambooSection__Rope 108 tris, JF_BambooPost 12 tris, JF_GateWood__Wood_Dark 72 tris, JF_GateWood__Wood_Mid 60 tris, JF_GateVermilion__Vermilion 60 tris, JF_GateVermilion__Black 84 tris, JF_SignBoard__Wood_Dark 24 tris, JF_SignBoard__Board 12 tris, JF_SignBoard__Wood_Cap 12 tris
+FBX_DONE
+shot kit_all.png
+shot kit_wood_close.png
+shot kit_bamboo_close.png
+shot kit_gates_close.png
+KIT_DONE

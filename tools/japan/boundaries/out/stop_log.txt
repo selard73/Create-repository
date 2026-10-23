@@ -1,0 +1,6 @@
+FBX: BS_Steel 132 tris, BS_Red 12 tris, BS_White 24 tris, BS_Head 240 tris, BS_Sleeper 24 tris
+FBX_DONE
+shot stop_three_quarter.png
+shot stop_side.png
+shot stop_back.png
+STOP_DONE

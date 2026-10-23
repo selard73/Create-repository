@@ -259,7 +259,7 @@ minute (36 % of new players leave before a first find).
     ServerStorage.HudBackup.ShelfClient_pre_shelf3 = the card version; its source also in tools/shelf/ShelfClient_shelf2.lua).
     Proven with the INSTALLED script: no card GUI, a real tap pulled the cup out x3.30 with the tag hidden, a tap sent it
     home (scale 1, tag back, OpenPanel cleared), no shelf errors.
-  * funnel2 INSTALLED Oct 22 on her word ("Install the new funnel steps and tracking, with a backup."), UNPUBLISHED
+  * funnel2 INSTALLED Oct 22 on her word ("Install the new funnel steps and tracking, with a backup."), PUBLISHED 17:22 UTC Oct 22
     (tools/funnel/funnel2.lua built by make_funnel2.py from funnel2_head.lua + src/SquirrelStats.lua + src/StatsClient.lua;
     backup ServerStorage.HudBackup.FunnelServer_pre_funnel2; test lines in tools/funnel/playtest_funnel2_2026-10-22.txt).
     Proven with the INSTALLED scripts (restarted on a wiped, ForceNew test player): steps 1-6 in order, SquirrelFound per
@@ -273,7 +273,7 @@ minute (36 % of new players leave before a first find).
     AreaFPS / AreaMemory (StatsClient, once per area per visit after 20 s). Area = SpawnReturn's x-line zones (Rue x>=150,
     Chateau x>=353 - only past the gates). In the Studio test on her PC: forest 60 fps, Rue 50.
   * welcome1 INSTALLED Oct 22 on her word ("Install the welcome, free hint, board move and hen eyes, with backups."),
-    UNPUBLISHED, + welcome1b right after (tools/welcome/welcome1b.lua; backups DailyClient_pre_welcome1b,
+    PUBLISHED 17:22 UTC Oct 22, + welcome1b right after (tools/welcome/welcome1b.lua; backups DailyClient_pre_welcome1b,
     QuestionClient_pre_welcome1b): the question banner landed ON the daily card (both waited for the first find) ->
     PlayerGui attribute DailyCardPending (set when a claimable day arrives, cleared when the card has slid away) and the
     reminder waits while it is set. Proven with the INSTALLED scripts on a wiped newcomer: the real WelcomeClient put the
@@ -303,7 +303,7 @@ minute (36 % of new players leave before a first find).
     a wiped newcomer: glow + bubble, free hint granted (HintServer log), first-find bubble, card wording, hens, board.
     Lesson: a Script created with Instance.new in a play test never runs (a clone of an existing one does); run preview
     client code straight from execute_luau instead. The hint's own glow stays on its squirrel for 2 min (not the welcome's).
-  * bottle2 INSTALLED Oct 22 on her word ("Install the bottle scatter, with a backup."), UNPUBLISHED (tools/bottle/
+  * bottle2 INSTALLED Oct 22 on her word ("Install the bottle scatter, with a backup."), PUBLISHED 17:22 UTC Oct 22 (tools/bottle/
     bottle2.lua; backup ServerStorage.HudBackup.BottleServer_pre_bottle2). Proven with the INSTALLED script: 2 bottles
     out at start, 101 studs apart, both on sand, no errors. Was PREVIEWED first. Shannon: the
     beach bottles "keep spawning over and over in the same place ... supposed to be random, scattered". Was: ten fixed
@@ -313,7 +313,7 @@ minute (36 % of new players leave before a first find).
     100, old list as the last fallback); MaxBeach 2. Proven in a play test with a patched copy: 2 bottles 50 studs apart;
     8 wash-ups in a row closest 30 studs. Her other report: crab game 1 crab per cast x12 - odds unchanged (0/1/2/3 =
     15/40/30/15 %, gold 5 %); the 6-crab bucket trims each cast; waiting for her bucket count.
-  * decorvr1 INSTALLED Oct 22 on her word ("Install the VR fix for the Treehouse tab, with backups."), UNPUBLISHED
+  * decorvr1 INSTALLED Oct 22 on her word ("Install the VR fix for the Treehouse tab, with backups."), PUBLISHED 17:22 UTC Oct 22
     (tools/decor/decorvr1.lua; backups ServerStorage.HudBackup.DecorClient_pre_decorvr1, TreehouseClient_pre_decorvr1).
     Proven with the INSTALLED scripts: normal screen 48 pieces in the tab; headset layout (screens moved as
     VRWindowClient does, DecorClient restarted) 48 pieces built on the VR window in 0.3 s; no errors from either script. Shannon: "when you open the menu for treehouse items on vr it is blank" ("the wardrobe
@@ -331,6 +331,9 @@ minute (36 % of new players leave before a first find).
     again (0.35 s, turning back the short way) on any tap, walking (MoveDirection), Esc, another panel, respawn.
     Proven in a play test: tap acorn -> out x2.92; tap -> home at scale 1, tag back, OpenPanel cleared; cup out x3.30 and
     an S-key step sent it home; key out x2.98 with the tag hidden.
+  * PUBLISHED by her in one Alt+P, servers shut down (game page Updated stamp 17:22:38 UTC Oct 22): decorvr1, funnel2,
+    welcome1 + welcome1b, bottle2. Funnel dashboard date ranges start Oct 22. Still to check live: the Treehouse tab in
+    her headset (and Gordo's ViewportFrame face there); the funnel's first read ~Oct 27-28.
 - Step 0 (economy audit): done Oct 20.
 - Step 1 baseline (Oct 20, dashboard cohort table, cohorts Oct 12-17): 212 new players (19-53 a day, ~35 avg).
   Day 1: 6 came back = 2.8 % (Oct 12 1/53, Oct 13 1/46, Oct 14 2/19, Oct 15 0/21, Oct 16 0/28, Oct 17 2/45).

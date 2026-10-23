@@ -1,0 +1,12 @@
+-- boundaries4.lua (Oct 23 2026): the Tea Hills line moved to where she drew it + clear blocks above every fence.
+-- Her: "I think the fence blocking the tea area should go the length of here rather than how you have it ... like where I drew
+-- the line please" (the north-south path east of the stream, x 5792..5798, from the mountains down to the cross path at z 70,
+-- then west to the farm bridge) and "put a clear block above the fence too please that goes way up".
+--  1. The old west runs (farmland, stream head) and the farm bridge gate (west landing) go.
+--  2. New wood runs: (5800,-402) -> (5800,66) -> (5788,66) [gate] (5788,76) -> (5765,86) -> (5765,117) -> (5358,117) with the
+--     station gap. The stream, both its banks, the path and the bridge are now INSIDE Tea Hills.
+--  3. The farm bridge gate at the bridge's EAST landing, x 5788, z 66..76, facing the cross path (east).
+--  4. Grove trees within crown reach of the new line move east of it.
+--  5. Sky blocks: one invisible solid slab per straight fence segment, 1.2 thick, from y -10 to 130; the gates' Blocks 130 tall.
+--  6. OpenPolygon + Gate1Back updated. Guarded by JapanGates attribute Boundaries4. "QQ BOUNDARIES4".
+-- (the fenceRun / piece / dress / gate code is boundaries1-2's, repeated here so this file runs alone)

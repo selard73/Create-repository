@@ -1,0 +1,153 @@
+{
+ "vending_machine": {
+  "min": [
+   -2.4,
+   -0.3,
+   -0.45
+  ],
+  "max": [
+   2.4,
+   6.84,
+   3.0
+  ],
+  "parts": {
+   "VM_Pad": {
+    "tris": 44
+   },
+   "VM_Kick": {
+    "tris": 60
+   },
+   "VM_Body": {
+    "tris": 88
+   },
+   "VM_Frame": {
+    "tris": 92
+   },
+   "VM_Header": {
+    "tris": 44
+   },
+   "VM_Backlight": {
+    "tris": 12
+   },
+   "VM_Glass": {
+    "tris": 12
+   },
+   "VM_Shelf": {
+    "tris": 72
+   },
+   "D_Silver": {
+    "tris": 1320
+   },
+   "D_Brown": {
+    "tris": 599
+   },
+   "D_Gold": {
+    "tris": 240
+   },
+   "VM_StripBlue": {
+    "tris": 156
+   },
+   "VM_PriceTag": {
+    "tris": 240
+   },
+   "VM_Button": {
+    "tris": 880
+   },
+   "D_Red": {
+    "tris": 300
+   },
+   "D_White": {
+    "tris": 576
+   },
+   "D_Orange": {
+    "tris": 216
+   },
+   "D_Purple": {
+    "tris": 60
+   },
+   "D_Yellow": {
+    "tris": 120
+   },
+   "D_Green": {
+    "tris": 232
+   },
+   "D_Blue": {
+    "tris": 224
+   },
+   "D_Tea": {
+    "tris": 478
+   },
+   "D_Water": {
+    "tris": 478
+   },
+   "D_Amber": {
+    "tris": 717
+   },
+   "VM_StripRed": {
+    "tris": 84
+   },
+   "D_Cream": {
+    "tris": 239
+   },
+   "VM_Trim": {
+    "tris": 124
+   },
+   "VM_PortDark": {
+    "tris": 48
+   },
+   "VM_Flap": {
+    "tris": 12
+   },
+   "VM_Chrome": {
+    "tris": 80
+   },
+   "VM_Graphic": {
+    "tris": 12
+   },
+   "VM_GraphicWave": {
+    "tris": 36
+   },
+   "VM_LED": {
+    "tris": 12
+   },
+   "VM_LEDDigits": {
+    "tris": 12
+   },
+   "VM_ICPad": {
+    "tris": 28
+   },
+   "VM_SlotGreen": {
+    "tris": 12
+   },
+   "VM_SideStripe": {
+    "tris": 24
+   }
+  }
+ },
+ "recycle_bin": {
+  "min": [
+   -0.78,
+   -0.02,
+   -0.03
+  ],
+  "max": [
+   0.78,
+   2.75,
+   1.23
+  ],
+  "parts": {
+   "BIN_Body": {
+    "tris": 44
+   },
+   "BIN_Lid": {
+    "tris": 240
+   },
+   "BIN_Hole": {
+    "tris": 184
+   },
+   "BIN_Label": {
+    "tris": 12
+   }
+  }
+ }
+}
